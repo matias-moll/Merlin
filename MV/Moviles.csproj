@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2FCE938E-CEC5-49AD-B116-2EEF8E9774C0}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MV</RootNamespace>
+    <AssemblyName>MV</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Bohman.MonthCalendar.520">
+      <HintPath>..\..\Ambiente0520\DNet0520\Release_Uil\Bohman.MonthCalendar.520.dll</HintPath>
+    </Reference>
+    <Reference Include="MikeHankey.XPControlLib.520">
+      <HintPath>..\..\Ambiente0520\DNet0520\Release_Uil\MikeHankey.XPControlLib.520.dll</HintPath>
+    </Reference>
+    <Reference Include="MS.TabStripControlLibrary.520">
+      <HintPath>..\..\Ambiente0520\DNet0520\Release_Uil\MS.TabStripControlLibrary.520.dll</HintPath>
+    </Reference>
+    <Reference Include="netchartdir">
+      <HintPath>..\..\Ambiente0520\DNet0520\Release_Uil\netchartdir.dll</HintPath>
+    </Reference>
+    <Reference Include="PS.TaskDialog.520">
+      <HintPath>..\..\Ambiente0520\DNet0520\Release_Uil\PS.TaskDialog.520.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="TNGS.NetApp.520">
+      <HintPath>..\..\Ambiente0520\DNet0520\Release_Uil\TNGS.NetApp.520.dll</HintPath>
+    </Reference>
+    <Reference Include="TNGS.NetAppBll.520">
+      <HintPath>..\..\Ambiente0520\DNet0520\Release_Uil\TNGS.NetAppBll.520.dll</HintPath>
+    </Reference>
+    <Reference Include="TNGS.NetControls.520">
+      <HintPath>..\..\Ambiente0520\DNet0520\Release_Uil\TNGS.NetControls.520.dll</HintPath>
+    </Reference>
+    <Reference Include="TNGS.NetIPlugin.520">
+      <HintPath>..\..\Ambiente0520\DNet0520\Release_Uil\TNGS.NetIPlugin.520.dll</HintPath>
+    </Reference>
+    <Reference Include="TNGS.NetOffice.520">
+      <HintPath>..\..\Ambiente0520\DNet0520\Release_Uil\TNGS.NetOffice.520.dll</HintPath>
+    </Reference>
+    <Reference Include="TNGS.NetRoutines.520">
+      <HintPath>..\..\Ambiente0520\DNet0520\Release_Uil\TNGS.NetRoutines.520.dll</HintPath>
+    </Reference>
+    <Reference Include="TNGS.NetSocket.520">
+      <HintPath>..\..\Ambiente0520\DNet0520\Release_Uil\TNGS.NetSocket.520.dll</HintPath>
+    </Reference>
+    <Reference Include="WeifenLuo.WinFormsUI.Docking.520">
+      <HintPath>..\..\Ambiente0520\DNet0520\Release_Uil\WeifenLuo.WinFormsUI.Docking.520.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Bel\BEL.csproj">
+      <Project>{7969C80F-3E89-4E03-A01B-776686783353}</Project>
+      <Name>BEL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bll\BLL.csproj">
+      <Project>{58EC503E-05DD-4F0F-B55A-318733142682}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Shr\Shr.csproj">
+      <Project>{4EE82BA9-6046-419B-87AF-014443954416}</Project>
+      <Name>Shr</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

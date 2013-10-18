@@ -451,7 +451,7 @@ namespace Rivn.Tg
             this.txtValor.Name = "txtValor";
             this.txtValor.Size = new System.Drawing.Size(51, 22);
             this.txtValor.TabIndex = 8;
-            this.txtValor.Text = "0,00";
+            this.txtValor.Text = "0.00";
             // 
             // Equipamiento
             // 
