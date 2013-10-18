@@ -14,7 +14,7 @@ namespace Rivn.Bel
     //----------------------------------------------------------------------------
     //                         TNG Software BEL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 20/09/2013 15:14
+    // Fecha                    : 18/10/2013 16:03
     // Sistema                  : Rivn
     // Clase para Administrar   : Tablas de Rivn.
     //----------------------------------------------------------------------------
@@ -583,7 +583,7 @@ namespace Rivn.Bel
             XML2FixedFields(ref l_drTemp, l_xndData);
 
             // Llamamos al metodo fijo
-       //     fNewFromXML(ref l_drTemp, l_xndData);
+            fNewFromXML(ref l_drTemp, l_xndData);
 
             // Agregamos la Row creada a la tabla creada y creamos
             // una entidad a partir de los datos
@@ -752,7 +752,7 @@ namespace Rivn.Bel
                 FixedFields2XML(l_xdocData, ref l_xndEntidad);
 
                 // Llamamos al metodo fijo
-       //         fAddXMLData(ref l_xdocData, ref l_xndEntidad);
+                fAddXMLData(ref l_xdocData, ref l_xndEntidad);
 
                 // Armamos el documento y lo devolvemos
                 l_xdocData.AppendChild(l_xndEntidad);
@@ -1027,6 +1027,1051 @@ namespace Rivn.Bel
                 foreach (EEquipamento l_entItem in this) {
                     // Si existe -> la devolvemos
                     if (l_entItem.Cod == p_strCod)
+                        return l_entItem;
+                }
+
+                // No existe
+                return null;
+            }
+        }
+        #endregion
+    }
+    #endregion
+
+    #region Entidad: Marca
+    /// <summary>
+    /// Clase que representa la Entidad: Marca
+    /// </summary>
+    public sealed partial class EMarca : Entidad
+    {
+        #region Constructores
+        /// <summary>
+        /// Constructor
+        /// Llena la entidad a partir de una Row de la tabla: Marcas
+        /// </summary>
+        /// <param name="p_drDatos">DataRow con los datos de la entidad</param>
+        public EMarca(DataRow p_drDatos) :
+            base(p_drDatos)
+        {
+        }
+
+        /// <summary>
+        /// Construye una entidad desde un XML: Marca
+        /// </summary>
+        /// <param name="p_strXML">Datos en XML</param>
+        /// <param name="p_bEsNueva">T- La Entidad es Nueva / F- No</param>
+        public EMarca(string p_strXML) :
+            this(p_strXML, false)
+        {
+        }
+
+        /// <summary>
+        /// Construye una entidad desde un XML: Marca
+        /// </summary>
+        /// <param name="p_strXML">Datos en XML</param>
+        public EMarca(string p_strXML,
+                      bool p_bEsNueva)
+        {
+            // Fijamos la condicion de entidad nueva
+            base.m_bNew= p_bEsNueva;
+
+            // Obtenemos el Nodo de datos del XML
+            XmlDocument l_xdocData= new XmlDocument();
+            l_xdocData.InnerXml= p_strXML;
+            XmlNode l_xndData= l_xdocData.ChildNodes[0];
+
+            // Creamos una tabla compatible con la entidad
+            DataTable l_dtTemp= new DataTable();
+            l_dtTemp.Columns.AddRange(EMarca.Struct);
+
+            // Creamos una row a partir de la tabla creada y la
+            // llenamos con los valores iniciales
+            DataRow l_drTemp= l_dtTemp.NewRow();
+
+            l_drTemp["mrc_rcd_codigo"]= XMLRuts.ExtractXAttr(l_xndData, "mrc_rcd_codigo");
+            l_drTemp["mrc_des_descripcion"]= XMLRuts.ExtractXAttr(l_xndData, "mrc_des_descripcion");
+
+            // Llenamos los campos fijos
+            XML2FixedFields(ref l_drTemp, l_xndData);
+
+            // Llamamos al metodo fijo
+            fNewFromXML(ref l_drTemp, l_xndData);
+
+            // Agregamos la Row creada a la tabla creada y creamos
+            // una entidad a partir de los datos
+            l_dtTemp.Rows.Add(l_drTemp);
+            SetInternalData(l_dtTemp, l_dtTemp.Rows[0]);
+        }
+
+        /// <summary>
+        /// Constructor 
+        /// Privado para crear clases vacias
+        /// </summary>
+        /// <param name="p_dtDatos">DataTable con 1 registro con los datos de la entidad</param>
+        private EMarca(DataTable p_dtDatos) :
+            base(p_dtDatos)
+        {
+        }
+        #endregion
+
+        #region Metodos publicos de la clase
+        //---------------------------------------------------------------
+        // Metodos públicos de la clase
+        //---------------------------------------------------------------
+
+        /// <summary>
+        /// Construye una entidad vacía: Marca
+        /// </summary>
+        /// <returns>Entidad vacia: Marca</returns>
+        public static EMarca NewEmpty()
+        {
+            // Creamos una tabla compatible con la entidad
+            DataTable l_dtTemp= new DataTable();
+            l_dtTemp.Columns.AddRange(EMarca.Struct);
+
+            // Creamos una row a partir de la tabla creada y la
+            // llenamos con los valores iniciales
+            DataRow l_drTemp= l_dtTemp.NewRow();
+
+            l_drTemp["mrc_rcd_codigo"]= "";
+            l_drTemp["mrc_des_descripcion"]= "";
+
+            // Agregamos la Row creada a la tabla creada y creamos
+            // una entidad a partir de la DataTable de 1 registro
+            l_dtTemp.Rows.Add(l_drTemp);
+            EMarca l_entRet= new EMarca(l_dtTemp);
+            l_dtTemp.Dispose();
+            return l_entRet;
+        }
+
+        /// <summary>
+        /// Construye una entidad con datos de parametro: Marca
+        /// </summary>
+        /// <param name="p_strCodigo">cod</param>
+        /// <param name="p_strDescripcion">des</param>
+        /// <returns>Entidad: Marca</returns>
+        public static EMarca NewFilled(string p_strCodigo,
+                                       string p_strDescripcion)
+        {
+            // Creamos una tabla compatible con la entidad
+            DataTable l_dtTemp= new DataTable();
+            l_dtTemp.Columns.AddRange(EMarca.Struct);
+
+            // Creamos una row a partir de la tabla creada y la
+            // llenamos con los valores iniciales
+            DataRow l_drTemp= l_dtTemp.NewRow();
+
+            l_drTemp["mrc_rcd_codigo"]= p_strCodigo;
+            l_drTemp["mrc_des_descripcion"]= p_strDescripcion;
+
+            // Agregamos la Row creada a la tabla creada y creamos
+            // una entidad a partir de la DataTable de 1 registro
+            l_dtTemp.Rows.Add(l_drTemp);
+            EMarca l_entRet= new EMarca(l_dtTemp);
+            l_dtTemp.Dispose();
+            return l_entRet;
+        }
+        #endregion
+
+        #region Formateadores
+
+        //---------------------------------------------------------------
+        // Metodos estáticos (Formateo de codigos alineados a derecha)
+        //---------------------------------------------------------------
+
+        /// <summary>
+        /// Formatea una string: cod
+        /// </summary>
+        public static string FrmtCodigo(string p_strCodigo)
+        {
+            if (p_strCodigo.Trim().Length > 2)
+                p_strCodigo= p_strCodigo.Trim().Substring(0,2);
+
+            return p_strCodigo.Trim().PadLeft(2).ToUpper();
+        }
+        #endregion
+
+        #region Propiedades de la clase
+        //---------------------------------------------------------------
+        // Propiedades de la clase
+        //---------------------------------------------------------------
+
+        /// <summary>
+        /// Devuelve la estructura de la tabla interna de la entidad
+        /// </summary>
+        public static DataColumn[] Struct
+        {
+            get {
+                // Creamos el vector de DataColumns y lo llenamos
+                DataColumn[] l_dcStruct= new DataColumn[6];
+
+                l_dcStruct[0]= new DataColumn("mrc_rcd_codigo", typeof(string));
+                l_dcStruct[1]= new DataColumn("mrc_des_descripcion", typeof(string));
+                EMarca.FillFixedFields(ref l_dcStruct, 2);
+
+                // Devolvemos el vector creado
+                return l_dcStruct;
+            }
+        }
+
+        /// <summary>
+        /// cod
+        /// </summary>
+        public string Codigo
+        {
+            get {return (string) InternalData["mrc_rcd_codigo"];}
+            set {InternalData["mrc_rcd_codigo"]= EMarca.FrmtCodigo(value);}
+        }
+
+        /// <summary>
+        /// des
+        /// </summary>
+        public string Descripcion
+        {
+            get {return ((string) InternalData["mrc_des_descripcion"]).Trim();}
+            set {
+                if (value.Trim().Length > 30) value= value.Trim().Substring(0,30);
+                InternalData["mrc_des_descripcion"]= value.Trim().ToUpper();
+            }
+        }
+
+        /// <summary>
+        /// Devuelve la entidad [EMarca] como XMLDocument en formato string
+        /// </summary>
+        public string XMLData
+        {
+            get {return XMLEncode.InnerXml;}
+        }
+
+        /// <summary>
+        /// Devuelve la entidad [EMarca] como XMLDocument
+        /// </summary>
+        public XmlDocument XMLEncode
+        {
+            get {
+                //Creamos un Nodo de un Documento XML
+                XmlDocument l_xdocData= new XmlDocument();
+                XmlNode l_xndEntidad= l_xdocData.CreateNode(XmlNodeType.Element, "EMarca", null);
+
+                // Asignamos los atributos al nodo
+                l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "mrc_rcd_codigo", Codigo));
+                l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "mrc_des_descripcion", Descripcion));
+
+                // Asignamos los campos fijos
+                FixedFields2XML(l_xdocData, ref l_xndEntidad);
+
+                // Llamamos al metodo fijo
+                fAddXMLData(ref l_xdocData, ref l_xndEntidad);
+
+                // Armamos el documento y lo devolvemos
+                l_xdocData.AppendChild(l_xndEntidad);
+                return l_xdocData;
+            }
+        }
+        #endregion
+    }
+    #endregion
+
+    #region Lista-Entidad: Marcas
+    /// <summary>
+    /// Clase que representa la Lista-Entidad: Marcas
+    /// </summary>
+    public sealed partial class LEMarcas : ListaEntidades
+    {
+        #region Constructores
+        /// <summary>
+        /// Constructor
+        /// Llena la lista-entidad a partir de una Tabla: Marcas
+        /// </summary>
+        /// <param name="p_dtDatos">DataTable con los datos de la entidad</param>
+        public LEMarcas(DataTable p_dtDatos) :
+            base(p_dtDatos)
+        {
+        }
+
+        /// <summary>
+        /// Constructor
+        /// Llena la lista-entidad a partir de un XML
+        /// </summary>
+        /// <param name="p_dtDatos">DataTable con los datos de la entidad</param>
+        public LEMarcas(string p_strXMLData) :
+            base(EMarca.Struct)
+        {
+            // Creamos el documento XML
+            XmlDocument l_xdocData= new XmlDocument();
+            l_xdocData.InnerXml= p_strXMLData;
+            XmlElement l_xelTemp= l_xdocData.DocumentElement;
+
+            // Agregamos cada item a la LE
+            foreach (XmlNode l_xndItem in l_xelTemp.ChildNodes)
+                AddEntity(new EMarca(l_xndItem.OuterXml));
+        }
+
+        /// <summary>
+        /// Constructor
+        /// Constuye la lista-entidad vacia a partir de una lista de columnas
+        /// correspondiente a una entidad
+        /// </summary>
+        /// <param name="p_dcEstructura">Columnas de la estructura</param>
+        private LEMarcas(DataColumn[] p_dcEstructura) :
+            base(p_dcEstructura)
+        {
+        }
+        #endregion
+
+        #region Metodos publicos de la clase
+        //---------------------------------------------------------------
+        // Metodos publicos
+        //---------------------------------------------------------------
+
+        /// <summary>
+        /// Construye una lista-entidad vacía: Marcas
+        /// </summary>
+        /// <returns>Lista-Entidad vacia: Marcas</returns>
+        public static LEMarcas NewEmpty()
+        {
+            return new LEMarcas(EMarca.Struct);
+        }
+
+        /// <summary>
+        /// Agrega una entidad a la lista
+        /// </summary>
+        /// <param name="p_entEMarca">Entidad a agregar</param>
+        public void AddEntity(EMarca p_entEMarca)
+        {
+            base.AddEntity(p_entEMarca);
+        }
+
+        /// <summary>
+        /// Remueve una entidad [Marca] por clave
+        /// </summary>
+        public int RemoveEntity(string p_strCodigo)
+        {
+            // Buscamos la fila mediante un filtro
+            int l_iRet= 0;
+
+            m_dtDatos.DefaultView.RowFilter= 
+                "mrc_rcd_codigo = " + Ruts.Co(EMarca.FrmtCodigo(p_strCodigo));
+
+            if (m_dtDatos.DefaultView.Count == 1) {
+                // La borramos
+                m_dtDatos.Rows.Remove(m_dtDatos.DefaultView[0].Row);
+                l_iRet= 1;
+            }
+
+            // Quito el filtro
+            m_dtDatos.DefaultView.RowFilter= "";
+            return l_iRet;
+        }
+
+        /// <summary>
+        /// Verifca si una entidad [Marca] esta en la lista
+        /// </summary>
+        public bool Contains(string p_strCodigo)
+        {
+            using (EMarca l_entTemp= this[p_strCodigo])
+            {
+                // Indicamos si existe o no
+                return (l_entTemp != null);
+            }
+        }
+
+        /// <summary>
+        /// Devuelve el enumerador de la lista-entidades: Marcas
+        /// </summary>
+        /// <returns>Enumerador de las entidades en la lista</returns>
+        public new IEnumerator GetEnumerator() 
+        {
+            EMarca l_entTemp= null;
+
+            foreach (DataRowView l_drvTemp in m_dtDatos.DefaultView) {
+                l_entTemp= new EMarca(l_drvTemp.Row);
+                yield return l_entTemp;
+            }
+        }
+
+        /// <summary>
+        /// Devuelve la lista entidad como un array de entidades: Marcas
+        /// </summary>
+        /// <returns>Array de entidades</returns>
+        public ArrayList GetAsArray()
+        {
+            // Llenamos el array con las entidades
+            ArrayList l_alRet= new ArrayList();
+
+            foreach (EMarca l_entItem in this)
+                l_alRet.Add(l_entItem);
+
+            return l_alRet;
+        }
+
+        /// <summary>
+        /// Devuelve la lista entidad como una LET: Marcas
+        /// </summary>
+        /// <returns>Lista Entidad Tipada</returns>
+        public LETMarcas GetAsLET()
+        {
+            // Llenamos la lista tipada
+            LETMarcas l_lentRet= new LETMarcas();
+
+            foreach (EMarca l_entItem in this)
+                l_lentRet.Add(l_entItem);
+
+            return l_lentRet;
+        }
+        #endregion
+
+        #region Propiedades de la clase
+        //---------------------------------------------------------------
+        // Propiedades de la clase
+        //---------------------------------------------------------------
+
+        /// <summary>
+        /// Indexer para acceder a cada entidad [Marca] por indice
+        /// </summary>
+        public new EMarca this[long p_lRow]
+        {
+            get {
+                // Recuperamos la fila solicitada
+                DataRow l_drDatos= base[(int) p_lRow];
+                if (l_drDatos == null) return null;
+
+                // Devolvemos una entidad Marca con los datos de la fila
+                return new EMarca(l_drDatos);
+            }
+        }
+
+        /// <summary>
+        /// Indexer para acceder a cada entidad [Marca] por clave
+        /// </summary>
+        public EMarca this[string p_strCodigo]
+        {
+            get {
+                // Buscamos la fila mediante un filtro
+                DataRow l_drData= null;
+
+                m_dtDatos.DefaultView.RowFilter= 
+                    "mrc_rcd_codigo = " + Ruts.Co(EMarca.FrmtCodigo(p_strCodigo));
+
+                if (m_dtDatos.DefaultView.Count == 1)
+                    l_drData= m_dtDatos.DefaultView[0].Row;
+
+                // Quito el filtro
+                m_dtDatos.DefaultView.RowFilter= "";
+
+                // Devolvemos una entidad Marca con los datos de la fila
+                if (l_drData == null) return null;
+                return new EMarca(l_drData);
+            }
+        }
+
+        /// <summary>
+        /// Devuelve la ListaEntidad como XML en string
+        /// </summary>
+        public string XMLData
+        {
+            get {return XMLEncode.InnerXml;}
+        }
+
+        /// <summary>
+        /// Devuelve la ListaEntidad como XML
+        /// </summary>
+        public XmlDocument XMLEncode
+        {
+            get {
+                // Construimos el XML
+                XmlDocument l_xdocData= new XmlDocument();
+                XmlNode l_xndEntidad= l_xdocData.CreateNode(XmlNodeType.Element, "LEMarcas", null);
+
+                foreach (EMarca l_entDExtra in this)
+                    l_xndEntidad.AppendChild(l_xdocData.ImportNode(l_entDExtra.XMLEncode.ChildNodes[0], false));
+
+                l_xdocData.AppendChild(l_xndEntidad);
+                return l_xdocData;
+            }
+        }
+        #endregion
+    }
+    #endregion
+
+    #region Lista-Entidad-Tipada: Marcas
+    /// <summary>
+    /// Clase que representa la Lista-Entidad-Tipada: Marcas
+    /// </summary>
+    public sealed partial class LETMarcas : LET<EMarca>
+    {
+        #region Metodos publicos de la clase
+        //---------------------------------------------------------------
+        // Metodos publicos
+        //---------------------------------------------------------------
+
+        /// <summary>
+        /// Devuelve la lista entidad tipada como una LE: Marcas
+        /// </summary>
+        /// <returns>Lista Entidad</returns>
+        public LEMarcas GetAsLE()
+        {
+            // Llenamos la lista
+            LEMarcas l_lentRet= LEMarcas.NewEmpty();
+
+            foreach (EMarca l_entItem in this)
+                l_lentRet.AddEntity(l_entItem);
+
+            return l_lentRet;
+        }
+        #endregion
+
+        #region Propiedades de la clase
+        //---------------------------------------------------------------
+        // Propiedades de la clase
+        //---------------------------------------------------------------
+
+        /// <summary>
+        /// Indexer para acceder a cada entidad [Marca] por clave
+        /// </summary>
+        public EMarca this[string p_strCodigo]
+        {
+            get {
+                // Buscamos la entidad
+                foreach (EMarca l_entItem in this) {
+                    // Si existe -> la devolvemos
+                    if (l_entItem.Codigo == EMarca.FrmtCodigo(p_strCodigo))
+                        return l_entItem;
+                }
+
+                // No existe
+                return null;
+            }
+        }
+        #endregion
+    }
+    #endregion
+
+    #region Entidad: Modelo
+    /// <summary>
+    /// Clase que representa la Entidad: Modelo
+    /// </summary>
+    public sealed partial class EModelo : Entidad
+    {
+        #region Constructores
+        /// <summary>
+        /// Constructor
+        /// Llena la entidad a partir de una Row de la tabla: Modelos
+        /// </summary>
+        /// <param name="p_drDatos">DataRow con los datos de la entidad</param>
+        public EModelo(DataRow p_drDatos) :
+            base(p_drDatos)
+        {
+        }
+
+        /// <summary>
+        /// Construye una entidad desde un XML: Modelo
+        /// </summary>
+        /// <param name="p_strXML">Datos en XML</param>
+        /// <param name="p_bEsNueva">T- La Entidad es Nueva / F- No</param>
+        public EModelo(string p_strXML) :
+            this(p_strXML, false)
+        {
+        }
+
+        /// <summary>
+        /// Construye una entidad desde un XML: Modelo
+        /// </summary>
+        /// <param name="p_strXML">Datos en XML</param>
+        public EModelo(string p_strXML,
+                       bool p_bEsNueva)
+        {
+            // Fijamos la condicion de entidad nueva
+            base.m_bNew= p_bEsNueva;
+
+            // Obtenemos el Nodo de datos del XML
+            XmlDocument l_xdocData= new XmlDocument();
+            l_xdocData.InnerXml= p_strXML;
+            XmlNode l_xndData= l_xdocData.ChildNodes[0];
+
+            // Creamos una tabla compatible con la entidad
+            DataTable l_dtTemp= new DataTable();
+            l_dtTemp.Columns.AddRange(EModelo.Struct);
+
+            // Creamos una row a partir de la tabla creada y la
+            // llenamos con los valores iniciales
+            DataRow l_drTemp= l_dtTemp.NewRow();
+
+            l_drTemp["mds_rcd_cod"]= XMLRuts.ExtractXAttr(l_xndData, "mds_rcd_cod");
+            l_drTemp["mds_des_des"]= XMLRuts.ExtractXAttr(l_xndData, "mds_des_des");
+            l_drTemp["mds_rcd_codmarca"]= XMLRuts.ExtractXAttr(l_xndData, "mds_rcd_codmarca");
+
+            // Llenamos los campos fijos
+            XML2FixedFields(ref l_drTemp, l_xndData);
+
+            // Llamamos al metodo fijo
+            fNewFromXML(ref l_drTemp, l_xndData);
+
+            // Agregamos la Row creada a la tabla creada y creamos
+            // una entidad a partir de los datos
+            l_dtTemp.Rows.Add(l_drTemp);
+            SetInternalData(l_dtTemp, l_dtTemp.Rows[0]);
+        }
+
+        /// <summary>
+        /// Constructor 
+        /// Privado para crear clases vacias
+        /// </summary>
+        /// <param name="p_dtDatos">DataTable con 1 registro con los datos de la entidad</param>
+        private EModelo(DataTable p_dtDatos) :
+            base(p_dtDatos)
+        {
+        }
+        #endregion
+
+        #region Metodos publicos de la clase
+        //---------------------------------------------------------------
+        // Metodos públicos de la clase
+        //---------------------------------------------------------------
+
+        /// <summary>
+        /// Construye una entidad vacía: Modelo
+        /// </summary>
+        /// <returns>Entidad vacia: Modelo</returns>
+        public static EModelo NewEmpty()
+        {
+            // Creamos una tabla compatible con la entidad
+            DataTable l_dtTemp= new DataTable();
+            l_dtTemp.Columns.AddRange(EModelo.Struct);
+
+            // Creamos una row a partir de la tabla creada y la
+            // llenamos con los valores iniciales
+            DataRow l_drTemp= l_dtTemp.NewRow();
+
+            l_drTemp["mds_rcd_cod"]= "";
+            l_drTemp["mds_des_des"]= "";
+            l_drTemp["mds_rcd_codmarca"]= "";
+
+            // Agregamos la Row creada a la tabla creada y creamos
+            // una entidad a partir de la DataTable de 1 registro
+            l_dtTemp.Rows.Add(l_drTemp);
+            EModelo l_entRet= new EModelo(l_dtTemp);
+            l_dtTemp.Dispose();
+            return l_entRet;
+        }
+
+        /// <summary>
+        /// Construye una entidad con datos de parametro: Modelo
+        /// </summary>
+        /// <param name="p_strCod">Codigo</param>
+        /// <param name="p_strDes">descripcion</param>
+        /// <param name="p_strCodmarca">Codigo de la marca</param>
+        /// <returns>Entidad: Modelo</returns>
+        public static EModelo NewFilled(string p_strCod,
+                                        string p_strDes,
+                                        string p_strCodmarca)
+        {
+            // Creamos una tabla compatible con la entidad
+            DataTable l_dtTemp= new DataTable();
+            l_dtTemp.Columns.AddRange(EModelo.Struct);
+
+            // Creamos una row a partir de la tabla creada y la
+            // llenamos con los valores iniciales
+            DataRow l_drTemp= l_dtTemp.NewRow();
+
+            l_drTemp["mds_rcd_cod"]= p_strCod;
+            l_drTemp["mds_des_des"]= p_strDes;
+            l_drTemp["mds_rcd_codmarca"]= p_strCodmarca;
+
+            // Agregamos la Row creada a la tabla creada y creamos
+            // una entidad a partir de la DataTable de 1 registro
+            l_dtTemp.Rows.Add(l_drTemp);
+            EModelo l_entRet= new EModelo(l_dtTemp);
+            l_dtTemp.Dispose();
+            return l_entRet;
+        }
+        #endregion
+
+        #region Formateadores
+
+        //---------------------------------------------------------------
+        // Metodos estáticos (Formateo de codigos alineados a derecha)
+        //---------------------------------------------------------------
+
+        /// <summary>
+        /// Formatea una string: Codigo
+        /// </summary>
+        public static string FrmtCod(string p_strCod)
+        {
+            if (p_strCod.Trim().Length > 2)
+                p_strCod= p_strCod.Trim().Substring(0,2);
+
+            return p_strCod.Trim().PadLeft(2).ToUpper();
+        }
+
+        /// <summary>
+        /// Formatea una string: Codigo de la marca
+        /// </summary>
+        public static string FrmtCodmarca(string p_strCodmarca)
+        {
+            if (p_strCodmarca.Trim().Length > 2)
+                p_strCodmarca= p_strCodmarca.Trim().Substring(0,2);
+
+            return p_strCodmarca.Trim().PadLeft(2).ToUpper();
+        }
+        #endregion
+
+        #region Propiedades de la clase
+        //---------------------------------------------------------------
+        // Propiedades de la clase
+        //---------------------------------------------------------------
+
+        /// <summary>
+        /// Devuelve la estructura de la tabla interna de la entidad
+        /// </summary>
+        public static DataColumn[] Struct
+        {
+            get {
+                // Creamos el vector de DataColumns y lo llenamos
+                DataColumn[] l_dcStruct= new DataColumn[7];
+
+                l_dcStruct[0]= new DataColumn("mds_rcd_cod", typeof(string));
+                l_dcStruct[1]= new DataColumn("mds_des_des", typeof(string));
+                l_dcStruct[2]= new DataColumn("mds_rcd_codmarca", typeof(string));
+                EModelo.FillFixedFields(ref l_dcStruct, 3);
+
+                // Devolvemos el vector creado
+                return l_dcStruct;
+            }
+        }
+
+        /// <summary>
+        /// Codigo
+        /// </summary>
+        public string Cod
+        {
+            get {return (string) InternalData["mds_rcd_cod"];}
+            set {InternalData["mds_rcd_cod"]= EModelo.FrmtCod(value);}
+        }
+
+        /// <summary>
+        /// descripcion
+        /// </summary>
+        public string Des
+        {
+            get {return ((string) InternalData["mds_des_des"]).Trim();}
+            set {
+                if (value.Trim().Length > 30) value= value.Trim().Substring(0,30);
+                InternalData["mds_des_des"]= value.Trim().ToUpper();
+            }
+        }
+
+        /// <summary>
+        /// Codigo de la marca
+        /// </summary>
+        public string Codmarca
+        {
+            get {return (string) InternalData["mds_rcd_codmarca"];}
+            set {InternalData["mds_rcd_codmarca"]= EModelo.FrmtCodmarca(value);}
+        }
+
+        /// <summary>
+        /// Devuelve la entidad [EModelo] como XMLDocument en formato string
+        /// </summary>
+        public string XMLData
+        {
+            get {return XMLEncode.InnerXml;}
+        }
+
+        /// <summary>
+        /// Devuelve la entidad [EModelo] como XMLDocument
+        /// </summary>
+        public XmlDocument XMLEncode
+        {
+            get {
+                //Creamos un Nodo de un Documento XML
+                XmlDocument l_xdocData= new XmlDocument();
+                XmlNode l_xndEntidad= l_xdocData.CreateNode(XmlNodeType.Element, "EModelo", null);
+
+                // Asignamos los atributos al nodo
+                l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "mds_rcd_cod", Cod));
+                l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "mds_des_des", Des));
+                l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "mds_rcd_codmarca", Codmarca));
+
+                // Asignamos los campos fijos
+                FixedFields2XML(l_xdocData, ref l_xndEntidad);
+
+                // Llamamos al metodo fijo
+                fAddXMLData(ref l_xdocData, ref l_xndEntidad);
+
+                // Armamos el documento y lo devolvemos
+                l_xdocData.AppendChild(l_xndEntidad);
+                return l_xdocData;
+            }
+        }
+        #endregion
+    }
+    #endregion
+
+    #region Lista-Entidad: Modelos
+    /// <summary>
+    /// Clase que representa la Lista-Entidad: Modelos
+    /// </summary>
+    public sealed partial class LEModelos : ListaEntidades
+    {
+        #region Constructores
+        /// <summary>
+        /// Constructor
+        /// Llena la lista-entidad a partir de una Tabla: Modelos
+        /// </summary>
+        /// <param name="p_dtDatos">DataTable con los datos de la entidad</param>
+        public LEModelos(DataTable p_dtDatos) :
+            base(p_dtDatos)
+        {
+        }
+
+        /// <summary>
+        /// Constructor
+        /// Llena la lista-entidad a partir de un XML
+        /// </summary>
+        /// <param name="p_dtDatos">DataTable con los datos de la entidad</param>
+        public LEModelos(string p_strXMLData) :
+            base(EModelo.Struct)
+        {
+            // Creamos el documento XML
+            XmlDocument l_xdocData= new XmlDocument();
+            l_xdocData.InnerXml= p_strXMLData;
+            XmlElement l_xelTemp= l_xdocData.DocumentElement;
+
+            // Agregamos cada item a la LE
+            foreach (XmlNode l_xndItem in l_xelTemp.ChildNodes)
+                AddEntity(new EModelo(l_xndItem.OuterXml));
+        }
+
+        /// <summary>
+        /// Constructor
+        /// Constuye la lista-entidad vacia a partir de una lista de columnas
+        /// correspondiente a una entidad
+        /// </summary>
+        /// <param name="p_dcEstructura">Columnas de la estructura</param>
+        private LEModelos(DataColumn[] p_dcEstructura) :
+            base(p_dcEstructura)
+        {
+        }
+        #endregion
+
+        #region Metodos publicos de la clase
+        //---------------------------------------------------------------
+        // Metodos publicos
+        //---------------------------------------------------------------
+
+        /// <summary>
+        /// Construye una lista-entidad vacía: Modelos
+        /// </summary>
+        /// <returns>Lista-Entidad vacia: Modelos</returns>
+        public static LEModelos NewEmpty()
+        {
+            return new LEModelos(EModelo.Struct);
+        }
+
+        /// <summary>
+        /// Agrega una entidad a la lista
+        /// </summary>
+        /// <param name="p_entEModelo">Entidad a agregar</param>
+        public void AddEntity(EModelo p_entEModelo)
+        {
+            base.AddEntity(p_entEModelo);
+        }
+
+        /// <summary>
+        /// Remueve una entidad [Modelo] por clave
+        /// </summary>
+        public int RemoveEntity(string p_strCod)
+        {
+            // Buscamos la fila mediante un filtro
+            int l_iRet= 0;
+
+            m_dtDatos.DefaultView.RowFilter= 
+                "mds_rcd_cod = " + Ruts.Co(EModelo.FrmtCod(p_strCod));
+
+            if (m_dtDatos.DefaultView.Count == 1) {
+                // La borramos
+                m_dtDatos.Rows.Remove(m_dtDatos.DefaultView[0].Row);
+                l_iRet= 1;
+            }
+
+            // Quito el filtro
+            m_dtDatos.DefaultView.RowFilter= "";
+            return l_iRet;
+        }
+
+        /// <summary>
+        /// Verifca si una entidad [Modelo] esta en la lista
+        /// </summary>
+        public bool Contains(string p_strCod)
+        {
+            using (EModelo l_entTemp= this[p_strCod])
+            {
+                // Indicamos si existe o no
+                return (l_entTemp != null);
+            }
+        }
+
+        /// <summary>
+        /// Devuelve el enumerador de la lista-entidades: Modelos
+        /// </summary>
+        /// <returns>Enumerador de las entidades en la lista</returns>
+        public new IEnumerator GetEnumerator() 
+        {
+            EModelo l_entTemp= null;
+
+            foreach (DataRowView l_drvTemp in m_dtDatos.DefaultView) {
+                l_entTemp= new EModelo(l_drvTemp.Row);
+                yield return l_entTemp;
+            }
+        }
+
+        /// <summary>
+        /// Devuelve la lista entidad como un array de entidades: Modelos
+        /// </summary>
+        /// <returns>Array de entidades</returns>
+        public ArrayList GetAsArray()
+        {
+            // Llenamos el array con las entidades
+            ArrayList l_alRet= new ArrayList();
+
+            foreach (EModelo l_entItem in this)
+                l_alRet.Add(l_entItem);
+
+            return l_alRet;
+        }
+
+        /// <summary>
+        /// Devuelve la lista entidad como una LET: Modelos
+        /// </summary>
+        /// <returns>Lista Entidad Tipada</returns>
+        public LETModelos GetAsLET()
+        {
+            // Llenamos la lista tipada
+            LETModelos l_lentRet= new LETModelos();
+
+            foreach (EModelo l_entItem in this)
+                l_lentRet.Add(l_entItem);
+
+            return l_lentRet;
+        }
+        #endregion
+
+        #region Propiedades de la clase
+        //---------------------------------------------------------------
+        // Propiedades de la clase
+        //---------------------------------------------------------------
+
+        /// <summary>
+        /// Indexer para acceder a cada entidad [Modelo] por indice
+        /// </summary>
+        public new EModelo this[long p_lRow]
+        {
+            get {
+                // Recuperamos la fila solicitada
+                DataRow l_drDatos= base[(int) p_lRow];
+                if (l_drDatos == null) return null;
+
+                // Devolvemos una entidad Modelo con los datos de la fila
+                return new EModelo(l_drDatos);
+            }
+        }
+
+        /// <summary>
+        /// Indexer para acceder a cada entidad [Modelo] por clave
+        /// </summary>
+        public EModelo this[string p_strCod]
+        {
+            get {
+                // Buscamos la fila mediante un filtro
+                DataRow l_drData= null;
+
+                m_dtDatos.DefaultView.RowFilter= 
+                    "mds_rcd_cod = " + Ruts.Co(EModelo.FrmtCod(p_strCod));
+
+                if (m_dtDatos.DefaultView.Count == 1)
+                    l_drData= m_dtDatos.DefaultView[0].Row;
+
+                // Quito el filtro
+                m_dtDatos.DefaultView.RowFilter= "";
+
+                // Devolvemos una entidad Modelo con los datos de la fila
+                if (l_drData == null) return null;
+                return new EModelo(l_drData);
+            }
+        }
+
+        /// <summary>
+        /// Devuelve la ListaEntidad como XML en string
+        /// </summary>
+        public string XMLData
+        {
+            get {return XMLEncode.InnerXml;}
+        }
+
+        /// <summary>
+        /// Devuelve la ListaEntidad como XML
+        /// </summary>
+        public XmlDocument XMLEncode
+        {
+            get {
+                // Construimos el XML
+                XmlDocument l_xdocData= new XmlDocument();
+                XmlNode l_xndEntidad= l_xdocData.CreateNode(XmlNodeType.Element, "LEModelos", null);
+
+                foreach (EModelo l_entDExtra in this)
+                    l_xndEntidad.AppendChild(l_xdocData.ImportNode(l_entDExtra.XMLEncode.ChildNodes[0], false));
+
+                l_xdocData.AppendChild(l_xndEntidad);
+                return l_xdocData;
+            }
+        }
+        #endregion
+    }
+    #endregion
+
+    #region Lista-Entidad-Tipada: Modelos
+    /// <summary>
+    /// Clase que representa la Lista-Entidad-Tipada: Modelos
+    /// </summary>
+    public sealed partial class LETModelos : LET<EModelo>
+    {
+        #region Metodos publicos de la clase
+        //---------------------------------------------------------------
+        // Metodos publicos
+        //---------------------------------------------------------------
+
+        /// <summary>
+        /// Devuelve la lista entidad tipada como una LE: Modelos
+        /// </summary>
+        /// <returns>Lista Entidad</returns>
+        public LEModelos GetAsLE()
+        {
+            // Llenamos la lista
+            LEModelos l_lentRet= LEModelos.NewEmpty();
+
+            foreach (EModelo l_entItem in this)
+                l_lentRet.AddEntity(l_entItem);
+
+            return l_lentRet;
+        }
+        #endregion
+
+        #region Propiedades de la clase
+        //---------------------------------------------------------------
+        // Propiedades de la clase
+        //---------------------------------------------------------------
+
+        /// <summary>
+        /// Indexer para acceder a cada entidad [Modelo] por clave
+        /// </summary>
+        public EModelo this[string p_strCod]
+        {
+            get {
+                // Buscamos la entidad
+                foreach (EModelo l_entItem in this) {
+                    // Si existe -> la devolvemos
+                    if (l_entItem.Cod == EModelo.FrmtCod(p_strCod))
                         return l_entItem;
                 }
 

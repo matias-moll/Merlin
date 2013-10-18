@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------
 //                 TNG Software Script Generator (Tablas)                     
 //----------------------------------------------------------------------------
-// Fecha              : 29/08/2013 09:32
+// Fecha              : 18/10/2013 15:51
 // Base de Datos      : TNGS_Rivn
 // Tabla              : Categorias
 //----------------------------------------------------------------------------
@@ -65,7 +65,7 @@ go
 /*----------------------------------------------------------------------------
 //                 TNG Software Script Generator (Tablas)                     
 //----------------------------------------------------------------------------
-// Fecha              : 29/08/2013 09:32
+// Fecha              : 18/10/2013 15:51
 // Base de Datos      : TNGS_Rivn
 // Tabla              : Controles
 //----------------------------------------------------------------------------
@@ -130,7 +130,7 @@ go
 /*----------------------------------------------------------------------------
 //                 TNG Software Script Generator (Tablas)                     
 //----------------------------------------------------------------------------
-// Fecha              : 29/08/2013 09:32
+// Fecha              : 18/10/2013 15:51
 // Base de Datos      : TNGS_Rivn
 // Tabla              : ControlesReparations
 //----------------------------------------------------------------------------
@@ -195,7 +195,611 @@ go
 /*----------------------------------------------------------------------------
 //                 TNG Software Script Generator (Tablas)                     
 //----------------------------------------------------------------------------
-// Fecha              : 20/09/2013 16:51
+// Fecha              : 18/10/2013 15:51
+// Base de Datos      : TNGS_Rivn
+// Tabla              : Equipamiento
+//----------------------------------------------------------------------------
+// © 1999-2013 by TNG Software                                      Gndr 5.20
+//---------------------------------------------------------------------------*/
+
+/* ***************************************************************************
+/  Atencion!!!
+/     Este archivo fue generado por un programa en forma automática. Cualquier
+/     modificación que se realize sobre él se perderá en la próxima
+/     regeneración.
+/  **************************************************************************/
+
+/*-------------------------------------------------*/
+/* Selecciono la base en la que se creara la tabla */
+/*-------------------------------------------------*/
+
+use TNGS_Rivn
+go
+
+/*-----------------------------------*/
+/* Crea la tabla en la base indicada */
+/*-----------------------------------*/
+
+print 'Tabla: Equipamiento'
+
+if exists (select * from sysobjects where id = object_id('dbo.Equipamiento'))
+begin
+   print '   - Borrando la vieja tabla'
+   drop table dbo.Equipamiento
+end
+go
+
+print '   - Creando la nueva tabla'
+
+create table Equipamiento
+   (
+      eqi_cod_cod tngs_codigo,
+      eqi_des_des tngs_descripcion,
+      eqi_imp_valor tngs_importe,
+      instante tngs_fecyhor,
+      deleted tngs_borrado,
+      usuario tngs_nombre,
+      version tngs_numero,
+      constraint Equipamiento_pk primary key clustered
+      (
+         eqi_cod_cod
+      )
+   )
+go
+
+print '   - Asignando permisos a la nueva tabla'
+
+grant select on Equipamiento to tngsqbe
+
+print ' '
+go
+
+/*--------------------------------------------------------------------------
+// Fin del script de creacion de la tabla: Equipamiento
+//--------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------
+//                 TNG Software Script Generator (Tablas)                     
+//----------------------------------------------------------------------------
+// Fecha              : 18/10/2013 15:51
+// Base de Datos      : TNGS_Rivn
+// Tabla              : Estados
+//----------------------------------------------------------------------------
+// © 1999-2013 by TNG Software                                      Gndr 5.20
+//---------------------------------------------------------------------------*/
+
+/* ***************************************************************************
+/  Atencion!!!
+/     Este archivo fue generado por un programa en forma automática. Cualquier
+/     modificación que se realize sobre él se perderá en la próxima
+/     regeneración.
+/  **************************************************************************/
+
+/*-------------------------------------------------*/
+/* Selecciono la base en la que se creara la tabla */
+/*-------------------------------------------------*/
+
+use TNGS_Rivn
+go
+
+/*-----------------------------------*/
+/* Crea la tabla en la base indicada */
+/*-----------------------------------*/
+
+print 'Tabla: Estados'
+
+if exists (select * from sysobjects where id = object_id('dbo.Estados'))
+begin
+   print '   - Borrando la vieja tabla'
+   drop table dbo.Estados
+end
+go
+
+print '   - Creando la nueva tabla'
+
+create table Estados
+   (
+      est_rcd_cod tngs_codigo_r,
+      est_des_des tngs_descripcion,
+      est_txt_txtcontingencia tngs_texto,
+      est_cd1_operativo tngs_codigo_1,
+      instante tngs_fecyhor,
+      deleted tngs_borrado,
+      usuario tngs_nombre,
+      version tngs_numero,
+      constraint Estados_pk primary key clustered
+      (
+         est_rcd_cod
+      )
+   )
+go
+
+print '   - Asignando permisos a la nueva tabla'
+
+grant select on Estados to tngsqbe
+
+print ' '
+go
+
+/*--------------------------------------------------------------------------
+// Fin del script de creacion de la tabla: Estados
+//--------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------
+//                 TNG Software Script Generator (Tablas)                     
+//----------------------------------------------------------------------------
+// Fecha              : 18/10/2013 15:51
+// Base de Datos      : TNGS_Rivn
+// Tabla              : Marcas
+//----------------------------------------------------------------------------
+// © 1999-2013 by TNG Software                                      Gndr 5.20
+//---------------------------------------------------------------------------*/
+
+/* ***************************************************************************
+/  Atencion!!!
+/     Este archivo fue generado por un programa en forma automática. Cualquier
+/     modificación que se realize sobre él se perderá en la próxima
+/     regeneración.
+/  **************************************************************************/
+
+/*-------------------------------------------------*/
+/* Selecciono la base en la que se creara la tabla */
+/*-------------------------------------------------*/
+
+use TNGS_Rivn
+go
+
+/*-----------------------------------*/
+/* Crea la tabla en la base indicada */
+/*-----------------------------------*/
+
+print 'Tabla: Marcas'
+
+if exists (select * from sysobjects where id = object_id('dbo.Marcas'))
+begin
+   print '   - Borrando la vieja tabla'
+   drop table dbo.Marcas
+end
+go
+
+print '   - Creando la nueva tabla'
+
+create table Marcas
+   (
+      mrc_rcd_codigo tngs_codigo_r,
+      mrc_des_descripcion tngs_descripcion,
+      instante tngs_fecyhor,
+      deleted tngs_borrado,
+      usuario tngs_nombre,
+      version tngs_numero,
+      constraint Marcas_pk primary key clustered
+      (
+         mrc_rcd_codigo
+      )
+   )
+go
+
+print '   - Asignando permisos a la nueva tabla'
+
+grant select on Marcas to tngsqbe
+
+print ' '
+go
+
+/*--------------------------------------------------------------------------
+// Fin del script de creacion de la tabla: Marcas
+//--------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------
+//                 TNG Software Script Generator (Tablas)                     
+//----------------------------------------------------------------------------
+// Fecha              : 18/10/2013 15:51
+// Base de Datos      : TNGS_Rivn
+// Tabla              : Modelos
+//----------------------------------------------------------------------------
+// © 1999-2013 by TNG Software                                      Gndr 5.20
+//---------------------------------------------------------------------------*/
+
+/* ***************************************************************************
+/  Atencion!!!
+/     Este archivo fue generado por un programa en forma automática. Cualquier
+/     modificación que se realize sobre él se perderá en la próxima
+/     regeneración.
+/  **************************************************************************/
+
+/*-------------------------------------------------*/
+/* Selecciono la base en la que se creara la tabla */
+/*-------------------------------------------------*/
+
+use TNGS_Rivn
+go
+
+/*-----------------------------------*/
+/* Crea la tabla en la base indicada */
+/*-----------------------------------*/
+
+print 'Tabla: Modelos'
+
+if exists (select * from sysobjects where id = object_id('dbo.Modelos'))
+begin
+   print '   - Borrando la vieja tabla'
+   drop table dbo.Modelos
+end
+go
+
+print '   - Creando la nueva tabla'
+
+create table Modelos
+   (
+      mds_rcd_cod tngs_codigo_r,
+      mds_des_des tngs_descripcion,
+      mds_rcd_codmarca tngs_codigo_r,
+      instante tngs_fecyhor,
+      deleted tngs_borrado,
+      usuario tngs_nombre,
+      version tngs_numero,
+      constraint Modelos_pk primary key clustered
+      (
+         mds_rcd_cod
+      )
+   )
+go
+
+print '   - Asignando permisos a la nueva tabla'
+
+grant select on Modelos to tngsqbe
+
+print ' '
+go
+
+/*--------------------------------------------------------------------------
+// Fin del script de creacion de la tabla: Modelos
+//--------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------
+//                 TNG Software Script Generator (Tablas)                     
+//----------------------------------------------------------------------------
+// Fecha              : 18/10/2013 15:51
+// Base de Datos      : TNGS_Rivn
+// Tabla              : Moviles
+//----------------------------------------------------------------------------
+// © 1999-2013 by TNG Software                                      Gndr 5.20
+//---------------------------------------------------------------------------*/
+
+/* ***************************************************************************
+/  Atencion!!!
+/     Este archivo fue generado por un programa en forma automática. Cualquier
+/     modificación que se realize sobre él se perderá en la próxima
+/     regeneración.
+/  **************************************************************************/
+
+/*-------------------------------------------------*/
+/* Selecciono la base en la que se creara la tabla */
+/*-------------------------------------------------*/
+
+use TNGS_Rivn
+go
+
+/*-----------------------------------*/
+/* Crea la tabla en la base indicada */
+/*-----------------------------------*/
+
+print 'Tabla: Moviles'
+
+if exists (select * from sysobjects where id = object_id('dbo.Moviles'))
+begin
+   print '   - Borrando la vieja tabla'
+   drop table dbo.Moviles
+end
+go
+
+print '   - Creando la nueva tabla'
+
+create table Moviles
+   (
+      mov_ecd_patente tngs_codigo_e,
+      mov_des_des tngs_descripcion,
+      mov_rcd_estado tngs_codigo_r,
+      mov_nro_kms tngs_numero,
+      mov_txt_anot tngs_texto,
+      mov_des_nrochasis tngs_descripcion,
+      mov_des_nromotor tngs_descripcion,
+      mov_rcd_modelo tngs_codigo_r,
+      mov_nro_aniofabric tngs_numero,
+      mov_cd1_propio tngs_codigo_1,
+      instante tngs_fecyhor,
+      deleted tngs_borrado,
+      usuario tngs_nombre,
+      version tngs_numero,
+      constraint Moviles_pk primary key clustered
+      (
+         mov_ecd_patente
+      )
+   )
+go
+
+print '   - Asignando permisos a la nueva tabla'
+
+grant select on Moviles to tngsqbe
+
+print ' '
+go
+
+/*--------------------------------------------------------------------------
+// Fin del script de creacion de la tabla: Moviles
+//--------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------
+//                 TNG Software Script Generator (Tablas)                     
+//----------------------------------------------------------------------------
+// Fecha              : 18/10/2013 15:51
+// Base de Datos      : TNGS_Rivn
+// Tabla              : MvlEquipamiento
+//----------------------------------------------------------------------------
+// © 1999-2013 by TNG Software                                      Gndr 5.20
+//---------------------------------------------------------------------------*/
+
+/* ***************************************************************************
+/  Atencion!!!
+/     Este archivo fue generado por un programa en forma automática. Cualquier
+/     modificación que se realize sobre él se perderá en la próxima
+/     regeneración.
+/  **************************************************************************/
+
+/*-------------------------------------------------*/
+/* Selecciono la base en la que se creara la tabla */
+/*-------------------------------------------------*/
+
+use TNGS_Rivn
+go
+
+/*-----------------------------------*/
+/* Crea la tabla en la base indicada */
+/*-----------------------------------*/
+
+print 'Tabla: MvlEquipamiento'
+
+if exists (select * from sysobjects where id = object_id('dbo.MvlEquipamiento'))
+begin
+   print '   - Borrando la vieja tabla'
+   drop table dbo.MvlEquipamiento
+end
+go
+
+print '   - Creando la nueva tabla'
+
+create table MvlEquipamiento
+   (
+      meq_ecd_patente tngs_codigo_e,
+      meq_cod_codequip tngs_codigo,
+      meq_cd1_esfijo tngs_codigo_1,
+      instante tngs_fecyhor,
+      deleted tngs_borrado,
+      usuario tngs_nombre,
+      version tngs_numero,
+      constraint MvlEquipamiento_pk primary key clustered
+      (
+         meq_ecd_patente,
+         meq_cod_codequip
+      )
+   )
+go
+
+print '   - Asignando permisos a la nueva tabla'
+
+grant select on MvlEquipamiento to tngsqbe
+
+print ' '
+go
+
+/*--------------------------------------------------------------------------
+// Fin del script de creacion de la tabla: MvlEquipamiento
+//--------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------
+//                 TNG Software Script Generator (Tablas)                     
+//----------------------------------------------------------------------------
+// Fecha              : 18/10/2013 15:51
+// Base de Datos      : TNGS_Rivn
+// Tabla              : MvlEstados
+//----------------------------------------------------------------------------
+// © 1999-2013 by TNG Software                                      Gndr 5.20
+//---------------------------------------------------------------------------*/
+
+/* ***************************************************************************
+/  Atencion!!!
+/     Este archivo fue generado por un programa en forma automática. Cualquier
+/     modificación que se realize sobre él se perderá en la próxima
+/     regeneración.
+/  **************************************************************************/
+
+/*-------------------------------------------------*/
+/* Selecciono la base en la que se creara la tabla */
+/*-------------------------------------------------*/
+
+use TNGS_Rivn
+go
+
+/*-----------------------------------*/
+/* Crea la tabla en la base indicada */
+/*-----------------------------------*/
+
+print 'Tabla: MvlEstados'
+
+if exists (select * from sysobjects where id = object_id('dbo.MvlEstados'))
+begin
+   print '   - Borrando la vieja tabla'
+   drop table dbo.MvlEstados
+end
+go
+
+print '   - Creando la nueva tabla'
+
+create table MvlEstados
+   (
+      mve_ecd_patente tngs_codigo_e,
+      mve_fyh_fecha tngs_fecyhor,
+      mve_rcd_codestado tngs_codigo_r,
+      mve_nro_km tngs_numero,
+      instante tngs_fecyhor,
+      deleted tngs_borrado,
+      usuario tngs_nombre,
+      version tngs_numero,
+      constraint MvlEstados_pk primary key clustered
+      (
+         mve_ecd_patente,
+         mve_fyh_fecha
+      )
+   )
+go
+
+print '   - Asignando permisos a la nueva tabla'
+
+grant select on MvlEstados to tngsqbe
+
+print ' '
+go
+
+/*--------------------------------------------------------------------------
+// Fin del script de creacion de la tabla: MvlEstados
+//--------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------
+//                 TNG Software Script Generator (Tablas)                     
+//----------------------------------------------------------------------------
+// Fecha              : 18/10/2013 15:51
+// Base de Datos      : TNGS_Rivn
+// Tabla              : OrdenesTrabajo
+//----------------------------------------------------------------------------
+// © 1999-2013 by TNG Software                                      Gndr 5.20
+//---------------------------------------------------------------------------*/
+
+/* ***************************************************************************
+/  Atencion!!!
+/     Este archivo fue generado por un programa en forma automática. Cualquier
+/     modificación que se realize sobre él se perderá en la próxima
+/     regeneración.
+/  **************************************************************************/
+
+/*-------------------------------------------------*/
+/* Selecciono la base en la que se creara la tabla */
+/*-------------------------------------------------*/
+
+use TNGS_Rivn
+go
+
+/*-----------------------------------*/
+/* Crea la tabla en la base indicada */
+/*-----------------------------------*/
+
+print 'Tabla: OrdenesTrabajo'
+
+if exists (select * from sysobjects where id = object_id('dbo.OrdenesTrabajo'))
+begin
+   print '   - Borrando la vieja tabla'
+   drop table dbo.OrdenesTrabajo
+end
+go
+
+print '   - Creando la nueva tabla'
+
+create table OrdenesTrabajo
+   (
+      odt_nro_nro tngs_numero,
+      odt_ecd_patente tngs_codigo_e,
+      odt_fyh_fecapertura tngs_fecyhor,
+      odt_nom_operador tngs_nombre,
+      odt_fyh_feccierre tngs_fecyhor,
+      instante tngs_fecyhor,
+      deleted tngs_borrado,
+      usuario tngs_nombre,
+      version tngs_numero,
+      constraint OrdenesTrabajo_pk primary key clustered
+      (
+         odt_nro_nro
+      )
+   )
+go
+
+print '   - Asignando permisos a la nueva tabla'
+
+grant select on OrdenesTrabajo to tngsqbe
+
+print ' '
+go
+
+/*--------------------------------------------------------------------------
+// Fin del script de creacion de la tabla: OrdenesTrabajo
+//--------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------
+//                 TNG Software Script Generator (Tablas)                     
+//----------------------------------------------------------------------------
+// Fecha              : 18/10/2013 15:51
+// Base de Datos      : TNGS_Rivn
+// Tabla              : OtItems
+//----------------------------------------------------------------------------
+// © 1999-2013 by TNG Software                                      Gndr 5.20
+//---------------------------------------------------------------------------*/
+
+/* ***************************************************************************
+/  Atencion!!!
+/     Este archivo fue generado por un programa en forma automática. Cualquier
+/     modificación que se realize sobre él se perderá en la próxima
+/     regeneración.
+/  **************************************************************************/
+
+/*-------------------------------------------------*/
+/* Selecciono la base en la que se creara la tabla */
+/*-------------------------------------------------*/
+
+use TNGS_Rivn
+go
+
+/*-----------------------------------*/
+/* Crea la tabla en la base indicada */
+/*-----------------------------------*/
+
+print 'Tabla: OtItems'
+
+if exists (select * from sysobjects where id = object_id('dbo.OtItems'))
+begin
+   print '   - Borrando la vieja tabla'
+   drop table dbo.OtItems
+end
+go
+
+print '   - Creando la nueva tabla'
+
+create table OtItems
+   (
+      oti_nro_nro tngs_numero,
+      oti_nro_nroagrupador tngs_numero,
+      oti_nro_nroitem tngs_numero,
+      oti_des_desoperacion tngs_descripcion,
+      oti_des_destarea tngs_descripcion,
+      oti_des_descategoria tngs_descripcion,
+      oti_imp_importe tngs_importe,
+      oti_ede_comentario tngs_descripcion_e,
+      instante tngs_fecyhor,
+      deleted tngs_borrado,
+      usuario tngs_nombre,
+      version tngs_numero,
+      constraint OtItems_pk primary key clustered
+      (
+         oti_nro_nro,
+         oti_nro_nroagrupador,
+         oti_nro_nroitem
+      )
+   )
+go
+
+print '   - Asignando permisos a la nueva tabla'
+
+grant select on OtItems to tngsqbe
+
+print ' '
+go
+
+/*--------------------------------------------------------------------------
+// Fin del script de creacion de la tabla: OtItems
+//--------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------
+//                 TNG Software Script Generator (Tablas)                     
+//----------------------------------------------------------------------------
+// Fecha              : 18/10/2013 15:51
 // Base de Datos      : TNGS_Rivn
 // Tabla              : Parametros
 //----------------------------------------------------------------------------
@@ -263,7 +867,7 @@ go
 /*----------------------------------------------------------------------------
 //                 TNG Software Script Generator (Tablas)                     
 //----------------------------------------------------------------------------
-// Fecha              : 26/08/2013 16:39
+// Fecha              : 18/10/2013 15:51
 // Base de Datos      : TNGS_Rivn
 // Tabla              : Reparaciones
 //----------------------------------------------------------------------------
@@ -328,7 +932,7 @@ go
 /*----------------------------------------------------------------------------
 //                 TNG Software Script Generator (Tablas)                     
 //----------------------------------------------------------------------------
-// Fecha              : 20/09/2013 16:51
+// Fecha              : 18/10/2013 15:51
 // Base de Datos      : TNGS_Rivn
 // Tabla              : Talonarios
 //----------------------------------------------------------------------------
@@ -396,7 +1000,7 @@ go
 /*----------------------------------------------------------------------------
 //                 TNG Software Script Generator (Indices)                    
 //----------------------------------------------------------------------------
-// Fecha              : 26/08/2013 16:39
+// Fecha              : 18/10/2013 15:51
 // Base de Datos      : TNGS_Rivn
 // Tabla              : Reparaciones
 //----------------------------------------------------------------------------

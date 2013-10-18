@@ -3,7 +3,7 @@
 //----------------------------------------------------------------------------
 // Fecha              : 18/10/2013 15:51
 // Base de Datos      : TNGS_Rivn
-// Tabla              : Categorias
+// Tabla              : Moviles
 //----------------------------------------------------------------------------
 // © 1999-2013 by TNG Software                                      Gndr 5.20
 //---------------------------------------------------------------------------*/
@@ -26,39 +26,47 @@ go
 /* Crea la tabla en la base indicada */
 /*-----------------------------------*/
 
-print 'Tabla: Categorias'
+print 'Tabla: Moviles'
 
-if exists (select * from sysobjects where id = object_id('dbo.Categorias'))
+if exists (select * from sysobjects where id = object_id('dbo.Moviles'))
 begin
    print '   - Borrando la vieja tabla'
-   drop table dbo.Categorias
+   drop table dbo.Moviles
 end
 go
 
 print '   - Creando la nueva tabla'
 
-create table Categorias
+create table Moviles
    (
-      cat_rcd_cod tngs_codigo_r,
-      cat_des_des tngs_descripcion,
+      mov_ecd_patente tngs_codigo_e,
+      mov_des_des tngs_descripcion,
+      mov_rcd_estado tngs_codigo_r,
+      mov_nro_kms tngs_numero,
+      mov_txt_anot tngs_texto,
+      mov_des_nrochasis tngs_descripcion,
+      mov_des_nromotor tngs_descripcion,
+      mov_rcd_modelo tngs_codigo_r,
+      mov_nro_aniofabric tngs_numero,
+      mov_cd1_propio tngs_codigo_1,
       instante tngs_fecyhor,
       deleted tngs_borrado,
       usuario tngs_nombre,
       version tngs_numero,
-      constraint Categorias_pk primary key clustered
+      constraint Moviles_pk primary key clustered
       (
-         cat_rcd_cod
+         mov_ecd_patente
       )
    )
 go
 
 print '   - Asignando permisos a la nueva tabla'
 
-grant select on Categorias to tngsqbe
+grant select on Moviles to tngsqbe
 
 print ' '
 go
 
 /*--------------------------------------------------------------------------
-// Fin del script de creacion de la tabla: Categorias
+// Fin del script de creacion de la tabla: Moviles
 //--------------------------------------------------------------------------*/

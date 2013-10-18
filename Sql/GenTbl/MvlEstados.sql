@@ -3,7 +3,7 @@
 //----------------------------------------------------------------------------
 // Fecha              : 18/10/2013 15:51
 // Base de Datos      : TNGS_Rivn
-// Tabla              : Categorias
+// Tabla              : MvlEstados
 //----------------------------------------------------------------------------
 // © 1999-2013 by TNG Software                                      Gndr 5.20
 //---------------------------------------------------------------------------*/
@@ -26,39 +26,42 @@ go
 /* Crea la tabla en la base indicada */
 /*-----------------------------------*/
 
-print 'Tabla: Categorias'
+print 'Tabla: MvlEstados'
 
-if exists (select * from sysobjects where id = object_id('dbo.Categorias'))
+if exists (select * from sysobjects where id = object_id('dbo.MvlEstados'))
 begin
    print '   - Borrando la vieja tabla'
-   drop table dbo.Categorias
+   drop table dbo.MvlEstados
 end
 go
 
 print '   - Creando la nueva tabla'
 
-create table Categorias
+create table MvlEstados
    (
-      cat_rcd_cod tngs_codigo_r,
-      cat_des_des tngs_descripcion,
+      mve_ecd_patente tngs_codigo_e,
+      mve_fyh_fecha tngs_fecyhor,
+      mve_rcd_codestado tngs_codigo_r,
+      mve_nro_km tngs_numero,
       instante tngs_fecyhor,
       deleted tngs_borrado,
       usuario tngs_nombre,
       version tngs_numero,
-      constraint Categorias_pk primary key clustered
+      constraint MvlEstados_pk primary key clustered
       (
-         cat_rcd_cod
+         mve_ecd_patente,
+         mve_fyh_fecha
       )
    )
 go
 
 print '   - Asignando permisos a la nueva tabla'
 
-grant select on Categorias to tngsqbe
+grant select on MvlEstados to tngsqbe
 
 print ' '
 go
 
 /*--------------------------------------------------------------------------
-// Fin del script de creacion de la tabla: Categorias
+// Fin del script de creacion de la tabla: MvlEstados
 //--------------------------------------------------------------------------*/

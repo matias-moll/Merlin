@@ -3,7 +3,7 @@
 //----------------------------------------------------------------------------
 // Fecha              : 18/10/2013 15:51
 // Base de Datos      : TNGS_Rivn
-// Tabla              : Categorias
+// Tabla              : Estados
 //----------------------------------------------------------------------------
 // © 1999-2013 by TNG Software                                      Gndr 5.20
 //---------------------------------------------------------------------------*/
@@ -26,39 +26,41 @@ go
 /* Crea la tabla en la base indicada */
 /*-----------------------------------*/
 
-print 'Tabla: Categorias'
+print 'Tabla: Estados'
 
-if exists (select * from sysobjects where id = object_id('dbo.Categorias'))
+if exists (select * from sysobjects where id = object_id('dbo.Estados'))
 begin
    print '   - Borrando la vieja tabla'
-   drop table dbo.Categorias
+   drop table dbo.Estados
 end
 go
 
 print '   - Creando la nueva tabla'
 
-create table Categorias
+create table Estados
    (
-      cat_rcd_cod tngs_codigo_r,
-      cat_des_des tngs_descripcion,
+      est_rcd_cod tngs_codigo_r,
+      est_des_des tngs_descripcion,
+      est_txt_txtcontingencia tngs_texto,
+      est_cd1_operativo tngs_codigo_1,
       instante tngs_fecyhor,
       deleted tngs_borrado,
       usuario tngs_nombre,
       version tngs_numero,
-      constraint Categorias_pk primary key clustered
+      constraint Estados_pk primary key clustered
       (
-         cat_rcd_cod
+         est_rcd_cod
       )
    )
 go
 
 print '   - Asignando permisos a la nueva tabla'
 
-grant select on Categorias to tngsqbe
+grant select on Estados to tngsqbe
 
 print ' '
 go
 
 /*--------------------------------------------------------------------------
-// Fin del script de creacion de la tabla: Categorias
+// Fin del script de creacion de la tabla: Estados
 //--------------------------------------------------------------------------*/

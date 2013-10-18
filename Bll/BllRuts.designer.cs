@@ -16,7 +16,7 @@ namespace Rivn.Bll
     //----------------------------------------------------------------------------
     //                         TNG Software BLL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 16/09/2013 17:37
+    // Fecha                    : 18/10/2013 16:01
     // Sistema                  : Rivn
     // Clase para Administrar   : 
     //----------------------------------------------------------------------------
@@ -145,6 +145,75 @@ namespace Rivn.Bll
                 case "ctr_nro_nroitem"                 : {return "V1itemNN3";}
                 case "ctr_cd6_codrep"                  : {return "V1codigoReparacionCN1";}
                 case "ctr_des_des"                     : {return "V1TitleSN1";}
+
+                // ****************************************
+                // Tabla: Equipamiento        
+                case "eqi_cod_cod"                     : {return "V1codCN1";}
+                case "eqi_des_des"                     : {return "V1desCN1";}
+                case "eqi_imp_valor"                   : {return "V1valor2N3";}
+
+                // ****************************************
+                // Tabla: Estados             
+                case "est_rcd_cod"                     : {return "V1codCN1";}
+                case "est_des_des"                     : {return "V1desCN1";}
+                case "est_txt_txtcontingencia"         : {return "V1Texto de ContingenciaCN1";}
+                case "est_cd1_operativo"               : {return "V1OperativoCN2";}
+
+                // ****************************************
+                // Tabla: Marcas              
+                case "mrc_rcd_codigo"                  : {return "V1codCN1";}
+                case "mrc_des_descripcion"             : {return "V1desCN1";}
+
+                // ****************************************
+                // Tabla: Modelos             
+                case "mds_rcd_cod"                     : {return "V1CodigoCN1";}
+                case "mds_des_des"                     : {return "V1descripcionCN1";}
+                case "mds_rcd_codmarca"                : {return "V1Codigo de la marcaCN1";}
+
+                // ****************************************
+                // Tabla: Moviles             
+                case "mov_ecd_patente"                 : {return "V1Patente de la AmbulanciaCN1";}
+                case "mov_des_des"                     : {return "V1desCN1";}
+                case "mov_rcd_estado"                  : {return "V1estadoCN1";}
+                case "mov_nro_kms"                     : {return "V1KilometrosNN3";}
+                case "mov_txt_anot"                    : {return "V1AnotacionesCN1";}
+                case "mov_des_nrochasis"               : {return "V1Nro ChasisCN1";}
+                case "mov_des_nromotor"                : {return "V1Nro MotorCN1";}
+                case "mov_rcd_modelo"                  : {return "V1ModeloCN1";}
+                case "mov_nro_aniofabric"              : {return "V1Año de fabricaciónNN3";}
+                case "mov_cd1_propio"                  : {return "V1Propio o noCN2";}
+
+                // ****************************************
+                // Tabla: MvlEquipamiento     
+                case "meq_ecd_patente"                 : {return "V1PatenteCN1";}
+                case "meq_cod_codequip"                : {return "V1Codigo del Equipamento.CN1";}
+                case "meq_cd1_esfijo"                  : {return "V1Es fijo o no.CN2";}
+
+                // ****************************************
+                // Tabla: MvlEstados          
+                case "mve_ecd_patente"                 : {return "V1PatenteCN1";}
+                case "mve_fyh_fecha"                   : {return "V1Fecha y HoraDN2";}
+                case "mve_rcd_codestado"               : {return "V1Codigo del estado.CN1";}
+                case "mve_nro_km"                      : {return "V1KilometrajeNN3";}
+
+                // ****************************************
+                // Tabla: OrdenesTrabajo      
+                case "odt_nro_nro"                     : {return "V1nroNN3";}
+                case "odt_ecd_patente"                 : {return "V1PatenteCN1";}
+                case "odt_fyh_fecapertura"             : {return "V1Fecha de aperturaDN2";}
+                case "odt_nom_operador"                : {return "V1OperadorCN1";}
+                case "odt_fyh_feccierre"               : {return "V1Fecha de cierre.DN2";}
+
+                // ****************************************
+                // Tabla: OtItems             
+                case "oti_nro_nro"                     : {return "V1nroNN3";}
+                case "oti_nro_nroagrupador"            : {return "V1Numero de agrupadorNN3";}
+                case "oti_nro_nroitem"                 : {return "V1Numero del itemNN3";}
+                case "oti_des_desoperacion"            : {return "V1Descripción de la operación.CN1";}
+                case "oti_des_destarea"                : {return "V1Descripción de la tareaCN1";}
+                case "oti_des_descategoria"            : {return "V1Descripción de la categoría.CN1";}
+                case "oti_imp_importe"                 : {return "V1Importe2N3";}
+                case "oti_ede_comentario"              : {return "V1ComentarioCN1";}
 
                 // ****************************************
                 // Tabla: Parametros          

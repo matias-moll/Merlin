@@ -16,7 +16,7 @@ namespace Rivn.Bll
     //----------------------------------------------------------------------------
     //                         TNG Software BLL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 20/09/2013 15:14
+    // Fecha                    : 18/10/2013 16:03
     // Sistema                  : Rivn
     // Clase para Administrar   : Tablas de Rivn.
     //----------------------------------------------------------------------------
@@ -1589,6 +1589,1677 @@ namespace Rivn.Bll
                 // Borramos los borrados lógicamente
                 Dal.Equipamiento.Pack(p_dbcAccess,
                                       ref p_smResult);
+                p_smResult.BllPop();
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Updt
+                p_smResult.BllError(l_expData.ToString());
+            }
+        }
+        #endregion
+
+        #region Metodos para métodos DAL definidos por el usuario
+        #endregion
+
+
+        //**********************************************************
+        //
+        // Funciones para la Tabla: Marcas
+        // Usando ClaseDal        : Marcas
+        //
+        //**********************************************************
+
+        //---------------------------------------------------------------
+        // Metodos públicos de la clase (visibles para la UIL)
+        //---------------------------------------------------------------
+        #region Metodos publicos de recupero
+
+        /// <summary>
+        /// Devuelve la grilla de la tabla: Marcas
+        /// </summary>
+        /// <param name="p_bOnlyActive">Indica si solo se analizan los registros activos</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        /// <returns>Lista-entidad: LEMarcas</returns>
+        public static LEMarcas MrcUpFull(bool p_bOnlyActive,
+                                         ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            DBConn l_dbcAccess= null;
+            p_smResult.BllReset("Tablas", "MrcUpFull");
+
+            try {
+                // Obtenemos una conexion
+                l_dbcAccess= DBRuts.GetConection(Connections.Dat);
+
+                // Pedimos los registros de la tabla
+                return MrcUpfl(l_dbcAccess, p_bOnlyActive, ref p_smResult);
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion UpFull
+                p_smResult.BllError(l_expData.ToString());
+                return null;
+            }
+            finally {
+                // Si pude abrir la conexion -> la cierro
+                if (l_dbcAccess != null) l_dbcAccess.Close();
+                p_smResult.BllPop();
+            }
+        }
+
+        /// <summary>
+        /// Devuelve una entidad: EMarca
+        /// </summary>
+        /// <param name="p_strCodigo">cod</param>
+        /// <param name="p_bOnlyActive">Indica si solo se analizan los registros activos</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        /// <returns>Entidad: EMarca</returns>
+        public static EMarca MrcGet(string p_strCodigo,
+                                    bool p_bOnlyActive,
+                                    ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            DBConn l_dbcAccess= null;
+            p_smResult.BllReset("Tablas", "MrcGet");
+
+            // Ajustamos codigos alineados a derecha
+            p_strCodigo= EMarca.FrmtCodigo(p_strCodigo);
+
+            try {
+                // Obtenemos una conexion
+                l_dbcAccess= DBRuts.GetConection(Connections.Dat);
+
+                // Pedimos la entidad: EMarca
+                return MrcSrch(l_dbcAccess,
+                               p_strCodigo,
+                               p_bOnlyActive,
+                               ref p_smResult);
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Get
+                p_smResult.BllError(l_expData.ToString());
+                return null;
+            }
+            finally {
+                // Si pude abrir la conexion -> la cierro
+                if (l_dbcAccess != null) l_dbcAccess.Close();
+                p_smResult.BllPop();
+            }
+        }
+
+        /// <summary>
+        /// Devuelve la próxima clave de la entidad
+        /// </summary>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        /// <returns>Próxima clave</returns>
+        public static string MrcNextKey(ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            DBConn l_dbcAccess= null;
+            p_smResult.BllReset("Tablas", "MrcNextKey");
+
+            try {
+                // Obtenemos una conexion
+                l_dbcAccess= DBRuts.GetConection(Connections.Dat);
+
+                // Pedimos la clave máxima
+                return MrcGetNK(l_dbcAccess,
+                                ref p_smResult);
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion NextKey
+                p_smResult.BllError(l_expData.ToString());
+                return "";
+            }
+            finally {
+                // Si pude abrir la conexion -> la cierro
+                if (l_dbcAccess != null) l_dbcAccess.Close();
+                p_smResult.BllPop();
+            }
+        }
+        #endregion
+
+        #region Metodos publicos de grabacion
+
+        /// <summary>
+        /// Agrega o modifica un registro de la tabla: Marcas
+        /// </summary>
+        /// <param name="p_entMarca">Entidad con los datos a procesar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        public static void MrcSave(EMarca p_entMarca,
+                                   ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            p_smResult.BllReset("Tablas", "MrcSave");
+            DBConn l_dbcAccess= null;
+
+            try {
+                // Obtenemos una conexion y abrimos una transaccion
+                l_dbcAccess= DBRuts.GetConection(Connections.Dat);
+                l_dbcAccess.BeginTransaction();
+
+                // Grabamos la entidad: EMarca
+                MrcSSav(l_dbcAccess, p_entMarca, ref p_smResult);
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Save
+                p_smResult.BllError(l_expData.ToString());
+            }
+            finally {
+                // Si pude abrir la conexion
+                if (l_dbcAccess != null) {
+                    // Finalizo la transacción y la cierro
+                    l_dbcAccess.EndTransaction(p_smResult);
+                    l_dbcAccess.Close();
+                }
+                p_smResult.BllPop();
+            }
+        }
+
+        /// <summary>
+        /// Habilita/Deshabilita un registro de la tabla: Marcas
+        /// </summary>
+        /// <param name="p_bEnable">Tipo de operacion</param>
+        /// <param name="p_strCodigo">cod</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        public static void MrcEnabled(bool p_bEnable,
+                                      string p_strCodigo,
+                                      int p_iFxdVersion,
+                                      ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            DBConn l_dbcAccess= null;
+            p_smResult.BllReset("Tablas", "MrcEnabled");
+
+            // Ajustamos codigos alineados a derecha
+            p_strCodigo= EMarca.FrmtCodigo(p_strCodigo);
+
+            try {
+                // Obtenemos una conexion
+                l_dbcAccess= DBRuts.GetConection(Connections.Dat);
+                l_dbcAccess.BeginTransaction();
+
+                // Procesamos codigo fijo
+                MrcEnabled_f(l_dbcAccess,
+                             p_bEnable,
+                             p_strCodigo,
+                             ref p_iFxdVersion,
+                             ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // Verificamos la clave a modificar
+                MrcVKey(l_dbcAccess,
+                        p_strCodigo,
+                        ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // El registro tiene que existir
+                if (p_smResult.ICodeEs(BllCodes.KeyDsntFound)) {
+                    // Error. La clave no existe
+                    p_smResult.BllWarning("El ítem (Marca) que intenta modificar no existe en el sistema.","");
+                    return;
+                }
+
+                // Debe coincidir el número de version
+                MrcVVer(l_dbcAccess, 
+                        p_strCodigo,
+                        p_iFxdVersion,
+                        ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // Segun el modo
+                if (p_bEnable) {
+                    // Hay que habilitar el registro
+                    Dal.Marcas.Recall(l_dbcAccess,
+                                      p_strCodigo,
+                                      ref p_smResult);
+                }
+                else {
+                    // Hay que deshabilitar el registro
+                    Dal.Marcas.Delete(l_dbcAccess,
+                                      p_strCodigo,
+                                      ref p_smResult);
+                }
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Enabled
+                p_smResult.BllError(l_expData.ToString());
+            }
+            finally {
+                // Si pude abrir la conexion
+                if (l_dbcAccess != null) {
+                    // Finalizo la transacción y la cierro
+                    l_dbcAccess.EndTransaction(p_smResult);
+                    l_dbcAccess.Close();
+                }
+                p_smResult.BllPop();
+            }
+        }
+
+        /// <summary>
+        /// Borra físicamento un registro de la tabla: Marcas
+        /// </summary>
+        /// <param name="p_strCodigo">cod</param>
+        /// <param name="p_iFxdVersion">Versión del registro a borrar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        public static void MrcRemove(string p_strCodigo,
+                                     int p_iFxdVersion,
+                                     ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            DBConn l_dbcAccess= null;
+            p_smResult.BllReset("Tablas", "MrcRemove");
+
+            // Ajustamos codigos alineados a derecha
+            p_strCodigo= EMarca.FrmtCodigo(p_strCodigo);
+
+            try {
+                // Obtenemos una conexion
+                l_dbcAccess= DBRuts.GetConection(Connections.Dat);
+                l_dbcAccess.BeginTransaction();
+
+                // Procesamos codigo fijo
+                MrcRemove_f(l_dbcAccess,
+                            p_strCodigo,
+                            p_iFxdVersion,
+                            ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // Borramos el registro solicitado
+                MrcDrop(l_dbcAccess,
+                        p_strCodigo,
+                        p_iFxdVersion,
+                        ref p_smResult);
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Remove
+                p_smResult.BllError(l_expData.ToString());
+            }
+            finally {
+                // Si pude abrir la conexion
+                if (l_dbcAccess != null) {
+                    // Finalizo la transacción y la cierro
+                    l_dbcAccess.EndTransaction(p_smResult);
+                    l_dbcAccess.Close();
+                }
+                p_smResult.BllPop();
+            }
+        }
+
+        /// <summary>
+        /// Compacta una tabla borrando los registros deshabilitados
+        /// </summary>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        public static void MrcPurge(ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            DBConn l_dbcAccess= null;
+            p_smResult.BllReset("Tablas", "MrcPurge");
+
+            try {
+                // Obtenemos una conexion
+                l_dbcAccess= DBRuts.GetConection(Connections.Dat);
+                l_dbcAccess.BeginTransaction();
+
+                // Realizamos el borrado
+                MrcPack(l_dbcAccess,
+                        ref p_smResult);
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Enabled
+                p_smResult.BllError(l_expData.ToString());
+            }
+            finally {
+                // Si pude abrir la conexion
+                if (l_dbcAccess != null) {
+                    // Finalizo la transacción y la cierro
+                    l_dbcAccess.EndTransaction(p_smResult);
+                    l_dbcAccess.Close();
+                }
+                p_smResult.BllPop();
+            }
+        }
+        #endregion
+
+        #region Metodos para métodos DAL definidos por el usuario
+        #endregion
+
+        //---------------------------------------------------------------
+        // Metodos públicos de la clase (no visibles para la UIL)
+        //---------------------------------------------------------------
+
+        #region Metodos internos de validacion
+
+        /// <summary>
+        /// Valida la integridad de una entidad: Marca
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_entMarca">Entidad con los datos a validar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static void MrcTInt(DBConn p_dbcAccess,
+                                     EMarca p_entMarca,
+                                     ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            p_smResult.BllReset("Tablas", "MrcTInt");
+
+            // ********
+            // Validaciones de los campos sin conexion
+            // ********
+
+            if (p_entMarca.Codigo.Trim() == "") {
+                // El campo [cod] no puede ser vacío
+                p_smResult.BllWarning("El dato [cod] no puede ser vacío","");
+                return;
+            }
+
+            if (p_entMarca.Descripcion.Trim() == "") {
+                // El campo [des] no puede ser vacío
+                p_smResult.BllWarning("El dato [des] no puede ser vacío","");
+                return;
+            }
+
+            // ********
+            // Validaciones de los campos con conexion
+            // ********
+
+            // Llamamos a la funcion fija del usuario
+            MrcTInt_f(p_dbcAccess, p_entMarca, ref p_smResult);
+            if (p_smResult.NOk) return;
+
+            // Finalizamos
+            p_smResult.BllPop();
+        }
+
+        /// <summary>
+        /// Verifica si existe en la tabla una entidad: EMarca
+        ///      Retorno: p_smResult.Stat= BllAvisos.KeyExists   - La clave existe
+        ///               p_smResult.Stat= BllAvisos.KeyNotFound - La clave no existe
+        ///               p_smResult.Stat= BllAvisos.KeyDisabled - La clave está deshabilitada
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_strCodigo">cod</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static void MrcVKey(DBConn p_dbcAccess,
+                                     string p_strCodigo,
+                                     ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            p_smResult.BllReset("Tablas", "MrcVKey");
+            DataSet l_dsTemp= new DataSet();
+
+            Dal.Marcas.Search(p_dbcAccess,
+                              p_strCodigo,
+                              false,
+                              ref l_dsTemp,
+                              "Temporal",
+                              ref p_smResult);
+            if (p_smResult.NOk) return;
+
+            try {
+                // Verificamos si vino algun registro
+                p_smResult.BllICode(BllCodes.KeyDsntFound);
+                if (l_dsTemp.Tables["Temporal"].Rows.Count == 0) return;
+
+                // Verificamos si el registro que vino esta habilitado
+                p_smResult.BllICode(BllCodes.KeyDisabled);
+                if ((decimal) l_dsTemp.Tables["Temporal"].Rows[0]["deleted"] == 1) return;
+
+                // La clave existia y estaba habilitada
+                p_smResult.BllICode(BllCodes.KeyExists);
+            }
+            finally {
+                // Terminamos
+                l_dsTemp.Dispose();
+                p_smResult.BllPop();
+            }
+        }
+
+        /// <summary>
+        /// Verifica el número de version de una tabla
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_strCodigo">cod</param>
+        /// <param name="p_iFxdVersion">Número de version</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static void MrcVVer(DBConn p_dbcAccess,
+                                     string p_strCodigo,
+                                     int p_iFxdVersion,
+                                     ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            p_smResult.BllReset("Tablas", "MrcVVer");
+            DataSet l_dsTemp= new DataSet();
+
+            // Verificamos el número de versión
+            Dal.Marcas.ChkVersion(p_dbcAccess,
+                                  p_strCodigo,
+                                  p_iFxdVersion,
+                                  ref l_dsTemp,
+                                  "Temporal",
+                                  ref p_smResult);
+            if (p_smResult.NOk) return;
+
+            // Verificamos el resultado que vino
+            if (l_dsTemp.Tables["Temporal"].Rows.Count != 0) {
+                // Verificamos si la cantidad es 1
+                if ((int) l_dsTemp.Tables["Temporal"].Rows[0]["cantidad"] == 1) {
+                    // La versión coincide
+                    l_dsTemp.Dispose();
+                    p_smResult.BllPop();
+                    return;
+                }
+            }
+
+            // El número de versión no coincide
+            StreamWriter l_swErrorFile= null;
+            string l_strErrFName= String.Format("C:\\V{0:ddMMyyyyHHmmss}.Err",
+                                                DateTime.Now);
+            try {
+                // Creamos el archivo del error
+                l_swErrorFile= new StreamWriter(File.Create(l_strErrFName),
+                                                System.Text.Encoding.ASCII);
+
+                // Grabamos los datos del error
+                l_swErrorFile.WriteLine("Instante    : {0:dd/MM/yyyy HH:mm:ss}", DateTime.Now);
+                l_swErrorFile.WriteLine("Uil         : {0}", p_smResult.Uil);
+                l_swErrorFile.WriteLine("Bll         : {0}", p_smResult.Bll);
+                l_swErrorFile.WriteLine("Dal         : {0}", p_smResult.Dal);
+                l_swErrorFile.WriteLine("Message     : No coincide el numero de version");
+            }
+            catch (Exception l_expData) {
+                // Error en el acceso al archivo.
+                string l_strLinea= l_expData.ToString();
+            }
+            finally {
+                // Si llegamos a abrir el archivo -> lo cerramos
+                if (l_swErrorFile != null) {
+                    l_swErrorFile.Close();
+                    l_swErrorFile.Dispose();
+                }
+            }
+
+            // El número de versión no coincide
+            l_dsTemp.Dispose();
+            p_smResult.BllWarning("El número de versión del registro del ítem (Marca) no coincide.\r\nOperación cancelada.","");
+        }
+        #endregion
+
+        #region Metodos internos de recupero
+
+        /// <summary>
+        /// Devuelve una Lista-entidad: LEMarcas
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_bOnlyActive">Indica si solo se analizan los registros activos</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        /// <returns>Lista-entidad: LEMarcas</returns>
+        internal static LEMarcas MrcUpfl(DBConn p_dbcAccess,
+                                          bool p_bOnlyActive,
+                                          ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            p_smResult.BllReset("Tablas", "MrcUpfl");
+
+            try {
+                // Pedimos los registros de la tabla: Marcas
+                DataSet l_dsTemp= new DataSet();
+
+                Dal.Marcas.Up(p_dbcAccess, 
+                              p_bOnlyActive,
+                              ref l_dsTemp, "Temporal",
+                              ref p_smResult);
+                if (p_smResult.NOk) return null;
+
+                // Fijamos los captions de la grilla
+                Dal.Marcas.MakeGridCaptions(ref l_dsTemp, "Temporal", ref p_smResult);
+
+                // Contruimos la lista-entidad y la devolvemos (si vino algun registro)
+                LEMarcas l_lentRet= new LEMarcas(l_dsTemp.Tables["Temporal"]);
+                l_dsTemp.Dispose();
+                return l_lentRet;
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Upfl
+                p_smResult.BllError(l_expData.ToString());
+                return null;
+            }
+            finally {
+                // Terminamos
+                p_smResult.BllPop();
+            }
+        }
+
+        /// <summary>
+        /// Devuelve una entidad: EMarca
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_strCodigo">cod</param>
+        /// <param name="p_bOnlyActive">Indica si solo se analizan los registros activos</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        /// <returns>Entidad: EMarca</returns>
+        internal static EMarca MrcSrch(DBConn p_dbcAccess,
+                                       string p_strCodigo,
+                                       bool p_bOnlyActive,
+                                       ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            p_smResult.BllReset("Tablas", "MrcSrch");
+
+            try {
+                // Pedimos el registro de la tabla: Marcas
+                DataSet l_dsTemp= new DataSet();
+
+                Dal.Marcas.Search(p_dbcAccess, 
+                                  p_strCodigo,
+                                  p_bOnlyActive,
+                                  ref l_dsTemp, "Temporal",
+                                  ref p_smResult);
+                if (p_smResult.NOk) return null;
+
+                // Constuimos la entidad y la devolvemos (si vino un registro)
+                EMarca l_entRet= null;
+
+                if (l_dsTemp.Tables["Temporal"].Rows.Count == 1)
+                    l_entRet= new EMarca(l_dsTemp.Tables["Temporal"].Rows[0]);
+
+                l_dsTemp.Dispose();
+                return l_entRet;
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Srch
+                p_smResult.BllError(l_expData.ToString());
+                return null;
+            }
+            finally {
+                // Terminamos
+                p_smResult.BllPop();
+            }
+        }
+
+        /// <summary>
+        /// Devuelve la próxima clave de la entidad
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        /// <returns>Próxima clave</returns>
+        internal static string MrcGetNK(DBConn p_dbcAccess,
+                                        ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            p_smResult.BllReset("Tablas", "MrcGetNK");
+
+            try {
+                // Pedimos la clave máxima
+                DataSet l_dsTemp= new DataSet();
+
+                Dal.Marcas.GetMaxKey(p_dbcAccess,
+                                     ref l_dsTemp,
+                                     "Temporal",
+                                     ref p_smResult);
+                if (p_smResult.NOk) return "";
+
+                // Si no vino nada
+                if (l_dsTemp.Tables["Temporal"].Rows.Count == 0) {
+                    // Primera clave de la tabla
+                    return "1";
+                }
+
+                // Convertimos la clave a numerica y le sumamos uno
+                int l_iValue= Convert.ToInt32((string) l_dsTemp.Tables["Temporal"].Rows[0][0]) + 1;
+
+                // Devolvemos la nueva clave
+                return l_iValue.ToString("0");
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion NextKey
+                p_smResult.BllError(l_expData.ToString());
+                return "";
+            }
+            finally {
+                // Si pude abrir la conexion -> la cierro
+                p_smResult.BllPop();
+            }
+        }
+        #endregion
+
+        #region Metodos internos de modificacion
+
+        /// <summary>
+        /// Agrega o modifica un registro de la tabla: Marcas
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_entMarca">Entidad con los datos a procesar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static void MrcSSav(DBConn p_dbcAccess,
+                                     EMarca p_entMarca,
+                                     ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            p_smResult.BllReset("Tablas", "MrcSave");
+
+            try {
+                // Procesamos codigo fijo
+                MrcSave_f(p_dbcAccess, ref p_entMarca, ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // Verificamos la clave a grabar
+                MrcVKey(p_dbcAccess, 
+                        p_entMarca.Codigo,
+                        ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // Si es una entidad nueva
+                if (p_entMarca.EsNueva) {
+                    // Es un alta. La clave no debe existir
+                    if (!p_smResult.ICodeEs(BllCodes.KeyDsntFound)) {
+                        // Error. La clave ya existe
+                        p_smResult.BllWarning("El ítem (Marca) que intenta agregar ya existe en el sistema.","");
+                        return;
+                    }
+
+                    // Agregamos el registro
+                    MrcInsr(p_dbcAccess, p_entMarca, ref p_smResult);
+                    return;
+                }
+
+                // Es un update. La clave debe existir y estar habilitada
+                if (!p_smResult.ICodeEs(BllCodes.KeyExists)) {
+                    // Error. La clave no existe o no está habilitada
+                    p_smResult.BllWarning("El ítem (Marca) que intenta modificar no existe en el sistema o no está habilitado.","");
+                    return;
+                }
+
+                // Debe coincidir el número de version
+                MrcVVer(p_dbcAccess, 
+                        p_entMarca.Codigo,
+                        p_entMarca.FxdVersion,
+                        ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // Actualizamos el registro
+                MrcUpdt(p_dbcAccess, p_entMarca, ref p_smResult);
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion SSav
+                p_smResult.BllError(l_expData.ToString());
+            }
+            finally {
+                // Terminamos
+                p_smResult.BllPop();
+            }
+        }
+
+        /// <summary>
+        /// Agrega un registro a la tabla a partir de una entidad: EMarca
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_entMarca">Entidad con los datos a procesar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static void MrcInsr(DBConn p_dbcAccess,
+                                     EMarca p_entMarca,
+                                     ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            p_smResult.BllReset("Tablas", "MrcInsr");
+
+            try {
+                // Validamos la integridad de la entidad
+                MrcTInt(p_dbcAccess, p_entMarca, ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // Creamos un nuevo registro de la tabla: Marcas
+                Dal.Marcas.Insert(p_dbcAccess,
+                                  p_entMarca.Codigo,
+                                  p_entMarca.Descripcion,
+                                  ref p_smResult);
+                p_smResult.BllPop();
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Insr
+                p_smResult.BllError(l_expData.ToString());
+            }
+        }
+
+        /// <summary>
+        /// Actualiza un registro a la tabla a partir de una entidad: EMarca
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_entMarca">Entidad con los datos a procesar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static void MrcUpdt(DBConn p_dbcAccess,
+                                     EMarca p_entMarca,
+                                     ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            p_smResult.BllReset("Tablas", "MrcUpdt");
+
+            try {
+                // Validamos la integridad de la entidad
+                MrcTInt(p_dbcAccess, p_entMarca, ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // Actualizamos un registro de la tabla: Marcas
+                Dal.Marcas.Update(p_dbcAccess,
+                                  p_entMarca.Codigo,
+                                  p_entMarca.Descripcion,
+                                  ref p_smResult);
+                p_smResult.BllPop();
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Updt
+                p_smResult.BllError(l_expData.ToString());
+            }
+        }
+
+        /// <summary>
+        /// Borra físicamente un registro de a tabla: Marcas
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_strCodigo">cod</param>
+        /// <param name="p_iFxdVersion">Versión del registro a borrar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static void MrcDrop(DBConn p_dbcAccess,
+                                     string p_strCodigo,
+                                     int p_iFxdVersion,
+                                     ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            p_smResult.BllReset("Tablas", "MrcDrop");
+
+            try {
+                // Verificamos la clave a borrar
+                MrcVKey(p_dbcAccess,
+                        p_strCodigo,
+                        ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // El registro tiene que existir
+                if (p_smResult.ICodeEs(BllCodes.KeyDsntFound)) {
+                    // Error. La clave no existe
+                    p_smResult.BllWarning("El ítem (Marca) que intenta borrar no existe en el sistema.","");
+                    return;
+                }
+
+                // Debe coincidir el número de version
+                MrcVVer(p_dbcAccess, 
+                        p_strCodigo,
+                        p_iFxdVersion,
+                        ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // Borramos físicamente el registro
+                Dal.Marcas.Drop(p_dbcAccess,
+                                p_strCodigo,
+                                ref p_smResult);
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Remove
+                p_smResult.BllError(l_expData.ToString());
+            }
+            finally {
+                // Terminamos
+                p_smResult.BllPop();
+            }
+        }
+
+        /// <summary>
+        /// Borra los registros borrados lógicamente de la tabla
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static void MrcPack(DBConn p_dbcAccess,
+                                     ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            p_smResult.BllReset("Tablas", "MrcPack");
+
+            try {
+                // Borramos los borrados lógicamente
+                Dal.Marcas.Pack(p_dbcAccess,
+                                ref p_smResult);
+                p_smResult.BllPop();
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Updt
+                p_smResult.BllError(l_expData.ToString());
+            }
+        }
+        #endregion
+
+        #region Metodos para métodos DAL definidos por el usuario
+        #endregion
+
+
+        //**********************************************************
+        //
+        // Funciones para la Tabla: Modelos
+        // Usando ClaseDal        : Modelos
+        //
+        //**********************************************************
+
+        //---------------------------------------------------------------
+        // Metodos públicos de la clase (visibles para la UIL)
+        //---------------------------------------------------------------
+        #region Metodos publicos de recupero
+
+        /// <summary>
+        /// Devuelve la grilla de la tabla: Modelos
+        /// </summary>
+        /// <param name="p_bOnlyActive">Indica si solo se analizan los registros activos</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        /// <returns>Lista-entidad: LEModelos</returns>
+        public static LEModelos ModUpFull(bool p_bOnlyActive,
+                                          ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            DBConn l_dbcAccess= null;
+            p_smResult.BllReset("Tablas", "ModUpFull");
+
+            try {
+                // Obtenemos una conexion
+                l_dbcAccess= DBRuts.GetConection(Connections.Dat);
+
+                // Pedimos los registros de la tabla
+                return ModUpfl(l_dbcAccess, p_bOnlyActive, ref p_smResult);
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion UpFull
+                p_smResult.BllError(l_expData.ToString());
+                return null;
+            }
+            finally {
+                // Si pude abrir la conexion -> la cierro
+                if (l_dbcAccess != null) l_dbcAccess.Close();
+                p_smResult.BllPop();
+            }
+        }
+
+        /// <summary>
+        /// Devuelve una entidad: EModelo
+        /// </summary>
+        /// <param name="p_strCod">Codigo</param>
+        /// <param name="p_bOnlyActive">Indica si solo se analizan los registros activos</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        /// <returns>Entidad: EModelo</returns>
+        public static EModelo ModGet(string p_strCod,
+                                     bool p_bOnlyActive,
+                                     ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            DBConn l_dbcAccess= null;
+            p_smResult.BllReset("Tablas", "ModGet");
+
+            // Ajustamos codigos alineados a derecha
+            p_strCod= EModelo.FrmtCod(p_strCod);
+
+            try {
+                // Obtenemos una conexion
+                l_dbcAccess= DBRuts.GetConection(Connections.Dat);
+
+                // Pedimos la entidad: EModelo
+                return ModSrch(l_dbcAccess,
+                               p_strCod,
+                               p_bOnlyActive,
+                               ref p_smResult);
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Get
+                p_smResult.BllError(l_expData.ToString());
+                return null;
+            }
+            finally {
+                // Si pude abrir la conexion -> la cierro
+                if (l_dbcAccess != null) l_dbcAccess.Close();
+                p_smResult.BllPop();
+            }
+        }
+
+        /// <summary>
+        /// Devuelve la próxima clave de la entidad
+        /// </summary>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        /// <returns>Próxima clave</returns>
+        public static string ModNextKey(ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            DBConn l_dbcAccess= null;
+            p_smResult.BllReset("Tablas", "ModNextKey");
+
+            try {
+                // Obtenemos una conexion
+                l_dbcAccess= DBRuts.GetConection(Connections.Dat);
+
+                // Pedimos la clave máxima
+                return ModGetNK(l_dbcAccess,
+                                ref p_smResult);
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion NextKey
+                p_smResult.BllError(l_expData.ToString());
+                return "";
+            }
+            finally {
+                // Si pude abrir la conexion -> la cierro
+                if (l_dbcAccess != null) l_dbcAccess.Close();
+                p_smResult.BllPop();
+            }
+        }
+        #endregion
+
+        #region Metodos publicos de grabacion
+
+        /// <summary>
+        /// Agrega o modifica un registro de la tabla: Modelos
+        /// </summary>
+        /// <param name="p_entModelo">Entidad con los datos a procesar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        public static void ModSave(EModelo p_entModelo,
+                                   ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            p_smResult.BllReset("Tablas", "ModSave");
+            DBConn l_dbcAccess= null;
+
+            try {
+                // Obtenemos una conexion y abrimos una transaccion
+                l_dbcAccess= DBRuts.GetConection(Connections.Dat);
+                l_dbcAccess.BeginTransaction();
+
+                // Grabamos la entidad: EModelo
+                ModSSav(l_dbcAccess, p_entModelo, ref p_smResult);
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Save
+                p_smResult.BllError(l_expData.ToString());
+            }
+            finally {
+                // Si pude abrir la conexion
+                if (l_dbcAccess != null) {
+                    // Finalizo la transacción y la cierro
+                    l_dbcAccess.EndTransaction(p_smResult);
+                    l_dbcAccess.Close();
+                }
+                p_smResult.BllPop();
+            }
+        }
+
+        /// <summary>
+        /// Habilita/Deshabilita un registro de la tabla: Modelos
+        /// </summary>
+        /// <param name="p_bEnable">Tipo de operacion</param>
+        /// <param name="p_strCod">Codigo</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        public static void ModEnabled(bool p_bEnable,
+                                      string p_strCod,
+                                      int p_iFxdVersion,
+                                      ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            DBConn l_dbcAccess= null;
+            p_smResult.BllReset("Tablas", "ModEnabled");
+
+            // Ajustamos codigos alineados a derecha
+            p_strCod= EModelo.FrmtCod(p_strCod);
+
+            try {
+                // Obtenemos una conexion
+                l_dbcAccess= DBRuts.GetConection(Connections.Dat);
+                l_dbcAccess.BeginTransaction();
+
+                // Procesamos codigo fijo
+                ModEnabled_f(l_dbcAccess,
+                             p_bEnable,
+                             p_strCod,
+                             ref p_iFxdVersion,
+                             ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // Verificamos la clave a modificar
+                ModVKey(l_dbcAccess,
+                        p_strCod,
+                        ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // El registro tiene que existir
+                if (p_smResult.ICodeEs(BllCodes.KeyDsntFound)) {
+                    // Error. La clave no existe
+                    p_smResult.BllWarning("El ítem (Modelo) que intenta modificar no existe en el sistema.","");
+                    return;
+                }
+
+                // Debe coincidir el número de version
+                ModVVer(l_dbcAccess, 
+                        p_strCod,
+                        p_iFxdVersion,
+                        ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // Segun el modo
+                if (p_bEnable) {
+                    // Hay que habilitar el registro
+                    Dal.Modelos.Recall(l_dbcAccess,
+                                       p_strCod,
+                                       ref p_smResult);
+                }
+                else {
+                    // Hay que deshabilitar el registro
+                    Dal.Modelos.Delete(l_dbcAccess,
+                                       p_strCod,
+                                       ref p_smResult);
+                }
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Enabled
+                p_smResult.BllError(l_expData.ToString());
+            }
+            finally {
+                // Si pude abrir la conexion
+                if (l_dbcAccess != null) {
+                    // Finalizo la transacción y la cierro
+                    l_dbcAccess.EndTransaction(p_smResult);
+                    l_dbcAccess.Close();
+                }
+                p_smResult.BllPop();
+            }
+        }
+
+        /// <summary>
+        /// Borra físicamento un registro de la tabla: Modelos
+        /// </summary>
+        /// <param name="p_strCod">Codigo</param>
+        /// <param name="p_iFxdVersion">Versión del registro a borrar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        public static void ModRemove(string p_strCod,
+                                     int p_iFxdVersion,
+                                     ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            DBConn l_dbcAccess= null;
+            p_smResult.BllReset("Tablas", "ModRemove");
+
+            // Ajustamos codigos alineados a derecha
+            p_strCod= EModelo.FrmtCod(p_strCod);
+
+            try {
+                // Obtenemos una conexion
+                l_dbcAccess= DBRuts.GetConection(Connections.Dat);
+                l_dbcAccess.BeginTransaction();
+
+                // Procesamos codigo fijo
+                ModRemove_f(l_dbcAccess,
+                            p_strCod,
+                            p_iFxdVersion,
+                            ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // Borramos el registro solicitado
+                ModDrop(l_dbcAccess,
+                        p_strCod,
+                        p_iFxdVersion,
+                        ref p_smResult);
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Remove
+                p_smResult.BllError(l_expData.ToString());
+            }
+            finally {
+                // Si pude abrir la conexion
+                if (l_dbcAccess != null) {
+                    // Finalizo la transacción y la cierro
+                    l_dbcAccess.EndTransaction(p_smResult);
+                    l_dbcAccess.Close();
+                }
+                p_smResult.BllPop();
+            }
+        }
+
+        /// <summary>
+        /// Compacta una tabla borrando los registros deshabilitados
+        /// </summary>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        public static void ModPurge(ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            DBConn l_dbcAccess= null;
+            p_smResult.BllReset("Tablas", "ModPurge");
+
+            try {
+                // Obtenemos una conexion
+                l_dbcAccess= DBRuts.GetConection(Connections.Dat);
+                l_dbcAccess.BeginTransaction();
+
+                // Realizamos el borrado
+                ModPack(l_dbcAccess,
+                        ref p_smResult);
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Enabled
+                p_smResult.BllError(l_expData.ToString());
+            }
+            finally {
+                // Si pude abrir la conexion
+                if (l_dbcAccess != null) {
+                    // Finalizo la transacción y la cierro
+                    l_dbcAccess.EndTransaction(p_smResult);
+                    l_dbcAccess.Close();
+                }
+                p_smResult.BllPop();
+            }
+        }
+        #endregion
+
+        #region Metodos para métodos DAL definidos por el usuario
+        #endregion
+
+        //---------------------------------------------------------------
+        // Metodos públicos de la clase (no visibles para la UIL)
+        //---------------------------------------------------------------
+
+        #region Metodos internos de validacion
+
+        /// <summary>
+        /// Valida la integridad de una entidad: Modelo
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_entModelo">Entidad con los datos a validar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static void ModTInt(DBConn p_dbcAccess,
+                                     EModelo p_entModelo,
+                                     ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            p_smResult.BllReset("Tablas", "ModTInt");
+
+            // ********
+            // Validaciones de los campos sin conexion
+            // ********
+
+            if (p_entModelo.Cod.Trim() == "") {
+                // El campo [Codigo] no puede ser vacío
+                p_smResult.BllWarning("El dato [Codigo] no puede ser vacío","");
+                return;
+            }
+
+            if (p_entModelo.Des.Trim() == "") {
+                // El campo [descripcion] no puede ser vacío
+                p_smResult.BllWarning("El dato [descripcion] no puede ser vacío","");
+                return;
+            }
+
+            // ********
+            // Validaciones de los campos con conexion
+            // ********
+
+            Tablas.MrcVKey(p_dbcAccess,
+                           p_entModelo.Codmarca,
+                           ref p_smResult);
+            if (p_smResult.NOk) return;
+
+            if (p_smResult.ICodeEs(BllCodes.KeyDsntFound)) {
+                // El campo [Codigo de la marca] debe existir en la tabla [Tablas.Mrc]
+                p_smResult.BllWarning("El dato [Codigo de la marca] debe existir en la tabla [Tablas.Mrc]","");
+                return;
+            }
+
+            // Todas las validaciones fueron correctas
+
+            // Llamamos a la funcion fija del usuario
+            ModTInt_f(p_dbcAccess, p_entModelo, ref p_smResult);
+            if (p_smResult.NOk) return;
+
+            // Finalizamos
+            p_smResult.BllPop();
+        }
+
+        /// <summary>
+        /// Verifica si existe en la tabla una entidad: EModelo
+        ///      Retorno: p_smResult.Stat= BllAvisos.KeyExists   - La clave existe
+        ///               p_smResult.Stat= BllAvisos.KeyNotFound - La clave no existe
+        ///               p_smResult.Stat= BllAvisos.KeyDisabled - La clave está deshabilitada
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_strCod">Codigo</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static void ModVKey(DBConn p_dbcAccess,
+                                     string p_strCod,
+                                     ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            p_smResult.BllReset("Tablas", "ModVKey");
+            DataSet l_dsTemp= new DataSet();
+
+            Dal.Modelos.Search(p_dbcAccess,
+                               p_strCod,
+                               false,
+                               ref l_dsTemp,
+                               "Temporal",
+                               ref p_smResult);
+            if (p_smResult.NOk) return;
+
+            try {
+                // Verificamos si vino algun registro
+                p_smResult.BllICode(BllCodes.KeyDsntFound);
+                if (l_dsTemp.Tables["Temporal"].Rows.Count == 0) return;
+
+                // Verificamos si el registro que vino esta habilitado
+                p_smResult.BllICode(BllCodes.KeyDisabled);
+                if ((decimal) l_dsTemp.Tables["Temporal"].Rows[0]["deleted"] == 1) return;
+
+                // La clave existia y estaba habilitada
+                p_smResult.BllICode(BllCodes.KeyExists);
+            }
+            finally {
+                // Terminamos
+                l_dsTemp.Dispose();
+                p_smResult.BllPop();
+            }
+        }
+
+        /// <summary>
+        /// Verifica el número de version de una tabla
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_strCod">Codigo</param>
+        /// <param name="p_iFxdVersion">Número de version</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static void ModVVer(DBConn p_dbcAccess,
+                                     string p_strCod,
+                                     int p_iFxdVersion,
+                                     ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            p_smResult.BllReset("Tablas", "ModVVer");
+            DataSet l_dsTemp= new DataSet();
+
+            // Verificamos el número de versión
+            Dal.Modelos.ChkVersion(p_dbcAccess,
+                                   p_strCod,
+                                   p_iFxdVersion,
+                                   ref l_dsTemp,
+                                   "Temporal",
+                                   ref p_smResult);
+            if (p_smResult.NOk) return;
+
+            // Verificamos el resultado que vino
+            if (l_dsTemp.Tables["Temporal"].Rows.Count != 0) {
+                // Verificamos si la cantidad es 1
+                if ((int) l_dsTemp.Tables["Temporal"].Rows[0]["cantidad"] == 1) {
+                    // La versión coincide
+                    l_dsTemp.Dispose();
+                    p_smResult.BllPop();
+                    return;
+                }
+            }
+
+            // El número de versión no coincide
+            StreamWriter l_swErrorFile= null;
+            string l_strErrFName= String.Format("C:\\V{0:ddMMyyyyHHmmss}.Err",
+                                                DateTime.Now);
+            try {
+                // Creamos el archivo del error
+                l_swErrorFile= new StreamWriter(File.Create(l_strErrFName),
+                                                System.Text.Encoding.ASCII);
+
+                // Grabamos los datos del error
+                l_swErrorFile.WriteLine("Instante    : {0:dd/MM/yyyy HH:mm:ss}", DateTime.Now);
+                l_swErrorFile.WriteLine("Uil         : {0}", p_smResult.Uil);
+                l_swErrorFile.WriteLine("Bll         : {0}", p_smResult.Bll);
+                l_swErrorFile.WriteLine("Dal         : {0}", p_smResult.Dal);
+                l_swErrorFile.WriteLine("Message     : No coincide el numero de version");
+            }
+            catch (Exception l_expData) {
+                // Error en el acceso al archivo.
+                string l_strLinea= l_expData.ToString();
+            }
+            finally {
+                // Si llegamos a abrir el archivo -> lo cerramos
+                if (l_swErrorFile != null) {
+                    l_swErrorFile.Close();
+                    l_swErrorFile.Dispose();
+                }
+            }
+
+            // El número de versión no coincide
+            l_dsTemp.Dispose();
+            p_smResult.BllWarning("El número de versión del registro del ítem (Modelo) no coincide.\r\nOperación cancelada.","");
+        }
+        #endregion
+
+        #region Metodos internos de recupero
+
+        /// <summary>
+        /// Devuelve una Lista-entidad: LEModelos
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_bOnlyActive">Indica si solo se analizan los registros activos</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        /// <returns>Lista-entidad: LEModelos</returns>
+        internal static LEModelos ModUpfl(DBConn p_dbcAccess,
+                                           bool p_bOnlyActive,
+                                           ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            p_smResult.BllReset("Tablas", "ModUpfl");
+
+            try {
+                // Pedimos los registros de la tabla: Modelos
+                DataSet l_dsTemp= new DataSet();
+
+                Dal.Modelos.Up(p_dbcAccess, 
+                               p_bOnlyActive,
+                               ref l_dsTemp, "Temporal",
+                               ref p_smResult);
+                if (p_smResult.NOk) return null;
+
+                // Fijamos los captions de la grilla
+                Dal.Modelos.MakeGridCaptions(ref l_dsTemp, "Temporal", ref p_smResult);
+
+                // Contruimos la lista-entidad y la devolvemos (si vino algun registro)
+                LEModelos l_lentRet= new LEModelos(l_dsTemp.Tables["Temporal"]);
+                l_dsTemp.Dispose();
+                return l_lentRet;
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Upfl
+                p_smResult.BllError(l_expData.ToString());
+                return null;
+            }
+            finally {
+                // Terminamos
+                p_smResult.BllPop();
+            }
+        }
+
+        /// <summary>
+        /// Devuelve una entidad: EModelo
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_strCod">Codigo</param>
+        /// <param name="p_bOnlyActive">Indica si solo se analizan los registros activos</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        /// <returns>Entidad: EModelo</returns>
+        internal static EModelo ModSrch(DBConn p_dbcAccess,
+                                        string p_strCod,
+                                        bool p_bOnlyActive,
+                                        ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            p_smResult.BllReset("Tablas", "ModSrch");
+
+            try {
+                // Pedimos el registro de la tabla: Modelos
+                DataSet l_dsTemp= new DataSet();
+
+                Dal.Modelos.Search(p_dbcAccess, 
+                                   p_strCod,
+                                   p_bOnlyActive,
+                                   ref l_dsTemp, "Temporal",
+                                   ref p_smResult);
+                if (p_smResult.NOk) return null;
+
+                // Constuimos la entidad y la devolvemos (si vino un registro)
+                EModelo l_entRet= null;
+
+                if (l_dsTemp.Tables["Temporal"].Rows.Count == 1)
+                    l_entRet= new EModelo(l_dsTemp.Tables["Temporal"].Rows[0]);
+
+                l_dsTemp.Dispose();
+                return l_entRet;
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Srch
+                p_smResult.BllError(l_expData.ToString());
+                return null;
+            }
+            finally {
+                // Terminamos
+                p_smResult.BllPop();
+            }
+        }
+
+        /// <summary>
+        /// Devuelve la próxima clave de la entidad
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        /// <returns>Próxima clave</returns>
+        internal static string ModGetNK(DBConn p_dbcAccess,
+                                        ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            p_smResult.BllReset("Tablas", "ModGetNK");
+
+            try {
+                // Pedimos la clave máxima
+                DataSet l_dsTemp= new DataSet();
+
+                Dal.Modelos.GetMaxKey(p_dbcAccess,
+                                      ref l_dsTemp,
+                                      "Temporal",
+                                      ref p_smResult);
+                if (p_smResult.NOk) return "";
+
+                // Si no vino nada
+                if (l_dsTemp.Tables["Temporal"].Rows.Count == 0) {
+                    // Primera clave de la tabla
+                    return "1";
+                }
+
+                // Convertimos la clave a numerica y le sumamos uno
+                int l_iValue= Convert.ToInt32((string) l_dsTemp.Tables["Temporal"].Rows[0][0]) + 1;
+
+                // Devolvemos la nueva clave
+                return l_iValue.ToString("0");
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion NextKey
+                p_smResult.BllError(l_expData.ToString());
+                return "";
+            }
+            finally {
+                // Si pude abrir la conexion -> la cierro
+                p_smResult.BllPop();
+            }
+        }
+        #endregion
+
+        #region Metodos internos de modificacion
+
+        /// <summary>
+        /// Agrega o modifica un registro de la tabla: Modelos
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_entModelo">Entidad con los datos a procesar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static void ModSSav(DBConn p_dbcAccess,
+                                     EModelo p_entModelo,
+                                     ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            p_smResult.BllReset("Tablas", "ModSave");
+
+            try {
+                // Procesamos codigo fijo
+                ModSave_f(p_dbcAccess, ref p_entModelo, ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // Verificamos la clave a grabar
+                ModVKey(p_dbcAccess, 
+                        p_entModelo.Cod,
+                        ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // Si es una entidad nueva
+                if (p_entModelo.EsNueva) {
+                    // Es un alta. La clave no debe existir
+                    if (!p_smResult.ICodeEs(BllCodes.KeyDsntFound)) {
+                        // Error. La clave ya existe
+                        p_smResult.BllWarning("El ítem (Modelo) que intenta agregar ya existe en el sistema.","");
+                        return;
+                    }
+
+                    // Agregamos el registro
+                    ModInsr(p_dbcAccess, p_entModelo, ref p_smResult);
+                    return;
+                }
+
+                // Es un update. La clave debe existir y estar habilitada
+                if (!p_smResult.ICodeEs(BllCodes.KeyExists)) {
+                    // Error. La clave no existe o no está habilitada
+                    p_smResult.BllWarning("El ítem (Modelo) que intenta modificar no existe en el sistema o no está habilitado.","");
+                    return;
+                }
+
+                // Debe coincidir el número de version
+                ModVVer(p_dbcAccess, 
+                        p_entModelo.Cod,
+                        p_entModelo.FxdVersion,
+                        ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // Actualizamos el registro
+                ModUpdt(p_dbcAccess, p_entModelo, ref p_smResult);
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion SSav
+                p_smResult.BllError(l_expData.ToString());
+            }
+            finally {
+                // Terminamos
+                p_smResult.BllPop();
+            }
+        }
+
+        /// <summary>
+        /// Agrega un registro a la tabla a partir de una entidad: EModelo
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_entModelo">Entidad con los datos a procesar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static void ModInsr(DBConn p_dbcAccess,
+                                     EModelo p_entModelo,
+                                     ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            p_smResult.BllReset("Tablas", "ModInsr");
+
+            try {
+                // Validamos la integridad de la entidad
+                ModTInt(p_dbcAccess, p_entModelo, ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // Creamos un nuevo registro de la tabla: Modelos
+                Dal.Modelos.Insert(p_dbcAccess,
+                                   p_entModelo.Cod,
+                                   p_entModelo.Des,
+                                   p_entModelo.Codmarca,
+                                   ref p_smResult);
+                p_smResult.BllPop();
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Insr
+                p_smResult.BllError(l_expData.ToString());
+            }
+        }
+
+        /// <summary>
+        /// Actualiza un registro a la tabla a partir de una entidad: EModelo
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_entModelo">Entidad con los datos a procesar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static void ModUpdt(DBConn p_dbcAccess,
+                                     EModelo p_entModelo,
+                                     ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            p_smResult.BllReset("Tablas", "ModUpdt");
+
+            try {
+                // Validamos la integridad de la entidad
+                ModTInt(p_dbcAccess, p_entModelo, ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // Actualizamos un registro de la tabla: Modelos
+                Dal.Modelos.Update(p_dbcAccess,
+                                   p_entModelo.Cod,
+                                   p_entModelo.Des,
+                                   p_entModelo.Codmarca,
+                                   ref p_smResult);
+                p_smResult.BllPop();
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Updt
+                p_smResult.BllError(l_expData.ToString());
+            }
+        }
+
+        /// <summary>
+        /// Borra físicamente un registro de a tabla: Modelos
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_strCod">Codigo</param>
+        /// <param name="p_iFxdVersion">Versión del registro a borrar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static void ModDrop(DBConn p_dbcAccess,
+                                     string p_strCod,
+                                     int p_iFxdVersion,
+                                     ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            p_smResult.BllReset("Tablas", "ModDrop");
+
+            try {
+                // Verificamos la clave a borrar
+                ModVKey(p_dbcAccess,
+                        p_strCod,
+                        ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // El registro tiene que existir
+                if (p_smResult.ICodeEs(BllCodes.KeyDsntFound)) {
+                    // Error. La clave no existe
+                    p_smResult.BllWarning("El ítem (Modelo) que intenta borrar no existe en el sistema.","");
+                    return;
+                }
+
+                // Debe coincidir el número de version
+                ModVVer(p_dbcAccess, 
+                        p_strCod,
+                        p_iFxdVersion,
+                        ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // Borramos físicamente el registro
+                Dal.Modelos.Drop(p_dbcAccess,
+                                 p_strCod,
+                                 ref p_smResult);
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Remove
+                p_smResult.BllError(l_expData.ToString());
+            }
+            finally {
+                // Terminamos
+                p_smResult.BllPop();
+            }
+        }
+
+        /// <summary>
+        /// Borra los registros borrados lógicamente de la tabla
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static void ModPack(DBConn p_dbcAccess,
+                                     ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            p_smResult.BllReset("Tablas", "ModPack");
+
+            try {
+                // Borramos los borrados lógicamente
+                Dal.Modelos.Pack(p_dbcAccess,
+                                 ref p_smResult);
                 p_smResult.BllPop();
             }
             catch (Exception l_expData) {

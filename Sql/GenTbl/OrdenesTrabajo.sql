@@ -3,7 +3,7 @@
 //----------------------------------------------------------------------------
 // Fecha              : 18/10/2013 15:51
 // Base de Datos      : TNGS_Rivn
-// Tabla              : Categorias
+// Tabla              : OrdenesTrabajo
 //----------------------------------------------------------------------------
 // © 1999-2013 by TNG Software                                      Gndr 5.20
 //---------------------------------------------------------------------------*/
@@ -26,39 +26,42 @@ go
 /* Crea la tabla en la base indicada */
 /*-----------------------------------*/
 
-print 'Tabla: Categorias'
+print 'Tabla: OrdenesTrabajo'
 
-if exists (select * from sysobjects where id = object_id('dbo.Categorias'))
+if exists (select * from sysobjects where id = object_id('dbo.OrdenesTrabajo'))
 begin
    print '   - Borrando la vieja tabla'
-   drop table dbo.Categorias
+   drop table dbo.OrdenesTrabajo
 end
 go
 
 print '   - Creando la nueva tabla'
 
-create table Categorias
+create table OrdenesTrabajo
    (
-      cat_rcd_cod tngs_codigo_r,
-      cat_des_des tngs_descripcion,
+      odt_nro_nro tngs_numero,
+      odt_ecd_patente tngs_codigo_e,
+      odt_fyh_fecapertura tngs_fecyhor,
+      odt_nom_operador tngs_nombre,
+      odt_fyh_feccierre tngs_fecyhor,
       instante tngs_fecyhor,
       deleted tngs_borrado,
       usuario tngs_nombre,
       version tngs_numero,
-      constraint Categorias_pk primary key clustered
+      constraint OrdenesTrabajo_pk primary key clustered
       (
-         cat_rcd_cod
+         odt_nro_nro
       )
    )
 go
 
 print '   - Asignando permisos a la nueva tabla'
 
-grant select on Categorias to tngsqbe
+grant select on OrdenesTrabajo to tngsqbe
 
 print ' '
 go
 
 /*--------------------------------------------------------------------------
-// Fin del script de creacion de la tabla: Categorias
+// Fin del script de creacion de la tabla: OrdenesTrabajo
 //--------------------------------------------------------------------------*/

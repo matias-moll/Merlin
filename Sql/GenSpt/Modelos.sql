@@ -3,7 +3,7 @@
 //----------------------------------------------------------------------------
 // Fecha       : 18/10/2013 15:51
 // Sistema     : Rivn
-// Tabla       : Equipamiento
+// Tabla       : Modelos
 //----------------------------------------------------------------------------
 // © 1999-2013 by TNG Software                                      Gndr 5.20
 //---------------------------------------------------------------------------*/
@@ -31,19 +31,19 @@ go
 ---
 ---////////////////////////////////////////////////////////
 
-print 'Store Procedure: dbo.EQUIPAMIENTO_UP'
+print 'Store Procedure: dbo.MODELOS_UP'
 
-if exists (select * from sysobjects where id = object_id('dbo.EQUIPAMIENTO_UP'))
+if exists (select * from sysobjects where id = object_id('dbo.MODELOS_UP'))
 begin
    print '       - Borrando el viejo SP'
-   drop procedure dbo.EQUIPAMIENTO_UP
+   drop procedure dbo.MODELOS_UP
 end
 go
 
 print '       - Creando el nuevo SP'
 go
 
-create procedure dbo.EQUIPAMIENTO_UP
+create procedure dbo.MODELOS_UP
 (
 @onlyactive tngs_valor
 )
@@ -52,28 +52,28 @@ begin
 
    if @onlyactive = 1
       begin
-         Select eqi_cod_cod,
-                eqi_des_des,
-                eqi_imp_valor,
-                TNGS_Rivn..Equipamiento.instante,
-                TNGS_Rivn..Equipamiento.deleted,
-                TNGS_Rivn..Equipamiento.usuario,
-                TNGS_Rivn..Equipamiento.version
-           from TNGS_Rivn..Equipamiento
+         Select mds_rcd_cod,
+                mds_des_des,
+                mds_rcd_codmarca,
+                TNGS_Rivn..Modelos.instante,
+                TNGS_Rivn..Modelos.deleted,
+                TNGS_Rivn..Modelos.usuario,
+                TNGS_Rivn..Modelos.version
+           from TNGS_Rivn..Modelos
           where deleted = 0
-          order by eqi_cod_cod
+          order by mds_rcd_cod
       end
    else
       begin
-         Select eqi_cod_cod,
-                eqi_des_des,
-                eqi_imp_valor,
-                TNGS_Rivn..Equipamiento.instante,
-                TNGS_Rivn..Equipamiento.deleted,
-                TNGS_Rivn..Equipamiento.usuario,
-                TNGS_Rivn..Equipamiento.version
-           from TNGS_Rivn..Equipamiento
-          order by eqi_cod_cod
+         Select mds_rcd_cod,
+                mds_des_des,
+                mds_rcd_codmarca,
+                TNGS_Rivn..Modelos.instante,
+                TNGS_Rivn..Modelos.deleted,
+                TNGS_Rivn..Modelos.usuario,
+                TNGS_Rivn..Modelos.version
+           from TNGS_Rivn..Modelos
+          order by mds_rcd_cod
       end
 
 fin:
@@ -83,7 +83,7 @@ go
 
 print '       - Asignando permisos al nuevo SP'
 
-grant execute on dbo.EQUIPAMIENTO_UP to tngsmodulos
+grant execute on dbo.MODELOS_UP to tngsmodulos
 
 print ' '
 go
@@ -93,34 +93,34 @@ go
 --- <summary>
 --- Verifica el número de versión de un registro
 --- </summary>
---- <param name="@eqi_cod_cod">cod</param>
+--- <param name="@mds_rcd_cod">Codigo</param>
 --- <param name="@version">Número de version a verificar</param>
 ---
 ---////////////////////////////////////////////////////////
 
-print 'Store Procedure: dbo.EQUIPAMIENTO_CHKVERSION'
+print 'Store Procedure: dbo.MODELOS_CHKVERSION'
 
-if exists (select * from sysobjects where id = object_id('dbo.EQUIPAMIENTO_CHKVERSION'))
+if exists (select * from sysobjects where id = object_id('dbo.MODELOS_CHKVERSION'))
 begin
    print '       - Borrando el viejo SP'
-   drop procedure dbo.EQUIPAMIENTO_CHKVERSION
+   drop procedure dbo.MODELOS_CHKVERSION
 end
 go
 
 print '       - Creando el nuevo SP'
 go
 
-create procedure dbo.EQUIPAMIENTO_CHKVERSION
+create procedure dbo.MODELOS_CHKVERSION
 (
-@eqi_cod_cod tngs_codigo,
+@mds_rcd_cod tngs_codigo_r,
 @version tngs_numero
 )
 as
 begin
 
    Select count(*) as cantidad
-     from TNGS_Rivn..Equipamiento
-    where eqi_cod_cod = @eqi_cod_cod
+     from TNGS_Rivn..Modelos
+    where mds_rcd_cod = @mds_rcd_cod
       and version = @version
 
 fin:
@@ -130,7 +130,7 @@ go
 
 print '       - Asignando permisos al nuevo SP'
 
-grant execute on dbo.EQUIPAMIENTO_CHKVERSION to tngsmodulos
+grant execute on dbo.MODELOS_CHKVERSION to tngsmodulos
 
 print ' '
 go
@@ -140,26 +140,26 @@ go
 --- <summary>
 --- Busca el registro de una clave
 --- </summary>
---- <param name="@eqi_cod_cod">cod</param>
+--- <param name="@mds_rcd_cod">Codigo</param>
 --- <param name="@onlyactive">Flag de SoloActivos</param>
 ---
 ---////////////////////////////////////////////////////////
 
-print 'Store Procedure: dbo.EQUIPAMIENTO_SEARCH'
+print 'Store Procedure: dbo.MODELOS_SEARCH'
 
-if exists (select * from sysobjects where id = object_id('dbo.EQUIPAMIENTO_SEARCH'))
+if exists (select * from sysobjects where id = object_id('dbo.MODELOS_SEARCH'))
 begin
    print '       - Borrando el viejo SP'
-   drop procedure dbo.EQUIPAMIENTO_SEARCH
+   drop procedure dbo.MODELOS_SEARCH
 end
 go
 
 print '       - Creando el nuevo SP'
 go
 
-create procedure dbo.EQUIPAMIENTO_SEARCH
+create procedure dbo.MODELOS_SEARCH
 (
-@eqi_cod_cod tngs_codigo,
+@mds_rcd_cod tngs_codigo_r,
 @onlyactive tngs_valor
 )
 as
@@ -167,28 +167,28 @@ begin
 
    if @onlyactive = 1
       begin
-         Select eqi_cod_cod,
-                eqi_des_des,
-                eqi_imp_valor,
-                TNGS_Rivn..Equipamiento.instante,
-                TNGS_Rivn..Equipamiento.deleted,
-                TNGS_Rivn..Equipamiento.usuario,
-                TNGS_Rivn..Equipamiento.version
-           from TNGS_Rivn..Equipamiento
-          where eqi_cod_cod = @eqi_cod_cod
+         Select mds_rcd_cod,
+                mds_des_des,
+                mds_rcd_codmarca,
+                TNGS_Rivn..Modelos.instante,
+                TNGS_Rivn..Modelos.deleted,
+                TNGS_Rivn..Modelos.usuario,
+                TNGS_Rivn..Modelos.version
+           from TNGS_Rivn..Modelos
+          where mds_rcd_cod = @mds_rcd_cod
             and deleted = 0
       end
    else
       begin
-         Select eqi_cod_cod,
-                eqi_des_des,
-                eqi_imp_valor,
-                TNGS_Rivn..Equipamiento.instante,
-                TNGS_Rivn..Equipamiento.deleted,
-                TNGS_Rivn..Equipamiento.usuario,
-                TNGS_Rivn..Equipamiento.version
-           from TNGS_Rivn..Equipamiento
-          where eqi_cod_cod = @eqi_cod_cod
+         Select mds_rcd_cod,
+                mds_des_des,
+                mds_rcd_codmarca,
+                TNGS_Rivn..Modelos.instante,
+                TNGS_Rivn..Modelos.deleted,
+                TNGS_Rivn..Modelos.usuario,
+                TNGS_Rivn..Modelos.version
+           from TNGS_Rivn..Modelos
+          where mds_rcd_cod = @mds_rcd_cod
       end
 
 fin:
@@ -198,7 +198,50 @@ go
 
 print '       - Asignando permisos al nuevo SP'
 
-grant execute on dbo.EQUIPAMIENTO_SEARCH to tngsmodulos
+grant execute on dbo.MODELOS_SEARCH to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Busca la clave máxima de la tabla
+--- </summary>
+--- <param name="@reservado">Reservado para futuras expansiones</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.MODELOS_GETMAXKEY'
+
+if exists (select * from sysobjects where id = object_id('dbo.MODELOS_GETMAXKEY'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.MODELOS_GETMAXKEY
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.MODELOS_GETMAXKEY
+(
+@dummy tngs_codigo_1
+)
+as
+begin
+
+   Select isnull(max(mds_rcd_cod), '0') as mds_rcd_cod
+     from TNGS_Rivn..Modelos
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.MODELOS_GETMAXKEY to tngsmodulos
 
 print ' '
 go
@@ -208,40 +251,40 @@ go
 --- <summary>
 --- Inserta un registro en la tabla
 --- </summary>
---- <param name="@eqi_cod_cod">cod</param>
---- <param name="@eqi_des_des">des</param>
---- <param name="@eqi_imp_valor">valor</param>
+--- <param name="@mds_rcd_cod">Codigo</param>
+--- <param name="@mds_des_des">descripcion</param>
+--- <param name="@mds_rcd_codmarca">Codigo de la marca</param>
 --- <param name="@usuario">Usuario que genera el insert</param>
 ---
 ---////////////////////////////////////////////////////////
 
-print 'Store Procedure: dbo.EQUIPAMIENTO_INSERT'
+print 'Store Procedure: dbo.MODELOS_INSERT'
 
-if exists (select * from sysobjects where id = object_id('dbo.EQUIPAMIENTO_INSERT'))
+if exists (select * from sysobjects where id = object_id('dbo.MODELOS_INSERT'))
 begin
    print '       - Borrando el viejo SP'
-   drop procedure dbo.EQUIPAMIENTO_INSERT
+   drop procedure dbo.MODELOS_INSERT
 end
 go
 
 print '       - Creando el nuevo SP'
 go
 
-create procedure dbo.EQUIPAMIENTO_INSERT
+create procedure dbo.MODELOS_INSERT
 (
-@eqi_cod_cod tngs_codigo,
-@eqi_des_des tngs_descripcion,
-@eqi_imp_valor tngs_importe,
+@mds_rcd_cod tngs_codigo_r,
+@mds_des_des tngs_descripcion,
+@mds_rcd_codmarca tngs_codigo_r,
 @usuario tngs_nombre
 )
 as
 begin
 
-   Insert into TNGS_Rivn..Equipamiento
+   Insert into TNGS_Rivn..Modelos
    values (
-           @eqi_cod_cod,
-           @eqi_des_des,
-           @eqi_imp_valor,
+           @mds_rcd_cod,
+           @mds_des_des,
+           @mds_rcd_codmarca,
            getdate(), 0, @usuario, 1
           )
 
@@ -252,7 +295,7 @@ go
 
 print '       - Asignando permisos al nuevo SP'
 
-grant execute on dbo.EQUIPAMIENTO_INSERT to tngsmodulos
+grant execute on dbo.MODELOS_INSERT to tngsmodulos
 
 print ' '
 go
@@ -262,42 +305,42 @@ go
 --- <summary>
 --- Actualiza un registro de la tabla
 --- </summary>
---- <param name="@eqi_cod_cod">cod</param>
---- <param name="@eqi_des_des">des</param>
---- <param name="@eqi_imp_valor">valor</param>
+--- <param name="@mds_rcd_cod">Codigo</param>
+--- <param name="@mds_des_des">descripcion</param>
+--- <param name="@mds_rcd_codmarca">Codigo de la marca</param>
 --- <param name="@usuario">Usuario que genera el update</param>
 ---
 ---////////////////////////////////////////////////////////
 
-print 'Store Procedure: dbo.EQUIPAMIENTO_UPDATE'
+print 'Store Procedure: dbo.MODELOS_UPDATE'
 
-if exists (select * from sysobjects where id = object_id('dbo.EQUIPAMIENTO_UPDATE'))
+if exists (select * from sysobjects where id = object_id('dbo.MODELOS_UPDATE'))
 begin
    print '       - Borrando el viejo SP'
-   drop procedure dbo.EQUIPAMIENTO_UPDATE
+   drop procedure dbo.MODELOS_UPDATE
 end
 go
 
 print '       - Creando el nuevo SP'
 go
 
-create procedure dbo.EQUIPAMIENTO_UPDATE
+create procedure dbo.MODELOS_UPDATE
 (
-@eqi_cod_cod tngs_codigo,
-@eqi_des_des tngs_descripcion,
-@eqi_imp_valor tngs_importe,
+@mds_rcd_cod tngs_codigo_r,
+@mds_des_des tngs_descripcion,
+@mds_rcd_codmarca tngs_codigo_r,
 @usuario tngs_nombre
 )
 as
 begin
 
-   Update TNGS_Rivn..Equipamiento
-      set eqi_des_des= @eqi_des_des,
-          eqi_imp_valor= @eqi_imp_valor,
+   Update TNGS_Rivn..Modelos
+      set mds_des_des= @mds_des_des,
+          mds_rcd_codmarca= @mds_rcd_codmarca,
           version = ((version+1) % 32767),
           instante= getdate(),
           usuario = @usuario
-    where eqi_cod_cod = @eqi_cod_cod
+    where mds_rcd_cod = @mds_rcd_cod
 
 fin:
 
@@ -306,7 +349,7 @@ go
 
 print '       - Asignando permisos al nuevo SP'
 
-grant execute on dbo.EQUIPAMIENTO_UPDATE to tngsmodulos
+grant execute on dbo.MODELOS_UPDATE to tngsmodulos
 
 print ' '
 go
@@ -316,37 +359,37 @@ go
 --- <summary>
 --- Borra lógicamente un registro
 --- </summary>
---- <param name="@eqi_cod_cod">cod</param>
+--- <param name="@mds_rcd_cod">Codigo</param>
 --- <param name="@usuario">Usuario que realiza el delete</param>
 ---
 ---////////////////////////////////////////////////////////
 
-print 'Store Procedure: dbo.EQUIPAMIENTO_DELETE'
+print 'Store Procedure: dbo.MODELOS_DELETE'
 
-if exists (select * from sysobjects where id = object_id('dbo.EQUIPAMIENTO_DELETE'))
+if exists (select * from sysobjects where id = object_id('dbo.MODELOS_DELETE'))
 begin
    print '       - Borrando el viejo SP'
-   drop procedure dbo.EQUIPAMIENTO_DELETE
+   drop procedure dbo.MODELOS_DELETE
 end
 go
 
 print '       - Creando el nuevo SP'
 go
 
-create procedure dbo.EQUIPAMIENTO_DELETE
+create procedure dbo.MODELOS_DELETE
 (
-@eqi_cod_cod tngs_codigo,
+@mds_rcd_cod tngs_codigo_r,
 @usuario tngs_nombre
 )
 as
 begin
 
-   Update TNGS_Rivn..Equipamiento
+   Update TNGS_Rivn..Modelos
       set deleted = 1,
           version = ((version+1) % 32767),
           instante= getdate(),
           usuario = @usuario
-    where eqi_cod_cod = @eqi_cod_cod
+    where mds_rcd_cod = @mds_rcd_cod
 
 fin:
 
@@ -355,7 +398,7 @@ go
 
 print '       - Asignando permisos al nuevo SP'
 
-grant execute on dbo.EQUIPAMIENTO_DELETE to tngsmodulos
+grant execute on dbo.MODELOS_DELETE to tngsmodulos
 
 print ' '
 go
@@ -365,37 +408,37 @@ go
 --- <summary>
 --- Recupera un registro
 --- </summary>
---- <param name="@eqi_cod_cod">cod</param>
+--- <param name="@mds_rcd_cod">Codigo</param>
 --- <param name="@usuario">Usuario que realiza el recall</param>
 ---
 ---////////////////////////////////////////////////////////
 
-print 'Store Procedure: dbo.EQUIPAMIENTO_RECALL'
+print 'Store Procedure: dbo.MODELOS_RECALL'
 
-if exists (select * from sysobjects where id = object_id('dbo.EQUIPAMIENTO_RECALL'))
+if exists (select * from sysobjects where id = object_id('dbo.MODELOS_RECALL'))
 begin
    print '       - Borrando el viejo SP'
-   drop procedure dbo.EQUIPAMIENTO_RECALL
+   drop procedure dbo.MODELOS_RECALL
 end
 go
 
 print '       - Creando el nuevo SP'
 go
 
-create procedure dbo.EQUIPAMIENTO_RECALL
+create procedure dbo.MODELOS_RECALL
 (
-@eqi_cod_cod tngs_codigo,
+@mds_rcd_cod tngs_codigo_r,
 @usuario tngs_nombre
 )
 as
 begin
 
-   Update TNGS_Rivn..Equipamiento
+   Update TNGS_Rivn..Modelos
       set deleted = 0,
           version = ((version+1) % 32767),
           instante= getdate(),
           usuario = @usuario
-    where eqi_cod_cod = @eqi_cod_cod
+    where mds_rcd_cod = @mds_rcd_cod
 
 fin:
 
@@ -404,7 +447,7 @@ go
 
 print '       - Asignando permisos al nuevo SP'
 
-grant execute on dbo.EQUIPAMIENTO_RECALL to tngsmodulos
+grant execute on dbo.MODELOS_RECALL to tngsmodulos
 
 print ' '
 go
@@ -414,33 +457,33 @@ go
 --- <summary>
 --- Borra físicamente un registro
 --- </summary>
---- <param name="@eqi_cod_cod">cod</param>
+--- <param name="@mds_rcd_cod">Codigo</param>
 --- <param name="@usuario">Usuario que realiza el drop</param>
 ---
 ---////////////////////////////////////////////////////////
 
-print 'Store Procedure: dbo.EQUIPAMIENTO_DROP'
+print 'Store Procedure: dbo.MODELOS_DROP'
 
-if exists (select * from sysobjects where id = object_id('dbo.EQUIPAMIENTO_DROP'))
+if exists (select * from sysobjects where id = object_id('dbo.MODELOS_DROP'))
 begin
    print '       - Borrando el viejo SP'
-   drop procedure dbo.EQUIPAMIENTO_DROP
+   drop procedure dbo.MODELOS_DROP
 end
 go
 
 print '       - Creando el nuevo SP'
 go
 
-create procedure dbo.EQUIPAMIENTO_DROP
+create procedure dbo.MODELOS_DROP
 (
-@eqi_cod_cod tngs_codigo,
+@mds_rcd_cod tngs_codigo_r,
 @usuario tngs_nombre
 )
 as
 begin
 
-   Delete from TNGS_Rivn..Equipamiento
-    where eqi_cod_cod = @eqi_cod_cod
+   Delete from TNGS_Rivn..Modelos
+    where mds_rcd_cod = @mds_rcd_cod
 
 fin:
 
@@ -449,7 +492,7 @@ go
 
 print '       - Asignando permisos al nuevo SP'
 
-grant execute on dbo.EQUIPAMIENTO_DROP to tngsmodulos
+grant execute on dbo.MODELOS_DROP to tngsmodulos
 
 print ' '
 go
@@ -463,26 +506,26 @@ go
 ---
 ---////////////////////////////////////////////////////////
 
-print 'Store Procedure: dbo.EQUIPAMIENTO_PACK'
+print 'Store Procedure: dbo.MODELOS_PACK'
 
-if exists (select * from sysobjects where id = object_id('dbo.EQUIPAMIENTO_PACK'))
+if exists (select * from sysobjects where id = object_id('dbo.MODELOS_PACK'))
 begin
    print '       - Borrando el viejo SP'
-   drop procedure dbo.EQUIPAMIENTO_PACK
+   drop procedure dbo.MODELOS_PACK
 end
 go
 
 print '       - Creando el nuevo SP'
 go
 
-create procedure dbo.EQUIPAMIENTO_PACK
+create procedure dbo.MODELOS_PACK
 (
 @usuario tngs_nombre
 )
 as
 begin
 
-   Delete TNGS_Rivn..Equipamiento
+   Delete TNGS_Rivn..Modelos
     where deleted = 1
 
 fin:
@@ -492,11 +535,11 @@ go
 
 print '       - Asignando permisos al nuevo SP'
 
-grant execute on dbo.EQUIPAMIENTO_PACK to tngsmodulos
+grant execute on dbo.MODELOS_PACK to tngsmodulos
 
 print ' '
 go
 
 /*--------------------------------------------------------------------------
-// Fin del script de creacion de los SP de la tabla: Equipamiento
+// Fin del script de creacion de los SP de la tabla: Modelos
 //--------------------------------------------------------------------------*/

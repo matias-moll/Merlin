@@ -15,7 +15,7 @@ namespace Rivn.Bll
     //----------------------------------------------------------------------------
     //                         TNG Software BLL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 09/09/2013 16:27
+    // Fecha                    : 18/10/2013 16:03
     // Sistema                  : Rivn
     // Clase para Administrar   : Tablas de Rivn.
     //----------------------------------------------------------------------------
@@ -36,58 +36,6 @@ namespace Rivn.Bll
         //---------------------------------------------------------------
 
         #region Metodos publicos de la clase
-        /// <summary>
-        /// Inserta 10 descripciones, 
-        /// respetando el máximo del código de la tabla (PK).
-        /// </summary>
-        /// <param name="p_asArray"></param>
-        /// <param name="p_smStatMsg"></param>
-        public static void fAddArray(string[] p_asArray, ref StatMsg p_smStatMsg) // TRANSFORMAR EN METODO BLL.
-        {
-            p_smStatMsg.BllReset("Tablas", "fAddArray");
-            DBConn p_dbcAccess = null;
-            try
-            {
-                p_dbcAccess = DBRuts.GetConection(Connections.Dat, "sa", CriptoRuts.DESHide("tommy65536"));
-                ECategoria l_eCat = null;
-                foreach (string a in p_asArray)
-                {
-                    l_eCat = ECategoria.NewEmpty();
-                    l_eCat.Des = a;
-                    //Esto debería estar en otra capa (UIL, tal vez?)
-                    CatSSav(p_dbcAccess, l_eCat,ref p_smStatMsg);
-                    if (p_smStatMsg.NOk) return;
-                }
-            }
-            catch (Exception e)
-            {
-                p_smStatMsg.BllError(e.ToString());
-                return;
-            }
-            finally
-            {
-                p_smStatMsg.BllPop();
-                if (p_dbcAccess != null)
-                    p_dbcAccess.Close();
-            }
-                                    
-        }
-
-        private static void obtenerMaxCodigo(DBConn p_dbcAccess, ECategoria p_entCategoria, ref StatMsg p_smResult)
-        {
-            if (!p_entCategoria.EsNueva) return;
-            LECategorias l_lista = Bll.Tablas.CatUpfl(p_dbcAccess, false, ref p_smResult);
-            if (p_smResult.NOk) return;
-            int max = -1;
-            foreach (ECategoria v in l_lista)
-            {
-                int a = Ruts.MakeInteger(v.Cod.ToString(), 0);
-                if (a >= max)
-                    max = a;
-            }
-            p_entCategoria.Cod = (++max).ToString();
-            return;
-        }
         #endregion
 
         //---------------------------------------------------------------
@@ -113,15 +61,9 @@ namespace Rivn.Bll
             // Agregar acá los procesos adicionales
             // *********
 
-            obtenerMaxCodigo(p_dbcAccess, p_entCategoria, ref p_smResult);
-            
-           
-
             // Finalizamos
             p_smResult.BllPop();
         }
-
-        
 
         /// <summary>
         /// Habilita/Deshabilita un registro de la tabla: Categorias
@@ -194,7 +136,6 @@ namespace Rivn.Bll
             // Finalizamos
             p_smResult.BllPop();
         }
-
 
         /// <summary>
         /// Agrega o modifica un registro de la tabla: Equipamiento
@@ -281,6 +222,194 @@ namespace Rivn.Bll
         {
             // No hay errores aun
             p_smResult.BllReset("Tablas", "EqiTInt_f");
+
+            // *********
+            // Agregar acá las validaciones adicionales
+            // *********
+
+            // Finalizamos
+            p_smResult.BllPop();
+        }
+
+        /// <summary>
+        /// Agrega o modifica un registro de la tabla: Marcas
+        /// (Código Fijo)
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_entMarca">Entidad con los datos a procesar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static void MrcSave_f(DBConn p_dbcAccess,
+                                       ref EMarca p_entMarca,
+                                       ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            p_smResult.BllReset("Tablas", "MrcSave_f");
+
+            // *********
+            // Agregar acá los procesos adicionales
+            // *********
+
+            // Finalizamos
+            p_smResult.BllPop();
+        }
+
+        /// <summary>
+        /// Habilita/Deshabilita un registro de la tabla: Marcas
+        /// (Código Fijo)
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_bEnable">Tipo de operacion</param>
+        /// <param name="p_strCodigo">cod</param>
+        /// <param name="p_iFxdVersion">Versión del registro a borrar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static void MrcEnabled_f(DBConn p_dbcAccess,
+                                          bool p_bEnable,
+                                          string p_strCodigo,
+                                          ref int p_iFxdVersion,
+                                          ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            p_smResult.BllReset("Tablas", "MrcEnabled_f");
+
+            // *********
+            // Agregar acá los procesos adicionales
+            // *********
+
+            // Finalizamos
+            p_smResult.BllPop();
+        }
+
+        /// <summary>
+        /// Borra físicamento un registro de la tabla: Marcas
+        /// (Código Fijo)
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_strCodigo">cod</param>
+        /// <param name="p_iFxdVersion">Versión del registro a borrar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static void MrcRemove_f(DBConn p_dbcAccess,
+                                         string p_strCodigo,
+                                         int p_iFxdVersion,
+                                         ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            p_smResult.BllReset("Tablas", "MrcRemove_f");
+
+            // *********
+            // Agregar acá los procesos adicionales
+            // *********
+
+            // Finalizamos
+            p_smResult.BllPop();
+        }
+
+        /// <summary>
+        /// Agrega validacion de integridad a una entidad: Marca
+        /// (Código Fijo)
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_entMarca">Entidad con los datos a validar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static void MrcTInt_f(DBConn p_dbcAccess,
+                                       EMarca p_entMarca,
+                                       ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            p_smResult.BllReset("Tablas", "MrcTInt_f");
+
+            // *********
+            // Agregar acá las validaciones adicionales
+            // *********
+
+            // Finalizamos
+            p_smResult.BllPop();
+        }
+
+        /// <summary>
+        /// Agrega o modifica un registro de la tabla: Modelos
+        /// (Código Fijo)
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_entModelo">Entidad con los datos a procesar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static void ModSave_f(DBConn p_dbcAccess,
+                                       ref EModelo p_entModelo,
+                                       ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            p_smResult.BllReset("Tablas", "ModSave_f");
+
+            // *********
+            // Agregar acá los procesos adicionales
+            // *********
+
+            // Finalizamos
+            p_smResult.BllPop();
+        }
+
+        /// <summary>
+        /// Habilita/Deshabilita un registro de la tabla: Modelos
+        /// (Código Fijo)
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_bEnable">Tipo de operacion</param>
+        /// <param name="p_strCod">Codigo</param>
+        /// <param name="p_iFxdVersion">Versión del registro a borrar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static void ModEnabled_f(DBConn p_dbcAccess,
+                                          bool p_bEnable,
+                                          string p_strCod,
+                                          ref int p_iFxdVersion,
+                                          ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            p_smResult.BllReset("Tablas", "ModEnabled_f");
+
+            // *********
+            // Agregar acá los procesos adicionales
+            // *********
+
+            // Finalizamos
+            p_smResult.BllPop();
+        }
+
+        /// <summary>
+        /// Borra físicamento un registro de la tabla: Modelos
+        /// (Código Fijo)
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_strCod">Codigo</param>
+        /// <param name="p_iFxdVersion">Versión del registro a borrar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static void ModRemove_f(DBConn p_dbcAccess,
+                                         string p_strCod,
+                                         int p_iFxdVersion,
+                                         ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            p_smResult.BllReset("Tablas", "ModRemove_f");
+
+            // *********
+            // Agregar acá los procesos adicionales
+            // *********
+
+            // Finalizamos
+            p_smResult.BllPop();
+        }
+
+        /// <summary>
+        /// Agrega validacion de integridad a una entidad: Modelo
+        /// (Código Fijo)
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_entModelo">Entidad con los datos a validar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static void ModTInt_f(DBConn p_dbcAccess,
+                                       EModelo p_entModelo,
+                                       ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            p_smResult.BllReset("Tablas", "ModTInt_f");
 
             // *********
             // Agregar acá las validaciones adicionales

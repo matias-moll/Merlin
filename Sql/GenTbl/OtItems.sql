@@ -3,7 +3,7 @@
 //----------------------------------------------------------------------------
 // Fecha              : 18/10/2013 15:51
 // Base de Datos      : TNGS_Rivn
-// Tabla              : Categorias
+// Tabla              : OtItems
 //----------------------------------------------------------------------------
 // © 1999-2013 by TNG Software                                      Gndr 5.20
 //---------------------------------------------------------------------------*/
@@ -26,39 +26,47 @@ go
 /* Crea la tabla en la base indicada */
 /*-----------------------------------*/
 
-print 'Tabla: Categorias'
+print 'Tabla: OtItems'
 
-if exists (select * from sysobjects where id = object_id('dbo.Categorias'))
+if exists (select * from sysobjects where id = object_id('dbo.OtItems'))
 begin
    print '   - Borrando la vieja tabla'
-   drop table dbo.Categorias
+   drop table dbo.OtItems
 end
 go
 
 print '   - Creando la nueva tabla'
 
-create table Categorias
+create table OtItems
    (
-      cat_rcd_cod tngs_codigo_r,
-      cat_des_des tngs_descripcion,
+      oti_nro_nro tngs_numero,
+      oti_nro_nroagrupador tngs_numero,
+      oti_nro_nroitem tngs_numero,
+      oti_des_desoperacion tngs_descripcion,
+      oti_des_destarea tngs_descripcion,
+      oti_des_descategoria tngs_descripcion,
+      oti_imp_importe tngs_importe,
+      oti_ede_comentario tngs_descripcion_e,
       instante tngs_fecyhor,
       deleted tngs_borrado,
       usuario tngs_nombre,
       version tngs_numero,
-      constraint Categorias_pk primary key clustered
+      constraint OtItems_pk primary key clustered
       (
-         cat_rcd_cod
+         oti_nro_nro,
+         oti_nro_nroagrupador,
+         oti_nro_nroitem
       )
    )
 go
 
 print '   - Asignando permisos a la nueva tabla'
 
-grant select on Categorias to tngsqbe
+grant select on OtItems to tngsqbe
 
 print ' '
 go
 
 /*--------------------------------------------------------------------------
-// Fin del script de creacion de la tabla: Categorias
+// Fin del script de creacion de la tabla: OtItems
 //--------------------------------------------------------------------------*/
