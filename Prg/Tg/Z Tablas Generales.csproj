@@ -102,6 +102,18 @@
     <Compile Include="Equipamiento.Designer.cs">
       <DependentUpon>Equipamiento.cs</DependentUpon>
     </Compile>
+    <Compile Include="Marcas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Marcas.Designer.cs">
+      <DependentUpon>Marcas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modelos.Designer.cs">
+      <DependentUpon>Modelos.cs</DependentUpon>
+    </Compile>
     <Compile Include="PrgRuts.cs" />
     <Compile Include="PrgRuts.designer.cs">
       <DependentUpon>PrgRuts.cs</DependentUpon>
@@ -115,6 +127,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Equipamiento.resx">
       <DependentUpon>Equipamiento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Marcas.resx">
+      <DependentUpon>Marcas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modelos.resx">
+      <DependentUpon>Modelos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
