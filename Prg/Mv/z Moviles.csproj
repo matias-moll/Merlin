@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-<Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
-<PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{651E45C5-5EF4-40A0-AD9E-174516173285}</ProjectGuid>
@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Rivn.Mv</RootNamespace>
     <AssemblyName>Rivn.Mv</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -43,55 +44,55 @@
     <Reference Include="System.Xml" />
     <Reference Include="Bohman.MonthCalendar.520">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>T:\Ambiente 05.20\DNet0520\Release_Uil\Bohman.MonthCalendar.520.dll</HintPath>
+      <HintPath>..\..\..\Ambiente0520\DNet0520\Release_Uil\Bohman.MonthCalendar.520.dll</HintPath>
     </Reference>
     <Reference Include="MikeHankey.XPControlLib.520">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>T:\Ambiente 05.20\DNet0520\Release_Uil\MikeHankey.XPControlLib.520.dll</HintPath>
+      <HintPath>..\..\..\Ambiente0520\DNet0520\Release_Uil\MikeHankey.XPControlLib.520.dll</HintPath>
     </Reference>
     <Reference Include="MS.TabStripControlLibrary.520">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>T:\Ambiente 05.20\DNet0520\Release_Uil\MS.TabStripControlLibrary.520.dll</HintPath>
+      <HintPath>..\..\..\Ambiente0520\DNet0520\Release_Uil\MS.TabStripControlLibrary.520.dll</HintPath>
     </Reference>
     <Reference Include="netchartdir">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>T:\Ambiente 05.20\DNet0520\Release_Uil\netchartdir.dll</HintPath>
+      <HintPath>..\..\..\Ambiente0520\DNet0520\Release_Uil\netchartdir.dll</HintPath>
     </Reference>
     <Reference Include="PS.TaskDialog.520">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>T:\Ambiente 05.20\DNet0520\Release_Uil\PS.TaskDialog.520.dll</HintPath>
+      <HintPath>..\..\..\Ambiente0520\DNet0520\Release_Uil\PS.TaskDialog.520.dll</HintPath>
     </Reference>
     <Reference Include="TNGS.NetApp.520">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>T:\Ambiente 05.20\DNet0520\Release_Uil\TNGS.NetApp.520.dll</HintPath>
+      <HintPath>..\..\..\Ambiente0520\DNet0520\Release_Uil\TNGS.NetApp.520.dll</HintPath>
     </Reference>
     <Reference Include="TNGS.NetAppBll.520">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>T:\Ambiente 05.20\DNet0520\Release_Uil\TNGS.NetAppBll.520.dll</HintPath>
+      <HintPath>..\..\..\Ambiente0520\DNet0520\Release_Uil\TNGS.NetAppBll.520.dll</HintPath>
     </Reference>
     <Reference Include="TNGS.NetControls.520">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>T:\Ambiente 05.20\DNet0520\Release_Uil\TNGS.NetControls.520.dll</HintPath>
+      <HintPath>..\..\..\Ambiente0520\DNet0520\Release_Uil\TNGS.NetControls.520.dll</HintPath>
     </Reference>
     <Reference Include="TNGS.NetIPlugin.520">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>T:\Ambiente 05.20\DNet0520\Release_Uil\TNGS.NetIPlugin.520.dll</HintPath>
+      <HintPath>..\..\..\Ambiente0520\DNet0520\Release_Uil\TNGS.NetIPlugin.520.dll</HintPath>
     </Reference>
     <Reference Include="TNGS.NetOffice.520">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>T:\Ambiente 05.20\DNet0520\Release_Uil\TNGS.NetOffice.520.dll</HintPath>
+      <HintPath>..\..\..\Ambiente0520\DNet0520\Release_Uil\TNGS.NetOffice.520.dll</HintPath>
     </Reference>
     <Reference Include="TNGS.NetRoutines.520">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>T:\Ambiente 05.20\DNet0520\Release_Uil\TNGS.NetRoutines.520.dll</HintPath>
+      <HintPath>..\..\..\Ambiente0520\DNet0520\Release_Uil\TNGS.NetRoutines.520.dll</HintPath>
     </Reference>
     <Reference Include="TNGS.NetSocket.520">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>T:\Ambiente 05.20\DNet0520\Release_Uil\TNGS.NetSocket.520.dll</HintPath>
+      <HintPath>..\..\..\Ambiente0520\DNet0520\Release_Uil\TNGS.NetSocket.520.dll</HintPath>
     </Reference>
     <Reference Include="WeifenLuo.WinFormsUI.Docking.520">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>T:\Ambiente 05.20\DNet0520\Release_Uil\WeifenLuo.WinFormsUI.Docking.520.dll</HintPath>
+      <HintPath>..\..\..\Ambiente0520\DNet0520\Release_Uil\WeifenLuo.WinFormsUI.Docking.520.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -132,6 +133,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -145,6 +147,20 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="C:\DiscoT\Rivn0100\Bel\BEL.csproj">
+      <Project>{7969C80F-3E89-4E03-A01B-776686783353}</Project>
+      <Name>BEL</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\DiscoT\Rivn0100\Bll\BLL.csproj">
+      <Project>{58EC503E-05DD-4F0F-B55A-318733142682}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\DiscoT\Rivn0100\Shr\Shr.csproj">
+      <Project>{4EE82BA9-6046-419B-87AF-014443954416}</Project>
+      <Name>Shr</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
