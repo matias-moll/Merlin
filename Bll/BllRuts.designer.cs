@@ -16,7 +16,7 @@ namespace Rivn.Bll
     //----------------------------------------------------------------------------
     //                         TNG Software BLL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 21/10/2013 15:07
+    // Fecha                    : 21/10/2013 16:24
     // Sistema                  : Rivn
     // Clase para Administrar   : 
     //----------------------------------------------------------------------------
@@ -153,6 +153,14 @@ namespace Rivn.Bll
                 case "eqi_imp_valor"                   : {return "V1valor2N3";}
 
                 // ****************************************
+                // Tabla: Estaciones          
+                case "ets_rcd_cod"                     : {return "V1CodigoEstacionCN1";}
+                case "ets_des_des"                     : {return "V1descripcionCN1";}
+                case "ets_ede_domicilio"               : {return "V1DomicilioCN1";}
+                case "ets_des_contacto"                : {return "V1ContactoCN1";}
+                case "ets_ete_telefono"                : {return "V1TelefonoCN1";}
+
+                // ****************************************
                 // Tabla: Estados             
                 case "est_rcd_cod"                     : {return "V1codCN1";}
                 case "est_des_des"                     : {return "V1desCN1";}
@@ -184,6 +192,14 @@ namespace Rivn.Bll
                 case "mov_cd1_propio"                  : {return "V1Propio o noCN2";}
 
                 // ****************************************
+                // Tabla: MvlCombustible      
+                case "mco_ecd_patente"                 : {return "V1PatenteCN1";}
+                case "mco_fyh_fecha"                   : {return "V1FechaDN2";}
+                case "mco_val_litros"                  : {return "V1Litros CargadosLN3";}
+                case "mco_imp_importe"                 : {return "V1Importe2N3";}
+                case "mco_rcd_codestacion"             : {return "V1Codigo estacionCN1";}
+
+                // ****************************************
                 // Tabla: MvlEquipamiento     
                 case "meq_ecd_patente"                 : {return "V1PatenteCN1";}
                 case "meq_cod_codequip"                : {return "V1Codigo del Equipamento.CN1";}
@@ -195,6 +211,12 @@ namespace Rivn.Bll
                 case "mve_fyh_fecha"                   : {return "V1Fecha y HoraDN2";}
                 case "mve_rcd_codestado"               : {return "V1Codigo del estado.CN1";}
                 case "mve_nro_km"                      : {return "V1KilometrajeNN3";}
+
+                // ****************************************
+                // Tabla: MvlKilometros       
+                case "mkm_ecd_patente"                 : {return "V1PatenteCN1";}
+                case "mkm_fyh_fecha"                   : {return "V1FechaDN2";}
+                case "mkm_nro_km"                      : {return "V1KilometrosNN3";}
 
                 // ****************************************
                 // Tabla: OrdenesTrabajo      
@@ -228,7 +250,8 @@ namespace Rivn.Bll
                 // Tabla: Reparaciones        
                 case "rep_cd6_cod"                     : {return "V1codigoCN1";}
                 case "rep_xde_des"                     : {return "V1descripcionCN1";}
-                case "rep_rcd_cat"                     : {return "V1categoriaCN1";}
+                case "rep_rcd_codcat"                  : {return "V1categoriaCN1";}
+                case "rep_cd1_solicitadetalle"         : {return "V1Se Solicita DetalleCN2";}
                 case "rep_des_des"                     : {return "V1TitleSN1";}
 
                 // ****************************************

@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 21/10/2013 14:30
+// Fecha       : 21/10/2013 16:24
 // Sistema     : Rivn
 // Tabla       : ControlesReparations
 //----------------------------------------------------------------------------
@@ -64,7 +64,8 @@ begin
                 join TNGS_Rivn..Controles
                   on ctr_cd6_codRep = ctl_cod_cod
           where TNGS_Rivn..ControlesReparations.deleted = 0
-          order by ctr_cod_codctl
+          order by ctr_cod_codctl,
+                ctr_nro_nroitem
       end
    else
       begin
@@ -79,7 +80,8 @@ begin
            from TNGS_Rivn..ControlesReparations
                 join TNGS_Rivn..Controles
                   on ctr_cd6_codRep = ctl_cod_cod
-          order by ctr_cod_codctl
+          order by ctr_cod_codctl,
+                ctr_nro_nroitem
       end
 
 fin:
@@ -100,6 +102,7 @@ go
 --- Verifica el número de versión de un registro
 --- </summary>
 --- <param name="@ctr_cod_codctl">codigoControl</param>
+--- <param name="@ctr_nro_nroitem">item</param>
 --- <param name="@version">Número de version a verificar</param>
 ---
 ---////////////////////////////////////////////////////////
@@ -119,6 +122,7 @@ go
 create procedure dbo.CONTROLESREPARATIONS_CHKVERSION
 (
 @ctr_cod_codctl tngs_codigo,
+@ctr_nro_nroitem tngs_numero,
 @version tngs_numero
 )
 as
@@ -127,6 +131,7 @@ begin
    Select count(*) as cantidad
      from TNGS_Rivn..ControlesReparations
     where ctr_cod_codctl = @ctr_cod_codctl
+      and ctr_nro_nroitem = @ctr_nro_nroitem
       and version = @version
 
 fin:
@@ -147,6 +152,7 @@ go
 --- Busca el registro de una clave
 --- </summary>
 --- <param name="@ctr_cod_codctl">codigoControl</param>
+--- <param name="@ctr_nro_nroitem">item</param>
 --- <param name="@onlyactive">Flag de SoloActivos</param>
 ---
 ---////////////////////////////////////////////////////////
@@ -166,6 +172,7 @@ go
 create procedure dbo.CONTROLESREPARATIONS_SEARCH
 (
 @ctr_cod_codctl tngs_codigo,
+@ctr_nro_nroitem tngs_numero,
 @onlyactive tngs_valor
 )
 as
@@ -185,6 +192,7 @@ begin
                 join TNGS_Rivn..Controles
                   on ctr_cd6_codRep = ctl_cod_cod
           where ctr_cod_codctl = @ctr_cod_codctl
+            and ctr_nro_nroitem = @ctr_nro_nroitem
             and TNGS_Rivn..ControlesReparations.deleted = 0
       end
    else
@@ -201,6 +209,7 @@ begin
                 join TNGS_Rivn..Controles
                   on ctr_cd6_codRep = ctl_cod_cod
           where ctr_cod_codctl = @ctr_cod_codctl
+            and ctr_nro_nroitem = @ctr_nro_nroitem
       end
 
 fin:
@@ -260,6 +269,7 @@ begin
                   on ctr_cd6_codRep = ctl_cod_cod
           where ctr_cod_codctl = @ctr_cod_codctl
             and TNGS_Rivn..ControlesReparations.deleted = 0
+          order by ctr_nro_nroitem
       end
    else
       begin
@@ -275,6 +285,7 @@ begin
                 join TNGS_Rivn..Controles
                   on ctr_cd6_codRep = ctl_cod_cod
           where ctr_cod_codctl = @ctr_cod_codctl
+          order by ctr_nro_nroitem
       end
 
 fin:
@@ -378,12 +389,12 @@ as
 begin
 
    Update TNGS_Rivn..ControlesReparations
-      set ctr_nro_nroitem= @ctr_nro_nroitem,
-          ctr_cd6_codrep= @ctr_cd6_codrep,
+      set ctr_cd6_codrep= @ctr_cd6_codrep,
           version = ((version+1) % 32767),
           instante= getdate(),
           usuario = @usuario
     where ctr_cod_codctl = @ctr_cod_codctl
+      and ctr_nro_nroitem = @ctr_nro_nroitem
 
 fin:
 
@@ -403,6 +414,7 @@ go
 --- Borra lógicamente un registro
 --- </summary>
 --- <param name="@ctr_cod_codctl">codigoControl</param>
+--- <param name="@ctr_nro_nroitem">item</param>
 --- <param name="@usuario">Usuario que realiza el delete</param>
 ---
 ---////////////////////////////////////////////////////////
@@ -422,6 +434,7 @@ go
 create procedure dbo.CONTROLESREPARATIONS_DELETE
 (
 @ctr_cod_codctl tngs_codigo,
+@ctr_nro_nroitem tngs_numero,
 @usuario tngs_nombre
 )
 as
@@ -433,6 +446,7 @@ begin
           instante= getdate(),
           usuario = @usuario
     where ctr_cod_codctl = @ctr_cod_codctl
+      and ctr_nro_nroitem = @ctr_nro_nroitem
 
 fin:
 
@@ -508,6 +522,7 @@ go
 --- Recupera un registro
 --- </summary>
 --- <param name="@ctr_cod_codctl">codigoControl</param>
+--- <param name="@ctr_nro_nroitem">item</param>
 --- <param name="@usuario">Usuario que realiza el recall</param>
 ---
 ---////////////////////////////////////////////////////////
@@ -527,6 +542,7 @@ go
 create procedure dbo.CONTROLESREPARATIONS_RECALL
 (
 @ctr_cod_codctl tngs_codigo,
+@ctr_nro_nroitem tngs_numero,
 @usuario tngs_nombre
 )
 as
@@ -538,6 +554,7 @@ begin
           instante= getdate(),
           usuario = @usuario
     where ctr_cod_codctl = @ctr_cod_codctl
+      and ctr_nro_nroitem = @ctr_nro_nroitem
 
 fin:
 
@@ -621,6 +638,7 @@ go
 --- Borra físicamente un registro
 --- </summary>
 --- <param name="@ctr_cod_codctl">codigoControl</param>
+--- <param name="@ctr_nro_nroitem">item</param>
 --- <param name="@usuario">Usuario que realiza el drop</param>
 ---
 ---////////////////////////////////////////////////////////
@@ -640,6 +658,7 @@ go
 create procedure dbo.CONTROLESREPARATIONS_DROP
 (
 @ctr_cod_codctl tngs_codigo,
+@ctr_nro_nroitem tngs_numero,
 @usuario tngs_nombre
 )
 as
@@ -647,6 +666,7 @@ begin
 
    Delete from TNGS_Rivn..ControlesReparations
     where ctr_cod_codctl = @ctr_cod_codctl
+      and ctr_nro_nroitem = @ctr_nro_nroitem
 
 fin:
 

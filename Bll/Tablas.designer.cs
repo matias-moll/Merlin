@@ -16,7 +16,7 @@ namespace Rivn.Bll
     //----------------------------------------------------------------------------
     //                         TNG Software BLL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 21/10/2013 15:07
+    // Fecha                    : 21/10/2013 16:24
     // Sistema                  : Rivn
     // Clase para Administrar   : Tablas de Rivn.
     //----------------------------------------------------------------------------
@@ -1589,6 +1589,840 @@ namespace Rivn.Bll
                 // Borramos los borrados lógicamente
                 Dal.Equipamiento.Pack(p_dbcAccess,
                                       ref p_smResult);
+                p_smResult.BllPop();
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Updt
+                p_smResult.BllError(l_expData.ToString());
+            }
+        }
+        #endregion
+
+        #region Metodos para métodos DAL definidos por el usuario
+        #endregion
+
+
+        //**********************************************************
+        //
+        // Funciones para la Tabla: Estaciones
+        // Usando ClaseDal        : Estaciones
+        //
+        //**********************************************************
+
+        //---------------------------------------------------------------
+        // Metodos públicos de la clase (visibles para la UIL)
+        //---------------------------------------------------------------
+        #region Metodos publicos de recupero
+
+        /// <summary>
+        /// Devuelve la grilla de la tabla: Estaciones
+        /// </summary>
+        /// <param name="p_bOnlyActive">Indica si solo se analizan los registros activos</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        /// <returns>Lista-entidad: LEEstaciones</returns>
+        public static LEEstaciones EstUpFull(bool p_bOnlyActive,
+                                             ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            DBConn l_dbcAccess= null;
+            p_smResult.BllReset("Tablas", "EstUpFull");
+
+            try {
+                // Obtenemos una conexion
+                l_dbcAccess= DBRuts.GetConection(Connections.Dat);
+
+                // Pedimos los registros de la tabla
+                return EstUpfl(l_dbcAccess, p_bOnlyActive, ref p_smResult);
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion UpFull
+                p_smResult.BllError(l_expData.ToString());
+                return null;
+            }
+            finally {
+                // Si pude abrir la conexion -> la cierro
+                if (l_dbcAccess != null) l_dbcAccess.Close();
+                p_smResult.BllPop();
+            }
+        }
+
+        /// <summary>
+        /// Devuelve una entidad: EEstacion
+        /// </summary>
+        /// <param name="p_strCod">CodigoEstacion</param>
+        /// <param name="p_bOnlyActive">Indica si solo se analizan los registros activos</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        /// <returns>Entidad: EEstacion</returns>
+        public static EEstacion EstGet(string p_strCod,
+                                       bool p_bOnlyActive,
+                                       ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            DBConn l_dbcAccess= null;
+            p_smResult.BllReset("Tablas", "EstGet");
+
+            // Ajustamos codigos alineados a derecha
+            p_strCod= EEstacion.FrmtCod(p_strCod);
+
+            try {
+                // Obtenemos una conexion
+                l_dbcAccess= DBRuts.GetConection(Connections.Dat);
+
+                // Pedimos la entidad: EEstacion
+                return EstSrch(l_dbcAccess,
+                               p_strCod,
+                               p_bOnlyActive,
+                               ref p_smResult);
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Get
+                p_smResult.BllError(l_expData.ToString());
+                return null;
+            }
+            finally {
+                // Si pude abrir la conexion -> la cierro
+                if (l_dbcAccess != null) l_dbcAccess.Close();
+                p_smResult.BllPop();
+            }
+        }
+
+        /// <summary>
+        /// Devuelve la próxima clave de la entidad
+        /// </summary>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        /// <returns>Próxima clave</returns>
+        public static string EstNextKey(ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            DBConn l_dbcAccess= null;
+            p_smResult.BllReset("Tablas", "EstNextKey");
+
+            try {
+                // Obtenemos una conexion
+                l_dbcAccess= DBRuts.GetConection(Connections.Dat);
+
+                // Pedimos la clave máxima
+                return EstGetNK(l_dbcAccess,
+                                ref p_smResult);
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion NextKey
+                p_smResult.BllError(l_expData.ToString());
+                return "";
+            }
+            finally {
+                // Si pude abrir la conexion -> la cierro
+                if (l_dbcAccess != null) l_dbcAccess.Close();
+                p_smResult.BllPop();
+            }
+        }
+        #endregion
+
+        #region Metodos publicos de grabacion
+
+        /// <summary>
+        /// Agrega o modifica un registro de la tabla: Estaciones
+        /// </summary>
+        /// <param name="p_entEstacion">Entidad con los datos a procesar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        public static void EstSave(EEstacion p_entEstacion,
+                                   ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            p_smResult.BllReset("Tablas", "EstSave");
+            DBConn l_dbcAccess= null;
+
+            try {
+                // Obtenemos una conexion y abrimos una transaccion
+                l_dbcAccess= DBRuts.GetConection(Connections.Dat);
+                l_dbcAccess.BeginTransaction();
+
+                // Grabamos la entidad: EEstacion
+                EstSSav(l_dbcAccess, p_entEstacion, ref p_smResult);
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Save
+                p_smResult.BllError(l_expData.ToString());
+            }
+            finally {
+                // Si pude abrir la conexion
+                if (l_dbcAccess != null) {
+                    // Finalizo la transacción y la cierro
+                    l_dbcAccess.EndTransaction(p_smResult);
+                    l_dbcAccess.Close();
+                }
+                p_smResult.BllPop();
+            }
+        }
+
+        /// <summary>
+        /// Habilita/Deshabilita un registro de la tabla: Estaciones
+        /// </summary>
+        /// <param name="p_bEnable">Tipo de operacion</param>
+        /// <param name="p_strCod">CodigoEstacion</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        public static void EstEnabled(bool p_bEnable,
+                                      string p_strCod,
+                                      int p_iFxdVersion,
+                                      ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            DBConn l_dbcAccess= null;
+            p_smResult.BllReset("Tablas", "EstEnabled");
+
+            // Ajustamos codigos alineados a derecha
+            p_strCod= EEstacion.FrmtCod(p_strCod);
+
+            try {
+                // Obtenemos una conexion
+                l_dbcAccess= DBRuts.GetConection(Connections.Dat);
+                l_dbcAccess.BeginTransaction();
+
+                // Procesamos codigo fijo
+                EstEnabled_f(l_dbcAccess,
+                             p_bEnable,
+                             p_strCod,
+                             ref p_iFxdVersion,
+                             ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // Verificamos la clave a modificar
+                EstVKey(l_dbcAccess,
+                        p_strCod,
+                        ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // El registro tiene que existir
+                if (p_smResult.ICodeEs(BllCodes.KeyDsntFound)) {
+                    // Error. La clave no existe
+                    p_smResult.BllWarning("El ítem (Estacion) que intenta modificar no existe en el sistema.","");
+                    return;
+                }
+
+                // Debe coincidir el número de version
+                EstVVer(l_dbcAccess, 
+                        p_strCod,
+                        p_iFxdVersion,
+                        ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // Segun el modo
+                if (p_bEnable) {
+                    // Hay que habilitar el registro
+                    Dal.Estaciones.Recall(l_dbcAccess,
+                                          p_strCod,
+                                          ref p_smResult);
+                }
+                else {
+                    // Hay que deshabilitar el registro
+                    Dal.Estaciones.Delete(l_dbcAccess,
+                                          p_strCod,
+                                          ref p_smResult);
+                }
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Enabled
+                p_smResult.BllError(l_expData.ToString());
+            }
+            finally {
+                // Si pude abrir la conexion
+                if (l_dbcAccess != null) {
+                    // Finalizo la transacción y la cierro
+                    l_dbcAccess.EndTransaction(p_smResult);
+                    l_dbcAccess.Close();
+                }
+                p_smResult.BllPop();
+            }
+        }
+
+        /// <summary>
+        /// Borra físicamento un registro de la tabla: Estaciones
+        /// </summary>
+        /// <param name="p_strCod">CodigoEstacion</param>
+        /// <param name="p_iFxdVersion">Versión del registro a borrar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        public static void EstRemove(string p_strCod,
+                                     int p_iFxdVersion,
+                                     ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            DBConn l_dbcAccess= null;
+            p_smResult.BllReset("Tablas", "EstRemove");
+
+            // Ajustamos codigos alineados a derecha
+            p_strCod= EEstacion.FrmtCod(p_strCod);
+
+            try {
+                // Obtenemos una conexion
+                l_dbcAccess= DBRuts.GetConection(Connections.Dat);
+                l_dbcAccess.BeginTransaction();
+
+                // Procesamos codigo fijo
+                EstRemove_f(l_dbcAccess,
+                            p_strCod,
+                            p_iFxdVersion,
+                            ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // Borramos el registro solicitado
+                EstDrop(l_dbcAccess,
+                        p_strCod,
+                        p_iFxdVersion,
+                        ref p_smResult);
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Remove
+                p_smResult.BllError(l_expData.ToString());
+            }
+            finally {
+                // Si pude abrir la conexion
+                if (l_dbcAccess != null) {
+                    // Finalizo la transacción y la cierro
+                    l_dbcAccess.EndTransaction(p_smResult);
+                    l_dbcAccess.Close();
+                }
+                p_smResult.BllPop();
+            }
+        }
+
+        /// <summary>
+        /// Compacta una tabla borrando los registros deshabilitados
+        /// </summary>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        public static void EstPurge(ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            DBConn l_dbcAccess= null;
+            p_smResult.BllReset("Tablas", "EstPurge");
+
+            try {
+                // Obtenemos una conexion
+                l_dbcAccess= DBRuts.GetConection(Connections.Dat);
+                l_dbcAccess.BeginTransaction();
+
+                // Realizamos el borrado
+                EstPack(l_dbcAccess,
+                        ref p_smResult);
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Enabled
+                p_smResult.BllError(l_expData.ToString());
+            }
+            finally {
+                // Si pude abrir la conexion
+                if (l_dbcAccess != null) {
+                    // Finalizo la transacción y la cierro
+                    l_dbcAccess.EndTransaction(p_smResult);
+                    l_dbcAccess.Close();
+                }
+                p_smResult.BllPop();
+            }
+        }
+        #endregion
+
+        #region Metodos para métodos DAL definidos por el usuario
+        #endregion
+
+        //---------------------------------------------------------------
+        // Metodos públicos de la clase (no visibles para la UIL)
+        //---------------------------------------------------------------
+
+        #region Metodos internos de validacion
+
+        /// <summary>
+        /// Valida la integridad de una entidad: Estacion
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_entEstacion">Entidad con los datos a validar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static void EstTInt(DBConn p_dbcAccess,
+                                     EEstacion p_entEstacion,
+                                     ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            p_smResult.BllReset("Tablas", "EstTInt");
+
+            // ********
+            // Validaciones de los campos sin conexion
+            // ********
+
+            if (p_entEstacion.Cod.Trim() == "") {
+                // El campo [CodigoEstacion] no puede ser vacío
+                p_smResult.BllWarning("El dato [CodigoEstacion] no puede ser vacío","");
+                return;
+            }
+
+            if (p_entEstacion.Des.Trim() == "") {
+                // El campo [descripcion] no puede ser vacío
+                p_smResult.BllWarning("El dato [descripcion] no puede ser vacío","");
+                return;
+            }
+
+            // ********
+            // Validaciones de los campos con conexion
+            // ********
+
+            // Llamamos a la funcion fija del usuario
+            EstTInt_f(p_dbcAccess, p_entEstacion, ref p_smResult);
+            if (p_smResult.NOk) return;
+
+            // Finalizamos
+            p_smResult.BllPop();
+        }
+
+        /// <summary>
+        /// Verifica si existe en la tabla una entidad: EEstacion
+        ///      Retorno: p_smResult.Stat= BllAvisos.KeyExists   - La clave existe
+        ///               p_smResult.Stat= BllAvisos.KeyNotFound - La clave no existe
+        ///               p_smResult.Stat= BllAvisos.KeyDisabled - La clave está deshabilitada
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_strCod">CodigoEstacion</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static void EstVKey(DBConn p_dbcAccess,
+                                     string p_strCod,
+                                     ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            p_smResult.BllReset("Tablas", "EstVKey");
+            DataSet l_dsTemp= new DataSet();
+
+            Dal.Estaciones.Search(p_dbcAccess,
+                                  p_strCod,
+                                  false,
+                                  ref l_dsTemp,
+                                  "Temporal",
+                                  ref p_smResult);
+            if (p_smResult.NOk) return;
+
+            try {
+                // Verificamos si vino algun registro
+                p_smResult.BllICode(BllCodes.KeyDsntFound);
+                if (l_dsTemp.Tables["Temporal"].Rows.Count == 0) return;
+
+                // Verificamos si el registro que vino esta habilitado
+                p_smResult.BllICode(BllCodes.KeyDisabled);
+                if ((decimal) l_dsTemp.Tables["Temporal"].Rows[0]["deleted"] == 1) return;
+
+                // La clave existia y estaba habilitada
+                p_smResult.BllICode(BllCodes.KeyExists);
+            }
+            finally {
+                // Terminamos
+                l_dsTemp.Dispose();
+                p_smResult.BllPop();
+            }
+        }
+
+        /// <summary>
+        /// Verifica el número de version de una tabla
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_strCod">CodigoEstacion</param>
+        /// <param name="p_iFxdVersion">Número de version</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static void EstVVer(DBConn p_dbcAccess,
+                                     string p_strCod,
+                                     int p_iFxdVersion,
+                                     ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            p_smResult.BllReset("Tablas", "EstVVer");
+            DataSet l_dsTemp= new DataSet();
+
+            // Verificamos el número de versión
+            Dal.Estaciones.ChkVersion(p_dbcAccess,
+                                      p_strCod,
+                                      p_iFxdVersion,
+                                      ref l_dsTemp,
+                                      "Temporal",
+                                      ref p_smResult);
+            if (p_smResult.NOk) return;
+
+            // Verificamos el resultado que vino
+            if (l_dsTemp.Tables["Temporal"].Rows.Count != 0) {
+                // Verificamos si la cantidad es 1
+                if ((int) l_dsTemp.Tables["Temporal"].Rows[0]["cantidad"] == 1) {
+                    // La versión coincide
+                    l_dsTemp.Dispose();
+                    p_smResult.BllPop();
+                    return;
+                }
+            }
+
+            // El número de versión no coincide
+            StreamWriter l_swErrorFile= null;
+            string l_strErrFName= String.Format("C:\\V{0:ddMMyyyyHHmmss}.Err",
+                                                DateTime.Now);
+            try {
+                // Creamos el archivo del error
+                l_swErrorFile= new StreamWriter(File.Create(l_strErrFName),
+                                                System.Text.Encoding.ASCII);
+
+                // Grabamos los datos del error
+                l_swErrorFile.WriteLine("Instante    : {0:dd/MM/yyyy HH:mm:ss}", DateTime.Now);
+                l_swErrorFile.WriteLine("Uil         : {0}", p_smResult.Uil);
+                l_swErrorFile.WriteLine("Bll         : {0}", p_smResult.Bll);
+                l_swErrorFile.WriteLine("Dal         : {0}", p_smResult.Dal);
+                l_swErrorFile.WriteLine("Message     : No coincide el numero de version");
+            }
+            catch (Exception l_expData) {
+                // Error en el acceso al archivo.
+                string l_strLinea= l_expData.ToString();
+            }
+            finally {
+                // Si llegamos a abrir el archivo -> lo cerramos
+                if (l_swErrorFile != null) {
+                    l_swErrorFile.Close();
+                    l_swErrorFile.Dispose();
+                }
+            }
+
+            // El número de versión no coincide
+            l_dsTemp.Dispose();
+            p_smResult.BllWarning("El número de versión del registro del ítem (Estacion) no coincide.\r\nOperación cancelada.","");
+        }
+        #endregion
+
+        #region Metodos internos de recupero
+
+        /// <summary>
+        /// Devuelve una Lista-entidad: LEEstaciones
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_bOnlyActive">Indica si solo se analizan los registros activos</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        /// <returns>Lista-entidad: LEEstaciones</returns>
+        internal static LEEstaciones EstUpfl(DBConn p_dbcAccess,
+                                              bool p_bOnlyActive,
+                                              ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            p_smResult.BllReset("Tablas", "EstUpfl");
+
+            try {
+                // Pedimos los registros de la tabla: Estaciones
+                DataSet l_dsTemp= new DataSet();
+
+                Dal.Estaciones.Up(p_dbcAccess, 
+                                  p_bOnlyActive,
+                                  ref l_dsTemp, "Temporal",
+                                  ref p_smResult);
+                if (p_smResult.NOk) return null;
+
+                // Fijamos los captions de la grilla
+                Dal.Estaciones.MakeGridCaptions(ref l_dsTemp, "Temporal", ref p_smResult);
+
+                // Contruimos la lista-entidad y la devolvemos (si vino algun registro)
+                LEEstaciones l_lentRet= new LEEstaciones(l_dsTemp.Tables["Temporal"]);
+                l_dsTemp.Dispose();
+                return l_lentRet;
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Upfl
+                p_smResult.BllError(l_expData.ToString());
+                return null;
+            }
+            finally {
+                // Terminamos
+                p_smResult.BllPop();
+            }
+        }
+
+        /// <summary>
+        /// Devuelve una entidad: EEstacion
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_strCod">CodigoEstacion</param>
+        /// <param name="p_bOnlyActive">Indica si solo se analizan los registros activos</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        /// <returns>Entidad: EEstacion</returns>
+        internal static EEstacion EstSrch(DBConn p_dbcAccess,
+                                          string p_strCod,
+                                          bool p_bOnlyActive,
+                                          ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            p_smResult.BllReset("Tablas", "EstSrch");
+
+            try {
+                // Pedimos el registro de la tabla: Estaciones
+                DataSet l_dsTemp= new DataSet();
+
+                Dal.Estaciones.Search(p_dbcAccess, 
+                                      p_strCod,
+                                      p_bOnlyActive,
+                                      ref l_dsTemp, "Temporal",
+                                      ref p_smResult);
+                if (p_smResult.NOk) return null;
+
+                // Constuimos la entidad y la devolvemos (si vino un registro)
+                EEstacion l_entRet= null;
+
+                if (l_dsTemp.Tables["Temporal"].Rows.Count == 1)
+                    l_entRet= new EEstacion(l_dsTemp.Tables["Temporal"].Rows[0]);
+
+                l_dsTemp.Dispose();
+                return l_entRet;
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Srch
+                p_smResult.BllError(l_expData.ToString());
+                return null;
+            }
+            finally {
+                // Terminamos
+                p_smResult.BllPop();
+            }
+        }
+
+        /// <summary>
+        /// Devuelve la próxima clave de la entidad
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        /// <returns>Próxima clave</returns>
+        internal static string EstGetNK(DBConn p_dbcAccess,
+                                        ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            p_smResult.BllReset("Tablas", "EstGetNK");
+
+            try {
+                // Pedimos la clave máxima
+                DataSet l_dsTemp= new DataSet();
+
+                Dal.Estaciones.GetMaxKey(p_dbcAccess,
+                                         ref l_dsTemp,
+                                         "Temporal",
+                                         ref p_smResult);
+                if (p_smResult.NOk) return "";
+
+                // Si no vino nada
+                if (l_dsTemp.Tables["Temporal"].Rows.Count == 0) {
+                    // Primera clave de la tabla
+                    return "1";
+                }
+
+                // Convertimos la clave a numerica y le sumamos uno
+                int l_iValue= Convert.ToInt32((string) l_dsTemp.Tables["Temporal"].Rows[0][0]) + 1;
+
+                // Devolvemos la nueva clave
+                return l_iValue.ToString("0");
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion NextKey
+                p_smResult.BllError(l_expData.ToString());
+                return "";
+            }
+            finally {
+                // Si pude abrir la conexion -> la cierro
+                p_smResult.BllPop();
+            }
+        }
+        #endregion
+
+        #region Metodos internos de modificacion
+
+        /// <summary>
+        /// Agrega o modifica un registro de la tabla: Estaciones
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_entEstacion">Entidad con los datos a procesar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static void EstSSav(DBConn p_dbcAccess,
+                                     EEstacion p_entEstacion,
+                                     ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            p_smResult.BllReset("Tablas", "EstSave");
+
+            try {
+                // Procesamos codigo fijo
+                EstSave_f(p_dbcAccess, ref p_entEstacion, ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // Verificamos la clave a grabar
+                EstVKey(p_dbcAccess, 
+                        p_entEstacion.Cod,
+                        ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // Si es una entidad nueva
+                if (p_entEstacion.EsNueva) {
+                    // Es un alta. La clave no debe existir
+                    if (!p_smResult.ICodeEs(BllCodes.KeyDsntFound)) {
+                        // Error. La clave ya existe
+                        p_smResult.BllWarning("El ítem (Estacion) que intenta agregar ya existe en el sistema.","");
+                        return;
+                    }
+
+                    // Agregamos el registro
+                    EstInsr(p_dbcAccess, p_entEstacion, ref p_smResult);
+                    return;
+                }
+
+                // Es un update. La clave debe existir y estar habilitada
+                if (!p_smResult.ICodeEs(BllCodes.KeyExists)) {
+                    // Error. La clave no existe o no está habilitada
+                    p_smResult.BllWarning("El ítem (Estacion) que intenta modificar no existe en el sistema o no está habilitado.","");
+                    return;
+                }
+
+                // Debe coincidir el número de version
+                EstVVer(p_dbcAccess, 
+                        p_entEstacion.Cod,
+                        p_entEstacion.FxdVersion,
+                        ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // Actualizamos el registro
+                EstUpdt(p_dbcAccess, p_entEstacion, ref p_smResult);
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion SSav
+                p_smResult.BllError(l_expData.ToString());
+            }
+            finally {
+                // Terminamos
+                p_smResult.BllPop();
+            }
+        }
+
+        /// <summary>
+        /// Agrega un registro a la tabla a partir de una entidad: EEstacion
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_entEstacion">Entidad con los datos a procesar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static void EstInsr(DBConn p_dbcAccess,
+                                     EEstacion p_entEstacion,
+                                     ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            p_smResult.BllReset("Tablas", "EstInsr");
+
+            try {
+                // Validamos la integridad de la entidad
+                EstTInt(p_dbcAccess, p_entEstacion, ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // Creamos un nuevo registro de la tabla: Estaciones
+                Dal.Estaciones.Insert(p_dbcAccess,
+                                      p_entEstacion.Cod,
+                                      p_entEstacion.Des,
+                                      p_entEstacion.Domicilio,
+                                      p_entEstacion.Contacto,
+                                      p_entEstacion.Telefono,
+                                      ref p_smResult);
+                p_smResult.BllPop();
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Insr
+                p_smResult.BllError(l_expData.ToString());
+            }
+        }
+
+        /// <summary>
+        /// Actualiza un registro a la tabla a partir de una entidad: EEstacion
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_entEstacion">Entidad con los datos a procesar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static void EstUpdt(DBConn p_dbcAccess,
+                                     EEstacion p_entEstacion,
+                                     ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            p_smResult.BllReset("Tablas", "EstUpdt");
+
+            try {
+                // Validamos la integridad de la entidad
+                EstTInt(p_dbcAccess, p_entEstacion, ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // Actualizamos un registro de la tabla: Estaciones
+                Dal.Estaciones.Update(p_dbcAccess,
+                                      p_entEstacion.Cod,
+                                      p_entEstacion.Des,
+                                      p_entEstacion.Domicilio,
+                                      p_entEstacion.Contacto,
+                                      p_entEstacion.Telefono,
+                                      ref p_smResult);
+                p_smResult.BllPop();
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Updt
+                p_smResult.BllError(l_expData.ToString());
+            }
+        }
+
+        /// <summary>
+        /// Borra físicamente un registro de a tabla: Estaciones
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_strCod">CodigoEstacion</param>
+        /// <param name="p_iFxdVersion">Versión del registro a borrar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static void EstDrop(DBConn p_dbcAccess,
+                                     string p_strCod,
+                                     int p_iFxdVersion,
+                                     ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            p_smResult.BllReset("Tablas", "EstDrop");
+
+            try {
+                // Verificamos la clave a borrar
+                EstVKey(p_dbcAccess,
+                        p_strCod,
+                        ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // El registro tiene que existir
+                if (p_smResult.ICodeEs(BllCodes.KeyDsntFound)) {
+                    // Error. La clave no existe
+                    p_smResult.BllWarning("El ítem (Estacion) que intenta borrar no existe en el sistema.","");
+                    return;
+                }
+
+                // Debe coincidir el número de version
+                EstVVer(p_dbcAccess, 
+                        p_strCod,
+                        p_iFxdVersion,
+                        ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // Borramos físicamente el registro
+                Dal.Estaciones.Drop(p_dbcAccess,
+                                    p_strCod,
+                                    ref p_smResult);
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Remove
+                p_smResult.BllError(l_expData.ToString());
+            }
+            finally {
+                // Terminamos
+                p_smResult.BllPop();
+            }
+        }
+
+        /// <summary>
+        /// Borra los registros borrados lógicamente de la tabla
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static void EstPack(DBConn p_dbcAccess,
+                                     ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            p_smResult.BllReset("Tablas", "EstPack");
+
+            try {
+                // Borramos los borrados lógicamente
+                Dal.Estaciones.Pack(p_dbcAccess,
+                                    ref p_smResult);
                 p_smResult.BllPop();
             }
             catch (Exception l_expData) {
@@ -3270,6 +4104,819 @@ namespace Rivn.Bll
         #endregion
 
         #region Metodos para métodos DAL definidos por el usuario
+        #endregion
+
+
+        //**********************************************************
+        //
+        // Funciones para la Tabla: Reparaciones
+        // Usando ClaseDal        : Reparaciones
+        //
+        //**********************************************************
+
+        //---------------------------------------------------------------
+        // Metodos públicos de la clase (visibles para la UIL)
+        //---------------------------------------------------------------
+        #region Metodos publicos de recupero
+
+        /// <summary>
+        /// Devuelve la grilla de la tabla: Reparaciones
+        /// </summary>
+        /// <param name="p_bOnlyActive">Indica si solo se analizan los registros activos</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        /// <returns>Lista-entidad: LEReparaciones</returns>
+        public static LEReparaciones RepUpFull(bool p_bOnlyActive,
+                                               ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            DBConn l_dbcAccess= null;
+            p_smResult.BllReset("Tablas", "RepUpFull");
+
+            try {
+                // Obtenemos una conexion
+                l_dbcAccess= DBRuts.GetConection(Connections.Dat);
+
+                // Pedimos los registros de la tabla
+                return RepUpfl(l_dbcAccess, p_bOnlyActive, ref p_smResult);
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion UpFull
+                p_smResult.BllError(l_expData.ToString());
+                return null;
+            }
+            finally {
+                // Si pude abrir la conexion -> la cierro
+                if (l_dbcAccess != null) l_dbcAccess.Close();
+                p_smResult.BllPop();
+            }
+        }
+
+        /// <summary>
+        /// Devuelve una entidad: EReparacion
+        /// </summary>
+        /// <param name="p_strCod">codigo</param>
+        /// <param name="p_bOnlyActive">Indica si solo se analizan los registros activos</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        /// <returns>Entidad: EReparacion</returns>
+        public static EReparacion RepGet(string p_strCod,
+                                         bool p_bOnlyActive,
+                                         ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            DBConn l_dbcAccess= null;
+            p_smResult.BllReset("Tablas", "RepGet");
+
+            try {
+                // Obtenemos una conexion
+                l_dbcAccess= DBRuts.GetConection(Connections.Dat);
+
+                // Pedimos la entidad: EReparacion
+                return RepSrch(l_dbcAccess,
+                               p_strCod,
+                               p_bOnlyActive,
+                               ref p_smResult);
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Get
+                p_smResult.BllError(l_expData.ToString());
+                return null;
+            }
+            finally {
+                // Si pude abrir la conexion -> la cierro
+                if (l_dbcAccess != null) l_dbcAccess.Close();
+                p_smResult.BllPop();
+            }
+        }
+        #endregion
+
+        #region Metodos publicos de grabacion
+
+        /// <summary>
+        /// Agrega o modifica un registro de la tabla: Reparaciones
+        /// </summary>
+        /// <param name="p_entReparacion">Entidad con los datos a procesar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        public static void RepSave(EReparacion p_entReparacion,
+                                   ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            p_smResult.BllReset("Tablas", "RepSave");
+            DBConn l_dbcAccess= null;
+
+            try {
+                // Obtenemos una conexion y abrimos una transaccion
+                l_dbcAccess= DBRuts.GetConection(Connections.Dat);
+                l_dbcAccess.BeginTransaction();
+
+                // Grabamos la entidad: EReparacion
+                RepSSav(l_dbcAccess, p_entReparacion, ref p_smResult);
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Save
+                p_smResult.BllError(l_expData.ToString());
+            }
+            finally {
+                // Si pude abrir la conexion
+                if (l_dbcAccess != null) {
+                    // Finalizo la transacción y la cierro
+                    l_dbcAccess.EndTransaction(p_smResult);
+                    l_dbcAccess.Close();
+                }
+                p_smResult.BllPop();
+            }
+        }
+
+        /// <summary>
+        /// Habilita/Deshabilita un registro de la tabla: Reparaciones
+        /// </summary>
+        /// <param name="p_bEnable">Tipo de operacion</param>
+        /// <param name="p_strCod">codigo</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        public static void RepEnabled(bool p_bEnable,
+                                      string p_strCod,
+                                      int p_iFxdVersion,
+                                      ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            DBConn l_dbcAccess= null;
+            p_smResult.BllReset("Tablas", "RepEnabled");
+
+            try {
+                // Obtenemos una conexion
+                l_dbcAccess= DBRuts.GetConection(Connections.Dat);
+                l_dbcAccess.BeginTransaction();
+
+                // Procesamos codigo fijo
+                RepEnabled_f(l_dbcAccess,
+                             p_bEnable,
+                             p_strCod,
+                             ref p_iFxdVersion,
+                             ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // Verificamos la clave a modificar
+                RepVKey(l_dbcAccess,
+                        p_strCod,
+                        ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // El registro tiene que existir
+                if (p_smResult.ICodeEs(BllCodes.KeyDsntFound)) {
+                    // Error. La clave no existe
+                    p_smResult.BllWarning("El ítem (Reparacion) que intenta modificar no existe en el sistema.","");
+                    return;
+                }
+
+                // Debe coincidir el número de version
+                RepVVer(l_dbcAccess, 
+                        p_strCod,
+                        p_iFxdVersion,
+                        ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // Segun el modo
+                if (p_bEnable) {
+                    // Hay que habilitar el registro
+                    Dal.Reparaciones.Recall(l_dbcAccess,
+                                            p_strCod,
+                                            ref p_smResult);
+                }
+                else {
+                    // Hay que deshabilitar el registro
+                    Dal.Reparaciones.Delete(l_dbcAccess,
+                                            p_strCod,
+                                            ref p_smResult);
+                }
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Enabled
+                p_smResult.BllError(l_expData.ToString());
+            }
+            finally {
+                // Si pude abrir la conexion
+                if (l_dbcAccess != null) {
+                    // Finalizo la transacción y la cierro
+                    l_dbcAccess.EndTransaction(p_smResult);
+                    l_dbcAccess.Close();
+                }
+                p_smResult.BllPop();
+            }
+        }
+
+        /// <summary>
+        /// Borra físicamento un registro de la tabla: Reparaciones
+        /// </summary>
+        /// <param name="p_strCod">codigo</param>
+        /// <param name="p_iFxdVersion">Versión del registro a borrar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        public static void RepRemove(string p_strCod,
+                                     int p_iFxdVersion,
+                                     ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            DBConn l_dbcAccess= null;
+            p_smResult.BllReset("Tablas", "RepRemove");
+
+            try {
+                // Obtenemos una conexion
+                l_dbcAccess= DBRuts.GetConection(Connections.Dat);
+                l_dbcAccess.BeginTransaction();
+
+                // Procesamos codigo fijo
+                RepRemove_f(l_dbcAccess,
+                            p_strCod,
+                            p_iFxdVersion,
+                            ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // Borramos el registro solicitado
+                RepDrop(l_dbcAccess,
+                        p_strCod,
+                        p_iFxdVersion,
+                        ref p_smResult);
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Remove
+                p_smResult.BllError(l_expData.ToString());
+            }
+            finally {
+                // Si pude abrir la conexion
+                if (l_dbcAccess != null) {
+                    // Finalizo la transacción y la cierro
+                    l_dbcAccess.EndTransaction(p_smResult);
+                    l_dbcAccess.Close();
+                }
+                p_smResult.BllPop();
+            }
+        }
+
+        /// <summary>
+        /// Compacta una tabla borrando los registros deshabilitados
+        /// </summary>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        public static void RepPurge(ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            DBConn l_dbcAccess= null;
+            p_smResult.BllReset("Tablas", "RepPurge");
+
+            try {
+                // Obtenemos una conexion
+                l_dbcAccess= DBRuts.GetConection(Connections.Dat);
+                l_dbcAccess.BeginTransaction();
+
+                // Realizamos el borrado
+                RepPack(l_dbcAccess,
+                        ref p_smResult);
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Enabled
+                p_smResult.BllError(l_expData.ToString());
+            }
+            finally {
+                // Si pude abrir la conexion
+                if (l_dbcAccess != null) {
+                    // Finalizo la transacción y la cierro
+                    l_dbcAccess.EndTransaction(p_smResult);
+                    l_dbcAccess.Close();
+                }
+                p_smResult.BllPop();
+            }
+        }
+        #endregion
+
+        #region Metodos para métodos DAL definidos por el usuario
+        #endregion
+
+        //---------------------------------------------------------------
+        // Metodos públicos de la clase (no visibles para la UIL)
+        //---------------------------------------------------------------
+
+        #region Metodos internos de validacion
+
+        /// <summary>
+        /// Valida la integridad de una entidad: Reparacion
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_entReparacion">Entidad con los datos a validar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static void RepTInt(DBConn p_dbcAccess,
+                                     EReparacion p_entReparacion,
+                                     ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            p_smResult.BllReset("Tablas", "RepTInt");
+
+            // ********
+            // Validaciones de los campos sin conexion
+            // ********
+
+            if (p_entReparacion.Cod.Trim() == "") {
+                // El campo [codigo] no puede ser vacío
+                p_smResult.BllWarning("El dato [codigo] no puede ser vacío","");
+                return;
+            }
+
+            if (p_entReparacion.Des.Trim() == "") {
+                // El campo [descripcion] no puede ser vacío
+                p_smResult.BllWarning("El dato [descripcion] no puede ser vacío","");
+                return;
+            }
+
+            if (p_entReparacion.Solicitadetalle.Trim() != "") {
+                if ((p_entReparacion.Solicitadetalle != "S") &&
+                    (p_entReparacion.Solicitadetalle != " N")) {
+                    // El campo [Se Solicita Detalle] tiene opciones
+                    p_smResult.BllWarning("El dato [Se Solicita Detalle] sólo admite\r\n\r\n[S]- SI\r\n[ N]- NO\r\n","");
+                    return;
+                }
+            }
+
+            // ********
+            // Validaciones de los campos con conexion
+            // ********
+
+            Tablas.CatVKey(p_dbcAccess,
+                           p_entReparacion.Codcat,
+                           ref p_smResult);
+            if (p_smResult.NOk) return;
+
+            if (p_smResult.ICodeEs(BllCodes.KeyDsntFound)) {
+                // El campo [categoria] debe existir en la tabla [Tablas.Cat]
+                p_smResult.BllWarning("El dato [categoria] debe existir en la tabla [Tablas.Cat]","");
+                return;
+            }
+
+            // Todas las validaciones fueron correctas
+
+            // Llamamos a la funcion fija del usuario
+            RepTInt_f(p_dbcAccess, p_entReparacion, ref p_smResult);
+            if (p_smResult.NOk) return;
+
+            // Finalizamos
+            p_smResult.BllPop();
+        }
+
+        /// <summary>
+        /// Verifica si existe en la tabla una entidad: EReparacion
+        ///      Retorno: p_smResult.Stat= BllAvisos.KeyExists   - La clave existe
+        ///               p_smResult.Stat= BllAvisos.KeyNotFound - La clave no existe
+        ///               p_smResult.Stat= BllAvisos.KeyDisabled - La clave está deshabilitada
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_strCod">codigo</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static void RepVKey(DBConn p_dbcAccess,
+                                     string p_strCod,
+                                     ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            p_smResult.BllReset("Tablas", "RepVKey");
+            DataSet l_dsTemp= new DataSet();
+
+            Dal.Reparaciones.Search(p_dbcAccess,
+                                    p_strCod,
+                                    false,
+                                    ref l_dsTemp,
+                                    "Temporal",
+                                    ref p_smResult);
+            if (p_smResult.NOk) return;
+
+            try {
+                // Verificamos si vino algun registro
+                p_smResult.BllICode(BllCodes.KeyDsntFound);
+                if (l_dsTemp.Tables["Temporal"].Rows.Count == 0) return;
+
+                // Verificamos si el registro que vino esta habilitado
+                p_smResult.BllICode(BllCodes.KeyDisabled);
+                if ((decimal) l_dsTemp.Tables["Temporal"].Rows[0]["deleted"] == 1) return;
+
+                // La clave existia y estaba habilitada
+                p_smResult.BllICode(BllCodes.KeyExists);
+            }
+            finally {
+                // Terminamos
+                l_dsTemp.Dispose();
+                p_smResult.BllPop();
+            }
+        }
+
+        /// <summary>
+        /// Verifica el número de version de una tabla
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_strCod">codigo</param>
+        /// <param name="p_iFxdVersion">Número de version</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static void RepVVer(DBConn p_dbcAccess,
+                                     string p_strCod,
+                                     int p_iFxdVersion,
+                                     ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            p_smResult.BllReset("Tablas", "RepVVer");
+            DataSet l_dsTemp= new DataSet();
+
+            // Verificamos el número de versión
+            Dal.Reparaciones.ChkVersion(p_dbcAccess,
+                                        p_strCod,
+                                        p_iFxdVersion,
+                                        ref l_dsTemp,
+                                        "Temporal",
+                                        ref p_smResult);
+            if (p_smResult.NOk) return;
+
+            // Verificamos el resultado que vino
+            if (l_dsTemp.Tables["Temporal"].Rows.Count != 0) {
+                // Verificamos si la cantidad es 1
+                if ((int) l_dsTemp.Tables["Temporal"].Rows[0]["cantidad"] == 1) {
+                    // La versión coincide
+                    l_dsTemp.Dispose();
+                    p_smResult.BllPop();
+                    return;
+                }
+            }
+
+            // El número de versión no coincide
+            StreamWriter l_swErrorFile= null;
+            string l_strErrFName= String.Format("C:\\V{0:ddMMyyyyHHmmss}.Err",
+                                                DateTime.Now);
+            try {
+                // Creamos el archivo del error
+                l_swErrorFile= new StreamWriter(File.Create(l_strErrFName),
+                                                System.Text.Encoding.ASCII);
+
+                // Grabamos los datos del error
+                l_swErrorFile.WriteLine("Instante    : {0:dd/MM/yyyy HH:mm:ss}", DateTime.Now);
+                l_swErrorFile.WriteLine("Uil         : {0}", p_smResult.Uil);
+                l_swErrorFile.WriteLine("Bll         : {0}", p_smResult.Bll);
+                l_swErrorFile.WriteLine("Dal         : {0}", p_smResult.Dal);
+                l_swErrorFile.WriteLine("Message     : No coincide el numero de version");
+            }
+            catch (Exception l_expData) {
+                // Error en el acceso al archivo.
+                string l_strLinea= l_expData.ToString();
+            }
+            finally {
+                // Si llegamos a abrir el archivo -> lo cerramos
+                if (l_swErrorFile != null) {
+                    l_swErrorFile.Close();
+                    l_swErrorFile.Dispose();
+                }
+            }
+
+            // El número de versión no coincide
+            l_dsTemp.Dispose();
+            p_smResult.BllWarning("El número de versión del registro del ítem (Reparacion) no coincide.\r\nOperación cancelada.","");
+        }
+        #endregion
+
+        #region Metodos internos de recupero
+
+        /// <summary>
+        /// Devuelve una Lista-entidad: LEReparaciones
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_bOnlyActive">Indica si solo se analizan los registros activos</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        /// <returns>Lista-entidad: LEReparaciones</returns>
+        internal static LEReparaciones RepUpfl(DBConn p_dbcAccess,
+                                                bool p_bOnlyActive,
+                                                ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            p_smResult.BllReset("Tablas", "RepUpfl");
+
+            try {
+                // Pedimos los registros de la tabla: Reparaciones
+                DataSet l_dsTemp= new DataSet();
+
+                Dal.Reparaciones.Up(p_dbcAccess, 
+                                    p_bOnlyActive,
+                                    ref l_dsTemp, "Temporal",
+                                    ref p_smResult);
+                if (p_smResult.NOk) return null;
+
+                // Fijamos los captions de la grilla
+                Dal.Reparaciones.MakeGridCaptions(ref l_dsTemp, "Temporal", ref p_smResult);
+
+                // Contruimos la lista-entidad y la devolvemos (si vino algun registro)
+                LEReparaciones l_lentRet= new LEReparaciones(l_dsTemp.Tables["Temporal"]);
+                l_dsTemp.Dispose();
+                return l_lentRet;
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Upfl
+                p_smResult.BllError(l_expData.ToString());
+                return null;
+            }
+            finally {
+                // Terminamos
+                p_smResult.BllPop();
+            }
+        }
+
+        /// <summary>
+        /// Devuelve una entidad: EReparacion
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_strCod">codigo</param>
+        /// <param name="p_bOnlyActive">Indica si solo se analizan los registros activos</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        /// <returns>Entidad: EReparacion</returns>
+        internal static EReparacion RepSrch(DBConn p_dbcAccess,
+                                            string p_strCod,
+                                            bool p_bOnlyActive,
+                                            ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            p_smResult.BllReset("Tablas", "RepSrch");
+
+            try {
+                // Pedimos el registro de la tabla: Reparaciones
+                DataSet l_dsTemp= new DataSet();
+
+                Dal.Reparaciones.Search(p_dbcAccess, 
+                                        p_strCod,
+                                        p_bOnlyActive,
+                                        ref l_dsTemp, "Temporal",
+                                        ref p_smResult);
+                if (p_smResult.NOk) return null;
+
+                // Constuimos la entidad y la devolvemos (si vino un registro)
+                EReparacion l_entRet= null;
+
+                if (l_dsTemp.Tables["Temporal"].Rows.Count == 1)
+                    l_entRet= new EReparacion(l_dsTemp.Tables["Temporal"].Rows[0]);
+
+                l_dsTemp.Dispose();
+                return l_entRet;
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Srch
+                p_smResult.BllError(l_expData.ToString());
+                return null;
+            }
+            finally {
+                // Terminamos
+                p_smResult.BllPop();
+            }
+        }
+        #endregion
+
+        #region Metodos internos de modificacion
+
+        /// <summary>
+        /// Agrega o modifica un registro de la tabla: Reparaciones
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_entReparacion">Entidad con los datos a procesar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static void RepSSav(DBConn p_dbcAccess,
+                                     EReparacion p_entReparacion,
+                                     ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            p_smResult.BllReset("Tablas", "RepSave");
+
+            try {
+                // Procesamos codigo fijo
+                RepSave_f(p_dbcAccess, ref p_entReparacion, ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // Verificamos la clave a grabar
+                RepVKey(p_dbcAccess, 
+                        p_entReparacion.Cod,
+                        ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // Si es una entidad nueva
+                if (p_entReparacion.EsNueva) {
+                    // Es un alta. La clave no debe existir
+                    if (!p_smResult.ICodeEs(BllCodes.KeyDsntFound)) {
+                        // Error. La clave ya existe
+                        p_smResult.BllWarning("El ítem (Reparacion) que intenta agregar ya existe en el sistema.","");
+                        return;
+                    }
+
+                    // Agregamos el registro
+                    RepInsr(p_dbcAccess, p_entReparacion, ref p_smResult);
+                    return;
+                }
+
+                // Es un update. La clave debe existir y estar habilitada
+                if (!p_smResult.ICodeEs(BllCodes.KeyExists)) {
+                    // Error. La clave no existe o no está habilitada
+                    p_smResult.BllWarning("El ítem (Reparacion) que intenta modificar no existe en el sistema o no está habilitado.","");
+                    return;
+                }
+
+                // Debe coincidir el número de version
+                RepVVer(p_dbcAccess, 
+                        p_entReparacion.Cod,
+                        p_entReparacion.FxdVersion,
+                        ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // Actualizamos el registro
+                RepUpdt(p_dbcAccess, p_entReparacion, ref p_smResult);
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion SSav
+                p_smResult.BllError(l_expData.ToString());
+            }
+            finally {
+                // Terminamos
+                p_smResult.BllPop();
+            }
+        }
+
+        /// <summary>
+        /// Agrega un registro a la tabla a partir de una entidad: EReparacion
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_entReparacion">Entidad con los datos a procesar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static void RepInsr(DBConn p_dbcAccess,
+                                     EReparacion p_entReparacion,
+                                     ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            p_smResult.BllReset("Tablas", "RepInsr");
+
+            try {
+                // Validamos la integridad de la entidad
+                RepTInt(p_dbcAccess, p_entReparacion, ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // Creamos un nuevo registro de la tabla: Reparaciones
+                Dal.Reparaciones.Insert(p_dbcAccess,
+                                        p_entReparacion.Cod,
+                                        p_entReparacion.Des,
+                                        p_entReparacion.Codcat,
+                                        p_entReparacion.Solicitadetalle,
+                                        ref p_smResult);
+                p_smResult.BllPop();
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Insr
+                p_smResult.BllError(l_expData.ToString());
+            }
+        }
+
+        /// <summary>
+        /// Actualiza un registro a la tabla a partir de una entidad: EReparacion
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_entReparacion">Entidad con los datos a procesar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static void RepUpdt(DBConn p_dbcAccess,
+                                     EReparacion p_entReparacion,
+                                     ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            p_smResult.BllReset("Tablas", "RepUpdt");
+
+            try {
+                // Validamos la integridad de la entidad
+                RepTInt(p_dbcAccess, p_entReparacion, ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // Actualizamos un registro de la tabla: Reparaciones
+                Dal.Reparaciones.Update(p_dbcAccess,
+                                        p_entReparacion.Cod,
+                                        p_entReparacion.Des,
+                                        p_entReparacion.Codcat,
+                                        p_entReparacion.Solicitadetalle,
+                                        ref p_smResult);
+                p_smResult.BllPop();
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Updt
+                p_smResult.BllError(l_expData.ToString());
+            }
+        }
+
+        /// <summary>
+        /// Borra físicamente un registro de a tabla: Reparaciones
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_strCod">codigo</param>
+        /// <param name="p_iFxdVersion">Versión del registro a borrar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static void RepDrop(DBConn p_dbcAccess,
+                                     string p_strCod,
+                                     int p_iFxdVersion,
+                                     ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            p_smResult.BllReset("Tablas", "RepDrop");
+
+            try {
+                // Verificamos la clave a borrar
+                RepVKey(p_dbcAccess,
+                        p_strCod,
+                        ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // El registro tiene que existir
+                if (p_smResult.ICodeEs(BllCodes.KeyDsntFound)) {
+                    // Error. La clave no existe
+                    p_smResult.BllWarning("El ítem (Reparacion) que intenta borrar no existe en el sistema.","");
+                    return;
+                }
+
+                // Debe coincidir el número de version
+                RepVVer(p_dbcAccess, 
+                        p_strCod,
+                        p_iFxdVersion,
+                        ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // Borramos físicamente el registro
+                Dal.Reparaciones.Drop(p_dbcAccess,
+                                      p_strCod,
+                                      ref p_smResult);
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Remove
+                p_smResult.BllError(l_expData.ToString());
+            }
+            finally {
+                // Terminamos
+                p_smResult.BllPop();
+            }
+        }
+
+        /// <summary>
+        /// Borra los registros borrados lógicamente de la tabla
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static void RepPack(DBConn p_dbcAccess,
+                                     ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            p_smResult.BllReset("Tablas", "RepPack");
+
+            try {
+                // Borramos los borrados lógicamente
+                Dal.Reparaciones.Pack(p_dbcAccess,
+                                      ref p_smResult);
+                p_smResult.BllPop();
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Updt
+                p_smResult.BllError(l_expData.ToString());
+            }
+        }
+        #endregion
+
+        #region Metodos para métodos DAL definidos por el usuario
+
+        /// <summary>
+        /// Ejecuta el SP definido por el usuario: Getbydesc
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name= p_strDes>Levanta descripciones de las reparaciones.</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        /// <returns>ListaEntidad con los datos solicitados</returns>
+        internal static ListaEntidades RepGetbydesc(DBConn p_dbcAccess,
+                                                    string p_strDes,
+                                                    ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            p_smResult.BllReset("Tablas", "RepGetbydesc");
+
+            try {
+                // Llamamos al metodo definido por el usuario
+                DataSet l_dsTemp= new DataSet();
+
+                Dal.Reparaciones.Getbydesc(p_dbcAccess,
+                                           p_strDes,
+                                           ref l_dsTemp,
+                                           "Temporal",
+                                           ref p_smResult);
+                if (p_smResult.NOk) return null;
+
+                // Creamos la LE y Captionamos
+                ListaEntidades l_lentRet= new ListaEntidades(l_dsTemp.Tables["Temporal"]);
+                BllRuts.FillStdCaptions(ref l_lentRet);
+
+                // Devolvemos la LE
+                l_dsTemp.Dispose();
+                return l_lentRet;
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion
+                p_smResult.BllError(l_expData.ToString());
+                return null;
+            }
+            finally {
+                // Terminamos
+                p_smResult.BllPop();
+            }
+        }
         #endregion
 
     }

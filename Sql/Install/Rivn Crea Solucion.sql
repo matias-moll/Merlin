@@ -1,7 +1,7 @@
 /*---------------------------------------------------------------------------
 //                   TNG Software (Scripts iniciales de la Base)
 //---------------------------------------------------------------------------
-// Fecha              : 21/10/2013 14:29
+// Fecha              : 21/10/2013 16:24
 // Base de Datos      : TNGS_Rivn
 // Objetivo           : Creación de los usuarios de la base
 //----------------------------------------------------------------------------
@@ -46,7 +46,7 @@ go
 /*---------------------------------------------------------------------------
 //                   TNG Software (Scripts iniciales de la Base)
 //---------------------------------------------------------------------------
-// Fecha              : 21/10/2013 14:29
+// Fecha              : 21/10/2013 16:24
 // Base de Datos      : TNGS_Rivn
 // Objetivo           : Creación de los tipos de datos
 //----------------------------------------------------------------------------
@@ -313,7 +313,7 @@ go
 /*---------------------------------------------------------------------------
 //                   TNG Software (Scripts iniciales de la Base)
 //---------------------------------------------------------------------------
-// Fecha              : 21/10/2013 14:29
+// Fecha              : 21/10/2013 16:24
 // Base de Datos      : TNGS_Rivn
 // Objetivo           : Creación de las funciones básicas
 //----------------------------------------------------------------------------
@@ -727,7 +727,7 @@ go
 /*----------------------------------------------------------------------------
 //                 TNG Software Script Generator (Tablas)                     
 //----------------------------------------------------------------------------
-// Fecha              : 21/10/2013 14:29
+// Fecha              : 21/10/2013 16:24
 // Base de Datos      : TNGS_Rivn
 // Tabla              : Categorias
 //----------------------------------------------------------------------------
@@ -791,7 +791,7 @@ go
 /*----------------------------------------------------------------------------
 //                 TNG Software Script Generator (Tablas)                     
 //----------------------------------------------------------------------------
-// Fecha              : 21/10/2013 14:29
+// Fecha              : 21/10/2013 16:24
 // Base de Datos      : TNGS_Rivn
 // Tabla              : Controles
 //----------------------------------------------------------------------------
@@ -856,7 +856,7 @@ go
 /*----------------------------------------------------------------------------
 //                 TNG Software Script Generator (Tablas)                     
 //----------------------------------------------------------------------------
-// Fecha              : 21/10/2013 14:29
+// Fecha              : 21/10/2013 16:24
 // Base de Datos      : TNGS_Rivn
 // Tabla              : ControlesReparations
 //----------------------------------------------------------------------------
@@ -903,7 +903,8 @@ create table ControlesReparations
       version tngs_numero,
       constraint ControlesReparations_pk primary key clustered
       (
-         ctr_cod_codctl
+         ctr_cod_codctl,
+         ctr_nro_nroitem
       )
    )
 go
@@ -921,7 +922,7 @@ go
 /*----------------------------------------------------------------------------
 //                 TNG Software Script Generator (Tablas)                     
 //----------------------------------------------------------------------------
-// Fecha              : 21/10/2013 14:29
+// Fecha              : 21/10/2013 16:24
 // Base de Datos      : TNGS_Rivn
 // Tabla              : Equipamiento
 //----------------------------------------------------------------------------
@@ -986,7 +987,74 @@ go
 /*----------------------------------------------------------------------------
 //                 TNG Software Script Generator (Tablas)                     
 //----------------------------------------------------------------------------
-// Fecha              : 21/10/2013 14:29
+// Fecha              : 21/10/2013 16:24
+// Base de Datos      : TNGS_Rivn
+// Tabla              : Estaciones
+//----------------------------------------------------------------------------
+// © 1999-2013 by TNG Software                                      Gndr 5.20
+//---------------------------------------------------------------------------*/
+
+/* ***************************************************************************
+/  Atencion!!!
+/     Este archivo fue generado por un programa en forma automática. Cualquier
+/     modificación que se realize sobre él se perderá en la próxima
+/     regeneración.
+/  **************************************************************************/
+
+/*-------------------------------------------------*/
+/* Selecciono la base en la que se creara la tabla */
+/*-------------------------------------------------*/
+
+use TNGS_Rivn
+go
+
+/*-----------------------------------*/
+/* Crea la tabla en la base indicada */
+/*-----------------------------------*/
+
+print 'Tabla: Estaciones'
+
+if exists (select * from sysobjects where id = object_id('dbo.Estaciones'))
+begin
+   print '   - Borrando la vieja tabla'
+   drop table dbo.Estaciones
+end
+go
+
+print '   - Creando la nueva tabla'
+
+create table Estaciones
+   (
+      ets_rcd_cod tngs_codigo_r,
+      ets_des_des tngs_descripcion,
+      ets_ede_domicilio tngs_descripcion_e,
+      ets_des_contacto tngs_descripcion,
+      ets_ete_telefono tngs_telefono_e,
+      instante tngs_fecyhor,
+      deleted tngs_borrado,
+      usuario tngs_nombre,
+      version tngs_numero,
+      constraint Estaciones_pk primary key clustered
+      (
+         ets_rcd_cod
+      )
+   )
+go
+
+print '   - Asignando permisos a la nueva tabla'
+
+grant select on Estaciones to tngsqbe
+
+print ' '
+go
+
+/*--------------------------------------------------------------------------
+// Fin del script de creacion de la tabla: Estaciones
+//--------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------
+//                 TNG Software Script Generator (Tablas)                     
+//----------------------------------------------------------------------------
+// Fecha              : 21/10/2013 16:24
 // Base de Datos      : TNGS_Rivn
 // Tabla              : Estados
 //----------------------------------------------------------------------------
@@ -1052,7 +1120,7 @@ go
 /*----------------------------------------------------------------------------
 //                 TNG Software Script Generator (Tablas)                     
 //----------------------------------------------------------------------------
-// Fecha              : 21/10/2013 14:29
+// Fecha              : 21/10/2013 16:24
 // Base de Datos      : TNGS_Rivn
 // Tabla              : Marcas
 //----------------------------------------------------------------------------
@@ -1116,7 +1184,7 @@ go
 /*----------------------------------------------------------------------------
 //                 TNG Software Script Generator (Tablas)                     
 //----------------------------------------------------------------------------
-// Fecha              : 21/10/2013 14:29
+// Fecha              : 21/10/2013 16:24
 // Base de Datos      : TNGS_Rivn
 // Tabla              : Modelos
 //----------------------------------------------------------------------------
@@ -1181,7 +1249,7 @@ go
 /*----------------------------------------------------------------------------
 //                 TNG Software Script Generator (Tablas)                     
 //----------------------------------------------------------------------------
-// Fecha              : 21/10/2013 14:29
+// Fecha              : 21/10/2013 16:24
 // Base de Datos      : TNGS_Rivn
 // Tabla              : Moviles
 //----------------------------------------------------------------------------
@@ -1253,7 +1321,75 @@ go
 /*----------------------------------------------------------------------------
 //                 TNG Software Script Generator (Tablas)                     
 //----------------------------------------------------------------------------
-// Fecha              : 21/10/2013 14:29
+// Fecha              : 21/10/2013 16:24
+// Base de Datos      : TNGS_Rivn
+// Tabla              : MvlCombustible
+//----------------------------------------------------------------------------
+// © 1999-2013 by TNG Software                                      Gndr 5.20
+//---------------------------------------------------------------------------*/
+
+/* ***************************************************************************
+/  Atencion!!!
+/     Este archivo fue generado por un programa en forma automática. Cualquier
+/     modificación que se realize sobre él se perderá en la próxima
+/     regeneración.
+/  **************************************************************************/
+
+/*-------------------------------------------------*/
+/* Selecciono la base en la que se creara la tabla */
+/*-------------------------------------------------*/
+
+use TNGS_Rivn
+go
+
+/*-----------------------------------*/
+/* Crea la tabla en la base indicada */
+/*-----------------------------------*/
+
+print 'Tabla: MvlCombustible'
+
+if exists (select * from sysobjects where id = object_id('dbo.MvlCombustible'))
+begin
+   print '   - Borrando la vieja tabla'
+   drop table dbo.MvlCombustible
+end
+go
+
+print '   - Creando la nueva tabla'
+
+create table MvlCombustible
+   (
+      mco_ecd_patente tngs_codigo_e,
+      mco_fyh_fecha tngs_fecyhor,
+      mco_val_litros tngs_valor,
+      mco_imp_importe tngs_importe,
+      mco_rcd_codestacion tngs_codigo_r,
+      instante tngs_fecyhor,
+      deleted tngs_borrado,
+      usuario tngs_nombre,
+      version tngs_numero,
+      constraint MvlCombustible_pk primary key clustered
+      (
+         mco_ecd_patente,
+         mco_fyh_fecha
+      )
+   )
+go
+
+print '   - Asignando permisos a la nueva tabla'
+
+grant select on MvlCombustible to tngsqbe
+
+print ' '
+go
+
+/*--------------------------------------------------------------------------
+// Fin del script de creacion de la tabla: MvlCombustible
+//--------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------
+//                 TNG Software Script Generator (Tablas)                     
+//----------------------------------------------------------------------------
+// Fecha              : 21/10/2013 16:24
 // Base de Datos      : TNGS_Rivn
 // Tabla              : MvlEquipamiento
 //----------------------------------------------------------------------------
@@ -1319,7 +1455,7 @@ go
 /*----------------------------------------------------------------------------
 //                 TNG Software Script Generator (Tablas)                     
 //----------------------------------------------------------------------------
-// Fecha              : 21/10/2013 14:29
+// Fecha              : 21/10/2013 16:24
 // Base de Datos      : TNGS_Rivn
 // Tabla              : MvlEstados
 //----------------------------------------------------------------------------
@@ -1386,7 +1522,73 @@ go
 /*----------------------------------------------------------------------------
 //                 TNG Software Script Generator (Tablas)                     
 //----------------------------------------------------------------------------
-// Fecha              : 21/10/2013 14:29
+// Fecha              : 21/10/2013 16:24
+// Base de Datos      : TNGS_Rivn
+// Tabla              : MvlKilometros
+//----------------------------------------------------------------------------
+// © 1999-2013 by TNG Software                                      Gndr 5.20
+//---------------------------------------------------------------------------*/
+
+/* ***************************************************************************
+/  Atencion!!!
+/     Este archivo fue generado por un programa en forma automática. Cualquier
+/     modificación que se realize sobre él se perderá en la próxima
+/     regeneración.
+/  **************************************************************************/
+
+/*-------------------------------------------------*/
+/* Selecciono la base en la que se creara la tabla */
+/*-------------------------------------------------*/
+
+use TNGS_Rivn
+go
+
+/*-----------------------------------*/
+/* Crea la tabla en la base indicada */
+/*-----------------------------------*/
+
+print 'Tabla: MvlKilometros'
+
+if exists (select * from sysobjects where id = object_id('dbo.MvlKilometros'))
+begin
+   print '   - Borrando la vieja tabla'
+   drop table dbo.MvlKilometros
+end
+go
+
+print '   - Creando la nueva tabla'
+
+create table MvlKilometros
+   (
+      mkm_ecd_patente tngs_codigo_e,
+      mkm_fyh_fecha tngs_fecyhor,
+      mkm_nro_km tngs_numero,
+      instante tngs_fecyhor,
+      deleted tngs_borrado,
+      usuario tngs_nombre,
+      version tngs_numero,
+      constraint MvlKilometros_pk primary key clustered
+      (
+         mkm_ecd_patente,
+         mkm_fyh_fecha
+      )
+   )
+go
+
+print '   - Asignando permisos a la nueva tabla'
+
+grant select on MvlKilometros to tngsqbe
+
+print ' '
+go
+
+/*--------------------------------------------------------------------------
+// Fin del script de creacion de la tabla: MvlKilometros
+//--------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------
+//                 TNG Software Script Generator (Tablas)                     
+//----------------------------------------------------------------------------
+// Fecha              : 21/10/2013 16:24
 // Base de Datos      : TNGS_Rivn
 // Tabla              : OrdenesTrabajo
 //----------------------------------------------------------------------------
@@ -1453,7 +1655,7 @@ go
 /*----------------------------------------------------------------------------
 //                 TNG Software Script Generator (Tablas)                     
 //----------------------------------------------------------------------------
-// Fecha              : 21/10/2013 14:29
+// Fecha              : 21/10/2013 16:24
 // Base de Datos      : TNGS_Rivn
 // Tabla              : OtItems
 //----------------------------------------------------------------------------
@@ -1525,7 +1727,7 @@ go
 /*----------------------------------------------------------------------------
 //                 TNG Software Script Generator (Tablas)                     
 //----------------------------------------------------------------------------
-// Fecha              : 21/10/2013 14:29
+// Fecha              : 21/10/2013 16:24
 // Base de Datos      : TNGS_Rivn
 // Tabla              : Parametros
 //----------------------------------------------------------------------------
@@ -1593,7 +1795,7 @@ go
 /*----------------------------------------------------------------------------
 //                 TNG Software Script Generator (Tablas)                     
 //----------------------------------------------------------------------------
-// Fecha              : 21/10/2013 14:29
+// Fecha              : 21/10/2013 16:24
 // Base de Datos      : TNGS_Rivn
 // Tabla              : Reparaciones
 //----------------------------------------------------------------------------
@@ -1633,7 +1835,8 @@ create table Reparaciones
    (
       rep_cd6_cod tngs_codigo_6,
       rep_xde_des tngs_descripcion_x,
-      rep_rcd_cat tngs_codigo_r,
+      rep_rcd_codcat tngs_codigo_r,
+      rep_cd1_solicitadetalle tngs_codigo_1,
       instante tngs_fecyhor,
       deleted tngs_borrado,
       usuario tngs_nombre,
@@ -1658,7 +1861,7 @@ go
 /*----------------------------------------------------------------------------
 //                 TNG Software Script Generator (Tablas)                     
 //----------------------------------------------------------------------------
-// Fecha              : 21/10/2013 14:29
+// Fecha              : 21/10/2013 16:24
 // Base de Datos      : TNGS_Rivn
 // Tabla              : Talonarios
 //----------------------------------------------------------------------------
@@ -1726,7 +1929,7 @@ go
 /*----------------------------------------------------------------------------
 //                 TNG Software Script Generator (Indices)                    
 //----------------------------------------------------------------------------
-// Fecha              : 21/10/2013 14:29
+// Fecha              : 21/10/2013 16:24
 // Base de Datos      : TNGS_Rivn
 // Tabla              : Reparaciones
 //----------------------------------------------------------------------------
@@ -1770,7 +1973,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 21/10/2013 14:30
+// Fecha       : 21/10/2013 16:24
 // Sistema     : Rivn
 // Tabla       : Categorias
 //----------------------------------------------------------------------------
@@ -2308,7 +2511,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 21/10/2013 14:30
+// Fecha       : 21/10/2013 16:24
 // Sistema     : Rivn
 // Tabla       : Controles
 //----------------------------------------------------------------------------
@@ -2506,6 +2709,49 @@ go
 print '       - Asignando permisos al nuevo SP'
 
 grant execute on dbo.CONTROLES_SEARCH to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Busca la clave máxima de la tabla
+--- </summary>
+--- <param name="@reservado">Reservado para futuras expansiones</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.CONTROLES_GETMAXKEY'
+
+if exists (select * from sysobjects where id = object_id('dbo.CONTROLES_GETMAXKEY'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.CONTROLES_GETMAXKEY
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.CONTROLES_GETMAXKEY
+(
+@dummy tngs_codigo_1
+)
+as
+begin
+
+   Select isnull(max(ctl_cod_cod), '0') as ctl_cod_cod
+     from TNGS_Rivn..Controles
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.CONTROLES_GETMAXKEY to tngsmodulos
 
 print ' '
 go
@@ -2810,7 +3056,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 21/10/2013 14:30
+// Fecha       : 21/10/2013 16:24
 // Sistema     : Rivn
 // Tabla       : ControlesReparations
 //----------------------------------------------------------------------------
@@ -2873,7 +3119,8 @@ begin
                 join TNGS_Rivn..Controles
                   on ctr_cd6_codRep = ctl_cod_cod
           where TNGS_Rivn..ControlesReparations.deleted = 0
-          order by ctr_cod_codctl
+          order by ctr_cod_codctl,
+                ctr_nro_nroitem
       end
    else
       begin
@@ -2888,7 +3135,8 @@ begin
            from TNGS_Rivn..ControlesReparations
                 join TNGS_Rivn..Controles
                   on ctr_cd6_codRep = ctl_cod_cod
-          order by ctr_cod_codctl
+          order by ctr_cod_codctl,
+                ctr_nro_nroitem
       end
 
 fin:
@@ -2909,6 +3157,7 @@ go
 --- Verifica el número de versión de un registro
 --- </summary>
 --- <param name="@ctr_cod_codctl">codigoControl</param>
+--- <param name="@ctr_nro_nroitem">item</param>
 --- <param name="@version">Número de version a verificar</param>
 ---
 ---////////////////////////////////////////////////////////
@@ -2928,6 +3177,7 @@ go
 create procedure dbo.CONTROLESREPARATIONS_CHKVERSION
 (
 @ctr_cod_codctl tngs_codigo,
+@ctr_nro_nroitem tngs_numero,
 @version tngs_numero
 )
 as
@@ -2936,6 +3186,7 @@ begin
    Select count(*) as cantidad
      from TNGS_Rivn..ControlesReparations
     where ctr_cod_codctl = @ctr_cod_codctl
+      and ctr_nro_nroitem = @ctr_nro_nroitem
       and version = @version
 
 fin:
@@ -2956,6 +3207,7 @@ go
 --- Busca el registro de una clave
 --- </summary>
 --- <param name="@ctr_cod_codctl">codigoControl</param>
+--- <param name="@ctr_nro_nroitem">item</param>
 --- <param name="@onlyactive">Flag de SoloActivos</param>
 ---
 ---////////////////////////////////////////////////////////
@@ -2975,6 +3227,7 @@ go
 create procedure dbo.CONTROLESREPARATIONS_SEARCH
 (
 @ctr_cod_codctl tngs_codigo,
+@ctr_nro_nroitem tngs_numero,
 @onlyactive tngs_valor
 )
 as
@@ -2994,6 +3247,7 @@ begin
                 join TNGS_Rivn..Controles
                   on ctr_cd6_codRep = ctl_cod_cod
           where ctr_cod_codctl = @ctr_cod_codctl
+            and ctr_nro_nroitem = @ctr_nro_nroitem
             and TNGS_Rivn..ControlesReparations.deleted = 0
       end
    else
@@ -3010,6 +3264,7 @@ begin
                 join TNGS_Rivn..Controles
                   on ctr_cd6_codRep = ctl_cod_cod
           where ctr_cod_codctl = @ctr_cod_codctl
+            and ctr_nro_nroitem = @ctr_nro_nroitem
       end
 
 fin:
@@ -3069,6 +3324,7 @@ begin
                   on ctr_cd6_codRep = ctl_cod_cod
           where ctr_cod_codctl = @ctr_cod_codctl
             and TNGS_Rivn..ControlesReparations.deleted = 0
+          order by ctr_nro_nroitem
       end
    else
       begin
@@ -3084,6 +3340,7 @@ begin
                 join TNGS_Rivn..Controles
                   on ctr_cd6_codRep = ctl_cod_cod
           where ctr_cod_codctl = @ctr_cod_codctl
+          order by ctr_nro_nroitem
       end
 
 fin:
@@ -3187,12 +3444,12 @@ as
 begin
 
    Update TNGS_Rivn..ControlesReparations
-      set ctr_nro_nroitem= @ctr_nro_nroitem,
-          ctr_cd6_codrep= @ctr_cd6_codrep,
+      set ctr_cd6_codrep= @ctr_cd6_codrep,
           version = ((version+1) % 32767),
           instante= getdate(),
           usuario = @usuario
     where ctr_cod_codctl = @ctr_cod_codctl
+      and ctr_nro_nroitem = @ctr_nro_nroitem
 
 fin:
 
@@ -3212,6 +3469,7 @@ go
 --- Borra lógicamente un registro
 --- </summary>
 --- <param name="@ctr_cod_codctl">codigoControl</param>
+--- <param name="@ctr_nro_nroitem">item</param>
 --- <param name="@usuario">Usuario que realiza el delete</param>
 ---
 ---////////////////////////////////////////////////////////
@@ -3231,6 +3489,7 @@ go
 create procedure dbo.CONTROLESREPARATIONS_DELETE
 (
 @ctr_cod_codctl tngs_codigo,
+@ctr_nro_nroitem tngs_numero,
 @usuario tngs_nombre
 )
 as
@@ -3242,6 +3501,7 @@ begin
           instante= getdate(),
           usuario = @usuario
     where ctr_cod_codctl = @ctr_cod_codctl
+      and ctr_nro_nroitem = @ctr_nro_nroitem
 
 fin:
 
@@ -3317,6 +3577,7 @@ go
 --- Recupera un registro
 --- </summary>
 --- <param name="@ctr_cod_codctl">codigoControl</param>
+--- <param name="@ctr_nro_nroitem">item</param>
 --- <param name="@usuario">Usuario que realiza el recall</param>
 ---
 ---////////////////////////////////////////////////////////
@@ -3336,6 +3597,7 @@ go
 create procedure dbo.CONTROLESREPARATIONS_RECALL
 (
 @ctr_cod_codctl tngs_codigo,
+@ctr_nro_nroitem tngs_numero,
 @usuario tngs_nombre
 )
 as
@@ -3347,6 +3609,7 @@ begin
           instante= getdate(),
           usuario = @usuario
     where ctr_cod_codctl = @ctr_cod_codctl
+      and ctr_nro_nroitem = @ctr_nro_nroitem
 
 fin:
 
@@ -3430,6 +3693,7 @@ go
 --- Borra físicamente un registro
 --- </summary>
 --- <param name="@ctr_cod_codctl">codigoControl</param>
+--- <param name="@ctr_nro_nroitem">item</param>
 --- <param name="@usuario">Usuario que realiza el drop</param>
 ---
 ---////////////////////////////////////////////////////////
@@ -3449,6 +3713,7 @@ go
 create procedure dbo.CONTROLESREPARATIONS_DROP
 (
 @ctr_cod_codctl tngs_codigo,
+@ctr_nro_nroitem tngs_numero,
 @usuario tngs_nombre
 )
 as
@@ -3456,6 +3721,7 @@ begin
 
    Delete from TNGS_Rivn..ControlesReparations
     where ctr_cod_codctl = @ctr_cod_codctl
+      and ctr_nro_nroitem = @ctr_nro_nroitem
 
 fin:
 
@@ -3609,7 +3875,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 21/10/2013 14:30
+// Fecha       : 21/10/2013 16:24
 // Sistema     : Rivn
 // Tabla       : Equipamiento
 //----------------------------------------------------------------------------
@@ -4111,7 +4377,572 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 21/10/2013 14:30
+// Fecha       : 21/10/2013 16:24
+// Sistema     : Rivn
+// Tabla       : Estaciones
+//----------------------------------------------------------------------------
+// © 1999-2013 by TNG Software                                      Gndr 5.20
+//---------------------------------------------------------------------------*/
+
+/* ***************************************************************************
+/  Atencion!!!
+/     Este archivo fue generado por un programa en forma automática. Cualquier
+/     modificación que se realize sobre él se perderá en la próxima
+/     regeneración.
+/  **************************************************************************/
+
+/*-------------------------------------------------*/
+/* Selecciono la base en la que se crearan los SPs */
+/*-------------------------------------------------*/
+
+use TNGS_Rivn
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Levanta todos los registros de una tabla
+--- </summary>
+--- <param name="@onlyactive">Flag de SoloActivos</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.ESTACIONES_UP'
+
+if exists (select * from sysobjects where id = object_id('dbo.ESTACIONES_UP'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.ESTACIONES_UP
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.ESTACIONES_UP
+(
+@onlyactive tngs_valor
+)
+as
+begin
+
+   if @onlyactive = 1
+      begin
+         Select ets_rcd_cod,
+                ets_des_des,
+                ets_ede_domicilio,
+                ets_des_contacto,
+                ets_ete_telefono,
+                TNGS_Rivn..Estaciones.instante,
+                TNGS_Rivn..Estaciones.deleted,
+                TNGS_Rivn..Estaciones.usuario,
+                TNGS_Rivn..Estaciones.version
+           from TNGS_Rivn..Estaciones
+          where deleted = 0
+          order by ets_rcd_cod
+      end
+   else
+      begin
+         Select ets_rcd_cod,
+                ets_des_des,
+                ets_ede_domicilio,
+                ets_des_contacto,
+                ets_ete_telefono,
+                TNGS_Rivn..Estaciones.instante,
+                TNGS_Rivn..Estaciones.deleted,
+                TNGS_Rivn..Estaciones.usuario,
+                TNGS_Rivn..Estaciones.version
+           from TNGS_Rivn..Estaciones
+          order by ets_rcd_cod
+      end
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.ESTACIONES_UP to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Verifica el número de versión de un registro
+--- </summary>
+--- <param name="@ets_rcd_cod">CodigoEstacion</param>
+--- <param name="@version">Número de version a verificar</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.ESTACIONES_CHKVERSION'
+
+if exists (select * from sysobjects where id = object_id('dbo.ESTACIONES_CHKVERSION'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.ESTACIONES_CHKVERSION
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.ESTACIONES_CHKVERSION
+(
+@ets_rcd_cod tngs_codigo_r,
+@version tngs_numero
+)
+as
+begin
+
+   Select count(*) as cantidad
+     from TNGS_Rivn..Estaciones
+    where ets_rcd_cod = @ets_rcd_cod
+      and version = @version
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.ESTACIONES_CHKVERSION to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Busca el registro de una clave
+--- </summary>
+--- <param name="@ets_rcd_cod">CodigoEstacion</param>
+--- <param name="@onlyactive">Flag de SoloActivos</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.ESTACIONES_SEARCH'
+
+if exists (select * from sysobjects where id = object_id('dbo.ESTACIONES_SEARCH'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.ESTACIONES_SEARCH
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.ESTACIONES_SEARCH
+(
+@ets_rcd_cod tngs_codigo_r,
+@onlyactive tngs_valor
+)
+as
+begin
+
+   if @onlyactive = 1
+      begin
+         Select ets_rcd_cod,
+                ets_des_des,
+                ets_ede_domicilio,
+                ets_des_contacto,
+                ets_ete_telefono,
+                TNGS_Rivn..Estaciones.instante,
+                TNGS_Rivn..Estaciones.deleted,
+                TNGS_Rivn..Estaciones.usuario,
+                TNGS_Rivn..Estaciones.version
+           from TNGS_Rivn..Estaciones
+          where ets_rcd_cod = @ets_rcd_cod
+            and deleted = 0
+      end
+   else
+      begin
+         Select ets_rcd_cod,
+                ets_des_des,
+                ets_ede_domicilio,
+                ets_des_contacto,
+                ets_ete_telefono,
+                TNGS_Rivn..Estaciones.instante,
+                TNGS_Rivn..Estaciones.deleted,
+                TNGS_Rivn..Estaciones.usuario,
+                TNGS_Rivn..Estaciones.version
+           from TNGS_Rivn..Estaciones
+          where ets_rcd_cod = @ets_rcd_cod
+      end
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.ESTACIONES_SEARCH to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Busca la clave máxima de la tabla
+--- </summary>
+--- <param name="@reservado">Reservado para futuras expansiones</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.ESTACIONES_GETMAXKEY'
+
+if exists (select * from sysobjects where id = object_id('dbo.ESTACIONES_GETMAXKEY'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.ESTACIONES_GETMAXKEY
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.ESTACIONES_GETMAXKEY
+(
+@dummy tngs_codigo_1
+)
+as
+begin
+
+   Select isnull(max(ets_rcd_cod), '0') as ets_rcd_cod
+     from TNGS_Rivn..Estaciones
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.ESTACIONES_GETMAXKEY to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Inserta un registro en la tabla
+--- </summary>
+--- <param name="@ets_rcd_cod">CodigoEstacion</param>
+--- <param name="@ets_des_des">descripcion</param>
+--- <param name="@ets_ede_domicilio">Domicilio</param>
+--- <param name="@ets_des_contacto">Contacto</param>
+--- <param name="@ets_ete_telefono">Telefono</param>
+--- <param name="@usuario">Usuario que genera el insert</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.ESTACIONES_INSERT'
+
+if exists (select * from sysobjects where id = object_id('dbo.ESTACIONES_INSERT'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.ESTACIONES_INSERT
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.ESTACIONES_INSERT
+(
+@ets_rcd_cod tngs_codigo_r,
+@ets_des_des tngs_descripcion,
+@ets_ede_domicilio tngs_descripcion_e,
+@ets_des_contacto tngs_descripcion,
+@ets_ete_telefono tngs_telefono_e,
+@usuario tngs_nombre
+)
+as
+begin
+
+   Insert into TNGS_Rivn..Estaciones
+   values (
+           @ets_rcd_cod,
+           @ets_des_des,
+           @ets_ede_domicilio,
+           @ets_des_contacto,
+           @ets_ete_telefono,
+           getdate(), 0, @usuario, 1
+          )
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.ESTACIONES_INSERT to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Actualiza un registro de la tabla
+--- </summary>
+--- <param name="@ets_rcd_cod">CodigoEstacion</param>
+--- <param name="@ets_des_des">descripcion</param>
+--- <param name="@ets_ede_domicilio">Domicilio</param>
+--- <param name="@ets_des_contacto">Contacto</param>
+--- <param name="@ets_ete_telefono">Telefono</param>
+--- <param name="@usuario">Usuario que genera el update</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.ESTACIONES_UPDATE'
+
+if exists (select * from sysobjects where id = object_id('dbo.ESTACIONES_UPDATE'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.ESTACIONES_UPDATE
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.ESTACIONES_UPDATE
+(
+@ets_rcd_cod tngs_codigo_r,
+@ets_des_des tngs_descripcion,
+@ets_ede_domicilio tngs_descripcion_e,
+@ets_des_contacto tngs_descripcion,
+@ets_ete_telefono tngs_telefono_e,
+@usuario tngs_nombre
+)
+as
+begin
+
+   Update TNGS_Rivn..Estaciones
+      set ets_des_des= @ets_des_des,
+          ets_ede_domicilio= @ets_ede_domicilio,
+          ets_des_contacto= @ets_des_contacto,
+          ets_ete_telefono= @ets_ete_telefono,
+          version = ((version+1) % 32767),
+          instante= getdate(),
+          usuario = @usuario
+    where ets_rcd_cod = @ets_rcd_cod
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.ESTACIONES_UPDATE to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Borra lógicamente un registro
+--- </summary>
+--- <param name="@ets_rcd_cod">CodigoEstacion</param>
+--- <param name="@usuario">Usuario que realiza el delete</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.ESTACIONES_DELETE'
+
+if exists (select * from sysobjects where id = object_id('dbo.ESTACIONES_DELETE'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.ESTACIONES_DELETE
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.ESTACIONES_DELETE
+(
+@ets_rcd_cod tngs_codigo_r,
+@usuario tngs_nombre
+)
+as
+begin
+
+   Update TNGS_Rivn..Estaciones
+      set deleted = 1,
+          version = ((version+1) % 32767),
+          instante= getdate(),
+          usuario = @usuario
+    where ets_rcd_cod = @ets_rcd_cod
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.ESTACIONES_DELETE to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Recupera un registro
+--- </summary>
+--- <param name="@ets_rcd_cod">CodigoEstacion</param>
+--- <param name="@usuario">Usuario que realiza el recall</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.ESTACIONES_RECALL'
+
+if exists (select * from sysobjects where id = object_id('dbo.ESTACIONES_RECALL'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.ESTACIONES_RECALL
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.ESTACIONES_RECALL
+(
+@ets_rcd_cod tngs_codigo_r,
+@usuario tngs_nombre
+)
+as
+begin
+
+   Update TNGS_Rivn..Estaciones
+      set deleted = 0,
+          version = ((version+1) % 32767),
+          instante= getdate(),
+          usuario = @usuario
+    where ets_rcd_cod = @ets_rcd_cod
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.ESTACIONES_RECALL to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Borra físicamente un registro
+--- </summary>
+--- <param name="@ets_rcd_cod">CodigoEstacion</param>
+--- <param name="@usuario">Usuario que realiza el drop</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.ESTACIONES_DROP'
+
+if exists (select * from sysobjects where id = object_id('dbo.ESTACIONES_DROP'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.ESTACIONES_DROP
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.ESTACIONES_DROP
+(
+@ets_rcd_cod tngs_codigo_r,
+@usuario tngs_nombre
+)
+as
+begin
+
+   Delete from TNGS_Rivn..Estaciones
+    where ets_rcd_cod = @ets_rcd_cod
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.ESTACIONES_DROP to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Borra físicamente los registros borrados lógicamente
+--- </summary>
+--- <param name="@usuario">Usuario que realiza el delete</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.ESTACIONES_PACK'
+
+if exists (select * from sysobjects where id = object_id('dbo.ESTACIONES_PACK'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.ESTACIONES_PACK
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.ESTACIONES_PACK
+(
+@usuario tngs_nombre
+)
+as
+begin
+
+   Delete TNGS_Rivn..Estaciones
+    where deleted = 1
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.ESTACIONES_PACK to tngsmodulos
+
+print ' '
+go
+
+/*--------------------------------------------------------------------------
+// Fin del script de creacion de los SP de la tabla: Estaciones
+//--------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------
+//                         TNG Software SPs Generator
+//----------------------------------------------------------------------------
+// Fecha       : 21/10/2013 16:24
 // Sistema     : Rivn
 // Tabla       : Estados
 //----------------------------------------------------------------------------
@@ -4623,7 +5454,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 21/10/2013 14:30
+// Fecha       : 21/10/2013 16:24
 // Sistema     : Rivn
 // Tabla       : Marcas
 //----------------------------------------------------------------------------
@@ -5158,7 +5989,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 21/10/2013 14:30
+// Fecha       : 21/10/2013 16:24
 // Sistema     : Rivn
 // Tabla       : Modelos
 //----------------------------------------------------------------------------
@@ -5703,7 +6534,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 21/10/2013 14:30
+// Fecha       : 21/10/2013 16:24
 // Sistema     : Rivn
 // Tabla       : Moviles
 //----------------------------------------------------------------------------
@@ -6275,7 +7106,832 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 21/10/2013 14:30
+// Fecha       : 21/10/2013 16:24
+// Sistema     : Rivn
+// Tabla       : MvlCombustible
+//----------------------------------------------------------------------------
+// © 1999-2013 by TNG Software                                      Gndr 5.20
+//---------------------------------------------------------------------------*/
+
+/* ***************************************************************************
+/  Atencion!!!
+/     Este archivo fue generado por un programa en forma automática. Cualquier
+/     modificación que se realize sobre él se perderá en la próxima
+/     regeneración.
+/  **************************************************************************/
+
+/*-------------------------------------------------*/
+/* Selecciono la base en la que se crearan los SPs */
+/*-------------------------------------------------*/
+
+use TNGS_Rivn
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Levanta todos los registros de una tabla
+--- </summary>
+--- <param name="@onlyactive">Flag de SoloActivos</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.MVLCOMBUSTIBLE_UP'
+
+if exists (select * from sysobjects where id = object_id('dbo.MVLCOMBUSTIBLE_UP'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.MVLCOMBUSTIBLE_UP
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.MVLCOMBUSTIBLE_UP
+(
+@onlyactive tngs_valor
+)
+as
+begin
+
+   if @onlyactive = 1
+      begin
+         Select mco_ecd_patente,
+                mco_fyh_fecha,
+                mco_val_litros,
+                mco_imp_importe,
+                mco_rcd_codestacion,
+                TNGS_Rivn..MvlCombustible.instante,
+                TNGS_Rivn..MvlCombustible.deleted,
+                TNGS_Rivn..MvlCombustible.usuario,
+                TNGS_Rivn..MvlCombustible.version
+           from TNGS_Rivn..MvlCombustible
+          where deleted = 0
+          order by mco_ecd_patente,
+                mco_fyh_fecha
+      end
+   else
+      begin
+         Select mco_ecd_patente,
+                mco_fyh_fecha,
+                mco_val_litros,
+                mco_imp_importe,
+                mco_rcd_codestacion,
+                TNGS_Rivn..MvlCombustible.instante,
+                TNGS_Rivn..MvlCombustible.deleted,
+                TNGS_Rivn..MvlCombustible.usuario,
+                TNGS_Rivn..MvlCombustible.version
+           from TNGS_Rivn..MvlCombustible
+          order by mco_ecd_patente,
+                mco_fyh_fecha
+      end
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.MVLCOMBUSTIBLE_UP to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Verifica el número de versión de un registro
+--- </summary>
+--- <param name="@mco_ecd_patente">Patente</param>
+--- <param name="@mco_fyh_fecha">Fecha</param>
+--- <param name="@version">Número de version a verificar</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.MVLCOMBUSTIBLE_CHKVERSION'
+
+if exists (select * from sysobjects where id = object_id('dbo.MVLCOMBUSTIBLE_CHKVERSION'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.MVLCOMBUSTIBLE_CHKVERSION
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.MVLCOMBUSTIBLE_CHKVERSION
+(
+@mco_ecd_patente tngs_codigo_e,
+@mco_fyh_fecha tngs_fecyhor,
+@version tngs_numero
+)
+as
+begin
+
+   Select count(*) as cantidad
+     from TNGS_Rivn..MvlCombustible
+    where mco_ecd_patente = @mco_ecd_patente
+      and mco_fyh_fecha = @mco_fyh_fecha
+      and version = @version
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.MVLCOMBUSTIBLE_CHKVERSION to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Busca el registro de una clave
+--- </summary>
+--- <param name="@mco_ecd_patente">Patente</param>
+--- <param name="@mco_fyh_fecha">Fecha</param>
+--- <param name="@onlyactive">Flag de SoloActivos</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.MVLCOMBUSTIBLE_SEARCH'
+
+if exists (select * from sysobjects where id = object_id('dbo.MVLCOMBUSTIBLE_SEARCH'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.MVLCOMBUSTIBLE_SEARCH
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.MVLCOMBUSTIBLE_SEARCH
+(
+@mco_ecd_patente tngs_codigo_e,
+@mco_fyh_fecha tngs_fecyhor,
+@onlyactive tngs_valor
+)
+as
+begin
+
+   if @onlyactive = 1
+      begin
+         Select mco_ecd_patente,
+                mco_fyh_fecha,
+                mco_val_litros,
+                mco_imp_importe,
+                mco_rcd_codestacion,
+                TNGS_Rivn..MvlCombustible.instante,
+                TNGS_Rivn..MvlCombustible.deleted,
+                TNGS_Rivn..MvlCombustible.usuario,
+                TNGS_Rivn..MvlCombustible.version
+           from TNGS_Rivn..MvlCombustible
+          where mco_ecd_patente = @mco_ecd_patente
+            and mco_fyh_fecha = @mco_fyh_fecha
+            and deleted = 0
+      end
+   else
+      begin
+         Select mco_ecd_patente,
+                mco_fyh_fecha,
+                mco_val_litros,
+                mco_imp_importe,
+                mco_rcd_codestacion,
+                TNGS_Rivn..MvlCombustible.instante,
+                TNGS_Rivn..MvlCombustible.deleted,
+                TNGS_Rivn..MvlCombustible.usuario,
+                TNGS_Rivn..MvlCombustible.version
+           from TNGS_Rivn..MvlCombustible
+          where mco_ecd_patente = @mco_ecd_patente
+            and mco_fyh_fecha = @mco_fyh_fecha
+      end
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.MVLCOMBUSTIBLE_SEARCH to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Busca los registros de una clave foranea
+--- </summary>
+--- <param name="@mco_ecd_patente">Patente</param>
+--- <param name="@onlyactive">Flag de SoloActivos</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.MVLCOMBUSTIBLE_FSEARCH'
+
+if exists (select * from sysobjects where id = object_id('dbo.MVLCOMBUSTIBLE_FSEARCH'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.MVLCOMBUSTIBLE_FSEARCH
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.MVLCOMBUSTIBLE_FSEARCH
+(
+@mco_ecd_patente tngs_codigo_e,
+@onlyactive tngs_valor
+)
+as
+begin
+
+   if @onlyactive = 1
+      begin
+         Select mco_ecd_patente,
+                mco_fyh_fecha,
+                mco_val_litros,
+                mco_imp_importe,
+                mco_rcd_codestacion,
+                TNGS_Rivn..MvlCombustible.instante,
+                TNGS_Rivn..MvlCombustible.deleted,
+                TNGS_Rivn..MvlCombustible.usuario,
+                TNGS_Rivn..MvlCombustible.version
+           from TNGS_Rivn..MvlCombustible
+          where mco_ecd_patente = @mco_ecd_patente
+            and deleted = 0
+          order by mco_fyh_fecha
+      end
+   else
+      begin
+         Select mco_ecd_patente,
+                mco_fyh_fecha,
+                mco_val_litros,
+                mco_imp_importe,
+                mco_rcd_codestacion,
+                TNGS_Rivn..MvlCombustible.instante,
+                TNGS_Rivn..MvlCombustible.deleted,
+                TNGS_Rivn..MvlCombustible.usuario,
+                TNGS_Rivn..MvlCombustible.version
+           from TNGS_Rivn..MvlCombustible
+          where mco_ecd_patente = @mco_ecd_patente
+          order by mco_fyh_fecha
+      end
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.MVLCOMBUSTIBLE_FSEARCH to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Inserta un registro en la tabla
+--- </summary>
+--- <param name="@mco_ecd_patente">Patente</param>
+--- <param name="@mco_fyh_fecha">Fecha</param>
+--- <param name="@mco_val_litros">Litros Cargados</param>
+--- <param name="@mco_imp_importe">Importe</param>
+--- <param name="@mco_rcd_codestacion">Codigo estacion</param>
+--- <param name="@usuario">Usuario que genera el insert</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.MVLCOMBUSTIBLE_INSERT'
+
+if exists (select * from sysobjects where id = object_id('dbo.MVLCOMBUSTIBLE_INSERT'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.MVLCOMBUSTIBLE_INSERT
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.MVLCOMBUSTIBLE_INSERT
+(
+@mco_ecd_patente tngs_codigo_e,
+@mco_fyh_fecha tngs_fecyhor,
+@mco_val_litros tngs_valor,
+@mco_imp_importe tngs_importe,
+@mco_rcd_codestacion tngs_codigo_r,
+@usuario tngs_nombre
+)
+as
+begin
+
+   Insert into TNGS_Rivn..MvlCombustible
+   values (
+           @mco_ecd_patente,
+           @mco_fyh_fecha,
+           @mco_val_litros,
+           @mco_imp_importe,
+           @mco_rcd_codestacion,
+           getdate(), 0, @usuario, 1
+          )
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.MVLCOMBUSTIBLE_INSERT to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Actualiza un registro de la tabla
+--- </summary>
+--- <param name="@mco_ecd_patente">Patente</param>
+--- <param name="@mco_fyh_fecha">Fecha</param>
+--- <param name="@mco_val_litros">Litros Cargados</param>
+--- <param name="@mco_imp_importe">Importe</param>
+--- <param name="@mco_rcd_codestacion">Codigo estacion</param>
+--- <param name="@usuario">Usuario que genera el update</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.MVLCOMBUSTIBLE_UPDATE'
+
+if exists (select * from sysobjects where id = object_id('dbo.MVLCOMBUSTIBLE_UPDATE'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.MVLCOMBUSTIBLE_UPDATE
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.MVLCOMBUSTIBLE_UPDATE
+(
+@mco_ecd_patente tngs_codigo_e,
+@mco_fyh_fecha tngs_fecyhor,
+@mco_val_litros tngs_valor,
+@mco_imp_importe tngs_importe,
+@mco_rcd_codestacion tngs_codigo_r,
+@usuario tngs_nombre
+)
+as
+begin
+
+   Update TNGS_Rivn..MvlCombustible
+      set mco_val_litros= @mco_val_litros,
+          mco_imp_importe= @mco_imp_importe,
+          mco_rcd_codestacion= @mco_rcd_codestacion,
+          version = ((version+1) % 32767),
+          instante= getdate(),
+          usuario = @usuario
+    where mco_ecd_patente = @mco_ecd_patente
+      and mco_fyh_fecha = @mco_fyh_fecha
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.MVLCOMBUSTIBLE_UPDATE to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Borra lógicamente un registro
+--- </summary>
+--- <param name="@mco_ecd_patente">Patente</param>
+--- <param name="@mco_fyh_fecha">Fecha</param>
+--- <param name="@usuario">Usuario que realiza el delete</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.MVLCOMBUSTIBLE_DELETE'
+
+if exists (select * from sysobjects where id = object_id('dbo.MVLCOMBUSTIBLE_DELETE'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.MVLCOMBUSTIBLE_DELETE
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.MVLCOMBUSTIBLE_DELETE
+(
+@mco_ecd_patente tngs_codigo_e,
+@mco_fyh_fecha tngs_fecyhor,
+@usuario tngs_nombre
+)
+as
+begin
+
+   Update TNGS_Rivn..MvlCombustible
+      set deleted = 1,
+          version = ((version+1) % 32767),
+          instante= getdate(),
+          usuario = @usuario
+    where mco_ecd_patente = @mco_ecd_patente
+      and mco_fyh_fecha = @mco_fyh_fecha
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.MVLCOMBUSTIBLE_DELETE to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Borra lógicamente un registro por clave foranea
+--- </summary>
+--- <param name="@mco_ecd_patente">Patente</param>
+--- <param name="@instante">Instante del delete</param>
+--- <param name="@usuario">Usuario que realiza el delete</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.MVLCOMBUSTIBLE_FDELETE'
+
+if exists (select * from sysobjects where id = object_id('dbo.MVLCOMBUSTIBLE_FDELETE'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.MVLCOMBUSTIBLE_FDELETE
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.MVLCOMBUSTIBLE_FDELETE
+(
+@mco_ecd_patente tngs_codigo_e,
+@instante tngs_fecyhor,
+@usuario tngs_nombre
+)
+as
+begin
+
+   if datepart(yyyy, @instante) = 1900
+      begin
+         select @instante= getdate()
+      end
+
+   Update TNGS_Rivn..MvlCombustible
+      set deleted = 1,
+          version = ((version+1) % 32767),
+          instante= @instante,
+          usuario = @usuario
+    where mco_ecd_patente = @mco_ecd_patente
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.MVLCOMBUSTIBLE_FDELETE to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Recupera un registro
+--- </summary>
+--- <param name="@mco_ecd_patente">Patente</param>
+--- <param name="@mco_fyh_fecha">Fecha</param>
+--- <param name="@usuario">Usuario que realiza el recall</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.MVLCOMBUSTIBLE_RECALL'
+
+if exists (select * from sysobjects where id = object_id('dbo.MVLCOMBUSTIBLE_RECALL'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.MVLCOMBUSTIBLE_RECALL
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.MVLCOMBUSTIBLE_RECALL
+(
+@mco_ecd_patente tngs_codigo_e,
+@mco_fyh_fecha tngs_fecyhor,
+@usuario tngs_nombre
+)
+as
+begin
+
+   Update TNGS_Rivn..MvlCombustible
+      set deleted = 0,
+          version = ((version+1) % 32767),
+          instante= getdate(),
+          usuario = @usuario
+    where mco_ecd_patente = @mco_ecd_patente
+      and mco_fyh_fecha = @mco_fyh_fecha
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.MVLCOMBUSTIBLE_RECALL to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Recupera lógicamente los registros de una clave foranea
+--- </summary>
+--- <param name="@mco_ecd_patente">Patente</param>
+--- <param name="@instante">Instante de referencia</param>
+--- <param name="@usuario">Usuario que realiza el recall</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.MVLCOMBUSTIBLE_FRECALL'
+
+if exists (select * from sysobjects where id = object_id('dbo.MVLCOMBUSTIBLE_FRECALL'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.MVLCOMBUSTIBLE_FRECALL
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.MVLCOMBUSTIBLE_FRECALL
+(
+@mco_ecd_patente tngs_codigo_e,
+@instante tngs_fecyhor,
+@usuario tngs_nombre
+)
+as
+begin
+
+   if datepart(yyyy, @instante) = 1900
+      begin
+         Update TNGS_Rivn..MvlCombustible
+            set deleted = 0,
+                version = ((version+1) % 32767),
+                instante= getdate(),
+                usuario = @usuario
+          where mco_ecd_patente = @mco_ecd_patente
+      end
+   else
+      begin
+         Update TNGS_Rivn..MvlCombustible
+            set deleted = 0,
+                version = ((version+1) % 32767),
+                instante= getdate(),
+                usuario = @usuario
+          where mco_ecd_patente = @mco_ecd_patente
+            and instante= @instante
+      end
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.MVLCOMBUSTIBLE_FRECALL to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Borra físicamente un registro
+--- </summary>
+--- <param name="@mco_ecd_patente">Patente</param>
+--- <param name="@mco_fyh_fecha">Fecha</param>
+--- <param name="@usuario">Usuario que realiza el drop</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.MVLCOMBUSTIBLE_DROP'
+
+if exists (select * from sysobjects where id = object_id('dbo.MVLCOMBUSTIBLE_DROP'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.MVLCOMBUSTIBLE_DROP
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.MVLCOMBUSTIBLE_DROP
+(
+@mco_ecd_patente tngs_codigo_e,
+@mco_fyh_fecha tngs_fecyhor,
+@usuario tngs_nombre
+)
+as
+begin
+
+   Delete from TNGS_Rivn..MvlCombustible
+    where mco_ecd_patente = @mco_ecd_patente
+      and mco_fyh_fecha = @mco_fyh_fecha
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.MVLCOMBUSTIBLE_DROP to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Borra físicamente un registro por clave foránea
+--- </summary>
+--- <param name="@mco_ecd_patente">Patente</param>
+--- <param name="@usuario">Usuario que realiza el drop</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.MVLCOMBUSTIBLE_FDROP'
+
+if exists (select * from sysobjects where id = object_id('dbo.MVLCOMBUSTIBLE_FDROP'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.MVLCOMBUSTIBLE_FDROP
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.MVLCOMBUSTIBLE_FDROP
+(
+@mco_ecd_patente tngs_codigo_e,
+@usuario tngs_nombre
+)
+as
+begin
+
+   Delete from TNGS_Rivn..MvlCombustible
+    where mco_ecd_patente = @mco_ecd_patente
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.MVLCOMBUSTIBLE_FDROP to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Borra físicamente los registros borrados lógicamente
+--- </summary>
+--- <param name="@usuario">Usuario que realiza el delete</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.MVLCOMBUSTIBLE_PACK'
+
+if exists (select * from sysobjects where id = object_id('dbo.MVLCOMBUSTIBLE_PACK'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.MVLCOMBUSTIBLE_PACK
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.MVLCOMBUSTIBLE_PACK
+(
+@usuario tngs_nombre
+)
+as
+begin
+
+   Delete TNGS_Rivn..MvlCombustible
+    where deleted = 1
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.MVLCOMBUSTIBLE_PACK to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Borra físicamente los registro borrados lógicamente por clave foránea
+--- </summary>
+--- <param name="@mco_ecd_patente">Patente</param>
+--- <param name="@usuario">Usuario que realiza el pack</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.MVLCOMBUSTIBLE_FPACK'
+
+if exists (select * from sysobjects where id = object_id('dbo.MVLCOMBUSTIBLE_FPACK'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.MVLCOMBUSTIBLE_FPACK
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.MVLCOMBUSTIBLE_FPACK
+(
+@mco_ecd_patente tngs_codigo_e,
+@usuario tngs_nombre
+)
+as
+begin
+
+   Delete from TNGS_Rivn..MvlCombustible
+    where mco_ecd_patente = @mco_ecd_patente
+      and deleted = 1
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.MVLCOMBUSTIBLE_FPACK to tngsmodulos
+
+print ' '
+go
+
+/*--------------------------------------------------------------------------
+// Fin del script de creacion de los SP de la tabla: MvlCombustible
+//--------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------
+//                         TNG Software SPs Generator
+//----------------------------------------------------------------------------
+// Fecha       : 21/10/2013 16:24
 // Sistema     : Rivn
 // Tabla       : MvlEquipamiento
 //----------------------------------------------------------------------------
@@ -7076,7 +8732,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 21/10/2013 14:30
+// Fecha       : 21/10/2013 16:24
 // Sistema     : Rivn
 // Tabla       : MvlEstados
 //----------------------------------------------------------------------------
@@ -7889,7 +9545,808 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 21/10/2013 14:30
+// Fecha       : 21/10/2013 16:24
+// Sistema     : Rivn
+// Tabla       : MvlKilometros
+//----------------------------------------------------------------------------
+// © 1999-2013 by TNG Software                                      Gndr 5.20
+//---------------------------------------------------------------------------*/
+
+/* ***************************************************************************
+/  Atencion!!!
+/     Este archivo fue generado por un programa en forma automática. Cualquier
+/     modificación que se realize sobre él se perderá en la próxima
+/     regeneración.
+/  **************************************************************************/
+
+/*-------------------------------------------------*/
+/* Selecciono la base en la que se crearan los SPs */
+/*-------------------------------------------------*/
+
+use TNGS_Rivn
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Levanta todos los registros de una tabla
+--- </summary>
+--- <param name="@onlyactive">Flag de SoloActivos</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.MVLKILOMETROS_UP'
+
+if exists (select * from sysobjects where id = object_id('dbo.MVLKILOMETROS_UP'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.MVLKILOMETROS_UP
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.MVLKILOMETROS_UP
+(
+@onlyactive tngs_valor
+)
+as
+begin
+
+   if @onlyactive = 1
+      begin
+         Select mkm_ecd_patente,
+                mkm_fyh_fecha,
+                mkm_nro_km,
+                TNGS_Rivn..MvlKilometros.instante,
+                TNGS_Rivn..MvlKilometros.deleted,
+                TNGS_Rivn..MvlKilometros.usuario,
+                TNGS_Rivn..MvlKilometros.version
+           from TNGS_Rivn..MvlKilometros
+          where deleted = 0
+          order by mkm_ecd_patente,
+                mkm_fyh_fecha
+      end
+   else
+      begin
+         Select mkm_ecd_patente,
+                mkm_fyh_fecha,
+                mkm_nro_km,
+                TNGS_Rivn..MvlKilometros.instante,
+                TNGS_Rivn..MvlKilometros.deleted,
+                TNGS_Rivn..MvlKilometros.usuario,
+                TNGS_Rivn..MvlKilometros.version
+           from TNGS_Rivn..MvlKilometros
+          order by mkm_ecd_patente,
+                mkm_fyh_fecha
+      end
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.MVLKILOMETROS_UP to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Verifica el número de versión de un registro
+--- </summary>
+--- <param name="@mkm_ecd_patente">Patente</param>
+--- <param name="@mkm_fyh_fecha">Fecha</param>
+--- <param name="@version">Número de version a verificar</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.MVLKILOMETROS_CHKVERSION'
+
+if exists (select * from sysobjects where id = object_id('dbo.MVLKILOMETROS_CHKVERSION'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.MVLKILOMETROS_CHKVERSION
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.MVLKILOMETROS_CHKVERSION
+(
+@mkm_ecd_patente tngs_codigo_e,
+@mkm_fyh_fecha tngs_fecyhor,
+@version tngs_numero
+)
+as
+begin
+
+   Select count(*) as cantidad
+     from TNGS_Rivn..MvlKilometros
+    where mkm_ecd_patente = @mkm_ecd_patente
+      and mkm_fyh_fecha = @mkm_fyh_fecha
+      and version = @version
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.MVLKILOMETROS_CHKVERSION to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Busca el registro de una clave
+--- </summary>
+--- <param name="@mkm_ecd_patente">Patente</param>
+--- <param name="@mkm_fyh_fecha">Fecha</param>
+--- <param name="@onlyactive">Flag de SoloActivos</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.MVLKILOMETROS_SEARCH'
+
+if exists (select * from sysobjects where id = object_id('dbo.MVLKILOMETROS_SEARCH'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.MVLKILOMETROS_SEARCH
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.MVLKILOMETROS_SEARCH
+(
+@mkm_ecd_patente tngs_codigo_e,
+@mkm_fyh_fecha tngs_fecyhor,
+@onlyactive tngs_valor
+)
+as
+begin
+
+   if @onlyactive = 1
+      begin
+         Select mkm_ecd_patente,
+                mkm_fyh_fecha,
+                mkm_nro_km,
+                TNGS_Rivn..MvlKilometros.instante,
+                TNGS_Rivn..MvlKilometros.deleted,
+                TNGS_Rivn..MvlKilometros.usuario,
+                TNGS_Rivn..MvlKilometros.version
+           from TNGS_Rivn..MvlKilometros
+          where mkm_ecd_patente = @mkm_ecd_patente
+            and mkm_fyh_fecha = @mkm_fyh_fecha
+            and deleted = 0
+      end
+   else
+      begin
+         Select mkm_ecd_patente,
+                mkm_fyh_fecha,
+                mkm_nro_km,
+                TNGS_Rivn..MvlKilometros.instante,
+                TNGS_Rivn..MvlKilometros.deleted,
+                TNGS_Rivn..MvlKilometros.usuario,
+                TNGS_Rivn..MvlKilometros.version
+           from TNGS_Rivn..MvlKilometros
+          where mkm_ecd_patente = @mkm_ecd_patente
+            and mkm_fyh_fecha = @mkm_fyh_fecha
+      end
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.MVLKILOMETROS_SEARCH to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Busca los registros de una clave foranea
+--- </summary>
+--- <param name="@mkm_ecd_patente">Patente</param>
+--- <param name="@onlyactive">Flag de SoloActivos</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.MVLKILOMETROS_FSEARCH'
+
+if exists (select * from sysobjects where id = object_id('dbo.MVLKILOMETROS_FSEARCH'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.MVLKILOMETROS_FSEARCH
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.MVLKILOMETROS_FSEARCH
+(
+@mkm_ecd_patente tngs_codigo_e,
+@onlyactive tngs_valor
+)
+as
+begin
+
+   if @onlyactive = 1
+      begin
+         Select mkm_ecd_patente,
+                mkm_fyh_fecha,
+                mkm_nro_km,
+                TNGS_Rivn..MvlKilometros.instante,
+                TNGS_Rivn..MvlKilometros.deleted,
+                TNGS_Rivn..MvlKilometros.usuario,
+                TNGS_Rivn..MvlKilometros.version
+           from TNGS_Rivn..MvlKilometros
+          where mkm_ecd_patente = @mkm_ecd_patente
+            and deleted = 0
+          order by mkm_fyh_fecha
+      end
+   else
+      begin
+         Select mkm_ecd_patente,
+                mkm_fyh_fecha,
+                mkm_nro_km,
+                TNGS_Rivn..MvlKilometros.instante,
+                TNGS_Rivn..MvlKilometros.deleted,
+                TNGS_Rivn..MvlKilometros.usuario,
+                TNGS_Rivn..MvlKilometros.version
+           from TNGS_Rivn..MvlKilometros
+          where mkm_ecd_patente = @mkm_ecd_patente
+          order by mkm_fyh_fecha
+      end
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.MVLKILOMETROS_FSEARCH to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Inserta un registro en la tabla
+--- </summary>
+--- <param name="@mkm_ecd_patente">Patente</param>
+--- <param name="@mkm_fyh_fecha">Fecha</param>
+--- <param name="@mkm_nro_km">Kilometros</param>
+--- <param name="@usuario">Usuario que genera el insert</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.MVLKILOMETROS_INSERT'
+
+if exists (select * from sysobjects where id = object_id('dbo.MVLKILOMETROS_INSERT'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.MVLKILOMETROS_INSERT
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.MVLKILOMETROS_INSERT
+(
+@mkm_ecd_patente tngs_codigo_e,
+@mkm_fyh_fecha tngs_fecyhor,
+@mkm_nro_km tngs_numero,
+@usuario tngs_nombre
+)
+as
+begin
+
+   Insert into TNGS_Rivn..MvlKilometros
+   values (
+           @mkm_ecd_patente,
+           @mkm_fyh_fecha,
+           @mkm_nro_km,
+           getdate(), 0, @usuario, 1
+          )
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.MVLKILOMETROS_INSERT to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Actualiza un registro de la tabla
+--- </summary>
+--- <param name="@mkm_ecd_patente">Patente</param>
+--- <param name="@mkm_fyh_fecha">Fecha</param>
+--- <param name="@mkm_nro_km">Kilometros</param>
+--- <param name="@usuario">Usuario que genera el update</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.MVLKILOMETROS_UPDATE'
+
+if exists (select * from sysobjects where id = object_id('dbo.MVLKILOMETROS_UPDATE'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.MVLKILOMETROS_UPDATE
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.MVLKILOMETROS_UPDATE
+(
+@mkm_ecd_patente tngs_codigo_e,
+@mkm_fyh_fecha tngs_fecyhor,
+@mkm_nro_km tngs_numero,
+@usuario tngs_nombre
+)
+as
+begin
+
+   Update TNGS_Rivn..MvlKilometros
+      set mkm_nro_km= @mkm_nro_km,
+          version = ((version+1) % 32767),
+          instante= getdate(),
+          usuario = @usuario
+    where mkm_ecd_patente = @mkm_ecd_patente
+      and mkm_fyh_fecha = @mkm_fyh_fecha
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.MVLKILOMETROS_UPDATE to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Borra lógicamente un registro
+--- </summary>
+--- <param name="@mkm_ecd_patente">Patente</param>
+--- <param name="@mkm_fyh_fecha">Fecha</param>
+--- <param name="@usuario">Usuario que realiza el delete</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.MVLKILOMETROS_DELETE'
+
+if exists (select * from sysobjects where id = object_id('dbo.MVLKILOMETROS_DELETE'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.MVLKILOMETROS_DELETE
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.MVLKILOMETROS_DELETE
+(
+@mkm_ecd_patente tngs_codigo_e,
+@mkm_fyh_fecha tngs_fecyhor,
+@usuario tngs_nombre
+)
+as
+begin
+
+   Update TNGS_Rivn..MvlKilometros
+      set deleted = 1,
+          version = ((version+1) % 32767),
+          instante= getdate(),
+          usuario = @usuario
+    where mkm_ecd_patente = @mkm_ecd_patente
+      and mkm_fyh_fecha = @mkm_fyh_fecha
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.MVLKILOMETROS_DELETE to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Borra lógicamente un registro por clave foranea
+--- </summary>
+--- <param name="@mkm_ecd_patente">Patente</param>
+--- <param name="@instante">Instante del delete</param>
+--- <param name="@usuario">Usuario que realiza el delete</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.MVLKILOMETROS_FDELETE'
+
+if exists (select * from sysobjects where id = object_id('dbo.MVLKILOMETROS_FDELETE'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.MVLKILOMETROS_FDELETE
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.MVLKILOMETROS_FDELETE
+(
+@mkm_ecd_patente tngs_codigo_e,
+@instante tngs_fecyhor,
+@usuario tngs_nombre
+)
+as
+begin
+
+   if datepart(yyyy, @instante) = 1900
+      begin
+         select @instante= getdate()
+      end
+
+   Update TNGS_Rivn..MvlKilometros
+      set deleted = 1,
+          version = ((version+1) % 32767),
+          instante= @instante,
+          usuario = @usuario
+    where mkm_ecd_patente = @mkm_ecd_patente
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.MVLKILOMETROS_FDELETE to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Recupera un registro
+--- </summary>
+--- <param name="@mkm_ecd_patente">Patente</param>
+--- <param name="@mkm_fyh_fecha">Fecha</param>
+--- <param name="@usuario">Usuario que realiza el recall</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.MVLKILOMETROS_RECALL'
+
+if exists (select * from sysobjects where id = object_id('dbo.MVLKILOMETROS_RECALL'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.MVLKILOMETROS_RECALL
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.MVLKILOMETROS_RECALL
+(
+@mkm_ecd_patente tngs_codigo_e,
+@mkm_fyh_fecha tngs_fecyhor,
+@usuario tngs_nombre
+)
+as
+begin
+
+   Update TNGS_Rivn..MvlKilometros
+      set deleted = 0,
+          version = ((version+1) % 32767),
+          instante= getdate(),
+          usuario = @usuario
+    where mkm_ecd_patente = @mkm_ecd_patente
+      and mkm_fyh_fecha = @mkm_fyh_fecha
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.MVLKILOMETROS_RECALL to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Recupera lógicamente los registros de una clave foranea
+--- </summary>
+--- <param name="@mkm_ecd_patente">Patente</param>
+--- <param name="@instante">Instante de referencia</param>
+--- <param name="@usuario">Usuario que realiza el recall</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.MVLKILOMETROS_FRECALL'
+
+if exists (select * from sysobjects where id = object_id('dbo.MVLKILOMETROS_FRECALL'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.MVLKILOMETROS_FRECALL
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.MVLKILOMETROS_FRECALL
+(
+@mkm_ecd_patente tngs_codigo_e,
+@instante tngs_fecyhor,
+@usuario tngs_nombre
+)
+as
+begin
+
+   if datepart(yyyy, @instante) = 1900
+      begin
+         Update TNGS_Rivn..MvlKilometros
+            set deleted = 0,
+                version = ((version+1) % 32767),
+                instante= getdate(),
+                usuario = @usuario
+          where mkm_ecd_patente = @mkm_ecd_patente
+      end
+   else
+      begin
+         Update TNGS_Rivn..MvlKilometros
+            set deleted = 0,
+                version = ((version+1) % 32767),
+                instante= getdate(),
+                usuario = @usuario
+          where mkm_ecd_patente = @mkm_ecd_patente
+            and instante= @instante
+      end
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.MVLKILOMETROS_FRECALL to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Borra físicamente un registro
+--- </summary>
+--- <param name="@mkm_ecd_patente">Patente</param>
+--- <param name="@mkm_fyh_fecha">Fecha</param>
+--- <param name="@usuario">Usuario que realiza el drop</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.MVLKILOMETROS_DROP'
+
+if exists (select * from sysobjects where id = object_id('dbo.MVLKILOMETROS_DROP'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.MVLKILOMETROS_DROP
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.MVLKILOMETROS_DROP
+(
+@mkm_ecd_patente tngs_codigo_e,
+@mkm_fyh_fecha tngs_fecyhor,
+@usuario tngs_nombre
+)
+as
+begin
+
+   Delete from TNGS_Rivn..MvlKilometros
+    where mkm_ecd_patente = @mkm_ecd_patente
+      and mkm_fyh_fecha = @mkm_fyh_fecha
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.MVLKILOMETROS_DROP to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Borra físicamente un registro por clave foránea
+--- </summary>
+--- <param name="@mkm_ecd_patente">Patente</param>
+--- <param name="@usuario">Usuario que realiza el drop</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.MVLKILOMETROS_FDROP'
+
+if exists (select * from sysobjects where id = object_id('dbo.MVLKILOMETROS_FDROP'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.MVLKILOMETROS_FDROP
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.MVLKILOMETROS_FDROP
+(
+@mkm_ecd_patente tngs_codigo_e,
+@usuario tngs_nombre
+)
+as
+begin
+
+   Delete from TNGS_Rivn..MvlKilometros
+    where mkm_ecd_patente = @mkm_ecd_patente
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.MVLKILOMETROS_FDROP to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Borra físicamente los registros borrados lógicamente
+--- </summary>
+--- <param name="@usuario">Usuario que realiza el delete</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.MVLKILOMETROS_PACK'
+
+if exists (select * from sysobjects where id = object_id('dbo.MVLKILOMETROS_PACK'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.MVLKILOMETROS_PACK
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.MVLKILOMETROS_PACK
+(
+@usuario tngs_nombre
+)
+as
+begin
+
+   Delete TNGS_Rivn..MvlKilometros
+    where deleted = 1
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.MVLKILOMETROS_PACK to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Borra físicamente los registro borrados lógicamente por clave foránea
+--- </summary>
+--- <param name="@mkm_ecd_patente">Patente</param>
+--- <param name="@usuario">Usuario que realiza el pack</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.MVLKILOMETROS_FPACK'
+
+if exists (select * from sysobjects where id = object_id('dbo.MVLKILOMETROS_FPACK'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.MVLKILOMETROS_FPACK
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.MVLKILOMETROS_FPACK
+(
+@mkm_ecd_patente tngs_codigo_e,
+@usuario tngs_nombre
+)
+as
+begin
+
+   Delete from TNGS_Rivn..MvlKilometros
+    where mkm_ecd_patente = @mkm_ecd_patente
+      and deleted = 1
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.MVLKILOMETROS_FPACK to tngsmodulos
+
+print ' '
+go
+
+/*--------------------------------------------------------------------------
+// Fin del script de creacion de los SP de la tabla: MvlKilometros
+//--------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------
+//                         TNG Software SPs Generator
+//----------------------------------------------------------------------------
+// Fecha       : 21/10/2013 16:24
 // Sistema     : Rivn
 // Tabla       : OrdenesTrabajo
 //----------------------------------------------------------------------------
@@ -8411,7 +10868,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 21/10/2013 14:30
+// Fecha       : 21/10/2013 16:24
 // Sistema     : Rivn
 // Tabla       : OtItems
 //----------------------------------------------------------------------------
@@ -9292,7 +11749,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 21/10/2013 14:30
+// Fecha       : 21/10/2013 16:24
 // Sistema     : Rivn
 // Tabla       : Parametros
 //----------------------------------------------------------------------------
@@ -9824,7 +12281,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 21/10/2013 14:30
+// Fecha       : 21/10/2013 16:24
 // Sistema     : Rivn
 // Tabla       : Reparaciones
 //----------------------------------------------------------------------------
@@ -9878,14 +12335,15 @@ begin
          Select rep_cd6_cod,
                 rep_xde_des,
                 cat_des_des as rep_des_des,
-                rep_rcd_cat,
+                rep_rcd_codcat,
+                rep_cd1_solicitadetalle,
                 TNGS_Rivn..Reparaciones.instante,
                 TNGS_Rivn..Reparaciones.deleted,
                 TNGS_Rivn..Reparaciones.usuario,
                 TNGS_Rivn..Reparaciones.version
            from TNGS_Rivn..Reparaciones
                 join TNGS_Rivn..Categorias
-                  on rep_rcd_cat = cat_rcd_cod
+                  on rep_   _ = cat_rcd_cod
           where TNGS_Rivn..Reparaciones.deleted = 0
           order by rep_cd6_cod
       end
@@ -9894,14 +12352,15 @@ begin
          Select rep_cd6_cod,
                 rep_xde_des,
                 cat_des_des as rep_des_des,
-                rep_rcd_cat,
+                rep_rcd_codcat,
+                rep_cd1_solicitadetalle,
                 TNGS_Rivn..Reparaciones.instante,
                 TNGS_Rivn..Reparaciones.deleted,
                 TNGS_Rivn..Reparaciones.usuario,
                 TNGS_Rivn..Reparaciones.version
            from TNGS_Rivn..Reparaciones
                 join TNGS_Rivn..Categorias
-                  on rep_rcd_cat = cat_rcd_cod
+                  on rep_   _ = cat_rcd_cod
           order by rep_cd6_cod
       end
 
@@ -9999,14 +12458,15 @@ begin
          Select rep_cd6_cod,
                 rep_xde_des,
                 cat_des_des as rep_des_des,
-                rep_rcd_cat,
+                rep_rcd_codcat,
+                rep_cd1_solicitadetalle,
                 TNGS_Rivn..Reparaciones.instante,
                 TNGS_Rivn..Reparaciones.deleted,
                 TNGS_Rivn..Reparaciones.usuario,
                 TNGS_Rivn..Reparaciones.version
            from TNGS_Rivn..Reparaciones
                 join TNGS_Rivn..Categorias
-                  on rep_rcd_cat = cat_rcd_cod
+                  on rep_   _ = cat_rcd_cod
           where rep_cd6_cod = @rep_cd6_cod
             and TNGS_Rivn..Reparaciones.deleted = 0
       end
@@ -10015,14 +12475,15 @@ begin
          Select rep_cd6_cod,
                 rep_xde_des,
                 cat_des_des as rep_des_des,
-                rep_rcd_cat,
+                rep_rcd_codcat,
+                rep_cd1_solicitadetalle,
                 TNGS_Rivn..Reparaciones.instante,
                 TNGS_Rivn..Reparaciones.deleted,
                 TNGS_Rivn..Reparaciones.usuario,
                 TNGS_Rivn..Reparaciones.version
            from TNGS_Rivn..Reparaciones
                 join TNGS_Rivn..Categorias
-                  on rep_rcd_cat = cat_rcd_cod
+                  on rep_   _ = cat_rcd_cod
           where rep_cd6_cod = @rep_cd6_cod
       end
 
@@ -10041,87 +12502,12 @@ go
 ---////////////////////////////////////////////////////////
 ---
 --- <summary>
---- Busca los registros de una clave foranea
---- </summary>
---- <param name="@rep_rcd_cat">categoria</param>
---- <param name="@onlyactive">Flag de SoloActivos</param>
----
----////////////////////////////////////////////////////////
-
-print 'Store Procedure: dbo.REPARACIONES_FSEARCH'
-
-if exists (select * from sysobjects where id = object_id('dbo.REPARACIONES_FSEARCH'))
-begin
-   print '       - Borrando el viejo SP'
-   drop procedure dbo.REPARACIONES_FSEARCH
-end
-go
-
-print '       - Creando el nuevo SP'
-go
-
-create procedure dbo.REPARACIONES_FSEARCH
-(
-@rep_rcd_cat tngs_codigo_r,
-@onlyactive tngs_valor
-)
-as
-begin
-
-   if @onlyactive = 1
-      begin
-         Select rep_cd6_cod,
-                rep_xde_des,
-                cat_des_des as rep_des_des,
-                rep_rcd_cat,
-                TNGS_Rivn..Reparaciones.instante,
-                TNGS_Rivn..Reparaciones.deleted,
-                TNGS_Rivn..Reparaciones.usuario,
-                TNGS_Rivn..Reparaciones.version
-           from TNGS_Rivn..Reparaciones
-                join TNGS_Rivn..Categorias
-                  on rep_rcd_cat = cat_rcd_cod
-          where rep_rcd_cat = @rep_rcd_cat
-            and TNGS_Rivn..Reparaciones.deleted = 0
-          order by rep_cd6_cod
-      end
-   else
-      begin
-         Select rep_cd6_cod,
-                rep_xde_des,
-                cat_des_des as rep_des_des,
-                rep_rcd_cat,
-                TNGS_Rivn..Reparaciones.instante,
-                TNGS_Rivn..Reparaciones.deleted,
-                TNGS_Rivn..Reparaciones.usuario,
-                TNGS_Rivn..Reparaciones.version
-           from TNGS_Rivn..Reparaciones
-                join TNGS_Rivn..Categorias
-                  on rep_rcd_cat = cat_rcd_cod
-          where rep_rcd_cat = @rep_rcd_cat
-          order by rep_cd6_cod
-      end
-
-fin:
-
-end
-go
-
-print '       - Asignando permisos al nuevo SP'
-
-grant execute on dbo.REPARACIONES_FSEARCH to tngsmodulos
-
-print ' '
-go
-
----////////////////////////////////////////////////////////
----
---- <summary>
 --- Inserta un registro en la tabla
 --- </summary>
 --- <param name="@rep_cd6_cod">codigo</param>
 --- <param name="@rep_xde_des">descripcion</param>
---- <param name="@rep_rcd_cat">categoria</param>
+--- <param name="@rep_rcd_codcat">categoria</param>
+--- <param name="@rep_cd1_solicitadetalle">Se Solicita Detalle</param>
 --- <param name="@usuario">Usuario que genera el insert</param>
 ---
 ---////////////////////////////////////////////////////////
@@ -10142,7 +12528,8 @@ create procedure dbo.REPARACIONES_INSERT
 (
 @rep_cd6_cod tngs_codigo_6,
 @rep_xde_des tngs_descripcion_x,
-@rep_rcd_cat tngs_codigo_r,
+@rep_rcd_codcat tngs_codigo_r,
+@rep_cd1_solicitadetalle tngs_codigo_1,
 @usuario tngs_nombre
 )
 as
@@ -10152,7 +12539,8 @@ begin
    values (
            @rep_cd6_cod,
            @rep_xde_des,
-           @rep_rcd_cat,
+           @rep_rcd_codcat,
+           @rep_cd1_solicitadetalle,
            getdate(), 0, @usuario, 1
           )
 
@@ -10175,7 +12563,8 @@ go
 --- </summary>
 --- <param name="@rep_cd6_cod">codigo</param>
 --- <param name="@rep_xde_des">descripcion</param>
---- <param name="@rep_rcd_cat">categoria</param>
+--- <param name="@rep_rcd_codcat">categoria</param>
+--- <param name="@rep_cd1_solicitadetalle">Se Solicita Detalle</param>
 --- <param name="@usuario">Usuario que genera el update</param>
 ---
 ---////////////////////////////////////////////////////////
@@ -10196,7 +12585,8 @@ create procedure dbo.REPARACIONES_UPDATE
 (
 @rep_cd6_cod tngs_codigo_6,
 @rep_xde_des tngs_descripcion_x,
-@rep_rcd_cat tngs_codigo_r,
+@rep_rcd_codcat tngs_codigo_r,
+@rep_cd1_solicitadetalle tngs_codigo_1,
 @usuario tngs_nombre
 )
 as
@@ -10204,7 +12594,8 @@ begin
 
    Update TNGS_Rivn..Reparaciones
       set rep_xde_des= @rep_xde_des,
-          rep_rcd_cat= @rep_rcd_cat,
+          rep_rcd_codcat= @rep_rcd_codcat,
+          rep_cd1_solicitadetalle= @rep_cd1_solicitadetalle,
           version = ((version+1) % 32767),
           instante= getdate(),
           usuario = @usuario
@@ -10274,62 +12665,6 @@ go
 ---////////////////////////////////////////////////////////
 ---
 --- <summary>
---- Borra lógicamente un registro por clave foranea
---- </summary>
---- <param name="@rep_rcd_cat">categoria</param>
---- <param name="@instante">Instante del delete</param>
---- <param name="@usuario">Usuario que realiza el delete</param>
----
----////////////////////////////////////////////////////////
-
-print 'Store Procedure: dbo.REPARACIONES_FDELETE'
-
-if exists (select * from sysobjects where id = object_id('dbo.REPARACIONES_FDELETE'))
-begin
-   print '       - Borrando el viejo SP'
-   drop procedure dbo.REPARACIONES_FDELETE
-end
-go
-
-print '       - Creando el nuevo SP'
-go
-
-create procedure dbo.REPARACIONES_FDELETE
-(
-@rep_rcd_cat tngs_codigo_r,
-@instante tngs_fecyhor,
-@usuario tngs_nombre
-)
-as
-begin
-
-   if datepart(yyyy, @instante) = 1900
-      begin
-         select @instante= getdate()
-      end
-
-   Update TNGS_Rivn..Reparaciones
-      set deleted = 1,
-          version = ((version+1) % 32767),
-          instante= @instante,
-          usuario = @usuario
-    where rep_rcd_cat = @rep_rcd_cat
-
-fin:
-
-end
-go
-
-print '       - Asignando permisos al nuevo SP'
-
-grant execute on dbo.REPARACIONES_FDELETE to tngsmodulos
-
-print ' '
-go
-
----////////////////////////////////////////////////////////
----
---- <summary>
 --- Recupera un registro
 --- </summary>
 --- <param name="@rep_cd6_cod">codigo</param>
@@ -10372,70 +12707,6 @@ go
 print '       - Asignando permisos al nuevo SP'
 
 grant execute on dbo.REPARACIONES_RECALL to tngsmodulos
-
-print ' '
-go
-
----////////////////////////////////////////////////////////
----
---- <summary>
---- Recupera lógicamente los registros de una clave foranea
---- </summary>
---- <param name="@rep_rcd_cat">categoria</param>
---- <param name="@instante">Instante de referencia</param>
---- <param name="@usuario">Usuario que realiza el recall</param>
----
----////////////////////////////////////////////////////////
-
-print 'Store Procedure: dbo.REPARACIONES_FRECALL'
-
-if exists (select * from sysobjects where id = object_id('dbo.REPARACIONES_FRECALL'))
-begin
-   print '       - Borrando el viejo SP'
-   drop procedure dbo.REPARACIONES_FRECALL
-end
-go
-
-print '       - Creando el nuevo SP'
-go
-
-create procedure dbo.REPARACIONES_FRECALL
-(
-@rep_rcd_cat tngs_codigo_r,
-@instante tngs_fecyhor,
-@usuario tngs_nombre
-)
-as
-begin
-
-   if datepart(yyyy, @instante) = 1900
-      begin
-         Update TNGS_Rivn..Reparaciones
-            set deleted = 0,
-                version = ((version+1) % 32767),
-                instante= getdate(),
-                usuario = @usuario
-          where rep_rcd_cat = @rep_rcd_cat
-      end
-   else
-      begin
-         Update TNGS_Rivn..Reparaciones
-            set deleted = 0,
-                version = ((version+1) % 32767),
-                instante= getdate(),
-                usuario = @usuario
-          where rep_rcd_cat = @rep_rcd_cat
-            and instante= @instante
-      end
-
-fin:
-
-end
-go
-
-print '       - Asignando permisos al nuevo SP'
-
-grant execute on dbo.REPARACIONES_FRECALL to tngsmodulos
 
 print ' '
 go
@@ -10488,51 +12759,6 @@ go
 ---////////////////////////////////////////////////////////
 ---
 --- <summary>
---- Borra físicamente un registro por clave foránea
---- </summary>
---- <param name="@rep_rcd_cat">categoria</param>
---- <param name="@usuario">Usuario que realiza el drop</param>
----
----////////////////////////////////////////////////////////
-
-print 'Store Procedure: dbo.REPARACIONES_FDROP'
-
-if exists (select * from sysobjects where id = object_id('dbo.REPARACIONES_FDROP'))
-begin
-   print '       - Borrando el viejo SP'
-   drop procedure dbo.REPARACIONES_FDROP
-end
-go
-
-print '       - Creando el nuevo SP'
-go
-
-create procedure dbo.REPARACIONES_FDROP
-(
-@rep_rcd_cat tngs_codigo_r,
-@usuario tngs_nombre
-)
-as
-begin
-
-   Delete from TNGS_Rivn..Reparaciones
-    where rep_rcd_cat = @rep_rcd_cat
-
-fin:
-
-end
-go
-
-print '       - Asignando permisos al nuevo SP'
-
-grant execute on dbo.REPARACIONES_FDROP to tngsmodulos
-
-print ' '
-go
-
----////////////////////////////////////////////////////////
----
---- <summary>
 --- Borra físicamente los registros borrados lógicamente
 --- </summary>
 --- <param name="@usuario">Usuario que realiza el delete</param>
@@ -10569,52 +12795,6 @@ go
 print '       - Asignando permisos al nuevo SP'
 
 grant execute on dbo.REPARACIONES_PACK to tngsmodulos
-
-print ' '
-go
-
----////////////////////////////////////////////////////////
----
---- <summary>
---- Borra físicamente los registro borrados lógicamente por clave foránea
---- </summary>
---- <param name="@rep_rcd_cat">categoria</param>
---- <param name="@usuario">Usuario que realiza el pack</param>
----
----////////////////////////////////////////////////////////
-
-print 'Store Procedure: dbo.REPARACIONES_FPACK'
-
-if exists (select * from sysobjects where id = object_id('dbo.REPARACIONES_FPACK'))
-begin
-   print '       - Borrando el viejo SP'
-   drop procedure dbo.REPARACIONES_FPACK
-end
-go
-
-print '       - Creando el nuevo SP'
-go
-
-create procedure dbo.REPARACIONES_FPACK
-(
-@rep_rcd_cat tngs_codigo_r,
-@usuario tngs_nombre
-)
-as
-begin
-
-   Delete from TNGS_Rivn..Reparaciones
-    where rep_rcd_cat = @rep_rcd_cat
-      and deleted = 1
-
-fin:
-
-end
-go
-
-print '       - Asignando permisos al nuevo SP'
-
-grant execute on dbo.REPARACIONES_FPACK to tngsmodulos
 
 print ' '
 go
@@ -10671,7 +12851,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 21/10/2013 14:30
+// Fecha       : 21/10/2013 16:24
 // Sistema     : Rivn
 // Tabla       : Talonarios
 //----------------------------------------------------------------------------

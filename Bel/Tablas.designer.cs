@@ -14,7 +14,7 @@ namespace Rivn.Bel
     //----------------------------------------------------------------------------
     //                         TNG Software BEL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 21/10/2013 15:07
+    // Fecha                    : 21/10/2013 16:24
     // Sistema                  : Rivn
     // Clase para Administrar   : Tablas de Rivn.
     //----------------------------------------------------------------------------
@@ -1027,6 +1027,572 @@ namespace Rivn.Bel
                 foreach (EEquipamento l_entItem in this) {
                     // Si existe -> la devolvemos
                     if (l_entItem.Cod == p_strCod)
+                        return l_entItem;
+                }
+
+                // No existe
+                return null;
+            }
+        }
+        #endregion
+    }
+    #endregion
+
+    #region Entidad: Estacion
+    /// <summary>
+    /// Clase que representa la Entidad: Estacion
+    /// </summary>
+    public sealed partial class EEstacion : Entidad
+    {
+        #region Constructores
+        /// <summary>
+        /// Constructor
+        /// Llena la entidad a partir de una Row de la tabla: Estaciones
+        /// </summary>
+        /// <param name="p_drDatos">DataRow con los datos de la entidad</param>
+        public EEstacion(DataRow p_drDatos) :
+            base(p_drDatos)
+        {
+        }
+
+        /// <summary>
+        /// Construye una entidad desde un XML: Estacion
+        /// </summary>
+        /// <param name="p_strXML">Datos en XML</param>
+        /// <param name="p_bEsNueva">T- La Entidad es Nueva / F- No</param>
+        public EEstacion(string p_strXML) :
+            this(p_strXML, false)
+        {
+        }
+
+        /// <summary>
+        /// Construye una entidad desde un XML: Estacion
+        /// </summary>
+        /// <param name="p_strXML">Datos en XML</param>
+        public EEstacion(string p_strXML,
+                         bool p_bEsNueva)
+        {
+            // Fijamos la condicion de entidad nueva
+            base.m_bNew= p_bEsNueva;
+
+            // Obtenemos el Nodo de datos del XML
+            XmlDocument l_xdocData= new XmlDocument();
+            l_xdocData.InnerXml= p_strXML;
+            XmlNode l_xndData= l_xdocData.ChildNodes[0];
+
+            // Creamos una tabla compatible con la entidad
+            DataTable l_dtTemp= new DataTable();
+            l_dtTemp.Columns.AddRange(EEstacion.Struct);
+
+            // Creamos una row a partir de la tabla creada y la
+            // llenamos con los valores iniciales
+            DataRow l_drTemp= l_dtTemp.NewRow();
+
+            l_drTemp["ets_rcd_cod"]= XMLRuts.ExtractXAttr(l_xndData, "ets_rcd_cod");
+            l_drTemp["ets_des_des"]= XMLRuts.ExtractXAttr(l_xndData, "ets_des_des");
+            l_drTemp["ets_ede_domicilio"]= XMLRuts.ExtractXAttr(l_xndData, "ets_ede_domicilio");
+            l_drTemp["ets_des_contacto"]= XMLRuts.ExtractXAttr(l_xndData, "ets_des_contacto");
+            l_drTemp["ets_ete_telefono"]= XMLRuts.ExtractXAttr(l_xndData, "ets_ete_telefono");
+
+            // Llenamos los campos fijos
+            XML2FixedFields(ref l_drTemp, l_xndData);
+
+            // Llamamos al metodo fijo
+            fNewFromXML(ref l_drTemp, l_xndData);
+
+            // Agregamos la Row creada a la tabla creada y creamos
+            // una entidad a partir de los datos
+            l_dtTemp.Rows.Add(l_drTemp);
+            SetInternalData(l_dtTemp, l_dtTemp.Rows[0]);
+        }
+
+        /// <summary>
+        /// Constructor 
+        /// Privado para crear clases vacias
+        /// </summary>
+        /// <param name="p_dtDatos">DataTable con 1 registro con los datos de la entidad</param>
+        private EEstacion(DataTable p_dtDatos) :
+            base(p_dtDatos)
+        {
+        }
+        #endregion
+
+        #region Metodos publicos de la clase
+        //---------------------------------------------------------------
+        // Metodos públicos de la clase
+        //---------------------------------------------------------------
+
+        /// <summary>
+        /// Construye una entidad vacía: Estacion
+        /// </summary>
+        /// <returns>Entidad vacia: Estacion</returns>
+        public static EEstacion NewEmpty()
+        {
+            // Creamos una tabla compatible con la entidad
+            DataTable l_dtTemp= new DataTable();
+            l_dtTemp.Columns.AddRange(EEstacion.Struct);
+
+            // Creamos una row a partir de la tabla creada y la
+            // llenamos con los valores iniciales
+            DataRow l_drTemp= l_dtTemp.NewRow();
+
+            l_drTemp["ets_rcd_cod"]= "";
+            l_drTemp["ets_des_des"]= "";
+            l_drTemp["ets_ede_domicilio"]= "";
+            l_drTemp["ets_des_contacto"]= "";
+            l_drTemp["ets_ete_telefono"]= "";
+
+            // Agregamos la Row creada a la tabla creada y creamos
+            // una entidad a partir de la DataTable de 1 registro
+            l_dtTemp.Rows.Add(l_drTemp);
+            EEstacion l_entRet= new EEstacion(l_dtTemp);
+            l_dtTemp.Dispose();
+            return l_entRet;
+        }
+
+        /// <summary>
+        /// Construye una entidad con datos de parametro: Estacion
+        /// </summary>
+        /// <param name="p_strCod">CodigoEstacion</param>
+        /// <param name="p_strDes">descripcion</param>
+        /// <param name="p_strDomicilio">Domicilio</param>
+        /// <param name="p_strContacto">Contacto</param>
+        /// <param name="p_strTelefono">Telefono</param>
+        /// <returns>Entidad: Estacion</returns>
+        public static EEstacion NewFilled(string p_strCod,
+                                          string p_strDes,
+                                          string p_strDomicilio,
+                                          string p_strContacto,
+                                          string p_strTelefono)
+        {
+            // Creamos una tabla compatible con la entidad
+            DataTable l_dtTemp= new DataTable();
+            l_dtTemp.Columns.AddRange(EEstacion.Struct);
+
+            // Creamos una row a partir de la tabla creada y la
+            // llenamos con los valores iniciales
+            DataRow l_drTemp= l_dtTemp.NewRow();
+
+            l_drTemp["ets_rcd_cod"]= p_strCod;
+            l_drTemp["ets_des_des"]= p_strDes;
+            l_drTemp["ets_ede_domicilio"]= p_strDomicilio;
+            l_drTemp["ets_des_contacto"]= p_strContacto;
+            l_drTemp["ets_ete_telefono"]= p_strTelefono;
+
+            // Agregamos la Row creada a la tabla creada y creamos
+            // una entidad a partir de la DataTable de 1 registro
+            l_dtTemp.Rows.Add(l_drTemp);
+            EEstacion l_entRet= new EEstacion(l_dtTemp);
+            l_dtTemp.Dispose();
+            return l_entRet;
+        }
+        #endregion
+
+        #region Formateadores
+
+        //---------------------------------------------------------------
+        // Metodos estáticos (Formateo de codigos alineados a derecha)
+        //---------------------------------------------------------------
+
+        /// <summary>
+        /// Formatea una string: CodigoEstacion
+        /// </summary>
+        public static string FrmtCod(string p_strCod)
+        {
+            if (p_strCod.Trim().Length > 2)
+                p_strCod= p_strCod.Trim().Substring(0,2);
+
+            return p_strCod.Trim().PadLeft(2).ToUpper();
+        }
+        #endregion
+
+        #region Propiedades de la clase
+        //---------------------------------------------------------------
+        // Propiedades de la clase
+        //---------------------------------------------------------------
+
+        /// <summary>
+        /// Devuelve la estructura de la tabla interna de la entidad
+        /// </summary>
+        public static DataColumn[] Struct
+        {
+            get {
+                // Creamos el vector de DataColumns y lo llenamos
+                DataColumn[] l_dcStruct= new DataColumn[9];
+
+                l_dcStruct[0]= new DataColumn("ets_rcd_cod", typeof(string));
+                l_dcStruct[1]= new DataColumn("ets_des_des", typeof(string));
+                l_dcStruct[2]= new DataColumn("ets_ede_domicilio", typeof(string));
+                l_dcStruct[3]= new DataColumn("ets_des_contacto", typeof(string));
+                l_dcStruct[4]= new DataColumn("ets_ete_telefono", typeof(string));
+                EEstacion.FillFixedFields(ref l_dcStruct, 5);
+
+                // Devolvemos el vector creado
+                return l_dcStruct;
+            }
+        }
+
+        /// <summary>
+        /// CodigoEstacion
+        /// </summary>
+        public string Cod
+        {
+            get {return (string) InternalData["ets_rcd_cod"];}
+            set {InternalData["ets_rcd_cod"]= EEstacion.FrmtCod(value);}
+        }
+
+        /// <summary>
+        /// descripcion
+        /// </summary>
+        public string Des
+        {
+            get {return ((string) InternalData["ets_des_des"]).Trim();}
+            set {
+                if (value.Trim().Length > 30) value= value.Trim().Substring(0,30);
+                InternalData["ets_des_des"]= value.Trim().ToUpper();
+            }
+        }
+
+        /// <summary>
+        /// Domicilio
+        /// </summary>
+        public string Domicilio
+        {
+            get {return ((string) InternalData["ets_ede_domicilio"]).Trim();}
+            set {
+                if (value.Trim().Length > 60) value= value.Trim().Substring(0,60);
+                InternalData["ets_ede_domicilio"]= value.Trim().ToUpper();
+            }
+        }
+
+        /// <summary>
+        /// Contacto
+        /// </summary>
+        public string Contacto
+        {
+            get {return (string) InternalData["ets_des_contacto"];}
+            set {
+                if (value.Trim().Length > 30) value= value.Trim().Substring(0,30);
+                InternalData["ets_des_contacto"]= value.Trim().PadLeft(30);
+            }
+        }
+
+        /// <summary>
+        /// Telefono
+        /// </summary>
+        public string Telefono
+        {
+            get {return ((string) InternalData["ets_ete_telefono"]).Trim();}
+            set {
+                if (value.Trim().Length > 60) value= value.Trim().Substring(0,60);
+                InternalData["ets_ete_telefono"]= value.Trim().ToUpper();
+            }
+        }
+
+        /// <summary>
+        /// Devuelve la entidad [EEstacion] como XMLDocument en formato string
+        /// </summary>
+        public string XMLData
+        {
+            get {return XMLEncode.InnerXml;}
+        }
+
+        /// <summary>
+        /// Devuelve la entidad [EEstacion] como XMLDocument
+        /// </summary>
+        public XmlDocument XMLEncode
+        {
+            get {
+                //Creamos un Nodo de un Documento XML
+                XmlDocument l_xdocData= new XmlDocument();
+                XmlNode l_xndEntidad= l_xdocData.CreateNode(XmlNodeType.Element, "EEstacion", null);
+
+                // Asignamos los atributos al nodo
+                l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "ets_rcd_cod", Cod));
+                l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "ets_des_des", Des));
+                l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "ets_ede_domicilio", Domicilio));
+                l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "ets_des_contacto", Contacto));
+                l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "ets_ete_telefono", Telefono));
+
+                // Asignamos los campos fijos
+                FixedFields2XML(l_xdocData, ref l_xndEntidad);
+
+                // Llamamos al metodo fijo
+                fAddXMLData(ref l_xdocData, ref l_xndEntidad);
+
+                // Armamos el documento y lo devolvemos
+                l_xdocData.AppendChild(l_xndEntidad);
+                return l_xdocData;
+            }
+        }
+        #endregion
+    }
+    #endregion
+
+    #region Lista-Entidad: Estaciones
+    /// <summary>
+    /// Clase que representa la Lista-Entidad: Estaciones
+    /// </summary>
+    public sealed partial class LEEstaciones : ListaEntidades
+    {
+        #region Constructores
+        /// <summary>
+        /// Constructor
+        /// Llena la lista-entidad a partir de una Tabla: Estaciones
+        /// </summary>
+        /// <param name="p_dtDatos">DataTable con los datos de la entidad</param>
+        public LEEstaciones(DataTable p_dtDatos) :
+            base(p_dtDatos)
+        {
+        }
+
+        /// <summary>
+        /// Constructor
+        /// Llena la lista-entidad a partir de un XML
+        /// </summary>
+        /// <param name="p_dtDatos">DataTable con los datos de la entidad</param>
+        public LEEstaciones(string p_strXMLData) :
+            base(EEstacion.Struct)
+        {
+            // Creamos el documento XML
+            XmlDocument l_xdocData= new XmlDocument();
+            l_xdocData.InnerXml= p_strXMLData;
+            XmlElement l_xelTemp= l_xdocData.DocumentElement;
+
+            // Agregamos cada item a la LE
+            foreach (XmlNode l_xndItem in l_xelTemp.ChildNodes)
+                AddEntity(new EEstacion(l_xndItem.OuterXml));
+        }
+
+        /// <summary>
+        /// Constructor
+        /// Constuye la lista-entidad vacia a partir de una lista de columnas
+        /// correspondiente a una entidad
+        /// </summary>
+        /// <param name="p_dcEstructura">Columnas de la estructura</param>
+        private LEEstaciones(DataColumn[] p_dcEstructura) :
+            base(p_dcEstructura)
+        {
+        }
+        #endregion
+
+        #region Metodos publicos de la clase
+        //---------------------------------------------------------------
+        // Metodos publicos
+        //---------------------------------------------------------------
+
+        /// <summary>
+        /// Construye una lista-entidad vacía: Estaciones
+        /// </summary>
+        /// <returns>Lista-Entidad vacia: Estaciones</returns>
+        public static LEEstaciones NewEmpty()
+        {
+            return new LEEstaciones(EEstacion.Struct);
+        }
+
+        /// <summary>
+        /// Agrega una entidad a la lista
+        /// </summary>
+        /// <param name="p_entEEstacion">Entidad a agregar</param>
+        public void AddEntity(EEstacion p_entEEstacion)
+        {
+            base.AddEntity(p_entEEstacion);
+        }
+
+        /// <summary>
+        /// Remueve una entidad [Estacion] por clave
+        /// </summary>
+        public int RemoveEntity(string p_strCod)
+        {
+            // Buscamos la fila mediante un filtro
+            int l_iRet= 0;
+
+            m_dtDatos.DefaultView.RowFilter= 
+                "ets_rcd_cod = " + Ruts.Co(EEstacion.FrmtCod(p_strCod));
+
+            if (m_dtDatos.DefaultView.Count == 1) {
+                // La borramos
+                m_dtDatos.Rows.Remove(m_dtDatos.DefaultView[0].Row);
+                l_iRet= 1;
+            }
+
+            // Quito el filtro
+            m_dtDatos.DefaultView.RowFilter= "";
+            return l_iRet;
+        }
+
+        /// <summary>
+        /// Verifca si una entidad [Estacion] esta en la lista
+        /// </summary>
+        public bool Contains(string p_strCod)
+        {
+            using (EEstacion l_entTemp= this[p_strCod])
+            {
+                // Indicamos si existe o no
+                return (l_entTemp != null);
+            }
+        }
+
+        /// <summary>
+        /// Devuelve el enumerador de la lista-entidades: Estaciones
+        /// </summary>
+        /// <returns>Enumerador de las entidades en la lista</returns>
+        public new IEnumerator GetEnumerator() 
+        {
+            EEstacion l_entTemp= null;
+
+            foreach (DataRowView l_drvTemp in m_dtDatos.DefaultView) {
+                l_entTemp= new EEstacion(l_drvTemp.Row);
+                yield return l_entTemp;
+            }
+        }
+
+        /// <summary>
+        /// Devuelve la lista entidad como un array de entidades: Estaciones
+        /// </summary>
+        /// <returns>Array de entidades</returns>
+        public ArrayList GetAsArray()
+        {
+            // Llenamos el array con las entidades
+            ArrayList l_alRet= new ArrayList();
+
+            foreach (EEstacion l_entItem in this)
+                l_alRet.Add(l_entItem);
+
+            return l_alRet;
+        }
+
+        /// <summary>
+        /// Devuelve la lista entidad como una LET: Estaciones
+        /// </summary>
+        /// <returns>Lista Entidad Tipada</returns>
+        public LETEstaciones GetAsLET()
+        {
+            // Llenamos la lista tipada
+            LETEstaciones l_lentRet= new LETEstaciones();
+
+            foreach (EEstacion l_entItem in this)
+                l_lentRet.Add(l_entItem);
+
+            return l_lentRet;
+        }
+        #endregion
+
+        #region Propiedades de la clase
+        //---------------------------------------------------------------
+        // Propiedades de la clase
+        //---------------------------------------------------------------
+
+        /// <summary>
+        /// Indexer para acceder a cada entidad [Estacion] por indice
+        /// </summary>
+        public new EEstacion this[long p_lRow]
+        {
+            get {
+                // Recuperamos la fila solicitada
+                DataRow l_drDatos= base[(int) p_lRow];
+                if (l_drDatos == null) return null;
+
+                // Devolvemos una entidad Estacion con los datos de la fila
+                return new EEstacion(l_drDatos);
+            }
+        }
+
+        /// <summary>
+        /// Indexer para acceder a cada entidad [Estacion] por clave
+        /// </summary>
+        public EEstacion this[string p_strCod]
+        {
+            get {
+                // Buscamos la fila mediante un filtro
+                DataRow l_drData= null;
+
+                m_dtDatos.DefaultView.RowFilter= 
+                    "ets_rcd_cod = " + Ruts.Co(EEstacion.FrmtCod(p_strCod));
+
+                if (m_dtDatos.DefaultView.Count == 1)
+                    l_drData= m_dtDatos.DefaultView[0].Row;
+
+                // Quito el filtro
+                m_dtDatos.DefaultView.RowFilter= "";
+
+                // Devolvemos una entidad Estacion con los datos de la fila
+                if (l_drData == null) return null;
+                return new EEstacion(l_drData);
+            }
+        }
+
+        /// <summary>
+        /// Devuelve la ListaEntidad como XML en string
+        /// </summary>
+        public string XMLData
+        {
+            get {return XMLEncode.InnerXml;}
+        }
+
+        /// <summary>
+        /// Devuelve la ListaEntidad como XML
+        /// </summary>
+        public XmlDocument XMLEncode
+        {
+            get {
+                // Construimos el XML
+                XmlDocument l_xdocData= new XmlDocument();
+                XmlNode l_xndEntidad= l_xdocData.CreateNode(XmlNodeType.Element, "LEEstaciones", null);
+
+                foreach (EEstacion l_entDExtra in this)
+                    l_xndEntidad.AppendChild(l_xdocData.ImportNode(l_entDExtra.XMLEncode.ChildNodes[0], false));
+
+                l_xdocData.AppendChild(l_xndEntidad);
+                return l_xdocData;
+            }
+        }
+        #endregion
+    }
+    #endregion
+
+    #region Lista-Entidad-Tipada: Estaciones
+    /// <summary>
+    /// Clase que representa la Lista-Entidad-Tipada: Estaciones
+    /// </summary>
+    public sealed partial class LETEstaciones : LET<EEstacion>
+    {
+        #region Metodos publicos de la clase
+        //---------------------------------------------------------------
+        // Metodos publicos
+        //---------------------------------------------------------------
+
+        /// <summary>
+        /// Devuelve la lista entidad tipada como una LE: Estaciones
+        /// </summary>
+        /// <returns>Lista Entidad</returns>
+        public LEEstaciones GetAsLE()
+        {
+            // Llenamos la lista
+            LEEstaciones l_lentRet= LEEstaciones.NewEmpty();
+
+            foreach (EEstacion l_entItem in this)
+                l_lentRet.AddEntity(l_entItem);
+
+            return l_lentRet;
+        }
+        #endregion
+
+        #region Propiedades de la clase
+        //---------------------------------------------------------------
+        // Propiedades de la clase
+        //---------------------------------------------------------------
+
+        /// <summary>
+        /// Indexer para acceder a cada entidad [Estacion] por clave
+        /// </summary>
+        public EEstacion this[string p_strCod]
+        {
+            get {
+                // Buscamos la entidad
+                foreach (EEstacion l_entItem in this) {
+                    // Si existe -> la devolvemos
+                    if (l_entItem.Cod == EEstacion.FrmtCod(p_strCod))
                         return l_entItem;
                 }
 
@@ -2072,6 +2638,549 @@ namespace Rivn.Bel
                 foreach (EModelo l_entItem in this) {
                     // Si existe -> la devolvemos
                     if (l_entItem.Cod == EModelo.FrmtCod(p_strCod))
+                        return l_entItem;
+                }
+
+                // No existe
+                return null;
+            }
+        }
+        #endregion
+    }
+    #endregion
+
+    #region Entidad: Reparacion
+    /// <summary>
+    /// Clase que representa la Entidad: Reparacion
+    /// </summary>
+    public sealed partial class EReparacion : Entidad
+    {
+        #region Constructores
+        /// <summary>
+        /// Constructor
+        /// Llena la entidad a partir de una Row de la tabla: Reparaciones
+        /// </summary>
+        /// <param name="p_drDatos">DataRow con los datos de la entidad</param>
+        public EReparacion(DataRow p_drDatos) :
+            base(p_drDatos)
+        {
+        }
+
+        /// <summary>
+        /// Construye una entidad desde un XML: Reparacion
+        /// </summary>
+        /// <param name="p_strXML">Datos en XML</param>
+        /// <param name="p_bEsNueva">T- La Entidad es Nueva / F- No</param>
+        public EReparacion(string p_strXML) :
+            this(p_strXML, false)
+        {
+        }
+
+        /// <summary>
+        /// Construye una entidad desde un XML: Reparacion
+        /// </summary>
+        /// <param name="p_strXML">Datos en XML</param>
+        public EReparacion(string p_strXML,
+                           bool p_bEsNueva)
+        {
+            // Fijamos la condicion de entidad nueva
+            base.m_bNew= p_bEsNueva;
+
+            // Obtenemos el Nodo de datos del XML
+            XmlDocument l_xdocData= new XmlDocument();
+            l_xdocData.InnerXml= p_strXML;
+            XmlNode l_xndData= l_xdocData.ChildNodes[0];
+
+            // Creamos una tabla compatible con la entidad
+            DataTable l_dtTemp= new DataTable();
+            l_dtTemp.Columns.AddRange(EReparacion.Struct);
+
+            // Creamos una row a partir de la tabla creada y la
+            // llenamos con los valores iniciales
+            DataRow l_drTemp= l_dtTemp.NewRow();
+
+            l_drTemp["rep_cd6_cod"]= XMLRuts.ExtractXAttr(l_xndData, "rep_cd6_cod");
+            l_drTemp["rep_xde_des"]= XMLRuts.ExtractXAttr(l_xndData, "rep_xde_des");
+            l_drTemp["rep_rcd_codcat"]= XMLRuts.ExtractXAttr(l_xndData, "rep_rcd_codcat");
+            l_drTemp["rep_cd1_solicitadetalle"]= XMLRuts.ExtractXAttr(l_xndData, "rep_cd1_solicitadetalle");
+            l_drTemp["rep_des_des"]= XMLRuts.ExtractXAttr(l_xndData, "rep_des_des", false);
+
+            // Llenamos los campos fijos
+            XML2FixedFields(ref l_drTemp, l_xndData);
+
+            // Llamamos al metodo fijo
+            fNewFromXML(ref l_drTemp, l_xndData);
+
+            // Agregamos la Row creada a la tabla creada y creamos
+            // una entidad a partir de los datos
+            l_dtTemp.Rows.Add(l_drTemp);
+            SetInternalData(l_dtTemp, l_dtTemp.Rows[0]);
+        }
+
+        /// <summary>
+        /// Constructor 
+        /// Privado para crear clases vacias
+        /// </summary>
+        /// <param name="p_dtDatos">DataTable con 1 registro con los datos de la entidad</param>
+        private EReparacion(DataTable p_dtDatos) :
+            base(p_dtDatos)
+        {
+        }
+        #endregion
+
+        #region Metodos publicos de la clase
+        //---------------------------------------------------------------
+        // Metodos públicos de la clase
+        //---------------------------------------------------------------
+
+        /// <summary>
+        /// Construye una entidad vacía: Reparacion
+        /// </summary>
+        /// <returns>Entidad vacia: Reparacion</returns>
+        public static EReparacion NewEmpty()
+        {
+            // Creamos una tabla compatible con la entidad
+            DataTable l_dtTemp= new DataTable();
+            l_dtTemp.Columns.AddRange(EReparacion.Struct);
+
+            // Creamos una row a partir de la tabla creada y la
+            // llenamos con los valores iniciales
+            DataRow l_drTemp= l_dtTemp.NewRow();
+
+            l_drTemp["rep_cd6_cod"]= "";
+            l_drTemp["rep_xde_des"]= "";
+            l_drTemp["rep_rcd_codcat"]= "";
+            l_drTemp["rep_cd1_solicitadetalle"]= "";
+            l_drTemp["rep_des_des"]= DateTimeRuts.Empty;
+
+            // Agregamos la Row creada a la tabla creada y creamos
+            // una entidad a partir de la DataTable de 1 registro
+            l_dtTemp.Rows.Add(l_drTemp);
+            EReparacion l_entRet= new EReparacion(l_dtTemp);
+            l_dtTemp.Dispose();
+            return l_entRet;
+        }
+
+        /// <summary>
+        /// Construye una entidad con datos de parametro: Reparacion
+        /// </summary>
+        /// <param name="p_strCod">codigo</param>
+        /// <param name="p_strDes">descripcion</param>
+        /// <param name="p_strCodcat">categoria</param>
+        /// <param name="p_strSolicitadetalle">Se Solicita Detalle</param>
+        /// <returns>Entidad: Reparacion</returns>
+        public static EReparacion NewFilled(string p_strCod,
+                                            string p_strDes,
+                                            string p_strCodcat,
+                                            string p_strSolicitadetalle)
+        {
+            // Creamos una tabla compatible con la entidad
+            DataTable l_dtTemp= new DataTable();
+            l_dtTemp.Columns.AddRange(EReparacion.Struct);
+
+            // Creamos una row a partir de la tabla creada y la
+            // llenamos con los valores iniciales
+            DataRow l_drTemp= l_dtTemp.NewRow();
+
+            l_drTemp["rep_cd6_cod"]= p_strCod;
+            l_drTemp["rep_xde_des"]= p_strDes;
+            l_drTemp["rep_rcd_codcat"]= p_strCodcat;
+            l_drTemp["rep_cd1_solicitadetalle"]= p_strSolicitadetalle;
+            l_drTemp["rep_des_des"]= DateTimeRuts.Empty;
+
+            // Agregamos la Row creada a la tabla creada y creamos
+            // una entidad a partir de la DataTable de 1 registro
+            l_dtTemp.Rows.Add(l_drTemp);
+            EReparacion l_entRet= new EReparacion(l_dtTemp);
+            l_dtTemp.Dispose();
+            return l_entRet;
+        }
+        #endregion
+
+        #region Formateadores
+        #endregion
+
+        #region Propiedades de la clase
+        //---------------------------------------------------------------
+        // Propiedades de la clase
+        //---------------------------------------------------------------
+
+        /// <summary>
+        /// Devuelve la estructura de la tabla interna de la entidad
+        /// </summary>
+        public static DataColumn[] Struct
+        {
+            get {
+                // Creamos el vector de DataColumns y lo llenamos
+                DataColumn[] l_dcStruct= new DataColumn[9];
+
+                l_dcStruct[0]= new DataColumn("rep_cd6_cod", typeof(string));
+                l_dcStruct[1]= new DataColumn("rep_xde_des", typeof(string));
+                l_dcStruct[2]= new DataColumn("rep_des_des", typeof(DateTime));
+                l_dcStruct[3]= new DataColumn("rep_rcd_codcat", typeof(string));
+                l_dcStruct[4]= new DataColumn("rep_cd1_solicitadetalle", typeof(string));
+                EReparacion.FillFixedFields(ref l_dcStruct, 5);
+
+                // Devolvemos el vector creado
+                return l_dcStruct;
+            }
+        }
+
+        /// <summary>
+        /// codigo
+        /// </summary>
+        public string Cod
+        {
+            get {return (string) InternalData["rep_cd6_cod"];}
+            set {
+                if (value.Trim().Length > 6) value= value.Trim().Substring(0,6);
+                InternalData["rep_cd6_cod"]= value.Trim().ToUpper();
+            }
+        }
+
+        /// <summary>
+        /// descripcion
+        /// </summary>
+        public string Des
+        {
+            get {return ((string) InternalData["rep_xde_des"]).Trim();}
+            set {
+                if (value.Trim().Length > 120) value= value.Trim().Substring(0,120);
+                InternalData["rep_xde_des"]= value.Trim().ToUpper();
+            }
+        }
+
+        /// <summary>
+        /// categoria
+        /// </summary>
+        public string Codcat
+        {
+            get {return (string) InternalData["rep_rcd_codcat"];}
+            set {InternalData["rep_rcd_codcat"]= value;}
+        }
+
+        /// <summary>
+        /// Se Solicita Detalle
+        /// </summary>
+        public string Solicitadetalle
+        {
+            get {return (string) InternalData["rep_cd1_solicitadetalle"];}
+            set {InternalData["rep_cd1_solicitadetalle"]= value;}
+        }
+
+        /// <summary>
+        /// Title
+        /// </summary>
+        public DateTime Rep_des_des
+        {
+            get {return (DateTime) InternalData["rep_des_des"];}
+            set {InternalData["rep_des_des"]= value;}
+        }
+
+        /// <summary>
+        /// Devuelve la entidad [EReparacion] como XMLDocument en formato string
+        /// </summary>
+        public string XMLData
+        {
+            get {return XMLEncode.InnerXml;}
+        }
+
+        /// <summary>
+        /// Devuelve la entidad [EReparacion] como XMLDocument
+        /// </summary>
+        public XmlDocument XMLEncode
+        {
+            get {
+                //Creamos un Nodo de un Documento XML
+                XmlDocument l_xdocData= new XmlDocument();
+                XmlNode l_xndEntidad= l_xdocData.CreateNode(XmlNodeType.Element, "EReparacion", null);
+
+                // Asignamos los atributos al nodo
+                l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "rep_cd6_cod", Cod));
+                l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "rep_xde_des", Des));
+                l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "rep_rcd_codcat", Codcat));
+                l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "rep_cd1_solicitadetalle", Solicitadetalle));
+                l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "rep_des_des", Rep_des_des));
+
+                // Asignamos los campos fijos
+                FixedFields2XML(l_xdocData, ref l_xndEntidad);
+
+                // Llamamos al metodo fijo
+                fAddXMLData(ref l_xdocData, ref l_xndEntidad);
+
+                // Armamos el documento y lo devolvemos
+                l_xdocData.AppendChild(l_xndEntidad);
+                return l_xdocData;
+            }
+        }
+        #endregion
+    }
+    #endregion
+
+    #region Lista-Entidad: Reparaciones
+    /// <summary>
+    /// Clase que representa la Lista-Entidad: Reparaciones
+    /// </summary>
+    public sealed partial class LEReparaciones : ListaEntidades
+    {
+        #region Constructores
+        /// <summary>
+        /// Constructor
+        /// Llena la lista-entidad a partir de una Tabla: Reparaciones
+        /// </summary>
+        /// <param name="p_dtDatos">DataTable con los datos de la entidad</param>
+        public LEReparaciones(DataTable p_dtDatos) :
+            base(p_dtDatos)
+        {
+        }
+
+        /// <summary>
+        /// Constructor
+        /// Llena la lista-entidad a partir de un XML
+        /// </summary>
+        /// <param name="p_dtDatos">DataTable con los datos de la entidad</param>
+        public LEReparaciones(string p_strXMLData) :
+            base(EReparacion.Struct)
+        {
+            // Creamos el documento XML
+            XmlDocument l_xdocData= new XmlDocument();
+            l_xdocData.InnerXml= p_strXMLData;
+            XmlElement l_xelTemp= l_xdocData.DocumentElement;
+
+            // Agregamos cada item a la LE
+            foreach (XmlNode l_xndItem in l_xelTemp.ChildNodes)
+                AddEntity(new EReparacion(l_xndItem.OuterXml));
+        }
+
+        /// <summary>
+        /// Constructor
+        /// Constuye la lista-entidad vacia a partir de una lista de columnas
+        /// correspondiente a una entidad
+        /// </summary>
+        /// <param name="p_dcEstructura">Columnas de la estructura</param>
+        private LEReparaciones(DataColumn[] p_dcEstructura) :
+            base(p_dcEstructura)
+        {
+        }
+        #endregion
+
+        #region Metodos publicos de la clase
+        //---------------------------------------------------------------
+        // Metodos publicos
+        //---------------------------------------------------------------
+
+        /// <summary>
+        /// Construye una lista-entidad vacía: Reparaciones
+        /// </summary>
+        /// <returns>Lista-Entidad vacia: Reparaciones</returns>
+        public static LEReparaciones NewEmpty()
+        {
+            return new LEReparaciones(EReparacion.Struct);
+        }
+
+        /// <summary>
+        /// Agrega una entidad a la lista
+        /// </summary>
+        /// <param name="p_entEReparacion">Entidad a agregar</param>
+        public void AddEntity(EReparacion p_entEReparacion)
+        {
+            base.AddEntity(p_entEReparacion);
+        }
+
+        /// <summary>
+        /// Remueve una entidad [Reparacion] por clave
+        /// </summary>
+        public int RemoveEntity(string p_strCod)
+        {
+            // Buscamos la fila mediante un filtro
+            int l_iRet= 0;
+
+            m_dtDatos.DefaultView.RowFilter= 
+                "rep_cd6_cod = " + Ruts.Co(p_strCod);
+
+            if (m_dtDatos.DefaultView.Count == 1) {
+                // La borramos
+                m_dtDatos.Rows.Remove(m_dtDatos.DefaultView[0].Row);
+                l_iRet= 1;
+            }
+
+            // Quito el filtro
+            m_dtDatos.DefaultView.RowFilter= "";
+            return l_iRet;
+        }
+
+        /// <summary>
+        /// Verifca si una entidad [Reparacion] esta en la lista
+        /// </summary>
+        public bool Contains(string p_strCod)
+        {
+            using (EReparacion l_entTemp= this[p_strCod])
+            {
+                // Indicamos si existe o no
+                return (l_entTemp != null);
+            }
+        }
+
+        /// <summary>
+        /// Devuelve el enumerador de la lista-entidades: Reparaciones
+        /// </summary>
+        /// <returns>Enumerador de las entidades en la lista</returns>
+        public new IEnumerator GetEnumerator() 
+        {
+            EReparacion l_entTemp= null;
+
+            foreach (DataRowView l_drvTemp in m_dtDatos.DefaultView) {
+                l_entTemp= new EReparacion(l_drvTemp.Row);
+                yield return l_entTemp;
+            }
+        }
+
+        /// <summary>
+        /// Devuelve la lista entidad como un array de entidades: Reparaciones
+        /// </summary>
+        /// <returns>Array de entidades</returns>
+        public ArrayList GetAsArray()
+        {
+            // Llenamos el array con las entidades
+            ArrayList l_alRet= new ArrayList();
+
+            foreach (EReparacion l_entItem in this)
+                l_alRet.Add(l_entItem);
+
+            return l_alRet;
+        }
+
+        /// <summary>
+        /// Devuelve la lista entidad como una LET: Reparaciones
+        /// </summary>
+        /// <returns>Lista Entidad Tipada</returns>
+        public LETReparaciones GetAsLET()
+        {
+            // Llenamos la lista tipada
+            LETReparaciones l_lentRet= new LETReparaciones();
+
+            foreach (EReparacion l_entItem in this)
+                l_lentRet.Add(l_entItem);
+
+            return l_lentRet;
+        }
+        #endregion
+
+        #region Propiedades de la clase
+        //---------------------------------------------------------------
+        // Propiedades de la clase
+        //---------------------------------------------------------------
+
+        /// <summary>
+        /// Indexer para acceder a cada entidad [Reparacion] por indice
+        /// </summary>
+        public new EReparacion this[long p_lRow]
+        {
+            get {
+                // Recuperamos la fila solicitada
+                DataRow l_drDatos= base[(int) p_lRow];
+                if (l_drDatos == null) return null;
+
+                // Devolvemos una entidad Reparacion con los datos de la fila
+                return new EReparacion(l_drDatos);
+            }
+        }
+
+        /// <summary>
+        /// Indexer para acceder a cada entidad [Reparacion] por clave
+        /// </summary>
+        public EReparacion this[string p_strCod]
+        {
+            get {
+                // Buscamos la fila mediante un filtro
+                DataRow l_drData= null;
+
+                m_dtDatos.DefaultView.RowFilter= 
+                    "rep_cd6_cod = " + Ruts.Co(p_strCod);
+
+                if (m_dtDatos.DefaultView.Count == 1)
+                    l_drData= m_dtDatos.DefaultView[0].Row;
+
+                // Quito el filtro
+                m_dtDatos.DefaultView.RowFilter= "";
+
+                // Devolvemos una entidad Reparacion con los datos de la fila
+                if (l_drData == null) return null;
+                return new EReparacion(l_drData);
+            }
+        }
+
+        /// <summary>
+        /// Devuelve la ListaEntidad como XML en string
+        /// </summary>
+        public string XMLData
+        {
+            get {return XMLEncode.InnerXml;}
+        }
+
+        /// <summary>
+        /// Devuelve la ListaEntidad como XML
+        /// </summary>
+        public XmlDocument XMLEncode
+        {
+            get {
+                // Construimos el XML
+                XmlDocument l_xdocData= new XmlDocument();
+                XmlNode l_xndEntidad= l_xdocData.CreateNode(XmlNodeType.Element, "LEReparaciones", null);
+
+                foreach (EReparacion l_entDExtra in this)
+                    l_xndEntidad.AppendChild(l_xdocData.ImportNode(l_entDExtra.XMLEncode.ChildNodes[0], false));
+
+                l_xdocData.AppendChild(l_xndEntidad);
+                return l_xdocData;
+            }
+        }
+        #endregion
+    }
+    #endregion
+
+    #region Lista-Entidad-Tipada: Reparaciones
+    /// <summary>
+    /// Clase que representa la Lista-Entidad-Tipada: Reparaciones
+    /// </summary>
+    public sealed partial class LETReparaciones : LET<EReparacion>
+    {
+        #region Metodos publicos de la clase
+        //---------------------------------------------------------------
+        // Metodos publicos
+        //---------------------------------------------------------------
+
+        /// <summary>
+        /// Devuelve la lista entidad tipada como una LE: Reparaciones
+        /// </summary>
+        /// <returns>Lista Entidad</returns>
+        public LEReparaciones GetAsLE()
+        {
+            // Llenamos la lista
+            LEReparaciones l_lentRet= LEReparaciones.NewEmpty();
+
+            foreach (EReparacion l_entItem in this)
+                l_lentRet.AddEntity(l_entItem);
+
+            return l_lentRet;
+        }
+        #endregion
+
+        #region Propiedades de la clase
+        //---------------------------------------------------------------
+        // Propiedades de la clase
+        //---------------------------------------------------------------
+
+        /// <summary>
+        /// Indexer para acceder a cada entidad [Reparacion] por clave
+        /// </summary>
+        public EReparacion this[string p_strCod]
+        {
+            get {
+                // Buscamos la entidad
+                foreach (EReparacion l_entItem in this) {
+                    // Si existe -> la devolvemos
+                    if (l_entItem.Cod == p_strCod)
                         return l_entItem;
                 }
 

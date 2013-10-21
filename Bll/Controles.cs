@@ -15,7 +15,7 @@ namespace Rivn.Bll
     //----------------------------------------------------------------------------
     //                         TNG Software BLL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 21/10/2013 14:59
+    // Fecha                    : 21/10/2013 16:14
     // Sistema                  : Rivn
     // Clase para Administrar   : Controles con sus Reparaciones
     //----------------------------------------------------------------------------
@@ -50,12 +50,12 @@ namespace Rivn.Bll
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
         /// <param name="p_entControl">Entidad con los datos a procesar</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
-        internal static void CtrlSave_f(DBConn p_dbcAccess,
-                                        ref EControl p_entControl,
-                                        ref StatMsg p_smResult)
+        internal static void Save_f(DBConn p_dbcAccess,
+                                    ref EControl p_entControl,
+                                    ref StatMsg p_smResult)
         {
             // No hay errores aun
-            p_smResult.BllReset("Controles", "CtrlSave_f");
+            p_smResult.BllReset("Controles", "Save_f");
 
             // *********
             // Agregar acá los procesos adicionales
@@ -74,14 +74,14 @@ namespace Rivn.Bll
         /// <param name="p_strCod">Codigo</param>
         /// <param name="p_iFxdVersion">Versión del registro a borrar</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
-        internal static void CtrlEnabled_f(DBConn p_dbcAccess,
-                                           bool p_bEnable,
-                                           string p_strCod,
-                                           ref int p_iFxdVersion,
-                                           ref StatMsg p_smResult)
+        internal static void Enabled_f(DBConn p_dbcAccess,
+                                       bool p_bEnable,
+                                       string p_strCod,
+                                       ref int p_iFxdVersion,
+                                       ref StatMsg p_smResult)
         {
             // No hay errores aun
-            p_smResult.BllReset("Controles", "CtrlEnabled_f");
+            p_smResult.BllReset("Controles", "Enabled_f");
 
             // *********
             // Agregar acá los procesos adicionales
@@ -99,13 +99,13 @@ namespace Rivn.Bll
         /// <param name="p_strCod">Codigo</param>
         /// <param name="p_iFxdVersion">Versión del registro a borrar</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
-        internal static void CtrlRemove_f(DBConn p_dbcAccess,
-                                          string p_strCod,
-                                          int p_iFxdVersion,
-                                          ref StatMsg p_smResult)
+        internal static void Remove_f(DBConn p_dbcAccess,
+                                      string p_strCod,
+                                      int p_iFxdVersion,
+                                      ref StatMsg p_smResult)
         {
             // No hay errores aun
-            p_smResult.BllReset("Controles", "CtrlRemove_f");
+            p_smResult.BllReset("Controles", "Remove_f");
 
             // *********
             // Agregar acá los procesos adicionales
@@ -122,12 +122,12 @@ namespace Rivn.Bll
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
         /// <param name="p_entControl">Entidad con los datos a validar</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
-        internal static void CtrlTInt_f(DBConn p_dbcAccess,
-                                        EControl p_entControl,
-                                        ref StatMsg p_smResult)
+        internal static void TInt_f(DBConn p_dbcAccess,
+                                    EControl p_entControl,
+                                    ref StatMsg p_smResult)
         {
             // No hay errores aun
-            p_smResult.BllReset("Controles", "CtrlTInt_f");
+            p_smResult.BllReset("Controles", "TInt_f");
 
             // *********
             // Agregar acá las validaciones adicionales

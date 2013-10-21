@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------
 //                 TNG Software Script Generator (Tablas)                     
 //----------------------------------------------------------------------------
-// Fecha              : 21/10/2013 14:29
+// Fecha              : 21/10/2013 16:24
 // Base de Datos      : TNGS_Rivn
 // Tabla              : Reparaciones
 //----------------------------------------------------------------------------
@@ -41,7 +41,8 @@ create table Reparaciones
    (
       rep_cd6_cod tngs_codigo_6,
       rep_xde_des tngs_descripcion_x,
-      rep_rcd_cat tngs_codigo_r,
+      rep_rcd_codcat tngs_codigo_r,
+      rep_cd1_solicitadetalle tngs_codigo_1,
       instante tngs_fecyhor,
       deleted tngs_borrado,
       usuario tngs_nombre,

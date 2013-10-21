@@ -13,7 +13,7 @@ namespace Rivn.Bel
     //----------------------------------------------------------------------------
     //                         TNG Software BEL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 21/10/2013 15:04
+    // Fecha                    : 21/10/2013 16:15
     // Sistema                  : Rivn
     // Clase para Administrar   : Tablas de Rivn.
     //----------------------------------------------------------------------------
@@ -236,6 +236,112 @@ namespace Rivn.Bel
     }
     #endregion
 
+    #region Entidad: Estacion
+    /// <summary>
+    /// Clase que representa la Entidad: Estacion
+    ///   - Elementos no producidos por el Generador
+    /// </summary>
+    public sealed partial class EEstacion : Entidad
+    {
+        #region Metodos publicos de la clase
+        //---------------------------------------------------------------
+        // Metodos públicos de la clase
+        //---------------------------------------------------------------
+
+        #endregion
+
+        #region Metodos privados de la clase
+        //---------------------------------------------------------------
+        // Metodos privados de la clase
+        //---------------------------------------------------------------
+
+        /// <summary>
+        /// Permite agregar datos al XML de la entidad
+        /// </summary>
+        private void fAddXMLData(ref XmlDocument p_xdocData,
+                                 ref XmlNode p_xndEntidad)
+        {
+        }
+
+        /// <summary>
+        /// Permite agregar datos a una entidad generada desde un XML
+        /// </summary>
+        private static void fNewFromXML(ref DataRow p_drTemp,
+                                        XmlNode p_xndData)
+        {
+        }
+
+        #endregion
+
+        #region Propiedades de la clase
+        //---------------------------------------------------------------
+        // Propiedades de la clase
+        //---------------------------------------------------------------
+
+        #endregion
+    }
+    #endregion
+
+    #region Lista-Entidad: Estaciones
+    /// <summary>
+    /// Clase que representa la Lista-Entidad: Estaciones
+    ///   - Elementos no producidos por el Generador
+    /// </summary>
+    public sealed partial class LEEstaciones : ListaEntidades
+    {
+        #region Metodos publicos de la clase
+        //---------------------------------------------------------------
+        // Metodos publicos
+        //---------------------------------------------------------------
+
+        #endregion
+
+        #region Metodos privados de la clase
+        //---------------------------------------------------------------
+        // Metodos privados
+        //---------------------------------------------------------------
+
+        #endregion
+
+        #region Propiedades de la clase
+        //---------------------------------------------------------------
+        // Propiedades de la clase
+        //---------------------------------------------------------------
+
+        #endregion
+    }
+    #endregion
+
+    #region Lista-Entidad-Tipada: Estaciones
+    /// <summary>
+    /// Clase que representa la Lista-Entidad-Tipada: Estaciones
+    ///   - Elementos no producidos por el Generador
+    /// </summary>
+    public sealed partial class LETEstaciones : LET<EEstacion>
+    {
+        #region Metodos publicos de la clase
+        //---------------------------------------------------------------
+        // Metodos publicos
+        //---------------------------------------------------------------
+
+        #endregion
+
+        #region Metodos privados de la clase
+        //---------------------------------------------------------------
+        // Metodos privados
+        //---------------------------------------------------------------
+
+        #endregion
+
+        #region Propiedades de la clase
+        //---------------------------------------------------------------
+        // Propiedades de la clase
+        //---------------------------------------------------------------
+
+        #endregion
+    }
+    #endregion
+
     #region Entidad: Marca
     /// <summary>
     /// Clase que representa la Entidad: Marca
@@ -424,6 +530,112 @@ namespace Rivn.Bel
     ///   - Elementos no producidos por el Generador
     /// </summary>
     public sealed partial class LETModelos : LET<EModelo>
+    {
+        #region Metodos publicos de la clase
+        //---------------------------------------------------------------
+        // Metodos publicos
+        //---------------------------------------------------------------
+
+        #endregion
+
+        #region Metodos privados de la clase
+        //---------------------------------------------------------------
+        // Metodos privados
+        //---------------------------------------------------------------
+
+        #endregion
+
+        #region Propiedades de la clase
+        //---------------------------------------------------------------
+        // Propiedades de la clase
+        //---------------------------------------------------------------
+
+        #endregion
+    }
+    #endregion
+
+    #region Entidad: Reparacion
+    /// <summary>
+    /// Clase que representa la Entidad: Reparacion
+    ///   - Elementos no producidos por el Generador
+    /// </summary>
+    public sealed partial class EReparacion : Entidad
+    {
+        #region Metodos publicos de la clase
+        //---------------------------------------------------------------
+        // Metodos públicos de la clase
+        //---------------------------------------------------------------
+
+        #endregion
+
+        #region Metodos privados de la clase
+        //---------------------------------------------------------------
+        // Metodos privados de la clase
+        //---------------------------------------------------------------
+
+        /// <summary>
+        /// Permite agregar datos al XML de la entidad
+        /// </summary>
+        private void fAddXMLData(ref XmlDocument p_xdocData,
+                                 ref XmlNode p_xndEntidad)
+        {
+        }
+
+        /// <summary>
+        /// Permite agregar datos a una entidad generada desde un XML
+        /// </summary>
+        private static void fNewFromXML(ref DataRow p_drTemp,
+                                        XmlNode p_xndData)
+        {
+        }
+
+        #endregion
+
+        #region Propiedades de la clase
+        //---------------------------------------------------------------
+        // Propiedades de la clase
+        //---------------------------------------------------------------
+
+        #endregion
+    }
+    #endregion
+
+    #region Lista-Entidad: Reparaciones
+    /// <summary>
+    /// Clase que representa la Lista-Entidad: Reparaciones
+    ///   - Elementos no producidos por el Generador
+    /// </summary>
+    public sealed partial class LEReparaciones : ListaEntidades
+    {
+        #region Metodos publicos de la clase
+        //---------------------------------------------------------------
+        // Metodos publicos
+        //---------------------------------------------------------------
+
+        #endregion
+
+        #region Metodos privados de la clase
+        //---------------------------------------------------------------
+        // Metodos privados
+        //---------------------------------------------------------------
+
+        #endregion
+
+        #region Propiedades de la clase
+        //---------------------------------------------------------------
+        // Propiedades de la clase
+        //---------------------------------------------------------------
+
+        #endregion
+    }
+    #endregion
+
+    #region Lista-Entidad-Tipada: Reparaciones
+    /// <summary>
+    /// Clase que representa la Lista-Entidad-Tipada: Reparaciones
+    ///   - Elementos no producidos por el Generador
+    /// </summary>
+    public sealed partial class LETReparaciones : LET<EReparacion>
     {
         #region Metodos publicos de la clase
         //---------------------------------------------------------------

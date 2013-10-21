@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 21/10/2013 14:30
+// Fecha       : 21/10/2013 16:24
 // Sistema     : Rivn
 // Tabla       : Controles
 //----------------------------------------------------------------------------
@@ -199,6 +199,49 @@ go
 print '       - Asignando permisos al nuevo SP'
 
 grant execute on dbo.CONTROLES_SEARCH to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Busca la clave máxima de la tabla
+--- </summary>
+--- <param name="@reservado">Reservado para futuras expansiones</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.CONTROLES_GETMAXKEY'
+
+if exists (select * from sysobjects where id = object_id('dbo.CONTROLES_GETMAXKEY'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.CONTROLES_GETMAXKEY
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.CONTROLES_GETMAXKEY
+(
+@dummy tngs_codigo_1
+)
+as
+begin
+
+   Select isnull(max(ctl_cod_cod), '0') as ctl_cod_cod
+     from TNGS_Rivn..Controles
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.CONTROLES_GETMAXKEY to tngsmodulos
 
 print ' '
 go

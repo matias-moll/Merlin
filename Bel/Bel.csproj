@@ -51,6 +51,14 @@
     <Compile Include="Controles.designer.cs">
       <DependentUpon>Controles.cs</DependentUpon>
     </Compile>
+    <Compile Include="Moviles.cs" />
+    <Compile Include="Moviles.designer.cs">
+      <DependentUpon>Moviles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OrdenesTrabajo.cs" />
+    <Compile Include="OrdenesTrabajo.designer.cs">
+      <DependentUpon>OrdenesTrabajo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tablas.cs" />
     <Compile Include="Tablas.designer.cs">

@@ -10,7 +10,7 @@ namespace Rivn.Dal
     //----------------------------------------------------------------------------
     //                         TNG Software DAL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 21/10/2013 15:07
+    // Fecha                    : 21/10/2013 16:23
     // Sistema                  : Rivn
     // Clase para Administrar   : Reparaciones de móviles
     // Basada en la Tabla       : Reparaciones
@@ -152,46 +152,6 @@ namespace Rivn.Dal
                 p_smResult.DalExit();
             }
         }
-
-        /// <summary>
-        /// Busca los registros de una clave foranea (Grilla)
-        /// </summary>
-        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_strCat">categoria</param>
-        /// <param name="p_bOnlyActive">Indica si solo se analizan los registros activos</param>
-        /// <param name="p_dsResult">DataSet donde devolver el registro</param>
-        /// <param name="p_strTabla">Nombre de la tabla a llenar</param>
-        /// <param name="p_smResult">Estado final de la operacion</param>
-        public static int FSearch(DBConn p_dbcAccess,
-                                  string p_strCat,
-                                  bool p_bOnlyActive,
-                                  ref DataSet p_dsResult,
-                                  string p_strTabla,
-                                  ref StatMsg p_smResult)
-        {
-            // No hay errores aun
-            p_smResult.DalReset("Reparaciones", "FSearch");
-
-            try {
-                // Recuperamos los registro de la clave foranea
-                return DBRuts.Exec_DS(p_dbcAccess,
-                                      "TNGS_Rivn..REPARACIONES_FSEARCH",
-                                      new DbParameter[] {
-                                          p_dbcAccess.MakeParam("@rep_rcd_cat", p_strCat),
-                                          p_dbcAccess.MakeParam("@onlyactive", (p_bOnlyActive ? 1 : 0))
-                                      },
-                                      ref p_dsResult, p_strTabla);
-            }
-            catch (Exception l_expData) {
-                // Error en el search de los registros
-                p_smResult.DalError(l_expData.ToString());
-                return -1;
-            }
-            finally {
-                // Resteamos el StatMsg
-                p_smResult.DalExit();
-            }
-        }
         #endregion
 
         #region Metodos de Actualizacion
@@ -202,12 +162,14 @@ namespace Rivn.Dal
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
         /// <param name="p_strCod">codigo</param>
         /// <param name="p_strDes">descripcion</param>
-        /// <param name="p_strCat">categoria</param>
+        /// <param name="p_strCodcat">categoria</param>
+        /// <param name="p_strSolicitadetalle">Se Solicita Detalle</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static int Insert(DBConn p_dbcAccess,
                                  string p_strCod,
                                  string p_strDes,
-                                 string p_strCat,
+                                 string p_strCodcat,
+                                 string p_strSolicitadetalle,
                                  ref StatMsg p_smResult)
         {
             // No hay errores aun
@@ -220,7 +182,8 @@ namespace Rivn.Dal
                                    new DbParameter[] {
                                        p_dbcAccess.MakeParam("@rep_cd6_cod", p_strCod),
                                        p_dbcAccess.MakeParam("@rep_xde_des", p_strDes),
-                                       p_dbcAccess.MakeParam("@rep_rcd_cat", p_strCat),
+                                       p_dbcAccess.MakeParam("@rep_rcd_codcat", p_strCodcat),
+                                       p_dbcAccess.MakeParam("@rep_cd1_solicitadetalle", p_strSolicitadetalle),
                                        p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
                                    }
                                   );
@@ -242,12 +205,14 @@ namespace Rivn.Dal
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
         /// <param name="p_strCod">codigo</param>
         /// <param name="p_strDes">descripcion</param>
-        /// <param name="p_strCat">categoria</param>
+        /// <param name="p_strCodcat">categoria</param>
+        /// <param name="p_strSolicitadetalle">Se Solicita Detalle</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static int Update(DBConn p_dbcAccess,
                                  string p_strCod,
                                  string p_strDes,
-                                 string p_strCat,
+                                 string p_strCodcat,
+                                 string p_strSolicitadetalle,
                                  ref StatMsg p_smResult)
         {
             // No hay errores aun
@@ -260,7 +225,8 @@ namespace Rivn.Dal
                                    new DbParameter[] {
                                        p_dbcAccess.MakeParam("@rep_cd6_cod", p_strCod),
                                        p_dbcAccess.MakeParam("@rep_xde_des", p_strDes),
-                                       p_dbcAccess.MakeParam("@rep_rcd_cat", p_strCat),
+                                       p_dbcAccess.MakeParam("@rep_rcd_codcat", p_strCodcat),
+                                       p_dbcAccess.MakeParam("@rep_cd1_solicitadetalle", p_strSolicitadetalle),
                                        p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
                                    }
                                   );
@@ -311,43 +277,6 @@ namespace Rivn.Dal
         }
 
         /// <summary>
-        /// Borra logicamente los registros de una clave foranea
-        /// </summary>
-        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_strCat">categoria</param>
-        /// <param name="p_dtInstante">Instante del borrado</param>
-        /// <param name="p_smResult">Estado final de la operacion</param>
-        public static int FDelete(DBConn p_dbcAccess,
-                                  string p_strCat,
-                                  DateTime p_dtInstante,
-                                  ref StatMsg p_smResult)
-        {
-            // No hay errores aun
-            p_smResult.DalReset("Reparaciones", "FDelete");
-
-            try {
-                // Borramos los registro de la clave foranea
-                return DBRuts.Exec(p_dbcAccess,
-                                   "TNGS_Rivn..REPARACIONES_FDELETE",
-                                   new DbParameter[] {
-                                       p_dbcAccess.MakeParam("@rep_rcd_cat", p_strCat),
-                                       p_dbcAccess.MakeParam("@instante", p_dtInstante),
-                                       p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
-                                   }
-                                  );
-            }
-            catch (Exception l_expData) {
-                // Error en el update de los registros
-                p_smResult.DalError(l_expData.ToString());
-                return -1;
-            }
-            finally {
-                // Resteamos el StatMsg
-                p_smResult.DalExit();
-            }
-        }
-
-        /// <summary>
         /// Recupera un registro
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
@@ -372,43 +301,6 @@ namespace Rivn.Dal
             }
             catch (Exception l_expData) {
                 // Error en el update del registro
-                p_smResult.DalError(l_expData.ToString());
-                return -1;
-            }
-            finally {
-                // Resteamos el StatMsg
-                p_smResult.DalExit();
-            }
-        }
-
-        /// <summary>
-        /// Recupera logicamente los registros de una clave foranea
-        /// </summary>
-        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_strCat">categoria</param>
-        /// <param name="p_dtInstante">Instante del borrado</param>
-        /// <param name="p_smResult">Estado final de la operacion</param>
-        public static int FRecall(DBConn p_dbcAccess,
-                                  string p_strCat,
-                                  DateTime p_dtInstante,
-                                  ref StatMsg p_smResult)
-        {
-            // No hay errores aun
-            p_smResult.DalReset("Reparaciones", "FRecall");
-
-            try {
-                // Borramos los registro de la clave foranea
-                return DBRuts.Exec(p_dbcAccess,
-                                   "TNGS_Rivn..REPARACIONES_FRECALL",
-                                   new DbParameter[] {
-                                       p_dbcAccess.MakeParam("@rep_rcd_cat", p_strCat),
-                                       p_dbcAccess.MakeParam("@instante", p_dtInstante),
-                                       p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
-                                   }
-                                  );
-            }
-            catch (Exception l_expData) {
-                // Error en el update de los registros
                 p_smResult.DalError(l_expData.ToString());
                 return -1;
             }
@@ -453,40 +345,6 @@ namespace Rivn.Dal
         }
 
         /// <summary>
-        /// Borra fisicamente los registros de una clave foranea
-        /// </summary>
-        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_strCat">categoria</param>
-        /// <param name="p_smResult">Estado final de la operacion</param>
-        public static int FDrop(DBConn p_dbcAccess,
-                                string p_strCat,
-                                ref StatMsg p_smResult)
-        {
-            // No hay errores aun
-            p_smResult.DalReset("Reparaciones", "FDrop");
-
-            try {
-                // Borramos los registro de la clave foranea
-                return DBRuts.Exec(p_dbcAccess,
-                                   "TNGS_Rivn..REPARACIONES_FDROP",
-                                   new DbParameter[] {
-                                       p_dbcAccess.MakeParam("@rep_rcd_cat", p_strCat),
-                                       p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
-                                   }
-                                  );
-            }
-            catch (Exception l_expData) {
-                // Error en el delete de los registros
-                p_smResult.DalError(l_expData.ToString());
-                return -1;
-            }
-            finally {
-                // Resteamos el StatMsg
-                p_smResult.DalExit();
-            }
-        }
-
-        /// <summary>
         /// Borra fisicamente los registros borrados logicamente
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
@@ -508,40 +366,6 @@ namespace Rivn.Dal
             }
             catch (Exception l_expData) {
                 // Error en el delete del registro
-                p_smResult.DalError(l_expData.ToString());
-                return -1;
-            }
-            finally {
-                // Resteamos el StatMsg
-                p_smResult.DalExit();
-            }
-        }
-
-        /// <summary>
-        /// Borra fisicamente los registros borrado lógicamente de una clave foranea
-        /// </summary>
-        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_strCat">categoria</param>
-        /// <param name="p_smResult">Estado final de la operacion</param>
-        public static int FPack(DBConn p_dbcAccess,
-                                string p_strCat,
-                                ref StatMsg p_smResult)
-        {
-            // No hay errores aun
-            p_smResult.DalReset("Reparaciones", "FPack");
-
-            try {
-                // Borramos los registro de la clave foranea
-                return DBRuts.Exec(p_dbcAccess,
-                                   "TNGS_Rivn..REPARACIONES_FPACK",
-                                   new DbParameter[] {
-                                       p_dbcAccess.MakeParam("@rep_rcd_cat", p_strCat),
-                                       p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
-                                   }
-                                  );
-            }
-            catch (Exception l_expData) {
-                // Error en el delete de los registros
                 p_smResult.DalError(l_expData.ToString());
                 return -1;
             }

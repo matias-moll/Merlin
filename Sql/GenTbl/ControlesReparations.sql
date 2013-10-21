@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------
 //                 TNG Software Script Generator (Tablas)                     
 //----------------------------------------------------------------------------
-// Fecha              : 21/10/2013 14:29
+// Fecha              : 21/10/2013 16:24
 // Base de Datos      : TNGS_Rivn
 // Tabla              : ControlesReparations
 //----------------------------------------------------------------------------
@@ -48,7 +48,8 @@ create table ControlesReparations
       version tngs_numero,
       constraint ControlesReparations_pk primary key clustered
       (
-         ctr_cod_codctl
+         ctr_cod_codctl,
+         ctr_nro_nroitem
       )
    )
 go
