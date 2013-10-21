@@ -10,7 +10,7 @@ namespace Rivn.Dal
     //----------------------------------------------------------------------------
     //                         TNG Software DAL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 18/10/2013 15:51
+    // Fecha                    : 21/10/2013 15:07
     // Sistema                  : Rivn
     // Clase para Administrar   : Controles de las reaparaciones
     // Basada en la Tabla       : ControlesReparations
@@ -79,12 +79,14 @@ namespace Rivn.Dal
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
         /// <param name="p_strCodctl">codigoControl</param>
+        /// <param name="p_iNroitem">item</param>
         /// <param name="p_iFxdVersion">Número de version a verificar</param>
         /// <param name="p_dsResult">DataSet donde devolver el registro</param>
         /// <param name="p_strTabla">Nombre de la tabla a llenar</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static void ChkVersion(DBConn p_dbcAccess,
                                       string p_strCodctl,
+                                      int p_iNroitem,
                                       int p_iFxdVersion,
                                       ref DataSet p_dsResult,
                                       string p_strTabla,
@@ -99,6 +101,7 @@ namespace Rivn.Dal
                                "TNGS_Rivn..CONTROLESREPARATIONS_CHKVERSION",
                                new DbParameter[] {
                                    p_dbcAccess.MakeParam("@ctr_cod_codctl", p_strCodctl),
+                                   p_dbcAccess.MakeParam("@ctr_nro_nroitem", p_iNroitem),
                                    p_dbcAccess.MakeParam("@version", p_iFxdVersion)
                                },
                                ref p_dsResult, p_strTabla);
@@ -118,12 +121,14 @@ namespace Rivn.Dal
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
         /// <param name="p_strCodctl">codigoControl</param>
+        /// <param name="p_iNroitem">item</param>
         /// <param name="p_bOnlyActive">Indica si solo se analizan los registros activos</param>
         /// <param name="p_dsResult">DataSet donde devolver el registro</param>
         /// <param name="p_strTabla">Nombre de la tabla a llenar</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static int Search(DBConn p_dbcAccess,
                                  string p_strCodctl,
+                                 int p_iNroitem,
                                  bool p_bOnlyActive,
                                  ref DataSet p_dsResult,
                                  string p_strTabla,
@@ -138,6 +143,7 @@ namespace Rivn.Dal
                                       "TNGS_Rivn..CONTROLESREPARATIONS_SEARCH",
                                       new DbParameter[] {
                                           p_dbcAccess.MakeParam("@ctr_cod_codctl", p_strCodctl),
+                                          p_dbcAccess.MakeParam("@ctr_nro_nroitem", p_iNroitem),
                                           p_dbcAccess.MakeParam("@onlyactive", (p_bOnlyActive ? 1 : 0))
                                       },
                                       ref p_dsResult, p_strTabla);
@@ -281,9 +287,11 @@ namespace Rivn.Dal
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
         /// <param name="p_strCodctl">codigoControl</param>
+        /// <param name="p_iNroitem">item</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static int Delete(DBConn p_dbcAccess,
                                  string p_strCodctl,
+                                 int p_iNroitem,
                                  ref StatMsg p_smResult)
         {
             // No hay errores aun
@@ -295,6 +303,7 @@ namespace Rivn.Dal
                                    "TNGS_Rivn..CONTROLESREPARATIONS_DELETE",
                                    new DbParameter[] {
                                        p_dbcAccess.MakeParam("@ctr_cod_codctl", p_strCodctl),
+                                       p_dbcAccess.MakeParam("@ctr_nro_nroitem", p_iNroitem),
                                        p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
                                    }
                                   );
@@ -352,9 +361,11 @@ namespace Rivn.Dal
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
         /// <param name="p_strCodctl">codigoControl</param>
+        /// <param name="p_iNroitem">item</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static int Recall(DBConn p_dbcAccess,
                                  string p_strCodctl,
+                                 int p_iNroitem,
                                  ref StatMsg p_smResult)
         {
             // No hay errores aun
@@ -366,6 +377,7 @@ namespace Rivn.Dal
                                    "TNGS_Rivn..CONTROLESREPARATIONS_RECALL",
                                    new DbParameter[] {
                                        p_dbcAccess.MakeParam("@ctr_cod_codctl", p_strCodctl),
+                                       p_dbcAccess.MakeParam("@ctr_nro_nroitem", p_iNroitem),
                                        p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
                                    }
                                   );
@@ -423,9 +435,11 @@ namespace Rivn.Dal
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
         /// <param name="p_strCodctl">codigoControl</param>
+        /// <param name="p_iNroitem">item</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static int Drop(DBConn p_dbcAccess,
                                string p_strCodctl,
+                               int p_iNroitem,
                                ref StatMsg p_smResult)
         {
             // No hay errores aun
@@ -437,6 +451,7 @@ namespace Rivn.Dal
                                    "TNGS_Rivn..CONTROLESREPARATIONS_DROP",
                                    new DbParameter[] {
                                        p_dbcAccess.MakeParam("@ctr_cod_codctl", p_strCodctl),
+                                       p_dbcAccess.MakeParam("@ctr_nro_nroitem", p_iNroitem),
                                        p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
                                    }
                                   );

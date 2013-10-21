@@ -16,7 +16,7 @@ namespace Rivn.Bll
     //----------------------------------------------------------------------------
     //                         TNG Software BLL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 18/10/2013 16:01
+    // Fecha                    : 21/10/2013 15:07
     // Sistema                  : Rivn
     // Clase para Administrar   : 
     //----------------------------------------------------------------------------
@@ -206,7 +206,7 @@ namespace Rivn.Bll
 
                 // ****************************************
                 // Tabla: OtItems             
-                case "oti_nro_nro"                     : {return "V1nroNN3";}
+                case "oti_nro_nroot"                   : {return "V1nroOtNN3";}
                 case "oti_nro_nroagrupador"            : {return "V1Numero de agrupadorNN3";}
                 case "oti_nro_nroitem"                 : {return "V1Numero del itemNN3";}
                 case "oti_des_desoperacion"            : {return "V1Descripción de la operación.CN1";}

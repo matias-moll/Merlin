@@ -10,7 +10,7 @@ namespace Rivn.Dal
     //----------------------------------------------------------------------------
     //                         TNG Software DAL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 18/10/2013 15:51
+    // Fecha                    : 21/10/2013 15:07
     // Sistema                  : Rivn
     // Clase para Administrar   : Controles de las reparaciones
     // Basada en la Tabla       : Controles
@@ -146,6 +146,40 @@ namespace Rivn.Dal
                 // Error en el search del registro
                 p_smResult.DalError(l_expData.ToString());
                 return -1;
+            }
+            finally {
+                // Resteamos el StatMsg
+                p_smResult.DalExit();
+            }
+        }
+
+        /// <summary>
+        /// Busca la clave máxima de la tabla
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_dsResult">DataSet donde devolver el registro</param>
+        /// <param name="p_strTabla">Nombre de la tabla a llenar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        public static void GetMaxKey(DBConn p_dbcAccess,
+                                     ref DataSet p_dsResult,
+                                     string p_strTabla,
+                                     ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            p_smResult.DalReset("Controles", "GetMaxKey");
+
+            try {
+                // Recuperamos la clave mas alta de la tabla
+                DBRuts.Exec_DS(p_dbcAccess,
+                               "TNGS_Rivn..CONTROLES_GETMAXKEY",
+                               new DbParameter[] {
+                                   p_dbcAccess.MakeParam("@dummy", "X")
+                               },
+                               ref p_dsResult, p_strTabla);
+            }
+            catch (Exception l_expData) {
+                // Error en el search de la clave máxima
+                p_smResult.DalError(l_expData.ToString());
             }
             finally {
                 // Resteamos el StatMsg

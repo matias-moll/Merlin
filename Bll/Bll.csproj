@@ -55,6 +55,18 @@
     <Compile Include="BllRuts.designer.cs">
       <DependentUpon>BllRuts.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controles.cs" />
+    <Compile Include="Controles.designer.cs">
+      <DependentUpon>Controles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Estados.cs" />
+    <Compile Include="Estados.designer.cs">
+      <DependentUpon>Estados.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Moviles.cs" />
+    <Compile Include="Moviles.designer.cs">
+      <DependentUpon>Moviles.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tablas.cs" />
     <Compile Include="Tablas.designer.cs">

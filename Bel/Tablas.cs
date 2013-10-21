@@ -5,8 +5,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Xml;
 using TNGS.NetRoutines;
-using Rivn.Bel;
-using Rivn.Dal;
+using Rivn;
 #endregion
 
 namespace Rivn.Bel
@@ -14,7 +13,7 @@ namespace Rivn.Bel
     //----------------------------------------------------------------------------
     //                         TNG Software BEL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 09/09/2013 16:27
+    // Fecha                    : 21/10/2013 15:04
     // Sistema                  : Rivn
     // Clase para Administrar   : Tablas de Rivn.
     //----------------------------------------------------------------------------
@@ -34,7 +33,7 @@ namespace Rivn.Bel
     {
         #region Metodos publicos de la clase
         //---------------------------------------------------------------
-        // Metodos públicos de la clase (manejadores de datos, sin lógica).
+        // Metodos públicos de la clase
         //---------------------------------------------------------------
 
         #endregion

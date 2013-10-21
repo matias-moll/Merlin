@@ -46,7 +46,7 @@
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="TNGS.NetRoutines.520">
-      <HintPath>C:\Proyecto TNGS\Framework\TNGS.NetRoutines.520.dll</HintPath>
+      <HintPath>..\..\Ambiente0520\DNet0520\Release_Bel\TNGS.NetRoutines.520.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

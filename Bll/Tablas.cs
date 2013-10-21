@@ -6,8 +6,8 @@ using System.Data;
 using System.Xml;
 using TNGS.NetAppBll;
 using TNGS.NetRoutines;
+using Rivn;
 using Rivn.Bel;
-
 #endregion
 
 namespace Rivn.Bll
@@ -15,7 +15,7 @@ namespace Rivn.Bll
     //----------------------------------------------------------------------------
     //                         TNG Software BLL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 18/10/2013 16:03
+    // Fecha                    : 21/10/2013 14:59
     // Sistema                  : Rivn
     // Clase para Administrar   : Tablas de Rivn.
     //----------------------------------------------------------------------------

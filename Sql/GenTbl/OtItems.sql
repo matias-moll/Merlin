@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------
 //                 TNG Software Script Generator (Tablas)                     
 //----------------------------------------------------------------------------
-// Fecha              : 18/10/2013 15:51
+// Fecha              : 21/10/2013 14:29
 // Base de Datos      : TNGS_Rivn
 // Tabla              : OtItems
 //----------------------------------------------------------------------------
@@ -39,7 +39,7 @@ print '   - Creando la nueva tabla'
 
 create table OtItems
    (
-      oti_nro_nro tngs_numero,
+      oti_nro_nroot tngs_numero,
       oti_nro_nroagrupador tngs_numero,
       oti_nro_nroitem tngs_numero,
       oti_des_desoperacion tngs_descripcion,
@@ -53,7 +53,7 @@ create table OtItems
       version tngs_numero,
       constraint OtItems_pk primary key clustered
       (
-         oti_nro_nro,
+         oti_nro_nroot,
          oti_nro_nroagrupador,
          oti_nro_nroitem
       )
