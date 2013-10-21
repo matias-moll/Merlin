@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 21/10/2013 16:24
+// Fecha       : 21/10/2013 16:41
 // Sistema     : Rivn
 // Tabla       : Reparaciones
 //----------------------------------------------------------------------------
@@ -54,7 +54,6 @@ begin
       begin
          Select rep_cd6_cod,
                 rep_xde_des,
-                cat_des_des as rep_des_des,
                 rep_rcd_codcat,
                 rep_cd1_solicitadetalle,
                 TNGS_Rivn..Reparaciones.instante,
@@ -62,16 +61,13 @@ begin
                 TNGS_Rivn..Reparaciones.usuario,
                 TNGS_Rivn..Reparaciones.version
            from TNGS_Rivn..Reparaciones
-                join TNGS_Rivn..Categorias
-                  on rep_   _ = cat_rcd_cod
-          where TNGS_Rivn..Reparaciones.deleted = 0
+          where deleted = 0
           order by rep_cd6_cod
       end
    else
       begin
          Select rep_cd6_cod,
                 rep_xde_des,
-                cat_des_des as rep_des_des,
                 rep_rcd_codcat,
                 rep_cd1_solicitadetalle,
                 TNGS_Rivn..Reparaciones.instante,
@@ -79,8 +75,6 @@ begin
                 TNGS_Rivn..Reparaciones.usuario,
                 TNGS_Rivn..Reparaciones.version
            from TNGS_Rivn..Reparaciones
-                join TNGS_Rivn..Categorias
-                  on rep_   _ = cat_rcd_cod
           order by rep_cd6_cod
       end
 
@@ -177,7 +171,6 @@ begin
       begin
          Select rep_cd6_cod,
                 rep_xde_des,
-                cat_des_des as rep_des_des,
                 rep_rcd_codcat,
                 rep_cd1_solicitadetalle,
                 TNGS_Rivn..Reparaciones.instante,
@@ -185,16 +178,13 @@ begin
                 TNGS_Rivn..Reparaciones.usuario,
                 TNGS_Rivn..Reparaciones.version
            from TNGS_Rivn..Reparaciones
-                join TNGS_Rivn..Categorias
-                  on rep_   _ = cat_rcd_cod
           where rep_cd6_cod = @rep_cd6_cod
-            and TNGS_Rivn..Reparaciones.deleted = 0
+            and deleted = 0
       end
    else
       begin
          Select rep_cd6_cod,
                 rep_xde_des,
-                cat_des_des as rep_des_des,
                 rep_rcd_codcat,
                 rep_cd1_solicitadetalle,
                 TNGS_Rivn..Reparaciones.instante,
@@ -202,8 +192,6 @@ begin
                 TNGS_Rivn..Reparaciones.usuario,
                 TNGS_Rivn..Reparaciones.version
            from TNGS_Rivn..Reparaciones
-                join TNGS_Rivn..Categorias
-                  on rep_   _ = cat_rcd_cod
           where rep_cd6_cod = @rep_cd6_cod
       end
 
