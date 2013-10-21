@@ -59,14 +59,6 @@
     <Compile Include="Controles.designer.cs">
       <DependentUpon>Controles.cs</DependentUpon>
     </Compile>
-    <Compile Include="Estados.cs" />
-    <Compile Include="Estados.designer.cs">
-      <DependentUpon>Estados.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Moviles.cs" />
-    <Compile Include="Moviles.designer.cs">
-      <DependentUpon>Moviles.cs</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tablas.cs" />
     <Compile Include="Tablas.designer.cs">
@@ -75,11 +67,11 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Bel\BEL.csproj">
-      <Project>{7969C80F-3E89-4E03-A01B-776686783353}</Project>
+      <Project>{7969c80f-3e89-4e03-a01b-776686783353}</Project>
       <Name>BEL</Name>
     </ProjectReference>
     <ProjectReference Include="..\Dal\DAL.csproj">
-      <Project>{1190DAFA-E684-4395-BACF-135005697362}</Project>
+      <Project>{1190dafa-e684-4395-bacf-135005697362}</Project>
       <Name>DAL</Name>
     </ProjectReference>
   </ItemGroup>
