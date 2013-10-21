@@ -14,7 +14,7 @@ namespace Rivn.Bel
     //----------------------------------------------------------------------------
     //                         TNG Software BEL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 21/10/2013 16:24
+    // Fecha                    : 21/10/2013 16:45
     // Sistema                  : Rivn
     // Clase para Administrar   : Tablas de Rivn.
     //----------------------------------------------------------------------------
@@ -2703,7 +2703,6 @@ namespace Rivn.Bel
             l_drTemp["rep_xde_des"]= XMLRuts.ExtractXAttr(l_xndData, "rep_xde_des");
             l_drTemp["rep_rcd_codcat"]= XMLRuts.ExtractXAttr(l_xndData, "rep_rcd_codcat");
             l_drTemp["rep_cd1_solicitadetalle"]= XMLRuts.ExtractXAttr(l_xndData, "rep_cd1_solicitadetalle");
-            l_drTemp["rep_des_des"]= XMLRuts.ExtractXAttr(l_xndData, "rep_des_des", false);
 
             // Llenamos los campos fijos
             XML2FixedFields(ref l_drTemp, l_xndData);
@@ -2751,7 +2750,6 @@ namespace Rivn.Bel
             l_drTemp["rep_xde_des"]= "";
             l_drTemp["rep_rcd_codcat"]= "";
             l_drTemp["rep_cd1_solicitadetalle"]= "";
-            l_drTemp["rep_des_des"]= DateTimeRuts.Empty;
 
             // Agregamos la Row creada a la tabla creada y creamos
             // una entidad a partir de la DataTable de 1 registro
@@ -2786,7 +2784,6 @@ namespace Rivn.Bel
             l_drTemp["rep_xde_des"]= p_strDes;
             l_drTemp["rep_rcd_codcat"]= p_strCodcat;
             l_drTemp["rep_cd1_solicitadetalle"]= p_strSolicitadetalle;
-            l_drTemp["rep_des_des"]= DateTimeRuts.Empty;
 
             // Agregamos la Row creada a la tabla creada y creamos
             // una entidad a partir de la DataTable de 1 registro
@@ -2812,14 +2809,13 @@ namespace Rivn.Bel
         {
             get {
                 // Creamos el vector de DataColumns y lo llenamos
-                DataColumn[] l_dcStruct= new DataColumn[9];
+                DataColumn[] l_dcStruct= new DataColumn[8];
 
                 l_dcStruct[0]= new DataColumn("rep_cd6_cod", typeof(string));
                 l_dcStruct[1]= new DataColumn("rep_xde_des", typeof(string));
-                l_dcStruct[2]= new DataColumn("rep_des_des", typeof(DateTime));
-                l_dcStruct[3]= new DataColumn("rep_rcd_codcat", typeof(string));
-                l_dcStruct[4]= new DataColumn("rep_cd1_solicitadetalle", typeof(string));
-                EReparacion.FillFixedFields(ref l_dcStruct, 5);
+                l_dcStruct[2]= new DataColumn("rep_rcd_codcat", typeof(string));
+                l_dcStruct[3]= new DataColumn("rep_cd1_solicitadetalle", typeof(string));
+                EReparacion.FillFixedFields(ref l_dcStruct, 4);
 
                 // Devolvemos el vector creado
                 return l_dcStruct;
@@ -2869,15 +2865,6 @@ namespace Rivn.Bel
         }
 
         /// <summary>
-        /// Title
-        /// </summary>
-        public DateTime Rep_des_des
-        {
-            get {return (DateTime) InternalData["rep_des_des"];}
-            set {InternalData["rep_des_des"]= value;}
-        }
-
-        /// <summary>
         /// Devuelve la entidad [EReparacion] como XMLDocument en formato string
         /// </summary>
         public string XMLData
@@ -2900,7 +2887,6 @@ namespace Rivn.Bel
                 l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "rep_xde_des", Des));
                 l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "rep_rcd_codcat", Codcat));
                 l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "rep_cd1_solicitadetalle", Solicitadetalle));
-                l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "rep_des_des", Rep_des_des));
 
                 // Asignamos los campos fijos
                 FixedFields2XML(l_xdocData, ref l_xndEntidad);

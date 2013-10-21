@@ -16,7 +16,7 @@ namespace Rivn.Bll
     //----------------------------------------------------------------------------
     //                         TNG Software BLL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 21/10/2013 16:24
+    // Fecha                    : 21/10/2013 16:45
     // Sistema                  : Rivn
     // Clase para Administrar   : 
     //----------------------------------------------------------------------------
@@ -252,7 +252,6 @@ namespace Rivn.Bll
                 case "rep_xde_des"                     : {return "V1descripcionCN1";}
                 case "rep_rcd_codcat"                  : {return "V1categoriaCN1";}
                 case "rep_cd1_solicitadetalle"         : {return "V1Se Solicita DetalleCN2";}
-                case "rep_des_des"                     : {return "V1TitleSN1";}
 
                 // ****************************************
                 // Tabla: Talonarios          

@@ -10,7 +10,7 @@ namespace Rivn.Dal
     //----------------------------------------------------------------------------
     //                         TNG Software DAL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 21/10/2013 16:23
+    // Fecha                    : 21/10/2013 16:46
     // Sistema                  : Rivn
     // Clase para Administrar   : Reparaciones de móviles
     // Basada en la Tabla       : Reparaciones
@@ -434,7 +434,8 @@ namespace Rivn.Dal
                 DBRuts.ClearDTCaptions(ref p_dtResult);
 
                 // Fijamos los nuevos captions de la grilla
-                p_dtResult.Columns["rep_des_des"].Caption= "V1TitleSN1";
+                p_dtResult.Columns["rep_cd6_cod"].Caption= "V1codigoCN1";
+                p_dtResult.Columns["rep_xde_des"].Caption= "V1descripcionCN1";
                 p_dtResult.Columns["deleted"].Caption= "V1Borrado2N2";
             }
             catch (Exception l_expData) {
