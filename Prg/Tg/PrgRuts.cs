@@ -36,6 +36,8 @@ namespace Rivn.Tg
             // Creamos el DockManager
             ((MainFrame) App.GetMainWindow()).CreateDockManager();
 
+            //Justo Abajo de la creacion del dockManager isntanciamos el primer dockeable
+
             // Liberamos el menu
             App.LockMenu(false);
             App.HideMsg();
