@@ -114,7 +114,7 @@ namespace Rivn.Tg
             this.xpnlBase.Dock = System.Windows.Forms.DockStyle.Fill;
             this.xpnlBase.Location = new System.Drawing.Point(0, 0);
             this.xpnlBase.Name = "xpnlBase";
-            this.xpnlBase.Size = new System.Drawing.Size(555, 450);
+            this.xpnlBase.Size = new System.Drawing.Size(784, 461);
             this.xpnlBase.TabIndex = 0;
             // 
             // tsContainer1
@@ -124,7 +124,7 @@ namespace Rivn.Tg
             this.tsContainer1.Dock = System.Windows.Forms.DockStyle.Top;
             this.tsContainer1.Location = new System.Drawing.Point(0, 0);
             this.tsContainer1.Name = "tsContainer1";
-            this.tsContainer1.Size = new System.Drawing.Size(555, 115);
+            this.tsContainer1.Size = new System.Drawing.Size(784, 115);
             this.tsContainer1.TabIndex = 22;
             // 
             // tabPageSwitcher1
@@ -134,7 +134,7 @@ namespace Rivn.Tg
             this.tabPageSwitcher1.Location = new System.Drawing.Point(0, 26);
             this.tabPageSwitcher1.Name = "tabPageSwitcher1";
             this.tabPageSwitcher1.SelectedTabStripPage = this.tabStripPage1;
-            this.tabPageSwitcher1.Size = new System.Drawing.Size(555, 89);
+            this.tabPageSwitcher1.Size = new System.Drawing.Size(784, 89);
             this.tabPageSwitcher1.TabIndex = 1;
             this.tabPageSwitcher1.TabStrip = this.tsBase1;
             this.tabPageSwitcher1.Text = "tabPageSwitcher1";
@@ -149,7 +149,7 @@ namespace Rivn.Tg
             this.tabStripPage1.Name = "tabStripPage1";
             this.tabStripPage1.Opacity = 255;
             this.tabStripPage1.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
-            this.tabStripPage1.Size = new System.Drawing.Size(547, 87);
+            this.tabStripPage1.Size = new System.Drawing.Size(776, 87);
             this.tabStripPage1.Speed = 8;
             this.tabStripPage1.TabIndex = 0;
             // 
@@ -282,7 +282,7 @@ namespace Rivn.Tg
             this.tsBase1.Padding = new System.Windows.Forms.Padding(60, 3, 30, 0);
             this.tsBase1.SelectedTab = this.tab1;
             this.tsBase1.ShowItemToolTips = false;
-            this.tsBase1.Size = new System.Drawing.Size(555, 26);
+            this.tsBase1.Size = new System.Drawing.Size(784, 26);
             this.tsBase1.TabIndex = 0;
             this.tsBase1.TabOverlap = 0;
             this.tsBase1.Text = "tsBase1";
@@ -324,7 +324,7 @@ namespace Rivn.Tg
             this.grdDatos.HeaderForeColor = System.Drawing.SystemColors.ControlText;
             this.grdDatos.Location = new System.Drawing.Point(4, 142);
             this.grdDatos.Name = "grdDatos";
-            this.grdDatos.Size = new System.Drawing.Size(547, 218);
+            this.grdDatos.Size = new System.Drawing.Size(776, 229);
             this.grdDatos.TabIndex = 0;
             this.grdDatos.Advance += new TNGS.NetRoutines.AdvanceEventHandler(this.grdDatos_Advance);
             this.grdDatos.DataDClick += new TNGS.NetRoutines.DataDClickEventHandler(this.grdDatos_DataDClick);
@@ -334,7 +334,7 @@ namespace Rivn.Tg
             // 
             this.cmdPrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cmdPrint.FixedImage = TNGS.NetControls.FixedGlassButtons.bPrint;
-            this.cmdPrint.Location = new System.Drawing.Point(525, 118);
+            this.cmdPrint.Location = new System.Drawing.Point(754, 118);
             this.cmdPrint.Name = "cmdPrint";
             this.cmdPrint.PCode = "TNGS.PRINT";
             this.cmdPrint.Size = new System.Drawing.Size(26, 24);
@@ -346,7 +346,7 @@ namespace Rivn.Tg
             // 
             this.cmdExcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cmdExcel.FixedImage = TNGS.NetControls.FixedGlassButtons.bExcel;
-            this.cmdExcel.Location = new System.Drawing.Point(500, 118);
+            this.cmdExcel.Location = new System.Drawing.Point(729, 118);
             this.cmdExcel.Name = "cmdExcel";
             this.cmdExcel.PCode = "TNGS.EXCEL";
             this.cmdExcel.Size = new System.Drawing.Size(26, 24);
@@ -373,7 +373,7 @@ namespace Rivn.Tg
             this.frmEdicion.FontTitle = new System.Drawing.Font("Arial", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.frmEdicion.GroupImage = null;
             this.frmEdicion.GroupTitle = " Modelo ";
-            this.frmEdicion.Location = new System.Drawing.Point(4, 366);
+            this.frmEdicion.Location = new System.Drawing.Point(4, 377);
             this.frmEdicion.Name = "frmEdicion";
             this.frmEdicion.Padding = new System.Windows.Forms.Padding(20);
             this.frmEdicion.PaintGroupBox = false;
@@ -381,13 +381,13 @@ namespace Rivn.Tg
             this.frmEdicion.ShadowColor = System.Drawing.Color.DarkGray;
             this.frmEdicion.ShadowControl = false;
             this.frmEdicion.ShadowThickness = 3;
-            this.frmEdicion.Size = new System.Drawing.Size(547, 80);
+            this.frmEdicion.Size = new System.Drawing.Size(776, 80);
             this.frmEdicion.TabIndex = 21;
             // 
             // lblCod
             // 
             this.lblCod.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCod.Location = new System.Drawing.Point(20, 34);
+            this.lblCod.Location = new System.Drawing.Point(92, 35);
             this.lblCod.Name = "lblCod";
             this.lblCod.Size = new System.Drawing.Size(62, 22);
             this.lblCod.TabIndex = 106;
@@ -401,7 +401,7 @@ namespace Rivn.Tg
             this.txtCod.EmptyValid = false;
             this.txtCod.Enabled = false;
             this.txtCod.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCod.Location = new System.Drawing.Point(84, 34);
+            this.txtCod.Location = new System.Drawing.Point(156, 35);
             this.txtCod.MaxLength = 2;
             this.txtCod.Name = "txtCod";
             this.txtCod.OnlyDigits = true;
@@ -411,7 +411,7 @@ namespace Rivn.Tg
             // lblDes
             // 
             this.lblDes.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDes.Location = new System.Drawing.Point(170, 34);
+            this.lblDes.Location = new System.Drawing.Point(298, 35);
             this.lblDes.Name = "lblDes";
             this.lblDes.Size = new System.Drawing.Size(56, 22);
             this.lblDes.TabIndex = 107;
@@ -425,7 +425,7 @@ namespace Rivn.Tg
             this.txtDes.EmptyValid = false;
             this.txtDes.Enabled = false;
             this.txtDes.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDes.Location = new System.Drawing.Point(228, 34);
+            this.txtDes.Location = new System.Drawing.Point(356, 35);
             this.txtDes.MaxLength = 30;
             this.txtDes.Name = "txtDes";
             this.txtDes.Size = new System.Drawing.Size(93, 22);
@@ -434,11 +434,11 @@ namespace Rivn.Tg
             // lblCodmarca
             // 
             this.lblCodmarca.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCodmarca.Location = new System.Drawing.Point(329, 34);
+            this.lblCodmarca.Location = new System.Drawing.Point(459, 35);
             this.lblCodmarca.Name = "lblCodmarca";
             this.lblCodmarca.Size = new System.Drawing.Size(113, 22);
             this.lblCodmarca.TabIndex = 108;
-            this.lblCodmarca.Text = "Codigo de Marca:";
+            this.lblCodmarca.Text = "Marca";
             this.lblCodmarca.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // cmbCodmarca
@@ -447,7 +447,7 @@ namespace Rivn.Tg
             this.cmbCodmarca.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCodmarca.Enabled = false;
             this.cmbCodmarca.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbCodmarca.Location = new System.Drawing.Point(443, 32);
+            this.cmbCodmarca.Location = new System.Drawing.Point(573, 33);
             this.cmbCodmarca.Name = "cmbCodmarca";
             this.cmbCodmarca.Size = new System.Drawing.Size(76, 24);
             this.cmbCodmarca.Sorted = true;
@@ -457,7 +457,7 @@ namespace Rivn.Tg
             // 
             this.AllowEndUserDocking = false;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(555, 450);
+            this.ClientSize = new System.Drawing.Size(784, 461);
             this.Controls.Add(this.xpnlBase);
             this.DockAreas = WeifenLuo.WinFormsUI.Docking.DockAreas.Document;
             this.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

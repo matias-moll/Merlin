@@ -10,6 +10,7 @@ using TNGS.NetRoutines;
 using TNGS.NetApp;
 using Rivn;
 using Rivn.Shr;
+using WeifenLuo.WinFormsUI.Docking;
 #endregion
 
 namespace Rivn.Mv
@@ -35,6 +36,9 @@ namespace Rivn.Mv
         {
             // Creamos el DockManager
             ((MainFrame) App.GetMainWindow()).CreateDockManager();
+
+            //Intanciamos el Dockeable principal.
+            AltaMovil l_dcAltaMovil = new AltaMovil();
 
             // Liberamos el menu
             App.LockMenu(false);

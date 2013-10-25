@@ -18,7 +18,7 @@ namespace Rivn.Tg
     //----------------------------------------------------------------------------
     //                         TNG Software PRG Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 20/09/2013 16:33
+    // Fecha                    : 25/10/2013 17:09
     // Sistema                  : Rivn
     // Programa                 : Tablas Generales
     //----------------------------------------------------------------------------
@@ -106,7 +106,7 @@ namespace Rivn.Tg
                 PrgRuts.RegisterPersistency();
 
                 // Creamos la ventana MDI de la aplicacion
-                MainFrame l_frmMain= new MainFrame(MFSizes.FREESIZE, 0, false, true);
+                MainFrame l_frmMain= new MainFrame(MFSizes.MF800x600, 0, false, true);
 
                 // Ejecutamos la funcion que arma la info de About
                 PrgRuts.MakeAboutInfo();
@@ -149,11 +149,15 @@ namespace Rivn.Tg
                 case "$$AUTOEXEC$$"  : {SysRuts.AutoExecIni(App.Programa.Codigo); PrgRuts.AutoExec(); SysRuts.AutoExecEnd(App.Programa.Codigo); return;}
 
                 // *************************************************
-                // ** Menu: Equipamiento
+                // ** Menu: Tablas Generales
                 // **
                 case "EQUI"          : {new Equipamiento().Show(); return;}
                 // **
                 case "CAT"           : {new Categorias().Show(); return;}
+                // **
+                case "MOD"           : {new Modelos().Show(); return;}
+                // **
+                case "MAR"           : {new Marcas().Show(); return;}
 
                 // *************************************************
                 // ** Ejecución automática al final del programa

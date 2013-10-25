@@ -41,5 +41,10 @@ namespace TestBLL
             }
             Rivn.Bll.Tablas.fAddArray(l_saArray, ref l_smStatMsg);           
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
