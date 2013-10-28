@@ -16,7 +16,7 @@ namespace Rivn.Bll
     //----------------------------------------------------------------------------
     //                         TNG Software BLL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 24/10/2013 16:24
+    // Fecha                    : 28/10/2013 17:41
     // Sistema                  : Rivn
     // Clase para Administrar   : 
     //----------------------------------------------------------------------------
@@ -181,8 +181,6 @@ namespace Rivn.Bll
                 // ****************************************
                 // Tabla: Moviles             
                 case "mov_ecd_patente"                 : {return "V1Patente de la AmbulanciaCN1";}
-                case "mov_des_des"                     : {return "V1desCN1";}
-                case "mov_rcd_estado"                  : {return "V1estadoCN1";}
                 case "mov_nro_kms"                     : {return "V1KilometrosNN3";}
                 case "mov_txt_anot"                    : {return "V1AnotacionesCN1";}
                 case "mov_des_nrochasis"               : {return "V1Nro ChasisCN1";}

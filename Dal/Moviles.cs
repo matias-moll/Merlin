@@ -10,7 +10,7 @@ namespace Rivn.Dal
     //----------------------------------------------------------------------------
     //                         TNG Software DAL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 21/10/2013 16:46
+    // Fecha                    : 28/10/2013 17:41
     // Sistema                  : Rivn
     // Clase para Administrar   : Moviles del Sistema
     // Basada en la Tabla       : Moviles
@@ -161,8 +161,6 @@ namespace Rivn.Dal
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
         /// <param name="p_strPatente">Patente de la Ambulancia</param>
-        /// <param name="p_strDes">des</param>
-        /// <param name="p_strEstado">estado</param>
         /// <param name="p_iKms">Kilometros</param>
         /// <param name="p_strAnot">Anotaciones</param>
         /// <param name="p_strNrochasis">Nro Chasis</param>
@@ -173,8 +171,6 @@ namespace Rivn.Dal
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static int Insert(DBConn p_dbcAccess,
                                  string p_strPatente,
-                                 string p_strDes,
-                                 string p_strEstado,
                                  int p_iKms,
                                  string p_strAnot,
                                  string p_strNrochasis,
@@ -193,8 +189,6 @@ namespace Rivn.Dal
                                    "TNGS_Rivn..MOVILES_INSERT",
                                    new DbParameter[] {
                                        p_dbcAccess.MakeParam("@mov_ecd_patente", p_strPatente),
-                                       p_dbcAccess.MakeParam("@mov_des_des", p_strDes),
-                                       p_dbcAccess.MakeParam("@mov_rcd_estado", p_strEstado),
                                        p_dbcAccess.MakeParam("@mov_nro_kms", p_iKms),
                                        p_dbcAccess.MakeParam("@mov_txt_anot", p_strAnot),
                                        p_dbcAccess.MakeParam("@mov_des_nrochasis", p_strNrochasis),
@@ -222,8 +216,6 @@ namespace Rivn.Dal
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
         /// <param name="p_strPatente">Patente de la Ambulancia</param>
-        /// <param name="p_strDes">des</param>
-        /// <param name="p_strEstado">estado</param>
         /// <param name="p_iKms">Kilometros</param>
         /// <param name="p_strAnot">Anotaciones</param>
         /// <param name="p_strNrochasis">Nro Chasis</param>
@@ -234,8 +226,6 @@ namespace Rivn.Dal
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static int Update(DBConn p_dbcAccess,
                                  string p_strPatente,
-                                 string p_strDes,
-                                 string p_strEstado,
                                  int p_iKms,
                                  string p_strAnot,
                                  string p_strNrochasis,
@@ -254,8 +244,6 @@ namespace Rivn.Dal
                                    "TNGS_Rivn..MOVILES_UPDATE",
                                    new DbParameter[] {
                                        p_dbcAccess.MakeParam("@mov_ecd_patente", p_strPatente),
-                                       p_dbcAccess.MakeParam("@mov_des_des", p_strDes),
-                                       p_dbcAccess.MakeParam("@mov_rcd_estado", p_strEstado),
                                        p_dbcAccess.MakeParam("@mov_nro_kms", p_iKms),
                                        p_dbcAccess.MakeParam("@mov_txt_anot", p_strAnot),
                                        p_dbcAccess.MakeParam("@mov_des_nrochasis", p_strNrochasis),
