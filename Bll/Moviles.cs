@@ -37,6 +37,29 @@ namespace Rivn.Bll
 
         #region Metodos publicos de la clase
 
+        /// <summary>
+        /// Agrega un ROOT a un tree
+        /// </summary>
+        /// <param name="p_lentData">ListaEntidad de datos</param>
+        /// <param name="p_strDescripcion">Descripcion del Root</param>
+        /// <param name="p_iNroImagen">Indice de la imagen</param>
+        private static void fAgregarRoot(ListaEntidades p_lentData,
+                                         string p_strDescripcion,
+                                         int p_iNroImagen)
+        {
+            DataRow l_drTemp = p_lentData.InternalData.Table.NewRow();
+
+            // Agregamos el root
+            l_drTemp["Codigo"] = 0;
+            l_drTemp["Descripcion"] = p_strDescripcion;
+            l_drTemp["Mensaje"] = "";
+            l_drTemp["Nivel"] = 1;
+            l_drTemp["Imagen"] = p_iNroImagen;
+
+            p_lentData.InternalData.Table.Rows.Add(l_drTemp);
+            p_lentData.Sort("Codigo");
+        }
+
         #endregion
 
         //---------------------------------------------------------------
