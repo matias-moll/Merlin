@@ -141,7 +141,6 @@ namespace Rivn.Mv
 
             //VerEsto NO TIENE QUE IR   
             l_entMovil.Kms = 1;
-            l_entMovil.Estado = "ROTO";
 
             //retornamos la EMovil Creado
             return l_entMovil;
