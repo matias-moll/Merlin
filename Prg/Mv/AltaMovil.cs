@@ -38,6 +38,9 @@ namespace Rivn.Mv
         public AltaMovil(Bel.EMovil p_entMovil) : this()
         {
            
+            //cambiamos titulo del formulario
+            this.Text = "Moficacion del Movil Patente: " + p_entMovil.Patente ;
+
             //seteamos todos los datos de la entidad existente en los campos
             teAnotaciones.Text = p_entMovil.Anot;
             teDescripcionMovil.Text = p_entMovil.Des;
@@ -50,6 +53,9 @@ namespace Rivn.Mv
 
             //disbleamos los controles que no tienen que estar activos
             neKilometros.Enabled = false;
+            tePatente.Enabled = false;
+            
+
 
             //recuperamos la LE de equipamientos del movil
             Bel.LEMovilesEquip l_lentMovEquipamiento = p_entMovil.MovilesEquip;
