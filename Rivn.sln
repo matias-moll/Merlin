@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "Dal\DAL.csproj", "{1190DAFA-E684-4395-BACF-135005697362}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLL", "Bll\BLL.csproj", "{58EC503E-05DD-4F0F-B55A-318733142682}"
@@ -11,9 +11,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shr", "Shr\Shr.csproj", "{4
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestBLL", "TestBLL\TestBLL.csproj", "{A1E2A783-C593-4E85-8B29-5987FC692F7B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Z Tablas Generales", "Prg\Tg\Z Tablas Generales.csproj", "{C0BF2586-5CC3-4B00-BFE7-FC9C128E6684}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Z - Tablas Generales", "Prg\Tg\Z - Tablas Generales.csproj", "{C0BF2586-5CC3-4B00-BFE7-FC9C128E6684}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "z Moviles", "T:\Rivn0100\Prg\Mv\z Moviles.csproj", "{651E45C5-5EF4-40A0-AD9E-174516173285}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Z - Moviles", "T:\Rivn0100\Prg\Mv\Z - Moviles.csproj", "{651E45C5-5EF4-40A0-AD9E-174516173285}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

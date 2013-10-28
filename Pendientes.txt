@@ -1,0 +1,7 @@
+- Tener resuletos todos los ABM "genericos", los de tablas clasificadores y los 3 que faltaban (Reparaciones, Controles y ControlesReparaciones).
+
+- Hacer que el dockeable de Alta de movil soporte un modo de modificacion de datos.
+
+- Pantalla de visualizacion de Moviles con Tree, las 4 grillas asociadas a un movil y Los datos mas importantes
+
+- Comenzar con el programa de Ordenes de Trabajo.
