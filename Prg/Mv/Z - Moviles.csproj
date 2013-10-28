@@ -109,11 +109,11 @@
     <Compile Include="Arranque.designer.cs">
       <DependentUpon>Arranque.cs</DependentUpon>
     </Compile>
-    <Compile Include="CambioEstado.cs">
+    <Compile Include="EjemploUsoTreeView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CambioEstado.Designer.cs">
-      <DependentUpon>CambioEstado.cs</DependentUpon>
+    <Compile Include="EjemploUsoTreeView.Designer.cs">
+      <DependentUpon>EjemploUsoTreeView.cs</DependentUpon>
     </Compile>
     <Compile Include="PrgRuts.cs" />
     <Compile Include="PrgRuts.designer.cs">
@@ -140,8 +140,8 @@
     <EmbeddedResource Include="Arranque.resx">
       <DependentUpon>Arranque.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CambioEstado.resx">
-      <DependentUpon>CambioEstado.cs</DependentUpon>
+    <EmbeddedResource Include="EjemploUsoTreeView.resx">
+      <DependentUpon>EjemploUsoTreeView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
