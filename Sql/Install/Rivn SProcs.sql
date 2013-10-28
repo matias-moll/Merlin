@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 21/10/2013 16:41
+// Fecha       : 28/10/2013 17:40
 // Sistema     : Rivn
 // Tabla       : Categorias
 //----------------------------------------------------------------------------
@@ -539,7 +539,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 21/10/2013 16:41
+// Fecha       : 28/10/2013 17:40
 // Sistema     : Rivn
 // Tabla       : Controles
 //----------------------------------------------------------------------------
@@ -1084,7 +1084,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 21/10/2013 16:41
+// Fecha       : 28/10/2013 17:40
 // Sistema     : Rivn
 // Tabla       : ControlesReparations
 //----------------------------------------------------------------------------
@@ -1903,7 +1903,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 21/10/2013 16:41
+// Fecha       : 28/10/2013 17:40
 // Sistema     : Rivn
 // Tabla       : Equipamiento
 //----------------------------------------------------------------------------
@@ -2405,7 +2405,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 21/10/2013 16:41
+// Fecha       : 28/10/2013 17:40
 // Sistema     : Rivn
 // Tabla       : Estaciones
 //----------------------------------------------------------------------------
@@ -2970,7 +2970,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 21/10/2013 16:41
+// Fecha       : 28/10/2013 17:40
 // Sistema     : Rivn
 // Tabla       : Estados
 //----------------------------------------------------------------------------
@@ -3482,7 +3482,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 21/10/2013 16:41
+// Fecha       : 28/10/2013 17:40
 // Sistema     : Rivn
 // Tabla       : Marcas
 //----------------------------------------------------------------------------
@@ -4017,7 +4017,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 21/10/2013 16:41
+// Fecha       : 28/10/2013 17:40
 // Sistema     : Rivn
 // Tabla       : Modelos
 //----------------------------------------------------------------------------
@@ -4562,7 +4562,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 21/10/2013 16:41
+// Fecha       : 28/10/2013 17:40
 // Sistema     : Rivn
 // Tabla       : Moviles
 //----------------------------------------------------------------------------
@@ -4614,8 +4614,6 @@ begin
    if @onlyactive = 1
       begin
          Select mov_ecd_patente,
-                mov_des_des,
-                mov_rcd_estado,
                 mov_nro_kms,
                 mov_txt_anot,
                 mov_des_nrochasis,
@@ -4634,8 +4632,6 @@ begin
    else
       begin
          Select mov_ecd_patente,
-                mov_des_des,
-                mov_rcd_estado,
                 mov_nro_kms,
                 mov_txt_anot,
                 mov_des_nrochasis,
@@ -4743,8 +4739,6 @@ begin
    if @onlyactive = 1
       begin
          Select mov_ecd_patente,
-                mov_des_des,
-                mov_rcd_estado,
                 mov_nro_kms,
                 mov_txt_anot,
                 mov_des_nrochasis,
@@ -4763,8 +4757,6 @@ begin
    else
       begin
          Select mov_ecd_patente,
-                mov_des_des,
-                mov_rcd_estado,
                 mov_nro_kms,
                 mov_txt_anot,
                 mov_des_nrochasis,
@@ -4798,8 +4790,6 @@ go
 --- Inserta un registro en la tabla
 --- </summary>
 --- <param name="@mov_ecd_patente">Patente de la Ambulancia</param>
---- <param name="@mov_des_des">des</param>
---- <param name="@mov_rcd_estado">estado</param>
 --- <param name="@mov_nro_kms">Kilometros</param>
 --- <param name="@mov_txt_anot">Anotaciones</param>
 --- <param name="@mov_des_nrochasis">Nro Chasis</param>
@@ -4826,8 +4816,6 @@ go
 create procedure dbo.MOVILES_INSERT
 (
 @mov_ecd_patente tngs_codigo_e,
-@mov_des_des tngs_descripcion,
-@mov_rcd_estado tngs_codigo_r,
 @mov_nro_kms tngs_numero,
 @mov_txt_anot tngs_texto,
 @mov_des_nrochasis tngs_descripcion,
@@ -4843,8 +4831,6 @@ begin
    Insert into TNGS_Rivn..Moviles
    values (
            @mov_ecd_patente,
-           @mov_des_des,
-           @mov_rcd_estado,
            @mov_nro_kms,
            @mov_txt_anot,
            @mov_des_nrochasis,
@@ -4873,8 +4859,6 @@ go
 --- Actualiza un registro de la tabla
 --- </summary>
 --- <param name="@mov_ecd_patente">Patente de la Ambulancia</param>
---- <param name="@mov_des_des">des</param>
---- <param name="@mov_rcd_estado">estado</param>
 --- <param name="@mov_nro_kms">Kilometros</param>
 --- <param name="@mov_txt_anot">Anotaciones</param>
 --- <param name="@mov_des_nrochasis">Nro Chasis</param>
@@ -4901,8 +4885,6 @@ go
 create procedure dbo.MOVILES_UPDATE
 (
 @mov_ecd_patente tngs_codigo_e,
-@mov_des_des tngs_descripcion,
-@mov_rcd_estado tngs_codigo_r,
 @mov_nro_kms tngs_numero,
 @mov_txt_anot tngs_texto,
 @mov_des_nrochasis tngs_descripcion,
@@ -4916,9 +4898,7 @@ as
 begin
 
    Update TNGS_Rivn..Moviles
-      set mov_des_des= @mov_des_des,
-          mov_rcd_estado= @mov_rcd_estado,
-          mov_nro_kms= @mov_nro_kms,
+      set mov_nro_kms= @mov_nro_kms,
           mov_txt_anot= @mov_txt_anot,
           mov_des_nrochasis= @mov_des_nrochasis,
           mov_des_nromotor= @mov_des_nromotor,
@@ -5134,7 +5114,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 21/10/2013 16:41
+// Fecha       : 28/10/2013 17:40
 // Sistema     : Rivn
 // Tabla       : MvlCombustible
 //----------------------------------------------------------------------------
@@ -5959,7 +5939,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 21/10/2013 16:41
+// Fecha       : 28/10/2013 17:40
 // Sistema     : Rivn
 // Tabla       : MvlEquipamiento
 //----------------------------------------------------------------------------
@@ -6760,7 +6740,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 21/10/2013 16:41
+// Fecha       : 28/10/2013 17:40
 // Sistema     : Rivn
 // Tabla       : MvlEstados
 //----------------------------------------------------------------------------
@@ -7573,7 +7553,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 21/10/2013 16:41
+// Fecha       : 28/10/2013 17:40
 // Sistema     : Rivn
 // Tabla       : MvlKilometros
 //----------------------------------------------------------------------------
@@ -8374,7 +8354,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 21/10/2013 16:41
+// Fecha       : 28/10/2013 17:40
 // Sistema     : Rivn
 // Tabla       : OrdenesTrabajo
 //----------------------------------------------------------------------------
@@ -8896,7 +8876,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 21/10/2013 16:41
+// Fecha       : 28/10/2013 17:40
 // Sistema     : Rivn
 // Tabla       : OtItems
 //----------------------------------------------------------------------------
@@ -9777,7 +9757,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 21/10/2013 16:41
+// Fecha       : 28/10/2013 17:40
 // Sistema     : Rivn
 // Tabla       : Parametros
 //----------------------------------------------------------------------------
@@ -10309,7 +10289,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 21/10/2013 16:41
+// Fecha       : 28/10/2013 17:40
 // Sistema     : Rivn
 // Tabla       : Reparaciones
 //----------------------------------------------------------------------------
@@ -10867,7 +10847,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 21/10/2013 16:41
+// Fecha       : 28/10/2013 17:40
 // Sistema     : Rivn
 // Tabla       : Talonarios
 //----------------------------------------------------------------------------
