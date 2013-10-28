@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 28/10/2013 17:40
+// Fecha       : 28/10/2013 18:04
 // Sistema     : Rivn
 // Tabla       : Moviles
 //----------------------------------------------------------------------------
@@ -53,7 +53,7 @@ begin
    if @onlyactive = 1
       begin
          Select mov_ecd_patente,
-                mov_nro_kms,
+                mov_des_des,
                 mov_txt_anot,
                 mov_des_nrochasis,
                 mov_des_nromotor,
@@ -71,7 +71,7 @@ begin
    else
       begin
          Select mov_ecd_patente,
-                mov_nro_kms,
+                mov_des_des,
                 mov_txt_anot,
                 mov_des_nrochasis,
                 mov_des_nromotor,
@@ -178,7 +178,7 @@ begin
    if @onlyactive = 1
       begin
          Select mov_ecd_patente,
-                mov_nro_kms,
+                mov_des_des,
                 mov_txt_anot,
                 mov_des_nrochasis,
                 mov_des_nromotor,
@@ -196,7 +196,7 @@ begin
    else
       begin
          Select mov_ecd_patente,
-                mov_nro_kms,
+                mov_des_des,
                 mov_txt_anot,
                 mov_des_nrochasis,
                 mov_des_nromotor,
@@ -229,7 +229,7 @@ go
 --- Inserta un registro en la tabla
 --- </summary>
 --- <param name="@mov_ecd_patente">Patente de la Ambulancia</param>
---- <param name="@mov_nro_kms">Kilometros</param>
+--- <param name="@mov_des_des">Descripcion</param>
 --- <param name="@mov_txt_anot">Anotaciones</param>
 --- <param name="@mov_des_nrochasis">Nro Chasis</param>
 --- <param name="@mov_des_nromotor">Nro Motor</param>
@@ -255,7 +255,7 @@ go
 create procedure dbo.MOVILES_INSERT
 (
 @mov_ecd_patente tngs_codigo_e,
-@mov_nro_kms tngs_numero,
+@mov_des_des tngs_descripcion,
 @mov_txt_anot tngs_texto,
 @mov_des_nrochasis tngs_descripcion,
 @mov_des_nromotor tngs_descripcion,
@@ -270,7 +270,7 @@ begin
    Insert into TNGS_Rivn..Moviles
    values (
            @mov_ecd_patente,
-           @mov_nro_kms,
+           @mov_des_des,
            @mov_txt_anot,
            @mov_des_nrochasis,
            @mov_des_nromotor,
@@ -298,7 +298,7 @@ go
 --- Actualiza un registro de la tabla
 --- </summary>
 --- <param name="@mov_ecd_patente">Patente de la Ambulancia</param>
---- <param name="@mov_nro_kms">Kilometros</param>
+--- <param name="@mov_des_des">Descripcion</param>
 --- <param name="@mov_txt_anot">Anotaciones</param>
 --- <param name="@mov_des_nrochasis">Nro Chasis</param>
 --- <param name="@mov_des_nromotor">Nro Motor</param>
@@ -324,7 +324,7 @@ go
 create procedure dbo.MOVILES_UPDATE
 (
 @mov_ecd_patente tngs_codigo_e,
-@mov_nro_kms tngs_numero,
+@mov_des_des tngs_descripcion,
 @mov_txt_anot tngs_texto,
 @mov_des_nrochasis tngs_descripcion,
 @mov_des_nromotor tngs_descripcion,
@@ -337,7 +337,7 @@ as
 begin
 
    Update TNGS_Rivn..Moviles
-      set mov_nro_kms= @mov_nro_kms,
+      set mov_des_des= @mov_des_des,
           mov_txt_anot= @mov_txt_anot,
           mov_des_nrochasis= @mov_des_nrochasis,
           mov_des_nromotor= @mov_des_nromotor,
@@ -543,6 +543,54 @@ go
 print '       - Asignando permisos al nuevo SP'
 
 grant execute on dbo.MOVILES_PACK to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Método Fijo: getMovilesTree
+--- </summary>
+--- <param name="@usuario">Usuario que ejecuta el SP</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.MOVILES_GETMOVILESTREE'
+
+if exists (select * from sysobjects where id = object_id('dbo.MOVILES_GETMOVILESTREE'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.MOVILES_GETMOVILESTREE
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.MOVILES_GETMOVILESTREE
+(
+@usuario tngs_nombre
+)
+as
+begin
+
+   select mvl_cod_cod as Codigo, 
+   	                  mvl_des_des as Descripcion, 
+   	                  2 as Nivel, 
+   	                  2 as Orden, 
+   	                  1 as Imagen, 
+   	                  2 as Niveles 
+   				from TNGS_Rivn..Moviles 
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.MOVILES_GETMOVILESTREE to tngsmodulos
 
 print ' '
 go
