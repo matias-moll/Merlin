@@ -16,7 +16,7 @@ namespace Rivn.Bll
     //----------------------------------------------------------------------------
     //                         TNG Software BLL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 28/10/2013 17:41
+    // Fecha                    : 28/10/2013 18:04
     // Sistema                  : Rivn
     // Clase para Administrar   : Moviles y Tablas Hijas
     //----------------------------------------------------------------------------
@@ -4185,9 +4185,9 @@ namespace Rivn.Bll
                 return;
             }
 
-            if (p_entMovil.Kms < 0) {
-                // El campo [Kilometros] no puede menor a cero
-                p_smResult.BllWarning("El dato [Kilometros] no puede ser negativo","");
+            if (p_entMovil.Des.Trim() == "") {
+                // El campo [Descripcion] no puede ser vacío
+                p_smResult.BllWarning("El dato [Descripcion] no puede ser vacío","");
                 return;
             }
 
@@ -4471,7 +4471,7 @@ namespace Rivn.Bll
                 // Creamos un nuevo registro de la tabla: Moviles
                 Dal.Moviles.Insert(p_dbcAccess,
                                    p_entMovil.Patente,
-                                   p_entMovil.Kms,
+                                   p_entMovil.Des,
                                    p_entMovil.Anot,
                                    p_entMovil.Nrochasis,
                                    p_entMovil.Nromotor,
@@ -4508,7 +4508,7 @@ namespace Rivn.Bll
                 // Actualizamos un registro de la tabla: Moviles
                 Dal.Moviles.Update(p_dbcAccess,
                                    p_entMovil.Patente,
-                                   p_entMovil.Kms,
+                                   p_entMovil.Des,
                                    p_entMovil.Anot,
                                    p_entMovil.Nrochasis,
                                    p_entMovil.Nromotor,
@@ -4692,6 +4692,47 @@ namespace Rivn.Bll
         #endregion
 
         #region Metodos para métodos DAL definidos por el usuario
+
+        /// <summary>
+        /// Ejecuta el SP definido por el usuario: getMovilesTree
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        /// <returns>ListaEntidad con los datos solicitados</returns>
+        internal static ListaEntidades getMovilesTree(DBConn p_dbcAccess,
+                                                      ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            p_smResult.BllReset("Moviles", "getMovilesTree");
+
+            try {
+                // Llamamos al metodo definido por el usuario
+                DataSet l_dsTemp= new DataSet();
+
+                Dal.Moviles.getMovilesTree(p_dbcAccess,
+                                           ref l_dsTemp,
+                                           "Temporal",
+                                           ref p_smResult);
+                if (p_smResult.NOk) return null;
+
+                // Creamos la LE y Captionamos
+                ListaEntidades l_lentRet= new ListaEntidades(l_dsTemp.Tables["Temporal"]);
+                BllRuts.FillStdCaptions(ref l_lentRet);
+
+                // Devolvemos la LE
+                l_dsTemp.Dispose();
+                return l_lentRet;
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion
+                p_smResult.BllError(l_expData.ToString());
+                return null;
+            }
+            finally {
+                // Terminamos
+                p_smResult.BllPop();
+            }
+        }
         #endregion
     }
 }

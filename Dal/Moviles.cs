@@ -10,7 +10,7 @@ namespace Rivn.Dal
     //----------------------------------------------------------------------------
     //                         TNG Software DAL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 28/10/2013 17:41
+    // Fecha                    : 28/10/2013 18:04
     // Sistema                  : Rivn
     // Clase para Administrar   : Moviles del Sistema
     // Basada en la Tabla       : Moviles
@@ -161,7 +161,7 @@ namespace Rivn.Dal
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
         /// <param name="p_strPatente">Patente de la Ambulancia</param>
-        /// <param name="p_iKms">Kilometros</param>
+        /// <param name="p_strDes">Descripcion</param>
         /// <param name="p_strAnot">Anotaciones</param>
         /// <param name="p_strNrochasis">Nro Chasis</param>
         /// <param name="p_strNromotor">Nro Motor</param>
@@ -171,7 +171,7 @@ namespace Rivn.Dal
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static int Insert(DBConn p_dbcAccess,
                                  string p_strPatente,
-                                 int p_iKms,
+                                 string p_strDes,
                                  string p_strAnot,
                                  string p_strNrochasis,
                                  string p_strNromotor,
@@ -189,7 +189,7 @@ namespace Rivn.Dal
                                    "TNGS_Rivn..MOVILES_INSERT",
                                    new DbParameter[] {
                                        p_dbcAccess.MakeParam("@mov_ecd_patente", p_strPatente),
-                                       p_dbcAccess.MakeParam("@mov_nro_kms", p_iKms),
+                                       p_dbcAccess.MakeParam("@mov_des_des", p_strDes),
                                        p_dbcAccess.MakeParam("@mov_txt_anot", p_strAnot),
                                        p_dbcAccess.MakeParam("@mov_des_nrochasis", p_strNrochasis),
                                        p_dbcAccess.MakeParam("@mov_des_nromotor", p_strNromotor),
@@ -216,7 +216,7 @@ namespace Rivn.Dal
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
         /// <param name="p_strPatente">Patente de la Ambulancia</param>
-        /// <param name="p_iKms">Kilometros</param>
+        /// <param name="p_strDes">Descripcion</param>
         /// <param name="p_strAnot">Anotaciones</param>
         /// <param name="p_strNrochasis">Nro Chasis</param>
         /// <param name="p_strNromotor">Nro Motor</param>
@@ -226,7 +226,7 @@ namespace Rivn.Dal
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static int Update(DBConn p_dbcAccess,
                                  string p_strPatente,
-                                 int p_iKms,
+                                 string p_strDes,
                                  string p_strAnot,
                                  string p_strNrochasis,
                                  string p_strNromotor,
@@ -244,7 +244,7 @@ namespace Rivn.Dal
                                    "TNGS_Rivn..MOVILES_UPDATE",
                                    new DbParameter[] {
                                        p_dbcAccess.MakeParam("@mov_ecd_patente", p_strPatente),
-                                       p_dbcAccess.MakeParam("@mov_nro_kms", p_iKms),
+                                       p_dbcAccess.MakeParam("@mov_des_des", p_strDes),
                                        p_dbcAccess.MakeParam("@mov_txt_anot", p_strAnot),
                                        p_dbcAccess.MakeParam("@mov_des_nrochasis", p_strNrochasis),
                                        p_dbcAccess.MakeParam("@mov_des_nromotor", p_strNromotor),
@@ -401,6 +401,40 @@ namespace Rivn.Dal
         #endregion
 
         #region Metodos del Usuario
+
+        /// <summary>
+        /// Método Fijo: getMovilesTree
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_dsResult">DataSet donde devolver el registro</param>
+        /// <param name="p_strTabla">Nombre de la tabla a llenar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        public static int getMovilesTree(DBConn p_dbcAccess,
+                                         ref DataSet p_dsResult,
+                                         string p_strTabla,
+                                         ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            p_smResult.DalReset("Moviles", "getMovilesTree");
+
+            try {
+                return DBRuts.Exec_DS(p_dbcAccess,
+                                      "TNGS_Rivn..MOVILES_GETMOVILESTREE",
+                                      new DbParameter[] {
+                                          p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
+                                      },
+                                      ref p_dsResult, p_strTabla);
+            }
+            catch (Exception l_expData) {
+                // Error en el método fijo
+                p_smResult.DalError(l_expData.ToString());
+                return -1;
+            }
+            finally {
+                // Resteamos el StatMsg
+                p_smResult.DalExit();
+            }
+        }
         #endregion
 
         #region Grillas Definidas
