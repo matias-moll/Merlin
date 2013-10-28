@@ -30,14 +30,15 @@
         {
             this.components = new System.ComponentModel.Container();
             this.xPanel1 = new TNGS.NetControls.XPanel();
-            this.btnLimpiarTodo = new TNGS.NetControls.GlassButton();
-            this.btnCancel = new TNGS.NetControls.GlassButton();
-            this.btnGrabar = new TNGS.NetControls.GlassButton();
+            this.gbLimpiarTodo = new TNGS.NetControls.GlassButton();
+            this.gbCancel = new TNGS.NetControls.GlassButton();
+            this.gbGrabar = new TNGS.NetControls.GlassButton();
             this.igEquipamiento = new TNGS.NetControls.ImgGroup();
             this.btnDestildarTodoEqi = new TNGS.NetControls.GlassButton();
             this.btnTildaTodos = new TNGS.NetControls.GlassButton();
             this.clEquipamientos = new TNGS.NetControls.CDCheckedList();
             this.igDatosBasicosMovil = new TNGS.NetControls.ImgGroup();
+            this.cdcModelo = new TNGS.NetControls.CDCombo();
             this.tePatente = new TNGS.NetControls.TextEdit();
             this.lblAnotaciones = new TNGS.NetControls.FullLabel();
             this.lblAnioFabricacion = new TNGS.NetControls.FullLabel();
@@ -45,7 +46,7 @@
             this.lblMovilPropio = new TNGS.NetControls.FullLabel();
             this.neAnioFabric = new TNGS.NetControls.NumberEdit();
             this.teNroMotor = new TNGS.NetControls.TextEdit();
-            this.cmbMovilPropio = new TNGS.NetControls.CDCombo();
+            this.cdcMovilPropio = new TNGS.NetControls.CDCombo();
             this.lblPatente = new TNGS.NetControls.FullLabel();
             this.lblDescripcionMovil = new TNGS.NetControls.FullLabel();
             this.teDescripcionMovil = new TNGS.NetControls.TextEdit();
@@ -53,7 +54,8 @@
             this.teNroChasis = new TNGS.NetControls.TextEdit();
             this.lblNroMotor = new TNGS.NetControls.FullLabel();
             this.lblNroChasis = new TNGS.NetControls.FullLabel();
-            this.cmbModelo = new TNGS.NetControls.CDCombo();
+            this.fullLabel1 = new TNGS.NetControls.FullLabel();
+            this.neKilometros = new TNGS.NetControls.NumberEdit();
             this.xPanel1.SuspendLayout();
             this.igEquipamiento.SuspendLayout();
             this.igDatosBasicosMovil.SuspendLayout();
@@ -63,9 +65,9 @@
             // 
             this.xPanel1.BackColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.xPanel1.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
-            this.xPanel1.Controls.Add(this.btnLimpiarTodo);
-            this.xPanel1.Controls.Add(this.btnCancel);
-            this.xPanel1.Controls.Add(this.btnGrabar);
+            this.xPanel1.Controls.Add(this.gbLimpiarTodo);
+            this.xPanel1.Controls.Add(this.gbCancel);
+            this.xPanel1.Controls.Add(this.gbGrabar);
             this.xPanel1.Controls.Add(this.igEquipamiento);
             this.xPanel1.Controls.Add(this.igDatosBasicosMovil);
             this.xPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -75,38 +77,38 @@
             this.xPanel1.SkinFixed = true;
             this.xPanel1.TabIndex = 0;
             // 
-            // btnLimpiarTodo
+            // gbLimpiarTodo
             // 
-            this.btnLimpiarTodo.FixedImage = TNGS.NetControls.FixedGlassButtons.tDelete;
-            this.btnLimpiarTodo.ImageOnTop = true;
-            this.btnLimpiarTodo.Location = new System.Drawing.Point(426, 405);
-            this.btnLimpiarTodo.Name = "btnLimpiarTodo";
-            this.btnLimpiarTodo.Size = new System.Drawing.Size(93, 68);
-            this.btnLimpiarTodo.TabIndex = 27;
-            this.btnLimpiarTodo.Text = "Limpiar Campos";
-            this.btnLimpiarTodo.Click += new System.EventHandler(this.btnLimpiarTodo_Click);
+            this.gbLimpiarTodo.FixedImage = TNGS.NetControls.FixedGlassButtons.tDelete;
+            this.gbLimpiarTodo.ImageOnTop = true;
+            this.gbLimpiarTodo.Location = new System.Drawing.Point(413, 405);
+            this.gbLimpiarTodo.Name = "gbLimpiarTodo";
+            this.gbLimpiarTodo.Size = new System.Drawing.Size(93, 68);
+            this.gbLimpiarTodo.TabIndex = 27;
+            this.gbLimpiarTodo.Text = "Limpiar Campos";
+            this.gbLimpiarTodo.Click += new System.EventHandler(this.btnLimpiarTodo_Click);
             // 
-            // btnCancel
+            // gbCancel
             // 
-            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.FixedImage = TNGS.NetControls.FixedGlassButtons.tCancel;
-            this.btnCancel.ImageOnTop = true;
-            this.btnCancel.Location = new System.Drawing.Point(566, 405);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(93, 68);
-            this.btnCancel.TabIndex = 26;
-            this.btnCancel.Text = "Cancelar";
+            this.gbCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.gbCancel.FixedImage = TNGS.NetControls.FixedGlassButtons.tCancel;
+            this.gbCancel.ImageOnTop = true;
+            this.gbCancel.Location = new System.Drawing.Point(553, 405);
+            this.gbCancel.Name = "gbCancel";
+            this.gbCancel.Size = new System.Drawing.Size(93, 68);
+            this.gbCancel.TabIndex = 26;
+            this.gbCancel.Text = "Cancelar";
             // 
-            // btnGrabar
+            // gbGrabar
             // 
-            this.btnGrabar.FixedImage = TNGS.NetControls.FixedGlassButtons.tSave;
-            this.btnGrabar.ImageOnTop = true;
-            this.btnGrabar.Location = new System.Drawing.Point(665, 405);
-            this.btnGrabar.Name = "btnGrabar";
-            this.btnGrabar.Size = new System.Drawing.Size(93, 68);
-            this.btnGrabar.TabIndex = 25;
-            this.btnGrabar.Text = "Grabar";
-            this.btnGrabar.Click += new System.EventHandler(this.btnGrabar_Click);
+            this.gbGrabar.FixedImage = TNGS.NetControls.FixedGlassButtons.tSave;
+            this.gbGrabar.ImageOnTop = true;
+            this.gbGrabar.Location = new System.Drawing.Point(652, 405);
+            this.gbGrabar.Name = "gbGrabar";
+            this.gbGrabar.Size = new System.Drawing.Size(93, 68);
+            this.gbGrabar.TabIndex = 25;
+            this.gbGrabar.Text = "Grabar";
+            this.gbGrabar.Click += new System.EventHandler(this.btnGrabar_Click);
             // 
             // igEquipamiento
             // 
@@ -175,7 +177,9 @@
             this.igDatosBasicosMovil.BackgroundGradientMode = TNGS.NetControls.ImgGroup.GroupBoxGradientMode.ForwardDiagonal;
             this.igDatosBasicosMovil.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.igDatosBasicosMovil.BorderThickness = 1F;
-            this.igDatosBasicosMovil.Controls.Add(this.cmbModelo);
+            this.igDatosBasicosMovil.Controls.Add(this.neKilometros);
+            this.igDatosBasicosMovil.Controls.Add(this.fullLabel1);
+            this.igDatosBasicosMovil.Controls.Add(this.cdcModelo);
             this.igDatosBasicosMovil.Controls.Add(this.tePatente);
             this.igDatosBasicosMovil.Controls.Add(this.lblAnotaciones);
             this.igDatosBasicosMovil.Controls.Add(this.lblAnioFabricacion);
@@ -183,7 +187,7 @@
             this.igDatosBasicosMovil.Controls.Add(this.lblMovilPropio);
             this.igDatosBasicosMovil.Controls.Add(this.neAnioFabric);
             this.igDatosBasicosMovil.Controls.Add(this.teNroMotor);
-            this.igDatosBasicosMovil.Controls.Add(this.cmbMovilPropio);
+            this.igDatosBasicosMovil.Controls.Add(this.cdcMovilPropio);
             this.igDatosBasicosMovil.Controls.Add(this.lblPatente);
             this.igDatosBasicosMovil.Controls.Add(this.lblDescripcionMovil);
             this.igDatosBasicosMovil.Controls.Add(this.teDescripcionMovil);
@@ -209,6 +213,17 @@
             this.igDatosBasicosMovil.SkinFixed = true;
             this.igDatosBasicosMovil.SkinFullFixed = true;
             this.igDatosBasicosMovil.TabIndex = 23;
+            // 
+            // cdcModelo
+            // 
+            this.cdcModelo.BackColor = System.Drawing.SystemColors.Window;
+            this.cdcModelo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cdcModelo.FormattingEnabled = true;
+            this.cdcModelo.Location = new System.Drawing.Point(115, 170);
+            this.cdcModelo.Name = "cdcModelo";
+            this.cdcModelo.Size = new System.Drawing.Size(118, 21);
+            this.cdcModelo.Sorted = true;
+            this.cdcModelo.TabIndex = 19;
             // 
             // tePatente
             // 
@@ -280,16 +295,16 @@
             this.teNroMotor.TabIndex = 4;
             this.teNroMotor.Text = "234";
             // 
-            // cmbMovilPropio
+            // cdcMovilPropio
             // 
-            this.cmbMovilPropio.BackColor = System.Drawing.SystemColors.Window;
-            this.cmbMovilPropio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbMovilPropio.FormattingEnabled = true;
-            this.cmbMovilPropio.Location = new System.Drawing.Point(351, 96);
-            this.cmbMovilPropio.Name = "cmbMovilPropio";
-            this.cmbMovilPropio.Size = new System.Drawing.Size(118, 21);
-            this.cmbMovilPropio.Sorted = true;
-            this.cmbMovilPropio.TabIndex = 3;
+            this.cdcMovilPropio.BackColor = System.Drawing.SystemColors.Window;
+            this.cdcMovilPropio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cdcMovilPropio.FormattingEnabled = true;
+            this.cdcMovilPropio.Location = new System.Drawing.Point(351, 96);
+            this.cdcMovilPropio.Name = "cdcMovilPropio";
+            this.cdcMovilPropio.Size = new System.Drawing.Size(118, 21);
+            this.cdcMovilPropio.Sorted = true;
+            this.cdcMovilPropio.TabIndex = 3;
             // 
             // lblPatente
             // 
@@ -327,7 +342,7 @@
             this.lblModelo.BackColor = System.Drawing.Color.Transparent;
             this.lblModelo.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblModelo.ForeColor = System.Drawing.Color.Black;
-            this.lblModelo.Location = new System.Drawing.Point(60, 176);
+            this.lblModelo.Location = new System.Drawing.Point(60, 174);
             this.lblModelo.Name = "lblModelo";
             this.lblModelo.Size = new System.Drawing.Size(55, 18);
             this.lblModelo.TabIndex = 16;
@@ -364,21 +379,30 @@
             this.lblNroChasis.TabIndex = 14;
             this.lblNroChasis.Text = "Numero Chasis:";
             // 
-            // cmbModelo
+            // fullLabel1
             // 
-            this.cmbModelo.BackColor = System.Drawing.SystemColors.Window;
-            this.cmbModelo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbModelo.FormattingEnabled = true;
-            this.cmbModelo.Location = new System.Drawing.Point(115, 172);
-            this.cmbModelo.Name = "cmbModelo";
-            this.cmbModelo.Size = new System.Drawing.Size(118, 21);
-            this.cmbModelo.Sorted = true;
-            this.cmbModelo.TabIndex = 19;
+            this.fullLabel1.BackColor = System.Drawing.Color.Transparent;
+            this.fullLabel1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fullLabel1.ForeColor = System.Drawing.Color.Black;
+            this.fullLabel1.Location = new System.Drawing.Point(275, 174);
+            this.fullLabel1.Name = "fullLabel1";
+            this.fullLabel1.Size = new System.Drawing.Size(82, 18);
+            this.fullLabel1.TabIndex = 20;
+            this.fullLabel1.Text = "Kilometros: ";
+            // 
+            // neKilometros
+            // 
+            this.neKilometros.BackColor = System.Drawing.SystemColors.Window;
+            this.neKilometros.Location = new System.Drawing.Point(351, 173);
+            this.neKilometros.Name = "neKilometros";
+            this.neKilometros.Size = new System.Drawing.Size(118, 20);
+            this.neKilometros.TabIndex = 21;
+            this.neKilometros.Text = "234234";
             // 
             // AltaMovil
             // 
-            this.AcceptButton = this.btnGrabar;
-            this.CancelButton = this.btnCancel;
+            this.AcceptButton = this.gbGrabar;
+            this.CancelButton = this.gbCancel;
             this.ClientSize = new System.Drawing.Size(784, 485);
             this.Controls.Add(this.xPanel1);
             this.DockAreas = WeifenLuo.WinFormsUI.Docking.DockAreas.Document;
@@ -407,7 +431,7 @@
         private TNGS.NetControls.FullLabel lblMovilPropio;
         private TNGS.NetControls.NumberEdit neAnioFabric;
         private TNGS.NetControls.TextEdit teNroMotor;
-        private TNGS.NetControls.CDCombo cmbMovilPropio;
+        private TNGS.NetControls.CDCombo cdcMovilPropio;
         private TNGS.NetControls.FullLabel lblPatente;
         private TNGS.NetControls.FullLabel lblDescripcionMovil;
         private TNGS.NetControls.TextEdit teDescripcionMovil;
@@ -415,11 +439,13 @@
         private TNGS.NetControls.TextEdit teNroChasis;
         private TNGS.NetControls.FullLabel lblNroMotor;
         private TNGS.NetControls.FullLabel lblNroChasis;
-        private TNGS.NetControls.GlassButton btnGrabar;
-        private TNGS.NetControls.GlassButton btnLimpiarTodo;
-        private TNGS.NetControls.GlassButton btnCancel;
+        private TNGS.NetControls.GlassButton gbGrabar;
+        private TNGS.NetControls.GlassButton gbLimpiarTodo;
+        private TNGS.NetControls.GlassButton gbCancel;
         private TNGS.NetControls.GlassButton btnDestildarTodoEqi;
         private TNGS.NetControls.GlassButton btnTildaTodos;
-        private TNGS.NetControls.CDCombo cmbModelo;
+        private TNGS.NetControls.CDCombo cdcModelo;
+        private TNGS.NetControls.NumberEdit neKilometros;
+        private TNGS.NetControls.FullLabel fullLabel1;
     }
 }
