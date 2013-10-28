@@ -37,6 +37,7 @@ namespace Rivn.Mv
 
         public AltaMovil(Bel.EMovil p_entMovil) : this()
         {
+           
             //seteamos todos los datos de la entidad existente en los campos
             teAnotaciones.Text = p_entMovil.Anot;
             teDescripcionMovil.Text = p_entMovil.Des;
@@ -46,6 +47,9 @@ namespace Rivn.Mv
             cdcModelo.SelectedStrCode = p_entMovil.Modelo;
             cdcMovilPropio.SelectedStrCode = p_entMovil.Propio;
             neAnioFabric.Numero = p_entMovil.Aniofabric;
+
+            //disbleamos los controles que no tienen que estar activos
+            neKilometros.Enabled = false;
 
             //recuperamos la LE de equipamientos del movil
             Bel.LEMovilesEquip l_lentMovEquipamiento = p_entMovil.MovilesEquip;
@@ -138,9 +142,6 @@ namespace Rivn.Mv
             l_entMovil.Modelo = cdcModelo.SelectedStrCode; 
             l_entMovil.Aniofabric = neAnioFabric.Numero;
             l_entMovil.Propio = cdcMovilPropio.SelectedStrCode;
-
-            //VerEsto NO TIENE QUE IR   
-            l_entMovil.Kms = 1;
 
             //retornamos la EMovil Creado
             return l_entMovil;
