@@ -31,6 +31,36 @@ namespace Rivn.Mv
             m_stResult = new StatMsg("AltaMovil");
             llenarCheckListEquipamiento();
             llenarComboModelos();
+            llenarComboMovilPropio();
+
+        }
+
+        public AltaMovil(Bel.EMovil p_entMovil) : this()
+        {
+            //seteamos todos los datos de la entidad existente en los campos
+            teAnotaciones.Text = p_entMovil.Anot;
+            teDescripcionMovil.Text = p_entMovil.Des;
+            teNroChasis.Text = p_entMovil.Nrochasis;
+            teNroMotor.Text = p_entMovil.Nromotor;
+            tePatente.Text = p_entMovil.Patente;
+            cdcModelo.SelectedStrCode = p_entMovil.Modelo;
+            cdcMovilPropio.SelectedStrCode = p_entMovil.Propio;
+            neAnioFabric.Numero = p_entMovil.Aniofabric;
+
+            //recuperamos la LE de equipamientos del movil
+            Bel.LEMovilesEquip l_lentMovEquipamiento = p_entMovil.MovilesEquip;
+
+
+            Bel.EMovilEquip l_entMovilEquip;
+            //checkeamos todos los equipamientos que posee.
+            foreach (CodDesItems item in clEquipamientos.Items)
+            {
+                l_entMovilEquip = l_lentMovEquipamiento[p_entMovil.Patente, item.StrCode];
+                //si la entidad es null, es porque no existe ninguna en la lista entidad con ese StrCode. 
+                //   si no es null, la chequeamos.
+                if( null != l_entMovilEquip) 
+                    clEquipamientos.SetCheckedStrCode(item.StrCode, true);
+            }
         }
 
         #endregion
@@ -58,12 +88,43 @@ namespace Rivn.Mv
             teAnotaciones.Clear();
         }
 
+        //Llenac la combo modelos con los modelos que hay en la tabla modelos.
         private void llenarComboModelos()
         {
-            m_stResult.UilReset("llenarComboModelos");
-            cmbModelo.FillFromStrLEntidad(Bll.Tablas.ModUpFull(true, ref m_stResult), "mds_rcd_cod", "mds_des_des", "deleted");
+            m_stResult.UilReset("llenarComboModelos");  
+            cdcModelo.FillFromStrLEntidad(Bll.Tablas.ModUpFull(true, ref m_stResult), "mds_rcd_cod", "mds_des_des", "deleted");
+            cdcModelo.AddStrCD("","VACIO", 0);
 
             MsgRuts.AnalizeError(this, m_stResult);
+        }
+
+        //llena comboMovil con SI NO Vacio
+        private void llenarComboMovilPropio()
+        {
+            cdcMovilPropio.AddStrCD("S","SI",0);
+            cdcMovilPropio.AddStrCD("N", "NO", 0);
+            cdcModelo.AddStrCD("", "VACIO", 0);
+        }
+
+        //chequea que todos los campos tengan datos validos.
+        private bool CamposDatosBasicosSonValidos()
+        {
+           if(     
+                   (teAnotaciones.IsValid)
+                   && (teDescripcionMovil.IsValid)
+                   && (teNroChasis.IsValid)
+                   && (teNroMotor.IsValid)
+                   && (tePatente.IsValid)
+                   && (cdcModelo.IsValid)
+                   && (cdcModelo.SelectedStrCode != "")
+                   && (cdcMovilPropio.IsValid)
+                   && (cdcMovilPropio.SelectedStrCode != "")
+                   && (neAnioFabric.IsValid)
+                   && (neKilometros.IsValid)
+               ) return true;
+
+           return false;
+
         }
         
         //genera una nueva entidad Movil, con los datos del formulario
@@ -74,16 +135,13 @@ namespace Rivn.Mv
             l_entMovil.Des = teDescripcionMovil.Text;
             l_entMovil.Nrochasis = teNroChasis.Text;
             l_entMovil.Nromotor = teNroMotor.Text;
-            l_entMovil.Modelo = cmbModelo.SelectedStrCode; 
+            l_entMovil.Modelo = cdcModelo.SelectedStrCode; 
             l_entMovil.Aniofabric = neAnioFabric.Numero;
-            //de aca en adelante hay que cambiarlos, estan HARDCODED
-                l_entMovil.Kms = 1;
-                l_entMovil.Estado = "ROTO";
-                l_entMovil.Propio = "S";
-                //l_entMovil.MovilesCombus = Bel.LEMovilesCombus.NewEmpty();
-                //l_entMovil.MovilesEstado = Bel.LEMovilesEstado.NewEmpty();
-                //l_entMovil.MovilesKms = Bel.LEMovilesKms.NewEmpty();
-                //l_entMovil.MovilesEquip = Bel.LEMovilesEquip.NewEmpty();
+            l_entMovil.Propio = cdcMovilPropio.SelectedStrCode;
+
+            //VerEsto NO TIENE QUE IR   
+            l_entMovil.Kms = 1;
+            l_entMovil.Estado = "ROTO";
 
             //retornamos la EMovil Creado
             return l_entMovil;
@@ -119,6 +177,13 @@ namespace Rivn.Mv
 
         private void btnGrabar_Click(object sender, EventArgs e)
         {
+           //nos fijamos que todos los campos sean validos.
+            if (CamposDatosBasicosSonValidos())
+            {
+                MsgRuts.ShowMsg(this, "Algun campo es invalido");
+                return;
+            }
+
             //generamos la entidad Movil
             Bel.EMovil l_entMovil = generarNuevaEntidadMovil();
 
