@@ -10,7 +10,7 @@ namespace Rivn.Dal
     //----------------------------------------------------------------------------
     //                         TNG Software DAL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 21/10/2013 16:46
+    // Fecha                    : 28/10/2013 17:41
     // Sistema                  : Rivn
     // Clase para Administrar   : Moviles Equipamiento
     // Basada en la Tabla       : MvlEquipamiento

@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------
 //                 TNG Software Script Generator (Tablas)                     
 //----------------------------------------------------------------------------
-// Fecha              : 21/10/2013 16:41
+// Fecha              : 28/10/2013 17:40
 // Base de Datos      : TNGS_Rivn
 // Tabla              : Moviles
 //----------------------------------------------------------------------------
@@ -40,8 +40,6 @@ print '   - Creando la nueva tabla'
 create table Moviles
    (
       mov_ecd_patente tngs_codigo_e,
-      mov_des_des tngs_descripcion,
-      mov_rcd_estado tngs_codigo_r,
       mov_nro_kms tngs_numero,
       mov_txt_anot tngs_texto,
       mov_des_nrochasis tngs_descripcion,
