@@ -16,7 +16,7 @@ namespace Rivn.Bll
     //----------------------------------------------------------------------------
     //                         TNG Software BLL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 24/10/2013 16:24
+    // Fecha                    : 28/10/2013 17:41
     // Sistema                  : Rivn
     // Clase para Administrar   : Moviles y Tablas Hijas
     //----------------------------------------------------------------------------
@@ -4185,18 +4185,6 @@ namespace Rivn.Bll
                 return;
             }
 
-            if (p_entMovil.Des.Trim() == "") {
-                // El campo [des] no puede ser vacío
-                p_smResult.BllWarning("El dato [des] no puede ser vacío","");
-                return;
-            }
-
-            if (p_entMovil.Estado.Trim() == "") {
-                // El campo [estado] no puede ser vacío
-                p_smResult.BllWarning("El dato [estado] no puede ser vacío","");
-                return;
-            }
-
             if (p_entMovil.Kms < 0) {
                 // El campo [Kilometros] no puede menor a cero
                 p_smResult.BllWarning("El dato [Kilometros] no puede ser negativo","");
@@ -4483,8 +4471,6 @@ namespace Rivn.Bll
                 // Creamos un nuevo registro de la tabla: Moviles
                 Dal.Moviles.Insert(p_dbcAccess,
                                    p_entMovil.Patente,
-                                   p_entMovil.Des,
-                                   p_entMovil.Estado,
                                    p_entMovil.Kms,
                                    p_entMovil.Anot,
                                    p_entMovil.Nrochasis,
@@ -4522,8 +4508,6 @@ namespace Rivn.Bll
                 // Actualizamos un registro de la tabla: Moviles
                 Dal.Moviles.Update(p_dbcAccess,
                                    p_entMovil.Patente,
-                                   p_entMovil.Des,
-                                   p_entMovil.Estado,
                                    p_entMovil.Kms,
                                    p_entMovil.Anot,
                                    p_entMovil.Nrochasis,
