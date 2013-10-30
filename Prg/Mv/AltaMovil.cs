@@ -151,6 +151,18 @@ namespace Rivn.Mv
 
             //retornamos la EMovil Creado
             return l_entMovil;
+        }
+
+        //genera una nueva entidad Movil, con los datos del formulario
+        private Bel.EMovilKms generarNuevaEntidadMovilKilometros()
+        {
+            Bel.EMovilKms l_enMovilKms= Bel.EMovilKms.NewEmpty();
+            l_enMovilKms.Patente = tePatente.Text;
+            l_enMovilKms.Fecha = DateTime.Now;
+            l_enMovilKms.Km = neKilometros.Numero;
+
+            //retornamos la EMovil Creado
+            return l_enMovilKms;
         }  
         
         //llena un CheckListBox con los equipamientos de la tabla Equipamientos.
@@ -184,7 +196,7 @@ namespace Rivn.Mv
         private void btnGrabar_Click(object sender, EventArgs e)
         {
            //nos fijamos que todos los campos sean validos.
-            if (CamposDatosBasicosSonValidos())
+            if (!CamposDatosBasicosSonValidos())
             {
                 MsgRuts.ShowMsg(this, "Algun campo es invalido");
                 return;
@@ -192,11 +204,14 @@ namespace Rivn.Mv
 
             //generamos la entidad Movil
             Bel.EMovil l_entMovil = generarNuevaEntidadMovil();
+            //generamos la entidad MovilKms
+            Bel.EMovilKms l_entMovilKms = generarNuevaEntidadMovilKilometros();
 
             m_stResult.UilReset("btnGrabar_Click");
 
-            //grabamos la entidad
+            //grabamos las entidades
             Bll.Moviles.Save(l_entMovil, ref m_stResult);
+            Bll.Moviles.MvkmSave(l_entMovilKms, ref m_stResult);            
 
             if (MsgRuts.AnalizeError(this, m_stResult)) return ;
 
