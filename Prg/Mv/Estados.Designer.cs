@@ -36,7 +36,6 @@
             this.igEquipamiento = new TNGS.NetControls.ImgGroup();
             this.gbBorrarEq = new TNGS.NetControls.GlassButton();
             this.gbModificarEq = new TNGS.NetControls.GlassButton();
-            this.gbNuevoEq = new TNGS.NetControls.GlassButton();
             this.fgEquipamiento = new TNGS.NetControls.FullGrid();
             this.igCombustibles = new TNGS.NetControls.ImgGroup();
             this.gbAgregarCombustible = new TNGS.NetControls.GlassButton();
@@ -138,7 +137,6 @@
             this.igEquipamiento.BorderThickness = 1F;
             this.igEquipamiento.Controls.Add(this.gbBorrarEq);
             this.igEquipamiento.Controls.Add(this.gbModificarEq);
-            this.igEquipamiento.Controls.Add(this.gbNuevoEq);
             this.igEquipamiento.Controls.Add(this.fgEquipamiento);
             this.igEquipamiento.CustomGroupBoxColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
             this.igEquipamiento.FontTitle = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -161,7 +159,7 @@
             // gbBorrarEq
             // 
             this.gbBorrarEq.FixedImage = TNGS.NetControls.FixedGlassButtons.Delete;
-            this.gbBorrarEq.Location = new System.Drawing.Point(191, 187);
+            this.gbBorrarEq.Location = new System.Drawing.Point(145, 185);
             this.gbBorrarEq.Name = "gbBorrarEq";
             this.gbBorrarEq.Size = new System.Drawing.Size(81, 26);
             this.gbBorrarEq.TabIndex = 3;
@@ -172,22 +170,12 @@
             // gbModificarEq
             // 
             this.gbModificarEq.FixedImage = TNGS.NetControls.FixedGlassButtons.Modify;
-            this.gbModificarEq.Location = new System.Drawing.Point(94, 187);
+            this.gbModificarEq.Location = new System.Drawing.Point(52, 185);
             this.gbModificarEq.Name = "gbModificarEq";
             this.gbModificarEq.Size = new System.Drawing.Size(87, 26);
             this.gbModificarEq.TabIndex = 2;
             this.gbModificarEq.Text = "Modificar";
             this.gbModificarEq.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // gbNuevoEq
-            // 
-            this.gbNuevoEq.FixedImage = TNGS.NetControls.FixedGlassButtons.Add;
-            this.gbNuevoEq.Location = new System.Drawing.Point(4, 187);
-            this.gbNuevoEq.Name = "gbNuevoEq";
-            this.gbNuevoEq.Size = new System.Drawing.Size(84, 26);
-            this.gbNuevoEq.TabIndex = 1;
-            this.gbNuevoEq.Text = "Agregar";
-            this.gbNuevoEq.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // fgEquipamiento
             // 
@@ -537,7 +525,6 @@
         private TNGS.NetControls.FullGrid fgEquipamiento;
         private TNGS.NetControls.GlassButton gbBorrarEq;
         private TNGS.NetControls.GlassButton gbModificarEq;
-        private TNGS.NetControls.GlassButton gbNuevoEq;
         private TNGS.NetControls.NumberEdit neKilometros;
         private TNGS.NetControls.GlassButton gbNuevoKM;
         private TNGS.NetControls.GlassButton gbAgregarCombustible;
