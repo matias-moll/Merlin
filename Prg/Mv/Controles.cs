@@ -211,7 +211,7 @@ namespace Rivn.Mv
             // Obtenemos la entidad del item seleccionado en la grilla
             App.ShowMsg("Recuperando Datos...");
             m_smResult.UilReset("cmdModificar_Click");
-            m_entControl= Bll.Controles.Get((xxxx) grdDatos.GetMatrixValueObj(l_iRow, 1),
+            m_entControl= Bll.Controles.Get((string) grdDatos.GetMatrixValueObj(l_iRow, 1),
                                             false, ref m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
@@ -222,7 +222,7 @@ namespace Rivn.Mv
                 cmdCancelar.Focus();
             }
             else {
-                txtCrit.Focus();
+                cmbCrit.Focus();
             }
             App.HideMsg();
         }
