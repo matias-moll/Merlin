@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{651E45C5-5EF4-40A0-AD9E-174516173285}</ProjectGuid>
+    <ProjectGuid>{46C7C912-9AD7-4F8E-9770-E69B85B050E8}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Rivn.Mv</RootNamespace>
