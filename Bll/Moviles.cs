@@ -69,6 +69,7 @@ namespace Rivn.Bll
         private static void fArmarTree(ListaEntidades p_lentData)
         {
             // Llamar metodo que hace juanchi
+            
             fAgregarRoot(p_lentData, "Moviles", 1);
         }
 
