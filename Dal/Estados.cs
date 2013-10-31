@@ -10,7 +10,7 @@ namespace Rivn.Dal
     //----------------------------------------------------------------------------
     //                         TNG Software DAL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 28/10/2013 18:04
+    // Fecha                    : 31/10/2013 16:28
     // Sistema                  : Rivn
     // Clase para Administrar   : Estados de los Moviles
     // Basada en la Tabla       : Estados
@@ -397,6 +397,10 @@ namespace Rivn.Dal
                 DBRuts.ClearDTCaptions(ref p_dtResult);
 
                 // Fijamos los nuevos captions de la grilla
+                p_dtResult.Columns["est_rcd_cod"].Caption= "V1codCN1";
+                p_dtResult.Columns["est_des_des"].Caption= "V1desCN1";
+                p_dtResult.Columns["est_cd1_operativo"].Caption= "V1OperativoCN1";
+                p_dtResult.Columns["est_txt_txtcontingencia"].Caption= "V1Texto de ContingenciaCN1";
                 p_dtResult.Columns["deleted"].Caption= "V1Borrado2N2";
             }
             catch (Exception l_expData) {
