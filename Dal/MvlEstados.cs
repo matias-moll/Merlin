@@ -10,7 +10,7 @@ namespace Rivn.Dal
     //----------------------------------------------------------------------------
     //                         TNG Software DAL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 21/10/2013 16:46
+    // Fecha                    : 31/10/2013 17:04
     // Sistema                  : Rivn
     // Clase para Administrar   : Movil Estado
     // Basada en la Tabla       : MvlEstados
@@ -574,6 +574,43 @@ namespace Rivn.Dal
         #endregion
 
         #region Metodos del Usuario
+
+        /// <summary>
+        /// Método Fijo: getLastFiveMvlEstads
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name= "p_strPatente">patente del movil</param>
+        /// <param name="p_dsResult">DataSet donde devolver el registro</param>
+        /// <param name="p_strTabla">Nombre de la tabla a llenar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        public static int getLastFiveMvlEstads(DBConn p_dbcAccess,
+                                               string p_strPatente,
+                                               ref DataSet p_dsResult,
+                                               string p_strTabla,
+                                               ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            p_smResult.DalReset("MvlEstados", "getLastFiveMvlEstads");
+
+            try {
+                return DBRuts.Exec_DS(p_dbcAccess,
+                                      "TNGS_Rivn..MVLESTADOS_GETLASTFIVEMVLESTADS",
+                                      new DbParameter[] {
+                                          p_dbcAccess.MakeParam("@patente", p_strPatente),
+                                          p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
+                                      },
+                                      ref p_dsResult, p_strTabla);
+            }
+            catch (Exception l_expData) {
+                // Error en el método fijo
+                p_smResult.DalError(l_expData.ToString());
+                return -1;
+            }
+            finally {
+                // Resteamos el StatMsg
+                p_smResult.DalExit();
+            }
+        }
         #endregion
 
         #region Grillas Definidas

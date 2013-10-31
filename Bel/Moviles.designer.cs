@@ -14,7 +14,7 @@ namespace Rivn.Bel
     //----------------------------------------------------------------------------
     //                         TNG Software BEL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 24/10/2013 16:24
+    // Fecha                    : 31/10/2013 17:05
     // Sistema                  : Rivn
     // Clase para Administrar   : Moviles y Tablas Hijas
     //----------------------------------------------------------------------------
@@ -2225,8 +2225,6 @@ namespace Rivn.Bel
 
             l_drTemp["mov_ecd_patente"]= XMLRuts.ExtractXAttr(l_xndData, "mov_ecd_patente");
             l_drTemp["mov_des_des"]= XMLRuts.ExtractXAttr(l_xndData, "mov_des_des");
-            l_drTemp["mov_rcd_estado"]= XMLRuts.ExtractXAttr(l_xndData, "mov_rcd_estado");
-            l_drTemp["mov_nro_kms"]= XMLRuts.ExtractXAttr(l_xndData, "mov_nro_kms", 0);
             l_drTemp["mov_txt_anot"]= XMLRuts.ExtractXAttr(l_xndData, "mov_txt_anot");
             l_drTemp["mov_des_nrochasis"]= XMLRuts.ExtractXAttr(l_xndData, "mov_des_nrochasis");
             l_drTemp["mov_des_nromotor"]= XMLRuts.ExtractXAttr(l_xndData, "mov_des_nromotor");
@@ -2283,8 +2281,6 @@ namespace Rivn.Bel
 
             l_drTemp["mov_ecd_patente"]= "";
             l_drTemp["mov_des_des"]= "";
-            l_drTemp["mov_rcd_estado"]= "";
-            l_drTemp["mov_nro_kms"]= 0;
             l_drTemp["mov_txt_anot"]= "";
             l_drTemp["mov_des_nrochasis"]= "";
             l_drTemp["mov_des_nromotor"]= "";
@@ -2304,9 +2300,7 @@ namespace Rivn.Bel
         /// Construye una entidad con datos de parametro: Movil
         /// </summary>
         /// <param name="p_strPatente">Patente de la Ambulancia</param>
-        /// <param name="p_strDes">des</param>
-        /// <param name="p_strEstado">estado</param>
-        /// <param name="p_iKms">Kilometros</param>
+        /// <param name="p_strDes">Descripcion</param>
         /// <param name="p_strAnot">Anotaciones</param>
         /// <param name="p_strNrochasis">Nro Chasis</param>
         /// <param name="p_strNromotor">Nro Motor</param>
@@ -2316,8 +2310,6 @@ namespace Rivn.Bel
         /// <returns>Entidad: Movil</returns>
         public static EMovil NewFilled(string p_strPatente,
                                        string p_strDes,
-                                       string p_strEstado,
-                                       int p_iKms,
                                        string p_strAnot,
                                        string p_strNrochasis,
                                        string p_strNromotor,
@@ -2335,8 +2327,6 @@ namespace Rivn.Bel
 
             l_drTemp["mov_ecd_patente"]= p_strPatente;
             l_drTemp["mov_des_des"]= p_strDes;
-            l_drTemp["mov_rcd_estado"]= p_strEstado;
-            l_drTemp["mov_nro_kms"]= p_iKms;
             l_drTemp["mov_txt_anot"]= p_strAnot;
             l_drTemp["mov_des_nrochasis"]= p_strNrochasis;
             l_drTemp["mov_des_nromotor"]= p_strNromotor;
@@ -2383,19 +2373,17 @@ namespace Rivn.Bel
         {
             get {
                 // Creamos el vector de DataColumns y lo llenamos
-                DataColumn[] l_dcStruct= new DataColumn[14];
+                DataColumn[] l_dcStruct= new DataColumn[12];
 
                 l_dcStruct[0]= new DataColumn("mov_ecd_patente", typeof(string));
                 l_dcStruct[1]= new DataColumn("mov_des_des", typeof(string));
-                l_dcStruct[2]= new DataColumn("mov_rcd_estado", typeof(string));
-                l_dcStruct[3]= new DataColumn("mov_nro_kms", typeof(int));
-                l_dcStruct[4]= new DataColumn("mov_txt_anot", typeof(string));
-                l_dcStruct[5]= new DataColumn("mov_des_nrochasis", typeof(string));
-                l_dcStruct[6]= new DataColumn("mov_des_nromotor", typeof(string));
-                l_dcStruct[7]= new DataColumn("mov_rcd_modelo", typeof(string));
-                l_dcStruct[8]= new DataColumn("mov_nro_aniofabric", typeof(int));
-                l_dcStruct[9]= new DataColumn("mov_cd1_propio", typeof(string));
-                EMovil.FillFixedFields(ref l_dcStruct, 10);
+                l_dcStruct[2]= new DataColumn("mov_txt_anot", typeof(string));
+                l_dcStruct[3]= new DataColumn("mov_des_nrochasis", typeof(string));
+                l_dcStruct[4]= new DataColumn("mov_des_nromotor", typeof(string));
+                l_dcStruct[5]= new DataColumn("mov_rcd_modelo", typeof(string));
+                l_dcStruct[6]= new DataColumn("mov_nro_aniofabric", typeof(int));
+                l_dcStruct[7]= new DataColumn("mov_cd1_propio", typeof(string));
+                EMovil.FillFixedFields(ref l_dcStruct, 8);
 
                 // Devolvemos el vector creado
                 return l_dcStruct;
@@ -2415,7 +2403,7 @@ namespace Rivn.Bel
         }
 
         /// <summary>
-        /// des
+        /// Descripcion
         /// </summary>
         public string Des
         {
@@ -2424,27 +2412,6 @@ namespace Rivn.Bel
                 if (value.Trim().Length > 30) value= value.Trim().Substring(0,30);
                 InternalData["mov_des_des"]= value.Trim().ToUpper();
             }
-        }
-
-        /// <summary>
-        /// estado
-        /// </summary>
-        public string Estado
-        {
-            get {return ((string) InternalData["mov_rcd_estado"]).Trim();}
-            set {
-                if (value.Trim().Length > 2) value= value.Trim().Substring(0,2);
-                InternalData["mov_rcd_estado"]= value.Trim().ToUpper();
-            }
-        }
-
-        /// <summary>
-        /// Kilometros
-        /// </summary>
-        public int Kms
-        {
-            get {return (int) InternalData["mov_nro_kms"];}
-            set {InternalData["mov_nro_kms"]= value;}
         }
 
         /// <summary>
@@ -2564,8 +2531,6 @@ namespace Rivn.Bel
                 // Asignamos los atributos al nodo
                 l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "mov_ecd_patente", Patente));
                 l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "mov_des_des", Des));
-                l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "mov_rcd_estado", Estado));
-                l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "mov_nro_kms", Kms));
                 l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "mov_txt_anot", Anot));
                 l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "mov_des_nrochasis", Nrochasis));
                 l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "mov_des_nromotor", Nromotor));

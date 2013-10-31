@@ -16,7 +16,7 @@ namespace Rivn.Bll
     //----------------------------------------------------------------------------
     //                         TNG Software BLL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 24/10/2013 16:24
+    // Fecha                    : 31/10/2013 17:05
     // Sistema                  : Rivn
     // Clase para Administrar   : Moviles y Tablas Hijas
     //----------------------------------------------------------------------------
@@ -2896,6 +2896,50 @@ namespace Rivn.Bll
         #endregion
 
         #region Metodos para métodos DAL definidos por el usuario
+
+        /// <summary>
+        /// Ejecuta el SP definido por el usuario: getLastFiveMvlEstads
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name= p_strPatente>patente del movil</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        /// <returns>ListaEntidad con los datos solicitados</returns>
+        internal static ListaEntidades MvesgetLastFiveMvlEstads(DBConn p_dbcAccess,
+                                                                string p_strPatente,
+                                                                ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            p_smResult.BllReset("Moviles", "MvesgetLastFiveMvlEstads");
+
+            try {
+                // Llamamos al metodo definido por el usuario
+                DataSet l_dsTemp= new DataSet();
+
+                Dal.MvlEstados.getLastFiveMvlEstads(p_dbcAccess,
+                                                    p_strPatente,
+                                                    ref l_dsTemp,
+                                                    "Temporal",
+                                                    ref p_smResult);
+                if (p_smResult.NOk) return null;
+
+                // Creamos la LE y Captionamos
+                ListaEntidades l_lentRet= new ListaEntidades(l_dsTemp.Tables["Temporal"]);
+                BllRuts.FillStdCaptions(ref l_lentRet);
+
+                // Devolvemos la LE
+                l_dsTemp.Dispose();
+                return l_lentRet;
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion
+                p_smResult.BllError(l_expData.ToString());
+                return null;
+            }
+            finally {
+                // Terminamos
+                p_smResult.BllPop();
+            }
+        }
         #endregion
 
 
@@ -4186,20 +4230,8 @@ namespace Rivn.Bll
             }
 
             if (p_entMovil.Des.Trim() == "") {
-                // El campo [des] no puede ser vacío
-                p_smResult.BllWarning("El dato [des] no puede ser vacío","");
-                return;
-            }
-
-            if (p_entMovil.Estado.Trim() == "") {
-                // El campo [estado] no puede ser vacío
-                p_smResult.BllWarning("El dato [estado] no puede ser vacío","");
-                return;
-            }
-
-            if (p_entMovil.Kms < 0) {
-                // El campo [Kilometros] no puede menor a cero
-                p_smResult.BllWarning("El dato [Kilometros] no puede ser negativo","");
+                // El campo [Descripcion] no puede ser vacío
+                p_smResult.BllWarning("El dato [Descripcion] no puede ser vacío","");
                 return;
             }
 
@@ -4484,8 +4516,6 @@ namespace Rivn.Bll
                 Dal.Moviles.Insert(p_dbcAccess,
                                    p_entMovil.Patente,
                                    p_entMovil.Des,
-                                   p_entMovil.Estado,
-                                   p_entMovil.Kms,
                                    p_entMovil.Anot,
                                    p_entMovil.Nrochasis,
                                    p_entMovil.Nromotor,
@@ -4523,8 +4553,6 @@ namespace Rivn.Bll
                 Dal.Moviles.Update(p_dbcAccess,
                                    p_entMovil.Patente,
                                    p_entMovil.Des,
-                                   p_entMovil.Estado,
-                                   p_entMovil.Kms,
                                    p_entMovil.Anot,
                                    p_entMovil.Nrochasis,
                                    p_entMovil.Nromotor,
@@ -4708,6 +4736,47 @@ namespace Rivn.Bll
         #endregion
 
         #region Metodos para métodos DAL definidos por el usuario
+
+        /// <summary>
+        /// Ejecuta el SP definido por el usuario: getMovilesTree
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        /// <returns>ListaEntidad con los datos solicitados</returns>
+        internal static ListaEntidades getMovilesTree(DBConn p_dbcAccess,
+                                                      ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            p_smResult.BllReset("Moviles", "getMovilesTree");
+
+            try {
+                // Llamamos al metodo definido por el usuario
+                DataSet l_dsTemp= new DataSet();
+
+                Dal.Moviles.getMovilesTree(p_dbcAccess,
+                                           ref l_dsTemp,
+                                           "Temporal",
+                                           ref p_smResult);
+                if (p_smResult.NOk) return null;
+
+                // Creamos la LE y Captionamos
+                ListaEntidades l_lentRet= new ListaEntidades(l_dsTemp.Tables["Temporal"]);
+                BllRuts.FillStdCaptions(ref l_lentRet);
+
+                // Devolvemos la LE
+                l_dsTemp.Dispose();
+                return l_lentRet;
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion
+                p_smResult.BllError(l_expData.ToString());
+                return null;
+            }
+            finally {
+                // Terminamos
+                p_smResult.BllPop();
+            }
+        }
         #endregion
     }
 }

@@ -13,9 +13,9 @@ namespace Rivn.Bel
     //----------------------------------------------------------------------------
     //                         TNG Software BEL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 21/10/2013 16:15
+    // Fecha                    : 31/10/2013 16:27
     // Sistema                  : Rivn
-    // Clase para Administrar   : Tablas de Rivn.
+    // Clase para Administrar   : Moviles y Tablas Hijas
     //----------------------------------------------------------------------------
     // © 1996-2013 by TNG Software                                      Gndr 5.20
     //----------------------------------------------------------------------------
@@ -24,12 +24,12 @@ namespace Rivn.Bel
     //    Agregue en esta clase los metodos fijos que desea incorporar 
     //****************************************************************************
 
-    #region Entidad: Categoria
+    #region Entidad: MovilCombus
     /// <summary>
-    /// Clase que representa la Entidad: Categoria
+    /// Clase que representa la Entidad: MovilCombus
     ///   - Elementos no producidos por el Generador
     /// </summary>
-    public sealed partial class ECategoria : Entidad
+    public sealed partial class EMovilCombus : Entidad
     {
         #region Metodos publicos de la clase
         //---------------------------------------------------------------
@@ -70,12 +70,12 @@ namespace Rivn.Bel
     }
     #endregion
 
-    #region Lista-Entidad: Categorias
+    #region Lista-Entidad: MovilesCombus
     /// <summary>
-    /// Clase que representa la Lista-Entidad: Categorias
+    /// Clase que representa la Lista-Entidad: MovilesCombus
     ///   - Elementos no producidos por el Generador
     /// </summary>
-    public sealed partial class LECategorias : ListaEntidades
+    public sealed partial class LEMovilesCombus : ListaEntidades
     {
         #region Metodos publicos de la clase
         //---------------------------------------------------------------
@@ -100,12 +100,12 @@ namespace Rivn.Bel
     }
     #endregion
 
-    #region Lista-Entidad-Tipada: Categorias
+    #region Lista-Entidad-Tipada: MovilesCombus
     /// <summary>
-    /// Clase que representa la Lista-Entidad-Tipada: Categorias
+    /// Clase que representa la Lista-Entidad-Tipada: MovilesCombus
     ///   - Elementos no producidos por el Generador
     /// </summary>
-    public sealed partial class LETCategorias : LET<ECategoria>
+    public sealed partial class LETMovilesCombus : LET<EMovilCombus>
     {
         #region Metodos publicos de la clase
         //---------------------------------------------------------------
@@ -130,12 +130,12 @@ namespace Rivn.Bel
     }
     #endregion
 
-    #region Entidad: Equipamento
+    #region Entidad: MovilEquip
     /// <summary>
-    /// Clase que representa la Entidad: Equipamento
+    /// Clase que representa la Entidad: MovilEquip
     ///   - Elementos no producidos por el Generador
     /// </summary>
-    public sealed partial class EEquipamento : Entidad
+    public sealed partial class EMovilEquip : Entidad
     {
         #region Metodos publicos de la clase
         //---------------------------------------------------------------
@@ -176,12 +176,12 @@ namespace Rivn.Bel
     }
     #endregion
 
-    #region Lista-Entidad: Equipamiento
+    #region Lista-Entidad: MovilesEquip
     /// <summary>
-    /// Clase que representa la Lista-Entidad: Equipamiento
+    /// Clase que representa la Lista-Entidad: MovilesEquip
     ///   - Elementos no producidos por el Generador
     /// </summary>
-    public sealed partial class LEEquipamiento : ListaEntidades
+    public sealed partial class LEMovilesEquip : ListaEntidades
     {
         #region Metodos publicos de la clase
         //---------------------------------------------------------------
@@ -206,12 +206,12 @@ namespace Rivn.Bel
     }
     #endregion
 
-    #region Lista-Entidad-Tipada: Equipamiento
+    #region Lista-Entidad-Tipada: MovilesEquip
     /// <summary>
-    /// Clase que representa la Lista-Entidad-Tipada: Equipamiento
+    /// Clase que representa la Lista-Entidad-Tipada: MovilesEquip
     ///   - Elementos no producidos por el Generador
     /// </summary>
-    public sealed partial class LETEquipamiento : LET<EEquipamento>
+    public sealed partial class LETMovilesEquip : LET<EMovilEquip>
     {
         #region Metodos publicos de la clase
         //---------------------------------------------------------------
@@ -236,12 +236,12 @@ namespace Rivn.Bel
     }
     #endregion
 
-    #region Entidad: Estacion
+    #region Entidad: MovilEstado
     /// <summary>
-    /// Clase que representa la Entidad: Estacion
+    /// Clase que representa la Entidad: MovilEstado
     ///   - Elementos no producidos por el Generador
     /// </summary>
-    public sealed partial class EEstacion : Entidad
+    public sealed partial class EMovilEstado : Entidad
     {
         #region Metodos publicos de la clase
         //---------------------------------------------------------------
@@ -282,12 +282,12 @@ namespace Rivn.Bel
     }
     #endregion
 
-    #region Lista-Entidad: Estaciones
+    #region Lista-Entidad: MovilesEstado
     /// <summary>
-    /// Clase que representa la Lista-Entidad: Estaciones
+    /// Clase que representa la Lista-Entidad: MovilesEstado
     ///   - Elementos no producidos por el Generador
     /// </summary>
-    public sealed partial class LEEstaciones : ListaEntidades
+    public sealed partial class LEMovilesEstado : ListaEntidades
     {
         #region Metodos publicos de la clase
         //---------------------------------------------------------------
@@ -312,12 +312,12 @@ namespace Rivn.Bel
     }
     #endregion
 
-    #region Lista-Entidad-Tipada: Estaciones
+    #region Lista-Entidad-Tipada: MovilesEstado
     /// <summary>
-    /// Clase que representa la Lista-Entidad-Tipada: Estaciones
+    /// Clase que representa la Lista-Entidad-Tipada: MovilesEstado
     ///   - Elementos no producidos por el Generador
     /// </summary>
-    public sealed partial class LETEstaciones : LET<EEstacion>
+    public sealed partial class LETMovilesEstado : LET<EMovilEstado>
     {
         #region Metodos publicos de la clase
         //---------------------------------------------------------------
@@ -342,12 +342,12 @@ namespace Rivn.Bel
     }
     #endregion
 
-    #region Entidad: Estado
+    #region Entidad: MovilKms
     /// <summary>
-    /// Clase que representa la Entidad: Estado
+    /// Clase que representa la Entidad: MovilKms
     ///   - Elementos no producidos por el Generador
     /// </summary>
-    public sealed partial class EEstado : Entidad
+    public sealed partial class EMovilKms : Entidad
     {
         #region Metodos publicos de la clase
         //---------------------------------------------------------------
@@ -388,12 +388,12 @@ namespace Rivn.Bel
     }
     #endregion
 
-    #region Lista-Entidad: Estados
+    #region Lista-Entidad: MovilesKms
     /// <summary>
-    /// Clase que representa la Lista-Entidad: Estados
+    /// Clase que representa la Lista-Entidad: MovilesKms
     ///   - Elementos no producidos por el Generador
     /// </summary>
-    public sealed partial class LEEstados : ListaEntidades
+    public sealed partial class LEMovilesKms : ListaEntidades
     {
         #region Metodos publicos de la clase
         //---------------------------------------------------------------
@@ -418,12 +418,12 @@ namespace Rivn.Bel
     }
     #endregion
 
-    #region Lista-Entidad-Tipada: Estados
+    #region Lista-Entidad-Tipada: MovilesKms
     /// <summary>
-    /// Clase que representa la Lista-Entidad-Tipada: Estados
+    /// Clase que representa la Lista-Entidad-Tipada: MovilesKms
     ///   - Elementos no producidos por el Generador
     /// </summary>
-    public sealed partial class LETEstados : LET<EEstado>
+    public sealed partial class LETMovilesKms : LET<EMovilKms>
     {
         #region Metodos publicos de la clase
         //---------------------------------------------------------------
@@ -448,12 +448,12 @@ namespace Rivn.Bel
     }
     #endregion
 
-    #region Entidad: Marca
+    #region Entidad: Movil
     /// <summary>
-    /// Clase que representa la Entidad: Marca
+    /// Clase que representa la Entidad: Movil
     ///   - Elementos no producidos por el Generador
     /// </summary>
-    public sealed partial class EMarca : Entidad
+    public sealed partial class EMovil : Entidad
     {
         #region Metodos publicos de la clase
         //---------------------------------------------------------------
@@ -494,12 +494,12 @@ namespace Rivn.Bel
     }
     #endregion
 
-    #region Lista-Entidad: Marcas
+    #region Lista-Entidad: Moviles
     /// <summary>
-    /// Clase que representa la Lista-Entidad: Marcas
+    /// Clase que representa la Lista-Entidad: Moviles
     ///   - Elementos no producidos por el Generador
     /// </summary>
-    public sealed partial class LEMarcas : ListaEntidades
+    public sealed partial class LEMoviles : ListaEntidades
     {
         #region Metodos publicos de la clase
         //---------------------------------------------------------------
@@ -524,224 +524,12 @@ namespace Rivn.Bel
     }
     #endregion
 
-    #region Lista-Entidad-Tipada: Marcas
+    #region Lista-Entidad-Tipada: Moviles
     /// <summary>
-    /// Clase que representa la Lista-Entidad-Tipada: Marcas
+    /// Clase que representa la Lista-Entidad-Tipada: Moviles
     ///   - Elementos no producidos por el Generador
     /// </summary>
-    public sealed partial class LETMarcas : LET<EMarca>
-    {
-        #region Metodos publicos de la clase
-        //---------------------------------------------------------------
-        // Metodos publicos
-        //---------------------------------------------------------------
-
-        #endregion
-
-        #region Metodos privados de la clase
-        //---------------------------------------------------------------
-        // Metodos privados
-        //---------------------------------------------------------------
-
-        #endregion
-
-        #region Propiedades de la clase
-        //---------------------------------------------------------------
-        // Propiedades de la clase
-        //---------------------------------------------------------------
-
-        #endregion
-    }
-    #endregion
-
-    #region Entidad: Modelo
-    /// <summary>
-    /// Clase que representa la Entidad: Modelo
-    ///   - Elementos no producidos por el Generador
-    /// </summary>
-    public sealed partial class EModelo : Entidad
-    {
-        #region Metodos publicos de la clase
-        //---------------------------------------------------------------
-        // Metodos públicos de la clase
-        //---------------------------------------------------------------
-
-        #endregion
-
-        #region Metodos privados de la clase
-        //---------------------------------------------------------------
-        // Metodos privados de la clase
-        //---------------------------------------------------------------
-
-        /// <summary>
-        /// Permite agregar datos al XML de la entidad
-        /// </summary>
-        private void fAddXMLData(ref XmlDocument p_xdocData,
-                                 ref XmlNode p_xndEntidad)
-        {
-        }
-
-        /// <summary>
-        /// Permite agregar datos a una entidad generada desde un XML
-        /// </summary>
-        private static void fNewFromXML(ref DataRow p_drTemp,
-                                        XmlNode p_xndData)
-        {
-        }
-
-        #endregion
-
-        #region Propiedades de la clase
-        //---------------------------------------------------------------
-        // Propiedades de la clase
-        //---------------------------------------------------------------
-
-        #endregion
-    }
-    #endregion
-
-    #region Lista-Entidad: Modelos
-    /// <summary>
-    /// Clase que representa la Lista-Entidad: Modelos
-    ///   - Elementos no producidos por el Generador
-    /// </summary>
-    public sealed partial class LEModelos : ListaEntidades
-    {
-        #region Metodos publicos de la clase
-        //---------------------------------------------------------------
-        // Metodos publicos
-        //---------------------------------------------------------------
-
-        #endregion
-
-        #region Metodos privados de la clase
-        //---------------------------------------------------------------
-        // Metodos privados
-        //---------------------------------------------------------------
-
-        #endregion
-
-        #region Propiedades de la clase
-        //---------------------------------------------------------------
-        // Propiedades de la clase
-        //---------------------------------------------------------------
-
-        #endregion
-    }
-    #endregion
-
-    #region Lista-Entidad-Tipada: Modelos
-    /// <summary>
-    /// Clase que representa la Lista-Entidad-Tipada: Modelos
-    ///   - Elementos no producidos por el Generador
-    /// </summary>
-    public sealed partial class LETModelos : LET<EModelo>
-    {
-        #region Metodos publicos de la clase
-        //---------------------------------------------------------------
-        // Metodos publicos
-        //---------------------------------------------------------------
-
-        #endregion
-
-        #region Metodos privados de la clase
-        //---------------------------------------------------------------
-        // Metodos privados
-        //---------------------------------------------------------------
-
-        #endregion
-
-        #region Propiedades de la clase
-        //---------------------------------------------------------------
-        // Propiedades de la clase
-        //---------------------------------------------------------------
-
-        #endregion
-    }
-    #endregion
-
-    #region Entidad: Reparacion
-    /// <summary>
-    /// Clase que representa la Entidad: Reparacion
-    ///   - Elementos no producidos por el Generador
-    /// </summary>
-    public sealed partial class EReparacion : Entidad
-    {
-        #region Metodos publicos de la clase
-        //---------------------------------------------------------------
-        // Metodos públicos de la clase
-        //---------------------------------------------------------------
-
-        #endregion
-
-        #region Metodos privados de la clase
-        //---------------------------------------------------------------
-        // Metodos privados de la clase
-        //---------------------------------------------------------------
-
-        /// <summary>
-        /// Permite agregar datos al XML de la entidad
-        /// </summary>
-        private void fAddXMLData(ref XmlDocument p_xdocData,
-                                 ref XmlNode p_xndEntidad)
-        {
-        }
-
-        /// <summary>
-        /// Permite agregar datos a una entidad generada desde un XML
-        /// </summary>
-        private static void fNewFromXML(ref DataRow p_drTemp,
-                                        XmlNode p_xndData)
-        {
-        }
-
-        #endregion
-
-        #region Propiedades de la clase
-        //---------------------------------------------------------------
-        // Propiedades de la clase
-        //---------------------------------------------------------------
-
-        #endregion
-    }
-    #endregion
-
-    #region Lista-Entidad: Reparaciones
-    /// <summary>
-    /// Clase que representa la Lista-Entidad: Reparaciones
-    ///   - Elementos no producidos por el Generador
-    /// </summary>
-    public sealed partial class LEReparaciones : ListaEntidades
-    {
-        #region Metodos publicos de la clase
-        //---------------------------------------------------------------
-        // Metodos publicos
-        //---------------------------------------------------------------
-
-        #endregion
-
-        #region Metodos privados de la clase
-        //---------------------------------------------------------------
-        // Metodos privados
-        //---------------------------------------------------------------
-
-        #endregion
-
-        #region Propiedades de la clase
-        //---------------------------------------------------------------
-        // Propiedades de la clase
-        //---------------------------------------------------------------
-
-        #endregion
-    }
-    #endregion
-
-    #region Lista-Entidad-Tipada: Reparaciones
-    /// <summary>
-    /// Clase que representa la Lista-Entidad-Tipada: Reparaciones
-    ///   - Elementos no producidos por el Generador
-    /// </summary>
-    public sealed partial class LETReparaciones : LET<EReparacion>
+    public sealed partial class LETMoviles : LET<EMovil>
     {
         #region Metodos publicos de la clase
         //---------------------------------------------------------------

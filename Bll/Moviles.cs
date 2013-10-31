@@ -66,11 +66,35 @@ namespace Rivn.Bll
         /// <param name="p_lentData">ListaEntidad de datos</param>
         /// <param name="p_strDescripcion">Descripcion del Root</param>
         /// <param name="p_iNroImagen">Indice de la imagen</param>
-        private static void fArmarTree(ListaEntidades p_lentData)
+        private static void fArmarTree(ListaEntidades p_lentData, bool p_bOnlyActive,
+                                                ref StatMsg p_smResult)
         {
-            // Llamar metodo que hace juanchi
-            
+            // No hay errores aun
+            DBConn l_dbcAccess = null;
+            p_smResult.BllReset("Moviles", "MveqUpFull");
+
+            try
+            {
+                // Obtenemos una conexion
+                l_dbcAccess = DBRuts.GetConection(Connections.Dat);
+
+                // Pedimos los registros de la tabla
+                p_lentData =  Bll.Moviles.getMovilesTree(l_dbcAccess, ref p_smResult);
+            }
+            catch (Exception l_expData)
+            {
+                // Error en la operacion
+                p_smResult.BllError(l_expData.ToString());
+            }
+            finally
+            {
+                // Si pude abrir la conexion -> la cierro
+                if (l_dbcAccess != null) l_dbcAccess.Close();
+                p_smResult.BllPop();
+            }
+
             fAgregarRoot(p_lentData, "Moviles", 1);
+
         }
 
         #endregion
