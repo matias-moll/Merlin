@@ -261,7 +261,7 @@ namespace Rivn.Mv
             App.ShowMsg("Recuperando Datos...");
             m_smResult.UilReset("cmdModificar_Click");
             m_entControlRepa= Bll.Controles.CrepGet(cmbControl.SelectedStrCode,
-                                                    (xxxx) grdDatos.GetMatrixValueObj(l_iRow, 2),
+                                                    (int) grdDatos.GetMatrixValueObj(l_iRow, 2),
                                                     false, ref m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 

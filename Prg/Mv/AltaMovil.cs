@@ -35,7 +35,7 @@ namespace Rivn.Mv
 
         }
 
-        public AltaMovil(Bel.EMovil p_entMovil) : this()
+        public AltaMovil(Bel.EMovil p_entMovil, bool p_bImgHabilitado) : this()
         {
            
             //cambiamos titulo del formulario
@@ -54,8 +54,10 @@ namespace Rivn.Mv
             //disbleamos los controles que no tienen que estar activos
             neKilometros.Enabled = false;
             tePatente.Enabled = false;
+            teNroChasis.Enabled = false;
+            teNroMotor.Enabled = false;
+            igDatosBasicosMovil.Enabled = p_bImgHabilitado;
             
-
 
             //recuperamos la LE de equipamientos del movil
             Bel.LEMovilesEquip l_lentMovEquipamiento = p_entMovil.MovilesEquip;

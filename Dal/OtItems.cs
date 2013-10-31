@@ -10,7 +10,7 @@ namespace Rivn.Dal
     //----------------------------------------------------------------------------
     //                         TNG Software DAL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 28/10/2013 18:04
+    // Fecha                    : 31/10/2013 16:28
     // Sistema                  : Rivn
     // Clase para Administrar   : OrdenTrabajo Items
     // Basada en la Tabla       : OtItems
