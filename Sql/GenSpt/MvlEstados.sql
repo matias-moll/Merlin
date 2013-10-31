@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 21/10/2013 16:41
+// Fecha       : 31/10/2013 14:46
 // Sistema     : Rivn
 // Tabla       : MvlEstados
 //----------------------------------------------------------------------------
@@ -804,6 +804,53 @@ go
 print '       - Asignando permisos al nuevo SP'
 
 grant execute on dbo.MVLESTADOS_FPACK to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Método Fijo: getLastFiveMvlEstads
+--- </summary>
+--- <param name="@patente">patente del movil</param>
+--- <param name="@usuario">Usuario que ejecuta el SP</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.MVLESTADOS_GETLASTFIVEMVLESTADS'
+
+if exists (select * from sysobjects where id = object_id('dbo.MVLESTADOS_GETLASTFIVEMVLESTADS'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.MVLESTADOS_GETLASTFIVEMVLESTADS
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.MVLESTADOS_GETLASTFIVEMVLESTADS
+(
+@patente tngs_codigo_e,
+@usuario tngs_nombre
+)
+as
+begin
+
+   SELECT TOP 5 * 
+   FROM TNGS_Rivn..MvlEstados 
+   WHERE mve_ecd_patente = @patente 
+   ORDER BY mve_fyh_fecha DESC 
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.MVLESTADOS_GETLASTFIVEMVLESTADS to tngsmodulos
 
 print ' '
 go
