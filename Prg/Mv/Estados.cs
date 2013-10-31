@@ -20,6 +20,7 @@ namespace Rivn.Mv
     public partial class Estados : DockContent
     {
         #region Miembros de la Clase
+        private Bel.LEMoviles m_LEMoviles = null;
         private Bel.EMovil m_entMovil = null;
         //Los de abajo podrian no estar hay que ver
         private Bel.EMovilCombus m_entMovilCombus = null;
@@ -49,11 +50,20 @@ namespace Rivn.Mv
             // Dockeamos el formulario
             ((MainFrame)App.GetMainWindow()).AddContent(this);
 
+            TraerInfoBase();
             LlenarTreeMoviles();
             LlenarComboEstados();
 
 
 
+        }
+
+        private void TraerInfoBase()
+        {
+            m_smResult.UilReset("TraerInfoBase");
+            m_LEMoviles = Bll.Moviles.UpFull(true, ref m_smResult);
+            // traer m_leEstados para llenar combo
+            MsgRuts.AnalizeError(this, m_smResult);
         }
 
         #endregion
@@ -82,9 +92,9 @@ namespace Rivn.Mv
         private void LlenarTreeMoviles()
         {
             m_smResult.UilReset("LlenarTreeMoviles");
-            ListaEntidades estaSeriaLaListaDeMoviles = new ListaEntidades(new DataTable());
+            ListaEntidades l_LEMovilesTree = new ListaEntidades(new DataTable());
             //TODO: llamar metodo para llenar tree
-            // Bll.Moviles.
+            // Bll.Moviles
             MsgRuts.AnalizeError(this, m_smResult);
 
         }
@@ -179,7 +189,8 @@ namespace Rivn.Mv
         /// <param name="e"></param>
         private void ftrMoviles_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            m_entMovil = Bll.Moviles.Get(ftrMoviles.SelectedNodeAsCDI.StrCode, true, ref m_smResult);
+
+            m_entMovil = m_LEMoviles[ftrMoviles.SelectedNodeAsCDI.StrCode];
             LlenarGridEquipamiento();
             LlenarGridKm();
             LlenarGridCombustible();
