@@ -10,7 +10,7 @@ namespace Rivn.Dal
     //----------------------------------------------------------------------------
     //                         TNG Software DAL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 21/10/2013 16:46
+    // Fecha                    : 31/10/2013 17:04
     // Sistema                  : Rivn
     // Clase para Administrar   : estaciones de servicio
     // Basada en la Tabla       : Estaciones

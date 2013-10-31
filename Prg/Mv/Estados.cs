@@ -93,8 +93,7 @@ namespace Rivn.Mv
         {
             m_smResult.UilReset("LlenarTreeMoviles");
             ListaEntidades l_LEMovilesTree = new ListaEntidades(new DataTable());
-            //TODO: llamar metodo para llenar tree
-            // Bll.Moviles
+            //Bll.Moviles.
             MsgRuts.AnalizeError(this, m_smResult);
 
         }
@@ -123,7 +122,9 @@ namespace Rivn.Mv
         {
             tePatente.Text = m_entMovil.Patente;
             teModelo.Text = GetModelo(m_entMovil.Modelo);
-            cmbEstado.SelectedStrCode = m_entMovil.Estado;
+
+            //TODO: Cambiar para sacar del historico de estados
+            //cmbEstado.SelectedStrCode =
         }
 
 
@@ -267,11 +268,12 @@ namespace Rivn.Mv
             l_EMEstMovilEstado.Codestado = cmbEstado.SelectedStrCode;
             l_EMEstMovilEstado.Fecha = DateTime.Now;
             l_EMEstMovilEstado.Patente = m_entMovil.Patente;
-            l_EMEstMovilEstado.Km = m_entMovil.Kms;
+            m_entMovil.MovilesKms.Sort("mkm_nro_km");
+            l_EMEstMovilEstado.Km = m_entMovil.MovilesKms[0].Km;
+
             Bll.Moviles.MvesSave(l_EMEstMovilEstado, ref m_smResult);
 
             //Guardamos tmb la entidad movil con su nuevo estado cambiado
-            m_entMovil.Estado = cmbEstado.SelectedStrCode;
             Bll.Moviles.Save(m_entMovil, ref m_smResult);
 
 
