@@ -16,7 +16,7 @@ namespace Rivn.Bll
     //----------------------------------------------------------------------------
     //                         TNG Software BLL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 28/10/2013 18:04
+    // Fecha                    : 31/10/2013 16:27
     // Sistema                  : Rivn
     // Clase para Administrar   : Moviles y Tablas Hijas
     //----------------------------------------------------------------------------
@@ -2896,6 +2896,50 @@ namespace Rivn.Bll
         #endregion
 
         #region Metodos para métodos DAL definidos por el usuario
+
+        /// <summary>
+        /// Ejecuta el SP definido por el usuario: getLastFiveMvlEstads
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name= p_strPatente>patente del movil</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        /// <returns>ListaEntidad con los datos solicitados</returns>
+        internal static ListaEntidades MvesgetLastFiveMvlEstads(DBConn p_dbcAccess,
+                                                                string p_strPatente,
+                                                                ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            p_smResult.BllReset("Moviles", "MvesgetLastFiveMvlEstads");
+
+            try {
+                // Llamamos al metodo definido por el usuario
+                DataSet l_dsTemp= new DataSet();
+
+                Dal.MvlEstados.getLastFiveMvlEstads(p_dbcAccess,
+                                                    p_strPatente,
+                                                    ref l_dsTemp,
+                                                    "Temporal",
+                                                    ref p_smResult);
+                if (p_smResult.NOk) return null;
+
+                // Creamos la LE y Captionamos
+                ListaEntidades l_lentRet= new ListaEntidades(l_dsTemp.Tables["Temporal"]);
+                BllRuts.FillStdCaptions(ref l_lentRet);
+
+                // Devolvemos la LE
+                l_dsTemp.Dispose();
+                return l_lentRet;
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion
+                p_smResult.BllError(l_expData.ToString());
+                return null;
+            }
+            finally {
+                // Terminamos
+                p_smResult.BllPop();
+            }
+        }
         #endregion
 
 
