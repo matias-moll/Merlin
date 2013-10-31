@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Estados));
             this.xpnlPanelAtras = new TNGS.NetControls.XPanel();
+            this.igHistorialEstados = new TNGS.NetControls.ImgGroup();
+            this.fgMovilEstados = new TNGS.NetControls.FullGrid();
             this.igEquipamiento = new TNGS.NetControls.ImgGroup();
             this.gbBorrarEq = new TNGS.NetControls.GlassButton();
             this.gbModificarEq = new TNGS.NetControls.GlassButton();
@@ -44,6 +46,10 @@
             this.neKilometros = new TNGS.NetControls.NumberEdit();
             this.fgKm = new TNGS.NetControls.FullGrid();
             this.igMoviles = new TNGS.NetControls.ImgGroup();
+            this.imgGroup1 = new TNGS.NetControls.ImgGroup();
+            this.gbNuevoMovil = new TNGS.NetControls.GlassButton();
+            this.gbBorrarMovil = new TNGS.NetControls.GlassButton();
+            this.gbModificarMovil = new TNGS.NetControls.GlassButton();
             this.gbModificarEstado = new TNGS.NetControls.GlassButton();
             this.teModelo = new TNGS.NetControls.TextEdit();
             this.lblEstado = new TNGS.NetControls.FullLabel();
@@ -52,13 +58,9 @@
             this.tePatente = new TNGS.NetControls.TextEdit();
             this.lblPatente = new TNGS.NetControls.FullLabel();
             this.ftrMoviles = new TNGS.NetControls.FullTreeView();
-            this.gbModificarMovil = new TNGS.NetControls.GlassButton();
-            this.gbNuevoMovil = new TNGS.NetControls.GlassButton();
-            this.gbBorrarMovil = new TNGS.NetControls.GlassButton();
-            this.imgGroup1 = new TNGS.NetControls.ImgGroup();
-            this.igHistorialEstados = new TNGS.NetControls.ImgGroup();
-            this.fgMovilEstados = new TNGS.NetControls.FullGrid();
             this.xpnlPanelAtras.SuspendLayout();
+            this.igHistorialEstados.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.fgMovilEstados)).BeginInit();
             this.igEquipamiento.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fgEquipamiento)).BeginInit();
             this.igCombustibles.SuspendLayout();
@@ -67,8 +69,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.fgKm)).BeginInit();
             this.igMoviles.SuspendLayout();
             this.imgGroup1.SuspendLayout();
-            this.igHistorialEstados.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.fgMovilEstados)).BeginInit();
             this.SuspendLayout();
             // 
             // xpnlPanelAtras
@@ -86,6 +86,48 @@
             this.xpnlPanelAtras.Size = new System.Drawing.Size(788, 485);
             this.xpnlPanelAtras.SkinFixed = true;
             this.xpnlPanelAtras.TabIndex = 0;
+            // 
+            // igHistorialEstados
+            // 
+            this.igHistorialEstados.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.igHistorialEstados.BackgroundGradientColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
+            this.igHistorialEstados.BackgroundGradientMode = TNGS.NetControls.ImgGroup.GroupBoxGradientMode.ForwardDiagonal;
+            this.igHistorialEstados.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.igHistorialEstados.BorderThickness = 1F;
+            this.igHistorialEstados.Controls.Add(this.fgMovilEstados);
+            this.igHistorialEstados.CustomGroupBoxColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
+            this.igHistorialEstados.FontTitle = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.igHistorialEstados.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.igHistorialEstados.GroupImage = ((System.Drawing.Image)(resources.GetObject("igHistorialEstados.GroupImage")));
+            this.igHistorialEstados.GroupTitle = "Historial Estados";
+            this.igHistorialEstados.Location = new System.Drawing.Point(504, 259);
+            this.igHistorialEstados.Name = "igHistorialEstados";
+            this.igHistorialEstados.Padding = new System.Windows.Forms.Padding(20);
+            this.igHistorialEstados.PaintGroupBox = true;
+            this.igHistorialEstados.RoundCorners = 10;
+            this.igHistorialEstados.ShadowColor = System.Drawing.Color.DarkGray;
+            this.igHistorialEstados.ShadowControl = true;
+            this.igHistorialEstados.ShadowThickness = 3;
+            this.igHistorialEstados.Size = new System.Drawing.Size(281, 223);
+            this.igHistorialEstados.SkinFixed = true;
+            this.igHistorialEstados.SkinFullFixed = true;
+            this.igHistorialEstados.TabIndex = 5;
+            // 
+            // fgMovilEstados
+            // 
+            this.fgMovilEstados.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
+            this.fgMovilEstados.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.fgMovilEstados.CaptionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(163)))), ((int)(((byte)(226)))));
+            this.fgMovilEstados.CaptionFilterColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(119)))), ((int)(((byte)(7)))));
+            this.fgMovilEstados.DataMember = "";
+            this.fgMovilEstados.ExcelTitle = "";
+            this.fgMovilEstados.GridOrder = "";
+            this.fgMovilEstados.HeaderForeColor = System.Drawing.SystemColors.ControlText;
+            this.fgMovilEstados.Location = new System.Drawing.Point(23, 37);
+            this.fgMovilEstados.Name = "fgMovilEstados";
+            this.fgMovilEstados.Size = new System.Drawing.Size(234, 145);
+            this.fgMovilEstados.SkinFixed = true;
+            this.fgMovilEstados.TabIndex = 0;
             // 
             // igEquipamiento
             // 
@@ -315,6 +357,63 @@
             this.igMoviles.SkinFullFixed = true;
             this.igMoviles.TabIndex = 1;
             // 
+            // imgGroup1
+            // 
+            this.imgGroup1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.imgGroup1.BackgroundGradientColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
+            this.imgGroup1.BackgroundGradientMode = TNGS.NetControls.ImgGroup.GroupBoxGradientMode.ForwardDiagonal;
+            this.imgGroup1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.imgGroup1.BorderThickness = 1F;
+            this.imgGroup1.Controls.Add(this.gbNuevoMovil);
+            this.imgGroup1.Controls.Add(this.gbBorrarMovil);
+            this.imgGroup1.Controls.Add(this.gbModificarMovil);
+            this.imgGroup1.CustomGroupBoxColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
+            this.imgGroup1.FontTitle = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.imgGroup1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.imgGroup1.GroupImage = ((System.Drawing.Image)(resources.GetObject("imgGroup1.GroupImage")));
+            this.imgGroup1.GroupTitle = "Opciones";
+            this.imgGroup1.Location = new System.Drawing.Point(0, 342);
+            this.imgGroup1.Name = "imgGroup1";
+            this.imgGroup1.Padding = new System.Windows.Forms.Padding(20);
+            this.imgGroup1.PaintGroupBox = true;
+            this.imgGroup1.RoundCorners = 10;
+            this.imgGroup1.ShadowColor = System.Drawing.Color.DarkGray;
+            this.imgGroup1.ShadowControl = true;
+            this.imgGroup1.ShadowThickness = 3;
+            this.imgGroup1.Size = new System.Drawing.Size(204, 128);
+            this.imgGroup1.TabIndex = 29;
+            // 
+            // gbNuevoMovil
+            // 
+            this.gbNuevoMovil.FixedImage = TNGS.NetControls.FixedGlassButtons.New;
+            this.gbNuevoMovil.Location = new System.Drawing.Point(40, 29);
+            this.gbNuevoMovil.Name = "gbNuevoMovil";
+            this.gbNuevoMovil.Size = new System.Drawing.Size(118, 26);
+            this.gbNuevoMovil.TabIndex = 27;
+            this.gbNuevoMovil.Text = "Nuevo Movil";
+            this.gbNuevoMovil.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // gbBorrarMovil
+            // 
+            this.gbBorrarMovil.FixedImage = TNGS.NetControls.FixedGlassButtons.Delete;
+            this.gbBorrarMovil.Location = new System.Drawing.Point(40, 93);
+            this.gbBorrarMovil.Name = "gbBorrarMovil";
+            this.gbBorrarMovil.Size = new System.Drawing.Size(118, 26);
+            this.gbBorrarMovil.TabIndex = 28;
+            this.gbBorrarMovil.Text = "Borrar Movil";
+            this.gbBorrarMovil.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.gbBorrarMovil.Click += new System.EventHandler(this.gbBorrarMovil_Click);
+            // 
+            // gbModificarMovil
+            // 
+            this.gbModificarMovil.FixedImage = TNGS.NetControls.FixedGlassButtons.Modify;
+            this.gbModificarMovil.Location = new System.Drawing.Point(40, 61);
+            this.gbModificarMovil.Name = "gbModificarMovil";
+            this.gbModificarMovil.Size = new System.Drawing.Size(118, 26);
+            this.gbModificarMovil.TabIndex = 26;
+            this.gbModificarMovil.Text = "Modificar Movil";
+            this.gbModificarMovil.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // gbModificarEstado
             // 
             this.gbModificarEstado.FixedImage = TNGS.NetControls.FixedGlassButtons.Modify;
@@ -397,105 +496,6 @@
             this.ftrMoviles.TabIndex = 0;
             this.ftrMoviles.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.ftrMoviles_AfterSelect);
             // 
-            // gbModificarMovil
-            // 
-            this.gbModificarMovil.FixedImage = TNGS.NetControls.FixedGlassButtons.Modify;
-            this.gbModificarMovil.Location = new System.Drawing.Point(40, 61);
-            this.gbModificarMovil.Name = "gbModificarMovil";
-            this.gbModificarMovil.Size = new System.Drawing.Size(118, 26);
-            this.gbModificarMovil.TabIndex = 26;
-            this.gbModificarMovil.Text = "Modificar Movil";
-            this.gbModificarMovil.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // gbNuevoMovil
-            // 
-            this.gbNuevoMovil.FixedImage = TNGS.NetControls.FixedGlassButtons.New;
-            this.gbNuevoMovil.Location = new System.Drawing.Point(40, 29);
-            this.gbNuevoMovil.Name = "gbNuevoMovil";
-            this.gbNuevoMovil.Size = new System.Drawing.Size(118, 26);
-            this.gbNuevoMovil.TabIndex = 27;
-            this.gbNuevoMovil.Text = "Nuevo Movil";
-            this.gbNuevoMovil.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // gbBorrarMovil
-            // 
-            this.gbBorrarMovil.FixedImage = TNGS.NetControls.FixedGlassButtons.Delete;
-            this.gbBorrarMovil.Location = new System.Drawing.Point(40, 93);
-            this.gbBorrarMovil.Name = "gbBorrarMovil";
-            this.gbBorrarMovil.Size = new System.Drawing.Size(118, 26);
-            this.gbBorrarMovil.TabIndex = 28;
-            this.gbBorrarMovil.Text = "Borrar Movil";
-            this.gbBorrarMovil.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.gbBorrarMovil.Click += new System.EventHandler(this.gbBorrarMovil_Click);
-            // 
-            // imgGroup1
-            // 
-            this.imgGroup1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.imgGroup1.BackgroundGradientColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
-            this.imgGroup1.BackgroundGradientMode = TNGS.NetControls.ImgGroup.GroupBoxGradientMode.ForwardDiagonal;
-            this.imgGroup1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.imgGroup1.BorderThickness = 1F;
-            this.imgGroup1.Controls.Add(this.gbNuevoMovil);
-            this.imgGroup1.Controls.Add(this.gbBorrarMovil);
-            this.imgGroup1.Controls.Add(this.gbModificarMovil);
-            this.imgGroup1.CustomGroupBoxColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
-            this.imgGroup1.FontTitle = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.imgGroup1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.imgGroup1.GroupImage = ((System.Drawing.Image)(resources.GetObject("imgGroup1.GroupImage")));
-            this.imgGroup1.GroupTitle = "Opciones";
-            this.imgGroup1.Location = new System.Drawing.Point(0, 342);
-            this.imgGroup1.Name = "imgGroup1";
-            this.imgGroup1.Padding = new System.Windows.Forms.Padding(20);
-            this.imgGroup1.PaintGroupBox = true;
-            this.imgGroup1.RoundCorners = 10;
-            this.imgGroup1.ShadowColor = System.Drawing.Color.DarkGray;
-            this.imgGroup1.ShadowControl = true;
-            this.imgGroup1.ShadowThickness = 3;
-            this.imgGroup1.Size = new System.Drawing.Size(204, 128);
-            this.imgGroup1.TabIndex = 29;
-            // 
-            // igHistorialEstados
-            // 
-            this.igHistorialEstados.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.igHistorialEstados.BackgroundGradientColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
-            this.igHistorialEstados.BackgroundGradientMode = TNGS.NetControls.ImgGroup.GroupBoxGradientMode.ForwardDiagonal;
-            this.igHistorialEstados.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.igHistorialEstados.BorderThickness = 1F;
-            this.igHistorialEstados.Controls.Add(this.fgMovilEstados);
-            this.igHistorialEstados.CustomGroupBoxColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
-            this.igHistorialEstados.FontTitle = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.igHistorialEstados.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.igHistorialEstados.GroupImage = ((System.Drawing.Image)(resources.GetObject("igHistorialEstados.GroupImage")));
-            this.igHistorialEstados.GroupTitle = "Historial Estados";
-            this.igHistorialEstados.Location = new System.Drawing.Point(504, 259);
-            this.igHistorialEstados.Name = "igHistorialEstados";
-            this.igHistorialEstados.Padding = new System.Windows.Forms.Padding(20);
-            this.igHistorialEstados.PaintGroupBox = true;
-            this.igHistorialEstados.RoundCorners = 10;
-            this.igHistorialEstados.ShadowColor = System.Drawing.Color.DarkGray;
-            this.igHistorialEstados.ShadowControl = true;
-            this.igHistorialEstados.ShadowThickness = 3;
-            this.igHistorialEstados.Size = new System.Drawing.Size(281, 223);
-            this.igHistorialEstados.SkinFixed = true;
-            this.igHistorialEstados.SkinFullFixed = true;
-            this.igHistorialEstados.TabIndex = 5;
-            // 
-            // fgMovilEstados
-            // 
-            this.fgMovilEstados.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
-            this.fgMovilEstados.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.fgMovilEstados.CaptionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(163)))), ((int)(((byte)(226)))));
-            this.fgMovilEstados.CaptionFilterColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(119)))), ((int)(((byte)(7)))));
-            this.fgMovilEstados.DataMember = "";
-            this.fgMovilEstados.ExcelTitle = "";
-            this.fgMovilEstados.GridOrder = "";
-            this.fgMovilEstados.HeaderForeColor = System.Drawing.SystemColors.ControlText;
-            this.fgMovilEstados.Location = new System.Drawing.Point(23, 37);
-            this.fgMovilEstados.Name = "fgMovilEstados";
-            this.fgMovilEstados.Size = new System.Drawing.Size(234, 145);
-            this.fgMovilEstados.SkinFixed = true;
-            this.fgMovilEstados.TabIndex = 0;
-            // 
             // Estados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -508,6 +508,8 @@
             this.Name = "Estados";
             this.Text = "Estados";
             this.xpnlPanelAtras.ResumeLayout(false);
+            this.igHistorialEstados.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.fgMovilEstados)).EndInit();
             this.igEquipamiento.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.fgEquipamiento)).EndInit();
             this.igCombustibles.ResumeLayout(false);
@@ -518,8 +520,6 @@
             this.igMoviles.ResumeLayout(false);
             this.igMoviles.PerformLayout();
             this.imgGroup1.ResumeLayout(false);
-            this.igHistorialEstados.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.fgMovilEstados)).EndInit();
             this.ResumeLayout(false);
 
         }
