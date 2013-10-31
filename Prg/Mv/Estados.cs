@@ -21,6 +21,7 @@ namespace Rivn.Mv
     {
         #region Miembros de la Clase
         private Bel.EMovil m_entMovil = null;
+        //Los de abajo podrian no estar hay que ver
         private Bel.EMovilCombus m_entMovilCombus = null;
         private Bel.EMovilKms m_entMovilKm = null;
         private Bel.EMovilEquip m_entMovilEq = null;
