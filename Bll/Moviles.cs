@@ -60,6 +60,18 @@ namespace Rivn.Bll
             p_lentData.Sort("Codigo");
         }
 
+        /// <summary>
+        /// Arma Tree de Moviles
+        /// </summary>
+        /// <param name="p_lentData">ListaEntidad de datos</param>
+        /// <param name="p_strDescripcion">Descripcion del Root</param>
+        /// <param name="p_iNroImagen">Indice de la imagen</param>
+        private static void fArmarTree(ListaEntidades p_lentData)
+        {
+            // Llamar metodo que hace juanchi
+            fAgregarRoot(p_lentData, "Moviles", 1);
+        }
+
         #endregion
 
         //---------------------------------------------------------------
