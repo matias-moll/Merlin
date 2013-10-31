@@ -507,7 +507,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Estados";
             this.Text = "Estados";
-            this.Load += new System.EventHandler(this.Estados_Load);
             this.xpnlPanelAtras.ResumeLayout(false);
             this.igEquipamiento.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.fgEquipamiento)).EndInit();
