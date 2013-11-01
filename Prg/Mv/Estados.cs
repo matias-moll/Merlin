@@ -26,7 +26,6 @@ namespace Rivn.Mv
         //Los de abajo podrian no estar hay que ver
         private StatMsg m_smResult = null;
         private ACLInfo m_aclInfo = null;
-        private string m_strSort = "";
         #endregion
 
         #region Constructores
@@ -96,7 +95,7 @@ namespace Rivn.Mv
             m_smResult.UilReset("LlenarTreeMoviles");
             ListaEntidades l_LEMovilesTree = new ListaEntidades(new DataTable());
             Bll.Moviles.fArmarTree(l_LEMovilesTree, true, ref m_smResult);
-            ftrMoviles.FillFromStrLEntidad(l_LEMovilesTree, "est_rcd_cod", "est_des_des", 2, "Nivel", "Imagen", "Imagen");
+            ftrMoviles.FillFromStrLEntidad(l_LEMovilesTree, "est_rcd_cod", "est_des_des", 2, "Nivel","Imagen", "Imagen");
             MsgRuts.AnalizeError(this, m_smResult);
 
         }

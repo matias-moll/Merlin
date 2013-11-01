@@ -50,14 +50,14 @@ namespace Rivn.Bll
             DataRow l_drTemp = p_lentData.InternalData.Table.NewRow();
 
             // Agregamos el root
-            l_drTemp["Codigo"] = 0;
-            l_drTemp["Descripcion"] = p_strDescripcion;
-            l_drTemp["Mensaje"] = "";
+            l_drTemp["mov_ecd_patente"] = 0;
+            l_drTemp["mov_des_des"] = p_strDescripcion;
+            l_drTemp["Orden"] = 1;
             l_drTemp["Nivel"] = 1;
             l_drTemp["Imagen"] = p_iNroImagen;
 
             p_lentData.InternalData.Table.Rows.Add(l_drTemp);
-            p_lentData.Sort("Codigo");
+            p_lentData.Sort("mov_ecd_patente");
         }
 
         /// <summary>
@@ -71,7 +71,7 @@ namespace Rivn.Bll
         {
             // No hay errores aun
             DBConn l_dbcAccess = null;
-            p_smResult.BllReset("Moviles", "MveqUpFull");
+            p_smResult.BllReset("Estados", "fArmarTree");
 
             try
             {
