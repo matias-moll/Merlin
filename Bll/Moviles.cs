@@ -66,7 +66,7 @@ namespace Rivn.Bll
         /// <param name="p_lentData">ListaEntidad de datos</param>
         /// <param name="p_strDescripcion">Descripcion del Root</param>
         /// <param name="p_iNroImagen">Indice de la imagen</param>
-        private static void fArmarTree(ListaEntidades p_lentData, bool p_bOnlyActive,
+        public static void fArmarTree(ListaEntidades p_lentData, bool p_bOnlyActive,
                                                 ref StatMsg p_smResult)
         {
             // No hay errores aun
