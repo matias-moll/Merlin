@@ -31,13 +31,10 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Estados));
             this.xpnlPanelAtras = new TNGS.NetControls.XPanel();
-            this.igHistorialEstados = new TNGS.NetControls.ImgGroup();
             this.fgMovilEstados = new TNGS.NetControls.FullGrid();
-            this.igEquipamiento = new TNGS.NetControls.ImgGroup();
             this.gbBorrarEq = new TNGS.NetControls.GlassButton();
             this.gbModificarEq = new TNGS.NetControls.GlassButton();
             this.fgEquipamiento = new TNGS.NetControls.FullGrid();
-            this.igCombustibles = new TNGS.NetControls.ImgGroup();
             this.gbAgregarCombustible = new TNGS.NetControls.GlassButton();
             this.fgCombustibles = new TNGS.NetControls.FullGrid();
             this.igKilometros = new TNGS.NetControls.ImgGroup();
@@ -58,11 +55,8 @@
             this.lblPatente = new TNGS.NetControls.FullLabel();
             this.ftrMoviles = new TNGS.NetControls.FullTreeView();
             this.xpnlPanelAtras.SuspendLayout();
-            this.igHistorialEstados.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fgMovilEstados)).BeginInit();
-            this.igEquipamiento.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fgEquipamiento)).BeginInit();
-            this.igCombustibles.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fgCombustibles)).BeginInit();
             this.igKilometros.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fgKm)).BeginInit();
@@ -74,43 +68,15 @@
             // 
             this.xpnlPanelAtras.BackColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.xpnlPanelAtras.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
-            this.xpnlPanelAtras.Controls.Add(this.igHistorialEstados);
-            this.xpnlPanelAtras.Controls.Add(this.igEquipamiento);
-            this.xpnlPanelAtras.Controls.Add(this.igCombustibles);
+            this.xpnlPanelAtras.Controls.Add(this.imgGroup1);
             this.xpnlPanelAtras.Controls.Add(this.igKilometros);
             this.xpnlPanelAtras.Controls.Add(this.igMoviles);
             this.xpnlPanelAtras.Dock = System.Windows.Forms.DockStyle.Fill;
             this.xpnlPanelAtras.Location = new System.Drawing.Point(0, 0);
             this.xpnlPanelAtras.Name = "xpnlPanelAtras";
-            this.xpnlPanelAtras.Size = new System.Drawing.Size(788, 485);
+            this.xpnlPanelAtras.Size = new System.Drawing.Size(794, 499);
             this.xpnlPanelAtras.SkinFixed = true;
             this.xpnlPanelAtras.TabIndex = 0;
-            // 
-            // igHistorialEstados
-            // 
-            this.igHistorialEstados.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.igHistorialEstados.BackgroundGradientColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
-            this.igHistorialEstados.BackgroundGradientMode = TNGS.NetControls.ImgGroup.GroupBoxGradientMode.ForwardDiagonal;
-            this.igHistorialEstados.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.igHistorialEstados.BorderThickness = 1F;
-            this.igHistorialEstados.Controls.Add(this.fgMovilEstados);
-            this.igHistorialEstados.CustomGroupBoxColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
-            this.igHistorialEstados.FontTitle = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.igHistorialEstados.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.igHistorialEstados.GroupImage = ((System.Drawing.Image)(resources.GetObject("igHistorialEstados.GroupImage")));
-            this.igHistorialEstados.GroupTitle = "Historial Estados";
-            this.igHistorialEstados.Location = new System.Drawing.Point(504, 259);
-            this.igHistorialEstados.Name = "igHistorialEstados";
-            this.igHistorialEstados.Padding = new System.Windows.Forms.Padding(20);
-            this.igHistorialEstados.PaintGroupBox = true;
-            this.igHistorialEstados.RoundCorners = 10;
-            this.igHistorialEstados.ShadowColor = System.Drawing.Color.DarkGray;
-            this.igHistorialEstados.ShadowControl = true;
-            this.igHistorialEstados.ShadowThickness = 3;
-            this.igHistorialEstados.Size = new System.Drawing.Size(281, 223);
-            this.igHistorialEstados.SkinFixed = true;
-            this.igHistorialEstados.SkinFullFixed = true;
-            this.igHistorialEstados.TabIndex = 5;
             // 
             // fgMovilEstados
             // 
@@ -122,44 +88,16 @@
             this.fgMovilEstados.ExcelTitle = "";
             this.fgMovilEstados.GridOrder = "";
             this.fgMovilEstados.HeaderForeColor = System.Drawing.SystemColors.ControlText;
-            this.fgMovilEstados.Location = new System.Drawing.Point(23, 37);
+            this.fgMovilEstados.Location = new System.Drawing.Point(10, 258);
             this.fgMovilEstados.Name = "fgMovilEstados";
             this.fgMovilEstados.Size = new System.Drawing.Size(234, 145);
             this.fgMovilEstados.SkinFixed = true;
             this.fgMovilEstados.TabIndex = 0;
             // 
-            // igEquipamiento
-            // 
-            this.igEquipamiento.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.igEquipamiento.BackgroundGradientColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
-            this.igEquipamiento.BackgroundGradientMode = TNGS.NetControls.ImgGroup.GroupBoxGradientMode.ForwardDiagonal;
-            this.igEquipamiento.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.igEquipamiento.BorderThickness = 1F;
-            this.igEquipamiento.Controls.Add(this.gbBorrarEq);
-            this.igEquipamiento.Controls.Add(this.gbModificarEq);
-            this.igEquipamiento.Controls.Add(this.fgEquipamiento);
-            this.igEquipamiento.CustomGroupBoxColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
-            this.igEquipamiento.FontTitle = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.igEquipamiento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.igEquipamiento.GroupImage = ((System.Drawing.Image)(resources.GetObject("igEquipamiento.GroupImage")));
-            this.igEquipamiento.GroupTitle = "Equipamiento";
-            this.igEquipamiento.Location = new System.Drawing.Point(504, 12);
-            this.igEquipamiento.Name = "igEquipamiento";
-            this.igEquipamiento.Padding = new System.Windows.Forms.Padding(20);
-            this.igEquipamiento.PaintGroupBox = true;
-            this.igEquipamiento.RoundCorners = 10;
-            this.igEquipamiento.ShadowColor = System.Drawing.Color.DarkGray;
-            this.igEquipamiento.ShadowControl = true;
-            this.igEquipamiento.ShadowThickness = 3;
-            this.igEquipamiento.Size = new System.Drawing.Size(280, 241);
-            this.igEquipamiento.SkinFixed = true;
-            this.igEquipamiento.SkinFullFixed = true;
-            this.igEquipamiento.TabIndex = 4;
-            // 
             // gbBorrarEq
             // 
             this.gbBorrarEq.FixedImage = TNGS.NetControls.FixedGlassButtons.Delete;
-            this.gbBorrarEq.Location = new System.Drawing.Point(145, 185);
+            this.gbBorrarEq.Location = new System.Drawing.Point(400, 185);
             this.gbBorrarEq.Name = "gbBorrarEq";
             this.gbBorrarEq.Size = new System.Drawing.Size(81, 26);
             this.gbBorrarEq.TabIndex = 3;
@@ -170,7 +108,7 @@
             // gbModificarEq
             // 
             this.gbModificarEq.FixedImage = TNGS.NetControls.FixedGlassButtons.Modify;
-            this.gbModificarEq.Location = new System.Drawing.Point(52, 185);
+            this.gbModificarEq.Location = new System.Drawing.Point(307, 185);
             this.gbModificarEq.Name = "gbModificarEq";
             this.gbModificarEq.Size = new System.Drawing.Size(87, 26);
             this.gbModificarEq.TabIndex = 2;
@@ -188,43 +126,16 @@
             this.fgEquipamiento.ExcelTitle = "";
             this.fgEquipamiento.GridOrder = "";
             this.fgEquipamiento.HeaderForeColor = System.Drawing.SystemColors.ControlText;
-            this.fgEquipamiento.Location = new System.Drawing.Point(23, 37);
+            this.fgEquipamiento.Location = new System.Drawing.Point(275, 39);
             this.fgEquipamiento.Name = "fgEquipamiento";
             this.fgEquipamiento.Size = new System.Drawing.Size(234, 144);
             this.fgEquipamiento.SkinFixed = true;
             this.fgEquipamiento.TabIndex = 0;
             // 
-            // igCombustibles
-            // 
-            this.igCombustibles.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.igCombustibles.BackgroundGradientColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
-            this.igCombustibles.BackgroundGradientMode = TNGS.NetControls.ImgGroup.GroupBoxGradientMode.ForwardDiagonal;
-            this.igCombustibles.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.igCombustibles.BorderThickness = 1F;
-            this.igCombustibles.Controls.Add(this.gbAgregarCombustible);
-            this.igCombustibles.Controls.Add(this.fgCombustibles);
-            this.igCombustibles.CustomGroupBoxColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
-            this.igCombustibles.FontTitle = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.igCombustibles.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.igCombustibles.GroupImage = ((System.Drawing.Image)(resources.GetObject("igCombustibles.GroupImage")));
-            this.igCombustibles.GroupTitle = "Combustibles";
-            this.igCombustibles.Location = new System.Drawing.Point(222, 259);
-            this.igCombustibles.Name = "igCombustibles";
-            this.igCombustibles.Padding = new System.Windows.Forms.Padding(20);
-            this.igCombustibles.PaintGroupBox = true;
-            this.igCombustibles.RoundCorners = 10;
-            this.igCombustibles.ShadowColor = System.Drawing.Color.DarkGray;
-            this.igCombustibles.ShadowControl = true;
-            this.igCombustibles.ShadowThickness = 3;
-            this.igCombustibles.Size = new System.Drawing.Size(276, 223);
-            this.igCombustibles.SkinFixed = true;
-            this.igCombustibles.SkinFullFixed = true;
-            this.igCombustibles.TabIndex = 4;
-            // 
             // gbAgregarCombustible
             // 
             this.gbAgregarCombustible.FixedImage = TNGS.NetControls.FixedGlassButtons.New;
-            this.gbAgregarCombustible.Location = new System.Drawing.Point(87, 187);
+            this.gbAgregarCombustible.Location = new System.Drawing.Point(80, 409);
             this.gbAgregarCombustible.Name = "gbAgregarCombustible";
             this.gbAgregarCombustible.Size = new System.Drawing.Size(104, 26);
             this.gbAgregarCombustible.TabIndex = 5;
@@ -242,7 +153,7 @@
             this.fgCombustibles.ExcelTitle = "";
             this.fgCombustibles.GridOrder = "";
             this.fgCombustibles.HeaderForeColor = System.Drawing.SystemColors.ControlText;
-            this.fgCombustibles.Location = new System.Drawing.Point(23, 37);
+            this.fgCombustibles.Location = new System.Drawing.Point(275, 258);
             this.fgCombustibles.Name = "fgCombustibles";
             this.fgCombustibles.Size = new System.Drawing.Size(231, 144);
             this.fgCombustibles.SkinFixed = true;
@@ -250,11 +161,18 @@
             // 
             // igKilometros
             // 
+            this.igKilometros.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.igKilometros.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.igKilometros.BackgroundGradientColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
             this.igKilometros.BackgroundGradientMode = TNGS.NetControls.ImgGroup.GroupBoxGradientMode.ForwardDiagonal;
             this.igKilometros.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.igKilometros.BorderThickness = 1F;
+            this.igKilometros.Controls.Add(this.gbAgregarCombustible);
+            this.igKilometros.Controls.Add(this.gbBorrarEq);
+            this.igKilometros.Controls.Add(this.fgMovilEstados);
+            this.igKilometros.Controls.Add(this.gbModificarEq);
+            this.igKilometros.Controls.Add(this.fgCombustibles);
+            this.igKilometros.Controls.Add(this.fgEquipamiento);
             this.igKilometros.Controls.Add(this.gbNuevoKM);
             this.igKilometros.Controls.Add(this.neKilometros);
             this.igKilometros.Controls.Add(this.fgKm);
@@ -263,7 +181,7 @@
             this.igKilometros.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.igKilometros.GroupImage = ((System.Drawing.Image)(resources.GetObject("igKilometros.GroupImage")));
             this.igKilometros.GroupTitle = "Kilometraje";
-            this.igKilometros.Location = new System.Drawing.Point(222, 12);
+            this.igKilometros.Location = new System.Drawing.Point(264, 12);
             this.igKilometros.Name = "igKilometros";
             this.igKilometros.Padding = new System.Windows.Forms.Padding(20);
             this.igKilometros.PaintGroupBox = true;
@@ -271,7 +189,7 @@
             this.igKilometros.ShadowColor = System.Drawing.Color.DarkGray;
             this.igKilometros.ShadowControl = true;
             this.igKilometros.ShadowThickness = 3;
-            this.igKilometros.Size = new System.Drawing.Size(280, 241);
+            this.igKilometros.Size = new System.Drawing.Size(518, 447);
             this.igKilometros.SkinFixed = true;
             this.igKilometros.SkinFullFixed = true;
             this.igKilometros.TabIndex = 3;
@@ -279,7 +197,7 @@
             // gbNuevoKM
             // 
             this.gbNuevoKM.FixedImage = TNGS.NetControls.FixedGlassButtons.Add;
-            this.gbNuevoKM.Location = new System.Drawing.Point(153, 187);
+            this.gbNuevoKM.Location = new System.Drawing.Point(127, 185);
             this.gbNuevoKM.Name = "gbNuevoKM";
             this.gbNuevoKM.Size = new System.Drawing.Size(104, 26);
             this.gbNuevoKM.TabIndex = 4;
@@ -290,7 +208,7 @@
             // neKilometros
             // 
             this.neKilometros.BackColor = System.Drawing.SystemColors.Window;
-            this.neKilometros.Location = new System.Drawing.Point(23, 191);
+            this.neKilometros.Location = new System.Drawing.Point(21, 189);
             this.neKilometros.MaxLength = 7;
             this.neKilometros.Name = "neKilometros";
             this.neKilometros.Size = new System.Drawing.Size(100, 20);
@@ -307,7 +225,7 @@
             this.fgKm.ExcelTitle = "";
             this.fgKm.GridOrder = "";
             this.fgKm.HeaderForeColor = System.Drawing.SystemColors.ControlText;
-            this.fgKm.Location = new System.Drawing.Point(23, 37);
+            this.fgKm.Location = new System.Drawing.Point(10, 37);
             this.fgKm.Name = "fgKm";
             this.fgKm.Size = new System.Drawing.Size(234, 144);
             this.fgKm.SkinFixed = true;
@@ -315,12 +233,13 @@
             // 
             // igMoviles
             // 
+            this.igMoviles.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.igMoviles.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.igMoviles.BackgroundGradientColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
             this.igMoviles.BackgroundGradientMode = TNGS.NetControls.ImgGroup.GroupBoxGradientMode.ForwardDiagonal;
             this.igMoviles.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.igMoviles.BorderThickness = 1F;
-            this.igMoviles.Controls.Add(this.imgGroup1);
             this.igMoviles.Controls.Add(this.gbModificarEstado);
             this.igMoviles.Controls.Add(this.teModelo);
             this.igMoviles.Controls.Add(this.lblEstado);
@@ -334,7 +253,7 @@
             this.igMoviles.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.igMoviles.GroupImage = ((System.Drawing.Image)(resources.GetObject("igMoviles.GroupImage")));
             this.igMoviles.GroupTitle = "Moviles";
-            this.igMoviles.Location = new System.Drawing.Point(12, 12);
+            this.igMoviles.Location = new System.Drawing.Point(3, 3);
             this.igMoviles.Name = "igMoviles";
             this.igMoviles.Padding = new System.Windows.Forms.Padding(20);
             this.igMoviles.PaintGroupBox = true;
@@ -342,13 +261,15 @@
             this.igMoviles.ShadowColor = System.Drawing.Color.DarkGray;
             this.igMoviles.ShadowControl = true;
             this.igMoviles.ShadowThickness = 3;
-            this.igMoviles.Size = new System.Drawing.Size(204, 470);
+            this.igMoviles.Size = new System.Drawing.Size(210, 357);
             this.igMoviles.SkinFixed = true;
             this.igMoviles.SkinFullFixed = true;
             this.igMoviles.TabIndex = 1;
             // 
             // imgGroup1
             // 
+            this.imgGroup1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.imgGroup1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.imgGroup1.BackgroundGradientColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
             this.imgGroup1.BackgroundGradientMode = TNGS.NetControls.ImgGroup.GroupBoxGradientMode.ForwardDiagonal;
@@ -362,7 +283,7 @@
             this.imgGroup1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.imgGroup1.GroupImage = ((System.Drawing.Image)(resources.GetObject("imgGroup1.GroupImage")));
             this.imgGroup1.GroupTitle = "Opciones";
-            this.imgGroup1.Location = new System.Drawing.Point(0, 342);
+            this.imgGroup1.Location = new System.Drawing.Point(3, 360);
             this.imgGroup1.Name = "imgGroup1";
             this.imgGroup1.Padding = new System.Windows.Forms.Padding(20);
             this.imgGroup1.PaintGroupBox = true;
@@ -370,7 +291,7 @@
             this.imgGroup1.ShadowColor = System.Drawing.Color.DarkGray;
             this.imgGroup1.ShadowControl = true;
             this.imgGroup1.ShadowThickness = 3;
-            this.imgGroup1.Size = new System.Drawing.Size(204, 128);
+            this.imgGroup1.Size = new System.Drawing.Size(208, 136);
             this.imgGroup1.TabIndex = 29;
             // 
             // gbNuevoMovil
@@ -492,7 +413,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(788, 485);
+            this.ClientSize = new System.Drawing.Size(794, 499);
             this.Controls.Add(this.xpnlPanelAtras);
             this.DockAreas = WeifenLuo.WinFormsUI.Docking.DockAreas.Document;
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -500,11 +421,8 @@
             this.Name = "Estados";
             this.Text = "Estados";
             this.xpnlPanelAtras.ResumeLayout(false);
-            this.igHistorialEstados.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.fgMovilEstados)).EndInit();
-            this.igEquipamiento.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.fgEquipamiento)).EndInit();
-            this.igCombustibles.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.fgCombustibles)).EndInit();
             this.igKilometros.ResumeLayout(false);
             this.igKilometros.PerformLayout();
@@ -523,9 +441,7 @@
         private TNGS.NetControls.FullTreeView ftrMoviles;
         private TNGS.NetControls.ImgGroup igKilometros;
         private TNGS.NetControls.FullGrid fgKm;
-        private TNGS.NetControls.ImgGroup igCombustibles;
         private TNGS.NetControls.FullGrid fgCombustibles;
-        private TNGS.NetControls.ImgGroup igEquipamiento;
         private TNGS.NetControls.FullGrid fgEquipamiento;
         private TNGS.NetControls.GlassButton gbBorrarEq;
         private TNGS.NetControls.GlassButton gbModificarEq;
@@ -543,7 +459,6 @@
         private TNGS.NetControls.GlassButton gbNuevoMovil;
         private TNGS.NetControls.GlassButton gbBorrarMovil;
         private TNGS.NetControls.GlassButton gbModificarMovil;
-        private TNGS.NetControls.ImgGroup igHistorialEstados;
         private TNGS.NetControls.FullGrid fgMovilEstados;
     }
 }

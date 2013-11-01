@@ -26,10 +26,18 @@ namespace Rivn.Mv
         #region Constructor
         public MovilCombustible()
         {
-            InitializeComponent();
-            CargarEstaciones();
-            m_smResult = new StatMsg("MovilCombustible");
             
+            InitializeComponent();
+            m_smResult = new StatMsg("MovilCombustible");
+            CargarEstaciones();
+            CargarCombo();
+            
+            
+        }
+
+        private void CargarCombo()
+        {
+            cdcEstacion.FillFromStrLEntidad(m_LEEstEstaciones, "ets_rcd_cod", "ets_des_des", "deleted");
         }
         #endregion
 
