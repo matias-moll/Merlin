@@ -59,6 +59,8 @@ namespace Rivn.Bll
             p_lentData.InternalData.Table.Rows.Add(l_drTemp);
             p_lentData.Sort("Codigo");
         }
+       
+
 
         #endregion
 
