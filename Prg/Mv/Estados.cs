@@ -22,12 +22,8 @@ namespace Rivn.Mv
         #region Miembros de la Clase
         private Bel.LEMoviles m_LEMoviles = null;
         private Bel.EMovil m_entMovil = null;
+        private Bel.LEEstados m_LEEdsEstados = null;
         //Los de abajo podrian no estar hay que ver
-        private Bel.EMovilCombus m_entMovilCombus = null;
-        private Bel.EMovilKms m_entMovilKm = null;
-        private Bel.EMovilEquip m_entMovilEq = null;
-        private Bel.EMovilEstado m_entMovilEst = null;
-        private Bel.LEMovilesEstado m_lemeEstados = null;
         private StatMsg m_smResult = null;
         private ACLInfo m_aclInfo = null;
         private string m_strSort = "";
@@ -51,6 +47,7 @@ namespace Rivn.Mv
             ((MainFrame)App.GetMainWindow()).AddContent(this);
 
             TraerInfoBase();
+            TraerInfoEstados();
             LlenarTreeMoviles();
             LlenarComboEstados();
 
@@ -62,8 +59,15 @@ namespace Rivn.Mv
         {
             m_smResult.UilReset("TraerInfoBase");
             m_LEMoviles = Bll.Moviles.UpFull(true, ref m_smResult);
-            // traer m_leEstados para llenar combo
             MsgRuts.AnalizeError(this, m_smResult);
+        }
+
+        private void TraerInfoEstados()
+        {
+            m_smResult.UilReset("TraerInfoEstados");
+            m_LEEdsEstados = Bll.Tablas.EdsUpFull(true, ref m_smResult);
+            MsgRuts.AnalizeError(this, m_smResult);
+
         }
 
         #endregion
@@ -77,10 +81,8 @@ namespace Rivn.Mv
         private void LlenarComboEstados()
         {
             m_smResult.UilReset("LlenarComboEstados");
-            //TODO: Aca hay que poner el metodo en las tablas generales de estados
-            //m_lemeEstados = Bll.Tablas.(true,ref m_smResult);
 
-            cmbEstado.FillFromStrLEntidad(m_lemeEstados, "est_cod_cod", "st_des_des", "deleted");
+            cmbEstado.FillFromStrLEntidad(m_LEEdsEstados, "est_cod_cod", "st_des_des", "deleted");
 
             MsgRuts.AnalizeError(this, m_smResult);
         }
@@ -93,7 +95,8 @@ namespace Rivn.Mv
         {
             m_smResult.UilReset("LlenarTreeMoviles");
             ListaEntidades l_LEMovilesTree = new ListaEntidades(new DataTable());
-            //Bll.Moviles.
+            Bll.Moviles.fArmarTree(l_LEMovilesTree, true, ref m_smResult);
+            ftrMoviles.FillFromStrLEntidad(l_LEMovilesTree, "est_rcd_cod", "est_des_des", 2, "Nivel", "Imagen", "Imagen");
             MsgRuts.AnalizeError(this, m_smResult);
 
         }
@@ -104,12 +107,10 @@ namespace Rivn.Mv
         /// </summary>
         private void LlenarGridEstados()
         {
-            //TODO: Preguntar a mati acerca del get
             m_smResult.UilReset("LlenarGridEstados");
-            // TODO: Usar metodo bll que traiga 5 primeros
-            // LEMovilesKms l_LEMovKm = Bll.Moviles.MvkmGet5MovilesCombustibles(l_cdiMovil.StrCode, true, ref m_smResult);
-            LEMovilesEstado l_LEMovComb = Bll.Moviles.MvesFGet(m_entMovil.Patente, true, ref m_smResult);
-            fgCombustibles.FillFromLEntidad(l_LEMovComb);
+            LEMovilesEstado l_larala = LEMovilesEstado.NewEmpty();
+            m_entMovil.MovilesEstado.Sort("desc mve_fyh_fecha");
+            fgCombustibles.FillFromLEntidad(Dame5PrimerosEstados(m_entMovil.MovilesEstado));
             MsgRuts.AnalizeError(this, m_smResult);
         }
 
@@ -135,10 +136,8 @@ namespace Rivn.Mv
         private void LlenarGridCombustible()
         {
             m_smResult.UilReset("LlenarGridCombustible");
-            // TODO: Usar metodo bll que traiga 5 primeros
-            // LEMovilesKms l_LEMovKm = Bll.Moviles.MvkmGet5MovilesCombustibles(l_cdiMovil.StrCode, true, ref m_smResult);
-            LEMovilesCombus l_LEMovComb = Bll.Moviles.MvcoFGet(m_entMovil.Patente, true, ref m_smResult);
-            fgCombustibles.FillFromLEntidad(l_LEMovComb);
+            m_entMovil.MovilesCombus.Sort("desc mco_fyh_fecha");
+            fgCombustibles.FillFromLEntidad(Dame5PrimerosCombustibles(m_entMovil.MovilesCombus));
             MsgRuts.AnalizeError(this, m_smResult);
         }
 
@@ -149,10 +148,8 @@ namespace Rivn.Mv
         private void LlenarGridKm()
         {
             m_smResult.UilReset("LlenarGridKms");
-            // TODO: Usar metodo bll que traiga 5 primeros
-            // LEMovilesKms l_LEMovKm = Bll.Moviles.MvkmGet5MovilesKm(l_cdiMovil.StrCode, true, ref m_smResult);
-            LEMovilesKms l_LEMovKm = Bll.Moviles.MvkmFGet(m_entMovil.Patente, true, ref m_smResult);
-            fgCombustibles.FillFromLEntidad(l_LEMovKm);
+            m_entMovil.MovilesKms.Sort("desc mkm_fyh_fecha");
+            fgCombustibles.FillFromLEntidad(Dame5PrimerosKms(m_entMovil.MovilesKms));
             MsgRuts.AnalizeError(this, m_smResult);
         }
 
@@ -202,7 +199,16 @@ namespace Rivn.Mv
 
         #region Clicks
 
+        private void gbModificarMovil_Click(object sender, EventArgs e)
+        {
 
+        }
+
+
+        private void gbModificarEq_Click(object sender, EventArgs e)
+        {
+
+        }
         /// <summary>
         /// Borrado de un Movil
         /// </summary>
@@ -212,8 +218,14 @@ namespace Rivn.Mv
         //TODO: Preguntar acerca del borrado
         private void gbBorrarMovil_Click(object sender, EventArgs e)
         {
+            m_smResult.UilReset("BorrarMovil");
             if (!BorradoSeguro()) return;
-
+            Bll.Moviles.Remove(m_entMovil.Patente,m_entMovil.FxdVersion, ref m_smResult);
+            m_entMovil = null;
+            LimpiarCampos();
+            TraerInfoBase();
+            LlenarTreeMoviles();
+            MsgRuts.AnalizeError(this, m_smResult);
         }
 
 
@@ -224,20 +236,54 @@ namespace Rivn.Mv
         /// <param name="e"></param>
         private void gbBorrarEq_Click(object sender, EventArgs e)
         {
+            m_smResult.UilReset("BorrarEquipamientoMovil");
             if (!BorradoSeguro()) return;
-            //TODO: Preguntar a Mati:
-            // Bll.Moviles.MveqRemove(m_entMovil.Patente,fgEquipamiento.Select,)
+            object l_objCodigo = fgEquipamiento.GetMatrixValueObj(fgEquipamiento.CurrentRowIndex,0);
+            if ((l_objCodigo == DBNull.Value) || (l_objCodigo == null))
+                    return;
+            Bll.Moviles.MveqRemove(m_entMovil.Patente, (string)l_objCodigo, m_entMovil.FxdVersion, ref m_smResult);
+            MsgRuts.AnalizeError(this, m_smResult);
+
 
         }
 
 
+        private void gbNuevoMovil_Click(object sender, EventArgs e)
+        {
+        }
+
+
+        private void gbAgregarCombustible_Click(object sender, EventArgs e)
+        {
+            m_smResult.UilReset("AgregarCargaCombustible");
+            MovilCombustible l_frmMovilCombustible = new MovilCombustible();
+            l_frmMovilCombustible.ShowDialog();
+            if (l_frmMovilCombustible.DialogResult == System.Windows.Forms.DialogResult.Abort)
+            {
+                return;
+            }
+            EMovilCombus l_EMComMovilCombustible = EMovilCombus.NewEmpty();
+            l_EMComMovilCombustible.Codestacion = l_frmMovilCombustible.Estacion;
+            l_EMComMovilCombustible.Fecha = DateTime.Now;
+            l_EMComMovilCombustible.Litros = l_frmMovilCombustible.Litros;
+            l_EMComMovilCombustible.Patente = m_entMovil.Patente;
+            l_EMComMovilCombustible.Importe = l_frmMovilCombustible.Importe;
+            Bll.Moviles.MvcoSave(l_EMComMovilCombustible, ref m_smResult);
+            TraerInfoBase();
+            LlenarGridCombustible();
+            MsgRuts.AnalizeError(this, m_smResult);
+
+
+        }
         /// <summary>
         /// Ingresar un nuevo kilometraje
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
+        /// 
         private void gbNuevoKM_Click(object sender, EventArgs e)
         {
+            m_smResult.UilReset("ClickNuevoKm");
             EMovilKms l_EMKmMovilKm = Bel.EMovilKms.NewEmpty();
             if (!neKilometros.IsValid)
                 DatosInvalidos();
@@ -245,8 +291,9 @@ namespace Rivn.Mv
             l_EMKmMovilKm.Km = neKilometros.Numero;
             l_EMKmMovilKm.Patente = tePatente.Text;
             Bll.Moviles.MvkmSave(l_EMKmMovilKm, ref m_smResult);
-            m_entMovil.MovilesKms.AddEntity(l_EMKmMovilKm);
-
+            TraerInfoBase();
+            LlenarGridKm();
+            MsgRuts.AnalizeError(this,m_smResult);
 
 
 
@@ -268,7 +315,7 @@ namespace Rivn.Mv
             l_EMEstMovilEstado.Codestado = cmbEstado.SelectedStrCode;
             l_EMEstMovilEstado.Fecha = DateTime.Now;
             l_EMEstMovilEstado.Patente = m_entMovil.Patente;
-            m_entMovil.MovilesKms.Sort("mkm_nro_km");
+            m_entMovil.MovilesKms.Sort("desc mkm_nro_km");
             l_EMEstMovilEstado.Km = m_entMovil.MovilesKms[0].Km;
 
             Bll.Moviles.MvesSave(l_EMEstMovilEstado, ref m_smResult);
@@ -286,6 +333,57 @@ namespace Rivn.Mv
 
 
         #region Otros Metodos
+        /// <summary>
+        /// Devuelve 5 primeros estados de un movil
+        /// </summary>
+        /// <param name="p_LEMEEstadosDeMovil">Lista Entidad tipada MOviles Estado</param>
+        /// <returns></returns>
+        private LEMovilesEstado Dame5PrimerosEstados(LEMovilesEstado p_LEMEEstadosDeMovil)
+        {
+           LEMovilesEstado l_LEMEPrimerosCincoMovilesEstados = LEMovilesEstado.NewEmpty();
+            for (long i = 0; i <= 4; i++)
+            {
+                l_LEMEPrimerosCincoMovilesEstados.AddEntity(p_LEMEEstadosDeMovil[i]);
+            }
+            return l_LEMEPrimerosCincoMovilesEstados;
+        }
+
+        /// <summary>
+        /// Devuelve 5 primeras cargas de combustible de un movil
+        /// </summary>
+        /// <param name="p_LEMEEstadosDeMovil">Lista entidad tipada</param>
+        /// <returns></returns>
+        private LEMovilesCombus Dame5PrimerosCombustibles(LEMovilesCombus p_LEMECombusDeMovil)
+        {
+            LEMovilesCombus l_LEMEPrimerosCincoMovilesCombustibles = LEMovilesCombus.NewEmpty();
+            for (long i = 0; i <= 4; i++)
+            {
+                l_LEMEPrimerosCincoMovilesCombustibles.AddEntity(p_LEMECombusDeMovil[i]);
+            }
+            return l_LEMEPrimerosCincoMovilesCombustibles;
+        }
+
+
+        /// <summary>
+        /// Devuelve lista entidad con los primeros 5 registros de kms
+        /// </summary>
+        /// <param name="p_LEMEEstadosDeMovil">Lista entidad tipada de estados</param>
+        /// <returns></returns>
+        private LEMovilesKms Dame5PrimerosKms(LEMovilesKms p_LEMEKmsDeMovil)
+        {
+            LEMovilesKms l_LEMEPrimerosCincoMovilesKms = LEMovilesKms.NewEmpty();
+            for (long i = 0; i <= 4; i++)
+            {
+                l_LEMEPrimerosCincoMovilesKms.AddEntity(p_LEMEKmsDeMovil[i]);
+            }
+            return l_LEMEPrimerosCincoMovilesKms;
+        }
+
+
+
+
+
+
 
         /// <summary>
         /// dispara ventana que avisa al usuario que los datos ingresados no son correctos
@@ -323,5 +421,9 @@ namespace Rivn.Mv
 
 
         #endregion
+
+
+
+
     }
 }

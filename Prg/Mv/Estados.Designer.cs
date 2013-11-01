@@ -176,6 +176,7 @@
             this.gbModificarEq.TabIndex = 2;
             this.gbModificarEq.Text = "Modificar";
             this.gbModificarEq.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.gbModificarEq.Click += new System.EventHandler(this.gbModificarEq_Click);
             // 
             // fgEquipamiento
             // 
@@ -229,6 +230,7 @@
             this.gbAgregarCombustible.TabIndex = 5;
             this.gbAgregarCombustible.Text = "Nuevo";
             this.gbAgregarCombustible.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.gbAgregarCombustible.Click += new System.EventHandler(this.gbAgregarCombustible_Click);
             // 
             // fgCombustibles
             // 
@@ -380,6 +382,7 @@
             this.gbNuevoMovil.TabIndex = 27;
             this.gbNuevoMovil.Text = "Nuevo Movil";
             this.gbNuevoMovil.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.gbNuevoMovil.Click += new System.EventHandler(this.gbNuevoMovil_Click);
             // 
             // gbBorrarMovil
             // 
@@ -401,6 +404,7 @@
             this.gbModificarMovil.TabIndex = 26;
             this.gbModificarMovil.Text = "Modificar Movil";
             this.gbModificarMovil.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.gbModificarMovil.Click += new System.EventHandler(this.gbModificarMovil_Click);
             // 
             // gbModificarEstado
             // 
