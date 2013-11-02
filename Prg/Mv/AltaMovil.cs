@@ -107,6 +107,15 @@ namespace Rivn.Mv
             }
         }
 
+        //llena un CheckListBox con los equipamientos de la tabla Equipamientos.
+        private void llenarCheckListEquipamiento()
+        {
+            m_stResult.UilReset("llenarCheckListEquipamiento");
+            clEquipamientos.FillFromStrLEntidad(Tablas.EqiUpFull(true, ref m_stResult), "eqi_cod_cod", "eqi_des_des", "deleted");
+
+            MsgRuts.AnalizeError(this, m_stResult);
+        }
+
         //pone en blanco todos los campos de DatosBasicos Movil
         private void limpiarTodosLosCamposDatosBasicos()
         {
@@ -209,7 +218,7 @@ namespace Rivn.Mv
         }
 
         //llena la ListaEntidad MovilEquip, con los datos del formulario
-        private void LlenarLEMovilesEquipamiento(Bel.LEMovilesEquip p_leMovilEq)
+        private void  CargarLEMovilesEquipamiento(Bel.LEMovilesEquip p_leMovilEq)
         {
             if (m_EstadoAlta)
             {
@@ -241,7 +250,7 @@ namespace Rivn.Mv
         }
 
         //llena una entidad Movil KMS pasada por parametro, con los datos del formulario
-        private Bel.EMovilKms generarNuevaEntidadMovilKilometros(Bel.EMovilKms p_entMovilKms)
+        private Bel.EMovilKms CargarEntidadMovilKilometros(Bel.EMovilKms p_entMovilKms)
         {
             p_entMovilKms.Patente = tePatente.Text;
             p_entMovilKms.Fecha = DateTime.Now;
@@ -251,14 +260,7 @@ namespace Rivn.Mv
             return p_entMovilKms;
         }  
         
-        //llena un CheckListBox con los equipamientos de la tabla Equipamientos.
-        private void llenarCheckListEquipamiento()
-        {
-            m_stResult.UilReset("llenarCheckListEquipamiento");
-            clEquipamientos.FillFromStrLEntidad(Tablas.EqiUpFull(true, ref m_stResult), "eqi_cod_cod", "eqi_des_des", "deleted");
 
-            MsgRuts.AnalizeError(this, m_stResult);
-        }
 
         #endregion
 
