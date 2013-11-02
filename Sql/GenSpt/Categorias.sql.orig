@@ -5,13 +5,13 @@
 // Fecha       : 31/10/2013 14:57
 =======
 <<<<<<< HEAD
-// Fecha       : 28/10/2013 18:04
-=======
 // Fecha       : 31/10/2013 14:57
->>>>>>> 3a252f53020dd3b440332b25355995d4c9ecb060
+=======
+// Fecha       : 28/10/2013 18:04
 >>>>>>> a5c655da9d140c81d307e269bb06f0bc907f9165
+>>>>>>> 0789a91d2814577d1208452c84dcd0d5038e7a9d
 // Sistema     : Rivn
-// Tabla       : Reparaciones
+// Tabla       : Categorias
 //----------------------------------------------------------------------------
 // © 1999-2013 by TNG Software                                      Gndr 5.20
 //---------------------------------------------------------------------------*/
@@ -39,19 +39,19 @@ go
 ---
 ---////////////////////////////////////////////////////////
 
-print 'Store Procedure: dbo.REPARACIONES_UP'
+print 'Store Procedure: dbo.CATEGORIAS_UP'
 
-if exists (select * from sysobjects where id = object_id('dbo.REPARACIONES_UP'))
+if exists (select * from sysobjects where id = object_id('dbo.CATEGORIAS_UP'))
 begin
    print '       - Borrando el viejo SP'
-   drop procedure dbo.REPARACIONES_UP
+   drop procedure dbo.CATEGORIAS_UP
 end
 go
 
 print '       - Creando el nuevo SP'
 go
 
-create procedure dbo.REPARACIONES_UP
+create procedure dbo.CATEGORIAS_UP
 (
 @onlyactive tngs_valor
 )
@@ -60,30 +60,26 @@ begin
 
    if @onlyactive = 1
       begin
-         Select rep_cd6_cod,
-                rep_xde_des,
-                rep_rcd_codcat,
-                rep_cd1_solicitadetalle,
-                TNGS_Rivn..Reparaciones.instante,
-                TNGS_Rivn..Reparaciones.deleted,
-                TNGS_Rivn..Reparaciones.usuario,
-                TNGS_Rivn..Reparaciones.version
-           from TNGS_Rivn..Reparaciones
+         Select cat_rcd_cod,
+                cat_des_des,
+                TNGS_Rivn..Categorias.instante,
+                TNGS_Rivn..Categorias.deleted,
+                TNGS_Rivn..Categorias.usuario,
+                TNGS_Rivn..Categorias.version
+           from TNGS_Rivn..Categorias
           where deleted = 0
-          order by rep_cd6_cod
+          order by cat_rcd_cod
       end
    else
       begin
-         Select rep_cd6_cod,
-                rep_xde_des,
-                rep_rcd_codcat,
-                rep_cd1_solicitadetalle,
-                TNGS_Rivn..Reparaciones.instante,
-                TNGS_Rivn..Reparaciones.deleted,
-                TNGS_Rivn..Reparaciones.usuario,
-                TNGS_Rivn..Reparaciones.version
-           from TNGS_Rivn..Reparaciones
-          order by rep_cd6_cod
+         Select cat_rcd_cod,
+                cat_des_des,
+                TNGS_Rivn..Categorias.instante,
+                TNGS_Rivn..Categorias.deleted,
+                TNGS_Rivn..Categorias.usuario,
+                TNGS_Rivn..Categorias.version
+           from TNGS_Rivn..Categorias
+          order by cat_rcd_cod
       end
 
 fin:
@@ -93,7 +89,7 @@ go
 
 print '       - Asignando permisos al nuevo SP'
 
-grant execute on dbo.REPARACIONES_UP to tngsmodulos
+grant execute on dbo.CATEGORIAS_UP to tngsmodulos
 
 print ' '
 go
@@ -103,34 +99,34 @@ go
 --- <summary>
 --- Verifica el número de versión de un registro
 --- </summary>
---- <param name="@rep_cd6_cod">codigo</param>
+--- <param name="@cat_rcd_cod">codigo</param>
 --- <param name="@version">Número de version a verificar</param>
 ---
 ---////////////////////////////////////////////////////////
 
-print 'Store Procedure: dbo.REPARACIONES_CHKVERSION'
+print 'Store Procedure: dbo.CATEGORIAS_CHKVERSION'
 
-if exists (select * from sysobjects where id = object_id('dbo.REPARACIONES_CHKVERSION'))
+if exists (select * from sysobjects where id = object_id('dbo.CATEGORIAS_CHKVERSION'))
 begin
    print '       - Borrando el viejo SP'
-   drop procedure dbo.REPARACIONES_CHKVERSION
+   drop procedure dbo.CATEGORIAS_CHKVERSION
 end
 go
 
 print '       - Creando el nuevo SP'
 go
 
-create procedure dbo.REPARACIONES_CHKVERSION
+create procedure dbo.CATEGORIAS_CHKVERSION
 (
-@rep_cd6_cod tngs_codigo_6,
+@cat_rcd_cod tngs_codigo_r,
 @version tngs_numero
 )
 as
 begin
 
    Select count(*) as cantidad
-     from TNGS_Rivn..Reparaciones
-    where rep_cd6_cod = @rep_cd6_cod
+     from TNGS_Rivn..Categorias
+    where cat_rcd_cod = @cat_rcd_cod
       and version = @version
 
 fin:
@@ -140,7 +136,7 @@ go
 
 print '       - Asignando permisos al nuevo SP'
 
-grant execute on dbo.REPARACIONES_CHKVERSION to tngsmodulos
+grant execute on dbo.CATEGORIAS_CHKVERSION to tngsmodulos
 
 print ' '
 go
@@ -150,26 +146,26 @@ go
 --- <summary>
 --- Busca el registro de una clave
 --- </summary>
---- <param name="@rep_cd6_cod">codigo</param>
+--- <param name="@cat_rcd_cod">codigo</param>
 --- <param name="@onlyactive">Flag de SoloActivos</param>
 ---
 ---////////////////////////////////////////////////////////
 
-print 'Store Procedure: dbo.REPARACIONES_SEARCH'
+print 'Store Procedure: dbo.CATEGORIAS_SEARCH'
 
-if exists (select * from sysobjects where id = object_id('dbo.REPARACIONES_SEARCH'))
+if exists (select * from sysobjects where id = object_id('dbo.CATEGORIAS_SEARCH'))
 begin
    print '       - Borrando el viejo SP'
-   drop procedure dbo.REPARACIONES_SEARCH
+   drop procedure dbo.CATEGORIAS_SEARCH
 end
 go
 
 print '       - Creando el nuevo SP'
 go
 
-create procedure dbo.REPARACIONES_SEARCH
+create procedure dbo.CATEGORIAS_SEARCH
 (
-@rep_cd6_cod tngs_codigo_6,
+@cat_rcd_cod tngs_codigo_r,
 @onlyactive tngs_valor
 )
 as
@@ -177,30 +173,26 @@ begin
 
    if @onlyactive = 1
       begin
-         Select rep_cd6_cod,
-                rep_xde_des,
-                rep_rcd_codcat,
-                rep_cd1_solicitadetalle,
-                TNGS_Rivn..Reparaciones.instante,
-                TNGS_Rivn..Reparaciones.deleted,
-                TNGS_Rivn..Reparaciones.usuario,
-                TNGS_Rivn..Reparaciones.version
-           from TNGS_Rivn..Reparaciones
-          where rep_cd6_cod = @rep_cd6_cod
+         Select cat_rcd_cod,
+                cat_des_des,
+                TNGS_Rivn..Categorias.instante,
+                TNGS_Rivn..Categorias.deleted,
+                TNGS_Rivn..Categorias.usuario,
+                TNGS_Rivn..Categorias.version
+           from TNGS_Rivn..Categorias
+          where cat_rcd_cod = @cat_rcd_cod
             and deleted = 0
       end
    else
       begin
-         Select rep_cd6_cod,
-                rep_xde_des,
-                rep_rcd_codcat,
-                rep_cd1_solicitadetalle,
-                TNGS_Rivn..Reparaciones.instante,
-                TNGS_Rivn..Reparaciones.deleted,
-                TNGS_Rivn..Reparaciones.usuario,
-                TNGS_Rivn..Reparaciones.version
-           from TNGS_Rivn..Reparaciones
-          where rep_cd6_cod = @rep_cd6_cod
+         Select cat_rcd_cod,
+                cat_des_des,
+                TNGS_Rivn..Categorias.instante,
+                TNGS_Rivn..Categorias.deleted,
+                TNGS_Rivn..Categorias.usuario,
+                TNGS_Rivn..Categorias.version
+           from TNGS_Rivn..Categorias
+          where cat_rcd_cod = @cat_rcd_cod
       end
 
 fin:
@@ -210,7 +202,7 @@ go
 
 print '       - Asignando permisos al nuevo SP'
 
-grant execute on dbo.REPARACIONES_SEARCH to tngsmodulos
+grant execute on dbo.CATEGORIAS_SEARCH to tngsmodulos
 
 print ' '
 go
@@ -220,43 +212,37 @@ go
 --- <summary>
 --- Inserta un registro en la tabla
 --- </summary>
---- <param name="@rep_cd6_cod">codigo</param>
---- <param name="@rep_xde_des">descripcion</param>
---- <param name="@rep_rcd_codcat">categoria</param>
---- <param name="@rep_cd1_solicitadetalle">Se Solicita Detalle</param>
+--- <param name="@cat_rcd_cod">codigo</param>
+--- <param name="@cat_des_des">descripcion</param>
 --- <param name="@usuario">Usuario que genera el insert</param>
 ---
 ---////////////////////////////////////////////////////////
 
-print 'Store Procedure: dbo.REPARACIONES_INSERT'
+print 'Store Procedure: dbo.CATEGORIAS_INSERT'
 
-if exists (select * from sysobjects where id = object_id('dbo.REPARACIONES_INSERT'))
+if exists (select * from sysobjects where id = object_id('dbo.CATEGORIAS_INSERT'))
 begin
    print '       - Borrando el viejo SP'
-   drop procedure dbo.REPARACIONES_INSERT
+   drop procedure dbo.CATEGORIAS_INSERT
 end
 go
 
 print '       - Creando el nuevo SP'
 go
 
-create procedure dbo.REPARACIONES_INSERT
+create procedure dbo.CATEGORIAS_INSERT
 (
-@rep_cd6_cod tngs_codigo_6,
-@rep_xde_des tngs_descripcion_x,
-@rep_rcd_codcat tngs_codigo_r,
-@rep_cd1_solicitadetalle tngs_codigo_1,
+@cat_rcd_cod tngs_codigo_r,
+@cat_des_des tngs_descripcion,
 @usuario tngs_nombre
 )
 as
 begin
 
-   Insert into TNGS_Rivn..Reparaciones
+   Insert into TNGS_Rivn..Categorias
    values (
-           @rep_cd6_cod,
-           @rep_xde_des,
-           @rep_rcd_codcat,
-           @rep_cd1_solicitadetalle,
+           @cat_rcd_cod,
+           @cat_des_des,
            getdate(), 0, @usuario, 1
           )
 
@@ -267,7 +253,7 @@ go
 
 print '       - Asignando permisos al nuevo SP'
 
-grant execute on dbo.REPARACIONES_INSERT to tngsmodulos
+grant execute on dbo.CATEGORIAS_INSERT to tngsmodulos
 
 print ' '
 go
@@ -277,45 +263,39 @@ go
 --- <summary>
 --- Actualiza un registro de la tabla
 --- </summary>
---- <param name="@rep_cd6_cod">codigo</param>
---- <param name="@rep_xde_des">descripcion</param>
---- <param name="@rep_rcd_codcat">categoria</param>
---- <param name="@rep_cd1_solicitadetalle">Se Solicita Detalle</param>
+--- <param name="@cat_rcd_cod">codigo</param>
+--- <param name="@cat_des_des">descripcion</param>
 --- <param name="@usuario">Usuario que genera el update</param>
 ---
 ---////////////////////////////////////////////////////////
 
-print 'Store Procedure: dbo.REPARACIONES_UPDATE'
+print 'Store Procedure: dbo.CATEGORIAS_UPDATE'
 
-if exists (select * from sysobjects where id = object_id('dbo.REPARACIONES_UPDATE'))
+if exists (select * from sysobjects where id = object_id('dbo.CATEGORIAS_UPDATE'))
 begin
    print '       - Borrando el viejo SP'
-   drop procedure dbo.REPARACIONES_UPDATE
+   drop procedure dbo.CATEGORIAS_UPDATE
 end
 go
 
 print '       - Creando el nuevo SP'
 go
 
-create procedure dbo.REPARACIONES_UPDATE
+create procedure dbo.CATEGORIAS_UPDATE
 (
-@rep_cd6_cod tngs_codigo_6,
-@rep_xde_des tngs_descripcion_x,
-@rep_rcd_codcat tngs_codigo_r,
-@rep_cd1_solicitadetalle tngs_codigo_1,
+@cat_rcd_cod tngs_codigo_r,
+@cat_des_des tngs_descripcion,
 @usuario tngs_nombre
 )
 as
 begin
 
-   Update TNGS_Rivn..Reparaciones
-      set rep_xde_des= @rep_xde_des,
-          rep_rcd_codcat= @rep_rcd_codcat,
-          rep_cd1_solicitadetalle= @rep_cd1_solicitadetalle,
+   Update TNGS_Rivn..Categorias
+      set cat_des_des= @cat_des_des,
           version = ((version+1) % 32767),
           instante= getdate(),
           usuario = @usuario
-    where rep_cd6_cod = @rep_cd6_cod
+    where cat_rcd_cod = @cat_rcd_cod
 
 fin:
 
@@ -324,7 +304,7 @@ go
 
 print '       - Asignando permisos al nuevo SP'
 
-grant execute on dbo.REPARACIONES_UPDATE to tngsmodulos
+grant execute on dbo.CATEGORIAS_UPDATE to tngsmodulos
 
 print ' '
 go
@@ -334,37 +314,37 @@ go
 --- <summary>
 --- Borra lógicamente un registro
 --- </summary>
---- <param name="@rep_cd6_cod">codigo</param>
+--- <param name="@cat_rcd_cod">codigo</param>
 --- <param name="@usuario">Usuario que realiza el delete</param>
 ---
 ---////////////////////////////////////////////////////////
 
-print 'Store Procedure: dbo.REPARACIONES_DELETE'
+print 'Store Procedure: dbo.CATEGORIAS_DELETE'
 
-if exists (select * from sysobjects where id = object_id('dbo.REPARACIONES_DELETE'))
+if exists (select * from sysobjects where id = object_id('dbo.CATEGORIAS_DELETE'))
 begin
    print '       - Borrando el viejo SP'
-   drop procedure dbo.REPARACIONES_DELETE
+   drop procedure dbo.CATEGORIAS_DELETE
 end
 go
 
 print '       - Creando el nuevo SP'
 go
 
-create procedure dbo.REPARACIONES_DELETE
+create procedure dbo.CATEGORIAS_DELETE
 (
-@rep_cd6_cod tngs_codigo_6,
+@cat_rcd_cod tngs_codigo_r,
 @usuario tngs_nombre
 )
 as
 begin
 
-   Update TNGS_Rivn..Reparaciones
+   Update TNGS_Rivn..Categorias
       set deleted = 1,
           version = ((version+1) % 32767),
           instante= getdate(),
           usuario = @usuario
-    where rep_cd6_cod = @rep_cd6_cod
+    where cat_rcd_cod = @cat_rcd_cod
 
 fin:
 
@@ -373,7 +353,7 @@ go
 
 print '       - Asignando permisos al nuevo SP'
 
-grant execute on dbo.REPARACIONES_DELETE to tngsmodulos
+grant execute on dbo.CATEGORIAS_DELETE to tngsmodulos
 
 print ' '
 go
@@ -383,37 +363,37 @@ go
 --- <summary>
 --- Recupera un registro
 --- </summary>
---- <param name="@rep_cd6_cod">codigo</param>
+--- <param name="@cat_rcd_cod">codigo</param>
 --- <param name="@usuario">Usuario que realiza el recall</param>
 ---
 ---////////////////////////////////////////////////////////
 
-print 'Store Procedure: dbo.REPARACIONES_RECALL'
+print 'Store Procedure: dbo.CATEGORIAS_RECALL'
 
-if exists (select * from sysobjects where id = object_id('dbo.REPARACIONES_RECALL'))
+if exists (select * from sysobjects where id = object_id('dbo.CATEGORIAS_RECALL'))
 begin
    print '       - Borrando el viejo SP'
-   drop procedure dbo.REPARACIONES_RECALL
+   drop procedure dbo.CATEGORIAS_RECALL
 end
 go
 
 print '       - Creando el nuevo SP'
 go
 
-create procedure dbo.REPARACIONES_RECALL
+create procedure dbo.CATEGORIAS_RECALL
 (
-@rep_cd6_cod tngs_codigo_6,
+@cat_rcd_cod tngs_codigo_r,
 @usuario tngs_nombre
 )
 as
 begin
 
-   Update TNGS_Rivn..Reparaciones
+   Update TNGS_Rivn..Categorias
       set deleted = 0,
           version = ((version+1) % 32767),
           instante= getdate(),
           usuario = @usuario
-    where rep_cd6_cod = @rep_cd6_cod
+    where cat_rcd_cod = @cat_rcd_cod
 
 fin:
 
@@ -422,7 +402,7 @@ go
 
 print '       - Asignando permisos al nuevo SP'
 
-grant execute on dbo.REPARACIONES_RECALL to tngsmodulos
+grant execute on dbo.CATEGORIAS_RECALL to tngsmodulos
 
 print ' '
 go
@@ -432,33 +412,33 @@ go
 --- <summary>
 --- Borra físicamente un registro
 --- </summary>
---- <param name="@rep_cd6_cod">codigo</param>
+--- <param name="@cat_rcd_cod">codigo</param>
 --- <param name="@usuario">Usuario que realiza el drop</param>
 ---
 ---////////////////////////////////////////////////////////
 
-print 'Store Procedure: dbo.REPARACIONES_DROP'
+print 'Store Procedure: dbo.CATEGORIAS_DROP'
 
-if exists (select * from sysobjects where id = object_id('dbo.REPARACIONES_DROP'))
+if exists (select * from sysobjects where id = object_id('dbo.CATEGORIAS_DROP'))
 begin
    print '       - Borrando el viejo SP'
-   drop procedure dbo.REPARACIONES_DROP
+   drop procedure dbo.CATEGORIAS_DROP
 end
 go
 
 print '       - Creando el nuevo SP'
 go
 
-create procedure dbo.REPARACIONES_DROP
+create procedure dbo.CATEGORIAS_DROP
 (
-@rep_cd6_cod tngs_codigo_6,
+@cat_rcd_cod tngs_codigo_r,
 @usuario tngs_nombre
 )
 as
 begin
 
-   Delete from TNGS_Rivn..Reparaciones
-    where rep_cd6_cod = @rep_cd6_cod
+   Delete from TNGS_Rivn..Categorias
+    where cat_rcd_cod = @cat_rcd_cod
 
 fin:
 
@@ -467,7 +447,7 @@ go
 
 print '       - Asignando permisos al nuevo SP'
 
-grant execute on dbo.REPARACIONES_DROP to tngsmodulos
+grant execute on dbo.CATEGORIAS_DROP to tngsmodulos
 
 print ' '
 go
@@ -481,26 +461,26 @@ go
 ---
 ---////////////////////////////////////////////////////////
 
-print 'Store Procedure: dbo.REPARACIONES_PACK'
+print 'Store Procedure: dbo.CATEGORIAS_PACK'
 
-if exists (select * from sysobjects where id = object_id('dbo.REPARACIONES_PACK'))
+if exists (select * from sysobjects where id = object_id('dbo.CATEGORIAS_PACK'))
 begin
    print '       - Borrando el viejo SP'
-   drop procedure dbo.REPARACIONES_PACK
+   drop procedure dbo.CATEGORIAS_PACK
 end
 go
 
 print '       - Creando el nuevo SP'
 go
 
-create procedure dbo.REPARACIONES_PACK
+create procedure dbo.CATEGORIAS_PACK
 (
 @usuario tngs_nombre
 )
 as
 begin
 
-   Delete TNGS_Rivn..Reparaciones
+   Delete TNGS_Rivn..Categorias
     where deleted = 1
 
 fin:
@@ -510,7 +490,7 @@ go
 
 print '       - Asignando permisos al nuevo SP'
 
-grant execute on dbo.REPARACIONES_PACK to tngsmodulos
+grant execute on dbo.CATEGORIAS_PACK to tngsmodulos
 
 print ' '
 go
@@ -518,36 +498,36 @@ go
 ---////////////////////////////////////////////////////////
 ---
 --- <summary>
---- Método Fijo: Getbydesc
+--- Método Fijo: getByDesc
 --- </summary>
---- <param name="@des">Levanta descripciones de las reparaciones.</param>
+--- <param name="@desc">.</param>
 --- <param name="@usuario">Usuario que ejecuta el SP</param>
 ---
 ---////////////////////////////////////////////////////////
 
-print 'Store Procedure: dbo.REPARACIONES_GETBYDESC'
+print 'Store Procedure: dbo.CATEGORIAS_GETBYDESC'
 
-if exists (select * from sysobjects where id = object_id('dbo.REPARACIONES_GETBYDESC'))
+if exists (select * from sysobjects where id = object_id('dbo.CATEGORIAS_GETBYDESC'))
 begin
    print '       - Borrando el viejo SP'
-   drop procedure dbo.REPARACIONES_GETBYDESC
+   drop procedure dbo.CATEGORIAS_GETBYDESC
 end
 go
 
 print '       - Creando el nuevo SP'
 go
 
-create procedure dbo.REPARACIONES_GETBYDESC
+create procedure dbo.CATEGORIAS_GETBYDESC
 (
-@des tngs_descripcion_10,
+@desc tngs_descripcion,
 @usuario tngs_nombre
 )
 as
 begin
 
-   select * from Reparaciones 
-   where rep_xde_des like '%' + rtrim(@des) + '%' 
+   select * from Categorias 
     
+         where cat_des_des like '%' + ltrim(rtrim(@desc)) + '%' 
 
 fin:
 
@@ -556,11 +536,11 @@ go
 
 print '       - Asignando permisos al nuevo SP'
 
-grant execute on dbo.REPARACIONES_GETBYDESC to tngsmodulos
+grant execute on dbo.CATEGORIAS_GETBYDESC to tngsmodulos
 
 print ' '
 go
 
 /*--------------------------------------------------------------------------
-// Fin del script de creacion de los SP de la tabla: Reparaciones
+// Fin del script de creacion de los SP de la tabla: Categorias
 //--------------------------------------------------------------------------*/
