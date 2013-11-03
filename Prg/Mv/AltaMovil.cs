@@ -19,6 +19,7 @@ namespace Rivn.Mv
 {
     public partial class AltaMovil : DockContent
     {
+
         #region Constructor y variables miembro
 
         //miembros
@@ -94,8 +95,7 @@ namespace Rivn.Mv
 
         #endregion
 
-
-        #region metodos privados de la UIL
+        #region Metodos privados de la UIL
 
 
         //chequea o Unchekea todos los items de una CheckBoxList, false para uncheaquear, true para chequear.
@@ -166,7 +166,7 @@ namespace Rivn.Mv
         }
 
         //llena una Entidad Movil pasada por parametro, con los datos del formulario
-        private Bel.EMovil CargarFormEnEntidadMovil(Bel.EMovil p_entMovil)
+        private void CargarDatosBasicosEnEntidadMovil(Bel.EMovil p_entMovil)
         {
             //llenamos la entidad
             p_entMovil.Patente = tePatente.Text;
@@ -176,27 +176,32 @@ namespace Rivn.Mv
             p_entMovil.Modelo = cdcModelo.SelectedStrCode; 
             p_entMovil.Aniofabric = neAnioFabric.Numero;
             p_entMovil.Propio = cdcMovilPropio.SelectedStrCode;
-
-            //retornamos la EMovil Creado
-            return p_entMovil;
+    
         }
 
         //llena una entidad Movil Estado pasada por parametro, con los datos del formulario
-        private Bel.EMovilEstado CargarEntidadMovilEstados(Bel.EMovilEstado p_entMovilEstado)
+        private Bel.EMovilEstado GenerarEstadoDefault()
         {
+            //creamos una nueva ListaEntidad nueva. 
+            Bel.EMovilEstado l_leMvlEstado = Bel.EMovilEstado.NewEmpty();
+
+            //reseteamos el StatMsg
             m_stResult.UilReset("generarNuevaEntidadMovilEstados");
             
             //instanciamos el parametro que viene de afuera del sistemas ESTADO DEFAULT
             TNGS.NetAppBll.EParametro l_ptroEstadoDefault = AppRuts.ParaGet("DefaultStateMovil", false, ref m_stResult);
-            if (MsgRuts.AnalizeError(this, m_stResult)) return p_entMovilEstado;
+            if (MsgRuts.AnalizeError(this, m_stResult))
+            { 
+                l_leMvlEstado.Patente = "";
+                return l_leMvlEstado;
+            } 
 
-            p_entMovilEstado.Patente = tePatente.Text;
-            p_entMovilEstado.Fecha = DateTime.Now;
-            p_entMovilEstado.Codestado = l_ptroEstadoDefault.VStr;
-            p_entMovilEstado.Km = neKilometros.Numero;
+            l_leMvlEstado.Patente = tePatente.Text;
+            l_leMvlEstado.Fecha = DateTime.Now;
+            l_leMvlEstado.Codestado = l_ptroEstadoDefault.VStr;
+            l_leMvlEstado.Km = neKilometros.Numero;
 
-            //retornamos la EMovil Creado
-            return p_entMovilEstado;
+            return l_leMvlEstado;
         }
 
         //obtiene los campos equipamientos chequeados.
@@ -212,59 +217,24 @@ namespace Rivn.Mv
                 l_entMovilEq.Codequip = item;
                 l_leMovilEqts.AddEntity(l_entMovilEq);
             }
-
-
             return l_leMovilEqts;
         }
 
-        //llena la ListaEntidad MovilEquip, con los datos del formulario
-        private void  CargarLEMovilesEquipamiento(Bel.LEMovilesEquip p_leMovilEq)
-        {
-            if (m_EstadoAlta)
-            {
-                m_entMovil.MovilesEquip = ObtenerLEntidadSeleccionadosCheckedList();
-            }
-            else
-            {
-                //guardamos los equipamientos que tiene en caso de no poder borrar
-                Bel.LEMovilesEquip l_leOriginalAuxiliar = m_entMovil.MovilesEquip;
-                foreach(Bel.EMovilEquip item in m_entMovil.MovilesEquip)
-                {
-                    m_stResult.UilReset("generarNuevaListaEntidadMovilEquipamiento");
-                    Bll.Moviles.MveqRemove(item.Patente, item.Codequip, item.FxdVersion, ref m_stResult);
-                    if (MsgRuts.AnalizeError(this, m_stResult)) break;
-                }
-                //si el statMsg no esta bien, se setean los equipamientos que tenia originalmente
-                if (m_stResult.NOk)
-                {
-                    m_entMovil.MovilesEquip = l_leOriginalAuxiliar;
-                    return;
-                }
-                else
-                {
-
-                }
-            }
-
-            return;
-        }
-
         //llena una entidad Movil KMS pasada por parametro, con los datos del formulario
-        private Bel.EMovilKms CargarEntidadMovilKilometros(Bel.EMovilKms p_entMovilKms)
+        private Bel.EMovilKms GenerarEntidadMvlKilometros()
         {
-            p_entMovilKms.Patente = tePatente.Text;
-            p_entMovilKms.Fecha = DateTime.Now;
-            p_entMovilKms.Km = neKilometros.Numero;
+            Bel.EMovilKms l_entMovilKms = Bel.EMovilKms.NewEmpty();
+            l_entMovilKms.Patente = tePatente.Text;
+            l_entMovilKms.Fecha = DateTime.Now;
+            l_entMovilKms.Km = neKilometros.Numero;
 
             //retornamos la EMovil Creado
-            return p_entMovilKms;
+            return l_entMovilKms;
         }  
-        
-
 
         #endregion
 
-
+        #region Eventos de los controles
         private void tildarTodo_Click(object sender, EventArgs e)
         {
             setearTodosLosItemsCheckedList(clEquipamientos, true);
@@ -284,33 +254,49 @@ namespace Rivn.Mv
 
         private void btnGrabar_Click(object sender, EventArgs e)
         {
-           //nos fijamos que todos los campos sean validos.
+            m_stResult.UilReset("btnGrabar_Click");
+
+            //nos fijamos que todos los campos sean validos.
             if (!CamposDatosBasicosSonValidos())
             {
                 MsgRuts.ShowMsg(this, "Algun campo es invalido");
                 return;
             }
 
-            //generamos la entidad Movil
-            Bel.EMovil l_entMovil = generarNuevaEntidadMovil();
-            //generamos la entidad MovilKms
-            Bel.EMovilKms l_entMovilKms = generarNuevaEntidadMovilKilometros();
+            //llenamos la entidad Movil con los datos basicos
+            CargarDatosBasicosEnEntidadMovil(m_entMovil);
 
-            m_stResult.UilReset("btnGrabar_Click");
-
-            //grabamos las entidades
-            Bll.Moviles.Save(l_entMovil, ref m_stResult);
-            
-            //nos fimamos si hay un error
-            if (MsgRuts.AnalizeError(this, m_stResult)) {
-                return; 
+            //generamos el estado default y nos fijamos que se haya creado con exito, sino lanzamos un error
+            Bel.EMovilEstado l_eMvlEstado = GenerarEstadoDefault();
+            if(l_eMvlEstado.Patente == "") 
+            {
+                MsgRuts.ShowMsg(this, "Error al cargar el estado");
+                return;
             }
 
+            // Agregamos la Entidad Estado Default a la lista entidad de Moviles Estados
+            m_entMovil.MovilesEstado.AddEntity(l_eMvlEstado);
 
+            // Agregamos la primer Entidad Kms Del movil, a la Lista Entidad
+            m_entMovil.MovilesKms.AddEntity(GenerarEntidadMvlKilometros());
+
+            //procedemos a grabar 
+            if(m_EstadoAlta)
+            {
+                //si es estado de alta grabamos una entidad nueva.
+                m_entMovil.MovilesEquip = ObtenerLEntidadSeleccionadosCheckedList();
+                Bll.Moviles.Save(m_entMovil, ref m_stResult);
+            }
+            else
+            {
+                // si es estado de Update se llama al metodo que elimina todos los equipamientos, carga los nuevos y graba la entidad.
+                Bll.Moviles.CambiarEquipamientoYGrabarMovil(m_entMovil, ObtenerLEntidadSeleccionadosCheckedList(), ref m_stResult);
+            }
         }
+        #endregion
 
 
-    
+
 
     }
 }
