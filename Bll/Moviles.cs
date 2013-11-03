@@ -59,7 +59,51 @@ namespace Rivn.Bll
             p_lentData.InternalData.Table.Rows.Add(l_drTemp);
             p_lentData.Sort("Codigo");
         }
-       
+
+
+        public static void CambiarEquipamientoYGrabarMovil(EMovil p_entMovil,
+                                                           LEMovilesEquip p_leNuevosEquipamientos,
+                                                           ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            p_smResult.BllReset("Moviles", "MvcoSave");
+            DBConn l_dbcAccess = null;
+
+            try
+            {
+                // Obtenemos una conexion y abrimos una transaccion
+                l_dbcAccess = DBRuts.GetConection(Connections.Dat);
+                l_dbcAccess.BeginTransaction();
+                DataSet l_dsTemp = new DataSet();
+
+                // Borramos todo el equimamiento que tiene el movil
+                MveqEliminarEquipamiento(l_dbcAccess, p_entMovil.Patente, ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // Le asignamos al movil los nuevo equipamientos
+                p_entMovil.MovilesEquip = p_leNuevosEquipamientos;
+
+                // Y finalmente grabamos la entidad
+                Save_f(l_dbcAccess, ref p_entMovil, ref p_smResult);
+
+            }
+            catch (Exception l_expData)
+            {
+                // Error 
+                p_smResult.BllError(l_expData.ToString());
+            }
+            finally
+            {
+                // Si pude abrir la conexion
+                if (l_dbcAccess != null)
+                {
+                    // Finalizo la transacción y la cierro
+                    l_dbcAccess.EndTransaction(p_smResult);
+                    l_dbcAccess.Close();
+                }
+                p_smResult.BllPop();
+            }
+        }
 
 
         #endregion
