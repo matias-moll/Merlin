@@ -123,6 +123,10 @@ namespace Rivn.Mv
             teNroChasis.Clear();
             teDescripcionMovil.Clear();
             teAnotaciones.Clear();
+            neAnioFabric.Clear();
+            neKilometros.Clear();
+            cdcModelo.SelectedIndex = -1;
+            cdcMovilPropio.SelectedIndex = -1;
         }
 
         // Llenac la combo modelos con los modelos que hay en la tabla modelos.
@@ -130,17 +134,15 @@ namespace Rivn.Mv
         {
             m_stResult.UilReset("llenarComboModelos");  
             cdcModelo.FillFromStrLEntidad(Bll.Tablas.ModUpFull(true, ref m_stResult), "mds_rcd_cod", "mds_des_des", "deleted");
-
-
             MsgRuts.AnalizeError(this, m_stResult);
+            cdcModelo.SelectedIndex = -1;
         }
 
         // llena comboMovil con SI NO Vacio
         private void llenarComboMovilPropio()
         {
-            cdcMovilPropio.AddStrCD("S","SI",0);
             cdcMovilPropio.AddStrCD("N", "NO", 0);
-            cdcModelo.AddStrCD("", "VACIO", 0);
+            cdcMovilPropio.AddStrCD("S", "SI", 0);
         }
 
         // chequea que todos los campos tengan datos validos.
@@ -310,7 +312,20 @@ namespace Rivn.Mv
                 MsgRuts.ShowMsg(this, "El Movil ah sido modificado satisfactoriamente");
             }
         }
+
+        private void gbCancel_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Si cierra esta ventana puede perder datos que no hayan sido grabados",
+                "Cuidado",
+                MessageBoxButtons.OKCancel,
+                MessageBoxIcon.Warning) == DialogResult.Cancel)
+                                                                    return;
+            this.Close();
+        }
+
         #endregion
+
+
 
 
 

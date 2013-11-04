@@ -10,10 +10,9 @@ using TNGS.NetRoutines;
 using TNGS.NetApp;
 using Rivn;
 using Rivn.Shr;
-using WeifenLuo.WinFormsUI.Docking;
 #endregion
 
-namespace Rivn.Mv
+namespace Rivn.Ot
 {
     /// <summary>
     /// Rutinas generales del programa
@@ -36,9 +35,6 @@ namespace Rivn.Mv
         {
             // Creamos el DockManager
             ((MainFrame) App.GetMainWindow()).CreateDockManager();
-
-            //Intanciamos el Dockeable principal.
-
 
             // Liberamos el menu
             App.LockMenu(false);

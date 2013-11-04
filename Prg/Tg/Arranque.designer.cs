@@ -18,7 +18,7 @@ namespace Rivn.Tg
     //----------------------------------------------------------------------------
     //                         TNG Software PRG Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 25/10/2013 17:09
+    // Fecha                    : 04/11/2013 16:14
     // Sistema                  : Rivn
     // Programa                 : Tablas Generales
     //----------------------------------------------------------------------------
@@ -106,7 +106,7 @@ namespace Rivn.Tg
                 PrgRuts.RegisterPersistency();
 
                 // Creamos la ventana MDI de la aplicacion
-                MainFrame l_frmMain= new MainFrame(MFSizes.MF800x600, 0, false, true);
+                MainFrame l_frmMain= new MainFrame(MFSizes.MF1024x768, 0, false, true);
 
                 // Ejecutamos la funcion que arma la info de About
                 PrgRuts.MakeAboutInfo();

@@ -13,14 +13,14 @@ using Rivn;
 using Rivn.Shr;
 #endregion
 
-namespace Rivn.Mv
+namespace Rivn.Ot
 {
     //----------------------------------------------------------------------------
     //                         TNG Software PRG Generator
     //----------------------------------------------------------------------------
     // Fecha                    : 04/11/2013 16:14
     // Sistema                  : Rivn
-    // Programa                 : Moviles
+    // Programa                 : Ordenes de Trabajo
     //----------------------------------------------------------------------------
     // © 1996-2013 by TNG Software                                      Gndr 5.20
     //----------------------------------------------------------------------------
@@ -50,7 +50,7 @@ namespace Rivn.Mv
                 // Verificamos si ya esta ejecutándose
                 if (App.EnEjecucion) {
                     // Mostramos un aviso y nos vamos
-                    MessageBox.Show("Ya existe una versión del Moviles en ejecución", "Atención");
+                    MessageBox.Show("Ya existe una versión del Ordenes de Trabajo en ejecución", "Atención");
                     return;
                 }
 
@@ -61,7 +61,7 @@ namespace Rivn.Mv
                 App.EnableXPStyle();
 
                 // Definimos el skin
-                TNGSSkin.ChangeSkin(FixedSkins.ModernUI);
+                TNGSSkin.ChangeSkin(FixedSkins.Desconocido);
 
                 // Llamamos al PreInit del Shr y del Programa
                 if (!SysRuts.PreInit()) return;
@@ -75,7 +75,7 @@ namespace Rivn.Mv
                 // Inicializamos nuestra clase App
                 l_smResult.UilReset("Main");
 
-                App.Init("Rivn", "Mv",
+                App.Init("Rivn", "Ot",
                          FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location),
                          l_rmApp,
                          Application.StartupPath, 
@@ -147,11 +147,6 @@ namespace Rivn.Mv
                 // ** Ejecución automática al inicio del programa
                 // **
                 case "$$AUTOEXEC$$"  : {SysRuts.AutoExecIni(App.Programa.Codigo); PrgRuts.AutoExec(); SysRuts.AutoExecEnd(App.Programa.Codigo); return;}
-
-                // *************************************************
-                // ** Menu: Estado
-                // **
-                case "CAME"          : {return;}
 
                 // *************************************************
                 // ** Ejecución automática al final del programa

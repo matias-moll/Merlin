@@ -12,7 +12,7 @@ using Rivn;
 using Rivn.Shr;
 #endregion
 
-namespace Rivn.Tg
+namespace Rivn.Ot
 {
     /// <summary>
     /// Rutinas generales del programa
