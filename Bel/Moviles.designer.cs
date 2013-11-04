@@ -14,7 +14,7 @@ namespace Rivn.Bel
     //----------------------------------------------------------------------------
     //                         TNG Software BEL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 03/11/2013 15:54
+    // Fecha                    : 04/11/2013 18:24
     // Sistema                  : Rivn
     // Clase para Administrar   : Moviles y Tablas Hijas
     //----------------------------------------------------------------------------
@@ -691,7 +691,7 @@ namespace Rivn.Bel
         /// </summary>
         /// <param name="p_strPatente">Patente</param>
         /// <param name="p_strCodequip">Codigo del Equipamento.</param>
-        /// <param name="p_strEsfijo">Es fijo o no.</param>
+        /// <param name="p_strEsfijo">equipamiento es fijo</param>
         /// <returns>Entidad: MovilEquip</returns>
         public static EMovilEquip NewFilled(string p_strPatente,
                                             string p_strCodequip,
@@ -770,7 +770,7 @@ namespace Rivn.Bel
         }
 
         /// <summary>
-        /// Es fijo o no.
+        /// equipamiento es fijo
         /// </summary>
         public string Esfijo
         {

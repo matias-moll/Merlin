@@ -10,7 +10,7 @@ namespace Rivn.Dal
     //----------------------------------------------------------------------------
     //                         TNG Software DAL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 03/11/2013 15:54
+    // Fecha                    : 04/11/2013 18:24
     // Sistema                  : Rivn
     // Clase para Administrar   : Moviles Equipamiento
     // Basada en la Tabla       : MvlEquipamiento
@@ -208,7 +208,7 @@ namespace Rivn.Dal
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
         /// <param name="p_strPatente">Patente</param>
         /// <param name="p_strCodequip">Codigo del Equipamento.</param>
-        /// <param name="p_strEsfijo">Es fijo o no.</param>
+        /// <param name="p_strEsfijo">equipamiento es fijo</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static int Insert(DBConn p_dbcAccess,
                                  string p_strPatente,
@@ -248,7 +248,7 @@ namespace Rivn.Dal
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
         /// <param name="p_strPatente">Patente</param>
         /// <param name="p_strCodequip">Codigo del Equipamento.</param>
-        /// <param name="p_strEsfijo">Es fijo o no.</param>
+        /// <param name="p_strEsfijo">equipamiento es fijo</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static int Update(DBConn p_dbcAccess,
                                  string p_strPatente,
@@ -625,6 +625,7 @@ namespace Rivn.Dal
                 DBRuts.ClearDTCaptions(ref p_dtResult);
 
                 // Fijamos los nuevos captions de la grilla
+                p_dtResult.Columns["meq_cod_codequip"].Caption= "V1Codigo del Equipamento.CN1";
                 p_dtResult.Columns["deleted"].Caption= "V1Borrado2N2";
             }
             catch (Exception l_expData) {

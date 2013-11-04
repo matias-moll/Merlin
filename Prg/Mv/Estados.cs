@@ -94,7 +94,7 @@ namespace Rivn.Mv
         {
             m_smResult.UilReset("LlenarComboEstados");
 
-            cmbEstado.FillFromStrLEntidad(m_LEEdsEstados, "est_cod_cod", "st_des_des", "deleted");
+            cmbEstado.FillFromStrLEntidad(m_LEEdsEstados, "est_rcd_cod", "est_des_des", "deleted");
 
             MsgRuts.AnalizeError(this, m_smResult);
         }
@@ -221,12 +221,14 @@ namespace Rivn.Mv
 
         private void gbModificarMovil_Click(object sender, EventArgs e)
         {
+            AltaMovil l_formAltaMovil = new AltaMovil(m_entMovil, true);
             SwitchTo(ModoForm.Edicion, OpGrid.Todas);
         }
 
 
         private void gbModificarEq_Click(object sender, EventArgs e)
         {
+            AltaMovil l_formAltaMovil = new AltaMovil(m_entMovil, false);
             SwitchTo(ModoForm.Edicion, OpGrid.Equip);
         }
 
@@ -271,7 +273,9 @@ namespace Rivn.Mv
 
         private void gbNuevoMovil_Click(object sender, EventArgs e)
         {
+            AltaMovil l_formAltaMovil = new AltaMovil();
             SwitchTo(ModoForm.Inicio);
+            
         }
 
 

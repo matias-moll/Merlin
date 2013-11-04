@@ -16,7 +16,7 @@ namespace Rivn.Bll
     //----------------------------------------------------------------------------
     //                         TNG Software BLL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 03/11/2013 15:54
+    // Fecha                    : 04/11/2013 18:24
     // Sistema                  : Rivn
     // Clase para Administrar   : 
     //----------------------------------------------------------------------------
@@ -201,7 +201,7 @@ namespace Rivn.Bll
                 // Tabla: MvlEquipamiento     
                 case "meq_ecd_patente"                 : {return "V1PatenteCN1";}
                 case "meq_cod_codequip"                : {return "V1Codigo del Equipamento.CN1";}
-                case "meq_cd1_esfijo"                  : {return "V1Es fijo o no.CN2";}
+                case "meq_cd1_esfijo"                  : {return "V1equipamiento es fijoCN2";}
 
                 // ****************************************
                 // Tabla: MvlEstados          

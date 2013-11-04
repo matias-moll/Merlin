@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{46C7C912-9AD7-4F8E-9770-E69B85B050E8}</ProjectGuid>
+    <ProjectGuid>{651E45C5-5EF4-40A0-AD9E-174516173285}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Rivn.Mv</RootNamespace>
@@ -99,15 +99,27 @@
     <Compile Include="..\..\Shr\Properties\ShrAssemblyInfo.cs">
       <Link>Properties\ShrAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="AltaMovil.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AltaMovil.Designer.cs">
+      <DependentUpon>AltaMovil.cs</DependentUpon>
+    </Compile>
     <Compile Include="Arranque.cs" />
     <Compile Include="Arranque.designer.cs">
       <DependentUpon>Arranque.cs</DependentUpon>
     </Compile>
-    <Compile Include="EjemploUsoTreeView.cs">
+    <Compile Include="Controles.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EjemploUsoTreeView.Designer.cs">
-      <DependentUpon>EjemploUsoTreeView.cs</DependentUpon>
+    <Compile Include="Controles.Designer.cs">
+      <DependentUpon>Controles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ControlesRepa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ControlesRepa.Designer.cs">
+      <DependentUpon>ControlesRepa.cs</DependentUpon>
     </Compile>
     <Compile Include="Estados.cs">
       <SubType>Form</SubType>
@@ -143,8 +155,11 @@
     <EmbeddedResource Include="Arranque.resx">
       <DependentUpon>Arranque.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EjemploUsoTreeView.resx">
-      <DependentUpon>EjemploUsoTreeView.cs</DependentUpon>
+    <EmbeddedResource Include="Controles.resx">
+      <DependentUpon>Controles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ControlesRepa.resx">
+      <DependentUpon>ControlesRepa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Estados.resx">
       <DependentUpon>Estados.cs</DependentUpon>

@@ -38,7 +38,7 @@ namespace Rivn.Mv
             ((MainFrame) App.GetMainWindow()).CreateDockManager();
 
             //Intanciamos el Dockeable principal.
-            Estados l_dcAltaMovil = new Estados();
+            Estados l_dcEstados = new Estados();
 
             // Liberamos el menu
             App.LockMenu(false);

@@ -10,7 +10,7 @@ namespace Rivn.Dal
     //----------------------------------------------------------------------------
     //                         TNG Software DAL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 03/11/2013 15:54
+    // Fecha                    : 04/11/2013 18:24
     // Sistema                  : Rivn
     // Clase para Administrar   : Combustible en moviles
     // Basada en la Tabla       : MvlCombustible
@@ -600,6 +600,9 @@ namespace Rivn.Dal
                 DBRuts.ClearDTCaptions(ref p_dtResult);
 
                 // Fijamos los nuevos captions de la grilla
+                p_dtResult.Columns["mco_rcd_codestacion"].Caption= "V1Codigo estacionCN1";
+                p_dtResult.Columns["mco_imp_importe"].Caption= "V1Importe2N1";
+                p_dtResult.Columns["mco_val_litros"].Caption= "V1Litros CargadosLN1";
                 p_dtResult.Columns["deleted"].Caption= "V1Borrado2N2";
             }
             catch (Exception l_expData) {

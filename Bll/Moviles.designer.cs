@@ -16,7 +16,7 @@ namespace Rivn.Bll
     //----------------------------------------------------------------------------
     //                         TNG Software BLL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 03/11/2013 15:54
+    // Fecha                    : 04/11/2013 18:24
     // Sistema                  : Rivn
     // Clase para Administrar   : Moviles y Tablas Hijas
     //----------------------------------------------------------------------------
@@ -1372,11 +1372,13 @@ namespace Rivn.Bll
                 return;
             }
 
-            if ((p_entMovilEquip.Esfijo != "S") &&
-                (p_entMovilEquip.Esfijo != "N")) {
-                // El campo [Es fijo o no.] tiene opciones
-                p_smResult.BllWarning("El dato [Es fijo o no.] sólo admite\r\n\r\n[S]- SI\r\n[N]- NO\r\n","");
-                return;
+            if (p_entMovilEquip.Esfijo.Trim() != "") {
+                if ((p_entMovilEquip.Esfijo != "S ") &&
+                    (p_entMovilEquip.Esfijo != " N ")) {
+                    // El campo [equipamiento es fijo] tiene opciones
+                    p_smResult.BllWarning("El dato [equipamiento es fijo] sólo admite\r\n\r\n[S ]-  SI\r\n[ N ]-  NO\r\n","");
+                    return;
+                }
             }
 
             // ********
