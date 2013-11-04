@@ -97,8 +97,7 @@ namespace Rivn.Mv
 
         #region Metodos privados de la UIL
 
-
-        //chequea o Unchekea todos los items de una CheckBoxList, false para uncheaquear, true para chequear.
+        // chequea o Unchekea todos los items de una CheckBoxList, false para uncheaquear, true para chequear.
         private void setearTodosLosItemsCheckedList(CDCheckedList p_clCheckedListBox, bool p_unBool)
         {
             for (int index = 0; index < p_clCheckedListBox.Items.Count; index++)
@@ -107,7 +106,7 @@ namespace Rivn.Mv
             }
         }
 
-        //llena un CheckListBox con los equipamientos de la tabla Equipamientos.
+        // llena un CheckListBox con los equipamientos de la tabla Equipamientos.
         private void llenarCheckListEquipamiento()
         {
             m_stResult.UilReset("llenarCheckListEquipamiento");
@@ -116,7 +115,7 @@ namespace Rivn.Mv
             MsgRuts.AnalizeError(this, m_stResult);
         }
 
-        //pone en blanco todos los campos de DatosBasicos Movil
+        // pone en blanco todos los campos de DatosBasicos Movil
         private void limpiarTodosLosCamposDatosBasicos()
         {
             tePatente.Clear();
@@ -126,7 +125,7 @@ namespace Rivn.Mv
             teAnotaciones.Clear();
         }
 
-        //Llenac la combo modelos con los modelos que hay en la tabla modelos.
+        // Llenac la combo modelos con los modelos que hay en la tabla modelos.
         private void llenarComboModelos()
         {
             m_stResult.UilReset("llenarComboModelos");  
@@ -136,7 +135,7 @@ namespace Rivn.Mv
             MsgRuts.AnalizeError(this, m_stResult);
         }
 
-        //llena comboMovil con SI NO Vacio
+        // llena comboMovil con SI NO Vacio
         private void llenarComboMovilPropio()
         {
             cdcMovilPropio.AddStrCD("S","SI",0);
@@ -144,28 +143,42 @@ namespace Rivn.Mv
             cdcModelo.AddStrCD("", "VACIO", 0);
         }
 
-        //chequea que todos los campos tengan datos validos.
-        private bool CamposDatosBasicosSonValidos()
+        // chequea que todos los campos tengan datos validos.
+        private bool ValidarControles()
         {
-           if(     
-                   (teAnotaciones.IsValid)
-                   && (teDescripcionMovil.IsValid)
-                   && (teNroChasis.IsValid)
-                   && (teNroMotor.IsValid)
-                   && (tePatente.IsValid)
-                   && (cdcModelo.IsValid)
-                   && (cdcModelo.SelectedStrCode != "")
-                   && (cdcMovilPropio.IsValid)
-                   && (cdcMovilPropio.SelectedStrCode != "")
-                   && (neAnioFabric.IsValid)
-                   && (neKilometros.IsValid)
-               ) return true;
+            // si alguno de los campos basico es invalido, mostramos un error.
+            if (
+                   (!teAnotaciones.IsValid)
+                   || (!teDescripcionMovil.IsValid)
+                   || (!teNroChasis.IsValid)
+                   || (!teNroMotor.IsValid)
+                   || (!tePatente.IsValid)
+                   || (!cdcModelo.IsValid)
+                   || (cdcModelo.SelectedStrCode == "")
+                   || (!cdcMovilPropio.IsValid)
+                   || (cdcMovilPropio.SelectedStrCode == "")
+                   || (!neAnioFabric.IsValid)
+                   || (!neKilometros.IsValid)
+               )
+            {
+                MsgRuts.ShowMsg(this, "Algun campo basico es invalido");
+                return false;
+            }
+            else
+            {
+                // un movil tiene que tener almenos un equipamiento, por eso chequeamos que no este vacia la seleccion.
+                if (clEquipamientos.CheckedStrCodes == null)
+                {
+                    MsgRuts.ShowMsg(this, "No hay ningun equipamiento seleccionado para este movil");
+                    return false;
+                }
+                return true;
+            }
 
-           return false;
 
         }
 
-        //llena una Entidad Movil pasada por parametro, con los datos del formulario
+        // llena una Entidad Movil pasada por parametro, con los datos del formulario
         private void CargarDatosBasicosEnEntidadMovil(Bel.EMovil p_entMovil)
         {
             //llenamos la entidad
@@ -179,48 +192,51 @@ namespace Rivn.Mv
     
         }
 
-        //llena una entidad Movil Estado pasada por parametro, con los datos del formulario
+        // llena una entidad Movil Estado pasada por parametro, con los datos del formulario
         private Bel.EMovilEstado GenerarEstadoDefault()
         {
             //creamos una nueva ListaEntidad nueva. 
             Bel.EMovilEstado l_leMvlEstado = Bel.EMovilEstado.NewEmpty();
 
             //reseteamos el StatMsg
-            m_stResult.UilReset("generarNuevaEntidadMovilEstados");
+            m_stResult.UilReset("GenerarEstadoDefault");
             
             //instanciamos el parametro que viene de afuera del sistemas ESTADO DEFAULT
-            TNGS.NetAppBll.EParametro l_ptroEstadoDefault = AppRuts.ParaGet("DefaultStateMovil", false, ref m_stResult);
-            if (MsgRuts.AnalizeError(this, m_stResult))
-            { 
-                l_leMvlEstado.Patente = "";
-                return l_leMvlEstado;
-            } 
+
+            //TNGS.NetAppBll.EParametro l_ptroEstadoDefault = AppRuts.ParaGet("DefaultStateMovil", false, ref m_stResult);
+            //if (MsgRuts.AnalizeError(this, m_stResult))
+            //{ 
+            //    l_leMvlEstado.Patente = "";
+            //    return l_leMvlEstado;
+            //} 
 
             l_leMvlEstado.Patente = tePatente.Text;
             l_leMvlEstado.Fecha = DateTime.Now;
-            l_leMvlEstado.Codestado = l_ptroEstadoDefault.VStr;
+            l_leMvlEstado.Codestado = "1";// l_ptroEstadoDefault.VStr;
             l_leMvlEstado.Km = neKilometros.Numero;
 
             return l_leMvlEstado;
         }
 
-        //obtiene los campos equipamientos chequeados.
+        // obtiene los campos equipamientos chequeados.
         private Bel.LEMovilesEquip ObtenerLEntidadSeleccionadosCheckedList()
         {
             Bel.LEMovilesEquip l_leMovilEqts = Bel.LEMovilesEquip.NewEmpty();
             Bel.EMovilEquip l_entMovilEq = Bel.EMovilEquip.NewEmpty();
 
             l_entMovilEq.Patente = tePatente.Text;
-            //Recorremos el Array de Strings de los Cod Seleccionados y llenamos el codigo en las entidades y luego cargandolas en la LE.
+            l_entMovilEq.Esfijo = "S";
+            // Recorremos el Array de Strings de los Cod Seleccionados y llenamos el codigo en las entidades y luego cargandolas en la LE.
             foreach (string item in clEquipamientos.CheckedStrCodes)
             {
                 l_entMovilEq.Codequip = item;
                 l_leMovilEqts.AddEntity(l_entMovilEq);
+                
             }
             return l_leMovilEqts;
         }
 
-        //llena una entidad Movil KMS pasada por parametro, con los datos del formulario
+        // llena una entidad Movil KMS pasada por parametro, con los datos del formulario
         private Bel.EMovilKms GenerarEntidadMvlKilometros()
         {
             Bel.EMovilKms l_entMovilKms = Bel.EMovilKms.NewEmpty();
@@ -257,11 +273,8 @@ namespace Rivn.Mv
             m_stResult.UilReset("btnGrabar_Click");
 
             //nos fijamos que todos los campos sean validos.
-            if (!CamposDatosBasicosSonValidos())
-            {
-                MsgRuts.ShowMsg(this, "Algun campo es invalido");
+            if (!ValidarControles())
                 return;
-            }
 
             //llenamos la entidad Movil con los datos basicos
             CargarDatosBasicosEnEntidadMovil(m_entMovil);
@@ -286,11 +299,15 @@ namespace Rivn.Mv
                 //si es estado de alta grabamos una entidad nueva.
                 m_entMovil.MovilesEquip = ObtenerLEntidadSeleccionadosCheckedList();
                 Bll.Moviles.Save(m_entMovil, ref m_stResult);
+                if (MsgRuts.AnalizeError(this, m_stResult)) return;
+                MsgRuts.ShowMsg(this, "El nuevo Movil ha sido agregado satisfactoriamente");
             }
             else
             {
                 // si es estado de Update se llama al metodo que elimina todos los equipamientos, carga los nuevos y graba la entidad.
                 Bll.Moviles.CambiarEquipamientoYGrabarMovil(m_entMovil, ObtenerLEntidadSeleccionadosCheckedList(), ref m_stResult);
+                if (MsgRuts.AnalizeError(this, m_stResult)) return;
+                MsgRuts.ShowMsg(this, "El Movil ah sido modificado satisfactoriamente");
             }
         }
         #endregion
