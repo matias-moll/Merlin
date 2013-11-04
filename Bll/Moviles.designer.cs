@@ -4761,7 +4761,7 @@ namespace Rivn.Bll
 
                 // Creamos la LE y Captionamos
                 ListaEntidades l_lentRet= new ListaEntidades(l_dsTemp.Tables["Temporal"]);
-                BllRuts.FillStdCaptions(ref l_lentRet);
+                //BllRuts.FillStdCaptions(ref l_lentRet);
 
                 // Devolvemos la LE
                 l_dsTemp.Dispose();

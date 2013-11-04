@@ -66,10 +66,11 @@ namespace Rivn.Bll
         /// <param name="p_lentData">ListaEntidad de datos</param>
         /// <param name="p_strDescripcion">Descripcion del Root</param>
         /// <param name="p_iNroImagen">Indice de la imagen</param>
-        public static void fArmarTree(ListaEntidades p_lentData, bool p_bOnlyActive,
+        public static ListaEntidades fArmarTree( bool p_bOnlyActive,
                                                 ref StatMsg p_smResult)
         {
             // No hay errores aun
+            ListaEntidades l_lentData;
             DBConn l_dbcAccess = null;
             p_smResult.BllReset("Estados", "fArmarTree");
 
@@ -79,12 +80,13 @@ namespace Rivn.Bll
                 l_dbcAccess = DBRuts.GetConection(Connections.Dat);
 
                 // Pedimos los registros de la tabla
-                p_lentData =  Bll.Moviles.getMovilesTree(l_dbcAccess, ref p_smResult);
+                l_lentData =  Bll.Moviles.getMovilesTree(l_dbcAccess, ref p_smResult);
             }
             catch (Exception l_expData)
             {
                 // Error en la operacion
                 p_smResult.BllError(l_expData.ToString());
+                return null;
             }
             finally
             {
@@ -93,7 +95,9 @@ namespace Rivn.Bll
                 p_smResult.BllPop();
             }
 
-            fAgregarRoot(p_lentData, "Moviles", 1);
+            fAgregarRoot(l_lentData, "Moviles", 1);
+
+            return l_lentData;
 
         }
 

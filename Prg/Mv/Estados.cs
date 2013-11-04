@@ -106,10 +106,11 @@ namespace Rivn.Mv
         private void LlenarTreeMoviles()
         {
             m_smResult.UilReset("LlenarTreeMoviles");
-            ListaEntidades l_LEMovilesTree = new ListaEntidades(new DataTable());
-            Bll.Moviles.fArmarTree(l_LEMovilesTree, true, ref m_smResult);
-            ftrMoviles.FillFromStrLEntidad(l_LEMovilesTree, "est_rcd_cod", "est_des_des", 2, "Nivel","Imagen", "Imagen");
+            ListaEntidades l_LEMovilesTree = Bll.Moviles.fArmarTree(true, ref m_smResult);
+            ftrMoviles.FillFromStrLEntidad(l_LEMovilesTree, "mov_ecd_patente", "mov_des_des", 2, "Nivel","Imagen", "Imagen");
+            ftrMoviles.ExpandAll();
             MsgRuts.AnalizeError(this, m_smResult);
+
 
         }
 
@@ -120,9 +121,11 @@ namespace Rivn.Mv
         private void LlenarGridEstados()
         {
             m_smResult.UilReset("LlenarGridEstados");
-            LEMovilesEstado l_larala = LEMovilesEstado.NewEmpty();
-            m_entMovil.MovilesEstado.Sort("desc mve_fyh_fecha");
-            fgCombustibles.FillFromLEntidad(Dame5PrimerosEstados(m_entMovil.MovilesEstado));
+            if (m_entMovil.MovilesEstado != null)
+            {
+                m_entMovil.MovilesEstado.Sort("desc mve_fyh_fecha");
+                fgCombustibles.FillFromLEntidad(Dame5PrimerosEstados(m_entMovil.MovilesEstado));
+            }
             MsgRuts.AnalizeError(this, m_smResult);
         }
 
@@ -148,8 +151,11 @@ namespace Rivn.Mv
         private void LlenarGridCombustible()
         {
             m_smResult.UilReset("LlenarGridCombustible");
-            m_entMovil.MovilesCombus.Sort("desc mco_fyh_fecha");
-            fgCombustibles.FillFromLEntidad(Dame5PrimerosCombustibles(m_entMovil.MovilesCombus));
+            if (m_entMovil.MovilesCombus != null)
+            {
+                m_entMovil.MovilesCombus.Sort("desc mco_fyh_fecha");
+                fgCombustibles.FillFromLEntidad(Dame5PrimerosCombustibles(m_entMovil.MovilesCombus));
+            }
             MsgRuts.AnalizeError(this, m_smResult);
         }
 
@@ -160,8 +166,11 @@ namespace Rivn.Mv
         private void LlenarGridKm()
         {
             m_smResult.UilReset("LlenarGridKms");
-            m_entMovil.MovilesKms.Sort("desc mkm_fyh_fecha");
-            fgCombustibles.FillFromLEntidad(Dame5PrimerosKms(m_entMovil.MovilesKms));
+            if (m_entMovil.MovilesKms != null)
+            {
+                m_entMovil.MovilesKms.Sort("desc mkm_fyh_fecha");
+                fgCombustibles.FillFromLEntidad(Dame5PrimerosKms(m_entMovil.MovilesKms));
+            }
             MsgRuts.AnalizeError(this, m_smResult);
         }
 
@@ -173,7 +182,10 @@ namespace Rivn.Mv
         private void LlenarGridEquipamiento()
         {
             m_smResult.UilReset("LlenarGridEquipamiento");
-            fgCombustibles.FillFromLEntidad(m_entMovil.MovilesEquip);
+            if (m_entMovil.MovilesEquip != null)
+            {
+                fgCombustibles.FillFromLEntidad(m_entMovil.MovilesEquip);
+            }
             MsgRuts.AnalizeError(this, m_smResult);
         }
 
@@ -185,7 +197,7 @@ namespace Rivn.Mv
         {
             teModelo.Clear();
             tePatente.Clear();
-            cmbEstado.SelectedIndex = 0;
+            cmbEstado.SelectedIndex = -1;
         }
 
         #endregion
@@ -385,22 +397,43 @@ namespace Rivn.Mv
         private void ModoEdicion()
         {
             LlenarDatos();
+            LimpiarEditables();
+            igMoviles.Enabled = true;
+            //gbModificarMovil.Enabled = true;
+            //gbBorrarMovil.Enabled = true;
             igOpciones.Enabled = true;
             igKilometros.Enabled = true;
+            igEquipamiento.Enabled = true;
+            igHistorialEstados.Enabled = true;
+            igCombustibles.Enabled = true;
             
         }
+
+        private void LimpiarEditables()
+        {
+            neKilometros.Numero = 0;
+        }
+
 
         /// <summary>
         /// Metodo del Modo Inicio del Formulario
         /// </summary>
         private void ModoInicio()
         {
+
             TraerInfoBase();
             LlenarTreeMoviles();
+            igMoviles.Enabled = true;
             igKilometros.Enabled = false;
+            igEquipamiento.Enabled = false;
+            igHistorialEstados.Enabled = false;
+            igCombustibles.Enabled = false;
             gbModificarMovil.Enabled = false;
             gbBorrarMovil.Enabled = false;
             LimpiarCampos();
+            cmbEstado.Enabled = false;
+            teModelo.Enabled = false;
+            tePatente.Enabled = false;
         }
 
 
@@ -487,7 +520,9 @@ namespace Rivn.Mv
         private string GetModelo(string p_strCodModelo)
         {
             m_smResult.UilReset("GetModelo");
-            return Bll.Tablas.ModGet(p_strCodModelo, true, ref m_smResult).Des;
+            EModelo l_EmodModelo =  Bll.Tablas.ModGet(p_strCodModelo, true, ref m_smResult);
+            string l_strModelo = l_EmodModelo.Des;
+            return l_strModelo;
             MsgRuts.AnalizeError(this, m_smResult);
         }
 
