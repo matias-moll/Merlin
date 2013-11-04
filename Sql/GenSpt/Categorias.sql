@@ -1,0 +1,542 @@
+/*----------------------------------------------------------------------------
+//                         TNG Software SPs Generator
+//----------------------------------------------------------------------------
+<<<<<<< HEAD
+// Fecha       : 31/10/2013 14:57
+=======
+// Fecha       : 28/10/2013 18:04
+>>>>>>> a5c655da9d140c81d307e269bb06f0bc907f9165
+// Sistema     : Rivn
+// Tabla       : Categorias
+//----------------------------------------------------------------------------
+// © 1999-2013 by TNG Software                                      Gndr 5.20
+//---------------------------------------------------------------------------*/
+
+/* ***************************************************************************
+/  Atencion!!!
+/     Este archivo fue generado por un programa en forma automática. Cualquier
+/     modificación que se realize sobre él se perderá en la próxima
+/     regeneración.
+/  **************************************************************************/
+
+/*-------------------------------------------------*/
+/* Selecciono la base en la que se crearan los SPs */
+/*-------------------------------------------------*/
+
+use TNGS_Rivn
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Levanta todos los registros de una tabla
+--- </summary>
+--- <param name="@onlyactive">Flag de SoloActivos</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.CATEGORIAS_UP'
+
+if exists (select * from sysobjects where id = object_id('dbo.CATEGORIAS_UP'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.CATEGORIAS_UP
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.CATEGORIAS_UP
+(
+@onlyactive tngs_valor
+)
+as
+begin
+
+   if @onlyactive = 1
+      begin
+         Select cat_rcd_cod,
+                cat_des_des,
+                TNGS_Rivn..Categorias.instante,
+                TNGS_Rivn..Categorias.deleted,
+                TNGS_Rivn..Categorias.usuario,
+                TNGS_Rivn..Categorias.version
+           from TNGS_Rivn..Categorias
+          where deleted = 0
+          order by cat_rcd_cod
+      end
+   else
+      begin
+         Select cat_rcd_cod,
+                cat_des_des,
+                TNGS_Rivn..Categorias.instante,
+                TNGS_Rivn..Categorias.deleted,
+                TNGS_Rivn..Categorias.usuario,
+                TNGS_Rivn..Categorias.version
+           from TNGS_Rivn..Categorias
+          order by cat_rcd_cod
+      end
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.CATEGORIAS_UP to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Verifica el número de versión de un registro
+--- </summary>
+--- <param name="@cat_rcd_cod">codigo</param>
+--- <param name="@version">Número de version a verificar</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.CATEGORIAS_CHKVERSION'
+
+if exists (select * from sysobjects where id = object_id('dbo.CATEGORIAS_CHKVERSION'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.CATEGORIAS_CHKVERSION
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.CATEGORIAS_CHKVERSION
+(
+@cat_rcd_cod tngs_codigo_r,
+@version tngs_numero
+)
+as
+begin
+
+   Select count(*) as cantidad
+     from TNGS_Rivn..Categorias
+    where cat_rcd_cod = @cat_rcd_cod
+      and version = @version
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.CATEGORIAS_CHKVERSION to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Busca el registro de una clave
+--- </summary>
+--- <param name="@cat_rcd_cod">codigo</param>
+--- <param name="@onlyactive">Flag de SoloActivos</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.CATEGORIAS_SEARCH'
+
+if exists (select * from sysobjects where id = object_id('dbo.CATEGORIAS_SEARCH'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.CATEGORIAS_SEARCH
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.CATEGORIAS_SEARCH
+(
+@cat_rcd_cod tngs_codigo_r,
+@onlyactive tngs_valor
+)
+as
+begin
+
+   if @onlyactive = 1
+      begin
+         Select cat_rcd_cod,
+                cat_des_des,
+                TNGS_Rivn..Categorias.instante,
+                TNGS_Rivn..Categorias.deleted,
+                TNGS_Rivn..Categorias.usuario,
+                TNGS_Rivn..Categorias.version
+           from TNGS_Rivn..Categorias
+          where cat_rcd_cod = @cat_rcd_cod
+            and deleted = 0
+      end
+   else
+      begin
+         Select cat_rcd_cod,
+                cat_des_des,
+                TNGS_Rivn..Categorias.instante,
+                TNGS_Rivn..Categorias.deleted,
+                TNGS_Rivn..Categorias.usuario,
+                TNGS_Rivn..Categorias.version
+           from TNGS_Rivn..Categorias
+          where cat_rcd_cod = @cat_rcd_cod
+      end
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.CATEGORIAS_SEARCH to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Inserta un registro en la tabla
+--- </summary>
+--- <param name="@cat_rcd_cod">codigo</param>
+--- <param name="@cat_des_des">descripcion</param>
+--- <param name="@usuario">Usuario que genera el insert</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.CATEGORIAS_INSERT'
+
+if exists (select * from sysobjects where id = object_id('dbo.CATEGORIAS_INSERT'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.CATEGORIAS_INSERT
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.CATEGORIAS_INSERT
+(
+@cat_rcd_cod tngs_codigo_r,
+@cat_des_des tngs_descripcion,
+@usuario tngs_nombre
+)
+as
+begin
+
+   Insert into TNGS_Rivn..Categorias
+   values (
+           @cat_rcd_cod,
+           @cat_des_des,
+           getdate(), 0, @usuario, 1
+          )
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.CATEGORIAS_INSERT to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Actualiza un registro de la tabla
+--- </summary>
+--- <param name="@cat_rcd_cod">codigo</param>
+--- <param name="@cat_des_des">descripcion</param>
+--- <param name="@usuario">Usuario que genera el update</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.CATEGORIAS_UPDATE'
+
+if exists (select * from sysobjects where id = object_id('dbo.CATEGORIAS_UPDATE'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.CATEGORIAS_UPDATE
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.CATEGORIAS_UPDATE
+(
+@cat_rcd_cod tngs_codigo_r,
+@cat_des_des tngs_descripcion,
+@usuario tngs_nombre
+)
+as
+begin
+
+   Update TNGS_Rivn..Categorias
+      set cat_des_des= @cat_des_des,
+          version = ((version+1) % 32767),
+          instante= getdate(),
+          usuario = @usuario
+    where cat_rcd_cod = @cat_rcd_cod
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.CATEGORIAS_UPDATE to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Borra lógicamente un registro
+--- </summary>
+--- <param name="@cat_rcd_cod">codigo</param>
+--- <param name="@usuario">Usuario que realiza el delete</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.CATEGORIAS_DELETE'
+
+if exists (select * from sysobjects where id = object_id('dbo.CATEGORIAS_DELETE'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.CATEGORIAS_DELETE
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.CATEGORIAS_DELETE
+(
+@cat_rcd_cod tngs_codigo_r,
+@usuario tngs_nombre
+)
+as
+begin
+
+   Update TNGS_Rivn..Categorias
+      set deleted = 1,
+          version = ((version+1) % 32767),
+          instante= getdate(),
+          usuario = @usuario
+    where cat_rcd_cod = @cat_rcd_cod
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.CATEGORIAS_DELETE to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Recupera un registro
+--- </summary>
+--- <param name="@cat_rcd_cod">codigo</param>
+--- <param name="@usuario">Usuario que realiza el recall</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.CATEGORIAS_RECALL'
+
+if exists (select * from sysobjects where id = object_id('dbo.CATEGORIAS_RECALL'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.CATEGORIAS_RECALL
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.CATEGORIAS_RECALL
+(
+@cat_rcd_cod tngs_codigo_r,
+@usuario tngs_nombre
+)
+as
+begin
+
+   Update TNGS_Rivn..Categorias
+      set deleted = 0,
+          version = ((version+1) % 32767),
+          instante= getdate(),
+          usuario = @usuario
+    where cat_rcd_cod = @cat_rcd_cod
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.CATEGORIAS_RECALL to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Borra físicamente un registro
+--- </summary>
+--- <param name="@cat_rcd_cod">codigo</param>
+--- <param name="@usuario">Usuario que realiza el drop</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.CATEGORIAS_DROP'
+
+if exists (select * from sysobjects where id = object_id('dbo.CATEGORIAS_DROP'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.CATEGORIAS_DROP
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.CATEGORIAS_DROP
+(
+@cat_rcd_cod tngs_codigo_r,
+@usuario tngs_nombre
+)
+as
+begin
+
+   Delete from TNGS_Rivn..Categorias
+    where cat_rcd_cod = @cat_rcd_cod
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.CATEGORIAS_DROP to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Borra físicamente los registros borrados lógicamente
+--- </summary>
+--- <param name="@usuario">Usuario que realiza el delete</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.CATEGORIAS_PACK'
+
+if exists (select * from sysobjects where id = object_id('dbo.CATEGORIAS_PACK'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.CATEGORIAS_PACK
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.CATEGORIAS_PACK
+(
+@usuario tngs_nombre
+)
+as
+begin
+
+   Delete TNGS_Rivn..Categorias
+    where deleted = 1
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.CATEGORIAS_PACK to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Método Fijo: getByDesc
+--- </summary>
+--- <param name="@desc">.</param>
+--- <param name="@usuario">Usuario que ejecuta el SP</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.CATEGORIAS_GETBYDESC'
+
+if exists (select * from sysobjects where id = object_id('dbo.CATEGORIAS_GETBYDESC'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.CATEGORIAS_GETBYDESC
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.CATEGORIAS_GETBYDESC
+(
+@desc tngs_descripcion,
+@usuario tngs_nombre
+)
+as
+begin
+
+   select * from Categorias 
+    
+         where cat_des_des like '%' + ltrim(rtrim(@desc)) + '%' 
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.CATEGORIAS_GETBYDESC to tngsmodulos
+
+print ' '
+go
+
+/*--------------------------------------------------------------------------
+// Fin del script de creacion de los SP de la tabla: Categorias
+//--------------------------------------------------------------------------*/
