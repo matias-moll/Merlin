@@ -120,32 +120,32 @@
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="igEquipamiento.GroupImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        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
+        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
+        eVMU9ROt09igkjiOqQAAAABJRU5ErkJggg==
 </value>
   </data>
   <data name="igDatosBasicosMovil.GroupImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFJSURBVDhPtZPPKwVRFMfH0kIpJJtp1DRmMWN+SfMXWEmx
-        tVEWthbKS4r8AUqysLayImVtZS3x3stCKQsL2UmU8Dnzzn1msniPcurTPed7vue+e29vrH+NLMtqgpa/
-        C9u2Rxj+FCRXufvwPG8wTdNjQXKVfwa/sG+MHTiCaR37DnNMAcM16yrrBtyXe8pzEATjOtoK02TgIs/z
-        XvI98hWMw6wP2rsdI8IwnKFuRFHUr+OVEyxh3GG9g0uoUW9Lj7Wpdot8Ge2EtKcQxKB0tYEE2iGsm6Lr
-        KziOU5AkyQTaE1eZKp9AjJ0esQKem8oGf+CjfIU6zCv1kqkN+gHMcoUt6jfR5FVfSF5hksaVILlq7WH0
-        U7wL8Ai7sCazxX8eRuM4XjRmyUUzjyb4vj/AwLlu9s6b9lW+Edd1h2icCZKrXAl6c9CEzZZiWV+Qsd5l
-        O7cEcAAAAABJRU5ErkJggg==
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wQAADsEBuJFr7QAAAUlJREFUOE+1k88rBVEUx8fSQikkm2nUNGYxY35J8xdYSbG1URa2FspLivwBSrKw
+        trIiZW1lLfHey0IpCwvZSZTwOfPOfWayeI9y6tM953u+5757b2+sf40sy2qClr8L27ZHGP4UJFe5+/A8
+        bzBN02NBcpV/Br+wb4wdOIJpHfsOc0wBwzXrKusG3Jd7ynMQBOM62grTZOAiz/Ne8j3yFYzDrA/aux0j
+        wjCcoW5EUdSv45UTLGHcYb2DS6hRb0uPtal2i3wZ7YS0pxDEoHS1gQTaIaybousrOI5TkCTJBNoTV5kq
+        n0CMnR6xAp6bygZ/4KN8hTrMK/WSqQ36AcxyhS3qN9HkVV9IXmGSxpUguWrtYfRTvAvwCLuwJrPFfx5G
+        4zheNGbJRTOPJvi+P8DAuW72zpv2Vb4R13WHaJwJkqtcCXpz0ITNlmJZX5Cx3mU7twRwAAAAAElFTkSu
+        QmCC
 </value>
   </data>
 </root>
