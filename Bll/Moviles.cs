@@ -50,14 +50,55 @@ namespace Rivn.Bll
             DataRow l_drTemp = p_lentData.InternalData.Table.NewRow();
 
             // Agregamos el root
-            l_drTemp["Codigo"] = 0;
-            l_drTemp["Descripcion"] = p_strDescripcion;
-            l_drTemp["Mensaje"] = "";
+            l_drTemp["mov_ecd_patente"] = 0;
+            l_drTemp["mov_des_des"] = p_strDescripcion;
+            l_drTemp["Orden"] = 1;
             l_drTemp["Nivel"] = 1;
             l_drTemp["Imagen"] = p_iNroImagen;
 
             p_lentData.InternalData.Table.Rows.Add(l_drTemp);
-            p_lentData.Sort("Codigo");
+            p_lentData.Sort("mov_ecd_patente");
+        }
+
+        /// <summary>
+        /// Arma Tree de Moviles
+        /// </summary>
+        /// <param name="p_lentData">ListaEntidad de datos</param>
+        /// <param name="p_strDescripcion">Descripcion del Root</param>
+        /// <param name="p_iNroImagen">Indice de la imagen</param>
+        public static ListaEntidades fArmarTree( bool p_bOnlyActive,
+                                                ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            ListaEntidades l_lentData;
+            DBConn l_dbcAccess = null;
+            p_smResult.BllReset("Estados", "fArmarTree");
+
+            try
+            {
+                // Obtenemos una conexion
+                l_dbcAccess = DBRuts.GetConection(Connections.Dat);
+
+                // Pedimos los registros de la tabla
+                l_lentData =  Bll.Moviles.getMovilesTree(l_dbcAccess, ref p_smResult);
+            }
+            catch (Exception l_expData)
+            {
+                // Error en la operacion
+                p_smResult.BllError(l_expData.ToString());
+                return null;
+            }
+            finally
+            {
+                // Si pude abrir la conexion -> la cierro
+                if (l_dbcAccess != null) l_dbcAccess.Close();
+                p_smResult.BllPop();
+            }
+
+            fAgregarRoot(l_lentData, "Moviles", 1);
+
+            return l_lentData;
+
         }
 
 

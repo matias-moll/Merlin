@@ -37,10 +37,10 @@ namespace Rivn.Mv
         /// </summary>
         public static void RegisterPersistency()
         {
-            //// Fijamos el usuario en Shr
+            // Fijamos el usuario en Shr
             //SysRuts.Usuario= App.Usuario;
 
-            //// Registramos el evento del Shared
+            // Registramos el evento del Shared
             //SysRuts.ShrLog += new BllReportEventHandler(Process_ShrLog);
             //SysRuts.ShrReport += new BllReportEventHandler(Process_ShrReport);
             //SysRuts.LdSvConfig += new LdSvConfigEventHandler(Persistency_LdSvConfig);
