@@ -142,6 +142,7 @@
             // btnDestildarTodoEqi
             // 
             this.btnDestildarTodoEqi.FixedImage = TNGS.NetControls.FixedGlassButtons.UnCheckAll;
+            this.btnDestildarTodoEqi.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDestildarTodoEqi.Location = new System.Drawing.Point(11, 353);
             this.btnDestildarTodoEqi.Name = "btnDestildarTodoEqi";
             this.btnDestildarTodoEqi.Size = new System.Drawing.Size(119, 24);
@@ -153,6 +154,7 @@
             // btnTildaTodos
             // 
             this.btnTildaTodos.FixedImage = TNGS.NetControls.FixedGlassButtons.CheckAll;
+            this.btnTildaTodos.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTildaTodos.Location = new System.Drawing.Point(131, 353);
             this.btnTildaTodos.Name = "btnTildaTodos";
             this.btnTildaTodos.Size = new System.Drawing.Size(119, 24);
@@ -222,7 +224,7 @@
             this.neKilometros.Name = "neKilometros";
             this.neKilometros.Size = new System.Drawing.Size(118, 20);
             this.neKilometros.TabIndex = 21;
-            this.neKilometros.Text = "234234";
+            this.neKilometros.Text = "50000";
             // 
             // fullLabel1
             // 
@@ -253,7 +255,7 @@
             this.tePatente.Name = "tePatente";
             this.tePatente.Size = new System.Drawing.Size(91, 20);
             this.tePatente.TabIndex = 0;
-            this.tePatente.Text = "234";
+            this.tePatente.Text = "2";
             // 
             // lblAnotaciones
             // 
@@ -285,7 +287,7 @@
             this.teAnotaciones.Name = "teAnotaciones";
             this.teAnotaciones.Size = new System.Drawing.Size(445, 110);
             this.teAnotaciones.TabIndex = 7;
-            this.teAnotaciones.Text = "234234242342342342342354tregwegsfgdgdfgsgsegsfg";
+            this.teAnotaciones.Text = "HOLA ANOTACIONES HOLA AOLA AOLA GOLA HOLA";
             // 
             // lblMovilPropio
             // 
@@ -305,7 +307,7 @@
             this.neAnioFabric.Name = "neAnioFabric";
             this.neAnioFabric.Size = new System.Drawing.Size(118, 20);
             this.neAnioFabric.TabIndex = 5;
-            this.neAnioFabric.Text = "234234";
+            this.neAnioFabric.Text = "1993";
             // 
             // teNroMotor
             // 
@@ -314,7 +316,7 @@
             this.teNroMotor.Name = "teNroMotor";
             this.teNroMotor.Size = new System.Drawing.Size(118, 20);
             this.teNroMotor.TabIndex = 4;
-            this.teNroMotor.Text = "234";
+            this.teNroMotor.Text = "222A";
             // 
             // cdcMovilPropio
             // 
@@ -356,7 +358,7 @@
             this.teDescripcionMovil.Name = "teDescripcionMovil";
             this.teDescripcionMovil.Size = new System.Drawing.Size(201, 20);
             this.teDescripcionMovil.TabIndex = 1;
-            this.teDescripcionMovil.Text = "24234";
+            this.teDescripcionMovil.Text = "PruebaNumero2";
             // 
             // lblModelo
             // 
@@ -376,7 +378,7 @@
             this.teNroChasis.Name = "teNroChasis";
             this.teNroChasis.Size = new System.Drawing.Size(118, 20);
             this.teNroChasis.TabIndex = 2;
-            this.teNroChasis.Text = "234";
+            this.teNroChasis.Text = "1111A";
             // 
             // lblNroMotor
             // 
