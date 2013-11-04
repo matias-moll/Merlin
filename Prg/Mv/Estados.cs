@@ -20,6 +20,8 @@ namespace Rivn.Mv
     public partial class Estados : DockContent
     {
         #region Miembros de la Clase
+        public enum ModoForm { Inicio, Edicion };
+        public enum OpGrid { Igual,Todas, Km, Combus, Equip, Estados };
         private Bel.LEMoviles m_LEMoviles = null;
         private Bel.EMovil m_entMovil = null;
         private Bel.LEEstados m_LEEdsEstados = null;
@@ -47,13 +49,23 @@ namespace Rivn.Mv
 
             TraerInfoBase();
             TraerInfoEstados();
-            LlenarTreeMoviles();
             LlenarComboEstados();
+            SwitchTo(ModoForm.Inicio);
 
 
 
         }
 
+
+        #endregion
+
+
+        #region Relleno De Datos
+
+
+        /// <summary>
+        /// Hace Upfull de todos los moviles con sus tablas hijo
+        /// </summary>
         private void TraerInfoBase()
         {
             m_smResult.UilReset("TraerInfoBase");
@@ -61,6 +73,11 @@ namespace Rivn.Mv
             MsgRuts.AnalizeError(this, m_smResult);
         }
 
+
+
+        /// <summary>
+        /// Hace traer la infomracion de los estados disponibles
+        /// </summary>
         private void TraerInfoEstados()
         {
             m_smResult.UilReset("TraerInfoEstados");
@@ -69,10 +86,6 @@ namespace Rivn.Mv
 
         }
 
-        #endregion
-
-
-        #region Relleno De Datos
 
         /// <summary>
         /// Llena la Combo De Estados Utilizando la ListaEntidad estados ya cargada con todos los estados
@@ -188,11 +201,7 @@ namespace Rivn.Mv
         {
 
             m_entMovil = m_LEMoviles[ftrMoviles.SelectedNodeAsCDI.StrCode];
-            LlenarGridEquipamiento();
-            LlenarGridKm();
-            LlenarGridCombustible();
-            LlenarDatos();
-            LlenarGridEstados();
+            SwitchTo(ModoForm.Edicion, OpGrid.Todas);
         }
 
 
@@ -200,14 +209,16 @@ namespace Rivn.Mv
 
         private void gbModificarMovil_Click(object sender, EventArgs e)
         {
-
+            SwitchTo(ModoForm.Edicion, OpGrid.Todas);
         }
 
 
         private void gbModificarEq_Click(object sender, EventArgs e)
         {
-
+            SwitchTo(ModoForm.Edicion, OpGrid.Equip);
         }
+
+
         /// <summary>
         /// Borrado de un Movil
         /// </summary>
@@ -221,9 +232,7 @@ namespace Rivn.Mv
             if (!BorradoSeguro()) return;
             Bll.Moviles.Remove(m_entMovil.Patente,m_entMovil.FxdVersion, ref m_smResult);
             m_entMovil = null;
-            LimpiarCampos();
-            TraerInfoBase();
-            LlenarTreeMoviles();
+            SwitchTo(ModoForm.Inicio, OpGrid.Igual);
             MsgRuts.AnalizeError(this, m_smResult);
         }
 
@@ -242,6 +251,7 @@ namespace Rivn.Mv
                     return;
             Bll.Moviles.MveqRemove(m_entMovil.Patente, (string)l_objCodigo, m_entMovil.FxdVersion, ref m_smResult);
             MsgRuts.AnalizeError(this, m_smResult);
+            SwitchTo(ModoForm.Edicion, OpGrid.Equip);
 
 
         }
@@ -249,6 +259,7 @@ namespace Rivn.Mv
 
         private void gbNuevoMovil_Click(object sender, EventArgs e)
         {
+            SwitchTo(ModoForm.Inicio);
         }
 
 
@@ -268,8 +279,7 @@ namespace Rivn.Mv
             l_EMComMovilCombustible.Patente = m_entMovil.Patente;
             l_EMComMovilCombustible.Importe = l_frmMovilCombustible.Importe;
             Bll.Moviles.MvcoSave(l_EMComMovilCombustible, ref m_smResult);
-            TraerInfoBase();
-            LlenarGridCombustible();
+            SwitchTo(ModoForm.Edicion, OpGrid.Combus);
             MsgRuts.AnalizeError(this, m_smResult);
 
 
@@ -290,8 +300,7 @@ namespace Rivn.Mv
             l_EMKmMovilKm.Km = neKilometros.Numero;
             l_EMKmMovilKm.Patente = tePatente.Text;
             Bll.Moviles.MvkmSave(l_EMKmMovilKm, ref m_smResult);
-            TraerInfoBase();
-            LlenarGridKm();
+            SwitchTo(ModoForm.Edicion, OpGrid.Km);
             MsgRuts.AnalizeError(this,m_smResult);
 
 
@@ -332,6 +341,70 @@ namespace Rivn.Mv
 
 
         #region Otros Metodos
+        /// <summary>
+        /// Cambia el modo del formulario
+        /// </summary>
+        private void SwitchTo(ModoForm p_fmNewMode, OpGrid p_goNewGState = 0)
+        {
+            // Fijamos el nuevo modo del formulario
+            switch (p_fmNewMode)
+            {
+                case ModoForm.Inicio: { ModoInicio(); break; }
+                case ModoForm.Edicion: { ModoEdicion(); break; }
+                default: { MsgRuts.ShowMsg(this, "Invalid mode"); break; }
+            }
+
+            // Fijamos el nuevo estado de la grilla
+            switch (p_goNewGState)
+            {
+                case OpGrid.Combus: { TraerInfoBase(); LlenarGridCombustible(); break; }
+                case OpGrid.Equip: { TraerInfoBase(); LlenarGridEquipamiento(); break; }
+                case OpGrid.Estados: { TraerInfoBase(); LlenarGridEstados(); break; }
+                case OpGrid.Km: { TraerInfoBase(); LlenarGridKm(); break; }
+                case OpGrid.Todas: { TraerInfoBase(); LlenarGrids(); break; }
+                case OpGrid.Igual: {break;}
+                default: { break; }
+            }
+        }
+
+
+        /// <summary>
+        /// Llena todas las grids
+        /// </summary>
+        private void LlenarGrids()
+        {
+            LlenarGridCombustible();
+            LlenarGridEquipamiento();
+            LlenarGridEstados();
+            LlenarGridKm();
+        }
+
+        /// <summary>
+        /// Metodo del modo edicion
+        /// </summary>
+        private void ModoEdicion()
+        {
+            LlenarDatos();
+            igOpciones.Enabled = true;
+            igKilometros.Enabled = true;
+            
+        }
+
+        /// <summary>
+        /// Metodo del Modo Inicio del Formulario
+        /// </summary>
+        private void ModoInicio()
+        {
+            TraerInfoBase();
+            LlenarTreeMoviles();
+            igKilometros.Enabled = false;
+            gbModificarMovil.Enabled = false;
+            gbBorrarMovil.Enabled = false;
+            LimpiarCampos();
+        }
+
+
+
         /// <summary>
         /// Devuelve 5 primeros estados de un movil
         /// </summary>
@@ -420,6 +493,7 @@ namespace Rivn.Mv
 
 
         #endregion
+
 
 
 
