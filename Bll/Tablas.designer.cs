@@ -16,7 +16,7 @@ namespace Rivn.Bll
     //----------------------------------------------------------------------------
     //                         TNG Software BLL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 04/11/2013 18:24
+    // Fecha                    : 05/11/2013 00:10
     // Sistema                  : Rivn
     // Clase para Administrar   : Tablas de Rivn.
     //----------------------------------------------------------------------------
@@ -874,9 +874,9 @@ namespace Rivn.Bll
         /// </summary>
         /// <param name="p_bOnlyActive">Indica si solo se analizan los registros activos</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
-        /// <returns>Lista-entidad: LEEquipamiento</returns>
-        public static LEEquipamiento EqiUpFull(bool p_bOnlyActive,
-                                               ref StatMsg p_smResult)
+        /// <returns>Lista-entidad: LEEquipamientos</returns>
+        public static LEEquipamientos EqiUpFull(bool p_bOnlyActive,
+                                                ref StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -1302,15 +1302,15 @@ namespace Rivn.Bll
         #region Metodos internos de recupero
 
         /// <summary>
-        /// Devuelve una Lista-entidad: LEEquipamiento
+        /// Devuelve una Lista-entidad: LEEquipamientos
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
         /// <param name="p_bOnlyActive">Indica si solo se analizan los registros activos</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
-        /// <returns>Lista-entidad: LEEquipamiento</returns>
-        internal static LEEquipamiento EqiUpfl(DBConn p_dbcAccess,
-                                                bool p_bOnlyActive,
-                                                ref StatMsg p_smResult)
+        /// <returns>Lista-entidad: LEEquipamientos</returns>
+        internal static LEEquipamientos EqiUpfl(DBConn p_dbcAccess,
+                                                 bool p_bOnlyActive,
+                                                 ref StatMsg p_smResult)
         {
             // No hay errores aun
             p_smResult.BllReset("Tablas", "EqiUpfl");
@@ -1329,7 +1329,7 @@ namespace Rivn.Bll
                 Dal.Equipamiento.MakeGridCaptions(ref l_dsTemp, "Temporal", ref p_smResult);
 
                 // Contruimos la lista-entidad y la devolvemos (si vino algun registro)
-                LEEquipamiento l_lentRet= new LEEquipamiento(l_dsTemp.Tables["Temporal"]);
+                LEEquipamientos l_lentRet= new LEEquipamientos(l_dsTemp.Tables["Temporal"]);
                 l_dsTemp.Dispose();
                 return l_lentRet;
             }

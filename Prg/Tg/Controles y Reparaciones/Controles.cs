@@ -12,7 +12,7 @@ using TNGS.NetApp;
 using Rivn;
 #endregion
 
-namespace Rivn.Mv
+namespace Rivn.Tg
 {
     //----------------------------------------------------------------------------
     //                         TNG Software UIL Generator

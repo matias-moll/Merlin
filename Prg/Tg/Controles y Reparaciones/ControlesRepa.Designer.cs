@@ -6,29 +6,30 @@ using System.Windows.Forms;
 using WeifenLuo.WinFormsUI.Docking;
 #endregion
 
-namespace Rivn.Mv
+namespace Rivn.Tg
 {
-    public partial class Controles : DockContent
+    public partial class ControlesRepa : DockContent
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.Container components = null;
         private TNGS.NetControls.XPanel xpnlBase;
+        private TNGS.NetControls.CDCombo cmbControl;
+        private TNGS.NetControls.GlassButton cmdModPadre;
         private TNGS.NetControls.GlassButton cmdSalir;
         private System.Windows.Forms.Label lblTitle;
         private TNGS.NetControls.GlassButton cmdExcel;
         private TNGS.NetControls.GlassButton cmdPrint;
+        private TNGS.NetControls.ImgGroup frmOper;
         private TNGS.NetControls.GlassButton cmdNuevo;
         private TNGS.NetControls.GlassButton cmdModificar;
         private TNGS.NetControls.GlassButton cmdPurgar;
         private TNGS.NetControls.ImgGroup frmEdicion;
-        private System.Windows.Forms.Label lblCod;
-        private TNGS.NetControls.TextEdit txtCod;
-        private System.Windows.Forms.Label lblDes;
-        private TNGS.NetControls.TextEdit txtDes;
-        private System.Windows.Forms.Label lblCrit;
-        private TNGS.NetControls.CDCombo cmbCrit;
+        private TNGS.NetControls.ImgGroup frmData;
+        private System.Windows.Forms.Label lblNroitem;
+        private TNGS.NetControls.NumberEdit txtNroitem;
+        private System.Windows.Forms.Label lblCodrep;
+        private TNGS.NetControls.TextEdit txtCodrep;
         private TNGS.NetControls.GlassButton cmdDesHab;
         private TNGS.NetControls.GlassButton cmdHab;
         private TNGS.NetControls.GlassButton cmdGrabar;
@@ -37,10 +38,11 @@ namespace Rivn.Mv
         private TNGS.NetControls.TSContainer tsContainer1;
         private RibbonStyle.TabPageSwitcher tabPageSwitcher1;
         private RibbonStyle.TabStripPage tabStripPage1;
-        private TNGS.NetControls.TSPanel tsPanel2;
-        private TNGS.NetControls.TSPanel tsPanel1;
         private TNGS.NetControls.TSBase tsBase1;
         private RibbonStyle.Tab tab1;
+        private TNGS.NetControls.TSPanel tsPanel2;
+        private TNGS.NetControls.TSPanel tsPanel1;
+        private TNGS.NetControls.TSPanel tsPanel3;
 
         /// <summary>
         /// Liberamos los recursos utilizados
@@ -63,39 +65,44 @@ namespace Rivn.Mv
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.xpnlBase = new TNGS.NetControls.XPanel();
+            this.lblTitle = new System.Windows.Forms.Label();
             this.tsContainer1 = new TNGS.NetControls.TSContainer();
             this.tabPageSwitcher1 = new RibbonStyle.TabPageSwitcher();
             this.tabStripPage1 = new RibbonStyle.TabStripPage();
-            this.tsPanel2 = new TNGS.NetControls.TSPanel();
+            this.tsPanel3 = new TNGS.NetControls.TSPanel();
             this.cmdHab = new TNGS.NetControls.GlassButton();
-            this.cmdCancelar = new TNGS.NetControls.GlassButton();
             this.cmdGrabar = new TNGS.NetControls.GlassButton();
+            this.cmdCancelar = new TNGS.NetControls.GlassButton();
             this.cmdDesHab = new TNGS.NetControls.GlassButton();
             this.tsPanel1 = new TNGS.NetControls.TSPanel();
             this.cmdSalir = new TNGS.NetControls.GlassButton();
             this.cmdPurgar = new TNGS.NetControls.GlassButton();
             this.cmdModificar = new TNGS.NetControls.GlassButton();
             this.cmdNuevo = new TNGS.NetControls.GlassButton();
+            this.tsPanel2 = new TNGS.NetControls.TSPanel();
+            this.cmdModPadre = new TNGS.NetControls.GlassButton();
             this.tsBase1 = new TNGS.NetControls.TSBase();
             this.tab1 = new RibbonStyle.Tab();
-            this.lblTitle = new System.Windows.Forms.Label();
             this.grdDatos = new TNGS.NetControls.FullGrid();
             this.cmdPrint = new TNGS.NetControls.GlassButton();
             this.cmdExcel = new TNGS.NetControls.GlassButton();
             this.frmEdicion = new TNGS.NetControls.ImgGroup();
-            this.lblCod = new System.Windows.Forms.Label();
-            this.txtCod = new TNGS.NetControls.TextEdit();
-            this.lblDes = new System.Windows.Forms.Label();
-            this.txtDes = new TNGS.NetControls.TextEdit();
-            this.lblCrit = new System.Windows.Forms.Label();
-            this.cmbCrit = new TNGS.NetControls.CDCombo();
+            this.lblNroitem = new System.Windows.Forms.Label();
+            this.txtNroitem = new TNGS.NetControls.NumberEdit();
+            this.lblCodrep = new System.Windows.Forms.Label();
+            this.txtCodrep = new TNGS.NetControls.TextEdit();
+            this.cmbControl = new TNGS.NetControls.CDCombo();
+            this.frmOper = new TNGS.NetControls.ImgGroup();
+            this.frmData = new TNGS.NetControls.ImgGroup();
             this.xpnlBase.SuspendLayout();
             this.tsContainer1.SuspendLayout();
             this.tabPageSwitcher1.SuspendLayout();
             this.tabStripPage1.SuspendLayout();
-            this.tsPanel2.SuspendLayout();
+            this.tsPanel3.SuspendLayout();
             this.tsPanel1.SuspendLayout();
+            this.tsPanel2.SuspendLayout();
             this.tsBase1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdDatos)).BeginInit();
             this.frmEdicion.SuspendLayout();
@@ -105,8 +112,8 @@ namespace Rivn.Mv
             // 
             this.xpnlBase.BackColor1 = System.Drawing.SystemColors.Control;
             this.xpnlBase.BackColor2 = System.Drawing.SystemColors.Control;
-            this.xpnlBase.Controls.Add(this.tsContainer1);
             this.xpnlBase.Controls.Add(this.lblTitle);
+            this.xpnlBase.Controls.Add(this.tsContainer1);
             this.xpnlBase.Controls.Add(this.grdDatos);
             this.xpnlBase.Controls.Add(this.cmdPrint);
             this.xpnlBase.Controls.Add(this.cmdExcel);
@@ -114,8 +121,18 @@ namespace Rivn.Mv
             this.xpnlBase.Dock = System.Windows.Forms.DockStyle.Fill;
             this.xpnlBase.Location = new System.Drawing.Point(0, 0);
             this.xpnlBase.Name = "xpnlBase";
-            this.xpnlBase.Size = new System.Drawing.Size(784, 485);
+            this.xpnlBase.Size = new System.Drawing.Size(784, 484);
             this.xpnlBase.TabIndex = 0;
+            // 
+            // lblTitle
+            // 
+            this.lblTitle.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.Location = new System.Drawing.Point(8, 125);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(150, 16);
+            this.lblTitle.TabIndex = 20;
+            this.lblTitle.Text = "Controles de Reparacion:";
+            this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // tsContainer1
             // 
@@ -125,7 +142,7 @@ namespace Rivn.Mv
             this.tsContainer1.Location = new System.Drawing.Point(0, 0);
             this.tsContainer1.Name = "tsContainer1";
             this.tsContainer1.Size = new System.Drawing.Size(784, 115);
-            this.tsContainer1.TabIndex = 22;
+            this.tsContainer1.TabIndex = 25;
             // 
             // tabPageSwitcher1
             // 
@@ -142,8 +159,9 @@ namespace Rivn.Mv
             // tabStripPage1
             // 
             this.tabStripPage1.Caption = "";
-            this.tabStripPage1.Controls.Add(this.tsPanel2);
+            this.tabStripPage1.Controls.Add(this.tsPanel3);
             this.tabStripPage1.Controls.Add(this.tsPanel1);
+            this.tabStripPage1.Controls.Add(this.tsPanel2);
             this.tabStripPage1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabStripPage1.Location = new System.Drawing.Point(4, 0);
             this.tabStripPage1.Name = "tabStripPage1";
@@ -153,62 +171,62 @@ namespace Rivn.Mv
             this.tabStripPage1.Speed = 8;
             this.tabStripPage1.TabIndex = 0;
             // 
-            // tsPanel2
+            // tsPanel3
             // 
-            this.tsPanel2.Caption = "Edición";
-            this.tsPanel2.Controls.Add(this.cmdHab);
-            this.tsPanel2.Controls.Add(this.cmdCancelar);
-            this.tsPanel2.Controls.Add(this.cmdGrabar);
-            this.tsPanel2.Controls.Add(this.cmdDesHab);
-            this.tsPanel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.tsPanel2.Location = new System.Drawing.Point(268, 3);
-            this.tsPanel2.Name = "tsPanel2";
-            this.tsPanel2.Opacity = 255;
-            this.tsPanel2.Size = new System.Drawing.Size(276, 85);
-            this.tsPanel2.Speed = 1;
-            this.tsPanel2.TabIndex = 1;
+            this.tsPanel3.Caption = "Edición";
+            this.tsPanel3.Controls.Add(this.cmdHab);
+            this.tsPanel3.Controls.Add(this.cmdGrabar);
+            this.tsPanel3.Controls.Add(this.cmdCancelar);
+            this.tsPanel3.Controls.Add(this.cmdDesHab);
+            this.tsPanel3.Dock = System.Windows.Forms.DockStyle.Left;
+            this.tsPanel3.Location = new System.Drawing.Point(482, 3);
+            this.tsPanel3.Name = "tsPanel3";
+            this.tsPanel3.Opacity = 255;
+            this.tsPanel3.Size = new System.Drawing.Size(263, 85);
+            this.tsPanel3.Speed = 1;
+            this.tsPanel3.TabIndex = 4;
             // 
             // cmdHab
             // 
-            this.cmdHab.FixedImage = TNGS.NetControls.FixedGlassButtons.Enable;
-            this.cmdHab.Location = new System.Drawing.Point(151, 7);
+            this.cmdHab.FixedImage = TNGS.NetControls.FixedGlassButtons.Disable;
+            this.cmdHab.Location = new System.Drawing.Point(141, 7);
             this.cmdHab.Name = "cmdHab";
             this.cmdHab.Size = new System.Drawing.Size(113, 26);
             this.cmdHab.TabIndex = 11;
-            this.cmdHab.Text = "Habilitar";
+            this.cmdHab.Text = "Deshabilitar";
             this.cmdHab.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.cmdHab.Click += new System.EventHandler(this.cmdDesHab_Click);
-            // 
-            // cmdCancelar
-            // 
-            this.cmdCancelar.FixedImage = TNGS.NetControls.FixedGlassButtons.tCancel;
-            this.cmdCancelar.ImageOnTop = true;
-            this.cmdCancelar.Location = new System.Drawing.Point(72, 4);
-            this.cmdCancelar.Name = "cmdCancelar";
-            this.cmdCancelar.Size = new System.Drawing.Size(62, 62);
-            this.cmdCancelar.TabIndex = 12;
-            this.cmdCancelar.Text = "Cancela";
-            this.cmdCancelar.Click += new System.EventHandler(this.cmdCancelar_Click);
             // 
             // cmdGrabar
             // 
             this.cmdGrabar.FixedImage = TNGS.NetControls.FixedGlassButtons.tSave;
             this.cmdGrabar.ImageOnTop = true;
-            this.cmdGrabar.Location = new System.Drawing.Point(8, 4);
+            this.cmdGrabar.Location = new System.Drawing.Point(6, 3);
             this.cmdGrabar.Name = "cmdGrabar";
             this.cmdGrabar.Size = new System.Drawing.Size(62, 62);
             this.cmdGrabar.TabIndex = 10;
             this.cmdGrabar.Text = "Graba";
             this.cmdGrabar.Click += new System.EventHandler(this.cmdGrabar_Click);
             // 
+            // cmdCancelar
+            // 
+            this.cmdCancelar.FixedImage = TNGS.NetControls.FixedGlassButtons.tCancel;
+            this.cmdCancelar.ImageOnTop = true;
+            this.cmdCancelar.Location = new System.Drawing.Point(70, 3);
+            this.cmdCancelar.Name = "cmdCancelar";
+            this.cmdCancelar.Size = new System.Drawing.Size(62, 62);
+            this.cmdCancelar.TabIndex = 12;
+            this.cmdCancelar.Text = "Cancela";
+            this.cmdCancelar.Click += new System.EventHandler(this.cmdCancelar_Click);
+            // 
             // cmdDesHab
             // 
-            this.cmdDesHab.FixedImage = TNGS.NetControls.FixedGlassButtons.Disable;
-            this.cmdDesHab.Location = new System.Drawing.Point(151, 35);
+            this.cmdDesHab.FixedImage = TNGS.NetControls.FixedGlassButtons.Enable;
+            this.cmdDesHab.Location = new System.Drawing.Point(141, 35);
             this.cmdDesHab.Name = "cmdDesHab";
             this.cmdDesHab.Size = new System.Drawing.Size(113, 26);
             this.cmdDesHab.TabIndex = 11;
-            this.cmdDesHab.Text = "Deshabilitar";
+            this.cmdDesHab.Text = "Habilitar";
             this.cmdDesHab.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.cmdDesHab.Click += new System.EventHandler(this.cmdDesHab_Click);
             // 
@@ -220,20 +238,20 @@ namespace Rivn.Mv
             this.tsPanel1.Controls.Add(this.cmdModificar);
             this.tsPanel1.Controls.Add(this.cmdNuevo);
             this.tsPanel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.tsPanel1.Location = new System.Drawing.Point(0, 3);
+            this.tsPanel1.Location = new System.Drawing.Point(224, 3);
             this.tsPanel1.Name = "tsPanel1";
             this.tsPanel1.Opacity = 255;
-            this.tsPanel1.Size = new System.Drawing.Size(268, 85);
+            this.tsPanel1.Size = new System.Drawing.Size(258, 85);
             this.tsPanel1.Speed = 1;
-            this.tsPanel1.TabIndex = 0;
+            this.tsPanel1.TabIndex = 2;
             // 
             // cmdSalir
             // 
             this.cmdSalir.FixedImage = TNGS.NetControls.FixedGlassButtons.Quit;
-            this.cmdSalir.Location = new System.Drawing.Point(151, 7);
+            this.cmdSalir.Location = new System.Drawing.Point(141, 7);
             this.cmdSalir.Name = "cmdSalir";
             this.cmdSalir.Size = new System.Drawing.Size(104, 26);
-            this.cmdSalir.TabIndex = 6;
+            this.cmdSalir.TabIndex = 5;
             this.cmdSalir.Text = "Salir";
             this.cmdSalir.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.cmdSalir.Click += new System.EventHandler(this.cmdSalir_Click);
@@ -241,7 +259,7 @@ namespace Rivn.Mv
             // cmdPurgar
             // 
             this.cmdPurgar.FixedImage = TNGS.NetControls.FixedGlassButtons.Agrupa;
-            this.cmdPurgar.Location = new System.Drawing.Point(151, 35);
+            this.cmdPurgar.Location = new System.Drawing.Point(141, 35);
             this.cmdPurgar.Name = "cmdPurgar";
             this.cmdPurgar.Size = new System.Drawing.Size(104, 26);
             this.cmdPurgar.TabIndex = 5;
@@ -257,7 +275,7 @@ namespace Rivn.Mv
             this.cmdModificar.Name = "cmdModificar";
             this.cmdModificar.Size = new System.Drawing.Size(62, 62);
             this.cmdModificar.TabIndex = 4;
-            this.cmdModificar.Text = "Editar";
+            this.cmdModificar.Text = "Edita";
             this.cmdModificar.Click += new System.EventHandler(this.cmdModificar_Click);
             // 
             // cmdNuevo
@@ -270,6 +288,30 @@ namespace Rivn.Mv
             this.cmdNuevo.TabIndex = 3;
             this.cmdNuevo.Text = "Nuevo";
             this.cmdNuevo.Click += new System.EventHandler(this.cmdNuevo_Click);
+            // 
+            // tsPanel2
+            // 
+            this.tsPanel2.Caption = "Control";
+            this.tsPanel2.Controls.Add(this.cmdModPadre);
+            this.tsPanel2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.tsPanel2.Location = new System.Drawing.Point(0, 3);
+            this.tsPanel2.Name = "tsPanel2";
+            this.tsPanel2.Opacity = 255;
+            this.tsPanel2.Size = new System.Drawing.Size(224, 85);
+            this.tsPanel2.Speed = 1;
+            this.tsPanel2.TabIndex = 3;
+            // 
+            // cmdModPadre
+            // 
+            this.cmdModPadre.FixedImage = TNGS.NetControls.FixedGlassButtons.Folder2;
+            this.cmdModPadre.Location = new System.Drawing.Point(8, 7);
+            this.cmdModPadre.Name = "cmdModPadre";
+            this.cmdModPadre.PCode = "M.CONTROL";
+            this.cmdModPadre.Size = new System.Drawing.Size(204, 54);
+            this.cmdModPadre.TabIndex = 24;
+            this.cmdModPadre.Text = "Mantenimiento de Controles";
+            this.cmdModPadre.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.cmdModPadre.Click += new System.EventHandler(this.cmdModPadre_Click);
             // 
             // tsBase1
             // 
@@ -300,16 +342,6 @@ namespace Rivn.Mv
             this.tab1.TabStripPage = this.tabStripPage1;
             this.tab1.Text = "Mantenimiento";
             // 
-            // lblTitle
-            // 
-            this.lblTitle.BackColor = System.Drawing.Color.Transparent;
-            this.lblTitle.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.Location = new System.Drawing.Point(9, 126);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(180, 16);
-            this.lblTitle.TabIndex = 20;
-            this.lblTitle.Text = "Controles:";
-            // 
             // grdDatos
             // 
             this.grdDatos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -322,9 +354,9 @@ namespace Rivn.Mv
             this.grdDatos.ExcelTitle = "";
             this.grdDatos.GridOrder = "";
             this.grdDatos.HeaderForeColor = System.Drawing.SystemColors.ControlText;
-            this.grdDatos.Location = new System.Drawing.Point(4, 142);
+            this.grdDatos.Location = new System.Drawing.Point(4, 141);
             this.grdDatos.Name = "grdDatos";
-            this.grdDatos.Size = new System.Drawing.Size(776, 260);
+            this.grdDatos.Size = new System.Drawing.Size(776, 263);
             this.grdDatos.TabIndex = 0;
             this.grdDatos.Advance += new TNGS.NetRoutines.AdvanceEventHandler(this.grdDatos_Advance);
             this.grdDatos.DataDClick += new TNGS.NetRoutines.DataDClickEventHandler(this.grdDatos_DataDClick);
@@ -334,9 +366,8 @@ namespace Rivn.Mv
             // 
             this.cmdPrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cmdPrint.FixedImage = TNGS.NetControls.FixedGlassButtons.bPrint;
-            this.cmdPrint.Location = new System.Drawing.Point(754, 118);
+            this.cmdPrint.Location = new System.Drawing.Point(754, 117);
             this.cmdPrint.Name = "cmdPrint";
-            this.cmdPrint.PCode = "TNGS.PRINT";
             this.cmdPrint.Size = new System.Drawing.Size(26, 24);
             this.cmdPrint.TabIndex = 2;
             this.cmdPrint.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -346,9 +377,9 @@ namespace Rivn.Mv
             // 
             this.cmdExcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cmdExcel.FixedImage = TNGS.NetControls.FixedGlassButtons.bExcel;
-            this.cmdExcel.Location = new System.Drawing.Point(729, 118);
+            this.cmdExcel.Location = new System.Drawing.Point(728, 117);
             this.cmdExcel.Name = "cmdExcel";
-            this.cmdExcel.PCode = "TNGS.EXCEL";
+            this.cmdExcel.PCode = "TNGS.PRINT";
             this.cmdExcel.Size = new System.Drawing.Size(26, 24);
             this.cmdExcel.TabIndex = 1;
             this.cmdExcel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -363,17 +394,15 @@ namespace Rivn.Mv
             this.frmEdicion.BackgroundGradientMode = TNGS.NetControls.ImgGroup.GroupBoxGradientMode.ForwardDiagonal;
             this.frmEdicion.BorderColor = System.Drawing.Color.Black;
             this.frmEdicion.BorderThickness = 1F;
-            this.frmEdicion.Controls.Add(this.lblCod);
-            this.frmEdicion.Controls.Add(this.txtCod);
-            this.frmEdicion.Controls.Add(this.lblDes);
-            this.frmEdicion.Controls.Add(this.txtDes);
-            this.frmEdicion.Controls.Add(this.lblCrit);
-            this.frmEdicion.Controls.Add(this.cmbCrit);
+            this.frmEdicion.Controls.Add(this.lblNroitem);
+            this.frmEdicion.Controls.Add(this.txtNroitem);
+            this.frmEdicion.Controls.Add(this.lblCodrep);
+            this.frmEdicion.Controls.Add(this.txtCodrep);
             this.frmEdicion.CustomGroupBoxColor = System.Drawing.Color.White;
             this.frmEdicion.FontTitle = new System.Drawing.Font("Arial", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.frmEdicion.GroupImage = null;
-            this.frmEdicion.GroupTitle = " Control ";
-            this.frmEdicion.Location = new System.Drawing.Point(4, 408);
+            this.frmEdicion.GroupTitle = "Controles de Reparacion";
+            this.frmEdicion.Location = new System.Drawing.Point(4, 410);
             this.frmEdicion.Name = "frmEdicion";
             this.frmEdicion.Padding = new System.Windows.Forms.Padding(20);
             this.frmEdicion.PaintGroupBox = false;
@@ -381,101 +410,133 @@ namespace Rivn.Mv
             this.frmEdicion.ShadowColor = System.Drawing.Color.DarkGray;
             this.frmEdicion.ShadowControl = false;
             this.frmEdicion.ShadowThickness = 3;
-            this.frmEdicion.Size = new System.Drawing.Size(776, 73);
+            this.frmEdicion.Size = new System.Drawing.Size(776, 67);
             this.frmEdicion.TabIndex = 21;
             // 
-            // lblCod
+            // lblNroitem
             // 
-            this.lblCod.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCod.Location = new System.Drawing.Point(18, 34);
-            this.lblCod.Name = "lblCod";
-            this.lblCod.Size = new System.Drawing.Size(62, 22);
-            this.lblCod.TabIndex = 106;
-            this.lblCod.Text = "Codigo:";
-            this.lblCod.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblNroitem.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNroitem.Location = new System.Drawing.Point(49, 31);
+            this.lblNroitem.Name = "lblNroitem";
+            this.lblNroitem.Size = new System.Drawing.Size(104, 22);
+            this.lblNroitem.TabIndex = 106;
+            this.lblNroitem.Text = "Item:";
+            this.lblNroitem.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // txtCod
+            // txtNroitem
             // 
-            this.txtCod.BackColor = System.Drawing.SystemColors.Window;
-            this.txtCod.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtCod.EmptyValid = false;
-            this.txtCod.Enabled = false;
-            this.txtCod.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCod.Location = new System.Drawing.Point(83, 34);
-            this.txtCod.MaxLength = 4;
-            this.txtCod.Name = "txtCod";
-            this.txtCod.OnlyDigits = true;
-            this.txtCod.Size = new System.Drawing.Size(114, 22);
-            this.txtCod.TabIndex = 6;
+            this.txtNroitem.BackColor = System.Drawing.SystemColors.Window;
+            this.txtNroitem.Enabled = false;
+            this.txtNroitem.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNroitem.Location = new System.Drawing.Point(159, 31);
+            this.txtNroitem.MaxLength = 5;
+            this.txtNroitem.Name = "txtNroitem";
+            this.txtNroitem.NegativeValid = false;
+            this.txtNroitem.Size = new System.Drawing.Size(159, 22);
+            this.txtNroitem.TabIndex = 6;
+            this.txtNroitem.Text = "0";
+            this.txtNroitem.ZeroValid = false;
             // 
-            // lblDes
+            // lblCodrep
             // 
-            this.lblDes.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDes.Location = new System.Drawing.Point(206, 34);
-            this.lblDes.Name = "lblDes";
-            this.lblDes.Size = new System.Drawing.Size(80, 22);
-            this.lblDes.TabIndex = 107;
-            this.lblDes.Text = "Descripcion:";
-            this.lblDes.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.lblDes.Click += new System.EventHandler(this.lblDes_Click);
+            this.lblCodrep.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCodrep.Location = new System.Drawing.Point(324, 31);
+            this.lblCodrep.Name = "lblCodrep";
+            this.lblCodrep.Size = new System.Drawing.Size(145, 22);
+            this.lblCodrep.TabIndex = 107;
+            this.lblCodrep.Text = "Codigo de Reparacion:";
+            this.lblCodrep.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // txtDes
+            // txtCodrep
             // 
-            this.txtDes.BackColor = System.Drawing.SystemColors.Window;
-            this.txtDes.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtDes.EmptyValid = false;
-            this.txtDes.Enabled = false;
-            this.txtDes.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDes.Location = new System.Drawing.Point(286, 34);
-            this.txtDes.MaxLength = 30;
-            this.txtDes.Name = "txtDes";
-            this.txtDes.Size = new System.Drawing.Size(254, 22);
-            this.txtDes.TabIndex = 7;
+            this.txtCodrep.BackColor = System.Drawing.SystemColors.Window;
+            this.txtCodrep.EmptyValid = false;
+            this.txtCodrep.Enabled = false;
+            this.txtCodrep.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCodrep.Location = new System.Drawing.Point(475, 31);
+            this.txtCodrep.MaxLength = 6;
+            this.txtCodrep.Name = "txtCodrep";
+            this.txtCodrep.Size = new System.Drawing.Size(181, 22);
+            this.txtCodrep.TabIndex = 7;
             // 
-            // lblCrit
+            // cmbControl
             // 
-            this.lblCrit.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCrit.Location = new System.Drawing.Point(546, 34);
-            this.lblCrit.Name = "lblCrit";
-            this.lblCrit.Size = new System.Drawing.Size(56, 22);
-            this.lblCrit.TabIndex = 108;
-            this.lblCrit.Text = "Critico:";
-            this.lblCrit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.cmbControl.BackColor = System.Drawing.SystemColors.Window;
+            this.cmbControl.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbControl.Location = new System.Drawing.Point(9, 34);
+            this.cmbControl.Name = "cmbControl";
+            this.cmbControl.Size = new System.Drawing.Size(213, 21);
+            this.cmbControl.Sorted = true;
+            this.cmbControl.TabIndex = 23;
+            this.cmbControl.SelectedIndexChanged += new System.EventHandler(this.cmbControl_SelectedIndexChanged);
             // 
-            // cmbCrit
+            // frmOper
             // 
-            this.cmbCrit.BackColor = System.Drawing.SystemColors.Window;
-            this.cmbCrit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbCrit.Enabled = false;
-            this.cmbCrit.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbCrit.Location = new System.Drawing.Point(608, 34);
-            this.cmbCrit.Name = "cmbCrit";
-            this.cmbCrit.Size = new System.Drawing.Size(142, 24);
-            this.cmbCrit.Sorted = true;
-            this.cmbCrit.TabIndex = 8;
+            this.frmOper.BackgroundColor = System.Drawing.Color.White;
+            this.frmOper.BackgroundGradientColor = System.Drawing.Color.White;
+            this.frmOper.BackgroundGradientMode = TNGS.NetControls.ImgGroup.GroupBoxGradientMode.None;
+            this.frmOper.BorderColor = System.Drawing.Color.Black;
+            this.frmOper.BorderThickness = 1F;
+            this.frmOper.CustomGroupBoxColor = System.Drawing.Color.White;
+            this.frmOper.FontTitle = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.frmOper.GroupImage = null;
+            this.frmOper.GroupTitle = "The Grouper";
+            this.frmOper.Location = new System.Drawing.Point(0, 0);
+            this.frmOper.Name = "frmOper";
+            this.frmOper.Padding = new System.Windows.Forms.Padding(20);
+            this.frmOper.PaintGroupBox = false;
+            this.frmOper.RoundCorners = 10;
+            this.frmOper.ShadowColor = System.Drawing.Color.DarkGray;
+            this.frmOper.ShadowControl = false;
+            this.frmOper.ShadowThickness = 3;
+            this.frmOper.Size = new System.Drawing.Size(368, 288);
+            this.frmOper.TabIndex = 0;
             // 
-            // Controles
+            // frmData
+            // 
+            this.frmData.BackgroundColor = System.Drawing.Color.White;
+            this.frmData.BackgroundGradientColor = System.Drawing.Color.White;
+            this.frmData.BackgroundGradientMode = TNGS.NetControls.ImgGroup.GroupBoxGradientMode.None;
+            this.frmData.BorderColor = System.Drawing.Color.Black;
+            this.frmData.BorderThickness = 1F;
+            this.frmData.CustomGroupBoxColor = System.Drawing.Color.White;
+            this.frmData.FontTitle = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.frmData.GroupImage = null;
+            this.frmData.GroupTitle = "The Grouper";
+            this.frmData.Location = new System.Drawing.Point(0, 0);
+            this.frmData.Name = "frmData";
+            this.frmData.Padding = new System.Windows.Forms.Padding(20);
+            this.frmData.PaintGroupBox = false;
+            this.frmData.RoundCorners = 10;
+            this.frmData.ShadowColor = System.Drawing.Color.DarkGray;
+            this.frmData.ShadowControl = false;
+            this.frmData.ShadowThickness = 3;
+            this.frmData.Size = new System.Drawing.Size(368, 288);
+            this.frmData.TabIndex = 0;
+            // 
+            // ControlesRepa
             // 
             this.AllowEndUserDocking = false;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(784, 485);
+            this.ClientSize = new System.Drawing.Size(784, 484);
             this.Controls.Add(this.xpnlBase);
             this.DockAreas = WeifenLuo.WinFormsUI.Docking.DockAreas.Document;
             this.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
-            this.Name = "Controles";
+            this.Name = "ControlesRepa";
             this.ShowHint = WeifenLuo.WinFormsUI.Docking.DockState.Document;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.TabText = "Mantenimiento de Controles";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Controles_FormClosed);
-            this.Load += new System.EventHandler(this.Controles_Load);
+            this.Text = "Mantenimiento de ControlesReparations";
+            this.Closed += new System.EventHandler(this.ControlesRepa_Closed);
+            this.Load += new System.EventHandler(this.ControlesRepa_Load);
             this.xpnlBase.ResumeLayout(false);
             this.tsContainer1.ResumeLayout(false);
             this.tabPageSwitcher1.ResumeLayout(false);
             this.tabStripPage1.ResumeLayout(false);
-            this.tsPanel2.ResumeLayout(false);
+            this.tsPanel3.ResumeLayout(false);
             this.tsPanel1.ResumeLayout(false);
+            this.tsPanel2.ResumeLayout(false);
             this.tsBase1.ResumeLayout(false);
             this.tsBase1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdDatos)).EndInit();
@@ -485,5 +546,7 @@ namespace Rivn.Mv
 
         }
         #endregion
+
+        private IContainer components;
     }
 }

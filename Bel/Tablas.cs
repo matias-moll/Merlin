@@ -181,7 +181,7 @@ namespace Rivn.Bel
     /// Clase que representa la Lista-Entidad: Equipamiento
     ///   - Elementos no producidos por el Generador
     /// </summary>
-    public sealed partial class LEEquipamiento : ListaEntidades
+    public sealed partial class LEEquipamientos : ListaEntidades
     {
         #region Metodos publicos de la clase
         //---------------------------------------------------------------

@@ -10,7 +10,7 @@ namespace Rivn.Dal
     //----------------------------------------------------------------------------
     //                         TNG Software DAL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 04/11/2013 18:24
+    // Fecha                    : 05/11/2013 00:10
     // Sistema                  : Rivn
     // Clase para Administrar   : Categorias de las reparaciones
     // Basada en la Tabla       : Categorias

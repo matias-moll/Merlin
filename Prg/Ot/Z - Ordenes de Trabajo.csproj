@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-<Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
-<PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{B4785FB7-AB1D-4F51-933E-127240964141}</ProjectGuid>
@@ -32,6 +32,21 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Bohman.MonthCalendar.520">
+      <HintPath>..\..\..\Ambiente0520\DNet0520\Release_Uil\Bohman.MonthCalendar.520.dll</HintPath>
+    </Reference>
+    <Reference Include="MikeHankey.XPControlLib.520">
+      <HintPath>..\..\..\Ambiente0520\DNet0520\Release_Uil\MikeHankey.XPControlLib.520.dll</HintPath>
+    </Reference>
+    <Reference Include="MS.TabStripControlLibrary.520">
+      <HintPath>..\..\..\Ambiente0520\DNet0520\Release_Uil\MS.TabStripControlLibrary.520.dll</HintPath>
+    </Reference>
+    <Reference Include="netchartdir">
+      <HintPath>..\..\..\Ambiente0520\DNet0520\Release_Uil\netchartdir.dll</HintPath>
+    </Reference>
+    <Reference Include="PS.TaskDialog.520">
+      <HintPath>..\..\..\Ambiente0520\DNet0520\Release_Uil\PS.TaskDialog.520.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -41,57 +56,29 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="Bohman.MonthCalendar.520">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>T:\Ambiente 05.20\DNet0520\Release_Uil\Bohman.MonthCalendar.520.dll</HintPath>
-    </Reference>
-    <Reference Include="MikeHankey.XPControlLib.520">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>T:\Ambiente 05.20\DNet0520\Release_Uil\MikeHankey.XPControlLib.520.dll</HintPath>
-    </Reference>
-    <Reference Include="MS.TabStripControlLibrary.520">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>T:\Ambiente 05.20\DNet0520\Release_Uil\MS.TabStripControlLibrary.520.dll</HintPath>
-    </Reference>
-    <Reference Include="netchartdir">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>T:\Ambiente 05.20\DNet0520\Release_Uil\netchartdir.dll</HintPath>
-    </Reference>
-    <Reference Include="PS.TaskDialog.520">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>T:\Ambiente 05.20\DNet0520\Release_Uil\PS.TaskDialog.520.dll</HintPath>
-    </Reference>
     <Reference Include="TNGS.NetApp.520">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>T:\Ambiente 05.20\DNet0520\Release_Uil\TNGS.NetApp.520.dll</HintPath>
+      <HintPath>..\..\..\Ambiente0520\DNet0520\Release_Uil\TNGS.NetApp.520.dll</HintPath>
     </Reference>
     <Reference Include="TNGS.NetAppBll.520">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>T:\Ambiente 05.20\DNet0520\Release_Uil\TNGS.NetAppBll.520.dll</HintPath>
+      <HintPath>..\..\..\Ambiente0520\DNet0520\Release_Uil\TNGS.NetAppBll.520.dll</HintPath>
     </Reference>
     <Reference Include="TNGS.NetControls.520">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>T:\Ambiente 05.20\DNet0520\Release_Uil\TNGS.NetControls.520.dll</HintPath>
+      <HintPath>..\..\..\Ambiente0520\DNet0520\Release_Uil\TNGS.NetControls.520.dll</HintPath>
     </Reference>
     <Reference Include="TNGS.NetIPlugin.520">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>T:\Ambiente 05.20\DNet0520\Release_Uil\TNGS.NetIPlugin.520.dll</HintPath>
+      <HintPath>..\..\..\Ambiente0520\DNet0520\Release_Uil\TNGS.NetIPlugin.520.dll</HintPath>
     </Reference>
     <Reference Include="TNGS.NetOffice.520">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>T:\Ambiente 05.20\DNet0520\Release_Uil\TNGS.NetOffice.520.dll</HintPath>
+      <HintPath>..\..\..\Ambiente0520\DNet0520\Release_Uil\TNGS.NetOffice.520.dll</HintPath>
     </Reference>
     <Reference Include="TNGS.NetRoutines.520">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>T:\Ambiente 05.20\DNet0520\Release_Uil\TNGS.NetRoutines.520.dll</HintPath>
+      <HintPath>..\..\..\Ambiente0520\DNet0520\Release_Uil\TNGS.NetRoutines.520.dll</HintPath>
     </Reference>
     <Reference Include="TNGS.NetSocket.520">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>T:\Ambiente 05.20\DNet0520\Release_Uil\TNGS.NetSocket.520.dll</HintPath>
+      <HintPath>..\..\..\Ambiente0520\DNet0520\Release_Uil\TNGS.NetSocket.520.dll</HintPath>
     </Reference>
     <Reference Include="WeifenLuo.WinFormsUI.Docking.520">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>T:\Ambiente 05.20\DNet0520\Release_Uil\WeifenLuo.WinFormsUI.Docking.520.dll</HintPath>
+      <HintPath>..\..\..\Ambiente0520\DNet0520\Release_Uil\WeifenLuo.WinFormsUI.Docking.520.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -145,6 +132,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Shr\Shr.csproj">
+      <Project>{4ee82ba9-6046-419b-87af-014443954416}</Project>
+      <Name>Shr</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

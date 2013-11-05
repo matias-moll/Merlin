@@ -18,7 +18,7 @@ namespace Rivn.Ot
     //----------------------------------------------------------------------------
     //                         TNG Software PRG Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 04/11/2013 16:14
+    // Fecha                    : 05/11/2013 00:08
     // Sistema                  : Rivn
     // Programa                 : Ordenes de Trabajo
     //----------------------------------------------------------------------------
@@ -61,7 +61,7 @@ namespace Rivn.Ot
                 App.EnableXPStyle();
 
                 // Definimos el skin
-                TNGSSkin.ChangeSkin(FixedSkins.Desconocido);
+                TNGSSkin.ChangeSkin(FixedSkins.ModernUI);
 
                 // Llamamos al PreInit del Shr y del Programa
                 if (!SysRuts.PreInit()) return;
@@ -102,9 +102,6 @@ namespace Rivn.Ot
             }
 
             try {
-                // Registramos la persistencia de datos desde Shr
-                PrgRuts.RegisterPersistency();
-
                 // Creamos la ventana MDI de la aplicacion
                 MainFrame l_frmMain= new MainFrame(MFSizes.MF1024x768, 0, false, true);
 

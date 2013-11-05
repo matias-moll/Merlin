@@ -17,21 +17,21 @@ namespace Rivn.Tg
     //----------------------------------------------------------------------------
     //                         TNG Software UIL Generator
     //----------------------------------------------------------------------------
-    // Fecha                     : 20/09/2013 16:32
+    // Fecha                     : 30/10/2013 17:05
     // Sistema                   : Rivn
-    // Interface para la Entidad : Equipamento
-    // Tipo de Interface         : Mantenimiento de Tabla Clasificadora
+    // Interface para la Entidad : ControlRepa
+    // Tipo de Interface         : Mantenimiento de Tabla Padre-Hijo
     //----------------------------------------------------------------------------
     // © 1996-2013 by TNG Software                                      Gndr 5.20
     //----------------------------------------------------------------------------
 
     /// <summary>
-    /// Formulario para Mantenimiento de la Tabla:Equipamiento
+    /// Formulario para Mantenimiento de la Tabla:ControlesReparations
     /// </summary>
-    public partial class Equipamiento : DockContent
+    public partial class ControlesRepa : DockContent
     {
         #region Miembros de la Clase
-            private Bel.EEquipamento m_entEquipamento= null;
+            private Bel.EControlRepa m_entControlRepa= null;
             private StatMsg m_smResult= null;
             private ACLInfo m_aclInfo= null;
             private string m_strSort= "";
@@ -40,7 +40,7 @@ namespace Rivn.Tg
         /// <summary>
         /// Constructor de la clase
         /// </summary>
-        public Equipamiento()
+        public ControlesRepa()
         {
             //
             // Required for Windows Form Designer support
@@ -54,12 +54,11 @@ namespace Rivn.Tg
             App.ApplySecurity(this);
 
             // Iniciamos los objetos de la clase
-            m_smResult= new StatMsg("Equipamiento");
+            m_smResult= new StatMsg("ControlesRepa");
 
             // Fijamos el modo Skin
             xpnlBase.SkinFixed= App.WithSkin;
             frmEdicion.SkinFixed= App.WithSkin;
-            grdDatos.SkinFixed= App.WithSkin;
 
             // Dockeamos el formulario
             ((MainFrame) App.GetMainWindow()).AddContent(this);
@@ -75,10 +74,14 @@ namespace Rivn.Tg
         /// <summary>
         /// Carga del Formulario
         /// </summary>
-        private void Equipamiento_Load(object sender, System.EventArgs e)
+        private void ControlesRepa_Load(object sender, System.EventArgs e)
         {
             // Inicializamos el form
             App.ShowMsg("Inicializando el formulario...");
+
+            Bel.LEControles l_lentControles= Bll.Controles.UpFull(true, ref m_smResult);
+            if (MsgRuts.AnalizeError(this, m_smResult)) return;
+            cmbControl.FillFromStrLEntidad(l_lentControles, "ctl_cod_cod", "ctl_des_des", "deleted");
 
             // Pasamos a modo Operaciones, llenamos la grilla y 
             // damos foco al primer campo
@@ -92,7 +95,7 @@ namespace Rivn.Tg
         /// <summary>
         /// Cierre del formulario
         /// </summary>
-        private void Equipamiento_FormClosed(object sender, FormClosedEventArgs e)
+        private void ControlesRepa_Closed(object sender, System.EventArgs e)
         {
             // Liberamos el menu
             App.LockMenu(false);
@@ -127,7 +130,7 @@ namespace Rivn.Tg
                 if (m_strSort != grdDatos.GridOrder) {
                     // Grabamos el nuevo sort
                     m_strSort= grdDatos.GridOrder;
-                    App.SetStrURegistry(false, "GridFormat", "EquipamientoGrdSort", m_strSort);
+                    App.SetStrURegistry(false, "GridFormat", "ControlesRepaGrdSort", m_strSort);
                     return;
                 }
             }
@@ -138,7 +141,7 @@ namespace Rivn.Tg
                 if (m_strSort != "") {
                     // Quitamos el orden, grabamos y recargamos
                     m_strSort= "";
-                    App.SetStrURegistry(false, "GridFormat", "EquipamientoGrdSort", m_strSort);
+                    App.SetStrURegistry(false, "GridFormat", "ControlesRepaGrdSort", m_strSort);
                     FillGrid();
                     return;
                 }
@@ -151,12 +154,58 @@ namespace Rivn.Tg
         private void GrdColumn_WidthChanged(object sender, EventArgs e)
         {
             // Guardamos el ancho de las columnas
-            App.SetStrURegistry(false, "GridFormat", "EquipamientoGrdWidths", grdDatos.ColWitdhs);
+            App.SetStrURegistry(false, "GridFormat", "ControlesRepaGrdWidths", grdDatos.ColWitdhs);
+        }
+
+        /// <summary>
+        /// Cambio la combo con codigos Padre
+        /// </summary>
+        private void cmbControl_SelectedIndexChanged(object sender, System.EventArgs e)
+        {
+            // Si se selecciono un codigo
+            if (cmbControl.SelectedIndex != -1) {
+                // Llenamos la grilla
+                FillGrid();
+            }
+            else {
+                // Limpiamos la grilla
+                grdDatos.Clear();
+            }
+
+            // Damos foco a la grilla
+            grdDatos.Focus();
         }
 
         //--------------------------------------------------------------
         // Operaciones
         //--------------------------------------------------------------
+
+        /// <summary>
+        /// Llama al formulario de mantenimiento de la tabla Padre
+        /// </summary>
+        private void cmdModPadre_Click(object sender, System.EventArgs e)
+        {
+            // Mostramos el formulario de ABM del padre
+            App.SetACL(m_aclInfo);
+            Controles l_frmPadre= new Controles();
+
+            l_frmPadre.MdiParent= null;
+            l_frmPadre.StartPosition= FormStartPosition.CenterParent;
+            l_frmPadre.ShowDialog(this);
+            App.SetACL(null);
+
+            // Bloqueamos el menu
+            App.LockMenu(true);
+
+            // Recargamos la combo
+            App.ShowMsg("Recargando los datos...");
+
+            Bel.LEControles l_lentControles= Bll.Controles.UpFull(true, ref m_smResult);
+            if (MsgRuts.AnalizeError(this, m_smResult)) return;
+            cmbControl.FillFromStrLEntidad(l_lentControles, "ctl_cod_cod", "ctl_des_des", "deleted");
+            cmbControl.Focus();
+            App.HideMsg();
+        }
 
         /// <summary>
         /// Exporta la grilla en Excel
@@ -165,7 +214,7 @@ namespace Rivn.Tg
         {
             App.ShowMsg("Generando planilla...");
             App.InitAdvance("Excel:");
-            grdDatos.ExportToExcel(false, false, "", "Equipamiento", ref m_smResult);
+            grdDatos.ExportToExcel(false, false, "", "ControlesRepa", ref m_smResult);
             App.EndAdvance();
             App.HideMsg();
         }
@@ -178,7 +227,7 @@ namespace Rivn.Tg
             App.ShowMsg("Imprimiendo datos...");
             App.InitAdvance("Imprimiendo:");
             grdDatos.Print(App.ROParams["EMPRESA"].VStr, App.Programa.Nombre,
-                           "Lista de Equipamiento", "");
+                           "Lista de ControlesRepa", "");
             App.EndAdvance();
             App.HideMsg();
         }
@@ -188,11 +237,15 @@ namespace Rivn.Tg
         /// </summary>
         private void cmdNuevo_Click(object sender, System.EventArgs e)
         {
+            // Si no hay padre -> salimos
+            if (cmbControl.SelectedIndex == -1) return;
+
             // Creamos una nueva entidad, pasamos a modo de edicion y
             // damos foco al primer campo
-            m_entEquipamento= Bel.EEquipamento.NewEmpty();
+            m_entControlRepa= Bel.EControlRepa.NewEmpty();
+            m_entControlRepa.Codctl= cmbControl.SelectedStrCode;
             SwitchTo(FormModes.Edit, GridOps.DontFill);
-            txtCod.Focus();
+            txtNroitem.Focus();
         }
 
         /// <summary>
@@ -207,18 +260,18 @@ namespace Rivn.Tg
             // Obtenemos la entidad del item seleccionado en la grilla
             App.ShowMsg("Recuperando Datos...");
             m_smResult.UilReset("cmdModificar_Click");
-            m_entEquipamento= Bll.Tablas.EqiGet((string) grdDatos.GetMatrixValueObj(l_iRow, 1),
-                                                false, ref m_smResult);
+            m_entControlRepa= Bll.Controles.CrepGet(cmbControl.SelectedStrCode,
+                                                    (int) grdDatos.GetMatrixValueObj(l_iRow, 2),
+                                                    false, ref m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
             // Tenemos la entidad. Pasamos a modo de edicion y damos foco
             // al campo que corresponda
             SwitchTo(FormModes.Edit, GridOps.DontFill);
-            if (m_entEquipamento.EstaBorrada) {
+            if (m_entControlRepa.EstaBorrada) {
                 cmdCancelar.Focus();
             }
             else {
-                txtValor.Focus();
             }
             App.HideMsg();
         }
@@ -233,12 +286,12 @@ namespace Rivn.Tg
                                       "La compactación de la tabla borra en forma " +
                                       "definitiva los items deshabilitados. " +
                                       "¿Confirma la compactación?",
-                                      /*App.Usuario.Usuario +*/ "EquipamientoPurge") == DialogResult.No) return;
+                                      /*App.Usuario.Usuario +*/ "ControlesRepaPurge") == DialogResult.No) return;
 
             // Purgamos la tabla
             App.ShowMsg("Compactando la tabla...");
             m_smResult.UilReset("cmdPurgar_Click");
-            Bll.Tablas.EqiPurge(ref m_smResult);
+            Bll.Controles.CrepPurge(ref m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
             // Terminamos
@@ -273,10 +326,11 @@ namespace Rivn.Tg
             // Realizamos la operacion
             App.ShowMsg("Procesando...");
             m_smResult.UilReset("cmdDesHab_Click");
-            Bll.Tablas.EqiEnabled(m_entEquipamento.EstaBorrada,
-                                  m_entEquipamento.Cod,
-                                  m_entEquipamento.FxdVersion,
-                                  ref m_smResult);
+            Bll.Controles.CrepEnabled(m_entControlRepa.EstaBorrada,
+                                      m_entControlRepa.Codctl,
+                                      m_entControlRepa.Nroitem,
+                                      m_entControlRepa.FxdVersion,
+                                      ref m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
             // Pasamos a modo Operaciones, rellenamos la grilla y 
@@ -292,14 +346,14 @@ namespace Rivn.Tg
         private void cmdGrabar_Click(object sender, System.EventArgs e)
         {
             // Pasamos los datos a la Entidad
-            m_entEquipamento.Cod= txtCod.Text;
-            m_entEquipamento.Des= txtDes.Text;
-            m_entEquipamento.Valor= txtValor.Decimal;
+            m_entControlRepa.Codctl= cmbControl.SelectedStrCode;
+            m_entControlRepa.Nroitem= txtNroitem.Numero;
+            m_entControlRepa.Codrep= txtCodrep.Text;
 
             // Tratamos de grabar la entidad
             App.ShowMsg("Grabando...");
             m_smResult.UilReset("cmdGrabar_Click");
-            Bll.Tablas.EqiSave(m_entEquipamento, ref m_smResult);
+            Bll.Controles.CrepSave(m_entControlRepa, ref m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
             // Pasamos a modo Operaciones, rellenamos la grilla y 
@@ -321,19 +375,20 @@ namespace Rivn.Tg
             // Recuperamos los datos para la grilla
             App.ShowMsg("Recuperando datos...");
             m_smResult.UilReset("FillGrid");
-            Bel.LEEquipamiento l_lentEquipamiento= Bll.Tablas.EqiUpFull(false, ref m_smResult);
+            Bel.LEControlesRepa l_lentControlesRepa= Bll.Controles.CrepFGet(cmbControl.SelectedStrCode,
+                                                                            false, ref m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
             // Asignamos a la grilla
             App.InitAdvance("Cargando:");
             grdDatos.Focus();
-            grdDatos.FillFromLEntidad(l_lentEquipamiento, "deleted");
-            grdDatos.ColWitdhs= App.GetStrURegistry(false, "GridFormat", "EquipamientoGrdWidths", "");
-            grdDatos.GridOrder= App.GetStrURegistry(false, "GridFormat", "EquipamientoGrdSort", "");
+            grdDatos.FillFromLEntidad(l_lentControlesRepa, "deleted");
+            grdDatos.ColWitdhs= App.GetStrURegistry(false, "GridFormat", "ControlesRepaGrdWidths", "");
+            grdDatos.GridOrder= App.GetStrURegistry(false, "GridFormat", "ControlesRepaGrdSort", "");
             App.EndAdvance();
 
             // Fijamos el evento de cambio de ancho de la grilla
-            if (l_lentEquipamiento.Count > 0)
+            if (l_lentControlesRepa.Count > 0)
                 foreach (DataGridColumnStyle l_dcsItem in grdDatos.TableStyles[0].GridColumnStyles)
                     l_dcsItem.WidthChanged += new EventHandler(GrdColumn_WidthChanged);
 
@@ -366,26 +421,24 @@ namespace Rivn.Tg
         private void OperationMode()
         {
             // Deshabilitamos el frame
-            txtCod.NormalDisable= true;
-            txtCod.Enabled= false;
-            txtDes.NormalDisable= true;
-            txtDes.Enabled= false;
-            txtValor.NormalDisable= true;
-            txtValor.Enabled= false;
+            txtNroitem.NormalDisable= true;
+            txtNroitem.Enabled= false;
+            txtCodrep.NormalDisable= true;
+            txtCodrep.Enabled= false;
             cmdCancelar.Enabled= false;
             cmdGrabar.Enabled= false;
             cmdDesHab.Enabled= false;
             cmdHab.Enabled= false;
 
             // Blanqueamos los campos
-            txtCod.Text= "";
-            txtDes.Text= "";
-            txtValor.Decimal= 0;
+            txtNroitem.Numero= 0;
+            txtCodrep.Text= "";
 
             // Habilitamos la grilla y los controles operativos
+            cmbControl.Enabled= true;
+            cmdModPadre.Enabled= true;
             cmdNuevo.Enabled= true;
             cmdModificar.Enabled= true;
-            cmdPurgar.Enabled= true;
             cmdSalir.Enabled= true;
             cmdPrint.Enabled= true;
             cmdExcel.Enabled= true;
@@ -394,7 +447,6 @@ namespace Rivn.Tg
             // Procesamos los comandos ACL
             cmdNuevo.Visible= ((m_aclInfo[0].VStr == "S") || (m_aclInfo[1].VStr == "S"));
             cmdModificar.Visible= ((m_aclInfo[0].VStr == "S") || (m_aclInfo[3].VStr == "S"));
-            cmdPurgar.Visible= ((m_aclInfo[0].VStr == "S") || (m_aclInfo[5].VStr == "S"));
 
             // El ESC sale del formulario
             CancelButton= cmdSalir;
@@ -406,20 +458,19 @@ namespace Rivn.Tg
         private void EditMode()
         {
             // Llenamos los campos a partir de la entidad a editar
-            txtCod.Text= m_entEquipamento.Cod;
-            txtDes.Text= m_entEquipamento.Des;
-            txtValor.Decimal= m_entEquipamento.Valor;
+            txtNroitem.Numero= m_entControlRepa.Nroitem;
+            txtCodrep.Text= m_entControlRepa.Codrep;
 
             // Habilitamos el frame
-            txtCod.NormalDisable= false;
-            txtCod.Enabled= m_entEquipamento.EsNueva;
-            txtDes.NormalDisable= false;
-            txtDes.Enabled= m_entEquipamento.EsNueva;
-            txtValor.NormalDisable= false;
-            txtValor.Enabled= !m_entEquipamento.EstaBorrada;
+            txtNroitem.NormalDisable= false;
+            txtNroitem.Enabled= m_entControlRepa.EsNueva;
+            txtCodrep.NormalDisable= false;
+            txtCodrep.Enabled= m_entControlRepa.EsNueva;
             cmdCancelar.Enabled= true;
-            cmdGrabar.Enabled= !m_entEquipamento.EstaBorrada;
-            cmdDesHab.Enabled= ((!m_entEquipamento.EsNueva) &&(!m_entEquipamento.EstaBorrada));
+            cmdGrabar.Enabled= !m_entControlRepa.EstaBorrada;
+            cmdDesHab.FixedImage= (m_entControlRepa.EstaBorrada) ? FixedGlassButtons.Enable 
+                                                                 : FixedGlassButtons.Disable;
+            cmdDesHab.Enabled= ((!m_entControlRepa.EsNueva) && (!m_entControlRepa.EstaBorrada));
             cmdHab.Enabled= !cmdDesHab.Enabled;
 
             // Procesamos los comandos ACL
@@ -427,9 +478,10 @@ namespace Rivn.Tg
             cmdDesHab.Visible= ((m_aclInfo[0].VStr == "S") || (m_aclInfo[2].VStr == "S"));
 
             // Dehabilitamos la grilla y los controles operativos
+            cmbControl.Enabled= false;
+            cmdModPadre.Enabled= false;
             cmdNuevo.Enabled= false;
             cmdModificar.Enabled= false;
-            cmdPurgar.Enabled= false;
             cmdSalir.Enabled= false;
             cmdPrint.Enabled= false;
             cmdExcel.Enabled= false;

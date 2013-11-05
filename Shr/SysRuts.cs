@@ -44,11 +44,11 @@ namespace Rivn.Shr
                                               Bitmap p_bmpEEgg)
         {
             // Llenamos la información de la ventana About...
-            AboutInfo l_aiData= new AboutInfo();
+            AboutInfo l_aiData = new AboutInfo();
 
-            l_aiData.FrmColor= Color.FromArgb(3);
-            l_aiData.ConIcono= true;
-            l_aiData.ConLogo= true;
+            l_aiData.FrmColor = Color.FromArgb(3);
+            l_aiData.ConIcono = true;
+            l_aiData.ConLogo = true;
             l_aiData.Copyright = String.Format("© Copyright 2003-{0:yy} by TNGS\r\n" +
                                               "www.tngs.com.ar    email: info@\r\n\r\n" +
                                               "Programa de distribución <TODO> como parte de <TODO>.",
@@ -102,7 +102,7 @@ namespace Rivn.Shr
         {
         }
 
-   
+
 
         /// <summary>
         /// Metodo de arranque del programa (llamado final)

@@ -109,18 +109,6 @@
     <Compile Include="Arranque.designer.cs">
       <DependentUpon>Arranque.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controles.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Controles.Designer.cs">
-      <DependentUpon>Controles.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ControlesRepa.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ControlesRepa.Designer.cs">
-      <DependentUpon>ControlesRepa.cs</DependentUpon>
-    </Compile>
     <Compile Include="Estados.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -154,12 +142,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Arranque.resx">
       <DependentUpon>Arranque.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controles.resx">
-      <DependentUpon>Controles.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ControlesRepa.resx">
-      <DependentUpon>ControlesRepa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Estados.resx">
       <DependentUpon>Estados.cs</DependentUpon>
