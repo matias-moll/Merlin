@@ -54,8 +54,14 @@ namespace Rivn.Mv
         #region Eventos Click
         private void gbAceptar_Click(object sender, EventArgs e)
         {
+            if (!ControlesValidos()) MsgRuts.ShowMsg(this,"Ingrese los datos correctamente");
             this.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.Close();
+        }
+
+        private bool ControlesValidos()
+        {
+            return neImporte.IsValid & neLitros.IsValid & cdcEstacion.IsValid;
         }
 
         private void gbCancelar_Click(object sender, EventArgs e)
