@@ -52,8 +52,6 @@ namespace Rivn.Mv
             LlenarComboEstados();
             SwitchTo(ModoForm.Inicio);
 
-
-
         }
 
 
