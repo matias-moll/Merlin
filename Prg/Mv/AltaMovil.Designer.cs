@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AltaMovil));
             this.xPanel1 = new TNGS.NetControls.XPanel();
             this.gbLimpiarTodo = new TNGS.NetControls.GlassButton();
             this.gbCancel = new TNGS.NetControls.GlassButton();
@@ -125,7 +124,7 @@
             this.igEquipamiento.CustomGroupBoxColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
             this.igEquipamiento.FontTitle = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.igEquipamiento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.igEquipamiento.GroupImage = ((System.Drawing.Image)(resources.GetObject("igEquipamiento.GroupImage")));
+            this.igEquipamiento.GroupImage = null;
             this.igEquipamiento.GroupTitle = "Equipamiento";
             this.igEquipamiento.Location = new System.Drawing.Point(712, 29);
             this.igEquipamiento.Name = "igEquipamiento";
@@ -203,7 +202,7 @@
             this.igDatosBasicosMovil.CustomGroupBoxColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
             this.igDatosBasicosMovil.FontTitle = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.igDatosBasicosMovil.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.igDatosBasicosMovil.GroupImage = ((System.Drawing.Image)(resources.GetObject("igDatosBasicosMovil.GroupImage")));
+            this.igDatosBasicosMovil.GroupImage = null;
             this.igDatosBasicosMovil.GroupTitle = "Datos Basicos";
             this.igDatosBasicosMovil.Location = new System.Drawing.Point(12, 29);
             this.igDatosBasicosMovil.Name = "igDatosBasicosMovil";
@@ -213,7 +212,7 @@
             this.igDatosBasicosMovil.ShadowColor = System.Drawing.Color.DarkGray;
             this.igDatosBasicosMovil.ShadowControl = true;
             this.igDatosBasicosMovil.ShadowThickness = 3;
-            this.igDatosBasicosMovil.Size = new System.Drawing.Size(677, 494);
+            this.igDatosBasicosMovil.Size = new System.Drawing.Size(660, 494);
             this.igDatosBasicosMovil.SkinFixed = true;
             this.igDatosBasicosMovil.SkinFullFixed = true;
             this.igDatosBasicosMovil.TabIndex = 23;
