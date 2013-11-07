@@ -36,6 +36,9 @@ namespace Rivn.Ot
             // Creamos el DockManager
             ((MainFrame) App.GetMainWindow()).CreateDockManager();
 
+            // Dockeamos el Principal
+            NuevosControlesReparaciones l_dcNCR = new NuevosControlesReparaciones();
+
             // Liberamos el menu
             App.LockMenu(false);
             App.HideMsg();

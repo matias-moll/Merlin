@@ -20,13 +20,14 @@ namespace Rivn.Ot
 
         #region Miembros y Contructores
         // Variables Miembro
-        private StatMsg m_smResult;
+        private StatMsg m_smResult = new StatMsg("NuevosControlesReparaciones");
 
         // Constructor Inicial
         public NuevosControlesReparaciones()
         {
             InitializeComponent();
-            m_smResult = new StatMsg("NuevosControlesReparaciones");
+            ((MainFrame)App.GetMainWindow()).AddContent(this);
+            // Instanciamos el StatMsg de la clase 
         }
         
         #endregion
@@ -82,6 +83,13 @@ namespace Rivn.Ot
             }
 
         #endregion
+
+        private void NuevosControlesReparaciones_Load(object sender, EventArgs e)
+        {
+            // LLenamos Las patentes que hay en la tabla.
+            LLenarComboPatentesMoviles(cdcPatente);
+        }
+
 
        
       
