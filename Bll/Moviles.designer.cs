@@ -16,7 +16,7 @@ namespace Rivn.Bll
     //----------------------------------------------------------------------------
     //                         TNG Software BLL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 05/11/2013 00:10
+    // Fecha                    : 07/11/2013 16:52
     // Sistema                  : Rivn
     // Clase para Administrar   : Moviles y Tablas Hijas
     //----------------------------------------------------------------------------
@@ -1001,6 +1001,50 @@ namespace Rivn.Bll
         #endregion
 
         #region Metodos para métodos DAL definidos por el usuario
+
+        /// <summary>
+        /// Ejecuta el SP definido por el usuario: getLastFiveMvlCombus
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name= p_strPatente>patente del movil</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        /// <returns>ListaEntidad con los datos solicitados</returns>
+        internal static ListaEntidades MvcogetLastFiveMvlCombus(DBConn p_dbcAccess,
+                                                                string p_strPatente,
+                                                                ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            p_smResult.BllReset("Moviles", "MvcogetLastFiveMvlCombus");
+
+            try {
+                // Llamamos al metodo definido por el usuario
+                DataSet l_dsTemp= new DataSet();
+
+                Dal.MvlCombustible.getLastFiveMvlCombus(p_dbcAccess,
+                                                        p_strPatente,
+                                                        ref l_dsTemp,
+                                                        "Temporal",
+                                                        ref p_smResult);
+                if (p_smResult.NOk) return null;
+
+                // Creamos la LE y Captionamos
+                ListaEntidades l_lentRet= new ListaEntidades(l_dsTemp.Tables["Temporal"]);
+                BllRuts.FillStdCaptions(ref l_lentRet);
+
+                // Devolvemos la LE
+                l_dsTemp.Dispose();
+                return l_lentRet;
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion
+                p_smResult.BllError(l_expData.ToString());
+                return null;
+            }
+            finally {
+                // Terminamos
+                p_smResult.BllPop();
+            }
+        }
         #endregion
 
 
@@ -1373,10 +1417,10 @@ namespace Rivn.Bll
             }
 
             if (p_entMovilEquip.Esfijo.Trim() != "") {
-                if ((p_entMovilEquip.Esfijo != "S ") &&
-                    (p_entMovilEquip.Esfijo != " N ")) {
+                if ((p_entMovilEquip.Esfijo != "S") &&
+                    (p_entMovilEquip.Esfijo != "N")) {
                     // El campo [equipamiento es fijo] tiene opciones
-                    p_smResult.BllWarning("El dato [equipamiento es fijo] sólo admite\r\n\r\n[S ]-  SI\r\n[ N ]-  NO\r\n","");
+                    p_smResult.BllWarning("El dato [equipamiento es fijo] sólo admite\r\n\r\n[S]- SI\r\n[N]- NO\r\n","");
                     return;
                 }
             }
@@ -3947,6 +3991,50 @@ namespace Rivn.Bll
                 DataSet l_dsTemp= new DataSet();
 
                 Dal.MvlKilometros.RemoveAllPatente(p_dbcAccess,
+                                                   ref l_dsTemp,
+                                                   "Temporal",
+                                                   ref p_smResult);
+                if (p_smResult.NOk) return null;
+
+                // Creamos la LE y Captionamos
+                ListaEntidades l_lentRet= new ListaEntidades(l_dsTemp.Tables["Temporal"]);
+                BllRuts.FillStdCaptions(ref l_lentRet);
+
+                // Devolvemos la LE
+                l_dsTemp.Dispose();
+                return l_lentRet;
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion
+                p_smResult.BllError(l_expData.ToString());
+                return null;
+            }
+            finally {
+                // Terminamos
+                p_smResult.BllPop();
+            }
+        }
+
+        /// <summary>
+        /// Ejecuta el SP definido por el usuario: getLastFiveMvlKm
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name= p_strPatente>patente de un movil</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        /// <returns>ListaEntidad con los datos solicitados</returns>
+        internal static ListaEntidades MvkmgetLastFiveMvlKm(DBConn p_dbcAccess,
+                                                            string p_strPatente,
+                                                            ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            p_smResult.BllReset("Moviles", "MvkmgetLastFiveMvlKm");
+
+            try {
+                // Llamamos al metodo definido por el usuario
+                DataSet l_dsTemp= new DataSet();
+
+                Dal.MvlKilometros.getLastFiveMvlKm(p_dbcAccess,
+                                                   p_strPatente,
                                                    ref l_dsTemp,
                                                    "Temporal",
                                                    ref p_smResult);

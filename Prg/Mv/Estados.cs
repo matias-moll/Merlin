@@ -26,6 +26,10 @@ namespace Rivn.Mv
         private Bel.EMovil m_entMovil = null;
         private Bel.LEEstados m_LEEdsEstados = null;
         //Los de abajo podrian no estar hay que ver
+        private ListaEntidades m_LEMvlKms = null;
+        private ListaEntidades m_LEMvlCombus = null;
+        private ListaEntidades m_LEMvlEquip = null;
+        private ListaEntidades m_LEMvlEstados = null;
         private StatMsg m_smResult = null;
         private ACLInfo m_aclInfo = null;
         #endregion
@@ -120,8 +124,8 @@ namespace Rivn.Mv
         {
             if (m_entMovil.MovilesEstado.Count != 0)
             {
-                m_entMovil.MovilesEstado.Sort("mve_fyh_fecha desc");
-                fgMovilEstados.FillFromLEntidad(Dame5PrimerosEstados(m_entMovil.MovilesEstado));
+                //m_entMovil.MovilesEstado.Sort("mve_fyh_fecha desc");
+                fgMovilEstados.FillFromLEntidad(m_LEMvlEstados);
             }
            
         }
@@ -135,7 +139,7 @@ namespace Rivn.Mv
         {
             tePatente.Text = m_entMovil.Patente;
             teModelo.Text = GetModelo(m_entMovil.Modelo);
-            m_entMovil.MovilesEstado.Sort("mve_fyh_fecha desc");
+            m_LEMvlEstados.Sort("mve_fyh_fecha desc");
             cmbEstado.SelectedIndex = -1;
             if (m_entMovil.MovilesEstado.Count != 0)
             {
@@ -152,12 +156,11 @@ namespace Rivn.Mv
         /// </summary>
         private void LlenarGridCombustible()
         {
-            //m_entMovil = m_LEMoviles[ftrMoviles.SelectedNodeAsCDI.StrCode];
+            
             m_smResult.UilReset("LlenarGridCombustible");
             if (m_entMovil.MovilesCombus.Count != 0)
             {
-                m_entMovil.MovilesCombus.Sort("mco_fyh_fecha desc");
-                fgCombustibles.FillFromLEntidad(Dame5PrimerosCombustibles(m_entMovil.MovilesCombus));
+                fgCombustibles.FillFromLEntidad(m_LEMvlCombus);
             }
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
         }
@@ -170,10 +173,10 @@ namespace Rivn.Mv
         {
             m_smResult.UilReset("LlenarGridKms");
             //m_entMovil.MovilesKms = Bll.Moviles.MvkmFGet(m_entMovil.Patente, true, ref m_smResult);
-            if (m_entMovil.MovilesKms.Count != 0)
+            if (m_LEMvlKms.Count != 0)
             {
-                m_entMovil.MovilesKms.Sort("mkm_fyh_fecha desc");
-                fgKm.FillFromLEntidad(Dame5PrimerosKms(m_entMovil.MovilesKms));
+
+                fgKm.FillFromLEntidad(m_LEMvlKms);
             }
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
         }
@@ -186,9 +189,9 @@ namespace Rivn.Mv
         private void LlenarGridEquipamiento()
         {
             m_smResult.UilReset("LlenarGridEquipamiento");
-            if (m_entMovil.MovilesEquip.Count != 0)
+            if (m_LEMvlEquip.Count != 0)
             {
-                fgEquipamiento.FillFromLEntidad(m_entMovil.MovilesEquip);
+                fgEquipamiento.FillFromLEntidad(m_LEMvlEquip);
             }
             MsgRuts.AnalizeError(this, m_smResult);
         }
@@ -215,8 +218,11 @@ namespace Rivn.Mv
         /// <param name="e"></param>
         private void ftrMoviles_AfterSelect(object sender, TreeViewEventArgs e)
         {
-
-            m_entMovil = Bll.Moviles.Get(ftrMoviles.SelectedNodeAsCDI.StrCode, true, ref m_smResult);
+            m_entMovil = m_LEMoviles[ftrMoviles.SelectedNodeAsCDI.StrCode];
+            m_LEMvlCombus = Bll.Moviles.fGetLastFiveMvlCombus(m_entMovil.Patente,true,ref m_smResult);
+            m_LEMvlEstados = Bll.Moviles.fGetLastFiveMvlEstados(m_entMovil.Patente, true, ref m_smResult);
+            m_LEMvlEquip = Bll.Moviles.MveqFGet(m_entMovil.Patente, true, ref m_smResult);
+            m_LEMvlKms = Bll.Moviles.fGetLastFiveMvlKms(m_entMovil.Patente, true, ref m_smResult);
             SwitchTo(ModoForm.Edicion, OpGrid.Todas);
         }
 
@@ -406,6 +412,7 @@ namespace Rivn.Mv
         /// </summary>
         private void ModoEdicion()
         {
+
             LlenarDatos();
             LimpiarEditables();
             gbModificarMovil.Enabled = true;
@@ -547,6 +554,11 @@ namespace Rivn.Mv
 
 
         #endregion
+
+        private void ftrMoviles_DoubleClick(object sender, EventArgs e)
+        {
+            SwitchTo(ModoForm.Edicion, OpGrid.Todas);
+        }
 
 
 

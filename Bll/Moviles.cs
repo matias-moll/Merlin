@@ -38,6 +38,137 @@ namespace Rivn.Bll
         #region Metodos publicos de la clase
 
         /// <summary>
+        /// Me devuelve una listaEntidad con los 5 ultimos Combustibles de un movil
+        /// </summary>
+        /// <param name="p_strPatente">Patente</param>
+        /// <param name="p_bOnlyActive"></param>
+        /// <param name="p_smResult"></param>
+        /// <returns></returns>
+        public static ListaEntidades fGetLastFiveMvlCombus(string p_strPatente,
+                                                bool p_bOnlyActive,
+                                                ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            ListaEntidades l_lentData;
+            DBConn l_dbcAccess = null;
+            p_smResult.BllReset("Estados", "fGetLastFiveMvlCombus");
+
+            try
+            {
+                // Obtenemos una conexion
+                l_dbcAccess = DBRuts.GetConection(Connections.Dat);
+
+                // Pedimos los registros de la tabla
+                l_lentData = Bll.Moviles.MvcogetLastFiveMvlCombus(l_dbcAccess,p_strPatente, ref p_smResult);
+            }
+            catch (Exception l_expData)
+            {
+                // Error en la operacion
+                p_smResult.BllError(l_expData.ToString());
+                return null;
+            }
+            finally
+            {
+                // Si pude abrir la conexion -> la cierro
+                if (l_dbcAccess != null) l_dbcAccess.Close();
+                p_smResult.BllPop();
+            }
+
+            return l_lentData;
+
+ 
+        
+        }
+
+        /// <summary>
+        /// Me devuelve los ultimos 5 kms de un movil
+        /// </summary>
+        /// <param name="p_strPatente"></param>
+        /// <param name="p_bOnlyActive"></param>
+        /// <param name="p_smResult"></param>
+        /// <returns></returns>
+        public static ListaEntidades fGetLastFiveMvlKms(string p_strPatente,
+                                  bool p_bOnlyActive,
+                                  ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            ListaEntidades l_lentData;
+            DBConn l_dbcAccess = null;
+            p_smResult.BllReset("Estados", "fGetLastFiveMvlKms");
+
+            try
+            {
+                // Obtenemos una conexion
+                l_dbcAccess = DBRuts.GetConection(Connections.Dat);
+
+                // Pedimos los registros de la tabla
+                l_lentData = Bll.Moviles.MvkmgetLastFiveMvlKm(l_dbcAccess, p_strPatente, ref p_smResult);
+            }
+            catch (Exception l_expData)
+            {
+                // Error en la operacion
+                p_smResult.BllError(l_expData.ToString());
+                return null;
+            }
+            finally
+            {
+                // Si pude abrir la conexion -> la cierro
+                if (l_dbcAccess != null) l_dbcAccess.Close();
+                p_smResult.BllPop();
+            }
+
+            return l_lentData;
+
+
+
+        }
+
+
+        /// <summary>
+        /// Devuelve los 5 ultimos estados de un movil
+        /// </summary>
+        /// <param name="p_strPatente"></param>
+        /// <param name="p_bOnlyActive"></param>
+        /// <param name="p_smResult"></param>
+        /// <returns></returns>
+        public static ListaEntidades fGetLastFiveMvlEstados(string p_strPatente,
+                                          bool p_bOnlyActive,
+                                          ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            ListaEntidades l_lentData;
+            DBConn l_dbcAccess = null;
+            p_smResult.BllReset("Estados", "fGetLastFiveMvlEstados");
+
+            try
+            {
+                // Obtenemos una conexion
+                l_dbcAccess = DBRuts.GetConection(Connections.Dat);
+
+                // Pedimos los registros de la tabla
+                l_lentData = Bll.Moviles.MvesgetLastFiveMvlEstads(l_dbcAccess, p_strPatente, ref p_smResult);
+            }
+            catch (Exception l_expData)
+            {
+                // Error en la operacion
+                p_smResult.BllError(l_expData.ToString());
+                return null;
+            }
+            finally
+            {
+                // Si pude abrir la conexion -> la cierro
+                if (l_dbcAccess != null) l_dbcAccess.Close();
+                p_smResult.BllPop();
+            }
+
+            return l_lentData;
+
+
+
+        }
+
+
+        /// <summary>
         /// Agrega un ROOT a un tree
         /// </summary>
         /// <param name="p_lentData">ListaEntidad de datos</param>

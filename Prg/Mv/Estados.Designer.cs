@@ -488,6 +488,7 @@ namespace Rivn.Mv
             this.ftrMoviles.Size = new System.Drawing.Size(171, 190);
             this.ftrMoviles.TabIndex = 0;
             this.ftrMoviles.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.ftrMoviles_AfterSelect);
+            this.ftrMoviles.DoubleClick += new System.EventHandler(this.ftrMoviles_DoubleClick);
             // 
             // Estados
             // 
