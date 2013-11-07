@@ -76,7 +76,7 @@ namespace Rivn.Ot
                 // reseteamos al statmsg
                 m_smResult.UilReset("rbControles_CheckedChanged");
                 //llenamos la lista con los controles de la tabla
-                cdlControlesReparaciones.FillFromStrLEntidad(Bll.Controles.UpFull(true, ref m_smResult), "ctl_cod_cod", "ctl_des_des", "deleted");
+                cdlControlesReparaciones.FillFromStrLEntidad(Bll.Tablas.RepUpFull(true, ref m_smResult), "rep_cod_cod", "rep_des_des", "deleted");
                 // chequeamos que haya salido todo bien
                 if (MsgRuts.AnalizeError(this, m_smResult)) return;
             }
