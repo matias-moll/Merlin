@@ -31,7 +31,7 @@ namespace Rivn.Mv
         public AltaMovil()
         {
             InitializeComponent();
-            ((MainFrame)App.GetMainWindow()).AddContent(this);
+      
             m_stResult = new StatMsg("AltaMovil");
 
             //creamos la nueva entidad VACIA

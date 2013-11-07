@@ -68,7 +68,7 @@ namespace Rivn.Mv
         {
             m_smResult.UilReset("TraerInfoBase");
             m_LEMoviles = Bll.Moviles.UpFull(true, ref m_smResult);
-            MsgRuts.AnalizeError(this, m_smResult);
+            if (MsgRuts.AnalizeError(this, m_smResult)) return;
         }
 
 
@@ -80,7 +80,7 @@ namespace Rivn.Mv
         {
             m_smResult.UilReset("TraerInfoEstados");
             m_LEEdsEstados = Bll.Tablas.EdsUpFull(true, ref m_smResult);
-            MsgRuts.AnalizeError(this, m_smResult);
+            if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
         }
 
@@ -94,7 +94,7 @@ namespace Rivn.Mv
 
             cmbEstado.FillFromStrLEntidad(m_LEEdsEstados, "est_rcd_cod", "est_des_des", "deleted");
 
-            MsgRuts.AnalizeError(this, m_smResult);
+            if (MsgRuts.AnalizeError(this, m_smResult)) return;
         }
 
 
@@ -107,7 +107,7 @@ namespace Rivn.Mv
             ListaEntidades l_LEMovilesTree = Bll.Moviles.fArmarTree(true, ref m_smResult);
             ftrMoviles.FillFromStrLEntidad(l_LEMovilesTree, "mov_ecd_patente", "mov_des_des", 2, "Nivel","Imagen", "Imagen");
             ftrMoviles.ExpandAll();
-            MsgRuts.AnalizeError(this, m_smResult);
+            if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
 
         }
@@ -118,13 +118,12 @@ namespace Rivn.Mv
         /// </summary>
         private void LlenarGridEstados()
         {
-            m_smResult.UilReset("LlenarGridEstados");
             if (m_entMovil.MovilesEstado.Count != 0)
             {
                 m_entMovil.MovilesEstado.Sort("mve_fyh_fecha desc");
                 fgMovilEstados.FillFromLEntidad(Dame5PrimerosEstados(m_entMovil.MovilesEstado));
             }
-            MsgRuts.AnalizeError(this, m_smResult);
+           
         }
 
 
@@ -136,7 +135,12 @@ namespace Rivn.Mv
         {
             tePatente.Text = m_entMovil.Patente;
             teModelo.Text = GetModelo(m_entMovil.Modelo);
-
+            m_entMovil.MovilesEstado.Sort("mve_fyh_fecha desc");
+            cmbEstado.SelectedIndex = -1;
+            if (m_entMovil.MovilesEstado.Count != 0)
+            {
+                cmbEstado.SelectedStrCode = m_entMovil.MovilesEstado[0].Codestado;
+            }
             //TODO: Cambiar para sacar del historico de estados
             //cmbEstado.SelectedStrCode =
         }
@@ -155,7 +159,7 @@ namespace Rivn.Mv
                 m_entMovil.MovilesCombus.Sort("mco_fyh_fecha desc");
                 fgCombustibles.FillFromLEntidad(Dame5PrimerosCombustibles(m_entMovil.MovilesCombus));
             }
-            MsgRuts.AnalizeError(this, m_smResult);
+            if (MsgRuts.AnalizeError(this, m_smResult)) return;
         }
 
 
@@ -171,7 +175,7 @@ namespace Rivn.Mv
                 m_entMovil.MovilesKms.Sort("mkm_fyh_fecha desc");
                 fgKm.FillFromLEntidad(Dame5PrimerosKms(m_entMovil.MovilesKms));
             }
-            MsgRuts.AnalizeError(this, m_smResult);
+            if (MsgRuts.AnalizeError(this, m_smResult)) return;
         }
 
 
@@ -222,6 +226,7 @@ namespace Rivn.Mv
         private void gbModificarMovil_Click(object sender, EventArgs e)
         {
             AltaMovil l_formAltaMovil = new AltaMovil(m_entMovil, true);
+            ((MainFrame)App.GetMainWindow()).AddContent(l_formAltaMovil);
             SwitchTo(ModoForm.Edicion, OpGrid.Todas);
         }
 
@@ -264,7 +269,7 @@ namespace Rivn.Mv
             if ((l_objCodigo == DBNull.Value) || (l_objCodigo == null))
                     return;
             Bll.Moviles.MveqRemove(m_entMovil.Patente, (string)l_objCodigo, m_entMovil.FxdVersion, ref m_smResult);
-            MsgRuts.AnalizeError(this, m_smResult);
+            if (MsgRuts.AnalizeError(this, m_smResult)) return;
             SwitchTo(ModoForm.Edicion, OpGrid.Equip);
 
 
@@ -274,6 +279,7 @@ namespace Rivn.Mv
         private void gbNuevoMovil_Click(object sender, EventArgs e)
         {
             AltaMovil l_formAltaMovil = new AltaMovil();
+            ((MainFrame)App.GetMainWindow()).AddContent(l_formAltaMovil);
             SwitchTo(ModoForm.Inicio);
             
         }
@@ -296,7 +302,7 @@ namespace Rivn.Mv
             l_EMComMovilCombustible.Importe = l_frmMovilCombustible.Importe;
             Bll.Moviles.MvcoSave(l_EMComMovilCombustible, ref m_smResult);
             SwitchTo(ModoForm.Edicion, OpGrid.Combus);
-            MsgRuts.AnalizeError(this, m_smResult);
+            if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
 
         }
@@ -317,7 +323,7 @@ namespace Rivn.Mv
             l_EMKmMovilKm.Patente = tePatente.Text;
             Bll.Moviles.MvkmSave(l_EMKmMovilKm, ref m_smResult);
             SwitchTo(ModoForm.Edicion, OpGrid.Km);
-            MsgRuts.AnalizeError(this,m_smResult);
+            if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
 
 
@@ -426,7 +432,9 @@ namespace Rivn.Mv
         {
 
             TraerInfoBase();
+            TraerInfoEstados();
             LlenarTreeMoviles();
+            LlenarComboEstados();
             igMoviles.Enabled = true;
             igKilometros.Enabled = false;
             igEquipamiento.Enabled = false;
@@ -528,9 +536,11 @@ namespace Rivn.Mv
         {
             m_smResult.UilReset("GetModelo");
             EModelo l_EmodModelo =  Bll.Tablas.ModGet(p_strCodModelo, true, ref m_smResult);
+            if (MsgRuts.AnalizeError(this, m_smResult)) return null;
             string l_strModelo = l_EmodModelo.Des;
+           
             return l_strModelo;
-            MsgRuts.AnalizeError(this, m_smResult);
+            
         }
 
 
