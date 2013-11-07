@@ -140,6 +140,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AltaMovil.resx">
+      <DependentUpon>AltaMovil.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Arranque.resx">
       <DependentUpon>Arranque.cs</DependentUpon>
     </EmbeddedResource>
