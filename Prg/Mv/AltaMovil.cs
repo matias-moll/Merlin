@@ -55,8 +55,6 @@ namespace Rivn.Mv
             //nos guardamos la entidad a Updatear en la variable miembro Movil
             m_entMovil = p_entMovil;
 
-            
-
             //disbleamos los controles que no tienen que estar activos
             neKilometros.Enabled = false;
             tePatente.Enabled = false;
@@ -64,7 +62,6 @@ namespace Rivn.Mv
             teNroMotor.Enabled = false;
             gbCancel.Enabled = false;
             igDatosBasicosMovil.Enabled = p_bImgHabilitado;
-            
 
             //recuperamos la LE de equipamientos del movil
             Bel.LEMovilesEquip l_lentMovEquipamiento = p_entMovil.MovilesEquip;
