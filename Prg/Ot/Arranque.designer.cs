@@ -18,7 +18,7 @@ namespace Rivn.Ot
     //----------------------------------------------------------------------------
     //                         TNG Software PRG Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 05/11/2013 00:08
+    // Fecha                    : 06/11/2013 22:39
     // Sistema                  : Rivn
     // Programa                 : Ordenes de Trabajo
     //----------------------------------------------------------------------------
@@ -102,6 +102,9 @@ namespace Rivn.Ot
             }
 
             try {
+                // Registramos la persistencia de datos desde Shr
+                PrgRuts.RegisterPersistency();
+
                 // Creamos la ventana MDI de la aplicacion
                 MainFrame l_frmMain= new MainFrame(MFSizes.MF1024x768, 0, false, true);
 
