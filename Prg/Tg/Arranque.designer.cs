@@ -18,7 +18,7 @@ namespace Rivn.Tg
     //----------------------------------------------------------------------------
     //                         TNG Software PRG Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 04/11/2013 16:14
+    // Fecha                    : 05/11/2013 00:08
     // Sistema                  : Rivn
     // Programa                 : Tablas Generales
     //----------------------------------------------------------------------------
@@ -102,9 +102,6 @@ namespace Rivn.Tg
             }
 
             try {
-                // Registramos la persistencia de datos desde Shr
-                PrgRuts.RegisterPersistency();
-
                 // Creamos la ventana MDI de la aplicacion
                 MainFrame l_frmMain= new MainFrame(MFSizes.MF1024x768, 0, false, true);
 
@@ -151,13 +148,24 @@ namespace Rivn.Tg
                 // *************************************************
                 // ** Menu: Tablas Generales
                 // **
-                case "EQUI"          : {new Equipamiento().Show(); return;}
+                case "EQUI"          : {new Equipamientos().Show(); return;}
                 // **
                 case "CAT"           : {new Categorias().Show(); return;}
                 // **
                 case "MOD"           : {new Modelos().Show(); return;}
                 // **
                 case "MAR"           : {new Marcas().Show(); return;}
+                // **
+                case "ESTA"          : {new Estaciones().Show(); return;}
+                // **
+                case "ESTD"          : {new Estados().Show(); return;}
+
+                // *************************************************
+                // ** Menu: Controles y Reparaciones
+                // **
+                case "REP"           : {new Reparaciones().Show(); return;}
+                // **
+                case "CNRE"          : {new ControlesRepa().Show(); return;}
 
                 // *************************************************
                 // ** Ejecución automática al final del programa

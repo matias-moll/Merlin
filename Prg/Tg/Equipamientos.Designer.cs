@@ -8,7 +8,7 @@ using WeifenLuo.WinFormsUI.Docking;
 
 namespace Rivn.Tg
 {
-    public partial class Equipamiento : DockContent
+    public partial class Equipamientos : DockContent
     {
         private TNGS.NetControls.XPanel xpnlBase;
         private TNGS.NetControls.GlassButton cmdSalir;
@@ -310,9 +310,9 @@ namespace Rivn.Tg
             // 
             // grdDatos
             // 
-            this.grdDatos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.grdDatos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.grdDatos.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.grdDatos.CaptionFilterColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(206)))), ((int)(((byte)(72)))));
             this.grdDatos.CaptionVisible = false;
@@ -354,8 +354,8 @@ namespace Rivn.Tg
             // 
             // frmEdicion
             // 
-            this.frmEdicion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.frmEdicion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.frmEdicion.BackgroundColor = System.Drawing.SystemColors.Control;
             this.frmEdicion.BackgroundGradientColor = System.Drawing.SystemColors.Control;
             this.frmEdicion.BackgroundGradientMode = TNGS.NetControls.ImgGroup.GroupBoxGradientMode.ForwardDiagonal;
@@ -450,7 +450,7 @@ namespace Rivn.Tg
             this.txtValor.TabIndex = 8;
             this.txtValor.Text = "0.00";
             // 
-            // Equipamiento
+            // Equipamientos
             // 
             this.AllowEndUserDocking = false;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -460,7 +460,7 @@ namespace Rivn.Tg
             this.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
-            this.Name = "Equipamiento";
+            this.Name = "Equipamientos";
             this.ShowHint = WeifenLuo.WinFormsUI.Docking.DockState.Document;
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;

@@ -14,7 +14,7 @@ namespace Rivn.Bel
     //----------------------------------------------------------------------------
     //                         TNG Software BEL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 04/11/2013 18:24
+    // Fecha                    : 05/11/2013 00:10
     // Sistema                  : Rivn
     // Clase para Administrar   : Tablas de Rivn.
     //----------------------------------------------------------------------------
@@ -763,11 +763,11 @@ namespace Rivn.Bel
     }
     #endregion
 
-    #region Lista-Entidad: Equipamiento
+    #region Lista-Entidad: Equipamientos
     /// <summary>
-    /// Clase que representa la Lista-Entidad: Equipamiento
+    /// Clase que representa la Lista-Entidad: Equipamientos
     /// </summary>
-    public sealed partial class LEEquipamiento : ListaEntidades
+    public sealed partial class LEEquipamientos : ListaEntidades
     {
         #region Constructores
         /// <summary>
@@ -775,7 +775,7 @@ namespace Rivn.Bel
         /// Llena la lista-entidad a partir de una Tabla: Equipamiento
         /// </summary>
         /// <param name="p_dtDatos">DataTable con los datos de la entidad</param>
-        public LEEquipamiento(DataTable p_dtDatos) :
+        public LEEquipamientos(DataTable p_dtDatos) :
             base(p_dtDatos)
         {
         }
@@ -785,7 +785,7 @@ namespace Rivn.Bel
         /// Llena la lista-entidad a partir de un XML
         /// </summary>
         /// <param name="p_dtDatos">DataTable con los datos de la entidad</param>
-        public LEEquipamiento(string p_strXMLData) :
+        public LEEquipamientos(string p_strXMLData) :
             base(EEquipamento.Struct)
         {
             // Creamos el documento XML
@@ -804,7 +804,7 @@ namespace Rivn.Bel
         /// correspondiente a una entidad
         /// </summary>
         /// <param name="p_dcEstructura">Columnas de la estructura</param>
-        private LEEquipamiento(DataColumn[] p_dcEstructura) :
+        private LEEquipamientos(DataColumn[] p_dcEstructura) :
             base(p_dcEstructura)
         {
         }
@@ -816,12 +816,12 @@ namespace Rivn.Bel
         //---------------------------------------------------------------
 
         /// <summary>
-        /// Construye una lista-entidad vacía: Equipamiento
+        /// Construye una lista-entidad vacía: Equipamientos
         /// </summary>
         /// <returns>Lista-Entidad vacia: Equipamiento</returns>
-        public static LEEquipamiento NewEmpty()
+        public static LEEquipamientos NewEmpty()
         {
-            return new LEEquipamiento(EEquipamento.Struct);
+            return new LEEquipamientos(EEquipamento.Struct);
         }
 
         /// <summary>
@@ -868,7 +868,7 @@ namespace Rivn.Bel
         }
 
         /// <summary>
-        /// Devuelve el enumerador de la lista-entidades: Equipamiento
+        /// Devuelve el enumerador de la lista-entidades: Equipamientos
         /// </summary>
         /// <returns>Enumerador de las entidades en la lista</returns>
         public new IEnumerator GetEnumerator() 
@@ -882,7 +882,7 @@ namespace Rivn.Bel
         }
 
         /// <summary>
-        /// Devuelve la lista entidad como un array de entidades: Equipamiento
+        /// Devuelve la lista entidad como un array de entidades: Equipamientos
         /// </summary>
         /// <returns>Array de entidades</returns>
         public ArrayList GetAsArray()
@@ -897,13 +897,13 @@ namespace Rivn.Bel
         }
 
         /// <summary>
-        /// Devuelve la lista entidad como una LET: Equipamiento
+        /// Devuelve la lista entidad como una LET: Equipamientos
         /// </summary>
         /// <returns>Lista Entidad Tipada</returns>
-        public LETEquipamiento GetAsLET()
+        public LETEquipamientos GetAsLET()
         {
             // Llenamos la lista tipada
-            LETEquipamiento l_lentRet= new LETEquipamiento();
+            LETEquipamientos l_lentRet= new LETEquipamientos();
 
             foreach (EEquipamento l_entItem in this)
                 l_lentRet.Add(l_entItem);
@@ -972,7 +972,7 @@ namespace Rivn.Bel
             get {
                 // Construimos el XML
                 XmlDocument l_xdocData= new XmlDocument();
-                XmlNode l_xndEntidad= l_xdocData.CreateNode(XmlNodeType.Element, "LEEquipamiento", null);
+                XmlNode l_xndEntidad= l_xdocData.CreateNode(XmlNodeType.Element, "LEEquipamientos", null);
 
                 foreach (EEquipamento l_entDExtra in this)
                     l_xndEntidad.AppendChild(l_xdocData.ImportNode(l_entDExtra.XMLEncode.ChildNodes[0], false));
@@ -985,11 +985,11 @@ namespace Rivn.Bel
     }
     #endregion
 
-    #region Lista-Entidad-Tipada: Equipamiento
+    #region Lista-Entidad-Tipada: Equipamientos
     /// <summary>
-    /// Clase que representa la Lista-Entidad-Tipada: Equipamiento
+    /// Clase que representa la Lista-Entidad-Tipada: Equipamientos
     /// </summary>
-    public sealed partial class LETEquipamiento : LET<EEquipamento>
+    public sealed partial class LETEquipamientos : LET<EEquipamento>
     {
         #region Metodos publicos de la clase
         //---------------------------------------------------------------
@@ -997,13 +997,13 @@ namespace Rivn.Bel
         //---------------------------------------------------------------
 
         /// <summary>
-        /// Devuelve la lista entidad tipada como una LE: Equipamiento
+        /// Devuelve la lista entidad tipada como una LE: Equipamientos
         /// </summary>
         /// <returns>Lista Entidad</returns>
-        public LEEquipamiento GetAsLE()
+        public LEEquipamientos GetAsLE()
         {
             // Llenamos la lista
-            LEEquipamiento l_lentRet= LEEquipamiento.NewEmpty();
+            LEEquipamientos l_lentRet= LEEquipamientos.NewEmpty();
 
             foreach (EEquipamento l_entItem in this)
                 l_lentRet.AddEntity(l_entItem);

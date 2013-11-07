@@ -32,6 +32,21 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Bohman.MonthCalendar.520">
+      <HintPath>..\..\..\Ambiente0520\DNet0520\Release_Uil\Bohman.MonthCalendar.520.dll</HintPath>
+    </Reference>
+    <Reference Include="MikeHankey.XPControlLib.520">
+      <HintPath>..\..\..\Ambiente0520\DNet0520\Release_Uil\MikeHankey.XPControlLib.520.dll</HintPath>
+    </Reference>
+    <Reference Include="MS.TabStripControlLibrary.520">
+      <HintPath>..\..\..\Ambiente0520\DNet0520\Release_Uil\MS.TabStripControlLibrary.520.dll</HintPath>
+    </Reference>
+    <Reference Include="netchartdir">
+      <HintPath>..\..\..\Ambiente0520\DNet0520\Release_Uil\netchartdir.dll</HintPath>
+    </Reference>
+    <Reference Include="PS.TaskDialog.520">
+      <HintPath>..\..\..\Ambiente0520\DNet0520\Release_Uil\PS.TaskDialog.520.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -41,56 +56,28 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="Bohman.MonthCalendar.520">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Ambiente0520\DNet0520\Release_Uil\Bohman.MonthCalendar.520.dll</HintPath>
-    </Reference>
-    <Reference Include="MikeHankey.XPControlLib.520">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>T:\Ambiente 05.20\DNet0520\Release_Uil\MikeHankey.XPControlLib.520.dll</HintPath>
-    </Reference>
-    <Reference Include="MS.TabStripControlLibrary.520">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>T:\Ambiente 05.20\DNet0520\Release_Uil\MS.TabStripControlLibrary.520.dll</HintPath>
-    </Reference>
-    <Reference Include="netchartdir">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>T:\Ambiente 05.20\DNet0520\Release_Uil\netchartdir.dll</HintPath>
-    </Reference>
-    <Reference Include="PS.TaskDialog.520">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>T:\Ambiente 05.20\DNet0520\Release_Uil\PS.TaskDialog.520.dll</HintPath>
-    </Reference>
     <Reference Include="TNGS.NetApp.520">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>T:\Ambiente 05.20\DNet0520\Release_Uil\TNGS.NetApp.520.dll</HintPath>
+      <HintPath>..\..\..\Ambiente0520\DNet0520\Release_Uil\TNGS.NetApp.520.dll</HintPath>
     </Reference>
     <Reference Include="TNGS.NetAppBll.520">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>T:\Ambiente 05.20\DNet0520\Release_Uil\TNGS.NetAppBll.520.dll</HintPath>
+      <HintPath>..\..\..\Ambiente0520\DNet0520\Release_Uil\TNGS.NetAppBll.520.dll</HintPath>
     </Reference>
     <Reference Include="TNGS.NetControls.520">
-      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\Ambiente0520\DNet0520\Release_Uil\TNGS.NetControls.520.dll</HintPath>
     </Reference>
     <Reference Include="TNGS.NetIPlugin.520">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>T:\Ambiente 05.20\DNet0520\Release_Uil\TNGS.NetIPlugin.520.dll</HintPath>
+      <HintPath>..\..\..\Ambiente0520\DNet0520\Release_Uil\TNGS.NetIPlugin.520.dll</HintPath>
     </Reference>
     <Reference Include="TNGS.NetOffice.520">
-      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\Ambiente0520\DNet0520\Release_Uil\TNGS.NetOffice.520.dll</HintPath>
     </Reference>
     <Reference Include="TNGS.NetRoutines.520">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Ambiente0520\DNet0520\Release_Bel\TNGS.NetRoutines.520.dll</HintPath>
+      <HintPath>..\..\..\Ambiente0520\DNet0520\Release_Uil\TNGS.NetRoutines.520.dll</HintPath>
     </Reference>
     <Reference Include="TNGS.NetSocket.520">
-      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\Ambiente0520\DNet0520\Release_Uil\TNGS.NetSocket.520.dll</HintPath>
     </Reference>
     <Reference Include="WeifenLuo.WinFormsUI.Docking.520">
-      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\Ambiente0520\DNet0520\Release_Uil\WeifenLuo.WinFormsUI.Docking.520.dll</HintPath>
     </Reference>
   </ItemGroup>
@@ -156,11 +143,11 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Bel\BEL.csproj">
-      <Project>{7969c80f-3e89-4e03-a01b-776686783353}</Project>
-      <Name>BEL</Name>
+    <ProjectReference Include="..\..\Shr\Shr.csproj">
+      <Project>{4ee82ba9-6046-419b-87af-014443954416}</Project>
+      <Name>Shr</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Bll\BLL.csproj">
+  </ItemGroup>
       <Project>{58ec503e-05dd-4f0f-b55a-318733142682}</Project>
       <Name>BLL</Name>
     </ProjectReference>

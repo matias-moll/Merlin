@@ -18,7 +18,7 @@ namespace Rivn.Mv
     //----------------------------------------------------------------------------
     //                         TNG Software PRG Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 04/11/2013 16:14
+    // Fecha                    : 05/11/2013 00:08
     // Sistema                  : Rivn
     // Programa                 : Moviles
     //----------------------------------------------------------------------------
@@ -102,9 +102,6 @@ namespace Rivn.Mv
             }
 
             try {
-                // Registramos la persistencia de datos desde Shr
-                PrgRuts.RegisterPersistency();
-
                 // Creamos la ventana MDI de la aplicacion
                 MainFrame l_frmMain= new MainFrame(MFSizes.MF1024x768, 0, false, true);
 

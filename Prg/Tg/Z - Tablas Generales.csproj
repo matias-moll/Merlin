@@ -96,11 +96,23 @@
     <Compile Include="Categorias.Designer.cs">
       <DependentUpon>Categorias.cs</DependentUpon>
     </Compile>
-    <Compile Include="Equipamiento.cs">
+    <Compile Include="Controles y Reparaciones\Controles.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Equipamiento.Designer.cs">
-      <DependentUpon>Equipamiento.cs</DependentUpon>
+    <Compile Include="Controles y Reparaciones\Controles.Designer.cs">
+      <DependentUpon>Controles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controles y Reparaciones\ControlesRepa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controles y Reparaciones\ControlesRepa.Designer.cs">
+      <DependentUpon>ControlesRepa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Equipamientos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Equipamientos.Designer.cs">
+      <DependentUpon>Equipamientos.cs</DependentUpon>
     </Compile>
     <Compile Include="Estaciones.cs">
       <SubType>Form</SubType>
@@ -131,10 +143,10 @@
       <DependentUpon>PrgRuts.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Reparaciones.cs">
+    <Compile Include="Controles y Reparaciones\Reparaciones.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Reparaciones.Designer.cs">
+    <Compile Include="Controles y Reparaciones\Reparaciones.Designer.cs">
       <DependentUpon>Reparaciones.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Arranque.resx">
@@ -143,8 +155,14 @@
     <EmbeddedResource Include="Categorias.resx">
       <DependentUpon>Categorias.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Equipamiento.resx">
-      <DependentUpon>Equipamiento.cs</DependentUpon>
+    <EmbeddedResource Include="Controles y Reparaciones\Controles.resx">
+      <DependentUpon>Controles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controles y Reparaciones\ControlesRepa.resx">
+      <DependentUpon>ControlesRepa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Equipamientos.resx">
+      <DependentUpon>Equipamientos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Estaciones.resx">
       <DependentUpon>Estaciones.cs</DependentUpon>
@@ -168,7 +186,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Reparaciones.resx">
+    <EmbeddedResource Include="Controles y Reparaciones\Reparaciones.resx">
       <DependentUpon>Reparaciones.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
@@ -196,6 +214,7 @@
       <Name>Shr</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

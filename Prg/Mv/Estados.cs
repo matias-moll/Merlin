@@ -119,10 +119,10 @@ namespace Rivn.Mv
         private void LlenarGridEstados()
         {
             m_smResult.UilReset("LlenarGridEstados");
-            if (m_entMovil.MovilesEstado != null)
+            if (m_entMovil.MovilesEstado.Count != 0)
             {
-                m_entMovil.MovilesEstado.Sort("desc mve_fyh_fecha");
-                fgCombustibles.FillFromLEntidad(Dame5PrimerosEstados(m_entMovil.MovilesEstado));
+                m_entMovil.MovilesEstado.Sort("mve_fyh_fecha desc");
+                fgMovilEstados.FillFromLEntidad(Dame5PrimerosEstados(m_entMovil.MovilesEstado));
             }
             MsgRuts.AnalizeError(this, m_smResult);
         }
@@ -148,10 +148,11 @@ namespace Rivn.Mv
         /// </summary>
         private void LlenarGridCombustible()
         {
+            //m_entMovil = m_LEMoviles[ftrMoviles.SelectedNodeAsCDI.StrCode];
             m_smResult.UilReset("LlenarGridCombustible");
-            if (m_entMovil.MovilesCombus != null)
+            if (m_entMovil.MovilesCombus.Count != 0)
             {
-                m_entMovil.MovilesCombus.Sort("desc mco_fyh_fecha");
+                m_entMovil.MovilesCombus.Sort("mco_fyh_fecha desc");
                 fgCombustibles.FillFromLEntidad(Dame5PrimerosCombustibles(m_entMovil.MovilesCombus));
             }
             MsgRuts.AnalizeError(this, m_smResult);
@@ -164,10 +165,11 @@ namespace Rivn.Mv
         private void LlenarGridKm()
         {
             m_smResult.UilReset("LlenarGridKms");
-            if (m_entMovil.MovilesKms != null)
+            //m_entMovil.MovilesKms = Bll.Moviles.MvkmFGet(m_entMovil.Patente, true, ref m_smResult);
+            if (m_entMovil.MovilesKms.Count != 0)
             {
-                m_entMovil.MovilesKms.Sort("desc mkm_fyh_fecha");
-                fgCombustibles.FillFromLEntidad(Dame5PrimerosKms(m_entMovil.MovilesKms));
+                m_entMovil.MovilesKms.Sort("mkm_fyh_fecha desc");
+                fgKm.FillFromLEntidad(Dame5PrimerosKms(m_entMovil.MovilesKms));
             }
             MsgRuts.AnalizeError(this, m_smResult);
         }
@@ -180,9 +182,9 @@ namespace Rivn.Mv
         private void LlenarGridEquipamiento()
         {
             m_smResult.UilReset("LlenarGridEquipamiento");
-            if (m_entMovil.MovilesEquip != null)
+            if (m_entMovil.MovilesEquip.Count != 0)
             {
-                fgCombustibles.FillFromLEntidad(m_entMovil.MovilesEquip);
+                fgEquipamiento.FillFromLEntidad(m_entMovil.MovilesEquip);
             }
             MsgRuts.AnalizeError(this, m_smResult);
         }
@@ -210,7 +212,7 @@ namespace Rivn.Mv
         private void ftrMoviles_AfterSelect(object sender, TreeViewEventArgs e)
         {
 
-            m_entMovil = m_LEMoviles[ftrMoviles.SelectedNodeAsCDI.StrCode];
+            m_entMovil = Bll.Moviles.Get(ftrMoviles.SelectedNodeAsCDI.StrCode, true, ref m_smResult);
             SwitchTo(ModoForm.Edicion, OpGrid.Todas);
         }
 
@@ -448,7 +450,8 @@ namespace Rivn.Mv
         private LEMovilesEstado Dame5PrimerosEstados(LEMovilesEstado p_LEMEEstadosDeMovil)
         {
            LEMovilesEstado l_LEMEPrimerosCincoMovilesEstados = LEMovilesEstado.NewEmpty();
-            for (long i = 0; i <= 4; i++)
+           long l_lngMaximo = Math.Min(p_LEMEEstadosDeMovil.Count - 1, 4);
+           for (long i = 0; i <= l_lngMaximo; i++)
             {
                 l_LEMEPrimerosCincoMovilesEstados.AddEntity(p_LEMEEstadosDeMovil[i]);
             }
@@ -463,7 +466,8 @@ namespace Rivn.Mv
         private LEMovilesCombus Dame5PrimerosCombustibles(LEMovilesCombus p_LEMECombusDeMovil)
         {
             LEMovilesCombus l_LEMEPrimerosCincoMovilesCombustibles = LEMovilesCombus.NewEmpty();
-            for (long i = 0; i <= 4; i++)
+            long l_lngMaximo = Math.Min(p_LEMECombusDeMovil.Count - 1, 4);
+            for (long i = 0; i <= l_lngMaximo; i++)
             {
                 l_LEMEPrimerosCincoMovilesCombustibles.AddEntity(p_LEMECombusDeMovil[i]);
             }
@@ -479,7 +483,8 @@ namespace Rivn.Mv
         private LEMovilesKms Dame5PrimerosKms(LEMovilesKms p_LEMEKmsDeMovil)
         {
             LEMovilesKms l_LEMEPrimerosCincoMovilesKms = LEMovilesKms.NewEmpty();
-            for (long i = 0; i <= 4; i++)
+            long l_lngMaximo = Math.Min(p_LEMEKmsDeMovil.Count - 1, 4);
+            for (long i = 0; i <= l_lngMaximo; i++)
             {
                 l_LEMEPrimerosCincoMovilesKms.AddEntity(p_LEMEKmsDeMovil[i]);
             }

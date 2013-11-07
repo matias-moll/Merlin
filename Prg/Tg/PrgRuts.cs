@@ -39,7 +39,7 @@ namespace Rivn.Tg
             //Justo Abajo de la creacion del dockManager isntanciamos el primer dockeable
             //Intanciamos el Dockeable principal.
             Estados l_dcAltaMovil = new Estados();
-            Equipamiento l_dcEquipamiento = new Equipamiento();
+            Equipamientos l_dcEquipamiento = new Equipamientos();
             Estaciones l_dcEstaciones = new Estaciones();
             Marcas l_dcMarcas= new Marcas();
             Modelos l_dcModelos = new Modelos();
