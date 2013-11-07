@@ -37,10 +37,7 @@ namespace Rivn.Mv
             //creamos la nueva entidad VACIA
             m_entMovil = Bel.EMovil.NewEmpty();
             
-            //llenamos los controles del formulario con la informacion sacada de las tablas.
-            llenarCheckListEquipamiento();
-            llenarComboModelos();
-            llenarComboMovilPropio();
+
             
             m_EstadoAlta = true;
 
@@ -58,15 +55,7 @@ namespace Rivn.Mv
             //nos guardamos la entidad a Updatear en la variable miembro Movil
             m_entMovil = p_entMovil;
 
-            //seteamos todos los datos de la entidad existente en los campos
-            teAnotaciones.Text = p_entMovil.Anot;
-            teDescripcionMovil.Text = p_entMovil.Des;
-            teNroChasis.Text = p_entMovil.Nrochasis;
-            teNroMotor.Text = p_entMovil.Nromotor;
-            tePatente.Text = p_entMovil.Patente;
-            cdcModelo.SelectedStrCode = p_entMovil.Modelo;
-            cdcMovilPropio.SelectedStrCode = p_entMovil.Propio;
-            neAnioFabric.Numero = p_entMovil.Aniofabric;
+            
 
             //disbleamos los controles que no tienen que estar activos
             neKilometros.Enabled = false;
@@ -232,7 +221,7 @@ namespace Rivn.Mv
             Bel.EMovilEquip l_entMovilEq = Bel.EMovilEquip.NewEmpty();
 
             l_entMovilEq.Patente = tePatente.Text;
-            l_entMovilEq.Esfijo = "S";
+            //l_entMovilEq.Esfijo = "S";
             // Recorremos el Array de Strings de los Cod Seleccionados y llenamos el codigo en las entidades y luego cargandolas en la LE.
             foreach (string item in clEquipamientos.CheckedStrCodes)
             {
@@ -329,6 +318,26 @@ namespace Rivn.Mv
         }
 
         #endregion
+
+        private void AltaMovil_Load(object sender, EventArgs e)
+        {
+            //llenamos los controles del formulario con la informacion sacada de las tablas.
+            llenarCheckListEquipamiento();
+            llenarComboModelos();
+            llenarComboMovilPropio();
+
+
+            //seteamos todos los datos de la entidad existente en los campos
+            teAnotaciones.Text = m_entMovil.Anot;
+            teDescripcionMovil.Text = m_entMovil.Des;
+            teNroChasis.Text = m_entMovil.Nrochasis;
+            teNroMotor.Text = m_entMovil.Nromotor;
+            tePatente.Text = m_entMovil.Patente;
+            cdcModelo.SelectedStrCode = m_entMovil.Modelo;
+            cdcMovilPropio.SelectedStrCode = m_entMovil.Propio;
+            neAnioFabric.Numero = m_entMovil.Aniofabric;
+
+        }
 
 
 

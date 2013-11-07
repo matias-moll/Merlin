@@ -413,6 +413,7 @@
             this.Name = "AltaMovil";
             this.ShowIcon = false;
             this.Text = "Nuevo Movil";
+            this.Load += new System.EventHandler(this.AltaMovil_Load);
             this.xPanel1.ResumeLayout(false);
             this.igEquipamiento.ResumeLayout(false);
             this.igDatosBasicosMovil.ResumeLayout(false);

@@ -408,6 +408,7 @@ namespace Rivn.Mv
         {
             LlenarDatos();
             LimpiarEditables();
+            gbModificarMovil.Enabled = true;
             igMoviles.Enabled = true;
             //gbModificarMovil.Enabled = true;
             //gbBorrarMovil.Enabled = true;
@@ -435,6 +436,7 @@ namespace Rivn.Mv
             TraerInfoEstados();
             LlenarTreeMoviles();
             LlenarComboEstados();
+
             igMoviles.Enabled = true;
             igKilometros.Enabled = false;
             igEquipamiento.Enabled = false;
