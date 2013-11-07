@@ -132,15 +132,20 @@ namespace Rivn.Mv
         // Llenac la combo modelos con los modelos que hay en la tabla modelos.
         private void llenarComboModelos()
         {
+            //reseteamos el statmsg
             m_stResult.UilReset("llenarComboModelos");  
+            //llenamos la combo
             cdcModelo.FillFromStrLEntidad(Bll.Tablas.ModUpFull(true, ref m_stResult), "mds_rcd_cod", "mds_des_des", "deleted");
-            MsgRuts.AnalizeError(this, m_stResult);
+            //chequeamos errores
+            if(MsgRuts.AnalizeError(this, m_stResult)) return;
+            //seteamos en el valor vacio a la combo para que se vea fancy
             cdcModelo.SelectedIndex = -1;
         }
 
         // llena comboMovil con SI NO Vacio
         private void llenarComboMovilPropio()
         {
+            //llenamos con los valores si Y no
             cdcMovilPropio.AddStrCD("N", "NO", 0);
             cdcMovilPropio.AddStrCD("S", "SI", 0);
         }
