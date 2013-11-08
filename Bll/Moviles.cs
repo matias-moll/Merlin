@@ -34,8 +34,53 @@ namespace Rivn.Bll
         //---------------------------------------------------------------
         // Metodos públicos de la clase
         //---------------------------------------------------------------
-
         #region Metodos publicos de la clase
+
+        /// <summary>
+        /// Me devuelve un Array con las listas entidades de los ultimos 5 combustibles, estados, kms y eq
+        /// </summary>
+        /// <param name="p_strPatente">Patente</param>
+        /// <param name="p_bOnlyActive"></param>
+        /// <param name="p_smResult"></param>
+        /// <returns></returns>
+        public static List<ListaEntidades> fGetLastFiveTodos(string p_strPatente,
+                                                bool p_bOnlyActive,
+                                                ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            List<ListaEntidades> l_lstLEListaListaEntidades = new List<ListaEntidades>();
+            DBConn l_dbcAccess = null;
+            p_smResult.BllReset("Estados", "fGetLastFiveMvlCombus");
+
+            try
+            {
+                // Obtenemos una conexion
+                l_dbcAccess = DBRuts.GetConection(Connections.Dat);
+
+                // Pedimos los registros de la tabla
+                l_lstLEListaListaEntidades.Add(Bll.Moviles.MvcogetLastFiveMvlCombus(l_dbcAccess, p_strPatente, ref p_smResult));
+                l_lstLEListaListaEntidades.Add(Bll.Moviles.MvkmgetLastFiveMvlKmG(l_dbcAccess, p_strPatente, ref p_smResult));
+                l_lstLEListaListaEntidades.Add(Bll.Moviles.MvesgetLastFiveMvlEstadG(l_dbcAccess, p_strPatente, ref p_smResult));
+                l_lstLEListaListaEntidades.Add(Bll.Moviles.MveqgetEquipamientoG(l_dbcAccess, p_strPatente, ref p_smResult));
+            }
+            catch (Exception l_expData)
+            {
+                // Error en la operacion
+                p_smResult.BllError(l_expData.ToString());
+                return null;
+            }
+            finally
+            {
+                // Si pude abrir la conexion -> la cierro
+                if (l_dbcAccess != null) l_dbcAccess.Close();
+                p_smResult.BllPop();
+            }
+
+            return l_lstLEListaListaEntidades;
+
+
+
+        }
 
         /// <summary>
         /// Me devuelve una listaEntidad con los 5 ultimos Combustibles de un movil

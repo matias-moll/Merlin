@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Rivn.Bll;
+using Rivn.Bll.ObjetosSoporte;
 using Rivn.Bel;
 using TNGS;
 using TNGS.NetApp;
@@ -26,10 +27,7 @@ namespace Rivn.Mv
         private Bel.EMovil m_entMovil = null;
         private Bel.LEEstados m_LEEdsEstados = null;
         //Los de abajo podrian no estar hay que ver
-        private ListaEntidades m_LEMvlKms = null;
-        private ListaEntidades m_LEMvlCombus = null;
-        private ListaEntidades m_LEMvlEquip = null;
-        private ListaEntidades m_LEMvlEstados = null;
+        private AsociadosMovil m_AMAsocMoviles = null;
         private StatMsg m_smResult = null;
         private ACLInfo m_aclInfo = null;
         #endregion
@@ -55,6 +53,7 @@ namespace Rivn.Mv
             TraerInfoEstados();
             LlenarComboEstados();
             SwitchTo(ModoForm.Inicio);
+            m_AMAsocMoviles = new AsociadosMovil(ref m_smResult);
 
         }
 
@@ -122,10 +121,10 @@ namespace Rivn.Mv
         /// </summary>
         private void LlenarGridEstados()
         {
-            if (m_entMovil.MovilesEstado.Count != 0)
+            if (m_AMAsocMoviles.Estados.Count != 0)
             {
                 //m_entMovil.MovilesEstado.Sort("mve_fyh_fecha desc");
-                fgMovilEstados.FillFromLEntidad(m_LEMvlEstados);
+                fgMovilEstados.FillFromLEntidad(m_AMAsocMoviles.Estados);
             }
            
         }
@@ -139,12 +138,12 @@ namespace Rivn.Mv
         {
             tePatente.Text = m_entMovil.Patente;
             teModelo.Text = GetModelo(m_entMovil.Modelo);
-            m_LEMvlEstados.Sort("mve_fyh_fecha desc");
             cmbEstado.SelectedIndex = -1;
-            if (m_entMovil.MovilesEstado.Count != 0)
+           /* if (m_LEMvlEstados.Count != 0)
             {
-                cmbEstado.SelectedStrCode = m_entMovil.MovilesEstado[0].Codestado;
+                cmbEstado.SelectedStrCode = 
             }
+            * */
             //TODO: Cambiar para sacar del historico de estados
             //cmbEstado.SelectedStrCode =
         }
@@ -157,12 +156,10 @@ namespace Rivn.Mv
         private void LlenarGridCombustible()
         {
             
-            m_smResult.UilReset("LlenarGridCombustible");
             if (m_entMovil.MovilesCombus.Count != 0)
             {
-                fgCombustibles.FillFromLEntidad(m_LEMvlCombus);
+                fgCombustibles.FillFromLEntidad(m_AMAsocMoviles.Combustibles);
             }
-            if (MsgRuts.AnalizeError(this, m_smResult)) return;
         }
 
 
@@ -171,14 +168,12 @@ namespace Rivn.Mv
         /// </summary>
         private void LlenarGridKm()
         {
-            m_smResult.UilReset("LlenarGridKms");
             //m_entMovil.MovilesKms = Bll.Moviles.MvkmFGet(m_entMovil.Patente, true, ref m_smResult);
-            if (m_LEMvlKms.Count != 0)
+            if (m_AMAsocMoviles.Kms.Count != 0)
             {
 
-                fgKm.FillFromLEntidad(m_LEMvlKms);
+                fgKm.FillFromLEntidad(m_AMAsocMoviles.Kms);
             }
-            if (MsgRuts.AnalizeError(this, m_smResult)) return;
         }
 
 
@@ -188,12 +183,10 @@ namespace Rivn.Mv
         /// </summary>
         private void LlenarGridEquipamiento()
         {
-            m_smResult.UilReset("LlenarGridEquipamiento");
-            if (m_LEMvlEquip.Count != 0)
+            if (m_AMAsocMoviles.Equipamiento.Count != 0)
             {
-                fgEquipamiento.FillFromLEntidad(m_LEMvlEquip);
+                fgEquipamiento.FillFromLEntidad(m_AMAsocMoviles.Equipamiento);
             }
-            MsgRuts.AnalizeError(this, m_smResult);
         }
 
 
@@ -219,10 +212,7 @@ namespace Rivn.Mv
         private void ftrMoviles_AfterSelect(object sender, TreeViewEventArgs e)
         {
             m_entMovil = m_LEMoviles[ftrMoviles.SelectedNodeAsCDI.StrCode];
-            m_LEMvlCombus = Bll.Moviles.fGetLastFiveMvlCombus(m_entMovil.Patente,true,ref m_smResult);
-            m_LEMvlEstados = Bll.Moviles.fGetLastFiveMvlEstados(m_entMovil.Patente, true, ref m_smResult);
-            m_LEMvlEquip = Bll.Moviles.MveqFGet(m_entMovil.Patente, true, ref m_smResult);
-            m_LEMvlKms = Bll.Moviles.fGetLastFiveMvlKms(m_entMovil.Patente, true, ref m_smResult);
+            m_AMAsocMoviles.CargarDatos(m_entMovil.Patente);
             SwitchTo(ModoForm.Edicion, OpGrid.Todas);
         }
 
@@ -412,7 +402,10 @@ namespace Rivn.Mv
         /// </summary>
         private void ModoEdicion()
         {
-
+            //m_LEMvlCombus = Bll.Moviles.fGetLastFiveMvlCombus(m_entMovil.Patente, true, ref m_smResult);
+            //m_LEMvlEquip = Bll.Moviles.MvesFGet(m_entMovil.Patente, true, ref m_smResult);
+            //m_LEMvlKms = Bll.Moviles.fGetLastFiveMvlKms(m_entMovil.Patente, true, ref m_smResult);
+            //m_LEMvlEstados = Bll.Moviles.fGetLastFiveMvlEstados(m_entMovil.Patente, true, ref m_smResult);
             LlenarDatos();
             LimpiarEditables();
             gbModificarMovil.Enabled = true;

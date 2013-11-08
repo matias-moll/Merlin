@@ -63,6 +63,7 @@
     <Compile Include="Moviles.designer.cs">
       <DependentUpon>Moviles.cs</DependentUpon>
     </Compile>
+    <Compile Include="ObjetosSoporte\AsociadosMovil.cs" />
     <Compile Include="OrdenesTrabajo.cs" />
     <Compile Include="OrdenesTrabajo.designer.cs">
       <DependentUpon>OrdenesTrabajo.cs</DependentUpon>
@@ -83,9 +84,7 @@
       <Name>DAL</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ObjetosSoporte\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

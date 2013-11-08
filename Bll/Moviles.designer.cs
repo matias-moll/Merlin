@@ -16,7 +16,7 @@ namespace Rivn.Bll
     //----------------------------------------------------------------------------
     //                         TNG Software BLL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 07/11/2013 16:52
+    // Fecha                    : 08/11/2013 12:03
     // Sistema                  : Rivn
     // Clase para Administrar   : Moviles y Tablas Hijas
     //----------------------------------------------------------------------------
@@ -1001,6 +1001,51 @@ namespace Rivn.Bll
         #endregion
 
         #region Metodos para métodos DAL definidos por el usuario
+
+        /// <summary>
+        /// Ejecuta el SP definido por el usuario: getLastFiveMvlCombuG
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name= p_strPatente>patente de un movil</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        /// <returns>ListaEntidad con los datos solicitados</returns>
+        internal static LEMovilesCombus MvcogetLastFiveMvlCombuG(DBConn p_dbcAccess,
+                                                                 string p_strPatente,
+                                                                 ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            p_smResult.BllReset("Moviles", "MvcogetLastFiveMvlCombuG");
+
+            try {
+                // Llamamos al metodo definido por el usuario
+                DataSet l_dsTemp= new DataSet();
+
+                Dal.MvlCombustible.getLastFiveMvlCombuG(p_dbcAccess,
+                                                        p_strPatente,
+                                                        ref l_dsTemp,
+                                                        "Temporal",
+                                                        ref p_smResult);
+                if (p_smResult.NOk) return null;
+
+                // Captionamos el resultado
+                Dal.MvlCombustible.MakeGridCaptions(ref l_dsTemp, "Temporal", ref p_smResult);
+                if (p_smResult.NOk) return null;
+
+                // Creamos la ListaEntidad y la devolvemos
+                LEMovilesCombus l_lentRet= new LEMovilesCombus(l_dsTemp.Tables["Temporal"]);
+                l_dsTemp.Dispose();
+                return l_lentRet;
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion
+                p_smResult.BllError(l_expData.ToString());
+                return null;
+            }
+            finally {
+                // Terminamos
+                p_smResult.BllPop();
+            }
+        }
 
         /// <summary>
         /// Ejecuta el SP definido por el usuario: getLastFiveMvlCombus
@@ -2035,6 +2080,51 @@ namespace Rivn.Bll
                 p_smResult.BllPop();
             }
         }
+
+        /// <summary>
+        /// Ejecuta el SP definido por el usuario: getEquipamientoG
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name= p_strPatente>patente de un movil</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        /// <returns>ListaEntidad con los datos solicitados</returns>
+        internal static LEMovilesEquip MveqgetEquipamientoG(DBConn p_dbcAccess,
+                                                            string p_strPatente,
+                                                            ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            p_smResult.BllReset("Moviles", "MveqgetEquipamientoG");
+
+            try {
+                // Llamamos al metodo definido por el usuario
+                DataSet l_dsTemp= new DataSet();
+
+                Dal.MvlEquipamiento.getEquipamientoG(p_dbcAccess,
+                                                     p_strPatente,
+                                                     ref l_dsTemp,
+                                                     "Temporal",
+                                                     ref p_smResult);
+                if (p_smResult.NOk) return null;
+
+                // Captionamos el resultado
+                Dal.MvlEquipamiento.MakeGridCaptions(ref l_dsTemp, "Temporal", ref p_smResult);
+                if (p_smResult.NOk) return null;
+
+                // Creamos la ListaEntidad y la devolvemos
+                LEMovilesEquip l_lentRet= new LEMovilesEquip(l_dsTemp.Tables["Temporal"]);
+                l_dsTemp.Dispose();
+                return l_lentRet;
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion
+                p_smResult.BllError(l_expData.ToString());
+                return null;
+            }
+            finally {
+                // Terminamos
+                p_smResult.BllPop();
+            }
+        }
         #endregion
 
 
@@ -2986,6 +3076,51 @@ namespace Rivn.Bll
         #endregion
 
         #region Metodos para métodos DAL definidos por el usuario
+
+        /// <summary>
+        /// Ejecuta el SP definido por el usuario: getLastFiveMvlEstadG
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name= p_strPatente>Patente de un movil</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        /// <returns>ListaEntidad con los datos solicitados</returns>
+        internal static LEMovilesEstado MvesgetLastFiveMvlEstadG(DBConn p_dbcAccess,
+                                                                 string p_strPatente,
+                                                                 ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            p_smResult.BllReset("Moviles", "MvesgetLastFiveMvlEstadG");
+
+            try {
+                // Llamamos al metodo definido por el usuario
+                DataSet l_dsTemp= new DataSet();
+
+                Dal.MvlEstados.getLastFiveMvlEstadG(p_dbcAccess,
+                                                    p_strPatente,
+                                                    ref l_dsTemp,
+                                                    "Temporal",
+                                                    ref p_smResult);
+                if (p_smResult.NOk) return null;
+
+                // Captionamos el resultado
+                Dal.MvlEstados.MakeGridCaptions(ref l_dsTemp, "Temporal", ref p_smResult);
+                if (p_smResult.NOk) return null;
+
+                // Creamos la ListaEntidad y la devolvemos
+                LEMovilesEstado l_lentRet= new LEMovilesEstado(l_dsTemp.Tables["Temporal"]);
+                l_dsTemp.Dispose();
+                return l_lentRet;
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion
+                p_smResult.BllError(l_expData.ToString());
+                return null;
+            }
+            finally {
+                // Terminamos
+                p_smResult.BllPop();
+            }
+        }
 
         /// <summary>
         /// Ejecuta el SP definido por el usuario: getLastFiveMvlEstads
@@ -4045,6 +4180,51 @@ namespace Rivn.Bll
                 BllRuts.FillStdCaptions(ref l_lentRet);
 
                 // Devolvemos la LE
+                l_dsTemp.Dispose();
+                return l_lentRet;
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion
+                p_smResult.BllError(l_expData.ToString());
+                return null;
+            }
+            finally {
+                // Terminamos
+                p_smResult.BllPop();
+            }
+        }
+
+        /// <summary>
+        /// Ejecuta el SP definido por el usuario: getLastFiveMvlKmG
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name= p_strPatente>patente de un movil</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        /// <returns>ListaEntidad con los datos solicitados</returns>
+        internal static LEMovilesKms MvkmgetLastFiveMvlKmG(DBConn p_dbcAccess,
+                                                           string p_strPatente,
+                                                           ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            p_smResult.BllReset("Moviles", "MvkmgetLastFiveMvlKmG");
+
+            try {
+                // Llamamos al metodo definido por el usuario
+                DataSet l_dsTemp= new DataSet();
+
+                Dal.MvlKilometros.getLastFiveMvlKmG(p_dbcAccess,
+                                                    p_strPatente,
+                                                    ref l_dsTemp,
+                                                    "Temporal",
+                                                    ref p_smResult);
+                if (p_smResult.NOk) return null;
+
+                // Captionamos el resultado
+                Dal.MvlKilometros.MakeGridCaptions(ref l_dsTemp, "Temporal", ref p_smResult);
+                if (p_smResult.NOk) return null;
+
+                // Creamos la ListaEntidad y la devolvemos
+                LEMovilesKms l_lentRet= new LEMovilesKms(l_dsTemp.Tables["Temporal"]);
                 l_dsTemp.Dispose();
                 return l_lentRet;
             }

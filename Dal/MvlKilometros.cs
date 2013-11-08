@@ -10,7 +10,7 @@ namespace Rivn.Dal
     //----------------------------------------------------------------------------
     //                         TNG Software DAL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 07/11/2013 16:52
+    // Fecha                    : 08/11/2013 12:03
     // Sistema                  : Rivn
     // Clase para Administrar   : Kilometros de los moviles
     // Basada en la Tabla       : MvlKilometros
@@ -623,6 +623,43 @@ namespace Rivn.Dal
             try {
                 return DBRuts.Exec_DS(p_dbcAccess,
                                       "TNGS_Rivn..MVLKILOMETROS_GETLASTFIVEMVLKM",
+                                      new DbParameter[] {
+                                          p_dbcAccess.MakeParam("@patente", p_strPatente),
+                                          p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
+                                      },
+                                      ref p_dsResult, p_strTabla);
+            }
+            catch (Exception l_expData) {
+                // Error en el método fijo
+                p_smResult.DalError(l_expData.ToString());
+                return -1;
+            }
+            finally {
+                // Resteamos el StatMsg
+                p_smResult.DalExit();
+            }
+        }
+
+        /// <summary>
+        /// Método Fijo: getLastFiveMvlKmG
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name= "p_strPatente">patente de un movil</param>
+        /// <param name="p_dsResult">DataSet donde devolver el registro</param>
+        /// <param name="p_strTabla">Nombre de la tabla a llenar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        public static int getLastFiveMvlKmG(DBConn p_dbcAccess,
+                                            string p_strPatente,
+                                            ref DataSet p_dsResult,
+                                            string p_strTabla,
+                                            ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            p_smResult.DalReset("MvlKilometros", "getLastFiveMvlKmG");
+
+            try {
+                return DBRuts.Exec_DS(p_dbcAccess,
+                                      "TNGS_Rivn..MVLKILOMETROS_GETLASTFIVEMVLKMG",
                                       new DbParameter[] {
                                           p_dbcAccess.MakeParam("@patente", p_strPatente),
                                           p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
