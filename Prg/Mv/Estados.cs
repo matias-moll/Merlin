@@ -21,7 +21,7 @@ namespace Rivn.Mv
     public partial class Estados : DockContent
     {
         #region Miembros de la Clase
-        public enum ModoForm { Inicio, Edicion };
+        public enum ModoForm { Inicio, EdicionBase,Edicion };
         public enum OpGrid { Igual,Todas, Km, Combus, Equip, Estados };
         private Bel.LEMoviles m_LEMoviles = null;
         private Bel.EMovil m_entMovil = null;
@@ -139,8 +139,7 @@ namespace Rivn.Mv
             tePatente.Text = m_entMovil.Patente;
             teModelo.Text = GetModelo(m_entMovil.Modelo);
             
-            //TODO: Cambiar para sacar del historico de estados
-            //cmbEstado.SelectedStrCode =
+      
         }
 
 
@@ -206,7 +205,7 @@ namespace Rivn.Mv
         private void ftrMoviles_AfterSelect(object sender, TreeViewEventArgs e)
         {
             m_entMovil = m_LEMoviles[ftrMoviles.SelectedNodeAsCDI.StrCode];
-            SwitchTo(ModoForm.Edicion, OpGrid.Igual);
+            SwitchTo(ModoForm.EdicionBase, OpGrid.Igual);
         }
 
 
@@ -359,6 +358,7 @@ namespace Rivn.Mv
             {
                 case ModoForm.Inicio: { ModoInicio(); break; }
                 case ModoForm.Edicion: { ModoEdicion(); break; }
+                case ModoForm.EdicionBase: { ModoEdicionBase(); break; }
                 default: { MsgRuts.ShowMsg(this, "Invalid mode"); break; }
             }
 
@@ -373,6 +373,23 @@ namespace Rivn.Mv
                 case OpGrid.Igual: {break;}
                 default: { break; }
             }
+        }
+
+        private void ModoEdicionBase()
+        {
+            LlenarDatos();
+            LimpiarEditables();
+            m_AMAsocMoviles.CargarDatos(m_entMovil.Patente);
+            fgCombustibles.Clear();
+            fgEquipamiento.Clear();
+            fgKm.Clear();
+            fgMovilEstados.Clear();
+            igKilometros.Enabled = false;
+            igOpciones.Enabled = true;
+            igHistorialEstados.Enabled = false;
+            igEquipamiento.Enabled = false;
+            igCombustibles.Enabled = false;
+            cmbEstado.Enabled = false;
         }
 
 
@@ -396,6 +413,7 @@ namespace Rivn.Mv
             LimpiarEditables();
             m_AMAsocMoviles.CargarDatos(m_entMovil.Patente);
             gbModificarMovil.Enabled = true;
+            gbBorrarMovil.Enabled = true;
             cmbEstado.Enabled = true;
             igMoviles.Enabled = true;
             igOpciones.Enabled = true;
@@ -423,17 +441,17 @@ namespace Rivn.Mv
             LlenarTreeMoviles();
             LlenarComboEstados();
 
-            igMoviles.Enabled = true;
-            igKilometros.Enabled = false;
-            igEquipamiento.Enabled = false;
-            igHistorialEstados.Enabled = false;
-            igCombustibles.Enabled = false;
+            cmbEstado.SelectedIndex = -1;
+            cmbEstado.Enabled = false;
+            gbModificarEstado.Enabled = false;
+            igOpciones.Enabled = true;
+            gbNuevoMovil.Enabled = true;
             gbModificarMovil.Enabled = false;
             gbBorrarMovil.Enabled = false;
-            LimpiarCampos();
-            cmbEstado.Enabled = false;
-            teModelo.Enabled = false;
-            tePatente.Enabled = false;
+            igCombustibles.Enabled = false;
+            igEquipamiento.Enabled = false;
+            igHistorialEstados.Enabled = false;
+            igKilometros.Enabled = false;
         }
 
 
