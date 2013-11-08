@@ -138,12 +138,7 @@ namespace Rivn.Mv
         {
             tePatente.Text = m_entMovil.Patente;
             teModelo.Text = GetModelo(m_entMovil.Modelo);
-            cmbEstado.SelectedIndex = -1;
-           /* if (m_LEMvlEstados.Count != 0)
-            {
-                cmbEstado.SelectedStrCode = 
-            }
-            * */
+            
             //TODO: Cambiar para sacar del historico de estados
             //cmbEstado.SelectedStrCode =
         }
@@ -155,8 +150,8 @@ namespace Rivn.Mv
         /// </summary>
         private void LlenarGridCombustible()
         {
-            
-            if (m_entMovil.MovilesCombus.Count != 0)
+
+            if (m_AMAsocMoviles.Combustibles.Count != 0)
             {
                 fgCombustibles.FillFromLEntidad(m_AMAsocMoviles.Combustibles);
             }
@@ -197,7 +192,6 @@ namespace Rivn.Mv
         {
             teModelo.Clear();
             tePatente.Clear();
-            cmbEstado.SelectedIndex = -1;
         }
 
         #endregion
@@ -212,8 +206,7 @@ namespace Rivn.Mv
         private void ftrMoviles_AfterSelect(object sender, TreeViewEventArgs e)
         {
             m_entMovil = m_LEMoviles[ftrMoviles.SelectedNodeAsCDI.StrCode];
-            m_AMAsocMoviles.CargarDatos(m_entMovil.Patente);
-            SwitchTo(ModoForm.Edicion, OpGrid.Todas);
+            SwitchTo(ModoForm.Edicion, OpGrid.Igual);
         }
 
 
@@ -341,13 +334,10 @@ namespace Rivn.Mv
             l_EMEstMovilEstado.Codestado = cmbEstado.SelectedStrCode;
             l_EMEstMovilEstado.Fecha = DateTime.Now;
             l_EMEstMovilEstado.Patente = m_entMovil.Patente;
-            m_entMovil.MovilesKms.Sort("desc mkm_nro_km");
-            l_EMEstMovilEstado.Km = m_entMovil.MovilesKms[0].Km;
+            l_EMEstMovilEstado.Km = DameUltimoKms();
 
             Bll.Moviles.MvesSave(l_EMEstMovilEstado, ref m_smResult);
-
-            //Guardamos tmb la entidad movil con su nuevo estado cambiado
-            Bll.Moviles.Save(m_entMovil, ref m_smResult);
+            SwitchTo(ModoForm.Edicion, OpGrid.Estados);
 
 
 
@@ -402,16 +392,12 @@ namespace Rivn.Mv
         /// </summary>
         private void ModoEdicion()
         {
-            //m_LEMvlCombus = Bll.Moviles.fGetLastFiveMvlCombus(m_entMovil.Patente, true, ref m_smResult);
-            //m_LEMvlEquip = Bll.Moviles.MvesFGet(m_entMovil.Patente, true, ref m_smResult);
-            //m_LEMvlKms = Bll.Moviles.fGetLastFiveMvlKms(m_entMovil.Patente, true, ref m_smResult);
-            //m_LEMvlEstados = Bll.Moviles.fGetLastFiveMvlEstados(m_entMovil.Patente, true, ref m_smResult);
             LlenarDatos();
             LimpiarEditables();
+            m_AMAsocMoviles.CargarDatos(m_entMovil.Patente);
             gbModificarMovil.Enabled = true;
+            cmbEstado.Enabled = true;
             igMoviles.Enabled = true;
-            //gbModificarMovil.Enabled = true;
-            //gbBorrarMovil.Enabled = true;
             igOpciones.Enabled = true;
             igKilometros.Enabled = true;
             igEquipamiento.Enabled = true;
@@ -550,10 +536,20 @@ namespace Rivn.Mv
 
         private void ftrMoviles_DoubleClick(object sender, EventArgs e)
         {
+            m_AMAsocMoviles.CargarDatos(m_entMovil.Patente);
+            cmbEstado.SelectedStrCode = DameUltimoEstado();
             SwitchTo(ModoForm.Edicion, OpGrid.Todas);
         }
 
+        private string DameUltimoEstado()
+        {
+            return m_AMAsocMoviles.Estados.InternalData.Table.Rows[0]["mve_rcd_codestado"].ToString();
+        }
 
+        private int DameUltimoKms()
+        {
+            return (int) m_AMAsocMoviles.Kms.InternalData.Table.Rows[0]["mkm_nro_km"];
+        }
 
 
 

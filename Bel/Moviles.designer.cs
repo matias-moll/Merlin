@@ -14,7 +14,7 @@ namespace Rivn.Bel
     //----------------------------------------------------------------------------
     //                         TNG Software BEL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 08/11/2013 12:03
+    // Fecha                    : 08/11/2013 16:49
     // Sistema                  : Rivn
     // Clase para Administrar   : Moviles y Tablas Hijas
     //----------------------------------------------------------------------------
@@ -179,6 +179,21 @@ namespace Rivn.Bel
         #endregion
 
         #region Formateadores
+
+        //---------------------------------------------------------------
+        // Metodos estáticos (Formateo de codigos alineados a derecha)
+        //---------------------------------------------------------------
+
+        /// <summary>
+        /// Formatea una string: Codigo estacion
+        /// </summary>
+        public static string FrmtCodestacion(string p_strCodestacion)
+        {
+            if (p_strCodestacion.Trim().Length > 2)
+                p_strCodestacion= p_strCodestacion.Trim().Substring(0,2);
+
+            return p_strCodestacion.Trim().PadLeft(2).ToUpper();
+        }
         #endregion
 
         #region Propiedades de la clase
@@ -252,7 +267,7 @@ namespace Rivn.Bel
         public string Codestacion
         {
             get {return (string) InternalData["mco_rcd_codestacion"];}
-            set {InternalData["mco_rcd_codestacion"]= value;}
+            set {InternalData["mco_rcd_codestacion"]= EMovilCombus.FrmtCodestacion(value);}
         }
 
         /// <summary>

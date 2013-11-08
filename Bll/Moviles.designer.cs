@@ -16,7 +16,7 @@ namespace Rivn.Bll
     //----------------------------------------------------------------------------
     //                         TNG Software BLL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 08/11/2013 12:03
+    // Fecha                    : 08/11/2013 16:49
     // Sistema                  : Rivn
     // Clase para Administrar   : Moviles y Tablas Hijas
     //----------------------------------------------------------------------------
@@ -420,18 +420,16 @@ namespace Rivn.Bll
             // Validaciones de los campos con conexion
             // ********
 
-            if (p_entMovilCombus.Codestacion.Trim() != "") {
-                VKey(p_dbcAccess,
-                     p_entMovilCombus.Codestacion,
-                     ref p_smResult);
-                if (p_smResult.NOk) return;
+            Tablas.EstVKey(p_dbcAccess,
+                           p_entMovilCombus.Codestacion,
+                           ref p_smResult);
+            if (p_smResult.NOk) return;
 
-                if (p_smResult.ICodeEs(BllCodes.KeyDsntFound)) {
-                    // El campo [Codigo estacion] debe existir en la tabla []
-                    p_smResult.BllWarning("El dato [Codigo estacion] debe existir en la tabla []","");
-                    return;
-                }
-                }
+            if (!p_smResult.ICodeEs(BllCodes.KeyExists)) {
+                // El campo [Codigo estacion] debe existir en la tabla [Tablas.Est]
+                p_smResult.BllWarning("El dato [Codigo estacion] debe existir en la tabla [Tablas.Est] y estar habilitado","");
+                return;
+            }
 
             // Verificamos la clave foranea
             Moviles.VKey(p_dbcAccess,
@@ -2112,6 +2110,50 @@ namespace Rivn.Bll
 
                 // Creamos la ListaEntidad y la devolvemos
                 LEMovilesEquip l_lentRet= new LEMovilesEquip(l_dsTemp.Tables["Temporal"]);
+                l_dsTemp.Dispose();
+                return l_lentRet;
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion
+                p_smResult.BllError(l_expData.ToString());
+                return null;
+            }
+            finally {
+                // Terminamos
+                p_smResult.BllPop();
+            }
+        }
+
+        /// <summary>
+        /// Ejecuta el SP definido por el usuario: getEquipamientos
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name= p_strPatente>patente de un movil</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        /// <returns>ListaEntidad con los datos solicitados</returns>
+        internal static ListaEntidades MveqgetEquipamientos(DBConn p_dbcAccess,
+                                                            string p_strPatente,
+                                                            ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            p_smResult.BllReset("Moviles", "MveqgetEquipamientos");
+
+            try {
+                // Llamamos al metodo definido por el usuario
+                DataSet l_dsTemp= new DataSet();
+
+                Dal.MvlEquipamiento.getEquipamientos(p_dbcAccess,
+                                                     p_strPatente,
+                                                     ref l_dsTemp,
+                                                     "Temporal",
+                                                     ref p_smResult);
+                if (p_smResult.NOk) return null;
+
+                // Creamos la LE y Captionamos
+                ListaEntidades l_lentRet= new ListaEntidades(l_dsTemp.Tables["Temporal"]);
+                BllRuts.FillStdCaptions(ref l_lentRet);
+
+                // Devolvemos la LE
                 l_dsTemp.Dispose();
                 return l_lentRet;
             }

@@ -372,6 +372,8 @@ namespace Rivn.Mv
             this.igOpciones.ShadowControl = true;
             this.igOpciones.ShadowThickness = 3;
             this.igOpciones.Size = new System.Drawing.Size(204, 128);
+            this.igOpciones.SkinFixed = true;
+            this.igOpciones.SkinFullFixed = true;
             this.igOpciones.TabIndex = 29;
             // 
             // gbNuevoMovil

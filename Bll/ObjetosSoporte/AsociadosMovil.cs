@@ -25,6 +25,31 @@ namespace Rivn.Bll.ObjetosSoporte
         public void CargarDatos(string p_strPatente)
         {
             m_lstLEListaEntidades = Bll.Moviles.fGetLastFiveTodos(p_strPatente,true,ref m_smResult);
+            llenarCaptions();
+        }
+
+        private void llenarCaptions()
+        {
+            //Seteamos caption de los combustibles
+            Combustibles.ChangeCaption("mco_val_litros", "V1Litros2N1");
+            Combustibles.ChangeCaption("mco_imp_importe", "V1Importe2S2");
+            Combustibles.ChangeCaption("mco_fyh_fecha", "V1FechaFN1");
+            Combustibles.ChangeCaption("ets_des_des", "V1EstacionCN2");
+
+            //Seteamos caption de equipamiento
+            Equipamiento.ChangeCaption("eqi_des_des", "V1EquipamientoCN2");
+
+
+            //Seteamos caption de Km
+            Kms.ChangeCaption("mkm_fyh_fecha", "V1FechaFN1");
+            Kms.ChangeCaption("mkm_nro_km", "V1KilometrosNN1");
+
+            //Seteamos caption de estados
+            Estados.ChangeCaption("mve_fyh_fecha", "V1FechaFN1");
+            Estados.ChangeCaption("est_des_des", "V1EstadoCN1");
+            Estados.ChangeCaption("mve_nro_km", "V1KmsCN1");
+            Estados.ChangeCaption("mve_rcd_codestado", "V1Codigo EstadoCN1");
+
         }
 
 
