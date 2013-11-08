@@ -14,7 +14,7 @@ namespace Rivn.Bel
     //----------------------------------------------------------------------------
     //                         TNG Software BEL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 08/11/2013 16:49
+    // Fecha                    : 08/11/2013 18:17
     // Sistema                  : Rivn
     // Clase para Administrar   : Moviles y Tablas Hijas
     //----------------------------------------------------------------------------
@@ -646,6 +646,7 @@ namespace Rivn.Bel
             l_drTemp["meq_ecd_patente"]= XMLRuts.ExtractXAttr(l_xndData, "meq_ecd_patente");
             l_drTemp["meq_cod_codequip"]= XMLRuts.ExtractXAttr(l_xndData, "meq_cod_codequip");
             l_drTemp["meq_cd1_esfijo"]= XMLRuts.ExtractXAttr(l_xndData, "meq_cd1_esfijo");
+            l_drTemp["meq_des_Equip"]= XMLRuts.ExtractXAttr(l_xndData, "meq_des_Equip");
 
             // Llenamos los campos fijos
             XML2FixedFields(ref l_drTemp, l_xndData);
@@ -692,6 +693,7 @@ namespace Rivn.Bel
             l_drTemp["meq_ecd_patente"]= "";
             l_drTemp["meq_cod_codequip"]= "";
             l_drTemp["meq_cd1_esfijo"]= "";
+            l_drTemp["meq_des_Equip"]= "";
 
             // Agregamos la Row creada a la tabla creada y creamos
             // una entidad a partir de la DataTable de 1 registro
@@ -723,6 +725,7 @@ namespace Rivn.Bel
             l_drTemp["meq_ecd_patente"]= p_strPatente;
             l_drTemp["meq_cod_codequip"]= p_strCodequip;
             l_drTemp["meq_cd1_esfijo"]= p_strEsfijo;
+            l_drTemp["meq_des_Equip"]= "";
 
             // Agregamos la Row creada a la tabla creada y creamos
             // una entidad a partir de la DataTable de 1 registro
@@ -748,12 +751,13 @@ namespace Rivn.Bel
         {
             get {
                 // Creamos el vector de DataColumns y lo llenamos
-                DataColumn[] l_dcStruct= new DataColumn[7];
+                DataColumn[] l_dcStruct= new DataColumn[8];
 
                 l_dcStruct[0]= new DataColumn("meq_ecd_patente", typeof(string));
                 l_dcStruct[1]= new DataColumn("meq_cod_codequip", typeof(string));
-                l_dcStruct[2]= new DataColumn("meq_cd1_esfijo", typeof(string));
-                EMovilEquip.FillFixedFields(ref l_dcStruct, 3);
+                l_dcStruct[2]= new DataColumn("meq_des_Equip", typeof(string));
+                l_dcStruct[3]= new DataColumn("meq_cd1_esfijo", typeof(string));
+                EMovilEquip.FillFixedFields(ref l_dcStruct, 4);
 
                 // Devolvemos el vector creado
                 return l_dcStruct;
@@ -794,6 +798,15 @@ namespace Rivn.Bel
         }
 
         /// <summary>
+        /// Equipamiento
+        /// </summary>
+        public string Meq_des_equip
+        {
+            get {return (string) InternalData["meq_des_Equip"];}
+            set {InternalData["meq_des_Equip"]= value;}
+        }
+
+        /// <summary>
         /// Devuelve la entidad [EMovilEquip] como XMLDocument en formato string
         /// </summary>
         public string XMLData
@@ -815,6 +828,7 @@ namespace Rivn.Bel
                 l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "meq_ecd_patente", Patente));
                 l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "meq_cod_codequip", Codequip));
                 l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "meq_cd1_esfijo", Esfijo));
+                l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "meq_des_Equip", Meq_des_equip));
 
                 // Asignamos los campos fijos
                 FixedFields2XML(l_xdocData, ref l_xndEntidad);

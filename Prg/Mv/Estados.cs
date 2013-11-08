@@ -179,7 +179,7 @@ namespace Rivn.Mv
         {
             if (m_AMAsocMoviles.Equipamiento.Count != 0)
             {
-                fgEquipamiento.FillFromLEntidad(m_AMAsocMoviles.Equipamiento);
+                fgEquipamiento.FillFromLEntidad(m_AMAsocMoviles.EquipamientoTip);
             }
         }
 
@@ -213,6 +213,7 @@ namespace Rivn.Mv
 
         private void gbModificarMovil_Click(object sender, EventArgs e)
         {
+            m_entMovil.MovilesEquip = m_AMAsocMoviles.EquipamientoTip;
             AltaMovil l_formAltaMovil = new AltaMovil(m_entMovil, true);
             ((MainFrame)App.GetMainWindow()).AddContent(l_formAltaMovil);
             SwitchTo(ModoForm.Edicion, OpGrid.Todas);
@@ -221,6 +222,7 @@ namespace Rivn.Mv
 
         private void gbModificarEq_Click(object sender, EventArgs e)
         {
+            m_entMovil.MovilesEquip = m_AMAsocMoviles.EquipamientoTip;
             AltaMovil l_formAltaMovil = new AltaMovil(m_entMovil, false);
             SwitchTo(ModoForm.Edicion, OpGrid.Equip);
         }
@@ -415,6 +417,7 @@ namespace Rivn.Mv
             gbModificarMovil.Enabled = true;
             gbBorrarMovil.Enabled = true;
             cmbEstado.Enabled = true;
+            gbModificarEstado.Enabled = true;
             igMoviles.Enabled = true;
             igOpciones.Enabled = true;
             igKilometros.Enabled = true;
