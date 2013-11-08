@@ -188,6 +188,7 @@ namespace Rivn.Tg
             // Mostramos el formulario de ABM del padre
             App.SetACL(m_aclInfo);
             Controles l_frmPadre= new Controles();
+            ((MainFrame)App.GetMainWindow()).AddContent(l_frmPadre);
 
             l_frmPadre.MdiParent= null;
             l_frmPadre.StartPosition= FormStartPosition.CenterParent;
@@ -348,7 +349,7 @@ namespace Rivn.Tg
             // Pasamos los datos a la Entidad
             m_entControlRepa.Codctl= cmbControl.SelectedStrCode;
             m_entControlRepa.Nroitem= txtNroitem.Numero;
-            m_entControlRepa.Codrep= txtCodrep.Text;
+            m_entControlRepa.Codrep= cdcCodRep.SelectedStrCode;
 
             // Tratamos de grabar la entidad
             App.ShowMsg("Grabando...");
@@ -423,8 +424,8 @@ namespace Rivn.Tg
             // Deshabilitamos el frame
             txtNroitem.NormalDisable= true;
             txtNroitem.Enabled= false;
-            txtCodrep.NormalDisable= true;
-            txtCodrep.Enabled= false;
+            cdcCodRep.NormalDisable = true;
+            cdcCodRep.Enabled = false;
             cmdCancelar.Enabled= false;
             cmdGrabar.Enabled= false;
             cmdDesHab.Enabled= false;
@@ -432,7 +433,7 @@ namespace Rivn.Tg
 
             // Blanqueamos los campos
             txtNroitem.Numero= 0;
-            txtCodrep.Text= "";
+            cdcCodRep.SelectedIndex = -1;
 
             // Habilitamos la grilla y los controles operativos
             cmbControl.Enabled= true;
@@ -459,13 +460,13 @@ namespace Rivn.Tg
         {
             // Llenamos los campos a partir de la entidad a editar
             txtNroitem.Numero= m_entControlRepa.Nroitem;
-            txtCodrep.Text= m_entControlRepa.Codrep;
+            cdcCodRep.SelectedStrCode = m_entControlRepa.Codrep;
 
             // Habilitamos el frame
             txtNroitem.NormalDisable= false;
             txtNroitem.Enabled= m_entControlRepa.EsNueva;
-            txtCodrep.NormalDisable= false;
-            txtCodrep.Enabled= m_entControlRepa.EsNueva;
+            cdcCodRep.NormalDisable = false;
+            cdcCodRep.Enabled = m_entControlRepa.EsNueva;
             cmdCancelar.Enabled= true;
             cmdGrabar.Enabled= !m_entControlRepa.EstaBorrada;
             cmdDesHab.FixedImage= (m_entControlRepa.EstaBorrada) ? FixedGlassButtons.Enable 

@@ -29,7 +29,6 @@ namespace Rivn.Tg
         private System.Windows.Forms.Label lblNroitem;
         private TNGS.NetControls.NumberEdit txtNroitem;
         private System.Windows.Forms.Label lblCodrep;
-        private TNGS.NetControls.TextEdit txtCodrep;
         private TNGS.NetControls.GlassButton cmdDesHab;
         private TNGS.NetControls.GlassButton cmdHab;
         private TNGS.NetControls.GlassButton cmdGrabar;
@@ -92,10 +91,10 @@ namespace Rivn.Tg
             this.lblNroitem = new System.Windows.Forms.Label();
             this.txtNroitem = new TNGS.NetControls.NumberEdit();
             this.lblCodrep = new System.Windows.Forms.Label();
-            this.txtCodrep = new TNGS.NetControls.TextEdit();
             this.cmbControl = new TNGS.NetControls.CDCombo();
             this.frmOper = new TNGS.NetControls.ImgGroup();
             this.frmData = new TNGS.NetControls.ImgGroup();
+            this.cdcCodRep = new TNGS.NetControls.CDCombo();
             this.xpnlBase.SuspendLayout();
             this.tsContainer1.SuspendLayout();
             this.tabPageSwitcher1.SuspendLayout();
@@ -121,7 +120,7 @@ namespace Rivn.Tg
             this.xpnlBase.Dock = System.Windows.Forms.DockStyle.Fill;
             this.xpnlBase.Location = new System.Drawing.Point(0, 0);
             this.xpnlBase.Name = "xpnlBase";
-            this.xpnlBase.Size = new System.Drawing.Size(784, 484);
+            this.xpnlBase.Size = new System.Drawing.Size(984, 484);
             this.xpnlBase.TabIndex = 0;
             // 
             // lblTitle
@@ -141,7 +140,7 @@ namespace Rivn.Tg
             this.tsContainer1.Dock = System.Windows.Forms.DockStyle.Top;
             this.tsContainer1.Location = new System.Drawing.Point(0, 0);
             this.tsContainer1.Name = "tsContainer1";
-            this.tsContainer1.Size = new System.Drawing.Size(784, 115);
+            this.tsContainer1.Size = new System.Drawing.Size(984, 115);
             this.tsContainer1.TabIndex = 25;
             // 
             // tabPageSwitcher1
@@ -151,7 +150,7 @@ namespace Rivn.Tg
             this.tabPageSwitcher1.Location = new System.Drawing.Point(0, 26);
             this.tabPageSwitcher1.Name = "tabPageSwitcher1";
             this.tabPageSwitcher1.SelectedTabStripPage = this.tabStripPage1;
-            this.tabPageSwitcher1.Size = new System.Drawing.Size(784, 89);
+            this.tabPageSwitcher1.Size = new System.Drawing.Size(984, 89);
             this.tabPageSwitcher1.TabIndex = 1;
             this.tabPageSwitcher1.TabStrip = this.tsBase1;
             this.tabPageSwitcher1.Text = "tabPageSwitcher1";
@@ -167,7 +166,7 @@ namespace Rivn.Tg
             this.tabStripPage1.Name = "tabStripPage1";
             this.tabStripPage1.Opacity = 255;
             this.tabStripPage1.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
-            this.tabStripPage1.Size = new System.Drawing.Size(776, 87);
+            this.tabStripPage1.Size = new System.Drawing.Size(976, 87);
             this.tabStripPage1.Speed = 8;
             this.tabStripPage1.TabIndex = 0;
             // 
@@ -324,7 +323,7 @@ namespace Rivn.Tg
             this.tsBase1.Padding = new System.Windows.Forms.Padding(60, 3, 30, 0);
             this.tsBase1.SelectedTab = this.tab1;
             this.tsBase1.ShowItemToolTips = false;
-            this.tsBase1.Size = new System.Drawing.Size(784, 26);
+            this.tsBase1.Size = new System.Drawing.Size(984, 26);
             this.tsBase1.TabIndex = 0;
             this.tsBase1.TabOverlap = 0;
             this.tsBase1.Text = "tsBase1";
@@ -356,7 +355,7 @@ namespace Rivn.Tg
             this.grdDatos.HeaderForeColor = System.Drawing.SystemColors.ControlText;
             this.grdDatos.Location = new System.Drawing.Point(4, 141);
             this.grdDatos.Name = "grdDatos";
-            this.grdDatos.Size = new System.Drawing.Size(776, 263);
+            this.grdDatos.Size = new System.Drawing.Size(976, 263);
             this.grdDatos.TabIndex = 0;
             this.grdDatos.Advance += new TNGS.NetRoutines.AdvanceEventHandler(this.grdDatos_Advance);
             this.grdDatos.DataDClick += new TNGS.NetRoutines.DataDClickEventHandler(this.grdDatos_DataDClick);
@@ -366,7 +365,7 @@ namespace Rivn.Tg
             // 
             this.cmdPrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cmdPrint.FixedImage = TNGS.NetControls.FixedGlassButtons.bPrint;
-            this.cmdPrint.Location = new System.Drawing.Point(754, 117);
+            this.cmdPrint.Location = new System.Drawing.Point(954, 117);
             this.cmdPrint.Name = "cmdPrint";
             this.cmdPrint.Size = new System.Drawing.Size(26, 24);
             this.cmdPrint.TabIndex = 2;
@@ -377,7 +376,7 @@ namespace Rivn.Tg
             // 
             this.cmdExcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cmdExcel.FixedImage = TNGS.NetControls.FixedGlassButtons.bExcel;
-            this.cmdExcel.Location = new System.Drawing.Point(728, 117);
+            this.cmdExcel.Location = new System.Drawing.Point(928, 117);
             this.cmdExcel.Name = "cmdExcel";
             this.cmdExcel.PCode = "TNGS.PRINT";
             this.cmdExcel.Size = new System.Drawing.Size(26, 24);
@@ -394,10 +393,10 @@ namespace Rivn.Tg
             this.frmEdicion.BackgroundGradientMode = TNGS.NetControls.ImgGroup.GroupBoxGradientMode.ForwardDiagonal;
             this.frmEdicion.BorderColor = System.Drawing.Color.Black;
             this.frmEdicion.BorderThickness = 1F;
+            this.frmEdicion.Controls.Add(this.cdcCodRep);
             this.frmEdicion.Controls.Add(this.lblNroitem);
             this.frmEdicion.Controls.Add(this.txtNroitem);
             this.frmEdicion.Controls.Add(this.lblCodrep);
-            this.frmEdicion.Controls.Add(this.txtCodrep);
             this.frmEdicion.CustomGroupBoxColor = System.Drawing.Color.White;
             this.frmEdicion.FontTitle = new System.Drawing.Font("Arial", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.frmEdicion.GroupImage = null;
@@ -410,13 +409,13 @@ namespace Rivn.Tg
             this.frmEdicion.ShadowColor = System.Drawing.Color.DarkGray;
             this.frmEdicion.ShadowControl = false;
             this.frmEdicion.ShadowThickness = 3;
-            this.frmEdicion.Size = new System.Drawing.Size(776, 67);
+            this.frmEdicion.Size = new System.Drawing.Size(976, 67);
             this.frmEdicion.TabIndex = 21;
             // 
             // lblNroitem
             // 
             this.lblNroitem.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNroitem.Location = new System.Drawing.Point(49, 31);
+            this.lblNroitem.Location = new System.Drawing.Point(122, 29);
             this.lblNroitem.Name = "lblNroitem";
             this.lblNroitem.Size = new System.Drawing.Size(104, 22);
             this.lblNroitem.TabIndex = 106;
@@ -428,7 +427,7 @@ namespace Rivn.Tg
             this.txtNroitem.BackColor = System.Drawing.SystemColors.Window;
             this.txtNroitem.Enabled = false;
             this.txtNroitem.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNroitem.Location = new System.Drawing.Point(159, 31);
+            this.txtNroitem.Location = new System.Drawing.Point(232, 29);
             this.txtNroitem.MaxLength = 5;
             this.txtNroitem.Name = "txtNroitem";
             this.txtNroitem.NegativeValid = false;
@@ -440,24 +439,12 @@ namespace Rivn.Tg
             // lblCodrep
             // 
             this.lblCodrep.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCodrep.Location = new System.Drawing.Point(324, 31);
+            this.lblCodrep.Location = new System.Drawing.Point(485, 29);
             this.lblCodrep.Name = "lblCodrep";
-            this.lblCodrep.Size = new System.Drawing.Size(145, 22);
+            this.lblCodrep.Size = new System.Drawing.Size(86, 22);
             this.lblCodrep.TabIndex = 107;
-            this.lblCodrep.Text = "Codigo de Reparacion:";
+            this.lblCodrep.Text = "Reparacion:";
             this.lblCodrep.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // txtCodrep
-            // 
-            this.txtCodrep.BackColor = System.Drawing.SystemColors.Window;
-            this.txtCodrep.EmptyValid = false;
-            this.txtCodrep.Enabled = false;
-            this.txtCodrep.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCodrep.Location = new System.Drawing.Point(475, 31);
-            this.txtCodrep.MaxLength = 6;
-            this.txtCodrep.Name = "txtCodrep";
-            this.txtCodrep.Size = new System.Drawing.Size(181, 22);
-            this.txtCodrep.TabIndex = 7;
             // 
             // cmbControl
             // 
@@ -514,11 +501,22 @@ namespace Rivn.Tg
             this.frmData.Size = new System.Drawing.Size(368, 288);
             this.frmData.TabIndex = 0;
             // 
+            // cdcCodRep
+            // 
+            this.cdcCodRep.BackColor = System.Drawing.SystemColors.Window;
+            this.cdcCodRep.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cdcCodRep.FormattingEnabled = true;
+            this.cdcCodRep.Location = new System.Drawing.Point(578, 29);
+            this.cdcCodRep.Name = "cdcCodRep";
+            this.cdcCodRep.Size = new System.Drawing.Size(205, 23);
+            this.cdcCodRep.Sorted = true;
+            this.cdcCodRep.TabIndex = 108;
+            // 
             // ControlesRepa
             // 
             this.AllowEndUserDocking = false;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(784, 484);
+            this.ClientSize = new System.Drawing.Size(984, 484);
             this.Controls.Add(this.xpnlBase);
             this.DockAreas = WeifenLuo.WinFormsUI.Docking.DockAreas.Document;
             this.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -548,5 +546,6 @@ namespace Rivn.Tg
         #endregion
 
         private IContainer components;
+        private TNGS.NetControls.CDCombo cdcCodRep;
     }
 }

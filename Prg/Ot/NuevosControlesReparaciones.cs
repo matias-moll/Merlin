@@ -20,14 +20,16 @@ namespace Rivn.Ot
 
         #region Miembros y Contructores
         // Variables Miembro
+        // Instanciamos el StatMsg de la clase 
         private StatMsg m_smResult = new StatMsg("NuevosControlesReparaciones");
+        //private Bel. m_leReparacionesSeleccionadas;
+        //private Entidad 
 
         // Constructor Inicial
         public NuevosControlesReparaciones()
         {
             InitializeComponent();
             ((MainFrame)App.GetMainWindow()).AddContent(this);
-            // Instanciamos el StatMsg de la clase 
         }
         
         #endregion
@@ -39,9 +41,12 @@ namespace Rivn.Ot
             // reseteamos el statmsg
             m_smResult.UilReset("LLenarComboPatentesMoviles");
             // llenamos la combo con los moviles
-            p_cdcCombo.FillFromStrLEntidad(Bll.Moviles.UpFull(true, ref m_smResult), "mov_ecd_patente", "mov_des_des", "deleted");
+            p_cdcCombo.FillFromStrLEntidad(Bll.Moviles.UpFull(true, ref m_smResult), "mov_ecd_patente", "mov_ecd_patente", "deleted");
             // chequeamos que haya salido todo bien
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
+
+            //seteamos en el null para que se vea fancy
+            p_cdcCombo.SelectedIndex = -1;
         }
 
         #endregion
@@ -50,13 +55,17 @@ namespace Rivn.Ot
 
         private void rbControles_CheckedChanged(object sender, EventArgs e)
         {
+            //si no esta seleccionado volvemos.
+            if (!rbControles.Checked)
+                return;
             // nos aseguramos de que haya un movil seleccionado
             if (cdcPatente.SelectedIndex == -1)
             {
                 MsgRuts.ShowMsg(this, "No hay ningun Movil seleccionado");
                 return;
             }
-
+            //cambiamos el nombre del ImgGroup
+            igControlReparacion.GroupTitle = "Controles";
             // reseteamos al statmsg
             m_smResult.UilReset("rbControles_CheckedChanged");
             //llenamos la lista con los controles de la tabla
@@ -67,31 +76,47 @@ namespace Rivn.Ot
 
         private void rbReparaciones_CheckedChanged(object sender, EventArgs e)
            {
+                // si no esta chequeado hacemos un return
+               if (!rbReparaciones.Checked)
+                   return;
                 // nos aseguramos de que haya un movil seleccionado
                 if (cdcPatente.SelectedIndex == -1)
                 {
                     MsgRuts.ShowMsg(this, "No hay ningun Movil seleccionado");
                     return;
                 }
-
+                //cambiamos el nombre del ImgGroup
+                igControlReparacion.GroupTitle = "Reparaciones";    
                 // reseteamos al statmsg
                 m_smResult.UilReset("rbControles_CheckedChanged");
                 //llenamos la lista con los controles de la tabla
-                cdlControlesReparaciones.FillFromStrLEntidad(Bll.Tablas.RepUpFull(true, ref m_smResult), "rep_cod_cod", "rep_des_des", "deleted");
+                cdlControlesReparaciones.FillFromStrLEntidad(Bll.Tablas.RepUpFull(true, ref m_smResult), "rep_cd6_cod", "rep_xde_des", "deleted");
                 // chequeamos que haya salido todo bien
                 if (MsgRuts.AnalizeError(this, m_smResult)) return;
             }
-
-        #endregion
-
+        
         private void NuevosControlesReparaciones_Load(object sender, EventArgs e)
         {
             // LLenamos Las patentes que hay en la tabla.
             LLenarComboPatentesMoviles(cdcPatente);
         }
 
+        private void gbCancel_Click(object sender, EventArgs e)
+        {
+            // mostramos un mensaje si esta seguro de cerrar
+            if (MsgRuts.ShowMsg(this, 
+                "Si cierra la pantalla perdera todo lo hecho en ella", 
+                MessageBoxButtons.OKCancel) == DialogResult.Cancel) return;
+            // si el dialog es OK cerramos.
+            this.Close();
+        }
 
-       
-      
+
+
+        #endregion
+
+
+
+
     }
 }

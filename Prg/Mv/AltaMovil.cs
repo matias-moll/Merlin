@@ -313,9 +313,7 @@ namespace Rivn.Mv
                                                                     return;
             this.Close();
         }
-
-        #endregion
-
+        
         private void AltaMovil_Load(object sender, EventArgs e)
         {
             //llenamos los controles del formulario con la informacion sacada de las tablas.
@@ -335,6 +333,10 @@ namespace Rivn.Mv
             neAnioFabric.Numero = m_entMovil.Aniofabric;
 
         }
+
+        #endregion
+
+        
 
 
 
