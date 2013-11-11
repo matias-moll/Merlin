@@ -14,7 +14,7 @@ namespace Rivn.Bel
     //----------------------------------------------------------------------------
     //                         TNG Software BEL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 08/11/2013 18:17
+    // Fecha                    : 11/11/2013 16:20
     // Sistema                  : Rivn
     // Clase para Administrar   : Tablas de Rivn.
     //----------------------------------------------------------------------------
@@ -666,6 +666,21 @@ namespace Rivn.Bel
         #endregion
 
         #region Formateadores
+
+        //---------------------------------------------------------------
+        // Metodos estáticos (Formateo de codigos alineados a derecha)
+        //---------------------------------------------------------------
+
+        /// <summary>
+        /// Formatea una string: cod
+        /// </summary>
+        public static string FrmtCod(string p_strCod)
+        {
+            if (p_strCod.Trim().Length > 4)
+                p_strCod= p_strCod.Trim().Substring(0,4);
+
+            return p_strCod.Trim().PadLeft(4).ToUpper();
+        }
         #endregion
 
         #region Propiedades de la clase
@@ -698,10 +713,7 @@ namespace Rivn.Bel
         public string Cod
         {
             get {return (string) InternalData["eqi_cod_cod"];}
-            set {
-                if (value.Trim().Length > 4) value= value.Trim().Substring(0,4);
-                InternalData["eqi_cod_cod"]= value.Trim().ToUpper();
-            }
+            set {InternalData["eqi_cod_cod"]= EEquipamento.FrmtCod(value);}
         }
 
         /// <summary>
@@ -842,7 +854,7 @@ namespace Rivn.Bel
             int l_iRet= 0;
 
             m_dtDatos.DefaultView.RowFilter= 
-                "eqi_cod_cod = " + Ruts.Co(p_strCod);
+                "eqi_cod_cod = " + Ruts.Co(EEquipamento.FrmtCod(p_strCod));
 
             if (m_dtDatos.DefaultView.Count == 1) {
                 // La borramos
@@ -942,7 +954,7 @@ namespace Rivn.Bel
                 DataRow l_drData= null;
 
                 m_dtDatos.DefaultView.RowFilter= 
-                    "eqi_cod_cod = " + Ruts.Co(p_strCod);
+                    "eqi_cod_cod = " + Ruts.Co(EEquipamento.FrmtCod(p_strCod));
 
                 if (m_dtDatos.DefaultView.Count == 1)
                     l_drData= m_dtDatos.DefaultView[0].Row;
@@ -1026,7 +1038,7 @@ namespace Rivn.Bel
                 // Buscamos la entidad
                 foreach (EEquipamento l_entItem in this) {
                     // Si existe -> la devolvemos
-                    if (l_entItem.Cod == p_strCod)
+                    if (l_entItem.Cod == EEquipamento.FrmtCod(p_strCod))
                         return l_entItem;
                 }
 
@@ -1750,6 +1762,21 @@ namespace Rivn.Bel
         #endregion
 
         #region Formateadores
+
+        //---------------------------------------------------------------
+        // Metodos estáticos (Formateo de codigos alineados a derecha)
+        //---------------------------------------------------------------
+
+        /// <summary>
+        /// Formatea una string: cod
+        /// </summary>
+        public static string FrmtCod(string p_strCod)
+        {
+            if (p_strCod.Trim().Length > 2)
+                p_strCod= p_strCod.Trim().Substring(0,2);
+
+            return p_strCod.Trim().PadLeft(2).ToUpper();
+        }
         #endregion
 
         #region Propiedades de la clase
@@ -1783,10 +1810,7 @@ namespace Rivn.Bel
         public string Cod
         {
             get {return (string) InternalData["est_rcd_cod"];}
-            set {
-                if (value.Trim().Length > 2) value= value.Trim().Substring(0,2);
-                InternalData["est_rcd_cod"]= value.Trim().ToUpper();
-            }
+            set {InternalData["est_rcd_cod"]= EEstado.FrmtCod(value);}
         }
 
         /// <summary>
@@ -1937,7 +1961,7 @@ namespace Rivn.Bel
             int l_iRet= 0;
 
             m_dtDatos.DefaultView.RowFilter= 
-                "est_rcd_cod = " + Ruts.Co(p_strCod);
+                "est_rcd_cod = " + Ruts.Co(EEstado.FrmtCod(p_strCod));
 
             if (m_dtDatos.DefaultView.Count == 1) {
                 // La borramos
@@ -2037,7 +2061,7 @@ namespace Rivn.Bel
                 DataRow l_drData= null;
 
                 m_dtDatos.DefaultView.RowFilter= 
-                    "est_rcd_cod = " + Ruts.Co(p_strCod);
+                    "est_rcd_cod = " + Ruts.Co(EEstado.FrmtCod(p_strCod));
 
                 if (m_dtDatos.DefaultView.Count == 1)
                     l_drData= m_dtDatos.DefaultView[0].Row;
@@ -2121,7 +2145,7 @@ namespace Rivn.Bel
                 // Buscamos la entidad
                 foreach (EEstado l_entItem in this) {
                     // Si existe -> la devolvemos
-                    if (l_entItem.Cod == p_strCod)
+                    if (l_entItem.Cod == EEstado.FrmtCod(p_strCod))
                         return l_entItem;
                 }
 

@@ -14,7 +14,7 @@ namespace Rivn.Bel
     //----------------------------------------------------------------------------
     //                         TNG Software BEL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 11/11/2013 15:23
+    // Fecha                    : 11/11/2013 16:20
     // Sistema                  : Rivn
     // Clase para Administrar   : Moviles y Tablas Hijas
     //----------------------------------------------------------------------------
@@ -737,6 +737,21 @@ namespace Rivn.Bel
         #endregion
 
         #region Formateadores
+
+        //---------------------------------------------------------------
+        // Metodos estáticos (Formateo de codigos alineados a derecha)
+        //---------------------------------------------------------------
+
+        /// <summary>
+        /// Formatea una string: Codigo del Equipamento.
+        /// </summary>
+        public static string FrmtCodequip(string p_strCodequip)
+        {
+            if (p_strCodequip.Trim().Length > 4)
+                p_strCodequip= p_strCodequip.Trim().Substring(0,4);
+
+            return p_strCodequip.Trim().PadLeft(4).ToUpper();
+        }
         #endregion
 
         #region Propiedades de la clase
@@ -782,10 +797,7 @@ namespace Rivn.Bel
         public string Codequip
         {
             get {return (string) InternalData["meq_cod_codequip"];}
-            set {
-                if (value.Trim().Length > 4) value= value.Trim().Substring(0,4);
-                InternalData["meq_cod_codequip"]= value.Trim().ToUpper();
-            }
+            set {InternalData["meq_cod_codequip"]= EMovilEquip.FrmtCodequip(value);}
         }
 
         /// <summary>

@@ -16,7 +16,7 @@ namespace Rivn.Bll
     //----------------------------------------------------------------------------
     //                         TNG Software BLL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 11/11/2013 15:23
+    // Fecha                    : 11/11/2013 16:20
     // Sistema                  : Rivn
     // Clase para Administrar   : Moviles y Tablas Hijas
     //----------------------------------------------------------------------------
@@ -1453,12 +1453,6 @@ namespace Rivn.Bll
                 return;
             }
 
-            if (p_entMovilEquip.Codequip.Trim() == "") {
-                // El campo [Codigo del Equipamento.] no puede ser vacío
-                p_smResult.BllWarning("El dato [Codigo del Equipamento.] no puede ser vacío","");
-                return;
-            }
-
             if (p_entMovilEquip.Esfijo.Trim() != "") {
                 if ((p_entMovilEquip.Esfijo != "S") &&
                     (p_entMovilEquip.Esfijo != "N")) {
@@ -1472,6 +1466,19 @@ namespace Rivn.Bll
             // Validaciones de los campos con conexion
             // ********
 
+            if (p_entMovilEquip.Codequip.Trim() != "") {
+                Tablas.EqiVKey(p_dbcAccess,
+                               p_entMovilEquip.Codequip,
+                               ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                if (p_smResult.ICodeEs(BllCodes.KeyDsntFound)) {
+                    // El campo [Codigo del Equipamento.] debe existir en la tabla [Tablas.Eqi]
+                    p_smResult.BllWarning("El dato [Codigo del Equipamento.] debe existir en la tabla [Tablas.Eqi]","");
+                    return;
+                }
+                }
+
             // Verificamos la clave foranea
             Moviles.VKey(p_dbcAccess,
                          p_entMovilEquip.Patente,
@@ -1484,6 +1491,8 @@ namespace Rivn.Bll
                 p_smResult.BllWarning("La clave (Movil) foranea no existe en el sistema.","");
                 return;
             }
+
+            // Todas las validaciones fueron correctas
 
             // Llamamos a la funcion fija del usuario
             MveqTInt_f(p_dbcAccess, p_entMovilEquip, ref p_smResult);
@@ -2538,12 +2547,6 @@ namespace Rivn.Bll
                 return;
             }
 
-            if (p_entMovilEstado.Codestado.Trim() == "") {
-                // El campo [Codigo del estado.] no puede ser vacío
-                p_smResult.BllWarning("El dato [Codigo del estado.] no puede ser vacío","");
-                return;
-            }
-
             if (p_entMovilEstado.Km < 0) {
                 // El campo [Kilometraje] no puede menor a cero
                 p_smResult.BllWarning("El dato [Kilometraje] no puede ser negativo","");
@@ -2553,6 +2556,17 @@ namespace Rivn.Bll
             // ********
             // Validaciones de los campos con conexion
             // ********
+
+            Tablas.EdsVKey(p_dbcAccess,
+                           p_entMovilEstado.Codestado,
+                           ref p_smResult);
+            if (p_smResult.NOk) return;
+
+            if (!p_smResult.ICodeEs(BllCodes.KeyExists)) {
+                // El campo [Codigo del estado.] debe existir en la tabla [Tablas.Eds]
+                p_smResult.BllWarning("El dato [Codigo del estado.] debe existir en la tabla [Tablas.Eds] y estar habilitado","");
+                return;
+            }
 
             // Verificamos la clave foranea
             Moviles.VKey(p_dbcAccess,
@@ -2566,6 +2580,8 @@ namespace Rivn.Bll
                 p_smResult.BllWarning("La clave (Movil) foranea no existe en el sistema.","");
                 return;
             }
+
+            // Todas las validaciones fueron correctas
 
             // Llamamos a la funcion fija del usuario
             MvesTInt_f(p_dbcAccess, p_entMovilEstado, ref p_smResult);
