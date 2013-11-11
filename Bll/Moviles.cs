@@ -61,7 +61,7 @@ namespace Rivn.Bll
                 l_lstLEListaListaEntidades.Add(Bll.Moviles.MvcogetLastFiveMvlCombus(l_dbcAccess, p_strPatente, ref p_smResult));
                 l_lstLEListaListaEntidades.Add(Bll.Moviles.MvkmgetLastFiveMvlKm(l_dbcAccess, p_strPatente, ref p_smResult));
                 l_lstLEListaListaEntidades.Add(Bll.Moviles.MvesgetLastFiveMvlEstads(l_dbcAccess, p_strPatente, ref p_smResult));
-                l_lstLEListaListaEntidades.Add(Bll.Moviles.MveqgetEquipamientos(l_dbcAccess, p_strPatente, ref p_smResult));
+                l_lstLEListaListaEntidades.Add(Bll.Moviles.MveqFGet(p_strPatente, true, ref p_smResult));
             }
             catch (Exception l_expData)
             {

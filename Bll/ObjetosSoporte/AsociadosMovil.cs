@@ -36,8 +36,6 @@ namespace Rivn.Bll.ObjetosSoporte
             Combustibles.ChangeCaption("mco_fyh_fecha", "V1FechaFN1");
             Combustibles.ChangeCaption("ets_des_des", "V1EstacionCN2");
 
-            //Seteamos caption de equipamiento
-            Equipamiento.ChangeCaption("eqi_des_des", "V1EquipamientoCN2");
 
 
             //Seteamos caption de Km
@@ -76,6 +74,11 @@ namespace Rivn.Bll.ObjetosSoporte
             get { return m_lstLEListaEntidades[3]; }
         }
 
+
+        public LEMovilesEquip EquipamientoTip
+        {
+            get { return (LEMovilesEquip)m_lstLEListaEntidades[3]; }
+        }
 
         #endregion
         #endregion
