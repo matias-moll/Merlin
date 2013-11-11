@@ -174,19 +174,31 @@ namespace Rivn.Mv
         // cheakea true los equipamientos que tiene un movil en una checked List
         private void CheckearEquipamientosMovil(CDCheckedList p_clEqui, Bel.EMovil p_eMovil)
         {
-            //recuperamos la LE de equipamientos del movil
+            // recuperamos la LE de equipamientos del movil
             Bel.LEMovilesEquip l_lentMovEquipamiento = p_eMovil.MovilesEquip;
             // creamos una nueva variable para llenarla con las entidadesde la lista entidad
             Bel.EMovilEquip l_entMovilEquip;
 
+            // instanciamos un array donde van a guardarse los codigos de los equipamientos seleccionados
+            string[] arraySoporte = new string[p_clEqui.Items.Count];
+            int l_iContador = 0;
             foreach (CodDesItems item in p_clEqui.Items)
             {
                 l_entMovilEquip = l_lentMovEquipamiento[p_eMovil.Patente, item.StrCode];
-                //si la entidad es null, es porque no existe ninguna en la lista entidad con ese StrCode. 
-                //   si no es null, la chequeamos.
+
+                // si la entidad es null, es porque no existe ninguna en la lista entidad con ese StrCode. 
+                // si no es null, la chequeamos.
                 if (null != l_entMovilEquip)
-                    p_clEqui.SetCheckedStrCode(item.StrCode,true);
+                    arraySoporte[l_iContador] = item.StrCode;
+                else
+                    arraySoporte[l_iContador] = "";
+
+                l_iContador = l_iContador + 1;
             }
+
+
+            //chequeamos desde el array creado
+            p_clEqui.CheckedStrCodes = arraySoporte;
         }
 
         // llena una Entidad Movil pasada por parametro, con los datos del formulario

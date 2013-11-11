@@ -22,14 +22,15 @@ namespace Rivn.Ot
         // Variables Miembro
         // Instanciamos el StatMsg de la clase 
         private StatMsg m_smResult = new StatMsg("NuevosControlesReparaciones");
-        //private Bel. m_leReparacionesSeleccionadas;
-        //private Entidad 
+        private Bel.LEReparaciones m_leReparacionesSeleccionadas;
+        private Bel.EOTItem m_entOTitem;
 
         // Constructor Inicial
         public NuevosControlesReparaciones()
         {
             InitializeComponent();
             ((MainFrame)App.GetMainWindow()).AddContent(this);
+            m_entOTitem = Bel.EOTItem.NewEmpty();
         }
         
         #endregion
@@ -114,6 +115,26 @@ namespace Rivn.Ot
 
 
         #endregion
+
+        private void gbAgregar_Click(object sender, EventArgs e)
+        {
+            int l_intNumeroItem;
+            if (rbControles.Checked)
+            {
+
+            }
+            if (rbReparaciones.Checked)
+            {
+                // los numeros de item y agrupador en una reparacion sola es el mismo, siempre se calcula como la cantidad  --->
+                // <--- de entidades que tiene nuestra lista mas uno (que es el que agregamos)
+                l_intNumeroItem = m_leReparacionesSeleccionadas.Count + 1;
+                m_entOTitem.Nroagrupador = l_intNumeroItem;
+                m_entOTitem.Nroitem = l_intNumeroItem;
+
+
+            }
+        }
+
 
 
 

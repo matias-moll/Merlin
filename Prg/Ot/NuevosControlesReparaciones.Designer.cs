@@ -95,7 +95,7 @@
             // rbReparaciones
             // 
             this.rbReparaciones.AutoSize = true;
-            this.rbReparaciones.Location = new System.Drawing.Point(95, 3);
+            this.rbReparaciones.Location = new System.Drawing.Point(90, 3);
             this.rbReparaciones.Name = "rbReparaciones";
             this.rbReparaciones.Size = new System.Drawing.Size(102, 19);
             this.rbReparaciones.TabIndex = 1;
@@ -109,7 +109,7 @@
             this.rbControles.AutoSize = true;
             this.rbControles.BackColor = System.Drawing.Color.Transparent;
             this.rbControles.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbControles.Location = new System.Drawing.Point(12, 3);
+            this.rbControles.Location = new System.Drawing.Point(3, 3);
             this.rbControles.Name = "rbControles";
             this.rbControles.Size = new System.Drawing.Size(77, 19);
             this.rbControles.TabIndex = 0;
@@ -154,7 +154,7 @@
             this.deImporte.Location = new System.Drawing.Point(291, 39);
             this.deImporte.MaxLength = 13;
             this.deImporte.Name = "deImporte";
-            this.deImporte.Size = new System.Drawing.Size(128, 21);
+            this.deImporte.Size = new System.Drawing.Size(119, 21);
             this.deImporte.TabIndex = 3;
             this.deImporte.Text = "0.00";
             // 
@@ -286,6 +286,7 @@
             this.gbAgregar.TabIndex = 0;
             this.gbAgregar.Text = "Agregar Nuevo";
             this.gbAgregar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.gbAgregar.Click += new System.EventHandler(this.gbAgregar_Click);
             // 
             // cdcPatente
             // 
@@ -293,7 +294,7 @@
             this.cdcPatente.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cdcPatente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.cdcPatente.FormattingEnabled = true;
-            this.cdcPatente.Location = new System.Drawing.Point(116, 18);
+            this.cdcPatente.Location = new System.Drawing.Point(122, 12);
             this.cdcPatente.Name = "cdcPatente";
             this.cdcPatente.Size = new System.Drawing.Size(119, 23);
             this.cdcPatente.Sorted = true;
@@ -351,9 +352,9 @@
             // 
             this.fullLabel2.BackColor = System.Drawing.Color.Transparent;
             this.fullLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fullLabel2.Location = new System.Drawing.Point(575, 9);
+            this.fullLabel2.Location = new System.Drawing.Point(581, 10);
             this.fullLabel2.Name = "fullLabel2";
-            this.fullLabel2.Size = new System.Drawing.Size(180, 22);
+            this.fullLabel2.Size = new System.Drawing.Size(180, 21);
             this.fullLabel2.TabIndex = 5;
             this.fullLabel2.Text = "Orden de Trabajo Numero:";
             // 
@@ -361,7 +362,7 @@
             // 
             this.fullLabel1.BackColor = System.Drawing.Color.Transparent;
             this.fullLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fullLabel1.Location = new System.Drawing.Point(24, 20);
+            this.fullLabel1.Location = new System.Drawing.Point(30, 14);
             this.fullLabel1.Name = "fullLabel1";
             this.fullLabel1.Size = new System.Drawing.Size(98, 23);
             this.fullLabel1.TabIndex = 1;
