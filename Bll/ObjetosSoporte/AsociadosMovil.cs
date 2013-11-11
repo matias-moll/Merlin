@@ -36,7 +36,9 @@ namespace Rivn.Bll.ObjetosSoporte
             Combustibles.ChangeCaption("mco_fyh_fecha", "V1FechaFN1");
             Combustibles.ChangeCaption("ets_des_des", "V1EstacionCN2");
 
-
+            //Cambiar caption de equipamiento
+            Equipamiento.ChangeCaption("meq_cod_codequip", "V1CCN1");
+            Equipamiento.ChangeCaption("deleted", "");
 
             //Seteamos caption de Km
             Kms.ChangeCaption("mkm_fyh_fecha", "V1FechaFN1");

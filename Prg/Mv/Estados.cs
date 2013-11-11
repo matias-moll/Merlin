@@ -179,7 +179,8 @@ namespace Rivn.Mv
         {
             if (m_AMAsocMoviles.Equipamiento.Count != 0)
             {
-                fgEquipamiento.FillFromLEntidad(m_AMAsocMoviles.EquipamientoTip);
+                fgEquipamiento.FillFromLEntidad(m_AMAsocMoviles.EquipamientoTip, "@M-M@@M-M@N@M-M@0;100@M-M@");
+                //fgEquipamiento.FillFromLEntidad(m_AMAsocMoviles.EquipamientoTip);
             }
         }
 
@@ -381,7 +382,8 @@ namespace Rivn.Mv
         {
             LlenarDatos();
             LimpiarEditables();
-            m_AMAsocMoviles.CargarDatos(m_entMovil.Patente);
+            cmbEstado.SelectedIndex = -1;
+            //m_AMAsocMoviles.CargarDatos(m_entMovil.Patente);
             fgCombustibles.Clear();
             fgEquipamiento.Clear();
             fgKm.Clear();
@@ -414,6 +416,7 @@ namespace Rivn.Mv
             LlenarDatos();
             LimpiarEditables();
             m_AMAsocMoviles.CargarDatos(m_entMovil.Patente);
+            cmbEstado.SelectedStrCode = DameUltimoEstado();
             gbModificarMovil.Enabled = true;
             gbBorrarMovil.Enabled = true;
             cmbEstado.Enabled = true;
@@ -557,8 +560,6 @@ namespace Rivn.Mv
 
         private void ftrMoviles_DoubleClick(object sender, EventArgs e)
         {
-            m_AMAsocMoviles.CargarDatos(m_entMovil.Patente);
-            cmbEstado.SelectedStrCode = DameUltimoEstado();
             SwitchTo(ModoForm.Edicion, OpGrid.Todas);
         }
 

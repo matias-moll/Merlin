@@ -10,7 +10,7 @@ namespace Rivn.Dal
     //----------------------------------------------------------------------------
     //                         TNG Software DAL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 08/11/2013 18:17
+    // Fecha                    : 11/11/2013 15:23
     // Sistema                  : Rivn
     // Clase para Administrar   : Moviles Equipamiento
     // Basada en la Tabla       : MvlEquipamiento
@@ -700,6 +700,7 @@ namespace Rivn.Dal
 
                 // Fijamos los nuevos captions de la grilla
                 p_dtResult.Columns["meq_des_Equip"].Caption= "V1EquipamientoCN1";
+                p_dtResult.Columns["meq_cod_codequip"].Caption= "V1Codigo del Equipamento.CN1";
                 p_dtResult.Columns["deleted"].Caption= "V1Borrado2N2";
             }
             catch (Exception l_expData) {
