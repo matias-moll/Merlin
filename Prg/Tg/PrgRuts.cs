@@ -46,7 +46,6 @@ namespace Rivn.Tg
             Reparaciones l_dcReparaciones = new Reparaciones();
             Categorias l_dcCategorias = new Categorias();
             ControlesRepa l_dcCOntroles = new ControlesRepa();
-            Controles controles = new Controles();
 
             // Liberamos el menu
             App.LockMenu(false);

@@ -10,7 +10,7 @@ namespace Rivn.Dal
     //----------------------------------------------------------------------------
     //                         TNG Software DAL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 11/11/2013 16:20
+    // Fecha                    : 11/11/2013 18:04
     // Sistema                  : Rivn
     // Clase para Administrar   : Moviles Equipamiento
     // Basada en la Tabla       : MvlEquipamiento
@@ -574,26 +574,22 @@ namespace Rivn.Dal
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
         /// <param name= "p_strPatente">patente del movil</param>
-        /// <param name="p_dsResult">DataSet donde devolver el registro</param>
-        /// <param name="p_strTabla">Nombre de la tabla a llenar</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static int EliminarEquipamiento(DBConn p_dbcAccess,
                                                string p_strPatente,
-                                               ref DataSet p_dsResult,
-                                               string p_strTabla,
                                                ref StatMsg p_smResult)
         {
             // No hay errores aun
             p_smResult.DalReset("MvlEquipamiento", "EliminarEquipamiento");
 
             try {
-                return DBRuts.Exec_DS(p_dbcAccess,
-                                      "TNGS_Rivn..MVLEQUIPAMIENTO_ELIMINAREQUIPAMIENTO",
-                                      new DbParameter[] {
-                                          p_dbcAccess.MakeParam("@patente", p_strPatente),
-                                          p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
-                                      },
-                                      ref p_dsResult, p_strTabla);
+                return DBRuts.Exec(p_dbcAccess,
+                                   "TNGS_Rivn..MVLEQUIPAMIENTO_ELIMINAREQUIPAMIENTO",
+                                   new DbParameter[] {
+                                       p_dbcAccess.MakeParam("@patente", p_strPatente),
+                                       p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
+                                   }
+                                  );
             }
             catch (Exception l_expData) {
                 // Error en el método fijo

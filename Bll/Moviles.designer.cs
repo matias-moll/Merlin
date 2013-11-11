@@ -16,7 +16,7 @@ namespace Rivn.Bll
     //----------------------------------------------------------------------------
     //                         TNG Software BLL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 11/11/2013 16:20
+    // Fecha                    : 11/11/2013 18:05
     // Sistema                  : Rivn
     // Clase para Administrar   : Moviles y Tablas Hijas
     //----------------------------------------------------------------------------
@@ -2050,37 +2050,22 @@ namespace Rivn.Bll
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
         /// <param name= p_strPatente>patente del movil</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
-        /// <returns>ListaEntidad con los datos solicitados</returns>
-        internal static ListaEntidades MveqEliminarEquipamiento(DBConn p_dbcAccess,
-                                                                string p_strPatente,
-                                                                ref StatMsg p_smResult)
+        internal static void MveqEliminarEquipamiento(DBConn p_dbcAccess,
+                                                      string p_strPatente,
+                                                      ref StatMsg p_smResult)
         {
             // No hay errores aun
             p_smResult.BllReset("Moviles", "MveqEliminarEquipamiento");
 
             try {
                 // Llamamos al metodo definido por el usuario
-                DataSet l_dsTemp= new DataSet();
-
                 Dal.MvlEquipamiento.EliminarEquipamiento(p_dbcAccess,
                                                          p_strPatente,
-                                                         ref l_dsTemp,
-                                                         "Temporal",
                                                          ref p_smResult);
-                if (p_smResult.NOk) return null;
-
-                // Creamos la LE y Captionamos
-                ListaEntidades l_lentRet= new ListaEntidades(l_dsTemp.Tables["Temporal"]);
-                BllRuts.FillStdCaptions(ref l_lentRet);
-
-                // Devolvemos la LE
-                l_dsTemp.Dispose();
-                return l_lentRet;
             }
             catch (Exception l_expData) {
                 // Error en la operacion
                 p_smResult.BllError(l_expData.ToString());
-                return null;
             }
             finally {
                 // Terminamos

@@ -54,6 +54,7 @@ namespace Rivn.Mv
 
             //nos guardamos la entidad a Updatear en la variable miembro Movil
             m_entMovil = p_entMovil;
+            m_EstadoAlta = false;
 
             //disbleamos los controles que no tienen que estar activos
             neKilometros.Enabled = false;
@@ -63,20 +64,6 @@ namespace Rivn.Mv
             gbCancel.Enabled = false;
             igDatosBasicosMovil.Enabled = p_bImgHabilitado;
 
-            ////recuperamos la LE de equipamientos del movil
-            //Bel.LEMovilesEquip l_lentMovEquipamiento = p_entMovil.MovilesEquip;
-            //// creamos una nueva variable para re
-            //Bel.EMovilEquip l_entMovilEquip;
-
-            ////checkeamos todos los equipamientos que posee.
-            //foreach (CodDesItems item in clEquipamientos.Items)
-            //{
-            //    l_entMovilEquip = l_lentMovEquipamiento[p_entMovil.Patente, item.StrCode];
-            //    //si la entidad es null, es porque no existe ninguna en la lista entidad con ese StrCode. 
-            //    //   si no es null, la chequeamos.
-            //    if( null != l_entMovilEquip) 
-            //        clEquipamientos.SetCheckedStrCode(item.StrCode, true);
-            //}
         }
 
         #endregion
@@ -310,15 +297,17 @@ namespace Rivn.Mv
                 return;
             }
 
-            // Agregamos la Entidad Estado Default a la lista entidad de Moviles Estados
-            m_entMovil.MovilesEstado.AddEntity(l_eMvlEstado);
 
-            // Agregamos la primer Entidad Kms Del movil, a la Lista Entidad
-            m_entMovil.MovilesKms.AddEntity(GenerarEntidadMvlKilometros());
+
+
 
             //procedemos a grabar 
             if(m_EstadoAlta)
             {
+                // Agregamos la primer Entidad Kms Del movil, a la Lista Entidad
+                m_entMovil.MovilesKms.AddEntity(GenerarEntidadMvlKilometros());
+                // Agregamos la Entidad Estado Default a la lista entidad de Moviles Estados
+                m_entMovil.MovilesEstado.AddEntity(l_eMvlEstado);
                 //si es estado de alta grabamos una entidad nueva.
                 m_entMovil.MovilesEquip = ObtenerLEntidadSeleccionadosCheckedList();
                 Bll.Moviles.Save(m_entMovil, ref m_stResult);

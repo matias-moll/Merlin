@@ -88,13 +88,13 @@ namespace Rivn.Tg
             this.cmdPrint = new TNGS.NetControls.GlassButton();
             this.cmdExcel = new TNGS.NetControls.GlassButton();
             this.frmEdicion = new TNGS.NetControls.ImgGroup();
+            this.cdcCodRep = new TNGS.NetControls.CDCombo();
             this.lblNroitem = new System.Windows.Forms.Label();
             this.txtNroitem = new TNGS.NetControls.NumberEdit();
             this.lblCodrep = new System.Windows.Forms.Label();
             this.cmbControl = new TNGS.NetControls.CDCombo();
             this.frmOper = new TNGS.NetControls.ImgGroup();
             this.frmData = new TNGS.NetControls.ImgGroup();
-            this.cdcCodRep = new TNGS.NetControls.CDCombo();
             this.xpnlBase.SuspendLayout();
             this.tsContainer1.SuspendLayout();
             this.tabPageSwitcher1.SuspendLayout();
@@ -412,6 +412,17 @@ namespace Rivn.Tg
             this.frmEdicion.Size = new System.Drawing.Size(976, 67);
             this.frmEdicion.TabIndex = 21;
             // 
+            // cdcCodRep
+            // 
+            this.cdcCodRep.BackColor = System.Drawing.SystemColors.Window;
+            this.cdcCodRep.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cdcCodRep.FormattingEnabled = true;
+            this.cdcCodRep.Location = new System.Drawing.Point(578, 29);
+            this.cdcCodRep.Name = "cdcCodRep";
+            this.cdcCodRep.Size = new System.Drawing.Size(205, 23);
+            this.cdcCodRep.Sorted = true;
+            this.cdcCodRep.TabIndex = 108;
+            // 
             // lblNroitem
             // 
             this.lblNroitem.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -500,17 +511,6 @@ namespace Rivn.Tg
             this.frmData.ShadowThickness = 3;
             this.frmData.Size = new System.Drawing.Size(368, 288);
             this.frmData.TabIndex = 0;
-            // 
-            // cdcCodRep
-            // 
-            this.cdcCodRep.BackColor = System.Drawing.SystemColors.Window;
-            this.cdcCodRep.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cdcCodRep.FormattingEnabled = true;
-            this.cdcCodRep.Location = new System.Drawing.Point(578, 29);
-            this.cdcCodRep.Name = "cdcCodRep";
-            this.cdcCodRep.Size = new System.Drawing.Size(205, 23);
-            this.cdcCodRep.Sorted = true;
-            this.cdcCodRep.TabIndex = 108;
             // 
             // ControlesRepa
             // 

@@ -82,6 +82,8 @@ namespace Rivn.Tg
             Bel.LEControles l_lentControles= Bll.Controles.UpFull(true, ref m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
             cmbControl.FillFromStrLEntidad(l_lentControles, "ctl_cod_cod", "ctl_des_des", "deleted");
+            Bel.LEReparaciones l_lentReparaciones = Bll.Tablas.RepUpFull(true, ref m_smResult);
+            cdcCodRep.FillFromStrLEntidad(l_lentReparaciones, "rep_cd6_cod", "rep_xde_des", "deleted");
 
             // Pasamos a modo Operaciones, llenamos la grilla y 
             // damos foco al primer campo
@@ -188,11 +190,11 @@ namespace Rivn.Tg
             // Mostramos el formulario de ABM del padre
             App.SetACL(m_aclInfo);
             Controles l_frmPadre= new Controles();
-            ((MainFrame)App.GetMainWindow()).AddContent(l_frmPadre);
+            //((MainFrame)App.GetMainWindow()).AddContent(l_frmPadre);
 
-            l_frmPadre.MdiParent= null;
-            l_frmPadre.StartPosition= FormStartPosition.CenterParent;
-            l_frmPadre.ShowDialog(this);
+            //l_frmPadre.MdiParent = null;
+            //l_frmPadre.StartPosition = FormStartPosition.CenterParent;
+            //l_frmPadre.ShowDialog(this);
             App.SetACL(null);
 
             // Bloqueamos el menu

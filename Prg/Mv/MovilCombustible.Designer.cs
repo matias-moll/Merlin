@@ -35,10 +35,10 @@
             this.igCombustible = new TNGS.NetControls.ImgGroup();
             this.lblEstacion = new TNGS.NetControls.FullLabel();
             this.cdcEstacion = new TNGS.NetControls.CDCombo();
-            this.neImporte = new TNGS.NetControls.NumberEdit();
             this.neLitros = new TNGS.NetControls.NumberEdit();
             this.lblImporte = new TNGS.NetControls.FullLabel();
             this.lblLitros = new TNGS.NetControls.FullLabel();
+            this.deImporte = new TNGS.NetControls.DecimalEdit();
             this.xpnlPanel.SuspendLayout();
             this.igCombustible.SuspendLayout();
             this.SuspendLayout();
@@ -86,9 +86,9 @@
             this.igCombustible.BackgroundGradientMode = TNGS.NetControls.ImgGroup.GroupBoxGradientMode.ForwardDiagonal;
             this.igCombustible.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.igCombustible.BorderThickness = 1F;
+            this.igCombustible.Controls.Add(this.deImporte);
             this.igCombustible.Controls.Add(this.lblEstacion);
             this.igCombustible.Controls.Add(this.cdcEstacion);
-            this.igCombustible.Controls.Add(this.neImporte);
             this.igCombustible.Controls.Add(this.neLitros);
             this.igCombustible.Controls.Add(this.lblImporte);
             this.igCombustible.Controls.Add(this.lblLitros);
@@ -130,16 +130,6 @@
             this.cdcEstacion.Sorted = true;
             this.cdcEstacion.TabIndex = 4;
             // 
-            // neImporte
-            // 
-            this.neImporte.BackColor = System.Drawing.SystemColors.Window;
-            this.neImporte.Location = new System.Drawing.Point(19, 138);
-            this.neImporte.MaxLength = 5;
-            this.neImporte.Name = "neImporte";
-            this.neImporte.Size = new System.Drawing.Size(161, 20);
-            this.neImporte.TabIndex = 3;
-            this.neImporte.Text = "0";
-            // 
             // neLitros
             // 
             this.neLitros.BackColor = System.Drawing.SystemColors.Window;
@@ -168,6 +158,16 @@
             this.lblLitros.TabIndex = 0;
             this.lblLitros.Text = "Litros:";
             // 
+            // deImporte
+            // 
+            this.deImporte.BackColor = System.Drawing.SystemColors.Window;
+            this.deImporte.Location = new System.Drawing.Point(19, 138);
+            this.deImporte.MaxLength = 13;
+            this.deImporte.Name = "deImporte";
+            this.deImporte.Size = new System.Drawing.Size(161, 20);
+            this.deImporte.TabIndex = 6;
+            this.deImporte.Text = "0,00";
+            // 
             // MovilCombustible
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -192,11 +192,11 @@
         private TNGS.NetControls.ImgGroup igCombustible;
         private TNGS.NetControls.GlassButton gbCancelar;
         private TNGS.NetControls.GlassButton gbAceptar;
-        private TNGS.NetControls.NumberEdit neImporte;
         private TNGS.NetControls.NumberEdit neLitros;
         private TNGS.NetControls.FullLabel lblImporte;
         private TNGS.NetControls.FullLabel lblLitros;
         private TNGS.NetControls.FullLabel lblEstacion;
         private TNGS.NetControls.CDCombo cdcEstacion;
+        private TNGS.NetControls.DecimalEdit deImporte;
     }
 }

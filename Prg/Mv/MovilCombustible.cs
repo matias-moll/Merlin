@@ -61,7 +61,7 @@ namespace Rivn.Mv
 
         private bool ControlesValidos()
         {
-            return neImporte.IsValid & neLitros.IsValid & cdcEstacion.IsValid;
+            return deImporte.IsValid & neLitros.IsValid & cdcEstacion.IsValid;
         }
 
         private void gbCancelar_Click(object sender, EventArgs e)
@@ -73,9 +73,9 @@ namespace Rivn.Mv
 
 
         #region Propiedades
-        public int Importe
+        public Decimal Importe
         {
-            get { return neImporte.Numero; }
+            get { return deImporte.Decimal; }
         }
 
 

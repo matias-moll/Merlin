@@ -179,8 +179,9 @@ namespace Rivn.Mv
         {
             if (m_AMAsocMoviles.Equipamiento.Count != 0)
             {
-                fgEquipamiento.FillFromLEntidad(m_AMAsocMoviles.EquipamientoTip, "@M-M@@M-M@N@M-M@0;100@M-M@");
-                //fgEquipamiento.FillFromLEntidad(m_AMAsocMoviles.EquipamientoTip);
+                //Propiedad .Colwitdhs (para el ancho de las columnas)
+                //fgEquipamiento.ColWitdhs = "@M-M@@M-M@N@M-M@0;0;@M-M@";
+                fgEquipamiento.FillFromLEntidad(m_AMAsocMoviles.Equipamiento);
             }
         }
 
@@ -205,6 +206,8 @@ namespace Rivn.Mv
         /// <param name="e"></param>
         private void ftrMoviles_AfterSelect(object sender, TreeViewEventArgs e)
         {
+            string l_strCodigo = ftrMoviles.SelectedNodeAsCDI.StrCode;
+            if (l_strCodigo == "0") return;
             m_entMovil = m_LEMoviles[ftrMoviles.SelectedNodeAsCDI.StrCode];
             SwitchTo(ModoForm.EdicionBase, OpGrid.Igual);
         }
@@ -329,6 +332,7 @@ namespace Rivn.Mv
         private void gbModificarEstado_Click(object sender, EventArgs e)
         {
             m_smResult.UilReset("ModificarEstado");
+            if (cmbEstado.SelectedStrCode == DameUltimoEstado()) { MsgRuts.ShowMsg(this,"El estado al cual esta modificando es igual al estado actual"); return; };
 
             EMovilEstado l_EMEstMovilEstado;
             //creamos la entidad y la llenamos con sus datos y la guardamos
