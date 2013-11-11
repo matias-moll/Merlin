@@ -154,7 +154,7 @@
             this.deImporte.Location = new System.Drawing.Point(291, 39);
             this.deImporte.MaxLength = 13;
             this.deImporte.Name = "deImporte";
-            this.deImporte.Size = new System.Drawing.Size(188, 21);
+            this.deImporte.Size = new System.Drawing.Size(128, 21);
             this.deImporte.TabIndex = 3;
             this.deImporte.Text = "0.00";
             // 
@@ -341,7 +341,7 @@
             // 
             this.teNumOrden.BackColor = System.Drawing.SystemColors.Window;
             this.teNumOrden.Enabled = false;
-            this.teNumOrden.Location = new System.Drawing.Point(748, 3);
+            this.teNumOrden.Location = new System.Drawing.Point(748, 9);
             this.teNumOrden.Name = "teNumOrden";
             this.teNumOrden.Size = new System.Drawing.Size(100, 21);
             this.teNumOrden.TabIndex = 6;
@@ -351,7 +351,7 @@
             // 
             this.fullLabel2.BackColor = System.Drawing.Color.Transparent;
             this.fullLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fullLabel2.Location = new System.Drawing.Point(575, 3);
+            this.fullLabel2.Location = new System.Drawing.Point(575, 9);
             this.fullLabel2.Name = "fullLabel2";
             this.fullLabel2.Size = new System.Drawing.Size(180, 22);
             this.fullLabel2.TabIndex = 5;

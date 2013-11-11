@@ -63,20 +63,20 @@ namespace Rivn.Mv
             gbCancel.Enabled = false;
             igDatosBasicosMovil.Enabled = p_bImgHabilitado;
 
-            //recuperamos la LE de equipamientos del movil
-            Bel.LEMovilesEquip l_lentMovEquipamiento = p_entMovil.MovilesEquip;
+            ////recuperamos la LE de equipamientos del movil
+            //Bel.LEMovilesEquip l_lentMovEquipamiento = p_entMovil.MovilesEquip;
+            //// creamos una nueva variable para re
+            //Bel.EMovilEquip l_entMovilEquip;
 
-
-            Bel.EMovilEquip l_entMovilEquip;
-            //checkeamos todos los equipamientos que posee.
-            foreach (CodDesItems item in clEquipamientos.Items)
-            {
-                l_entMovilEquip = l_lentMovEquipamiento[p_entMovil.Patente, item.StrCode];
-                //si la entidad es null, es porque no existe ninguna en la lista entidad con ese StrCode. 
-                //   si no es null, la chequeamos.
-                if( null != l_entMovilEquip) 
-                    clEquipamientos.SetCheckedStrCode(item.StrCode, true);
-            }
+            ////checkeamos todos los equipamientos que posee.
+            //foreach (CodDesItems item in clEquipamientos.Items)
+            //{
+            //    l_entMovilEquip = l_lentMovEquipamiento[p_entMovil.Patente, item.StrCode];
+            //    //si la entidad es null, es porque no existe ninguna en la lista entidad con ese StrCode. 
+            //    //   si no es null, la chequeamos.
+            //    if( null != l_entMovilEquip) 
+            //        clEquipamientos.SetCheckedStrCode(item.StrCode, true);
+            //}
         }
 
         #endregion
@@ -169,6 +169,24 @@ namespace Rivn.Mv
             }
 
 
+        }
+
+        // cheakea true los equipamientos que tiene un movil.
+        private void CheckearEquipamientosMovil(CDCheckedList p_clEqui, Bel.EMovil p_eMovil)
+        {
+            //recuperamos la LE de equipamientos del movil
+            Bel.LEMovilesEquip l_lentMovEquipamiento = p_eMovil.MovilesEquip;
+            // creamos una nueva variable para llenarla con las entidadesde la lista entidad
+            Bel.EMovilEquip l_entMovilEquip;
+
+            foreach (CodDesItems item in p_clEqui.Items)
+            {
+                l_entMovilEquip = l_lentMovEquipamiento[p_eMovil.Patente, item.StrCode];
+                //si la entidad es null, es porque no existe ninguna en la lista entidad con ese StrCode. 
+                //   si no es null, la chequeamos.
+                if (null != l_entMovilEquip)
+                    p_clEqui.SetCheckedStrCode(item.StrCode,true);
+            }
         }
 
         // llena una Entidad Movil pasada por parametro, con los datos del formulario
@@ -331,6 +349,9 @@ namespace Rivn.Mv
             cdcModelo.SelectedStrCode = m_entMovil.Modelo;
             cdcMovilPropio.SelectedStrCode = m_entMovil.Propio;
             neAnioFabric.Numero = m_entMovil.Aniofabric;
+
+            //llenamos la CDCheckedList
+            CheckearEquipamientosMovil(clEquipamientos, m_entMovil);
 
         }
 
