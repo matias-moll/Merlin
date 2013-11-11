@@ -10,7 +10,7 @@ namespace Rivn.Dal
     //----------------------------------------------------------------------------
     //                         TNG Software DAL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 08/11/2013 18:17
+    // Fecha                    : 11/11/2013 18:47
     // Sistema                  : Rivn
     // Clase para Administrar   : Reparaciones de móviles
     // Basada en la Tabla       : Reparaciones

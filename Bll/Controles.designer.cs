@@ -16,7 +16,7 @@ namespace Rivn.Bll
     //----------------------------------------------------------------------------
     //                         TNG Software BLL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 08/11/2013 18:17
+    // Fecha                    : 11/11/2013 18:47
     // Sistema                  : Rivn
     // Clase para Administrar   : Controles con sus Reparaciones
     //----------------------------------------------------------------------------
@@ -97,9 +97,6 @@ namespace Rivn.Bll
             DBConn l_dbcAccess= null;
             p_smResult.BllReset("Controles", "CrepGet");
 
-            // Ajustamos codigos alineados a derecha
-            p_strCodctl= EControlRepa.FrmtCodctl(p_strCodctl);
-
             try {
                 // Obtenemos una conexion
                 l_dbcAccess= DBRuts.GetConection(Connections.Dat);
@@ -138,9 +135,6 @@ namespace Rivn.Bll
             // No hay errores aun
             DBConn l_dbcAccess= null;
             p_smResult.BllReset("Controles", "CrepFGet");
-
-            // Ajustamos codigos alineados a derecha
-            p_strCodctl= EControlRepa.FrmtCodctl(p_strCodctl);
 
             try {
                 // Obtenemos una conexion
@@ -218,9 +212,6 @@ namespace Rivn.Bll
             // No hay errores aun
             DBConn l_dbcAccess= null;
             p_smResult.BllReset("Controles", "CrepEnabled");
-
-            // Ajustamos codigos alineados a derecha
-            p_strCodctl= EControlRepa.FrmtCodctl(p_strCodctl);
 
             try {
                 // Obtenemos una conexion
@@ -304,9 +295,6 @@ namespace Rivn.Bll
             // No hay errores aun
             DBConn l_dbcAccess= null;
             p_smResult.BllReset("Controles", "CrepRemove");
-
-            // Ajustamos codigos alineados a derecha
-            p_strCodctl= EControlRepa.FrmtCodctl(p_strCodctl);
 
             try {
                 // Obtenemos una conexion
@@ -404,27 +392,37 @@ namespace Rivn.Bll
             // Validaciones de los campos sin conexion
             // ********
 
-            if (p_entControlRepa.Codctl.Trim() == "") {
-                // El campo [codigoControl] no puede ser vacío
-                p_smResult.BllWarning("El dato [codigoControl] no puede ser vacío","");
-                return;
-            }
-
             if (p_entControlRepa.Nroitem <= 0) {
                 // El campo [item] debe ser mayor a cero
                 p_smResult.BllWarning("El dato [item] debe ser mayor a cero","");
                 return;
             }
 
-            if (p_entControlRepa.Codrep.Trim() == "") {
-                // El campo [codigoReparacion] no puede ser vacío
-                p_smResult.BllWarning("El dato [codigoReparacion] no puede ser vacío","");
-                return;
-            }
-
             // ********
             // Validaciones de los campos con conexion
             // ********
+
+            Controles.VKey(p_dbcAccess,
+                           p_entControlRepa.Codctl,
+                           ref p_smResult);
+            if (p_smResult.NOk) return;
+
+            if (!p_smResult.ICodeEs(BllCodes.KeyExists)) {
+                // El campo [codigoControl] debe existir en la tabla [Controles.]
+                p_smResult.BllWarning("El dato [codigoControl] debe existir en la tabla [Controles.] y estar habilitado","");
+                return;
+            }
+
+            Tablas.RepVKey(p_dbcAccess,
+                           p_entControlRepa.Codrep,
+                           ref p_smResult);
+            if (p_smResult.NOk) return;
+
+            if (!p_smResult.ICodeEs(BllCodes.KeyExists)) {
+                // El campo [codigoReparacion] debe existir en la tabla [Tablas.Rep]
+                p_smResult.BllWarning("El dato [codigoReparacion] debe existir en la tabla [Tablas.Rep] y estar habilitado","");
+                return;
+            }
 
             // Verificamos la clave foranea
             Controles.VKey(p_dbcAccess,
@@ -438,6 +436,8 @@ namespace Rivn.Bll
                 p_smResult.BllWarning("La clave (Control) foranea no existe en el sistema.","");
                 return;
             }
+
+            // Todas las validaciones fueron correctas
 
             // Llamamos a la funcion fija del usuario
             CrepTInt_f(p_dbcAccess, p_entControlRepa, ref p_smResult);

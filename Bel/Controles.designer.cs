@@ -14,7 +14,7 @@ namespace Rivn.Bel
     //----------------------------------------------------------------------------
     //                         TNG Software BEL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 08/11/2013 18:17
+    // Fecha                    : 11/11/2013 18:47
     // Sistema                  : Rivn
     // Clase para Administrar   : Controles con sus Reparaciones
     //----------------------------------------------------------------------------
@@ -81,7 +81,7 @@ namespace Rivn.Bel
             l_drTemp["ctr_cod_codctl"]= XMLRuts.ExtractXAttr(l_xndData, "ctr_cod_codctl");
             l_drTemp["ctr_nro_nroitem"]= XMLRuts.ExtractXAttr(l_xndData, "ctr_nro_nroitem", 1);
             l_drTemp["ctr_cd6_codrep"]= XMLRuts.ExtractXAttr(l_xndData, "ctr_cd6_codrep");
-            l_drTemp["ctr_des_des"]= XMLRuts.ExtractXAttr(l_xndData, "ctr_des_des", false);
+            l_drTemp["ctr_des_des"]= XMLRuts.ExtractXAttr(l_xndData, "ctr_des_des");
 
             // Llenamos los campos fijos
             XML2FixedFields(ref l_drTemp, l_xndData);
@@ -128,7 +128,7 @@ namespace Rivn.Bel
             l_drTemp["ctr_cod_codctl"]= "";
             l_drTemp["ctr_nro_nroitem"]= 1;
             l_drTemp["ctr_cd6_codrep"]= "";
-            l_drTemp["ctr_des_des"]= DateTimeRuts.Empty;
+            l_drTemp["ctr_des_des"]= "";
 
             // Agregamos la Row creada a la tabla creada y creamos
             // una entidad a partir de la DataTable de 1 registro
@@ -160,7 +160,7 @@ namespace Rivn.Bel
             l_drTemp["ctr_cod_codctl"]= p_strCodctl;
             l_drTemp["ctr_nro_nroitem"]= p_iNroitem;
             l_drTemp["ctr_cd6_codrep"]= p_strCodrep;
-            l_drTemp["ctr_des_des"]= DateTimeRuts.Empty;
+            l_drTemp["ctr_des_des"]= "";
 
             // Agregamos la Row creada a la tabla creada y creamos
             // una entidad a partir de la DataTable de 1 registro
@@ -206,7 +206,7 @@ namespace Rivn.Bel
                 l_dcStruct[0]= new DataColumn("ctr_cod_codctl", typeof(string));
                 l_dcStruct[1]= new DataColumn("ctr_nro_nroitem", typeof(int));
                 l_dcStruct[2]= new DataColumn("ctr_cd6_codrep", typeof(string));
-                l_dcStruct[3]= new DataColumn("ctr_des_des", typeof(DateTime));
+                l_dcStruct[3]= new DataColumn("ctr_des_des", typeof(string));
                 EControlRepa.FillFixedFields(ref l_dcStruct, 4);
 
                 // Devolvemos el vector creado
@@ -237,19 +237,16 @@ namespace Rivn.Bel
         /// </summary>
         public string Codrep
         {
-            get {return ((string) InternalData["ctr_cd6_codrep"]).Trim();}
-            set {
-                if (value.Trim().Length > 6) value= value.Trim().Substring(0,6);
-                InternalData["ctr_cd6_codrep"]= value.Trim();
-            }
+            get {return (string) InternalData["ctr_cd6_codrep"];}
+            set {InternalData["ctr_cd6_codrep"]= value;}
         }
 
         /// <summary>
         /// Title
         /// </summary>
-        public DateTime Ctr_des_des
+        public string Ctr_des_des
         {
-            get {return (DateTime) InternalData["ctr_des_des"];}
+            get {return (string) InternalData["ctr_des_des"];}
             set {InternalData["ctr_des_des"]= value;}
         }
 
@@ -372,7 +369,7 @@ namespace Rivn.Bel
             int l_iRet= 0;
 
             m_dtDatos.DefaultView.RowFilter= 
-                "ctr_cod_codctl = " + Ruts.Co(EControlRepa.FrmtCodctl(p_strCodctl)) + " and " + 
+                "ctr_cod_codctl = " + Ruts.Co(p_strCodctl) + " and " + 
                 "ctr_nro_nroitem = " + Ruts.Nu(p_iNroitem);
 
             if (m_dtDatos.DefaultView.Count == 1) {
@@ -476,7 +473,7 @@ namespace Rivn.Bel
                 DataRow l_drData= null;
 
                 m_dtDatos.DefaultView.RowFilter= 
-                    "ctr_cod_codctl = " + Ruts.Co(EControlRepa.FrmtCodctl(p_strCodctl)) + " and " + 
+                    "ctr_cod_codctl = " + Ruts.Co(p_strCodctl) + " and " + 
                     "ctr_nro_nroitem = " + Ruts.Nu(p_iNroitem);
 
                 if (m_dtDatos.DefaultView.Count == 1)
@@ -562,7 +559,7 @@ namespace Rivn.Bel
                 // Buscamos la entidad
                 foreach (EControlRepa l_entItem in this) {
                     // Si existe -> la devolvemos
-                    if ((l_entItem.Codctl == EControlRepa.FrmtCodctl(p_strCodctl)) &&
+                    if ((l_entItem.Codctl == p_strCodctl) &&
                         (l_entItem.Nroitem == p_iNroitem))
                         return l_entItem;
                 }

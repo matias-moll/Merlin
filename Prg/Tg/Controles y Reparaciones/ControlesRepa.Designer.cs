@@ -14,7 +14,6 @@ namespace Rivn.Tg
         /// Required designer variable.
         /// </summary>
         private TNGS.NetControls.XPanel xpnlBase;
-        private TNGS.NetControls.CDCombo cmbControl;
         private TNGS.NetControls.GlassButton cmdModPadre;
         private TNGS.NetControls.GlassButton cmdSalir;
         private System.Windows.Forms.Label lblTitle;
@@ -81,6 +80,7 @@ namespace Rivn.Tg
             this.cmdModificar = new TNGS.NetControls.GlassButton();
             this.cmdNuevo = new TNGS.NetControls.GlassButton();
             this.tsPanel2 = new TNGS.NetControls.TSPanel();
+            this.cmbControl = new TNGS.NetControls.CDCombo();
             this.cmdModPadre = new TNGS.NetControls.GlassButton();
             this.tsBase1 = new TNGS.NetControls.TSBase();
             this.tab1 = new RibbonStyle.Tab();
@@ -92,7 +92,6 @@ namespace Rivn.Tg
             this.lblNroitem = new System.Windows.Forms.Label();
             this.txtNroitem = new TNGS.NetControls.NumberEdit();
             this.lblCodrep = new System.Windows.Forms.Label();
-            this.cmbControl = new TNGS.NetControls.CDCombo();
             this.frmOper = new TNGS.NetControls.ImgGroup();
             this.frmData = new TNGS.NetControls.ImgGroup();
             this.xpnlBase.SuspendLayout();
@@ -291,6 +290,7 @@ namespace Rivn.Tg
             // tsPanel2
             // 
             this.tsPanel2.Caption = "Control";
+            this.tsPanel2.Controls.Add(this.cmbControl);
             this.tsPanel2.Controls.Add(this.cmdModPadre);
             this.tsPanel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.tsPanel2.Location = new System.Drawing.Point(0, 3);
@@ -300,13 +300,25 @@ namespace Rivn.Tg
             this.tsPanel2.Speed = 1;
             this.tsPanel2.TabIndex = 3;
             // 
+            // cmbControl
+            // 
+            this.cmbControl.BackColor = System.Drawing.SystemColors.Window;
+            this.cmbControl.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbControl.FormattingEnabled = true;
+            this.cmbControl.Location = new System.Drawing.Point(8, 39);
+            this.cmbControl.Name = "cmbControl";
+            this.cmbControl.Size = new System.Drawing.Size(210, 23);
+            this.cmbControl.Sorted = true;
+            this.cmbControl.TabIndex = 25;
+            this.cmbControl.SelectedIndexChanged += new System.EventHandler(this.cmbControl_SelectedIndexChanged);
+            // 
             // cmdModPadre
             // 
             this.cmdModPadre.FixedImage = TNGS.NetControls.FixedGlassButtons.Folder2;
             this.cmdModPadre.Location = new System.Drawing.Point(8, 7);
             this.cmdModPadre.Name = "cmdModPadre";
             this.cmdModPadre.PCode = "M.CONTROL";
-            this.cmdModPadre.Size = new System.Drawing.Size(204, 54);
+            this.cmdModPadre.Size = new System.Drawing.Size(210, 26);
             this.cmdModPadre.TabIndex = 24;
             this.cmdModPadre.Text = "Mantenimiento de Controles";
             this.cmdModPadre.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -457,17 +469,6 @@ namespace Rivn.Tg
             this.lblCodrep.Text = "Reparacion:";
             this.lblCodrep.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // cmbControl
-            // 
-            this.cmbControl.BackColor = System.Drawing.SystemColors.Window;
-            this.cmbControl.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbControl.Location = new System.Drawing.Point(9, 34);
-            this.cmbControl.Name = "cmbControl";
-            this.cmbControl.Size = new System.Drawing.Size(213, 21);
-            this.cmbControl.Sorted = true;
-            this.cmbControl.TabIndex = 23;
-            this.cmbControl.SelectedIndexChanged += new System.EventHandler(this.cmbControl_SelectedIndexChanged);
-            // 
             // frmOper
             // 
             this.frmOper.BackgroundColor = System.Drawing.Color.White;
@@ -547,5 +548,6 @@ namespace Rivn.Tg
 
         private IContainer components;
         private TNGS.NetControls.CDCombo cdcCodRep;
+        private TNGS.NetControls.CDCombo cmbControl;
     }
 }
