@@ -171,7 +171,7 @@ namespace Rivn.Mv
 
         }
 
-        // cheakea true los equipamientos que tiene un movil.
+        // cheakea true los equipamientos que tiene un movil en una checked List
         private void CheckearEquipamientosMovil(CDCheckedList p_clEqui, Bel.EMovil p_eMovil)
         {
             //recuperamos la LE de equipamientos del movil
@@ -312,6 +312,7 @@ namespace Rivn.Mv
                 Bll.Moviles.Save(m_entMovil, ref m_stResult);
                 if (MsgRuts.AnalizeError(this, m_stResult)) return;
                 MsgRuts.ShowMsg(this, "El nuevo Movil ha sido agregado satisfactoriamente");
+                this.Close();
             }
             else
             {
@@ -319,6 +320,7 @@ namespace Rivn.Mv
                 Bll.Moviles.CambiarEquipamientoYGrabarMovil(m_entMovil, ObtenerLEntidadSeleccionadosCheckedList(), ref m_stResult);
                 if (MsgRuts.AnalizeError(this, m_stResult)) return;
                 MsgRuts.ShowMsg(this, "El Movil ah sido modificado satisfactoriamente");
+                this.Close();
             }
         }
 
