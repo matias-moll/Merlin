@@ -29,16 +29,17 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MovilCombustible));
             this.xpnlPanel = new TNGS.NetControls.XPanel();
             this.gbCancelar = new TNGS.NetControls.GlassButton();
             this.gbAceptar = new TNGS.NetControls.GlassButton();
             this.igCombustible = new TNGS.NetControls.ImgGroup();
+            this.deImporte = new TNGS.NetControls.DecimalEdit();
             this.lblEstacion = new TNGS.NetControls.FullLabel();
             this.cdcEstacion = new TNGS.NetControls.CDCombo();
             this.neLitros = new TNGS.NetControls.NumberEdit();
             this.lblImporte = new TNGS.NetControls.FullLabel();
             this.lblLitros = new TNGS.NetControls.FullLabel();
-            this.deImporte = new TNGS.NetControls.DecimalEdit();
             this.xpnlPanel.SuspendLayout();
             this.igCombustible.SuspendLayout();
             this.SuspendLayout();
@@ -47,22 +48,23 @@
             // 
             this.xpnlPanel.BackColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.xpnlPanel.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
+            this.xpnlPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.xpnlPanel.Controls.Add(this.gbCancelar);
             this.xpnlPanel.Controls.Add(this.gbAceptar);
             this.xpnlPanel.Controls.Add(this.igCombustible);
             this.xpnlPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.xpnlPanel.Location = new System.Drawing.Point(0, 0);
             this.xpnlPanel.Name = "xpnlPanel";
-            this.xpnlPanel.Size = new System.Drawing.Size(227, 349);
+            this.xpnlPanel.Size = new System.Drawing.Size(337, 217);
             this.xpnlPanel.SkinFixed = true;
             this.xpnlPanel.TabIndex = 0;
             // 
             // gbCancelar
             // 
             this.gbCancelar.FixedImage = TNGS.NetControls.FixedGlassButtons.Cancel;
-            this.gbCancelar.Location = new System.Drawing.Point(119, 294);
+            this.gbCancelar.Location = new System.Drawing.Point(229, 180);
             this.gbCancelar.Name = "gbCancelar";
-            this.gbCancelar.Size = new System.Drawing.Size(96, 43);
+            this.gbCancelar.Size = new System.Drawing.Size(96, 28);
             this.gbCancelar.TabIndex = 1;
             this.gbCancelar.Text = "Cancelar";
             this.gbCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -71,9 +73,9 @@
             // gbAceptar
             // 
             this.gbAceptar.FixedImage = TNGS.NetControls.FixedGlassButtons.Accept;
-            this.gbAceptar.Location = new System.Drawing.Point(18, 294);
+            this.gbAceptar.Location = new System.Drawing.Point(128, 180);
             this.gbAceptar.Name = "gbAceptar";
-            this.gbAceptar.Size = new System.Drawing.Size(90, 43);
+            this.gbAceptar.Size = new System.Drawing.Size(90, 28);
             this.gbAceptar.TabIndex = 0;
             this.gbAceptar.Text = "Aceptar";
             this.gbAceptar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -95,8 +97,8 @@
             this.igCombustible.CustomGroupBoxColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
             this.igCombustible.FontTitle = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.igCombustible.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.igCombustible.GroupImage = null;
-            this.igCombustible.GroupTitle = "Carga Combustible";
+            this.igCombustible.GroupImage = ((System.Drawing.Image)(resources.GetObject("igCombustible.GroupImage")));
+            this.igCombustible.GroupTitle = "Nueva Carga Combustible";
             this.igCombustible.Location = new System.Drawing.Point(12, 12);
             this.igCombustible.Name = "igCombustible";
             this.igCombustible.Padding = new System.Windows.Forms.Padding(20);
@@ -105,17 +107,27 @@
             this.igCombustible.ShadowColor = System.Drawing.Color.DarkGray;
             this.igCombustible.ShadowControl = true;
             this.igCombustible.ShadowThickness = 3;
-            this.igCombustible.Size = new System.Drawing.Size(203, 266);
+            this.igCombustible.Size = new System.Drawing.Size(313, 164);
             this.igCombustible.SkinFixed = true;
             this.igCombustible.SkinFullFixed = true;
             this.igCombustible.TabIndex = 0;
             // 
+            // deImporte
+            // 
+            this.deImporte.BackColor = System.Drawing.SystemColors.Window;
+            this.deImporte.Location = new System.Drawing.Point(137, 112);
+            this.deImporte.MaxLength = 13;
+            this.deImporte.Name = "deImporte";
+            this.deImporte.Size = new System.Drawing.Size(153, 20);
+            this.deImporte.TabIndex = 6;
+            this.deImporte.Text = "0.00";
+            // 
             // lblEstacion
             // 
-            this.lblEstacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEstacion.Location = new System.Drawing.Point(15, 182);
+            this.lblEstacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEstacion.Location = new System.Drawing.Point(23, 74);
             this.lblEstacion.Name = "lblEstacion";
-            this.lblEstacion.Size = new System.Drawing.Size(100, 23);
+            this.lblEstacion.Size = new System.Drawing.Size(75, 23);
             this.lblEstacion.TabIndex = 5;
             this.lblEstacion.Text = "Estacion:";
             // 
@@ -124,58 +136,48 @@
             this.cdcEstacion.BackColor = System.Drawing.SystemColors.Window;
             this.cdcEstacion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cdcEstacion.FormattingEnabled = true;
-            this.cdcEstacion.Location = new System.Drawing.Point(19, 208);
+            this.cdcEstacion.Location = new System.Drawing.Point(137, 75);
             this.cdcEstacion.Name = "cdcEstacion";
-            this.cdcEstacion.Size = new System.Drawing.Size(161, 21);
+            this.cdcEstacion.Size = new System.Drawing.Size(153, 21);
             this.cdcEstacion.Sorted = true;
             this.cdcEstacion.TabIndex = 4;
             // 
             // neLitros
             // 
             this.neLitros.BackColor = System.Drawing.SystemColors.Window;
-            this.neLitros.Location = new System.Drawing.Point(19, 68);
+            this.neLitros.Location = new System.Drawing.Point(217, 39);
             this.neLitros.MaxLength = 3;
             this.neLitros.Name = "neLitros";
-            this.neLitros.Size = new System.Drawing.Size(161, 20);
+            this.neLitros.Size = new System.Drawing.Size(73, 20);
             this.neLitros.TabIndex = 2;
             this.neLitros.Text = "0";
             // 
             // lblImporte
             // 
-            this.lblImporte.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblImporte.Location = new System.Drawing.Point(15, 112);
+            this.lblImporte.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblImporte.Location = new System.Drawing.Point(23, 111);
             this.lblImporte.Name = "lblImporte";
-            this.lblImporte.Size = new System.Drawing.Size(100, 23);
+            this.lblImporte.Size = new System.Drawing.Size(67, 23);
             this.lblImporte.TabIndex = 1;
             this.lblImporte.Text = "Importe:";
             // 
             // lblLitros
             // 
-            this.lblLitros.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLitros.Location = new System.Drawing.Point(21, 42);
+            this.lblLitros.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLitros.Location = new System.Drawing.Point(23, 38);
             this.lblLitros.Name = "lblLitros";
-            this.lblLitros.Size = new System.Drawing.Size(100, 23);
+            this.lblLitros.Size = new System.Drawing.Size(146, 23);
             this.lblLitros.TabIndex = 0;
-            this.lblLitros.Text = "Litros:";
-            // 
-            // deImporte
-            // 
-            this.deImporte.BackColor = System.Drawing.SystemColors.Window;
-            this.deImporte.Location = new System.Drawing.Point(19, 138);
-            this.deImporte.MaxLength = 13;
-            this.deImporte.Name = "deImporte";
-            this.deImporte.Size = new System.Drawing.Size(161, 20);
-            this.deImporte.TabIndex = 6;
-            this.deImporte.Text = "0,00";
+            this.lblLitros.Text = "Cantidad de Litros:";
             // 
             // MovilCombustible
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(227, 349);
+            this.ClientSize = new System.Drawing.Size(337, 217);
             this.ControlBox = false;
             this.Controls.Add(this.xpnlPanel);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "MovilCombustible";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "MovilCombustible";
