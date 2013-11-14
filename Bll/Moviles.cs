@@ -300,8 +300,15 @@ namespace Rivn.Bll
                 // Le asignamos al movil los nuevo equipamientos
                 p_entMovil.MovilesEquip = p_leNuevosEquipamientos;
 
-                // Y finalmente grabamos la entidad
-                Save_f(l_dbcAccess, ref p_entMovil, ref p_smResult);
+                // Y grabamos los equipamientos
+                foreach(Bel.EMovilEquip item in p_leNuevosEquipamientos){
+                    Moviles.MveqInsr(l_dbcAccess, item, ref p_smResult);
+                    if (p_smResult.NOk) return;
+                }
+
+                //grabamos el movil con sus modificaciones
+                Moviles.Updt(l_dbcAccess, p_entMovil, ref p_smResult);
+                if (p_smResult.NOk) return;
 
             }
             catch (Exception l_expData)

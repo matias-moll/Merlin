@@ -297,10 +297,6 @@ namespace Rivn.Mv
                 return;
             }
 
-
-
-
-
             //procedemos a grabar 
             if(m_EstadoAlta)
             {
