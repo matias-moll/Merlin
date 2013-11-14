@@ -215,6 +215,12 @@ namespace Rivn.Mv
 
         #region Clicks
 
+
+        /// <summary>
+        /// Permite modificar un Movil y setea el evento ante la modificacion
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void gbModificarMovil_Click(object sender, EventArgs e)
         {
             m_entMovil.MovilesEquip = m_AMAsocMoviles.EquipamientoTip;
@@ -224,6 +230,12 @@ namespace Rivn.Mv
         }
 
 
+
+        /// <summary>
+        /// Abre ventana de AltaMoviles modificada para cambiar los equipamientos que tiene disponible el movil
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void gbModificarEq_Click(object sender, EventArgs e)
         {
             m_entMovil.MovilesEquip = m_AMAsocMoviles.EquipamientoTip;
@@ -272,6 +284,12 @@ namespace Rivn.Mv
         }
 
         */
+
+        /// <summary>
+        /// Agrega un nuevo Movil y engancha el evento al metodo movilChanged
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void gbNuevoMovil_Click(object sender, EventArgs e)
         {
             AltaMovil l_formAltaMovil = new AltaMovil();
@@ -281,12 +299,23 @@ namespace Rivn.Mv
             
         }
 
+
+        /// <summary>
+        /// Manejo de evento para la modificacion o alta de un movil
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="s"></param>
         private void movilChanged(object sender, EventArgs s)
         {
             SwitchTo(ModoForm.Inicio);
 
 
         }
+        /// <summary>
+        /// Metodo de manejo de evento del formulario de AltaMovil al modificar un equipamiento
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="s"></param>
         private void equipChanged(object sender, EventArgs s)
         {
             SwitchTo(ModoForm.Edicion, OpGrid.Equip);
@@ -295,6 +324,12 @@ namespace Rivn.Mv
         }  
 
 
+
+        /// <summary>
+        /// Lanza el formulario de carga de combustible y luego graba en la base el resultado
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void gbAgregarCombustible_Click(object sender, EventArgs e)
         {
             m_smResult.UilReset("AgregarCargaCombustible");
@@ -337,6 +372,16 @@ namespace Rivn.Mv
 
 
 
+        }
+
+        /// <summary>
+        /// Cambia el estado del form y llena las grillas
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ftrMoviles_DoubleClick(object sender, EventArgs e)
+        {
+            SwitchTo(ModoForm.Edicion, OpGrid.Todas);
         }
 
 
@@ -398,12 +443,15 @@ namespace Rivn.Mv
             }
         }
 
+
+        /// <summary>
+        /// Metodo que setea el formulario para ver datos resumidos del movil
+        /// </summary>
         private void ModoEdicionBase()
         {
             LlenarDatos();
             LimpiarEditables();
             cmbEstado.SelectedIndex = -1;
-            //m_AMAsocMoviles.CargarDatos(m_entMovil.Patente);
             fgCombustibles.Clear();
             fgEquipamiento.Clear();
             fgKm.Clear();
@@ -449,7 +497,9 @@ namespace Rivn.Mv
             igCombustibles.Enabled = true;
             
         }
-
+        /// <summary>
+        /// Limpia campos editables
+        /// </summary>
         private void LimpiarEditables()
         {
             neKilometros.Numero = 0;
@@ -578,16 +628,20 @@ namespace Rivn.Mv
 
         #endregion
 
-        private void ftrMoviles_DoubleClick(object sender, EventArgs e)
-        {
-            SwitchTo(ModoForm.Edicion, OpGrid.Todas);
-        }
 
+
+        /// <summary>
+        /// Me devuelve el ultimo estado ingresado
+        /// </summary>
+        /// <returns></returns>
         private string DameUltimoEstado()
         {
             return m_AMAsocMoviles.Estados.InternalData.Table.Rows[0]["mve_rcd_codestado"].ToString();
         }
-
+        /// <summary>
+        /// Me da el ultimo kilometraje ingresado
+        /// </summary>
+        /// <returns></returns>
         private int DameUltimoKms()
         {
             return (int) m_AMAsocMoviles.Kms.InternalData.Table.Rows[0]["mkm_nro_km"];
