@@ -26,6 +26,8 @@ namespace Rivn.Mv
         private StatMsg m_stResult;
         private bool m_EstadoAlta;
         private Bel.EMovil m_entMovil;
+        public delegate void ChangedMovilEventHandler(object sender, EventArgs e);
+        public event ChangedMovilEventHandler m_evChangedMovil;
 
         //constructor principal
         public AltaMovil()
@@ -71,6 +73,14 @@ namespace Rivn.Mv
         #endregion
 
         #region Metodos privados de la UIL
+
+
+        protected virtual void OnChangedMovil(EventArgs e)
+        {
+            if (m_evChangedMovil != null)
+                m_evChangedMovil(this, e);
+        }
+
 
         // chequea o Unchekea todos los items de una CheckBoxList, false para uncheaquear, true para chequear.
         private void setearTodosLosItemsCheckedList(CDCheckedList p_clCheckedListBox, bool p_unBool)
@@ -318,7 +328,8 @@ namespace Rivn.Mv
                 // si es estado de Update se llama al metodo que elimina todos los equipamientos, carga los nuevos y graba la entidad.
                 Bll.Moviles.CambiarEquipamientoYGrabarMovil(m_entMovil, ObtenerLEntidadSeleccionadosCheckedList(), ref m_stResult);
                 if (MsgRuts.AnalizeError(this, m_stResult)) return;
-                MsgRuts.ShowMsg(this, "El Movil ah sido modificado satisfactoriamente");
+                OnChangedMovil(EventArgs.Empty);
+                MsgRuts.ShowMsg(this, "El Movil ha sido modificado satisfactoriamente");
                 this.Close();
             }
         }

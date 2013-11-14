@@ -203,7 +203,7 @@
             this.igDatosBasicosMovil.CustomGroupBoxColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
             this.igDatosBasicosMovil.FontTitle = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.igDatosBasicosMovil.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.igDatosBasicosMovil.GroupImage = global::Rivn.Mv.Properties.Resources.ambulance_car;
+            //this.igDatosBasicosMovil.GroupImage = global::Rivn.Mv.Properties.Resources.ambulance_car;
             this.igDatosBasicosMovil.GroupTitle = "Datos Basicos";
             this.igDatosBasicosMovil.Location = new System.Drawing.Point(12, 17);
             this.igDatosBasicosMovil.Name = "igDatosBasicosMovil";

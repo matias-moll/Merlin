@@ -220,7 +220,7 @@ namespace Rivn.Mv
             m_entMovil.MovilesEquip = m_AMAsocMoviles.EquipamientoTip;
             AltaMovil l_formAltaMovil = new AltaMovil(m_entMovil, true);
             ((MainFrame)App.GetMainWindow()).AddContent(l_formAltaMovil);
-            SwitchTo(ModoForm.Edicion, OpGrid.Todas);
+            l_formAltaMovil.m_evChangedMovil += new AltaMovil.ChangedMovilEventHandler(movilChanged);
         }
 
 
@@ -228,7 +228,7 @@ namespace Rivn.Mv
         {
             m_entMovil.MovilesEquip = m_AMAsocMoviles.EquipamientoTip;
             AltaMovil l_formAltaMovil = new AltaMovil(m_entMovil, false);
-            SwitchTo(ModoForm.Edicion, OpGrid.Equip);
+            l_formAltaMovil.m_evChangedMovil += new AltaMovil.ChangedMovilEventHandler(equipChanged);
         }
 
 
@@ -274,9 +274,23 @@ namespace Rivn.Mv
         {
             AltaMovil l_formAltaMovil = new AltaMovil();
             ((MainFrame)App.GetMainWindow()).AddContent(l_formAltaMovil);
-            SwitchTo(ModoForm.Inicio);
+            l_formAltaMovil.m_evChangedMovil += new AltaMovil.ChangedMovilEventHandler(movilChanged);
+            
             
         }
+
+        private void movilChanged(object sender, EventArgs s)
+        {
+            SwitchTo(ModoForm.Inicio);
+
+
+        }
+        private void equipChanged(object sender, EventArgs s)
+        {
+            SwitchTo(ModoForm.Edicion, OpGrid.Equip);
+
+
+        }  
 
 
         private void gbAgregarCombustible_Click(object sender, EventArgs e)
