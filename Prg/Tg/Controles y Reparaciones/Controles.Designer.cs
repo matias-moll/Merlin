@@ -8,7 +8,7 @@ using WeifenLuo.WinFormsUI.Docking;
 
 namespace Rivn.Tg
 {
-    public partial class Controles : DockContent
+    public partial class Controles : Form
     {
         /// <summary>
         /// Required designer variable.
@@ -456,18 +456,14 @@ namespace Rivn.Tg
             // 
             // Controles
             // 
-            this.AllowEndUserDocking = false;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(984, 485);
             this.Controls.Add(this.xpnlBase);
-            this.DockAreas = WeifenLuo.WinFormsUI.Docking.DockAreas.Document;
             this.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "Controles";
-            this.ShowHint = WeifenLuo.WinFormsUI.Docking.DockState.Document;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.TabText = "Mantenimiento de Controles";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Controles_FormClosed);
             this.Load += new System.EventHandler(this.Controles_Load);
             this.xpnlBase.ResumeLayout(false);

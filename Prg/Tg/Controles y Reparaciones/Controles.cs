@@ -28,7 +28,7 @@ namespace Rivn.Tg
     /// <summary>
     /// Formulario para Mantenimiento de la Tabla:Controles
     /// </summary>
-    public partial class Controles : DockContent
+    public partial class Controles : Form
     {
         #region Miembros de la Clase
             private Bel.EControl m_entControl= null;
@@ -62,7 +62,6 @@ namespace Rivn.Tg
             grdDatos.SkinFixed= App.WithSkin;
 
             // Dockeamos el formulario
-            ((MainFrame) App.GetMainWindow()).AddContent(this);
 
             // Fijamos la imagen del Frm de edicion
             frmEdicion.GroupImage= Icon.ToBitmap();

@@ -10,7 +10,7 @@ namespace Rivn.Dal
     //----------------------------------------------------------------------------
     //                         TNG Software DAL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 14/11/2013 15:19
+    // Fecha                    : 14/11/2013 15:44
     // Sistema                  : Rivn
     // Clase para Administrar   : Controles de las reaparaciones
     // Basada en la Tabla       : ControlesReparations
@@ -588,7 +588,8 @@ namespace Rivn.Dal
                 DBRuts.ClearDTCaptions(ref p_dtResult);
 
                 // Fijamos los nuevos captions de la grilla
-                p_dtResult.Columns["ctr_des_des"].Caption= "V1TitleCN1";
+                p_dtResult.Columns["ctr_des_descRep"].Caption= "V1ReparacionCN1";
+                p_dtResult.Columns["ctr_nro_nroitem"].Caption= "V1itemNN1";
                 p_dtResult.Columns["deleted"].Caption= "V1Borrado2N2";
             }
             catch (Exception l_expData) {

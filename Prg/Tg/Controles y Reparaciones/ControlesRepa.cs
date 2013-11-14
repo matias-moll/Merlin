@@ -190,11 +190,10 @@ namespace Rivn.Tg
             // Mostramos el formulario de ABM del padre
             App.SetACL(m_aclInfo);
             Controles l_frmPadre= new Controles();
-            //((MainFrame)App.GetMainWindow()).AddContent(l_frmPadre);
 
-            //l_frmPadre.MdiParent = null;
-            //l_frmPadre.StartPosition = FormStartPosition.CenterParent;
-            //l_frmPadre.ShowDialog(this);
+            l_frmPadre.MdiParent = null;
+            l_frmPadre.StartPosition = FormStartPosition.CenterParent;
+            l_frmPadre.ShowDialog(this);
             App.SetACL(null);
 
             // Bloqueamos el menu
