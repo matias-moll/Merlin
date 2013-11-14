@@ -35,7 +35,6 @@ namespace Rivn.Mv
             this.igHistorialEstados = new TNGS.NetControls.ImgGroup();
             this.fgMovilEstados = new TNGS.NetControls.FullGrid();
             this.igEquipamiento = new TNGS.NetControls.ImgGroup();
-            this.gbBorrarEq = new TNGS.NetControls.GlassButton();
             this.gbModificarEq = new TNGS.NetControls.GlassButton();
             this.fgEquipamiento = new TNGS.NetControls.FullGrid();
             this.igCombustibles = new TNGS.NetControls.ImgGroup();
@@ -136,7 +135,6 @@ namespace Rivn.Mv
             this.igEquipamiento.BackgroundGradientMode = TNGS.NetControls.ImgGroup.GroupBoxGradientMode.ForwardDiagonal;
             this.igEquipamiento.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.igEquipamiento.BorderThickness = 1F;
-            this.igEquipamiento.Controls.Add(this.gbBorrarEq);
             this.igEquipamiento.Controls.Add(this.gbModificarEq);
             this.igEquipamiento.Controls.Add(this.fgEquipamiento);
             this.igEquipamiento.CustomGroupBoxColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
@@ -157,21 +155,10 @@ namespace Rivn.Mv
             this.igEquipamiento.SkinFullFixed = true;
             this.igEquipamiento.TabIndex = 4;
             // 
-            // gbBorrarEq
-            // 
-            this.gbBorrarEq.FixedImage = TNGS.NetControls.FixedGlassButtons.Delete;
-            this.gbBorrarEq.Location = new System.Drawing.Point(145, 185);
-            this.gbBorrarEq.Name = "gbBorrarEq";
-            this.gbBorrarEq.Size = new System.Drawing.Size(81, 26);
-            this.gbBorrarEq.TabIndex = 3;
-            this.gbBorrarEq.Text = "Borrar";
-            this.gbBorrarEq.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.gbBorrarEq.Click += new System.EventHandler(this.gbBorrarEq_Click);
-            // 
             // gbModificarEq
             // 
             this.gbModificarEq.FixedImage = TNGS.NetControls.FixedGlassButtons.Modify;
-            this.gbModificarEq.Location = new System.Drawing.Point(52, 185);
+            this.gbModificarEq.Location = new System.Drawing.Point(88, 185);
             this.gbModificarEq.Name = "gbModificarEq";
             this.gbModificarEq.Size = new System.Drawing.Size(87, 26);
             this.gbModificarEq.TabIndex = 2;
@@ -531,7 +518,6 @@ namespace Rivn.Mv
         private TNGS.NetControls.FullGrid fgCombustibles;
         private TNGS.NetControls.ImgGroup igEquipamiento;
         private TNGS.NetControls.FullGrid fgEquipamiento;
-        private TNGS.NetControls.GlassButton gbBorrarEq;
         private TNGS.NetControls.GlassButton gbModificarEq;
         private TNGS.NetControls.NumberEdit neKilometros;
         private TNGS.NetControls.GlassButton gbNuevoKM;

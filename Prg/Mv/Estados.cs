@@ -228,6 +228,7 @@ namespace Rivn.Mv
         {
             m_entMovil.MovilesEquip = m_AMAsocMoviles.EquipamientoTip;
             AltaMovil l_formAltaMovil = new AltaMovil(m_entMovil, false);
+            ((MainFrame)App.GetMainWindow()).AddContent(l_formAltaMovil);
             l_formAltaMovil.m_evChangedMovil += new AltaMovil.ChangedMovilEventHandler(equipChanged);
         }
 
@@ -249,9 +250,10 @@ namespace Rivn.Mv
             MsgRuts.AnalizeError(this, m_smResult);
         }
 
-
+        /*
+         * Metodo borrado para borrar un equipamiento usamos el form de Juan
         /// <summary>
-        /// Borrar un Equipamiento de un determinado movil
+        /// Borrar un Equipamiento de un determinado movil 
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -269,7 +271,7 @@ namespace Rivn.Mv
 
         }
 
-
+        */
         private void gbNuevoMovil_Click(object sender, EventArgs e)
         {
             AltaMovil l_formAltaMovil = new AltaMovil();
