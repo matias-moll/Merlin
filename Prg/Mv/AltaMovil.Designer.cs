@@ -82,7 +82,7 @@
             // 
             this.gbLimpiarTodo.FixedImage = TNGS.NetControls.FixedGlassButtons.tDelete;
             this.gbLimpiarTodo.ImageOnTop = true;
-            this.gbLimpiarTodo.Location = new System.Drawing.Point(661, 571);
+            this.gbLimpiarTodo.Location = new System.Drawing.Point(622, 571);
             this.gbLimpiarTodo.Name = "gbLimpiarTodo";
             this.gbLimpiarTodo.Size = new System.Drawing.Size(91, 68);
             this.gbLimpiarTodo.TabIndex = 0;
@@ -94,7 +94,7 @@
             this.gbCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.gbCancel.FixedImage = TNGS.NetControls.FixedGlassButtons.tCancel;
             this.gbCancel.ImageOnTop = true;
-            this.gbCancel.Location = new System.Drawing.Point(791, 571);
+            this.gbCancel.Location = new System.Drawing.Point(891, 571);
             this.gbCancel.Name = "gbCancel";
             this.gbCancel.Size = new System.Drawing.Size(91, 68);
             this.gbCancel.TabIndex = 1;
@@ -105,7 +105,7 @@
             // 
             this.gbGrabar.FixedImage = TNGS.NetControls.FixedGlassButtons.tSave;
             this.gbGrabar.ImageOnTop = true;
-            this.gbGrabar.Location = new System.Drawing.Point(888, 571);
+            this.gbGrabar.Location = new System.Drawing.Point(792, 571);
             this.gbGrabar.Name = "gbGrabar";
             this.gbGrabar.Size = new System.Drawing.Size(91, 68);
             this.gbGrabar.TabIndex = 2;
@@ -203,8 +203,8 @@
             this.igDatosBasicosMovil.CustomGroupBoxColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
             this.igDatosBasicosMovil.FontTitle = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.igDatosBasicosMovil.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            //this.igDatosBasicosMovil.GroupImage = global::Rivn.Mv.Properties.Resources.ambulance_car;
-            this.igDatosBasicosMovil.GroupTitle = "Datos Basicos";
+            this.igDatosBasicosMovil.GroupImage = ((System.Drawing.Image)(resources.GetObject("igDatosBasicosMovil.GroupImage")));
+            this.igDatosBasicosMovil.GroupTitle = " Datos Basicos";
             this.igDatosBasicosMovil.Location = new System.Drawing.Point(12, 17);
             this.igDatosBasicosMovil.Name = "igDatosBasicosMovil";
             this.igDatosBasicosMovil.Padding = new System.Windows.Forms.Padding(20);

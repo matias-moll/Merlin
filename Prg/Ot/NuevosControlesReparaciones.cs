@@ -20,23 +20,34 @@ namespace Rivn.Ot
 
         #region Miembros y Contructores
         // Variables Miembro
-        // Instanciamos el StatMsg de la clase 
+
         private StatMsg m_smResult = new StatMsg("NuevosControlesReparaciones");
-        private Bel.LEReparaciones m_leReparacionesSeleccionadas;
-        private Bel.EOTItem m_entOTitem;
+        private Bel.LEOTItems m_leOTItems;
+        private Bel.LEReparaciones m_leReparaciones;
+        private int m_intNumeroAgrupador;
 
         // Constructor Inicial
         public NuevosControlesReparaciones()
         {
             InitializeComponent();
             ((MainFrame)App.GetMainWindow()).AddContent(this);
-            m_entOTitem = Bel.EOTItem.NewEmpty();
+            // Reseteamos el StatMsg
+            m_smResult.UilReset("NuevosControlesReparaciones");
+            
+            // Seteamos como nueva la lista entidad OTItems
+            m_leOTItems = Bel.LEOTItems.NewEmpty();
+            // Nos traemos todas las reparaciones de la grilla a memoria
+            m_leReparaciones = Bll.Tablas.RepUpFull(true, ref m_smResult) ;
+
+            //seteamos el numero de agrupador como 1
+            m_intNumeroAgrupador= 1;
         }
         
         #endregion
 
         #region Metodos Privados
 
+        // LLena la combo de patente con todas las de la base .
         private void LLenarComboPatentesMoviles(CDCombo p_cdcCombo)
         {
             // reseteamos el statmsg
@@ -48,6 +59,29 @@ namespace Rivn.Ot
 
             //seteamos en el null para que se vea fancy
             p_cdcCombo.SelectedIndex = -1;
+        }
+
+        // Nos retorna la reparacion de Codigo pasado por parametro
+        private Bel.EReparacion obtenerReparacion(string p_sCodigoSelecionado)
+        {
+            return m_leReparaciones[p_sCodigoSelecionado];
+        }
+
+        // LLena una Entidad OrdenTrabajoITEM y nos la devuelve para poder aniadirla a nuestra lista entidad.
+        private Bel.EOTItem LLenarOTItem(Bel.EReparacion p_eReparacion, int p_nroAgrupador, int p_nroItem,string p_sDescControl )
+        {
+            Bel.EOTItem l_entOTitem = Bel.EOTItem.NewEmpty();
+
+            l_entOTitem.Nroot = 1;
+            l_entOTitem.Nroagrupador = p_nroAgrupador;
+            l_entOTitem.Nroitem = p_nroItem;
+            l_entOTitem.Descategoria = p_eReparacion.Codcat;
+            l_entOTitem.Desoperacion = p_eReparacion.Des;
+            l_entOTitem.Destarea = p_eReparacion.Des;
+            l_entOTitem.Comentario = teComentario.Text;
+            l_entOTitem.Importe = deImporte.Decimal;
+
+            return l_entOTitem;
         }
 
         #endregion
@@ -112,28 +146,57 @@ namespace Rivn.Ot
             this.Close();
         }
 
-
-
-        #endregion
-
         private void gbAgregar_Click(object sender, EventArgs e)
         {
-            int l_intNumeroItem;
+            m_smResult.UilReset("gbAgregar_Click");
+
             if (rbControles.Checked)
             {
+                Bel.LEControlesRepa l_leCodRep = Bll.Controles.CrepFGet(cdlControlesReparaciones.SelectedStrCode, true, ref m_smResult);
+                //declaramos un contador para que numero en el agrupador
+                int l_iContador = 1;
+                //por cada una de las reparaciones del control, grabamos una entidad
+                foreach (Bel.EControlRepa controRepa in l_leCodRep)
+                {
+                    Bel.EReparacion l_eRepaSelec = obtenerReparacion(cdlControlesReparaciones.SelectedStrCode);
+                   
+                    //llenamos la OTitem y lo agregamos a la lista entidad
+                    m_leOTItems.AddEntity(LLenarOTItem(l_eRepaSelec, m_intNumeroAgrupador, l_iContador,)); //aca va la descripcion del control));
+                    
+                    //aumentamos el contador de items
+                   l_iContador += 1;
+                    
+                }
 
+                // LLenamos la grilla con lista entidad
+                fgControlRepaSeleccionados.FillFromLEntidad(m_leOTItems); 
+                //aumentamos en uno al Agrupador
+                m_intNumeroAgrupador += 1;
+
+                //desabilitamos el control seleccionado para que no lo pueda volver a usar
+                // NoSe si hacerlo.
             }
             if (rbReparaciones.Checked)
             {
-                // los numeros de item y agrupador en una reparacion sola es el mismo, siempre se calcula como la cantidad  --->
-                // <--- de entidades que tiene nuestra lista mas uno (que es el que agregamos)
-                l_intNumeroItem = m_leReparacionesSeleccionadas.Count + 1;
-                m_entOTitem.Nroagrupador = l_intNumeroItem;
-                m_entOTitem.Nroitem = l_intNumeroItem;
-
-
+                Bel.EReparacion l_eRepaSelec = obtenerReparacion(cdlControlesReparaciones.SelectedStrCode);
+                // en una reparacion siempre la descripcion de control es la misma que la descripcion de reparacion
+                // en una reparacion el numero de item siempre es 1, (porque es unica)
+                m_leOTItems.AddEntity(LLenarOTItem(l_eRepaSelec, m_intNumeroAgrupador, 1, l_eRepaSelec.Des));
+                // LLenamos la grilla con lista entidad
+                fgControlRepaSeleccionados.FillFromLEntidad(m_leOTItems);
+                //aumentamos en uno al Agrupador
+                m_intNumeroAgrupador += 1;
             }
         }
+
+        private void gbAccept_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        #endregion
+
+       
 
 
 

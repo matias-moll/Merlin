@@ -409,7 +409,7 @@ namespace Rivn.Mv
             fgKm.Clear();
             fgMovilEstados.Clear();
             igKilometros.Enabled = false;
-            igOpciones.Enabled = true;
+            pnlOpciones.Enabled = true;
             igHistorialEstados.Enabled = false;
             igEquipamiento.Enabled = false;
             igCombustibles.Enabled = false;
@@ -442,7 +442,7 @@ namespace Rivn.Mv
             cmbEstado.Enabled = true;
             gbModificarEstado.Enabled = true;
             igMoviles.Enabled = true;
-            igOpciones.Enabled = true;
+            pnlOpciones.Enabled = true;
             igKilometros.Enabled = true;
             igEquipamiento.Enabled = true;
             igHistorialEstados.Enabled = true;
@@ -470,7 +470,7 @@ namespace Rivn.Mv
             cmbEstado.SelectedIndex = -1;
             cmbEstado.Enabled = false;
             gbModificarEstado.Enabled = false;
-            igOpciones.Enabled = true;
+            pnlOpciones.Enabled = true;
             gbNuevoMovil.Enabled = true;
             gbModificarMovil.Enabled = false;
             gbBorrarMovil.Enabled = false;
@@ -591,6 +591,11 @@ namespace Rivn.Mv
         private int DameUltimoKms()
         {
             return (int) m_AMAsocMoviles.Kms.InternalData.Table.Rows[0]["mkm_nro_km"];
+        }
+
+        private void xpnlPanelAtras_Paint(object sender, PaintEventArgs e)
+        {
+
         }
 
 

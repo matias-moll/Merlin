@@ -227,11 +227,10 @@ namespace Rivn.Mv
 
             //TNGS.NetAppBll.EParametro l_ptroEstadoDefault = AppRuts.ParaGet("DefaultStateMovil", false, ref m_stResult);
             //if (MsgRuts.AnalizeError(this, m_stResult))
-            //{ 
+            //{
             //    l_leMvlEstado.Patente = "";
             //    return l_leMvlEstado;
             //} 
-
             l_leMvlEstado.Patente = tePatente.Text;
             l_leMvlEstado.Fecha = DateTime.Now;
             l_leMvlEstado.Codestado = "1";// l_ptroEstadoDefault.VStr;

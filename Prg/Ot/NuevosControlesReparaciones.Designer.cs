@@ -151,19 +151,19 @@
             // deImporte
             // 
             this.deImporte.BackColor = System.Drawing.SystemColors.Window;
-            this.deImporte.Location = new System.Drawing.Point(291, 39);
+            this.deImporte.Location = new System.Drawing.Point(355, 30);
             this.deImporte.MaxLength = 13;
             this.deImporte.Name = "deImporte";
-            this.deImporte.Size = new System.Drawing.Size(119, 21);
+            this.deImporte.Size = new System.Drawing.Size(168, 21);
             this.deImporte.TabIndex = 3;
             this.deImporte.Text = "0.00";
             // 
             // fullLabel4
             // 
             this.fullLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fullLabel4.Location = new System.Drawing.Point(288, 20);
+            this.fullLabel4.Location = new System.Drawing.Point(290, 30);
             this.fullLabel4.Name = "fullLabel4";
-            this.fullLabel4.Size = new System.Drawing.Size(61, 21);
+            this.fullLabel4.Size = new System.Drawing.Size(79, 21);
             this.fullLabel4.TabIndex = 14;
             this.fullLabel4.Text = "Importe:";
             // 
@@ -179,10 +179,10 @@
             // teComentario
             // 
             this.teComentario.BackColor = System.Drawing.SystemColors.Window;
-            this.teComentario.Location = new System.Drawing.Point(291, 84);
+            this.teComentario.Location = new System.Drawing.Point(290, 84);
             this.teComentario.Multiline = true;
             this.teComentario.Name = "teComentario";
-            this.teComentario.Size = new System.Drawing.Size(235, 101);
+            this.teComentario.Size = new System.Drawing.Size(233, 101);
             this.teComentario.TabIndex = 4;
             // 
             // cdlControlesReparaciones
@@ -260,7 +260,7 @@
             // gbQuitarSeleccionado
             // 
             this.gbQuitarSeleccionado.FixedImage = TNGS.NetControls.FixedGlassButtons.Delete;
-            this.gbQuitarSeleccionado.Location = new System.Drawing.Point(153, 60);
+            this.gbQuitarSeleccionado.Location = new System.Drawing.Point(152, 70);
             this.gbQuitarSeleccionado.Name = "gbQuitarSeleccionado";
             this.gbQuitarSeleccionado.Size = new System.Drawing.Size(117, 48);
             this.gbQuitarSeleccionado.TabIndex = 1;
@@ -280,7 +280,7 @@
             // gbAgregar
             // 
             this.gbAgregar.FixedImage = TNGS.NetControls.FixedGlassButtons.Add;
-            this.gbAgregar.Location = new System.Drawing.Point(20, 60);
+            this.gbAgregar.Location = new System.Drawing.Point(19, 70);
             this.gbAgregar.Name = "gbAgregar";
             this.gbAgregar.Size = new System.Drawing.Size(117, 48);
             this.gbAgregar.TabIndex = 0;
@@ -309,6 +309,7 @@
             this.gbAccept.TabIndex = 4;
             this.gbAccept.Text = "Aceptar";
             this.gbAccept.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.gbAccept.Click += new System.EventHandler(this.gbAccept_Click);
             // 
             // fgControlRepaSeleccionados
             // 
