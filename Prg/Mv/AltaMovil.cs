@@ -27,7 +27,7 @@ namespace Rivn.Mv
         private bool m_EstadoAlta;
         private Bel.EMovil m_entMovil;
 
-        //constructor
+        //constructor principal
         public AltaMovil()
         {
             InitializeComponent();
@@ -43,6 +43,7 @@ namespace Rivn.Mv
 
         }
 
+        //constructor para modificacion
         public AltaMovil(Bel.EMovil p_entMovil, bool p_bImgHabilitado) : this()
         {
             if(p_bImgHabilitado)
@@ -58,6 +59,7 @@ namespace Rivn.Mv
 
             //disbleamos los controles que no tienen que estar activos
             neKilometros.Enabled = false;
+            gbLimpiarTodo.Enabled = false;
             tePatente.Enabled = false;
             teNroChasis.Enabled = false;
             teNroMotor.Enabled = false;

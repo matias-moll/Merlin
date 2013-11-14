@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AltaMovil));
             this.xPanel1 = new TNGS.NetControls.XPanel();
             this.gbLimpiarTodo = new TNGS.NetControls.GlassButton();
             this.gbCancel = new TNGS.NetControls.GlassButton();
@@ -81,9 +82,9 @@
             // 
             this.gbLimpiarTodo.FixedImage = TNGS.NetControls.FixedGlassButtons.tDelete;
             this.gbLimpiarTodo.ImageOnTop = true;
-            this.gbLimpiarTodo.Location = new System.Drawing.Point(24, 571);
+            this.gbLimpiarTodo.Location = new System.Drawing.Point(661, 571);
             this.gbLimpiarTodo.Name = "gbLimpiarTodo";
-            this.gbLimpiarTodo.Size = new System.Drawing.Size(131, 68);
+            this.gbLimpiarTodo.Size = new System.Drawing.Size(91, 68);
             this.gbLimpiarTodo.TabIndex = 0;
             this.gbLimpiarTodo.Text = "Limpiar Campos";
             this.gbLimpiarTodo.Click += new System.EventHandler(this.btnLimpiarTodo_Click);
@@ -93,9 +94,9 @@
             this.gbCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.gbCancel.FixedImage = TNGS.NetControls.FixedGlassButtons.tCancel;
             this.gbCancel.ImageOnTop = true;
-            this.gbCancel.Location = new System.Drawing.Point(684, 571);
+            this.gbCancel.Location = new System.Drawing.Point(791, 571);
             this.gbCancel.Name = "gbCancel";
-            this.gbCancel.Size = new System.Drawing.Size(131, 68);
+            this.gbCancel.Size = new System.Drawing.Size(91, 68);
             this.gbCancel.TabIndex = 1;
             this.gbCancel.Text = "Cancelar";
             this.gbCancel.Click += new System.EventHandler(this.gbCancel_Click);
@@ -104,9 +105,9 @@
             // 
             this.gbGrabar.FixedImage = TNGS.NetControls.FixedGlassButtons.tSave;
             this.gbGrabar.ImageOnTop = true;
-            this.gbGrabar.Location = new System.Drawing.Point(837, 571);
+            this.gbGrabar.Location = new System.Drawing.Point(888, 571);
             this.gbGrabar.Name = "gbGrabar";
-            this.gbGrabar.Size = new System.Drawing.Size(131, 68);
+            this.gbGrabar.Size = new System.Drawing.Size(91, 68);
             this.gbGrabar.TabIndex = 2;
             this.gbGrabar.Text = "Grabar";
             this.gbGrabar.Click += new System.EventHandler(this.btnGrabar_Click);
@@ -124,7 +125,7 @@
             this.igEquipamiento.CustomGroupBoxColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
             this.igEquipamiento.FontTitle = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.igEquipamiento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.igEquipamiento.GroupImage = null;
+            this.igEquipamiento.GroupImage = ((System.Drawing.Image)(resources.GetObject("igEquipamiento.GroupImage")));
             this.igEquipamiento.GroupTitle = "Equipamiento";
             this.igEquipamiento.Location = new System.Drawing.Point(684, 17);
             this.igEquipamiento.Name = "igEquipamiento";
@@ -134,7 +135,7 @@
             this.igEquipamiento.ShadowColor = System.Drawing.Color.DarkGray;
             this.igEquipamiento.ShadowControl = true;
             this.igEquipamiento.ShadowThickness = 3;
-            this.igEquipamiento.Size = new System.Drawing.Size(312, 525);
+            this.igEquipamiento.Size = new System.Drawing.Size(312, 536);
             this.igEquipamiento.SkinFixed = true;
             this.igEquipamiento.SkinFullFixed = true;
             this.igEquipamiento.TabIndex = 24;
@@ -143,7 +144,7 @@
             // 
             this.btnDestildarTodoEqi.FixedImage = TNGS.NetControls.FixedGlassButtons.UnCheckAll;
             this.btnDestildarTodoEqi.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDestildarTodoEqi.Location = new System.Drawing.Point(161, 486);
+            this.btnDestildarTodoEqi.Location = new System.Drawing.Point(158, 489);
             this.btnDestildarTodoEqi.Name = "btnDestildarTodoEqi";
             this.btnDestildarTodoEqi.Size = new System.Drawing.Size(122, 24);
             this.btnDestildarTodoEqi.TabIndex = 2;
@@ -155,7 +156,7 @@
             // 
             this.btnTildaTodos.FixedImage = TNGS.NetControls.FixedGlassButtons.CheckAll;
             this.btnTildaTodos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTildaTodos.Location = new System.Drawing.Point(29, 486);
+            this.btnTildaTodos.Location = new System.Drawing.Point(26, 489);
             this.btnTildaTodos.Name = "btnTildaTodos";
             this.btnTildaTodos.Size = new System.Drawing.Size(122, 24);
             this.btnTildaTodos.TabIndex = 1;
@@ -202,7 +203,7 @@
             this.igDatosBasicosMovil.CustomGroupBoxColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
             this.igDatosBasicosMovil.FontTitle = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.igDatosBasicosMovil.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.igDatosBasicosMovil.GroupImage = null;
+            this.igDatosBasicosMovil.GroupImage = global::Rivn.Mv.Properties.Resources.ambulance_car;
             this.igDatosBasicosMovil.GroupTitle = "Datos Basicos";
             this.igDatosBasicosMovil.Location = new System.Drawing.Point(12, 17);
             this.igDatosBasicosMovil.Name = "igDatosBasicosMovil";
@@ -212,7 +213,7 @@
             this.igDatosBasicosMovil.ShadowColor = System.Drawing.Color.DarkGray;
             this.igDatosBasicosMovil.ShadowControl = true;
             this.igDatosBasicosMovil.ShadowThickness = 3;
-            this.igDatosBasicosMovil.Size = new System.Drawing.Size(660, 525);
+            this.igDatosBasicosMovil.Size = new System.Drawing.Size(660, 536);
             this.igDatosBasicosMovil.SkinFixed = true;
             this.igDatosBasicosMovil.SkinFullFixed = true;
             this.igDatosBasicosMovil.TabIndex = 23;
@@ -220,7 +221,7 @@
             // neKilometros
             // 
             this.neKilometros.BackColor = System.Drawing.SystemColors.Window;
-            this.neKilometros.Location = new System.Drawing.Point(457, 286);
+            this.neKilometros.Location = new System.Drawing.Point(451, 288);
             this.neKilometros.Name = "neKilometros";
             this.neKilometros.Size = new System.Drawing.Size(123, 20);
             this.neKilometros.TabIndex = 7;
@@ -229,11 +230,11 @@
             // fullLabel1
             // 
             this.fullLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.fullLabel1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fullLabel1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.fullLabel1.ForeColor = System.Drawing.Color.Black;
-            this.fullLabel1.Location = new System.Drawing.Point(363, 286);
+            this.fullLabel1.Location = new System.Drawing.Point(352, 288);
             this.fullLabel1.Name = "fullLabel1";
-            this.fullLabel1.Size = new System.Drawing.Size(82, 18);
+            this.fullLabel1.Size = new System.Drawing.Size(90, 18);
             this.fullLabel1.TabIndex = 20;
             this.fullLabel1.Text = "Kilometros: ";
             // 
@@ -242,7 +243,7 @@
             this.cdcModelo.BackColor = System.Drawing.SystemColors.Window;
             this.cdcModelo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cdcModelo.FormattingEnabled = true;
-            this.cdcModelo.Location = new System.Drawing.Point(164, 286);
+            this.cdcModelo.Location = new System.Drawing.Point(162, 288);
             this.cdcModelo.Name = "cdcModelo";
             this.cdcModelo.Size = new System.Drawing.Size(123, 21);
             this.cdcModelo.Sorted = true;
@@ -251,57 +252,59 @@
             // tePatente
             // 
             this.tePatente.BackColor = System.Drawing.SystemColors.Window;
-            this.tePatente.Location = new System.Drawing.Point(308, 60);
+            this.tePatente.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.tePatente.Location = new System.Drawing.Point(303, 68);
             this.tePatente.Name = "tePatente";
-            this.tePatente.Size = new System.Drawing.Size(132, 20);
+            this.tePatente.Size = new System.Drawing.Size(136, 20);
             this.tePatente.TabIndex = 0;
+            this.tePatente.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lblAnotaciones
             // 
             this.lblAnotaciones.BackColor = System.Drawing.Color.Transparent;
-            this.lblAnotaciones.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAnotaciones.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAnotaciones.ForeColor = System.Drawing.Color.Black;
-            this.lblAnotaciones.Location = new System.Drawing.Point(36, 356);
+            this.lblAnotaciones.Location = new System.Drawing.Point(46, 363);
             this.lblAnotaciones.Name = "lblAnotaciones";
-            this.lblAnotaciones.Size = new System.Drawing.Size(87, 18);
+            this.lblAnotaciones.Size = new System.Drawing.Size(117, 18);
             this.lblAnotaciones.TabIndex = 13;
             this.lblAnotaciones.Text = "Anotaciones:";
             // 
             // lblAnioFabricacion
             // 
             this.lblAnioFabricacion.BackColor = System.Drawing.Color.Transparent;
-            this.lblAnioFabricacion.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAnioFabricacion.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAnioFabricacion.ForeColor = System.Drawing.Color.Black;
-            this.lblAnioFabricacion.Location = new System.Drawing.Point(332, 230);
+            this.lblAnioFabricacion.Location = new System.Drawing.Point(315, 232);
             this.lblAnioFabricacion.Name = "lblAnioFabricacion";
-            this.lblAnioFabricacion.Size = new System.Drawing.Size(107, 18);
+            this.lblAnioFabricacion.Size = new System.Drawing.Size(124, 18);
             this.lblAnioFabricacion.TabIndex = 17;
             this.lblAnioFabricacion.Text = "Año Fabricacion:";
             // 
             // teAnotaciones
             // 
             this.teAnotaciones.BackColor = System.Drawing.SystemColors.Window;
-            this.teAnotaciones.Location = new System.Drawing.Point(39, 377);
+            this.teAnotaciones.Location = new System.Drawing.Point(39, 384);
             this.teAnotaciones.Multiline = true;
             this.teAnotaciones.Name = "teAnotaciones";
-            this.teAnotaciones.Size = new System.Drawing.Size(580, 122);
+            this.teAnotaciones.Size = new System.Drawing.Size(580, 129);
             this.teAnotaciones.TabIndex = 8;
             // 
             // lblMovilPropio
             // 
             this.lblMovilPropio.BackColor = System.Drawing.Color.Transparent;
-            this.lblMovilPropio.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMovilPropio.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMovilPropio.ForeColor = System.Drawing.Color.Black;
-            this.lblMovilPropio.Location = new System.Drawing.Point(358, 177);
+            this.lblMovilPropio.Location = new System.Drawing.Point(339, 179);
             this.lblMovilPropio.Name = "lblMovilPropio";
-            this.lblMovilPropio.Size = new System.Drawing.Size(82, 18);
+            this.lblMovilPropio.Size = new System.Drawing.Size(105, 18);
             this.lblMovilPropio.TabIndex = 18;
             this.lblMovilPropio.Text = "Movil Propio:";
             // 
             // neAnioFabric
             // 
             this.neAnioFabric.BackColor = System.Drawing.SystemColors.Window;
-            this.neAnioFabric.Location = new System.Drawing.Point(457, 231);
+            this.neAnioFabric.Location = new System.Drawing.Point(451, 233);
             this.neAnioFabric.Name = "neAnioFabric";
             this.neAnioFabric.Size = new System.Drawing.Size(123, 20);
             this.neAnioFabric.TabIndex = 5;
@@ -310,91 +313,93 @@
             // teNroMotor
             // 
             this.teNroMotor.BackColor = System.Drawing.SystemColors.Window;
-            this.teNroMotor.Location = new System.Drawing.Point(163, 233);
+            this.teNroMotor.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.teNroMotor.Location = new System.Drawing.Point(161, 235);
             this.teNroMotor.Name = "teNroMotor";
             this.teNroMotor.Size = new System.Drawing.Size(123, 20);
             this.teNroMotor.TabIndex = 4;
-            this.teNroMotor.Text = "222A";
+            this.teNroMotor.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // cdcMovilPropio
             // 
             this.cdcMovilPropio.BackColor = System.Drawing.SystemColors.Window;
             this.cdcMovilPropio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cdcMovilPropio.FormattingEnabled = true;
-            this.cdcMovilPropio.Location = new System.Drawing.Point(458, 176);
+            this.cdcMovilPropio.Location = new System.Drawing.Point(452, 178);
             this.cdcMovilPropio.Name = "cdcMovilPropio";
-            this.cdcMovilPropio.Size = new System.Drawing.Size(123, 21);
+            this.cdcMovilPropio.Size = new System.Drawing.Size(122, 21);
             this.cdcMovilPropio.Sorted = true;
             this.cdcMovilPropio.TabIndex = 3;
             // 
             // lblPatente
             // 
             this.lblPatente.BackColor = System.Drawing.Color.Transparent;
-            this.lblPatente.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPatente.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPatente.ForeColor = System.Drawing.Color.Black;
-            this.lblPatente.Location = new System.Drawing.Point(220, 60);
+            this.lblPatente.Location = new System.Drawing.Point(204, 68);
             this.lblPatente.Name = "lblPatente";
-            this.lblPatente.Size = new System.Drawing.Size(67, 18);
+            this.lblPatente.Size = new System.Drawing.Size(75, 18);
             this.lblPatente.TabIndex = 6;
             this.lblPatente.Text = "Patente:";
             // 
             // lblDescripcionMovil
             // 
             this.lblDescripcionMovil.BackColor = System.Drawing.Color.Transparent;
-            this.lblDescripcionMovil.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDescripcionMovil.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDescripcionMovil.ForeColor = System.Drawing.Color.Black;
-            this.lblDescripcionMovil.Location = new System.Drawing.Point(65, 117);
+            this.lblDescripcionMovil.Location = new System.Drawing.Point(59, 124);
             this.lblDescripcionMovil.Name = "lblDescripcionMovil";
-            this.lblDescripcionMovil.Size = new System.Drawing.Size(81, 18);
+            this.lblDescripcionMovil.Size = new System.Drawing.Size(86, 19);
             this.lblDescripcionMovil.TabIndex = 10;
             this.lblDescripcionMovil.Text = "Descripcion:";
             // 
             // teDescripcionMovil
             // 
             this.teDescripcionMovil.BackColor = System.Drawing.SystemColors.Window;
-            this.teDescripcionMovil.Location = new System.Drawing.Point(163, 117);
+            this.teDescripcionMovil.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.teDescripcionMovil.Location = new System.Drawing.Point(161, 124);
             this.teDescripcionMovil.Name = "teDescripcionMovil";
-            this.teDescripcionMovil.Size = new System.Drawing.Size(418, 20);
+            this.teDescripcionMovil.Size = new System.Drawing.Size(413, 20);
             this.teDescripcionMovil.TabIndex = 1;
-            this.teDescripcionMovil.Text = "PruebaNumero2";
             // 
             // lblModelo
             // 
             this.lblModelo.BackColor = System.Drawing.Color.Transparent;
-            this.lblModelo.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblModelo.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblModelo.ForeColor = System.Drawing.Color.Black;
-            this.lblModelo.Location = new System.Drawing.Point(91, 288);
+            this.lblModelo.Location = new System.Drawing.Point(82, 290);
             this.lblModelo.Name = "lblModelo";
-            this.lblModelo.Size = new System.Drawing.Size(55, 18);
+            this.lblModelo.Size = new System.Drawing.Size(65, 18);
             this.lblModelo.TabIndex = 16;
             this.lblModelo.Text = "Modelo:";
             // 
             // teNroChasis
             // 
             this.teNroChasis.BackColor = System.Drawing.SystemColors.Window;
-            this.teNroChasis.Location = new System.Drawing.Point(164, 178);
+            this.teNroChasis.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.teNroChasis.Location = new System.Drawing.Point(162, 180);
             this.teNroChasis.Name = "teNroChasis";
             this.teNroChasis.Size = new System.Drawing.Size(123, 20);
             this.teNroChasis.TabIndex = 2;
-            this.teNroChasis.Text = "1111A";
+            this.teNroChasis.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lblNroMotor
             // 
             this.lblNroMotor.BackColor = System.Drawing.Color.Transparent;
-            this.lblNroMotor.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNroMotor.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNroMotor.ForeColor = System.Drawing.Color.Black;
-            this.lblNroMotor.Location = new System.Drawing.Point(51, 234);
+            this.lblNroMotor.Location = new System.Drawing.Point(40, 236);
             this.lblNroMotor.Name = "lblNroMotor";
-            this.lblNroMotor.Size = new System.Drawing.Size(95, 18);
+            this.lblNroMotor.Size = new System.Drawing.Size(110, 18);
             this.lblNroMotor.TabIndex = 15;
             this.lblNroMotor.Text = "Numero Motor:";
             // 
             // lblNroChasis
             // 
             this.lblNroChasis.BackColor = System.Drawing.Color.Transparent;
-            this.lblNroChasis.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNroChasis.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNroChasis.ForeColor = System.Drawing.Color.Black;
-            this.lblNroChasis.Location = new System.Drawing.Point(46, 178);
+            this.lblNroChasis.Location = new System.Drawing.Point(38, 180);
             this.lblNroChasis.Name = "lblNroChasis";
             this.lblNroChasis.Size = new System.Drawing.Size(107, 18);
             this.lblNroChasis.TabIndex = 14;
