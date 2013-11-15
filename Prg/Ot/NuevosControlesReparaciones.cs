@@ -283,11 +283,14 @@ namespace Rivn.Ot
                 return;
             // Si le dio OK al dialog. entonces Vaciamos la lista
             m_leOTItems = Bel.LEOTItems.NewEmpty();
+            //configuramos los captions
+            ConfigurarCaptionsLEOitems(m_leOTItems);
             // LLenamos la grilla con lista entidad
             fgControlRepaSeleccionados.FillFromLEntidad(m_leOTItems);
 
             // Le asignamos 1 al agrupador para que empiece de nuevo.
             m_intNumeroAgrupador = 1;
+
         }
 
         // Borra el item seleccionado de la grilla
@@ -322,10 +325,10 @@ namespace Rivn.Ot
             }
 
             //bajamos en uno al los agrupadores para que sigan en orden
-            foreach (Bel.EOTItem item in m_leOTItems)
+            for (int i = 1; i < m_leOTItems.Count; i++)
             {
-                if (item.Nroagrupador > neSeleccionado.Numero)
-                    item.Nroagrupador = item.Nroagrupador - 1;
+                if (m_leOTItems[i].Nroagrupador > neSeleccionado.Numero)
+                    m_leOTItems[i].Nroagrupador = m_leOTItems[i].Nroagrupador - 1;
             }
 
             //establecemos como numero seleccionado a 0, que representa NO SELECCIONADO
@@ -347,6 +350,7 @@ namespace Rivn.Ot
             // le asignamos el numero de agrupador a esa fila
             neSeleccionado.Numero = m_leOTItems[l_NumeroDeRow].Nroagrupador;
         }
+
         #endregion
 
         
