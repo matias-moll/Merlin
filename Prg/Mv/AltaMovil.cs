@@ -233,7 +233,7 @@ namespace Rivn.Mv
             //} 
             l_leMvlEstado.Patente = tePatente.Text;
             l_leMvlEstado.Fecha = DateTime.Now;
-            l_leMvlEstado.Codestado = "1";// l_ptroEstadoDefault.VStr;
+            l_leMvlEstado.Codestado = "01";// l_ptroEstadoDefault.VStr;
             l_leMvlEstado.Km = neKilometros.Numero;
 
             return l_leMvlEstado;
@@ -327,10 +327,10 @@ namespace Rivn.Mv
                 // si es estado de Update se llama al metodo que elimina todos los equipamientos, carga los nuevos y graba la entidad.
                 Bll.Moviles.CambiarEquipamientoYGrabarMovil(m_entMovil, ObtenerLEntidadSeleccionadosCheckedList(), ref m_stResult);
                 if (MsgRuts.AnalizeError(this, m_stResult)) return;
-                OnChangedMovil(EventArgs.Empty);
                 MsgRuts.ShowMsg(this, "El Movil ha sido modificado satisfactoriamente");
                 this.Close();
             }
+            OnChangedMovil(EventArgs.Empty);
         }
 
         private void gbCancel_Click(object sender, EventArgs e)

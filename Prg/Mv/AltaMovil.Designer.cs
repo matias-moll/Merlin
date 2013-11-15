@@ -225,7 +225,7 @@
             this.neKilometros.Name = "neKilometros";
             this.neKilometros.Size = new System.Drawing.Size(123, 20);
             this.neKilometros.TabIndex = 7;
-            this.neKilometros.Text = "50000";
+            this.neKilometros.Text = "0";
             // 
             // fullLabel1
             // 
@@ -308,7 +308,7 @@
             this.neAnioFabric.Name = "neAnioFabric";
             this.neAnioFabric.Size = new System.Drawing.Size(123, 20);
             this.neAnioFabric.TabIndex = 5;
-            this.neAnioFabric.Text = "1993";
+            this.neAnioFabric.Text = "0";
             // 
             // teNroMotor
             // 
