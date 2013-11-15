@@ -16,7 +16,7 @@ namespace Rivn.Bll
     //----------------------------------------------------------------------------
     //                         TNG Software BLL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 08/11/2013 18:17
+    // Fecha                    : 15/11/2013 15:37
     // Sistema                  : Rivn
     // Clase para Administrar   : 
     //----------------------------------------------------------------------------
@@ -144,7 +144,7 @@ namespace Rivn.Bll
                 case "ctr_cod_codctl"                  : {return "V1codigoControlCN1";}
                 case "ctr_nro_nroitem"                 : {return "V1itemNN3";}
                 case "ctr_cd6_codrep"                  : {return "V1codigoReparacionCN1";}
-                case "ctr_des_des"                     : {return "V1TitleSN1";}
+                case "ctr_des_descRep"                 : {return "V1ReparacionCN1";}
 
                 // ****************************************
                 // Tabla: Equipamiento        

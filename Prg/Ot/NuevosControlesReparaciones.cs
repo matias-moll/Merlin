@@ -24,6 +24,7 @@ namespace Rivn.Ot
         private StatMsg m_smResult = new StatMsg("NuevosControlesReparaciones");
         private Bel.LEOTItems m_leOTItems;
         private Bel.LEReparaciones m_leReparaciones;
+        private Bel.LEControles m_leControles;
         private int m_intNumeroAgrupador;
 
         // Constructor Inicial
@@ -36,8 +37,11 @@ namespace Rivn.Ot
             
             // Seteamos como nueva la lista entidad OTItems
             m_leOTItems = Bel.LEOTItems.NewEmpty();
-            // Nos traemos todas las reparaciones de la grilla a memoria
-            m_leReparaciones = Bll.Tablas.RepUpFull(true, ref m_smResult) ;
+            // Nos traemos todas las reparaciones y controles de las grillas a memoria 
+            m_leReparaciones = Bll.Tablas.RepUpFull(true, ref m_smResult);
+            if (MsgRuts.AnalizeError(this, m_smResult)) return;
+            m_leControles = Bll.Controles.UpFull(true, ref m_smResult);
+            if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
             //seteamos el numero de agrupador como 1
             m_intNumeroAgrupador= 1;

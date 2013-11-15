@@ -38,8 +38,7 @@ namespace Rivn.Tg
 
             //Justo Abajo de la creacion del dockManager isntanciamos el primer dockeable
             //Intanciamos el Dockeable principal.
-            Reparaciones l_dcReparaciones = new Reparaciones();
-            ControlesRepa l_dcCOntroles = new ControlesRepa();
+            Controles l_dcReparaciones = new Controles();
 
             // Liberamos el menu
             App.LockMenu(false);

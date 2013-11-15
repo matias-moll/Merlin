@@ -16,7 +16,7 @@ namespace Rivn.Bll
     //----------------------------------------------------------------------------
     //                         TNG Software BLL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 11/11/2013 18:05
+    // Fecha                    : 15/11/2013 15:37
     // Sistema                  : Rivn
     // Clase para Administrar   : Moviles y Tablas Hijas
     //----------------------------------------------------------------------------
@@ -1466,18 +1466,16 @@ namespace Rivn.Bll
             // Validaciones de los campos con conexion
             // ********
 
-            if (p_entMovilEquip.Codequip.Trim() != "") {
-                Tablas.EqiVKey(p_dbcAccess,
-                               p_entMovilEquip.Codequip,
-                               ref p_smResult);
-                if (p_smResult.NOk) return;
+            Tablas.EqiVKey(p_dbcAccess,
+                           p_entMovilEquip.Codequip,
+                           ref p_smResult);
+            if (p_smResult.NOk) return;
 
-                if (p_smResult.ICodeEs(BllCodes.KeyDsntFound)) {
-                    // El campo [Codigo del Equipamento.] debe existir en la tabla [Tablas.Eqi]
-                    p_smResult.BllWarning("El dato [Codigo del Equipamento.] debe existir en la tabla [Tablas.Eqi]","");
-                    return;
-                }
-                }
+            if (p_smResult.ICodeEs(BllCodes.KeyDsntFound)) {
+                // El campo [Codigo del Equipamento.] debe existir en la tabla [Tablas.Eqi]
+                p_smResult.BllWarning("El dato [Codigo del Equipamento.] debe existir en la tabla [Tablas.Eqi]","");
+                return;
+            }
 
             // Verificamos la clave foranea
             Moviles.VKey(p_dbcAccess,
