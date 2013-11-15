@@ -460,10 +460,10 @@ namespace Rivn.Tg
             this.ClientSize = new System.Drawing.Size(984, 485);
             this.Controls.Add(this.xpnlBase);
             this.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.Name = "Controles";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Controles_FormClosed);
             this.Load += new System.EventHandler(this.Controles_Load);
             this.xpnlBase.ResumeLayout(false);
