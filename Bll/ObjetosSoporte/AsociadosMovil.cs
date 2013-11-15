@@ -36,19 +36,20 @@ namespace Rivn.Bll.ObjetosSoporte
             Combustibles.ChangeCaption("mco_fyh_fecha", "V1FechaFN1");
             Combustibles.ChangeCaption("ets_des_des", "V1EstacionCN2");
 
-            //Cambiar caption de equipamiento
+            ////Cambiar caption de equipamiento
             Equipamiento.ChangeCaption("meq_cod_codequip", "V1CCN1");
+            Equipamiento.ChangeCaption("meq_des_Equip", "V1EquipamientoCN2");
             Equipamiento.ChangeCaption("deleted", "");
 
             //Seteamos caption de Km
-            Kms.ChangeCaption("mkm_fyh_fecha", "V1FechaFN1");
-            Kms.ChangeCaption("mkm_nro_km", "V1KilometrosNN1");
+            Kms.ChangeCaption("mkm_fyh_fecha", "V1FechaFN2");
+            Kms.ChangeCaption("mkm_nro_km", "V1KilometrosNN2");
 
             //Seteamos caption de estados
-            Estados.ChangeCaption("mve_fyh_fecha", "V1FechaFN1");
-            Estados.ChangeCaption("est_des_des", "V1EstadoCN1");
-            Estados.ChangeCaption("mve_nro_km", "V1KmsCN1");
-            Estados.ChangeCaption("mve_rcd_codestado", "V1Codigo EstadoCN1");
+            Estados.ChangeCaption("mve_fyh_fecha", "V1FechaFN2");
+            Estados.ChangeCaption("est_des_des", "V1EstadoCN2");
+            Estados.ChangeCaption("mve_nro_km", "V1KmsCN2");
+            Estados.ChangeCaption("mve_rcd_codestado", "V1CCN1");
 
         }
 
