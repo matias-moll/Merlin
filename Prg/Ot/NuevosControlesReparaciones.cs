@@ -92,7 +92,19 @@ namespace Rivn.Ot
         // Configura los captions de la ListaOTItems, para ver bien la grilla que muestra los items.
         private void ConfigurarCaptionsLEOitems(Bel.LEOTItems p_leOTItems)
         {
-            p_leOTItems.ChangeCaption("oti_nro_nroot", "V1Orden NroNN3");
+            p_leOTItems.ChangeCaption("oti_nro_nroot", "V1OrdenNN2");
+            p_leOTItems.ChangeCaption("oti_nro_nroagrupador", "V1AgrupadorNN2");
+            p_leOTItems.ChangeCaption("oti_nro_nroitem", "V1ItemNN2");
+            p_leOTItems.ChangeCaption("oti_des_desoperacion", "V1ControlCN2");
+            p_leOTItems.ChangeCaption("oti_des_destarea", "V1ReparacionCN2");
+            p_leOTItems.ChangeCaption("oti_des_descategoria", "V1CategoriaCN2");
+            p_leOTItems.ChangeCaption("oti_imp_importe", "V1Importe2N2");
+            p_leOTItems.ChangeCaption("oti_ede_comentario","");
+            p_leOTItems.ChangeCaption("instante","");
+            p_leOTItems.ChangeCaption("deleted","");
+            p_leOTItems.ChangeCaption("usuario","");
+            p_leOTItems.ChangeCaption("version","");
+            
         }
 
         #endregion
