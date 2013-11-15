@@ -35,6 +35,7 @@ namespace Rivn.Tg
             private StatMsg m_smResult= null;
             private ACLInfo m_aclInfo= null;
             private string m_strSort= "";
+            private int m_nroItemAGrabar = 1;
         #endregion
 
         /// <summary>
@@ -393,6 +394,12 @@ namespace Rivn.Tg
             if (l_lentControlesRepa.Count > 0)
                 foreach (DataGridColumnStyle l_dcsItem in grdDatos.TableStyles[0].GridColumnStyles)
                     l_dcsItem.WidthChanged += new EventHandler(GrdColumn_WidthChanged);
+            txtNroitem.Numero = 1;
+            if (l_lentControlesRepa.Count != 0)
+            {
+                m_nroItemAGrabar = l_lentControlesRepa[l_lentControlesRepa.Count - 1].Nroitem + 1;
+                txtNroitem.Numero = m_nroItemAGrabar;
+            }
 
             // Ya la llenamos
             App.HideMsg();
@@ -467,7 +474,8 @@ namespace Rivn.Tg
             txtNroitem.NormalDisable= false;
             txtNroitem.Enabled= m_entControlRepa.EsNueva;
             cdcCodRep.NormalDisable = false;
-            cdcCodRep.Enabled = m_entControlRepa.EsNueva;
+            //todo ver esto
+            cdcCodRep.Enabled = !m_entControlRepa.EsNueva;
             cmdCancelar.Enabled= true;
             cmdGrabar.Enabled= !m_entControlRepa.EstaBorrada;
             cmdDesHab.FixedImage= (m_entControlRepa.EstaBorrada) ? FixedGlassButtons.Enable 
