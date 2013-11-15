@@ -467,7 +467,6 @@ namespace Rivn.Tg
         private void EditMode()
         {
             // Llenamos los campos a partir de la entidad a editar
-            txtNroitem.Numero= m_entControlRepa.Nroitem;
             cdcCodRep.SelectedStrCode = m_entControlRepa.Codrep;
 
             // Habilitamos el frame
@@ -475,7 +474,7 @@ namespace Rivn.Tg
             txtNroitem.Enabled= m_entControlRepa.EsNueva;
             cdcCodRep.NormalDisable = false;
             //todo ver esto
-            cdcCodRep.Enabled = !m_entControlRepa.EsNueva;
+            cdcCodRep.Enabled = m_entControlRepa.EsNueva;
             cmdCancelar.Enabled= true;
             cmdGrabar.Enabled= !m_entControlRepa.EstaBorrada;
             cmdDesHab.FixedImage= (m_entControlRepa.EstaBorrada) ? FixedGlassButtons.Enable 
