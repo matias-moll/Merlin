@@ -125,6 +125,7 @@ namespace Rivn.Mv
             {
                 //m_entMovil.MovilesEstado.Sort("mve_fyh_fecha desc");
                 fgMovilEstados.FillFromLEntidad(m_AMAsocMoviles.Estados);
+                fgMovilEstados.ColWitdhs = "105;105;105;0;";
             }
            
         }
@@ -153,6 +154,7 @@ namespace Rivn.Mv
             if (m_AMAsocMoviles.Combustibles.Count != 0)
             {
                 fgCombustibles.FillFromLEntidad(m_AMAsocMoviles.Combustibles);
+                fgCombustibles.ColWitdhs = "57;57;100;100;";
             }
         }
 
@@ -167,6 +169,7 @@ namespace Rivn.Mv
             {
 
                 fgKm.FillFromLEntidad(m_AMAsocMoviles.Kms);
+                fgKm.ColWitdhs = "157;157;";
             }
         }
 
@@ -179,9 +182,9 @@ namespace Rivn.Mv
         {
             if (m_AMAsocMoviles.Equipamiento.Count != 0)
             {
-                //Propiedad .Colwitdhs (para el ancho de las columnas)
-                //fgEquipamiento.ColWitdhs = "@M-M@@M-M@N@M-M@0;0;@M-M@";
+                  //Propiedad .Colwitdhs (para el ancho de las columnas) colwitdhs
                 fgEquipamiento.FillFromLEntidad(m_AMAsocMoviles.Equipamiento);
+                fgEquipamiento.ColWitdhs = "0;"+(fgEquipamiento.Size.Width -5).ToString()+";";
             }
         }
 
