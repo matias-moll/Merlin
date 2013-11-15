@@ -440,7 +440,7 @@ namespace Rivn.Tg
             cmdHab.Enabled= false;
 
             // Blanqueamos los campos
-            txtNroitem.Numero= 0;
+            txtNroitem.Numero= m_nroItemAGrabar;
             cdcCodRep.SelectedIndex = -1;
 
             // Habilitamos la grilla y los controles operativos
@@ -468,7 +468,7 @@ namespace Rivn.Tg
         {
             // Llenamos los campos a partir de la entidad a editar
             cdcCodRep.SelectedStrCode = m_entControlRepa.Codrep;
-
+            if (!m_entControlRepa.EsNueva) txtNroitem.Numero = m_entControlRepa.Nroitem;
             // Habilitamos el frame
             txtNroitem.NormalDisable= false;
             txtNroitem.Enabled= m_entControlRepa.EsNueva;
