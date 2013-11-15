@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.xPanel1 = new TNGS.NetControls.XPanel();
+            this.neOrdenTrabajo = new TNGS.NetControls.NumberEdit();
             this.panel1 = new System.Windows.Forms.Panel();
             this.rbReparaciones = new System.Windows.Forms.RadioButton();
             this.rbControles = new System.Windows.Forms.RadioButton();
@@ -40,6 +41,7 @@
             this.teComentario = new TNGS.NetControls.TextEdit();
             this.cdlControlesReparaciones = new TNGS.NetControls.CDList();
             this.igOpciones = new TNGS.NetControls.ImgGroup();
+            this.neSeleccionado = new TNGS.NetControls.NumberEdit();
             this.gbQuitarTodos = new TNGS.NetControls.GlassButton();
             this.gbQuitarUltimo = new TNGS.NetControls.GlassButton();
             this.gbQuitarSeleccionado = new TNGS.NetControls.GlassButton();
@@ -49,10 +51,8 @@
             this.gbAccept = new TNGS.NetControls.GlassButton();
             this.fgControlRepaSeleccionados = new TNGS.NetControls.FullGrid();
             this.gbCancel = new TNGS.NetControls.GlassButton();
-            this.teNumOrden = new TNGS.NetControls.TextEdit();
             this.fullLabel2 = new TNGS.NetControls.FullLabel();
             this.fullLabel1 = new TNGS.NetControls.FullLabel();
-            this.neSeleccionado = new TNGS.NetControls.NumberEdit();
             this.xPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.igControlReparacion.SuspendLayout();
@@ -64,6 +64,7 @@
             // 
             this.xPanel1.BackColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.xPanel1.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
+            this.xPanel1.Controls.Add(this.neOrdenTrabajo);
             this.xPanel1.Controls.Add(this.panel1);
             this.xPanel1.Controls.Add(this.igControlReparacion);
             this.xPanel1.Controls.Add(this.igOpciones);
@@ -71,7 +72,6 @@
             this.xPanel1.Controls.Add(this.gbAccept);
             this.xPanel1.Controls.Add(this.fgControlRepaSeleccionados);
             this.xPanel1.Controls.Add(this.gbCancel);
-            this.xPanel1.Controls.Add(this.teNumOrden);
             this.xPanel1.Controls.Add(this.fullLabel2);
             this.xPanel1.Controls.Add(this.fullLabel1);
             this.xPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -81,6 +81,16 @@
             this.xPanel1.Size = new System.Drawing.Size(860, 501);
             this.xPanel1.SkinFixed = true;
             this.xPanel1.TabIndex = 0;
+            // 
+            // neOrdenTrabajo
+            // 
+            this.neOrdenTrabajo.BackColor = System.Drawing.SystemColors.Window;
+            this.neOrdenTrabajo.Enabled = false;
+            this.neOrdenTrabajo.Location = new System.Drawing.Point(754, 9);
+            this.neOrdenTrabajo.Name = "neOrdenTrabajo";
+            this.neOrdenTrabajo.Size = new System.Drawing.Size(79, 21);
+            this.neOrdenTrabajo.TabIndex = 13;
+            this.neOrdenTrabajo.Text = "0";
             // 
             // panel1
             // 
@@ -226,6 +236,15 @@
             this.igOpciones.SkinFullFixed = true;
             this.igOpciones.TabIndex = 2;
             // 
+            // neSeleccionado
+            // 
+            this.neSeleccionado.BackColor = System.Drawing.SystemColors.Window;
+            this.neSeleccionado.Location = new System.Drawing.Point(153, 33);
+            this.neSeleccionado.Name = "neSeleccionado";
+            this.neSeleccionado.Size = new System.Drawing.Size(115, 21);
+            this.neSeleccionado.TabIndex = 18;
+            this.neSeleccionado.Text = "0";
+            // 
             // gbQuitarTodos
             // 
             this.gbQuitarTodos.FixedImage = TNGS.NetControls.FixedGlassButtons.Clean;
@@ -319,6 +338,7 @@
             this.fgControlRepaSeleccionados.SkinFixed = true;
             this.fgControlRepaSeleccionados.TabIndex = 0;
             this.fgControlRepaSeleccionados.TabStop = false;
+            this.fgControlRepaSeleccionados.CurrentCellChanged += new System.EventHandler(this.fgControlRepaSeleccionados_CurrentCellChanged);
             // 
             // gbCancel
             // 
@@ -330,16 +350,6 @@
             this.gbCancel.Text = "Cancelar";
             this.gbCancel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.gbCancel.Click += new System.EventHandler(this.gbCancel_Click);
-            // 
-            // teNumOrden
-            // 
-            this.teNumOrden.BackColor = System.Drawing.SystemColors.Window;
-            this.teNumOrden.Enabled = false;
-            this.teNumOrden.Location = new System.Drawing.Point(748, 9);
-            this.teNumOrden.Name = "teNumOrden";
-            this.teNumOrden.Size = new System.Drawing.Size(100, 21);
-            this.teNumOrden.TabIndex = 6;
-            this.teNumOrden.TabStop = false;
             // 
             // fullLabel2
             // 
@@ -360,15 +370,6 @@
             this.fullLabel1.Size = new System.Drawing.Size(98, 23);
             this.fullLabel1.TabIndex = 1;
             this.fullLabel1.Text = "Movil Patente:";
-            // 
-            // neSeleccionado
-            // 
-            this.neSeleccionado.BackColor = System.Drawing.SystemColors.Window;
-            this.neSeleccionado.Location = new System.Drawing.Point(153, 33);
-            this.neSeleccionado.Name = "neSeleccionado";
-            this.neSeleccionado.Size = new System.Drawing.Size(115, 21);
-            this.neSeleccionado.TabIndex = 18;
-            this.neSeleccionado.Text = "0";
             // 
             // NuevosControlesReparaciones
             // 
@@ -402,7 +403,6 @@
         private TNGS.NetControls.ImgGroup igControlReparacion;
         private TNGS.NetControls.FullGrid fgControlRepaSeleccionados;
         private TNGS.NetControls.CDList cdlControlesReparaciones;
-        private TNGS.NetControls.TextEdit teNumOrden;
         private TNGS.NetControls.FullLabel fullLabel2;
         private TNGS.NetControls.GlassButton gbAccept;
         private TNGS.NetControls.GlassButton gbCancel;
@@ -419,5 +419,6 @@
         private TNGS.NetControls.GlassButton gbAgregar;
         private TNGS.NetControls.FullLabel fullLabel5;
         private TNGS.NetControls.NumberEdit neSeleccionado;
+        private TNGS.NetControls.NumberEdit neOrdenTrabajo;
     }
 }

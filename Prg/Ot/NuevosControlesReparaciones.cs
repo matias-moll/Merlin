@@ -31,12 +31,13 @@ namespace Rivn.Ot
         {
             InitializeComponent();
             ((MainFrame)App.GetMainWindow()).AddContent(this);
-
+            
             igOpciones.Enabled = false;
 
             // Reseteamos el StatMsg
             m_smResult.UilReset("NuevosControlesReparaciones");
-            
+            // seteamos el numero de OT
+            neOrdenTrabajo.Numero = TNGS.NetAppBll.AppRuts.TaloGet("TaloOT",ref m_smResult).Valor;
             // Seteamos como nueva la lista entidad OTItems
             m_leOTItems = Bel.LEOTItems.NewEmpty();
             ConfigurarCaptionsLEOitems(m_leOTItems);
@@ -77,10 +78,10 @@ namespace Rivn.Ot
         {
             Bel.EOTItem l_entOTitem = Bel.EOTItem.NewEmpty();
 
-            l_entOTitem.Nroot = 1;
+            l_entOTitem.Nroot = neOrdenTrabajo.Numero;
             l_entOTitem.Nroagrupador = p_nroAgrupador;
             l_entOTitem.Nroitem = p_nroItem;
-            l_entOTitem.Descategoria = p_eReparacion.Codcat;
+            l_entOTitem.Descategoria = p_sDescControl;
             l_entOTitem.Desoperacion = p_eReparacion.Des;
             l_entOTitem.Destarea = p_eReparacion.Des;
             l_entOTitem.Comentario = teComentario.Text;
@@ -104,7 +105,6 @@ namespace Rivn.Ot
             p_leOTItems.ChangeCaption("deleted","");
             p_leOTItems.ChangeCaption("usuario","");
             p_leOTItems.ChangeCaption("version","");
-            
         }
 
         #endregion
@@ -337,8 +337,17 @@ namespace Rivn.Ot
             
         }
         
-        
+        // Cambia el numero de Item seleccionado segundo que fila toquemos
+        private void fgControlRepaSeleccionados_CurrentCellChanged(object sender, EventArgs e)
+        {
+            // nos fijamos en que fila estamos parados 
+            int l_NumeroDeRow = fgControlRepaSeleccionados.CurrentRowIndex;      
+            // le asignamos el numero de agrupador a esa fila
+            neSeleccionado.Numero = m_leOTItems[l_NumeroDeRow].Nroagrupador;
+        }
         #endregion
+
+        
 
     }
 }
