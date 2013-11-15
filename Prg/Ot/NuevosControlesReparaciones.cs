@@ -38,9 +38,11 @@ namespace Rivn.Ot
             m_smResult.UilReset("NuevosControlesReparaciones");
             // seteamos el numero de OT
             neOrdenTrabajo.Numero = TNGS.NetAppBll.AppRuts.TaloGet("TaloOT",ref m_smResult).Valor;
+
             // Seteamos como nueva la lista entidad OTItems
             m_leOTItems = Bel.LEOTItems.NewEmpty();
             ConfigurarCaptionsLEOitems(m_leOTItems);
+
             // Nos traemos todas las reparaciones de la grilla a memoria 
             m_leReparaciones = Bll.Tablas.RepUpFull(true, ref m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
@@ -81,8 +83,8 @@ namespace Rivn.Ot
             l_entOTitem.Nroot = neOrdenTrabajo.Numero;
             l_entOTitem.Nroagrupador = p_nroAgrupador;
             l_entOTitem.Nroitem = p_nroItem;
-            l_entOTitem.Descategoria = p_sDescControl;
-            l_entOTitem.Desoperacion = p_eReparacion.Des;
+            l_entOTitem.Descategoria = p_eReparacion.Codcat;
+            l_entOTitem.Desoperacion = p_sDescControl;
             l_entOTitem.Destarea = p_eReparacion.Des;
             l_entOTitem.Comentario = teComentario.Text;
             l_entOTitem.Importe = deImporte.Decimal;
@@ -201,7 +203,7 @@ namespace Rivn.Ot
 
                    
                     //llenamos la OTitem y lo agregamos a la lista entidad
-                    m_leOTItems.AddEntity(LLenarOTItem(l_eRepaSelec, m_intNumeroAgrupador, l_iContador,l_entControlSeleccionado.Cod));
+                    m_leOTItems.AddEntity(LLenarOTItem(l_eRepaSelec, m_intNumeroAgrupador, l_iContador,l_entControlSeleccionado.Des));
                     
                     //aumentamos el contador de items
                    l_iContador += 1;
