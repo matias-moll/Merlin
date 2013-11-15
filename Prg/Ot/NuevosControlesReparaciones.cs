@@ -24,7 +24,6 @@ namespace Rivn.Ot
         private StatMsg m_smResult = new StatMsg("NuevosControlesReparaciones");
         private Bel.LEOTItems m_leOTItems;
         private Bel.LEReparaciones m_leReparaciones;
-        private Bel.LEControles m_leControles;
         private int m_intNumeroAgrupador;
 
         // Constructor Inicial
@@ -32,15 +31,17 @@ namespace Rivn.Ot
         {
             InitializeComponent();
             ((MainFrame)App.GetMainWindow()).AddContent(this);
+
+            igOpciones.Enabled = false;
+
             // Reseteamos el StatMsg
             m_smResult.UilReset("NuevosControlesReparaciones");
             
             // Seteamos como nueva la lista entidad OTItems
             m_leOTItems = Bel.LEOTItems.NewEmpty();
-            // Nos traemos todas las reparaciones y controles de las grillas a memoria 
+            ConfigurarCaptionsLEOitems(m_leOTItems);
+            // Nos traemos todas las reparaciones de la grilla a memoria 
             m_leReparaciones = Bll.Tablas.RepUpFull(true, ref m_smResult);
-            if (MsgRuts.AnalizeError(this, m_smResult)) return;
-            m_leControles = Bll.Controles.UpFull(true, ref m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
             //seteamos el numero de agrupador como 1
@@ -88,10 +89,17 @@ namespace Rivn.Ot
             return l_entOTitem;
         }
 
+        // Configura los captions de la ListaOTItems, para ver bien la grilla que muestra los items.
+        private void ConfigurarCaptionsLEOitems(Bel.LEOTItems p_leOTItems)
+        {
+            p_leOTItems.ChangeCaption("oti_nro_nroot", "V1Orden NroNN3");
+        }
+
         #endregion
 
         #region Eventos de los Controles
 
+        // llenamos la lista con los controles si se puede.
         private void rbControles_CheckedChanged(object sender, EventArgs e)
         {
             //si no esta seleccionado volvemos.
@@ -100,11 +108,13 @@ namespace Rivn.Ot
             // nos aseguramos de que haya un movil seleccionado
             if (cdcPatente.SelectedIndex == -1)
             {
+                rbControles.Checked = false;
                 MsgRuts.ShowMsg(this, "No hay ningun Movil seleccionado");
                 return;
             }
-            //cambiamos el nombre del ImgGroup
+            //cambiamos el nombre del ImgGroup y activamos las opciones
             igControlReparacion.GroupTitle = "Controles";
+            igOpciones.Enabled = true;
             // reseteamos al statmsg
             m_smResult.UilReset("rbControles_CheckedChanged");
             //llenamos la lista con los controles de la tabla
@@ -113,6 +123,7 @@ namespace Rivn.Ot
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
         }
 
+        // llenamos la lista con las reparacion si se puede
         private void rbReparaciones_CheckedChanged(object sender, EventArgs e)
            {
                 // si no esta chequeado hacemos un return
@@ -121,11 +132,14 @@ namespace Rivn.Ot
                 // nos aseguramos de que haya un movil seleccionado
                 if (cdcPatente.SelectedIndex == -1)
                 {
+                    rbReparaciones.Checked = false;
                     MsgRuts.ShowMsg(this, "No hay ningun Movil seleccionado");
                     return;
                 }
-                //cambiamos el nombre del ImgGroup
-                igControlReparacion.GroupTitle = "Reparaciones";    
+
+                //cambiamos el nombre del ImgGroup y activamos las opciones
+                igControlReparacion.GroupTitle = "Reparaciones";
+                igOpciones.Enabled = true;
                 // reseteamos al statmsg
                 m_smResult.UilReset("rbControles_CheckedChanged");
                 //llenamos la lista con los controles de la tabla
@@ -140,6 +154,7 @@ namespace Rivn.Ot
             LLenarComboPatentesMoviles(cdcPatente);
         }
 
+        // Cierra el formulario
         private void gbCancel_Click(object sender, EventArgs e)
         {
             // mostramos un mensaje si esta seguro de cerrar
@@ -150,22 +165,31 @@ namespace Rivn.Ot
             this.Close();
         }
 
+        // Agrega un control o una reparacion a nuestra listaEntidad de items
         private void gbAgregar_Click(object sender, EventArgs e)
         {
             m_smResult.UilReset("gbAgregar_Click");
 
             if (rbControles.Checked)
             {
-                Bel.LEControlesRepa l_leCodRep = Bll.Controles.CrepFGet(cdlControlesReparaciones.SelectedStrCode, true, ref m_smResult);
+                //obtenemos todas las reparaciones de el control seleccionado y el Control selecionado
+                Bel.LEControlesRepa l_leControlReparaciones = Bll.Controles.CrepFGet(cdlControlesReparaciones.SelectedStrCode, true, ref m_smResult);
+                if (MsgRuts.AnalizeError(this, m_smResult)) return;
+
+                Bel.EControl l_entControlSeleccionado = Bll.Controles.Get(cdlControlesReparaciones.SelectedStrCode, true , ref m_smResult);
+                if (MsgRuts.AnalizeError(this, m_smResult)) return;
+                
                 //declaramos un contador para que numero en el agrupador
                 int l_iContador = 1;
+                
                 //por cada una de las reparaciones del control, grabamos una entidad
-                foreach (Bel.EControlRepa controRepa in l_leCodRep)
+                foreach (Bel.EControlRepa controlRepa in l_leControlReparaciones)
                 {
-                    Bel.EReparacion l_eRepaSelec = obtenerReparacion(cdlControlesReparaciones.SelectedStrCode);
+                    Bel.EReparacion l_eRepaSelec = obtenerReparacion(controlRepa.Codrep);
+
                    
                     //llenamos la OTitem y lo agregamos a la lista entidad
-                    m_leOTItems.AddEntity(LLenarOTItem(l_eRepaSelec, m_intNumeroAgrupador, l_iContador,)); //aca va la descripcion del control));
+                    m_leOTItems.AddEntity(LLenarOTItem(l_eRepaSelec, m_intNumeroAgrupador, l_iContador,l_entControlSeleccionado.Cod));
                     
                     //aumentamos el contador de items
                    l_iContador += 1;
@@ -193,18 +217,116 @@ namespace Rivn.Ot
             }
         }
 
+        // Graba la ListaEntidad de Items en la Base
         private void gbAccept_Click(object sender, EventArgs e)
         {
+            // si la lista esta vacia no grabamos
+            if(m_leOTItems.Count == 0)
+            {
+                MsgRuts.ShowMsg(this, "No se puede grabar en la base por que no hay nada en la lista para grabar");
+                return;
+            }
 
+            // Grabamos la orden de trabajo nueva
+
+            // Grabamos los OTItems correspondientes a esta orden nueva
         }
 
+        // Borra el ultimo item agregado a la lista
+        private void gbQuitarUltimo_Click(object sender, EventArgs e)
+        {
+            string l_Message = "Si realiza esta accion se borrara el ultimo item de la lista";
+            // Si toca cancelar no borra nada
+            if (MsgRuts.ShowMsg(this, l_Message, MessageBoxButtons.OKCancel) == DialogResult.Cancel)
+                return;
+            // Si le dio OK al dialog. 
+            // creamos una lista nueva y encontramos los items que tienen el ultimo numeroAgrupador para borrarlos.
+            Bel.LEOTItems l_itemsUltimos = Bel.LEOTItems.NewEmpty();
+            
+            foreach(Bel.EOTItem item in m_leOTItems){
+                //si tiene el ultimo numero agrupador ingresado lo agregamos a los ultimos
+                if (item.Nroagrupador == (m_intNumeroAgrupador - 1))
+                    l_itemsUltimos.AddEntity(item);
+            }
+
+            // los borramos a todos los ultimos
+            foreach(Bel.EOTItem item in l_itemsUltimos ){
+                m_leOTItems.RemoveEntity(item.Nroot, item.Nroagrupador, item.Nroitem);
+            }
+            // LLenamos la grilla con lista entidad
+            fgControlRepaSeleccionados.FillFromLEntidad(m_leOTItems);
+
+            //restamos uno al contador de agrupadores
+            m_intNumeroAgrupador = m_intNumeroAgrupador - 1;
+        }
+
+        // Borra TODOS los items de la lista
+        private void gbQuitarTodos_Click(object sender, EventArgs e)
+        {
+            string l_Message = "Si realiza esta accion borrara todos los items agregados hasta el momento";
+            // Si toca cancelar no borra nada
+            if (MsgRuts.ShowMsg(this, l_Message, MessageBoxButtons.OKCancel) == DialogResult.Cancel)
+                return;
+            // Si le dio OK al dialog. entonces Vaciamos la lista
+            m_leOTItems = Bel.LEOTItems.NewEmpty();
+            // LLenamos la grilla con lista entidad
+            fgControlRepaSeleccionados.FillFromLEntidad(m_leOTItems);
+
+            // Le asignamos 1 al agrupador para que empiece de nuevo.
+            m_intNumeroAgrupador = 1;
+        }
+
+        // Borra el item seleccionado de la grilla
+        private void gbQuitarSeleccionado_Click(object sender, EventArgs e)
+        {
+            // chequeamos que algun items este seleccionado
+            if (neSeleccionado.Numero == 0)
+            {
+                MsgRuts.ShowMsg(this, "no hay ningun item seleccionado");
+                return;
+            }
+
+            string l_Message = "Si realiza esta accion se borrara el/los elementos seleccionado de la lista";
+            // Si toca cancelar no borra nada
+            if (MsgRuts.ShowMsg(this, l_Message, MessageBoxButtons.OKCancel) == DialogResult.Cancel)
+                return;
+            // Si le dio OK al dialog. 
+            // creamos una lista nueva y encontramos los items que tienen el ultimo numeroAgrupador para borrarlos.
+            Bel.LEOTItems l_itemsABorrar = Bel.LEOTItems.NewEmpty();
+
+            foreach (Bel.EOTItem item in m_leOTItems)
+            {
+                //si tiene el ultimo numero agrupador ingresado lo agregamos a los ultimos
+                if (item.Nroagrupador == (neSeleccionado.Numero))
+                    l_itemsABorrar.AddEntity(item);
+            }
+
+            // los borramos a todos los ultimos
+            foreach (Bel.EOTItem item in l_itemsABorrar)
+            {
+                m_leOTItems.RemoveEntity(item.Nroot, item.Nroagrupador, item.Nroitem);
+            }
+
+            //bajamos en uno al los agrupadores para que sigan en orden
+            foreach (Bel.EOTItem item in m_leOTItems)
+            {
+                if (item.Nroagrupador > neSeleccionado.Numero)
+                    item.Nroagrupador = item.Nroagrupador - 1;
+            }
+
+            //establecemos como numero seleccionado a 0, que representa NO SELECCIONADO
+            neSeleccionado.Numero = 0;
+
+            // LLenamos la grilla con lista entidad
+            fgControlRepaSeleccionados.FillFromLEntidad(m_leOTItems);
+
+            //restamos uno al contador de agrupadores
+            m_intNumeroAgrupador = m_intNumeroAgrupador - 1;
+            
+        }
+        
+        
         #endregion
-
-       
-
-
-
-
 
     }
 }

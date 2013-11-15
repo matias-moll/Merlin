@@ -39,9 +39,8 @@
             this.fullLabel3 = new TNGS.NetControls.FullLabel();
             this.teComentario = new TNGS.NetControls.TextEdit();
             this.cdlControlesReparaciones = new TNGS.NetControls.CDList();
-            this.imgGroup2 = new TNGS.NetControls.ImgGroup();
+            this.igOpciones = new TNGS.NetControls.ImgGroup();
             this.gbQuitarTodos = new TNGS.NetControls.GlassButton();
-            this.textEdit2 = new TNGS.NetControls.TextEdit();
             this.gbQuitarUltimo = new TNGS.NetControls.GlassButton();
             this.gbQuitarSeleccionado = new TNGS.NetControls.GlassButton();
             this.fullLabel5 = new TNGS.NetControls.FullLabel();
@@ -53,10 +52,11 @@
             this.teNumOrden = new TNGS.NetControls.TextEdit();
             this.fullLabel2 = new TNGS.NetControls.FullLabel();
             this.fullLabel1 = new TNGS.NetControls.FullLabel();
+            this.neSeleccionado = new TNGS.NetControls.NumberEdit();
             this.xPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.igControlReparacion.SuspendLayout();
-            this.imgGroup2.SuspendLayout();
+            this.igOpciones.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fgControlRepaSeleccionados)).BeginInit();
             this.SuspendLayout();
             // 
@@ -66,7 +66,7 @@
             this.xPanel1.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
             this.xPanel1.Controls.Add(this.panel1);
             this.xPanel1.Controls.Add(this.igControlReparacion);
-            this.xPanel1.Controls.Add(this.imgGroup2);
+            this.xPanel1.Controls.Add(this.igOpciones);
             this.xPanel1.Controls.Add(this.cdcPatente);
             this.xPanel1.Controls.Add(this.gbAccept);
             this.xPanel1.Controls.Add(this.fgControlRepaSeleccionados);
@@ -195,36 +195,36 @@
             this.cdlControlesReparaciones.Sorted = true;
             this.cdlControlesReparaciones.TabIndex = 2;
             // 
-            // imgGroup2
+            // igOpciones
             // 
-            this.imgGroup2.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.imgGroup2.BackgroundGradientColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
-            this.imgGroup2.BackgroundGradientMode = TNGS.NetControls.ImgGroup.GroupBoxGradientMode.ForwardDiagonal;
-            this.imgGroup2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.imgGroup2.BorderThickness = 1F;
-            this.imgGroup2.Controls.Add(this.gbQuitarTodos);
-            this.imgGroup2.Controls.Add(this.textEdit2);
-            this.imgGroup2.Controls.Add(this.gbQuitarUltimo);
-            this.imgGroup2.Controls.Add(this.gbQuitarSeleccionado);
-            this.imgGroup2.Controls.Add(this.fullLabel5);
-            this.imgGroup2.Controls.Add(this.gbAgregar);
-            this.imgGroup2.CustomGroupBoxColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
-            this.imgGroup2.FontTitle = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.imgGroup2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.imgGroup2.GroupImage = null;
-            this.imgGroup2.GroupTitle = "Opciones";
-            this.imgGroup2.Location = new System.Drawing.Point(559, 52);
-            this.imgGroup2.Name = "imgGroup2";
-            this.imgGroup2.Padding = new System.Windows.Forms.Padding(20);
-            this.imgGroup2.PaintGroupBox = true;
-            this.imgGroup2.RoundCorners = 10;
-            this.imgGroup2.ShadowColor = System.Drawing.Color.DarkGray;
-            this.imgGroup2.ShadowControl = true;
-            this.imgGroup2.ShadowThickness = 3;
-            this.imgGroup2.Size = new System.Drawing.Size(291, 198);
-            this.imgGroup2.SkinFixed = true;
-            this.imgGroup2.SkinFullFixed = true;
-            this.imgGroup2.TabIndex = 2;
+            this.igOpciones.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.igOpciones.BackgroundGradientColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
+            this.igOpciones.BackgroundGradientMode = TNGS.NetControls.ImgGroup.GroupBoxGradientMode.ForwardDiagonal;
+            this.igOpciones.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.igOpciones.BorderThickness = 1F;
+            this.igOpciones.Controls.Add(this.neSeleccionado);
+            this.igOpciones.Controls.Add(this.gbQuitarTodos);
+            this.igOpciones.Controls.Add(this.gbQuitarUltimo);
+            this.igOpciones.Controls.Add(this.gbQuitarSeleccionado);
+            this.igOpciones.Controls.Add(this.fullLabel5);
+            this.igOpciones.Controls.Add(this.gbAgregar);
+            this.igOpciones.CustomGroupBoxColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
+            this.igOpciones.FontTitle = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.igOpciones.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.igOpciones.GroupImage = null;
+            this.igOpciones.GroupTitle = "Opciones";
+            this.igOpciones.Location = new System.Drawing.Point(559, 52);
+            this.igOpciones.Name = "igOpciones";
+            this.igOpciones.Padding = new System.Windows.Forms.Padding(20);
+            this.igOpciones.PaintGroupBox = true;
+            this.igOpciones.RoundCorners = 10;
+            this.igOpciones.ShadowColor = System.Drawing.Color.DarkGray;
+            this.igOpciones.ShadowControl = true;
+            this.igOpciones.ShadowThickness = 3;
+            this.igOpciones.Size = new System.Drawing.Size(291, 198);
+            this.igOpciones.SkinFixed = true;
+            this.igOpciones.SkinFullFixed = true;
+            this.igOpciones.TabIndex = 2;
             // 
             // gbQuitarTodos
             // 
@@ -235,17 +235,7 @@
             this.gbQuitarTodos.TabIndex = 3;
             this.gbQuitarTodos.Text = "Quitar Todos";
             this.gbQuitarTodos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // textEdit2
-            // 
-            this.textEdit2.BackColor = System.Drawing.SystemColors.Window;
-            this.textEdit2.Enabled = false;
-            this.textEdit2.Location = new System.Drawing.Point(153, 33);
-            this.textEdit2.Multiline = true;
-            this.textEdit2.Name = "textEdit2";
-            this.textEdit2.Size = new System.Drawing.Size(117, 17);
-            this.textEdit2.TabIndex = 20;
-            this.textEdit2.TabStop = false;
+            this.gbQuitarTodos.Click += new System.EventHandler(this.gbQuitarTodos_Click);
             // 
             // gbQuitarUltimo
             // 
@@ -256,6 +246,7 @@
             this.gbQuitarUltimo.TabIndex = 2;
             this.gbQuitarUltimo.Text = "Quitar Ultimo";
             this.gbQuitarUltimo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.gbQuitarUltimo.Click += new System.EventHandler(this.gbQuitarUltimo_Click);
             // 
             // gbQuitarSeleccionado
             // 
@@ -266,6 +257,7 @@
             this.gbQuitarSeleccionado.TabIndex = 1;
             this.gbQuitarSeleccionado.Text = "Quitar Seleccionado";
             this.gbQuitarSeleccionado.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.gbQuitarSeleccionado.Click += new System.EventHandler(this.gbQuitarSeleccionado_Click);
             // 
             // fullLabel5
             // 
@@ -369,6 +361,15 @@
             this.fullLabel1.TabIndex = 1;
             this.fullLabel1.Text = "Movil Patente:";
             // 
+            // neSeleccionado
+            // 
+            this.neSeleccionado.BackColor = System.Drawing.SystemColors.Window;
+            this.neSeleccionado.Location = new System.Drawing.Point(153, 33);
+            this.neSeleccionado.Name = "neSeleccionado";
+            this.neSeleccionado.Size = new System.Drawing.Size(115, 21);
+            this.neSeleccionado.TabIndex = 18;
+            this.neSeleccionado.Text = "0";
+            // 
             // NuevosControlesReparaciones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -385,8 +386,8 @@
             this.panel1.PerformLayout();
             this.igControlReparacion.ResumeLayout(false);
             this.igControlReparacion.PerformLayout();
-            this.imgGroup2.ResumeLayout(false);
-            this.imgGroup2.PerformLayout();
+            this.igOpciones.ResumeLayout(false);
+            this.igOpciones.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fgControlRepaSeleccionados)).EndInit();
             this.ResumeLayout(false);
 
@@ -411,12 +412,12 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.RadioButton rbReparaciones;
         private TNGS.NetControls.DecimalEdit deImporte;
-        private TNGS.NetControls.ImgGroup imgGroup2;
+        private TNGS.NetControls.ImgGroup igOpciones;
         private TNGS.NetControls.GlassButton gbQuitarTodos;
         private TNGS.NetControls.GlassButton gbQuitarUltimo;
         private TNGS.NetControls.GlassButton gbQuitarSeleccionado;
         private TNGS.NetControls.GlassButton gbAgregar;
-        private TNGS.NetControls.TextEdit textEdit2;
         private TNGS.NetControls.FullLabel fullLabel5;
+        private TNGS.NetControls.NumberEdit neSeleccionado;
     }
 }
