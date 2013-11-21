@@ -32,9 +32,11 @@ namespace Rivn.Ot
             InitializeComponent();
             ((MainFrame)App.GetMainWindow()).AddContent(this);
             
-            // desabilitamos los IG para que no puedan usarlos si no selecciona nada
+            // desabilitamos los IG y los Botones Quitar para que no puedan usarlos si no selecciona nada
             igOpciones.Enabled = false;
             igControlReparacion.Enabled = false;
+            HabilitarBotonesQuitar(false);
+
 
             // Reseteamos el StatMsg
             m_smResult.UilReset("NuevosControlesReparaciones");
@@ -126,6 +128,21 @@ namespace Rivn.Ot
             return l_eOrdenNueva;
         }
 
+        // Habilita o Desabilita los botones quitar
+        private void HabilitarBotonesQuitar(bool p_bool)
+        {
+            gbQuitarTodos.Enabled = p_bool;
+            gbQuitarUltimo.Enabled = p_bool;
+            gbQuitarSeleccionado.Enabled = p_bool;
+        }
+
+        // LLena una grilla con la ListaEntidad y Pone Tamanos de columnas para ajustar a pantalla
+        private void FillFromLEOTItemsConAnchoDeColumna(FullGrid p_fullGrid, Bel.LEOTItems p_leOTItems)
+        {
+            p_fullGrid.FillFromLEntidad(p_leOTItems);
+            p_fullGrid.ColWitdhs = "64;80;80;280;280;80;110;";
+        }
+
         #endregion
 
         #region Eventos de los Controles
@@ -179,6 +196,7 @@ namespace Rivn.Ot
                 if (MsgRuts.AnalizeError(this, m_smResult)) return;
             }
         
+        // Hacemos las cargas pertinentes en el load
         private void NuevosControlesReparaciones_Load(object sender, EventArgs e)
         {
             // LLenamos Las patentes que hay en la tabla.
@@ -188,11 +206,14 @@ namespace Rivn.Ot
         // Cierra el formulario
         private void gbCancel_Click(object sender, EventArgs e)
         {
-            // mostramos un mensaje si esta seguro de cerrar
-            if (MsgRuts.ShowMsg(this, 
-                "Si cierra la pantalla perdera todo lo hecho en ella", 
-                MessageBoxButtons.OKCancel) == DialogResult.Cancel) return;
-            // si el dialog es OK cerramos.
+            if (m_leOTItems.Count != 0)
+            {
+                // mostramos un mensaje si esta seguro de cerrar
+                if (MsgRuts.ShowMsg(this,
+                    "Si cierra la pantalla perdera todo lo hecho en ella",
+                    MessageBoxButtons.OKCancel) == DialogResult.Cancel) return;
+                // si el dialog es OK cerramos.
+            }
             this.Close();
         }
 
@@ -203,37 +224,37 @@ namespace Rivn.Ot
 
             if (rbControles.Checked)
             {
-                //obtenemos todas las reparaciones de el control seleccionado y el Control selecionado
+                // Obtenemos todas las reparaciones de el control seleccionado y el Control selecionado
                 Bel.LEControlesRepa l_leControlReparaciones = Bll.Controles.CrepFGet(cdlControlesReparaciones.SelectedStrCode, true, ref m_smResult);
                 if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
                 Bel.EControl l_entControlSeleccionado = Bll.Controles.Get(cdlControlesReparaciones.SelectedStrCode, true , ref m_smResult);
                 if (MsgRuts.AnalizeError(this, m_smResult)) return;
                 
-                //declaramos un contador para que numero en el agrupador
+                // Declaramos un contador para que numero en el agrupador
                 int l_iContador = 1;
                 
-                //por cada una de las reparaciones del control, grabamos una entidad
+                // Por cada una de las reparaciones del control, llenamos una entidad
                 foreach (Bel.EControlRepa controlRepa in l_leControlReparaciones)
                 {
                     Bel.EReparacion l_eRepaSelec = obtenerReparacion(controlRepa.Codrep);
-
-                   
-                    //llenamos la OTitem y lo agregamos a la lista entidad
+                    // LLenamos la OTitem y lo agregamos a la lista entidad
                     m_leOTItems.AddEntity(LLenarOTItem(l_eRepaSelec, m_intNumeroAgrupador, l_iContador,l_entControlSeleccionado.Des));
-                    
-                    //aumentamos el contador de items
-                   l_iContador += 1;
+                    // Aumentamos el contador de items
+                    l_iContador += 1;
                     
                 }
+                // Si la lista no esta vacia habilitamos los Botones Quitar
+                if (m_leOTItems.Count != 0)
+                    HabilitarBotonesQuitar(true);
 
                 // LLenamos la grilla con lista entidad
-                fgControlRepaSeleccionados.FillFromLEntidad(m_leOTItems); 
+                FillFromLEOTItemsConAnchoDeColumna(fgControlRepaSeleccionados, m_leOTItems); 
                 //aumentamos en uno al Agrupador
                 m_intNumeroAgrupador += 1;
 
                 //desabilitamos el control seleccionado para que no lo pueda volver a usar
-                // NoSe si hacerlo.
+                // No Se si hacerlo. 
             }
             if (rbReparaciones.Checked)
             {
@@ -241,8 +262,13 @@ namespace Rivn.Ot
                 // en una reparacion siempre la descripcion de control es la misma que la descripcion de reparacion
                 // en una reparacion el numero de item siempre es 1, (porque es unica)
                 m_leOTItems.AddEntity(LLenarOTItem(l_eRepaSelec, m_intNumeroAgrupador, 1, l_eRepaSelec.Des));
+
+                // Si la lista no esta vacia habilitamos los Botones Quitar
+                if (m_leOTItems.Count != 0)
+                    HabilitarBotonesQuitar(true);
+
                 // LLenamos la grilla con lista entidad
-                fgControlRepaSeleccionados.FillFromLEntidad(m_leOTItems);
+                FillFromLEOTItemsConAnchoDeColumna(fgControlRepaSeleccionados, m_leOTItems);
                 //aumentamos en uno al Agrupador
                 m_intNumeroAgrupador += 1;
             }
@@ -265,7 +291,12 @@ namespace Rivn.Ot
 
             // Grabamos los OTItems correspondientes a esta orden nueva
             Bll.OrdenesTrabajo.GrabarOTItems(m_leOTItems, ref m_smResult);
-            if (MsgRuts.AnalizeError(this, m_smResult)) return;       
+            if (MsgRuts.AnalizeError(this, m_smResult)) return;
+
+            MsgRuts.ShowMsg(this, "La nueva orden fue agregada exitosamente");
+
+            // Despueste grabado se cierra el formulario para poder seguir con el programa principal
+            this.Close();
         }
 
         // Borra el ultimo item agregado a la lista
@@ -289,11 +320,15 @@ namespace Rivn.Ot
             foreach(Bel.EOTItem item in l_itemsUltimos ){
                 m_leOTItems.RemoveEntity(item.Nroot, item.Nroagrupador, item.Nroitem);
             }
-            // LLenamos la grilla con lista entidad
-            fgControlRepaSeleccionados.FillFromLEntidad(m_leOTItems);
+             // LLenamos la grilla con lista entidad
+                FillFromLEOTItemsConAnchoDeColumna(fgControlRepaSeleccionados, m_leOTItems);
 
             //restamos uno al contador de agrupadores
             m_intNumeroAgrupador = m_intNumeroAgrupador - 1;
+
+            // Si la lista esta vacia deshabilitamos los Botones Quitar
+            if (m_leOTItems.Count == 0)
+                HabilitarBotonesQuitar(false);
         }
 
         // Borra TODOS los items de la lista
@@ -308,10 +343,15 @@ namespace Rivn.Ot
             //configuramos los captions
             ConfigurarCaptionsLEOitems(m_leOTItems);
             // LLenamos la grilla con lista entidad
-            fgControlRepaSeleccionados.FillFromLEntidad(m_leOTItems);
+            FillFromLEOTItemsConAnchoDeColumna(fgControlRepaSeleccionados, m_leOTItems);
 
+            neSeleccionado.Numero = 0;
             // Le asignamos 1 al agrupador para que empiece de nuevo.
             m_intNumeroAgrupador = 1;
+
+            // Si la lista esta vacia deshabilitamos los Botones Quitar
+            if (m_leOTItems.Count == 0)
+                HabilitarBotonesQuitar(false);
 
         }
 
@@ -346,33 +386,44 @@ namespace Rivn.Ot
                 m_leOTItems.RemoveEntity(item.Nroot, item.Nroagrupador, item.Nroitem);
             }
 
-            //bajamos en uno al los agrupadores para que sigan en orden
-            for (int i = 1; i < m_leOTItems.Count; i++)
+           // Bajamos en uno al los agrupadores para que sigan en orden
+            // Primero tenemos que crear una lista entidad con los captions donde vamos a poner la lista mofidicada 
+            Bel.LEOTItems l_LEOTActualizada = Bel.LEOTItems.NewEmpty();
+            ConfigurarCaptionsLEOitems(l_LEOTActualizada);
+
+            // Recorremos la lista y vamos llenando con las modificaciones
+            foreach (Bel.EOTItem item in m_leOTItems)
             {
-                if (m_leOTItems[i].Nroagrupador > neSeleccionado.Numero)
-                    m_leOTItems[i].Nroagrupador = m_leOTItems[i].Nroagrupador - 1;
+                if (item.Nroagrupador > neSeleccionado.Numero) item.Nroagrupador = item.Nroagrupador - 1;
+                l_LEOTActualizada.AddEntity(item);
             }
+            // y por ultimo Asignamos la list Nueva a la Miembro
+            m_leOTItems = l_LEOTActualizada;
 
             //establecemos como numero seleccionado a 0, que representa NO SELECCIONADO
             neSeleccionado.Numero = 0;
 
-            // LLenamos la grilla con lista entidad
-            fgControlRepaSeleccionados.FillFromLEntidad(m_leOTItems);
+            // LLenamos la grilla con lista entidad miembro
+            FillFromLEOTItemsConAnchoDeColumna(fgControlRepaSeleccionados, m_leOTItems);
 
             //restamos uno al contador de agrupadores
             m_intNumeroAgrupador = m_intNumeroAgrupador - 1;
-            
+
+            // Si la lista esta vacia deshabilitamos los Botones Quitar
+            if (m_leOTItems.Count == 0)
+                HabilitarBotonesQuitar(false);
         }
         
-        // Cambia el numero de Item seleccionado segundo que fila toquemos
+        //cambiamos el seleccionado
         private void fgControlRepaSeleccionados_CurrentCellChanged(object sender, EventArgs e)
         {
             // nos fijamos en que fila estamos parados 
             int l_NumeroDeRow = fgControlRepaSeleccionados.CurrentRowIndex;      
             // le asignamos el numero de agrupador a esa fila
             neSeleccionado.Numero = m_leOTItems[l_NumeroDeRow].Nroagrupador;
+            return;
         }
-        
+
         // Habilitamos el IGControlRepa solo cuando hay una patente seleccionada
         private void cdcPatente_SelectedIndexChanged(object sender, EventArgs e)
         {

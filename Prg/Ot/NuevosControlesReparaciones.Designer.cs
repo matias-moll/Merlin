@@ -239,6 +239,7 @@
             // neSeleccionado
             // 
             this.neSeleccionado.BackColor = System.Drawing.SystemColors.Window;
+            this.neSeleccionado.Enabled = false;
             this.neSeleccionado.Location = new System.Drawing.Point(153, 33);
             this.neSeleccionado.Name = "neSeleccionado";
             this.neSeleccionado.Size = new System.Drawing.Size(115, 21);
@@ -340,6 +341,7 @@
             this.fgControlRepaSeleccionados.TabIndex = 0;
             this.fgControlRepaSeleccionados.TabStop = false;
             this.fgControlRepaSeleccionados.CurrentCellChanged += new System.EventHandler(this.fgControlRepaSeleccionados_CurrentCellChanged);
+           
             // 
             // gbCancel
             // 
