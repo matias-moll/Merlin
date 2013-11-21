@@ -641,11 +641,6 @@ namespace Rivn.Mv
             
         }
 
-
-        #endregion
-
-
-
         /// <summary>
         /// Me devuelve el ultimo estado ingresado
         /// </summary>
@@ -663,8 +658,15 @@ namespace Rivn.Mv
         /// <returns></returns>
         private int DameUltimoKms()
         {
-            return (int) m_AMAsocMoviles.Kms.InternalData.Table.Rows[0]["mkm_nro_km"];
+            return (int)m_AMAsocMoviles.Kms.InternalData.Table.Rows[0]["mkm_nro_km"];
         }
+
+
+
+        #endregion
+
+
+
 
         private void xpnlPanelAtras_Paint(object sender, PaintEventArgs e)
         {
