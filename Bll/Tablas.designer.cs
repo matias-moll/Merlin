@@ -16,7 +16,7 @@ namespace Rivn.Bll
     //----------------------------------------------------------------------------
     //                         TNG Software BLL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 15/11/2013 15:37
+    // Fecha                    : 21/11/2013 15:12
     // Sistema                  : Rivn
     // Clase para Administrar   : Tablas de Rivn.
     //----------------------------------------------------------------------------
@@ -83,7 +83,7 @@ namespace Rivn.Bll
         /// <summary>
         /// Devuelve una entidad: ECategoria
         /// </summary>
-        /// <param name="p_strCod">codigo</param>
+        /// <param name="p_strCod">Cod Categoria</param>
         /// <param name="p_bOnlyActive">Indica si solo se analizan los registros activos</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         /// <returns>Entidad: ECategoria</returns>
@@ -159,7 +159,7 @@ namespace Rivn.Bll
         /// Habilita/Deshabilita un registro de la tabla: Categorias
         /// </summary>
         /// <param name="p_bEnable">Tipo de operacion</param>
-        /// <param name="p_strCod">codigo</param>
+        /// <param name="p_strCod">Cod Categoria</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static void CatEnabled(bool p_bEnable,
                                       string p_strCod,
@@ -235,7 +235,7 @@ namespace Rivn.Bll
         /// <summary>
         /// Borra físicamento un registro de la tabla: Categorias
         /// </summary>
-        /// <param name="p_strCod">codigo</param>
+        /// <param name="p_strCod">Cod Categoria</param>
         /// <param name="p_iFxdVersion">Versión del registro a borrar</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static void CatRemove(string p_strCod,
@@ -375,14 +375,14 @@ namespace Rivn.Bll
             // ********
 
             if (p_entCategoria.Cod.Trim() == "") {
-                // El campo [codigo] no puede ser vacío
-                p_smResult.BllWarning("El dato [codigo] no puede ser vacío","");
+                // El campo [Cod Categoria] no puede ser vacío
+                p_smResult.BllWarning("El dato [Cod Categoria] no puede ser vacío","");
                 return;
             }
 
             if (p_entCategoria.Des.Trim() == "") {
-                // El campo [descripcion] no puede ser vacío
-                p_smResult.BllWarning("El dato [descripcion] no puede ser vacío","");
+                // El campo [Categoria] no puede ser vacío
+                p_smResult.BllWarning("El dato [Categoria] no puede ser vacío","");
                 return;
             }
 
@@ -405,7 +405,7 @@ namespace Rivn.Bll
         ///               p_smResult.Stat= BllAvisos.KeyDisabled - La clave está deshabilitada
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_strCod">codigo</param>
+        /// <param name="p_strCod">Cod Categoria</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void CatVKey(DBConn p_dbcAccess,
                                      string p_strCod,
@@ -446,7 +446,7 @@ namespace Rivn.Bll
         /// Verifica el número de version de una tabla
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_strCod">codigo</param>
+        /// <param name="p_strCod">Cod Categoria</param>
         /// <param name="p_iFxdVersion">Número de version</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void CatVVer(DBConn p_dbcAccess,
@@ -561,7 +561,7 @@ namespace Rivn.Bll
         /// Devuelve una entidad: ECategoria
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_strCod">codigo</param>
+        /// <param name="p_strCod">Cod Categoria</param>
         /// <param name="p_bOnlyActive">Indica si solo se analizan los registros activos</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         /// <returns>Entidad: ECategoria</returns>
@@ -738,7 +738,7 @@ namespace Rivn.Bll
         /// Borra físicamente un registro de a tabla: Categorias
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_strCod">codigo</param>
+        /// <param name="p_strCod">Cod Categoria</param>
         /// <param name="p_iFxdVersion">Versión del registro a borrar</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void CatDrop(DBConn p_dbcAccess,
@@ -904,7 +904,7 @@ namespace Rivn.Bll
         /// <summary>
         /// Devuelve una entidad: EEquipamento
         /// </summary>
-        /// <param name="p_strCod">cod</param>
+        /// <param name="p_strCod">Codigo Equipamiento</param>
         /// <param name="p_bOnlyActive">Indica si solo se analizan los registros activos</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         /// <returns>Entidad: EEquipamento</returns>
@@ -1014,7 +1014,7 @@ namespace Rivn.Bll
         /// Habilita/Deshabilita un registro de la tabla: Equipamiento
         /// </summary>
         /// <param name="p_bEnable">Tipo de operacion</param>
-        /// <param name="p_strCod">cod</param>
+        /// <param name="p_strCod">Codigo Equipamiento</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static void EqiEnabled(bool p_bEnable,
                                       string p_strCod,
@@ -1093,7 +1093,7 @@ namespace Rivn.Bll
         /// <summary>
         /// Borra físicamento un registro de la tabla: Equipamiento
         /// </summary>
-        /// <param name="p_strCod">cod</param>
+        /// <param name="p_strCod">Codigo Equipamiento</param>
         /// <param name="p_iFxdVersion">Versión del registro a borrar</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static void EqiRemove(string p_strCod,
@@ -1202,14 +1202,14 @@ namespace Rivn.Bll
             // ********
 
             if (p_entEquipamento.Cod.Trim() == "") {
-                // El campo [cod] no puede ser vacío
-                p_smResult.BllWarning("El dato [cod] no puede ser vacío","");
+                // El campo [Codigo Equipamiento] no puede ser vacío
+                p_smResult.BllWarning("El dato [Codigo Equipamiento] no puede ser vacío","");
                 return;
             }
 
             if (p_entEquipamento.Des.Trim() == "") {
-                // El campo [des] no puede ser vacío
-                p_smResult.BllWarning("El dato [des] no puede ser vacío","");
+                // El campo [Equipamiento] no puede ser vacío
+                p_smResult.BllWarning("El dato [Equipamiento] no puede ser vacío","");
                 return;
             }
 
@@ -1232,7 +1232,7 @@ namespace Rivn.Bll
         ///               p_smResult.Stat= BllAvisos.KeyDisabled - La clave está deshabilitada
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_strCod">cod</param>
+        /// <param name="p_strCod">Codigo Equipamiento</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void EqiVKey(DBConn p_dbcAccess,
                                      string p_strCod,
@@ -1273,7 +1273,7 @@ namespace Rivn.Bll
         /// Verifica el número de version de una tabla
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_strCod">cod</param>
+        /// <param name="p_strCod">Codigo Equipamiento</param>
         /// <param name="p_iFxdVersion">Número de version</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void EqiVVer(DBConn p_dbcAccess,
@@ -1388,7 +1388,7 @@ namespace Rivn.Bll
         /// Devuelve una entidad: EEquipamento
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_strCod">cod</param>
+        /// <param name="p_strCod">Codigo Equipamiento</param>
         /// <param name="p_bOnlyActive">Indica si solo se analizan los registros activos</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         /// <returns>Entidad: EEquipamento</returns>
@@ -1612,7 +1612,7 @@ namespace Rivn.Bll
         /// Borra físicamente un registro de a tabla: Equipamiento
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_strCod">cod</param>
+        /// <param name="p_strCod">Codigo Equipamiento</param>
         /// <param name="p_iFxdVersion">Versión del registro a borrar</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void EqiDrop(DBConn p_dbcAccess,
@@ -1734,7 +1734,7 @@ namespace Rivn.Bll
         /// <summary>
         /// Devuelve una entidad: EEstacion
         /// </summary>
-        /// <param name="p_strCod">CodigoEstacion</param>
+        /// <param name="p_strCod">Codigo Estacion</param>
         /// <param name="p_bOnlyActive">Indica si solo se analizan los registros activos</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         /// <returns>Entidad: EEstacion</returns>
@@ -1844,7 +1844,7 @@ namespace Rivn.Bll
         /// Habilita/Deshabilita un registro de la tabla: Estaciones
         /// </summary>
         /// <param name="p_bEnable">Tipo de operacion</param>
-        /// <param name="p_strCod">CodigoEstacion</param>
+        /// <param name="p_strCod">Codigo Estacion</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static void EstEnabled(bool p_bEnable,
                                       string p_strCod,
@@ -1923,7 +1923,7 @@ namespace Rivn.Bll
         /// <summary>
         /// Borra físicamento un registro de la tabla: Estaciones
         /// </summary>
-        /// <param name="p_strCod">CodigoEstacion</param>
+        /// <param name="p_strCod">Codigo Estacion</param>
         /// <param name="p_iFxdVersion">Versión del registro a borrar</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static void EstRemove(string p_strCod,
@@ -2032,14 +2032,14 @@ namespace Rivn.Bll
             // ********
 
             if (p_entEstacion.Cod.Trim() == "") {
-                // El campo [CodigoEstacion] no puede ser vacío
-                p_smResult.BllWarning("El dato [CodigoEstacion] no puede ser vacío","");
+                // El campo [Codigo Estacion] no puede ser vacío
+                p_smResult.BllWarning("El dato [Codigo Estacion] no puede ser vacío","");
                 return;
             }
 
             if (p_entEstacion.Des.Trim() == "") {
-                // El campo [descripcion] no puede ser vacío
-                p_smResult.BllWarning("El dato [descripcion] no puede ser vacío","");
+                // El campo [Estacion] no puede ser vacío
+                p_smResult.BllWarning("El dato [Estacion] no puede ser vacío","");
                 return;
             }
 
@@ -2062,7 +2062,7 @@ namespace Rivn.Bll
         ///               p_smResult.Stat= BllAvisos.KeyDisabled - La clave está deshabilitada
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_strCod">CodigoEstacion</param>
+        /// <param name="p_strCod">Codigo Estacion</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void EstVKey(DBConn p_dbcAccess,
                                      string p_strCod,
@@ -2103,7 +2103,7 @@ namespace Rivn.Bll
         /// Verifica el número de version de una tabla
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_strCod">CodigoEstacion</param>
+        /// <param name="p_strCod">Codigo Estacion</param>
         /// <param name="p_iFxdVersion">Número de version</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void EstVVer(DBConn p_dbcAccess,
@@ -2218,7 +2218,7 @@ namespace Rivn.Bll
         /// Devuelve una entidad: EEstacion
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_strCod">CodigoEstacion</param>
+        /// <param name="p_strCod">Codigo Estacion</param>
         /// <param name="p_bOnlyActive">Indica si solo se analizan los registros activos</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         /// <returns>Entidad: EEstacion</returns>
@@ -2446,7 +2446,7 @@ namespace Rivn.Bll
         /// Borra físicamente un registro de a tabla: Estaciones
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_strCod">CodigoEstacion</param>
+        /// <param name="p_strCod">Codigo Estacion</param>
         /// <param name="p_iFxdVersion">Versión del registro a borrar</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void EstDrop(DBConn p_dbcAccess,
@@ -2568,7 +2568,7 @@ namespace Rivn.Bll
         /// <summary>
         /// Devuelve una entidad: EEstado
         /// </summary>
-        /// <param name="p_strCod">cod</param>
+        /// <param name="p_strCod">Codigo Estado</param>
         /// <param name="p_bOnlyActive">Indica si solo se analizan los registros activos</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         /// <returns>Entidad: EEstado</returns>
@@ -2678,7 +2678,7 @@ namespace Rivn.Bll
         /// Habilita/Deshabilita un registro de la tabla: Estados
         /// </summary>
         /// <param name="p_bEnable">Tipo de operacion</param>
-        /// <param name="p_strCod">cod</param>
+        /// <param name="p_strCod">Codigo Estado</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static void EdsEnabled(bool p_bEnable,
                                       string p_strCod,
@@ -2757,7 +2757,7 @@ namespace Rivn.Bll
         /// <summary>
         /// Borra físicamento un registro de la tabla: Estados
         /// </summary>
-        /// <param name="p_strCod">cod</param>
+        /// <param name="p_strCod">Codigo Estado</param>
         /// <param name="p_iFxdVersion">Versión del registro a borrar</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static void EdsRemove(string p_strCod,
@@ -2866,14 +2866,14 @@ namespace Rivn.Bll
             // ********
 
             if (p_entEstado.Cod.Trim() == "") {
-                // El campo [cod] no puede ser vacío
-                p_smResult.BllWarning("El dato [cod] no puede ser vacío","");
+                // El campo [Codigo Estado] no puede ser vacío
+                p_smResult.BllWarning("El dato [Codigo Estado] no puede ser vacío","");
                 return;
             }
 
             if (p_entEstado.Des.Trim() == "") {
-                // El campo [des] no puede ser vacío
-                p_smResult.BllWarning("El dato [des] no puede ser vacío","");
+                // El campo [Estado] no puede ser vacío
+                p_smResult.BllWarning("El dato [Estado] no puede ser vacío","");
                 return;
             }
 
@@ -2905,7 +2905,7 @@ namespace Rivn.Bll
         ///               p_smResult.Stat= BllAvisos.KeyDisabled - La clave está deshabilitada
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_strCod">cod</param>
+        /// <param name="p_strCod">Codigo Estado</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void EdsVKey(DBConn p_dbcAccess,
                                      string p_strCod,
@@ -2946,7 +2946,7 @@ namespace Rivn.Bll
         /// Verifica el número de version de una tabla
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_strCod">cod</param>
+        /// <param name="p_strCod">Codigo Estado</param>
         /// <param name="p_iFxdVersion">Número de version</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void EdsVVer(DBConn p_dbcAccess,
@@ -3061,7 +3061,7 @@ namespace Rivn.Bll
         /// Devuelve una entidad: EEstado
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_strCod">cod</param>
+        /// <param name="p_strCod">Codigo Estado</param>
         /// <param name="p_bOnlyActive">Indica si solo se analizan los registros activos</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         /// <returns>Entidad: EEstado</returns>
@@ -3287,7 +3287,7 @@ namespace Rivn.Bll
         /// Borra físicamente un registro de a tabla: Estados
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_strCod">cod</param>
+        /// <param name="p_strCod">Codigo Estado</param>
         /// <param name="p_iFxdVersion">Versión del registro a borrar</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void EdsDrop(DBConn p_dbcAccess,
@@ -3409,7 +3409,7 @@ namespace Rivn.Bll
         /// <summary>
         /// Devuelve una entidad: EMarca
         /// </summary>
-        /// <param name="p_strCodigo">cod</param>
+        /// <param name="p_strCodigo">Codigo Marca</param>
         /// <param name="p_bOnlyActive">Indica si solo se analizan los registros activos</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         /// <returns>Entidad: EMarca</returns>
@@ -3519,7 +3519,7 @@ namespace Rivn.Bll
         /// Habilita/Deshabilita un registro de la tabla: Marcas
         /// </summary>
         /// <param name="p_bEnable">Tipo de operacion</param>
-        /// <param name="p_strCodigo">cod</param>
+        /// <param name="p_strCodigo">Codigo Marca</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static void MrcEnabled(bool p_bEnable,
                                       string p_strCodigo,
@@ -3598,7 +3598,7 @@ namespace Rivn.Bll
         /// <summary>
         /// Borra físicamento un registro de la tabla: Marcas
         /// </summary>
-        /// <param name="p_strCodigo">cod</param>
+        /// <param name="p_strCodigo">Codigo Marca</param>
         /// <param name="p_iFxdVersion">Versión del registro a borrar</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static void MrcRemove(string p_strCodigo,
@@ -3707,14 +3707,14 @@ namespace Rivn.Bll
             // ********
 
             if (p_entMarca.Codigo.Trim() == "") {
-                // El campo [cod] no puede ser vacío
-                p_smResult.BllWarning("El dato [cod] no puede ser vacío","");
+                // El campo [Codigo Marca] no puede ser vacío
+                p_smResult.BllWarning("El dato [Codigo Marca] no puede ser vacío","");
                 return;
             }
 
             if (p_entMarca.Descripcion.Trim() == "") {
-                // El campo [des] no puede ser vacío
-                p_smResult.BllWarning("El dato [des] no puede ser vacío","");
+                // El campo [Marca] no puede ser vacío
+                p_smResult.BllWarning("El dato [Marca] no puede ser vacío","");
                 return;
             }
 
@@ -3737,7 +3737,7 @@ namespace Rivn.Bll
         ///               p_smResult.Stat= BllAvisos.KeyDisabled - La clave está deshabilitada
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_strCodigo">cod</param>
+        /// <param name="p_strCodigo">Codigo Marca</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void MrcVKey(DBConn p_dbcAccess,
                                      string p_strCodigo,
@@ -3778,7 +3778,7 @@ namespace Rivn.Bll
         /// Verifica el número de version de una tabla
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_strCodigo">cod</param>
+        /// <param name="p_strCodigo">Codigo Marca</param>
         /// <param name="p_iFxdVersion">Número de version</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void MrcVVer(DBConn p_dbcAccess,
@@ -3893,7 +3893,7 @@ namespace Rivn.Bll
         /// Devuelve una entidad: EMarca
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_strCodigo">cod</param>
+        /// <param name="p_strCodigo">Codigo Marca</param>
         /// <param name="p_bOnlyActive">Indica si solo se analizan los registros activos</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         /// <returns>Entidad: EMarca</returns>
@@ -4115,7 +4115,7 @@ namespace Rivn.Bll
         /// Borra físicamente un registro de a tabla: Marcas
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_strCodigo">cod</param>
+        /// <param name="p_strCodigo">Codigo Marca</param>
         /// <param name="p_iFxdVersion">Versión del registro a borrar</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void MrcDrop(DBConn p_dbcAccess,
@@ -4237,7 +4237,7 @@ namespace Rivn.Bll
         /// <summary>
         /// Devuelve una entidad: EModelo
         /// </summary>
-        /// <param name="p_strCod">Codigo</param>
+        /// <param name="p_strCod">Codigo Modelo</param>
         /// <param name="p_bOnlyActive">Indica si solo se analizan los registros activos</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         /// <returns>Entidad: EModelo</returns>
@@ -4347,7 +4347,7 @@ namespace Rivn.Bll
         /// Habilita/Deshabilita un registro de la tabla: Modelos
         /// </summary>
         /// <param name="p_bEnable">Tipo de operacion</param>
-        /// <param name="p_strCod">Codigo</param>
+        /// <param name="p_strCod">Codigo Modelo</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static void ModEnabled(bool p_bEnable,
                                       string p_strCod,
@@ -4426,7 +4426,7 @@ namespace Rivn.Bll
         /// <summary>
         /// Borra físicamento un registro de la tabla: Modelos
         /// </summary>
-        /// <param name="p_strCod">Codigo</param>
+        /// <param name="p_strCod">Codigo Modelo</param>
         /// <param name="p_iFxdVersion">Versión del registro a borrar</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static void ModRemove(string p_strCod,
@@ -4535,14 +4535,14 @@ namespace Rivn.Bll
             // ********
 
             if (p_entModelo.Cod.Trim() == "") {
-                // El campo [Codigo] no puede ser vacío
-                p_smResult.BllWarning("El dato [Codigo] no puede ser vacío","");
+                // El campo [Codigo Modelo] no puede ser vacío
+                p_smResult.BllWarning("El dato [Codigo Modelo] no puede ser vacío","");
                 return;
             }
 
             if (p_entModelo.Des.Trim() == "") {
-                // El campo [descripcion] no puede ser vacío
-                p_smResult.BllWarning("El dato [descripcion] no puede ser vacío","");
+                // El campo [Modelo] no puede ser vacío
+                p_smResult.BllWarning("El dato [Modelo] no puede ser vacío","");
                 return;
             }
 
@@ -4578,7 +4578,7 @@ namespace Rivn.Bll
         ///               p_smResult.Stat= BllAvisos.KeyDisabled - La clave está deshabilitada
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_strCod">Codigo</param>
+        /// <param name="p_strCod">Codigo Modelo</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void ModVKey(DBConn p_dbcAccess,
                                      string p_strCod,
@@ -4619,7 +4619,7 @@ namespace Rivn.Bll
         /// Verifica el número de version de una tabla
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_strCod">Codigo</param>
+        /// <param name="p_strCod">Codigo Modelo</param>
         /// <param name="p_iFxdVersion">Número de version</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void ModVVer(DBConn p_dbcAccess,
@@ -4734,7 +4734,7 @@ namespace Rivn.Bll
         /// Devuelve una entidad: EModelo
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_strCod">Codigo</param>
+        /// <param name="p_strCod">Codigo Modelo</param>
         /// <param name="p_bOnlyActive">Indica si solo se analizan los registros activos</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         /// <returns>Entidad: EModelo</returns>
@@ -4958,7 +4958,7 @@ namespace Rivn.Bll
         /// Borra físicamente un registro de a tabla: Modelos
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_strCod">Codigo</param>
+        /// <param name="p_strCod">Codigo Modelo</param>
         /// <param name="p_iFxdVersion">Versión del registro a borrar</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void ModDrop(DBConn p_dbcAccess,
@@ -5080,7 +5080,7 @@ namespace Rivn.Bll
         /// <summary>
         /// Devuelve una entidad: EReparacion
         /// </summary>
-        /// <param name="p_strCod">codigo</param>
+        /// <param name="p_strCod">Codigo Reparacion</param>
         /// <param name="p_bOnlyActive">Indica si solo se analizan los registros activos</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         /// <returns>Entidad: EReparacion</returns>
@@ -5156,7 +5156,7 @@ namespace Rivn.Bll
         /// Habilita/Deshabilita un registro de la tabla: Reparaciones
         /// </summary>
         /// <param name="p_bEnable">Tipo de operacion</param>
-        /// <param name="p_strCod">codigo</param>
+        /// <param name="p_strCod">Codigo Reparacion</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static void RepEnabled(bool p_bEnable,
                                       string p_strCod,
@@ -5232,7 +5232,7 @@ namespace Rivn.Bll
         /// <summary>
         /// Borra físicamento un registro de la tabla: Reparaciones
         /// </summary>
-        /// <param name="p_strCod">codigo</param>
+        /// <param name="p_strCod">Codigo Reparacion</param>
         /// <param name="p_iFxdVersion">Versión del registro a borrar</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static void RepRemove(string p_strCod,
@@ -5338,14 +5338,14 @@ namespace Rivn.Bll
             // ********
 
             if (p_entReparacion.Cod.Trim() == "") {
-                // El campo [codigo] no puede ser vacío
-                p_smResult.BllWarning("El dato [codigo] no puede ser vacío","");
+                // El campo [Codigo Reparacion] no puede ser vacío
+                p_smResult.BllWarning("El dato [Codigo Reparacion] no puede ser vacío","");
                 return;
             }
 
             if (p_entReparacion.Des.Trim() == "") {
-                // El campo [descripcion] no puede ser vacío
-                p_smResult.BllWarning("El dato [descripcion] no puede ser vacío","");
+                // El campo [Reparacion] no puede ser vacío
+                p_smResult.BllWarning("El dato [Reparacion] no puede ser vacío","");
                 return;
             }
 
@@ -5368,8 +5368,8 @@ namespace Rivn.Bll
             if (p_smResult.NOk) return;
 
             if (p_smResult.ICodeEs(BllCodes.KeyDsntFound)) {
-                // El campo [categoria] debe existir en la tabla [Tablas.Cat]
-                p_smResult.BllWarning("El dato [categoria] debe existir en la tabla [Tablas.Cat]","");
+                // El campo [Categoria] debe existir en la tabla [Tablas.Cat]
+                p_smResult.BllWarning("El dato [Categoria] debe existir en la tabla [Tablas.Cat]","");
                 return;
             }
 
@@ -5390,7 +5390,7 @@ namespace Rivn.Bll
         ///               p_smResult.Stat= BllAvisos.KeyDisabled - La clave está deshabilitada
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_strCod">codigo</param>
+        /// <param name="p_strCod">Codigo Reparacion</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void RepVKey(DBConn p_dbcAccess,
                                      string p_strCod,
@@ -5431,7 +5431,7 @@ namespace Rivn.Bll
         /// Verifica el número de version de una tabla
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_strCod">codigo</param>
+        /// <param name="p_strCod">Codigo Reparacion</param>
         /// <param name="p_iFxdVersion">Número de version</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void RepVVer(DBConn p_dbcAccess,
@@ -5546,7 +5546,7 @@ namespace Rivn.Bll
         /// Devuelve una entidad: EReparacion
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_strCod">codigo</param>
+        /// <param name="p_strCod">Codigo Reparacion</param>
         /// <param name="p_bOnlyActive">Indica si solo se analizan los registros activos</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         /// <returns>Entidad: EReparacion</returns>
@@ -5727,7 +5727,7 @@ namespace Rivn.Bll
         /// Borra físicamente un registro de a tabla: Reparaciones
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_strCod">codigo</param>
+        /// <param name="p_strCod">Codigo Reparacion</param>
         /// <param name="p_iFxdVersion">Versión del registro a borrar</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void RepDrop(DBConn p_dbcAccess,

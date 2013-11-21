@@ -14,7 +14,7 @@ namespace Rivn.Bel
     //----------------------------------------------------------------------------
     //                         TNG Software BEL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 15/11/2013 15:37
+    // Fecha                    : 21/11/2013 15:12
     // Sistema                  : Rivn
     // Clase para Administrar   : Tablas de Rivn.
     //----------------------------------------------------------------------------
@@ -137,8 +137,8 @@ namespace Rivn.Bel
         /// <summary>
         /// Construye una entidad con datos de parametro: Categoria
         /// </summary>
-        /// <param name="p_strCod">codigo</param>
-        /// <param name="p_strDes">descripcion</param>
+        /// <param name="p_strCod">Cod Categoria</param>
+        /// <param name="p_strDes">Categoria</param>
         /// <returns>Entidad: Categoria</returns>
         public static ECategoria NewFilled(string p_strCod,
                                            string p_strDes)
@@ -190,7 +190,7 @@ namespace Rivn.Bel
         }
 
         /// <summary>
-        /// codigo
+        /// Cod Categoria
         /// </summary>
         public string Cod
         {
@@ -202,7 +202,7 @@ namespace Rivn.Bel
         }
 
         /// <summary>
-        /// descripcion
+        /// Categoria
         /// </summary>
         public string Des
         {
@@ -636,9 +636,9 @@ namespace Rivn.Bel
         /// <summary>
         /// Construye una entidad con datos de parametro: Equipamento
         /// </summary>
-        /// <param name="p_strCod">cod</param>
-        /// <param name="p_strDes">des</param>
-        /// <param name="p_dcValor">valor</param>
+        /// <param name="p_strCod">Codigo Equipamiento</param>
+        /// <param name="p_strDes">Equipamiento</param>
+        /// <param name="p_dcValor">Importe</param>
         /// <returns>Entidad: Equipamento</returns>
         public static EEquipamento NewFilled(string p_strCod,
                                              string p_strDes,
@@ -672,7 +672,7 @@ namespace Rivn.Bel
         //---------------------------------------------------------------
 
         /// <summary>
-        /// Formatea una string: cod
+        /// Formatea una string: Codigo Equipamiento
         /// </summary>
         public static string FrmtCod(string p_strCod)
         {
@@ -708,7 +708,7 @@ namespace Rivn.Bel
         }
 
         /// <summary>
-        /// cod
+        /// Codigo Equipamiento
         /// </summary>
         public string Cod
         {
@@ -717,7 +717,7 @@ namespace Rivn.Bel
         }
 
         /// <summary>
-        /// des
+        /// Equipamiento
         /// </summary>
         public string Des
         {
@@ -729,7 +729,7 @@ namespace Rivn.Bel
         }
 
         /// <summary>
-        /// valor
+        /// Importe
         /// </summary>
         public decimal Valor
         {
@@ -1165,8 +1165,8 @@ namespace Rivn.Bel
         /// <summary>
         /// Construye una entidad con datos de parametro: Estacion
         /// </summary>
-        /// <param name="p_strCod">CodigoEstacion</param>
-        /// <param name="p_strDes">descripcion</param>
+        /// <param name="p_strCod">Codigo Estacion</param>
+        /// <param name="p_strDes">Estacion</param>
         /// <param name="p_strDomicilio">Domicilio</param>
         /// <param name="p_strContacto">Contacto</param>
         /// <param name="p_strTelefono">Telefono</param>
@@ -1207,7 +1207,7 @@ namespace Rivn.Bel
         //---------------------------------------------------------------
 
         /// <summary>
-        /// Formatea una string: CodigoEstacion
+        /// Formatea una string: Codigo Estacion
         /// </summary>
         public static string FrmtCod(string p_strCod)
         {
@@ -1245,7 +1245,7 @@ namespace Rivn.Bel
         }
 
         /// <summary>
-        /// CodigoEstacion
+        /// Codigo Estacion
         /// </summary>
         public string Cod
         {
@@ -1254,7 +1254,7 @@ namespace Rivn.Bel
         }
 
         /// <summary>
-        /// descripcion
+        /// Estacion
         /// </summary>
         public string Des
         {
@@ -1729,8 +1729,8 @@ namespace Rivn.Bel
         /// <summary>
         /// Construye una entidad con datos de parametro: Estado
         /// </summary>
-        /// <param name="p_strCod">cod</param>
-        /// <param name="p_strDes">des</param>
+        /// <param name="p_strCod">Codigo Estado</param>
+        /// <param name="p_strDes">Estado</param>
         /// <param name="p_strTxtcontingencia">Texto de Contingencia</param>
         /// <param name="p_strOperativo">Operativo</param>
         /// <returns>Entidad: Estado</returns>
@@ -1768,7 +1768,7 @@ namespace Rivn.Bel
         //---------------------------------------------------------------
 
         /// <summary>
-        /// Formatea una string: cod
+        /// Formatea una string: Codigo Estado
         /// </summary>
         public static string FrmtCod(string p_strCod)
         {
@@ -1805,7 +1805,7 @@ namespace Rivn.Bel
         }
 
         /// <summary>
-        /// cod
+        /// Codigo Estado
         /// </summary>
         public string Cod
         {
@@ -1814,7 +1814,7 @@ namespace Rivn.Bel
         }
 
         /// <summary>
-        /// des
+        /// Estado
         /// </summary>
         public string Des
         {
@@ -2266,8 +2266,8 @@ namespace Rivn.Bel
         /// <summary>
         /// Construye una entidad con datos de parametro: Marca
         /// </summary>
-        /// <param name="p_strCodigo">cod</param>
-        /// <param name="p_strDescripcion">des</param>
+        /// <param name="p_strCodigo">Codigo Marca</param>
+        /// <param name="p_strDescripcion">Marca</param>
         /// <returns>Entidad: Marca</returns>
         public static EMarca NewFilled(string p_strCodigo,
                                        string p_strDescripcion)
@@ -2299,7 +2299,7 @@ namespace Rivn.Bel
         //---------------------------------------------------------------
 
         /// <summary>
-        /// Formatea una string: cod
+        /// Formatea una string: Codigo Marca
         /// </summary>
         public static string FrmtCodigo(string p_strCodigo)
         {
@@ -2334,7 +2334,7 @@ namespace Rivn.Bel
         }
 
         /// <summary>
-        /// cod
+        /// Codigo Marca
         /// </summary>
         public string Codigo
         {
@@ -2343,7 +2343,7 @@ namespace Rivn.Bel
         }
 
         /// <summary>
-        /// des
+        /// Marca
         /// </summary>
         public string Descripcion
         {
@@ -2777,8 +2777,8 @@ namespace Rivn.Bel
         /// <summary>
         /// Construye una entidad con datos de parametro: Modelo
         /// </summary>
-        /// <param name="p_strCod">Codigo</param>
-        /// <param name="p_strDes">descripcion</param>
+        /// <param name="p_strCod">Codigo Modelo</param>
+        /// <param name="p_strDes">Modelo</param>
         /// <param name="p_strCodmarca">Codigo de la marca</param>
         /// <returns>Entidad: Modelo</returns>
         public static EModelo NewFilled(string p_strCod,
@@ -2813,7 +2813,7 @@ namespace Rivn.Bel
         //---------------------------------------------------------------
 
         /// <summary>
-        /// Formatea una string: Codigo
+        /// Formatea una string: Codigo Modelo
         /// </summary>
         public static string FrmtCod(string p_strCod)
         {
@@ -2860,7 +2860,7 @@ namespace Rivn.Bel
         }
 
         /// <summary>
-        /// Codigo
+        /// Codigo Modelo
         /// </summary>
         public string Cod
         {
@@ -2869,7 +2869,7 @@ namespace Rivn.Bel
         }
 
         /// <summary>
-        /// descripcion
+        /// Modelo
         /// </summary>
         public string Des
         {
@@ -3315,9 +3315,9 @@ namespace Rivn.Bel
         /// <summary>
         /// Construye una entidad con datos de parametro: Reparacion
         /// </summary>
-        /// <param name="p_strCod">codigo</param>
-        /// <param name="p_strDes">descripcion</param>
-        /// <param name="p_strCodcat">categoria</param>
+        /// <param name="p_strCod">Codigo Reparacion</param>
+        /// <param name="p_strDes">Reparacion</param>
+        /// <param name="p_strCodcat">Categoria</param>
         /// <param name="p_strSolicitadetalle">Se Solicita Detalle</param>
         /// <returns>Entidad: Reparacion</returns>
         public static EReparacion NewFilled(string p_strCod,
@@ -3376,7 +3376,7 @@ namespace Rivn.Bel
         }
 
         /// <summary>
-        /// codigo
+        /// Codigo Reparacion
         /// </summary>
         public string Cod
         {
@@ -3388,7 +3388,7 @@ namespace Rivn.Bel
         }
 
         /// <summary>
-        /// descripcion
+        /// Reparacion
         /// </summary>
         public string Des
         {
@@ -3400,7 +3400,7 @@ namespace Rivn.Bel
         }
 
         /// <summary>
-        /// categoria
+        /// Categoria
         /// </summary>
         public string Codcat
         {

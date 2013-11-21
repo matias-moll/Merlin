@@ -10,7 +10,7 @@ namespace Rivn.Dal
     //----------------------------------------------------------------------------
     //                         TNG Software DAL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 15/11/2013 15:37
+    // Fecha                    : 21/11/2013 15:12
     // Sistema                  : Rivn
     // Clase para Administrar   : Modelos de los moviles
     // Basada en la Tabla       : Modelos
@@ -78,7 +78,7 @@ namespace Rivn.Dal
         /// Verifica el número de versión de un registro
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_strCod">Codigo</param>
+        /// <param name="p_strCod">Codigo Modelo</param>
         /// <param name="p_iFxdVersion">Número de version a verificar</param>
         /// <param name="p_dsResult">DataSet donde devolver el registro</param>
         /// <param name="p_strTabla">Nombre de la tabla a llenar</param>
@@ -117,7 +117,7 @@ namespace Rivn.Dal
         /// Busca el registro de una clave (Grilla)
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_strCod">Codigo</param>
+        /// <param name="p_strCod">Codigo Modelo</param>
         /// <param name="p_bOnlyActive">Indica si solo se analizan los registros activos</param>
         /// <param name="p_dsResult">DataSet donde devolver el registro</param>
         /// <param name="p_strTabla">Nombre de la tabla a llenar</param>
@@ -194,8 +194,8 @@ namespace Rivn.Dal
         /// Inserta un registro en la tabla
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_strCod">Codigo</param>
-        /// <param name="p_strDes">descripcion</param>
+        /// <param name="p_strCod">Codigo Modelo</param>
+        /// <param name="p_strDes">Modelo</param>
         /// <param name="p_strCodmarca">Codigo de la marca</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static int Insert(DBConn p_dbcAccess,
@@ -234,8 +234,8 @@ namespace Rivn.Dal
         /// Actualiza un registro de la tabla
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_strCod">Codigo</param>
-        /// <param name="p_strDes">descripcion</param>
+        /// <param name="p_strCod">Codigo Modelo</param>
+        /// <param name="p_strDes">Modelo</param>
         /// <param name="p_strCodmarca">Codigo de la marca</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static int Update(DBConn p_dbcAccess,
@@ -274,7 +274,7 @@ namespace Rivn.Dal
         /// Borra logicamente un registro
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_strCod">Codigo</param>
+        /// <param name="p_strCod">Codigo Modelo</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static int Delete(DBConn p_dbcAccess,
                                  string p_strCod,
@@ -308,7 +308,7 @@ namespace Rivn.Dal
         /// Recupera un registro
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_strCod">Codigo</param>
+        /// <param name="p_strCod">Codigo Modelo</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static int Recall(DBConn p_dbcAccess,
                                  string p_strCod,
@@ -342,7 +342,7 @@ namespace Rivn.Dal
         /// Borra fisicamente un registro
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_strCod">Codigo</param>
+        /// <param name="p_strCod">Codigo Modelo</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static int Drop(DBConn p_dbcAccess,
                                string p_strCod,
@@ -425,9 +425,9 @@ namespace Rivn.Dal
                 DBRuts.ClearDTCaptions(ref p_dtResult);
 
                 // Fijamos los nuevos captions de la grilla
-                p_dtResult.Columns["mds_rcd_cod"].Caption= "V1CodigoCN1";
+                p_dtResult.Columns["mds_rcd_cod"].Caption= "V1Codigo ModeloCN1";
                 p_dtResult.Columns["mds_rcd_codmarca"].Caption= "V1Codigo de la marcaCN1";
-                p_dtResult.Columns["mds_des_des"].Caption= "V1descripcionCN1";
+                p_dtResult.Columns["mds_des_des"].Caption= "V1ModeloCN1";
                 p_dtResult.Columns["deleted"].Caption= "V1Borrado2N2";
             }
             catch (Exception l_expData) {

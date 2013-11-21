@@ -449,5 +449,10 @@ namespace Rivn.Tg
             // El ESC sale de la edicion
             CancelButton= cmdCancelar;
         }
+
+        private void tsPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

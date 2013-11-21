@@ -10,7 +10,7 @@ namespace Rivn.Dal
     //----------------------------------------------------------------------------
     //                         TNG Software DAL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 15/11/2013 15:37
+    // Fecha                    : 21/11/2013 15:12
     // Sistema                  : Rivn
     // Clase para Administrar   : Controles de las reaparaciones
     // Basada en la Tabla       : ControlesReparations
@@ -78,8 +78,8 @@ namespace Rivn.Dal
         /// Verifica el número de versión de un registro
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_strCodctl">codigoControl</param>
-        /// <param name="p_iNroitem">item</param>
+        /// <param name="p_strCodctl">Codigo Control</param>
+        /// <param name="p_iNroitem">Item</param>
         /// <param name="p_iFxdVersion">Número de version a verificar</param>
         /// <param name="p_dsResult">DataSet donde devolver el registro</param>
         /// <param name="p_strTabla">Nombre de la tabla a llenar</param>
@@ -120,8 +120,8 @@ namespace Rivn.Dal
         /// Busca el registro de una clave (Grilla)
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_strCodctl">codigoControl</param>
-        /// <param name="p_iNroitem">item</param>
+        /// <param name="p_strCodctl">Codigo Control</param>
+        /// <param name="p_iNroitem">Item</param>
         /// <param name="p_bOnlyActive">Indica si solo se analizan los registros activos</param>
         /// <param name="p_dsResult">DataSet donde devolver el registro</param>
         /// <param name="p_strTabla">Nombre de la tabla a llenar</param>
@@ -163,7 +163,7 @@ namespace Rivn.Dal
         /// Busca los registros de una clave foranea (Grilla)
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_strCodctl">codigoControl</param>
+        /// <param name="p_strCodctl">Codigo Control</param>
         /// <param name="p_bOnlyActive">Indica si solo se analizan los registros activos</param>
         /// <param name="p_dsResult">DataSet donde devolver el registro</param>
         /// <param name="p_strTabla">Nombre de la tabla a llenar</param>
@@ -206,9 +206,9 @@ namespace Rivn.Dal
         /// Inserta un registro en la tabla
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_strCodctl">codigoControl</param>
-        /// <param name="p_iNroitem">item</param>
-        /// <param name="p_strCodrep">codigoReparacion</param>
+        /// <param name="p_strCodctl">Codigo Control</param>
+        /// <param name="p_iNroitem">Item</param>
+        /// <param name="p_strCodrep">Codigo de Reparacion</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static int Insert(DBConn p_dbcAccess,
                                  string p_strCodctl,
@@ -246,9 +246,9 @@ namespace Rivn.Dal
         /// Actualiza un registro de la tabla
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_strCodctl">codigoControl</param>
-        /// <param name="p_iNroitem">item</param>
-        /// <param name="p_strCodrep">codigoReparacion</param>
+        /// <param name="p_strCodctl">Codigo Control</param>
+        /// <param name="p_iNroitem">Item</param>
+        /// <param name="p_strCodrep">Codigo de Reparacion</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static int Update(DBConn p_dbcAccess,
                                  string p_strCodctl,
@@ -286,8 +286,8 @@ namespace Rivn.Dal
         /// Borra logicamente un registro
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_strCodctl">codigoControl</param>
-        /// <param name="p_iNroitem">item</param>
+        /// <param name="p_strCodctl">Codigo Control</param>
+        /// <param name="p_iNroitem">Item</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static int Delete(DBConn p_dbcAccess,
                                  string p_strCodctl,
@@ -323,7 +323,7 @@ namespace Rivn.Dal
         /// Borra logicamente los registros de una clave foranea
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_strCodctl">codigoControl</param>
+        /// <param name="p_strCodctl">Codigo Control</param>
         /// <param name="p_dtInstante">Instante del borrado</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static int FDelete(DBConn p_dbcAccess,
@@ -360,8 +360,8 @@ namespace Rivn.Dal
         /// Recupera un registro
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_strCodctl">codigoControl</param>
-        /// <param name="p_iNroitem">item</param>
+        /// <param name="p_strCodctl">Codigo Control</param>
+        /// <param name="p_iNroitem">Item</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static int Recall(DBConn p_dbcAccess,
                                  string p_strCodctl,
@@ -397,7 +397,7 @@ namespace Rivn.Dal
         /// Recupera logicamente los registros de una clave foranea
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_strCodctl">codigoControl</param>
+        /// <param name="p_strCodctl">Codigo Control</param>
         /// <param name="p_dtInstante">Instante del borrado</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static int FRecall(DBConn p_dbcAccess,
@@ -434,8 +434,8 @@ namespace Rivn.Dal
         /// Borra fisicamente un registro
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_strCodctl">codigoControl</param>
-        /// <param name="p_iNroitem">item</param>
+        /// <param name="p_strCodctl">Codigo Control</param>
+        /// <param name="p_iNroitem">Item</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static int Drop(DBConn p_dbcAccess,
                                string p_strCodctl,
@@ -471,7 +471,7 @@ namespace Rivn.Dal
         /// Borra fisicamente los registros de una clave foranea
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_strCodctl">codigoControl</param>
+        /// <param name="p_strCodctl">Codigo Control</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static int FDrop(DBConn p_dbcAccess,
                                 string p_strCodctl,
@@ -536,7 +536,7 @@ namespace Rivn.Dal
         /// Borra fisicamente los registros borrado lógicamente de una clave foranea
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_strCodctl">codigoControl</param>
+        /// <param name="p_strCodctl">Codigo Control</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static int FPack(DBConn p_dbcAccess,
                                 string p_strCodctl,
@@ -589,7 +589,7 @@ namespace Rivn.Dal
 
                 // Fijamos los nuevos captions de la grilla
                 p_dtResult.Columns["ctr_des_descRep"].Caption= "V1ReparacionCN1";
-                p_dtResult.Columns["ctr_nro_nroitem"].Caption= "V1itemNN1";
+                p_dtResult.Columns["ctr_nro_nroitem"].Caption= "V1ItemNN1";
                 p_dtResult.Columns["deleted"].Caption= "V1Borrado2N2";
             }
             catch (Exception l_expData) {
