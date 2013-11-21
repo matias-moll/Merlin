@@ -278,6 +278,12 @@ namespace Rivn.Bll
         }
 
 
+        /// <summary>
+        /// Permite Modificar el equipamiento de un movil
+        /// </summary>
+        /// <param name="p_entMovil">Movil poseedor de los equipamientos</param>
+        /// <param name="p_leNuevosEquipamientos">Nuevos equipamientos que se quieren agregar o modificar</param>
+        /// <param name="p_smResult">ref StatMsg</param>
         public static void CambiarEquipamientoYGrabarMovil(EMovil p_entMovil,
                                                            LEMovilesEquip p_leNuevosEquipamientos,
                                                            ref StatMsg p_smResult)
@@ -291,7 +297,6 @@ namespace Rivn.Bll
                 // Obtenemos una conexion y abrimos una transaccion
                 l_dbcAccess = DBRuts.GetConection(Connections.Dat);
                 l_dbcAccess.BeginTransaction();
-                DataSet l_dsTemp = new DataSet();
 
                 // Borramos todo el equimamiento que tiene el movil
                 MveqEliminarEquipamiento(l_dbcAccess, p_entMovil.Patente, ref p_smResult);
