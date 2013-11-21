@@ -16,7 +16,7 @@ namespace Rivn.Bll
     //----------------------------------------------------------------------------
     //                         TNG Software BLL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 15/11/2013 15:37
+    // Fecha                    : 21/11/2013 16:01
     // Sistema                  : Rivn
     // Clase para Administrar   : Ordenes de Trabajo y sus Items
     //----------------------------------------------------------------------------
@@ -1376,12 +1376,6 @@ namespace Rivn.Bll
             if (p_entOrdenTrabajo.Fecapertura.Year == 1900) {
                 // El campo [Fecha de apertura] no puede ser vacío
                 p_smResult.BllWarning("El dato [Fecha de apertura] no puede ser vacío","");
-                return;
-            }
-
-            if (p_entOrdenTrabajo.Feccierre.Year == 1900) {
-                // El campo [Fecha de cierre.] no puede ser vacío
-                p_smResult.BllWarning("El dato [Fecha de cierre.] no puede ser vacío","");
                 return;
             }
 
