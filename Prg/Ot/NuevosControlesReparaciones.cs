@@ -32,7 +32,9 @@ namespace Rivn.Ot
             InitializeComponent();
             ((MainFrame)App.GetMainWindow()).AddContent(this);
             
+            // desabilitamos los IG para que no puedan usarlos si no selecciona nada
             igOpciones.Enabled = false;
+            igControlReparacion.Enabled = false;
 
             // Reseteamos el StatMsg
             m_smResult.UilReset("NuevosControlesReparaciones");
@@ -107,6 +109,21 @@ namespace Rivn.Ot
             p_leOTItems.ChangeCaption("deleted","");
             p_leOTItems.ChangeCaption("usuario","");
             p_leOTItems.ChangeCaption("version","");
+        }
+
+        // Crea la nueva entidad OrdenTrabajo que tendra asociados a todos los items
+        private Bel.EOrdenTrabajo CrearOrdenDeTrabajo()
+        {
+            Bel.EOrdenTrabajo l_eOrdenNueva = Bel.EOrdenTrabajo.NewEmpty();
+            l_eOrdenNueva.Nro = neOrdenTrabajo.Numero;
+            l_eOrdenNueva.Patente = cdcPatente.Text;
+            l_eOrdenNueva.Fecapertura = DateTime.Today;
+            // en la fecha cierre ponemos nuestra fecha null para que indique no esta abierta
+            l_eOrdenNueva.Feccierre = new DateTime(1900, 1, 1);
+            // Le asignamos el operador que realizo la orden
+            l_eOrdenNueva.Operador = App.Usuario.Usuario;
+
+            return l_eOrdenNueva;
         }
 
         #endregion
@@ -234,6 +251,7 @@ namespace Rivn.Ot
         // Graba la ListaEntidad de Items en la Base
         private void gbAccept_Click(object sender, EventArgs e)
         {
+            m_smResult.UilReset("gbAccept_Click");
             // si la lista esta vacia no grabamos
             if(m_leOTItems.Count == 0)
             {
@@ -242,8 +260,12 @@ namespace Rivn.Ot
             }
 
             // Grabamos la orden de trabajo nueva
+            Bll.OrdenesTrabajo.Save(CrearOrdenDeTrabajo(), ref m_smResult);
+            if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
             // Grabamos los OTItems correspondientes a esta orden nueva
+            Bll.OrdenesTrabajo.GrabarOTItems(m_leOTItems, ref m_smResult);
+            if (MsgRuts.AnalizeError(this, m_smResult)) return;       
         }
 
         // Borra el ultimo item agregado a la lista
@@ -350,8 +372,16 @@ namespace Rivn.Ot
             // le asignamos el numero de agrupador a esa fila
             neSeleccionado.Numero = m_leOTItems[l_NumeroDeRow].Nroagrupador;
         }
+        
+        // Habilitamos el IGControlRepa solo cuando hay una patente seleccionada
+        private void cdcPatente_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            igControlReparacion.Enabled = true;
+        }
 
         #endregion
+
+        
 
         
 

@@ -99,7 +99,7 @@
             this.panel1.Controls.Add(this.rbControles);
             this.panel1.Location = new System.Drawing.Point(332, 34);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(206, 25);
+            this.panel1.Size = new System.Drawing.Size(192, 25);
             this.panel1.TabIndex = 12;
             // 
             // rbReparaciones
@@ -310,6 +310,7 @@
             this.cdcPatente.Size = new System.Drawing.Size(119, 23);
             this.cdcPatente.Sorted = true;
             this.cdcPatente.TabIndex = 0;
+            this.cdcPatente.SelectedIndexChanged += new System.EventHandler(this.cdcPatente_SelectedIndexChanged);
             // 
             // gbAccept
             // 

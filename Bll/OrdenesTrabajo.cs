@@ -36,6 +36,50 @@ namespace Rivn.Bll
         //---------------------------------------------------------------
 
         #region Metodos publicos de la clase
+
+        /// <summary>
+        /// Graba todos los OTItems que se encuentran en una lista entidad.
+        /// </summary>
+        /// <param name="p_lentOTItems"> Lista Entidad con los items a grabar </param>
+        /// <param name="p_smResult">ref StatMsg</param>
+        public static void GrabarOTItems(LEOTItems p_lentOTItems, ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            p_smResult.BllReset("Moviles", "MvcoSave");
+            DBConn l_dbcAccess = null;
+
+            try
+            {
+                // Obtenemos una conexion y abrimos una transaccion
+                l_dbcAccess = DBRuts.GetConection(Connections.Dat);
+                l_dbcAccess.BeginTransaction();
+
+                // Por cada equipamiento de la lista lo grabamos, con la misma coneccion todos
+                foreach (Bel.EOTItem item in p_lentOTItems)
+                {
+                    // insertamos todas las entidades
+                    OtitInsr(l_dbcAccess, item, ref p_smResult);
+                    if (p_smResult.NOk) return;
+                }
+
+            }
+            catch (Exception l_expData)
+            {
+                // Error 
+                p_smResult.BllError(l_expData.ToString());
+            }
+            finally
+            {
+                // Si pude abrir la conexion
+                if (l_dbcAccess != null)
+                {
+                    // Finalizo la transacción y la cierro
+                    l_dbcAccess.EndTransaction(p_smResult);
+                    l_dbcAccess.Close();
+                }
+                p_smResult.BllPop();
+            }
+        }
         #endregion
 
         //---------------------------------------------------------------
