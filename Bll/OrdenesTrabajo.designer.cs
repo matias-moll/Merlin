@@ -16,7 +16,7 @@ namespace Rivn.Bll
     //----------------------------------------------------------------------------
     //                         TNG Software BLL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 21/11/2013 16:01
+    // Fecha                    : 21/11/2013 16:05
     // Sistema                  : Rivn
     // Clase para Administrar   : Ordenes de Trabajo y sus Items
     //----------------------------------------------------------------------------
@@ -439,12 +439,6 @@ namespace Rivn.Bll
             if (p_entOTItem.Descategoria.Trim() == "") {
                 // El campo [Descripción de la categoría.] no puede ser vacío
                 p_smResult.BllWarning("El dato [Descripción de la categoría.] no puede ser vacío","");
-                return;
-            }
-
-            if (p_entOTItem.Comentario.Trim() == "") {
-                // El campo [Comentario] no puede ser vacío
-                p_smResult.BllWarning("El dato [Comentario] no puede ser vacío","");
                 return;
             }
 
