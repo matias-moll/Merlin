@@ -10,7 +10,7 @@ namespace Rivn.Dal
     //----------------------------------------------------------------------------
     //                         TNG Software DAL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 15/11/2013 15:37
+    // Fecha                    : 21/11/2013 15:12
     // Sistema                  : Rivn
     // Clase para Administrar   : Controles de las reparaciones
     // Basada en la Tabla       : Controles
@@ -195,7 +195,7 @@ namespace Rivn.Dal
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
         /// <param name="p_strCod">Codigo</param>
-        /// <param name="p_strDes">Descripcion</param>
+        /// <param name="p_strDes">Control</param>
         /// <param name="p_strCrit">Critico</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static int Insert(DBConn p_dbcAccess,
@@ -235,7 +235,7 @@ namespace Rivn.Dal
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
         /// <param name="p_strCod">Codigo</param>
-        /// <param name="p_strDes">Descripcion</param>
+        /// <param name="p_strDes">Control</param>
         /// <param name="p_strCrit">Critico</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static int Update(DBConn p_dbcAccess,
@@ -426,7 +426,7 @@ namespace Rivn.Dal
 
                 // Fijamos los nuevos captions de la grilla
                 p_dtResult.Columns["ctl_cod_cod"].Caption= "V1CodigoCN1";
-                p_dtResult.Columns["ctl_des_des"].Caption= "V1DescripcionCN1";
+                p_dtResult.Columns["ctl_des_des"].Caption= "V1ControlCN1";
                 p_dtResult.Columns["deleted"].Caption= "V1Borrado2N2";
             }
             catch (Exception l_expData) {

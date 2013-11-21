@@ -49,13 +49,13 @@ namespace Rivn.Mv
             this.gbNuevoKM = new TNGS.NetControls.GlassButton();
             this.fgKm = new TNGS.NetControls.FullGrid();
             this.igMoviles = new TNGS.NetControls.ImgGroup();
+            this.teEstado = new TNGS.NetControls.TextEdit();
             this.teModelo = new TNGS.NetControls.TextEdit();
             this.lblEstado = new TNGS.NetControls.FullLabel();
             this.lblModelo = new TNGS.NetControls.FullLabel();
             this.tePatente = new TNGS.NetControls.TextEdit();
             this.lblPatente = new TNGS.NetControls.FullLabel();
             this.ftrMoviles = new TNGS.NetControls.FullTreeView();
-            this.teEstado = new TNGS.NetControls.TextEdit();
             this.xpnlPanelAtras.SuspendLayout();
             this.igOpciones.SuspendLayout();
             this.pnlOpciones.SuspendLayout();
@@ -406,6 +406,16 @@ namespace Rivn.Mv
             this.igMoviles.SkinFullFixed = true;
             this.igMoviles.TabIndex = 1;
             // 
+            // teEstado
+            // 
+            this.teEstado.BackColor = System.Drawing.SystemColors.Window;
+            this.teEstado.Enabled = false;
+            this.teEstado.Location = new System.Drawing.Point(69, 443);
+            this.teEstado.Name = "teEstado";
+            this.teEstado.Size = new System.Drawing.Size(123, 20);
+            this.teEstado.TabIndex = 25;
+            this.teEstado.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // teModelo
             // 
             this.teModelo.BackColor = System.Drawing.SystemColors.Window;
@@ -468,16 +478,6 @@ namespace Rivn.Mv
             this.ftrMoviles.TabIndex = 0;
             this.ftrMoviles.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.ftrMoviles_AfterSelect);
             this.ftrMoviles.DoubleClick += new System.EventHandler(this.ftrMoviles_DoubleClick);
-            // 
-            // teEstado
-            // 
-            this.teEstado.BackColor = System.Drawing.SystemColors.Window;
-            this.teEstado.Enabled = false;
-            this.teEstado.Location = new System.Drawing.Point(69, 443);
-            this.teEstado.Name = "teEstado";
-            this.teEstado.Size = new System.Drawing.Size(123, 20);
-            this.teEstado.TabIndex = 25;
-            this.teEstado.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // Estados
             // 

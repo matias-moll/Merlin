@@ -161,17 +161,17 @@ namespace Rivn.Tg
             this.tsPanel2.Controls.Add(this.cmdGrabar);
             this.tsPanel2.Controls.Add(this.cmdDesHab);
             this.tsPanel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.tsPanel2.Location = new System.Drawing.Point(268, 3);
+            this.tsPanel2.Location = new System.Drawing.Point(280, 3);
             this.tsPanel2.Name = "tsPanel2";
             this.tsPanel2.Opacity = 255;
-            this.tsPanel2.Size = new System.Drawing.Size(276, 85);
+            this.tsPanel2.Size = new System.Drawing.Size(280, 85);
             this.tsPanel2.Speed = 1;
             this.tsPanel2.TabIndex = 1;
             // 
             // cmdHab
             // 
             this.cmdHab.FixedImage = TNGS.NetControls.FixedGlassButtons.Enable;
-            this.cmdHab.Location = new System.Drawing.Point(151, 7);
+            this.cmdHab.Location = new System.Drawing.Point(162, 7);
             this.cmdHab.Name = "cmdHab";
             this.cmdHab.Size = new System.Drawing.Size(113, 26);
             this.cmdHab.TabIndex = 11;
@@ -183,28 +183,28 @@ namespace Rivn.Tg
             // 
             this.cmdCancelar.FixedImage = TNGS.NetControls.FixedGlassButtons.tCancel;
             this.cmdCancelar.ImageOnTop = true;
-            this.cmdCancelar.Location = new System.Drawing.Point(72, 4);
+            this.cmdCancelar.Location = new System.Drawing.Point(83, 4);
             this.cmdCancelar.Name = "cmdCancelar";
-            this.cmdCancelar.Size = new System.Drawing.Size(62, 62);
+            this.cmdCancelar.Size = new System.Drawing.Size(73, 62);
             this.cmdCancelar.TabIndex = 12;
-            this.cmdCancelar.Text = "Cancela";
+            this.cmdCancelar.Text = "Cancelar";
             this.cmdCancelar.Click += new System.EventHandler(this.cmdCancelar_Click);
             // 
             // cmdGrabar
             // 
             this.cmdGrabar.FixedImage = TNGS.NetControls.FixedGlassButtons.tSave;
             this.cmdGrabar.ImageOnTop = true;
-            this.cmdGrabar.Location = new System.Drawing.Point(8, 4);
+            this.cmdGrabar.Location = new System.Drawing.Point(3, 4);
             this.cmdGrabar.Name = "cmdGrabar";
-            this.cmdGrabar.Size = new System.Drawing.Size(62, 62);
+            this.cmdGrabar.Size = new System.Drawing.Size(73, 62);
             this.cmdGrabar.TabIndex = 10;
-            this.cmdGrabar.Text = "Graba";
+            this.cmdGrabar.Text = "Grabar";
             this.cmdGrabar.Click += new System.EventHandler(this.cmdGrabar_Click);
             // 
             // cmdDesHab
             // 
             this.cmdDesHab.FixedImage = TNGS.NetControls.FixedGlassButtons.Disable;
-            this.cmdDesHab.Location = new System.Drawing.Point(151, 35);
+            this.cmdDesHab.Location = new System.Drawing.Point(162, 35);
             this.cmdDesHab.Name = "cmdDesHab";
             this.cmdDesHab.Size = new System.Drawing.Size(113, 26);
             this.cmdDesHab.TabIndex = 11;
@@ -223,14 +223,14 @@ namespace Rivn.Tg
             this.tsPanel1.Location = new System.Drawing.Point(0, 3);
             this.tsPanel1.Name = "tsPanel1";
             this.tsPanel1.Opacity = 255;
-            this.tsPanel1.Size = new System.Drawing.Size(268, 85);
+            this.tsPanel1.Size = new System.Drawing.Size(280, 85);
             this.tsPanel1.Speed = 1;
             this.tsPanel1.TabIndex = 0;
             // 
             // cmdSalir
             // 
             this.cmdSalir.FixedImage = TNGS.NetControls.FixedGlassButtons.Quit;
-            this.cmdSalir.Location = new System.Drawing.Point(151, 7);
+            this.cmdSalir.Location = new System.Drawing.Point(161, 7);
             this.cmdSalir.Name = "cmdSalir";
             this.cmdSalir.Size = new System.Drawing.Size(104, 26);
             this.cmdSalir.TabIndex = 6;
@@ -241,7 +241,7 @@ namespace Rivn.Tg
             // cmdPurgar
             // 
             this.cmdPurgar.FixedImage = TNGS.NetControls.FixedGlassButtons.Agrupa;
-            this.cmdPurgar.Location = new System.Drawing.Point(151, 35);
+            this.cmdPurgar.Location = new System.Drawing.Point(161, 35);
             this.cmdPurgar.Name = "cmdPurgar";
             this.cmdPurgar.Size = new System.Drawing.Size(104, 26);
             this.cmdPurgar.TabIndex = 5;
@@ -253,9 +253,9 @@ namespace Rivn.Tg
             // 
             this.cmdModificar.FixedImage = TNGS.NetControls.FixedGlassButtons.tModify;
             this.cmdModificar.ImageOnTop = true;
-            this.cmdModificar.Location = new System.Drawing.Point(72, 4);
+            this.cmdModificar.Location = new System.Drawing.Point(82, 4);
             this.cmdModificar.Name = "cmdModificar";
-            this.cmdModificar.Size = new System.Drawing.Size(62, 62);
+            this.cmdModificar.Size = new System.Drawing.Size(73, 62);
             this.cmdModificar.TabIndex = 1;
             this.cmdModificar.Text = "Editar";
             this.cmdModificar.Click += new System.EventHandler(this.cmdModificar_Click);
@@ -264,9 +264,9 @@ namespace Rivn.Tg
             // 
             this.cmdNuevo.FixedImage = TNGS.NetControls.FixedGlassButtons.tNew;
             this.cmdNuevo.ImageOnTop = true;
-            this.cmdNuevo.Location = new System.Drawing.Point(8, 4);
+            this.cmdNuevo.Location = new System.Drawing.Point(3, 4);
             this.cmdNuevo.Name = "cmdNuevo";
-            this.cmdNuevo.Size = new System.Drawing.Size(62, 62);
+            this.cmdNuevo.Size = new System.Drawing.Size(73, 62);
             this.cmdNuevo.TabIndex = 0;
             this.cmdNuevo.Text = "Nuevo";
             this.cmdNuevo.Click += new System.EventHandler(this.cmdNuevo_Click);

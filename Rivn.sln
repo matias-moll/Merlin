@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "Dal\DAL.csproj", "{1190DAFA-E684-4395-BACF-135005697362}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLL", "Bll\BLL.csproj", "{58EC503E-05DD-4F0F-B55A-318733142682}"
@@ -14,6 +16,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Z - Moviles", "T:\Rivn0100\Prg\Mv\Z - Moviles.csproj", "{651E45C5-5EF4-40A0-AD9E-174516173285}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Z - Ordenes de Trabajo", "Prg\Ot\Z - Ordenes de Trabajo.csproj", "{D5B433DC-DA68-4E6B-BBD3-578604601232}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Z - Reportes", "C:\DiscoT\Rivn0100\Prg\Rp\Z - Reportes.csproj", "{058FDFEF-4ED6-4628-9C13-059343220504}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -95,6 +99,16 @@ Global
 		{D5B433DC-DA68-4E6B-BBD3-578604601232}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{D5B433DC-DA68-4E6B-BBD3-578604601232}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{D5B433DC-DA68-4E6B-BBD3-578604601232}.Release|x86.ActiveCfg = Release|Any CPU
+		{058FDFEF-4ED6-4628-9C13-059343220504}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{058FDFEF-4ED6-4628-9C13-059343220504}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{058FDFEF-4ED6-4628-9C13-059343220504}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{058FDFEF-4ED6-4628-9C13-059343220504}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{058FDFEF-4ED6-4628-9C13-059343220504}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{058FDFEF-4ED6-4628-9C13-059343220504}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{058FDFEF-4ED6-4628-9C13-059343220504}.Release|Any CPU.Build.0 = Release|Any CPU
+		{058FDFEF-4ED6-4628-9C13-059343220504}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{058FDFEF-4ED6-4628-9C13-059343220504}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{058FDFEF-4ED6-4628-9C13-059343220504}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
