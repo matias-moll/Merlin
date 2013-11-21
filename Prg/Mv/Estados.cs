@@ -51,7 +51,7 @@ namespace Rivn.Mv
 
             TraerInfoBase();
             TraerInfoEstados();
-            LlenarComboEstados();
+            //LlenarComboEstados();
             SwitchTo(ModoForm.Inicio);
             m_AMAsocMoviles = new AsociadosMovil(ref m_smResult);
 
@@ -87,18 +87,18 @@ namespace Rivn.Mv
 
         }
 
+        //Todo Borrar
+        ///// <summary>
+        ///// Llena la Combo De Estados Utilizando la ListaEntidad estados ya cargada con todos los estados
+        ///// </summary>
+        //private void LlenarComboEstados()
+        //{
+        //    m_smResult.UilReset("LlenarComboEstados");
 
-        /// <summary>
-        /// Llena la Combo De Estados Utilizando la ListaEntidad estados ya cargada con todos los estados
-        /// </summary>
-        private void LlenarComboEstados()
-        {
-            m_smResult.UilReset("LlenarComboEstados");
+        //    cmbEstado.FillFromStrLEntidad(m_LEEdsEstados, "est_rcd_cod", "est_des_des", "deleted");
 
-            cmbEstado.FillFromStrLEntidad(m_LEEdsEstados, "est_rcd_cod", "est_des_des", "deleted");
-
-            if (MsgRuts.AnalizeError(this, m_smResult)) return;
-        }
+        //    if (MsgRuts.AnalizeError(this, m_smResult)) return;
+        //}
 
 
         /// <summary>
@@ -338,7 +338,7 @@ namespace Rivn.Mv
             m_smResult.UilReset("AgregarCargaCombustible");
             MovilCombustible l_frmMovilCombustible = new MovilCombustible();
             l_frmMovilCombustible.ShowDialog();
-            if (l_frmMovilCombustible.DialogResult == System.Windows.Forms.DialogResult.Abort)
+            if (l_frmMovilCombustible.DialogResult == System.Windows.Forms.DialogResult.Cancel)
             {
                 return;
             }
@@ -363,11 +363,17 @@ namespace Rivn.Mv
         private void gbNuevoKM_Click(object sender, EventArgs e)
         {
             m_smResult.UilReset("ClickNuevoKm");
+
+            NuevoKm l_frmNuevoKm = new NuevoKm();
+            l_frmNuevoKm.ShowDialog();
+            if (l_frmNuevoKm.DialogResult == System.Windows.Forms.DialogResult.Cancel)
+            {
+                return;
+            }
+            if (l_frmNuevoKm.Kilometros < DameUltimoKms()) {MsgRuts.ShowMsg(this, "El kilometraje que intenta ingresar es menor al ultimo kilometraje ingresado"); return;}
             EMovilKms l_EMKmMovilKm = Bel.EMovilKms.NewEmpty();
-            if (!neKilometros.IsValid)
-                DatosInvalidos();
             l_EMKmMovilKm.Fecha = DateTime.Now;
-            l_EMKmMovilKm.Km = neKilometros.Numero;
+            l_EMKmMovilKm.Km = l_frmNuevoKm.Kilometros;
             l_EMKmMovilKm.Patente = tePatente.Text;
             Bll.Moviles.MvkmSave(l_EMKmMovilKm, ref m_smResult);
             SwitchTo(ModoForm.Edicion, OpGrid.Km);
@@ -396,12 +402,19 @@ namespace Rivn.Mv
         private void gbModificarEstado_Click(object sender, EventArgs e)
         {
             m_smResult.UilReset("ModificarEstado");
-            if (cmbEstado.SelectedStrCode == DameUltimoEstado()) { MsgRuts.ShowMsg(this,"El estado al cual esta modificando es igual al estado actual"); return; };
+            ModificarEstado l_frmModificarEstado = new ModificarEstado(m_LEEdsEstados);
+            l_frmModificarEstado.ShowDialog();
+            if (l_frmModificarEstado.DialogResult == System.Windows.Forms.DialogResult.Cancel)
+            {
+                return;
+            }
+
+            if (l_frmModificarEstado.Estado == DameUltimoEstado()) { MsgRuts.ShowMsg(this,"El estado al cual esta modificando es igual al estado actual"); return; };
 
             EMovilEstado l_EMEstMovilEstado;
             //creamos la entidad y la llenamos con sus datos y la guardamos
             l_EMEstMovilEstado = Bel.EMovilEstado.NewEmpty();
-            l_EMEstMovilEstado.Codestado = cmbEstado.SelectedStrCode;
+            l_EMEstMovilEstado.Codestado = l_frmModificarEstado.Estado;
             l_EMEstMovilEstado.Fecha = DateTime.Now;
             l_EMEstMovilEstado.Patente = m_entMovil.Patente;
             l_EMEstMovilEstado.Km = DameUltimoKms();
@@ -412,7 +425,7 @@ namespace Rivn.Mv
 
 
 
-            MsgRuts.AnalizeError(this, m_smResult);
+            if (MsgRuts.AnalizeError(this, m_smResult)) return;
         }
         #endregion
         #endregion
@@ -454,7 +467,7 @@ namespace Rivn.Mv
         {
             LlenarDatos();
             LimpiarEditables();
-            cmbEstado.SelectedIndex = -1;
+            //cmbEstado.SelectedIndex = -1;
             fgCombustibles.Clear();
             fgEquipamiento.Clear();
             fgKm.Clear();
@@ -464,7 +477,7 @@ namespace Rivn.Mv
             igHistorialEstados.Enabled = false;
             igEquipamiento.Enabled = false;
             igCombustibles.Enabled = false;
-            cmbEstado.Enabled = false;
+            //cmbEstado.Enabled = false;
         }
 
 
@@ -487,10 +500,10 @@ namespace Rivn.Mv
             LlenarDatos();
             LimpiarEditables();
             m_AMAsocMoviles.CargarDatos(m_entMovil.Patente);
-            cmbEstado.SelectedStrCode = DameUltimoEstado();
+            teEstado.Text = m_LEEdsEstados[DameUltimoEstado()].Des;
             gbModificarMovil.Enabled = true;
             gbBorrarMovil.Enabled = true;
-            cmbEstado.Enabled = true;
+            //cmbEstado.Enabled = true;
             gbModificarEstado.Enabled = true;
             igMoviles.Enabled = true;
             pnlOpciones.Enabled = true;
@@ -501,11 +514,11 @@ namespace Rivn.Mv
             
         }
         /// <summary>
-        /// Limpia campos editables
+        /// Limpia campos editables (hay que sacarlo)
         /// </summary>
         private void LimpiarEditables()
         {
-            neKilometros.Numero = 0;
+            return;
         }
 
 
@@ -518,10 +531,10 @@ namespace Rivn.Mv
             TraerInfoBase();
             TraerInfoEstados();
             LlenarTreeMoviles();
-            LlenarComboEstados();
+            //LlenarComboEstados();
 
-            cmbEstado.SelectedIndex = -1;
-            cmbEstado.Enabled = false;
+            //cmbEstado.SelectedIndex = -1;
+            //cmbEstado.Enabled = false;
             gbModificarEstado.Enabled = false;
             pnlOpciones.Enabled = true;
             gbNuevoMovil.Enabled = true;
@@ -641,6 +654,9 @@ namespace Rivn.Mv
         {
             return m_AMAsocMoviles.Estados.InternalData.Table.Rows[0]["mve_rcd_codestado"].ToString();
         }
+
+
+
         /// <summary>
         /// Me da el ultimo kilometraje ingresado
         /// </summary>

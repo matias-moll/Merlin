@@ -54,7 +54,7 @@ namespace Rivn.Mv
         #region Eventos Click
         private void gbAceptar_Click(object sender, EventArgs e)
         {
-            if (!ControlesValidos()) MsgRuts.ShowMsg(this,"Ingrese los datos correctamente");
+            if (!ControlesValidos()) {MsgRuts.ShowMsg(this, "Ingrese los datos correctamente"); return;}
             this.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.Close();
         }
