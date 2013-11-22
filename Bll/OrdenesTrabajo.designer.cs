@@ -16,7 +16,7 @@ namespace Rivn.Bll
     //----------------------------------------------------------------------------
     //                         TNG Software BLL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 22/11/2013 15:06
+    // Fecha                    : 22/11/2013 16:17
     // Sistema                  : Rivn
     // Clase para Administrar   : Ordenes de Trabajo y sus Items
     //----------------------------------------------------------------------------
@@ -1809,6 +1809,51 @@ namespace Rivn.Bll
         #endregion
 
         #region Metodos para métodos DAL definidos por el usuario
+
+        /// <summary>
+        /// Ejecuta el SP definido por el usuario: getByPatente
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name= p_strPatente>patente de un movil</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        /// <returns>ListaEntidad con los datos solicitados</returns>
+        internal static LEOrdenesTrabajo getByPatente(DBConn p_dbcAccess,
+                                                      string p_strPatente,
+                                                      ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            p_smResult.BllReset("OrdenesTrabajo", "getByPatente");
+
+            try {
+                // Llamamos al metodo definido por el usuario
+                DataSet l_dsTemp= new DataSet();
+
+                Dal.OrdenesTrabajo.getByPatente(p_dbcAccess,
+                                                p_strPatente,
+                                                ref l_dsTemp,
+                                                "Temporal",
+                                                ref p_smResult);
+                if (p_smResult.NOk) return null;
+
+                // Captionamos el resultado
+                Dal.OrdenesTrabajo.MakeGridCaptions(ref l_dsTemp, "Temporal", ref p_smResult);
+                if (p_smResult.NOk) return null;
+
+                // Creamos la ListaEntidad y la devolvemos
+                LEOrdenesTrabajo l_lentRet= new LEOrdenesTrabajo(l_dsTemp.Tables["Temporal"]);
+                l_dsTemp.Dispose();
+                return l_lentRet;
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion
+                p_smResult.BllError(l_expData.ToString());
+                return null;
+            }
+            finally {
+                // Terminamos
+                p_smResult.BllPop();
+            }
+        }
         #endregion
     }
 }
