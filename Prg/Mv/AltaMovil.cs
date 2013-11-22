@@ -70,6 +70,22 @@ namespace Rivn.Mv
 
         }
 
+        //constructor para mostrar
+        public AltaMovil(Bel.EMovil p_entMovil): this(p_entMovil, false)
+        {
+            igEquipamiento.Enabled = false;
+            gbGrabar.Enabled = false;
+            gbLimpiarTodo.Enabled = false;
+            btnDestildarTodoEqi.Enabled = false;
+            btnTildaTodos.Enabled = false;
+
+            gbCancel.FixedImage = TNGS.NetControls.FixedGlassButtons.tQuit;
+            gbCancel.Width = 78;
+            gbCancel.Height = 60;
+            gbCancel.Text = "Salir";
+        }
+
+
         #endregion
 
         #region Metodos privados de la UIL

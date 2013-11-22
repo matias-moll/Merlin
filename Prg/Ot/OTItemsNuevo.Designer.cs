@@ -1,6 +1,6 @@
 ﻿namespace Rivn.Ot
 {
-    partial class NuevosControlesReparaciones
+    partial class OTItemsNuevo
     {
         /// <summary>
         /// Required designer variable.
@@ -341,7 +341,6 @@
             this.fgControlRepaSeleccionados.TabIndex = 0;
             this.fgControlRepaSeleccionados.TabStop = false;
             this.fgControlRepaSeleccionados.CurrentCellChanged += new System.EventHandler(this.fgControlRepaSeleccionados_CurrentCellChanged);
-           
             // 
             // gbCancel
             // 
@@ -374,15 +373,17 @@
             this.fullLabel1.TabIndex = 1;
             this.fullLabel1.Text = "Movil Patente:";
             // 
-            // NuevosControlesReparaciones
+            // OTItemsNuevo
             // 
+            this.AllowEndUserDocking = false;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(860, 501);
             this.Controls.Add(this.xPanel1);
+            this.DockAreas = WeifenLuo.WinFormsUI.Docking.DockAreas.Document;
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Name = "NuevosControlesReparaciones";
-            this.Text = "NuevosControlesReparaciones";
+            this.Name = "OTItemsNuevo";
+            this.Text = "Nueva Orden de Trabajo";
             this.Load += new System.EventHandler(this.NuevosControlesReparaciones_Load);
             this.xPanel1.ResumeLayout(false);
             this.xPanel1.PerformLayout();

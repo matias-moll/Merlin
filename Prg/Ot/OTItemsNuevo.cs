@@ -15,7 +15,7 @@ using WeifenLuo.WinFormsUI.Docking;
 
 namespace Rivn.Ot
 {
-    public partial class NuevosControlesReparaciones:DockContent
+    public partial class OTItemsNuevo:DockContent
     {
 
         #region Miembros y Contructores
@@ -27,7 +27,7 @@ namespace Rivn.Ot
         private int m_intNumeroAgrupador;
 
         // Constructor Inicial
-        public NuevosControlesReparaciones()
+        public OTItemsNuevo()
         {
             InitializeComponent();
             ((MainFrame)App.GetMainWindow()).AddContent(this);

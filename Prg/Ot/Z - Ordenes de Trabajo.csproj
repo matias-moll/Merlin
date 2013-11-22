@@ -102,11 +102,11 @@
     <Compile Include="Arranque.designer.cs">
       <DependentUpon>Arranque.cs</DependentUpon>
     </Compile>
-    <Compile Include="NuevosControlesReparaciones.cs">
+    <Compile Include="OTItemsNuevo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NuevosControlesReparaciones.Designer.cs">
-      <DependentUpon>NuevosControlesReparaciones.cs</DependentUpon>
+    <Compile Include="OTItemsNuevo.Designer.cs">
+      <DependentUpon>OTItemsNuevo.cs</DependentUpon>
     </Compile>
     <Compile Include="PrgRuts.cs" />
     <Compile Include="PrgRuts.designer.cs">
@@ -130,8 +130,8 @@
     <EmbeddedResource Include="Arranque.resx">
       <DependentUpon>Arranque.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NuevosControlesReparaciones.resx">
-      <DependentUpon>NuevosControlesReparaciones.cs</DependentUpon>
+    <EmbeddedResource Include="OTItemsNuevo.resx">
+      <DependentUpon>OTItemsNuevo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

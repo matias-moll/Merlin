@@ -430,7 +430,6 @@ namespace Rivn.Mv
         #endregion
         #endregion
 
-
         #region Otros Metodos
         /// <summary>
         /// Cambia el modo del formulario
@@ -467,17 +466,11 @@ namespace Rivn.Mv
         {
             LlenarDatos();
             LimpiarEditables();
-            //cmbEstado.SelectedIndex = -1;
             fgCombustibles.Clear();
             fgEquipamiento.Clear();
             fgKm.Clear();
             fgMovilEstados.Clear();
-            igKilometros.Enabled = false;
             pnlOpciones.Enabled = true;
-            igHistorialEstados.Enabled = false;
-            igEquipamiento.Enabled = false;
-            igCombustibles.Enabled = false;
-            //cmbEstado.Enabled = false;
         }
 
 
@@ -507,10 +500,6 @@ namespace Rivn.Mv
             gbModificarEstado.Enabled = true;
             igMoviles.Enabled = true;
             pnlOpciones.Enabled = true;
-            igKilometros.Enabled = true;
-            igEquipamiento.Enabled = true;
-            igHistorialEstados.Enabled = true;
-            igCombustibles.Enabled = true;
             
         }
         /// <summary>
@@ -540,10 +529,6 @@ namespace Rivn.Mv
             gbNuevoMovil.Enabled = true;
             gbModificarMovil.Enabled = false;
             gbBorrarMovil.Enabled = false;
-            igCombustibles.Enabled = false;
-            igEquipamiento.Enabled = false;
-            igHistorialEstados.Enabled = false;
-            igKilometros.Enabled = false;
         }
 
 
@@ -664,14 +649,6 @@ namespace Rivn.Mv
 
 
         #endregion
-
-
-
-
-        private void xpnlPanelAtras_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
 
 
 
