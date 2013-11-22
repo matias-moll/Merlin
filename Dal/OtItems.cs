@@ -10,7 +10,7 @@ namespace Rivn.Dal
     //----------------------------------------------------------------------------
     //                         TNG Software DAL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 21/11/2013 16:01
+    // Fecha                    : 22/11/2013 15:06
     // Sistema                  : Rivn
     // Clase para Administrar   : OrdenTrabajo Items
     // Basada en la Tabla       : OtItems
@@ -633,6 +633,12 @@ namespace Rivn.Dal
                 DBRuts.ClearDTCaptions(ref p_dtResult);
 
                 // Fijamos los nuevos captions de la grilla
+                p_dtResult.Columns["oti_ede_comentario"].Caption= "V1ComentarioCN1";
+                p_dtResult.Columns["oti_des_desoperacion"].Caption= "V1Descripción de la operación.CN1";
+                p_dtResult.Columns["oti_des_destarea"].Caption= "V1Descripción de la tareaCN1";
+                p_dtResult.Columns["oti_imp_importe"].Caption= "V1Importe2N1";
+                p_dtResult.Columns["oti_nro_nroagrupador"].Caption= "V1Numero de agrupadorNN1";
+                p_dtResult.Columns["oti_nro_nroitem"].Caption= "V1Numero del itemNN1";
                 p_dtResult.Columns["deleted"].Caption= "V1Borrado2N2";
             }
             catch (Exception l_expData) {
