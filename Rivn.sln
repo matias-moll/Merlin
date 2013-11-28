@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Z - Ordenes de Trabajo", "P
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Z - Reportes", "C:\DiscoT\Rivn0100\Prg\Rp\Z - Reportes.csproj", "{058FDFEF-4ED6-4628-9C13-059343220504}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Z - Cierre De Ordenes De Trabajo", "Prg\Ct\Z - Cierre De Ordenes De Trabajo.csproj", "{C512D6F9-A71B-462D-A443-883963595751}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -109,6 +111,16 @@ Global
 		{058FDFEF-4ED6-4628-9C13-059343220504}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{058FDFEF-4ED6-4628-9C13-059343220504}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{058FDFEF-4ED6-4628-9C13-059343220504}.Release|x86.ActiveCfg = Release|Any CPU
+		{C512D6F9-A71B-462D-A443-883963595751}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C512D6F9-A71B-462D-A443-883963595751}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C512D6F9-A71B-462D-A443-883963595751}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{C512D6F9-A71B-462D-A443-883963595751}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{C512D6F9-A71B-462D-A443-883963595751}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C512D6F9-A71B-462D-A443-883963595751}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C512D6F9-A71B-462D-A443-883963595751}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C512D6F9-A71B-462D-A443-883963595751}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{C512D6F9-A71B-462D-A443-883963595751}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{C512D6F9-A71B-462D-A443-883963595751}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -37,6 +37,49 @@ namespace Rivn.Bll
 
         #region Metodos publicos de la clase
 
+
+        /// <summary>
+        /// Devuelve la lista entidades de ordenes de trabajo de un movil (buscando por patente)
+        /// </summary>
+        /// <param name="p_strPatente"></param>
+        /// <param name="p_smResult"></param>
+        /// <returns>ListaEOrdenes De Trabajo</returns>
+        public static LEOrdenesTrabajo ObtenerOTsPorPatente(string p_strPatente, ref StatMsg p_smResult)
+        {           // No hay errores aun
+            p_smResult.BllReset("OrdenesTrabajo", "ObtenerOTsPorPatente");
+            DBConn l_dbcAccess = null;
+            LEOrdenesTrabajo l_LEOrdenesTrabajo = LEOrdenesTrabajo.NewEmpty();
+            try
+            {
+                // Obtenemos una conexion y abrimos una transaccion
+                l_dbcAccess = DBRuts.GetConection(Connections.Dat);
+                l_dbcAccess.BeginTransaction();
+
+                // Por cada equipamiento de la lista lo grabamos, con la misma coneccion todos
+                 l_LEOrdenesTrabajo = Bll.OrdenesTrabajo.getByPatente(l_dbcAccess, p_strPatente, ref p_smResult);
+
+            }
+            catch (Exception l_expData)
+            {
+                // Error 
+                p_smResult.BllError(l_expData.ToString());
+            }
+            finally
+            {
+                // Si pude abrir la conexion
+                if (l_dbcAccess != null)
+                {
+                    // Finalizo la transacción y la cierro
+                    l_dbcAccess.EndTransaction(p_smResult);
+                    l_dbcAccess.Close();
+                }
+
+                p_smResult.BllPop();
+            }
+            return l_LEOrdenesTrabajo;
+        }
+
+
         /// <summary>
         /// Graba todos los OTItems que se encuentran en una lista entidad.
         /// </summary>

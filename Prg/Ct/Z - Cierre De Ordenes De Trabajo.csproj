@@ -98,15 +98,15 @@
     <Compile Include="..\..\Shr\Properties\ShrAssemblyInfo.cs">
       <Link>Properties\ShrAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="CierreOt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CierreOt.designer.cs">
+      <DependentUpon>CierreOt.cs</DependentUpon>
+    </Compile>
     <Compile Include="Arranque.cs" />
     <Compile Include="Arranque.designer.cs">
       <DependentUpon>Arranque.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CierreOT.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CierreOT.Designer.cs">
-      <DependentUpon>CierreOT.cs</DependentUpon>
     </Compile>
     <Compile Include="PrgRuts.cs" />
     <Compile Include="PrgRuts.designer.cs">
@@ -127,11 +127,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="CierreOt.resx">
+      <DependentUpon>CierreOt.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Arranque.resx">
       <DependentUpon>Arranque.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="CierreOT.resx">
-      <DependentUpon>CierreOT.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -154,6 +154,20 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Bel\BEL.csproj">
+      <Project>{7969c80f-3e89-4e03-a01b-776686783353}</Project>
+      <Name>BEL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Bll\BLL.csproj">
+      <Project>{58ec503e-05dd-4f0f-b55a-318733142682}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Shr\Shr.csproj">
+      <Project>{4ee82ba9-6046-419b-87af-014443954416}</Project>
+      <Name>Shr</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

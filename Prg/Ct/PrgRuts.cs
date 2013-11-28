@@ -20,6 +20,8 @@ namespace Rivn.Ct
     public partial class PrgRuts
     {
         #region Miembros estaticos de la clase
+
+        private static CierreOT m_frmCierreOt = null;
         #endregion
 
         //--------------------------------------------------------------------
@@ -33,9 +35,6 @@ namespace Rivn.Ct
         /// </summary>
         public static void AutoExec()
         {
-            // Creamos el DockManager
-            ((MainFrame) App.GetMainWindow()).CreateDockManager();
-
             // Liberamos el menu
             App.LockMenu(false);
             App.HideMsg();
@@ -46,6 +45,13 @@ namespace Rivn.Ct
         /// </summary>
         public static void EndExec()
         {
+        }
+
+        public static void MakeMainFrame()
+        {
+            // Fijamos el formulario de la aplicacion
+            m_frmCierreOt = new Rivn.Ct.CierreOT();
+            
         }
 
         #endregion
