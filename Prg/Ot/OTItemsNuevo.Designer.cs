@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.xPanel1 = new TNGS.NetControls.XPanel();
             this.neOrdenTrabajo = new TNGS.NetControls.NumberEdit();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.pnlOpciones = new System.Windows.Forms.Panel();
             this.rbReparaciones = new System.Windows.Forms.RadioButton();
             this.rbControles = new System.Windows.Forms.RadioButton();
             this.igControlReparacion = new TNGS.NetControls.ImgGroup();
@@ -54,7 +54,7 @@
             this.fullLabel2 = new TNGS.NetControls.FullLabel();
             this.fullLabel1 = new TNGS.NetControls.FullLabel();
             this.xPanel1.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.pnlOpciones.SuspendLayout();
             this.igControlReparacion.SuspendLayout();
             this.igOpciones.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fgControlRepaSeleccionados)).BeginInit();
@@ -65,7 +65,7 @@
             this.xPanel1.BackColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.xPanel1.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
             this.xPanel1.Controls.Add(this.neOrdenTrabajo);
-            this.xPanel1.Controls.Add(this.panel1);
+            this.xPanel1.Controls.Add(this.pnlOpciones);
             this.xPanel1.Controls.Add(this.igControlReparacion);
             this.xPanel1.Controls.Add(this.igOpciones);
             this.xPanel1.Controls.Add(this.cdcPatente);
@@ -86,21 +86,21 @@
             // 
             this.neOrdenTrabajo.BackColor = System.Drawing.SystemColors.Window;
             this.neOrdenTrabajo.Enabled = false;
-            this.neOrdenTrabajo.Location = new System.Drawing.Point(754, 9);
+            this.neOrdenTrabajo.Location = new System.Drawing.Point(764, 8);
             this.neOrdenTrabajo.Name = "neOrdenTrabajo";
             this.neOrdenTrabajo.Size = new System.Drawing.Size(79, 21);
             this.neOrdenTrabajo.TabIndex = 13;
             this.neOrdenTrabajo.Text = "0";
             // 
-            // panel1
+            // pnlOpciones
             // 
-            this.panel1.BackColor = System.Drawing.Color.Transparent;
-            this.panel1.Controls.Add(this.rbReparaciones);
-            this.panel1.Controls.Add(this.rbControles);
-            this.panel1.Location = new System.Drawing.Point(332, 34);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(192, 25);
-            this.panel1.TabIndex = 12;
+            this.pnlOpciones.BackColor = System.Drawing.Color.Transparent;
+            this.pnlOpciones.Controls.Add(this.rbReparaciones);
+            this.pnlOpciones.Controls.Add(this.rbControles);
+            this.pnlOpciones.Location = new System.Drawing.Point(332, 34);
+            this.pnlOpciones.Name = "pnlOpciones";
+            this.pnlOpciones.Size = new System.Drawing.Size(192, 25);
+            this.pnlOpciones.TabIndex = 12;
             // 
             // rbReparaciones
             // 
@@ -306,9 +306,9 @@
             this.cdcPatente.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cdcPatente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.cdcPatente.FormattingEnabled = true;
-            this.cdcPatente.Location = new System.Drawing.Point(122, 12);
+            this.cdcPatente.Location = new System.Drawing.Point(127, 12);
             this.cdcPatente.Name = "cdcPatente";
-            this.cdcPatente.Size = new System.Drawing.Size(119, 23);
+            this.cdcPatente.Size = new System.Drawing.Size(89, 23);
             this.cdcPatente.Sorted = true;
             this.cdcPatente.TabIndex = 0;
             this.cdcPatente.SelectedIndexChanged += new System.EventHandler(this.cdcPatente_SelectedIndexChanged);
@@ -357,7 +357,7 @@
             // 
             this.fullLabel2.BackColor = System.Drawing.Color.Transparent;
             this.fullLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fullLabel2.Location = new System.Drawing.Point(581, 10);
+            this.fullLabel2.Location = new System.Drawing.Point(591, 9);
             this.fullLabel2.Name = "fullLabel2";
             this.fullLabel2.Size = new System.Drawing.Size(180, 21);
             this.fullLabel2.TabIndex = 5;
@@ -384,11 +384,10 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "OTItemsNuevo";
             this.Text = "Nueva Orden de Trabajo";
-            this.Load += new System.EventHandler(this.NuevosControlesReparaciones_Load);
             this.xPanel1.ResumeLayout(false);
             this.xPanel1.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.pnlOpciones.ResumeLayout(false);
+            this.pnlOpciones.PerformLayout();
             this.igControlReparacion.ResumeLayout(false);
             this.igControlReparacion.PerformLayout();
             this.igOpciones.ResumeLayout(false);
@@ -413,7 +412,7 @@
         private TNGS.NetControls.FullLabel fullLabel4;
         private TNGS.NetControls.FullLabel fullLabel3;
         private TNGS.NetControls.TextEdit teComentario;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel pnlOpciones;
         private System.Windows.Forms.RadioButton rbReparaciones;
         private TNGS.NetControls.DecimalEdit deImporte;
         private TNGS.NetControls.ImgGroup igOpciones;

@@ -38,7 +38,6 @@ namespace Rivn.Mv
 
             //creamos la nueva entidad VACIA
             m_entMovil = Bel.EMovil.NewEmpty();
-            
 
             
             m_EstadoAlta = true;
