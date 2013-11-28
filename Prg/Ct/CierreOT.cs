@@ -58,6 +58,7 @@ namespace Rivn.Ct
         private void gbBuscar_Click(object sender, EventArgs e)
         {
             m_smResult.UilReset("Buscar");
+
         }
 
 

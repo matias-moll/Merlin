@@ -10,7 +10,7 @@ namespace Rivn.Dal
     //----------------------------------------------------------------------------
     //                         TNG Software DAL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 22/11/2013 15:06
+    // Fecha                    : 28/11/2013 14:42
     // Sistema                  : Rivn
     // Clase para Administrar   : Ordenes De Trabajo
     // Basada en la Tabla       : OrdenesTrabajo
@@ -383,6 +383,43 @@ namespace Rivn.Dal
         #endregion
 
         #region Metodos del Usuario
+
+        /// <summary>
+        /// Método Fijo: getByPatente
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name= "p_strPatente">patente de un movil</param>
+        /// <param name="p_dsResult">DataSet donde devolver el registro</param>
+        /// <param name="p_strTabla">Nombre de la tabla a llenar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        public static int getByPatente(DBConn p_dbcAccess,
+                                       string p_strPatente,
+                                       ref DataSet p_dsResult,
+                                       string p_strTabla,
+                                       ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            p_smResult.DalReset("OrdenesTrabajo", "getByPatente");
+
+            try {
+                return DBRuts.Exec_DS(p_dbcAccess,
+                                      "TNGS_Rivn..ORDENESTRABAJO_GETBYPATENTE",
+                                      new DbParameter[] {
+                                          p_dbcAccess.MakeParam("@patente", p_strPatente),
+                                          p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
+                                      },
+                                      ref p_dsResult, p_strTabla);
+            }
+            catch (Exception l_expData) {
+                // Error en el método fijo
+                p_smResult.DalError(l_expData.ToString());
+                return -1;
+            }
+            finally {
+                // Resteamos el StatMsg
+                p_smResult.DalExit();
+            }
+        }
         #endregion
 
         #region Grillas Definidas
