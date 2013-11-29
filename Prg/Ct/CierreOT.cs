@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,12 +17,9 @@ using TNGS.NetControls;
 
 namespace Rivn.Ct
 {
-    /// <summary>
-    /// Formulario para consulta de datos del oficina
-    /// </summary>
     public partial class CierreOT : Form
     {
-        #region
+        #region 
         private LEMoviles m_LEMoviles = null;
         private LEOTItems m_LEOTitems = null;
         private LEOrdenesTrabajo m_LEOTTrabajos = null;
@@ -30,24 +27,24 @@ namespace Rivn.Ct
         private StatMsg m_smResult = null;
         private ACLInfo m_aclInfo = null;
         #endregion
-            
 
-        /// <summary>
-        /// Constuctor
-        /// </summary>
+
         public CierreOT()
         {
             InitializeComponent();
+            // Obtenemos los permisos ACL
+            m_aclInfo = App.ACLInfo;
 
-            // Inicializar variables
-            m_smResult = new StatMsg("Cierre de Ordenes De Trabajo");
+            // Aplicamos los nieves de seguridad
+            App.ApplySecurity(this);
 
-            // Fijamos el formulario de la aplicacion
-            App.SetMainWindow(this, mnuMain, null, sbpMensaje, sbpConexion, sbpUsuario, sbpPercent, sbpAvance);
+            // Iniciamos los objetos de la clase
+            m_smResult = new StatMsg("CierreOT");
 
             LlenarCombo();
-        }
 
+
+        }
 
         private void LlenarCombo()
         {
@@ -55,25 +52,14 @@ namespace Rivn.Ct
             m_LEMoviles = Bll.Moviles.UpFull(true, ref m_smResult);
             cdcMoviles.FillFromStrLEntidad(m_LEMoviles, "mov_ecd_patente", "mov_des_des", "deleted");
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
-
+            
         }
 
         private void gbBuscar_Click(object sender, EventArgs e)
         {
             m_smResult.UilReset("Buscar");
-            m_LEOTTrabajos = Bll.OrdenesTrabajo.ObtenerOTsPorPatente(cdcMoviles.SelectedStrCode, ref m_smResult);
-            if (m_LEOTTrabajos.Count == 0)
-            {
-                MsgRuts.ShowMsg(this,"El Movil elegido no tiene ordenes de trabajo asociadas");
-                return;
-            }
-            fgGrillaOT.FillFromLEntidad(m_LEOTTrabajos);
-            if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
         }
-
-
-        
 
 
     }
