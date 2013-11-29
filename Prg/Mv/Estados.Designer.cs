@@ -58,6 +58,10 @@ namespace Rivn.Mv
             this.tePatente = new TNGS.NetControls.TextEdit();
             this.lblPatente = new TNGS.NetControls.FullLabel();
             this.ftrMoviles = new TNGS.NetControls.FullTreeView();
+            this.fullLabel1 = new TNGS.NetControls.FullLabel();
+            this.fullLabel2 = new TNGS.NetControls.FullLabel();
+            this.fullLabel3 = new TNGS.NetControls.FullLabel();
+            this.fullLabel4 = new TNGS.NetControls.FullLabel();
             this.xpnlPanelAtras.SuspendLayout();
             this.tsContainer1.SuspendLayout();
             this.tabPageSwitcher1.SuspendLayout();
@@ -77,6 +81,10 @@ namespace Rivn.Mv
             // 
             this.xpnlPanelAtras.BackColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.xpnlPanelAtras.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
+            this.xpnlPanelAtras.Controls.Add(this.fullLabel4);
+            this.xpnlPanelAtras.Controls.Add(this.fullLabel3);
+            this.xpnlPanelAtras.Controls.Add(this.fullLabel2);
+            this.xpnlPanelAtras.Controls.Add(this.fullLabel1);
             this.xpnlPanelAtras.Controls.Add(this.tsContainer1);
             this.xpnlPanelAtras.Controls.Add(this.fgMovilEstados);
             this.xpnlPanelAtras.Controls.Add(this.fgCombustibles);
@@ -133,10 +141,10 @@ namespace Rivn.Mv
             this.tsPanel2.Controls.Add(this.glassButton2);
             this.tsPanel2.Controls.Add(this.glassButton1);
             this.tsPanel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.tsPanel2.Location = new System.Drawing.Point(456, 3);
+            this.tsPanel2.Location = new System.Drawing.Point(504, 3);
             this.tsPanel2.Name = "tsPanel2";
             this.tsPanel2.Opacity = 255;
-            this.tsPanel2.Size = new System.Drawing.Size(359, 85);
+            this.tsPanel2.Size = new System.Drawing.Size(375, 85);
             this.tsPanel2.Speed = 1;
             this.tsPanel2.TabIndex = 1;
             // 
@@ -144,9 +152,9 @@ namespace Rivn.Mv
             // 
             this.glassButton3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("glassButton3.BackgroundImage")));
             this.glassButton3.ImageOnTop = true;
-            this.glassButton3.Location = new System.Drawing.Point(224, 6);
+            this.glassButton3.Location = new System.Drawing.Point(247, 6);
             this.glassButton3.Name = "glassButton3";
-            this.glassButton3.Size = new System.Drawing.Size(99, 55);
+            this.glassButton3.Size = new System.Drawing.Size(118, 55);
             this.glassButton3.TabIndex = 2;
             this.glassButton3.Text = "Cargar Nafta";
             // 
@@ -154,9 +162,9 @@ namespace Rivn.Mv
             // 
             this.glassButton2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("glassButton2.BackgroundImage")));
             this.glassButton2.ImageOnTop = true;
-            this.glassButton2.Location = new System.Drawing.Point(112, 6);
+            this.glassButton2.Location = new System.Drawing.Point(124, 6);
             this.glassButton2.Name = "glassButton2";
-            this.glassButton2.Size = new System.Drawing.Size(106, 55);
+            this.glassButton2.Size = new System.Drawing.Size(118, 55);
             this.glassButton2.TabIndex = 1;
             this.glassButton2.Text = "Agregar Kms";
             // 
@@ -166,20 +174,20 @@ namespace Rivn.Mv
             this.glassButton1.ImageOnTop = true;
             this.glassButton1.Location = new System.Drawing.Point(6, 6);
             this.glassButton1.Name = "glassButton1";
-            this.glassButton1.Size = new System.Drawing.Size(100, 55);
+            this.glassButton1.Size = new System.Drawing.Size(112, 55);
             this.glassButton1.TabIndex = 0;
             this.glassButton1.Text = "Cambiar Estado";
             // 
             // tsPanel1
             // 
-            this.tsPanel1.Caption = "Opciones generales";
+            this.tsPanel1.Caption = "Opciones Generales";
             this.tsPanel1.Controls.Add(this.pnlOpciones);
             this.tsPanel1.Controls.Add(this.gbModificarEstado);
             this.tsPanel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.tsPanel1.Location = new System.Drawing.Point(0, 3);
             this.tsPanel1.Name = "tsPanel1";
             this.tsPanel1.Opacity = 255;
-            this.tsPanel1.Size = new System.Drawing.Size(456, 85);
+            this.tsPanel1.Size = new System.Drawing.Size(504, 85);
             this.tsPanel1.Speed = 1;
             this.tsPanel1.TabIndex = 0;
             // 
@@ -190,7 +198,7 @@ namespace Rivn.Mv
             this.pnlOpciones.Controls.Add(this.gbBorrarMovil);
             this.pnlOpciones.Location = new System.Drawing.Point(127, 0);
             this.pnlOpciones.Name = "pnlOpciones";
-            this.pnlOpciones.Size = new System.Drawing.Size(323, 63);
+            this.pnlOpciones.Size = new System.Drawing.Size(371, 63);
             this.pnlOpciones.TabIndex = 31;
             // 
             // gbNuevoMovil
@@ -199,7 +207,7 @@ namespace Rivn.Mv
             this.gbNuevoMovil.ImageOnTop = true;
             this.gbNuevoMovil.Location = new System.Drawing.Point(4, 6);
             this.gbNuevoMovil.Name = "gbNuevoMovil";
-            this.gbNuevoMovil.Size = new System.Drawing.Size(100, 55);
+            this.gbNuevoMovil.Size = new System.Drawing.Size(113, 55);
             this.gbNuevoMovil.TabIndex = 27;
             this.gbNuevoMovil.Text = "Nuevo Movil";
             this.gbNuevoMovil.Click += new System.EventHandler(this.gbNuevoMovil_Click);
@@ -208,9 +216,9 @@ namespace Rivn.Mv
             // 
             this.gbModificarMovil.FixedImage = TNGS.NetControls.FixedGlassButtons.tChange;
             this.gbModificarMovil.ImageOnTop = true;
-            this.gbModificarMovil.Location = new System.Drawing.Point(110, 6);
+            this.gbModificarMovil.Location = new System.Drawing.Point(123, 6);
             this.gbModificarMovil.Name = "gbModificarMovil";
-            this.gbModificarMovil.Size = new System.Drawing.Size(100, 55);
+            this.gbModificarMovil.Size = new System.Drawing.Size(113, 55);
             this.gbModificarMovil.TabIndex = 26;
             this.gbModificarMovil.Text = "Cambiar";
             this.gbModificarMovil.Click += new System.EventHandler(this.gbModificarMovil_Click);
@@ -219,9 +227,9 @@ namespace Rivn.Mv
             // 
             this.gbBorrarMovil.FixedImage = TNGS.NetControls.FixedGlassButtons.tDelete;
             this.gbBorrarMovil.ImageOnTop = true;
-            this.gbBorrarMovil.Location = new System.Drawing.Point(218, 6);
+            this.gbBorrarMovil.Location = new System.Drawing.Point(242, 6);
             this.gbBorrarMovil.Name = "gbBorrarMovil";
-            this.gbBorrarMovil.Size = new System.Drawing.Size(100, 55);
+            this.gbBorrarMovil.Size = new System.Drawing.Size(113, 55);
             this.gbBorrarMovil.TabIndex = 28;
             this.gbBorrarMovil.Text = "Borrar";
             this.gbBorrarMovil.Click += new System.EventHandler(this.gbBorrarMovil_Click);
@@ -276,9 +284,9 @@ namespace Rivn.Mv
             this.fgMovilEstados.ExcelTitle = "";
             this.fgMovilEstados.GridOrder = "";
             this.fgMovilEstados.HeaderForeColor = System.Drawing.SystemColors.ControlText;
-            this.fgMovilEstados.Location = new System.Drawing.Point(572, 290);
+            this.fgMovilEstados.Location = new System.Drawing.Point(650, 412);
             this.fgMovilEstados.Name = "fgMovilEstados";
-            this.fgMovilEstados.Size = new System.Drawing.Size(274, 112);
+            this.fgMovilEstados.Size = new System.Drawing.Size(326, 213);
             this.fgMovilEstados.SkinFixed = true;
             this.fgMovilEstados.TabIndex = 0;
             // 
@@ -292,9 +300,9 @@ namespace Rivn.Mv
             this.fgCombustibles.ExcelTitle = "";
             this.fgCombustibles.GridOrder = "";
             this.fgCombustibles.HeaderForeColor = System.Drawing.SystemColors.ControlText;
-            this.fgCombustibles.Location = new System.Drawing.Point(258, 290);
+            this.fgCombustibles.Location = new System.Drawing.Point(277, 412);
             this.fgCombustibles.Name = "fgCombustibles";
-            this.fgCombustibles.Size = new System.Drawing.Size(273, 112);
+            this.fgCombustibles.Size = new System.Drawing.Size(325, 213);
             this.fgCombustibles.SkinFixed = true;
             this.fgCombustibles.TabIndex = 0;
             // 
@@ -308,9 +316,9 @@ namespace Rivn.Mv
             this.fgEquipamiento.ExcelTitle = "";
             this.fgEquipamiento.GridOrder = "";
             this.fgEquipamiento.HeaderForeColor = System.Drawing.SystemColors.ControlText;
-            this.fgEquipamiento.Location = new System.Drawing.Point(572, 144);
+            this.fgEquipamiento.Location = new System.Drawing.Point(650, 162);
             this.fgEquipamiento.Name = "fgEquipamiento";
-            this.fgEquipamiento.Size = new System.Drawing.Size(274, 110);
+            this.fgEquipamiento.Size = new System.Drawing.Size(326, 211);
             this.fgEquipamiento.SkinFixed = true;
             this.fgEquipamiento.TabIndex = 0;
             // 
@@ -324,9 +332,9 @@ namespace Rivn.Mv
             this.fgKm.ExcelTitle = "";
             this.fgKm.GridOrder = "";
             this.fgKm.HeaderForeColor = System.Drawing.SystemColors.ControlText;
-            this.fgKm.Location = new System.Drawing.Point(258, 144);
+            this.fgKm.Location = new System.Drawing.Point(277, 162);
             this.fgKm.Name = "fgKm";
-            this.fgKm.Size = new System.Drawing.Size(273, 110);
+            this.fgKm.Size = new System.Drawing.Size(325, 211);
             this.fgKm.SkinFixed = true;
             this.fgKm.TabIndex = 0;
             // 
@@ -357,7 +365,7 @@ namespace Rivn.Mv
             this.igMoviles.ShadowColor = System.Drawing.Color.DarkGray;
             this.igMoviles.ShadowControl = true;
             this.igMoviles.ShadowThickness = 3;
-            this.igMoviles.Size = new System.Drawing.Size(217, 311);
+            this.igMoviles.Size = new System.Drawing.Size(229, 519);
             this.igMoviles.SkinFixed = true;
             this.igMoviles.SkinFullFixed = true;
             this.igMoviles.TabIndex = 1;
@@ -366,9 +374,9 @@ namespace Rivn.Mv
             // 
             this.teEstado.BackColor = System.Drawing.SystemColors.Window;
             this.teEstado.Enabled = false;
-            this.teEstado.Location = new System.Drawing.Point(69, 273);
+            this.teEstado.Location = new System.Drawing.Point(100, 485);
             this.teEstado.Name = "teEstado";
-            this.teEstado.Size = new System.Drawing.Size(135, 20);
+            this.teEstado.Size = new System.Drawing.Size(106, 20);
             this.teEstado.TabIndex = 25;
             this.teEstado.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -376,9 +384,9 @@ namespace Rivn.Mv
             // 
             this.teModelo.BackColor = System.Drawing.SystemColors.Window;
             this.teModelo.Enabled = false;
-            this.teModelo.Location = new System.Drawing.Point(69, 247);
+            this.teModelo.Location = new System.Drawing.Point(100, 459);
             this.teModelo.Name = "teModelo";
-            this.teModelo.Size = new System.Drawing.Size(135, 20);
+            this.teModelo.Size = new System.Drawing.Size(106, 20);
             this.teModelo.TabIndex = 24;
             this.teModelo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -387,7 +395,7 @@ namespace Rivn.Mv
             this.lblEstado.BackColor = System.Drawing.Color.Transparent;
             this.lblEstado.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEstado.ForeColor = System.Drawing.Color.Black;
-            this.lblEstado.Location = new System.Drawing.Point(8, 273);
+            this.lblEstado.Location = new System.Drawing.Point(15, 485);
             this.lblEstado.Name = "lblEstado";
             this.lblEstado.Size = new System.Drawing.Size(55, 18);
             this.lblEstado.TabIndex = 23;
@@ -398,7 +406,7 @@ namespace Rivn.Mv
             this.lblModelo.BackColor = System.Drawing.Color.Transparent;
             this.lblModelo.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblModelo.ForeColor = System.Drawing.Color.Black;
-            this.lblModelo.Location = new System.Drawing.Point(8, 248);
+            this.lblModelo.Location = new System.Drawing.Point(15, 460);
             this.lblModelo.Name = "lblModelo";
             this.lblModelo.Size = new System.Drawing.Size(55, 18);
             this.lblModelo.TabIndex = 20;
@@ -408,9 +416,9 @@ namespace Rivn.Mv
             // 
             this.tePatente.BackColor = System.Drawing.SystemColors.Window;
             this.tePatente.Enabled = false;
-            this.tePatente.Location = new System.Drawing.Point(69, 221);
+            this.tePatente.Location = new System.Drawing.Point(100, 433);
             this.tePatente.Name = "tePatente";
-            this.tePatente.Size = new System.Drawing.Size(135, 20);
+            this.tePatente.Size = new System.Drawing.Size(106, 20);
             this.tePatente.TabIndex = 7;
             this.tePatente.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -419,7 +427,7 @@ namespace Rivn.Mv
             this.lblPatente.BackColor = System.Drawing.Color.Transparent;
             this.lblPatente.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPatente.ForeColor = System.Drawing.Color.Black;
-            this.lblPatente.Location = new System.Drawing.Point(8, 223);
+            this.lblPatente.Location = new System.Drawing.Point(15, 435);
             this.lblPatente.Name = "lblPatente";
             this.lblPatente.Size = new System.Drawing.Size(67, 18);
             this.lblPatente.TabIndex = 8;
@@ -430,16 +438,47 @@ namespace Rivn.Mv
             this.ftrMoviles.IgnoreLevelInFill = false;
             this.ftrMoviles.Location = new System.Drawing.Point(11, 35);
             this.ftrMoviles.Name = "ftrMoviles";
-            this.ftrMoviles.Size = new System.Drawing.Size(194, 169);
+            this.ftrMoviles.Size = new System.Drawing.Size(206, 392);
             this.ftrMoviles.TabIndex = 0;
             this.ftrMoviles.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.ftrMoviles_AfterSelect);
             this.ftrMoviles.DoubleClick += new System.EventHandler(this.ftrMoviles_DoubleClick);
             // 
+            // fullLabel1
+            // 
+            this.fullLabel1.Location = new System.Drawing.Point(277, 144);
+            this.fullLabel1.Name = "fullLabel1";
+            this.fullLabel1.Size = new System.Drawing.Size(100, 15);
+            this.fullLabel1.TabIndex = 34;
+            this.fullLabel1.Text = "Kilometros";
+            // 
+            // fullLabel2
+            // 
+            this.fullLabel2.Location = new System.Drawing.Point(650, 144);
+            this.fullLabel2.Name = "fullLabel2";
+            this.fullLabel2.Size = new System.Drawing.Size(100, 15);
+            this.fullLabel2.TabIndex = 35;
+            this.fullLabel2.Text = "Equipamiento";
+            // 
+            // fullLabel3
+            // 
+            this.fullLabel3.Location = new System.Drawing.Point(277, 394);
+            this.fullLabel3.Name = "fullLabel3";
+            this.fullLabel3.Size = new System.Drawing.Size(100, 15);
+            this.fullLabel3.TabIndex = 36;
+            this.fullLabel3.Text = "Combustible";
+            // 
+            // fullLabel4
+            // 
+            this.fullLabel4.Location = new System.Drawing.Point(650, 394);
+            this.fullLabel4.Name = "fullLabel4";
+            this.fullLabel4.Size = new System.Drawing.Size(100, 15);
+            this.fullLabel4.TabIndex = 37;
+            this.fullLabel4.Text = "Estado";
+            // 
             // Estados
             // 
             this.AllowEndUserDocking = false;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.ClientSize = new System.Drawing.Size(1008, 651);
             this.CloseButton = false;
             this.CloseButtonVisible = false;
@@ -497,5 +536,9 @@ namespace Rivn.Mv
         private TNGS.NetControls.GlassButton glassButton1;
         private TNGS.NetControls.GlassButton glassButton3;
         private TNGS.NetControls.GlassButton glassButton2;
+        private TNGS.NetControls.FullLabel fullLabel4;
+        private TNGS.NetControls.FullLabel fullLabel3;
+        private TNGS.NetControls.FullLabel fullLabel2;
+        private TNGS.NetControls.FullLabel fullLabel1;
     }
 }
