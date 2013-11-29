@@ -25,18 +25,24 @@ namespace Rivn.Ot
         private Bel.LEOTItems m_leOTItems;
         private Bel.LEReparaciones m_leReparaciones;
         private int m_intNumeroAgrupador;
-
+        private bool m_estadoMofidicar;
+        private Bel.EOrdenTrabajo m_eOrdenAModificar;
         // Constructor Inicial
         public OTItemsNuevo()
         {
             InitializeComponent();
             ((MainFrame)App.GetMainWindow()).AddContent(this);
             
+            // Estado Modificar es FALSO
+            m_estadoMofidicar = false;
+
             // desabilitamos los IG y los Botones Quitar para que no puedan usarlos si no selecciona nada
             igOpciones.Enabled = false;
             igControlReparacion.Enabled = false;
             HabilitarBotonesQuitar(false);
 
+            // LLenamos Las patentes que hay en la tabla.
+            LLenarComboPatentesMoviles(cdcPatente);
 
             // Reseteamos el StatMsg
             m_smResult.UilReset("NuevosControlesReparaciones");
@@ -54,7 +60,56 @@ namespace Rivn.Ot
             //seteamos el numero de agrupador como 1
             m_intNumeroAgrupador= 1;
         }
-        
+
+        // Constructor Inicial
+        public OTItemsNuevo(int p_iNumeroOrdenTrabajo)
+        {
+            InitializeComponent();
+            ((MainFrame)App.GetMainWindow()).AddContent(this);
+
+            // Estado Mofidicar es Verdadero
+            m_estadoMofidicar = true;
+
+            // desabilitamos los controles necesarios para que el usuario no pueda interactuar con ellos 
+            igControlReparacion.Enabled = false;
+            pnlOpciones.Enabled = false;
+            gbAgregar.Enabled = false;
+            cdcPatente.Enabled = false;
+
+            // Reseteamos el StatMsg
+            m_smResult.UilReset("NuevosControlesReparaciones");
+
+            // Seteamos la el numero de orden trabajo en el TV
+            neOrdenTrabajo.Numero = p_iNumeroOrdenTrabajo;
+
+            // Traemos la orden con su lista de items asociada
+            m_eOrdenAModificar = Bll.OrdenesTrabajo.Get(p_iNumeroOrdenTrabajo, true, ref m_smResult);
+            if (MsgRuts.AnalizeError(this, m_smResult)) return;
+
+            // Asignamos los items actuales que tiene la orden a nuestra lista 
+            m_leOTItems = m_eOrdenAModificar.OTItems;
+            // Configuramos los captions de la lista entidad OTItems
+            ConfigurarCaptionsLEOitems(m_leOTItems);
+            // LLenamos la Grilla con el metodo especial
+            FillFromLEOTItemsConAnchoDeColumna(fgControlRepaSeleccionados, m_leOTItems);
+
+            // Configuramos los captions de la lista entidad OTItems
+            ConfigurarCaptionsLEOitems(m_leOTItems);
+
+            // LLenamos Las patentes que hay en la tabla y Seteamos la patente seleccionada del movil a la asociada en la OT 
+            cdcPatente.AddStrCD("patente",m_eOrdenAModificar.Patente,1);
+            cdcPatente.SelectedStrCode = "patente";
+
+            // por ultimo obtenemos el numero maximo de agrupador y le sumamos uno.
+            m_intNumeroAgrupador = 1;
+            foreach (Bel.EOTItem item in m_eOrdenAModificar.OTItems)
+            {
+                if (m_intNumeroAgrupador < item.Nroagrupador)
+                    m_intNumeroAgrupador = item.Nroagrupador;
+            }
+            m_intNumeroAgrupador += 1; 
+        }
+
         #endregion
 
         #region Metodos Privados
@@ -114,7 +169,7 @@ namespace Rivn.Ot
         }
 
         // Crea la nueva entidad OrdenTrabajo que tendra asociados a todos los items
-        private Bel.EOrdenTrabajo CrearOrdenDeTrabajo()
+        private Bel.EOrdenTrabajo CrearOrdenDeTrabajo(Bel.LEOTItems p_leOTItems)
         {
             Bel.EOrdenTrabajo l_eOrdenNueva = Bel.EOrdenTrabajo.NewEmpty();
             l_eOrdenNueva.Nro = neOrdenTrabajo.Numero;
@@ -124,6 +179,9 @@ namespace Rivn.Ot
             l_eOrdenNueva.Feccierre = new DateTime(1900, 1, 1);
             // Le asignamos el operador que realizo la orden
             l_eOrdenNueva.Operador = App.Usuario.Usuario;
+
+            // Le asignamos los items que nos vienen por parametro
+            l_eOrdenNueva.OTItems = p_leOTItems;
 
             return l_eOrdenNueva;
         }
@@ -195,13 +253,6 @@ namespace Rivn.Ot
                 // chequeamos que haya salido todo bien
                 if (MsgRuts.AnalizeError(this, m_smResult)) return;
             }
-        
-        // Hacemos las cargas pertinentes en el load
-        private void NuevosControlesReparaciones_Load(object sender, EventArgs e)
-        {
-            // LLenamos Las patentes que hay en la tabla.
-            LLenarComboPatentesMoviles(cdcPatente);
-        }
 
         // Cierra el formulario
         private void gbCancel_Click(object sender, EventArgs e)
@@ -284,16 +335,22 @@ namespace Rivn.Ot
                 MsgRuts.ShowMsg(this, "No se puede grabar en la base por que no hay nada en la lista para grabar");
                 return;
             }
-
-            // Grabamos la orden de trabajo nueva
-            Bll.OrdenesTrabajo.Save(CrearOrdenDeTrabajo(), ref m_smResult);
-            if (MsgRuts.AnalizeError(this, m_smResult)) return;
-
-            // Grabamos los OTItems correspondientes a esta orden nueva
-            Bll.OrdenesTrabajo.GrabarOTItems(m_leOTItems, ref m_smResult);
-            if (MsgRuts.AnalizeError(this, m_smResult)) return;
-
-            MsgRuts.ShowMsg(this, "La nueva orden fue agregada exitosamente");
+            // Procedemos al grabado
+            if(!m_estadoMofidicar){
+                // Graba OrdenNueva con sus items
+                Bel.EOrdenTrabajo l_ordenAGrabar = CrearOrdenDeTrabajo(m_leOTItems);
+                Bll.OrdenesTrabajo.Save(l_ordenAGrabar,ref m_smResult);
+                if (MsgRuts.AnalizeError(this, m_smResult)) return;
+                MsgRuts.ShowMsg(this, "La nueva orden fue agregada exitosamente");
+            }
+            else{
+            // Graba Orden a Actualizar
+                // primero asigna los nuevos items a la orden de trabajo
+                m_eOrdenAModificar.OTItems = m_leOTItems;
+                Bll.OrdenesTrabajo.Save(m_eOrdenAModificar,ref m_smResult);
+                if (MsgRuts.AnalizeError(this, m_smResult)) return;
+                MsgRuts.ShowMsg(this, "La orden fue modificada exitosamente");            
+            }
 
             // Despueste grabado se cierra el formulario para poder seguir con el programa principal
             this.Close();
@@ -427,6 +484,7 @@ namespace Rivn.Ot
         // Habilitamos el IGControlRepa solo cuando hay una patente seleccionada
         private void cdcPatente_SelectedIndexChanged(object sender, EventArgs e)
         {
+           if(!m_estadoMofidicar)
             igControlReparacion.Enabled = true;
         }
 

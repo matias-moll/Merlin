@@ -35,8 +35,8 @@
             this.tabPageSwitcher1 = new RibbonStyle.TabPageSwitcher();
             this.tabStripPage1 = new RibbonStyle.TabStripPage();
             this.tsPanel2 = new TNGS.NetControls.TSPanel();
-            this.gbGrabar = new TNGS.NetControls.GlassButton();
             this.gbCancel = new TNGS.NetControls.GlassButton();
+            this.gbGrabar = new TNGS.NetControls.GlassButton();
             this.tsPanel1 = new TNGS.NetControls.TSPanel();
             this.btnDestildarTodoEqi = new TNGS.NetControls.GlassButton();
             this.gbLimpiarTodo = new TNGS.NetControls.GlassButton();
@@ -129,28 +129,16 @@
             // 
             // tsPanel2
             // 
-            this.tsPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.tsPanel2.Caption = "Acciones";
-            this.tsPanel2.Controls.Add(this.gbGrabar);
             this.tsPanel2.Controls.Add(this.gbCancel);
-            this.tsPanel2.Location = new System.Drawing.Point(269, 3);
+            this.tsPanel2.Controls.Add(this.gbGrabar);
+            this.tsPanel2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.tsPanel2.Location = new System.Drawing.Point(330, 3);
             this.tsPanel2.Name = "tsPanel2";
             this.tsPanel2.Opacity = 255;
-            this.tsPanel2.Size = new System.Drawing.Size(193, 85);
+            this.tsPanel2.Size = new System.Drawing.Size(222, 85);
             this.tsPanel2.Speed = 1;
-            this.tsPanel2.TabIndex = 3;
-            // 
-            // gbGrabar
-            // 
-            this.gbGrabar.FixedImage = TNGS.NetControls.FixedGlassButtons.tSave;
-            this.gbGrabar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbGrabar.ImageOnTop = true;
-            this.gbGrabar.Location = new System.Drawing.Point(18, 4);
-            this.gbGrabar.Name = "gbGrabar";
-            this.gbGrabar.Size = new System.Drawing.Size(78, 60);
-            this.gbGrabar.TabIndex = 2;
-            this.gbGrabar.Text = "Grabar";
-            this.gbGrabar.Click += new System.EventHandler(this.btnGrabar_Click);
+            this.tsPanel2.TabIndex = 1;
             // 
             // gbCancel
             // 
@@ -158,12 +146,24 @@
             this.gbCancel.FixedImage = TNGS.NetControls.FixedGlassButtons.tCancel;
             this.gbCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbCancel.ImageOnTop = true;
-            this.gbCancel.Location = new System.Drawing.Point(103, 2);
+            this.gbCancel.Location = new System.Drawing.Point(111, 6);
             this.gbCancel.Name = "gbCancel";
-            this.gbCancel.Size = new System.Drawing.Size(78, 60);
+            this.gbCancel.Size = new System.Drawing.Size(100, 55);
             this.gbCancel.TabIndex = 1;
             this.gbCancel.Text = "Cancelar";
             this.gbCancel.Click += new System.EventHandler(this.gbCancel_Click);
+            // 
+            // gbGrabar
+            // 
+            this.gbGrabar.FixedImage = TNGS.NetControls.FixedGlassButtons.tSave;
+            this.gbGrabar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbGrabar.ImageOnTop = true;
+            this.gbGrabar.Location = new System.Drawing.Point(6, 6);
+            this.gbGrabar.Name = "gbGrabar";
+            this.gbGrabar.Size = new System.Drawing.Size(100, 55);
+            this.gbGrabar.TabIndex = 2;
+            this.gbGrabar.Text = "Grabar";
+            this.gbGrabar.Click += new System.EventHandler(this.btnGrabar_Click);
             // 
             // tsPanel1
             // 
@@ -175,7 +175,7 @@
             this.tsPanel1.Location = new System.Drawing.Point(0, 3);
             this.tsPanel1.Name = "tsPanel1";
             this.tsPanel1.Opacity = 255;
-            this.tsPanel1.Size = new System.Drawing.Size(263, 85);
+            this.tsPanel1.Size = new System.Drawing.Size(330, 85);
             this.tsPanel1.Speed = 1;
             this.tsPanel1.TabIndex = 0;
             // 
@@ -184,11 +184,11 @@
             this.btnDestildarTodoEqi.FixedImage = TNGS.NetControls.FixedGlassButtons.tDisable;
             this.btnDestildarTodoEqi.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDestildarTodoEqi.ImageOnTop = true;
-            this.btnDestildarTodoEqi.Location = new System.Drawing.Point(173, 1);
+            this.btnDestildarTodoEqi.Location = new System.Drawing.Point(218, 6);
             this.btnDestildarTodoEqi.Name = "btnDestildarTodoEqi";
-            this.btnDestildarTodoEqi.Size = new System.Drawing.Size(78, 62);
+            this.btnDestildarTodoEqi.Size = new System.Drawing.Size(100, 55);
             this.btnDestildarTodoEqi.TabIndex = 2;
-            this.btnDestildarTodoEqi.Text = "Uncheck";
+            this.btnDestildarTodoEqi.Text = "Destildar Todos";
             this.btnDestildarTodoEqi.Click += new System.EventHandler(this.btnDestildarTodoEqi_Click);
             // 
             // gbLimpiarTodo
@@ -196,9 +196,9 @@
             this.gbLimpiarTodo.FixedImage = TNGS.NetControls.FixedGlassButtons.tDelete;
             this.gbLimpiarTodo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbLimpiarTodo.ImageOnTop = true;
-            this.gbLimpiarTodo.Location = new System.Drawing.Point(8, 1);
+            this.gbLimpiarTodo.Location = new System.Drawing.Point(8, 6);
             this.gbLimpiarTodo.Name = "gbLimpiarTodo";
-            this.gbLimpiarTodo.Size = new System.Drawing.Size(75, 62);
+            this.gbLimpiarTodo.Size = new System.Drawing.Size(100, 55);
             this.gbLimpiarTodo.TabIndex = 0;
             this.gbLimpiarTodo.Text = "Limpiar Campos";
             this.gbLimpiarTodo.Click += new System.EventHandler(this.btnLimpiarTodo_Click);
@@ -208,11 +208,11 @@
             this.btnTildaTodos.FixedImage = TNGS.NetControls.FixedGlassButtons.tEnable;
             this.btnTildaTodos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTildaTodos.ImageOnTop = true;
-            this.btnTildaTodos.Location = new System.Drawing.Point(89, 1);
+            this.btnTildaTodos.Location = new System.Drawing.Point(113, 6);
             this.btnTildaTodos.Name = "btnTildaTodos";
-            this.btnTildaTodos.Size = new System.Drawing.Size(78, 62);
+            this.btnTildaTodos.Size = new System.Drawing.Size(100, 55);
             this.btnTildaTodos.TabIndex = 1;
-            this.btnTildaTodos.Text = "Chekear";
+            this.btnTildaTodos.Text = "Tildar Todos";
             this.btnTildaTodos.Click += new System.EventHandler(this.tildarTodo_Click);
             // 
             // tsBase1
@@ -516,8 +516,11 @@
             // AltaMovil
             // 
             this.AcceptButton = this.gbGrabar;
+            this.AllowEndUserDocking = false;
             this.CancelButton = this.gbCancel;
             this.ClientSize = new System.Drawing.Size(1008, 651);
+            this.CloseButton = false;
+            this.CloseButtonVisible = false;
             this.Controls.Add(this.xPanel1);
             this.DockAreas = WeifenLuo.WinFormsUI.Docking.DockAreas.Document;
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -572,9 +575,9 @@
         private TNGS.NetControls.TSContainer tsContainer1;
         private RibbonStyle.TabPageSwitcher tabPageSwitcher1;
         private RibbonStyle.TabStripPage tabStripPage1;
-        private TNGS.NetControls.TSPanel tsPanel2;
         private TNGS.NetControls.TSPanel tsPanel1;
         private TNGS.NetControls.TSBase tsBase1;
         private RibbonStyle.Tab tab1;
+        private TNGS.NetControls.TSPanel tsPanel2;
     }
 }
