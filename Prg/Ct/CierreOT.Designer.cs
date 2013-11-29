@@ -113,7 +113,7 @@
             this.sbpMensaje.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sbpMensaje.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.sbpMensaje.Name = "sbpMensaje";
-            this.sbpMensaje.Size = new System.Drawing.Size(732, 18);
+            this.sbpMensaje.Size = new System.Drawing.Size(734, 18);
             this.sbpMensaje.Spring = true;
             this.sbpMensaje.Text = "XXX";
             this.sbpMensaje.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -123,7 +123,7 @@
             this.sbpConexion.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
             this.sbpConexion.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sbpConexion.Name = "sbpConexion";
-            this.sbpConexion.Size = new System.Drawing.Size(27, 18);
+            this.sbpConexion.Size = new System.Drawing.Size(25, 18);
             this.sbpConexion.Text = "YY";
             // 
             // sbpUsuario
