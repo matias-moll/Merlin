@@ -39,9 +39,9 @@ namespace Rivn.Mv
             this.tabPageSwitcher1 = new RibbonStyle.TabPageSwitcher();
             this.tabStripPage1 = new RibbonStyle.TabStripPage();
             this.tsPanel2 = new TNGS.NetControls.TSPanel();
-            this.glassButton3 = new TNGS.NetControls.GlassButton();
-            this.glassButton2 = new TNGS.NetControls.GlassButton();
-            this.glassButton1 = new TNGS.NetControls.GlassButton();
+            this.gbCargarNafta = new TNGS.NetControls.GlassButton();
+            this.gbAgregarKMs = new TNGS.NetControls.GlassButton();
+            this.gbCambiarEstado = new TNGS.NetControls.GlassButton();
             this.tsPanel1 = new TNGS.NetControls.TSPanel();
             this.pnlOpciones = new System.Windows.Forms.Panel();
             this.gbNuevoMovil = new TNGS.NetControls.GlassButton();
@@ -100,39 +100,47 @@ namespace Rivn.Mv
             // 
             // fullLabel4
             // 
+            this.fullLabel4.BackColor = System.Drawing.Color.Transparent;
             this.fullLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.fullLabel4.Location = new System.Drawing.Point(773, 394);
             this.fullLabel4.Name = "fullLabel4";
             this.fullLabel4.Size = new System.Drawing.Size(100, 15);
             this.fullLabel4.TabIndex = 37;
             this.fullLabel4.Text = "Estado";
+            this.fullLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // fullLabel3
             // 
+            this.fullLabel3.BackColor = System.Drawing.Color.Transparent;
             this.fullLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.fullLabel3.Location = new System.Drawing.Point(386, 392);
             this.fullLabel3.Name = "fullLabel3";
             this.fullLabel3.Size = new System.Drawing.Size(100, 15);
             this.fullLabel3.TabIndex = 36;
             this.fullLabel3.Text = "Combustible";
+            this.fullLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // fullLabel2
             // 
+            this.fullLabel2.BackColor = System.Drawing.Color.Transparent;
             this.fullLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.fullLabel2.Location = new System.Drawing.Point(773, 142);
             this.fullLabel2.Name = "fullLabel2";
             this.fullLabel2.Size = new System.Drawing.Size(100, 15);
             this.fullLabel2.TabIndex = 35;
             this.fullLabel2.Text = "Equipamiento";
+            this.fullLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // fullLabel1
             // 
+            this.fullLabel1.BackColor = System.Drawing.Color.Transparent;
             this.fullLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.fullLabel1.Location = new System.Drawing.Point(386, 142);
             this.fullLabel1.Name = "fullLabel1";
             this.fullLabel1.Size = new System.Drawing.Size(100, 15);
             this.fullLabel1.TabIndex = 34;
             this.fullLabel1.Text = "Kilometros";
+            this.fullLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tsContainer1
             // 
@@ -173,9 +181,9 @@ namespace Rivn.Mv
             // tsPanel2
             // 
             this.tsPanel2.Caption = "Opciones Espeficificas";
-            this.tsPanel2.Controls.Add(this.glassButton3);
-            this.tsPanel2.Controls.Add(this.glassButton2);
-            this.tsPanel2.Controls.Add(this.glassButton1);
+            this.tsPanel2.Controls.Add(this.gbCargarNafta);
+            this.tsPanel2.Controls.Add(this.gbAgregarKMs);
+            this.tsPanel2.Controls.Add(this.gbCambiarEstado);
             this.tsPanel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.tsPanel2.Location = new System.Drawing.Point(504, 3);
             this.tsPanel2.Name = "tsPanel2";
@@ -184,36 +192,38 @@ namespace Rivn.Mv
             this.tsPanel2.Speed = 1;
             this.tsPanel2.TabIndex = 1;
             // 
-            // glassButton3
+            // gbCargarNafta
             // 
-            this.glassButton3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("glassButton3.BackgroundImage")));
-            this.glassButton3.ImageOnTop = true;
-            this.glassButton3.Location = new System.Drawing.Point(247, 6);
-            this.glassButton3.Name = "glassButton3";
-            this.glassButton3.Size = new System.Drawing.Size(118, 55);
-            this.glassButton3.TabIndex = 2;
-            this.glassButton3.Text = "Cargar Nafta";
+            this.gbCargarNafta.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("gbCargarNafta.BackgroundImage")));
+            this.gbCargarNafta.ImageOnTop = true;
+            this.gbCargarNafta.Location = new System.Drawing.Point(247, 6);
+            this.gbCargarNafta.Name = "gbCargarNafta";
+            this.gbCargarNafta.Size = new System.Drawing.Size(118, 55);
+            this.gbCargarNafta.TabIndex = 2;
+            this.gbCargarNafta.Text = "Cargar Nafta";
+            this.gbCargarNafta.Click += new System.EventHandler(this.gbAgregarCombustible_Click);
             // 
-            // glassButton2
+            // gbAgregarKMs
             // 
-            this.glassButton2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("glassButton2.BackgroundImage")));
-            this.glassButton2.ImageOnTop = true;
-            this.glassButton2.Location = new System.Drawing.Point(124, 6);
-            this.glassButton2.Name = "glassButton2";
-            this.glassButton2.Size = new System.Drawing.Size(118, 55);
-            this.glassButton2.TabIndex = 1;
-            this.glassButton2.Text = "Agregar Kms";
+            this.gbAgregarKMs.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("gbAgregarKMs.BackgroundImage")));
+            this.gbAgregarKMs.ImageOnTop = true;
+            this.gbAgregarKMs.Location = new System.Drawing.Point(124, 6);
+            this.gbAgregarKMs.Name = "gbAgregarKMs";
+            this.gbAgregarKMs.Size = new System.Drawing.Size(118, 55);
+            this.gbAgregarKMs.TabIndex = 1;
+            this.gbAgregarKMs.Text = "Agregar Kms";
+            this.gbAgregarKMs.Click += new System.EventHandler(this.gbNuevoKM_Click);
             // 
-            // glassButton1
+            // gbCambiarEstado
             // 
-            this.glassButton1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("glassButton1.BackgroundImage")));
-            this.glassButton1.ImageOnTop = true;
-            this.glassButton1.Location = new System.Drawing.Point(6, 6);
-            this.glassButton1.Name = "glassButton1";
-            this.glassButton1.Size = new System.Drawing.Size(112, 55);
-            this.glassButton1.TabIndex = 0;
-            this.glassButton1.Text = "Cambiar Estado";
-            this.glassButton1.Click += new System.EventHandler(this.glassButton1_Click);
+            this.gbCambiarEstado.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("gbCambiarEstado.BackgroundImage")));
+            this.gbCambiarEstado.ImageOnTop = true;
+            this.gbCambiarEstado.Location = new System.Drawing.Point(6, 6);
+            this.gbCambiarEstado.Name = "gbCambiarEstado";
+            this.gbCambiarEstado.Size = new System.Drawing.Size(112, 55);
+            this.gbCambiarEstado.TabIndex = 0;
+            this.gbCambiarEstado.Text = "Cambiar Estado";
+            this.gbCambiarEstado.Click += new System.EventHandler(this.gbModificarEstado_Click);
             // 
             // tsPanel1
             // 
@@ -411,9 +421,9 @@ namespace Rivn.Mv
             // 
             this.teEstado.BackColor = System.Drawing.SystemColors.Window;
             this.teEstado.Enabled = false;
-            this.teEstado.Location = new System.Drawing.Point(100, 485);
+            this.teEstado.Location = new System.Drawing.Point(79, 485);
             this.teEstado.Name = "teEstado";
-            this.teEstado.Size = new System.Drawing.Size(106, 20);
+            this.teEstado.Size = new System.Drawing.Size(138, 20);
             this.teEstado.TabIndex = 25;
             this.teEstado.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -421,9 +431,9 @@ namespace Rivn.Mv
             // 
             this.teModelo.BackColor = System.Drawing.SystemColors.Window;
             this.teModelo.Enabled = false;
-            this.teModelo.Location = new System.Drawing.Point(100, 459);
+            this.teModelo.Location = new System.Drawing.Point(79, 459);
             this.teModelo.Name = "teModelo";
-            this.teModelo.Size = new System.Drawing.Size(106, 20);
+            this.teModelo.Size = new System.Drawing.Size(138, 20);
             this.teModelo.TabIndex = 24;
             this.teModelo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -453,9 +463,9 @@ namespace Rivn.Mv
             // 
             this.tePatente.BackColor = System.Drawing.SystemColors.Window;
             this.tePatente.Enabled = false;
-            this.tePatente.Location = new System.Drawing.Point(100, 433);
+            this.tePatente.Location = new System.Drawing.Point(79, 433);
             this.tePatente.Name = "tePatente";
-            this.tePatente.Size = new System.Drawing.Size(106, 20);
+            this.tePatente.Size = new System.Drawing.Size(138, 20);
             this.tePatente.TabIndex = 7;
             this.tePatente.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -538,9 +548,9 @@ namespace Rivn.Mv
         private TNGS.NetControls.TSBase tsBase1;
         private RibbonStyle.Tab tab1;
         private TNGS.NetControls.TSPanel tsPanel2;
-        private TNGS.NetControls.GlassButton glassButton1;
-        private TNGS.NetControls.GlassButton glassButton3;
-        private TNGS.NetControls.GlassButton glassButton2;
+        private TNGS.NetControls.GlassButton gbCambiarEstado;
+        private TNGS.NetControls.GlassButton gbCargarNafta;
+        private TNGS.NetControls.GlassButton gbAgregarKMs;
         private TNGS.NetControls.FullLabel fullLabel4;
         private TNGS.NetControls.FullLabel fullLabel3;
         private TNGS.NetControls.FullLabel fullLabel2;

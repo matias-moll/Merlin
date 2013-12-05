@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AltaMovil));
             this.xPanel1 = new TNGS.NetControls.XPanel();
             this.tsContainer1 = new TNGS.NetControls.TSContainer();
