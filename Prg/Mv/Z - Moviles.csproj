@@ -194,6 +194,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ControlesCustom\Z - ControlesCustom.csproj">
+      <Project>{F0C6C8AA-F128-4F5A-BD1B-2332BFEA1DE4}</Project>
+      <Name>Z - ControlesCustom</Name>
+    </ProjectReference>
     <ProjectReference Include="C:\DiscoT\Rivn0100\Bel\BEL.csproj">
       <Project>{7969C80F-3E89-4E03-A01B-776686783353}</Project>
       <Name>BEL</Name>

@@ -44,8 +44,6 @@
             this.tmrRefresh = new System.Windows.Forms.Timer(this.components);
             this.niSysTray = new System.Windows.Forms.NotifyIcon(this.components);
             this.xpnlPanel1 = new TNGS.NetControls.XPanel();
-            this.imgGroup1 = new TNGS.NetControls.ImgGroup();
-            this.cdList1 = new TNGS.NetControls.CDList();
             this.fgGrillaOT = new TNGS.NetControls.FullGrid();
             this.tsContainer1 = new TNGS.NetControls.TSContainer();
             this.tabStripPage1 = new RibbonStyle.TabStripPage();
@@ -61,9 +59,11 @@
             this.cdcMoviles = new TNGS.NetControls.CDCombo();
             this.tsBase1 = new TNGS.NetControls.TSBase();
             this.tab1 = new RibbonStyle.Tab();
+            this.xPanel1 = new TNGS.NetControls.XPanel();
+            this.itemBarra1 = new ControlesCustom.itemBarra();
+            this.itemBarra2 = new ControlesCustom.itemBarra();
             this.sbMain.SuspendLayout();
             this.xpnlPanel1.SuspendLayout();
-            this.imgGroup1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fgGrillaOT)).BeginInit();
             this.tsContainer1.SuspendLayout();
             this.tabStripPage1.SuspendLayout();
@@ -71,6 +71,7 @@
             this.tsPanel1.SuspendLayout();
             this.tsPpanel1.SuspendLayout();
             this.tsBase1.SuspendLayout();
+            this.xPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // imgTree
@@ -152,7 +153,7 @@
             // 
             this.xpnlPanel1.BackColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.xpnlPanel1.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
-            this.xpnlPanel1.Controls.Add(this.imgGroup1);
+            this.xpnlPanel1.Controls.Add(this.xPanel1);
             this.xpnlPanel1.Controls.Add(this.fgGrillaOT);
             this.xpnlPanel1.Controls.Add(this.tsContainer1);
             this.xpnlPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -161,42 +162,6 @@
             this.xpnlPanel1.Size = new System.Drawing.Size(940, 601);
             this.xpnlPanel1.SkinFixed = true;
             this.xpnlPanel1.TabIndex = 14;
-            // 
-            // imgGroup1
-            // 
-            this.imgGroup1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.imgGroup1.BackgroundGradientColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
-            this.imgGroup1.BackgroundGradientMode = TNGS.NetControls.ImgGroup.GroupBoxGradientMode.ForwardDiagonal;
-            this.imgGroup1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.imgGroup1.BorderThickness = 1F;
-            this.imgGroup1.Controls.Add(this.cdList1);
-            this.imgGroup1.CustomGroupBoxColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
-            this.imgGroup1.FontTitle = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.imgGroup1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.imgGroup1.GroupImage = null;
-            this.imgGroup1.GroupTitle = "The Grouper";
-            this.imgGroup1.Location = new System.Drawing.Point(12, 120);
-            this.imgGroup1.Name = "imgGroup1";
-            this.imgGroup1.Padding = new System.Windows.Forms.Padding(20);
-            this.imgGroup1.PaintGroupBox = true;
-            this.imgGroup1.RoundCorners = 10;
-            this.imgGroup1.ShadowColor = System.Drawing.Color.DarkGray;
-            this.imgGroup1.ShadowControl = true;
-            this.imgGroup1.ShadowThickness = 3;
-            this.imgGroup1.Size = new System.Drawing.Size(231, 232);
-            this.imgGroup1.SkinFixed = true;
-            this.imgGroup1.SkinFullFixed = true;
-            this.imgGroup1.TabIndex = 4;
-            // 
-            // cdList1
-            // 
-            this.cdList1.FormattingEnabled = true;
-            this.cdList1.ItemHeight = 15;
-            this.cdList1.Location = new System.Drawing.Point(14, 35);
-            this.cdList1.Name = "cdList1";
-            this.cdList1.Size = new System.Drawing.Size(196, 184);
-            this.cdList1.Sorted = true;
-            this.cdList1.TabIndex = 3;
             // 
             // fgGrillaOT
             // 
@@ -373,6 +338,46 @@
             this.tab1.TabStripPage = null;
             this.tab1.Text = "Cierre Ordenes De Trabajo";
             // 
+            // xPanel1
+            // 
+            this.xPanel1.BackColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.xPanel1.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
+            this.xPanel1.Controls.Add(this.itemBarra2);
+            this.xPanel1.Controls.Add(this.itemBarra1);
+            this.xPanel1.Location = new System.Drawing.Point(0, 110);
+            this.xPanel1.Name = "xPanel1";
+            this.xPanel1.Size = new System.Drawing.Size(940, 96);
+            this.xPanel1.SkinFixed = true;
+            this.xPanel1.TabIndex = 3;
+            // 
+            // itemBarra1
+            // 
+            this.itemBarra1.AutoSize = true;
+            this.itemBarra1.CambiarEstado = ControlesCustom.itemBarra.Estados.Verde;
+            this.itemBarra1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.itemBarra1.Fecha = new System.DateTime(1993, 1, 29, 0, 0, 0, 0);
+            this.itemBarra1.Location = new System.Drawing.Point(0, 0);
+            this.itemBarra1.MaximumSize = new System.Drawing.Size(160, 120);
+            this.itemBarra1.MinimumSize = new System.Drawing.Size(120, 90);
+            this.itemBarra1.Name = "itemBarra1";
+            this.itemBarra1.Numero = 0;
+            this.itemBarra1.Size = new System.Drawing.Size(120, 96);
+            this.itemBarra1.TabIndex = 0;
+            // 
+            // itemBarra2
+            // 
+            this.itemBarra2.AutoSize = true;
+            this.itemBarra2.CambiarEstado = ControlesCustom.itemBarra.Estados.Verde;
+            this.itemBarra2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.itemBarra2.Fecha = new System.DateTime(1993, 1, 29, 0, 0, 0, 0);
+            this.itemBarra2.Location = new System.Drawing.Point(120, 0);
+            this.itemBarra2.MaximumSize = new System.Drawing.Size(160, 120);
+            this.itemBarra2.MinimumSize = new System.Drawing.Size(120, 90);
+            this.itemBarra2.Name = "itemBarra2";
+            this.itemBarra2.Numero = 0;
+            this.itemBarra2.Size = new System.Drawing.Size(120, 96);
+            this.itemBarra2.TabIndex = 1;
+            // 
             // CierreOT
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -391,7 +396,6 @@
             this.sbMain.ResumeLayout(false);
             this.sbMain.PerformLayout();
             this.xpnlPanel1.ResumeLayout(false);
-            this.imgGroup1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.fgGrillaOT)).EndInit();
             this.tsContainer1.ResumeLayout(false);
             this.tabStripPage1.ResumeLayout(false);
@@ -401,6 +405,8 @@
             this.tsPpanel1.ResumeLayout(false);
             this.tsBase1.ResumeLayout(false);
             this.tsBase1.PerformLayout();
+            this.xPanel1.ResumeLayout(false);
+            this.xPanel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -434,7 +440,8 @@
         private TNGS.NetControls.GlassButton gbBuscar;
         private TNGS.NetControls.CDCombo cdcMoviles;
         private TNGS.NetControls.FullGrid fgGrillaOT;
-        private TNGS.NetControls.CDList cdList1;
-        private TNGS.NetControls.ImgGroup imgGroup1;
+        private TNGS.NetControls.XPanel xPanel1;
+        private ControlesCustom.itemBarra itemBarra2;
+        private ControlesCustom.itemBarra itemBarra1;
     }
 }

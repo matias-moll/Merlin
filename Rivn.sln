@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Z - Reportes", "C:\DiscoT\R
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Z - Cierre De Ordenes De Trabajo", "Prg\Ct\Z - Cierre De Ordenes De Trabajo.csproj", "{C512D6F9-A71B-462D-A443-883963595751}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlesCustom", "ControlesCustom\ControlesCustom.csproj", "{F0C6C8AA-F128-4F5A-BD1B-2332BFEA1DE4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Z - ControlesCustom", "Prg\ControlesCustom\Z - ControlesCustom.csproj", "{F0C6C8AA-F128-4F5A-BD1B-2332BFEA1DE4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -31,6 +31,10 @@ namespace Rivn.Mv
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Estados));
             this.xpnlPanelAtras = new TNGS.NetControls.XPanel();
+            this.fullLabel4 = new TNGS.NetControls.FullLabel();
+            this.fullLabel3 = new TNGS.NetControls.FullLabel();
+            this.fullLabel2 = new TNGS.NetControls.FullLabel();
+            this.fullLabel1 = new TNGS.NetControls.FullLabel();
             this.tsContainer1 = new TNGS.NetControls.TSContainer();
             this.tabPageSwitcher1 = new RibbonStyle.TabPageSwitcher();
             this.tabStripPage1 = new RibbonStyle.TabStripPage();
@@ -58,10 +62,6 @@ namespace Rivn.Mv
             this.tePatente = new TNGS.NetControls.TextEdit();
             this.lblPatente = new TNGS.NetControls.FullLabel();
             this.ftrMoviles = new TNGS.NetControls.FullTreeView();
-            this.fullLabel1 = new TNGS.NetControls.FullLabel();
-            this.fullLabel2 = new TNGS.NetControls.FullLabel();
-            this.fullLabel3 = new TNGS.NetControls.FullLabel();
-            this.fullLabel4 = new TNGS.NetControls.FullLabel();
             this.xpnlPanelAtras.SuspendLayout();
             this.tsContainer1.SuspendLayout();
             this.tabPageSwitcher1.SuspendLayout();
@@ -97,6 +97,42 @@ namespace Rivn.Mv
             this.xpnlPanelAtras.Size = new System.Drawing.Size(1008, 651);
             this.xpnlPanelAtras.SkinFixed = true;
             this.xpnlPanelAtras.TabIndex = 0;
+            // 
+            // fullLabel4
+            // 
+            this.fullLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fullLabel4.Location = new System.Drawing.Point(773, 394);
+            this.fullLabel4.Name = "fullLabel4";
+            this.fullLabel4.Size = new System.Drawing.Size(100, 15);
+            this.fullLabel4.TabIndex = 37;
+            this.fullLabel4.Text = "Estado";
+            // 
+            // fullLabel3
+            // 
+            this.fullLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fullLabel3.Location = new System.Drawing.Point(386, 392);
+            this.fullLabel3.Name = "fullLabel3";
+            this.fullLabel3.Size = new System.Drawing.Size(100, 15);
+            this.fullLabel3.TabIndex = 36;
+            this.fullLabel3.Text = "Combustible";
+            // 
+            // fullLabel2
+            // 
+            this.fullLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fullLabel2.Location = new System.Drawing.Point(773, 142);
+            this.fullLabel2.Name = "fullLabel2";
+            this.fullLabel2.Size = new System.Drawing.Size(100, 15);
+            this.fullLabel2.TabIndex = 35;
+            this.fullLabel2.Text = "Equipamiento";
+            // 
+            // fullLabel1
+            // 
+            this.fullLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fullLabel1.Location = new System.Drawing.Point(386, 142);
+            this.fullLabel1.Name = "fullLabel1";
+            this.fullLabel1.Size = new System.Drawing.Size(100, 15);
+            this.fullLabel1.TabIndex = 34;
+            this.fullLabel1.Text = "Kilometros";
             // 
             // tsContainer1
             // 
@@ -177,6 +213,7 @@ namespace Rivn.Mv
             this.glassButton1.Size = new System.Drawing.Size(112, 55);
             this.glassButton1.TabIndex = 0;
             this.glassButton1.Text = "Cambiar Estado";
+            this.glassButton1.Click += new System.EventHandler(this.glassButton1_Click);
             // 
             // tsPanel1
             // 
@@ -442,38 +479,6 @@ namespace Rivn.Mv
             this.ftrMoviles.TabIndex = 0;
             this.ftrMoviles.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.ftrMoviles_AfterSelect);
             this.ftrMoviles.DoubleClick += new System.EventHandler(this.ftrMoviles_DoubleClick);
-            // 
-            // fullLabel1
-            // 
-            this.fullLabel1.Location = new System.Drawing.Point(277, 144);
-            this.fullLabel1.Name = "fullLabel1";
-            this.fullLabel1.Size = new System.Drawing.Size(100, 15);
-            this.fullLabel1.TabIndex = 34;
-            this.fullLabel1.Text = "Kilometros";
-            // 
-            // fullLabel2
-            // 
-            this.fullLabel2.Location = new System.Drawing.Point(650, 144);
-            this.fullLabel2.Name = "fullLabel2";
-            this.fullLabel2.Size = new System.Drawing.Size(100, 15);
-            this.fullLabel2.TabIndex = 35;
-            this.fullLabel2.Text = "Equipamiento";
-            // 
-            // fullLabel3
-            // 
-            this.fullLabel3.Location = new System.Drawing.Point(277, 394);
-            this.fullLabel3.Name = "fullLabel3";
-            this.fullLabel3.Size = new System.Drawing.Size(100, 15);
-            this.fullLabel3.TabIndex = 36;
-            this.fullLabel3.Text = "Combustible";
-            // 
-            // fullLabel4
-            // 
-            this.fullLabel4.Location = new System.Drawing.Point(650, 394);
-            this.fullLabel4.Name = "fullLabel4";
-            this.fullLabel4.Size = new System.Drawing.Size(100, 15);
-            this.fullLabel4.TabIndex = 37;
-            this.fullLabel4.Text = "Estado";
             // 
             // Estados
             // 
