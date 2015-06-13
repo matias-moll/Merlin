@@ -45,8 +45,7 @@ namespace Rivn.Bll
         /// <param name="p_smResult"></param>
         /// <returns>ListaEOrdenes De Trabajo</returns>
         public static LEOrdenesTrabajo ObtenerOTsPorPatente(string p_strPatente, ref StatMsg p_smResult)
-        {           // No hay errores aun
-            p_smResult.BllReset("OrdenesTrabajo", "ObtenerOTsPorPatente");
+        {           
             DBConn l_dbcAccess = null;
             LEOrdenesTrabajo l_LEOrdenesTrabajo = LEOrdenesTrabajo.NewEmpty();
             try
@@ -73,8 +72,6 @@ namespace Rivn.Bll
                     l_dbcAccess.EndTransaction(p_smResult);
                     l_dbcAccess.Close();
                 }
-
-                p_smResult.BllPop();
             }
             return l_LEOrdenesTrabajo;
         }
@@ -87,8 +84,6 @@ namespace Rivn.Bll
         /// <param name="p_smResult">ref StatMsg</param>
         public static void GrabarOTItems(LEOTItems p_lentOTItems, ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Moviles", "MvcoSave");
             DBConn l_dbcAccess = null;
 
             try
@@ -120,7 +115,6 @@ namespace Rivn.Bll
                     l_dbcAccess.EndTransaction(p_smResult);
                     l_dbcAccess.Close();
                 }
-                p_smResult.BllPop();
             }
         }
         #endregion
@@ -141,15 +135,9 @@ namespace Rivn.Bll
                                     ref EOrdenTrabajo p_entOrdenTrabajo,
                                     ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("OrdenesTrabajo", "Save_f");
-
             // *********
             // Agregar acá los procesos adicionales
             // *********
-
-            // Finalizamos
-            p_smResult.BllPop();
         }
 
         /// <summary>
@@ -167,15 +155,9 @@ namespace Rivn.Bll
                                        ref int p_iFxdVersion,
                                        ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("OrdenesTrabajo", "Enabled_f");
-
             // *********
             // Agregar acá los procesos adicionales
             // *********
-
-            // Finalizamos
-            p_smResult.BllPop();
         }
 
         /// <summary>
@@ -191,15 +173,9 @@ namespace Rivn.Bll
                                       int p_iFxdVersion,
                                       ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("OrdenesTrabajo", "Remove_f");
-
             // *********
             // Agregar acá los procesos adicionales
             // *********
-
-            // Finalizamos
-            p_smResult.BllPop();
         }
 
         /// <summary>
@@ -213,15 +189,9 @@ namespace Rivn.Bll
                                     EOrdenTrabajo p_entOrdenTrabajo,
                                     ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("OrdenesTrabajo", "TInt_f");
-
             // *********
             // Agregar acá las validaciones adicionales
             // *********
-
-            // Finalizamos
-            p_smResult.BllPop();
         }
 
         /// <summary>
@@ -235,15 +205,9 @@ namespace Rivn.Bll
                                         ref EOTItem p_entOTItem,
                                         ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("OrdenesTrabajo", "OtitSave_f");
-
             // *********
             // Agregar acá los procesos adicionales
             // *********
-
-            // Finalizamos
-            p_smResult.BllPop();
         }
 
         /// <summary>
@@ -265,15 +229,9 @@ namespace Rivn.Bll
                                            ref int p_iFxdVersion,
                                            ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("OrdenesTrabajo", "OtitEnabled_f");
-
             // *********
             // Agregar acá los procesos adicionales
             // *********
-
-            // Finalizamos
-            p_smResult.BllPop();
         }
 
         /// <summary>
@@ -293,15 +251,9 @@ namespace Rivn.Bll
                                           int p_iFxdVersion,
                                           ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("OrdenesTrabajo", "OtitRemove_f");
-
             // *********
             // Agregar acá los procesos adicionales
             // *********
-
-            // Finalizamos
-            p_smResult.BllPop();
         }
 
         /// <summary>
@@ -315,15 +267,9 @@ namespace Rivn.Bll
                                         EOTItem p_entOTItem,
                                         ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("OrdenesTrabajo", "OtitTInt_f");
-
             // *********
             // Agregar acá las validaciones adicionales
             // *********
-
-            // Finalizamos
-            p_smResult.BllPop();
         }
 
         #endregion

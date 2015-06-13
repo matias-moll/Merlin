@@ -40,7 +40,7 @@ namespace Rivn.Ct
             InitializeComponent();
 
             // Inicializar variables
-            m_smResult = new StatMsg("Cierre de Ordenes De Trabajo");
+            m_smResult = new StatMsg();
 
             // Fijamos el formulario de la aplicacion
             App.SetMainWindow(this, mnuMain, null, sbpMensaje, sbpConexion, sbpUsuario, sbpPercent, sbpAvance);
@@ -51,7 +51,6 @@ namespace Rivn.Ct
 
         private void LlenarCombo()
         {
-            m_smResult.UilReset("LlenarCombo");
             m_LEMoviles = Bll.Moviles.UpFull(true, ref m_smResult);
             cdcMoviles.FillFromStrLEntidad(m_LEMoviles, "mov_ecd_patente", "mov_des_des", "deleted");
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
@@ -60,7 +59,6 @@ namespace Rivn.Ct
 
         private void gbBuscar_Click(object sender, EventArgs e)
         {
-            m_smResult.UilReset("Buscar");
             m_LEOTTrabajos = Bll.OrdenesTrabajo.ObtenerOTsPorPatente(cdcMoviles.SelectedStrCode, ref m_smResult);
             if (m_LEOTTrabajos.Count == 0)
             {

@@ -14,11 +14,11 @@ namespace Rivn.Bel
     //----------------------------------------------------------------------------
     //                         TNG Software BEL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 15/11/2013 15:37
+    // Fecha                    : 13/06/2015 15:32
     // Sistema                  : Rivn
     // Clase para Administrar   : Controles con sus Reparaciones
     //----------------------------------------------------------------------------
-    // © 1996-2013 by TNG Software                                      Gndr 5.20
+    // © 1996-2015 by TNG Software                                      Gndr 5.20
     //----------------------------------------------------------------------------
 
     //****************************************************************************
@@ -141,9 +141,9 @@ namespace Rivn.Bel
         /// <summary>
         /// Construye una entidad con datos de parametro: ControlRepa
         /// </summary>
-        /// <param name="p_strCodctl">codigoControl</param>
-        /// <param name="p_iNroitem">item</param>
-        /// <param name="p_strCodrep">codigoReparacion</param>
+        /// <param name="p_strCodctl">Codigo Control</param>
+        /// <param name="p_iNroitem">Item</param>
+        /// <param name="p_strCodrep">Codigo de Reparacion</param>
         /// <returns>Entidad: ControlRepa</returns>
         public static EControlRepa NewFilled(string p_strCodctl,
                                              int p_iNroitem,
@@ -178,7 +178,7 @@ namespace Rivn.Bel
         //---------------------------------------------------------------
 
         /// <summary>
-        /// Formatea una string: codigoControl
+        /// Formatea una string: Codigo Control
         /// </summary>
         public static string FrmtCodctl(string p_strCodctl)
         {
@@ -215,7 +215,15 @@ namespace Rivn.Bel
         }
 
         /// <summary>
-        /// codigoControl
+        /// Codigo Control
+        /// </summary>
+        public static string CodctlCmp
+        {
+           get {return "ctr_cod_codctl";}
+        }
+
+        /// <summary>
+        /// Codigo Control
         /// </summary>
         public string Codctl
         {
@@ -224,7 +232,15 @@ namespace Rivn.Bel
         }
 
         /// <summary>
-        /// item
+        /// Item
+        /// </summary>
+        public static string NroitemCmp
+        {
+           get {return "ctr_nro_nroitem";}
+        }
+
+        /// <summary>
+        /// Item
         /// </summary>
         public int Nroitem
         {
@@ -233,7 +249,15 @@ namespace Rivn.Bel
         }
 
         /// <summary>
-        /// codigoReparacion
+        /// Codigo de Reparacion
+        /// </summary>
+        public static string CodrepCmp
+        {
+           get {return "ctr_cd6_codrep";}
+        }
+
+        /// <summary>
+        /// Codigo de Reparacion
         /// </summary>
         public string Codrep
         {
@@ -293,7 +317,7 @@ namespace Rivn.Bel
     /// <summary>
     /// Clase que representa la Lista-Entidad: ControlesRepa
     /// </summary>
-    public sealed partial class LEControlesRepa : ListaEntidades
+    public sealed partial class LEControlesRepa : ListaEntidades, IEnumerable<EControlRepa>
     {
         #region Constructores
         /// <summary>
@@ -401,7 +425,7 @@ namespace Rivn.Bel
         /// Devuelve el enumerador de la lista-entidades: ControlesRepa
         /// </summary>
         /// <returns>Enumerador de las entidades en la lista</returns>
-        public new IEnumerator GetEnumerator() 
+        public new IEnumerator<EControlRepa> GetEnumerator() 
         {
             EControlRepa l_entTemp= null;
 
@@ -439,6 +463,16 @@ namespace Rivn.Bel
                 l_lentRet.Add(l_entItem);
 
             return l_lentRet;
+        }
+
+        /// <summary>
+        /// Devuelve la lista entidad como una List<ControlesRepa>
+        /// </summary>
+        /// <returns>Lista de entidades</returns>
+        public List<EControlRepa> ToList()
+        {
+            // Usamos el metodo GetAsLET
+            return (List<EControlRepa>) GetAsLET();
         }
         #endregion
 
@@ -601,6 +635,8 @@ namespace Rivn.Bel
         public EControl(string p_strXML) :
             this(p_strXML, false)
         {
+            // Creamos las listas-entidad hijas vacias
+            m_lentControlesRepa= LEControlesRepa.NewEmpty();
         }
 
         /// <summary>
@@ -608,7 +644,8 @@ namespace Rivn.Bel
         /// </summary>
         /// <param name="p_strXML">Datos en XML</param>
         public EControl(string p_strXML,
-                        bool p_bEsNueva)
+                        bool p_bEsNueva,
+                        bool p_bInitChilds= false)
         {
             // Fijamos la condicion de entidad nueva
             base.m_bNew= p_bEsNueva;
@@ -640,6 +677,11 @@ namespace Rivn.Bel
             // una entidad a partir de los datos
             l_dtTemp.Rows.Add(l_drTemp);
             SetInternalData(l_dtTemp, l_dtTemp.Rows[0]);
+
+            if (!p_bInitChilds) return;
+
+            // Creamos las listas-entidad hijas vacias
+            m_lentControlesRepa= LEControlesRepa.NewEmpty();
         }
 
         /// <summary>
@@ -690,7 +732,7 @@ namespace Rivn.Bel
         /// Construye una entidad con datos de parametro: Control
         /// </summary>
         /// <param name="p_strCod">Codigo</param>
-        /// <param name="p_strDes">Descripcion</param>
+        /// <param name="p_strDes">Control</param>
         /// <param name="p_strCrit">Critico</param>
         /// <returns>Entidad: Control</returns>
         public static EControl NewFilled(string p_strCod,
@@ -763,6 +805,14 @@ namespace Rivn.Bel
         /// <summary>
         /// Codigo
         /// </summary>
+        public static string CodCmp
+        {
+           get {return "ctl_cod_cod";}
+        }
+
+        /// <summary>
+        /// Codigo
+        /// </summary>
         public string Cod
         {
             get {return (string) InternalData["ctl_cod_cod"];}
@@ -770,7 +820,15 @@ namespace Rivn.Bel
         }
 
         /// <summary>
-        /// Descripcion
+        /// Control
+        /// </summary>
+        public static string DesCmp
+        {
+           get {return "ctl_des_des";}
+        }
+
+        /// <summary>
+        /// Control
         /// </summary>
         public string Des
         {
@@ -779,6 +837,14 @@ namespace Rivn.Bel
                 if (value.Trim().Length > 30) value= value.Trim().Substring(0,30);
                 InternalData["ctl_des_des"]= value.Trim().ToUpper();
             }
+        }
+
+        /// <summary>
+        /// Critico
+        /// </summary>
+        public static string CritCmp
+        {
+           get {return "ctl_cd1_crit";}
         }
 
         /// <summary>
@@ -841,7 +907,7 @@ namespace Rivn.Bel
     /// <summary>
     /// Clase que representa la Lista-Entidad: Controles
     /// </summary>
-    public sealed partial class LEControles : ListaEntidades
+    public sealed partial class LEControles : ListaEntidades, IEnumerable<EControl>
     {
         #region Constructores
         /// <summary>
@@ -945,7 +1011,7 @@ namespace Rivn.Bel
         /// Devuelve el enumerador de la lista-entidades: Controles
         /// </summary>
         /// <returns>Enumerador de las entidades en la lista</returns>
-        public new IEnumerator GetEnumerator() 
+        public new IEnumerator<EControl> GetEnumerator() 
         {
             EControl l_entTemp= null;
 
@@ -983,6 +1049,16 @@ namespace Rivn.Bel
                 l_lentRet.Add(l_entItem);
 
             return l_lentRet;
+        }
+
+        /// <summary>
+        /// Devuelve la lista entidad como una List<Controles>
+        /// </summary>
+        /// <returns>Lista de entidades</returns>
+        public List<EControl> ToList()
+        {
+            // Usamos el metodo GetAsLET
+            return (List<EControl>) GetAsLET();
         }
         #endregion
 

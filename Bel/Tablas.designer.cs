@@ -14,11 +14,11 @@ namespace Rivn.Bel
     //----------------------------------------------------------------------------
     //                         TNG Software BEL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 21/11/2013 15:12
+    // Fecha                    : 13/06/2015 15:33
     // Sistema                  : Rivn
     // Clase para Administrar   : Tablas de Rivn.
     //----------------------------------------------------------------------------
-    // © 1996-2013 by TNG Software                                      Gndr 5.20
+    // © 1996-2015 by TNG Software                                      Gndr 5.20
     //----------------------------------------------------------------------------
 
     //****************************************************************************
@@ -192,6 +192,14 @@ namespace Rivn.Bel
         /// <summary>
         /// Cod Categoria
         /// </summary>
+        public static string CodCmp
+        {
+           get {return "cat_rcd_cod";}
+        }
+
+        /// <summary>
+        /// Cod Categoria
+        /// </summary>
         public string Cod
         {
             get {return (string) InternalData["cat_rcd_cod"];}
@@ -199,6 +207,14 @@ namespace Rivn.Bel
                 if (value.Trim().Length > 2) value= value.Trim().Substring(0,2);
                 InternalData["cat_rcd_cod"]= value.Trim().ToUpper();
             }
+        }
+
+        /// <summary>
+        /// Categoria
+        /// </summary>
+        public static string DesCmp
+        {
+           get {return "cat_des_des";}
         }
 
         /// <summary>
@@ -254,7 +270,7 @@ namespace Rivn.Bel
     /// <summary>
     /// Clase que representa la Lista-Entidad: Categorias
     /// </summary>
-    public sealed partial class LECategorias : ListaEntidades
+    public sealed partial class LECategorias : ListaEntidades, IEnumerable<ECategoria>
     {
         #region Constructores
         /// <summary>
@@ -358,7 +374,7 @@ namespace Rivn.Bel
         /// Devuelve el enumerador de la lista-entidades: Categorias
         /// </summary>
         /// <returns>Enumerador de las entidades en la lista</returns>
-        public new IEnumerator GetEnumerator() 
+        public new IEnumerator<ECategoria> GetEnumerator() 
         {
             ECategoria l_entTemp= null;
 
@@ -396,6 +412,16 @@ namespace Rivn.Bel
                 l_lentRet.Add(l_entItem);
 
             return l_lentRet;
+        }
+
+        /// <summary>
+        /// Devuelve la lista entidad como una List<Categorias>
+        /// </summary>
+        /// <returns>Lista de entidades</returns>
+        public List<ECategoria> ToList()
+        {
+            // Usamos el metodo GetAsLET
+            return (List<ECategoria>) GetAsLET();
         }
         #endregion
 
@@ -710,10 +736,26 @@ namespace Rivn.Bel
         /// <summary>
         /// Codigo Equipamiento
         /// </summary>
+        public static string CodCmp
+        {
+           get {return "eqi_cod_cod";}
+        }
+
+        /// <summary>
+        /// Codigo Equipamiento
+        /// </summary>
         public string Cod
         {
             get {return (string) InternalData["eqi_cod_cod"];}
             set {InternalData["eqi_cod_cod"]= EEquipamento.FrmtCod(value);}
+        }
+
+        /// <summary>
+        /// Equipamiento
+        /// </summary>
+        public static string DesCmp
+        {
+           get {return "eqi_des_des";}
         }
 
         /// <summary>
@@ -726,6 +768,14 @@ namespace Rivn.Bel
                 if (value.Trim().Length > 30) value= value.Trim().Substring(0,30);
                 InternalData["eqi_des_des"]= value.Trim().ToUpper();
             }
+        }
+
+        /// <summary>
+        /// Importe
+        /// </summary>
+        public static string ValorCmp
+        {
+           get {return "eqi_imp_valor";}
         }
 
         /// <summary>
@@ -779,7 +829,7 @@ namespace Rivn.Bel
     /// <summary>
     /// Clase que representa la Lista-Entidad: Equipamientos
     /// </summary>
-    public sealed partial class LEEquipamientos : ListaEntidades
+    public sealed partial class LEEquipamientos : ListaEntidades, IEnumerable<EEquipamento>
     {
         #region Constructores
         /// <summary>
@@ -883,7 +933,7 @@ namespace Rivn.Bel
         /// Devuelve el enumerador de la lista-entidades: Equipamientos
         /// </summary>
         /// <returns>Enumerador de las entidades en la lista</returns>
-        public new IEnumerator GetEnumerator() 
+        public new IEnumerator<EEquipamento> GetEnumerator() 
         {
             EEquipamento l_entTemp= null;
 
@@ -921,6 +971,16 @@ namespace Rivn.Bel
                 l_lentRet.Add(l_entItem);
 
             return l_lentRet;
+        }
+
+        /// <summary>
+        /// Devuelve la lista entidad como una List<Equipamientos>
+        /// </summary>
+        /// <returns>Lista de entidades</returns>
+        public List<EEquipamento> ToList()
+        {
+            // Usamos el metodo GetAsLET
+            return (List<EEquipamento>) GetAsLET();
         }
         #endregion
 
@@ -1247,10 +1307,26 @@ namespace Rivn.Bel
         /// <summary>
         /// Codigo Estacion
         /// </summary>
+        public static string CodCmp
+        {
+           get {return "ets_rcd_cod";}
+        }
+
+        /// <summary>
+        /// Codigo Estacion
+        /// </summary>
         public string Cod
         {
             get {return (string) InternalData["ets_rcd_cod"];}
             set {InternalData["ets_rcd_cod"]= EEstacion.FrmtCod(value);}
+        }
+
+        /// <summary>
+        /// Estacion
+        /// </summary>
+        public static string DesCmp
+        {
+           get {return "ets_des_des";}
         }
 
         /// <summary>
@@ -1268,6 +1344,14 @@ namespace Rivn.Bel
         /// <summary>
         /// Domicilio
         /// </summary>
+        public static string DomicilioCmp
+        {
+           get {return "ets_ede_domicilio";}
+        }
+
+        /// <summary>
+        /// Domicilio
+        /// </summary>
         public string Domicilio
         {
             get {return ((string) InternalData["ets_ede_domicilio"]).Trim();}
@@ -1280,6 +1364,14 @@ namespace Rivn.Bel
         /// <summary>
         /// Contacto
         /// </summary>
+        public static string ContactoCmp
+        {
+           get {return "ets_des_contacto";}
+        }
+
+        /// <summary>
+        /// Contacto
+        /// </summary>
         public string Contacto
         {
             get {return (string) InternalData["ets_des_contacto"];}
@@ -1287,6 +1379,14 @@ namespace Rivn.Bel
                 if (value.Trim().Length > 30) value= value.Trim().Substring(0,30);
                 InternalData["ets_des_contacto"]= value.Trim().PadLeft(30);
             }
+        }
+
+        /// <summary>
+        /// Telefono
+        /// </summary>
+        public static string TelefonoCmp
+        {
+           get {return "ets_ete_telefono";}
         }
 
         /// <summary>
@@ -1345,7 +1445,7 @@ namespace Rivn.Bel
     /// <summary>
     /// Clase que representa la Lista-Entidad: Estaciones
     /// </summary>
-    public sealed partial class LEEstaciones : ListaEntidades
+    public sealed partial class LEEstaciones : ListaEntidades, IEnumerable<EEstacion>
     {
         #region Constructores
         /// <summary>
@@ -1449,7 +1549,7 @@ namespace Rivn.Bel
         /// Devuelve el enumerador de la lista-entidades: Estaciones
         /// </summary>
         /// <returns>Enumerador de las entidades en la lista</returns>
-        public new IEnumerator GetEnumerator() 
+        public new IEnumerator<EEstacion> GetEnumerator() 
         {
             EEstacion l_entTemp= null;
 
@@ -1487,6 +1587,16 @@ namespace Rivn.Bel
                 l_lentRet.Add(l_entItem);
 
             return l_lentRet;
+        }
+
+        /// <summary>
+        /// Devuelve la lista entidad como una List<Estaciones>
+        /// </summary>
+        /// <returns>Lista de entidades</returns>
+        public List<EEstacion> ToList()
+        {
+            // Usamos el metodo GetAsLET
+            return (List<EEstacion>) GetAsLET();
         }
         #endregion
 
@@ -1807,10 +1917,26 @@ namespace Rivn.Bel
         /// <summary>
         /// Codigo Estado
         /// </summary>
+        public static string CodCmp
+        {
+           get {return "est_rcd_cod";}
+        }
+
+        /// <summary>
+        /// Codigo Estado
+        /// </summary>
         public string Cod
         {
             get {return (string) InternalData["est_rcd_cod"];}
             set {InternalData["est_rcd_cod"]= EEstado.FrmtCod(value);}
+        }
+
+        /// <summary>
+        /// Estado
+        /// </summary>
+        public static string DesCmp
+        {
+           get {return "est_des_des";}
         }
 
         /// <summary>
@@ -1828,10 +1954,26 @@ namespace Rivn.Bel
         /// <summary>
         /// Texto de Contingencia
         /// </summary>
+        public static string TxtcontingenciaCmp
+        {
+           get {return "est_txt_txtcontingencia";}
+        }
+
+        /// <summary>
+        /// Texto de Contingencia
+        /// </summary>
         public string Txtcontingencia
         {
             get {return (string) InternalData["est_txt_txtcontingencia"];}
             set {InternalData["est_txt_txtcontingencia"]= value;}
+        }
+
+        /// <summary>
+        /// Operativo
+        /// </summary>
+        public static string OperativoCmp
+        {
+           get {return "est_cd1_operativo";}
         }
 
         /// <summary>
@@ -1886,7 +2028,7 @@ namespace Rivn.Bel
     /// <summary>
     /// Clase que representa la Lista-Entidad: Estados
     /// </summary>
-    public sealed partial class LEEstados : ListaEntidades
+    public sealed partial class LEEstados : ListaEntidades, IEnumerable<EEstado>
     {
         #region Constructores
         /// <summary>
@@ -1990,7 +2132,7 @@ namespace Rivn.Bel
         /// Devuelve el enumerador de la lista-entidades: Estados
         /// </summary>
         /// <returns>Enumerador de las entidades en la lista</returns>
-        public new IEnumerator GetEnumerator() 
+        public new IEnumerator<EEstado> GetEnumerator() 
         {
             EEstado l_entTemp= null;
 
@@ -2028,6 +2170,16 @@ namespace Rivn.Bel
                 l_lentRet.Add(l_entItem);
 
             return l_lentRet;
+        }
+
+        /// <summary>
+        /// Devuelve la lista entidad como una List<Estados>
+        /// </summary>
+        /// <returns>Lista de entidades</returns>
+        public List<EEstado> ToList()
+        {
+            // Usamos el metodo GetAsLET
+            return (List<EEstado>) GetAsLET();
         }
         #endregion
 
@@ -2336,10 +2488,26 @@ namespace Rivn.Bel
         /// <summary>
         /// Codigo Marca
         /// </summary>
+        public static string CodigoCmp
+        {
+           get {return "mrc_rcd_codigo";}
+        }
+
+        /// <summary>
+        /// Codigo Marca
+        /// </summary>
         public string Codigo
         {
             get {return (string) InternalData["mrc_rcd_codigo"];}
             set {InternalData["mrc_rcd_codigo"]= EMarca.FrmtCodigo(value);}
+        }
+
+        /// <summary>
+        /// Marca
+        /// </summary>
+        public static string DescripcionCmp
+        {
+           get {return "mrc_des_descripcion";}
         }
 
         /// <summary>
@@ -2395,7 +2563,7 @@ namespace Rivn.Bel
     /// <summary>
     /// Clase que representa la Lista-Entidad: Marcas
     /// </summary>
-    public sealed partial class LEMarcas : ListaEntidades
+    public sealed partial class LEMarcas : ListaEntidades, IEnumerable<EMarca>
     {
         #region Constructores
         /// <summary>
@@ -2499,7 +2667,7 @@ namespace Rivn.Bel
         /// Devuelve el enumerador de la lista-entidades: Marcas
         /// </summary>
         /// <returns>Enumerador de las entidades en la lista</returns>
-        public new IEnumerator GetEnumerator() 
+        public new IEnumerator<EMarca> GetEnumerator() 
         {
             EMarca l_entTemp= null;
 
@@ -2537,6 +2705,16 @@ namespace Rivn.Bel
                 l_lentRet.Add(l_entItem);
 
             return l_lentRet;
+        }
+
+        /// <summary>
+        /// Devuelve la lista entidad como una List<Marcas>
+        /// </summary>
+        /// <returns>Lista de entidades</returns>
+        public List<EMarca> ToList()
+        {
+            // Usamos el metodo GetAsLET
+            return (List<EMarca>) GetAsLET();
         }
         #endregion
 
@@ -2862,10 +3040,26 @@ namespace Rivn.Bel
         /// <summary>
         /// Codigo Modelo
         /// </summary>
+        public static string CodCmp
+        {
+           get {return "mds_rcd_cod";}
+        }
+
+        /// <summary>
+        /// Codigo Modelo
+        /// </summary>
         public string Cod
         {
             get {return (string) InternalData["mds_rcd_cod"];}
             set {InternalData["mds_rcd_cod"]= EModelo.FrmtCod(value);}
+        }
+
+        /// <summary>
+        /// Modelo
+        /// </summary>
+        public static string DesCmp
+        {
+           get {return "mds_des_des";}
         }
 
         /// <summary>
@@ -2878,6 +3072,14 @@ namespace Rivn.Bel
                 if (value.Trim().Length > 30) value= value.Trim().Substring(0,30);
                 InternalData["mds_des_des"]= value.Trim().ToUpper();
             }
+        }
+
+        /// <summary>
+        /// Codigo de la marca
+        /// </summary>
+        public static string CodmarcaCmp
+        {
+           get {return "mds_rcd_codmarca";}
         }
 
         /// <summary>
@@ -2931,7 +3133,7 @@ namespace Rivn.Bel
     /// <summary>
     /// Clase que representa la Lista-Entidad: Modelos
     /// </summary>
-    public sealed partial class LEModelos : ListaEntidades
+    public sealed partial class LEModelos : ListaEntidades, IEnumerable<EModelo>
     {
         #region Constructores
         /// <summary>
@@ -3035,7 +3237,7 @@ namespace Rivn.Bel
         /// Devuelve el enumerador de la lista-entidades: Modelos
         /// </summary>
         /// <returns>Enumerador de las entidades en la lista</returns>
-        public new IEnumerator GetEnumerator() 
+        public new IEnumerator<EModelo> GetEnumerator() 
         {
             EModelo l_entTemp= null;
 
@@ -3073,6 +3275,16 @@ namespace Rivn.Bel
                 l_lentRet.Add(l_entItem);
 
             return l_lentRet;
+        }
+
+        /// <summary>
+        /// Devuelve la lista entidad como una List<Modelos>
+        /// </summary>
+        /// <returns>Lista de entidades</returns>
+        public List<EModelo> ToList()
+        {
+            // Usamos el metodo GetAsLET
+            return (List<EModelo>) GetAsLET();
         }
         #endregion
 
@@ -3378,6 +3590,14 @@ namespace Rivn.Bel
         /// <summary>
         /// Codigo Reparacion
         /// </summary>
+        public static string CodCmp
+        {
+           get {return "rep_cd6_cod";}
+        }
+
+        /// <summary>
+        /// Codigo Reparacion
+        /// </summary>
         public string Cod
         {
             get {return (string) InternalData["rep_cd6_cod"];}
@@ -3385,6 +3605,14 @@ namespace Rivn.Bel
                 if (value.Trim().Length > 6) value= value.Trim().Substring(0,6);
                 InternalData["rep_cd6_cod"]= value.Trim().ToUpper();
             }
+        }
+
+        /// <summary>
+        /// Reparacion
+        /// </summary>
+        public static string DesCmp
+        {
+           get {return "rep_xde_des";}
         }
 
         /// <summary>
@@ -3402,10 +3630,26 @@ namespace Rivn.Bel
         /// <summary>
         /// Categoria
         /// </summary>
+        public static string CodcatCmp
+        {
+           get {return "rep_rcd_codcat";}
+        }
+
+        /// <summary>
+        /// Categoria
+        /// </summary>
         public string Codcat
         {
             get {return (string) InternalData["rep_rcd_codcat"];}
             set {InternalData["rep_rcd_codcat"]= value;}
+        }
+
+        /// <summary>
+        /// Se Solicita Detalle
+        /// </summary>
+        public static string SolicitadetalleCmp
+        {
+           get {return "rep_cd1_solicitadetalle";}
         }
 
         /// <summary>
@@ -3460,7 +3704,7 @@ namespace Rivn.Bel
     /// <summary>
     /// Clase que representa la Lista-Entidad: Reparaciones
     /// </summary>
-    public sealed partial class LEReparaciones : ListaEntidades
+    public sealed partial class LEReparaciones : ListaEntidades, IEnumerable<EReparacion>
     {
         #region Constructores
         /// <summary>
@@ -3564,7 +3808,7 @@ namespace Rivn.Bel
         /// Devuelve el enumerador de la lista-entidades: Reparaciones
         /// </summary>
         /// <returns>Enumerador de las entidades en la lista</returns>
-        public new IEnumerator GetEnumerator() 
+        public new IEnumerator<EReparacion> GetEnumerator() 
         {
             EReparacion l_entTemp= null;
 
@@ -3602,6 +3846,16 @@ namespace Rivn.Bel
                 l_lentRet.Add(l_entItem);
 
             return l_lentRet;
+        }
+
+        /// <summary>
+        /// Devuelve la lista entidad como una List<Reparaciones>
+        /// </summary>
+        /// <returns>Lista de entidades</returns>
+        public List<EReparacion> ToList()
+        {
+            // Usamos el metodo GetAsLET
+            return (List<EReparacion>) GetAsLET();
         }
         #endregion
 

@@ -18,11 +18,11 @@ namespace Rivn.Tg
     //----------------------------------------------------------------------------
     //                         TNG Software PRG Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 14/11/2013 15:21
+    // Fecha                    : 13/06/2015 15:38
     // Sistema                  : Rivn
     // Programa                 : Tablas Generales
     //----------------------------------------------------------------------------
-    // © 1996-2013 by TNG Software                                      Gndr 5.20
+    // © 1996-2015 by TNG Software                                      Gndr 5.20
     //----------------------------------------------------------------------------
 
     //****************************************************************************
@@ -44,7 +44,7 @@ namespace Rivn.Tg
         static void Main() 
         {
             // Creamos el objeto de reporte de errores
-            StatMsg l_smResult= new StatMsg("Arranque");
+            StatMsg l_smResult= new StatMsg();
 
             try {
                 // Verificamos si ya esta ejecutándose
@@ -73,8 +73,6 @@ namespace Rivn.Tg
 #endif
 
                 // Inicializamos nuestra clase App
-                l_smResult.UilReset("Main");
-
                 App.Init("Rivn", "Tg",
                          FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location),
                          l_rmApp,
@@ -88,8 +86,7 @@ namespace Rivn.Tg
             }
             catch (Exception l_expData) {
                 // Se produjo un error no capturado
-                l_smResult.BllReset("Arranque", "Run");
-                l_smResult.BllError(l_expData.ToString());
+                l_smResult.BllError(l_expData);
             }
 
             if (l_smResult.NOk) {
@@ -102,9 +99,6 @@ namespace Rivn.Tg
             }
 
             try {
-                // Registramos la persistencia de datos desde Shr
-                PrgRuts.RegisterPersistency();
-
                 // Creamos la ventana MDI de la aplicacion
                 MainFrame l_frmMain= new MainFrame(MFSizes.MF1024x768, 0, false, true);
 
@@ -126,8 +120,7 @@ namespace Rivn.Tg
             }
             catch (Exception l_expData) {
                 // Se produjo un error no capturado
-                l_smResult.BllReset("Arranque", "Run");
-                l_smResult.BllError(l_expData.ToString());
+                l_smResult.BllError(l_expData);
             }
 
             MsgRuts.AnalizeError(null, l_smResult);

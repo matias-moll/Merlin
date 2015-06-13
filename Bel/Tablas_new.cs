@@ -13,11 +13,11 @@ namespace Rivn.Bel
     //----------------------------------------------------------------------------
     //                         TNG Software BEL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 31/10/2013 17:14
+    // Fecha                    : 13/06/2015 15:33
     // Sistema                  : Rivn
     // Clase para Administrar   : Tablas de Rivn.
     //----------------------------------------------------------------------------
-    // © 1996-2013 by TNG Software                                      Gndr 5.20
+    // © 1996-2015 by TNG Software                                      Gndr 5.20
     //----------------------------------------------------------------------------
 
     //****************************************************************************
@@ -54,8 +54,8 @@ namespace Rivn.Bel
         /// <summary>
         /// Permite agregar datos a una entidad generada desde un XML
         /// </summary>
-        private static void fNewFromXML(ref DataRow p_drTemp,
-                                        XmlNode p_xndData)
+        private void fNewFromXML(ref DataRow p_drTemp,
+                                 XmlNode p_xndData)
         {
         }
 
@@ -160,8 +160,8 @@ namespace Rivn.Bel
         /// <summary>
         /// Permite agregar datos a una entidad generada desde un XML
         /// </summary>
-        private static void fNewFromXML(ref DataRow p_drTemp,
-                                        XmlNode p_xndData)
+        private void fNewFromXML(ref DataRow p_drTemp,
+                                 XmlNode p_xndData)
         {
         }
 
@@ -176,12 +176,12 @@ namespace Rivn.Bel
     }
     #endregion
 
-    #region Lista-Entidad: Equipamiento
+    #region Lista-Entidad: Equipamientos
     /// <summary>
-    /// Clase que representa la Lista-Entidad: Equipamiento
+    /// Clase que representa la Lista-Entidad: Equipamientos
     ///   - Elementos no producidos por el Generador
     /// </summary>
-    public sealed partial class LEEquipamiento : ListaEntidades
+    public sealed partial class LEEquipamientos : ListaEntidades
     {
         #region Metodos publicos de la clase
         //---------------------------------------------------------------
@@ -206,12 +206,12 @@ namespace Rivn.Bel
     }
     #endregion
 
-    #region Lista-Entidad-Tipada: Equipamiento
+    #region Lista-Entidad-Tipada: Equipamientos
     /// <summary>
-    /// Clase que representa la Lista-Entidad-Tipada: Equipamiento
+    /// Clase que representa la Lista-Entidad-Tipada: Equipamientos
     ///   - Elementos no producidos por el Generador
     /// </summary>
-    public sealed partial class LETEquipamiento : LET<EEquipamento>
+    public sealed partial class LETEquipamientos : LET<EEquipamento>
     {
         #region Metodos publicos de la clase
         //---------------------------------------------------------------
@@ -266,8 +266,8 @@ namespace Rivn.Bel
         /// <summary>
         /// Permite agregar datos a una entidad generada desde un XML
         /// </summary>
-        private static void fNewFromXML(ref DataRow p_drTemp,
-                                        XmlNode p_xndData)
+        private void fNewFromXML(ref DataRow p_drTemp,
+                                 XmlNode p_xndData)
         {
         }
 
@@ -372,8 +372,8 @@ namespace Rivn.Bel
         /// <summary>
         /// Permite agregar datos a una entidad generada desde un XML
         /// </summary>
-        private static void fNewFromXML(ref DataRow p_drTemp,
-                                        XmlNode p_xndData)
+        private void fNewFromXML(ref DataRow p_drTemp,
+                                 XmlNode p_xndData)
         {
         }
 
@@ -478,8 +478,8 @@ namespace Rivn.Bel
         /// <summary>
         /// Permite agregar datos a una entidad generada desde un XML
         /// </summary>
-        private static void fNewFromXML(ref DataRow p_drTemp,
-                                        XmlNode p_xndData)
+        private void fNewFromXML(ref DataRow p_drTemp,
+                                 XmlNode p_xndData)
         {
         }
 
@@ -584,8 +584,8 @@ namespace Rivn.Bel
         /// <summary>
         /// Permite agregar datos a una entidad generada desde un XML
         /// </summary>
-        private static void fNewFromXML(ref DataRow p_drTemp,
-                                        XmlNode p_xndData)
+        private void fNewFromXML(ref DataRow p_drTemp,
+                                 XmlNode p_xndData)
         {
         }
 
@@ -690,8 +690,8 @@ namespace Rivn.Bel
         /// <summary>
         /// Permite agregar datos a una entidad generada desde un XML
         /// </summary>
-        private static void fNewFromXML(ref DataRow p_drTemp,
-                                        XmlNode p_xndData)
+        private void fNewFromXML(ref DataRow p_drTemp,
+                                 XmlNode p_xndData)
         {
         }
 

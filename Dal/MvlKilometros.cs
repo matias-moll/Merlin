@@ -10,12 +10,12 @@ namespace Rivn.Dal
     //----------------------------------------------------------------------------
     //                         TNG Software DAL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 15/11/2013 15:37
+    // Fecha                    : 13/06/2015 14:44
     // Sistema                  : Rivn
     // Clase para Administrar   : Kilometros de los moviles
     // Basada en la Tabla       : MvlKilometros
     //----------------------------------------------------------------------------
-    // © 1996-2013 by TNG Software                                      Gndr 5.20
+    // © 1996-2015 by TNG Software                                      Gndr 5.20
     //----------------------------------------------------------------------------
 
     //****************************************************************************
@@ -51,9 +51,6 @@ namespace Rivn.Dal
                              string p_strTabla,
                              ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.DalReset("MvlKilometros", "Up");
-
             try {
                 // Recuperamos todos los registros
                 return DBRuts.Exec_DS(p_dbcAccess,
@@ -65,12 +62,8 @@ namespace Rivn.Dal
             }
             catch (Exception l_expData) {
                 // Error en el select de la tabla
-                p_smResult.DalError(l_expData.ToString());
+                p_smResult.DalError(l_expData);
                 return -1;
-            }
-            finally {
-                // Resteamos el StatMsg
-                p_smResult.DalExit();
             }
         }
 
@@ -92,9 +85,6 @@ namespace Rivn.Dal
                                       string p_strTabla,
                                       ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.DalReset("MvlKilometros", "ChkVersion");
-
             try {
                 // Verificamos el número de versión
                 DBRuts.Exec_DS(p_dbcAccess,
@@ -108,11 +98,7 @@ namespace Rivn.Dal
             }
             catch (Exception l_expData) {
                 // Error en el conteo
-                p_smResult.DalError(l_expData.ToString());
-            }
-            finally {
-                // Resteamos el StatMsg
-                p_smResult.DalExit();
+                p_smResult.DalError(l_expData);
             }
         }
 
@@ -134,9 +120,6 @@ namespace Rivn.Dal
                                  string p_strTabla,
                                  ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.DalReset("MvlKilometros", "Search");
-
             try {
                 // Recuperamos el registro de la clave
                 return DBRuts.Exec_DS(p_dbcAccess,
@@ -150,12 +133,8 @@ namespace Rivn.Dal
             }
             catch (Exception l_expData) {
                 // Error en el search del registro
-                p_smResult.DalError(l_expData.ToString());
+                p_smResult.DalError(l_expData);
                 return -1;
-            }
-            finally {
-                // Resteamos el StatMsg
-                p_smResult.DalExit();
             }
         }
 
@@ -175,9 +154,6 @@ namespace Rivn.Dal
                                   string p_strTabla,
                                   ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.DalReset("MvlKilometros", "FSearch");
-
             try {
                 // Recuperamos los registro de la clave foranea
                 return DBRuts.Exec_DS(p_dbcAccess,
@@ -190,12 +166,8 @@ namespace Rivn.Dal
             }
             catch (Exception l_expData) {
                 // Error en el search de los registros
-                p_smResult.DalError(l_expData.ToString());
+                p_smResult.DalError(l_expData);
                 return -1;
-            }
-            finally {
-                // Resteamos el StatMsg
-                p_smResult.DalExit();
             }
         }
         #endregion
@@ -216,9 +188,6 @@ namespace Rivn.Dal
                                  int p_iKm,
                                  ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.DalReset("MvlKilometros", "Insert");
-
             try {
                 // Insertamos el registro
                 return DBRuts.Exec(p_dbcAccess,
@@ -233,12 +202,8 @@ namespace Rivn.Dal
             }
             catch (Exception l_expData) {
                 // Error en el insert del registro
-                p_smResult.DalError(l_expData.ToString());
+                p_smResult.DalError(l_expData);
                 return -1;
-            }
-            finally {
-                // Resteamos el StatMsg
-                p_smResult.DalExit();
             }
         }
 
@@ -256,9 +221,6 @@ namespace Rivn.Dal
                                  int p_iKm,
                                  ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.DalReset("MvlKilometros", "Update");
-
             try {
                 // Modificamos el registro
                 return DBRuts.Exec(p_dbcAccess,
@@ -273,12 +235,8 @@ namespace Rivn.Dal
             }
             catch (Exception l_expData) {
                 // Error en el update del registro
-                p_smResult.DalError(l_expData.ToString());
+                p_smResult.DalError(l_expData);
                 return -1;
-            }
-            finally {
-                // Resteamos el StatMsg
-                p_smResult.DalExit();
             }
         }
 
@@ -294,9 +252,6 @@ namespace Rivn.Dal
                                  DateTime p_dtFecha,
                                  ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.DalReset("MvlKilometros", "Delete");
-
             try {
                 // Borramos el registro
                 return DBRuts.Exec(p_dbcAccess,
@@ -310,12 +265,8 @@ namespace Rivn.Dal
             }
             catch (Exception l_expData) {
                 // Error en el update del registro
-                p_smResult.DalError(l_expData.ToString());
+                p_smResult.DalError(l_expData);
                 return -1;
-            }
-            finally {
-                // Resteamos el StatMsg
-                p_smResult.DalExit();
             }
         }
 
@@ -331,9 +282,6 @@ namespace Rivn.Dal
                                   DateTime p_dtInstante,
                                   ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.DalReset("MvlKilometros", "FDelete");
-
             try {
                 // Borramos los registro de la clave foranea
                 return DBRuts.Exec(p_dbcAccess,
@@ -347,12 +295,8 @@ namespace Rivn.Dal
             }
             catch (Exception l_expData) {
                 // Error en el update de los registros
-                p_smResult.DalError(l_expData.ToString());
+                p_smResult.DalError(l_expData);
                 return -1;
-            }
-            finally {
-                // Resteamos el StatMsg
-                p_smResult.DalExit();
             }
         }
 
@@ -368,9 +312,6 @@ namespace Rivn.Dal
                                  DateTime p_dtFecha,
                                  ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.DalReset("MvlKilometros", "Recall");
-
             try {
                 // Borramos el registro
                 return DBRuts.Exec(p_dbcAccess,
@@ -384,12 +325,8 @@ namespace Rivn.Dal
             }
             catch (Exception l_expData) {
                 // Error en el update del registro
-                p_smResult.DalError(l_expData.ToString());
+                p_smResult.DalError(l_expData);
                 return -1;
-            }
-            finally {
-                // Resteamos el StatMsg
-                p_smResult.DalExit();
             }
         }
 
@@ -405,9 +342,6 @@ namespace Rivn.Dal
                                   DateTime p_dtInstante,
                                   ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.DalReset("MvlKilometros", "FRecall");
-
             try {
                 // Borramos los registro de la clave foranea
                 return DBRuts.Exec(p_dbcAccess,
@@ -421,12 +355,8 @@ namespace Rivn.Dal
             }
             catch (Exception l_expData) {
                 // Error en el update de los registros
-                p_smResult.DalError(l_expData.ToString());
+                p_smResult.DalError(l_expData);
                 return -1;
-            }
-            finally {
-                // Resteamos el StatMsg
-                p_smResult.DalExit();
             }
         }
 
@@ -442,9 +372,6 @@ namespace Rivn.Dal
                                DateTime p_dtFecha,
                                ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.DalReset("MvlKilometros", "Drop");
-
             try {
                 // Borramos el registro
                 return DBRuts.Exec(p_dbcAccess,
@@ -458,12 +385,8 @@ namespace Rivn.Dal
             }
             catch (Exception l_expData) {
                 // Error en el delete del registro
-                p_smResult.DalError(l_expData.ToString());
+                p_smResult.DalError(l_expData);
                 return -1;
-            }
-            finally {
-                // Resteamos el StatMsg
-                p_smResult.DalExit();
             }
         }
 
@@ -477,9 +400,6 @@ namespace Rivn.Dal
                                 string p_strPatente,
                                 ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.DalReset("MvlKilometros", "FDrop");
-
             try {
                 // Borramos los registro de la clave foranea
                 return DBRuts.Exec(p_dbcAccess,
@@ -492,12 +412,8 @@ namespace Rivn.Dal
             }
             catch (Exception l_expData) {
                 // Error en el delete de los registros
-                p_smResult.DalError(l_expData.ToString());
+                p_smResult.DalError(l_expData);
                 return -1;
-            }
-            finally {
-                // Resteamos el StatMsg
-                p_smResult.DalExit();
             }
         }
 
@@ -509,9 +425,6 @@ namespace Rivn.Dal
         public static int Pack(DBConn p_dbcAccess,
                                ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.DalReset("MvlKilometros", "Pack");
-
             try {
                 // Borramos el registro
                 return DBRuts.Exec(p_dbcAccess,
@@ -523,12 +436,8 @@ namespace Rivn.Dal
             }
             catch (Exception l_expData) {
                 // Error en el delete del registro
-                p_smResult.DalError(l_expData.ToString());
+                p_smResult.DalError(l_expData);
                 return -1;
-            }
-            finally {
-                // Resteamos el StatMsg
-                p_smResult.DalExit();
             }
         }
 
@@ -542,9 +451,6 @@ namespace Rivn.Dal
                                 string p_strPatente,
                                 ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.DalReset("MvlKilometros", "FPack");
-
             try {
                 // Borramos los registro de la clave foranea
                 return DBRuts.Exec(p_dbcAccess,
@@ -557,12 +463,8 @@ namespace Rivn.Dal
             }
             catch (Exception l_expData) {
                 // Error en el delete de los registros
-                p_smResult.DalError(l_expData.ToString());
+                p_smResult.DalError(l_expData);
                 return -1;
-            }
-            finally {
-                // Resteamos el StatMsg
-                p_smResult.DalExit();
             }
         }
         #endregion
@@ -581,9 +483,6 @@ namespace Rivn.Dal
                                            string p_strTabla,
                                            ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.DalReset("MvlKilometros", "RemoveAllPatente");
-
             try {
                 return DBRuts.Exec_DS(p_dbcAccess,
                                       "TNGS_Rivn..MVLKILOMETROS_REMOVEALLPATENTE",
@@ -594,12 +493,8 @@ namespace Rivn.Dal
             }
             catch (Exception l_expData) {
                 // Error en el método fijo
-                p_smResult.DalError(l_expData.ToString());
+                p_smResult.DalError(l_expData);
                 return -1;
-            }
-            finally {
-                // Resteamos el StatMsg
-                p_smResult.DalExit();
             }
         }
 
@@ -617,9 +512,6 @@ namespace Rivn.Dal
                                            string p_strTabla,
                                            ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.DalReset("MvlKilometros", "getLastFiveMvlKm");
-
             try {
                 return DBRuts.Exec_DS(p_dbcAccess,
                                       "TNGS_Rivn..MVLKILOMETROS_GETLASTFIVEMVLKM",
@@ -631,49 +523,8 @@ namespace Rivn.Dal
             }
             catch (Exception l_expData) {
                 // Error en el método fijo
-                p_smResult.DalError(l_expData.ToString());
+                p_smResult.DalError(l_expData);
                 return -1;
-            }
-            finally {
-                // Resteamos el StatMsg
-                p_smResult.DalExit();
-            }
-        }
-
-        /// <summary>
-        /// Método Fijo: getLastFiveMvlKmG
-        /// </summary>
-        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name= "p_strPatente">patente de un movil</param>
-        /// <param name="p_dsResult">DataSet donde devolver el registro</param>
-        /// <param name="p_strTabla">Nombre de la tabla a llenar</param>
-        /// <param name="p_smResult">Estado final de la operacion</param>
-        public static int getLastFiveMvlKmG(DBConn p_dbcAccess,
-                                            string p_strPatente,
-                                            ref DataSet p_dsResult,
-                                            string p_strTabla,
-                                            ref StatMsg p_smResult)
-        {
-            // No hay errores aun
-            p_smResult.DalReset("MvlKilometros", "getLastFiveMvlKmG");
-
-            try {
-                return DBRuts.Exec_DS(p_dbcAccess,
-                                      "TNGS_Rivn..MVLKILOMETROS_GETLASTFIVEMVLKMG",
-                                      new DbParameter[] {
-                                          p_dbcAccess.MakeParam("@patente", p_strPatente),
-                                          p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
-                                      },
-                                      ref p_dsResult, p_strTabla);
-            }
-            catch (Exception l_expData) {
-                // Error en el método fijo
-                p_smResult.DalError(l_expData.ToString());
-                return -1;
-            }
-            finally {
-                // Resteamos el StatMsg
-                p_smResult.DalExit();
             }
         }
         #endregion
@@ -688,9 +539,6 @@ namespace Rivn.Dal
         public static void MakeGridCaptions(ref DataTable p_dtResult,
                                             ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.DalReset("MvlKilometros", "MakeGridCaption");
-
             try {
                 // Quitamos los captions existentes
                 DBRuts.ClearDTCaptions(ref p_dtResult);
@@ -702,11 +550,7 @@ namespace Rivn.Dal
             }
             catch (Exception l_expData) {
                 // Error en el armado de la grilla
-                p_smResult.DalError(l_expData.ToString());
-            }
-            finally {
-                // Resteamos el StatMsg
-                p_smResult.DalExit();
+                p_smResult.DalError(l_expData);
             }
         }
 
@@ -720,13 +564,9 @@ namespace Rivn.Dal
                                             string p_strTabla,
                                             ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.DalReset("MvlKilometros", "MakeGridCaption");
-
             // Llamamos al método base
             DataTable l_dtTemp= p_dsResult.Tables[p_strTabla];
             MakeGridCaptions(ref l_dtTemp, ref p_smResult);
-            p_smResult.DalExit();
         }
 
         /// <summary>
@@ -737,13 +577,9 @@ namespace Rivn.Dal
         public static void MakeGridCaptions(ref ListaEntidades p_lentResult,
                                             ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.DalReset("MvlKilometros", "MakeGridCaption");
-
             // Llamamos al método base
             DataTable l_dtTemp= p_lentResult.InternalData.Table;
             MakeGridCaptions(ref l_dtTemp, ref p_smResult);
-            p_smResult.DalExit();
         }
         #endregion
     }

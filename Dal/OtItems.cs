@@ -10,12 +10,12 @@ namespace Rivn.Dal
     //----------------------------------------------------------------------------
     //                         TNG Software DAL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 28/11/2013 14:42
+    // Fecha                    : 13/06/2015 14:44
     // Sistema                  : Rivn
     // Clase para Administrar   : OrdenTrabajo Items
     // Basada en la Tabla       : OtItems
     //----------------------------------------------------------------------------
-    // © 1996-2013 by TNG Software                                      Gndr 5.20
+    // © 1996-2015 by TNG Software                                      Gndr 5.20
     //----------------------------------------------------------------------------
 
     //****************************************************************************
@@ -51,9 +51,6 @@ namespace Rivn.Dal
                              string p_strTabla,
                              ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.DalReset("OtItems", "Up");
-
             try {
                 // Recuperamos todos los registros
                 return DBRuts.Exec_DS(p_dbcAccess,
@@ -65,12 +62,8 @@ namespace Rivn.Dal
             }
             catch (Exception l_expData) {
                 // Error en el select de la tabla
-                p_smResult.DalError(l_expData.ToString());
+                p_smResult.DalError(l_expData);
                 return -1;
-            }
-            finally {
-                // Resteamos el StatMsg
-                p_smResult.DalExit();
             }
         }
 
@@ -94,9 +87,6 @@ namespace Rivn.Dal
                                       string p_strTabla,
                                       ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.DalReset("OtItems", "ChkVersion");
-
             try {
                 // Verificamos el número de versión
                 DBRuts.Exec_DS(p_dbcAccess,
@@ -111,11 +101,7 @@ namespace Rivn.Dal
             }
             catch (Exception l_expData) {
                 // Error en el conteo
-                p_smResult.DalError(l_expData.ToString());
-            }
-            finally {
-                // Resteamos el StatMsg
-                p_smResult.DalExit();
+                p_smResult.DalError(l_expData);
             }
         }
 
@@ -139,9 +125,6 @@ namespace Rivn.Dal
                                  string p_strTabla,
                                  ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.DalReset("OtItems", "Search");
-
             try {
                 // Recuperamos el registro de la clave
                 return DBRuts.Exec_DS(p_dbcAccess,
@@ -156,12 +139,8 @@ namespace Rivn.Dal
             }
             catch (Exception l_expData) {
                 // Error en el search del registro
-                p_smResult.DalError(l_expData.ToString());
+                p_smResult.DalError(l_expData);
                 return -1;
-            }
-            finally {
-                // Resteamos el StatMsg
-                p_smResult.DalExit();
             }
         }
 
@@ -181,9 +160,6 @@ namespace Rivn.Dal
                                   string p_strTabla,
                                   ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.DalReset("OtItems", "FSearch");
-
             try {
                 // Recuperamos los registro de la clave foranea
                 return DBRuts.Exec_DS(p_dbcAccess,
@@ -196,12 +172,8 @@ namespace Rivn.Dal
             }
             catch (Exception l_expData) {
                 // Error en el search de los registros
-                p_smResult.DalError(l_expData.ToString());
+                p_smResult.DalError(l_expData);
                 return -1;
-            }
-            finally {
-                // Resteamos el StatMsg
-                p_smResult.DalExit();
             }
         }
         #endregion
@@ -232,9 +204,6 @@ namespace Rivn.Dal
                                  string p_strComentario,
                                  ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.DalReset("OtItems", "Insert");
-
             try {
                 // Insertamos el registro
                 return DBRuts.Exec(p_dbcAccess,
@@ -254,12 +223,8 @@ namespace Rivn.Dal
             }
             catch (Exception l_expData) {
                 // Error en el insert del registro
-                p_smResult.DalError(l_expData.ToString());
+                p_smResult.DalError(l_expData);
                 return -1;
-            }
-            finally {
-                // Resteamos el StatMsg
-                p_smResult.DalExit();
             }
         }
 
@@ -287,9 +252,6 @@ namespace Rivn.Dal
                                  string p_strComentario,
                                  ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.DalReset("OtItems", "Update");
-
             try {
                 // Modificamos el registro
                 return DBRuts.Exec(p_dbcAccess,
@@ -309,12 +271,8 @@ namespace Rivn.Dal
             }
             catch (Exception l_expData) {
                 // Error en el update del registro
-                p_smResult.DalError(l_expData.ToString());
+                p_smResult.DalError(l_expData);
                 return -1;
-            }
-            finally {
-                // Resteamos el StatMsg
-                p_smResult.DalExit();
             }
         }
 
@@ -332,9 +290,6 @@ namespace Rivn.Dal
                                  int p_iNroitem,
                                  ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.DalReset("OtItems", "Delete");
-
             try {
                 // Borramos el registro
                 return DBRuts.Exec(p_dbcAccess,
@@ -349,12 +304,8 @@ namespace Rivn.Dal
             }
             catch (Exception l_expData) {
                 // Error en el update del registro
-                p_smResult.DalError(l_expData.ToString());
+                p_smResult.DalError(l_expData);
                 return -1;
-            }
-            finally {
-                // Resteamos el StatMsg
-                p_smResult.DalExit();
             }
         }
 
@@ -370,9 +321,6 @@ namespace Rivn.Dal
                                   DateTime p_dtInstante,
                                   ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.DalReset("OtItems", "FDelete");
-
             try {
                 // Borramos los registro de la clave foranea
                 return DBRuts.Exec(p_dbcAccess,
@@ -386,12 +334,8 @@ namespace Rivn.Dal
             }
             catch (Exception l_expData) {
                 // Error en el update de los registros
-                p_smResult.DalError(l_expData.ToString());
+                p_smResult.DalError(l_expData);
                 return -1;
-            }
-            finally {
-                // Resteamos el StatMsg
-                p_smResult.DalExit();
             }
         }
 
@@ -409,9 +353,6 @@ namespace Rivn.Dal
                                  int p_iNroitem,
                                  ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.DalReset("OtItems", "Recall");
-
             try {
                 // Borramos el registro
                 return DBRuts.Exec(p_dbcAccess,
@@ -426,12 +367,8 @@ namespace Rivn.Dal
             }
             catch (Exception l_expData) {
                 // Error en el update del registro
-                p_smResult.DalError(l_expData.ToString());
+                p_smResult.DalError(l_expData);
                 return -1;
-            }
-            finally {
-                // Resteamos el StatMsg
-                p_smResult.DalExit();
             }
         }
 
@@ -447,9 +384,6 @@ namespace Rivn.Dal
                                   DateTime p_dtInstante,
                                   ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.DalReset("OtItems", "FRecall");
-
             try {
                 // Borramos los registro de la clave foranea
                 return DBRuts.Exec(p_dbcAccess,
@@ -463,12 +397,8 @@ namespace Rivn.Dal
             }
             catch (Exception l_expData) {
                 // Error en el update de los registros
-                p_smResult.DalError(l_expData.ToString());
+                p_smResult.DalError(l_expData);
                 return -1;
-            }
-            finally {
-                // Resteamos el StatMsg
-                p_smResult.DalExit();
             }
         }
 
@@ -486,9 +416,6 @@ namespace Rivn.Dal
                                int p_iNroitem,
                                ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.DalReset("OtItems", "Drop");
-
             try {
                 // Borramos el registro
                 return DBRuts.Exec(p_dbcAccess,
@@ -503,12 +430,8 @@ namespace Rivn.Dal
             }
             catch (Exception l_expData) {
                 // Error en el delete del registro
-                p_smResult.DalError(l_expData.ToString());
+                p_smResult.DalError(l_expData);
                 return -1;
-            }
-            finally {
-                // Resteamos el StatMsg
-                p_smResult.DalExit();
             }
         }
 
@@ -522,9 +445,6 @@ namespace Rivn.Dal
                                 int p_iNroot,
                                 ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.DalReset("OtItems", "FDrop");
-
             try {
                 // Borramos los registro de la clave foranea
                 return DBRuts.Exec(p_dbcAccess,
@@ -537,12 +457,8 @@ namespace Rivn.Dal
             }
             catch (Exception l_expData) {
                 // Error en el delete de los registros
-                p_smResult.DalError(l_expData.ToString());
+                p_smResult.DalError(l_expData);
                 return -1;
-            }
-            finally {
-                // Resteamos el StatMsg
-                p_smResult.DalExit();
             }
         }
 
@@ -554,9 +470,6 @@ namespace Rivn.Dal
         public static int Pack(DBConn p_dbcAccess,
                                ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.DalReset("OtItems", "Pack");
-
             try {
                 // Borramos el registro
                 return DBRuts.Exec(p_dbcAccess,
@@ -568,12 +481,8 @@ namespace Rivn.Dal
             }
             catch (Exception l_expData) {
                 // Error en el delete del registro
-                p_smResult.DalError(l_expData.ToString());
+                p_smResult.DalError(l_expData);
                 return -1;
-            }
-            finally {
-                // Resteamos el StatMsg
-                p_smResult.DalExit();
             }
         }
 
@@ -587,9 +496,6 @@ namespace Rivn.Dal
                                 int p_iNroot,
                                 ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.DalReset("OtItems", "FPack");
-
             try {
                 // Borramos los registro de la clave foranea
                 return DBRuts.Exec(p_dbcAccess,
@@ -602,12 +508,8 @@ namespace Rivn.Dal
             }
             catch (Exception l_expData) {
                 // Error en el delete de los registros
-                p_smResult.DalError(l_expData.ToString());
+                p_smResult.DalError(l_expData);
                 return -1;
-            }
-            finally {
-                // Resteamos el StatMsg
-                p_smResult.DalExit();
             }
         }
         #endregion
@@ -625,9 +527,6 @@ namespace Rivn.Dal
         public static void MakeGridCaptions(ref DataTable p_dtResult,
                                             ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.DalReset("OtItems", "MakeGridCaption");
-
             try {
                 // Quitamos los captions existentes
                 DBRuts.ClearDTCaptions(ref p_dtResult);
@@ -643,11 +542,7 @@ namespace Rivn.Dal
             }
             catch (Exception l_expData) {
                 // Error en el armado de la grilla
-                p_smResult.DalError(l_expData.ToString());
-            }
-            finally {
-                // Resteamos el StatMsg
-                p_smResult.DalExit();
+                p_smResult.DalError(l_expData);
             }
         }
 
@@ -661,13 +556,9 @@ namespace Rivn.Dal
                                             string p_strTabla,
                                             ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.DalReset("OtItems", "MakeGridCaption");
-
             // Llamamos al método base
             DataTable l_dtTemp= p_dsResult.Tables[p_strTabla];
             MakeGridCaptions(ref l_dtTemp, ref p_smResult);
-            p_smResult.DalExit();
         }
 
         /// <summary>
@@ -678,13 +569,9 @@ namespace Rivn.Dal
         public static void MakeGridCaptions(ref ListaEntidades p_lentResult,
                                             ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.DalReset("OtItems", "MakeGridCaption");
-
             // Llamamos al método base
             DataTable l_dtTemp= p_lentResult.InternalData.Table;
             MakeGridCaptions(ref l_dtTemp, ref p_smResult);
-            p_smResult.DalExit();
         }
         #endregion
     }

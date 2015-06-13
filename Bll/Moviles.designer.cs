@@ -16,11 +16,11 @@ namespace Rivn.Bll
     //----------------------------------------------------------------------------
     //                         TNG Software BLL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 15/11/2013 15:37
+    // Fecha                    : 13/06/2015 15:32
     // Sistema                  : Rivn
     // Clase para Administrar   : Moviles y Tablas Hijas
     //----------------------------------------------------------------------------
-    // © 1996-2013 by TNG Software                                      Gndr 5.20
+    // © 1996-2015 by TNG Software                                      Gndr 5.20
     //----------------------------------------------------------------------------
 
     //****************************************************************************
@@ -59,7 +59,6 @@ namespace Rivn.Bll
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
-            p_smResult.BllReset("Moviles", "MvcoUpFull");
 
             try {
                 // Obtenemos una conexion
@@ -70,13 +69,12 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion UpFull
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
                 return null;
             }
             finally {
                 // Si pude abrir la conexion -> la cierro
                 if (l_dbcAccess != null) l_dbcAccess.Close();
-                p_smResult.BllPop();
             }
         }
 
@@ -95,7 +93,6 @@ namespace Rivn.Bll
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
-            p_smResult.BllReset("Moviles", "MvcoGet");
 
             try {
                 // Obtenemos una conexion
@@ -110,13 +107,12 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion Get
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
                 return null;
             }
             finally {
                 // Si pude abrir la conexion -> la cierro
                 if (l_dbcAccess != null) l_dbcAccess.Close();
-                p_smResult.BllPop();
             }
         }
 
@@ -134,7 +130,6 @@ namespace Rivn.Bll
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
-            p_smResult.BllReset("Moviles", "MvcoFGet");
 
             try {
                 // Obtenemos una conexion
@@ -148,13 +143,12 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion FGet
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
                 return null;
             }
             finally {
                 // Si pude abrir la conexion -> la cierro
                 if (l_dbcAccess != null) l_dbcAccess.Close();
-                p_smResult.BllPop();
             }
         }
         #endregion
@@ -170,7 +164,6 @@ namespace Rivn.Bll
                                     ref StatMsg p_smResult)
         {
             // No hay errores aun
-            p_smResult.BllReset("Moviles", "MvcoSave");
             DBConn l_dbcAccess= null;
 
             try {
@@ -183,7 +176,7 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion Save
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
             }
             finally {
                 // Si pude abrir la conexion
@@ -192,7 +185,6 @@ namespace Rivn.Bll
                     l_dbcAccess.EndTransaction(p_smResult);
                     l_dbcAccess.Close();
                 }
-                p_smResult.BllPop();
             }
         }
 
@@ -211,7 +203,6 @@ namespace Rivn.Bll
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
-            p_smResult.BllReset("Moviles", "MvcoEnabled");
 
             try {
                 // Obtenemos una conexion
@@ -267,7 +258,7 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion Enabled
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
             }
             finally {
                 // Si pude abrir la conexion
@@ -276,7 +267,6 @@ namespace Rivn.Bll
                     l_dbcAccess.EndTransaction(p_smResult);
                     l_dbcAccess.Close();
                 }
-                p_smResult.BllPop();
             }
         }
 
@@ -294,7 +284,6 @@ namespace Rivn.Bll
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
-            p_smResult.BllReset("Moviles", "MvcoRemove");
 
             try {
                 // Obtenemos una conexion
@@ -318,7 +307,7 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion Remove
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
             }
             finally {
                 // Si pude abrir la conexion
@@ -327,7 +316,6 @@ namespace Rivn.Bll
                     l_dbcAccess.EndTransaction(p_smResult);
                     l_dbcAccess.Close();
                 }
-                p_smResult.BllPop();
             }
         }
 
@@ -339,8 +327,6 @@ namespace Rivn.Bll
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
-            p_smResult.BllReset("Moviles", "MvcoPurge");
-
             try {
                 // Obtenemos una conexion
                 l_dbcAccess= DBRuts.GetConection(Connections.Dat);
@@ -352,7 +338,7 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion Enabled
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
             }
             finally {
                 // Si pude abrir la conexion
@@ -361,7 +347,6 @@ namespace Rivn.Bll
                     l_dbcAccess.EndTransaction(p_smResult);
                     l_dbcAccess.Close();
                 }
-                p_smResult.BllPop();
             }
         }
         #endregion
@@ -385,9 +370,6 @@ namespace Rivn.Bll
                                       EMovilCombus p_entMovilCombus,
                                       ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Moviles", "MvcoTInt");
-
             // ********
             // Validaciones de los campos sin conexion
             // ********
@@ -449,9 +431,6 @@ namespace Rivn.Bll
             // Llamamos a la funcion fija del usuario
             MvcoTInt_f(p_dbcAccess, p_entMovilCombus, ref p_smResult);
             if (p_smResult.NOk) return;
-
-            // Finalizamos
-            p_smResult.BllPop();
         }
 
         /// <summary>
@@ -469,7 +448,6 @@ namespace Rivn.Bll
                                       ref StatMsg p_smResult)
         {
             // No hay errores aun
-            p_smResult.BllReset("Moviles", "MvcoVVer");
             DataSet l_dsTemp= new DataSet();
 
             // Verificamos el número de versión
@@ -488,7 +466,6 @@ namespace Rivn.Bll
                 if ((int) l_dsTemp.Tables["Temporal"].Rows[0]["cantidad"] == 1) {
                     // La versión coincide
                     l_dsTemp.Dispose();
-                    p_smResult.BllPop();
                     return;
                 }
             }
@@ -504,14 +481,12 @@ namespace Rivn.Bll
 
                 // Grabamos los datos del error
                 l_swErrorFile.WriteLine("Instante    : {0:dd/MM/yyyy HH:mm:ss}", DateTime.Now);
-                l_swErrorFile.WriteLine("Uil         : {0}", p_smResult.Uil);
-                l_swErrorFile.WriteLine("Bll         : {0}", p_smResult.Bll);
-                l_swErrorFile.WriteLine("Dal         : {0}", p_smResult.Dal);
+                l_swErrorFile.WriteLine("Metodo      : {0}", p_smResult.Method);
                 l_swErrorFile.WriteLine("Message     : No coincide el numero de version");
             }
             catch (Exception l_expData) {
                 // Error en el acceso al archivo.
-                string l_strLinea= l_expData.ToString();
+                string l_strLinea= l_expData.Message;
             }
             finally {
                 // Si llegamos a abrir el archivo -> lo cerramos
@@ -542,7 +517,6 @@ namespace Rivn.Bll
                                       ref StatMsg p_smResult)
         {
             // No hay errores aun
-            p_smResult.BllReset("Moviles", "MvcoVKey");
             DataSet l_dsTemp= new DataSet();
 
             Dal.MvlCombustible.Search(p_dbcAccess,
@@ -569,7 +543,6 @@ namespace Rivn.Bll
             finally {
                 // Terminamos
                 l_dsTemp.Dispose();
-                p_smResult.BllPop();
             }
         }
         #endregion
@@ -587,9 +560,6 @@ namespace Rivn.Bll
                                                  bool p_bOnlyActive,
                                                  ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Moviles", "MvcoUpfl");
-
             try {
                 // Pedimos los registros de la tabla: MvlCombustible
                 DataSet l_dsTemp= new DataSet();
@@ -610,12 +580,8 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion Upfl
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
                 return null;
-            }
-            finally {
-                // Terminamos
-                p_smResult.BllPop();
             }
         }
 
@@ -634,9 +600,6 @@ namespace Rivn.Bll
                                               bool p_bOnlyActive,
                                               ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Moviles", "MvcoSrch");
-
             try {
                 // Pedimos el registro de la tabla: MvlCombustible
                 DataSet l_dsTemp= new DataSet();
@@ -660,12 +623,8 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion Srch
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
                 return null;
-            }
-            finally {
-                // Terminamos
-                p_smResult.BllPop();
             }
         }
 
@@ -683,7 +642,6 @@ namespace Rivn.Bll
                                                  ref StatMsg p_smResult)
         {
             // No hay errores aun
-            p_smResult.BllReset("Moviles", "MvcoFSch");
             DataSet l_dsTemp= new DataSet();
 
             try {
@@ -705,12 +663,8 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion FSch
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
                 return null;
-            }
-            finally {
-                // Terminamos
-                p_smResult.BllPop();
             }
         }
         #endregion
@@ -727,9 +681,6 @@ namespace Rivn.Bll
                                       EMovilCombus p_entMovilCombus,
                                       ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Moviles", "MvcoSave");
-
             try {
                 // Procesamos codigo fijo
                 MvcoSave_f(p_dbcAccess, ref p_entMovilCombus, ref p_smResult);
@@ -776,11 +727,7 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion SSav
-                p_smResult.BllError(l_expData.ToString());
-            }
-            finally {
-                // Terminamos
-                p_smResult.BllPop();
+                p_smResult.BllError(l_expData);
             }
         }
 
@@ -794,9 +741,6 @@ namespace Rivn.Bll
                                       EMovilCombus p_entMovilCombus,
                                       ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Moviles", "MvcoInsr");
-
             try {
                 // Validamos la integridad de la entidad
                 MvcoTInt(p_dbcAccess, p_entMovilCombus, ref p_smResult);
@@ -810,11 +754,10 @@ namespace Rivn.Bll
                                           p_entMovilCombus.Importe,
                                           p_entMovilCombus.Codestacion,
                                           ref p_smResult);
-                p_smResult.BllPop();
             }
             catch (Exception l_expData) {
                 // Error en la operacion Insr
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
             }
         }
 
@@ -828,9 +771,6 @@ namespace Rivn.Bll
                                       EMovilCombus p_entMovilCombus,
                                       ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Moviles", "MvcoUpdt");
-
             try {
                 // Validamos la integridad de la entidad
                 MvcoTInt(p_dbcAccess, p_entMovilCombus, ref p_smResult);
@@ -844,11 +784,10 @@ namespace Rivn.Bll
                                           p_entMovilCombus.Importe,
                                           p_entMovilCombus.Codestacion,
                                           ref p_smResult);
-                p_smResult.BllPop();
             }
             catch (Exception l_expData) {
                 // Error en la operacion Updt
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
             }
         }
 
@@ -866,9 +805,6 @@ namespace Rivn.Bll
                                       int p_iFxdVersion,
                                       ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Moviles", "MvcoDrop");
-
             try {
                 // Verificamos la clave a borrar
                 MvcoVKey(p_dbcAccess,
@@ -900,11 +836,7 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion Remove
-                p_smResult.BllError(l_expData.ToString());
-            }
-            finally {
-                // Terminamos
-                p_smResult.BllPop();
+                p_smResult.BllError(l_expData);
             }
         }
 
@@ -916,18 +848,14 @@ namespace Rivn.Bll
         internal static void MvcoPack(DBConn p_dbcAccess,
                                       ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Moviles", "MvcoPack");
-
             try {
                 // Borramos los borrados lógicamente
                 Dal.MvlCombustible.Pack(p_dbcAccess,
                                         ref p_smResult);
-                p_smResult.BllPop();
             }
             catch (Exception l_expData) {
                 // Error en la operacion Updt
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
             }
         }
 
@@ -944,9 +872,6 @@ namespace Rivn.Bll
                                       LEMovilesCombus p_lentMovilesCombus,
                                       ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Moviles", "MvcoSSav");
-
             try {
                 // Deshabilitamos todas las entidades existentes
                 Dal.MvlCombustible.FDrop(p_dbcAccess,
@@ -988,62 +913,15 @@ namespace Rivn.Bll
                         if (p_smResult.NOk) return;
                     }
                 }
-
-                p_smResult.BllPop();
             }
             catch (Exception l_expData) {
                 // Error en la operacion SSav
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
             }
         }
         #endregion
 
         #region Metodos para métodos DAL definidos por el usuario
-
-        /// <summary>
-        /// Ejecuta el SP definido por el usuario: getLastFiveMvlCombuG
-        /// </summary>
-        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name= p_strPatente>patente de un movil</param>
-        /// <param name="p_smResult">Estado final de la operacion</param>
-        /// <returns>ListaEntidad con los datos solicitados</returns>
-        internal static LEMovilesCombus MvcogetLastFiveMvlCombuG(DBConn p_dbcAccess,
-                                                                 string p_strPatente,
-                                                                 ref StatMsg p_smResult)
-        {
-            // No hay errores aun
-            p_smResult.BllReset("Moviles", "MvcogetLastFiveMvlCombuG");
-
-            try {
-                // Llamamos al metodo definido por el usuario
-                DataSet l_dsTemp= new DataSet();
-
-                Dal.MvlCombustible.getLastFiveMvlCombuG(p_dbcAccess,
-                                                        p_strPatente,
-                                                        ref l_dsTemp,
-                                                        "Temporal",
-                                                        ref p_smResult);
-                if (p_smResult.NOk) return null;
-
-                // Captionamos el resultado
-                Dal.MvlCombustible.MakeGridCaptions(ref l_dsTemp, "Temporal", ref p_smResult);
-                if (p_smResult.NOk) return null;
-
-                // Creamos la ListaEntidad y la devolvemos
-                LEMovilesCombus l_lentRet= new LEMovilesCombus(l_dsTemp.Tables["Temporal"]);
-                l_dsTemp.Dispose();
-                return l_lentRet;
-            }
-            catch (Exception l_expData) {
-                // Error en la operacion
-                p_smResult.BllError(l_expData.ToString());
-                return null;
-            }
-            finally {
-                // Terminamos
-                p_smResult.BllPop();
-            }
-        }
 
         /// <summary>
         /// Ejecuta el SP definido por el usuario: getLastFiveMvlCombus
@@ -1056,9 +934,6 @@ namespace Rivn.Bll
                                                                 string p_strPatente,
                                                                 ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Moviles", "MvcogetLastFiveMvlCombus");
-
             try {
                 // Llamamos al metodo definido por el usuario
                 DataSet l_dsTemp= new DataSet();
@@ -1080,12 +955,11 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
                 return null;
             }
             finally {
                 // Terminamos
-                p_smResult.BllPop();
             }
         }
         #endregion
@@ -1114,7 +988,6 @@ namespace Rivn.Bll
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
-            p_smResult.BllReset("Moviles", "MveqUpFull");
 
             try {
                 // Obtenemos una conexion
@@ -1125,13 +998,12 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion UpFull
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
                 return null;
             }
             finally {
                 // Si pude abrir la conexion -> la cierro
                 if (l_dbcAccess != null) l_dbcAccess.Close();
-                p_smResult.BllPop();
             }
         }
 
@@ -1150,7 +1022,6 @@ namespace Rivn.Bll
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
-            p_smResult.BllReset("Moviles", "MveqGet");
 
             try {
                 // Obtenemos una conexion
@@ -1165,13 +1036,12 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion Get
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
                 return null;
             }
             finally {
                 // Si pude abrir la conexion -> la cierro
                 if (l_dbcAccess != null) l_dbcAccess.Close();
-                p_smResult.BllPop();
             }
         }
 
@@ -1189,7 +1059,6 @@ namespace Rivn.Bll
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
-            p_smResult.BllReset("Moviles", "MveqFGet");
 
             try {
                 // Obtenemos una conexion
@@ -1203,13 +1072,12 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion FGet
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
                 return null;
             }
             finally {
                 // Si pude abrir la conexion -> la cierro
                 if (l_dbcAccess != null) l_dbcAccess.Close();
-                p_smResult.BllPop();
             }
         }
         #endregion
@@ -1225,7 +1093,6 @@ namespace Rivn.Bll
                                     ref StatMsg p_smResult)
         {
             // No hay errores aun
-            p_smResult.BllReset("Moviles", "MveqSave");
             DBConn l_dbcAccess= null;
 
             try {
@@ -1238,7 +1105,7 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion Save
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
             }
             finally {
                 // Si pude abrir la conexion
@@ -1247,7 +1114,6 @@ namespace Rivn.Bll
                     l_dbcAccess.EndTransaction(p_smResult);
                     l_dbcAccess.Close();
                 }
-                p_smResult.BllPop();
             }
         }
 
@@ -1266,7 +1132,6 @@ namespace Rivn.Bll
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
-            p_smResult.BllReset("Moviles", "MveqEnabled");
 
             try {
                 // Obtenemos una conexion
@@ -1322,7 +1187,7 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion Enabled
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
             }
             finally {
                 // Si pude abrir la conexion
@@ -1331,7 +1196,6 @@ namespace Rivn.Bll
                     l_dbcAccess.EndTransaction(p_smResult);
                     l_dbcAccess.Close();
                 }
-                p_smResult.BllPop();
             }
         }
 
@@ -1349,7 +1213,6 @@ namespace Rivn.Bll
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
-            p_smResult.BllReset("Moviles", "MveqRemove");
 
             try {
                 // Obtenemos una conexion
@@ -1373,7 +1236,7 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion Remove
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
             }
             finally {
                 // Si pude abrir la conexion
@@ -1382,7 +1245,6 @@ namespace Rivn.Bll
                     l_dbcAccess.EndTransaction(p_smResult);
                     l_dbcAccess.Close();
                 }
-                p_smResult.BllPop();
             }
         }
 
@@ -1394,8 +1256,6 @@ namespace Rivn.Bll
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
-            p_smResult.BllReset("Moviles", "MveqPurge");
-
             try {
                 // Obtenemos una conexion
                 l_dbcAccess= DBRuts.GetConection(Connections.Dat);
@@ -1407,7 +1267,7 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion Enabled
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
             }
             finally {
                 // Si pude abrir la conexion
@@ -1416,7 +1276,6 @@ namespace Rivn.Bll
                     l_dbcAccess.EndTransaction(p_smResult);
                     l_dbcAccess.Close();
                 }
-                p_smResult.BllPop();
             }
         }
         #endregion
@@ -1440,9 +1299,6 @@ namespace Rivn.Bll
                                       EMovilEquip p_entMovilEquip,
                                       ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Moviles", "MveqTInt");
-
             // ********
             // Validaciones de los campos sin conexion
             // ********
@@ -1495,9 +1351,6 @@ namespace Rivn.Bll
             // Llamamos a la funcion fija del usuario
             MveqTInt_f(p_dbcAccess, p_entMovilEquip, ref p_smResult);
             if (p_smResult.NOk) return;
-
-            // Finalizamos
-            p_smResult.BllPop();
         }
 
         /// <summary>
@@ -1515,7 +1368,6 @@ namespace Rivn.Bll
                                       ref StatMsg p_smResult)
         {
             // No hay errores aun
-            p_smResult.BllReset("Moviles", "MveqVVer");
             DataSet l_dsTemp= new DataSet();
 
             // Verificamos el número de versión
@@ -1534,7 +1386,6 @@ namespace Rivn.Bll
                 if ((int) l_dsTemp.Tables["Temporal"].Rows[0]["cantidad"] == 1) {
                     // La versión coincide
                     l_dsTemp.Dispose();
-                    p_smResult.BllPop();
                     return;
                 }
             }
@@ -1550,14 +1401,12 @@ namespace Rivn.Bll
 
                 // Grabamos los datos del error
                 l_swErrorFile.WriteLine("Instante    : {0:dd/MM/yyyy HH:mm:ss}", DateTime.Now);
-                l_swErrorFile.WriteLine("Uil         : {0}", p_smResult.Uil);
-                l_swErrorFile.WriteLine("Bll         : {0}", p_smResult.Bll);
-                l_swErrorFile.WriteLine("Dal         : {0}", p_smResult.Dal);
+                l_swErrorFile.WriteLine("Metodo      : {0}", p_smResult.Method);
                 l_swErrorFile.WriteLine("Message     : No coincide el numero de version");
             }
             catch (Exception l_expData) {
                 // Error en el acceso al archivo.
-                string l_strLinea= l_expData.ToString();
+                string l_strLinea= l_expData.Message;
             }
             finally {
                 // Si llegamos a abrir el archivo -> lo cerramos
@@ -1588,7 +1437,6 @@ namespace Rivn.Bll
                                       ref StatMsg p_smResult)
         {
             // No hay errores aun
-            p_smResult.BllReset("Moviles", "MveqVKey");
             DataSet l_dsTemp= new DataSet();
 
             Dal.MvlEquipamiento.Search(p_dbcAccess,
@@ -1615,7 +1463,6 @@ namespace Rivn.Bll
             finally {
                 // Terminamos
                 l_dsTemp.Dispose();
-                p_smResult.BllPop();
             }
         }
         #endregion
@@ -1633,9 +1480,6 @@ namespace Rivn.Bll
                                                 bool p_bOnlyActive,
                                                 ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Moviles", "MveqUpfl");
-
             try {
                 // Pedimos los registros de la tabla: MvlEquipamiento
                 DataSet l_dsTemp= new DataSet();
@@ -1656,12 +1500,8 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion Upfl
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
                 return null;
-            }
-            finally {
-                // Terminamos
-                p_smResult.BllPop();
             }
         }
 
@@ -1680,9 +1520,6 @@ namespace Rivn.Bll
                                              bool p_bOnlyActive,
                                              ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Moviles", "MveqSrch");
-
             try {
                 // Pedimos el registro de la tabla: MvlEquipamiento
                 DataSet l_dsTemp= new DataSet();
@@ -1706,12 +1543,8 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion Srch
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
                 return null;
-            }
-            finally {
-                // Terminamos
-                p_smResult.BllPop();
             }
         }
 
@@ -1729,7 +1562,6 @@ namespace Rivn.Bll
                                                 ref StatMsg p_smResult)
         {
             // No hay errores aun
-            p_smResult.BllReset("Moviles", "MveqFSch");
             DataSet l_dsTemp= new DataSet();
 
             try {
@@ -1751,12 +1583,8 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion FSch
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
                 return null;
-            }
-            finally {
-                // Terminamos
-                p_smResult.BllPop();
             }
         }
         #endregion
@@ -1773,9 +1601,6 @@ namespace Rivn.Bll
                                       EMovilEquip p_entMovilEquip,
                                       ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Moviles", "MveqSave");
-
             try {
                 // Procesamos codigo fijo
                 MveqSave_f(p_dbcAccess, ref p_entMovilEquip, ref p_smResult);
@@ -1822,11 +1647,7 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion SSav
-                p_smResult.BllError(l_expData.ToString());
-            }
-            finally {
-                // Terminamos
-                p_smResult.BllPop();
+                p_smResult.BllError(l_expData);
             }
         }
 
@@ -1840,9 +1661,6 @@ namespace Rivn.Bll
                                       EMovilEquip p_entMovilEquip,
                                       ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Moviles", "MveqInsr");
-
             try {
                 // Validamos la integridad de la entidad
                 MveqTInt(p_dbcAccess, p_entMovilEquip, ref p_smResult);
@@ -1854,11 +1672,10 @@ namespace Rivn.Bll
                                            p_entMovilEquip.Codequip,
                                            p_entMovilEquip.Esfijo,
                                            ref p_smResult);
-                p_smResult.BllPop();
             }
             catch (Exception l_expData) {
                 // Error en la operacion Insr
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
             }
         }
 
@@ -1872,9 +1689,6 @@ namespace Rivn.Bll
                                       EMovilEquip p_entMovilEquip,
                                       ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Moviles", "MveqUpdt");
-
             try {
                 // Validamos la integridad de la entidad
                 MveqTInt(p_dbcAccess, p_entMovilEquip, ref p_smResult);
@@ -1886,11 +1700,10 @@ namespace Rivn.Bll
                                            p_entMovilEquip.Codequip,
                                            p_entMovilEquip.Esfijo,
                                            ref p_smResult);
-                p_smResult.BllPop();
             }
             catch (Exception l_expData) {
                 // Error en la operacion Updt
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
             }
         }
 
@@ -1908,9 +1721,6 @@ namespace Rivn.Bll
                                       int p_iFxdVersion,
                                       ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Moviles", "MveqDrop");
-
             try {
                 // Verificamos la clave a borrar
                 MveqVKey(p_dbcAccess,
@@ -1942,11 +1752,7 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion Remove
-                p_smResult.BllError(l_expData.ToString());
-            }
-            finally {
-                // Terminamos
-                p_smResult.BllPop();
+                p_smResult.BllError(l_expData);
             }
         }
 
@@ -1958,18 +1764,14 @@ namespace Rivn.Bll
         internal static void MveqPack(DBConn p_dbcAccess,
                                       ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Moviles", "MveqPack");
-
             try {
                 // Borramos los borrados lógicamente
                 Dal.MvlEquipamiento.Pack(p_dbcAccess,
                                          ref p_smResult);
-                p_smResult.BllPop();
             }
             catch (Exception l_expData) {
                 // Error en la operacion Updt
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
             }
         }
 
@@ -1986,9 +1788,6 @@ namespace Rivn.Bll
                                       LEMovilesEquip p_lentMovilesEquip,
                                       ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Moviles", "MveqSSav");
-
             try {
                 // Deshabilitamos todas las entidades existentes
                 Dal.MvlEquipamiento.FDrop(p_dbcAccess,
@@ -2030,12 +1829,10 @@ namespace Rivn.Bll
                         if (p_smResult.NOk) return;
                     }
                 }
-
-                p_smResult.BllPop();
             }
             catch (Exception l_expData) {
                 // Error en la operacion SSav
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
             }
         }
         #endregion
@@ -2052,9 +1849,6 @@ namespace Rivn.Bll
                                                       string p_strPatente,
                                                       ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Moviles", "MveqEliminarEquipamiento");
-
             try {
                 // Llamamos al metodo definido por el usuario
                 Dal.MvlEquipamiento.EliminarEquipamiento(p_dbcAccess,
@@ -2063,56 +1857,10 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
             }
             finally {
                 // Terminamos
-                p_smResult.BllPop();
-            }
-        }
-
-        /// <summary>
-        /// Ejecuta el SP definido por el usuario: getEquipamientoG
-        /// </summary>
-        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name= p_strPatente>patente de un movil</param>
-        /// <param name="p_smResult">Estado final de la operacion</param>
-        /// <returns>ListaEntidad con los datos solicitados</returns>
-        internal static LEMovilesEquip MveqgetEquipamientoG(DBConn p_dbcAccess,
-                                                            string p_strPatente,
-                                                            ref StatMsg p_smResult)
-        {
-            // No hay errores aun
-            p_smResult.BllReset("Moviles", "MveqgetEquipamientoG");
-
-            try {
-                // Llamamos al metodo definido por el usuario
-                DataSet l_dsTemp= new DataSet();
-
-                Dal.MvlEquipamiento.getEquipamientoG(p_dbcAccess,
-                                                     p_strPatente,
-                                                     ref l_dsTemp,
-                                                     "Temporal",
-                                                     ref p_smResult);
-                if (p_smResult.NOk) return null;
-
-                // Captionamos el resultado
-                Dal.MvlEquipamiento.MakeGridCaptions(ref l_dsTemp, "Temporal", ref p_smResult);
-                if (p_smResult.NOk) return null;
-
-                // Creamos la ListaEntidad y la devolvemos
-                LEMovilesEquip l_lentRet= new LEMovilesEquip(l_dsTemp.Tables["Temporal"]);
-                l_dsTemp.Dispose();
-                return l_lentRet;
-            }
-            catch (Exception l_expData) {
-                // Error en la operacion
-                p_smResult.BllError(l_expData.ToString());
-                return null;
-            }
-            finally {
-                // Terminamos
-                p_smResult.BllPop();
             }
         }
 
@@ -2127,9 +1875,6 @@ namespace Rivn.Bll
                                                             string p_strPatente,
                                                             ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Moviles", "MveqgetEquipamientos");
-
             try {
                 // Llamamos al metodo definido por el usuario
                 DataSet l_dsTemp= new DataSet();
@@ -2151,12 +1896,11 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
                 return null;
             }
             finally {
                 // Terminamos
-                p_smResult.BllPop();
             }
         }
         #endregion
@@ -2185,7 +1929,6 @@ namespace Rivn.Bll
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
-            p_smResult.BllReset("Moviles", "MvesUpFull");
 
             try {
                 // Obtenemos una conexion
@@ -2196,13 +1939,12 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion UpFull
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
                 return null;
             }
             finally {
                 // Si pude abrir la conexion -> la cierro
                 if (l_dbcAccess != null) l_dbcAccess.Close();
-                p_smResult.BllPop();
             }
         }
 
@@ -2221,7 +1963,6 @@ namespace Rivn.Bll
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
-            p_smResult.BllReset("Moviles", "MvesGet");
 
             try {
                 // Obtenemos una conexion
@@ -2236,13 +1977,12 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion Get
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
                 return null;
             }
             finally {
                 // Si pude abrir la conexion -> la cierro
                 if (l_dbcAccess != null) l_dbcAccess.Close();
-                p_smResult.BllPop();
             }
         }
 
@@ -2260,7 +2000,6 @@ namespace Rivn.Bll
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
-            p_smResult.BllReset("Moviles", "MvesFGet");
 
             try {
                 // Obtenemos una conexion
@@ -2274,13 +2013,12 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion FGet
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
                 return null;
             }
             finally {
                 // Si pude abrir la conexion -> la cierro
                 if (l_dbcAccess != null) l_dbcAccess.Close();
-                p_smResult.BllPop();
             }
         }
         #endregion
@@ -2296,7 +2034,6 @@ namespace Rivn.Bll
                                     ref StatMsg p_smResult)
         {
             // No hay errores aun
-            p_smResult.BllReset("Moviles", "MvesSave");
             DBConn l_dbcAccess= null;
 
             try {
@@ -2309,7 +2046,7 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion Save
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
             }
             finally {
                 // Si pude abrir la conexion
@@ -2318,7 +2055,6 @@ namespace Rivn.Bll
                     l_dbcAccess.EndTransaction(p_smResult);
                     l_dbcAccess.Close();
                 }
-                p_smResult.BllPop();
             }
         }
 
@@ -2337,7 +2073,6 @@ namespace Rivn.Bll
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
-            p_smResult.BllReset("Moviles", "MvesEnabled");
 
             try {
                 // Obtenemos una conexion
@@ -2393,7 +2128,7 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion Enabled
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
             }
             finally {
                 // Si pude abrir la conexion
@@ -2402,7 +2137,6 @@ namespace Rivn.Bll
                     l_dbcAccess.EndTransaction(p_smResult);
                     l_dbcAccess.Close();
                 }
-                p_smResult.BllPop();
             }
         }
 
@@ -2420,7 +2154,6 @@ namespace Rivn.Bll
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
-            p_smResult.BllReset("Moviles", "MvesRemove");
 
             try {
                 // Obtenemos una conexion
@@ -2444,7 +2177,7 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion Remove
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
             }
             finally {
                 // Si pude abrir la conexion
@@ -2453,7 +2186,6 @@ namespace Rivn.Bll
                     l_dbcAccess.EndTransaction(p_smResult);
                     l_dbcAccess.Close();
                 }
-                p_smResult.BllPop();
             }
         }
 
@@ -2465,8 +2197,6 @@ namespace Rivn.Bll
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
-            p_smResult.BllReset("Moviles", "MvesPurge");
-
             try {
                 // Obtenemos una conexion
                 l_dbcAccess= DBRuts.GetConection(Connections.Dat);
@@ -2478,7 +2208,7 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion Enabled
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
             }
             finally {
                 // Si pude abrir la conexion
@@ -2487,7 +2217,6 @@ namespace Rivn.Bll
                     l_dbcAccess.EndTransaction(p_smResult);
                     l_dbcAccess.Close();
                 }
-                p_smResult.BllPop();
             }
         }
         #endregion
@@ -2511,9 +2240,6 @@ namespace Rivn.Bll
                                       EMovilEstado p_entMovilEstado,
                                       ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Moviles", "MvesTInt");
-
             // ********
             // Validaciones de los campos sin conexion
             // ********
@@ -2569,9 +2295,6 @@ namespace Rivn.Bll
             // Llamamos a la funcion fija del usuario
             MvesTInt_f(p_dbcAccess, p_entMovilEstado, ref p_smResult);
             if (p_smResult.NOk) return;
-
-            // Finalizamos
-            p_smResult.BllPop();
         }
 
         /// <summary>
@@ -2589,7 +2312,6 @@ namespace Rivn.Bll
                                       ref StatMsg p_smResult)
         {
             // No hay errores aun
-            p_smResult.BllReset("Moviles", "MvesVVer");
             DataSet l_dsTemp= new DataSet();
 
             // Verificamos el número de versión
@@ -2608,7 +2330,6 @@ namespace Rivn.Bll
                 if ((int) l_dsTemp.Tables["Temporal"].Rows[0]["cantidad"] == 1) {
                     // La versión coincide
                     l_dsTemp.Dispose();
-                    p_smResult.BllPop();
                     return;
                 }
             }
@@ -2624,14 +2345,12 @@ namespace Rivn.Bll
 
                 // Grabamos los datos del error
                 l_swErrorFile.WriteLine("Instante    : {0:dd/MM/yyyy HH:mm:ss}", DateTime.Now);
-                l_swErrorFile.WriteLine("Uil         : {0}", p_smResult.Uil);
-                l_swErrorFile.WriteLine("Bll         : {0}", p_smResult.Bll);
-                l_swErrorFile.WriteLine("Dal         : {0}", p_smResult.Dal);
+                l_swErrorFile.WriteLine("Metodo      : {0}", p_smResult.Method);
                 l_swErrorFile.WriteLine("Message     : No coincide el numero de version");
             }
             catch (Exception l_expData) {
                 // Error en el acceso al archivo.
-                string l_strLinea= l_expData.ToString();
+                string l_strLinea= l_expData.Message;
             }
             finally {
                 // Si llegamos a abrir el archivo -> lo cerramos
@@ -2662,7 +2381,6 @@ namespace Rivn.Bll
                                       ref StatMsg p_smResult)
         {
             // No hay errores aun
-            p_smResult.BllReset("Moviles", "MvesVKey");
             DataSet l_dsTemp= new DataSet();
 
             Dal.MvlEstados.Search(p_dbcAccess,
@@ -2689,7 +2407,6 @@ namespace Rivn.Bll
             finally {
                 // Terminamos
                 l_dsTemp.Dispose();
-                p_smResult.BllPop();
             }
         }
         #endregion
@@ -2707,9 +2424,6 @@ namespace Rivn.Bll
                                                  bool p_bOnlyActive,
                                                  ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Moviles", "MvesUpfl");
-
             try {
                 // Pedimos los registros de la tabla: MvlEstados
                 DataSet l_dsTemp= new DataSet();
@@ -2730,12 +2444,8 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion Upfl
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
                 return null;
-            }
-            finally {
-                // Terminamos
-                p_smResult.BllPop();
             }
         }
 
@@ -2754,9 +2464,6 @@ namespace Rivn.Bll
                                               bool p_bOnlyActive,
                                               ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Moviles", "MvesSrch");
-
             try {
                 // Pedimos el registro de la tabla: MvlEstados
                 DataSet l_dsTemp= new DataSet();
@@ -2780,12 +2487,8 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion Srch
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
                 return null;
-            }
-            finally {
-                // Terminamos
-                p_smResult.BllPop();
             }
         }
 
@@ -2803,7 +2506,6 @@ namespace Rivn.Bll
                                                  ref StatMsg p_smResult)
         {
             // No hay errores aun
-            p_smResult.BllReset("Moviles", "MvesFSch");
             DataSet l_dsTemp= new DataSet();
 
             try {
@@ -2825,12 +2527,8 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion FSch
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
                 return null;
-            }
-            finally {
-                // Terminamos
-                p_smResult.BllPop();
             }
         }
         #endregion
@@ -2847,9 +2545,6 @@ namespace Rivn.Bll
                                       EMovilEstado p_entMovilEstado,
                                       ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Moviles", "MvesSave");
-
             try {
                 // Procesamos codigo fijo
                 MvesSave_f(p_dbcAccess, ref p_entMovilEstado, ref p_smResult);
@@ -2896,11 +2591,7 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion SSav
-                p_smResult.BllError(l_expData.ToString());
-            }
-            finally {
-                // Terminamos
-                p_smResult.BllPop();
+                p_smResult.BllError(l_expData);
             }
         }
 
@@ -2914,9 +2605,6 @@ namespace Rivn.Bll
                                       EMovilEstado p_entMovilEstado,
                                       ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Moviles", "MvesInsr");
-
             try {
                 // Validamos la integridad de la entidad
                 MvesTInt(p_dbcAccess, p_entMovilEstado, ref p_smResult);
@@ -2929,11 +2617,10 @@ namespace Rivn.Bll
                                       p_entMovilEstado.Codestado,
                                       p_entMovilEstado.Km,
                                       ref p_smResult);
-                p_smResult.BllPop();
             }
             catch (Exception l_expData) {
                 // Error en la operacion Insr
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
             }
         }
 
@@ -2947,9 +2634,6 @@ namespace Rivn.Bll
                                       EMovilEstado p_entMovilEstado,
                                       ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Moviles", "MvesUpdt");
-
             try {
                 // Validamos la integridad de la entidad
                 MvesTInt(p_dbcAccess, p_entMovilEstado, ref p_smResult);
@@ -2962,11 +2646,10 @@ namespace Rivn.Bll
                                       p_entMovilEstado.Codestado,
                                       p_entMovilEstado.Km,
                                       ref p_smResult);
-                p_smResult.BllPop();
             }
             catch (Exception l_expData) {
                 // Error en la operacion Updt
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
             }
         }
 
@@ -2984,9 +2667,6 @@ namespace Rivn.Bll
                                       int p_iFxdVersion,
                                       ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Moviles", "MvesDrop");
-
             try {
                 // Verificamos la clave a borrar
                 MvesVKey(p_dbcAccess,
@@ -3018,11 +2698,7 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion Remove
-                p_smResult.BllError(l_expData.ToString());
-            }
-            finally {
-                // Terminamos
-                p_smResult.BllPop();
+                p_smResult.BllError(l_expData);
             }
         }
 
@@ -3034,18 +2710,14 @@ namespace Rivn.Bll
         internal static void MvesPack(DBConn p_dbcAccess,
                                       ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Moviles", "MvesPack");
-
             try {
                 // Borramos los borrados lógicamente
                 Dal.MvlEstados.Pack(p_dbcAccess,
                                     ref p_smResult);
-                p_smResult.BllPop();
             }
             catch (Exception l_expData) {
                 // Error en la operacion Updt
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
             }
         }
 
@@ -3062,9 +2734,6 @@ namespace Rivn.Bll
                                       LEMovilesEstado p_lentMovilesEstado,
                                       ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Moviles", "MvesSSav");
-
             try {
                 // Deshabilitamos todas las entidades existentes
                 Dal.MvlEstados.FDrop(p_dbcAccess,
@@ -3106,62 +2775,15 @@ namespace Rivn.Bll
                         if (p_smResult.NOk) return;
                     }
                 }
-
-                p_smResult.BllPop();
             }
             catch (Exception l_expData) {
                 // Error en la operacion SSav
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
             }
         }
         #endregion
 
         #region Metodos para métodos DAL definidos por el usuario
-
-        /// <summary>
-        /// Ejecuta el SP definido por el usuario: getLastFiveMvlEstadG
-        /// </summary>
-        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name= p_strPatente>Patente de un movil</param>
-        /// <param name="p_smResult">Estado final de la operacion</param>
-        /// <returns>ListaEntidad con los datos solicitados</returns>
-        internal static LEMovilesEstado MvesgetLastFiveMvlEstadG(DBConn p_dbcAccess,
-                                                                 string p_strPatente,
-                                                                 ref StatMsg p_smResult)
-        {
-            // No hay errores aun
-            p_smResult.BllReset("Moviles", "MvesgetLastFiveMvlEstadG");
-
-            try {
-                // Llamamos al metodo definido por el usuario
-                DataSet l_dsTemp= new DataSet();
-
-                Dal.MvlEstados.getLastFiveMvlEstadG(p_dbcAccess,
-                                                    p_strPatente,
-                                                    ref l_dsTemp,
-                                                    "Temporal",
-                                                    ref p_smResult);
-                if (p_smResult.NOk) return null;
-
-                // Captionamos el resultado
-                Dal.MvlEstados.MakeGridCaptions(ref l_dsTemp, "Temporal", ref p_smResult);
-                if (p_smResult.NOk) return null;
-
-                // Creamos la ListaEntidad y la devolvemos
-                LEMovilesEstado l_lentRet= new LEMovilesEstado(l_dsTemp.Tables["Temporal"]);
-                l_dsTemp.Dispose();
-                return l_lentRet;
-            }
-            catch (Exception l_expData) {
-                // Error en la operacion
-                p_smResult.BllError(l_expData.ToString());
-                return null;
-            }
-            finally {
-                // Terminamos
-                p_smResult.BllPop();
-            }
-        }
 
         /// <summary>
         /// Ejecuta el SP definido por el usuario: getLastFiveMvlEstads
@@ -3174,9 +2796,6 @@ namespace Rivn.Bll
                                                                 string p_strPatente,
                                                                 ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Moviles", "MvesgetLastFiveMvlEstads");
-
             try {
                 // Llamamos al metodo definido por el usuario
                 DataSet l_dsTemp= new DataSet();
@@ -3198,12 +2817,11 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
                 return null;
             }
             finally {
                 // Terminamos
-                p_smResult.BllPop();
             }
         }
         #endregion
@@ -3232,7 +2850,6 @@ namespace Rivn.Bll
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
-            p_smResult.BllReset("Moviles", "MvkmUpFull");
 
             try {
                 // Obtenemos una conexion
@@ -3243,13 +2860,12 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion UpFull
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
                 return null;
             }
             finally {
                 // Si pude abrir la conexion -> la cierro
                 if (l_dbcAccess != null) l_dbcAccess.Close();
-                p_smResult.BllPop();
             }
         }
 
@@ -3268,7 +2884,6 @@ namespace Rivn.Bll
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
-            p_smResult.BllReset("Moviles", "MvkmGet");
 
             try {
                 // Obtenemos una conexion
@@ -3283,13 +2898,12 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion Get
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
                 return null;
             }
             finally {
                 // Si pude abrir la conexion -> la cierro
                 if (l_dbcAccess != null) l_dbcAccess.Close();
-                p_smResult.BllPop();
             }
         }
 
@@ -3307,7 +2921,6 @@ namespace Rivn.Bll
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
-            p_smResult.BllReset("Moviles", "MvkmFGet");
 
             try {
                 // Obtenemos una conexion
@@ -3321,13 +2934,12 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion FGet
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
                 return null;
             }
             finally {
                 // Si pude abrir la conexion -> la cierro
                 if (l_dbcAccess != null) l_dbcAccess.Close();
-                p_smResult.BllPop();
             }
         }
         #endregion
@@ -3343,7 +2955,6 @@ namespace Rivn.Bll
                                     ref StatMsg p_smResult)
         {
             // No hay errores aun
-            p_smResult.BllReset("Moviles", "MvkmSave");
             DBConn l_dbcAccess= null;
 
             try {
@@ -3356,7 +2967,7 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion Save
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
             }
             finally {
                 // Si pude abrir la conexion
@@ -3365,7 +2976,6 @@ namespace Rivn.Bll
                     l_dbcAccess.EndTransaction(p_smResult);
                     l_dbcAccess.Close();
                 }
-                p_smResult.BllPop();
             }
         }
 
@@ -3384,7 +2994,6 @@ namespace Rivn.Bll
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
-            p_smResult.BllReset("Moviles", "MvkmEnabled");
 
             try {
                 // Obtenemos una conexion
@@ -3440,7 +3049,7 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion Enabled
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
             }
             finally {
                 // Si pude abrir la conexion
@@ -3449,7 +3058,6 @@ namespace Rivn.Bll
                     l_dbcAccess.EndTransaction(p_smResult);
                     l_dbcAccess.Close();
                 }
-                p_smResult.BllPop();
             }
         }
 
@@ -3467,7 +3075,6 @@ namespace Rivn.Bll
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
-            p_smResult.BllReset("Moviles", "MvkmRemove");
 
             try {
                 // Obtenemos una conexion
@@ -3491,7 +3098,7 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion Remove
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
             }
             finally {
                 // Si pude abrir la conexion
@@ -3500,7 +3107,6 @@ namespace Rivn.Bll
                     l_dbcAccess.EndTransaction(p_smResult);
                     l_dbcAccess.Close();
                 }
-                p_smResult.BllPop();
             }
         }
 
@@ -3512,8 +3118,6 @@ namespace Rivn.Bll
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
-            p_smResult.BllReset("Moviles", "MvkmPurge");
-
             try {
                 // Obtenemos una conexion
                 l_dbcAccess= DBRuts.GetConection(Connections.Dat);
@@ -3525,7 +3129,7 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion Enabled
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
             }
             finally {
                 // Si pude abrir la conexion
@@ -3534,7 +3138,6 @@ namespace Rivn.Bll
                     l_dbcAccess.EndTransaction(p_smResult);
                     l_dbcAccess.Close();
                 }
-                p_smResult.BllPop();
             }
         }
         #endregion
@@ -3558,9 +3161,6 @@ namespace Rivn.Bll
                                       EMovilKms p_entMovilKms,
                                       ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Moviles", "MvkmTInt");
-
             // ********
             // Validaciones de los campos sin conexion
             // ********
@@ -3603,9 +3203,6 @@ namespace Rivn.Bll
             // Llamamos a la funcion fija del usuario
             MvkmTInt_f(p_dbcAccess, p_entMovilKms, ref p_smResult);
             if (p_smResult.NOk) return;
-
-            // Finalizamos
-            p_smResult.BllPop();
         }
 
         /// <summary>
@@ -3623,7 +3220,6 @@ namespace Rivn.Bll
                                       ref StatMsg p_smResult)
         {
             // No hay errores aun
-            p_smResult.BllReset("Moviles", "MvkmVVer");
             DataSet l_dsTemp= new DataSet();
 
             // Verificamos el número de versión
@@ -3642,7 +3238,6 @@ namespace Rivn.Bll
                 if ((int) l_dsTemp.Tables["Temporal"].Rows[0]["cantidad"] == 1) {
                     // La versión coincide
                     l_dsTemp.Dispose();
-                    p_smResult.BllPop();
                     return;
                 }
             }
@@ -3658,14 +3253,12 @@ namespace Rivn.Bll
 
                 // Grabamos los datos del error
                 l_swErrorFile.WriteLine("Instante    : {0:dd/MM/yyyy HH:mm:ss}", DateTime.Now);
-                l_swErrorFile.WriteLine("Uil         : {0}", p_smResult.Uil);
-                l_swErrorFile.WriteLine("Bll         : {0}", p_smResult.Bll);
-                l_swErrorFile.WriteLine("Dal         : {0}", p_smResult.Dal);
+                l_swErrorFile.WriteLine("Metodo      : {0}", p_smResult.Method);
                 l_swErrorFile.WriteLine("Message     : No coincide el numero de version");
             }
             catch (Exception l_expData) {
                 // Error en el acceso al archivo.
-                string l_strLinea= l_expData.ToString();
+                string l_strLinea= l_expData.Message;
             }
             finally {
                 // Si llegamos a abrir el archivo -> lo cerramos
@@ -3696,7 +3289,6 @@ namespace Rivn.Bll
                                       ref StatMsg p_smResult)
         {
             // No hay errores aun
-            p_smResult.BllReset("Moviles", "MvkmVKey");
             DataSet l_dsTemp= new DataSet();
 
             Dal.MvlKilometros.Search(p_dbcAccess,
@@ -3723,7 +3315,6 @@ namespace Rivn.Bll
             finally {
                 // Terminamos
                 l_dsTemp.Dispose();
-                p_smResult.BllPop();
             }
         }
         #endregion
@@ -3741,9 +3332,6 @@ namespace Rivn.Bll
                                               bool p_bOnlyActive,
                                               ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Moviles", "MvkmUpfl");
-
             try {
                 // Pedimos los registros de la tabla: MvlKilometros
                 DataSet l_dsTemp= new DataSet();
@@ -3764,12 +3352,8 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion Upfl
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
                 return null;
-            }
-            finally {
-                // Terminamos
-                p_smResult.BllPop();
             }
         }
 
@@ -3788,9 +3372,6 @@ namespace Rivn.Bll
                                            bool p_bOnlyActive,
                                            ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Moviles", "MvkmSrch");
-
             try {
                 // Pedimos el registro de la tabla: MvlKilometros
                 DataSet l_dsTemp= new DataSet();
@@ -3814,12 +3395,8 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion Srch
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
                 return null;
-            }
-            finally {
-                // Terminamos
-                p_smResult.BllPop();
             }
         }
 
@@ -3837,7 +3414,6 @@ namespace Rivn.Bll
                                               ref StatMsg p_smResult)
         {
             // No hay errores aun
-            p_smResult.BllReset("Moviles", "MvkmFSch");
             DataSet l_dsTemp= new DataSet();
 
             try {
@@ -3859,12 +3435,8 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion FSch
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
                 return null;
-            }
-            finally {
-                // Terminamos
-                p_smResult.BllPop();
             }
         }
         #endregion
@@ -3881,9 +3453,6 @@ namespace Rivn.Bll
                                       EMovilKms p_entMovilKms,
                                       ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Moviles", "MvkmSave");
-
             try {
                 // Procesamos codigo fijo
                 MvkmSave_f(p_dbcAccess, ref p_entMovilKms, ref p_smResult);
@@ -3930,11 +3499,7 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion SSav
-                p_smResult.BllError(l_expData.ToString());
-            }
-            finally {
-                // Terminamos
-                p_smResult.BllPop();
+                p_smResult.BllError(l_expData);
             }
         }
 
@@ -3948,9 +3513,6 @@ namespace Rivn.Bll
                                       EMovilKms p_entMovilKms,
                                       ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Moviles", "MvkmInsr");
-
             try {
                 // Validamos la integridad de la entidad
                 MvkmTInt(p_dbcAccess, p_entMovilKms, ref p_smResult);
@@ -3962,11 +3524,10 @@ namespace Rivn.Bll
                                          p_entMovilKms.Fecha,
                                          p_entMovilKms.Km,
                                          ref p_smResult);
-                p_smResult.BllPop();
             }
             catch (Exception l_expData) {
                 // Error en la operacion Insr
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
             }
         }
 
@@ -3980,9 +3541,6 @@ namespace Rivn.Bll
                                       EMovilKms p_entMovilKms,
                                       ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Moviles", "MvkmUpdt");
-
             try {
                 // Validamos la integridad de la entidad
                 MvkmTInt(p_dbcAccess, p_entMovilKms, ref p_smResult);
@@ -3994,11 +3552,10 @@ namespace Rivn.Bll
                                          p_entMovilKms.Fecha,
                                          p_entMovilKms.Km,
                                          ref p_smResult);
-                p_smResult.BllPop();
             }
             catch (Exception l_expData) {
                 // Error en la operacion Updt
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
             }
         }
 
@@ -4016,9 +3573,6 @@ namespace Rivn.Bll
                                       int p_iFxdVersion,
                                       ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Moviles", "MvkmDrop");
-
             try {
                 // Verificamos la clave a borrar
                 MvkmVKey(p_dbcAccess,
@@ -4050,11 +3604,7 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion Remove
-                p_smResult.BllError(l_expData.ToString());
-            }
-            finally {
-                // Terminamos
-                p_smResult.BllPop();
+                p_smResult.BllError(l_expData);
             }
         }
 
@@ -4066,18 +3616,14 @@ namespace Rivn.Bll
         internal static void MvkmPack(DBConn p_dbcAccess,
                                       ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Moviles", "MvkmPack");
-
             try {
                 // Borramos los borrados lógicamente
                 Dal.MvlKilometros.Pack(p_dbcAccess,
                                        ref p_smResult);
-                p_smResult.BllPop();
             }
             catch (Exception l_expData) {
                 // Error en la operacion Updt
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
             }
         }
 
@@ -4094,9 +3640,6 @@ namespace Rivn.Bll
                                       LEMovilesKms p_lentMovilesKms,
                                       ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Moviles", "MvkmSSav");
-
             try {
                 // Deshabilitamos todas las entidades existentes
                 Dal.MvlKilometros.FDrop(p_dbcAccess,
@@ -4138,12 +3681,10 @@ namespace Rivn.Bll
                         if (p_smResult.NOk) return;
                     }
                 }
-
-                p_smResult.BllPop();
             }
             catch (Exception l_expData) {
                 // Error en la operacion SSav
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
             }
         }
         #endregion
@@ -4159,9 +3700,6 @@ namespace Rivn.Bll
         internal static ListaEntidades MvkmRemoveAllPatente(DBConn p_dbcAccess,
                                                             ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Moviles", "MvkmRemoveAllPatente");
-
             try {
                 // Llamamos al metodo definido por el usuario
                 DataSet l_dsTemp= new DataSet();
@@ -4182,12 +3720,11 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
                 return null;
             }
             finally {
                 // Terminamos
-                p_smResult.BllPop();
             }
         }
 
@@ -4202,9 +3739,6 @@ namespace Rivn.Bll
                                                             string p_strPatente,
                                                             ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Moviles", "MvkmgetLastFiveMvlKm");
-
             try {
                 // Llamamos al metodo definido por el usuario
                 DataSet l_dsTemp= new DataSet();
@@ -4226,57 +3760,11 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
                 return null;
             }
             finally {
                 // Terminamos
-                p_smResult.BllPop();
-            }
-        }
-
-        /// <summary>
-        /// Ejecuta el SP definido por el usuario: getLastFiveMvlKmG
-        /// </summary>
-        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name= p_strPatente>patente de un movil</param>
-        /// <param name="p_smResult">Estado final de la operacion</param>
-        /// <returns>ListaEntidad con los datos solicitados</returns>
-        internal static LEMovilesKms MvkmgetLastFiveMvlKmG(DBConn p_dbcAccess,
-                                                           string p_strPatente,
-                                                           ref StatMsg p_smResult)
-        {
-            // No hay errores aun
-            p_smResult.BllReset("Moviles", "MvkmgetLastFiveMvlKmG");
-
-            try {
-                // Llamamos al metodo definido por el usuario
-                DataSet l_dsTemp= new DataSet();
-
-                Dal.MvlKilometros.getLastFiveMvlKmG(p_dbcAccess,
-                                                    p_strPatente,
-                                                    ref l_dsTemp,
-                                                    "Temporal",
-                                                    ref p_smResult);
-                if (p_smResult.NOk) return null;
-
-                // Captionamos el resultado
-                Dal.MvlKilometros.MakeGridCaptions(ref l_dsTemp, "Temporal", ref p_smResult);
-                if (p_smResult.NOk) return null;
-
-                // Creamos la ListaEntidad y la devolvemos
-                LEMovilesKms l_lentRet= new LEMovilesKms(l_dsTemp.Tables["Temporal"]);
-                l_dsTemp.Dispose();
-                return l_lentRet;
-            }
-            catch (Exception l_expData) {
-                // Error en la operacion
-                p_smResult.BllError(l_expData.ToString());
-                return null;
-            }
-            finally {
-                // Terminamos
-                p_smResult.BllPop();
             }
         }
         #endregion
@@ -4305,7 +3793,6 @@ namespace Rivn.Bll
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
-            p_smResult.BllReset("Moviles", "UpFull");
 
             try {
                 // Obtenemos una conexion
@@ -4316,13 +3803,12 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion UpFull
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
                 return null;
             }
             finally {
                 // Si pude abrir la conexion -> la cierro
                 if (l_dbcAccess != null) l_dbcAccess.Close();
-                p_smResult.BllPop();
             }
         }
 
@@ -4339,7 +3825,6 @@ namespace Rivn.Bll
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
-            p_smResult.BllReset("Moviles", "Get");
 
             try {
                 // Obtenemos una conexion
@@ -4386,13 +3871,12 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion Get
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
                 return null;
             }
             finally {
                 // Si pude abrir la conexion -> la cierro
                 if (l_dbcAccess != null) l_dbcAccess.Close();
-                p_smResult.BllPop();
             }
         }
         #endregion
@@ -4408,7 +3892,6 @@ namespace Rivn.Bll
                                 ref StatMsg p_smResult)
         {
             // No hay errores aun
-            p_smResult.BllReset("Moviles", "Save");
             DBConn l_dbcAccess= null;
 
             try {
@@ -4421,7 +3904,7 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion Save
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
             }
             finally {
                 // Si pude abrir la conexion
@@ -4430,7 +3913,6 @@ namespace Rivn.Bll
                     l_dbcAccess.EndTransaction(p_smResult);
                     l_dbcAccess.Close();
                 }
-                p_smResult.BllPop();
             }
         }
 
@@ -4447,7 +3929,6 @@ namespace Rivn.Bll
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
-            p_smResult.BllReset("Moviles", "Enabled");
 
             try {
                 // Obtenemos una conexion
@@ -4498,7 +3979,7 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion Enabled
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
             }
             finally {
                 // Si pude abrir la conexion
@@ -4507,7 +3988,6 @@ namespace Rivn.Bll
                     l_dbcAccess.EndTransaction(p_smResult);
                     l_dbcAccess.Close();
                 }
-                p_smResult.BllPop();
             }
         }
 
@@ -4523,7 +4003,6 @@ namespace Rivn.Bll
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
-            p_smResult.BllReset("Moviles", "Remove");
 
             try {
                 // Obtenemos una conexion
@@ -4545,7 +4024,7 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion Remove
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
             }
             finally {
                 // Si pude abrir la conexion
@@ -4554,7 +4033,6 @@ namespace Rivn.Bll
                     l_dbcAccess.EndTransaction(p_smResult);
                     l_dbcAccess.Close();
                 }
-                p_smResult.BllPop();
             }
         }
 
@@ -4566,8 +4044,6 @@ namespace Rivn.Bll
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
-            p_smResult.BllReset("Moviles", "Purge");
-
             try {
                 // Obtenemos una conexion
                 l_dbcAccess= DBRuts.GetConection(Connections.Dat);
@@ -4579,7 +4055,7 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion Enabled
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
             }
             finally {
                 // Si pude abrir la conexion
@@ -4588,7 +4064,6 @@ namespace Rivn.Bll
                     l_dbcAccess.EndTransaction(p_smResult);
                     l_dbcAccess.Close();
                 }
-                p_smResult.BllPop();
             }
         }
         #endregion
@@ -4612,9 +4087,6 @@ namespace Rivn.Bll
                                   EMovil p_entMovil,
                                   ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Moviles", "TInt");
-
             // ********
             // Validaciones de los campos sin conexion
             // ********
@@ -4676,9 +4148,6 @@ namespace Rivn.Bll
             // Llamamos a la funcion fija del usuario
             TInt_f(p_dbcAccess, p_entMovil, ref p_smResult);
             if (p_smResult.NOk) return;
-
-            // Finalizamos
-            p_smResult.BllPop();
         }
 
         /// <summary>
@@ -4694,7 +4163,6 @@ namespace Rivn.Bll
                                   ref StatMsg p_smResult)
         {
             // No hay errores aun
-            p_smResult.BllReset("Moviles", "VVer");
             DataSet l_dsTemp= new DataSet();
 
             // Verificamos el número de versión
@@ -4712,7 +4180,6 @@ namespace Rivn.Bll
                 if ((int) l_dsTemp.Tables["Temporal"].Rows[0]["cantidad"] == 1) {
                     // La versión coincide
                     l_dsTemp.Dispose();
-                    p_smResult.BllPop();
                     return;
                 }
             }
@@ -4728,14 +4195,12 @@ namespace Rivn.Bll
 
                 // Grabamos los datos del error
                 l_swErrorFile.WriteLine("Instante    : {0:dd/MM/yyyy HH:mm:ss}", DateTime.Now);
-                l_swErrorFile.WriteLine("Uil         : {0}", p_smResult.Uil);
-                l_swErrorFile.WriteLine("Bll         : {0}", p_smResult.Bll);
-                l_swErrorFile.WriteLine("Dal         : {0}", p_smResult.Dal);
+                l_swErrorFile.WriteLine("Metodo      : {0}", p_smResult.Method);
                 l_swErrorFile.WriteLine("Message     : No coincide el numero de version");
             }
             catch (Exception l_expData) {
                 // Error en el acceso al archivo.
-                string l_strLinea= l_expData.ToString();
+                string l_strLinea= l_expData.Message;
             }
             finally {
                 // Si llegamos a abrir el archivo -> lo cerramos
@@ -4764,7 +4229,6 @@ namespace Rivn.Bll
                                   ref StatMsg p_smResult)
         {
             // No hay errores aun
-            p_smResult.BllReset("Moviles", "VKey");
             DataSet l_dsTemp= new DataSet();
 
             Dal.Moviles.Search(p_dbcAccess,
@@ -4790,7 +4254,6 @@ namespace Rivn.Bll
             finally {
                 // Terminamos
                 l_dsTemp.Dispose();
-                p_smResult.BllPop();
             }
         }
         #endregion
@@ -4808,9 +4271,6 @@ namespace Rivn.Bll
                                            bool p_bOnlyActive,
                                            ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Moviles", "Upfl");
-
             try {
                 // Pedimos los registros de la tabla: Moviles
                 DataSet l_dsTemp= new DataSet();
@@ -4831,12 +4291,8 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion Upfl
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
                 return null;
-            }
-            finally {
-                // Terminamos
-                p_smResult.BllPop();
             }
         }
 
@@ -4853,9 +4309,6 @@ namespace Rivn.Bll
                                     bool p_bOnlyActive,
                                     ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Moviles", "Srch");
-
             try {
                 // Pedimos el registro de la tabla: Moviles
                 DataSet l_dsTemp= new DataSet();
@@ -4878,12 +4331,8 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion Srch
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
                 return null;
-            }
-            finally {
-                // Terminamos
-                p_smResult.BllPop();
             }
         }
         #endregion
@@ -4900,9 +4349,6 @@ namespace Rivn.Bll
                                   EMovil p_entMovil,
                                   ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Moviles", "Insr");
-
             try {
                 // Validamos la integridad de la entidad
                 TInt(p_dbcAccess, p_entMovil, ref p_smResult);
@@ -4919,11 +4365,10 @@ namespace Rivn.Bll
                                    p_entMovil.Aniofabric,
                                    p_entMovil.Propio,
                                    ref p_smResult);
-                p_smResult.BllPop();
             }
             catch (Exception l_expData) {
                 // Error en la operacion Insr
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
             }
         }
 
@@ -4937,9 +4382,6 @@ namespace Rivn.Bll
                                   EMovil p_entMovil,
                                   ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Moviles", "Updt");
-
             try {
                 // Validamos la integridad de la entidad
                 TInt(p_dbcAccess, p_entMovil, ref p_smResult);
@@ -4956,11 +4398,10 @@ namespace Rivn.Bll
                                    p_entMovil.Aniofabric,
                                    p_entMovil.Propio,
                                    ref p_smResult);
-                p_smResult.BllPop();
             }
             catch (Exception l_expData) {
                 // Error en la operacion Updt
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
             }
         }
 
@@ -4976,9 +4417,6 @@ namespace Rivn.Bll
                                   int p_iFxdVersion,
                                   ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Moviles", "Drop");
-
             try {
                 // Verificamos la clave a borrar
                 VKey(p_dbcAccess,
@@ -5007,11 +4445,7 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion Remove
-                p_smResult.BllError(l_expData.ToString());
-            }
-            finally {
-                // Terminamos
-                p_smResult.BllPop();
+                p_smResult.BllError(l_expData);
             }
         }
 
@@ -5023,18 +4457,14 @@ namespace Rivn.Bll
         internal static void Pack(DBConn p_dbcAccess,
                                   ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Moviles", "Pack");
-
             try {
                 // Borramos los borrados lógicamente
                 Dal.Moviles.Pack(p_dbcAccess,
                                  ref p_smResult);
-                p_smResult.BllPop();
             }
             catch (Exception l_expData) {
                 // Error en la operacion Updt
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
             }
         }
 
@@ -5048,9 +4478,6 @@ namespace Rivn.Bll
                                   EMovil p_entMovil,
                                   ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Moviles", "SSav");
-
             try {
                 // Procesamos codigo fijo
                 Save_f(p_dbcAccess, ref p_entMovil, ref p_smResult);
@@ -5121,12 +4548,10 @@ namespace Rivn.Bll
                          p_entMovil.MovilesKms,
                          ref p_smResult);
                 if (p_smResult.NOk) return;
-
-                p_smResult.BllPop();
             }
             catch (Exception l_expData) {
                 // Error en la operacion SSav
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
             }
         }
         #endregion
@@ -5142,9 +4567,6 @@ namespace Rivn.Bll
         internal static ListaEntidades getMovilesTree(DBConn p_dbcAccess,
                                                       ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Moviles", "getMovilesTree");
-
             try {
                 // Llamamos al metodo definido por el usuario
                 DataSet l_dsTemp= new DataSet();
@@ -5165,12 +4587,11 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
                 return null;
             }
             finally {
                 // Terminamos
-                p_smResult.BllPop();
             }
         }
         #endregion

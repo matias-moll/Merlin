@@ -50,7 +50,6 @@ namespace Rivn.Bll
             // No hay errores aun
             List<ListaEntidades> l_lstLEListaListaEntidades = new List<ListaEntidades>();
             DBConn l_dbcAccess = null;
-            p_smResult.BllReset("Estados", "fGetLastFiveMvlCombus");
 
             try
             {
@@ -73,7 +72,6 @@ namespace Rivn.Bll
             {
                 // Si pude abrir la conexion -> la cierro
                 if (l_dbcAccess != null) l_dbcAccess.Close();
-                p_smResult.BllPop();
             }
 
             return l_lstLEListaListaEntidades;
@@ -96,7 +94,6 @@ namespace Rivn.Bll
             // No hay errores aun
             ListaEntidades l_lentData;
             DBConn l_dbcAccess = null;
-            p_smResult.BllReset("Estados", "fGetLastFiveMvlCombus");
 
             try
             {
@@ -116,7 +113,6 @@ namespace Rivn.Bll
             {
                 // Si pude abrir la conexion -> la cierro
                 if (l_dbcAccess != null) l_dbcAccess.Close();
-                p_smResult.BllPop();
             }
 
             return l_lentData;
@@ -139,7 +135,6 @@ namespace Rivn.Bll
             // No hay errores aun
             ListaEntidades l_lentData;
             DBConn l_dbcAccess = null;
-            p_smResult.BllReset("Estados", "fGetLastFiveMvlKms");
 
             try
             {
@@ -159,7 +154,6 @@ namespace Rivn.Bll
             {
                 // Si pude abrir la conexion -> la cierro
                 if (l_dbcAccess != null) l_dbcAccess.Close();
-                p_smResult.BllPop();
             }
 
             return l_lentData;
@@ -183,7 +177,6 @@ namespace Rivn.Bll
             // No hay errores aun
             ListaEntidades l_lentData;
             DBConn l_dbcAccess = null;
-            p_smResult.BllReset("Estados", "fGetLastFiveMvlEstados");
 
             try
             {
@@ -203,7 +196,6 @@ namespace Rivn.Bll
             {
                 // Si pude abrir la conexion -> la cierro
                 if (l_dbcAccess != null) l_dbcAccess.Close();
-                p_smResult.BllPop();
             }
 
             return l_lentData;
@@ -248,7 +240,6 @@ namespace Rivn.Bll
             // No hay errores aun
             ListaEntidades l_lentData;
             DBConn l_dbcAccess = null;
-            p_smResult.BllReset("Estados", "fArmarTree");
 
             try
             {
@@ -268,7 +259,6 @@ namespace Rivn.Bll
             {
                 // Si pude abrir la conexion -> la cierro
                 if (l_dbcAccess != null) l_dbcAccess.Close();
-                p_smResult.BllPop();
             }
 
             fAgregarRoot(l_lentData, "Moviles", 1);
@@ -288,8 +278,6 @@ namespace Rivn.Bll
                                                            LEMovilesEquip p_leNuevosEquipamientos,
                                                            ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Moviles", "MvcoSave");
             DBConn l_dbcAccess = null;
 
             try
@@ -330,7 +318,6 @@ namespace Rivn.Bll
                     l_dbcAccess.EndTransaction(p_smResult);
                     l_dbcAccess.Close();
                 }
-                p_smResult.BllPop();
             }
         }
 
@@ -353,15 +340,9 @@ namespace Rivn.Bll
                                     ref EMovil p_entMovil,
                                     ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Moviles", "Save_f");
-
             // *********
             // Agregar acá los procesos adicionales
             // *********
-
-            // Finalizamos
-            p_smResult.BllPop();
         }
 
         /// <summary>
@@ -379,15 +360,9 @@ namespace Rivn.Bll
                                        ref int p_iFxdVersion,
                                        ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Moviles", "Enabled_f");
-
             // *********
             // Agregar acá los procesos adicionales
             // *********
-
-            // Finalizamos
-            p_smResult.BllPop();
         }
 
         /// <summary>
@@ -403,15 +378,9 @@ namespace Rivn.Bll
                                       int p_iFxdVersion,
                                       ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Moviles", "Remove_f");
-
             // *********
             // Agregar acá los procesos adicionales
             // *********
-
-            // Finalizamos
-            p_smResult.BllPop();
         }
 
         /// <summary>
@@ -425,15 +394,9 @@ namespace Rivn.Bll
                                     EMovil p_entMovil,
                                     ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Moviles", "TInt_f");
-
             // *********
             // Agregar acá las validaciones adicionales
             // *********
-
-            // Finalizamos
-            p_smResult.BllPop();
         }
 
         /// <summary>
@@ -447,15 +410,9 @@ namespace Rivn.Bll
                                         ref EMovilCombus p_entMovilCombus,
                                         ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Moviles", "MvcoSave_f");
-
             // *********
             // Agregar acá los procesos adicionales
             // *********
-
-            // Finalizamos
-            p_smResult.BllPop();
         }
 
         /// <summary>
@@ -475,15 +432,9 @@ namespace Rivn.Bll
                                            ref int p_iFxdVersion,
                                            ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Moviles", "MvcoEnabled_f");
-
             // *********
             // Agregar acá los procesos adicionales
             // *********
-
-            // Finalizamos
-            p_smResult.BllPop();
         }
 
         /// <summary>
@@ -501,15 +452,9 @@ namespace Rivn.Bll
                                           int p_iFxdVersion,
                                           ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Moviles", "MvcoRemove_f");
-
             // *********
             // Agregar acá los procesos adicionales
             // *********
-
-            // Finalizamos
-            p_smResult.BllPop();
         }
 
         /// <summary>
@@ -523,15 +468,9 @@ namespace Rivn.Bll
                                         EMovilCombus p_entMovilCombus,
                                         ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Moviles", "MvcoTInt_f");
-
             // *********
             // Agregar acá las validaciones adicionales
             // *********
-
-            // Finalizamos
-            p_smResult.BllPop();
         }
 
         /// <summary>
@@ -545,15 +484,9 @@ namespace Rivn.Bll
                                         ref EMovilEquip p_entMovilEquip,
                                         ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Moviles", "MveqSave_f");
-
             // *********
             // Agregar acá los procesos adicionales
             // *********
-
-            // Finalizamos
-            p_smResult.BllPop();
         }
 
         /// <summary>
@@ -573,15 +506,9 @@ namespace Rivn.Bll
                                            ref int p_iFxdVersion,
                                            ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Moviles", "MveqEnabled_f");
-
             // *********
             // Agregar acá los procesos adicionales
             // *********
-
-            // Finalizamos
-            p_smResult.BllPop();
         }
 
         /// <summary>
@@ -599,15 +526,9 @@ namespace Rivn.Bll
                                           int p_iFxdVersion,
                                           ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Moviles", "MveqRemove_f");
-
             // *********
             // Agregar acá los procesos adicionales
             // *********
-
-            // Finalizamos
-            p_smResult.BllPop();
         }
 
         /// <summary>
@@ -621,15 +542,9 @@ namespace Rivn.Bll
                                         EMovilEquip p_entMovilEquip,
                                         ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Moviles", "MveqTInt_f");
-
             // *********
             // Agregar acá las validaciones adicionales
             // *********
-
-            // Finalizamos
-            p_smResult.BllPop();
         }
 
         /// <summary>
@@ -643,15 +558,9 @@ namespace Rivn.Bll
                                         ref EMovilEstado p_entMovilEstado,
                                         ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Moviles", "MvesSave_f");
-
             // *********
             // Agregar acá los procesos adicionales
             // *********
-
-            // Finalizamos
-            p_smResult.BllPop();
         }
 
         /// <summary>
@@ -671,15 +580,9 @@ namespace Rivn.Bll
                                            ref int p_iFxdVersion,
                                            ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Moviles", "MvesEnabled_f");
-
             // *********
             // Agregar acá los procesos adicionales
             // *********
-
-            // Finalizamos
-            p_smResult.BllPop();
         }
 
         /// <summary>
@@ -697,15 +600,9 @@ namespace Rivn.Bll
                                           int p_iFxdVersion,
                                           ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Moviles", "MvesRemove_f");
-
             // *********
             // Agregar acá los procesos adicionales
             // *********
-
-            // Finalizamos
-            p_smResult.BllPop();
         }
 
         /// <summary>
@@ -719,15 +616,9 @@ namespace Rivn.Bll
                                         EMovilEstado p_entMovilEstado,
                                         ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Moviles", "MvesTInt_f");
-
             // *********
             // Agregar acá las validaciones adicionales
             // *********
-
-            // Finalizamos
-            p_smResult.BllPop();
         }
 
         /// <summary>
@@ -741,15 +632,9 @@ namespace Rivn.Bll
                                         ref EMovilKms p_entMovilKms,
                                         ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Moviles", "MvkmSave_f");
-
             // *********
             // Agregar acá los procesos adicionales
             // *********
-
-            // Finalizamos
-            p_smResult.BllPop();
         }
 
         /// <summary>
@@ -769,15 +654,9 @@ namespace Rivn.Bll
                                            ref int p_iFxdVersion,
                                            ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Moviles", "MvkmEnabled_f");
-
             // *********
             // Agregar acá los procesos adicionales
             // *********
-
-            // Finalizamos
-            p_smResult.BllPop();
         }
 
         /// <summary>
@@ -795,15 +674,9 @@ namespace Rivn.Bll
                                           int p_iFxdVersion,
                                           ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Moviles", "MvkmRemove_f");
-
             // *********
             // Agregar acá los procesos adicionales
             // *********
-
-            // Finalizamos
-            p_smResult.BllPop();
         }
 
         /// <summary>
@@ -817,15 +690,9 @@ namespace Rivn.Bll
                                         EMovilKms p_entMovilKms,
                                         ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Moviles", "MvkmTInt_f");
-
             // *********
             // Agregar acá las validaciones adicionales
             // *********
-
-            // Finalizamos
-            p_smResult.BllPop();
         }
 
         #endregion

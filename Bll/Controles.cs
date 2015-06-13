@@ -54,15 +54,9 @@ namespace Rivn.Bll
                                     ref EControl p_entControl,
                                     ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Controles", "Save_f");
-
             // *********
             // Agregar acá los procesos adicionales
             // *********
-
-            // Finalizamos
-            p_smResult.BllPop();
         }
 
         /// <summary>
@@ -80,15 +74,9 @@ namespace Rivn.Bll
                                        ref int p_iFxdVersion,
                                        ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Controles", "Enabled_f");
-
             // *********
             // Agregar acá los procesos adicionales
             // *********
-
-            // Finalizamos
-            p_smResult.BllPop();
         }
 
         /// <summary>
@@ -104,15 +92,9 @@ namespace Rivn.Bll
                                       int p_iFxdVersion,
                                       ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Controles", "Remove_f");
-
             // *********
             // Agregar acá los procesos adicionales
             // *********
-
-            // Finalizamos
-            p_smResult.BllPop();
         }
 
         /// <summary>
@@ -126,15 +108,9 @@ namespace Rivn.Bll
                                     EControl p_entControl,
                                     ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Controles", "TInt_f");
-
             // *********
             // Agregar acá las validaciones adicionales
             // *********
-
-            // Finalizamos
-            p_smResult.BllPop();
         }
 
         /// <summary>
@@ -148,15 +124,9 @@ namespace Rivn.Bll
                                         ref EControlRepa p_entControlRepa,
                                         ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Controles", "CrepSave_f");
-
             // *********
             // Agregar acá los procesos adicionales
             // *********
-
-            // Finalizamos
-            p_smResult.BllPop();
         }
 
         /// <summary>
@@ -165,8 +135,8 @@ namespace Rivn.Bll
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
         /// <param name="p_bEnable">Tipo de operacion</param>
-        /// <param name="p_strCodctl">codigoControl</param>
-        /// <param name="p_iNroitem">item</param>
+        /// <param name="p_strCodctl">Codigo Control</param>
+        /// <param name="p_iNroitem">Item</param>
         /// <param name="p_iFxdVersion">Versión del registro a borrar</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void CrepEnabled_f(DBConn p_dbcAccess,
@@ -176,15 +146,9 @@ namespace Rivn.Bll
                                            ref int p_iFxdVersion,
                                            ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Controles", "CrepEnabled_f");
-
             // *********
             // Agregar acá los procesos adicionales
             // *********
-
-            // Finalizamos
-            p_smResult.BllPop();
         }
 
         /// <summary>
@@ -192,8 +156,8 @@ namespace Rivn.Bll
         /// (Código Fijo)
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_strCodctl">codigoControl</param>
-        /// <param name="p_iNroitem">item</param>
+        /// <param name="p_strCodctl">Codigo Control</param>
+        /// <param name="p_iNroitem">Item</param>
         /// <param name="p_iFxdVersion">Versión del registro a borrar</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void CrepRemove_f(DBConn p_dbcAccess,
@@ -202,15 +166,9 @@ namespace Rivn.Bll
                                           int p_iFxdVersion,
                                           ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Controles", "CrepRemove_f");
-
             // *********
             // Agregar acá los procesos adicionales
             // *********
-
-            // Finalizamos
-            p_smResult.BllPop();
         }
 
         /// <summary>
@@ -224,15 +182,9 @@ namespace Rivn.Bll
                                         EControlRepa p_entControlRepa,
                                         ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Controles", "CrepTInt_f");
-
             // *********
             // Agregar acá las validaciones adicionales
             // *********
-
-            // Finalizamos
-            p_smResult.BllPop();
         }
 
         #endregion

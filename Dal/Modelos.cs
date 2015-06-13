@@ -10,12 +10,12 @@ namespace Rivn.Dal
     //----------------------------------------------------------------------------
     //                         TNG Software DAL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 21/11/2013 15:12
+    // Fecha                    : 13/06/2015 14:44
     // Sistema                  : Rivn
     // Clase para Administrar   : Modelos de los moviles
     // Basada en la Tabla       : Modelos
     //----------------------------------------------------------------------------
-    // © 1996-2013 by TNG Software                                      Gndr 5.20
+    // © 1996-2015 by TNG Software                                      Gndr 5.20
     //----------------------------------------------------------------------------
 
     //****************************************************************************
@@ -51,9 +51,6 @@ namespace Rivn.Dal
                              string p_strTabla,
                              ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.DalReset("Modelos", "Up");
-
             try {
                 // Recuperamos todos los registros
                 return DBRuts.Exec_DS(p_dbcAccess,
@@ -65,12 +62,8 @@ namespace Rivn.Dal
             }
             catch (Exception l_expData) {
                 // Error en el select de la tabla
-                p_smResult.DalError(l_expData.ToString());
+                p_smResult.DalError(l_expData);
                 return -1;
-            }
-            finally {
-                // Resteamos el StatMsg
-                p_smResult.DalExit();
             }
         }
 
@@ -90,9 +83,6 @@ namespace Rivn.Dal
                                       string p_strTabla,
                                       ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.DalReset("Modelos", "ChkVersion");
-
             try {
                 // Verificamos el número de versión
                 DBRuts.Exec_DS(p_dbcAccess,
@@ -105,11 +95,7 @@ namespace Rivn.Dal
             }
             catch (Exception l_expData) {
                 // Error en el conteo
-                p_smResult.DalError(l_expData.ToString());
-            }
-            finally {
-                // Resteamos el StatMsg
-                p_smResult.DalExit();
+                p_smResult.DalError(l_expData);
             }
         }
 
@@ -129,9 +115,6 @@ namespace Rivn.Dal
                                  string p_strTabla,
                                  ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.DalReset("Modelos", "Search");
-
             try {
                 // Recuperamos el registro de la clave
                 return DBRuts.Exec_DS(p_dbcAccess,
@@ -144,12 +127,8 @@ namespace Rivn.Dal
             }
             catch (Exception l_expData) {
                 // Error en el search del registro
-                p_smResult.DalError(l_expData.ToString());
+                p_smResult.DalError(l_expData);
                 return -1;
-            }
-            finally {
-                // Resteamos el StatMsg
-                p_smResult.DalExit();
             }
         }
 
@@ -166,8 +145,6 @@ namespace Rivn.Dal
                                      ref StatMsg p_smResult)
         {
             // No hay errores aun
-            p_smResult.DalReset("Modelos", "GetMaxKey");
-
             try {
                 // Recuperamos la clave mas alta de la tabla
                 DBRuts.Exec_DS(p_dbcAccess,
@@ -179,11 +156,7 @@ namespace Rivn.Dal
             }
             catch (Exception l_expData) {
                 // Error en el search de la clave máxima
-                p_smResult.DalError(l_expData.ToString());
-            }
-            finally {
-                // Resteamos el StatMsg
-                p_smResult.DalExit();
+                p_smResult.DalError(l_expData);
             }
         }
         #endregion
@@ -204,9 +177,6 @@ namespace Rivn.Dal
                                  string p_strCodmarca,
                                  ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.DalReset("Modelos", "Insert");
-
             try {
                 // Insertamos el registro
                 return DBRuts.Exec(p_dbcAccess,
@@ -221,12 +191,8 @@ namespace Rivn.Dal
             }
             catch (Exception l_expData) {
                 // Error en el insert del registro
-                p_smResult.DalError(l_expData.ToString());
+                p_smResult.DalError(l_expData);
                 return -1;
-            }
-            finally {
-                // Resteamos el StatMsg
-                p_smResult.DalExit();
             }
         }
 
@@ -244,9 +210,6 @@ namespace Rivn.Dal
                                  string p_strCodmarca,
                                  ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.DalReset("Modelos", "Update");
-
             try {
                 // Modificamos el registro
                 return DBRuts.Exec(p_dbcAccess,
@@ -261,12 +224,8 @@ namespace Rivn.Dal
             }
             catch (Exception l_expData) {
                 // Error en el update del registro
-                p_smResult.DalError(l_expData.ToString());
+                p_smResult.DalError(l_expData);
                 return -1;
-            }
-            finally {
-                // Resteamos el StatMsg
-                p_smResult.DalExit();
             }
         }
 
@@ -280,9 +239,6 @@ namespace Rivn.Dal
                                  string p_strCod,
                                  ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.DalReset("Modelos", "Delete");
-
             try {
                 // Borramos el registro
                 return DBRuts.Exec(p_dbcAccess,
@@ -295,12 +251,8 @@ namespace Rivn.Dal
             }
             catch (Exception l_expData) {
                 // Error en el update del registro
-                p_smResult.DalError(l_expData.ToString());
+                p_smResult.DalError(l_expData);
                 return -1;
-            }
-            finally {
-                // Resteamos el StatMsg
-                p_smResult.DalExit();
             }
         }
 
@@ -314,9 +266,6 @@ namespace Rivn.Dal
                                  string p_strCod,
                                  ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.DalReset("Modelos", "Recall");
-
             try {
                 // Borramos el registro
                 return DBRuts.Exec(p_dbcAccess,
@@ -329,12 +278,8 @@ namespace Rivn.Dal
             }
             catch (Exception l_expData) {
                 // Error en el update del registro
-                p_smResult.DalError(l_expData.ToString());
+                p_smResult.DalError(l_expData);
                 return -1;
-            }
-            finally {
-                // Resteamos el StatMsg
-                p_smResult.DalExit();
             }
         }
 
@@ -348,9 +293,6 @@ namespace Rivn.Dal
                                string p_strCod,
                                ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.DalReset("Modelos", "Drop");
-
             try {
                 // Borramos el registro
                 return DBRuts.Exec(p_dbcAccess,
@@ -363,12 +305,8 @@ namespace Rivn.Dal
             }
             catch (Exception l_expData) {
                 // Error en el delete del registro
-                p_smResult.DalError(l_expData.ToString());
+                p_smResult.DalError(l_expData);
                 return -1;
-            }
-            finally {
-                // Resteamos el StatMsg
-                p_smResult.DalExit();
             }
         }
 
@@ -380,9 +318,6 @@ namespace Rivn.Dal
         public static int Pack(DBConn p_dbcAccess,
                                ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.DalReset("Modelos", "Pack");
-
             try {
                 // Borramos el registro
                 return DBRuts.Exec(p_dbcAccess,
@@ -394,12 +329,8 @@ namespace Rivn.Dal
             }
             catch (Exception l_expData) {
                 // Error en el delete del registro
-                p_smResult.DalError(l_expData.ToString());
+                p_smResult.DalError(l_expData);
                 return -1;
-            }
-            finally {
-                // Resteamos el StatMsg
-                p_smResult.DalExit();
             }
         }
         #endregion
@@ -417,9 +348,6 @@ namespace Rivn.Dal
         public static void MakeGridCaptions(ref DataTable p_dtResult,
                                             ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.DalReset("Modelos", "MakeGridCaption");
-
             try {
                 // Quitamos los captions existentes
                 DBRuts.ClearDTCaptions(ref p_dtResult);
@@ -432,11 +360,7 @@ namespace Rivn.Dal
             }
             catch (Exception l_expData) {
                 // Error en el armado de la grilla
-                p_smResult.DalError(l_expData.ToString());
-            }
-            finally {
-                // Resteamos el StatMsg
-                p_smResult.DalExit();
+                p_smResult.DalError(l_expData);
             }
         }
 
@@ -450,13 +374,9 @@ namespace Rivn.Dal
                                             string p_strTabla,
                                             ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.DalReset("Modelos", "MakeGridCaption");
-
             // Llamamos al método base
             DataTable l_dtTemp= p_dsResult.Tables[p_strTabla];
             MakeGridCaptions(ref l_dtTemp, ref p_smResult);
-            p_smResult.DalExit();
         }
 
         /// <summary>
@@ -467,13 +387,9 @@ namespace Rivn.Dal
         public static void MakeGridCaptions(ref ListaEntidades p_lentResult,
                                             ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.DalReset("Modelos", "MakeGridCaption");
-
             // Llamamos al método base
             DataTable l_dtTemp= p_lentResult.InternalData.Table;
             MakeGridCaptions(ref l_dtTemp, ref p_smResult);
-            p_smResult.DalExit();
         }
         #endregion
     }

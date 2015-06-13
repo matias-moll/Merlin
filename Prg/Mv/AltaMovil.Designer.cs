@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AltaMovil));
             this.xPanel1 = new TNGS.NetControls.XPanel();
             this.tsContainer1 = new TNGS.NetControls.TSContainer();
@@ -141,27 +142,41 @@
             // 
             // gbCancel
             // 
+            this.gbCancel.BlackBorder = true;
+            this.gbCancel.CircleButton = false;
             this.gbCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.gbCancel.FixedImage = TNGS.NetControls.FixedGlassButtons.tCancel;
+            this.gbCancel.FlatColor = System.Drawing.Color.RoyalBlue;
+            this.gbCancel.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
+            this.gbCancel.FlatTextColor = System.Drawing.Color.Black;
             this.gbCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbCancel.ImageOnTop = true;
             this.gbCancel.Location = new System.Drawing.Point(111, 6);
             this.gbCancel.Name = "gbCancel";
+            this.gbCancel.RoundCorners = 2;
             this.gbCancel.Size = new System.Drawing.Size(100, 55);
             this.gbCancel.TabIndex = 1;
             this.gbCancel.Text = "Cancelar";
+            this.gbCancel.W8Color = System.Drawing.Color.RoyalBlue;
             this.gbCancel.Click += new System.EventHandler(this.gbCancel_Click);
             // 
             // gbGrabar
             // 
+            this.gbGrabar.BlackBorder = true;
+            this.gbGrabar.CircleButton = false;
             this.gbGrabar.FixedImage = TNGS.NetControls.FixedGlassButtons.tSave;
+            this.gbGrabar.FlatColor = System.Drawing.Color.RoyalBlue;
+            this.gbGrabar.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
+            this.gbGrabar.FlatTextColor = System.Drawing.Color.Black;
             this.gbGrabar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbGrabar.ImageOnTop = true;
             this.gbGrabar.Location = new System.Drawing.Point(6, 6);
             this.gbGrabar.Name = "gbGrabar";
+            this.gbGrabar.RoundCorners = 2;
             this.gbGrabar.Size = new System.Drawing.Size(100, 55);
             this.gbGrabar.TabIndex = 2;
             this.gbGrabar.Text = "Grabar";
+            this.gbGrabar.W8Color = System.Drawing.Color.RoyalBlue;
             this.gbGrabar.Click += new System.EventHandler(this.btnGrabar_Click);
             // 
             // tsPanel1
@@ -180,38 +195,59 @@
             // 
             // btnDestildarTodoEqi
             // 
+            this.btnDestildarTodoEqi.BlackBorder = true;
+            this.btnDestildarTodoEqi.CircleButton = false;
             this.btnDestildarTodoEqi.FixedImage = TNGS.NetControls.FixedGlassButtons.tDisable;
+            this.btnDestildarTodoEqi.FlatColor = System.Drawing.Color.RoyalBlue;
+            this.btnDestildarTodoEqi.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
+            this.btnDestildarTodoEqi.FlatTextColor = System.Drawing.Color.Black;
             this.btnDestildarTodoEqi.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDestildarTodoEqi.ImageOnTop = true;
             this.btnDestildarTodoEqi.Location = new System.Drawing.Point(218, 6);
             this.btnDestildarTodoEqi.Name = "btnDestildarTodoEqi";
+            this.btnDestildarTodoEqi.RoundCorners = 2;
             this.btnDestildarTodoEqi.Size = new System.Drawing.Size(100, 55);
             this.btnDestildarTodoEqi.TabIndex = 2;
             this.btnDestildarTodoEqi.Text = "Destildar Todos";
+            this.btnDestildarTodoEqi.W8Color = System.Drawing.Color.RoyalBlue;
             this.btnDestildarTodoEqi.Click += new System.EventHandler(this.btnDestildarTodoEqi_Click);
             // 
             // gbLimpiarTodo
             // 
+            this.gbLimpiarTodo.BlackBorder = true;
+            this.gbLimpiarTodo.CircleButton = false;
             this.gbLimpiarTodo.FixedImage = TNGS.NetControls.FixedGlassButtons.tDelete;
+            this.gbLimpiarTodo.FlatColor = System.Drawing.Color.RoyalBlue;
+            this.gbLimpiarTodo.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
+            this.gbLimpiarTodo.FlatTextColor = System.Drawing.Color.Black;
             this.gbLimpiarTodo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbLimpiarTodo.ImageOnTop = true;
             this.gbLimpiarTodo.Location = new System.Drawing.Point(8, 6);
             this.gbLimpiarTodo.Name = "gbLimpiarTodo";
+            this.gbLimpiarTodo.RoundCorners = 2;
             this.gbLimpiarTodo.Size = new System.Drawing.Size(100, 55);
             this.gbLimpiarTodo.TabIndex = 0;
             this.gbLimpiarTodo.Text = "Limpiar Campos";
+            this.gbLimpiarTodo.W8Color = System.Drawing.Color.RoyalBlue;
             this.gbLimpiarTodo.Click += new System.EventHandler(this.btnLimpiarTodo_Click);
             // 
             // btnTildaTodos
             // 
+            this.btnTildaTodos.BlackBorder = true;
+            this.btnTildaTodos.CircleButton = false;
             this.btnTildaTodos.FixedImage = TNGS.NetControls.FixedGlassButtons.tEnable;
+            this.btnTildaTodos.FlatColor = System.Drawing.Color.RoyalBlue;
+            this.btnTildaTodos.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
+            this.btnTildaTodos.FlatTextColor = System.Drawing.Color.Black;
             this.btnTildaTodos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTildaTodos.ImageOnTop = true;
             this.btnTildaTodos.Location = new System.Drawing.Point(113, 6);
             this.btnTildaTodos.Name = "btnTildaTodos";
+            this.btnTildaTodos.RoundCorners = 2;
             this.btnTildaTodos.Size = new System.Drawing.Size(100, 55);
             this.btnTildaTodos.TabIndex = 1;
             this.btnTildaTodos.Text = "Tildar Todos";
+            this.btnTildaTodos.W8Color = System.Drawing.Color.RoyalBlue;
             this.btnTildaTodos.Click += new System.EventHandler(this.tildarTodo_Click);
             // 
             // tsBase1
@@ -349,6 +385,7 @@
             // 
             this.cdcModelo.BackColor = System.Drawing.SystemColors.Window;
             this.cdcModelo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cdcModelo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cdcModelo.FormattingEnabled = true;
             this.cdcModelo.Location = new System.Drawing.Point(157, 271);
             this.cdcModelo.Name = "cdcModelo";
@@ -431,6 +468,7 @@
             // 
             this.cdcMovilPropio.BackColor = System.Drawing.SystemColors.Window;
             this.cdcMovilPropio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cdcMovilPropio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cdcMovilPropio.FormattingEnabled = true;
             this.cdcMovilPropio.Location = new System.Drawing.Point(447, 161);
             this.cdcMovilPropio.Name = "cdcMovilPropio";

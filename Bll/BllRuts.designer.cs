@@ -16,11 +16,11 @@ namespace Rivn.Bll
     //----------------------------------------------------------------------------
     //                         TNG Software BLL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 15/11/2013 15:37
+    // Fecha                    : 13/06/2015 15:32
     // Sistema                  : Rivn
-    // Clase para Administrar   : 
+    // Clase para Administrar   : Tablas de Rivn.
     //----------------------------------------------------------------------------
-    // © 1996-2013 by TNG Software                                      Gndr 5.20
+    // © 1996-2015 by TNG Software                                      Gndr 5.20
     //----------------------------------------------------------------------------
 
     //****************************************************************************
@@ -49,15 +49,11 @@ namespace Rivn.Bll
         public static DateTime GetDBNow(DBConn p_dbcAccess,
                                         ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("BllRuts", "GetDBNow");
-
             // Llamamos al metodo basico
             DateTime l_dtRet= GetDBNow(p_dbcAccess, false, ref p_smResult);
             if (p_smResult.NOk) return DateTimeRuts.Empty;
 
             // Terminamos
-            p_smResult.BllPop();
             return l_dtRet;
         }
 
@@ -72,21 +68,14 @@ namespace Rivn.Bll
                                         bool p_bOnlyDate,
                                         ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("BllRuts", "GetDBNow");
-
             try {
                 // Recuperamos la fecha del server
                 return AppRuts.GetDBNow(p_dbcAccess, p_bOnlyDate, ref p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
                 return DateTimeRuts.Empty;
-            }
-            finally {
-                // Terminamos
-                p_smResult.BllPop();
             }
         }
 
@@ -130,52 +119,52 @@ namespace Rivn.Bll
             switch (p_strColumn) {
                 // ****************************************
                 // Tabla: Categorias          
-                case "cat_rcd_cod"                     : {return "V1codigoCN1";}
-                case "cat_des_des"                     : {return "V1descripcionCN1";}
+                case "cat_rcd_cod"                     : {return "V1Cod CategoriaCN1";}
+                case "cat_des_des"                     : {return "V1CategoriaCN1";}
 
                 // ****************************************
                 // Tabla: Controles           
                 case "ctl_cod_cod"                     : {return "V1CodigoCN1";}
-                case "ctl_des_des"                     : {return "V1DescripcionCN1";}
+                case "ctl_des_des"                     : {return "V1ControlCN1";}
                 case "ctl_cd1_crit"                    : {return "V1CriticoCN2";}
 
                 // ****************************************
                 // Tabla: ControlesReparations
-                case "ctr_cod_codctl"                  : {return "V1codigoControlCN1";}
-                case "ctr_nro_nroitem"                 : {return "V1itemNN3";}
-                case "ctr_cd6_codrep"                  : {return "V1codigoReparacionCN1";}
+                case "ctr_cod_codctl"                  : {return "V1Codigo ControlCN1";}
+                case "ctr_nro_nroitem"                 : {return "V1ItemNN3";}
+                case "ctr_cd6_codrep"                  : {return "V1Codigo de ReparacionCN1";}
                 case "ctr_des_descRep"                 : {return "V1ReparacionCN1";}
 
                 // ****************************************
                 // Tabla: Equipamiento        
-                case "eqi_cod_cod"                     : {return "V1codCN1";}
-                case "eqi_des_des"                     : {return "V1desCN1";}
-                case "eqi_imp_valor"                   : {return "V1valor2N3";}
+                case "eqi_cod_cod"                     : {return "V1Codigo EquipamientoCN1";}
+                case "eqi_des_des"                     : {return "V1EquipamientoCN1";}
+                case "eqi_imp_valor"                   : {return "V1Importe2N3";}
 
                 // ****************************************
                 // Tabla: Estaciones          
-                case "ets_rcd_cod"                     : {return "V1CodigoEstacionCN1";}
-                case "ets_des_des"                     : {return "V1descripcionCN1";}
+                case "ets_rcd_cod"                     : {return "V1Codigo EstacionCN1";}
+                case "ets_des_des"                     : {return "V1EstacionCN1";}
                 case "ets_ede_domicilio"               : {return "V1DomicilioCN1";}
                 case "ets_des_contacto"                : {return "V1ContactoCN1";}
                 case "ets_ete_telefono"                : {return "V1TelefonoCN1";}
 
                 // ****************************************
                 // Tabla: Estados             
-                case "est_rcd_cod"                     : {return "V1codCN1";}
-                case "est_des_des"                     : {return "V1desCN1";}
+                case "est_rcd_cod"                     : {return "V1Codigo EstadoCN1";}
+                case "est_des_des"                     : {return "V1EstadoCN1";}
                 case "est_txt_txtcontingencia"         : {return "V1Texto de ContingenciaCN1";}
                 case "est_cd1_operativo"               : {return "V1OperativoCN2";}
 
                 // ****************************************
                 // Tabla: Marcas              
-                case "mrc_rcd_codigo"                  : {return "V1codCN1";}
-                case "mrc_des_descripcion"             : {return "V1desCN1";}
+                case "mrc_rcd_codigo"                  : {return "V1Codigo MarcaCN1";}
+                case "mrc_des_descripcion"             : {return "V1MarcaCN1";}
 
                 // ****************************************
                 // Tabla: Modelos             
-                case "mds_rcd_cod"                     : {return "V1CodigoCN1";}
-                case "mds_des_des"                     : {return "V1descripcionCN1";}
+                case "mds_rcd_cod"                     : {return "V1Codigo ModeloCN1";}
+                case "mds_des_des"                     : {return "V1ModeloCN1";}
                 case "mds_rcd_codmarca"                : {return "V1Codigo de la marcaCN1";}
 
                 // ****************************************
@@ -247,9 +236,9 @@ namespace Rivn.Bll
 
                 // ****************************************
                 // Tabla: Reparaciones        
-                case "rep_cd6_cod"                     : {return "V1codigoCN1";}
-                case "rep_xde_des"                     : {return "V1descripcionCN1";}
-                case "rep_rcd_codcat"                  : {return "V1categoriaCN1";}
+                case "rep_cd6_cod"                     : {return "V1Codigo ReparacionCN1";}
+                case "rep_xde_des"                     : {return "V1ReparacionCN1";}
+                case "rep_rcd_codcat"                  : {return "V1CategoriaCN1";}
                 case "rep_cd1_solicitadetalle"         : {return "V1Se Solicita DetalleCN2";}
 
                 // ****************************************

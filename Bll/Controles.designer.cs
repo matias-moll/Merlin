@@ -16,11 +16,11 @@ namespace Rivn.Bll
     //----------------------------------------------------------------------------
     //                         TNG Software BLL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 15/11/2013 15:37
+    // Fecha                    : 13/06/2015 15:32
     // Sistema                  : Rivn
     // Clase para Administrar   : Controles con sus Reparaciones
     //----------------------------------------------------------------------------
-    // © 1996-2013 by TNG Software                                      Gndr 5.20
+    // © 1996-2015 by TNG Software                                      Gndr 5.20
     //----------------------------------------------------------------------------
 
     //****************************************************************************
@@ -59,7 +59,6 @@ namespace Rivn.Bll
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
-            p_smResult.BllReset("Controles", "CrepUpFull");
 
             try {
                 // Obtenemos una conexion
@@ -70,21 +69,20 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion UpFull
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
                 return null;
             }
             finally {
                 // Si pude abrir la conexion -> la cierro
                 if (l_dbcAccess != null) l_dbcAccess.Close();
-                p_smResult.BllPop();
             }
         }
 
         /// <summary>
         /// Devuelve una entidad: EControlRepa
         /// </summary>
-        /// <param name="p_strCodctl">codigoControl</param>
-        /// <param name="p_iNroitem">item</param>
+        /// <param name="p_strCodctl">Codigo Control</param>
+        /// <param name="p_iNroitem">Item</param>
         /// <param name="p_bOnlyActive">Indica si solo se analizan los registros activos</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         /// <returns>Entidad: EControlRepa</returns>
@@ -95,7 +93,6 @@ namespace Rivn.Bll
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
-            p_smResult.BllReset("Controles", "CrepGet");
 
             try {
                 // Obtenemos una conexion
@@ -110,13 +107,12 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion Get
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
                 return null;
             }
             finally {
                 // Si pude abrir la conexion -> la cierro
                 if (l_dbcAccess != null) l_dbcAccess.Close();
-                p_smResult.BllPop();
             }
         }
 
@@ -124,7 +120,7 @@ namespace Rivn.Bll
         /// Devuelve una lista-entidad: LEControlesRepa
         /// asociada a una Foreing key de la tabla: ControlesReparations
         /// </summary>
-        /// <param name="p_strCodctl">codigoControl</param>
+        /// <param name="p_strCodctl">Codigo Control</param>
         /// <param name="p_bOnlyActive">Indica si solo se analizan los registros activos</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         /// <returns>Lista-Entidad: LEControlesRepa</returns>
@@ -134,7 +130,6 @@ namespace Rivn.Bll
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
-            p_smResult.BllReset("Controles", "CrepFGet");
 
             try {
                 // Obtenemos una conexion
@@ -148,13 +143,12 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion FGet
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
                 return null;
             }
             finally {
                 // Si pude abrir la conexion -> la cierro
                 if (l_dbcAccess != null) l_dbcAccess.Close();
-                p_smResult.BllPop();
             }
         }
         #endregion
@@ -170,7 +164,6 @@ namespace Rivn.Bll
                                     ref StatMsg p_smResult)
         {
             // No hay errores aun
-            p_smResult.BllReset("Controles", "CrepSave");
             DBConn l_dbcAccess= null;
 
             try {
@@ -183,7 +176,7 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion Save
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
             }
             finally {
                 // Si pude abrir la conexion
@@ -192,7 +185,6 @@ namespace Rivn.Bll
                     l_dbcAccess.EndTransaction(p_smResult);
                     l_dbcAccess.Close();
                 }
-                p_smResult.BllPop();
             }
         }
 
@@ -200,8 +192,8 @@ namespace Rivn.Bll
         /// Habilita/Deshabilita un registro de la tabla: ControlesReparations
         /// </summary>
         /// <param name="p_bEnable">Tipo de operacion</param>
-        /// <param name="p_strCodctl">codigoControl</param>
-        /// <param name="p_iNroitem">item</param>
+        /// <param name="p_strCodctl">Codigo Control</param>
+        /// <param name="p_iNroitem">Item</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static void CrepEnabled(bool p_bEnable,
                                        string p_strCodctl,
@@ -211,7 +203,6 @@ namespace Rivn.Bll
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
-            p_smResult.BllReset("Controles", "CrepEnabled");
 
             try {
                 // Obtenemos una conexion
@@ -267,7 +258,7 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion Enabled
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
             }
             finally {
                 // Si pude abrir la conexion
@@ -276,15 +267,14 @@ namespace Rivn.Bll
                     l_dbcAccess.EndTransaction(p_smResult);
                     l_dbcAccess.Close();
                 }
-                p_smResult.BllPop();
             }
         }
 
         /// <summary>
         /// Borra físicamento un registro de la tabla: ControlesReparations
         /// </summary>
-        /// <param name="p_strCodctl">codigoControl</param>
-        /// <param name="p_iNroitem">item</param>
+        /// <param name="p_strCodctl">Codigo Control</param>
+        /// <param name="p_iNroitem">Item</param>
         /// <param name="p_iFxdVersion">Versión del registro a borrar</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static void CrepRemove(string p_strCodctl,
@@ -294,7 +284,6 @@ namespace Rivn.Bll
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
-            p_smResult.BllReset("Controles", "CrepRemove");
 
             try {
                 // Obtenemos una conexion
@@ -318,7 +307,7 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion Remove
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
             }
             finally {
                 // Si pude abrir la conexion
@@ -327,7 +316,6 @@ namespace Rivn.Bll
                     l_dbcAccess.EndTransaction(p_smResult);
                     l_dbcAccess.Close();
                 }
-                p_smResult.BllPop();
             }
         }
 
@@ -339,8 +327,6 @@ namespace Rivn.Bll
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
-            p_smResult.BllReset("Controles", "CrepPurge");
-
             try {
                 // Obtenemos una conexion
                 l_dbcAccess= DBRuts.GetConection(Connections.Dat);
@@ -352,7 +338,7 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion Enabled
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
             }
             finally {
                 // Si pude abrir la conexion
@@ -361,7 +347,6 @@ namespace Rivn.Bll
                     l_dbcAccess.EndTransaction(p_smResult);
                     l_dbcAccess.Close();
                 }
-                p_smResult.BllPop();
             }
         }
         #endregion
@@ -385,16 +370,13 @@ namespace Rivn.Bll
                                       EControlRepa p_entControlRepa,
                                       ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Controles", "CrepTInt");
-
             // ********
             // Validaciones de los campos sin conexion
             // ********
 
             if (p_entControlRepa.Nroitem <= 0) {
-                // El campo [item] debe ser mayor a cero
-                p_smResult.BllWarning("El dato [item] debe ser mayor a cero","");
+                // El campo [Item] debe ser mayor a cero
+                p_smResult.BllWarning("El dato [Item] debe ser mayor a cero","");
                 return;
             }
 
@@ -408,8 +390,8 @@ namespace Rivn.Bll
             if (p_smResult.NOk) return;
 
             if (!p_smResult.ICodeEs(BllCodes.KeyExists)) {
-                // El campo [codigoControl] debe existir en la tabla [Controles.]
-                p_smResult.BllWarning("El dato [codigoControl] debe existir en la tabla [Controles.] y estar habilitado","");
+                // El campo [Codigo Control] debe existir en la tabla [Controles.]
+                p_smResult.BllWarning("El dato [Codigo Control] debe existir en la tabla [Controles.] y estar habilitado","");
                 return;
             }
 
@@ -419,8 +401,8 @@ namespace Rivn.Bll
             if (p_smResult.NOk) return;
 
             if (!p_smResult.ICodeEs(BllCodes.KeyExists)) {
-                // El campo [codigoReparacion] debe existir en la tabla [Tablas.Rep]
-                p_smResult.BllWarning("El dato [codigoReparacion] debe existir en la tabla [Tablas.Rep] y estar habilitado","");
+                // El campo [Codigo de Reparacion] debe existir en la tabla [Tablas.Rep]
+                p_smResult.BllWarning("El dato [Codigo de Reparacion] debe existir en la tabla [Tablas.Rep] y estar habilitado","");
                 return;
             }
 
@@ -442,17 +424,14 @@ namespace Rivn.Bll
             // Llamamos a la funcion fija del usuario
             CrepTInt_f(p_dbcAccess, p_entControlRepa, ref p_smResult);
             if (p_smResult.NOk) return;
-
-            // Finalizamos
-            p_smResult.BllPop();
         }
 
         /// <summary>
         /// Verifica el número de version de una tabla
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_strCodctl">codigoControl</param>
-        /// <param name="p_iNroitem">item</param>
+        /// <param name="p_strCodctl">Codigo Control</param>
+        /// <param name="p_iNroitem">Item</param>
         /// <param name="p_iFxdVersion">Número de version</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void CrepVVer(DBConn p_dbcAccess,
@@ -462,7 +441,6 @@ namespace Rivn.Bll
                                       ref StatMsg p_smResult)
         {
             // No hay errores aun
-            p_smResult.BllReset("Controles", "CrepVVer");
             DataSet l_dsTemp= new DataSet();
 
             // Verificamos el número de versión
@@ -481,7 +459,6 @@ namespace Rivn.Bll
                 if ((int) l_dsTemp.Tables["Temporal"].Rows[0]["cantidad"] == 1) {
                     // La versión coincide
                     l_dsTemp.Dispose();
-                    p_smResult.BllPop();
                     return;
                 }
             }
@@ -497,14 +474,12 @@ namespace Rivn.Bll
 
                 // Grabamos los datos del error
                 l_swErrorFile.WriteLine("Instante    : {0:dd/MM/yyyy HH:mm:ss}", DateTime.Now);
-                l_swErrorFile.WriteLine("Uil         : {0}", p_smResult.Uil);
-                l_swErrorFile.WriteLine("Bll         : {0}", p_smResult.Bll);
-                l_swErrorFile.WriteLine("Dal         : {0}", p_smResult.Dal);
+                l_swErrorFile.WriteLine("Metodo      : {0}", p_smResult.Method);
                 l_swErrorFile.WriteLine("Message     : No coincide el numero de version");
             }
             catch (Exception l_expData) {
                 // Error en el acceso al archivo.
-                string l_strLinea= l_expData.ToString();
+                string l_strLinea= l_expData.Message;
             }
             finally {
                 // Si llegamos a abrir el archivo -> lo cerramos
@@ -526,8 +501,8 @@ namespace Rivn.Bll
         ///               p_smResult.Stat= BllAvisos.KeyDisabled - La clave está deshabilitada
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_strCodctl">codigoControl</param>
-        /// <param name="p_iNroitem">item</param>
+        /// <param name="p_strCodctl">Codigo Control</param>
+        /// <param name="p_iNroitem">Item</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void CrepVKey(DBConn p_dbcAccess,
                                       string p_strCodctl,
@@ -535,7 +510,6 @@ namespace Rivn.Bll
                                       ref StatMsg p_smResult)
         {
             // No hay errores aun
-            p_smResult.BllReset("Controles", "CrepVKey");
             DataSet l_dsTemp= new DataSet();
 
             Dal.ControlesReparations.Search(p_dbcAccess,
@@ -562,7 +536,6 @@ namespace Rivn.Bll
             finally {
                 // Terminamos
                 l_dsTemp.Dispose();
-                p_smResult.BllPop();
             }
         }
         #endregion
@@ -580,9 +553,6 @@ namespace Rivn.Bll
                                                  bool p_bOnlyActive,
                                                  ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Controles", "CrepUpfl");
-
             try {
                 // Pedimos los registros de la tabla: ControlesReparations
                 DataSet l_dsTemp= new DataSet();
@@ -603,12 +573,8 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion Upfl
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
                 return null;
-            }
-            finally {
-                // Terminamos
-                p_smResult.BllPop();
             }
         }
 
@@ -616,8 +582,8 @@ namespace Rivn.Bll
         /// Devuelve una entidad: EControlRepa
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_strCodctl">codigoControl</param>
-        /// <param name="p_iNroitem">item</param>
+        /// <param name="p_strCodctl">Codigo Control</param>
+        /// <param name="p_iNroitem">Item</param>
         /// <param name="p_bOnlyActive">Indica si solo se analizan los registros activos</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         /// <returns>Entidad: EControlRepa</returns>
@@ -627,9 +593,6 @@ namespace Rivn.Bll
                                               bool p_bOnlyActive,
                                               ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Controles", "CrepSrch");
-
             try {
                 // Pedimos el registro de la tabla: ControlesReparations
                 DataSet l_dsTemp= new DataSet();
@@ -653,12 +616,8 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion Srch
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
                 return null;
-            }
-            finally {
-                // Terminamos
-                p_smResult.BllPop();
             }
         }
 
@@ -667,7 +626,7 @@ namespace Rivn.Bll
         /// a partir de una clave foranea de la tabla: ControlesReparations
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_strCodctl">codigoControl</param>
+        /// <param name="p_strCodctl">Codigo Control</param>
         /// <param name="p_bOnlyActive">Indica si solo se analizan los registros activos</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static LEControlesRepa CrepFSch(DBConn p_dbcAccess,
@@ -676,7 +635,6 @@ namespace Rivn.Bll
                                                  ref StatMsg p_smResult)
         {
             // No hay errores aun
-            p_smResult.BllReset("Controles", "CrepFSch");
             DataSet l_dsTemp= new DataSet();
 
             try {
@@ -698,12 +656,8 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion FSch
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
                 return null;
-            }
-            finally {
-                // Terminamos
-                p_smResult.BllPop();
             }
         }
         #endregion
@@ -720,9 +674,6 @@ namespace Rivn.Bll
                                       EControlRepa p_entControlRepa,
                                       ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Controles", "CrepSave");
-
             try {
                 // Procesamos codigo fijo
                 CrepSave_f(p_dbcAccess, ref p_entControlRepa, ref p_smResult);
@@ -769,11 +720,7 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion SSav
-                p_smResult.BllError(l_expData.ToString());
-            }
-            finally {
-                // Terminamos
-                p_smResult.BllPop();
+                p_smResult.BllError(l_expData);
             }
         }
 
@@ -787,9 +734,6 @@ namespace Rivn.Bll
                                       EControlRepa p_entControlRepa,
                                       ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Controles", "CrepInsr");
-
             try {
                 // Validamos la integridad de la entidad
                 CrepTInt(p_dbcAccess, p_entControlRepa, ref p_smResult);
@@ -801,11 +745,10 @@ namespace Rivn.Bll
                                                 p_entControlRepa.Nroitem,
                                                 p_entControlRepa.Codrep,
                                                 ref p_smResult);
-                p_smResult.BllPop();
             }
             catch (Exception l_expData) {
                 // Error en la operacion Insr
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
             }
         }
 
@@ -819,9 +762,6 @@ namespace Rivn.Bll
                                       EControlRepa p_entControlRepa,
                                       ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Controles", "CrepUpdt");
-
             try {
                 // Validamos la integridad de la entidad
                 CrepTInt(p_dbcAccess, p_entControlRepa, ref p_smResult);
@@ -833,11 +773,10 @@ namespace Rivn.Bll
                                                 p_entControlRepa.Nroitem,
                                                 p_entControlRepa.Codrep,
                                                 ref p_smResult);
-                p_smResult.BllPop();
             }
             catch (Exception l_expData) {
                 // Error en la operacion Updt
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
             }
         }
 
@@ -845,8 +784,8 @@ namespace Rivn.Bll
         /// Borra físicamente un registro de a tabla: ControlesReparations
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_strCodctl">codigoControl</param>
-        /// <param name="p_iNroitem">item</param>
+        /// <param name="p_strCodctl">Codigo Control</param>
+        /// <param name="p_iNroitem">Item</param>
         /// <param name="p_iFxdVersion">Versión del registro a borrar</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void CrepDrop(DBConn p_dbcAccess,
@@ -855,9 +794,6 @@ namespace Rivn.Bll
                                       int p_iFxdVersion,
                                       ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Controles", "CrepDrop");
-
             try {
                 // Verificamos la clave a borrar
                 CrepVKey(p_dbcAccess,
@@ -889,11 +825,7 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion Remove
-                p_smResult.BllError(l_expData.ToString());
-            }
-            finally {
-                // Terminamos
-                p_smResult.BllPop();
+                p_smResult.BllError(l_expData);
             }
         }
 
@@ -905,18 +837,14 @@ namespace Rivn.Bll
         internal static void CrepPack(DBConn p_dbcAccess,
                                       ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Controles", "CrepPack");
-
             try {
                 // Borramos los borrados lógicamente
                 Dal.ControlesReparations.Pack(p_dbcAccess,
                                               ref p_smResult);
-                p_smResult.BllPop();
             }
             catch (Exception l_expData) {
                 // Error en la operacion Updt
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
             }
         }
 
@@ -925,7 +853,7 @@ namespace Rivn.Bll
         /// lista-entidad: LEControlesRepa
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_strCodctl">codigoControl</param>
+        /// <param name="p_strCodctl">Codigo Control</param>
         /// <param name="p_lentControlesRepa">Lista-entidad a actualizar sobre la tabla</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void CrepSSav(DBConn p_dbcAccess,
@@ -933,9 +861,6 @@ namespace Rivn.Bll
                                       LEControlesRepa p_lentControlesRepa,
                                       ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Controles", "CrepSSav");
-
             try {
                 // Deshabilitamos todas las entidades existentes
                 Dal.ControlesReparations.FDrop(p_dbcAccess,
@@ -977,12 +902,10 @@ namespace Rivn.Bll
                         if (p_smResult.NOk) return;
                     }
                 }
-
-                p_smResult.BllPop();
             }
             catch (Exception l_expData) {
                 // Error en la operacion SSav
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
             }
         }
         #endregion
@@ -1014,7 +937,6 @@ namespace Rivn.Bll
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
-            p_smResult.BllReset("Controles", "UpFull");
 
             try {
                 // Obtenemos una conexion
@@ -1025,13 +947,12 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion UpFull
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
                 return null;
             }
             finally {
                 // Si pude abrir la conexion -> la cierro
                 if (l_dbcAccess != null) l_dbcAccess.Close();
-                p_smResult.BllPop();
             }
         }
 
@@ -1048,7 +969,6 @@ namespace Rivn.Bll
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
-            p_smResult.BllReset("Controles", "Get");
 
             // Ajustamos codigos alineados a derecha
             p_strCod= EControl.FrmtCod(p_strCod);
@@ -1077,13 +997,12 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion Get
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
                 return null;
             }
             finally {
                 // Si pude abrir la conexion -> la cierro
                 if (l_dbcAccess != null) l_dbcAccess.Close();
-                p_smResult.BllPop();
             }
         }
 
@@ -1096,7 +1015,6 @@ namespace Rivn.Bll
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
-            p_smResult.BllReset("Controles", "NextKey");
 
             try {
                 // Obtenemos una conexion
@@ -1108,13 +1026,12 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion NextKey
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
                 return "";
             }
             finally {
                 // Si pude abrir la conexion -> la cierro
                 if (l_dbcAccess != null) l_dbcAccess.Close();
-                p_smResult.BllPop();
             }
         }
         #endregion
@@ -1130,7 +1047,6 @@ namespace Rivn.Bll
                                 ref StatMsg p_smResult)
         {
             // No hay errores aun
-            p_smResult.BllReset("Controles", "Save");
             DBConn l_dbcAccess= null;
 
             try {
@@ -1143,7 +1059,7 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion Save
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
             }
             finally {
                 // Si pude abrir la conexion
@@ -1152,7 +1068,6 @@ namespace Rivn.Bll
                     l_dbcAccess.EndTransaction(p_smResult);
                     l_dbcAccess.Close();
                 }
-                p_smResult.BllPop();
             }
         }
 
@@ -1169,7 +1084,6 @@ namespace Rivn.Bll
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
-            p_smResult.BllReset("Controles", "Enabled");
 
             // Ajustamos codigos alineados a derecha
             p_strCod= EControl.FrmtCod(p_strCod);
@@ -1223,7 +1137,7 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion Enabled
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
             }
             finally {
                 // Si pude abrir la conexion
@@ -1232,7 +1146,6 @@ namespace Rivn.Bll
                     l_dbcAccess.EndTransaction(p_smResult);
                     l_dbcAccess.Close();
                 }
-                p_smResult.BllPop();
             }
         }
 
@@ -1248,7 +1161,6 @@ namespace Rivn.Bll
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
-            p_smResult.BllReset("Controles", "Remove");
 
             // Ajustamos codigos alineados a derecha
             p_strCod= EControl.FrmtCod(p_strCod);
@@ -1273,7 +1185,7 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion Remove
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
             }
             finally {
                 // Si pude abrir la conexion
@@ -1282,7 +1194,6 @@ namespace Rivn.Bll
                     l_dbcAccess.EndTransaction(p_smResult);
                     l_dbcAccess.Close();
                 }
-                p_smResult.BllPop();
             }
         }
 
@@ -1294,8 +1205,6 @@ namespace Rivn.Bll
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
-            p_smResult.BllReset("Controles", "Purge");
-
             try {
                 // Obtenemos una conexion
                 l_dbcAccess= DBRuts.GetConection(Connections.Dat);
@@ -1307,7 +1216,7 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion Enabled
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
             }
             finally {
                 // Si pude abrir la conexion
@@ -1316,7 +1225,6 @@ namespace Rivn.Bll
                     l_dbcAccess.EndTransaction(p_smResult);
                     l_dbcAccess.Close();
                 }
-                p_smResult.BllPop();
             }
         }
         #endregion
@@ -1340,9 +1248,6 @@ namespace Rivn.Bll
                                   EControl p_entControl,
                                   ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Controles", "TInt");
-
             // ********
             // Validaciones de los campos sin conexion
             // ********
@@ -1354,8 +1259,8 @@ namespace Rivn.Bll
             }
 
             if (p_entControl.Des.Trim() == "") {
-                // El campo [Descripcion] no puede ser vacío
-                p_smResult.BllWarning("El dato [Descripcion] no puede ser vacío","");
+                // El campo [Control] no puede ser vacío
+                p_smResult.BllWarning("El dato [Control] no puede ser vacío","");
                 return;
             }
 
@@ -1375,9 +1280,6 @@ namespace Rivn.Bll
             // Llamamos a la funcion fija del usuario
             TInt_f(p_dbcAccess, p_entControl, ref p_smResult);
             if (p_smResult.NOk) return;
-
-            // Finalizamos
-            p_smResult.BllPop();
         }
 
         /// <summary>
@@ -1393,7 +1295,6 @@ namespace Rivn.Bll
                                   ref StatMsg p_smResult)
         {
             // No hay errores aun
-            p_smResult.BllReset("Controles", "VVer");
             DataSet l_dsTemp= new DataSet();
 
             // Verificamos el número de versión
@@ -1411,7 +1312,6 @@ namespace Rivn.Bll
                 if ((int) l_dsTemp.Tables["Temporal"].Rows[0]["cantidad"] == 1) {
                     // La versión coincide
                     l_dsTemp.Dispose();
-                    p_smResult.BllPop();
                     return;
                 }
             }
@@ -1427,14 +1327,12 @@ namespace Rivn.Bll
 
                 // Grabamos los datos del error
                 l_swErrorFile.WriteLine("Instante    : {0:dd/MM/yyyy HH:mm:ss}", DateTime.Now);
-                l_swErrorFile.WriteLine("Uil         : {0}", p_smResult.Uil);
-                l_swErrorFile.WriteLine("Bll         : {0}", p_smResult.Bll);
-                l_swErrorFile.WriteLine("Dal         : {0}", p_smResult.Dal);
+                l_swErrorFile.WriteLine("Metodo      : {0}", p_smResult.Method);
                 l_swErrorFile.WriteLine("Message     : No coincide el numero de version");
             }
             catch (Exception l_expData) {
                 // Error en el acceso al archivo.
-                string l_strLinea= l_expData.ToString();
+                string l_strLinea= l_expData.Message;
             }
             finally {
                 // Si llegamos a abrir el archivo -> lo cerramos
@@ -1463,7 +1361,6 @@ namespace Rivn.Bll
                                   ref StatMsg p_smResult)
         {
             // No hay errores aun
-            p_smResult.BllReset("Controles", "VKey");
             DataSet l_dsTemp= new DataSet();
 
             Dal.Controles.Search(p_dbcAccess,
@@ -1489,7 +1386,6 @@ namespace Rivn.Bll
             finally {
                 // Terminamos
                 l_dsTemp.Dispose();
-                p_smResult.BllPop();
             }
         }
         #endregion
@@ -1507,9 +1403,6 @@ namespace Rivn.Bll
                                              bool p_bOnlyActive,
                                              ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Controles", "Upfl");
-
             try {
                 // Pedimos los registros de la tabla: Controles
                 DataSet l_dsTemp= new DataSet();
@@ -1530,12 +1423,8 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion Upfl
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
                 return null;
-            }
-            finally {
-                // Terminamos
-                p_smResult.BllPop();
             }
         }
 
@@ -1552,9 +1441,6 @@ namespace Rivn.Bll
                                       bool p_bOnlyActive,
                                       ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Controles", "Srch");
-
             try {
                 // Pedimos el registro de la tabla: Controles
                 DataSet l_dsTemp= new DataSet();
@@ -1577,12 +1463,8 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion Srch
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
                 return null;
-            }
-            finally {
-                // Terminamos
-                p_smResult.BllPop();
             }
         }
 
@@ -1595,9 +1477,6 @@ namespace Rivn.Bll
         internal static string GetNK(DBConn p_dbcAccess,
                                      ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Controles", "GetNK");
-
             try {
                 // Pedimos la clave máxima
                 DataSet l_dsTemp= new DataSet();
@@ -1622,12 +1501,8 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion NextKey
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
                 return "";
-            }
-            finally {
-                // Si pude abrir la conexion -> la cierro
-                p_smResult.BllPop();
             }
         }
         #endregion
@@ -1644,9 +1519,6 @@ namespace Rivn.Bll
                                   EControl p_entControl,
                                   ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Controles", "Insr");
-
             try {
                 // Validamos la integridad de la entidad
                 TInt(p_dbcAccess, p_entControl, ref p_smResult);
@@ -1658,11 +1530,10 @@ namespace Rivn.Bll
                                      p_entControl.Des,
                                      p_entControl.Crit,
                                      ref p_smResult);
-                p_smResult.BllPop();
             }
             catch (Exception l_expData) {
                 // Error en la operacion Insr
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
             }
         }
 
@@ -1676,9 +1547,6 @@ namespace Rivn.Bll
                                   EControl p_entControl,
                                   ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Controles", "Updt");
-
             try {
                 // Validamos la integridad de la entidad
                 TInt(p_dbcAccess, p_entControl, ref p_smResult);
@@ -1690,11 +1558,10 @@ namespace Rivn.Bll
                                      p_entControl.Des,
                                      p_entControl.Crit,
                                      ref p_smResult);
-                p_smResult.BllPop();
             }
             catch (Exception l_expData) {
                 // Error en la operacion Updt
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
             }
         }
 
@@ -1710,9 +1577,6 @@ namespace Rivn.Bll
                                   int p_iFxdVersion,
                                   ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Controles", "Drop");
-
             try {
                 // Verificamos la clave a borrar
                 VKey(p_dbcAccess,
@@ -1741,11 +1605,7 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion Remove
-                p_smResult.BllError(l_expData.ToString());
-            }
-            finally {
-                // Terminamos
-                p_smResult.BllPop();
+                p_smResult.BllError(l_expData);
             }
         }
 
@@ -1757,18 +1617,14 @@ namespace Rivn.Bll
         internal static void Pack(DBConn p_dbcAccess,
                                   ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Controles", "Pack");
-
             try {
                 // Borramos los borrados lógicamente
                 Dal.Controles.Pack(p_dbcAccess,
                                    ref p_smResult);
-                p_smResult.BllPop();
             }
             catch (Exception l_expData) {
                 // Error en la operacion Updt
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
             }
         }
 
@@ -1782,9 +1638,6 @@ namespace Rivn.Bll
                                   EControl p_entControl,
                                   ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Controles", "SSav");
-
             try {
                 // Procesamos codigo fijo
                 Save_f(p_dbcAccess, ref p_entControl, ref p_smResult);
@@ -1834,12 +1687,10 @@ namespace Rivn.Bll
                          p_entControl.ControlesRepa,
                          ref p_smResult);
                 if (p_smResult.NOk) return;
-
-                p_smResult.BllPop();
             }
             catch (Exception l_expData) {
                 // Error en la operacion SSav
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
             }
         }
         #endregion

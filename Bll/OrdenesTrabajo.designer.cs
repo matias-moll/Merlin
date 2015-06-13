@@ -16,11 +16,11 @@ namespace Rivn.Bll
     //----------------------------------------------------------------------------
     //                         TNG Software BLL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 28/11/2013 14:42
+    // Fecha                    : 13/06/2015 15:32
     // Sistema                  : Rivn
     // Clase para Administrar   : Ordenes de Trabajo y sus Items
     //----------------------------------------------------------------------------
-    // © 1996-2013 by TNG Software                                      Gndr 5.20
+    // © 1996-2015 by TNG Software                                      Gndr 5.20
     //----------------------------------------------------------------------------
 
     //****************************************************************************
@@ -59,7 +59,6 @@ namespace Rivn.Bll
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
-            p_smResult.BllReset("OrdenesTrabajo", "OtitUpFull");
 
             try {
                 // Obtenemos una conexion
@@ -70,13 +69,12 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion UpFull
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
                 return null;
             }
             finally {
                 // Si pude abrir la conexion -> la cierro
                 if (l_dbcAccess != null) l_dbcAccess.Close();
-                p_smResult.BllPop();
             }
         }
 
@@ -97,7 +95,6 @@ namespace Rivn.Bll
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
-            p_smResult.BllReset("OrdenesTrabajo", "OtitGet");
 
             try {
                 // Obtenemos una conexion
@@ -113,13 +110,12 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion Get
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
                 return null;
             }
             finally {
                 // Si pude abrir la conexion -> la cierro
                 if (l_dbcAccess != null) l_dbcAccess.Close();
-                p_smResult.BllPop();
             }
         }
 
@@ -137,7 +133,6 @@ namespace Rivn.Bll
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
-            p_smResult.BllReset("OrdenesTrabajo", "OtitFGet");
 
             try {
                 // Obtenemos una conexion
@@ -151,13 +146,12 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion FGet
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
                 return null;
             }
             finally {
                 // Si pude abrir la conexion -> la cierro
                 if (l_dbcAccess != null) l_dbcAccess.Close();
-                p_smResult.BllPop();
             }
         }
         #endregion
@@ -173,7 +167,6 @@ namespace Rivn.Bll
                                     ref StatMsg p_smResult)
         {
             // No hay errores aun
-            p_smResult.BllReset("OrdenesTrabajo", "OtitSave");
             DBConn l_dbcAccess= null;
 
             try {
@@ -186,7 +179,7 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion Save
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
             }
             finally {
                 // Si pude abrir la conexion
@@ -195,7 +188,6 @@ namespace Rivn.Bll
                     l_dbcAccess.EndTransaction(p_smResult);
                     l_dbcAccess.Close();
                 }
-                p_smResult.BllPop();
             }
         }
 
@@ -216,7 +208,6 @@ namespace Rivn.Bll
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
-            p_smResult.BllReset("OrdenesTrabajo", "OtitEnabled");
 
             try {
                 // Obtenemos una conexion
@@ -277,7 +268,7 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion Enabled
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
             }
             finally {
                 // Si pude abrir la conexion
@@ -286,7 +277,6 @@ namespace Rivn.Bll
                     l_dbcAccess.EndTransaction(p_smResult);
                     l_dbcAccess.Close();
                 }
-                p_smResult.BllPop();
             }
         }
 
@@ -306,7 +296,6 @@ namespace Rivn.Bll
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
-            p_smResult.BllReset("OrdenesTrabajo", "OtitRemove");
 
             try {
                 // Obtenemos una conexion
@@ -332,7 +321,7 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion Remove
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
             }
             finally {
                 // Si pude abrir la conexion
@@ -341,7 +330,6 @@ namespace Rivn.Bll
                     l_dbcAccess.EndTransaction(p_smResult);
                     l_dbcAccess.Close();
                 }
-                p_smResult.BllPop();
             }
         }
 
@@ -353,8 +341,6 @@ namespace Rivn.Bll
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
-            p_smResult.BllReset("OrdenesTrabajo", "OtitPurge");
-
             try {
                 // Obtenemos una conexion
                 l_dbcAccess= DBRuts.GetConection(Connections.Dat);
@@ -366,7 +352,7 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion Enabled
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
             }
             finally {
                 // Si pude abrir la conexion
@@ -375,7 +361,6 @@ namespace Rivn.Bll
                     l_dbcAccess.EndTransaction(p_smResult);
                     l_dbcAccess.Close();
                 }
-                p_smResult.BllPop();
             }
         }
         #endregion
@@ -399,9 +384,6 @@ namespace Rivn.Bll
                                       EOTItem p_entOTItem,
                                       ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("OrdenesTrabajo", "OtitTInt");
-
             // ********
             // Validaciones de los campos sin conexion
             // ********
@@ -462,9 +444,6 @@ namespace Rivn.Bll
             // Llamamos a la funcion fija del usuario
             OtitTInt_f(p_dbcAccess, p_entOTItem, ref p_smResult);
             if (p_smResult.NOk) return;
-
-            // Finalizamos
-            p_smResult.BllPop();
         }
 
         /// <summary>
@@ -484,7 +463,6 @@ namespace Rivn.Bll
                                       ref StatMsg p_smResult)
         {
             // No hay errores aun
-            p_smResult.BllReset("OrdenesTrabajo", "OtitVVer");
             DataSet l_dsTemp= new DataSet();
 
             // Verificamos el número de versión
@@ -504,7 +482,6 @@ namespace Rivn.Bll
                 if ((int) l_dsTemp.Tables["Temporal"].Rows[0]["cantidad"] == 1) {
                     // La versión coincide
                     l_dsTemp.Dispose();
-                    p_smResult.BllPop();
                     return;
                 }
             }
@@ -520,14 +497,12 @@ namespace Rivn.Bll
 
                 // Grabamos los datos del error
                 l_swErrorFile.WriteLine("Instante    : {0:dd/MM/yyyy HH:mm:ss}", DateTime.Now);
-                l_swErrorFile.WriteLine("Uil         : {0}", p_smResult.Uil);
-                l_swErrorFile.WriteLine("Bll         : {0}", p_smResult.Bll);
-                l_swErrorFile.WriteLine("Dal         : {0}", p_smResult.Dal);
+                l_swErrorFile.WriteLine("Metodo      : {0}", p_smResult.Method);
                 l_swErrorFile.WriteLine("Message     : No coincide el numero de version");
             }
             catch (Exception l_expData) {
                 // Error en el acceso al archivo.
-                string l_strLinea= l_expData.ToString();
+                string l_strLinea= l_expData.Message;
             }
             finally {
                 // Si llegamos a abrir el archivo -> lo cerramos
@@ -560,7 +535,6 @@ namespace Rivn.Bll
                                       ref StatMsg p_smResult)
         {
             // No hay errores aun
-            p_smResult.BllReset("OrdenesTrabajo", "OtitVKey");
             DataSet l_dsTemp= new DataSet();
 
             Dal.OtItems.Search(p_dbcAccess,
@@ -588,7 +562,6 @@ namespace Rivn.Bll
             finally {
                 // Terminamos
                 l_dsTemp.Dispose();
-                p_smResult.BllPop();
             }
         }
         #endregion
@@ -606,9 +579,6 @@ namespace Rivn.Bll
                                            bool p_bOnlyActive,
                                            ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("OrdenesTrabajo", "OtitUpfl");
-
             try {
                 // Pedimos los registros de la tabla: OtItems
                 DataSet l_dsTemp= new DataSet();
@@ -629,12 +599,8 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion Upfl
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
                 return null;
-            }
-            finally {
-                // Terminamos
-                p_smResult.BllPop();
             }
         }
 
@@ -655,9 +621,6 @@ namespace Rivn.Bll
                                          bool p_bOnlyActive,
                                          ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("OrdenesTrabajo", "OtitSrch");
-
             try {
                 // Pedimos el registro de la tabla: OtItems
                 DataSet l_dsTemp= new DataSet();
@@ -682,12 +645,8 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion Srch
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
                 return null;
-            }
-            finally {
-                // Terminamos
-                p_smResult.BllPop();
             }
         }
 
@@ -705,7 +664,6 @@ namespace Rivn.Bll
                                            ref StatMsg p_smResult)
         {
             // No hay errores aun
-            p_smResult.BllReset("OrdenesTrabajo", "OtitFSch");
             DataSet l_dsTemp= new DataSet();
 
             try {
@@ -727,12 +685,8 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion FSch
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
                 return null;
-            }
-            finally {
-                // Terminamos
-                p_smResult.BllPop();
             }
         }
         #endregion
@@ -749,9 +703,6 @@ namespace Rivn.Bll
                                       EOTItem p_entOTItem,
                                       ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("OrdenesTrabajo", "OtitSave");
-
             try {
                 // Procesamos codigo fijo
                 OtitSave_f(p_dbcAccess, ref p_entOTItem, ref p_smResult);
@@ -800,11 +751,7 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion SSav
-                p_smResult.BllError(l_expData.ToString());
-            }
-            finally {
-                // Terminamos
-                p_smResult.BllPop();
+                p_smResult.BllError(l_expData);
             }
         }
 
@@ -818,9 +765,6 @@ namespace Rivn.Bll
                                       EOTItem p_entOTItem,
                                       ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("OrdenesTrabajo", "OtitInsr");
-
             try {
                 // Validamos la integridad de la entidad
                 OtitTInt(p_dbcAccess, p_entOTItem, ref p_smResult);
@@ -837,11 +781,10 @@ namespace Rivn.Bll
                                    p_entOTItem.Importe,
                                    p_entOTItem.Comentario,
                                    ref p_smResult);
-                p_smResult.BllPop();
             }
             catch (Exception l_expData) {
                 // Error en la operacion Insr
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
             }
         }
 
@@ -855,9 +798,6 @@ namespace Rivn.Bll
                                       EOTItem p_entOTItem,
                                       ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("OrdenesTrabajo", "OtitUpdt");
-
             try {
                 // Validamos la integridad de la entidad
                 OtitTInt(p_dbcAccess, p_entOTItem, ref p_smResult);
@@ -874,11 +814,10 @@ namespace Rivn.Bll
                                    p_entOTItem.Importe,
                                    p_entOTItem.Comentario,
                                    ref p_smResult);
-                p_smResult.BllPop();
             }
             catch (Exception l_expData) {
                 // Error en la operacion Updt
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
             }
         }
 
@@ -898,9 +837,6 @@ namespace Rivn.Bll
                                       int p_iFxdVersion,
                                       ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("OrdenesTrabajo", "OtitDrop");
-
             try {
                 // Verificamos la clave a borrar
                 OtitVKey(p_dbcAccess,
@@ -935,11 +871,7 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion Remove
-                p_smResult.BllError(l_expData.ToString());
-            }
-            finally {
-                // Terminamos
-                p_smResult.BllPop();
+                p_smResult.BllError(l_expData);
             }
         }
 
@@ -951,18 +883,14 @@ namespace Rivn.Bll
         internal static void OtitPack(DBConn p_dbcAccess,
                                       ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("OrdenesTrabajo", "OtitPack");
-
             try {
                 // Borramos los borrados lógicamente
                 Dal.OtItems.Pack(p_dbcAccess,
                                  ref p_smResult);
-                p_smResult.BllPop();
             }
             catch (Exception l_expData) {
                 // Error en la operacion Updt
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
             }
         }
 
@@ -979,9 +907,6 @@ namespace Rivn.Bll
                                       LEOTItems p_lentOTItems,
                                       ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("OrdenesTrabajo", "OtitSSav");
-
             try {
                 // Deshabilitamos todas las entidades existentes
                 Dal.OtItems.FDrop(p_dbcAccess,
@@ -1025,12 +950,10 @@ namespace Rivn.Bll
                         if (p_smResult.NOk) return;
                     }
                 }
-
-                p_smResult.BllPop();
             }
             catch (Exception l_expData) {
                 // Error en la operacion SSav
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
             }
         }
         #endregion
@@ -1062,7 +985,6 @@ namespace Rivn.Bll
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
-            p_smResult.BllReset("OrdenesTrabajo", "UpFull");
 
             try {
                 // Obtenemos una conexion
@@ -1073,13 +995,12 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion UpFull
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
                 return null;
             }
             finally {
                 // Si pude abrir la conexion -> la cierro
                 if (l_dbcAccess != null) l_dbcAccess.Close();
-                p_smResult.BllPop();
             }
         }
 
@@ -1096,7 +1017,6 @@ namespace Rivn.Bll
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
-            p_smResult.BllReset("OrdenesTrabajo", "Get");
 
             try {
                 // Obtenemos una conexion
@@ -1122,13 +1042,12 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion Get
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
                 return null;
             }
             finally {
                 // Si pude abrir la conexion -> la cierro
                 if (l_dbcAccess != null) l_dbcAccess.Close();
-                p_smResult.BllPop();
             }
         }
         #endregion
@@ -1144,7 +1063,6 @@ namespace Rivn.Bll
                                 ref StatMsg p_smResult)
         {
             // No hay errores aun
-            p_smResult.BllReset("OrdenesTrabajo", "Save");
             DBConn l_dbcAccess= null;
 
             try {
@@ -1157,7 +1075,7 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion Save
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
             }
             finally {
                 // Si pude abrir la conexion
@@ -1166,7 +1084,6 @@ namespace Rivn.Bll
                     l_dbcAccess.EndTransaction(p_smResult);
                     l_dbcAccess.Close();
                 }
-                p_smResult.BllPop();
             }
         }
 
@@ -1183,7 +1100,6 @@ namespace Rivn.Bll
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
-            p_smResult.BllReset("OrdenesTrabajo", "Enabled");
 
             try {
                 // Obtenemos una conexion
@@ -1234,7 +1150,7 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion Enabled
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
             }
             finally {
                 // Si pude abrir la conexion
@@ -1243,7 +1159,6 @@ namespace Rivn.Bll
                     l_dbcAccess.EndTransaction(p_smResult);
                     l_dbcAccess.Close();
                 }
-                p_smResult.BllPop();
             }
         }
 
@@ -1259,7 +1174,6 @@ namespace Rivn.Bll
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
-            p_smResult.BllReset("OrdenesTrabajo", "Remove");
 
             try {
                 // Obtenemos una conexion
@@ -1281,7 +1195,7 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion Remove
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
             }
             finally {
                 // Si pude abrir la conexion
@@ -1290,7 +1204,6 @@ namespace Rivn.Bll
                     l_dbcAccess.EndTransaction(p_smResult);
                     l_dbcAccess.Close();
                 }
-                p_smResult.BllPop();
             }
         }
 
@@ -1302,8 +1215,6 @@ namespace Rivn.Bll
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
-            p_smResult.BllReset("OrdenesTrabajo", "Purge");
-
             try {
                 // Obtenemos una conexion
                 l_dbcAccess= DBRuts.GetConection(Connections.Dat);
@@ -1315,7 +1226,7 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion Enabled
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
             }
             finally {
                 // Si pude abrir la conexion
@@ -1324,7 +1235,6 @@ namespace Rivn.Bll
                     l_dbcAccess.EndTransaction(p_smResult);
                     l_dbcAccess.Close();
                 }
-                p_smResult.BllPop();
             }
         }
         #endregion
@@ -1348,9 +1258,6 @@ namespace Rivn.Bll
                                   EOrdenTrabajo p_entOrdenTrabajo,
                                   ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("OrdenesTrabajo", "TInt");
-
             // ********
             // Validaciones de los campos sin conexion
             // ********
@@ -1380,9 +1287,6 @@ namespace Rivn.Bll
             // Llamamos a la funcion fija del usuario
             TInt_f(p_dbcAccess, p_entOrdenTrabajo, ref p_smResult);
             if (p_smResult.NOk) return;
-
-            // Finalizamos
-            p_smResult.BllPop();
         }
 
         /// <summary>
@@ -1398,7 +1302,6 @@ namespace Rivn.Bll
                                   ref StatMsg p_smResult)
         {
             // No hay errores aun
-            p_smResult.BllReset("OrdenesTrabajo", "VVer");
             DataSet l_dsTemp= new DataSet();
 
             // Verificamos el número de versión
@@ -1416,7 +1319,6 @@ namespace Rivn.Bll
                 if ((int) l_dsTemp.Tables["Temporal"].Rows[0]["cantidad"] == 1) {
                     // La versión coincide
                     l_dsTemp.Dispose();
-                    p_smResult.BllPop();
                     return;
                 }
             }
@@ -1432,14 +1334,12 @@ namespace Rivn.Bll
 
                 // Grabamos los datos del error
                 l_swErrorFile.WriteLine("Instante    : {0:dd/MM/yyyy HH:mm:ss}", DateTime.Now);
-                l_swErrorFile.WriteLine("Uil         : {0}", p_smResult.Uil);
-                l_swErrorFile.WriteLine("Bll         : {0}", p_smResult.Bll);
-                l_swErrorFile.WriteLine("Dal         : {0}", p_smResult.Dal);
+                l_swErrorFile.WriteLine("Metodo      : {0}", p_smResult.Method);
                 l_swErrorFile.WriteLine("Message     : No coincide el numero de version");
             }
             catch (Exception l_expData) {
                 // Error en el acceso al archivo.
-                string l_strLinea= l_expData.ToString();
+                string l_strLinea= l_expData.Message;
             }
             finally {
                 // Si llegamos a abrir el archivo -> lo cerramos
@@ -1468,7 +1368,6 @@ namespace Rivn.Bll
                                   ref StatMsg p_smResult)
         {
             // No hay errores aun
-            p_smResult.BllReset("OrdenesTrabajo", "VKey");
             DataSet l_dsTemp= new DataSet();
 
             Dal.OrdenesTrabajo.Search(p_dbcAccess,
@@ -1494,7 +1393,6 @@ namespace Rivn.Bll
             finally {
                 // Terminamos
                 l_dsTemp.Dispose();
-                p_smResult.BllPop();
             }
         }
         #endregion
@@ -1512,9 +1410,6 @@ namespace Rivn.Bll
                                                   bool p_bOnlyActive,
                                                   ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("OrdenesTrabajo", "Upfl");
-
             try {
                 // Pedimos los registros de la tabla: OrdenesTrabajo
                 DataSet l_dsTemp= new DataSet();
@@ -1535,12 +1430,8 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion Upfl
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
                 return null;
-            }
-            finally {
-                // Terminamos
-                p_smResult.BllPop();
             }
         }
 
@@ -1557,9 +1448,6 @@ namespace Rivn.Bll
                                            bool p_bOnlyActive,
                                            ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("OrdenesTrabajo", "Srch");
-
             try {
                 // Pedimos el registro de la tabla: OrdenesTrabajo
                 DataSet l_dsTemp= new DataSet();
@@ -1582,12 +1470,8 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion Srch
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
                 return null;
-            }
-            finally {
-                // Terminamos
-                p_smResult.BllPop();
             }
         }
         #endregion
@@ -1604,9 +1488,6 @@ namespace Rivn.Bll
                                   EOrdenTrabajo p_entOrdenTrabajo,
                                   ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("OrdenesTrabajo", "Insr");
-
             try {
                 // Validamos la integridad de la entidad
                 TInt(p_dbcAccess, p_entOrdenTrabajo, ref p_smResult);
@@ -1620,11 +1501,10 @@ namespace Rivn.Bll
                                           p_entOrdenTrabajo.Operador,
                                           p_entOrdenTrabajo.Feccierre,
                                           ref p_smResult);
-                p_smResult.BllPop();
             }
             catch (Exception l_expData) {
                 // Error en la operacion Insr
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
             }
         }
 
@@ -1638,9 +1518,6 @@ namespace Rivn.Bll
                                   EOrdenTrabajo p_entOrdenTrabajo,
                                   ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("OrdenesTrabajo", "Updt");
-
             try {
                 // Validamos la integridad de la entidad
                 TInt(p_dbcAccess, p_entOrdenTrabajo, ref p_smResult);
@@ -1654,11 +1531,10 @@ namespace Rivn.Bll
                                           p_entOrdenTrabajo.Operador,
                                           p_entOrdenTrabajo.Feccierre,
                                           ref p_smResult);
-                p_smResult.BllPop();
             }
             catch (Exception l_expData) {
                 // Error en la operacion Updt
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
             }
         }
 
@@ -1674,9 +1550,6 @@ namespace Rivn.Bll
                                   int p_iFxdVersion,
                                   ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("OrdenesTrabajo", "Drop");
-
             try {
                 // Verificamos la clave a borrar
                 VKey(p_dbcAccess,
@@ -1705,11 +1578,7 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion Remove
-                p_smResult.BllError(l_expData.ToString());
-            }
-            finally {
-                // Terminamos
-                p_smResult.BllPop();
+                p_smResult.BllError(l_expData);
             }
         }
 
@@ -1721,18 +1590,14 @@ namespace Rivn.Bll
         internal static void Pack(DBConn p_dbcAccess,
                                   ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("OrdenesTrabajo", "Pack");
-
             try {
                 // Borramos los borrados lógicamente
                 Dal.OrdenesTrabajo.Pack(p_dbcAccess,
                                         ref p_smResult);
-                p_smResult.BllPop();
             }
             catch (Exception l_expData) {
                 // Error en la operacion Updt
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
             }
         }
 
@@ -1746,9 +1611,6 @@ namespace Rivn.Bll
                                   EOrdenTrabajo p_entOrdenTrabajo,
                                   ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("OrdenesTrabajo", "SSav");
-
             try {
                 // Procesamos codigo fijo
                 Save_f(p_dbcAccess, ref p_entOrdenTrabajo, ref p_smResult);
@@ -1798,12 +1660,10 @@ namespace Rivn.Bll
                          p_entOrdenTrabajo.OTItems,
                          ref p_smResult);
                 if (p_smResult.NOk) return;
-
-                p_smResult.BllPop();
             }
             catch (Exception l_expData) {
                 // Error en la operacion SSav
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
             }
         }
         #endregion
@@ -1821,9 +1681,6 @@ namespace Rivn.Bll
                                                       string p_strPatente,
                                                       ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("OrdenesTrabajo", "getByPatente");
-
             try {
                 // Llamamos al metodo definido por el usuario
                 DataSet l_dsTemp= new DataSet();
@@ -1846,12 +1703,11 @@ namespace Rivn.Bll
             }
             catch (Exception l_expData) {
                 // Error en la operacion
-                p_smResult.BllError(l_expData.ToString());
+                p_smResult.BllError(l_expData);
                 return null;
             }
             finally {
                 // Terminamos
-                p_smResult.BllPop();
             }
         }
         #endregion

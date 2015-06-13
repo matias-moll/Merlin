@@ -54,15 +54,9 @@ namespace Rivn.Bll
                                        ref ECategoria p_entCategoria,
                                        ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Tablas", "CatSave_f");
-
             // *********
             // Agregar acá los procesos adicionales
             // *********
-
-            // Finalizamos
-            p_smResult.BllPop();
         }
 
         /// <summary>
@@ -71,7 +65,7 @@ namespace Rivn.Bll
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
         /// <param name="p_bEnable">Tipo de operacion</param>
-        /// <param name="p_strCod">codigo</param>
+        /// <param name="p_strCod">Cod Categoria</param>
         /// <param name="p_iFxdVersion">Versión del registro a borrar</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void CatEnabled_f(DBConn p_dbcAccess,
@@ -80,15 +74,9 @@ namespace Rivn.Bll
                                           ref int p_iFxdVersion,
                                           ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Tablas", "CatEnabled_f");
-
             // *********
             // Agregar acá los procesos adicionales
             // *********
-
-            // Finalizamos
-            p_smResult.BllPop();
         }
 
         /// <summary>
@@ -96,7 +84,7 @@ namespace Rivn.Bll
         /// (Código Fijo)
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_strCod">codigo</param>
+        /// <param name="p_strCod">Cod Categoria</param>
         /// <param name="p_iFxdVersion">Versión del registro a borrar</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void CatRemove_f(DBConn p_dbcAccess,
@@ -104,15 +92,9 @@ namespace Rivn.Bll
                                          int p_iFxdVersion,
                                          ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Tablas", "CatRemove_f");
-
             // *********
             // Agregar acá los procesos adicionales
             // *********
-
-            // Finalizamos
-            p_smResult.BllPop();
         }
 
         /// <summary>
@@ -126,15 +108,9 @@ namespace Rivn.Bll
                                        ECategoria p_entCategoria,
                                        ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Tablas", "CatTInt_f");
-
             // *********
             // Agregar acá las validaciones adicionales
             // *********
-
-            // Finalizamos
-            p_smResult.BllPop();
         }
 
         /// <summary>
@@ -148,15 +124,9 @@ namespace Rivn.Bll
                                        ref EEquipamento p_entEquipamento,
                                        ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Tablas", "EqiSave_f");
-
             // *********
             // Agregar acá los procesos adicionales
             // *********
-
-            // Finalizamos
-            p_smResult.BllPop();
         }
 
         /// <summary>
@@ -165,7 +135,7 @@ namespace Rivn.Bll
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
         /// <param name="p_bEnable">Tipo de operacion</param>
-        /// <param name="p_strCod">cod</param>
+        /// <param name="p_strCod">Codigo Equipamiento</param>
         /// <param name="p_iFxdVersion">Versión del registro a borrar</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void EqiEnabled_f(DBConn p_dbcAccess,
@@ -174,15 +144,9 @@ namespace Rivn.Bll
                                           ref int p_iFxdVersion,
                                           ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Tablas", "EqiEnabled_f");
-
             // *********
             // Agregar acá los procesos adicionales
             // *********
-
-            // Finalizamos
-            p_smResult.BllPop();
         }
 
         /// <summary>
@@ -190,7 +154,7 @@ namespace Rivn.Bll
         /// (Código Fijo)
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_strCod">cod</param>
+        /// <param name="p_strCod">Codigo Equipamiento</param>
         /// <param name="p_iFxdVersion">Versión del registro a borrar</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void EqiRemove_f(DBConn p_dbcAccess,
@@ -198,15 +162,9 @@ namespace Rivn.Bll
                                          int p_iFxdVersion,
                                          ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Tablas", "EqiRemove_f");
-
             // *********
             // Agregar acá los procesos adicionales
             // *********
-
-            // Finalizamos
-            p_smResult.BllPop();
         }
 
         /// <summary>
@@ -220,15 +178,9 @@ namespace Rivn.Bll
                                        EEquipamento p_entEquipamento,
                                        ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Tablas", "EqiTInt_f");
-
             // *********
             // Agregar acá las validaciones adicionales
             // *********
-
-            // Finalizamos
-            p_smResult.BllPop();
         }
 
         /// <summary>
@@ -242,15 +194,9 @@ namespace Rivn.Bll
                                        ref EEstacion p_entEstacion,
                                        ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Tablas", "EstSave_f");
-
             // *********
             // Agregar acá los procesos adicionales
             // *********
-
-            // Finalizamos
-            p_smResult.BllPop();
         }
 
         /// <summary>
@@ -259,7 +205,7 @@ namespace Rivn.Bll
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
         /// <param name="p_bEnable">Tipo de operacion</param>
-        /// <param name="p_strCod">CodigoEstacion</param>
+        /// <param name="p_strCod">Codigo Estacion</param>
         /// <param name="p_iFxdVersion">Versión del registro a borrar</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void EstEnabled_f(DBConn p_dbcAccess,
@@ -268,15 +214,9 @@ namespace Rivn.Bll
                                           ref int p_iFxdVersion,
                                           ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Tablas", "EstEnabled_f");
-
             // *********
             // Agregar acá los procesos adicionales
             // *********
-
-            // Finalizamos
-            p_smResult.BllPop();
         }
 
         /// <summary>
@@ -284,7 +224,7 @@ namespace Rivn.Bll
         /// (Código Fijo)
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_strCod">CodigoEstacion</param>
+        /// <param name="p_strCod">Codigo Estacion</param>
         /// <param name="p_iFxdVersion">Versión del registro a borrar</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void EstRemove_f(DBConn p_dbcAccess,
@@ -292,15 +232,9 @@ namespace Rivn.Bll
                                          int p_iFxdVersion,
                                          ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Tablas", "EstRemove_f");
-
             // *********
             // Agregar acá los procesos adicionales
             // *********
-
-            // Finalizamos
-            p_smResult.BllPop();
         }
 
         /// <summary>
@@ -314,15 +248,9 @@ namespace Rivn.Bll
                                        EEstacion p_entEstacion,
                                        ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Tablas", "EstTInt_f");
-
             // *********
             // Agregar acá las validaciones adicionales
             // *********
-
-            // Finalizamos
-            p_smResult.BllPop();
         }
 
         /// <summary>
@@ -336,15 +264,9 @@ namespace Rivn.Bll
                                        ref EEstado p_entEstado,
                                        ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Tablas", "EdsSave_f");
-
             // *********
             // Agregar acá los procesos adicionales
             // *********
-
-            // Finalizamos
-            p_smResult.BllPop();
         }
 
         /// <summary>
@@ -353,7 +275,7 @@ namespace Rivn.Bll
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
         /// <param name="p_bEnable">Tipo de operacion</param>
-        /// <param name="p_strCod">cod</param>
+        /// <param name="p_strCod">Codigo Estado</param>
         /// <param name="p_iFxdVersion">Versión del registro a borrar</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void EdsEnabled_f(DBConn p_dbcAccess,
@@ -362,15 +284,9 @@ namespace Rivn.Bll
                                           ref int p_iFxdVersion,
                                           ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Tablas", "EdsEnabled_f");
-
             // *********
             // Agregar acá los procesos adicionales
             // *********
-
-            // Finalizamos
-            p_smResult.BllPop();
         }
 
         /// <summary>
@@ -378,7 +294,7 @@ namespace Rivn.Bll
         /// (Código Fijo)
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_strCod">cod</param>
+        /// <param name="p_strCod">Codigo Estado</param>
         /// <param name="p_iFxdVersion">Versión del registro a borrar</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void EdsRemove_f(DBConn p_dbcAccess,
@@ -386,15 +302,9 @@ namespace Rivn.Bll
                                          int p_iFxdVersion,
                                          ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Tablas", "EdsRemove_f");
-
             // *********
             // Agregar acá los procesos adicionales
             // *********
-
-            // Finalizamos
-            p_smResult.BllPop();
         }
 
         /// <summary>
@@ -408,15 +318,9 @@ namespace Rivn.Bll
                                        EEstado p_entEstado,
                                        ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Tablas", "EdsTInt_f");
-
             // *********
             // Agregar acá las validaciones adicionales
             // *********
-
-            // Finalizamos
-            p_smResult.BllPop();
         }
 
         /// <summary>
@@ -430,15 +334,9 @@ namespace Rivn.Bll
                                        ref EMarca p_entMarca,
                                        ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Tablas", "MrcSave_f");
-
             // *********
             // Agregar acá los procesos adicionales
             // *********
-
-            // Finalizamos
-            p_smResult.BllPop();
         }
 
         /// <summary>
@@ -447,7 +345,7 @@ namespace Rivn.Bll
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
         /// <param name="p_bEnable">Tipo de operacion</param>
-        /// <param name="p_strCodigo">cod</param>
+        /// <param name="p_strCodigo">Codigo Marca</param>
         /// <param name="p_iFxdVersion">Versión del registro a borrar</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void MrcEnabled_f(DBConn p_dbcAccess,
@@ -456,15 +354,9 @@ namespace Rivn.Bll
                                           ref int p_iFxdVersion,
                                           ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Tablas", "MrcEnabled_f");
-
             // *********
             // Agregar acá los procesos adicionales
             // *********
-
-            // Finalizamos
-            p_smResult.BllPop();
         }
 
         /// <summary>
@@ -472,7 +364,7 @@ namespace Rivn.Bll
         /// (Código Fijo)
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_strCodigo">cod</param>
+        /// <param name="p_strCodigo">Codigo Marca</param>
         /// <param name="p_iFxdVersion">Versión del registro a borrar</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void MrcRemove_f(DBConn p_dbcAccess,
@@ -480,15 +372,9 @@ namespace Rivn.Bll
                                          int p_iFxdVersion,
                                          ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Tablas", "MrcRemove_f");
-
             // *********
             // Agregar acá los procesos adicionales
             // *********
-
-            // Finalizamos
-            p_smResult.BllPop();
         }
 
         /// <summary>
@@ -502,15 +388,9 @@ namespace Rivn.Bll
                                        EMarca p_entMarca,
                                        ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Tablas", "MrcTInt_f");
-
             // *********
             // Agregar acá las validaciones adicionales
             // *********
-
-            // Finalizamos
-            p_smResult.BllPop();
         }
 
         /// <summary>
@@ -524,15 +404,9 @@ namespace Rivn.Bll
                                        ref EModelo p_entModelo,
                                        ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Tablas", "ModSave_f");
-
             // *********
             // Agregar acá los procesos adicionales
             // *********
-
-            // Finalizamos
-            p_smResult.BllPop();
         }
 
         /// <summary>
@@ -541,7 +415,7 @@ namespace Rivn.Bll
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
         /// <param name="p_bEnable">Tipo de operacion</param>
-        /// <param name="p_strCod">Codigo</param>
+        /// <param name="p_strCod">Codigo Modelo</param>
         /// <param name="p_iFxdVersion">Versión del registro a borrar</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void ModEnabled_f(DBConn p_dbcAccess,
@@ -550,15 +424,9 @@ namespace Rivn.Bll
                                           ref int p_iFxdVersion,
                                           ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Tablas", "ModEnabled_f");
-
             // *********
             // Agregar acá los procesos adicionales
             // *********
-
-            // Finalizamos
-            p_smResult.BllPop();
         }
 
         /// <summary>
@@ -566,7 +434,7 @@ namespace Rivn.Bll
         /// (Código Fijo)
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_strCod">Codigo</param>
+        /// <param name="p_strCod">Codigo Modelo</param>
         /// <param name="p_iFxdVersion">Versión del registro a borrar</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void ModRemove_f(DBConn p_dbcAccess,
@@ -574,15 +442,9 @@ namespace Rivn.Bll
                                          int p_iFxdVersion,
                                          ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Tablas", "ModRemove_f");
-
             // *********
             // Agregar acá los procesos adicionales
             // *********
-
-            // Finalizamos
-            p_smResult.BllPop();
         }
 
         /// <summary>
@@ -596,15 +458,9 @@ namespace Rivn.Bll
                                        EModelo p_entModelo,
                                        ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Tablas", "ModTInt_f");
-
             // *********
             // Agregar acá las validaciones adicionales
             // *********
-
-            // Finalizamos
-            p_smResult.BllPop();
         }
 
         /// <summary>
@@ -618,15 +474,9 @@ namespace Rivn.Bll
                                        ref EReparacion p_entReparacion,
                                        ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Tablas", "RepSave_f");
-
             // *********
             // Agregar acá los procesos adicionales
             // *********
-
-            // Finalizamos
-            p_smResult.BllPop();
         }
 
         /// <summary>
@@ -635,7 +485,7 @@ namespace Rivn.Bll
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
         /// <param name="p_bEnable">Tipo de operacion</param>
-        /// <param name="p_strCod">codigo</param>
+        /// <param name="p_strCod">Codigo Reparacion</param>
         /// <param name="p_iFxdVersion">Versión del registro a borrar</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void RepEnabled_f(DBConn p_dbcAccess,
@@ -644,15 +494,9 @@ namespace Rivn.Bll
                                           ref int p_iFxdVersion,
                                           ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Tablas", "RepEnabled_f");
-
             // *********
             // Agregar acá los procesos adicionales
             // *********
-
-            // Finalizamos
-            p_smResult.BllPop();
         }
 
         /// <summary>
@@ -660,7 +504,7 @@ namespace Rivn.Bll
         /// (Código Fijo)
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_strCod">codigo</param>
+        /// <param name="p_strCod">Codigo Reparacion</param>
         /// <param name="p_iFxdVersion">Versión del registro a borrar</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void RepRemove_f(DBConn p_dbcAccess,
@@ -668,15 +512,9 @@ namespace Rivn.Bll
                                          int p_iFxdVersion,
                                          ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Tablas", "RepRemove_f");
-
             // *********
             // Agregar acá los procesos adicionales
             // *********
-
-            // Finalizamos
-            p_smResult.BllPop();
         }
 
         /// <summary>
@@ -690,17 +528,10 @@ namespace Rivn.Bll
                                        EReparacion p_entReparacion,
                                        ref StatMsg p_smResult)
         {
-            // No hay errores aun
-            p_smResult.BllReset("Tablas", "RepTInt_f");
-
             // *********
             // Agregar acá las validaciones adicionales
             // *********
-
-            // Finalizamos
-            p_smResult.BllPop();
         }
-
 
         #endregion
 

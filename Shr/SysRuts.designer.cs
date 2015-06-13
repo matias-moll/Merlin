@@ -18,11 +18,11 @@ namespace Rivn.Shr
     //----------------------------------------------------------------------------
     //                         TNG Software SHR Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 15/11/2013 15:37
+    // Fecha                    : 13/06/2015 15:32
     // Sistema                  : Rivn
     // Clase para Administrar   : Shr
     //----------------------------------------------------------------------------
-    // © 1996-2013 by TNG Software                                      Gndr 5.20
+    // © 1996-2015 by TNG Software                                      Gndr 5.20
     //----------------------------------------------------------------------------
 
     /// <summary>
@@ -116,16 +116,21 @@ namespace Rivn.Shr
     public sealed class RivnStatMsg
     {
         #region Miembros de la clase
-            StatMsg m_smResult= new StatMsg("RivnStatMsg");
+            StatMsg m_smResult= new StatMsg();
         #endregion
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        public RivnStatMsg()
+        {
+        }
 
         /// <summary>
         /// Constructor
         /// </summary>
         public RivnStatMsg(string p_strUilMethod)
         {
-            // Fijamos el UIL
-            m_smResult.UilReset(p_strUilMethod);
         }
 
         //-------------------------------------------------------

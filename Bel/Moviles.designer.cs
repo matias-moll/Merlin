@@ -14,11 +14,11 @@ namespace Rivn.Bel
     //----------------------------------------------------------------------------
     //                         TNG Software BEL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 15/11/2013 15:37
+    // Fecha                    : 13/06/2015 15:32
     // Sistema                  : Rivn
     // Clase para Administrar   : Moviles y Tablas Hijas
     //----------------------------------------------------------------------------
-    // © 1996-2013 by TNG Software                                      Gndr 5.20
+    // © 1996-2015 by TNG Software                                      Gndr 5.20
     //----------------------------------------------------------------------------
 
     //****************************************************************************
@@ -225,6 +225,14 @@ namespace Rivn.Bel
         /// <summary>
         /// Patente
         /// </summary>
+        public static string PatenteCmp
+        {
+           get {return "mco_ecd_patente";}
+        }
+
+        /// <summary>
+        /// Patente
+        /// </summary>
         public string Patente
         {
             get {return (string) InternalData["mco_ecd_patente"];}
@@ -232,6 +240,14 @@ namespace Rivn.Bel
                 if (value.Trim().Length > 8) value= value.Trim().Substring(0,8);
                 InternalData["mco_ecd_patente"]= value.Trim().ToUpper();
             }
+        }
+
+        /// <summary>
+        /// Fecha
+        /// </summary>
+        public static string FechaCmp
+        {
+           get {return "mco_fyh_fecha";}
         }
 
         /// <summary>
@@ -246,6 +262,14 @@ namespace Rivn.Bel
         /// <summary>
         /// Litros Cargados
         /// </summary>
+        public static string LitrosCmp
+        {
+           get {return "mco_val_litros";}
+        }
+
+        /// <summary>
+        /// Litros Cargados
+        /// </summary>
         public double Litros
         {
             get {return (double) InternalData["mco_val_litros"];}
@@ -255,10 +279,26 @@ namespace Rivn.Bel
         /// <summary>
         /// Importe
         /// </summary>
+        public static string ImporteCmp
+        {
+           get {return "mco_imp_importe";}
+        }
+
+        /// <summary>
+        /// Importe
+        /// </summary>
         public decimal Importe
         {
             get {return (decimal) InternalData["mco_imp_importe"];}
             set {InternalData["mco_imp_importe"]= value;}
+        }
+
+        /// <summary>
+        /// Codigo estacion
+        /// </summary>
+        public static string CodestacionCmp
+        {
+           get {return "mco_rcd_codestacion";}
         }
 
         /// <summary>
@@ -314,7 +354,7 @@ namespace Rivn.Bel
     /// <summary>
     /// Clase que representa la Lista-Entidad: MovilesCombus
     /// </summary>
-    public sealed partial class LEMovilesCombus : ListaEntidades
+    public sealed partial class LEMovilesCombus : ListaEntidades, IEnumerable<EMovilCombus>
     {
         #region Constructores
         /// <summary>
@@ -422,7 +462,7 @@ namespace Rivn.Bel
         /// Devuelve el enumerador de la lista-entidades: MovilesCombus
         /// </summary>
         /// <returns>Enumerador de las entidades en la lista</returns>
-        public new IEnumerator GetEnumerator() 
+        public new IEnumerator<EMovilCombus> GetEnumerator() 
         {
             EMovilCombus l_entTemp= null;
 
@@ -460,6 +500,16 @@ namespace Rivn.Bel
                 l_lentRet.Add(l_entItem);
 
             return l_lentRet;
+        }
+
+        /// <summary>
+        /// Devuelve la lista entidad como una List<MovilesCombus>
+        /// </summary>
+        /// <returns>Lista de entidades</returns>
+        public List<EMovilCombus> ToList()
+        {
+            // Usamos el metodo GetAsLET
+            return (List<EMovilCombus>) GetAsLET();
         }
         #endregion
 
@@ -782,6 +832,14 @@ namespace Rivn.Bel
         /// <summary>
         /// Patente
         /// </summary>
+        public static string PatenteCmp
+        {
+           get {return "meq_ecd_patente";}
+        }
+
+        /// <summary>
+        /// Patente
+        /// </summary>
         public string Patente
         {
             get {return (string) InternalData["meq_ecd_patente"];}
@@ -794,10 +852,26 @@ namespace Rivn.Bel
         /// <summary>
         /// Codigo del Equipamento.
         /// </summary>
+        public static string CodequipCmp
+        {
+           get {return "meq_cod_codequip";}
+        }
+
+        /// <summary>
+        /// Codigo del Equipamento.
+        /// </summary>
         public string Codequip
         {
             get {return (string) InternalData["meq_cod_codequip"];}
             set {InternalData["meq_cod_codequip"]= EMovilEquip.FrmtCodequip(value);}
+        }
+
+        /// <summary>
+        /// equipamiento es fijo
+        /// </summary>
+        public static string EsfijoCmp
+        {
+           get {return "meq_cd1_esfijo";}
         }
 
         /// <summary>
@@ -861,7 +935,7 @@ namespace Rivn.Bel
     /// <summary>
     /// Clase que representa la Lista-Entidad: MovilesEquip
     /// </summary>
-    public sealed partial class LEMovilesEquip : ListaEntidades
+    public sealed partial class LEMovilesEquip : ListaEntidades, IEnumerable<EMovilEquip>
     {
         #region Constructores
         /// <summary>
@@ -969,7 +1043,7 @@ namespace Rivn.Bel
         /// Devuelve el enumerador de la lista-entidades: MovilesEquip
         /// </summary>
         /// <returns>Enumerador de las entidades en la lista</returns>
-        public new IEnumerator GetEnumerator() 
+        public new IEnumerator<EMovilEquip> GetEnumerator() 
         {
             EMovilEquip l_entTemp= null;
 
@@ -1007,6 +1081,16 @@ namespace Rivn.Bel
                 l_lentRet.Add(l_entItem);
 
             return l_lentRet;
+        }
+
+        /// <summary>
+        /// Devuelve la lista entidad como una List<MovilesEquip>
+        /// </summary>
+        /// <returns>Lista de entidades</returns>
+        public List<EMovilEquip> ToList()
+        {
+            // Usamos el metodo GetAsLET
+            return (List<EMovilEquip>) GetAsLET();
         }
         #endregion
 
@@ -1331,6 +1415,14 @@ namespace Rivn.Bel
         /// <summary>
         /// Patente
         /// </summary>
+        public static string PatenteCmp
+        {
+           get {return "mve_ecd_patente";}
+        }
+
+        /// <summary>
+        /// Patente
+        /// </summary>
         public string Patente
         {
             get {return (string) InternalData["mve_ecd_patente"];}
@@ -1338,6 +1430,14 @@ namespace Rivn.Bel
                 if (value.Trim().Length > 8) value= value.Trim().Substring(0,8);
                 InternalData["mve_ecd_patente"]= value.Trim().ToUpper();
             }
+        }
+
+        /// <summary>
+        /// Fecha y Hora
+        /// </summary>
+        public static string FechaCmp
+        {
+           get {return "mve_fyh_fecha";}
         }
 
         /// <summary>
@@ -1352,10 +1452,26 @@ namespace Rivn.Bel
         /// <summary>
         /// Codigo del estado.
         /// </summary>
+        public static string CodestadoCmp
+        {
+           get {return "mve_rcd_codestado";}
+        }
+
+        /// <summary>
+        /// Codigo del estado.
+        /// </summary>
         public string Codestado
         {
             get {return (string) InternalData["mve_rcd_codestado"];}
             set {InternalData["mve_rcd_codestado"]= EMovilEstado.FrmtCodestado(value);}
+        }
+
+        /// <summary>
+        /// Kilometraje
+        /// </summary>
+        public static string KmCmp
+        {
+           get {return "mve_nro_km";}
         }
 
         /// <summary>
@@ -1410,7 +1526,7 @@ namespace Rivn.Bel
     /// <summary>
     /// Clase que representa la Lista-Entidad: MovilesEstado
     /// </summary>
-    public sealed partial class LEMovilesEstado : ListaEntidades
+    public sealed partial class LEMovilesEstado : ListaEntidades, IEnumerable<EMovilEstado>
     {
         #region Constructores
         /// <summary>
@@ -1518,7 +1634,7 @@ namespace Rivn.Bel
         /// Devuelve el enumerador de la lista-entidades: MovilesEstado
         /// </summary>
         /// <returns>Enumerador de las entidades en la lista</returns>
-        public new IEnumerator GetEnumerator() 
+        public new IEnumerator<EMovilEstado> GetEnumerator() 
         {
             EMovilEstado l_entTemp= null;
 
@@ -1556,6 +1672,16 @@ namespace Rivn.Bel
                 l_lentRet.Add(l_entItem);
 
             return l_lentRet;
+        }
+
+        /// <summary>
+        /// Devuelve la lista entidad como una List<MovilesEstado>
+        /// </summary>
+        /// <returns>Lista de entidades</returns>
+        public List<EMovilEstado> ToList()
+        {
+            // Usamos el metodo GetAsLET
+            return (List<EMovilEstado>) GetAsLET();
         }
         #endregion
 
@@ -1859,6 +1985,14 @@ namespace Rivn.Bel
         /// <summary>
         /// Patente
         /// </summary>
+        public static string PatenteCmp
+        {
+           get {return "mkm_ecd_patente";}
+        }
+
+        /// <summary>
+        /// Patente
+        /// </summary>
         public string Patente
         {
             get {return (string) InternalData["mkm_ecd_patente"];}
@@ -1871,10 +2005,26 @@ namespace Rivn.Bel
         /// <summary>
         /// Fecha
         /// </summary>
+        public static string FechaCmp
+        {
+           get {return "mkm_fyh_fecha";}
+        }
+
+        /// <summary>
+        /// Fecha
+        /// </summary>
         public DateTime Fecha
         {
             get {return (DateTime) InternalData["mkm_fyh_fecha"];}
             set {InternalData["mkm_fyh_fecha"]= value;}
+        }
+
+        /// <summary>
+        /// Kilometros
+        /// </summary>
+        public static string KmCmp
+        {
+           get {return "mkm_nro_km";}
         }
 
         /// <summary>
@@ -1928,7 +2078,7 @@ namespace Rivn.Bel
     /// <summary>
     /// Clase que representa la Lista-Entidad: MovilesKms
     /// </summary>
-    public sealed partial class LEMovilesKms : ListaEntidades
+    public sealed partial class LEMovilesKms : ListaEntidades, IEnumerable<EMovilKms>
     {
         #region Constructores
         /// <summary>
@@ -2036,7 +2186,7 @@ namespace Rivn.Bel
         /// Devuelve el enumerador de la lista-entidades: MovilesKms
         /// </summary>
         /// <returns>Enumerador de las entidades en la lista</returns>
-        public new IEnumerator GetEnumerator() 
+        public new IEnumerator<EMovilKms> GetEnumerator() 
         {
             EMovilKms l_entTemp= null;
 
@@ -2074,6 +2224,16 @@ namespace Rivn.Bel
                 l_lentRet.Add(l_entItem);
 
             return l_lentRet;
+        }
+
+        /// <summary>
+        /// Devuelve la lista entidad como una List<MovilesKms>
+        /// </summary>
+        /// <returns>Lista de entidades</returns>
+        public List<EMovilKms> ToList()
+        {
+            // Usamos el metodo GetAsLET
+            return (List<EMovilKms>) GetAsLET();
         }
         #endregion
 
@@ -2239,6 +2399,11 @@ namespace Rivn.Bel
         public EMovil(string p_strXML) :
             this(p_strXML, false)
         {
+            // Creamos las listas-entidad hijas vacias
+            m_lentMovilesCombus= LEMovilesCombus.NewEmpty();
+            m_lentMovilesEquip= LEMovilesEquip.NewEmpty();
+            m_lentMovilesEstado= LEMovilesEstado.NewEmpty();
+            m_lentMovilesKms= LEMovilesKms.NewEmpty();
         }
 
         /// <summary>
@@ -2246,7 +2411,8 @@ namespace Rivn.Bel
         /// </summary>
         /// <param name="p_strXML">Datos en XML</param>
         public EMovil(string p_strXML,
-                      bool p_bEsNueva)
+                      bool p_bEsNueva,
+                      bool p_bInitChilds= false)
         {
             // Fijamos la condicion de entidad nueva
             base.m_bNew= p_bEsNueva;
@@ -2283,6 +2449,14 @@ namespace Rivn.Bel
             // una entidad a partir de los datos
             l_dtTemp.Rows.Add(l_drTemp);
             SetInternalData(l_dtTemp, l_dtTemp.Rows[0]);
+
+            if (!p_bInitChilds) return;
+
+            // Creamos las listas-entidad hijas vacias
+            m_lentMovilesCombus= LEMovilesCombus.NewEmpty();
+            m_lentMovilesEquip= LEMovilesEquip.NewEmpty();
+            m_lentMovilesEstado= LEMovilesEstado.NewEmpty();
+            m_lentMovilesKms= LEMovilesKms.NewEmpty();
         }
 
         /// <summary>
@@ -2434,6 +2608,14 @@ namespace Rivn.Bel
         /// <summary>
         /// Patente de la Ambulancia
         /// </summary>
+        public static string PatenteCmp
+        {
+           get {return "mov_ecd_patente";}
+        }
+
+        /// <summary>
+        /// Patente de la Ambulancia
+        /// </summary>
         public string Patente
         {
             get {return (string) InternalData["mov_ecd_patente"];}
@@ -2441,6 +2623,14 @@ namespace Rivn.Bel
                 if (value.Trim().Length > 8) value= value.Trim().Substring(0,8);
                 InternalData["mov_ecd_patente"]= value.Trim().ToUpper();
             }
+        }
+
+        /// <summary>
+        /// Descripcion
+        /// </summary>
+        public static string DesCmp
+        {
+           get {return "mov_des_des";}
         }
 
         /// <summary>
@@ -2458,10 +2648,26 @@ namespace Rivn.Bel
         /// <summary>
         /// Anotaciones
         /// </summary>
+        public static string AnotCmp
+        {
+           get {return "mov_txt_anot";}
+        }
+
+        /// <summary>
+        /// Anotaciones
+        /// </summary>
         public string Anot
         {
             get {return (string) InternalData["mov_txt_anot"];}
             set {InternalData["mov_txt_anot"]= value;}
+        }
+
+        /// <summary>
+        /// Nro Chasis
+        /// </summary>
+        public static string NrochasisCmp
+        {
+           get {return "mov_des_nrochasis";}
         }
 
         /// <summary>
@@ -2479,6 +2685,14 @@ namespace Rivn.Bel
         /// <summary>
         /// Nro Motor
         /// </summary>
+        public static string NromotorCmp
+        {
+           get {return "mov_des_nromotor";}
+        }
+
+        /// <summary>
+        /// Nro Motor
+        /// </summary>
         public string Nromotor
         {
             get {return ((string) InternalData["mov_des_nromotor"]).Trim();}
@@ -2486,6 +2700,14 @@ namespace Rivn.Bel
                 if (value.Trim().Length > 30) value= value.Trim().Substring(0,30);
                 InternalData["mov_des_nromotor"]= value.Trim().ToUpper();
             }
+        }
+
+        /// <summary>
+        /// Modelo
+        /// </summary>
+        public static string ModeloCmp
+        {
+           get {return "mov_rcd_modelo";}
         }
 
         /// <summary>
@@ -2500,10 +2722,26 @@ namespace Rivn.Bel
         /// <summary>
         /// Año de fabricación
         /// </summary>
+        public static string AniofabricCmp
+        {
+           get {return "mov_nro_aniofabric";}
+        }
+
+        /// <summary>
+        /// Año de fabricación
+        /// </summary>
         public int Aniofabric
         {
             get {return (int) InternalData["mov_nro_aniofabric"];}
             set {InternalData["mov_nro_aniofabric"]= value;}
+        }
+
+        /// <summary>
+        /// Propio o no
+        /// </summary>
+        public static string PropioCmp
+        {
+           get {return "mov_cd1_propio";}
         }
 
         /// <summary>
@@ -2598,7 +2836,7 @@ namespace Rivn.Bel
     /// <summary>
     /// Clase que representa la Lista-Entidad: Moviles
     /// </summary>
-    public sealed partial class LEMoviles : ListaEntidades
+    public sealed partial class LEMoviles : ListaEntidades, IEnumerable<EMovil>
     {
         #region Constructores
         /// <summary>
@@ -2702,7 +2940,7 @@ namespace Rivn.Bel
         /// Devuelve el enumerador de la lista-entidades: Moviles
         /// </summary>
         /// <returns>Enumerador de las entidades en la lista</returns>
-        public new IEnumerator GetEnumerator() 
+        public new IEnumerator<EMovil> GetEnumerator() 
         {
             EMovil l_entTemp= null;
 
@@ -2740,6 +2978,16 @@ namespace Rivn.Bel
                 l_lentRet.Add(l_entItem);
 
             return l_lentRet;
+        }
+
+        /// <summary>
+        /// Devuelve la lista entidad como una List<Moviles>
+        /// </summary>
+        /// <returns>Lista de entidades</returns>
+        public List<EMovil> ToList()
+        {
+            // Usamos el metodo GetAsLET
+            return (List<EMovil>) GetAsLET();
         }
         #endregion
 

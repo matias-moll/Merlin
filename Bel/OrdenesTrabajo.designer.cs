@@ -14,11 +14,11 @@ namespace Rivn.Bel
     //----------------------------------------------------------------------------
     //                         TNG Software BEL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 28/11/2013 14:42
+    // Fecha                    : 13/06/2015 15:32
     // Sistema                  : Rivn
     // Clase para Administrar   : Ordenes de Trabajo y sus Items
     //----------------------------------------------------------------------------
-    // © 1996-2013 by TNG Software                                      Gndr 5.20
+    // © 1996-2015 by TNG Software                                      Gndr 5.20
     //----------------------------------------------------------------------------
 
     //****************************************************************************
@@ -228,10 +228,26 @@ namespace Rivn.Bel
         /// <summary>
         /// nroOt
         /// </summary>
+        public static string NrootCmp
+        {
+           get {return "oti_nro_nroot";}
+        }
+
+        /// <summary>
+        /// nroOt
+        /// </summary>
         public int Nroot
         {
             get {return (int) InternalData["oti_nro_nroot"];}
             set {InternalData["oti_nro_nroot"]= value;}
+        }
+
+        /// <summary>
+        /// Numero de agrupador
+        /// </summary>
+        public static string NroagrupadorCmp
+        {
+           get {return "oti_nro_nroagrupador";}
         }
 
         /// <summary>
@@ -246,10 +262,26 @@ namespace Rivn.Bel
         /// <summary>
         /// Numero del item
         /// </summary>
+        public static string NroitemCmp
+        {
+           get {return "oti_nro_nroitem";}
+        }
+
+        /// <summary>
+        /// Numero del item
+        /// </summary>
         public int Nroitem
         {
             get {return (int) InternalData["oti_nro_nroitem"];}
             set {InternalData["oti_nro_nroitem"]= value;}
+        }
+
+        /// <summary>
+        /// Descripción de la operación.
+        /// </summary>
+        public static string DesoperacionCmp
+        {
+           get {return "oti_des_desoperacion";}
         }
 
         /// <summary>
@@ -267,6 +299,14 @@ namespace Rivn.Bel
         /// <summary>
         /// Descripción de la tarea
         /// </summary>
+        public static string DestareaCmp
+        {
+           get {return "oti_des_destarea";}
+        }
+
+        /// <summary>
+        /// Descripción de la tarea
+        /// </summary>
         public string Destarea
         {
             get {return ((string) InternalData["oti_des_destarea"]).Trim();}
@@ -274,6 +314,14 @@ namespace Rivn.Bel
                 if (value.Trim().Length > 30) value= value.Trim().Substring(0,30);
                 InternalData["oti_des_destarea"]= value.Trim().ToUpper();
             }
+        }
+
+        /// <summary>
+        /// Descripción de la categoría.
+        /// </summary>
+        public static string DescategoriaCmp
+        {
+           get {return "oti_des_descategoria";}
         }
 
         /// <summary>
@@ -291,10 +339,26 @@ namespace Rivn.Bel
         /// <summary>
         /// Importe
         /// </summary>
+        public static string ImporteCmp
+        {
+           get {return "oti_imp_importe";}
+        }
+
+        /// <summary>
+        /// Importe
+        /// </summary>
         public decimal Importe
         {
             get {return (decimal) InternalData["oti_imp_importe"];}
             set {InternalData["oti_imp_importe"]= value;}
+        }
+
+        /// <summary>
+        /// Comentario
+        /// </summary>
+        public static string ComentarioCmp
+        {
+           get {return "oti_ede_comentario";}
         }
 
         /// <summary>
@@ -356,7 +420,7 @@ namespace Rivn.Bel
     /// <summary>
     /// Clase que representa la Lista-Entidad: OTItems
     /// </summary>
-    public sealed partial class LEOTItems : ListaEntidades
+    public sealed partial class LEOTItems : ListaEntidades, IEnumerable<EOTItem>
     {
         #region Constructores
         /// <summary>
@@ -468,7 +532,7 @@ namespace Rivn.Bel
         /// Devuelve el enumerador de la lista-entidades: OTItems
         /// </summary>
         /// <returns>Enumerador de las entidades en la lista</returns>
-        public new IEnumerator GetEnumerator() 
+        public new IEnumerator<EOTItem> GetEnumerator() 
         {
             EOTItem l_entTemp= null;
 
@@ -506,6 +570,16 @@ namespace Rivn.Bel
                 l_lentRet.Add(l_entItem);
 
             return l_lentRet;
+        }
+
+        /// <summary>
+        /// Devuelve la lista entidad como una List<OTItems>
+        /// </summary>
+        /// <returns>Lista de entidades</returns>
+        public List<EOTItem> ToList()
+        {
+            // Usamos el metodo GetAsLET
+            return (List<EOTItem>) GetAsLET();
         }
         #endregion
 
@@ -672,6 +746,8 @@ namespace Rivn.Bel
         public EOrdenTrabajo(string p_strXML) :
             this(p_strXML, false)
         {
+            // Creamos las listas-entidad hijas vacias
+            m_lentOTItems= LEOTItems.NewEmpty();
         }
 
         /// <summary>
@@ -679,7 +755,8 @@ namespace Rivn.Bel
         /// </summary>
         /// <param name="p_strXML">Datos en XML</param>
         public EOrdenTrabajo(string p_strXML,
-                             bool p_bEsNueva)
+                             bool p_bEsNueva,
+                             bool p_bInitChilds= false)
         {
             // Fijamos la condicion de entidad nueva
             base.m_bNew= p_bEsNueva;
@@ -713,6 +790,11 @@ namespace Rivn.Bel
             // una entidad a partir de los datos
             l_dtTemp.Rows.Add(l_drTemp);
             SetInternalData(l_dtTemp, l_dtTemp.Rows[0]);
+
+            if (!p_bInitChilds) return;
+
+            // Creamos las listas-entidad hijas vacias
+            m_lentOTItems= LEOTItems.NewEmpty();
         }
 
         /// <summary>
@@ -831,10 +913,26 @@ namespace Rivn.Bel
         /// <summary>
         /// nro
         /// </summary>
+        public static string NroCmp
+        {
+           get {return "odt_nro_nro";}
+        }
+
+        /// <summary>
+        /// nro
+        /// </summary>
         public int Nro
         {
             get {return (int) InternalData["odt_nro_nro"];}
             set {InternalData["odt_nro_nro"]= value;}
+        }
+
+        /// <summary>
+        /// Patente
+        /// </summary>
+        public static string PatenteCmp
+        {
+           get {return "odt_ecd_patente";}
         }
 
         /// <summary>
@@ -852,10 +950,26 @@ namespace Rivn.Bel
         /// <summary>
         /// Fecha de apertura
         /// </summary>
+        public static string FecaperturaCmp
+        {
+           get {return "odt_fyh_fecapertura";}
+        }
+
+        /// <summary>
+        /// Fecha de apertura
+        /// </summary>
         public DateTime Fecapertura
         {
             get {return (DateTime) InternalData["odt_fyh_fecapertura"];}
             set {InternalData["odt_fyh_fecapertura"]= value;}
+        }
+
+        /// <summary>
+        /// Operador
+        /// </summary>
+        public static string OperadorCmp
+        {
+           get {return "odt_nom_operador";}
         }
 
         /// <summary>
@@ -868,6 +982,14 @@ namespace Rivn.Bel
                 if (value.Trim().Length > 20) value= value.Trim().Substring(0,20);
                 InternalData["odt_nom_operador"]= value.Trim().ToUpper();
             }
+        }
+
+        /// <summary>
+        /// Fecha de cierre.
+        /// </summary>
+        public static string FeccierreCmp
+        {
+           get {return "odt_fyh_feccierre";}
         }
 
         /// <summary>
@@ -932,7 +1054,7 @@ namespace Rivn.Bel
     /// <summary>
     /// Clase que representa la Lista-Entidad: OrdenesTrabajo
     /// </summary>
-    public sealed partial class LEOrdenesTrabajo : ListaEntidades
+    public sealed partial class LEOrdenesTrabajo : ListaEntidades, IEnumerable<EOrdenTrabajo>
     {
         #region Constructores
         /// <summary>
@@ -1036,7 +1158,7 @@ namespace Rivn.Bel
         /// Devuelve el enumerador de la lista-entidades: OrdenesTrabajo
         /// </summary>
         /// <returns>Enumerador de las entidades en la lista</returns>
-        public new IEnumerator GetEnumerator() 
+        public new IEnumerator<EOrdenTrabajo> GetEnumerator() 
         {
             EOrdenTrabajo l_entTemp= null;
 
@@ -1074,6 +1196,16 @@ namespace Rivn.Bel
                 l_lentRet.Add(l_entItem);
 
             return l_lentRet;
+        }
+
+        /// <summary>
+        /// Devuelve la lista entidad como una List<OrdenesTrabajo>
+        /// </summary>
+        /// <returns>Lista de entidades</returns>
+        public List<EOrdenTrabajo> ToList()
+        {
+            // Usamos el metodo GetAsLET
+            return (List<EOrdenTrabajo>) GetAsLET();
         }
         #endregion
 

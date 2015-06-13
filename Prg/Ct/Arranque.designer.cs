@@ -18,11 +18,11 @@ namespace Rivn.Ct
     //----------------------------------------------------------------------------
     //                         TNG Software PRG Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 22/11/2013 14:33
+    // Fecha                    : 13/06/2015 15:38
     // Sistema                  : Rivn
     // Programa                 : Cierre Ordenes de Trabajo
     //----------------------------------------------------------------------------
-    // © 1996-2013 by TNG Software                                      Gndr 5.20
+    // © 1996-2015 by TNG Software                                      Gndr 5.20
     //----------------------------------------------------------------------------
 
     //****************************************************************************
@@ -44,7 +44,7 @@ namespace Rivn.Ct
         static void Main() 
         {
             // Creamos el objeto de reporte de errores
-            StatMsg l_smResult= new StatMsg("Arranque");
+            StatMsg l_smResult= new StatMsg();
 
             try {
                 // Verificamos si ya esta ejecutándose
@@ -73,8 +73,6 @@ namespace Rivn.Ct
 #endif
 
                 // Inicializamos nuestra clase App
-                l_smResult.UilReset("Main");
-
                 App.Init("Rivn", "Ct",
                          FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location),
                          l_rmApp,
@@ -88,8 +86,7 @@ namespace Rivn.Ct
             }
             catch (Exception l_expData) {
                 // Se produjo un error no capturado
-                l_smResult.BllReset("Arranque", "Run");
-                l_smResult.BllError(l_expData.ToString());
+                l_smResult.BllError(l_expData);
             }
 
             if (l_smResult.NOk) {
@@ -102,9 +99,6 @@ namespace Rivn.Ct
             }
 
             try {
-                // Registramos la persistencia de datos desde Shr
-                PrgRuts.RegisterPersistency();
-
                 // Ejecutamos la funcion que construye la pantalla principal
                 PrgRuts.MakeMainFrame();
 
@@ -126,8 +120,7 @@ namespace Rivn.Ct
             }
             catch (Exception l_expData) {
                 // Se produjo un error no capturado
-                l_smResult.BllReset("Arranque", "Run");
-                l_smResult.BllError(l_expData.ToString());
+                l_smResult.BllError(l_expData);
             }
 
             MsgRuts.AnalizeError(null, l_smResult);

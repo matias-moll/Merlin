@@ -18,11 +18,11 @@ namespace Rivn.Mv
     //----------------------------------------------------------------------------
     //                         TNG Software PRG Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 05/11/2013 00:08
+    // Fecha                    : 13/06/2015 15:38
     // Sistema                  : Rivn
     // Programa                 : Moviles
     //----------------------------------------------------------------------------
-    // © 1996-2013 by TNG Software                                      Gndr 5.20
+    // © 1996-2015 by TNG Software                                      Gndr 5.20
     //----------------------------------------------------------------------------
 
     //****************************************************************************
@@ -44,7 +44,7 @@ namespace Rivn.Mv
         static void Main() 
         {
             // Creamos el objeto de reporte de errores
-            StatMsg l_smResult= new StatMsg("Arranque");
+            StatMsg l_smResult= new StatMsg();
 
             try {
                 // Verificamos si ya esta ejecutándose
@@ -73,8 +73,6 @@ namespace Rivn.Mv
 #endif
 
                 // Inicializamos nuestra clase App
-                l_smResult.UilReset("Main");
-
                 App.Init("Rivn", "Mv",
                          FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location),
                          l_rmApp,
@@ -88,8 +86,7 @@ namespace Rivn.Mv
             }
             catch (Exception l_expData) {
                 // Se produjo un error no capturado
-                l_smResult.BllReset("Arranque", "Run");
-                l_smResult.BllError(l_expData.ToString());
+                l_smResult.BllError(l_expData);
             }
 
             if (l_smResult.NOk) {
@@ -123,8 +120,7 @@ namespace Rivn.Mv
             }
             catch (Exception l_expData) {
                 // Se produjo un error no capturado
-                l_smResult.BllReset("Arranque", "Run");
-                l_smResult.BllError(l_expData.ToString());
+                l_smResult.BllError(l_expData);
             }
 
             MsgRuts.AnalizeError(null, l_smResult);

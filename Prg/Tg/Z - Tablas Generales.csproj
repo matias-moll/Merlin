@@ -63,9 +63,6 @@
     <Reference Include="TNGS.NetApp.520">
       <HintPath>..\..\..\Ambiente0520\DNet0520\Release_Uil\TNGS.NetApp.520.dll</HintPath>
     </Reference>
-    <Reference Include="TNGS.NetAppBll.520">
-      <HintPath>..\..\..\Ambiente0520\DNet0520\Release_Uil\TNGS.NetAppBll.520.dll</HintPath>
-    </Reference>
     <Reference Include="TNGS.NetControls.520">
       <HintPath>..\..\..\Ambiente0520\DNet0520\Release_Uil\TNGS.NetControls.520.dll</HintPath>
     </Reference>
