@@ -54,7 +54,7 @@ namespace Rivn.Tg
             App.ApplySecurity(this);
 
             // Iniciamos los objetos de la clase
-            m_smResult= new StatMsg("Reparaciones");
+            m_smResult= new StatMsg();
 
             // Fijamos el modo Skin
             xpnlBase.SkinFixed= App.WithSkin;
@@ -215,7 +215,6 @@ namespace Rivn.Tg
 
             // Obtenemos la entidad del item seleccionado en la grilla
             App.ShowMsg("Recuperando Datos...");
-            m_smResult.UilReset("cmdModificar_Click");
             m_entReparacion= Bll.Tablas.RepGet((string) grdDatos.GetMatrixValueObj(l_iRow, 1),
                                                false, ref m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
@@ -246,7 +245,6 @@ namespace Rivn.Tg
 
             // Purgamos la tabla
             App.ShowMsg("Compactando la tabla...");
-            m_smResult.UilReset("cmdPurgar_Click");
             Bll.Tablas.RepPurge(ref m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
@@ -281,7 +279,6 @@ namespace Rivn.Tg
         {
             // Realizamos la operacion
             App.ShowMsg("Procesando...");
-            m_smResult.UilReset("cmdDesHab_Click");
             Bll.Tablas.RepEnabled(m_entReparacion.EstaBorrada,
                                   m_entReparacion.Cod,
                                   m_entReparacion.FxdVersion,
@@ -308,7 +305,6 @@ namespace Rivn.Tg
 
             // Tratamos de grabar la entidad
             App.ShowMsg("Grabando...");
-            m_smResult.UilReset("cmdGrabar_Click");
             Bll.Tablas.RepSave(m_entReparacion, ref m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
@@ -330,7 +326,6 @@ namespace Rivn.Tg
         {
             // Recuperamos los datos para la grilla
             App.ShowMsg("Recuperando datos...");
-            m_smResult.UilReset("FillGrid");
             Bel.LEReparaciones l_lentReparaciones= Bll.Tablas.RepUpFull(false, ref m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 

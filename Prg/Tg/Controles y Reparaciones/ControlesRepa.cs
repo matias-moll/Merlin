@@ -55,7 +55,7 @@ namespace Rivn.Tg
             App.ApplySecurity(this);
 
             // Iniciamos los objetos de la clase
-            m_smResult= new StatMsg("ControlesRepa");
+            m_smResult= new StatMsg();
 
             // Fijamos el modo Skin
             xpnlBase.SkinFixed= App.WithSkin;
@@ -262,7 +262,6 @@ namespace Rivn.Tg
 
             // Obtenemos la entidad del item seleccionado en la grilla
             App.ShowMsg("Recuperando Datos...");
-            m_smResult.UilReset("cmdModificar_Click");
             m_entControlRepa= Bll.Controles.CrepGet(cmbControl.SelectedStrCode,
                                                     (int) grdDatos.GetMatrixValueObj(l_iRow, 2),
                                                     false, ref m_smResult);
@@ -293,7 +292,6 @@ namespace Rivn.Tg
 
             // Purgamos la tabla
             App.ShowMsg("Compactando la tabla...");
-            m_smResult.UilReset("cmdPurgar_Click");
             Bll.Controles.CrepPurge(ref m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
@@ -328,7 +326,6 @@ namespace Rivn.Tg
         {
             // Realizamos la operacion
             App.ShowMsg("Procesando...");
-            m_smResult.UilReset("cmdDesHab_Click");
             Bll.Controles.CrepEnabled(m_entControlRepa.EstaBorrada,
                                       m_entControlRepa.Codctl,
                                       m_entControlRepa.Nroitem,
@@ -355,7 +352,6 @@ namespace Rivn.Tg
 
             // Tratamos de grabar la entidad
             App.ShowMsg("Grabando...");
-            m_smResult.UilReset("cmdGrabar_Click");
             Bll.Controles.CrepSave(m_entControlRepa, ref m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
@@ -377,7 +373,6 @@ namespace Rivn.Tg
         {
             // Recuperamos los datos para la grilla
             App.ShowMsg("Recuperando datos...");
-            m_smResult.UilReset("FillGrid");
             Bel.LEControlesRepa l_lentControlesRepa= Bll.Controles.CrepFGet(cmbControl.SelectedStrCode,
                                                                             false, ref m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;

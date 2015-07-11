@@ -54,7 +54,7 @@ namespace Rivn.Tg
             App.ApplySecurity(this);
 
             // Iniciamos los objetos de la clase
-            m_smResult= new StatMsg("Controles");
+            m_smResult= new StatMsg();
 
             // Fijamos el modo Skin
             xpnlBase.SkinFixed= App.WithSkin;
@@ -209,7 +209,6 @@ namespace Rivn.Tg
 
             // Obtenemos la entidad del item seleccionado en la grilla
             App.ShowMsg("Recuperando Datos...");
-            m_smResult.UilReset("cmdModificar_Click");
             m_entControl= Bll.Controles.Get((string) grdDatos.GetMatrixValueObj(l_iRow, 1),
                                             false, ref m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
@@ -240,7 +239,6 @@ namespace Rivn.Tg
 
             // Purgamos la tabla
             App.ShowMsg("Compactando la tabla...");
-            m_smResult.UilReset("cmdPurgar_Click");
             Bll.Controles.Purge(ref m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
@@ -275,7 +273,6 @@ namespace Rivn.Tg
         {
             // Realizamos la operacion
             App.ShowMsg("Procesando...");
-            m_smResult.UilReset("cmdDesHab_Click");
             Bll.Controles.Enabled(m_entControl.EstaBorrada,
                                   m_entControl.Cod,
                                   m_entControl.FxdVersion,
@@ -301,7 +298,6 @@ namespace Rivn.Tg
 
             // Tratamos de grabar la entidad
             App.ShowMsg("Grabando...");
-            m_smResult.UilReset("cmdGrabar_Click");
             Bll.Controles.Save(m_entControl, ref m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
@@ -323,7 +319,6 @@ namespace Rivn.Tg
         {
             // Recuperamos los datos para la grilla
             App.ShowMsg("Recuperando datos...");
-            m_smResult.UilReset("FillGrid");
             Bel.LEControles l_lentControles= Bll.Controles.UpFull(false, ref m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 

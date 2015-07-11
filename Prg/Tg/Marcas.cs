@@ -54,7 +54,7 @@ namespace Rivn.Tg
             App.ApplySecurity(this);
 
             // Iniciamos los objetos de la clase
-            m_smResult= new StatMsg("Marcas");
+            m_smResult= new StatMsg();
 
             // Fijamos el modo Skin
             xpnlBase.SkinFixed= App.WithSkin;
@@ -206,7 +206,6 @@ namespace Rivn.Tg
 
             // Obtenemos la entidad del item seleccionado en la grilla
             App.ShowMsg("Recuperando Datos...");
-            m_smResult.UilReset("cmdModificar_Click");
             m_entMarca= Bll.Tablas.MrcGet((string) grdDatos.GetMatrixValueObj(l_iRow, 1),
                                           false, ref m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
@@ -236,7 +235,6 @@ namespace Rivn.Tg
 
             // Purgamos la tabla
             App.ShowMsg("Compactando la tabla...");
-            m_smResult.UilReset("cmdPurgar_Click");
             Bll.Tablas.MrcPurge(ref m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
@@ -271,7 +269,6 @@ namespace Rivn.Tg
         {
             // Realizamos la operacion
             App.ShowMsg("Procesando...");
-            m_smResult.UilReset("cmdDesHab_Click");
             Bll.Tablas.MrcEnabled(m_entMarca.EstaBorrada,
                                   m_entMarca.Codigo,
                                   m_entMarca.FxdVersion,
@@ -296,7 +293,6 @@ namespace Rivn.Tg
 
             // Tratamos de grabar la entidad
             App.ShowMsg("Grabando...");
-            m_smResult.UilReset("cmdGrabar_Click");
             Bll.Tablas.MrcSave(m_entMarca, ref m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
@@ -318,7 +314,6 @@ namespace Rivn.Tg
         {
             // Recuperamos los datos para la grilla
             App.ShowMsg("Recuperando datos...");
-            m_smResult.UilReset("FillGrid");
             Bel.LEMarcas l_lentMarcas= Bll.Tablas.MrcUpFull(false, ref m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 

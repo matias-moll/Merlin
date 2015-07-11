@@ -54,7 +54,7 @@ namespace Rivn.Tg
             App.ApplySecurity(this);
 
             // Iniciamos los objetos de la clase
-            m_smResult= new StatMsg("Estados");
+            m_smResult= new StatMsg();
 
             // Fijamos el modo Skin
             xpnlBase.SkinFixed= App.WithSkin;
@@ -210,7 +210,6 @@ namespace Rivn.Tg
 
             // Obtenemos la entidad del item seleccionado en la grilla
             App.ShowMsg("Recuperando Datos...");
-            m_smResult.UilReset("cmdModificar_Click");
             m_entEstado= Bll.Tablas.EdsGet((string) grdDatos.GetMatrixValueObj(l_iRow, 1),
                                            false, ref m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
@@ -241,7 +240,6 @@ namespace Rivn.Tg
 
             // Purgamos la tabla
             App.ShowMsg("Compactando la tabla...");
-            m_smResult.UilReset("cmdPurgar_Click");
             Bll.Tablas.EdsPurge(ref m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
@@ -276,7 +274,6 @@ namespace Rivn.Tg
         {
             // Realizamos la operacion
             App.ShowMsg("Procesando...");
-            m_smResult.UilReset("cmdDesHab_Click");
             Bll.Tablas.EdsEnabled(m_entEstado.EstaBorrada,
                                   m_entEstado.Cod,
                                   m_entEstado.FxdVersion,
@@ -303,7 +300,6 @@ namespace Rivn.Tg
 
             // Tratamos de grabar la entidad
             App.ShowMsg("Grabando...");
-            m_smResult.UilReset("cmdGrabar_Click");
             Bll.Tablas.EdsSave(m_entEstado, ref m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
@@ -325,7 +321,6 @@ namespace Rivn.Tg
         {
             // Recuperamos los datos para la grilla
             App.ShowMsg("Recuperando datos...");
-            m_smResult.UilReset("FillGrid");
             Bel.LEEstados l_lentEstados= Bll.Tablas.EdsUpFull(false, ref m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 

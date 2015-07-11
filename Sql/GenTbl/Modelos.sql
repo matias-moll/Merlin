@@ -1,0 +1,65 @@
+/*----------------------------------------------------------------------------
+//                 TNG Software Script Generator (Tablas)                     
+//----------------------------------------------------------------------------
+// Fecha              : 11/07/2015 08:29
+// Base de Datos      : TNGS_Rivn
+// Tabla              : Modelos
+//----------------------------------------------------------------------------
+// © 1999-2015 by TNG Software                                      Gndr 5.20
+//---------------------------------------------------------------------------*/
+
+/* ***************************************************************************
+/  Atencion!!!
+/     Este archivo fue generado por un programa en forma automática. Cualquier
+/     modificación que se realize sobre él se perderá en la próxima
+/     regeneración.
+/  **************************************************************************/
+
+/*-------------------------------------------------*/
+/* Selecciono la base en la que se creara la tabla */
+/*-------------------------------------------------*/
+
+use TNGS_Rivn
+go
+
+/*-----------------------------------*/
+/* Crea la tabla en la base indicada */
+/*-----------------------------------*/
+
+print 'Tabla: Modelos'
+
+if exists (select * from sysobjects where id = object_id('dbo.Modelos'))
+begin
+   print '   - Borrando la vieja tabla'
+   drop table dbo.Modelos
+end
+go
+
+print '   - Creando la nueva tabla'
+
+create table Modelos
+   (
+      mds_rcd_cod tngs_codigo_r,
+      mds_des_des tngs_descripcion,
+      mds_rcd_codmarca tngs_codigo_r,
+      instante tngs_fecyhor,
+      deleted tngs_borrado,
+      usuario tngs_nombre,
+      version tngs_numero,
+      constraint Modelos_pk primary key clustered
+      (
+         mds_rcd_cod
+      )
+   )
+go
+
+print '   - Asignando permisos a la nueva tabla'
+
+grant select on Modelos to tngsqbe
+
+print ' '
+go
+
+/*--------------------------------------------------------------------------
+// Fin del script de creacion de la tabla: Modelos
+//--------------------------------------------------------------------------*/
