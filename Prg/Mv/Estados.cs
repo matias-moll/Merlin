@@ -44,7 +44,7 @@ namespace Rivn.Mv
             App.ApplySecurity(this);
 
             // Iniciamos los objetos de la clase
-            m_smResult = new StatMsg("Moviles");
+            m_smResult = new StatMsg();
 
             // Dockeamos el formulario
             ((MainFrame)App.GetMainWindow()).AddContent(this);
@@ -69,7 +69,6 @@ namespace Rivn.Mv
         /// </summary>
         private void TraerInfoBase()
         {
-            m_smResult.UilReset("TraerInfoBase");
             m_LEMoviles = Bll.Moviles.UpFull(true, ref m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
         }
@@ -81,7 +80,6 @@ namespace Rivn.Mv
         /// </summary>
         private void TraerInfoEstados()
         {
-            m_smResult.UilReset("TraerInfoEstados");
             m_LEEdsEstados = Bll.Tablas.EdsUpFull(true, ref m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
@@ -106,7 +104,6 @@ namespace Rivn.Mv
         /// </summary>
         private void LlenarTreeMoviles()
         {
-            m_smResult.UilReset("LlenarTreeMoviles");
             ListaEntidades l_LEMovilesTree = Bll.Moviles.fArmarTree(true, ref m_smResult);
             ftrMoviles.FillFromStrLEntidad(l_LEMovilesTree, "mov_ecd_patente", "mov_des_des", 2, "Nivel","Imagen", "Imagen");
             ftrMoviles.ExpandAll();
@@ -257,7 +254,6 @@ namespace Rivn.Mv
         //TODO: Preguntar acerca del borrado
         private void gbBorrarMovil_Click(object sender, EventArgs e)
         {
-            m_smResult.UilReset("BorrarMovil");
             if (!BorradoSeguro()) return;
             Bll.Moviles.Remove(m_entMovil.Patente,m_entMovil.FxdVersion, ref m_smResult);
             m_entMovil = null;
@@ -335,7 +331,6 @@ namespace Rivn.Mv
         /// <param name="e"></param>
         private void gbAgregarCombustible_Click(object sender, EventArgs e)
         {
-            m_smResult.UilReset("AgregarCargaCombustible");
             MovilCombustible l_frmMovilCombustible = new MovilCombustible();
             l_frmMovilCombustible.ShowDialog();
             if (l_frmMovilCombustible.DialogResult == System.Windows.Forms.DialogResult.Cancel)
@@ -362,8 +357,6 @@ namespace Rivn.Mv
         /// 
         private void gbNuevoKM_Click(object sender, EventArgs e)
         {
-            m_smResult.UilReset("ClickNuevoKm");
-
             NuevoKm l_frmNuevoKm = new NuevoKm();
             l_frmNuevoKm.ShowDialog();
             if (l_frmNuevoKm.DialogResult == System.Windows.Forms.DialogResult.Cancel)
@@ -401,7 +394,6 @@ namespace Rivn.Mv
         /// <param name="e"></param>
         private void gbModificarEstado_Click(object sender, EventArgs e)
         {
-            m_smResult.UilReset("ModificarEstado");
             ModificarEstado l_frmModificarEstado = new ModificarEstado(m_LEEdsEstados);
             l_frmModificarEstado.ShowDialog();
             if (l_frmModificarEstado.DialogResult == System.Windows.Forms.DialogResult.Cancel)
@@ -617,7 +609,6 @@ namespace Rivn.Mv
         /// <returns>Devuelve la descripción del modelo</returns>
         private string GetModelo(string p_strCodModelo)
         {
-            m_smResult.UilReset("GetModelo");
             EModelo l_EmodModelo =  Bll.Tablas.ModGet(p_strCodModelo, true, ref m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return null;
             string l_strModelo = l_EmodModelo.Des;

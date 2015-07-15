@@ -12,15 +12,12 @@ using TNGS.NetApp;
 using TNGS.NetRoutines;
 using TNGS.NetControls;
 using WeifenLuo.WinFormsUI.Docking;
-using TNGS.NetAppBll;
 
 
 namespace Rivn.Mv
 {
     public partial class AltaMovil : DockContent
     {
-
-        #region Constructor y variables miembro
 
         //miembros
         private StatMsg m_stResult;
@@ -34,7 +31,7 @@ namespace Rivn.Mv
         {
             InitializeComponent();
            
-            m_stResult = new StatMsg("AltaMovil");
+            m_stResult = new StatMsg();
 
             //creamos la nueva entidad VACIA
             m_entMovil = Bel.EMovil.NewEmpty();
@@ -85,8 +82,6 @@ namespace Rivn.Mv
         }
 
 
-        #endregion
-
         #region Metodos privados de la UIL
 
 
@@ -109,7 +104,6 @@ namespace Rivn.Mv
         // llena un CheckListBox con los equipamientos de la tabla Equipamientos.
         private void llenarCheckListEquipamiento()
         {
-            m_stResult.UilReset("llenarCheckListEquipamiento");
             clEquipamientos.FillFromStrLEntidad(Tablas.EqiUpFull(true, ref m_stResult), "eqi_cod_cod", "eqi_des_des", "deleted");
 
             MsgRuts.AnalizeError(this, m_stResult);
@@ -132,8 +126,6 @@ namespace Rivn.Mv
         // Llenac la combo modelos con los modelos que hay en la tabla modelos.
         private void llenarComboModelos()
         {
-            //reseteamos el statmsg
-            m_stResult.UilReset("llenarComboModelos");  
             //llenamos la combo
             cdcModelo.FillFromStrLEntidad(Bll.Tablas.ModUpFull(true, ref m_stResult), "mds_rcd_cod", "mds_des_des", "deleted");
             //chequeamos errores
@@ -235,8 +227,6 @@ namespace Rivn.Mv
             //creamos una nueva ListaEntidad nueva. 
             Bel.EMovilEstado l_leMvlEstado = Bel.EMovilEstado.NewEmpty();
 
-            //reseteamos el StatMsg
-            m_stResult.UilReset("GenerarEstadoDefault");
             
             //instanciamos el parametro que viene de afuera del sistemas ESTADO DEFAULT
 
@@ -306,8 +296,6 @@ namespace Rivn.Mv
 
         private void btnGrabar_Click(object sender, EventArgs e)
         {
-            m_stResult.UilReset("btnGrabar_Click");
-
             //nos fijamos que todos los campos sean validos.
             if (!ValidarControles())
                 return;
@@ -382,13 +370,6 @@ namespace Rivn.Mv
         }
 
         #endregion
-
-        
-
-
-
-
-
 
     }
 }

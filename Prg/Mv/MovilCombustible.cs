@@ -28,7 +28,7 @@ namespace Rivn.Mv
         {
             
             InitializeComponent();
-            m_smResult = new StatMsg("MovilCombustible");
+            m_smResult = new StatMsg();
             CargarEstaciones();
             CargarCombo();
             
@@ -45,7 +45,6 @@ namespace Rivn.Mv
 
         private void CargarEstaciones()
         {
-            m_smResult.UilReset("TraerInfoBase");
             m_LEEstEstaciones = Bll.Tablas.EstUpFull(true, ref m_smResult);
             MsgRuts.AnalizeError(this, m_smResult);
         }

@@ -195,34 +195,55 @@ namespace Rivn.Mv
             // gbCargarNafta
             // 
             this.gbCargarNafta.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("gbCargarNafta.BackgroundImage")));
+            this.gbCargarNafta.BlackBorder = true;
+            this.gbCargarNafta.CircleButton = false;
+            this.gbCargarNafta.FlatColor = System.Drawing.Color.RoyalBlue;
+            this.gbCargarNafta.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
+            this.gbCargarNafta.FlatTextColor = System.Drawing.Color.Black;
             this.gbCargarNafta.ImageOnTop = true;
             this.gbCargarNafta.Location = new System.Drawing.Point(247, 6);
             this.gbCargarNafta.Name = "gbCargarNafta";
+            this.gbCargarNafta.RoundCorners = 2;
             this.gbCargarNafta.Size = new System.Drawing.Size(118, 55);
             this.gbCargarNafta.TabIndex = 2;
             this.gbCargarNafta.Text = "Cargar Nafta";
+            this.gbCargarNafta.W8Color = System.Drawing.Color.RoyalBlue;
             this.gbCargarNafta.Click += new System.EventHandler(this.gbAgregarCombustible_Click);
             // 
             // gbAgregarKMs
             // 
             this.gbAgregarKMs.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("gbAgregarKMs.BackgroundImage")));
+            this.gbAgregarKMs.BlackBorder = true;
+            this.gbAgregarKMs.CircleButton = false;
+            this.gbAgregarKMs.FlatColor = System.Drawing.Color.RoyalBlue;
+            this.gbAgregarKMs.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
+            this.gbAgregarKMs.FlatTextColor = System.Drawing.Color.Black;
             this.gbAgregarKMs.ImageOnTop = true;
             this.gbAgregarKMs.Location = new System.Drawing.Point(124, 6);
             this.gbAgregarKMs.Name = "gbAgregarKMs";
+            this.gbAgregarKMs.RoundCorners = 2;
             this.gbAgregarKMs.Size = new System.Drawing.Size(118, 55);
             this.gbAgregarKMs.TabIndex = 1;
             this.gbAgregarKMs.Text = "Agregar Kms";
+            this.gbAgregarKMs.W8Color = System.Drawing.Color.RoyalBlue;
             this.gbAgregarKMs.Click += new System.EventHandler(this.gbNuevoKM_Click);
             // 
             // gbCambiarEstado
             // 
             this.gbCambiarEstado.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("gbCambiarEstado.BackgroundImage")));
+            this.gbCambiarEstado.BlackBorder = true;
+            this.gbCambiarEstado.CircleButton = false;
+            this.gbCambiarEstado.FlatColor = System.Drawing.Color.RoyalBlue;
+            this.gbCambiarEstado.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
+            this.gbCambiarEstado.FlatTextColor = System.Drawing.Color.Black;
             this.gbCambiarEstado.ImageOnTop = true;
             this.gbCambiarEstado.Location = new System.Drawing.Point(6, 6);
             this.gbCambiarEstado.Name = "gbCambiarEstado";
+            this.gbCambiarEstado.RoundCorners = 2;
             this.gbCambiarEstado.Size = new System.Drawing.Size(112, 55);
             this.gbCambiarEstado.TabIndex = 0;
             this.gbCambiarEstado.Text = "Cambiar Estado";
+            this.gbCambiarEstado.W8Color = System.Drawing.Color.RoyalBlue;
             this.gbCambiarEstado.Click += new System.EventHandler(this.gbModificarEstado_Click);
             // 
             // tsPanel1
@@ -250,46 +271,74 @@ namespace Rivn.Mv
             // 
             // gbNuevoMovil
             // 
+            this.gbNuevoMovil.BlackBorder = true;
+            this.gbNuevoMovil.CircleButton = false;
             this.gbNuevoMovil.FixedImage = TNGS.NetControls.FixedGlassButtons.tNew;
+            this.gbNuevoMovil.FlatColor = System.Drawing.Color.RoyalBlue;
+            this.gbNuevoMovil.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
+            this.gbNuevoMovil.FlatTextColor = System.Drawing.Color.Black;
             this.gbNuevoMovil.ImageOnTop = true;
             this.gbNuevoMovil.Location = new System.Drawing.Point(4, 6);
             this.gbNuevoMovil.Name = "gbNuevoMovil";
+            this.gbNuevoMovil.RoundCorners = 2;
             this.gbNuevoMovil.Size = new System.Drawing.Size(113, 55);
             this.gbNuevoMovil.TabIndex = 27;
             this.gbNuevoMovil.Text = "Nuevo Movil";
+            this.gbNuevoMovil.W8Color = System.Drawing.Color.RoyalBlue;
             this.gbNuevoMovil.Click += new System.EventHandler(this.gbNuevoMovil_Click);
             // 
             // gbModificarMovil
             // 
+            this.gbModificarMovil.BlackBorder = true;
+            this.gbModificarMovil.CircleButton = false;
             this.gbModificarMovil.FixedImage = TNGS.NetControls.FixedGlassButtons.tChange;
+            this.gbModificarMovil.FlatColor = System.Drawing.Color.RoyalBlue;
+            this.gbModificarMovil.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
+            this.gbModificarMovil.FlatTextColor = System.Drawing.Color.Black;
             this.gbModificarMovil.ImageOnTop = true;
             this.gbModificarMovil.Location = new System.Drawing.Point(123, 6);
             this.gbModificarMovil.Name = "gbModificarMovil";
+            this.gbModificarMovil.RoundCorners = 2;
             this.gbModificarMovil.Size = new System.Drawing.Size(113, 55);
             this.gbModificarMovil.TabIndex = 26;
             this.gbModificarMovil.Text = "Cambiar";
+            this.gbModificarMovil.W8Color = System.Drawing.Color.RoyalBlue;
             this.gbModificarMovil.Click += new System.EventHandler(this.gbModificarMovil_Click);
             // 
             // gbBorrarMovil
             // 
+            this.gbBorrarMovil.BlackBorder = true;
+            this.gbBorrarMovil.CircleButton = false;
             this.gbBorrarMovil.FixedImage = TNGS.NetControls.FixedGlassButtons.tDelete;
+            this.gbBorrarMovil.FlatColor = System.Drawing.Color.RoyalBlue;
+            this.gbBorrarMovil.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
+            this.gbBorrarMovil.FlatTextColor = System.Drawing.Color.Black;
             this.gbBorrarMovil.ImageOnTop = true;
             this.gbBorrarMovil.Location = new System.Drawing.Point(242, 6);
             this.gbBorrarMovil.Name = "gbBorrarMovil";
+            this.gbBorrarMovil.RoundCorners = 2;
             this.gbBorrarMovil.Size = new System.Drawing.Size(113, 55);
             this.gbBorrarMovil.TabIndex = 28;
             this.gbBorrarMovil.Text = "Borrar";
+            this.gbBorrarMovil.W8Color = System.Drawing.Color.RoyalBlue;
             this.gbBorrarMovil.Click += new System.EventHandler(this.gbBorrarMovil_Click);
             // 
             // gbModificarEstado
             // 
+            this.gbModificarEstado.BlackBorder = true;
+            this.gbModificarEstado.CircleButton = false;
             this.gbModificarEstado.FixedImage = TNGS.NetControls.FixedGlassButtons.tModify;
+            this.gbModificarEstado.FlatColor = System.Drawing.Color.RoyalBlue;
+            this.gbModificarEstado.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
+            this.gbModificarEstado.FlatTextColor = System.Drawing.Color.Black;
             this.gbModificarEstado.ImageOnTop = true;
             this.gbModificarEstado.Location = new System.Drawing.Point(8, 6);
             this.gbModificarEstado.Name = "gbModificarEstado";
+            this.gbModificarEstado.RoundCorners = 2;
             this.gbModificarEstado.Size = new System.Drawing.Size(117, 55);
             this.gbModificarEstado.TabIndex = 30;
             this.gbModificarEstado.Text = "Modificar Estado";
+            this.gbModificarEstado.W8Color = System.Drawing.Color.RoyalBlue;
             this.gbModificarEstado.Click += new System.EventHandler(this.gbModificarEstado_Click);
             // 
             // tsBase1

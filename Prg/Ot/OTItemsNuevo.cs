@@ -21,7 +21,7 @@ namespace Rivn.Ot
         #region Miembros y Contructores
         // Variables Miembro
 
-        private StatMsg m_smResult = new StatMsg("NuevosControlesReparaciones");
+        private StatMsg m_smResult = new StatMsg();
         private Bel.LEOTItems m_leOTItems;
         private Bel.LEReparaciones m_leReparaciones;
         private int m_intNumeroAgrupador;
@@ -44,10 +44,8 @@ namespace Rivn.Ot
             // LLenamos Las patentes que hay en la tabla.
             LLenarComboPatentesMoviles(cdcPatente);
 
-            // Reseteamos el StatMsg
-            m_smResult.UilReset("NuevosControlesReparaciones");
             // seteamos el numero de OT
-            neOrdenTrabajo.Numero = TNGS.NetAppBll.AppRuts.TaloGet("TaloOT",ref m_smResult).Valor;
+            neOrdenTrabajo.Numero =  App.TaloGet("TaloOT",ref m_smResult).Valor;
 
             // Seteamos como nueva la lista entidad OTItems
             m_leOTItems = Bel.LEOTItems.NewEmpty();
@@ -75,9 +73,6 @@ namespace Rivn.Ot
             pnlOpciones.Enabled = false;
             gbAgregar.Enabled = false;
             cdcPatente.Enabled = false;
-
-            // Reseteamos el StatMsg
-            m_smResult.UilReset("NuevosControlesReparaciones");
 
             // Seteamos la el numero de orden trabajo en el TV
             neOrdenTrabajo.Numero = p_iNumeroOrdenTrabajo;
@@ -117,8 +112,6 @@ namespace Rivn.Ot
         // LLena la combo de patente con todas las de la base .
         private void LLenarComboPatentesMoviles(CDCombo p_cdcCombo)
         {
-            // reseteamos el statmsg
-            m_smResult.UilReset("LLenarComboPatentesMoviles");
             // llenamos la combo con los moviles
             p_cdcCombo.FillFromStrLEntidad(Bll.Moviles.UpFull(true, ref m_smResult), "mov_ecd_patente", "mov_ecd_patente", "deleted");
             // chequeamos que haya salido todo bien
@@ -221,8 +214,6 @@ namespace Rivn.Ot
             //cambiamos el nombre del ImgGroup y activamos las opciones
             igControlReparacion.GroupTitle = "Controles";
             igOpciones.Enabled = true;
-            // reseteamos al statmsg
-            m_smResult.UilReset("rbControles_CheckedChanged");
             //llenamos la lista con los controles de la tabla
             cdlControlesReparaciones.FillFromStrLEntidad(Bll.Controles.UpFull(true, ref m_smResult), "ctl_cod_cod", "ctl_des_des", "deleted");
             // chequeamos que haya salido todo bien
@@ -246,8 +237,6 @@ namespace Rivn.Ot
                 //cambiamos el nombre del ImgGroup y activamos las opciones
                 igControlReparacion.GroupTitle = "Reparaciones";
                 igOpciones.Enabled = true;
-                // reseteamos al statmsg
-                m_smResult.UilReset("rbControles_CheckedChanged");
                 //llenamos la lista con los controles de la tabla
                 cdlControlesReparaciones.FillFromStrLEntidad(Bll.Tablas.RepUpFull(true, ref m_smResult), "rep_cd6_cod", "rep_xde_des", "deleted");
                 // chequeamos que haya salido todo bien
@@ -271,8 +260,6 @@ namespace Rivn.Ot
         // Agrega un control o una reparacion a nuestra listaEntidad de items
         private void gbAgregar_Click(object sender, EventArgs e)
         {
-            m_smResult.UilReset("gbAgregar_Click");
-
             if (rbControles.Checked)
             {
                 // Obtenemos todas las reparaciones de el control seleccionado y el Control selecionado
@@ -328,7 +315,6 @@ namespace Rivn.Ot
         // Graba la ListaEntidad de Items en la Base
         private void gbAccept_Click(object sender, EventArgs e)
         {
-            m_smResult.UilReset("gbAccept_Click");
             // si la lista esta vacia no grabamos
             if(m_leOTItems.Count == 0)
             {
