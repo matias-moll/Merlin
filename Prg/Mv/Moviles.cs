@@ -85,20 +85,6 @@ namespace Rivn.Mv
 
         }
 
-        //Todo Borrar
-        ///// <summary>
-        ///// Llena la Combo De Estados Utilizando la ListaEntidad estados ya cargada con todos los estados
-        ///// </summary>
-        //private void LlenarComboEstados()
-        //{
-        //    m_smResult.UilReset("LlenarComboEstados");
-
-        //    cmbEstado.FillFromStrLEntidad(m_LEEdsEstados, "est_rcd_cod", "est_des_des", "deleted");
-
-        //    if (MsgRuts.AnalizeError(this, m_smResult)) return;
-        //}
-
-
         /// <summary>
         /// Llena la tree con todos los moviles activos
         /// </summary>
@@ -136,8 +122,19 @@ namespace Rivn.Mv
         {
             tePatente.Text = m_entMovil.Patente;
             teModelo.Text = GetModelo(m_entMovil.Modelo);
-            
+            // ordenamos por fecha descendentemente para que quede primero el ultimo estado (actual).
+            m_entMovil.MovilesEstado.Sort(String.Format("{0} desc", Bel.EMovilEstado.FechaCmp));
+            teEstado.Text = GetEstado(m_entMovil.MovilesEstado[0]);
       
+        }
+
+        private string GetEstado(EMovilEstado eMovilEstado)
+        {
+            EEstado l_eEstado = Bll.Tablas.EdsGet(eMovilEstado.Codestado, true, ref m_smResult);
+            if (MsgRuts.AnalizeError(this, m_smResult)) return null;
+            string l_strEstado = l_eEstado.Des;
+
+            return l_strEstado;
         }
 
 
@@ -209,6 +206,8 @@ namespace Rivn.Mv
             string l_strCodigo = ftrMoviles.SelectedNodeAsCDI.StrCode;
             if (l_strCodigo == "0") return;
             m_entMovil = m_LEMoviles[ftrMoviles.SelectedNodeAsCDI.StrCode];
+            m_entMovil.MovilesEstado = Bll.Moviles.MvesFGet(m_entMovil.Patente, true, ref m_smResult);
+            if (MsgRuts.AnalizeError(this, m_smResult)) return;
             SwitchTo(ModoForm.EdicionBase, OpGrid.Igual);
         }
 
@@ -486,9 +485,7 @@ namespace Rivn.Mv
             LimpiarEditables();
             m_AMAsocMoviles.CargarDatos(m_entMovil.Patente);
             teEstado.Text = m_LEEdsEstados[DameUltimoEstado()].Des;
-            gbModificarMovil.Enabled = true;
             gbBorrarMovil.Enabled = true;
-            //cmbEstado.Enabled = true;
             gbModificarEstado.Enabled = true;
             igMoviles.Enabled = true;
             pnlOpciones.Enabled = true;
@@ -519,7 +516,6 @@ namespace Rivn.Mv
             gbModificarEstado.Enabled = false;
             pnlOpciones.Enabled = true;
             gbNuevoMovil.Enabled = true;
-            gbModificarMovil.Enabled = false;
             gbBorrarMovil.Enabled = false;
         }
 
