@@ -229,16 +229,15 @@ namespace Rivn.Mv
 
             
             //instanciamos el parametro que viene de afuera del sistemas ESTADO DEFAULT
-
-            //TNGS.NetAppBll.EParametro l_ptroEstadoDefault = AppRuts.ParaGet("DefaultStateMovil", false, ref m_stResult);
-            //if (MsgRuts.AnalizeError(this, m_stResult))
-            //{
-            //    l_leMvlEstado.Patente = "";
-            //    return l_leMvlEstado;
-            //} 
+            EParametro l_ptroEstadoDefault = App.ParaGet("estadoDef", false, ref m_stResult);
+            if (MsgRuts.AnalizeError(this, m_stResult))
+            {
+                l_leMvlEstado.Patente = "";
+                return l_leMvlEstado;
+            } 
             l_leMvlEstado.Patente = tePatente.Text;
             l_leMvlEstado.Fecha = DateTime.Now;
-            l_leMvlEstado.Codestado = "01";// l_ptroEstadoDefault.VStr;
+            l_leMvlEstado.Codestado = Bel.EMovilEstado.FrmtCodestado(l_ptroEstadoDefault.VStr);
             l_leMvlEstado.Km = neKilometros.Numero;
 
             return l_leMvlEstado;

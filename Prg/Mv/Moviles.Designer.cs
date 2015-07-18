@@ -1,7 +1,7 @@
 ﻿using WeifenLuo.WinFormsUI.Docking;
 namespace Rivn.Mv
 {
-    partial class Estados
+    partial class Moviles
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@ namespace Rivn.Mv
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Estados));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Moviles));
             this.xpnlPanelAtras = new TNGS.NetControls.XPanel();
             this.fullLabel4 = new TNGS.NetControls.FullLabel();
             this.fullLabel3 = new TNGS.NetControls.FullLabel();
@@ -45,7 +45,6 @@ namespace Rivn.Mv
             this.tsPanel1 = new TNGS.NetControls.TSPanel();
             this.pnlOpciones = new System.Windows.Forms.Panel();
             this.gbNuevoMovil = new TNGS.NetControls.GlassButton();
-            this.gbModificarMovil = new TNGS.NetControls.GlassButton();
             this.gbBorrarMovil = new TNGS.NetControls.GlassButton();
             this.gbModificarEstado = new TNGS.NetControls.GlassButton();
             this.tsBase1 = new TNGS.NetControls.TSBase();
@@ -185,7 +184,7 @@ namespace Rivn.Mv
             this.tsPanel2.Controls.Add(this.gbAgregarKMs);
             this.tsPanel2.Controls.Add(this.gbCambiarEstado);
             this.tsPanel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.tsPanel2.Location = new System.Drawing.Point(504, 3);
+            this.tsPanel2.Location = new System.Drawing.Point(378, 3);
             this.tsPanel2.Name = "tsPanel2";
             this.tsPanel2.Opacity = 255;
             this.tsPanel2.Size = new System.Drawing.Size(375, 85);
@@ -255,18 +254,17 @@ namespace Rivn.Mv
             this.tsPanel1.Location = new System.Drawing.Point(0, 3);
             this.tsPanel1.Name = "tsPanel1";
             this.tsPanel1.Opacity = 255;
-            this.tsPanel1.Size = new System.Drawing.Size(504, 85);
+            this.tsPanel1.Size = new System.Drawing.Size(378, 85);
             this.tsPanel1.Speed = 1;
             this.tsPanel1.TabIndex = 0;
             // 
             // pnlOpciones
             // 
             this.pnlOpciones.Controls.Add(this.gbNuevoMovil);
-            this.pnlOpciones.Controls.Add(this.gbModificarMovil);
             this.pnlOpciones.Controls.Add(this.gbBorrarMovil);
             this.pnlOpciones.Location = new System.Drawing.Point(127, 0);
             this.pnlOpciones.Name = "pnlOpciones";
-            this.pnlOpciones.Size = new System.Drawing.Size(371, 63);
+            this.pnlOpciones.Size = new System.Drawing.Size(249, 63);
             this.pnlOpciones.TabIndex = 31;
             // 
             // gbNuevoMovil
@@ -287,24 +285,6 @@ namespace Rivn.Mv
             this.gbNuevoMovil.W8Color = System.Drawing.Color.RoyalBlue;
             this.gbNuevoMovil.Click += new System.EventHandler(this.gbNuevoMovil_Click);
             // 
-            // gbModificarMovil
-            // 
-            this.gbModificarMovil.BlackBorder = true;
-            this.gbModificarMovil.CircleButton = false;
-            this.gbModificarMovil.FixedImage = TNGS.NetControls.FixedGlassButtons.tChange;
-            this.gbModificarMovil.FlatColor = System.Drawing.Color.RoyalBlue;
-            this.gbModificarMovil.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
-            this.gbModificarMovil.FlatTextColor = System.Drawing.Color.Black;
-            this.gbModificarMovil.ImageOnTop = true;
-            this.gbModificarMovil.Location = new System.Drawing.Point(123, 6);
-            this.gbModificarMovil.Name = "gbModificarMovil";
-            this.gbModificarMovil.RoundCorners = 2;
-            this.gbModificarMovil.Size = new System.Drawing.Size(113, 55);
-            this.gbModificarMovil.TabIndex = 26;
-            this.gbModificarMovil.Text = "Cambiar";
-            this.gbModificarMovil.W8Color = System.Drawing.Color.RoyalBlue;
-            this.gbModificarMovil.Click += new System.EventHandler(this.gbModificarMovil_Click);
-            // 
             // gbBorrarMovil
             // 
             this.gbBorrarMovil.BlackBorder = true;
@@ -314,7 +294,7 @@ namespace Rivn.Mv
             this.gbBorrarMovil.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
             this.gbBorrarMovil.FlatTextColor = System.Drawing.Color.Black;
             this.gbBorrarMovil.ImageOnTop = true;
-            this.gbBorrarMovil.Location = new System.Drawing.Point(242, 6);
+            this.gbBorrarMovil.Location = new System.Drawing.Point(123, 5);
             this.gbBorrarMovil.Name = "gbBorrarMovil";
             this.gbBorrarMovil.RoundCorners = 2;
             this.gbBorrarMovil.Size = new System.Drawing.Size(113, 55);
@@ -337,9 +317,9 @@ namespace Rivn.Mv
             this.gbModificarEstado.RoundCorners = 2;
             this.gbModificarEstado.Size = new System.Drawing.Size(117, 55);
             this.gbModificarEstado.TabIndex = 30;
-            this.gbModificarEstado.Text = "Modificar Estado";
+            this.gbModificarEstado.Text = "Modificar Movil";
             this.gbModificarEstado.W8Color = System.Drawing.Color.RoyalBlue;
-            this.gbModificarEstado.Click += new System.EventHandler(this.gbModificarEstado_Click);
+            this.gbModificarEstado.Click += new System.EventHandler(this.gbModificarMovil_Click);
             // 
             // tsBase1
             // 
@@ -539,7 +519,7 @@ namespace Rivn.Mv
             this.ftrMoviles.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.ftrMoviles_AfterSelect);
             this.ftrMoviles.DoubleClick += new System.EventHandler(this.ftrMoviles_DoubleClick);
             // 
-            // Estados
+            // Moviles
             // 
             this.AllowEndUserDocking = false;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
@@ -549,8 +529,8 @@ namespace Rivn.Mv
             this.Controls.Add(this.xpnlPanelAtras);
             this.DockAreas = WeifenLuo.WinFormsUI.Docking.DockAreas.Document;
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Name = "Estados";
-            this.Text = "Estados";
+            this.Name = "Moviles";
+            this.Text = "Moviles";
             this.xpnlPanelAtras.ResumeLayout(false);
             this.tsContainer1.ResumeLayout(false);
             this.tabPageSwitcher1.ResumeLayout(false);
@@ -587,7 +567,6 @@ namespace Rivn.Mv
         private TNGS.NetControls.GlassButton gbModificarEstado;
         private System.Windows.Forms.Panel pnlOpciones;
         private TNGS.NetControls.GlassButton gbNuevoMovil;
-        private TNGS.NetControls.GlassButton gbModificarMovil;
         private TNGS.NetControls.GlassButton gbBorrarMovil;
         private TNGS.NetControls.TextEdit teEstado;
         private TNGS.NetControls.TSContainer tsContainer1;

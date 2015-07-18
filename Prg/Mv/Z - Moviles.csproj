@@ -105,11 +105,11 @@
     <Compile Include="Arranque.designer.cs">
       <DependentUpon>Arranque.cs</DependentUpon>
     </Compile>
-    <Compile Include="Estados.cs">
+    <Compile Include="Moviles.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Estados.Designer.cs">
-      <DependentUpon>Estados.cs</DependentUpon>
+    <Compile Include="Moviles.Designer.cs">
+      <DependentUpon>Moviles.cs</DependentUpon>
     </Compile>
     <Compile Include="ModificarEstado.cs">
       <SubType>Form</SubType>
@@ -154,8 +154,8 @@
     <EmbeddedResource Include="Arranque.resx">
       <DependentUpon>Arranque.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Estados.resx">
-      <DependentUpon>Estados.cs</DependentUpon>
+    <EmbeddedResource Include="Moviles.resx">
+      <DependentUpon>Moviles.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModificarEstado.resx">
       <DependentUpon>ModificarEstado.cs</DependentUpon>

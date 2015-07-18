@@ -55,24 +55,38 @@
             // 
             // gbCancelar
             // 
+            this.gbCancelar.BlackBorder = true;
+            this.gbCancelar.CircleButton = false;
             this.gbCancelar.FixedImage = TNGS.NetControls.FixedGlassButtons.Cancel;
+            this.gbCancelar.FlatColor = System.Drawing.Color.RoyalBlue;
+            this.gbCancelar.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
+            this.gbCancelar.FlatTextColor = System.Drawing.Color.Black;
             this.gbCancelar.Location = new System.Drawing.Point(229, 149);
             this.gbCancelar.Name = "gbCancelar";
+            this.gbCancelar.RoundCorners = 2;
             this.gbCancelar.Size = new System.Drawing.Size(96, 28);
             this.gbCancelar.TabIndex = 1;
             this.gbCancelar.Text = "Cancelar";
             this.gbCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.gbCancelar.W8Color = System.Drawing.Color.RoyalBlue;
             this.gbCancelar.Click += new System.EventHandler(this.gbCancelar_Click);
             // 
             // gbAceptar
             // 
+            this.gbAceptar.BlackBorder = true;
+            this.gbAceptar.CircleButton = false;
             this.gbAceptar.FixedImage = TNGS.NetControls.FixedGlassButtons.Accept;
+            this.gbAceptar.FlatColor = System.Drawing.Color.RoyalBlue;
+            this.gbAceptar.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
+            this.gbAceptar.FlatTextColor = System.Drawing.Color.Black;
             this.gbAceptar.Location = new System.Drawing.Point(133, 149);
             this.gbAceptar.Name = "gbAceptar";
+            this.gbAceptar.RoundCorners = 2;
             this.gbAceptar.Size = new System.Drawing.Size(90, 28);
             this.gbAceptar.TabIndex = 0;
             this.gbAceptar.Text = "Aceptar";
             this.gbAceptar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.gbAceptar.W8Color = System.Drawing.Color.RoyalBlue;
             this.gbAceptar.Click += new System.EventHandler(this.gbAceptar_Click);
             // 
             // igCombustible
@@ -88,7 +102,7 @@
             this.igCombustible.FontTitle = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.igCombustible.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.igCombustible.GroupImage = null;
-            this.igCombustible.GroupTitle = "Nueva Carga Combustible";
+            this.igCombustible.GroupTitle = "Nueva Carga Estado";
             this.igCombustible.Location = new System.Drawing.Point(12, 12);
             this.igCombustible.Name = "igCombustible";
             this.igCombustible.Padding = new System.Windows.Forms.Padding(20);
@@ -115,6 +129,7 @@
             // 
             this.cdcEstados.BackColor = System.Drawing.SystemColors.Window;
             this.cdcEstados.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cdcEstados.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cdcEstados.FormattingEnabled = true;
             this.cdcEstados.Location = new System.Drawing.Point(105, 60);
             this.cdcEstados.Name = "cdcEstados";

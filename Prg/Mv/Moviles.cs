@@ -18,7 +18,7 @@ using WeifenLuo.WinFormsUI.Docking;
 
 namespace Rivn.Mv
 {
-    public partial class Estados : DockContent
+    public partial class Moviles : DockContent
     {
         #region Miembros de la Clase
         public enum ModoForm { Inicio, EdicionBase,Edicion };
@@ -34,7 +34,7 @@ namespace Rivn.Mv
 
         #region Constructores
 
-        public Estados()
+        public Moviles()
         {
             InitializeComponent();
             // Obtenemos los permisos ACL
