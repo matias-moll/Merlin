@@ -39,7 +39,7 @@
             this.fullLabel4 = new TNGS.NetControls.FullLabel();
             this.fullLabel3 = new TNGS.NetControls.FullLabel();
             this.teComentario = new TNGS.NetControls.TextEdit();
-            this.cdlControlesReparaciones = new TNGS.NetControls.CDList();
+            this.lstControlesReparaciones = new TNGS.NetControls.CDList();
             this.igOpciones = new TNGS.NetControls.ImgGroup();
             this.neSeleccionado = new TNGS.NetControls.NumberEdit();
             this.gbQuitarTodos = new TNGS.NetControls.GlassButton();
@@ -139,7 +139,7 @@
             this.igControlReparacion.Controls.Add(this.fullLabel4);
             this.igControlReparacion.Controls.Add(this.fullLabel3);
             this.igControlReparacion.Controls.Add(this.teComentario);
-            this.igControlReparacion.Controls.Add(this.cdlControlesReparaciones);
+            this.igControlReparacion.Controls.Add(this.lstControlesReparaciones);
             this.igControlReparacion.CustomGroupBoxColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
             this.igControlReparacion.FontTitle = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.igControlReparacion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -161,10 +161,10 @@
             // deImporte
             // 
             this.deImporte.BackColor = System.Drawing.SystemColors.Window;
-            this.deImporte.Location = new System.Drawing.Point(355, 30);
+            this.deImporte.Location = new System.Drawing.Point(410, 27);
             this.deImporte.MaxLength = 13;
             this.deImporte.Name = "deImporte";
-            this.deImporte.Size = new System.Drawing.Size(168, 21);
+            this.deImporte.Size = new System.Drawing.Size(113, 21);
             this.deImporte.TabIndex = 3;
             this.deImporte.Text = "0.00";
             // 
@@ -195,15 +195,15 @@
             this.teComentario.Size = new System.Drawing.Size(233, 101);
             this.teComentario.TabIndex = 4;
             // 
-            // cdlControlesReparaciones
+            // lstControlesReparaciones
             // 
-            this.cdlControlesReparaciones.FormattingEnabled = true;
-            this.cdlControlesReparaciones.ItemHeight = 15;
-            this.cdlControlesReparaciones.Location = new System.Drawing.Point(12, 31);
-            this.cdlControlesReparaciones.Name = "cdlControlesReparaciones";
-            this.cdlControlesReparaciones.Size = new System.Drawing.Size(270, 154);
-            this.cdlControlesReparaciones.Sorted = true;
-            this.cdlControlesReparaciones.TabIndex = 2;
+            this.lstControlesReparaciones.FormattingEnabled = true;
+            this.lstControlesReparaciones.ItemHeight = 15;
+            this.lstControlesReparaciones.Location = new System.Drawing.Point(12, 31);
+            this.lstControlesReparaciones.Name = "lstControlesReparaciones";
+            this.lstControlesReparaciones.Size = new System.Drawing.Size(270, 154);
+            this.lstControlesReparaciones.Sorted = true;
+            this.lstControlesReparaciones.TabIndex = 2;
             // 
             // igOpciones
             // 
@@ -248,35 +248,59 @@
             // 
             // gbQuitarTodos
             // 
+            this.gbQuitarTodos.BlackBorder = true;
+            this.gbQuitarTodos.CircleButton = false;
             this.gbQuitarTodos.FixedImage = TNGS.NetControls.FixedGlassButtons.Clean;
+            this.gbQuitarTodos.FlatColor = System.Drawing.Color.RoyalBlue;
+            this.gbQuitarTodos.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
+            this.gbQuitarTodos.FlatFontSize = 9;
+            this.gbQuitarTodos.FlatTextColor = System.Drawing.Color.Black;
             this.gbQuitarTodos.Location = new System.Drawing.Point(153, 131);
             this.gbQuitarTodos.Name = "gbQuitarTodos";
+            this.gbQuitarTodos.RoundCorners = 2;
             this.gbQuitarTodos.Size = new System.Drawing.Size(117, 48);
             this.gbQuitarTodos.TabIndex = 3;
             this.gbQuitarTodos.Text = "Quitar Todos";
             this.gbQuitarTodos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.gbQuitarTodos.W8Color = System.Drawing.Color.RoyalBlue;
             this.gbQuitarTodos.Click += new System.EventHandler(this.gbQuitarTodos_Click);
             // 
             // gbQuitarUltimo
             // 
+            this.gbQuitarUltimo.BlackBorder = true;
+            this.gbQuitarUltimo.CircleButton = false;
             this.gbQuitarUltimo.FixedImage = TNGS.NetControls.FixedGlassButtons.Subs;
+            this.gbQuitarUltimo.FlatColor = System.Drawing.Color.RoyalBlue;
+            this.gbQuitarUltimo.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
+            this.gbQuitarUltimo.FlatFontSize = 9;
+            this.gbQuitarUltimo.FlatTextColor = System.Drawing.Color.Black;
             this.gbQuitarUltimo.Location = new System.Drawing.Point(20, 131);
             this.gbQuitarUltimo.Name = "gbQuitarUltimo";
+            this.gbQuitarUltimo.RoundCorners = 2;
             this.gbQuitarUltimo.Size = new System.Drawing.Size(117, 48);
             this.gbQuitarUltimo.TabIndex = 2;
             this.gbQuitarUltimo.Text = "Quitar Ultimo";
             this.gbQuitarUltimo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.gbQuitarUltimo.W8Color = System.Drawing.Color.RoyalBlue;
             this.gbQuitarUltimo.Click += new System.EventHandler(this.gbQuitarUltimo_Click);
             // 
             // gbQuitarSeleccionado
             // 
+            this.gbQuitarSeleccionado.BlackBorder = true;
+            this.gbQuitarSeleccionado.CircleButton = false;
             this.gbQuitarSeleccionado.FixedImage = TNGS.NetControls.FixedGlassButtons.Delete;
+            this.gbQuitarSeleccionado.FlatColor = System.Drawing.Color.RoyalBlue;
+            this.gbQuitarSeleccionado.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
+            this.gbQuitarSeleccionado.FlatFontSize = 9;
+            this.gbQuitarSeleccionado.FlatTextColor = System.Drawing.Color.Black;
             this.gbQuitarSeleccionado.Location = new System.Drawing.Point(152, 70);
             this.gbQuitarSeleccionado.Name = "gbQuitarSeleccionado";
+            this.gbQuitarSeleccionado.RoundCorners = 2;
             this.gbQuitarSeleccionado.Size = new System.Drawing.Size(117, 48);
             this.gbQuitarSeleccionado.TabIndex = 1;
             this.gbQuitarSeleccionado.Text = "Quitar Seleccionado";
             this.gbQuitarSeleccionado.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.gbQuitarSeleccionado.W8Color = System.Drawing.Color.RoyalBlue;
             this.gbQuitarSeleccionado.Click += new System.EventHandler(this.gbQuitarSeleccionado_Click);
             // 
             // fullLabel5
@@ -291,19 +315,28 @@
             // 
             // gbAgregar
             // 
+            this.gbAgregar.BlackBorder = true;
+            this.gbAgregar.CircleButton = false;
             this.gbAgregar.FixedImage = TNGS.NetControls.FixedGlassButtons.Add;
+            this.gbAgregar.FlatColor = System.Drawing.Color.RoyalBlue;
+            this.gbAgregar.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
+            this.gbAgregar.FlatFontSize = 9;
+            this.gbAgregar.FlatTextColor = System.Drawing.Color.Black;
             this.gbAgregar.Location = new System.Drawing.Point(19, 70);
             this.gbAgregar.Name = "gbAgregar";
+            this.gbAgregar.RoundCorners = 2;
             this.gbAgregar.Size = new System.Drawing.Size(117, 48);
             this.gbAgregar.TabIndex = 0;
             this.gbAgregar.Text = "Agregar Nuevo";
             this.gbAgregar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.gbAgregar.W8Color = System.Drawing.Color.RoyalBlue;
             this.gbAgregar.Click += new System.EventHandler(this.gbAgregar_Click);
             // 
             // cdcPatente
             // 
             this.cdcPatente.BackColor = System.Drawing.SystemColors.Window;
             this.cdcPatente.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cdcPatente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cdcPatente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.cdcPatente.FormattingEnabled = true;
             this.cdcPatente.Location = new System.Drawing.Point(127, 12);
@@ -315,13 +348,21 @@
             // 
             // gbAccept
             // 
+            this.gbAccept.BlackBorder = true;
+            this.gbAccept.CircleButton = false;
             this.gbAccept.FixedImage = TNGS.NetControls.FixedGlassButtons.Accept;
+            this.gbAccept.FlatColor = System.Drawing.Color.RoyalBlue;
+            this.gbAccept.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
+            this.gbAccept.FlatFontSize = 9;
+            this.gbAccept.FlatTextColor = System.Drawing.Color.Black;
             this.gbAccept.Location = new System.Drawing.Point(745, 458);
             this.gbAccept.Name = "gbAccept";
+            this.gbAccept.RoundCorners = 2;
             this.gbAccept.Size = new System.Drawing.Size(103, 31);
             this.gbAccept.TabIndex = 4;
             this.gbAccept.Text = "Aceptar";
             this.gbAccept.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.gbAccept.W8Color = System.Drawing.Color.RoyalBlue;
             this.gbAccept.Click += new System.EventHandler(this.gbAccept_Click);
             // 
             // fgControlRepaSeleccionados
@@ -344,13 +385,21 @@
             // 
             // gbCancel
             // 
+            this.gbCancel.BlackBorder = true;
+            this.gbCancel.CircleButton = false;
             this.gbCancel.FixedImage = TNGS.NetControls.FixedGlassButtons.Quit;
+            this.gbCancel.FlatColor = System.Drawing.Color.RoyalBlue;
+            this.gbCancel.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
+            this.gbCancel.FlatFontSize = 9;
+            this.gbCancel.FlatTextColor = System.Drawing.Color.Black;
             this.gbCancel.Location = new System.Drawing.Point(636, 458);
             this.gbCancel.Name = "gbCancel";
+            this.gbCancel.RoundCorners = 2;
             this.gbCancel.Size = new System.Drawing.Size(103, 31);
             this.gbCancel.TabIndex = 3;
             this.gbCancel.Text = "Cancelar";
             this.gbCancel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.gbCancel.W8Color = System.Drawing.Color.RoyalBlue;
             this.gbCancel.Click += new System.EventHandler(this.gbCancel_Click);
             // 
             // fullLabel2
@@ -405,7 +454,7 @@
         private TNGS.NetControls.CDCombo cdcPatente;
         private TNGS.NetControls.ImgGroup igControlReparacion;
         private TNGS.NetControls.FullGrid fgControlRepaSeleccionados;
-        private TNGS.NetControls.CDList cdlControlesReparaciones;
+        private TNGS.NetControls.CDList lstControlesReparaciones;
         private TNGS.NetControls.FullLabel fullLabel2;
         private TNGS.NetControls.GlassButton gbAccept;
         private TNGS.NetControls.GlassButton gbCancel;

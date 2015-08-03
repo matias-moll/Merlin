@@ -250,7 +250,6 @@ namespace Rivn.Mv
         /// <param name="sender"></param>
         /// <param name="e"></param>
         /// 
-        //TODO: Preguntar acerca del borrado
         private void gbBorrarMovil_Click(object sender, EventArgs e)
         {
             if (!BorradoSeguro()) return;
@@ -259,29 +258,6 @@ namespace Rivn.Mv
             SwitchTo(ModoForm.Inicio, OpGrid.Igual);
             MsgRuts.AnalizeError(this, m_smResult);
         }
-
-        /*
-         * Metodo borrado para borrar un equipamiento usamos el form de Juan
-        /// <summary>
-        /// Borrar un Equipamiento de un determinado movil 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void gbBorrarEq_Click(object sender, EventArgs e)
-        {
-            m_smResult.UilReset("BorrarEquipamientoMovil");
-            if (!BorradoSeguro()) return;
-            object l_objCodigo = fgEquipamiento.GetMatrixValueObj(fgEquipamiento.CurrentRowIndex,0);
-            if ((l_objCodigo == DBNull.Value) || (l_objCodigo == null))
-                    return;
-            Bll.Moviles.MveqRemove(m_entMovil.Patente, (string)l_objCodigo, m_entMovil.FxdVersion, ref m_smResult);
-            if (MsgRuts.AnalizeError(this, m_smResult)) return;
-            SwitchTo(ModoForm.Edicion, OpGrid.Equip);
-
-
-        }
-
-        */
 
         /// <summary>
         /// Agrega un nuevo Movil y engancha el evento al metodo movilChanged
@@ -449,6 +425,23 @@ namespace Rivn.Mv
             }
         }
 
+        /// <summary>
+        /// Metodo del Modo Inicio del Formulario
+        /// </summary>
+        private void ModoInicio()
+        {
+
+            TraerInfoBase();
+            TraerInfoEstados();
+            LlenarTreeMoviles();
+
+            teEstado.Enabled = false;
+            gbModificarMovil.Enabled = false;
+            gbNuevoMovil.Enabled = true;
+            gbBorrarMovil.Enabled = false;
+            pnlOpcionesEspecificas.Enabled = false;
+            pnlOpcionesGenerales.Enabled = true;
+        }
 
         /// <summary>
         /// Metodo que setea el formulario para ver datos resumidos del movil
@@ -461,7 +454,28 @@ namespace Rivn.Mv
             fgEquipamiento.Clear();
             fgKm.Clear();
             fgMovilEstados.Clear();
-            pnlOpciones.Enabled = true;
+            gbBorrarMovil.Enabled = true;
+            gbModificarMovil.Enabled = true;
+            pnlOpcionesEspecificas.Enabled = false;
+            pnlOpcionesGenerales.Enabled = true;
+        }
+
+        /// <summary>
+        /// Metodo del modo edicion
+        /// </summary>
+        private void ModoEdicion()
+        {
+            LlenarDatos();
+            LimpiarEditables();
+            m_AMAsocMoviles.CargarDatos(m_entMovil.Patente);
+            teEstado.Text = m_LEEdsEstados[DameUltimoEstado()].Des;
+            gbBorrarMovil.Enabled = true;
+            gbModificarMovil.Enabled = true;
+            igMoviles.Enabled = true;
+            pnlOpcionesEspecificas.Enabled = true;
+            pnlOpcionesGenerales.Enabled = false;
+
+
         }
 
 
@@ -477,21 +491,6 @@ namespace Rivn.Mv
         }
 
         /// <summary>
-        /// Metodo del modo edicion
-        /// </summary>
-        private void ModoEdicion()
-        {
-            LlenarDatos();
-            LimpiarEditables();
-            m_AMAsocMoviles.CargarDatos(m_entMovil.Patente);
-            teEstado.Text = m_LEEdsEstados[DameUltimoEstado()].Des;
-            gbBorrarMovil.Enabled = true;
-            gbModificarEstado.Enabled = true;
-            igMoviles.Enabled = true;
-            pnlOpciones.Enabled = true;
-            
-        }
-        /// <summary>
         /// Limpia campos editables (hay que sacarlo)
         /// </summary>
         private void LimpiarEditables()
@@ -499,25 +498,6 @@ namespace Rivn.Mv
             return;
         }
 
-
-        /// <summary>
-        /// Metodo del Modo Inicio del Formulario
-        /// </summary>
-        private void ModoInicio()
-        {
-
-            TraerInfoBase();
-            TraerInfoEstados();
-            LlenarTreeMoviles();
-            //LlenarComboEstados();
-
-            //cmbEstado.SelectedIndex = -1;
-            //cmbEstado.Enabled = false;
-            gbModificarEstado.Enabled = false;
-            pnlOpciones.Enabled = true;
-            gbNuevoMovil.Enabled = true;
-            gbBorrarMovil.Enabled = false;
-        }
 
 
 
@@ -569,10 +549,6 @@ namespace Rivn.Mv
             }
             return l_LEMEPrimerosCincoMovilesKms;
         }
-
-
-
-
 
 
 

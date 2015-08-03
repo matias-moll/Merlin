@@ -38,15 +38,14 @@ namespace Rivn.Mv
             this.tsContainer1 = new TNGS.NetControls.TSContainer();
             this.tabPageSwitcher1 = new RibbonStyle.TabPageSwitcher();
             this.tabStripPage1 = new RibbonStyle.TabStripPage();
-            this.tsPanel2 = new TNGS.NetControls.TSPanel();
+            this.pnlOpcionesEspecificas = new TNGS.NetControls.TSPanel();
             this.gbCargarNafta = new TNGS.NetControls.GlassButton();
             this.gbAgregarKMs = new TNGS.NetControls.GlassButton();
             this.gbCambiarEstado = new TNGS.NetControls.GlassButton();
-            this.tsPanel1 = new TNGS.NetControls.TSPanel();
-            this.pnlOpciones = new System.Windows.Forms.Panel();
+            this.pnlOpcionesGenerales = new TNGS.NetControls.TSPanel();
             this.gbNuevoMovil = new TNGS.NetControls.GlassButton();
             this.gbBorrarMovil = new TNGS.NetControls.GlassButton();
-            this.gbModificarEstado = new TNGS.NetControls.GlassButton();
+            this.gbModificarMovil = new TNGS.NetControls.GlassButton();
             this.tsBase1 = new TNGS.NetControls.TSBase();
             this.tab1 = new RibbonStyle.Tab();
             this.fgMovilEstados = new TNGS.NetControls.FullGrid();
@@ -65,9 +64,8 @@ namespace Rivn.Mv
             this.tsContainer1.SuspendLayout();
             this.tabPageSwitcher1.SuspendLayout();
             this.tabStripPage1.SuspendLayout();
-            this.tsPanel2.SuspendLayout();
-            this.tsPanel1.SuspendLayout();
-            this.pnlOpciones.SuspendLayout();
+            this.pnlOpcionesEspecificas.SuspendLayout();
+            this.pnlOpcionesGenerales.SuspendLayout();
             this.tsBase1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fgMovilEstados)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fgCombustibles)).BeginInit();
@@ -166,8 +164,8 @@ namespace Rivn.Mv
             // tabStripPage1
             // 
             this.tabStripPage1.Caption = "";
-            this.tabStripPage1.Controls.Add(this.tsPanel2);
-            this.tabStripPage1.Controls.Add(this.tsPanel1);
+            this.tabStripPage1.Controls.Add(this.pnlOpcionesEspecificas);
+            this.tabStripPage1.Controls.Add(this.pnlOpcionesGenerales);
             this.tabStripPage1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabStripPage1.Location = new System.Drawing.Point(4, 0);
             this.tabStripPage1.Name = "tabStripPage1";
@@ -177,19 +175,19 @@ namespace Rivn.Mv
             this.tabStripPage1.Speed = 8;
             this.tabStripPage1.TabIndex = 0;
             // 
-            // tsPanel2
+            // pnlOpcionesEspecificas
             // 
-            this.tsPanel2.Caption = "Opciones Espeficificas";
-            this.tsPanel2.Controls.Add(this.gbCargarNafta);
-            this.tsPanel2.Controls.Add(this.gbAgregarKMs);
-            this.tsPanel2.Controls.Add(this.gbCambiarEstado);
-            this.tsPanel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.tsPanel2.Location = new System.Drawing.Point(378, 3);
-            this.tsPanel2.Name = "tsPanel2";
-            this.tsPanel2.Opacity = 255;
-            this.tsPanel2.Size = new System.Drawing.Size(375, 85);
-            this.tsPanel2.Speed = 1;
-            this.tsPanel2.TabIndex = 1;
+            this.pnlOpcionesEspecificas.Caption = "Opciones Espeficificas";
+            this.pnlOpcionesEspecificas.Controls.Add(this.gbCargarNafta);
+            this.pnlOpcionesEspecificas.Controls.Add(this.gbAgregarKMs);
+            this.pnlOpcionesEspecificas.Controls.Add(this.gbCambiarEstado);
+            this.pnlOpcionesEspecificas.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pnlOpcionesEspecificas.Location = new System.Drawing.Point(378, 3);
+            this.pnlOpcionesEspecificas.Name = "pnlOpcionesEspecificas";
+            this.pnlOpcionesEspecificas.Opacity = 255;
+            this.pnlOpcionesEspecificas.Size = new System.Drawing.Size(375, 85);
+            this.pnlOpcionesEspecificas.Speed = 1;
+            this.pnlOpcionesEspecificas.TabIndex = 1;
             // 
             // gbCargarNafta
             // 
@@ -245,27 +243,19 @@ namespace Rivn.Mv
             this.gbCambiarEstado.W8Color = System.Drawing.Color.RoyalBlue;
             this.gbCambiarEstado.Click += new System.EventHandler(this.gbModificarEstado_Click);
             // 
-            // tsPanel1
+            // pnlOpcionesGenerales
             // 
-            this.tsPanel1.Caption = "Opciones Generales";
-            this.tsPanel1.Controls.Add(this.pnlOpciones);
-            this.tsPanel1.Controls.Add(this.gbModificarEstado);
-            this.tsPanel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.tsPanel1.Location = new System.Drawing.Point(0, 3);
-            this.tsPanel1.Name = "tsPanel1";
-            this.tsPanel1.Opacity = 255;
-            this.tsPanel1.Size = new System.Drawing.Size(378, 85);
-            this.tsPanel1.Speed = 1;
-            this.tsPanel1.TabIndex = 0;
-            // 
-            // pnlOpciones
-            // 
-            this.pnlOpciones.Controls.Add(this.gbNuevoMovil);
-            this.pnlOpciones.Controls.Add(this.gbBorrarMovil);
-            this.pnlOpciones.Location = new System.Drawing.Point(127, 0);
-            this.pnlOpciones.Name = "pnlOpciones";
-            this.pnlOpciones.Size = new System.Drawing.Size(249, 63);
-            this.pnlOpciones.TabIndex = 31;
+            this.pnlOpcionesGenerales.Caption = "Opciones Generales";
+            this.pnlOpcionesGenerales.Controls.Add(this.gbNuevoMovil);
+            this.pnlOpcionesGenerales.Controls.Add(this.gbBorrarMovil);
+            this.pnlOpcionesGenerales.Controls.Add(this.gbModificarMovil);
+            this.pnlOpcionesGenerales.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pnlOpcionesGenerales.Location = new System.Drawing.Point(0, 3);
+            this.pnlOpcionesGenerales.Name = "pnlOpcionesGenerales";
+            this.pnlOpcionesGenerales.Opacity = 255;
+            this.pnlOpcionesGenerales.Size = new System.Drawing.Size(378, 85);
+            this.pnlOpcionesGenerales.Speed = 1;
+            this.pnlOpcionesGenerales.TabIndex = 0;
             // 
             // gbNuevoMovil
             // 
@@ -276,7 +266,7 @@ namespace Rivn.Mv
             this.gbNuevoMovil.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
             this.gbNuevoMovil.FlatTextColor = System.Drawing.Color.Black;
             this.gbNuevoMovil.ImageOnTop = true;
-            this.gbNuevoMovil.Location = new System.Drawing.Point(4, 6);
+            this.gbNuevoMovil.Location = new System.Drawing.Point(132, 6);
             this.gbNuevoMovil.Name = "gbNuevoMovil";
             this.gbNuevoMovil.RoundCorners = 2;
             this.gbNuevoMovil.Size = new System.Drawing.Size(113, 55);
@@ -294,7 +284,7 @@ namespace Rivn.Mv
             this.gbBorrarMovil.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
             this.gbBorrarMovil.FlatTextColor = System.Drawing.Color.Black;
             this.gbBorrarMovil.ImageOnTop = true;
-            this.gbBorrarMovil.Location = new System.Drawing.Point(123, 5);
+            this.gbBorrarMovil.Location = new System.Drawing.Point(255, 6);
             this.gbBorrarMovil.Name = "gbBorrarMovil";
             this.gbBorrarMovil.RoundCorners = 2;
             this.gbBorrarMovil.Size = new System.Drawing.Size(113, 55);
@@ -303,23 +293,23 @@ namespace Rivn.Mv
             this.gbBorrarMovil.W8Color = System.Drawing.Color.RoyalBlue;
             this.gbBorrarMovil.Click += new System.EventHandler(this.gbBorrarMovil_Click);
             // 
-            // gbModificarEstado
+            // gbModificarMovil
             // 
-            this.gbModificarEstado.BlackBorder = true;
-            this.gbModificarEstado.CircleButton = false;
-            this.gbModificarEstado.FixedImage = TNGS.NetControls.FixedGlassButtons.tModify;
-            this.gbModificarEstado.FlatColor = System.Drawing.Color.RoyalBlue;
-            this.gbModificarEstado.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
-            this.gbModificarEstado.FlatTextColor = System.Drawing.Color.Black;
-            this.gbModificarEstado.ImageOnTop = true;
-            this.gbModificarEstado.Location = new System.Drawing.Point(8, 6);
-            this.gbModificarEstado.Name = "gbModificarEstado";
-            this.gbModificarEstado.RoundCorners = 2;
-            this.gbModificarEstado.Size = new System.Drawing.Size(117, 55);
-            this.gbModificarEstado.TabIndex = 30;
-            this.gbModificarEstado.Text = "Modificar Movil";
-            this.gbModificarEstado.W8Color = System.Drawing.Color.RoyalBlue;
-            this.gbModificarEstado.Click += new System.EventHandler(this.gbModificarMovil_Click);
+            this.gbModificarMovil.BlackBorder = true;
+            this.gbModificarMovil.CircleButton = false;
+            this.gbModificarMovil.FixedImage = TNGS.NetControls.FixedGlassButtons.tModify;
+            this.gbModificarMovil.FlatColor = System.Drawing.Color.RoyalBlue;
+            this.gbModificarMovil.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
+            this.gbModificarMovil.FlatTextColor = System.Drawing.Color.Black;
+            this.gbModificarMovil.ImageOnTop = true;
+            this.gbModificarMovil.Location = new System.Drawing.Point(8, 6);
+            this.gbModificarMovil.Name = "gbModificarMovil";
+            this.gbModificarMovil.RoundCorners = 2;
+            this.gbModificarMovil.Size = new System.Drawing.Size(117, 55);
+            this.gbModificarMovil.TabIndex = 30;
+            this.gbModificarMovil.Text = "Modificar Movil";
+            this.gbModificarMovil.W8Color = System.Drawing.Color.RoyalBlue;
+            this.gbModificarMovil.Click += new System.EventHandler(this.gbModificarMovil_Click);
             // 
             // tsBase1
             // 
@@ -535,9 +525,8 @@ namespace Rivn.Mv
             this.tsContainer1.ResumeLayout(false);
             this.tabPageSwitcher1.ResumeLayout(false);
             this.tabStripPage1.ResumeLayout(false);
-            this.tsPanel2.ResumeLayout(false);
-            this.tsPanel1.ResumeLayout(false);
-            this.pnlOpciones.ResumeLayout(false);
+            this.pnlOpcionesEspecificas.ResumeLayout(false);
+            this.pnlOpcionesGenerales.ResumeLayout(false);
             this.tsBase1.ResumeLayout(false);
             this.tsBase1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fgMovilEstados)).EndInit();
@@ -564,18 +553,17 @@ namespace Rivn.Mv
         private TNGS.NetControls.TextEdit teModelo;
         private TNGS.NetControls.FullLabel lblEstado;
         private TNGS.NetControls.FullGrid fgMovilEstados;
-        private TNGS.NetControls.GlassButton gbModificarEstado;
-        private System.Windows.Forms.Panel pnlOpciones;
+        private TNGS.NetControls.GlassButton gbModificarMovil;
         private TNGS.NetControls.GlassButton gbNuevoMovil;
         private TNGS.NetControls.GlassButton gbBorrarMovil;
         private TNGS.NetControls.TextEdit teEstado;
         private TNGS.NetControls.TSContainer tsContainer1;
         private RibbonStyle.TabPageSwitcher tabPageSwitcher1;
         private RibbonStyle.TabStripPage tabStripPage1;
-        private TNGS.NetControls.TSPanel tsPanel1;
+        private TNGS.NetControls.TSPanel pnlOpcionesGenerales;
         private TNGS.NetControls.TSBase tsBase1;
         private RibbonStyle.Tab tab1;
-        private TNGS.NetControls.TSPanel tsPanel2;
+        private TNGS.NetControls.TSPanel pnlOpcionesEspecificas;
         private TNGS.NetControls.GlassButton gbCambiarEstado;
         private TNGS.NetControls.GlassButton gbCargarNafta;
         private TNGS.NetControls.GlassButton gbAgregarKMs;

@@ -12,13 +12,13 @@ using TNGS.NetControls;
 using TNGS.NetRoutines;
 using TNGS.NetApp;
 using WeifenLuo.WinFormsUI.Docking;
+using Rivn.Bel;
 
 namespace Rivn.Ot
 {
     public partial class OTItemsNuevo:DockContent
     {
 
-        #region Miembros y Contructores
         // Variables Miembro
 
         private StatMsg m_smResult = new StatMsg();
@@ -27,36 +27,14 @@ namespace Rivn.Ot
         private int m_intNumeroAgrupador;
         private bool m_estadoMofidicar;
         private Bel.EOrdenTrabajo m_eOrdenAModificar;
+
         // Constructor Inicial
         public OTItemsNuevo()
         {
             InitializeComponent();
             ((MainFrame)App.GetMainWindow()).AddContent(this);
-            
-            // Estado Modificar es FALSO
-            m_estadoMofidicar = false;
 
-            // desabilitamos los IG y los Botones Quitar para que no puedan usarlos si no selecciona nada
-            igOpciones.Enabled = false;
-            igControlReparacion.Enabled = false;
-            HabilitarBotonesQuitar(false);
-
-            // LLenamos Las patentes que hay en la tabla.
-            LLenarComboPatentesMoviles(cdcPatente);
-
-            // seteamos el numero de OT
-            neOrdenTrabajo.Numero =  App.TaloGet("TaloOT",ref m_smResult).Valor;
-
-            // Seteamos como nueva la lista entidad OTItems
-            m_leOTItems = Bel.LEOTItems.NewEmpty();
-            ConfigurarCaptionsLEOitems(m_leOTItems);
-
-            // Nos traemos todas las reparaciones de la grilla a memoria 
-            m_leReparaciones = Bll.Tablas.RepUpFull(true, ref m_smResult);
-            if (MsgRuts.AnalizeError(this, m_smResult)) return;
-
-            //seteamos el numero de agrupador como 1
-            m_intNumeroAgrupador= 1;
+            estadoInicial();
         }
 
         // Constructor Inicial
@@ -105,20 +83,19 @@ namespace Rivn.Ot
             m_intNumeroAgrupador += 1; 
         }
 
-        #endregion
 
         #region Metodos Privados
 
         // LLena la combo de patente con todas las de la base .
-        private void LLenarComboPatentesMoviles(CDCombo p_cdcCombo)
+        private void LLenarComboPatentesMoviles()
         {
             // llenamos la combo con los moviles
-            p_cdcCombo.FillFromStrLEntidad(Bll.Moviles.UpFull(true, ref m_smResult), "mov_ecd_patente", "mov_ecd_patente", "deleted");
+            cdcPatente.FillFromStrLEntidad(Bll.Moviles.UpFull(true, ref m_smResult), EMovil.PatenteCmp, EMovil.PatenteCmp, "deleted");
             // chequeamos que haya salido todo bien
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
             //seteamos en el null para que se vea fancy
-            p_cdcCombo.SelectedIndex = -1;
+            cdcPatente.SelectedIndex = -1;
         }
 
         // Nos retorna la reparacion de Codigo pasado por parametro
@@ -194,6 +171,57 @@ namespace Rivn.Ot
             p_fullGrid.ColWitdhs = "64;80;80;280;280;80;110;";
         }
 
+        private void estadoInicial()
+        {
+            // Estado Modificar es FALSO
+            m_estadoMofidicar = false;
+
+            // desabilitamos los IG y los Botones Quitar para que no puedan usarlos si no selecciona nada
+            igOpciones.Enabled = false;
+            igControlReparacion.Enabled = false;
+            HabilitarBotonesQuitar(false);
+
+            // LLenamos Las patentes que hay en la tabla.
+            LLenarComboPatentesMoviles();
+
+            // seteamos el numero de OT
+            neOrdenTrabajo.Numero = App.TaloGet("TaloOT", ref m_smResult).Valor;
+
+            // Seteamos como nueva la lista entidad OTItems
+            m_leOTItems = Bel.LEOTItems.NewEmpty();
+            ConfigurarCaptionsLEOitems(m_leOTItems);
+
+            // Nos traemos todas las reparaciones de la grilla a memoria 
+            m_leReparaciones = Bll.Tablas.RepUpFull(true, ref m_smResult);
+            if (MsgRuts.AnalizeError(this, m_smResult)) return;
+
+            //seteamos el numero de agrupador como 1
+            m_intNumeroAgrupador = 1;
+        }
+
+        private void reiniciarForm()
+        {
+            limpiarControles();
+            estadoInicial();
+        }
+
+        private void limpiarControles()
+        {
+            cdcPatente.Clear();
+            fgControlRepaSeleccionados.Clear();
+            limpiarPanelControlesYReparaciones();
+
+        }
+
+        private void limpiarPanelControlesYReparaciones()
+        {
+            teComentario.Text = "";
+            deImporte.Decimal = 0;
+            lstControlesReparaciones.Clear();
+            rbReparaciones.Checked = false;
+            rbControles.Checked = false;
+        }
+
         #endregion
 
         #region Eventos de los Controles
@@ -215,33 +243,43 @@ namespace Rivn.Ot
             igControlReparacion.GroupTitle = "Controles";
             igOpciones.Enabled = true;
             //llenamos la lista con los controles de la tabla
-            cdlControlesReparaciones.FillFromStrLEntidad(Bll.Controles.UpFull(true, ref m_smResult), "ctl_cod_cod", "ctl_des_des", "deleted");
+            lstControlesReparaciones.FillFromStrLEntidad(Bll.Controles.UpFull(true, ref m_smResult), "ctl_cod_cod", "ctl_des_des", "deleted");
             // chequeamos que haya salido todo bien
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
+
+            limpiarDatosAsociados();
         }
 
         // llenamos la lista con las reparacion si se puede
         private void rbReparaciones_CheckedChanged(object sender, EventArgs e)
-           {
-                // si no esta chequeado hacemos un return
-               if (!rbReparaciones.Checked)
-                   return;
-                // nos aseguramos de que haya un movil seleccionado
-                if (cdcPatente.SelectedIndex == -1)
-                {
-                    rbReparaciones.Checked = false;
-                    MsgRuts.ShowMsg(this, "No hay ningun Movil seleccionado");
-                    return;
-                }
-
-                //cambiamos el nombre del ImgGroup y activamos las opciones
-                igControlReparacion.GroupTitle = "Reparaciones";
-                igOpciones.Enabled = true;
-                //llenamos la lista con los controles de la tabla
-                cdlControlesReparaciones.FillFromStrLEntidad(Bll.Tablas.RepUpFull(true, ref m_smResult), "rep_cd6_cod", "rep_xde_des", "deleted");
-                // chequeamos que haya salido todo bien
-                if (MsgRuts.AnalizeError(this, m_smResult)) return;
+        {
+            // si no esta chequeado hacemos un return
+            if (!rbReparaciones.Checked)
+                return;
+            // nos aseguramos de que haya un movil seleccionado
+            if (cdcPatente.SelectedIndex == -1)
+            {
+                rbReparaciones.Checked = false;
+                MsgRuts.ShowMsg(this, "No hay ningun Movil seleccionado");
+                return;
             }
+
+            //cambiamos el nombre del ImgGroup y activamos las opciones
+            igControlReparacion.GroupTitle = "Reparaciones";
+            igOpciones.Enabled = true;
+            //llenamos la lista con los controles de la tabla
+            lstControlesReparaciones.FillFromStrLEntidad(Bll.Tablas.RepUpFull(true, ref m_smResult), "rep_cd6_cod", "rep_xde_des", "deleted");
+            // chequeamos que haya salido todo bien
+            if (MsgRuts.AnalizeError(this, m_smResult)) return;
+
+            limpiarDatosAsociados();
+        }
+
+        private void limpiarDatosAsociados()
+        {
+            teComentario.Text = "";
+            deImporte.Decimal = 0;
+        }
 
         // Cierra el formulario
         private void gbCancel_Click(object sender, EventArgs e)
@@ -263,10 +301,10 @@ namespace Rivn.Ot
             if (rbControles.Checked)
             {
                 // Obtenemos todas las reparaciones de el control seleccionado y el Control selecionado
-                Bel.LEControlesRepa l_leControlReparaciones = Bll.Controles.CrepFGet(cdlControlesReparaciones.SelectedStrCode, true, ref m_smResult);
+                Bel.LEControlesRepa l_leControlReparaciones = Bll.Controles.CrepFGet(lstControlesReparaciones.SelectedStrCode, true, ref m_smResult);
                 if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
-                Bel.EControl l_entControlSeleccionado = Bll.Controles.Get(cdlControlesReparaciones.SelectedStrCode, true , ref m_smResult);
+                Bel.EControl l_entControlSeleccionado = Bll.Controles.Get(lstControlesReparaciones.SelectedStrCode, true , ref m_smResult);
                 if (MsgRuts.AnalizeError(this, m_smResult)) return;
                 
                 // Declaramos un contador para que numero en el agrupador
@@ -296,7 +334,7 @@ namespace Rivn.Ot
             }
             if (rbReparaciones.Checked)
             {
-                Bel.EReparacion l_eRepaSelec = obtenerReparacion(cdlControlesReparaciones.SelectedStrCode);
+                Bel.EReparacion l_eRepaSelec = obtenerReparacion(lstControlesReparaciones.SelectedStrCode);
                 // en una reparacion siempre la descripcion de control es la misma que la descripcion de reparacion
                 // en una reparacion el numero de item siempre es 1, (porque es unica)
                 m_leOTItems.AddEntity(LLenarOTItem(l_eRepaSelec, m_intNumeroAgrupador, 1, l_eRepaSelec.Des));
@@ -310,7 +348,11 @@ namespace Rivn.Ot
                 //aumentamos en uno al Agrupador
                 m_intNumeroAgrupador += 1;
             }
+
+            limpiarPanelControlesYReparaciones();
         }
+
+
 
         // Graba la ListaEntidad de Items en la Base
         private void gbAccept_Click(object sender, EventArgs e)
@@ -339,7 +381,7 @@ namespace Rivn.Ot
             }
 
             // Despueste grabado se cierra el formulario para poder seguir con el programa principal
-            this.Close();
+            reiniciarForm();
         }
 
         // Borra el ultimo item agregado a la lista
@@ -476,9 +518,6 @@ namespace Rivn.Ot
 
         #endregion
 
-        
-
-        
 
     }
 }
