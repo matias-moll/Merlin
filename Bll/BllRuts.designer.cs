@@ -16,9 +16,9 @@ namespace Rivn.Bll
     //----------------------------------------------------------------------------
     //                         TNG Software BLL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 13/06/2015 15:32
+    // Fecha                    : 17/08/2015 10:49
     // Sistema                  : Rivn
-    // Clase para Administrar   : Tablas de Rivn.
+    // Clase para Administrar   : 
     //----------------------------------------------------------------------------
     // © 1996-2015 by TNG Software                                      Gndr 5.20
     //----------------------------------------------------------------------------
@@ -136,6 +136,11 @@ namespace Rivn.Bll
                 case "ctr_des_descRep"                 : {return "V1ReparacionCN1";}
 
                 // ****************************************
+                // Tabla: Encargados          
+                case "enc_cod_cod"                     : {return "V1CodCN1";}
+                case "enc_des_des"                     : {return "V1DescripcionCN1";}
+
+                // ****************************************
                 // Tabla: Equipamiento        
                 case "eqi_cod_cod"                     : {return "V1Codigo EquipamientoCN1";}
                 case "eqi_des_des"                     : {return "V1EquipamientoCN1";}
@@ -213,6 +218,7 @@ namespace Rivn.Bll
                 case "odt_fyh_fecapertura"             : {return "V1Fecha de aperturaDN2";}
                 case "odt_nom_operador"                : {return "V1OperadorCN1";}
                 case "odt_fyh_feccierre"               : {return "V1Fecha de cierre.DN2";}
+                case "odt_cod_encargado"               : {return "V1EncargadoCN1";}
 
                 // ****************************************
                 // Tabla: OtItems             

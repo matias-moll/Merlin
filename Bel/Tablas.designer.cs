@@ -14,7 +14,7 @@ namespace Rivn.Bel
     //----------------------------------------------------------------------------
     //                         TNG Software BEL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 13/06/2015 15:33
+    // Fecha                    : 17/08/2015 10:53
     // Sistema                  : Rivn
     // Clase para Administrar   : Tablas de Rivn.
     //----------------------------------------------------------------------------
@@ -540,6 +540,541 @@ namespace Rivn.Bel
                 foreach (ECategoria l_entItem in this) {
                     // Si existe -> la devolvemos
                     if (l_entItem.Cod == p_strCod)
+                        return l_entItem;
+                }
+
+                // No existe
+                return null;
+            }
+        }
+        #endregion
+    }
+    #endregion
+
+    #region Entidad: Encargado
+    /// <summary>
+    /// Clase que representa la Entidad: Encargado
+    /// </summary>
+    public sealed partial class EEncargado : Entidad
+    {
+        #region Constructores
+        /// <summary>
+        /// Constructor
+        /// Llena la entidad a partir de una Row de la tabla: Encargados
+        /// </summary>
+        /// <param name="p_drDatos">DataRow con los datos de la entidad</param>
+        public EEncargado(DataRow p_drDatos) :
+            base(p_drDatos)
+        {
+        }
+
+        /// <summary>
+        /// Construye una entidad desde un XML: Encargado
+        /// </summary>
+        /// <param name="p_strXML">Datos en XML</param>
+        /// <param name="p_bEsNueva">T- La Entidad es Nueva / F- No</param>
+        public EEncargado(string p_strXML) :
+            this(p_strXML, false)
+        {
+        }
+
+        /// <summary>
+        /// Construye una entidad desde un XML: Encargado
+        /// </summary>
+        /// <param name="p_strXML">Datos en XML</param>
+        public EEncargado(string p_strXML,
+                          bool p_bEsNueva)
+        {
+            // Fijamos la condicion de entidad nueva
+            base.m_bNew= p_bEsNueva;
+
+            // Obtenemos el Nodo de datos del XML
+            XmlDocument l_xdocData= new XmlDocument();
+            l_xdocData.InnerXml= p_strXML;
+            XmlNode l_xndData= l_xdocData.ChildNodes[0];
+
+            // Creamos una tabla compatible con la entidad
+            DataTable l_dtTemp= new DataTable();
+            l_dtTemp.Columns.AddRange(EEncargado.Struct);
+
+            // Creamos una row a partir de la tabla creada y la
+            // llenamos con los valores iniciales
+            DataRow l_drTemp= l_dtTemp.NewRow();
+
+            l_drTemp["enc_cod_cod"]= XMLRuts.ExtractXAttr(l_xndData, "enc_cod_cod");
+            l_drTemp["enc_des_des"]= XMLRuts.ExtractXAttr(l_xndData, "enc_des_des");
+
+            // Llenamos los campos fijos
+            XML2FixedFields(ref l_drTemp, l_xndData);
+
+            // Llamamos al metodo fijo
+            fNewFromXML(ref l_drTemp, l_xndData);
+
+            // Agregamos la Row creada a la tabla creada y creamos
+            // una entidad a partir de los datos
+            l_dtTemp.Rows.Add(l_drTemp);
+            SetInternalData(l_dtTemp, l_dtTemp.Rows[0]);
+        }
+
+        /// <summary>
+        /// Constructor 
+        /// Privado para crear clases vacias
+        /// </summary>
+        /// <param name="p_dtDatos">DataTable con 1 registro con los datos de la entidad</param>
+        private EEncargado(DataTable p_dtDatos) :
+            base(p_dtDatos)
+        {
+        }
+        #endregion
+
+        #region Metodos publicos de la clase
+        //---------------------------------------------------------------
+        // Metodos públicos de la clase
+        //---------------------------------------------------------------
+
+        /// <summary>
+        /// Construye una entidad vacía: Encargado
+        /// </summary>
+        /// <returns>Entidad vacia: Encargado</returns>
+        public static EEncargado NewEmpty()
+        {
+            // Creamos una tabla compatible con la entidad
+            DataTable l_dtTemp= new DataTable();
+            l_dtTemp.Columns.AddRange(EEncargado.Struct);
+
+            // Creamos una row a partir de la tabla creada y la
+            // llenamos con los valores iniciales
+            DataRow l_drTemp= l_dtTemp.NewRow();
+
+            l_drTemp["enc_cod_cod"]= "";
+            l_drTemp["enc_des_des"]= "";
+
+            // Agregamos la Row creada a la tabla creada y creamos
+            // una entidad a partir de la DataTable de 1 registro
+            l_dtTemp.Rows.Add(l_drTemp);
+            EEncargado l_entRet= new EEncargado(l_dtTemp);
+            l_dtTemp.Dispose();
+            return l_entRet;
+        }
+
+        /// <summary>
+        /// Construye una entidad con datos de parametro: Encargado
+        /// </summary>
+        /// <param name="p_strCod">Cod</param>
+        /// <param name="p_strDes">Descripcion</param>
+        /// <returns>Entidad: Encargado</returns>
+        public static EEncargado NewFilled(string p_strCod,
+                                           string p_strDes)
+        {
+            // Creamos una tabla compatible con la entidad
+            DataTable l_dtTemp= new DataTable();
+            l_dtTemp.Columns.AddRange(EEncargado.Struct);
+
+            // Creamos una row a partir de la tabla creada y la
+            // llenamos con los valores iniciales
+            DataRow l_drTemp= l_dtTemp.NewRow();
+
+            l_drTemp["enc_cod_cod"]= p_strCod;
+            l_drTemp["enc_des_des"]= p_strDes;
+
+            // Agregamos la Row creada a la tabla creada y creamos
+            // una entidad a partir de la DataTable de 1 registro
+            l_dtTemp.Rows.Add(l_drTemp);
+            EEncargado l_entRet= new EEncargado(l_dtTemp);
+            l_dtTemp.Dispose();
+            return l_entRet;
+        }
+        #endregion
+
+        #region Formateadores
+
+        //---------------------------------------------------------------
+        // Metodos estáticos (Formateo de codigos alineados a derecha)
+        //---------------------------------------------------------------
+
+        /// <summary>
+        /// Formatea una string: Cod
+        /// </summary>
+        public static string FrmtCod(string p_strCod)
+        {
+            if (p_strCod.Trim().Length > 4)
+                p_strCod= p_strCod.Trim().Substring(0,4);
+
+            return p_strCod.Trim().PadLeft(4).ToUpper();
+        }
+        #endregion
+
+        #region Propiedades de la clase
+        //---------------------------------------------------------------
+        // Propiedades de la clase
+        //---------------------------------------------------------------
+
+        /// <summary>
+        /// Devuelve la estructura de la tabla interna de la entidad
+        /// </summary>
+        public static DataColumn[] Struct
+        {
+            get {
+                // Creamos el vector de DataColumns y lo llenamos
+                DataColumn[] l_dcStruct= new DataColumn[6];
+
+                l_dcStruct[0]= new DataColumn("enc_cod_cod", typeof(string));
+                l_dcStruct[1]= new DataColumn("enc_des_des", typeof(string));
+                EEncargado.FillFixedFields(ref l_dcStruct, 2);
+
+                // Devolvemos el vector creado
+                return l_dcStruct;
+            }
+        }
+
+        /// <summary>
+        /// Cod
+        /// </summary>
+        public static string CodCmp
+        {
+           get {return "enc_cod_cod";}
+        }
+
+        /// <summary>
+        /// Cod
+        /// </summary>
+        public string Cod
+        {
+            get {return (string) InternalData["enc_cod_cod"];}
+            set {InternalData["enc_cod_cod"]= EEncargado.FrmtCod(value);}
+        }
+
+        /// <summary>
+        /// Descripcion
+        /// </summary>
+        public static string DesCmp
+        {
+           get {return "enc_des_des";}
+        }
+
+        /// <summary>
+        /// Descripcion
+        /// </summary>
+        public string Des
+        {
+            get {return ((string) InternalData["enc_des_des"]).Trim();}
+            set {
+                if (value.Trim().Length > 30) value= value.Trim().Substring(0,30);
+                InternalData["enc_des_des"]= value.Trim();
+            }
+        }
+
+        /// <summary>
+        /// Devuelve la entidad [EEncargado] como XMLDocument en formato string
+        /// </summary>
+        public string XMLData
+        {
+            get {return XMLEncode.InnerXml;}
+        }
+
+        /// <summary>
+        /// Devuelve la entidad [EEncargado] como XMLDocument
+        /// </summary>
+        public XmlDocument XMLEncode
+        {
+            get {
+                //Creamos un Nodo de un Documento XML
+                XmlDocument l_xdocData= new XmlDocument();
+                XmlNode l_xndEntidad= l_xdocData.CreateNode(XmlNodeType.Element, "EEncargado", null);
+
+                // Asignamos los atributos al nodo
+                l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "enc_cod_cod", Cod));
+                l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "enc_des_des", Des));
+
+                // Asignamos los campos fijos
+                FixedFields2XML(l_xdocData, ref l_xndEntidad);
+
+                // Llamamos al metodo fijo
+                fAddXMLData(ref l_xdocData, ref l_xndEntidad);
+
+                // Armamos el documento y lo devolvemos
+                l_xdocData.AppendChild(l_xndEntidad);
+                return l_xdocData;
+            }
+        }
+        #endregion
+    }
+    #endregion
+
+    #region Lista-Entidad: Encargados
+    /// <summary>
+    /// Clase que representa la Lista-Entidad: Encargados
+    /// </summary>
+    public sealed partial class LEEncargados : ListaEntidades, IEnumerable<EEncargado>
+    {
+        #region Constructores
+        /// <summary>
+        /// Constructor
+        /// Llena la lista-entidad a partir de una Tabla: Encargados
+        /// </summary>
+        /// <param name="p_dtDatos">DataTable con los datos de la entidad</param>
+        public LEEncargados(DataTable p_dtDatos) :
+            base(p_dtDatos)
+        {
+        }
+
+        /// <summary>
+        /// Constructor
+        /// Llena la lista-entidad a partir de un XML
+        /// </summary>
+        /// <param name="p_dtDatos">DataTable con los datos de la entidad</param>
+        public LEEncargados(string p_strXMLData) :
+            base(EEncargado.Struct)
+        {
+            // Creamos el documento XML
+            XmlDocument l_xdocData= new XmlDocument();
+            l_xdocData.InnerXml= p_strXMLData;
+            XmlElement l_xelTemp= l_xdocData.DocumentElement;
+
+            // Agregamos cada item a la LE
+            foreach (XmlNode l_xndItem in l_xelTemp.ChildNodes)
+                AddEntity(new EEncargado(l_xndItem.OuterXml));
+        }
+
+        /// <summary>
+        /// Constructor
+        /// Constuye la lista-entidad vacia a partir de una lista de columnas
+        /// correspondiente a una entidad
+        /// </summary>
+        /// <param name="p_dcEstructura">Columnas de la estructura</param>
+        private LEEncargados(DataColumn[] p_dcEstructura) :
+            base(p_dcEstructura)
+        {
+        }
+        #endregion
+
+        #region Metodos publicos de la clase
+        //---------------------------------------------------------------
+        // Metodos publicos
+        //---------------------------------------------------------------
+
+        /// <summary>
+        /// Construye una lista-entidad vacía: Encargados
+        /// </summary>
+        /// <returns>Lista-Entidad vacia: Encargados</returns>
+        public static LEEncargados NewEmpty()
+        {
+            return new LEEncargados(EEncargado.Struct);
+        }
+
+        /// <summary>
+        /// Agrega una entidad a la lista
+        /// </summary>
+        /// <param name="p_entEEncargado">Entidad a agregar</param>
+        public void AddEntity(EEncargado p_entEEncargado)
+        {
+            base.AddEntity(p_entEEncargado);
+        }
+
+        /// <summary>
+        /// Remueve una entidad [Encargado] por clave
+        /// </summary>
+        public int RemoveEntity(string p_strCod)
+        {
+            // Buscamos la fila mediante un filtro
+            int l_iRet= 0;
+
+            m_dtDatos.DefaultView.RowFilter= 
+                "enc_cod_cod = " + Ruts.Co(EEncargado.FrmtCod(p_strCod));
+
+            if (m_dtDatos.DefaultView.Count == 1) {
+                // La borramos
+                m_dtDatos.Rows.Remove(m_dtDatos.DefaultView[0].Row);
+                l_iRet= 1;
+            }
+
+            // Quito el filtro
+            m_dtDatos.DefaultView.RowFilter= "";
+            return l_iRet;
+        }
+
+        /// <summary>
+        /// Verifca si una entidad [Encargado] esta en la lista
+        /// </summary>
+        public bool Contains(string p_strCod)
+        {
+            using (EEncargado l_entTemp= this[p_strCod])
+            {
+                // Indicamos si existe o no
+                return (l_entTemp != null);
+            }
+        }
+
+        /// <summary>
+        /// Devuelve el enumerador de la lista-entidades: Encargados
+        /// </summary>
+        /// <returns>Enumerador de las entidades en la lista</returns>
+        public new IEnumerator<EEncargado> GetEnumerator() 
+        {
+            EEncargado l_entTemp= null;
+
+            foreach (DataRowView l_drvTemp in m_dtDatos.DefaultView) {
+                l_entTemp= new EEncargado(l_drvTemp.Row);
+                yield return l_entTemp;
+            }
+        }
+
+        /// <summary>
+        /// Devuelve la lista entidad como un array de entidades: Encargados
+        /// </summary>
+        /// <returns>Array de entidades</returns>
+        public ArrayList GetAsArray()
+        {
+            // Llenamos el array con las entidades
+            ArrayList l_alRet= new ArrayList();
+
+            foreach (EEncargado l_entItem in this)
+                l_alRet.Add(l_entItem);
+
+            return l_alRet;
+        }
+
+        /// <summary>
+        /// Devuelve la lista entidad como una LET: Encargados
+        /// </summary>
+        /// <returns>Lista Entidad Tipada</returns>
+        public LETEncargados GetAsLET()
+        {
+            // Llenamos la lista tipada
+            LETEncargados l_lentRet= new LETEncargados();
+
+            foreach (EEncargado l_entItem in this)
+                l_lentRet.Add(l_entItem);
+
+            return l_lentRet;
+        }
+
+        /// <summary>
+        /// Devuelve la lista entidad como una List<Encargados>
+        /// </summary>
+        /// <returns>Lista de entidades</returns>
+        public List<EEncargado> ToList()
+        {
+            // Usamos el metodo GetAsLET
+            return (List<EEncargado>) GetAsLET();
+        }
+        #endregion
+
+        #region Propiedades de la clase
+        //---------------------------------------------------------------
+        // Propiedades de la clase
+        //---------------------------------------------------------------
+
+        /// <summary>
+        /// Indexer para acceder a cada entidad [Encargado] por indice
+        /// </summary>
+        public new EEncargado this[long p_lRow]
+        {
+            get {
+                // Recuperamos la fila solicitada
+                DataRow l_drDatos= base[(int) p_lRow];
+                if (l_drDatos == null) return null;
+
+                // Devolvemos una entidad Encargado con los datos de la fila
+                return new EEncargado(l_drDatos);
+            }
+        }
+
+        /// <summary>
+        /// Indexer para acceder a cada entidad [Encargado] por clave
+        /// </summary>
+        public EEncargado this[string p_strCod]
+        {
+            get {
+                // Buscamos la fila mediante un filtro
+                DataRow l_drData= null;
+
+                m_dtDatos.DefaultView.RowFilter= 
+                    "enc_cod_cod = " + Ruts.Co(EEncargado.FrmtCod(p_strCod));
+
+                if (m_dtDatos.DefaultView.Count == 1)
+                    l_drData= m_dtDatos.DefaultView[0].Row;
+
+                // Quito el filtro
+                m_dtDatos.DefaultView.RowFilter= "";
+
+                // Devolvemos una entidad Encargado con los datos de la fila
+                if (l_drData == null) return null;
+                return new EEncargado(l_drData);
+            }
+        }
+
+        /// <summary>
+        /// Devuelve la ListaEntidad como XML en string
+        /// </summary>
+        public string XMLData
+        {
+            get {return XMLEncode.InnerXml;}
+        }
+
+        /// <summary>
+        /// Devuelve la ListaEntidad como XML
+        /// </summary>
+        public XmlDocument XMLEncode
+        {
+            get {
+                // Construimos el XML
+                XmlDocument l_xdocData= new XmlDocument();
+                XmlNode l_xndEntidad= l_xdocData.CreateNode(XmlNodeType.Element, "LEEncargados", null);
+
+                foreach (EEncargado l_entDExtra in this)
+                    l_xndEntidad.AppendChild(l_xdocData.ImportNode(l_entDExtra.XMLEncode.ChildNodes[0], false));
+
+                l_xdocData.AppendChild(l_xndEntidad);
+                return l_xdocData;
+            }
+        }
+        #endregion
+    }
+    #endregion
+
+    #region Lista-Entidad-Tipada: Encargados
+    /// <summary>
+    /// Clase que representa la Lista-Entidad-Tipada: Encargados
+    /// </summary>
+    public sealed partial class LETEncargados : LET<EEncargado>
+    {
+        #region Metodos publicos de la clase
+        //---------------------------------------------------------------
+        // Metodos publicos
+        //---------------------------------------------------------------
+
+        /// <summary>
+        /// Devuelve la lista entidad tipada como una LE: Encargados
+        /// </summary>
+        /// <returns>Lista Entidad</returns>
+        public LEEncargados GetAsLE()
+        {
+            // Llenamos la lista
+            LEEncargados l_lentRet= LEEncargados.NewEmpty();
+
+            foreach (EEncargado l_entItem in this)
+                l_lentRet.AddEntity(l_entItem);
+
+            return l_lentRet;
+        }
+        #endregion
+
+        #region Propiedades de la clase
+        //---------------------------------------------------------------
+        // Propiedades de la clase
+        //---------------------------------------------------------------
+
+        /// <summary>
+        /// Indexer para acceder a cada entidad [Encargado] por clave
+        /// </summary>
+        public EEncargado this[string p_strCod]
+        {
+            get {
+                // Buscamos la entidad
+                foreach (EEncargado l_entItem in this) {
+                    // Si existe -> la devolvemos
+                    if (l_entItem.Cod == EEncargado.FrmtCod(p_strCod))
                         return l_entItem;
                 }
 

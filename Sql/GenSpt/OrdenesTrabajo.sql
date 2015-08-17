@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 11/07/2015 08:30
+// Fecha       : 17/08/2015 10:48
 // Sistema     : Rivn
 // Tabla       : OrdenesTrabajo
 //----------------------------------------------------------------------------
@@ -57,6 +57,7 @@ begin
                 odt_fyh_fecapertura,
                 odt_nom_operador,
                 odt_fyh_feccierre,
+                odt_cod_encargado,
                 TNGS_Rivn..OrdenesTrabajo.instante,
                 TNGS_Rivn..OrdenesTrabajo.deleted,
                 TNGS_Rivn..OrdenesTrabajo.usuario,
@@ -72,6 +73,7 @@ begin
                 odt_fyh_fecapertura,
                 odt_nom_operador,
                 odt_fyh_feccierre,
+                odt_cod_encargado,
                 TNGS_Rivn..OrdenesTrabajo.instante,
                 TNGS_Rivn..OrdenesTrabajo.deleted,
                 TNGS_Rivn..OrdenesTrabajo.usuario,
@@ -176,6 +178,7 @@ begin
                 odt_fyh_fecapertura,
                 odt_nom_operador,
                 odt_fyh_feccierre,
+                odt_cod_encargado,
                 TNGS_Rivn..OrdenesTrabajo.instante,
                 TNGS_Rivn..OrdenesTrabajo.deleted,
                 TNGS_Rivn..OrdenesTrabajo.usuario,
@@ -191,6 +194,7 @@ begin
                 odt_fyh_fecapertura,
                 odt_nom_operador,
                 odt_fyh_feccierre,
+                odt_cod_encargado,
                 TNGS_Rivn..OrdenesTrabajo.instante,
                 TNGS_Rivn..OrdenesTrabajo.deleted,
                 TNGS_Rivn..OrdenesTrabajo.usuario,
@@ -221,6 +225,7 @@ go
 --- <param name="@odt_fyh_fecapertura">Fecha de apertura</param>
 --- <param name="@odt_nom_operador">Operador</param>
 --- <param name="@odt_fyh_feccierre">Fecha de cierre.</param>
+--- <param name="@odt_cod_encargado">Encargado</param>
 --- <param name="@usuario">Usuario que genera el insert</param>
 ---
 ---////////////////////////////////////////////////////////
@@ -244,6 +249,7 @@ create procedure dbo.ORDENESTRABAJO_INSERT
 @odt_fyh_fecapertura tngs_fecyhor,
 @odt_nom_operador tngs_nombre,
 @odt_fyh_feccierre tngs_fecyhor,
+@odt_cod_encargado tngs_codigo,
 @usuario tngs_nombre
 )
 as
@@ -256,6 +262,7 @@ begin
            @odt_fyh_fecapertura,
            @odt_nom_operador,
            @odt_fyh_feccierre,
+           @odt_cod_encargado,
            getdate(), 0, @usuario, 1
           )
 
@@ -281,6 +288,7 @@ go
 --- <param name="@odt_fyh_fecapertura">Fecha de apertura</param>
 --- <param name="@odt_nom_operador">Operador</param>
 --- <param name="@odt_fyh_feccierre">Fecha de cierre.</param>
+--- <param name="@odt_cod_encargado">Encargado</param>
 --- <param name="@usuario">Usuario que genera el update</param>
 ---
 ---////////////////////////////////////////////////////////
@@ -304,6 +312,7 @@ create procedure dbo.ORDENESTRABAJO_UPDATE
 @odt_fyh_fecapertura tngs_fecyhor,
 @odt_nom_operador tngs_nombre,
 @odt_fyh_feccierre tngs_fecyhor,
+@odt_cod_encargado tngs_codigo,
 @usuario tngs_nombre
 )
 as
@@ -314,6 +323,7 @@ begin
           odt_fyh_fecapertura= @odt_fyh_fecapertura,
           odt_nom_operador= @odt_nom_operador,
           odt_fyh_feccierre= @odt_fyh_feccierre,
+          odt_cod_encargado= @odt_cod_encargado,
           version = ((version+1) % 32767),
           instante= getdate(),
           usuario = @usuario
@@ -552,6 +562,7 @@ begin
           odt_fyh_fecapertura,
           odt_nom_operador,
           odt_fyh_feccierre,
+          odt_cod_encargado,
           TNGS_Rivn..OrdenesTrabajo.instante,
           TNGS_Rivn..OrdenesTrabajo.deleted,
           TNGS_Rivn..OrdenesTrabajo.usuario,

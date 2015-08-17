@@ -53,6 +53,8 @@
             this.gbCancel = new TNGS.NetControls.GlassButton();
             this.fullLabel2 = new TNGS.NetControls.FullLabel();
             this.fullLabel1 = new TNGS.NetControls.FullLabel();
+            this.gbAsignar = new TNGS.NetControls.GlassButton();
+            this.textEdit1 = new TNGS.NetControls.TextEdit();
             this.xPanel1.SuspendLayout();
             this.pnlOpciones.SuspendLayout();
             this.igControlReparacion.SuspendLayout();
@@ -64,6 +66,8 @@
             // 
             this.xPanel1.BackColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.xPanel1.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
+            this.xPanel1.Controls.Add(this.textEdit1);
+            this.xPanel1.Controls.Add(this.gbAsignar);
             this.xPanel1.Controls.Add(this.neOrdenTrabajo);
             this.xPanel1.Controls.Add(this.pnlOpciones);
             this.xPanel1.Controls.Add(this.igControlReparacion);
@@ -255,6 +259,7 @@
             this.gbQuitarTodos.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
             this.gbQuitarTodos.FlatFontSize = 9;
             this.gbQuitarTodos.FlatTextColor = System.Drawing.Color.Black;
+            this.gbQuitarTodos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.gbQuitarTodos.Location = new System.Drawing.Point(153, 131);
             this.gbQuitarTodos.Name = "gbQuitarTodos";
             this.gbQuitarTodos.RoundCorners = 2;
@@ -274,6 +279,7 @@
             this.gbQuitarUltimo.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
             this.gbQuitarUltimo.FlatFontSize = 9;
             this.gbQuitarUltimo.FlatTextColor = System.Drawing.Color.Black;
+            this.gbQuitarUltimo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.gbQuitarUltimo.Location = new System.Drawing.Point(20, 131);
             this.gbQuitarUltimo.Name = "gbQuitarUltimo";
             this.gbQuitarUltimo.RoundCorners = 2;
@@ -293,6 +299,7 @@
             this.gbQuitarSeleccionado.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
             this.gbQuitarSeleccionado.FlatFontSize = 9;
             this.gbQuitarSeleccionado.FlatTextColor = System.Drawing.Color.Black;
+            this.gbQuitarSeleccionado.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.gbQuitarSeleccionado.Location = new System.Drawing.Point(152, 70);
             this.gbQuitarSeleccionado.Name = "gbQuitarSeleccionado";
             this.gbQuitarSeleccionado.RoundCorners = 2;
@@ -322,6 +329,7 @@
             this.gbAgregar.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
             this.gbAgregar.FlatFontSize = 9;
             this.gbAgregar.FlatTextColor = System.Drawing.Color.Black;
+            this.gbAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.gbAgregar.Location = new System.Drawing.Point(19, 70);
             this.gbAgregar.Name = "gbAgregar";
             this.gbAgregar.RoundCorners = 2;
@@ -355,6 +363,7 @@
             this.gbAccept.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
             this.gbAccept.FlatFontSize = 9;
             this.gbAccept.FlatTextColor = System.Drawing.Color.Black;
+            this.gbAccept.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.gbAccept.Location = new System.Drawing.Point(745, 458);
             this.gbAccept.Name = "gbAccept";
             this.gbAccept.RoundCorners = 2;
@@ -392,6 +401,7 @@
             this.gbCancel.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
             this.gbCancel.FlatFontSize = 9;
             this.gbCancel.FlatTextColor = System.Drawing.Color.Black;
+            this.gbCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.gbCancel.Location = new System.Drawing.Point(636, 458);
             this.gbCancel.Name = "gbCancel";
             this.gbCancel.RoundCorners = 2;
@@ -421,6 +431,34 @@
             this.fullLabel1.Size = new System.Drawing.Size(98, 23);
             this.fullLabel1.TabIndex = 1;
             this.fullLabel1.Text = "Movil Patente:";
+            // 
+            // gbAsignar
+            // 
+            this.gbAsignar.BlackBorder = true;
+            this.gbAsignar.CircleButton = false;
+            this.gbAsignar.FixedImage = TNGS.NetControls.FixedGlassButtons.Accept;
+            this.gbAsignar.FlatColor = System.Drawing.Color.RoyalBlue;
+            this.gbAsignar.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
+            this.gbAsignar.FlatFontSize = 9;
+            this.gbAsignar.FlatTextColor = System.Drawing.Color.Black;
+            this.gbAsignar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.gbAsignar.Location = new System.Drawing.Point(12, 458);
+            this.gbAsignar.Name = "gbAsignar";
+            this.gbAsignar.RoundCorners = 2;
+            this.gbAsignar.Size = new System.Drawing.Size(103, 31);
+            this.gbAsignar.TabIndex = 14;
+            this.gbAsignar.Text = "Asignar";
+            this.gbAsignar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.gbAsignar.W8Color = System.Drawing.Color.RoyalBlue;
+            this.gbAsignar.Click += new System.EventHandler(this.gbAsignar_Click);
+            // 
+            // textEdit1
+            // 
+            this.textEdit1.BackColor = System.Drawing.SystemColors.Window;
+            this.textEdit1.Location = new System.Drawing.Point(127, 463);
+            this.textEdit1.Name = "textEdit1";
+            this.textEdit1.Size = new System.Drawing.Size(233, 21);
+            this.textEdit1.TabIndex = 15;
             // 
             // OTItemsNuevo
             // 
@@ -472,5 +510,7 @@
         private TNGS.NetControls.FullLabel fullLabel5;
         private TNGS.NetControls.NumberEdit neSeleccionado;
         private TNGS.NetControls.NumberEdit neOrdenTrabajo;
+        private TNGS.NetControls.TextEdit textEdit1;
+        private TNGS.NetControls.GlassButton gbAsignar;
     }
 }

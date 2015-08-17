@@ -3,7 +3,7 @@
 //----------------------------------------------------------------------------
 // Fecha       : 17/08/2015 10:48
 // Sistema     : Rivn
-// Tabla       : Marcas
+// Tabla       : Encargados
 //----------------------------------------------------------------------------
 // © 1999-2015 by TNG Software                                      Gndr 5.20
 //---------------------------------------------------------------------------*/
@@ -31,19 +31,19 @@ go
 ---
 ---////////////////////////////////////////////////////////
 
-print 'Store Procedure: dbo.MARCAS_UP'
+print 'Store Procedure: dbo.ENCARGADOS_UP'
 
-if exists (select * from sysobjects where id = object_id('dbo.MARCAS_UP'))
+if exists (select * from sysobjects where id = object_id('dbo.ENCARGADOS_UP'))
 begin
    print '       - Borrando el viejo SP'
-   drop procedure dbo.MARCAS_UP
+   drop procedure dbo.ENCARGADOS_UP
 end
 go
 
 print '       - Creando el nuevo SP'
 go
 
-create procedure dbo.MARCAS_UP
+create procedure dbo.ENCARGADOS_UP
 (
 @onlyactive tngs_valor
 )
@@ -52,26 +52,26 @@ begin
 
    if @onlyactive = 1
       begin
-         Select mrc_rcd_codigo,
-                mrc_des_descripcion,
-                TNGS_Rivn..Marcas.instante,
-                TNGS_Rivn..Marcas.deleted,
-                TNGS_Rivn..Marcas.usuario,
-                TNGS_Rivn..Marcas.version
-           from TNGS_Rivn..Marcas
+         Select enc_cod_cod,
+                enc_des_des,
+                TNGS_Rivn..Encargados.instante,
+                TNGS_Rivn..Encargados.deleted,
+                TNGS_Rivn..Encargados.usuario,
+                TNGS_Rivn..Encargados.version
+           from TNGS_Rivn..Encargados
           where deleted = 0
-          order by mrc_rcd_codigo
+          order by enc_cod_cod
       end
    else
       begin
-         Select mrc_rcd_codigo,
-                mrc_des_descripcion,
-                TNGS_Rivn..Marcas.instante,
-                TNGS_Rivn..Marcas.deleted,
-                TNGS_Rivn..Marcas.usuario,
-                TNGS_Rivn..Marcas.version
-           from TNGS_Rivn..Marcas
-          order by mrc_rcd_codigo
+         Select enc_cod_cod,
+                enc_des_des,
+                TNGS_Rivn..Encargados.instante,
+                TNGS_Rivn..Encargados.deleted,
+                TNGS_Rivn..Encargados.usuario,
+                TNGS_Rivn..Encargados.version
+           from TNGS_Rivn..Encargados
+          order by enc_cod_cod
       end
 
 fin:
@@ -81,7 +81,7 @@ go
 
 print '       - Asignando permisos al nuevo SP'
 
-grant execute on dbo.MARCAS_UP to tngsmodulos
+grant execute on dbo.ENCARGADOS_UP to tngsmodulos
 
 print ' '
 go
@@ -91,34 +91,34 @@ go
 --- <summary>
 --- Verifica el número de versión de un registro
 --- </summary>
---- <param name="@mrc_rcd_codigo">Codigo Marca</param>
+--- <param name="@enc_cod_cod">Cod</param>
 --- <param name="@version">Número de version a verificar</param>
 ---
 ---////////////////////////////////////////////////////////
 
-print 'Store Procedure: dbo.MARCAS_CHKVERSION'
+print 'Store Procedure: dbo.ENCARGADOS_CHKVERSION'
 
-if exists (select * from sysobjects where id = object_id('dbo.MARCAS_CHKVERSION'))
+if exists (select * from sysobjects where id = object_id('dbo.ENCARGADOS_CHKVERSION'))
 begin
    print '       - Borrando el viejo SP'
-   drop procedure dbo.MARCAS_CHKVERSION
+   drop procedure dbo.ENCARGADOS_CHKVERSION
 end
 go
 
 print '       - Creando el nuevo SP'
 go
 
-create procedure dbo.MARCAS_CHKVERSION
+create procedure dbo.ENCARGADOS_CHKVERSION
 (
-@mrc_rcd_codigo tngs_codigo_r,
+@enc_cod_cod tngs_codigo,
 @version tngs_numero
 )
 as
 begin
 
    Select count(*) as cantidad
-     from TNGS_Rivn..Marcas
-    where mrc_rcd_codigo = @mrc_rcd_codigo
+     from TNGS_Rivn..Encargados
+    where enc_cod_cod = @enc_cod_cod
       and version = @version
 
 fin:
@@ -128,7 +128,7 @@ go
 
 print '       - Asignando permisos al nuevo SP'
 
-grant execute on dbo.MARCAS_CHKVERSION to tngsmodulos
+grant execute on dbo.ENCARGADOS_CHKVERSION to tngsmodulos
 
 print ' '
 go
@@ -138,26 +138,26 @@ go
 --- <summary>
 --- Busca el registro de una clave
 --- </summary>
---- <param name="@mrc_rcd_codigo">Codigo Marca</param>
+--- <param name="@enc_cod_cod">Cod</param>
 --- <param name="@onlyactive">Flag de SoloActivos</param>
 ---
 ---////////////////////////////////////////////////////////
 
-print 'Store Procedure: dbo.MARCAS_SEARCH'
+print 'Store Procedure: dbo.ENCARGADOS_SEARCH'
 
-if exists (select * from sysobjects where id = object_id('dbo.MARCAS_SEARCH'))
+if exists (select * from sysobjects where id = object_id('dbo.ENCARGADOS_SEARCH'))
 begin
    print '       - Borrando el viejo SP'
-   drop procedure dbo.MARCAS_SEARCH
+   drop procedure dbo.ENCARGADOS_SEARCH
 end
 go
 
 print '       - Creando el nuevo SP'
 go
 
-create procedure dbo.MARCAS_SEARCH
+create procedure dbo.ENCARGADOS_SEARCH
 (
-@mrc_rcd_codigo tngs_codigo_r,
+@enc_cod_cod tngs_codigo,
 @onlyactive tngs_valor
 )
 as
@@ -165,26 +165,26 @@ begin
 
    if @onlyactive = 1
       begin
-         Select mrc_rcd_codigo,
-                mrc_des_descripcion,
-                TNGS_Rivn..Marcas.instante,
-                TNGS_Rivn..Marcas.deleted,
-                TNGS_Rivn..Marcas.usuario,
-                TNGS_Rivn..Marcas.version
-           from TNGS_Rivn..Marcas
-          where mrc_rcd_codigo = @mrc_rcd_codigo
+         Select enc_cod_cod,
+                enc_des_des,
+                TNGS_Rivn..Encargados.instante,
+                TNGS_Rivn..Encargados.deleted,
+                TNGS_Rivn..Encargados.usuario,
+                TNGS_Rivn..Encargados.version
+           from TNGS_Rivn..Encargados
+          where enc_cod_cod = @enc_cod_cod
             and deleted = 0
       end
    else
       begin
-         Select mrc_rcd_codigo,
-                mrc_des_descripcion,
-                TNGS_Rivn..Marcas.instante,
-                TNGS_Rivn..Marcas.deleted,
-                TNGS_Rivn..Marcas.usuario,
-                TNGS_Rivn..Marcas.version
-           from TNGS_Rivn..Marcas
-          where mrc_rcd_codigo = @mrc_rcd_codigo
+         Select enc_cod_cod,
+                enc_des_des,
+                TNGS_Rivn..Encargados.instante,
+                TNGS_Rivn..Encargados.deleted,
+                TNGS_Rivn..Encargados.usuario,
+                TNGS_Rivn..Encargados.version
+           from TNGS_Rivn..Encargados
+          where enc_cod_cod = @enc_cod_cod
       end
 
 fin:
@@ -194,7 +194,7 @@ go
 
 print '       - Asignando permisos al nuevo SP'
 
-grant execute on dbo.MARCAS_SEARCH to tngsmodulos
+grant execute on dbo.ENCARGADOS_SEARCH to tngsmodulos
 
 print ' '
 go
@@ -208,27 +208,27 @@ go
 ---
 ---////////////////////////////////////////////////////////
 
-print 'Store Procedure: dbo.MARCAS_GETMAXKEY'
+print 'Store Procedure: dbo.ENCARGADOS_GETMAXKEY'
 
-if exists (select * from sysobjects where id = object_id('dbo.MARCAS_GETMAXKEY'))
+if exists (select * from sysobjects where id = object_id('dbo.ENCARGADOS_GETMAXKEY'))
 begin
    print '       - Borrando el viejo SP'
-   drop procedure dbo.MARCAS_GETMAXKEY
+   drop procedure dbo.ENCARGADOS_GETMAXKEY
 end
 go
 
 print '       - Creando el nuevo SP'
 go
 
-create procedure dbo.MARCAS_GETMAXKEY
+create procedure dbo.ENCARGADOS_GETMAXKEY
 (
 @dummy tngs_codigo_1
 )
 as
 begin
 
-   Select isnull(max(mrc_rcd_codigo), '0') as mrc_rcd_codigo
-     from TNGS_Rivn..Marcas
+   Select isnull(max(enc_cod_cod), '0') as enc_cod_cod
+     from TNGS_Rivn..Encargados
 
 fin:
 
@@ -237,7 +237,7 @@ go
 
 print '       - Asignando permisos al nuevo SP'
 
-grant execute on dbo.MARCAS_GETMAXKEY to tngsmodulos
+grant execute on dbo.ENCARGADOS_GETMAXKEY to tngsmodulos
 
 print ' '
 go
@@ -247,37 +247,37 @@ go
 --- <summary>
 --- Inserta un registro en la tabla
 --- </summary>
---- <param name="@mrc_rcd_codigo">Codigo Marca</param>
---- <param name="@mrc_des_descripcion">Marca</param>
+--- <param name="@enc_cod_cod">Cod</param>
+--- <param name="@enc_des_des">Descripcion</param>
 --- <param name="@usuario">Usuario que genera el insert</param>
 ---
 ---////////////////////////////////////////////////////////
 
-print 'Store Procedure: dbo.MARCAS_INSERT'
+print 'Store Procedure: dbo.ENCARGADOS_INSERT'
 
-if exists (select * from sysobjects where id = object_id('dbo.MARCAS_INSERT'))
+if exists (select * from sysobjects where id = object_id('dbo.ENCARGADOS_INSERT'))
 begin
    print '       - Borrando el viejo SP'
-   drop procedure dbo.MARCAS_INSERT
+   drop procedure dbo.ENCARGADOS_INSERT
 end
 go
 
 print '       - Creando el nuevo SP'
 go
 
-create procedure dbo.MARCAS_INSERT
+create procedure dbo.ENCARGADOS_INSERT
 (
-@mrc_rcd_codigo tngs_codigo_r,
-@mrc_des_descripcion tngs_descripcion,
+@enc_cod_cod tngs_codigo,
+@enc_des_des tngs_descripcion,
 @usuario tngs_nombre
 )
 as
 begin
 
-   Insert into TNGS_Rivn..Marcas
+   Insert into TNGS_Rivn..Encargados
    values (
-           @mrc_rcd_codigo,
-           @mrc_des_descripcion,
+           @enc_cod_cod,
+           @enc_des_des,
            getdate(), 0, @usuario, 1
           )
 
@@ -288,7 +288,7 @@ go
 
 print '       - Asignando permisos al nuevo SP'
 
-grant execute on dbo.MARCAS_INSERT to tngsmodulos
+grant execute on dbo.ENCARGADOS_INSERT to tngsmodulos
 
 print ' '
 go
@@ -298,39 +298,39 @@ go
 --- <summary>
 --- Actualiza un registro de la tabla
 --- </summary>
---- <param name="@mrc_rcd_codigo">Codigo Marca</param>
---- <param name="@mrc_des_descripcion">Marca</param>
+--- <param name="@enc_cod_cod">Cod</param>
+--- <param name="@enc_des_des">Descripcion</param>
 --- <param name="@usuario">Usuario que genera el update</param>
 ---
 ---////////////////////////////////////////////////////////
 
-print 'Store Procedure: dbo.MARCAS_UPDATE'
+print 'Store Procedure: dbo.ENCARGADOS_UPDATE'
 
-if exists (select * from sysobjects where id = object_id('dbo.MARCAS_UPDATE'))
+if exists (select * from sysobjects where id = object_id('dbo.ENCARGADOS_UPDATE'))
 begin
    print '       - Borrando el viejo SP'
-   drop procedure dbo.MARCAS_UPDATE
+   drop procedure dbo.ENCARGADOS_UPDATE
 end
 go
 
 print '       - Creando el nuevo SP'
 go
 
-create procedure dbo.MARCAS_UPDATE
+create procedure dbo.ENCARGADOS_UPDATE
 (
-@mrc_rcd_codigo tngs_codigo_r,
-@mrc_des_descripcion tngs_descripcion,
+@enc_cod_cod tngs_codigo,
+@enc_des_des tngs_descripcion,
 @usuario tngs_nombre
 )
 as
 begin
 
-   Update TNGS_Rivn..Marcas
-      set mrc_des_descripcion= @mrc_des_descripcion,
+   Update TNGS_Rivn..Encargados
+      set enc_des_des= @enc_des_des,
           version = ((version+1) % 32767),
           instante= getdate(),
           usuario = @usuario
-    where mrc_rcd_codigo = @mrc_rcd_codigo
+    where enc_cod_cod = @enc_cod_cod
 
 fin:
 
@@ -339,7 +339,7 @@ go
 
 print '       - Asignando permisos al nuevo SP'
 
-grant execute on dbo.MARCAS_UPDATE to tngsmodulos
+grant execute on dbo.ENCARGADOS_UPDATE to tngsmodulos
 
 print ' '
 go
@@ -349,37 +349,37 @@ go
 --- <summary>
 --- Borra lógicamente un registro
 --- </summary>
---- <param name="@mrc_rcd_codigo">Codigo Marca</param>
+--- <param name="@enc_cod_cod">Cod</param>
 --- <param name="@usuario">Usuario que realiza el delete</param>
 ---
 ---////////////////////////////////////////////////////////
 
-print 'Store Procedure: dbo.MARCAS_DELETE'
+print 'Store Procedure: dbo.ENCARGADOS_DELETE'
 
-if exists (select * from sysobjects where id = object_id('dbo.MARCAS_DELETE'))
+if exists (select * from sysobjects where id = object_id('dbo.ENCARGADOS_DELETE'))
 begin
    print '       - Borrando el viejo SP'
-   drop procedure dbo.MARCAS_DELETE
+   drop procedure dbo.ENCARGADOS_DELETE
 end
 go
 
 print '       - Creando el nuevo SP'
 go
 
-create procedure dbo.MARCAS_DELETE
+create procedure dbo.ENCARGADOS_DELETE
 (
-@mrc_rcd_codigo tngs_codigo_r,
+@enc_cod_cod tngs_codigo,
 @usuario tngs_nombre
 )
 as
 begin
 
-   Update TNGS_Rivn..Marcas
+   Update TNGS_Rivn..Encargados
       set deleted = 1,
           version = ((version+1) % 32767),
           instante= getdate(),
           usuario = @usuario
-    where mrc_rcd_codigo = @mrc_rcd_codigo
+    where enc_cod_cod = @enc_cod_cod
 
 fin:
 
@@ -388,7 +388,7 @@ go
 
 print '       - Asignando permisos al nuevo SP'
 
-grant execute on dbo.MARCAS_DELETE to tngsmodulos
+grant execute on dbo.ENCARGADOS_DELETE to tngsmodulos
 
 print ' '
 go
@@ -398,37 +398,37 @@ go
 --- <summary>
 --- Recupera un registro
 --- </summary>
---- <param name="@mrc_rcd_codigo">Codigo Marca</param>
+--- <param name="@enc_cod_cod">Cod</param>
 --- <param name="@usuario">Usuario que realiza el recall</param>
 ---
 ---////////////////////////////////////////////////////////
 
-print 'Store Procedure: dbo.MARCAS_RECALL'
+print 'Store Procedure: dbo.ENCARGADOS_RECALL'
 
-if exists (select * from sysobjects where id = object_id('dbo.MARCAS_RECALL'))
+if exists (select * from sysobjects where id = object_id('dbo.ENCARGADOS_RECALL'))
 begin
    print '       - Borrando el viejo SP'
-   drop procedure dbo.MARCAS_RECALL
+   drop procedure dbo.ENCARGADOS_RECALL
 end
 go
 
 print '       - Creando el nuevo SP'
 go
 
-create procedure dbo.MARCAS_RECALL
+create procedure dbo.ENCARGADOS_RECALL
 (
-@mrc_rcd_codigo tngs_codigo_r,
+@enc_cod_cod tngs_codigo,
 @usuario tngs_nombre
 )
 as
 begin
 
-   Update TNGS_Rivn..Marcas
+   Update TNGS_Rivn..Encargados
       set deleted = 0,
           version = ((version+1) % 32767),
           instante= getdate(),
           usuario = @usuario
-    where mrc_rcd_codigo = @mrc_rcd_codigo
+    where enc_cod_cod = @enc_cod_cod
 
 fin:
 
@@ -437,7 +437,7 @@ go
 
 print '       - Asignando permisos al nuevo SP'
 
-grant execute on dbo.MARCAS_RECALL to tngsmodulos
+grant execute on dbo.ENCARGADOS_RECALL to tngsmodulos
 
 print ' '
 go
@@ -447,33 +447,33 @@ go
 --- <summary>
 --- Borra físicamente un registro
 --- </summary>
---- <param name="@mrc_rcd_codigo">Codigo Marca</param>
+--- <param name="@enc_cod_cod">Cod</param>
 --- <param name="@usuario">Usuario que realiza el drop</param>
 ---
 ---////////////////////////////////////////////////////////
 
-print 'Store Procedure: dbo.MARCAS_DROP'
+print 'Store Procedure: dbo.ENCARGADOS_DROP'
 
-if exists (select * from sysobjects where id = object_id('dbo.MARCAS_DROP'))
+if exists (select * from sysobjects where id = object_id('dbo.ENCARGADOS_DROP'))
 begin
    print '       - Borrando el viejo SP'
-   drop procedure dbo.MARCAS_DROP
+   drop procedure dbo.ENCARGADOS_DROP
 end
 go
 
 print '       - Creando el nuevo SP'
 go
 
-create procedure dbo.MARCAS_DROP
+create procedure dbo.ENCARGADOS_DROP
 (
-@mrc_rcd_codigo tngs_codigo_r,
+@enc_cod_cod tngs_codigo,
 @usuario tngs_nombre
 )
 as
 begin
 
-   Delete from TNGS_Rivn..Marcas
-    where mrc_rcd_codigo = @mrc_rcd_codigo
+   Delete from TNGS_Rivn..Encargados
+    where enc_cod_cod = @enc_cod_cod
 
 fin:
 
@@ -482,7 +482,7 @@ go
 
 print '       - Asignando permisos al nuevo SP'
 
-grant execute on dbo.MARCAS_DROP to tngsmodulos
+grant execute on dbo.ENCARGADOS_DROP to tngsmodulos
 
 print ' '
 go
@@ -496,26 +496,26 @@ go
 ---
 ---////////////////////////////////////////////////////////
 
-print 'Store Procedure: dbo.MARCAS_PACK'
+print 'Store Procedure: dbo.ENCARGADOS_PACK'
 
-if exists (select * from sysobjects where id = object_id('dbo.MARCAS_PACK'))
+if exists (select * from sysobjects where id = object_id('dbo.ENCARGADOS_PACK'))
 begin
    print '       - Borrando el viejo SP'
-   drop procedure dbo.MARCAS_PACK
+   drop procedure dbo.ENCARGADOS_PACK
 end
 go
 
 print '       - Creando el nuevo SP'
 go
 
-create procedure dbo.MARCAS_PACK
+create procedure dbo.ENCARGADOS_PACK
 (
 @usuario tngs_nombre
 )
 as
 begin
 
-   Delete TNGS_Rivn..Marcas
+   Delete TNGS_Rivn..Encargados
     where deleted = 1
 
 fin:
@@ -525,11 +525,11 @@ go
 
 print '       - Asignando permisos al nuevo SP'
 
-grant execute on dbo.MARCAS_PACK to tngsmodulos
+grant execute on dbo.ENCARGADOS_PACK to tngsmodulos
 
 print ' '
 go
 
 /*--------------------------------------------------------------------------
-// Fin del script de creacion de los SP de la tabla: Marcas
+// Fin del script de creacion de los SP de la tabla: Encargados
 //--------------------------------------------------------------------------*/

@@ -14,7 +14,7 @@ namespace Rivn.Bel
     //----------------------------------------------------------------------------
     //                         TNG Software BEL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 13/06/2015 15:32
+    // Fecha                    : 17/08/2015 10:49
     // Sistema                  : Rivn
     // Clase para Administrar   : Ordenes de Trabajo y sus Items
     //----------------------------------------------------------------------------
@@ -779,6 +779,7 @@ namespace Rivn.Bel
             l_drTemp["odt_fyh_fecapertura"]= XMLRuts.ExtractXAttr(l_xndData, "odt_fyh_fecapertura", true);
             l_drTemp["odt_nom_operador"]= XMLRuts.ExtractXAttr(l_xndData, "odt_nom_operador");
             l_drTemp["odt_fyh_feccierre"]= XMLRuts.ExtractXAttr(l_xndData, "odt_fyh_feccierre", true);
+            l_drTemp["odt_cod_encargado"]= XMLRuts.ExtractXAttr(l_xndData, "odt_cod_encargado");
 
             // Llenamos los campos fijos
             XML2FixedFields(ref l_drTemp, l_xndData);
@@ -834,6 +835,7 @@ namespace Rivn.Bel
             l_drTemp["odt_fyh_fecapertura"]= DateTimeRuts.Empty;
             l_drTemp["odt_nom_operador"]= "";
             l_drTemp["odt_fyh_feccierre"]= DateTimeRuts.Empty;
+            l_drTemp["odt_cod_encargado"]= "";
 
             // Agregamos la Row creada a la tabla creada y creamos
             // una entidad a partir de la DataTable de 1 registro
@@ -851,12 +853,14 @@ namespace Rivn.Bel
         /// <param name="p_dtFecapertura">Fecha de apertura</param>
         /// <param name="p_strOperador">Operador</param>
         /// <param name="p_dtFeccierre">Fecha de cierre.</param>
+        /// <param name="p_strEncargado">Encargado</param>
         /// <returns>Entidad: OrdenTrabajo</returns>
         public static EOrdenTrabajo NewFilled(int p_iNro,
                                               string p_strPatente,
                                               DateTime p_dtFecapertura,
                                               string p_strOperador,
-                                              DateTime p_dtFeccierre)
+                                              DateTime p_dtFeccierre,
+                                              string p_strEncargado)
         {
             // Creamos una tabla compatible con la entidad
             DataTable l_dtTemp= new DataTable();
@@ -871,6 +875,7 @@ namespace Rivn.Bel
             l_drTemp["odt_fyh_fecapertura"]= p_dtFecapertura;
             l_drTemp["odt_nom_operador"]= p_strOperador;
             l_drTemp["odt_fyh_feccierre"]= p_dtFeccierre;
+            l_drTemp["odt_cod_encargado"]= p_strEncargado;
 
             // Agregamos la Row creada a la tabla creada y creamos
             // una entidad a partir de la DataTable de 1 registro
@@ -882,6 +887,21 @@ namespace Rivn.Bel
         #endregion
 
         #region Formateadores
+
+        //---------------------------------------------------------------
+        // Metodos estáticos (Formateo de codigos alineados a derecha)
+        //---------------------------------------------------------------
+
+        /// <summary>
+        /// Formatea una string: Encargado
+        /// </summary>
+        public static string FrmtEncargado(string p_strEncargado)
+        {
+            if (p_strEncargado.Trim().Length > 4)
+                p_strEncargado= p_strEncargado.Trim().Substring(0,4);
+
+            return p_strEncargado.Trim().PadLeft(4).ToUpper();
+        }
         #endregion
 
         #region Propiedades de la clase
@@ -896,14 +916,15 @@ namespace Rivn.Bel
         {
             get {
                 // Creamos el vector de DataColumns y lo llenamos
-                DataColumn[] l_dcStruct= new DataColumn[9];
+                DataColumn[] l_dcStruct= new DataColumn[10];
 
                 l_dcStruct[0]= new DataColumn("odt_nro_nro", typeof(int));
                 l_dcStruct[1]= new DataColumn("odt_ecd_patente", typeof(string));
                 l_dcStruct[2]= new DataColumn("odt_fyh_fecapertura", typeof(DateTime));
                 l_dcStruct[3]= new DataColumn("odt_nom_operador", typeof(string));
                 l_dcStruct[4]= new DataColumn("odt_fyh_feccierre", typeof(DateTime));
-                EOrdenTrabajo.FillFixedFields(ref l_dcStruct, 5);
+                l_dcStruct[5]= new DataColumn("odt_cod_encargado", typeof(string));
+                EOrdenTrabajo.FillFixedFields(ref l_dcStruct, 6);
 
                 // Devolvemos el vector creado
                 return l_dcStruct;
@@ -1002,6 +1023,23 @@ namespace Rivn.Bel
         }
 
         /// <summary>
+        /// Encargado
+        /// </summary>
+        public static string EncargadoCmp
+        {
+           get {return "odt_cod_encargado";}
+        }
+
+        /// <summary>
+        /// Encargado
+        /// </summary>
+        public string Encargado
+        {
+            get {return (string) InternalData["odt_cod_encargado"];}
+            set {InternalData["odt_cod_encargado"]= EOrdenTrabajo.FrmtEncargado(value);}
+        }
+
+        /// <summary>
         /// OrdenTrabajo Items
         /// </summary>
         public LEOTItems OTItems
@@ -1034,6 +1072,7 @@ namespace Rivn.Bel
                 l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "odt_fyh_fecapertura", Fecapertura));
                 l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "odt_nom_operador", Operador));
                 l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "odt_fyh_feccierre", Feccierre));
+                l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "odt_cod_encargado", Encargado));
 
                 // Asignamos los campos fijos
                 FixedFields2XML(l_xdocData, ref l_xndEntidad);

@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 11/07/2015 08:30
+// Fecha       : 17/08/2015 10:48
 // Sistema     : Rivn
 // Tabla       : Categorias
 //----------------------------------------------------------------------------
@@ -539,7 +539,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 11/07/2015 08:30
+// Fecha       : 17/08/2015 10:48
 // Sistema     : Rivn
 // Tabla       : Controles
 //----------------------------------------------------------------------------
@@ -1084,7 +1084,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 11/07/2015 08:30
+// Fecha       : 17/08/2015 10:48
 // Sistema     : Rivn
 // Tabla       : ControlesReparations
 //----------------------------------------------------------------------------
@@ -1903,7 +1903,542 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 11/07/2015 08:30
+// Fecha       : 17/08/2015 10:48
+// Sistema     : Rivn
+// Tabla       : Encargados
+//----------------------------------------------------------------------------
+// © 1999-2015 by TNG Software                                      Gndr 5.20
+//---------------------------------------------------------------------------*/
+
+/* ***************************************************************************
+/  Atencion!!!
+/     Este archivo fue generado por un programa en forma automática. Cualquier
+/     modificación que se realize sobre él se perderá en la próxima
+/     regeneración.
+/  **************************************************************************/
+
+/*-------------------------------------------------*/
+/* Selecciono la base en la que se crearan los SPs */
+/*-------------------------------------------------*/
+
+use TNGS_Rivn
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Levanta todos los registros de una tabla
+--- </summary>
+--- <param name="@onlyactive">Flag de SoloActivos</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.ENCARGADOS_UP'
+
+if exists (select * from sysobjects where id = object_id('dbo.ENCARGADOS_UP'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.ENCARGADOS_UP
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.ENCARGADOS_UP
+(
+@onlyactive tngs_valor
+)
+as
+begin
+
+   if @onlyactive = 1
+      begin
+         Select enc_cod_cod,
+                enc_des_des,
+                TNGS_Rivn..Encargados.instante,
+                TNGS_Rivn..Encargados.deleted,
+                TNGS_Rivn..Encargados.usuario,
+                TNGS_Rivn..Encargados.version
+           from TNGS_Rivn..Encargados
+          where deleted = 0
+          order by enc_cod_cod
+      end
+   else
+      begin
+         Select enc_cod_cod,
+                enc_des_des,
+                TNGS_Rivn..Encargados.instante,
+                TNGS_Rivn..Encargados.deleted,
+                TNGS_Rivn..Encargados.usuario,
+                TNGS_Rivn..Encargados.version
+           from TNGS_Rivn..Encargados
+          order by enc_cod_cod
+      end
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.ENCARGADOS_UP to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Verifica el número de versión de un registro
+--- </summary>
+--- <param name="@enc_cod_cod">Cod</param>
+--- <param name="@version">Número de version a verificar</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.ENCARGADOS_CHKVERSION'
+
+if exists (select * from sysobjects where id = object_id('dbo.ENCARGADOS_CHKVERSION'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.ENCARGADOS_CHKVERSION
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.ENCARGADOS_CHKVERSION
+(
+@enc_cod_cod tngs_codigo,
+@version tngs_numero
+)
+as
+begin
+
+   Select count(*) as cantidad
+     from TNGS_Rivn..Encargados
+    where enc_cod_cod = @enc_cod_cod
+      and version = @version
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.ENCARGADOS_CHKVERSION to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Busca el registro de una clave
+--- </summary>
+--- <param name="@enc_cod_cod">Cod</param>
+--- <param name="@onlyactive">Flag de SoloActivos</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.ENCARGADOS_SEARCH'
+
+if exists (select * from sysobjects where id = object_id('dbo.ENCARGADOS_SEARCH'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.ENCARGADOS_SEARCH
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.ENCARGADOS_SEARCH
+(
+@enc_cod_cod tngs_codigo,
+@onlyactive tngs_valor
+)
+as
+begin
+
+   if @onlyactive = 1
+      begin
+         Select enc_cod_cod,
+                enc_des_des,
+                TNGS_Rivn..Encargados.instante,
+                TNGS_Rivn..Encargados.deleted,
+                TNGS_Rivn..Encargados.usuario,
+                TNGS_Rivn..Encargados.version
+           from TNGS_Rivn..Encargados
+          where enc_cod_cod = @enc_cod_cod
+            and deleted = 0
+      end
+   else
+      begin
+         Select enc_cod_cod,
+                enc_des_des,
+                TNGS_Rivn..Encargados.instante,
+                TNGS_Rivn..Encargados.deleted,
+                TNGS_Rivn..Encargados.usuario,
+                TNGS_Rivn..Encargados.version
+           from TNGS_Rivn..Encargados
+          where enc_cod_cod = @enc_cod_cod
+      end
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.ENCARGADOS_SEARCH to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Busca la clave máxima de la tabla
+--- </summary>
+--- <param name="@reservado">Reservado para futuras expansiones</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.ENCARGADOS_GETMAXKEY'
+
+if exists (select * from sysobjects where id = object_id('dbo.ENCARGADOS_GETMAXKEY'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.ENCARGADOS_GETMAXKEY
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.ENCARGADOS_GETMAXKEY
+(
+@dummy tngs_codigo_1
+)
+as
+begin
+
+   Select isnull(max(enc_cod_cod), '0') as enc_cod_cod
+     from TNGS_Rivn..Encargados
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.ENCARGADOS_GETMAXKEY to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Inserta un registro en la tabla
+--- </summary>
+--- <param name="@enc_cod_cod">Cod</param>
+--- <param name="@enc_des_des">Descripcion</param>
+--- <param name="@usuario">Usuario que genera el insert</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.ENCARGADOS_INSERT'
+
+if exists (select * from sysobjects where id = object_id('dbo.ENCARGADOS_INSERT'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.ENCARGADOS_INSERT
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.ENCARGADOS_INSERT
+(
+@enc_cod_cod tngs_codigo,
+@enc_des_des tngs_descripcion,
+@usuario tngs_nombre
+)
+as
+begin
+
+   Insert into TNGS_Rivn..Encargados
+   values (
+           @enc_cod_cod,
+           @enc_des_des,
+           getdate(), 0, @usuario, 1
+          )
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.ENCARGADOS_INSERT to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Actualiza un registro de la tabla
+--- </summary>
+--- <param name="@enc_cod_cod">Cod</param>
+--- <param name="@enc_des_des">Descripcion</param>
+--- <param name="@usuario">Usuario que genera el update</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.ENCARGADOS_UPDATE'
+
+if exists (select * from sysobjects where id = object_id('dbo.ENCARGADOS_UPDATE'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.ENCARGADOS_UPDATE
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.ENCARGADOS_UPDATE
+(
+@enc_cod_cod tngs_codigo,
+@enc_des_des tngs_descripcion,
+@usuario tngs_nombre
+)
+as
+begin
+
+   Update TNGS_Rivn..Encargados
+      set enc_des_des= @enc_des_des,
+          version = ((version+1) % 32767),
+          instante= getdate(),
+          usuario = @usuario
+    where enc_cod_cod = @enc_cod_cod
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.ENCARGADOS_UPDATE to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Borra lógicamente un registro
+--- </summary>
+--- <param name="@enc_cod_cod">Cod</param>
+--- <param name="@usuario">Usuario que realiza el delete</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.ENCARGADOS_DELETE'
+
+if exists (select * from sysobjects where id = object_id('dbo.ENCARGADOS_DELETE'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.ENCARGADOS_DELETE
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.ENCARGADOS_DELETE
+(
+@enc_cod_cod tngs_codigo,
+@usuario tngs_nombre
+)
+as
+begin
+
+   Update TNGS_Rivn..Encargados
+      set deleted = 1,
+          version = ((version+1) % 32767),
+          instante= getdate(),
+          usuario = @usuario
+    where enc_cod_cod = @enc_cod_cod
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.ENCARGADOS_DELETE to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Recupera un registro
+--- </summary>
+--- <param name="@enc_cod_cod">Cod</param>
+--- <param name="@usuario">Usuario que realiza el recall</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.ENCARGADOS_RECALL'
+
+if exists (select * from sysobjects where id = object_id('dbo.ENCARGADOS_RECALL'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.ENCARGADOS_RECALL
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.ENCARGADOS_RECALL
+(
+@enc_cod_cod tngs_codigo,
+@usuario tngs_nombre
+)
+as
+begin
+
+   Update TNGS_Rivn..Encargados
+      set deleted = 0,
+          version = ((version+1) % 32767),
+          instante= getdate(),
+          usuario = @usuario
+    where enc_cod_cod = @enc_cod_cod
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.ENCARGADOS_RECALL to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Borra físicamente un registro
+--- </summary>
+--- <param name="@enc_cod_cod">Cod</param>
+--- <param name="@usuario">Usuario que realiza el drop</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.ENCARGADOS_DROP'
+
+if exists (select * from sysobjects where id = object_id('dbo.ENCARGADOS_DROP'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.ENCARGADOS_DROP
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.ENCARGADOS_DROP
+(
+@enc_cod_cod tngs_codigo,
+@usuario tngs_nombre
+)
+as
+begin
+
+   Delete from TNGS_Rivn..Encargados
+    where enc_cod_cod = @enc_cod_cod
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.ENCARGADOS_DROP to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Borra físicamente los registros borrados lógicamente
+--- </summary>
+--- <param name="@usuario">Usuario que realiza el delete</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.ENCARGADOS_PACK'
+
+if exists (select * from sysobjects where id = object_id('dbo.ENCARGADOS_PACK'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.ENCARGADOS_PACK
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.ENCARGADOS_PACK
+(
+@usuario tngs_nombre
+)
+as
+begin
+
+   Delete TNGS_Rivn..Encargados
+    where deleted = 1
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.ENCARGADOS_PACK to tngsmodulos
+
+print ' '
+go
+
+/*--------------------------------------------------------------------------
+// Fin del script de creacion de los SP de la tabla: Encargados
+//--------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------
+//                         TNG Software SPs Generator
+//----------------------------------------------------------------------------
+// Fecha       : 17/08/2015 10:48
 // Sistema     : Rivn
 // Tabla       : Equipamiento
 //----------------------------------------------------------------------------
@@ -2448,7 +2983,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 11/07/2015 08:30
+// Fecha       : 17/08/2015 10:48
 // Sistema     : Rivn
 // Tabla       : Estaciones
 //----------------------------------------------------------------------------
@@ -3013,7 +3548,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 11/07/2015 08:30
+// Fecha       : 17/08/2015 10:48
 // Sistema     : Rivn
 // Tabla       : Estados
 //----------------------------------------------------------------------------
@@ -3568,7 +4103,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 11/07/2015 08:30
+// Fecha       : 17/08/2015 10:48
 // Sistema     : Rivn
 // Tabla       : Marcas
 //----------------------------------------------------------------------------
@@ -4103,7 +4638,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 11/07/2015 08:30
+// Fecha       : 17/08/2015 10:48
 // Sistema     : Rivn
 // Tabla       : Modelos
 //----------------------------------------------------------------------------
@@ -4648,7 +5183,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 11/07/2015 08:30
+// Fecha       : 17/08/2015 10:48
 // Sistema     : Rivn
 // Tabla       : Moviles
 //----------------------------------------------------------------------------
@@ -5248,7 +5783,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 11/07/2015 08:30
+// Fecha       : 17/08/2015 10:48
 // Sistema     : Rivn
 // Tabla       : MvlCombustible
 //----------------------------------------------------------------------------
@@ -6126,7 +6661,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 11/07/2015 08:30
+// Fecha       : 17/08/2015 10:48
 // Sistema     : Rivn
 // Tabla       : MvlEquipamiento
 //----------------------------------------------------------------------------
@@ -7040,7 +7575,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 11/07/2015 08:30
+// Fecha       : 17/08/2015 10:48
 // Sistema     : Rivn
 // Tabla       : MvlEstados
 //----------------------------------------------------------------------------
@@ -7905,7 +8440,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 11/07/2015 08:30
+// Fecha       : 17/08/2015 10:48
 // Sistema     : Rivn
 // Tabla       : MvlKilometros
 //----------------------------------------------------------------------------
@@ -8795,7 +9330,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 11/07/2015 08:30
+// Fecha       : 17/08/2015 10:48
 // Sistema     : Rivn
 // Tabla       : OrdenesTrabajo
 //----------------------------------------------------------------------------
@@ -8851,6 +9386,7 @@ begin
                 odt_fyh_fecapertura,
                 odt_nom_operador,
                 odt_fyh_feccierre,
+                odt_cod_encargado,
                 TNGS_Rivn..OrdenesTrabajo.instante,
                 TNGS_Rivn..OrdenesTrabajo.deleted,
                 TNGS_Rivn..OrdenesTrabajo.usuario,
@@ -8866,6 +9402,7 @@ begin
                 odt_fyh_fecapertura,
                 odt_nom_operador,
                 odt_fyh_feccierre,
+                odt_cod_encargado,
                 TNGS_Rivn..OrdenesTrabajo.instante,
                 TNGS_Rivn..OrdenesTrabajo.deleted,
                 TNGS_Rivn..OrdenesTrabajo.usuario,
@@ -8970,6 +9507,7 @@ begin
                 odt_fyh_fecapertura,
                 odt_nom_operador,
                 odt_fyh_feccierre,
+                odt_cod_encargado,
                 TNGS_Rivn..OrdenesTrabajo.instante,
                 TNGS_Rivn..OrdenesTrabajo.deleted,
                 TNGS_Rivn..OrdenesTrabajo.usuario,
@@ -8985,6 +9523,7 @@ begin
                 odt_fyh_fecapertura,
                 odt_nom_operador,
                 odt_fyh_feccierre,
+                odt_cod_encargado,
                 TNGS_Rivn..OrdenesTrabajo.instante,
                 TNGS_Rivn..OrdenesTrabajo.deleted,
                 TNGS_Rivn..OrdenesTrabajo.usuario,
@@ -9015,6 +9554,7 @@ go
 --- <param name="@odt_fyh_fecapertura">Fecha de apertura</param>
 --- <param name="@odt_nom_operador">Operador</param>
 --- <param name="@odt_fyh_feccierre">Fecha de cierre.</param>
+--- <param name="@odt_cod_encargado">Encargado</param>
 --- <param name="@usuario">Usuario que genera el insert</param>
 ---
 ---////////////////////////////////////////////////////////
@@ -9038,6 +9578,7 @@ create procedure dbo.ORDENESTRABAJO_INSERT
 @odt_fyh_fecapertura tngs_fecyhor,
 @odt_nom_operador tngs_nombre,
 @odt_fyh_feccierre tngs_fecyhor,
+@odt_cod_encargado tngs_codigo,
 @usuario tngs_nombre
 )
 as
@@ -9050,6 +9591,7 @@ begin
            @odt_fyh_fecapertura,
            @odt_nom_operador,
            @odt_fyh_feccierre,
+           @odt_cod_encargado,
            getdate(), 0, @usuario, 1
           )
 
@@ -9075,6 +9617,7 @@ go
 --- <param name="@odt_fyh_fecapertura">Fecha de apertura</param>
 --- <param name="@odt_nom_operador">Operador</param>
 --- <param name="@odt_fyh_feccierre">Fecha de cierre.</param>
+--- <param name="@odt_cod_encargado">Encargado</param>
 --- <param name="@usuario">Usuario que genera el update</param>
 ---
 ---////////////////////////////////////////////////////////
@@ -9098,6 +9641,7 @@ create procedure dbo.ORDENESTRABAJO_UPDATE
 @odt_fyh_fecapertura tngs_fecyhor,
 @odt_nom_operador tngs_nombre,
 @odt_fyh_feccierre tngs_fecyhor,
+@odt_cod_encargado tngs_codigo,
 @usuario tngs_nombre
 )
 as
@@ -9108,6 +9652,7 @@ begin
           odt_fyh_fecapertura= @odt_fyh_fecapertura,
           odt_nom_operador= @odt_nom_operador,
           odt_fyh_feccierre= @odt_fyh_feccierre,
+          odt_cod_encargado= @odt_cod_encargado,
           version = ((version+1) % 32767),
           instante= getdate(),
           usuario = @usuario
@@ -9346,6 +9891,7 @@ begin
           odt_fyh_fecapertura,
           odt_nom_operador,
           odt_fyh_feccierre,
+          odt_cod_encargado,
           TNGS_Rivn..OrdenesTrabajo.instante,
           TNGS_Rivn..OrdenesTrabajo.deleted,
           TNGS_Rivn..OrdenesTrabajo.usuario,
@@ -9371,7 +9917,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 11/07/2015 08:30
+// Fecha       : 17/08/2015 10:48
 // Sistema     : Rivn
 // Tabla       : OtItems
 //----------------------------------------------------------------------------
@@ -10252,7 +10798,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 11/07/2015 08:30
+// Fecha       : 17/08/2015 10:48
 // Sistema     : Rivn
 // Tabla       : Parametros
 //----------------------------------------------------------------------------
@@ -10784,7 +11330,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 11/07/2015 08:30
+// Fecha       : 17/08/2015 10:48
 // Sistema     : Rivn
 // Tabla       : Reparaciones
 //----------------------------------------------------------------------------
@@ -11342,7 +11888,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 11/07/2015 08:30
+// Fecha       : 17/08/2015 10:48
 // Sistema     : Rivn
 // Tabla       : Talonarios
 //----------------------------------------------------------------------------

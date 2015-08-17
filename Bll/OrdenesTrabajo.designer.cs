@@ -16,7 +16,7 @@ namespace Rivn.Bll
     //----------------------------------------------------------------------------
     //                         TNG Software BLL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 13/06/2015 15:32
+    // Fecha                    : 17/08/2015 10:49
     // Sistema                  : Rivn
     // Clase para Administrar   : Ordenes de Trabajo y sus Items
     //----------------------------------------------------------------------------
@@ -1284,6 +1284,21 @@ namespace Rivn.Bll
             // Validaciones de los campos con conexion
             // ********
 
+            if (p_entOrdenTrabajo.Encargado.Trim() != "") {
+                Tablas.EncVKey(p_dbcAccess,
+                               p_entOrdenTrabajo.Encargado,
+                               ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                if (p_smResult.ICodeEs(BllCodes.KeyDsntFound)) {
+                    // El campo [Encargado] debe existir en la tabla [Tablas.Enc]
+                    p_smResult.BllWarning("El dato [Encargado] debe existir en la tabla [Tablas.Enc]","");
+                    return;
+                }
+            }
+
+            // Todas las validaciones fueron correctas
+
             // Llamamos a la funcion fija del usuario
             TInt_f(p_dbcAccess, p_entOrdenTrabajo, ref p_smResult);
             if (p_smResult.NOk) return;
@@ -1500,6 +1515,7 @@ namespace Rivn.Bll
                                           p_entOrdenTrabajo.Fecapertura,
                                           p_entOrdenTrabajo.Operador,
                                           p_entOrdenTrabajo.Feccierre,
+                                          p_entOrdenTrabajo.Encargado,
                                           ref p_smResult);
             }
             catch (Exception l_expData) {
@@ -1530,6 +1546,7 @@ namespace Rivn.Bll
                                           p_entOrdenTrabajo.Fecapertura,
                                           p_entOrdenTrabajo.Operador,
                                           p_entOrdenTrabajo.Feccierre,
+                                          p_entOrdenTrabajo.Encargado,
                                           ref p_smResult);
             }
             catch (Exception l_expData) {

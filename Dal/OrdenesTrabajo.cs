@@ -10,7 +10,7 @@ namespace Rivn.Dal
     //----------------------------------------------------------------------------
     //                         TNG Software DAL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 13/06/2015 14:44
+    // Fecha                    : 17/08/2015 10:49
     // Sistema                  : Rivn
     // Clase para Administrar   : Ordenes De Trabajo
     // Basada en la Tabla       : OrdenesTrabajo
@@ -144,6 +144,7 @@ namespace Rivn.Dal
         /// <param name="p_dtFecapertura">Fecha de apertura</param>
         /// <param name="p_strOperador">Operador</param>
         /// <param name="p_dtFeccierre">Fecha de cierre.</param>
+        /// <param name="p_strEncargado">Encargado</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static int Insert(DBConn p_dbcAccess,
                                  int p_iNro,
@@ -151,6 +152,7 @@ namespace Rivn.Dal
                                  DateTime p_dtFecapertura,
                                  string p_strOperador,
                                  DateTime p_dtFeccierre,
+                                 string p_strEncargado,
                                  ref StatMsg p_smResult)
         {
             try {
@@ -163,6 +165,7 @@ namespace Rivn.Dal
                                        p_dbcAccess.MakeParam("@odt_fyh_fecapertura", p_dtFecapertura),
                                        p_dbcAccess.MakeParam("@odt_nom_operador", p_strOperador),
                                        p_dbcAccess.MakeParam("@odt_fyh_feccierre", p_dtFeccierre),
+                                       p_dbcAccess.MakeParam("@odt_cod_encargado", p_strEncargado),
                                        p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
                                    }
                                   );
@@ -183,6 +186,7 @@ namespace Rivn.Dal
         /// <param name="p_dtFecapertura">Fecha de apertura</param>
         /// <param name="p_strOperador">Operador</param>
         /// <param name="p_dtFeccierre">Fecha de cierre.</param>
+        /// <param name="p_strEncargado">Encargado</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static int Update(DBConn p_dbcAccess,
                                  int p_iNro,
@@ -190,6 +194,7 @@ namespace Rivn.Dal
                                  DateTime p_dtFecapertura,
                                  string p_strOperador,
                                  DateTime p_dtFeccierre,
+                                 string p_strEncargado,
                                  ref StatMsg p_smResult)
         {
             try {
@@ -202,6 +207,7 @@ namespace Rivn.Dal
                                        p_dbcAccess.MakeParam("@odt_fyh_fecapertura", p_dtFecapertura),
                                        p_dbcAccess.MakeParam("@odt_nom_operador", p_strOperador),
                                        p_dbcAccess.MakeParam("@odt_fyh_feccierre", p_dtFeccierre),
+                                       p_dbcAccess.MakeParam("@odt_cod_encargado", p_strEncargado),
                                        p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
                                    }
                                   );

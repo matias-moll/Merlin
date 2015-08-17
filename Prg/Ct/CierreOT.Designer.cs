@@ -299,6 +299,7 @@
             this.glassButton1.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
             this.glassButton1.FlatFontSize = 9;
             this.glassButton1.FlatTextColor = System.Drawing.Color.Black;
+            this.glassButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.glassButton1.ImageOnTop = true;
             this.glassButton1.Location = new System.Drawing.Point(6, 4);
             this.glassButton1.Name = "glassButton1";
@@ -316,6 +317,7 @@
             this.gbAceptar.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
             this.gbAceptar.FlatFontSize = 9;
             this.gbAceptar.FlatTextColor = System.Drawing.Color.Black;
+            this.gbAceptar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.gbAceptar.Location = new System.Drawing.Point(91, 23);
             this.gbAceptar.Name = "gbAceptar";
             this.gbAceptar.RoundCorners = 2;
@@ -333,6 +335,7 @@
             this.gbCancelar.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
             this.gbCancelar.FlatFontSize = 9;
             this.gbCancelar.FlatTextColor = System.Drawing.Color.Black;
+            this.gbCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.gbCancelar.ImageOnTop = true;
             this.gbCancelar.Location = new System.Drawing.Point(172, 3);
             this.gbCancelar.Name = "gbCancelar";
@@ -364,6 +367,7 @@
             this.gbBuscar.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
             this.gbBuscar.FlatFontSize = 9;
             this.gbBuscar.FlatTextColor = System.Drawing.Color.Black;
+            this.gbBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.gbBuscar.ImageOnTop = true;
             this.gbBuscar.Location = new System.Drawing.Point(196, 4);
             this.gbBuscar.Name = "gbBuscar";

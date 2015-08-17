@@ -518,6 +518,11 @@ namespace Rivn.Ot
 
         #endregion
 
+        private void gbAsignar_Click(object sender, EventArgs e)
+        {
+
+        }
+
 
     }
 }
