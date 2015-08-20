@@ -29,13 +29,11 @@
         private void InitializeComponent()
         {
             this.xpnlPanel = new TNGS.NetControls.XPanel();
-            this.gbCancelar = new TNGS.NetControls.GlassButton();
-            this.gbAceptar = new TNGS.NetControls.GlassButton();
-            this.igCombustible = new TNGS.NetControls.ImgGroup();
             this.lblEstados = new TNGS.NetControls.FullLabel();
             this.cdcEstados = new TNGS.NetControls.CDCombo();
+            this.gbAceptar = new TNGS.NetControls.GlassButton();
+            this.gbCancelar = new TNGS.NetControls.GlassButton();
             this.xpnlPanel.SuspendLayout();
-            this.igCombustible.SuspendLayout();
             this.SuspendLayout();
             // 
             // xpnlPanel
@@ -43,83 +41,22 @@
             this.xpnlPanel.BackColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.xpnlPanel.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
             this.xpnlPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.xpnlPanel.Controls.Add(this.gbCancelar);
             this.xpnlPanel.Controls.Add(this.gbAceptar);
-            this.xpnlPanel.Controls.Add(this.igCombustible);
+            this.xpnlPanel.Controls.Add(this.gbCancelar);
+            this.xpnlPanel.Controls.Add(this.lblEstados);
+            this.xpnlPanel.Controls.Add(this.cdcEstados);
             this.xpnlPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.xpnlPanel.Location = new System.Drawing.Point(0, 0);
             this.xpnlPanel.Name = "xpnlPanel";
-            this.xpnlPanel.Size = new System.Drawing.Size(336, 186);
+            this.xpnlPanel.Size = new System.Drawing.Size(304, 117);
             this.xpnlPanel.SkinFixed = true;
             this.xpnlPanel.TabIndex = 0;
             // 
-            // gbCancelar
-            // 
-            this.gbCancelar.BlackBorder = true;
-            this.gbCancelar.CircleButton = false;
-            this.gbCancelar.FixedImage = TNGS.NetControls.FixedGlassButtons.Cancel;
-            this.gbCancelar.FlatColor = System.Drawing.Color.RoyalBlue;
-            this.gbCancelar.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
-            this.gbCancelar.FlatTextColor = System.Drawing.Color.Black;
-            this.gbCancelar.Location = new System.Drawing.Point(229, 149);
-            this.gbCancelar.Name = "gbCancelar";
-            this.gbCancelar.RoundCorners = 2;
-            this.gbCancelar.Size = new System.Drawing.Size(96, 28);
-            this.gbCancelar.TabIndex = 1;
-            this.gbCancelar.Text = "Cancelar";
-            this.gbCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.gbCancelar.W8Color = System.Drawing.Color.RoyalBlue;
-            this.gbCancelar.Click += new System.EventHandler(this.gbCancelar_Click);
-            // 
-            // gbAceptar
-            // 
-            this.gbAceptar.BlackBorder = true;
-            this.gbAceptar.CircleButton = false;
-            this.gbAceptar.FixedImage = TNGS.NetControls.FixedGlassButtons.Accept;
-            this.gbAceptar.FlatColor = System.Drawing.Color.RoyalBlue;
-            this.gbAceptar.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
-            this.gbAceptar.FlatTextColor = System.Drawing.Color.Black;
-            this.gbAceptar.Location = new System.Drawing.Point(133, 149);
-            this.gbAceptar.Name = "gbAceptar";
-            this.gbAceptar.RoundCorners = 2;
-            this.gbAceptar.Size = new System.Drawing.Size(90, 28);
-            this.gbAceptar.TabIndex = 0;
-            this.gbAceptar.Text = "Aceptar";
-            this.gbAceptar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.gbAceptar.W8Color = System.Drawing.Color.RoyalBlue;
-            this.gbAceptar.Click += new System.EventHandler(this.gbAceptar_Click);
-            // 
-            // igCombustible
-            // 
-            this.igCombustible.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.igCombustible.BackgroundGradientColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
-            this.igCombustible.BackgroundGradientMode = TNGS.NetControls.ImgGroup.GroupBoxGradientMode.ForwardDiagonal;
-            this.igCombustible.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.igCombustible.BorderThickness = 1F;
-            this.igCombustible.Controls.Add(this.lblEstados);
-            this.igCombustible.Controls.Add(this.cdcEstados);
-            this.igCombustible.CustomGroupBoxColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
-            this.igCombustible.FontTitle = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.igCombustible.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.igCombustible.GroupImage = null;
-            this.igCombustible.GroupTitle = "Asignación Orden de Trabajo";
-            this.igCombustible.Location = new System.Drawing.Point(12, 12);
-            this.igCombustible.Name = "igCombustible";
-            this.igCombustible.Padding = new System.Windows.Forms.Padding(20);
-            this.igCombustible.PaintGroupBox = true;
-            this.igCombustible.RoundCorners = 10;
-            this.igCombustible.ShadowColor = System.Drawing.Color.DarkGray;
-            this.igCombustible.ShadowControl = true;
-            this.igCombustible.ShadowThickness = 3;
-            this.igCombustible.Size = new System.Drawing.Size(312, 131);
-            this.igCombustible.SkinFixed = true;
-            this.igCombustible.SkinFullFixed = true;
-            this.igCombustible.TabIndex = 0;
-            // 
             // lblEstados
             // 
+            this.lblEstados.BackColor = System.Drawing.Color.Transparent;
             this.lblEstados.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEstados.Location = new System.Drawing.Point(14, 59);
+            this.lblEstados.Location = new System.Drawing.Point(15, 20);
             this.lblEstados.Name = "lblEstados";
             this.lblEstados.Size = new System.Drawing.Size(85, 23);
             this.lblEstados.TabIndex = 5;
@@ -131,17 +68,55 @@
             this.cdcEstados.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cdcEstados.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cdcEstados.FormattingEnabled = true;
-            this.cdcEstados.Location = new System.Drawing.Point(105, 60);
+            this.cdcEstados.Location = new System.Drawing.Point(106, 21);
             this.cdcEstados.Name = "cdcEstados";
             this.cdcEstados.Size = new System.Drawing.Size(184, 21);
             this.cdcEstados.Sorted = true;
             this.cdcEstados.TabIndex = 4;
             // 
+            // gbAceptar
+            // 
+            this.gbAceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbAceptar.BlackBorder = true;
+            this.gbAceptar.ButtonMode = TNGS.NetControls.GlassButton.GBMode.Flat;
+            this.gbAceptar.CircleButton = false;
+            this.gbAceptar.FlatColor = System.Drawing.Color.LimeGreen;
+            this.gbAceptar.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
+            this.gbAceptar.FlatFontSize = 9;
+            this.gbAceptar.FlatTextColor = System.Drawing.Color.White;
+            this.gbAceptar.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.gbAceptar.Location = new System.Drawing.Point(209, 77);
+            this.gbAceptar.Name = "gbAceptar";
+            this.gbAceptar.Size = new System.Drawing.Size(82, 27);
+            this.gbAceptar.TabIndex = 8;
+            this.gbAceptar.Text = "Aceptar";
+            this.gbAceptar.W8Color = System.Drawing.Color.LimeGreen;
+            this.gbAceptar.Click += new System.EventHandler(this.gbAceptar_Click);
+            // 
+            // gbCancelar
+            // 
+            this.gbCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbCancelar.BlackBorder = true;
+            this.gbCancelar.ButtonMode = TNGS.NetControls.GlassButton.GBMode.Flat;
+            this.gbCancelar.CircleButton = false;
+            this.gbCancelar.FlatColor = System.Drawing.Color.Red;
+            this.gbCancelar.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
+            this.gbCancelar.FlatFontSize = 9;
+            this.gbCancelar.FlatTextColor = System.Drawing.Color.White;
+            this.gbCancelar.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.gbCancelar.Location = new System.Drawing.Point(121, 77);
+            this.gbCancelar.Name = "gbCancelar";
+            this.gbCancelar.Size = new System.Drawing.Size(82, 27);
+            this.gbCancelar.TabIndex = 9;
+            this.gbCancelar.Text = "Cancelar";
+            this.gbCancelar.W8Color = System.Drawing.Color.Red;
+            this.gbCancelar.Click += new System.EventHandler(this.gbCancelar_Click);
+            // 
             // AsigarOT
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(336, 186);
+            this.ClientSize = new System.Drawing.Size(304, 117);
             this.ControlBox = false;
             this.Controls.Add(this.xpnlPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -149,7 +124,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "MovilCombustible";
             this.xpnlPanel.ResumeLayout(false);
-            this.igCombustible.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -157,10 +131,9 @@
         #endregion
 
         private TNGS.NetControls.XPanel xpnlPanel;
-        private TNGS.NetControls.ImgGroup igCombustible;
-        private TNGS.NetControls.GlassButton gbCancelar;
-        private TNGS.NetControls.GlassButton gbAceptar;
         private TNGS.NetControls.FullLabel lblEstados;
         private TNGS.NetControls.CDCombo cdcEstados;
+        private TNGS.NetControls.GlassButton gbAceptar;
+        private TNGS.NetControls.GlassButton gbCancelar;
     }
 }

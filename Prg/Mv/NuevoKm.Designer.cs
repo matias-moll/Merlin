@@ -29,15 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NuevoKm));
             this.xpnlPanel = new TNGS.NetControls.XPanel();
-            this.gbCancelar = new TNGS.NetControls.GlassButton();
-            this.gbAceptar = new TNGS.NetControls.GlassButton();
-            this.igKilometros = new TNGS.NetControls.ImgGroup();
             this.neKms = new TNGS.NetControls.NumberEdit();
             this.lblKilometros = new TNGS.NetControls.FullLabel();
+            this.gbAceptar = new TNGS.NetControls.GlassButton();
+            this.gbCancelar = new TNGS.NetControls.GlassButton();
             this.xpnlPanel.SuspendLayout();
-            this.igKilometros.SuspendLayout();
             this.SuspendLayout();
             // 
             // xpnlPanel
@@ -45,69 +42,21 @@
             this.xpnlPanel.BackColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.xpnlPanel.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
             this.xpnlPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.xpnlPanel.Controls.Add(this.gbCancelar);
             this.xpnlPanel.Controls.Add(this.gbAceptar);
-            this.xpnlPanel.Controls.Add(this.igKilometros);
+            this.xpnlPanel.Controls.Add(this.gbCancelar);
+            this.xpnlPanel.Controls.Add(this.neKms);
+            this.xpnlPanel.Controls.Add(this.lblKilometros);
             this.xpnlPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.xpnlPanel.Location = new System.Drawing.Point(0, 0);
             this.xpnlPanel.Name = "xpnlPanel";
-            this.xpnlPanel.Size = new System.Drawing.Size(337, 217);
+            this.xpnlPanel.Size = new System.Drawing.Size(272, 115);
             this.xpnlPanel.SkinFixed = true;
             this.xpnlPanel.TabIndex = 0;
-            // 
-            // gbCancelar
-            // 
-            this.gbCancelar.FixedImage = TNGS.NetControls.FixedGlassButtons.Cancel;
-            this.gbCancelar.Location = new System.Drawing.Point(229, 180);
-            this.gbCancelar.Name = "gbCancelar";
-            this.gbCancelar.Size = new System.Drawing.Size(96, 28);
-            this.gbCancelar.TabIndex = 1;
-            this.gbCancelar.Text = "Cancelar";
-            this.gbCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.gbCancelar.Click += new System.EventHandler(this.gbCancelar_Click);
-            // 
-            // gbAceptar
-            // 
-            this.gbAceptar.FixedImage = TNGS.NetControls.FixedGlassButtons.Accept;
-            this.gbAceptar.Location = new System.Drawing.Point(128, 180);
-            this.gbAceptar.Name = "gbAceptar";
-            this.gbAceptar.Size = new System.Drawing.Size(90, 28);
-            this.gbAceptar.TabIndex = 0;
-            this.gbAceptar.Text = "Aceptar";
-            this.gbAceptar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.gbAceptar.Click += new System.EventHandler(this.gbAceptar_Click);
-            // 
-            // igKilometros
-            // 
-            this.igKilometros.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.igKilometros.BackgroundGradientColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
-            this.igKilometros.BackgroundGradientMode = TNGS.NetControls.ImgGroup.GroupBoxGradientMode.ForwardDiagonal;
-            this.igKilometros.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.igKilometros.BorderThickness = 1F;
-            this.igKilometros.Controls.Add(this.neKms);
-            this.igKilometros.Controls.Add(this.lblKilometros);
-            this.igKilometros.CustomGroupBoxColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
-            this.igKilometros.FontTitle = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.igKilometros.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.igKilometros.GroupImage = ((System.Drawing.Image)(resources.GetObject("igKilometros.GroupImage")));
-            this.igKilometros.GroupTitle = "Nueva Carga Kilometraje";
-            this.igKilometros.Location = new System.Drawing.Point(12, 12);
-            this.igKilometros.Name = "igKilometros";
-            this.igKilometros.Padding = new System.Windows.Forms.Padding(20);
-            this.igKilometros.PaintGroupBox = true;
-            this.igKilometros.RoundCorners = 10;
-            this.igKilometros.ShadowColor = System.Drawing.Color.DarkGray;
-            this.igKilometros.ShadowControl = true;
-            this.igKilometros.ShadowThickness = 3;
-            this.igKilometros.Size = new System.Drawing.Size(313, 164);
-            this.igKilometros.SkinFixed = true;
-            this.igKilometros.SkinFullFixed = true;
-            this.igKilometros.TabIndex = 0;
             // 
             // neKms
             // 
             this.neKms.BackColor = System.Drawing.SystemColors.Window;
-            this.neKms.Location = new System.Drawing.Point(144, 77);
+            this.neKms.Location = new System.Drawing.Point(111, 22);
             this.neKms.MaxLength = 7;
             this.neKms.Name = "neKms";
             this.neKms.NegativeValid = false;
@@ -118,18 +67,57 @@
             // 
             // lblKilometros
             // 
+            this.lblKilometros.BackColor = System.Drawing.Color.Transparent;
             this.lblKilometros.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblKilometros.Location = new System.Drawing.Point(42, 76);
+            this.lblKilometros.Location = new System.Drawing.Point(17, 21);
             this.lblKilometros.Name = "lblKilometros";
             this.lblKilometros.Size = new System.Drawing.Size(146, 23);
             this.lblKilometros.TabIndex = 0;
-            this.lblKilometros.Text = "Kilometros:";
+            this.lblKilometros.Text = "Kilómetros:";
+            // 
+            // gbAceptar
+            // 
+            this.gbAceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbAceptar.BlackBorder = true;
+            this.gbAceptar.ButtonMode = TNGS.NetControls.GlassButton.GBMode.Flat;
+            this.gbAceptar.CircleButton = false;
+            this.gbAceptar.FlatColor = System.Drawing.Color.LimeGreen;
+            this.gbAceptar.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
+            this.gbAceptar.FlatFontSize = 9;
+            this.gbAceptar.FlatTextColor = System.Drawing.Color.White;
+            this.gbAceptar.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.gbAceptar.Location = new System.Drawing.Point(177, 75);
+            this.gbAceptar.Name = "gbAceptar";
+            this.gbAceptar.Size = new System.Drawing.Size(82, 27);
+            this.gbAceptar.TabIndex = 10;
+            this.gbAceptar.Text = "Aceptar";
+            this.gbAceptar.W8Color = System.Drawing.Color.LimeGreen;
+            this.gbAceptar.Click += new System.EventHandler(this.gbAceptar_Click);
+            // 
+            // gbCancelar
+            // 
+            this.gbCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbCancelar.BlackBorder = true;
+            this.gbCancelar.ButtonMode = TNGS.NetControls.GlassButton.GBMode.Flat;
+            this.gbCancelar.CircleButton = false;
+            this.gbCancelar.FlatColor = System.Drawing.Color.Red;
+            this.gbCancelar.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
+            this.gbCancelar.FlatFontSize = 9;
+            this.gbCancelar.FlatTextColor = System.Drawing.Color.White;
+            this.gbCancelar.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.gbCancelar.Location = new System.Drawing.Point(89, 75);
+            this.gbCancelar.Name = "gbCancelar";
+            this.gbCancelar.Size = new System.Drawing.Size(82, 27);
+            this.gbCancelar.TabIndex = 11;
+            this.gbCancelar.Text = "Cancelar";
+            this.gbCancelar.W8Color = System.Drawing.Color.Red;
+            this.gbCancelar.Click += new System.EventHandler(this.gbCancelar_Click);
             // 
             // NuevoKm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(337, 217);
+            this.ClientSize = new System.Drawing.Size(272, 115);
             this.ControlBox = false;
             this.Controls.Add(this.xpnlPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -137,8 +125,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "MovilCombustible";
             this.xpnlPanel.ResumeLayout(false);
-            this.igKilometros.ResumeLayout(false);
-            this.igKilometros.PerformLayout();
+            this.xpnlPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -146,10 +133,9 @@
         #endregion
 
         private TNGS.NetControls.XPanel xpnlPanel;
-        private TNGS.NetControls.ImgGroup igKilometros;
-        private TNGS.NetControls.GlassButton gbCancelar;
-        private TNGS.NetControls.GlassButton gbAceptar;
         private TNGS.NetControls.NumberEdit neKms;
         private TNGS.NetControls.FullLabel lblKilometros;
+        private TNGS.NetControls.GlassButton gbAceptar;
+        private TNGS.NetControls.GlassButton gbCancelar;
     }
 }

@@ -54,8 +54,8 @@
             this.textEdit1 = new TNGS.NetControls.TextEdit();
             this.fullLabel1 = new TNGS.NetControls.FullLabel();
             this.tsPanel1 = new TNGS.NetControls.TSPanel();
-            this.glassButton1 = new TNGS.NetControls.GlassButton();
-            this.gbAceptar = new TNGS.NetControls.GlassButton();
+            this.gbVerItems = new TNGS.NetControls.GlassButton();
+            this.gbCerrarOT = new TNGS.NetControls.GlassButton();
             this.gbCancelar = new TNGS.NetControls.GlassButton();
             this.tsPpanel1 = new TNGS.NetControls.TSPanel();
             this.gbBuscar = new TNGS.NetControls.GlassButton();
@@ -209,7 +209,11 @@
             // 
             // fgGrillaOT
             // 
+            this.fgGrillaOT.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
             this.fgGrillaOT.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.fgGrillaOT.CaptionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(163)))), ((int)(((byte)(226)))));
+            this.fgGrillaOT.CaptionFilterColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(119)))), ((int)(((byte)(7)))));
+            this.fgGrillaOT.CaptionVisible = false;
             this.fgGrillaOT.DataMember = "";
             this.fgGrillaOT.ExcelTitle = "";
             this.fgGrillaOT.GridOrder = "";
@@ -219,6 +223,7 @@
             this.fgGrillaOT.Name = "fgGrillaOT";
             this.fgGrillaOT.Padding = new System.Windows.Forms.Padding(10);
             this.fgGrillaOT.Size = new System.Drawing.Size(916, 229);
+            this.fgGrillaOT.SkinFixed = true;
             this.fgGrillaOT.TabIndex = 2;
             // 
             // tsContainer1
@@ -252,7 +257,7 @@
             this.tsPanel2.Controls.Add(this.textEdit1);
             this.tsPanel2.Controls.Add(this.fullLabel1);
             this.tsPanel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.tsPanel2.Location = new System.Drawing.Point(512, 3);
+            this.tsPanel2.Location = new System.Drawing.Point(708, 3);
             this.tsPanel2.Name = "tsPanel2";
             this.tsPanel2.Opacity = 255;
             this.tsPanel2.Size = new System.Drawing.Size(223, 85);
@@ -279,70 +284,75 @@
             // tsPanel1
             // 
             this.tsPanel1.Caption = "Cierre Orden De Trabajo";
-            this.tsPanel1.Controls.Add(this.glassButton1);
-            this.tsPanel1.Controls.Add(this.gbAceptar);
+            this.tsPanel1.Controls.Add(this.gbVerItems);
+            this.tsPanel1.Controls.Add(this.gbCerrarOT);
             this.tsPanel1.Controls.Add(this.gbCancelar);
             this.tsPanel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.tsPanel1.Location = new System.Drawing.Point(263, 3);
+            this.tsPanel1.Location = new System.Drawing.Point(320, 3);
             this.tsPanel1.Name = "tsPanel1";
             this.tsPanel1.Opacity = 255;
-            this.tsPanel1.Size = new System.Drawing.Size(249, 85);
+            this.tsPanel1.Size = new System.Drawing.Size(388, 85);
             this.tsPanel1.Speed = 1;
             this.tsPanel1.TabIndex = 1;
             // 
-            // glassButton1
+            // gbVerItems
             // 
-            this.glassButton1.BlackBorder = true;
-            this.glassButton1.CircleButton = false;
-            this.glassButton1.FixedImage = TNGS.NetControls.FixedGlassButtons.tZoom;
-            this.glassButton1.FlatColor = System.Drawing.Color.RoyalBlue;
-            this.glassButton1.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
-            this.glassButton1.FlatFontSize = 9;
-            this.glassButton1.FlatTextColor = System.Drawing.Color.Black;
-            this.glassButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.glassButton1.ImageOnTop = true;
-            this.glassButton1.Location = new System.Drawing.Point(6, 4);
-            this.glassButton1.Name = "glassButton1";
-            this.glassButton1.RoundCorners = 2;
-            this.glassButton1.Size = new System.Drawing.Size(64, 62);
-            this.glassButton1.TabIndex = 2;
-            this.glassButton1.Text = "Ver Items OT";
-            this.glassButton1.W8Color = System.Drawing.Color.RoyalBlue;
+            this.gbVerItems.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("gbVerItems.BackgroundImage")));
+            this.gbVerItems.BlackBorder = true;
+            this.gbVerItems.ButtonMode = TNGS.NetControls.GlassButton.GBMode.Flat;
+            this.gbVerItems.CircleButton = false;
+            this.gbVerItems.FixedFlatImage = TNGS.NetControls.FixedFlatImageButtons.Search;
+            this.gbVerItems.FlatColor = System.Drawing.Color.RoyalBlue;
+            this.gbVerItems.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
+            this.gbVerItems.FlatFontSize = 9;
+            this.gbVerItems.FlatTextColor = System.Drawing.Color.Black;
+            this.gbVerItems.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.gbVerItems.Location = new System.Drawing.Point(11, 4);
+            this.gbVerItems.Name = "gbVerItems";
+            this.gbVerItems.RoundCorners = 2;
+            this.gbVerItems.Size = new System.Drawing.Size(107, 58);
+            this.gbVerItems.TabIndex = 2;
+            this.gbVerItems.Text = "Ver Items ";
+            this.gbVerItems.W8Color = System.Drawing.Color.RoyalBlue;
             // 
-            // gbAceptar
+            // gbCerrarOT
             // 
-            this.gbAceptar.BlackBorder = true;
-            this.gbAceptar.CircleButton = false;
-            this.gbAceptar.FlatColor = System.Drawing.Color.RoyalBlue;
-            this.gbAceptar.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
-            this.gbAceptar.FlatFontSize = 9;
-            this.gbAceptar.FlatTextColor = System.Drawing.Color.Black;
-            this.gbAceptar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.gbAceptar.Location = new System.Drawing.Point(91, 23);
-            this.gbAceptar.Name = "gbAceptar";
-            this.gbAceptar.RoundCorners = 2;
-            this.gbAceptar.Size = new System.Drawing.Size(75, 23);
-            this.gbAceptar.TabIndex = 1;
-            this.gbAceptar.Text = "Cerrar OT";
-            this.gbAceptar.W8Color = System.Drawing.Color.RoyalBlue;
+            this.gbCerrarOT.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("gbCerrarOT.BackgroundImage")));
+            this.gbCerrarOT.BlackBorder = true;
+            this.gbCerrarOT.ButtonMode = TNGS.NetControls.GlassButton.GBMode.Flat;
+            this.gbCerrarOT.CircleButton = false;
+            this.gbCerrarOT.FixedFlatImage = TNGS.NetControls.FixedFlatImageButtons.Ok;
+            this.gbCerrarOT.FlatColor = System.Drawing.Color.RoyalBlue;
+            this.gbCerrarOT.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
+            this.gbCerrarOT.FlatFontSize = 9;
+            this.gbCerrarOT.FlatTextColor = System.Drawing.Color.Black;
+            this.gbCerrarOT.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.gbCerrarOT.Location = new System.Drawing.Point(131, 4);
+            this.gbCerrarOT.Name = "gbCerrarOT";
+            this.gbCerrarOT.RoundCorners = 2;
+            this.gbCerrarOT.Size = new System.Drawing.Size(114, 56);
+            this.gbCerrarOT.TabIndex = 1;
+            this.gbCerrarOT.Text = "Cerrar Orden de Trabajo";
+            this.gbCerrarOT.W8Color = System.Drawing.Color.RoyalBlue;
             // 
             // gbCancelar
             // 
+            this.gbCancelar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("gbCancelar.BackgroundImage")));
             this.gbCancelar.BlackBorder = true;
+            this.gbCancelar.ButtonMode = TNGS.NetControls.GlassButton.GBMode.Flat;
             this.gbCancelar.CircleButton = false;
-            this.gbCancelar.FixedImage = TNGS.NetControls.FixedGlassButtons.tCancel;
+            this.gbCancelar.FixedFlatImage = TNGS.NetControls.FixedFlatImageButtons.Delete;
             this.gbCancelar.FlatColor = System.Drawing.Color.RoyalBlue;
             this.gbCancelar.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
             this.gbCancelar.FlatFontSize = 9;
             this.gbCancelar.FlatTextColor = System.Drawing.Color.Black;
-            this.gbCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.gbCancelar.ImageOnTop = true;
-            this.gbCancelar.Location = new System.Drawing.Point(172, 3);
+            this.gbCancelar.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.gbCancelar.Location = new System.Drawing.Point(256, 4);
             this.gbCancelar.Name = "gbCancelar";
             this.gbCancelar.RoundCorners = 2;
-            this.gbCancelar.Size = new System.Drawing.Size(71, 62);
+            this.gbCancelar.Size = new System.Drawing.Size(126, 57);
             this.gbCancelar.TabIndex = 0;
-            this.gbCancelar.Text = "Cancelar";
+            this.gbCancelar.Text = "Cancelar Orden de Trabajo";
             this.gbCancelar.W8Color = System.Drawing.Color.RoyalBlue;
             // 
             // tsPpanel1
@@ -354,27 +364,28 @@
             this.tsPpanel1.Location = new System.Drawing.Point(0, 3);
             this.tsPpanel1.Name = "tsPpanel1";
             this.tsPpanel1.Opacity = 255;
-            this.tsPpanel1.Size = new System.Drawing.Size(263, 85);
+            this.tsPpanel1.Size = new System.Drawing.Size(320, 85);
             this.tsPpanel1.Speed = 1;
             this.tsPpanel1.TabIndex = 0;
             // 
             // gbBuscar
             // 
+            this.gbBuscar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("gbBuscar.BackgroundImage")));
             this.gbBuscar.BlackBorder = true;
+            this.gbBuscar.ButtonMode = TNGS.NetControls.GlassButton.GBMode.Flat;
             this.gbBuscar.CircleButton = false;
-            this.gbBuscar.FixedImage = TNGS.NetControls.FixedGlassButtons.tFind;
+            this.gbBuscar.FixedFlatImage = TNGS.NetControls.FixedFlatImageButtons.Search;
             this.gbBuscar.FlatColor = System.Drawing.Color.RoyalBlue;
             this.gbBuscar.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
             this.gbBuscar.FlatFontSize = 9;
             this.gbBuscar.FlatTextColor = System.Drawing.Color.Black;
-            this.gbBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.gbBuscar.ImageOnTop = true;
-            this.gbBuscar.Location = new System.Drawing.Point(196, 4);
+            this.gbBuscar.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.gbBuscar.Location = new System.Drawing.Point(212, 5);
             this.gbBuscar.Name = "gbBuscar";
             this.gbBuscar.RoundCorners = 2;
-            this.gbBuscar.Size = new System.Drawing.Size(62, 62);
+            this.gbBuscar.Size = new System.Drawing.Size(98, 56);
             this.gbBuscar.TabIndex = 1;
-            this.gbBuscar.Text = "Find";
+            this.gbBuscar.Text = "Buscar";
             this.gbBuscar.W8Color = System.Drawing.Color.RoyalBlue;
             this.gbBuscar.Click += new System.EventHandler(this.gbBuscar_Click);
             // 
@@ -384,7 +395,7 @@
             this.cdcMoviles.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cdcMoviles.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cdcMoviles.FormattingEnabled = true;
-            this.cdcMoviles.Location = new System.Drawing.Point(9, 26);
+            this.cdcMoviles.Location = new System.Drawing.Point(12, 23);
             this.cdcMoviles.Name = "cdcMoviles";
             this.cdcMoviles.Size = new System.Drawing.Size(181, 23);
             this.cdcMoviles.Sorted = true;
@@ -474,8 +485,8 @@
         private TNGS.NetControls.TextEdit textEdit1;
         private TNGS.NetControls.FullLabel fullLabel1;
         private TNGS.NetControls.TSPanel tsPanel1;
-        private TNGS.NetControls.GlassButton glassButton1;
-        private TNGS.NetControls.GlassButton gbAceptar;
+        private TNGS.NetControls.GlassButton gbVerItems;
+        private TNGS.NetControls.GlassButton gbCerrarOT;
         private TNGS.NetControls.GlassButton gbCancelar;
         private TNGS.NetControls.TSPanel tsPpanel1;
         private TNGS.NetControls.GlassButton gbBuscar;

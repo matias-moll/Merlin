@@ -47,5 +47,6 @@ namespace Rivn.Mv
             get {return cdcEstados.SelectedStrCode; }
 
         }
+
     }
 }

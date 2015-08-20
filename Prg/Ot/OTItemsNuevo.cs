@@ -47,7 +47,7 @@ namespace Rivn.Ot
             m_estadoMofidicar = true;
 
             // desabilitamos los controles necesarios para que el usuario no pueda interactuar con ellos 
-            igControlReparacion.Enabled = false;
+            tgrpControlesYRep.Enabled = false;
             pnlOpciones.Enabled = false;
             gbAgregar.Enabled = false;
             cdcPatente.Enabled = false;
@@ -177,10 +177,11 @@ namespace Rivn.Ot
             m_estadoMofidicar = false;
 
             // desabilitamos los IG y los Botones Quitar para que no puedan usarlos si no selecciona nada
-            igOpciones.Enabled = false;
-            igControlReparacion.Enabled = false;
+            tgrpOpciones.Enabled = false;
+            tgrpControlesYRep.Enabled = false;
             HabilitarBotonesQuitar(false);
 
+            
             // LLenamos Las patentes que hay en la tabla.
             LLenarComboPatentesMoviles();
 
@@ -240,8 +241,8 @@ namespace Rivn.Ot
                 return;
             }
             //cambiamos el nombre del ImgGroup y activamos las opciones
-            igControlReparacion.GroupTitle = "Controles";
-            igOpciones.Enabled = true;
+            tgrpControlesYRep.Title = "Controles";
+            tgrpOpciones.Enabled = true;
             //llenamos la lista con los controles de la tabla
             lstControlesReparaciones.FillFromStrLEntidad(Bll.Controles.UpFull(true, ref m_smResult), "ctl_cod_cod", "ctl_des_des", "deleted");
             // chequeamos que haya salido todo bien
@@ -265,8 +266,8 @@ namespace Rivn.Ot
             }
 
             //cambiamos el nombre del ImgGroup y activamos las opciones
-            igControlReparacion.GroupTitle = "Reparaciones";
-            igOpciones.Enabled = true;
+            tgrpControlesYRep.Title = "Reparaciones";
+            tgrpOpciones.Enabled = true;
             //llenamos la lista con los controles de la tabla
             lstControlesReparaciones.FillFromStrLEntidad(Bll.Tablas.RepUpFull(true, ref m_smResult), "rep_cd6_cod", "rep_xde_des", "deleted");
             // chequeamos que haya salido todo bien
@@ -513,7 +514,7 @@ namespace Rivn.Ot
         private void cdcPatente_SelectedIndexChanged(object sender, EventArgs e)
         {
            if(!m_estadoMofidicar)
-            igControlReparacion.Enabled = true;
+            tgrpControlesYRep.Enabled = true;
         }
 
         #endregion

@@ -37,15 +37,12 @@
             this.tsPanel2 = new TNGS.NetControls.TSPanel();
             this.gbCancel = new TNGS.NetControls.GlassButton();
             this.gbGrabar = new TNGS.NetControls.GlassButton();
-            this.tsPanel1 = new TNGS.NetControls.TSPanel();
             this.btnDestildarTodoEqi = new TNGS.NetControls.GlassButton();
             this.gbLimpiarTodo = new TNGS.NetControls.GlassButton();
             this.btnTildaTodos = new TNGS.NetControls.GlassButton();
             this.tsBase1 = new TNGS.NetControls.TSBase();
             this.tab1 = new RibbonStyle.Tab();
-            this.igEquipamiento = new TNGS.NetControls.ImgGroup();
             this.clEquipamientos = new TNGS.NetControls.CDCheckedList();
-            this.igDatosBasicosMovil = new TNGS.NetControls.ImgGroup();
             this.neKilometros = new TNGS.NetControls.NumberEdit();
             this.fullLabel1 = new TNGS.NetControls.FullLabel();
             this.cdcModelo = new TNGS.NetControls.CDCombo();
@@ -64,24 +61,25 @@
             this.teNroChasis = new TNGS.NetControls.TextEdit();
             this.lblNroMotor = new TNGS.NetControls.FullLabel();
             this.lblNroChasis = new TNGS.NetControls.FullLabel();
+            this.tgrpEquipamiento = new TNGS.NetControls.TitledGroup();
+            this.tgrpDatosBasicos = new TNGS.NetControls.TitledGroup();
             this.xPanel1.SuspendLayout();
             this.tsContainer1.SuspendLayout();
             this.tabPageSwitcher1.SuspendLayout();
             this.tabStripPage1.SuspendLayout();
             this.tsPanel2.SuspendLayout();
-            this.tsPanel1.SuspendLayout();
             this.tsBase1.SuspendLayout();
-            this.igEquipamiento.SuspendLayout();
-            this.igDatosBasicosMovil.SuspendLayout();
+            this.tgrpEquipamiento.SuspendLayout();
+            this.tgrpDatosBasicos.SuspendLayout();
             this.SuspendLayout();
             // 
             // xPanel1
             // 
             this.xPanel1.BackColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.xPanel1.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
+            this.xPanel1.Controls.Add(this.tgrpDatosBasicos);
+            this.xPanel1.Controls.Add(this.tgrpEquipamiento);
             this.xPanel1.Controls.Add(this.tsContainer1);
-            this.xPanel1.Controls.Add(this.igEquipamiento);
-            this.xPanel1.Controls.Add(this.igDatosBasicosMovil);
             this.xPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.xPanel1.Location = new System.Drawing.Point(0, 0);
             this.xPanel1.Name = "xPanel1";
@@ -117,7 +115,6 @@
             this.tabStripPage1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.tabStripPage1.Caption = "";
             this.tabStripPage1.Controls.Add(this.tsPanel2);
-            this.tabStripPage1.Controls.Add(this.tsPanel1);
             this.tabStripPage1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabStripPage1.Location = new System.Drawing.Point(4, 0);
             this.tabStripPage1.Name = "tabStripPage1";
@@ -130,31 +127,34 @@
             // tsPanel2
             // 
             this.tsPanel2.Caption = "Acciones";
+            this.tsPanel2.Controls.Add(this.gbLimpiarTodo);
             this.tsPanel2.Controls.Add(this.gbCancel);
             this.tsPanel2.Controls.Add(this.gbGrabar);
             this.tsPanel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.tsPanel2.Location = new System.Drawing.Point(330, 3);
+            this.tsPanel2.Location = new System.Drawing.Point(0, 3);
             this.tsPanel2.Name = "tsPanel2";
             this.tsPanel2.Opacity = 255;
-            this.tsPanel2.Size = new System.Drawing.Size(222, 85);
+            this.tsPanel2.Size = new System.Drawing.Size(384, 85);
             this.tsPanel2.Speed = 1;
             this.tsPanel2.TabIndex = 1;
             // 
             // gbCancel
             // 
+            this.gbCancel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("gbCancel.BackgroundImage")));
             this.gbCancel.BlackBorder = true;
+            this.gbCancel.ButtonMode = TNGS.NetControls.GlassButton.GBMode.Flat;
             this.gbCancel.CircleButton = false;
             this.gbCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.gbCancel.FixedImage = TNGS.NetControls.FixedGlassButtons.tCancel;
+            this.gbCancel.FixedFlatImage = TNGS.NetControls.FixedFlatImageButtons.Delete;
             this.gbCancel.FlatColor = System.Drawing.Color.RoyalBlue;
             this.gbCancel.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
+            this.gbCancel.FlatFontSize = 9;
             this.gbCancel.FlatTextColor = System.Drawing.Color.Black;
-            this.gbCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbCancel.ImageOnTop = true;
-            this.gbCancel.Location = new System.Drawing.Point(111, 6);
+            this.gbCancel.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.gbCancel.Location = new System.Drawing.Point(271, 5);
             this.gbCancel.Name = "gbCancel";
             this.gbCancel.RoundCorners = 2;
-            this.gbCancel.Size = new System.Drawing.Size(100, 55);
+            this.gbCancel.Size = new System.Drawing.Size(99, 55);
             this.gbCancel.TabIndex = 1;
             this.gbCancel.Text = "Cancelar";
             this.gbCancel.W8Color = System.Drawing.Color.RoyalBlue;
@@ -162,51 +162,41 @@
             // 
             // gbGrabar
             // 
+            this.gbGrabar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("gbGrabar.BackgroundImage")));
             this.gbGrabar.BlackBorder = true;
+            this.gbGrabar.ButtonMode = TNGS.NetControls.GlassButton.GBMode.Flat;
             this.gbGrabar.CircleButton = false;
-            this.gbGrabar.FixedImage = TNGS.NetControls.FixedGlassButtons.tSave;
+            this.gbGrabar.FixedFlatImage = TNGS.NetControls.FixedFlatImageButtons.Save;
             this.gbGrabar.FlatColor = System.Drawing.Color.RoyalBlue;
             this.gbGrabar.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
+            this.gbGrabar.FlatFontSize = 9;
             this.gbGrabar.FlatTextColor = System.Drawing.Color.Black;
-            this.gbGrabar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbGrabar.ImageOnTop = true;
-            this.gbGrabar.Location = new System.Drawing.Point(6, 6);
+            this.gbGrabar.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.gbGrabar.Location = new System.Drawing.Point(144, 5);
             this.gbGrabar.Name = "gbGrabar";
             this.gbGrabar.RoundCorners = 2;
             this.gbGrabar.Size = new System.Drawing.Size(100, 55);
             this.gbGrabar.TabIndex = 2;
-            this.gbGrabar.Text = "Grabar";
+            this.gbGrabar.Text = "Guardar";
             this.gbGrabar.W8Color = System.Drawing.Color.RoyalBlue;
             this.gbGrabar.Click += new System.EventHandler(this.btnGrabar_Click);
             // 
-            // tsPanel1
-            // 
-            this.tsPanel1.Caption = "Opciones Generales";
-            this.tsPanel1.Controls.Add(this.btnDestildarTodoEqi);
-            this.tsPanel1.Controls.Add(this.gbLimpiarTodo);
-            this.tsPanel1.Controls.Add(this.btnTildaTodos);
-            this.tsPanel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.tsPanel1.Location = new System.Drawing.Point(0, 3);
-            this.tsPanel1.Name = "tsPanel1";
-            this.tsPanel1.Opacity = 255;
-            this.tsPanel1.Size = new System.Drawing.Size(330, 85);
-            this.tsPanel1.Speed = 1;
-            this.tsPanel1.TabIndex = 0;
-            // 
             // btnDestildarTodoEqi
             // 
+            this.btnDestildarTodoEqi.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnDestildarTodoEqi.BackgroundImage")));
             this.btnDestildarTodoEqi.BlackBorder = true;
+            this.btnDestildarTodoEqi.ButtonMode = TNGS.NetControls.GlassButton.GBMode.Flat;
             this.btnDestildarTodoEqi.CircleButton = false;
-            this.btnDestildarTodoEqi.FixedImage = TNGS.NetControls.FixedGlassButtons.tDisable;
+            this.btnDestildarTodoEqi.FixedFlatImage = TNGS.NetControls.FixedFlatImageButtons.UncheckAll;
             this.btnDestildarTodoEqi.FlatColor = System.Drawing.Color.RoyalBlue;
             this.btnDestildarTodoEqi.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
+            this.btnDestildarTodoEqi.FlatFontSize = 9;
             this.btnDestildarTodoEqi.FlatTextColor = System.Drawing.Color.Black;
-            this.btnDestildarTodoEqi.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDestildarTodoEqi.ImageOnTop = true;
-            this.btnDestildarTodoEqi.Location = new System.Drawing.Point(218, 6);
+            this.btnDestildarTodoEqi.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.btnDestildarTodoEqi.Location = new System.Drawing.Point(155, 37);
             this.btnDestildarTodoEqi.Name = "btnDestildarTodoEqi";
             this.btnDestildarTodoEqi.RoundCorners = 2;
-            this.btnDestildarTodoEqi.Size = new System.Drawing.Size(100, 55);
+            this.btnDestildarTodoEqi.Size = new System.Drawing.Size(139, 25);
             this.btnDestildarTodoEqi.TabIndex = 2;
             this.btnDestildarTodoEqi.Text = "Destildar Todos";
             this.btnDestildarTodoEqi.W8Color = System.Drawing.Color.RoyalBlue;
@@ -214,18 +204,20 @@
             // 
             // gbLimpiarTodo
             // 
+            this.gbLimpiarTodo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("gbLimpiarTodo.BackgroundImage")));
             this.gbLimpiarTodo.BlackBorder = true;
+            this.gbLimpiarTodo.ButtonMode = TNGS.NetControls.GlassButton.GBMode.Flat;
             this.gbLimpiarTodo.CircleButton = false;
-            this.gbLimpiarTodo.FixedImage = TNGS.NetControls.FixedGlassButtons.tDelete;
+            this.gbLimpiarTodo.FixedFlatImage = TNGS.NetControls.FixedFlatImageButtons.Erase;
             this.gbLimpiarTodo.FlatColor = System.Drawing.Color.RoyalBlue;
             this.gbLimpiarTodo.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
+            this.gbLimpiarTodo.FlatFontSize = 9;
             this.gbLimpiarTodo.FlatTextColor = System.Drawing.Color.Black;
-            this.gbLimpiarTodo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbLimpiarTodo.ImageOnTop = true;
-            this.gbLimpiarTodo.Location = new System.Drawing.Point(8, 6);
+            this.gbLimpiarTodo.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.gbLimpiarTodo.Location = new System.Drawing.Point(11, 5);
             this.gbLimpiarTodo.Name = "gbLimpiarTodo";
             this.gbLimpiarTodo.RoundCorners = 2;
-            this.gbLimpiarTodo.Size = new System.Drawing.Size(100, 55);
+            this.gbLimpiarTodo.Size = new System.Drawing.Size(99, 55);
             this.gbLimpiarTodo.TabIndex = 0;
             this.gbLimpiarTodo.Text = "Limpiar Campos";
             this.gbLimpiarTodo.W8Color = System.Drawing.Color.RoyalBlue;
@@ -233,18 +225,20 @@
             // 
             // btnTildaTodos
             // 
+            this.btnTildaTodos.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnTildaTodos.BackgroundImage")));
             this.btnTildaTodos.BlackBorder = true;
+            this.btnTildaTodos.ButtonMode = TNGS.NetControls.GlassButton.GBMode.Flat;
             this.btnTildaTodos.CircleButton = false;
-            this.btnTildaTodos.FixedImage = TNGS.NetControls.FixedGlassButtons.tEnable;
+            this.btnTildaTodos.FixedFlatImage = TNGS.NetControls.FixedFlatImageButtons.CheckAll;
             this.btnTildaTodos.FlatColor = System.Drawing.Color.RoyalBlue;
             this.btnTildaTodos.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
+            this.btnTildaTodos.FlatFontSize = 9;
             this.btnTildaTodos.FlatTextColor = System.Drawing.Color.Black;
-            this.btnTildaTodos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTildaTodos.ImageOnTop = true;
-            this.btnTildaTodos.Location = new System.Drawing.Point(113, 6);
+            this.btnTildaTodos.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.btnTildaTodos.Location = new System.Drawing.Point(17, 37);
             this.btnTildaTodos.Name = "btnTildaTodos";
             this.btnTildaTodos.RoundCorners = 2;
-            this.btnTildaTodos.Size = new System.Drawing.Size(100, 55);
+            this.btnTildaTodos.Size = new System.Drawing.Size(123, 25);
             this.btnTildaTodos.TabIndex = 1;
             this.btnTildaTodos.Text = "Tildar Todos";
             this.btnTildaTodos.W8Color = System.Drawing.Color.RoyalBlue;
@@ -279,94 +273,22 @@
             this.tab1.TabStripPage = this.tabStripPage1;
             this.tab1.Text = "Opciones Nuevo Movil";
             // 
-            // igEquipamiento
-            // 
-            this.igEquipamiento.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.igEquipamiento.BackgroundGradientColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
-            this.igEquipamiento.BackgroundGradientMode = TNGS.NetControls.ImgGroup.GroupBoxGradientMode.ForwardDiagonal;
-            this.igEquipamiento.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.igEquipamiento.BorderThickness = 1F;
-            this.igEquipamiento.Controls.Add(this.clEquipamientos);
-            this.igEquipamiento.CustomGroupBoxColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
-            this.igEquipamiento.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.igEquipamiento.FontTitle = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.igEquipamiento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.igEquipamiento.GroupImage = ((System.Drawing.Image)(resources.GetObject("igEquipamiento.GroupImage")));
-            this.igEquipamiento.GroupTitle = "Equipamiento";
-            this.igEquipamiento.Location = new System.Drawing.Point(684, 130);
-            this.igEquipamiento.Name = "igEquipamiento";
-            this.igEquipamiento.Padding = new System.Windows.Forms.Padding(20);
-            this.igEquipamiento.PaintGroupBox = true;
-            this.igEquipamiento.RoundCorners = 10;
-            this.igEquipamiento.ShadowColor = System.Drawing.Color.DarkGray;
-            this.igEquipamiento.ShadowControl = true;
-            this.igEquipamiento.ShadowThickness = 3;
-            this.igEquipamiento.Size = new System.Drawing.Size(312, 497);
-            this.igEquipamiento.SkinFixed = true;
-            this.igEquipamiento.SkinFullFixed = true;
-            this.igEquipamiento.TabIndex = 24;
-            // 
             // clEquipamientos
             // 
             this.clEquipamientos.BackColor = System.Drawing.SystemColors.Window;
             this.clEquipamientos.FormattingEnabled = true;
-            this.clEquipamientos.Location = new System.Drawing.Point(12, 31);
+            this.clEquipamientos.Location = new System.Drawing.Point(13, 82);
             this.clEquipamientos.Name = "clEquipamientos";
-            this.clEquipamientos.Size = new System.Drawing.Size(286, 454);
+            this.clEquipamientos.Size = new System.Drawing.Size(286, 382);
             this.clEquipamientos.Sorted = true;
             this.clEquipamientos.TabIndex = 0;
-            // 
-            // igDatosBasicosMovil
-            // 
-            this.igDatosBasicosMovil.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.igDatosBasicosMovil.BackgroundGradientColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
-            this.igDatosBasicosMovil.BackgroundGradientMode = TNGS.NetControls.ImgGroup.GroupBoxGradientMode.ForwardDiagonal;
-            this.igDatosBasicosMovil.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.igDatosBasicosMovil.BorderThickness = 1F;
-            this.igDatosBasicosMovil.Controls.Add(this.neKilometros);
-            this.igDatosBasicosMovil.Controls.Add(this.fullLabel1);
-            this.igDatosBasicosMovil.Controls.Add(this.cdcModelo);
-            this.igDatosBasicosMovil.Controls.Add(this.tePatente);
-            this.igDatosBasicosMovil.Controls.Add(this.lblAnotaciones);
-            this.igDatosBasicosMovil.Controls.Add(this.lblAnioFabricacion);
-            this.igDatosBasicosMovil.Controls.Add(this.teAnotaciones);
-            this.igDatosBasicosMovil.Controls.Add(this.lblMovilPropio);
-            this.igDatosBasicosMovil.Controls.Add(this.neAnioFabric);
-            this.igDatosBasicosMovil.Controls.Add(this.teNroMotor);
-            this.igDatosBasicosMovil.Controls.Add(this.cdcMovilPropio);
-            this.igDatosBasicosMovil.Controls.Add(this.lblPatente);
-            this.igDatosBasicosMovil.Controls.Add(this.lblDescripcionMovil);
-            this.igDatosBasicosMovil.Controls.Add(this.teDescripcionMovil);
-            this.igDatosBasicosMovil.Controls.Add(this.lblModelo);
-            this.igDatosBasicosMovil.Controls.Add(this.teNroChasis);
-            this.igDatosBasicosMovil.Controls.Add(this.lblNroMotor);
-            this.igDatosBasicosMovil.Controls.Add(this.lblNroChasis);
-            this.igDatosBasicosMovil.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.igDatosBasicosMovil.CustomGroupBoxColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
-            this.igDatosBasicosMovil.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.igDatosBasicosMovil.FontTitle = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.igDatosBasicosMovil.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.igDatosBasicosMovil.GroupImage = ((System.Drawing.Image)(resources.GetObject("igDatosBasicosMovil.GroupImage")));
-            this.igDatosBasicosMovil.GroupTitle = " Datos Basicos";
-            this.igDatosBasicosMovil.Location = new System.Drawing.Point(12, 130);
-            this.igDatosBasicosMovil.Name = "igDatosBasicosMovil";
-            this.igDatosBasicosMovil.Padding = new System.Windows.Forms.Padding(20);
-            this.igDatosBasicosMovil.PaintGroupBox = true;
-            this.igDatosBasicosMovil.RoundCorners = 10;
-            this.igDatosBasicosMovil.ShadowColor = System.Drawing.Color.DarkGray;
-            this.igDatosBasicosMovil.ShadowControl = true;
-            this.igDatosBasicosMovil.ShadowThickness = 3;
-            this.igDatosBasicosMovil.Size = new System.Drawing.Size(660, 497);
-            this.igDatosBasicosMovil.SkinFixed = true;
-            this.igDatosBasicosMovil.SkinFullFixed = true;
-            this.igDatosBasicosMovil.TabIndex = 23;
             // 
             // neKilometros
             // 
             this.neKilometros.BackColor = System.Drawing.SystemColors.Window;
             this.neKilometros.Location = new System.Drawing.Point(446, 271);
             this.neKilometros.Name = "neKilometros";
-            this.neKilometros.Size = new System.Drawing.Size(123, 22);
+            this.neKilometros.Size = new System.Drawing.Size(123, 23);
             this.neKilometros.TabIndex = 7;
             this.neKilometros.Text = "0";
             // 
@@ -389,7 +311,7 @@
             this.cdcModelo.FormattingEnabled = true;
             this.cdcModelo.Location = new System.Drawing.Point(157, 271);
             this.cdcModelo.Name = "cdcModelo";
-            this.cdcModelo.Size = new System.Drawing.Size(123, 24);
+            this.cdcModelo.Size = new System.Drawing.Size(123, 23);
             this.cdcModelo.Sorted = true;
             this.cdcModelo.TabIndex = 6;
             // 
@@ -397,9 +319,9 @@
             // 
             this.tePatente.BackColor = System.Drawing.SystemColors.Window;
             this.tePatente.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.tePatente.Location = new System.Drawing.Point(292, 58);
+            this.tePatente.Location = new System.Drawing.Point(274, 56);
             this.tePatente.Name = "tePatente";
-            this.tePatente.Size = new System.Drawing.Size(136, 22);
+            this.tePatente.Size = new System.Drawing.Size(136, 23);
             this.tePatente.TabIndex = 0;
             this.tePatente.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -450,7 +372,7 @@
             this.neAnioFabric.BackColor = System.Drawing.SystemColors.Window;
             this.neAnioFabric.Location = new System.Drawing.Point(446, 216);
             this.neAnioFabric.Name = "neAnioFabric";
-            this.neAnioFabric.Size = new System.Drawing.Size(123, 22);
+            this.neAnioFabric.Size = new System.Drawing.Size(123, 23);
             this.neAnioFabric.TabIndex = 5;
             this.neAnioFabric.Text = "0";
             // 
@@ -460,7 +382,7 @@
             this.teNroMotor.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.teNroMotor.Location = new System.Drawing.Point(156, 218);
             this.teNroMotor.Name = "teNroMotor";
-            this.teNroMotor.Size = new System.Drawing.Size(123, 22);
+            this.teNroMotor.Size = new System.Drawing.Size(123, 23);
             this.teNroMotor.TabIndex = 4;
             this.teNroMotor.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -472,7 +394,7 @@
             this.cdcMovilPropio.FormattingEnabled = true;
             this.cdcMovilPropio.Location = new System.Drawing.Point(447, 161);
             this.cdcMovilPropio.Name = "cdcMovilPropio";
-            this.cdcMovilPropio.Size = new System.Drawing.Size(122, 24);
+            this.cdcMovilPropio.Size = new System.Drawing.Size(122, 23);
             this.cdcMovilPropio.Sorted = true;
             this.cdcMovilPropio.TabIndex = 3;
             // 
@@ -504,7 +426,7 @@
             this.teDescripcionMovil.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.teDescripcionMovil.Location = new System.Drawing.Point(156, 107);
             this.teDescripcionMovil.Name = "teDescripcionMovil";
-            this.teDescripcionMovil.Size = new System.Drawing.Size(413, 22);
+            this.teDescripcionMovil.Size = new System.Drawing.Size(413, 23);
             this.teDescripcionMovil.TabIndex = 1;
             // 
             // lblModelo
@@ -524,7 +446,7 @@
             this.teNroChasis.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.teNroChasis.Location = new System.Drawing.Point(157, 163);
             this.teNroChasis.Name = "teNroChasis";
-            this.teNroChasis.Size = new System.Drawing.Size(123, 22);
+            this.teNroChasis.Size = new System.Drawing.Size(123, 23);
             this.teNroChasis.TabIndex = 2;
             this.teNroChasis.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -550,6 +472,85 @@
             this.lblNroChasis.TabIndex = 14;
             this.lblNroChasis.Text = "Numero Chasis:";
             // 
+            // tgrpEquipamiento
+            // 
+            this.tgrpEquipamiento.BackgroundColor = System.Drawing.Color.WhiteSmoke;
+            this.tgrpEquipamiento.BackgroundGradientColor = System.Drawing.Color.White;
+            this.tgrpEquipamiento.BackgroundGradientMode = TNGS.NetControls.TitledGroup.GroupBoxGradientMode.None;
+            this.tgrpEquipamiento.BlackBorder = true;
+            this.tgrpEquipamiento.BorderColor = System.Drawing.Color.WhiteSmoke;
+            this.tgrpEquipamiento.BorderThickness = 1F;
+            this.tgrpEquipamiento.Controls.Add(this.btnDestildarTodoEqi);
+            this.tgrpEquipamiento.Controls.Add(this.clEquipamientos);
+            this.tgrpEquipamiento.Controls.Add(this.btnTildaTodos);
+            this.tgrpEquipamiento.CustomGroupBoxColor = System.Drawing.Color.White;
+            this.tgrpEquipamiento.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.tgrpEquipamiento.ForeColor = System.Drawing.Color.Black;
+            this.tgrpEquipamiento.ImageGroup = null;
+            this.tgrpEquipamiento.Location = new System.Drawing.Point(684, 137);
+            this.tgrpEquipamiento.Name = "tgrpEquipamiento";
+            this.tgrpEquipamiento.Padding = new System.Windows.Forms.Padding(20);
+            this.tgrpEquipamiento.PaintGroupBox = false;
+            this.tgrpEquipamiento.RoundCorners = 4;
+            this.tgrpEquipamiento.ShadowColor = System.Drawing.Color.DarkGray;
+            this.tgrpEquipamiento.ShadowControl = false;
+            this.tgrpEquipamiento.ShadowThickness = 3;
+            this.tgrpEquipamiento.Size = new System.Drawing.Size(312, 490);
+            this.tgrpEquipamiento.TabIndex = 26;
+            this.tgrpEquipamiento.Title = "Equipamiento";
+            this.tgrpEquipamiento.TitleAlignment = TNGS.NetControls.TitledGroup.TitleAlign.Center;
+            this.tgrpEquipamiento.TitleBackground = System.Drawing.SystemColors.HotTrack;
+            this.tgrpEquipamiento.TitleBackgroundDefault = TNGS.NetControls.ColorRuts.ColoresDefault.None;
+            this.tgrpEquipamiento.TitleFont = new System.Drawing.Font("Segoe UI", 10F);
+            this.tgrpEquipamiento.TitleFontColor = System.Drawing.Color.White;
+            // 
+            // tgrpDatosBasicos
+            // 
+            this.tgrpDatosBasicos.BackgroundColor = System.Drawing.Color.WhiteSmoke;
+            this.tgrpDatosBasicos.BackgroundGradientColor = System.Drawing.Color.White;
+            this.tgrpDatosBasicos.BackgroundGradientMode = TNGS.NetControls.TitledGroup.GroupBoxGradientMode.None;
+            this.tgrpDatosBasicos.BlackBorder = true;
+            this.tgrpDatosBasicos.BorderColor = System.Drawing.Color.WhiteSmoke;
+            this.tgrpDatosBasicos.BorderThickness = 1F;
+            this.tgrpDatosBasicos.Controls.Add(this.neKilometros);
+            this.tgrpDatosBasicos.Controls.Add(this.teDescripcionMovil);
+            this.tgrpDatosBasicos.Controls.Add(this.fullLabel1);
+            this.tgrpDatosBasicos.Controls.Add(this.lblNroChasis);
+            this.tgrpDatosBasicos.Controls.Add(this.cdcModelo);
+            this.tgrpDatosBasicos.Controls.Add(this.lblNroMotor);
+            this.tgrpDatosBasicos.Controls.Add(this.tePatente);
+            this.tgrpDatosBasicos.Controls.Add(this.teNroChasis);
+            this.tgrpDatosBasicos.Controls.Add(this.lblAnotaciones);
+            this.tgrpDatosBasicos.Controls.Add(this.lblModelo);
+            this.tgrpDatosBasicos.Controls.Add(this.lblAnioFabricacion);
+            this.tgrpDatosBasicos.Controls.Add(this.lblDescripcionMovil);
+            this.tgrpDatosBasicos.Controls.Add(this.teAnotaciones);
+            this.tgrpDatosBasicos.Controls.Add(this.lblPatente);
+            this.tgrpDatosBasicos.Controls.Add(this.lblMovilPropio);
+            this.tgrpDatosBasicos.Controls.Add(this.cdcMovilPropio);
+            this.tgrpDatosBasicos.Controls.Add(this.neAnioFabric);
+            this.tgrpDatosBasicos.Controls.Add(this.teNroMotor);
+            this.tgrpDatosBasicos.CustomGroupBoxColor = System.Drawing.Color.White;
+            this.tgrpDatosBasicos.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.tgrpDatosBasicos.ForeColor = System.Drawing.Color.Black;
+            this.tgrpDatosBasicos.ImageGroup = null;
+            this.tgrpDatosBasicos.Location = new System.Drawing.Point(15, 134);
+            this.tgrpDatosBasicos.Name = "tgrpDatosBasicos";
+            this.tgrpDatosBasicos.Padding = new System.Windows.Forms.Padding(20);
+            this.tgrpDatosBasicos.PaintGroupBox = false;
+            this.tgrpDatosBasicos.RoundCorners = 4;
+            this.tgrpDatosBasicos.ShadowColor = System.Drawing.Color.DarkGray;
+            this.tgrpDatosBasicos.ShadowControl = false;
+            this.tgrpDatosBasicos.ShadowThickness = 3;
+            this.tgrpDatosBasicos.Size = new System.Drawing.Size(663, 493);
+            this.tgrpDatosBasicos.TabIndex = 27;
+            this.tgrpDatosBasicos.Title = "Datos Básicos";
+            this.tgrpDatosBasicos.TitleAlignment = TNGS.NetControls.TitledGroup.TitleAlign.Center;
+            this.tgrpDatosBasicos.TitleBackground = System.Drawing.SystemColors.HotTrack;
+            this.tgrpDatosBasicos.TitleBackgroundDefault = TNGS.NetControls.ColorRuts.ColoresDefault.None;
+            this.tgrpDatosBasicos.TitleFont = new System.Drawing.Font("Segoe UI", 10F);
+            this.tgrpDatosBasicos.TitleFontColor = System.Drawing.Color.White;
+            // 
             // AltaMovil
             // 
             this.AcceptButton = this.gbGrabar;
@@ -570,12 +571,11 @@
             this.tabPageSwitcher1.ResumeLayout(false);
             this.tabStripPage1.ResumeLayout(false);
             this.tsPanel2.ResumeLayout(false);
-            this.tsPanel1.ResumeLayout(false);
             this.tsBase1.ResumeLayout(false);
             this.tsBase1.PerformLayout();
-            this.igEquipamiento.ResumeLayout(false);
-            this.igDatosBasicosMovil.ResumeLayout(false);
-            this.igDatosBasicosMovil.PerformLayout();
+            this.tgrpEquipamiento.ResumeLayout(false);
+            this.tgrpDatosBasicos.ResumeLayout(false);
+            this.tgrpDatosBasicos.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -583,9 +583,7 @@
         #endregion
 
         private TNGS.NetControls.XPanel xPanel1;
-        private TNGS.NetControls.ImgGroup igEquipamiento;
         private TNGS.NetControls.CDCheckedList clEquipamientos;
-        private TNGS.NetControls.ImgGroup igDatosBasicosMovil;
         private TNGS.NetControls.TextEdit tePatente;
         private TNGS.NetControls.FullLabel lblAnotaciones;
         private TNGS.NetControls.FullLabel lblAnioFabricacion;
@@ -612,9 +610,10 @@
         private TNGS.NetControls.TSContainer tsContainer1;
         private RibbonStyle.TabPageSwitcher tabPageSwitcher1;
         private RibbonStyle.TabStripPage tabStripPage1;
-        private TNGS.NetControls.TSPanel tsPanel1;
         private TNGS.NetControls.TSBase tsBase1;
         private RibbonStyle.Tab tab1;
         private TNGS.NetControls.TSPanel tsPanel2;
+        private TNGS.NetControls.TitledGroup tgrpDatosBasicos;
+        private TNGS.NetControls.TitledGroup tgrpEquipamiento;
     }
 }

@@ -62,14 +62,14 @@ namespace Rivn.Mv
             teNroChasis.Enabled = false;
             teNroMotor.Enabled = false;
             gbCancel.Enabled = false;
-            igDatosBasicosMovil.Enabled = p_bImgHabilitado;
+            tgrpDatosBasicos.Enabled = p_bImgHabilitado;
 
         }
 
         //constructor para mostrar
         public AltaMovil(Bel.EMovil p_entMovil): this(p_entMovil, false)
         {
-            igEquipamiento.Enabled = false;
+            tgrpEquipamiento.Enabled = false;
             gbGrabar.Enabled = false;
             gbLimpiarTodo.Enabled = false;
             btnDestildarTodoEqi.Enabled = false;

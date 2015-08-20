@@ -471,7 +471,7 @@ namespace Rivn.Mv
             teEstado.Text = m_LEEdsEstados[DameUltimoEstado()].Des;
             gbBorrarMovil.Enabled = true;
             gbModificarMovil.Enabled = true;
-            igMoviles.Enabled = true;
+            tgrpMoviles.Enabled = true;
             pnlOpcionesEspecificas.Enabled = true;
             pnlOpcionesGenerales.Enabled = false;
 
