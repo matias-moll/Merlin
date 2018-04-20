@@ -8,7 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using TNGS.NetApp;
 
-namespace Rivn.Mv
+namespace Mrln.Mv
 {
     public partial class NuevoKm : Form
     {

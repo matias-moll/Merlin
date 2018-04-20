@@ -1,11 +1,11 @@
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 17/08/2015 10:48
-// Sistema     : Rivn
+// Fecha       : 20/04/2018 19:40
+// Sistema     : Mrln
 // Tabla       : ControlesReparations
 //----------------------------------------------------------------------------
-// © 1999-2015 by TNG Software                                      Gndr 5.20
+// © 1999-2018 by TNG Software                                      Gndr 5.20
 //---------------------------------------------------------------------------*/
 
 /* ***************************************************************************
@@ -19,7 +19,7 @@
 /* Selecciono la base en la que se crearan los SPs */
 /*-------------------------------------------------*/
 
-use TNGS_Rivn
+use TNGS_Mrln
 go
 
 ---////////////////////////////////////////////////////////
@@ -56,14 +56,14 @@ begin
                 ctr_nro_nroitem,
                 rep_xde_des as ctr_des_descRep,
                 ctr_cd6_codrep,
-                TNGS_Rivn..ControlesReparations.instante,
-                TNGS_Rivn..ControlesReparations.deleted,
-                TNGS_Rivn..ControlesReparations.usuario,
-                TNGS_Rivn..ControlesReparations.version
-           from TNGS_Rivn..ControlesReparations
-                join TNGS_Rivn..Reparaciones
+                TNGS_Mrln..ControlesReparations.instante,
+                TNGS_Mrln..ControlesReparations.deleted,
+                TNGS_Mrln..ControlesReparations.usuario,
+                TNGS_Mrln..ControlesReparations.version
+           from TNGS_Mrln..ControlesReparations
+                join TNGS_Mrln..Reparaciones
                   on ctr_cd6_codRep = rep_cd6_cod
-          where TNGS_Rivn..ControlesReparations.deleted = 0
+          where TNGS_Mrln..ControlesReparations.deleted = 0
           order by ctr_cod_codctl,
                 ctr_nro_nroitem
       end
@@ -73,12 +73,12 @@ begin
                 ctr_nro_nroitem,
                 rep_xde_des as ctr_des_descRep,
                 ctr_cd6_codrep,
-                TNGS_Rivn..ControlesReparations.instante,
-                TNGS_Rivn..ControlesReparations.deleted,
-                TNGS_Rivn..ControlesReparations.usuario,
-                TNGS_Rivn..ControlesReparations.version
-           from TNGS_Rivn..ControlesReparations
-                join TNGS_Rivn..Reparaciones
+                TNGS_Mrln..ControlesReparations.instante,
+                TNGS_Mrln..ControlesReparations.deleted,
+                TNGS_Mrln..ControlesReparations.usuario,
+                TNGS_Mrln..ControlesReparations.version
+           from TNGS_Mrln..ControlesReparations
+                join TNGS_Mrln..Reparaciones
                   on ctr_cd6_codRep = rep_cd6_cod
           order by ctr_cod_codctl,
                 ctr_nro_nroitem
@@ -129,7 +129,7 @@ as
 begin
 
    Select count(*) as cantidad
-     from TNGS_Rivn..ControlesReparations
+     from TNGS_Mrln..ControlesReparations
     where ctr_cod_codctl = @ctr_cod_codctl
       and ctr_nro_nroitem = @ctr_nro_nroitem
       and version = @version
@@ -184,16 +184,16 @@ begin
                 ctr_nro_nroitem,
                 rep_xde_des as ctr_des_descRep,
                 ctr_cd6_codrep,
-                TNGS_Rivn..ControlesReparations.instante,
-                TNGS_Rivn..ControlesReparations.deleted,
-                TNGS_Rivn..ControlesReparations.usuario,
-                TNGS_Rivn..ControlesReparations.version
-           from TNGS_Rivn..ControlesReparations
-                join TNGS_Rivn..Reparaciones
+                TNGS_Mrln..ControlesReparations.instante,
+                TNGS_Mrln..ControlesReparations.deleted,
+                TNGS_Mrln..ControlesReparations.usuario,
+                TNGS_Mrln..ControlesReparations.version
+           from TNGS_Mrln..ControlesReparations
+                join TNGS_Mrln..Reparaciones
                   on ctr_cd6_codRep = rep_cd6_cod
           where ctr_cod_codctl = @ctr_cod_codctl
             and ctr_nro_nroitem = @ctr_nro_nroitem
-            and TNGS_Rivn..ControlesReparations.deleted = 0
+            and TNGS_Mrln..ControlesReparations.deleted = 0
       end
    else
       begin
@@ -201,12 +201,12 @@ begin
                 ctr_nro_nroitem,
                 rep_xde_des as ctr_des_descRep,
                 ctr_cd6_codrep,
-                TNGS_Rivn..ControlesReparations.instante,
-                TNGS_Rivn..ControlesReparations.deleted,
-                TNGS_Rivn..ControlesReparations.usuario,
-                TNGS_Rivn..ControlesReparations.version
-           from TNGS_Rivn..ControlesReparations
-                join TNGS_Rivn..Reparaciones
+                TNGS_Mrln..ControlesReparations.instante,
+                TNGS_Mrln..ControlesReparations.deleted,
+                TNGS_Mrln..ControlesReparations.usuario,
+                TNGS_Mrln..ControlesReparations.version
+           from TNGS_Mrln..ControlesReparations
+                join TNGS_Mrln..Reparaciones
                   on ctr_cd6_codRep = rep_cd6_cod
           where ctr_cod_codctl = @ctr_cod_codctl
             and ctr_nro_nroitem = @ctr_nro_nroitem
@@ -260,15 +260,15 @@ begin
                 ctr_nro_nroitem,
                 rep_xde_des as ctr_des_descRep,
                 ctr_cd6_codrep,
-                TNGS_Rivn..ControlesReparations.instante,
-                TNGS_Rivn..ControlesReparations.deleted,
-                TNGS_Rivn..ControlesReparations.usuario,
-                TNGS_Rivn..ControlesReparations.version
-           from TNGS_Rivn..ControlesReparations
-                join TNGS_Rivn..Reparaciones
+                TNGS_Mrln..ControlesReparations.instante,
+                TNGS_Mrln..ControlesReparations.deleted,
+                TNGS_Mrln..ControlesReparations.usuario,
+                TNGS_Mrln..ControlesReparations.version
+           from TNGS_Mrln..ControlesReparations
+                join TNGS_Mrln..Reparaciones
                   on ctr_cd6_codRep = rep_cd6_cod
           where ctr_cod_codctl = @ctr_cod_codctl
-            and TNGS_Rivn..ControlesReparations.deleted = 0
+            and TNGS_Mrln..ControlesReparations.deleted = 0
           order by ctr_nro_nroitem
       end
    else
@@ -277,12 +277,12 @@ begin
                 ctr_nro_nroitem,
                 rep_xde_des as ctr_des_descRep,
                 ctr_cd6_codrep,
-                TNGS_Rivn..ControlesReparations.instante,
-                TNGS_Rivn..ControlesReparations.deleted,
-                TNGS_Rivn..ControlesReparations.usuario,
-                TNGS_Rivn..ControlesReparations.version
-           from TNGS_Rivn..ControlesReparations
-                join TNGS_Rivn..Reparaciones
+                TNGS_Mrln..ControlesReparations.instante,
+                TNGS_Mrln..ControlesReparations.deleted,
+                TNGS_Mrln..ControlesReparations.usuario,
+                TNGS_Mrln..ControlesReparations.version
+           from TNGS_Mrln..ControlesReparations
+                join TNGS_Mrln..Reparaciones
                   on ctr_cd6_codRep = rep_cd6_cod
           where ctr_cod_codctl = @ctr_cod_codctl
           order by ctr_nro_nroitem
@@ -334,7 +334,7 @@ create procedure dbo.CONTROLESREPARATIONS_INSERT
 as
 begin
 
-   Insert into TNGS_Rivn..ControlesReparations
+   Insert into TNGS_Mrln..ControlesReparations
    values (
            @ctr_cod_codctl,
            @ctr_nro_nroitem,
@@ -388,7 +388,7 @@ create procedure dbo.CONTROLESREPARATIONS_UPDATE
 as
 begin
 
-   Update TNGS_Rivn..ControlesReparations
+   Update TNGS_Mrln..ControlesReparations
       set ctr_cd6_codrep= @ctr_cd6_codrep,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -440,7 +440,7 @@ create procedure dbo.CONTROLESREPARATIONS_DELETE
 as
 begin
 
-   Update TNGS_Rivn..ControlesReparations
+   Update TNGS_Mrln..ControlesReparations
       set deleted = 1,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -497,7 +497,7 @@ begin
          select @instante= getdate()
       end
 
-   Update TNGS_Rivn..ControlesReparations
+   Update TNGS_Mrln..ControlesReparations
       set deleted = 1,
           version = ((version+1) % 32767),
           instante= @instante,
@@ -548,7 +548,7 @@ create procedure dbo.CONTROLESREPARATIONS_RECALL
 as
 begin
 
-   Update TNGS_Rivn..ControlesReparations
+   Update TNGS_Mrln..ControlesReparations
       set deleted = 0,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -602,7 +602,7 @@ begin
 
    if datepart(yyyy, @instante) = 1900
       begin
-         Update TNGS_Rivn..ControlesReparations
+         Update TNGS_Mrln..ControlesReparations
             set deleted = 0,
                 version = ((version+1) % 32767),
                 instante= getdate(),
@@ -611,7 +611,7 @@ begin
       end
    else
       begin
-         Update TNGS_Rivn..ControlesReparations
+         Update TNGS_Mrln..ControlesReparations
             set deleted = 0,
                 version = ((version+1) % 32767),
                 instante= getdate(),
@@ -664,7 +664,7 @@ create procedure dbo.CONTROLESREPARATIONS_DROP
 as
 begin
 
-   Delete from TNGS_Rivn..ControlesReparations
+   Delete from TNGS_Mrln..ControlesReparations
     where ctr_cod_codctl = @ctr_cod_codctl
       and ctr_nro_nroitem = @ctr_nro_nroitem
 
@@ -710,7 +710,7 @@ create procedure dbo.CONTROLESREPARATIONS_FDROP
 as
 begin
 
-   Delete from TNGS_Rivn..ControlesReparations
+   Delete from TNGS_Mrln..ControlesReparations
     where ctr_cod_codctl = @ctr_cod_codctl
 
 fin:
@@ -753,7 +753,7 @@ create procedure dbo.CONTROLESREPARATIONS_PACK
 as
 begin
 
-   Delete TNGS_Rivn..ControlesReparations
+   Delete TNGS_Mrln..ControlesReparations
     where deleted = 1
 
 fin:
@@ -798,7 +798,7 @@ create procedure dbo.CONTROLESREPARATIONS_FPACK
 as
 begin
 
-   Delete from TNGS_Rivn..ControlesReparations
+   Delete from TNGS_Mrln..ControlesReparations
     where ctr_cod_codctl = @ctr_cod_codctl
       and deleted = 1
 

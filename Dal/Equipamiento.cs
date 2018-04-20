@@ -5,17 +5,17 @@ using System.Data.Common;
 using TNGS.NetRoutines;
 #endregion
 
-namespace Rivn.Dal
+namespace Mrln.Dal
 {
     //----------------------------------------------------------------------------
     //                         TNG Software DAL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 17/08/2015 10:49
-    // Sistema                  : Rivn
+    // Fecha                    : 20/04/2018 20:34
+    // Sistema                  : Mrln
     // Clase para Administrar   : Equipamiento de los móviles
     // Basada en la Tabla       : Equipamiento
     //----------------------------------------------------------------------------
-    // © 1996-2015 by TNG Software                                      Gndr 5.20
+    // © 1996-2018 by TNG Software                                      Gndr 5.20
     //----------------------------------------------------------------------------
 
     //****************************************************************************
@@ -54,7 +54,7 @@ namespace Rivn.Dal
             try {
                 // Recuperamos todos los registros
                 return DBRuts.Exec_DS(p_dbcAccess,
-                                      "TNGS_Rivn..EQUIPAMIENTO_UP",
+                                      "TNGS_Mrln..EQUIPAMIENTO_UP",
                                       new DbParameter[] {
                                           p_dbcAccess.MakeParam("@onlyactive", (p_bOnlyActive ? 1 : 0))
                                       },
@@ -86,7 +86,7 @@ namespace Rivn.Dal
             try {
                 // Verificamos el número de versión
                 DBRuts.Exec_DS(p_dbcAccess,
-                               "TNGS_Rivn..EQUIPAMIENTO_CHKVERSION",
+                               "TNGS_Mrln..EQUIPAMIENTO_CHKVERSION",
                                new DbParameter[] {
                                    p_dbcAccess.MakeParam("@eqi_cod_cod", p_strCod),
                                    p_dbcAccess.MakeParam("@version", p_iFxdVersion)
@@ -118,7 +118,7 @@ namespace Rivn.Dal
             try {
                 // Recuperamos el registro de la clave
                 return DBRuts.Exec_DS(p_dbcAccess,
-                                      "TNGS_Rivn..EQUIPAMIENTO_SEARCH",
+                                      "TNGS_Mrln..EQUIPAMIENTO_SEARCH",
                                       new DbParameter[] {
                                           p_dbcAccess.MakeParam("@eqi_cod_cod", p_strCod),
                                           p_dbcAccess.MakeParam("@onlyactive", (p_bOnlyActive ? 1 : 0))
@@ -148,7 +148,7 @@ namespace Rivn.Dal
             try {
                 // Recuperamos la clave mas alta de la tabla
                 DBRuts.Exec_DS(p_dbcAccess,
-                               "TNGS_Rivn..EQUIPAMIENTO_GETMAXKEY",
+                               "TNGS_Mrln..EQUIPAMIENTO_GETMAXKEY",
                                new DbParameter[] {
                                    p_dbcAccess.MakeParam("@dummy", "X")
                                },
@@ -180,7 +180,7 @@ namespace Rivn.Dal
             try {
                 // Insertamos el registro
                 return DBRuts.Exec(p_dbcAccess,
-                                   "TNGS_Rivn..EQUIPAMIENTO_INSERT",
+                                   "TNGS_Mrln..EQUIPAMIENTO_INSERT",
                                    new DbParameter[] {
                                        p_dbcAccess.MakeParam("@eqi_cod_cod", p_strCod),
                                        p_dbcAccess.MakeParam("@eqi_des_des", p_strDes),
@@ -213,7 +213,7 @@ namespace Rivn.Dal
             try {
                 // Modificamos el registro
                 return DBRuts.Exec(p_dbcAccess,
-                                   "TNGS_Rivn..EQUIPAMIENTO_UPDATE",
+                                   "TNGS_Mrln..EQUIPAMIENTO_UPDATE",
                                    new DbParameter[] {
                                        p_dbcAccess.MakeParam("@eqi_cod_cod", p_strCod),
                                        p_dbcAccess.MakeParam("@eqi_des_des", p_strDes),
@@ -242,7 +242,7 @@ namespace Rivn.Dal
             try {
                 // Borramos el registro
                 return DBRuts.Exec(p_dbcAccess,
-                                   "TNGS_Rivn..EQUIPAMIENTO_DELETE",
+                                   "TNGS_Mrln..EQUIPAMIENTO_DELETE",
                                    new DbParameter[] {
                                        p_dbcAccess.MakeParam("@eqi_cod_cod", p_strCod),
                                        p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
@@ -269,7 +269,7 @@ namespace Rivn.Dal
             try {
                 // Borramos el registro
                 return DBRuts.Exec(p_dbcAccess,
-                                   "TNGS_Rivn..EQUIPAMIENTO_RECALL",
+                                   "TNGS_Mrln..EQUIPAMIENTO_RECALL",
                                    new DbParameter[] {
                                        p_dbcAccess.MakeParam("@eqi_cod_cod", p_strCod),
                                        p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
@@ -296,7 +296,7 @@ namespace Rivn.Dal
             try {
                 // Borramos el registro
                 return DBRuts.Exec(p_dbcAccess,
-                                   "TNGS_Rivn..EQUIPAMIENTO_DROP",
+                                   "TNGS_Mrln..EQUIPAMIENTO_DROP",
                                    new DbParameter[] {
                                        p_dbcAccess.MakeParam("@eqi_cod_cod", p_strCod),
                                        p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
@@ -321,7 +321,7 @@ namespace Rivn.Dal
             try {
                 // Borramos el registro
                 return DBRuts.Exec(p_dbcAccess,
-                                   "TNGS_Rivn..EQUIPAMIENTO_PACK",
+                                   "TNGS_Mrln..EQUIPAMIENTO_PACK",
                                    new DbParameter[] {
                                        p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
                                    }
@@ -355,6 +355,7 @@ namespace Rivn.Dal
                 // Fijamos los nuevos captions de la grilla
                 p_dtResult.Columns["eqi_cod_cod"].Caption= "V1Codigo EquipamientoCN1";
                 p_dtResult.Columns["eqi_des_des"].Caption= "V1EquipamientoCN1";
+                p_dtResult.Columns["eqi_imp_valor"].Caption= "V1Importe2N1";
                 p_dtResult.Columns["deleted"].Caption= "V1Borrado2N2";
             }
             catch (Exception l_expData) {

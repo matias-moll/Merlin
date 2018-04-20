@@ -7,10 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using TNGS.NetAppBll;
-using Rivn.Bel;
-using Rivn.Bll;
+using Mrln.Bel;
+using Mrln.Bll;
 
-namespace Rivn.Mv
+namespace Mrln.Mv
 {
     public partial class AsigarOT : Form
     {

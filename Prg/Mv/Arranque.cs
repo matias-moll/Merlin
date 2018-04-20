@@ -3,10 +3,10 @@ using System;
 using System.Resources;
 using TNGS.NetRoutines;
 using TNGS.NetApp;
-using Rivn;
+using Mrln;
 #endregion
 
-namespace Rivn.Mv
+namespace Mrln.Mv
 {
     /// <summary>
     /// Clase que contiene el Punto de arranque del sistema

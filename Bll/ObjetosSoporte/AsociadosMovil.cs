@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using TNGS.NetAppBll;
 using TNGS.NetRoutines;
-using Rivn;
-using Rivn.Bel;
+using Mrln;
+using Mrln.Bel;
 
 
-namespace Rivn.Bll.ObjetosSoporte
+namespace Mrln.Bll.ObjetosSoporte
 {
     public class AsociadosMovil
     {

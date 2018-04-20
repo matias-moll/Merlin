@@ -6,7 +6,7 @@ using System.Windows.Forms;
 using WeifenLuo.WinFormsUI.Docking;
 #endregion
 
-namespace Rivn.Tg
+namespace Mrln.Tg
 {
     public partial class Equipamientos : DockContent
     {

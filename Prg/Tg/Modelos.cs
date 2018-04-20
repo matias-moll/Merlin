@@ -9,16 +9,16 @@ using WeifenLuo.WinFormsUI.Docking;
 using TNGS.NetRoutines;
 using TNGS.NetControls;
 using TNGS.NetApp;
-using Rivn;
+using Mrln;
 #endregion
 
-namespace Rivn.Tg
+namespace Mrln.Tg
 {
     //----------------------------------------------------------------------------
     //                         TNG Software UIL Generator
     //----------------------------------------------------------------------------
     // Fecha                     : 20/10/2013 13:56
-    // Sistema                   : Rivn
+    // Sistema                   : Mrln
     // Interface para la Entidad : Modelo
     // Tipo de Interface         : Mantenimiento de Tabla Clasificadora
     //----------------------------------------------------------------------------

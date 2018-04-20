@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Rivn.Rp
+namespace Mrln.Rp
 {
     public partial class Reportes : Form
     {

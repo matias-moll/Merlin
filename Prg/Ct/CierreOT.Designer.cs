@@ -1,4 +1,4 @@
-﻿namespace Rivn.Ct
+﻿namespace Mrln.Ct
 {
     /*Datos para la grilla:
      * Fecha de generación, tipo, cantidad de solicitudes para el mismo cliente, codVend, codCli

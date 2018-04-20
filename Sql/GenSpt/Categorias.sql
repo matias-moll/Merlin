@@ -1,11 +1,11 @@
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 17/08/2015 10:48
-// Sistema     : Rivn
+// Fecha       : 20/04/2018 19:40
+// Sistema     : Mrln
 // Tabla       : Categorias
 //----------------------------------------------------------------------------
-// © 1999-2015 by TNG Software                                      Gndr 5.20
+// © 1999-2018 by TNG Software                                      Gndr 5.20
 //---------------------------------------------------------------------------*/
 
 /* ***************************************************************************
@@ -19,7 +19,7 @@
 /* Selecciono la base en la que se crearan los SPs */
 /*-------------------------------------------------*/
 
-use TNGS_Rivn
+use TNGS_Mrln
 go
 
 ---////////////////////////////////////////////////////////
@@ -54,11 +54,11 @@ begin
       begin
          Select cat_rcd_cod,
                 cat_des_des,
-                TNGS_Rivn..Categorias.instante,
-                TNGS_Rivn..Categorias.deleted,
-                TNGS_Rivn..Categorias.usuario,
-                TNGS_Rivn..Categorias.version
-           from TNGS_Rivn..Categorias
+                TNGS_Mrln..Categorias.instante,
+                TNGS_Mrln..Categorias.deleted,
+                TNGS_Mrln..Categorias.usuario,
+                TNGS_Mrln..Categorias.version
+           from TNGS_Mrln..Categorias
           where deleted = 0
           order by cat_rcd_cod
       end
@@ -66,11 +66,11 @@ begin
       begin
          Select cat_rcd_cod,
                 cat_des_des,
-                TNGS_Rivn..Categorias.instante,
-                TNGS_Rivn..Categorias.deleted,
-                TNGS_Rivn..Categorias.usuario,
-                TNGS_Rivn..Categorias.version
-           from TNGS_Rivn..Categorias
+                TNGS_Mrln..Categorias.instante,
+                TNGS_Mrln..Categorias.deleted,
+                TNGS_Mrln..Categorias.usuario,
+                TNGS_Mrln..Categorias.version
+           from TNGS_Mrln..Categorias
           order by cat_rcd_cod
       end
 
@@ -117,7 +117,7 @@ as
 begin
 
    Select count(*) as cantidad
-     from TNGS_Rivn..Categorias
+     from TNGS_Mrln..Categorias
     where cat_rcd_cod = @cat_rcd_cod
       and version = @version
 
@@ -167,11 +167,11 @@ begin
       begin
          Select cat_rcd_cod,
                 cat_des_des,
-                TNGS_Rivn..Categorias.instante,
-                TNGS_Rivn..Categorias.deleted,
-                TNGS_Rivn..Categorias.usuario,
-                TNGS_Rivn..Categorias.version
-           from TNGS_Rivn..Categorias
+                TNGS_Mrln..Categorias.instante,
+                TNGS_Mrln..Categorias.deleted,
+                TNGS_Mrln..Categorias.usuario,
+                TNGS_Mrln..Categorias.version
+           from TNGS_Mrln..Categorias
           where cat_rcd_cod = @cat_rcd_cod
             and deleted = 0
       end
@@ -179,11 +179,11 @@ begin
       begin
          Select cat_rcd_cod,
                 cat_des_des,
-                TNGS_Rivn..Categorias.instante,
-                TNGS_Rivn..Categorias.deleted,
-                TNGS_Rivn..Categorias.usuario,
-                TNGS_Rivn..Categorias.version
-           from TNGS_Rivn..Categorias
+                TNGS_Mrln..Categorias.instante,
+                TNGS_Mrln..Categorias.deleted,
+                TNGS_Mrln..Categorias.usuario,
+                TNGS_Mrln..Categorias.version
+           from TNGS_Mrln..Categorias
           where cat_rcd_cod = @cat_rcd_cod
       end
 
@@ -231,7 +231,7 @@ create procedure dbo.CATEGORIAS_INSERT
 as
 begin
 
-   Insert into TNGS_Rivn..Categorias
+   Insert into TNGS_Mrln..Categorias
    values (
            @cat_rcd_cod,
            @cat_des_des,
@@ -282,7 +282,7 @@ create procedure dbo.CATEGORIAS_UPDATE
 as
 begin
 
-   Update TNGS_Rivn..Categorias
+   Update TNGS_Mrln..Categorias
       set cat_des_des= @cat_des_des,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -331,7 +331,7 @@ create procedure dbo.CATEGORIAS_DELETE
 as
 begin
 
-   Update TNGS_Rivn..Categorias
+   Update TNGS_Mrln..Categorias
       set deleted = 1,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -380,7 +380,7 @@ create procedure dbo.CATEGORIAS_RECALL
 as
 begin
 
-   Update TNGS_Rivn..Categorias
+   Update TNGS_Mrln..Categorias
       set deleted = 0,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -429,7 +429,7 @@ create procedure dbo.CATEGORIAS_DROP
 as
 begin
 
-   Delete from TNGS_Rivn..Categorias
+   Delete from TNGS_Mrln..Categorias
     where cat_rcd_cod = @cat_rcd_cod
 
 fin:
@@ -472,7 +472,7 @@ create procedure dbo.CATEGORIAS_PACK
 as
 begin
 
-   Delete TNGS_Rivn..Categorias
+   Delete TNGS_Mrln..Categorias
     where deleted = 1
 
 fin:
@@ -518,8 +518,7 @@ as
 begin
 
    select * from Categorias 
-    
-         where cat_des_des like '%' + ltrim(rtrim(@desc)) + '%' 
+   where cat_des_des like '%' + ltrim(rtrim(@desc)) + '%' 
 
 fin:
 

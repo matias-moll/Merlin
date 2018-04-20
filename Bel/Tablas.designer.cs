@@ -6,19 +6,19 @@ using System.Collections.Generic;
 using System.Data;
 using System.Xml;
 using TNGS.NetRoutines;
-using Rivn;
+using Mrln;
 #endregion
 
-namespace Rivn.Bel
+namespace Mrln.Bel
 {
     //----------------------------------------------------------------------------
     //                         TNG Software BEL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 17/08/2015 10:53
-    // Sistema                  : Rivn
+    // Fecha                    : 20/04/2018 20:34
+    // Sistema                  : Mrln
     // Clase para Administrar   : Tablas de Rivn.
     //----------------------------------------------------------------------------
-    // © 1996-2015 by TNG Software                                      Gndr 5.20
+    // © 1996-2018 by TNG Software                                      Gndr 5.20
     //----------------------------------------------------------------------------
 
     //****************************************************************************

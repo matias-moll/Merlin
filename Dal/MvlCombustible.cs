@@ -5,17 +5,17 @@ using System.Data.Common;
 using TNGS.NetRoutines;
 #endregion
 
-namespace Rivn.Dal
+namespace Mrln.Dal
 {
     //----------------------------------------------------------------------------
     //                         TNG Software DAL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 17/08/2015 10:49
-    // Sistema                  : Rivn
+    // Fecha                    : 20/04/2018 20:27
+    // Sistema                  : Mrln
     // Clase para Administrar   : Combustible en moviles
     // Basada en la Tabla       : MvlCombustible
     //----------------------------------------------------------------------------
-    // © 1996-2015 by TNG Software                                      Gndr 5.20
+    // © 1996-2018 by TNG Software                                      Gndr 5.20
     //----------------------------------------------------------------------------
 
     //****************************************************************************
@@ -54,7 +54,7 @@ namespace Rivn.Dal
             try {
                 // Recuperamos todos los registros
                 return DBRuts.Exec_DS(p_dbcAccess,
-                                      "TNGS_Rivn..MVLCOMBUSTIBLE_UP",
+                                      "TNGS_Mrln..MVLCOMBUSTIBLE_UP",
                                       new DbParameter[] {
                                           p_dbcAccess.MakeParam("@onlyactive", (p_bOnlyActive ? 1 : 0))
                                       },
@@ -88,7 +88,7 @@ namespace Rivn.Dal
             try {
                 // Verificamos el número de versión
                 DBRuts.Exec_DS(p_dbcAccess,
-                               "TNGS_Rivn..MVLCOMBUSTIBLE_CHKVERSION",
+                               "TNGS_Mrln..MVLCOMBUSTIBLE_CHKVERSION",
                                new DbParameter[] {
                                    p_dbcAccess.MakeParam("@mco_ecd_patente", p_strPatente),
                                    p_dbcAccess.MakeParam("@mco_fyh_fecha", p_dtFecha),
@@ -123,7 +123,7 @@ namespace Rivn.Dal
             try {
                 // Recuperamos el registro de la clave
                 return DBRuts.Exec_DS(p_dbcAccess,
-                                      "TNGS_Rivn..MVLCOMBUSTIBLE_SEARCH",
+                                      "TNGS_Mrln..MVLCOMBUSTIBLE_SEARCH",
                                       new DbParameter[] {
                                           p_dbcAccess.MakeParam("@mco_ecd_patente", p_strPatente),
                                           p_dbcAccess.MakeParam("@mco_fyh_fecha", p_dtFecha),
@@ -157,7 +157,7 @@ namespace Rivn.Dal
             try {
                 // Recuperamos los registro de la clave foranea
                 return DBRuts.Exec_DS(p_dbcAccess,
-                                      "TNGS_Rivn..MVLCOMBUSTIBLE_FSEARCH",
+                                      "TNGS_Mrln..MVLCOMBUSTIBLE_FSEARCH",
                                       new DbParameter[] {
                                           p_dbcAccess.MakeParam("@mco_ecd_patente", p_strPatente),
                                           p_dbcAccess.MakeParam("@onlyactive", (p_bOnlyActive ? 1 : 0))
@@ -195,7 +195,7 @@ namespace Rivn.Dal
             try {
                 // Insertamos el registro
                 return DBRuts.Exec(p_dbcAccess,
-                                   "TNGS_Rivn..MVLCOMBUSTIBLE_INSERT",
+                                   "TNGS_Mrln..MVLCOMBUSTIBLE_INSERT",
                                    new DbParameter[] {
                                        p_dbcAccess.MakeParam("@mco_ecd_patente", p_strPatente),
                                        p_dbcAccess.MakeParam("@mco_fyh_fecha", p_dtFecha),
@@ -234,7 +234,7 @@ namespace Rivn.Dal
             try {
                 // Modificamos el registro
                 return DBRuts.Exec(p_dbcAccess,
-                                   "TNGS_Rivn..MVLCOMBUSTIBLE_UPDATE",
+                                   "TNGS_Mrln..MVLCOMBUSTIBLE_UPDATE",
                                    new DbParameter[] {
                                        p_dbcAccess.MakeParam("@mco_ecd_patente", p_strPatente),
                                        p_dbcAccess.MakeParam("@mco_fyh_fecha", p_dtFecha),
@@ -267,7 +267,7 @@ namespace Rivn.Dal
             try {
                 // Borramos el registro
                 return DBRuts.Exec(p_dbcAccess,
-                                   "TNGS_Rivn..MVLCOMBUSTIBLE_DELETE",
+                                   "TNGS_Mrln..MVLCOMBUSTIBLE_DELETE",
                                    new DbParameter[] {
                                        p_dbcAccess.MakeParam("@mco_ecd_patente", p_strPatente),
                                        p_dbcAccess.MakeParam("@mco_fyh_fecha", p_dtFecha),
@@ -297,7 +297,7 @@ namespace Rivn.Dal
             try {
                 // Borramos los registro de la clave foranea
                 return DBRuts.Exec(p_dbcAccess,
-                                   "TNGS_Rivn..MVLCOMBUSTIBLE_FDELETE",
+                                   "TNGS_Mrln..MVLCOMBUSTIBLE_FDELETE",
                                    new DbParameter[] {
                                        p_dbcAccess.MakeParam("@mco_ecd_patente", p_strPatente),
                                        p_dbcAccess.MakeParam("@instante", p_dtInstante),
@@ -327,7 +327,7 @@ namespace Rivn.Dal
             try {
                 // Borramos el registro
                 return DBRuts.Exec(p_dbcAccess,
-                                   "TNGS_Rivn..MVLCOMBUSTIBLE_RECALL",
+                                   "TNGS_Mrln..MVLCOMBUSTIBLE_RECALL",
                                    new DbParameter[] {
                                        p_dbcAccess.MakeParam("@mco_ecd_patente", p_strPatente),
                                        p_dbcAccess.MakeParam("@mco_fyh_fecha", p_dtFecha),
@@ -357,7 +357,7 @@ namespace Rivn.Dal
             try {
                 // Borramos los registro de la clave foranea
                 return DBRuts.Exec(p_dbcAccess,
-                                   "TNGS_Rivn..MVLCOMBUSTIBLE_FRECALL",
+                                   "TNGS_Mrln..MVLCOMBUSTIBLE_FRECALL",
                                    new DbParameter[] {
                                        p_dbcAccess.MakeParam("@mco_ecd_patente", p_strPatente),
                                        p_dbcAccess.MakeParam("@instante", p_dtInstante),
@@ -387,7 +387,7 @@ namespace Rivn.Dal
             try {
                 // Borramos el registro
                 return DBRuts.Exec(p_dbcAccess,
-                                   "TNGS_Rivn..MVLCOMBUSTIBLE_DROP",
+                                   "TNGS_Mrln..MVLCOMBUSTIBLE_DROP",
                                    new DbParameter[] {
                                        p_dbcAccess.MakeParam("@mco_ecd_patente", p_strPatente),
                                        p_dbcAccess.MakeParam("@mco_fyh_fecha", p_dtFecha),
@@ -415,7 +415,7 @@ namespace Rivn.Dal
             try {
                 // Borramos los registro de la clave foranea
                 return DBRuts.Exec(p_dbcAccess,
-                                   "TNGS_Rivn..MVLCOMBUSTIBLE_FDROP",
+                                   "TNGS_Mrln..MVLCOMBUSTIBLE_FDROP",
                                    new DbParameter[] {
                                        p_dbcAccess.MakeParam("@mco_ecd_patente", p_strPatente),
                                        p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
@@ -440,7 +440,7 @@ namespace Rivn.Dal
             try {
                 // Borramos el registro
                 return DBRuts.Exec(p_dbcAccess,
-                                   "TNGS_Rivn..MVLCOMBUSTIBLE_PACK",
+                                   "TNGS_Mrln..MVLCOMBUSTIBLE_PACK",
                                    new DbParameter[] {
                                        p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
                                    }
@@ -466,7 +466,7 @@ namespace Rivn.Dal
             try {
                 // Borramos los registro de la clave foranea
                 return DBRuts.Exec(p_dbcAccess,
-                                   "TNGS_Rivn..MVLCOMBUSTIBLE_FPACK",
+                                   "TNGS_Mrln..MVLCOMBUSTIBLE_FPACK",
                                    new DbParameter[] {
                                        p_dbcAccess.MakeParam("@mco_ecd_patente", p_strPatente),
                                        p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
@@ -499,7 +499,7 @@ namespace Rivn.Dal
         {
             try {
                 return DBRuts.Exec_DS(p_dbcAccess,
-                                      "TNGS_Rivn..MVLCOMBUSTIBLE_GETLASTFIVEMVLCOMBUS",
+                                      "TNGS_Mrln..MVLCOMBUSTIBLE_GETLASTFIVEMVLCOMBUS",
                                       new DbParameter[] {
                                           p_dbcAccess.MakeParam("@patente", p_strPatente),
                                           p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)

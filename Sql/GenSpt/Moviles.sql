@@ -1,11 +1,11 @@
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 17/08/2015 10:48
-// Sistema     : Rivn
+// Fecha       : 20/04/2018 19:40
+// Sistema     : Mrln
 // Tabla       : Moviles
 //----------------------------------------------------------------------------
-// © 1999-2015 by TNG Software                                      Gndr 5.20
+// © 1999-2018 by TNG Software                                      Gndr 5.20
 //---------------------------------------------------------------------------*/
 
 /* ***************************************************************************
@@ -19,7 +19,7 @@
 /* Selecciono la base en la que se crearan los SPs */
 /*-------------------------------------------------*/
 
-use TNGS_Rivn
+use TNGS_Mrln
 go
 
 ---////////////////////////////////////////////////////////
@@ -60,11 +60,11 @@ begin
                 mov_rcd_modelo,
                 mov_nro_aniofabric,
                 mov_cd1_propio,
-                TNGS_Rivn..Moviles.instante,
-                TNGS_Rivn..Moviles.deleted,
-                TNGS_Rivn..Moviles.usuario,
-                TNGS_Rivn..Moviles.version
-           from TNGS_Rivn..Moviles
+                TNGS_Mrln..Moviles.instante,
+                TNGS_Mrln..Moviles.deleted,
+                TNGS_Mrln..Moviles.usuario,
+                TNGS_Mrln..Moviles.version
+           from TNGS_Mrln..Moviles
           where deleted = 0
           order by mov_ecd_patente
       end
@@ -78,11 +78,11 @@ begin
                 mov_rcd_modelo,
                 mov_nro_aniofabric,
                 mov_cd1_propio,
-                TNGS_Rivn..Moviles.instante,
-                TNGS_Rivn..Moviles.deleted,
-                TNGS_Rivn..Moviles.usuario,
-                TNGS_Rivn..Moviles.version
-           from TNGS_Rivn..Moviles
+                TNGS_Mrln..Moviles.instante,
+                TNGS_Mrln..Moviles.deleted,
+                TNGS_Mrln..Moviles.usuario,
+                TNGS_Mrln..Moviles.version
+           from TNGS_Mrln..Moviles
           order by mov_ecd_patente
       end
 
@@ -129,7 +129,7 @@ as
 begin
 
    Select count(*) as cantidad
-     from TNGS_Rivn..Moviles
+     from TNGS_Mrln..Moviles
     where mov_ecd_patente = @mov_ecd_patente
       and version = @version
 
@@ -185,11 +185,11 @@ begin
                 mov_rcd_modelo,
                 mov_nro_aniofabric,
                 mov_cd1_propio,
-                TNGS_Rivn..Moviles.instante,
-                TNGS_Rivn..Moviles.deleted,
-                TNGS_Rivn..Moviles.usuario,
-                TNGS_Rivn..Moviles.version
-           from TNGS_Rivn..Moviles
+                TNGS_Mrln..Moviles.instante,
+                TNGS_Mrln..Moviles.deleted,
+                TNGS_Mrln..Moviles.usuario,
+                TNGS_Mrln..Moviles.version
+           from TNGS_Mrln..Moviles
           where mov_ecd_patente = @mov_ecd_patente
             and deleted = 0
       end
@@ -203,11 +203,11 @@ begin
                 mov_rcd_modelo,
                 mov_nro_aniofabric,
                 mov_cd1_propio,
-                TNGS_Rivn..Moviles.instante,
-                TNGS_Rivn..Moviles.deleted,
-                TNGS_Rivn..Moviles.usuario,
-                TNGS_Rivn..Moviles.version
-           from TNGS_Rivn..Moviles
+                TNGS_Mrln..Moviles.instante,
+                TNGS_Mrln..Moviles.deleted,
+                TNGS_Mrln..Moviles.usuario,
+                TNGS_Mrln..Moviles.version
+           from TNGS_Mrln..Moviles
           where mov_ecd_patente = @mov_ecd_patente
       end
 
@@ -267,7 +267,7 @@ create procedure dbo.MOVILES_INSERT
 as
 begin
 
-   Insert into TNGS_Rivn..Moviles
+   Insert into TNGS_Mrln..Moviles
    values (
            @mov_ecd_patente,
            @mov_des_des,
@@ -336,7 +336,7 @@ create procedure dbo.MOVILES_UPDATE
 as
 begin
 
-   Update TNGS_Rivn..Moviles
+   Update TNGS_Mrln..Moviles
       set mov_des_des= @mov_des_des,
           mov_txt_anot= @mov_txt_anot,
           mov_des_nrochasis= @mov_des_nrochasis,
@@ -391,7 +391,7 @@ create procedure dbo.MOVILES_DELETE
 as
 begin
 
-   Update TNGS_Rivn..Moviles
+   Update TNGS_Mrln..Moviles
       set deleted = 1,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -440,7 +440,7 @@ create procedure dbo.MOVILES_RECALL
 as
 begin
 
-   Update TNGS_Rivn..Moviles
+   Update TNGS_Mrln..Moviles
       set deleted = 0,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -489,7 +489,7 @@ create procedure dbo.MOVILES_DROP
 as
 begin
 
-   Delete from TNGS_Rivn..Moviles
+   Delete from TNGS_Mrln..Moviles
     where mov_ecd_patente = @mov_ecd_patente
 
 fin:
@@ -532,7 +532,7 @@ create procedure dbo.MOVILES_PACK
 as
 begin
 
-   Delete TNGS_Rivn..Moviles
+   Delete TNGS_Mrln..Moviles
     where deleted = 1
 
 fin:
@@ -581,7 +581,7 @@ begin
    		2 as Orden , 
    		1 as Imagen, 
    		2 as Niveles 
-     		from TNGS_Rivn..Moviles 
+     		from TNGS_Mrln..Moviles 
 
 fin:
 

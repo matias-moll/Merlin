@@ -9,21 +9,21 @@ using System.Xml;
 using TNGS.NetRoutines;
 using TNGS.NetAppBll;
 using TNGS.NetControls;
-using Rivn.Bll;
-namespace Rivn.Shr.Export
+using Mrln.Bll;
+namespace Mrln.Shr.Export
 {
     //----------------------------------------------------------------------------
     //                         TNG Software SHR Generator
     //----------------------------------------------------------------------------
     // Fecha                    : 23/08/2013 15:35
-    // Sistema                  : Rivn
+    // Sistema                  : Mrln
     // Clase para Administrar   : Export
     //----------------------------------------------------------------------------
     // © 1996-2013 by TNG Software                                      Gndr 5.20
     //----------------------------------------------------------------------------
 
     /// <summary>
-    /// Exporta metodos Rivn a sistemas externos
+    /// Exporta metodos Mrln a sistemas externos
     /// </summary>
     public static class Operaciones
     {

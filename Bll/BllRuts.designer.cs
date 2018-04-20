@@ -7,20 +7,20 @@ using System.Data;
 using System.Xml;
 using TNGS.NetRoutines;
 using TNGS.NetAppBll;
-using Rivn;
-using Rivn.Bel;
+using Mrln;
+using Mrln.Bel;
 #endregion
 
-namespace Rivn.Bll
+namespace Mrln.Bll
 {
     //----------------------------------------------------------------------------
     //                         TNG Software BLL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 17/08/2015 10:49
-    // Sistema                  : Rivn
+    // Fecha                    : 20/04/2018 20:34
+    // Sistema                  : Mrln
     // Clase para Administrar   : 
     //----------------------------------------------------------------------------
-    // © 1996-2015 by TNG Software                                      Gndr 5.20
+    // © 1996-2018 by TNG Software                                      Gndr 5.20
     //----------------------------------------------------------------------------
 
     //****************************************************************************

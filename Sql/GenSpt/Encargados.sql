@@ -1,11 +1,11 @@
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 17/08/2015 10:48
-// Sistema     : Rivn
+// Fecha       : 20/04/2018 19:40
+// Sistema     : Mrln
 // Tabla       : Encargados
 //----------------------------------------------------------------------------
-// © 1999-2015 by TNG Software                                      Gndr 5.20
+// © 1999-2018 by TNG Software                                      Gndr 5.20
 //---------------------------------------------------------------------------*/
 
 /* ***************************************************************************
@@ -19,7 +19,7 @@
 /* Selecciono la base en la que se crearan los SPs */
 /*-------------------------------------------------*/
 
-use TNGS_Rivn
+use TNGS_Mrln
 go
 
 ---////////////////////////////////////////////////////////
@@ -54,11 +54,11 @@ begin
       begin
          Select enc_cod_cod,
                 enc_des_des,
-                TNGS_Rivn..Encargados.instante,
-                TNGS_Rivn..Encargados.deleted,
-                TNGS_Rivn..Encargados.usuario,
-                TNGS_Rivn..Encargados.version
-           from TNGS_Rivn..Encargados
+                TNGS_Mrln..Encargados.instante,
+                TNGS_Mrln..Encargados.deleted,
+                TNGS_Mrln..Encargados.usuario,
+                TNGS_Mrln..Encargados.version
+           from TNGS_Mrln..Encargados
           where deleted = 0
           order by enc_cod_cod
       end
@@ -66,11 +66,11 @@ begin
       begin
          Select enc_cod_cod,
                 enc_des_des,
-                TNGS_Rivn..Encargados.instante,
-                TNGS_Rivn..Encargados.deleted,
-                TNGS_Rivn..Encargados.usuario,
-                TNGS_Rivn..Encargados.version
-           from TNGS_Rivn..Encargados
+                TNGS_Mrln..Encargados.instante,
+                TNGS_Mrln..Encargados.deleted,
+                TNGS_Mrln..Encargados.usuario,
+                TNGS_Mrln..Encargados.version
+           from TNGS_Mrln..Encargados
           order by enc_cod_cod
       end
 
@@ -117,7 +117,7 @@ as
 begin
 
    Select count(*) as cantidad
-     from TNGS_Rivn..Encargados
+     from TNGS_Mrln..Encargados
     where enc_cod_cod = @enc_cod_cod
       and version = @version
 
@@ -167,11 +167,11 @@ begin
       begin
          Select enc_cod_cod,
                 enc_des_des,
-                TNGS_Rivn..Encargados.instante,
-                TNGS_Rivn..Encargados.deleted,
-                TNGS_Rivn..Encargados.usuario,
-                TNGS_Rivn..Encargados.version
-           from TNGS_Rivn..Encargados
+                TNGS_Mrln..Encargados.instante,
+                TNGS_Mrln..Encargados.deleted,
+                TNGS_Mrln..Encargados.usuario,
+                TNGS_Mrln..Encargados.version
+           from TNGS_Mrln..Encargados
           where enc_cod_cod = @enc_cod_cod
             and deleted = 0
       end
@@ -179,11 +179,11 @@ begin
       begin
          Select enc_cod_cod,
                 enc_des_des,
-                TNGS_Rivn..Encargados.instante,
-                TNGS_Rivn..Encargados.deleted,
-                TNGS_Rivn..Encargados.usuario,
-                TNGS_Rivn..Encargados.version
-           from TNGS_Rivn..Encargados
+                TNGS_Mrln..Encargados.instante,
+                TNGS_Mrln..Encargados.deleted,
+                TNGS_Mrln..Encargados.usuario,
+                TNGS_Mrln..Encargados.version
+           from TNGS_Mrln..Encargados
           where enc_cod_cod = @enc_cod_cod
       end
 
@@ -228,7 +228,7 @@ as
 begin
 
    Select isnull(max(enc_cod_cod), '0') as enc_cod_cod
-     from TNGS_Rivn..Encargados
+     from TNGS_Mrln..Encargados
 
 fin:
 
@@ -274,7 +274,7 @@ create procedure dbo.ENCARGADOS_INSERT
 as
 begin
 
-   Insert into TNGS_Rivn..Encargados
+   Insert into TNGS_Mrln..Encargados
    values (
            @enc_cod_cod,
            @enc_des_des,
@@ -325,7 +325,7 @@ create procedure dbo.ENCARGADOS_UPDATE
 as
 begin
 
-   Update TNGS_Rivn..Encargados
+   Update TNGS_Mrln..Encargados
       set enc_des_des= @enc_des_des,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -374,7 +374,7 @@ create procedure dbo.ENCARGADOS_DELETE
 as
 begin
 
-   Update TNGS_Rivn..Encargados
+   Update TNGS_Mrln..Encargados
       set deleted = 1,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -423,7 +423,7 @@ create procedure dbo.ENCARGADOS_RECALL
 as
 begin
 
-   Update TNGS_Rivn..Encargados
+   Update TNGS_Mrln..Encargados
       set deleted = 0,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -472,7 +472,7 @@ create procedure dbo.ENCARGADOS_DROP
 as
 begin
 
-   Delete from TNGS_Rivn..Encargados
+   Delete from TNGS_Mrln..Encargados
     where enc_cod_cod = @enc_cod_cod
 
 fin:
@@ -515,7 +515,7 @@ create procedure dbo.ENCARGADOS_PACK
 as
 begin
 
-   Delete TNGS_Rivn..Encargados
+   Delete TNGS_Mrln..Encargados
     where deleted = 1
 
 fin:

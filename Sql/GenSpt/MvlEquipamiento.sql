@@ -1,11 +1,11 @@
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 17/08/2015 10:48
-// Sistema     : Rivn
+// Fecha       : 20/04/2018 19:40
+// Sistema     : Mrln
 // Tabla       : MvlEquipamiento
 //----------------------------------------------------------------------------
-// © 1999-2015 by TNG Software                                      Gndr 5.20
+// © 1999-2018 by TNG Software                                      Gndr 5.20
 //---------------------------------------------------------------------------*/
 
 /* ***************************************************************************
@@ -19,7 +19,7 @@
 /* Selecciono la base en la que se crearan los SPs */
 /*-------------------------------------------------*/
 
-use TNGS_Rivn
+use TNGS_Mrln
 go
 
 ---////////////////////////////////////////////////////////
@@ -56,14 +56,14 @@ begin
                 meq_cod_codequip,
                 eqi_des_des as meq_des_Equip,
                 meq_cd1_esfijo,
-                TNGS_Rivn..MvlEquipamiento.instante,
-                TNGS_Rivn..MvlEquipamiento.deleted,
-                TNGS_Rivn..MvlEquipamiento.usuario,
-                TNGS_Rivn..MvlEquipamiento.version
-           from TNGS_Rivn..MvlEquipamiento
-                join TNGS_Rivn..Equipamiento
+                TNGS_Mrln..MvlEquipamiento.instante,
+                TNGS_Mrln..MvlEquipamiento.deleted,
+                TNGS_Mrln..MvlEquipamiento.usuario,
+                TNGS_Mrln..MvlEquipamiento.version
+           from TNGS_Mrln..MvlEquipamiento
+                join TNGS_Mrln..Equipamiento
                   on meq_cod_codequip = eqi_cod_cod
-          where TNGS_Rivn..MvlEquipamiento.deleted = 0
+          where TNGS_Mrln..MvlEquipamiento.deleted = 0
           order by meq_ecd_patente,
                 meq_cod_codequip
       end
@@ -73,12 +73,12 @@ begin
                 meq_cod_codequip,
                 eqi_des_des as meq_des_Equip,
                 meq_cd1_esfijo,
-                TNGS_Rivn..MvlEquipamiento.instante,
-                TNGS_Rivn..MvlEquipamiento.deleted,
-                TNGS_Rivn..MvlEquipamiento.usuario,
-                TNGS_Rivn..MvlEquipamiento.version
-           from TNGS_Rivn..MvlEquipamiento
-                join TNGS_Rivn..Equipamiento
+                TNGS_Mrln..MvlEquipamiento.instante,
+                TNGS_Mrln..MvlEquipamiento.deleted,
+                TNGS_Mrln..MvlEquipamiento.usuario,
+                TNGS_Mrln..MvlEquipamiento.version
+           from TNGS_Mrln..MvlEquipamiento
+                join TNGS_Mrln..Equipamiento
                   on meq_cod_codequip = eqi_cod_cod
           order by meq_ecd_patente,
                 meq_cod_codequip
@@ -129,7 +129,7 @@ as
 begin
 
    Select count(*) as cantidad
-     from TNGS_Rivn..MvlEquipamiento
+     from TNGS_Mrln..MvlEquipamiento
     where meq_ecd_patente = @meq_ecd_patente
       and meq_cod_codequip = @meq_cod_codequip
       and version = @version
@@ -184,16 +184,16 @@ begin
                 meq_cod_codequip,
                 eqi_des_des as meq_des_Equip,
                 meq_cd1_esfijo,
-                TNGS_Rivn..MvlEquipamiento.instante,
-                TNGS_Rivn..MvlEquipamiento.deleted,
-                TNGS_Rivn..MvlEquipamiento.usuario,
-                TNGS_Rivn..MvlEquipamiento.version
-           from TNGS_Rivn..MvlEquipamiento
-                join TNGS_Rivn..Equipamiento
+                TNGS_Mrln..MvlEquipamiento.instante,
+                TNGS_Mrln..MvlEquipamiento.deleted,
+                TNGS_Mrln..MvlEquipamiento.usuario,
+                TNGS_Mrln..MvlEquipamiento.version
+           from TNGS_Mrln..MvlEquipamiento
+                join TNGS_Mrln..Equipamiento
                   on meq_cod_codequip = eqi_cod_cod
           where meq_ecd_patente = @meq_ecd_patente
             and meq_cod_codequip = @meq_cod_codequip
-            and TNGS_Rivn..MvlEquipamiento.deleted = 0
+            and TNGS_Mrln..MvlEquipamiento.deleted = 0
       end
    else
       begin
@@ -201,12 +201,12 @@ begin
                 meq_cod_codequip,
                 eqi_des_des as meq_des_Equip,
                 meq_cd1_esfijo,
-                TNGS_Rivn..MvlEquipamiento.instante,
-                TNGS_Rivn..MvlEquipamiento.deleted,
-                TNGS_Rivn..MvlEquipamiento.usuario,
-                TNGS_Rivn..MvlEquipamiento.version
-           from TNGS_Rivn..MvlEquipamiento
-                join TNGS_Rivn..Equipamiento
+                TNGS_Mrln..MvlEquipamiento.instante,
+                TNGS_Mrln..MvlEquipamiento.deleted,
+                TNGS_Mrln..MvlEquipamiento.usuario,
+                TNGS_Mrln..MvlEquipamiento.version
+           from TNGS_Mrln..MvlEquipamiento
+                join TNGS_Mrln..Equipamiento
                   on meq_cod_codequip = eqi_cod_cod
           where meq_ecd_patente = @meq_ecd_patente
             and meq_cod_codequip = @meq_cod_codequip
@@ -260,15 +260,15 @@ begin
                 meq_cod_codequip,
                 eqi_des_des as meq_des_Equip,
                 meq_cd1_esfijo,
-                TNGS_Rivn..MvlEquipamiento.instante,
-                TNGS_Rivn..MvlEquipamiento.deleted,
-                TNGS_Rivn..MvlEquipamiento.usuario,
-                TNGS_Rivn..MvlEquipamiento.version
-           from TNGS_Rivn..MvlEquipamiento
-                join TNGS_Rivn..Equipamiento
+                TNGS_Mrln..MvlEquipamiento.instante,
+                TNGS_Mrln..MvlEquipamiento.deleted,
+                TNGS_Mrln..MvlEquipamiento.usuario,
+                TNGS_Mrln..MvlEquipamiento.version
+           from TNGS_Mrln..MvlEquipamiento
+                join TNGS_Mrln..Equipamiento
                   on meq_cod_codequip = eqi_cod_cod
           where meq_ecd_patente = @meq_ecd_patente
-            and TNGS_Rivn..MvlEquipamiento.deleted = 0
+            and TNGS_Mrln..MvlEquipamiento.deleted = 0
           order by meq_cod_codequip
       end
    else
@@ -277,12 +277,12 @@ begin
                 meq_cod_codequip,
                 eqi_des_des as meq_des_Equip,
                 meq_cd1_esfijo,
-                TNGS_Rivn..MvlEquipamiento.instante,
-                TNGS_Rivn..MvlEquipamiento.deleted,
-                TNGS_Rivn..MvlEquipamiento.usuario,
-                TNGS_Rivn..MvlEquipamiento.version
-           from TNGS_Rivn..MvlEquipamiento
-                join TNGS_Rivn..Equipamiento
+                TNGS_Mrln..MvlEquipamiento.instante,
+                TNGS_Mrln..MvlEquipamiento.deleted,
+                TNGS_Mrln..MvlEquipamiento.usuario,
+                TNGS_Mrln..MvlEquipamiento.version
+           from TNGS_Mrln..MvlEquipamiento
+                join TNGS_Mrln..Equipamiento
                   on meq_cod_codequip = eqi_cod_cod
           where meq_ecd_patente = @meq_ecd_patente
           order by meq_cod_codequip
@@ -334,7 +334,7 @@ create procedure dbo.MVLEQUIPAMIENTO_INSERT
 as
 begin
 
-   Insert into TNGS_Rivn..MvlEquipamiento
+   Insert into TNGS_Mrln..MvlEquipamiento
    values (
            @meq_ecd_patente,
            @meq_cod_codequip,
@@ -388,7 +388,7 @@ create procedure dbo.MVLEQUIPAMIENTO_UPDATE
 as
 begin
 
-   Update TNGS_Rivn..MvlEquipamiento
+   Update TNGS_Mrln..MvlEquipamiento
       set meq_cd1_esfijo= @meq_cd1_esfijo,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -440,7 +440,7 @@ create procedure dbo.MVLEQUIPAMIENTO_DELETE
 as
 begin
 
-   Update TNGS_Rivn..MvlEquipamiento
+   Update TNGS_Mrln..MvlEquipamiento
       set deleted = 1,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -497,7 +497,7 @@ begin
          select @instante= getdate()
       end
 
-   Update TNGS_Rivn..MvlEquipamiento
+   Update TNGS_Mrln..MvlEquipamiento
       set deleted = 1,
           version = ((version+1) % 32767),
           instante= @instante,
@@ -548,7 +548,7 @@ create procedure dbo.MVLEQUIPAMIENTO_RECALL
 as
 begin
 
-   Update TNGS_Rivn..MvlEquipamiento
+   Update TNGS_Mrln..MvlEquipamiento
       set deleted = 0,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -602,7 +602,7 @@ begin
 
    if datepart(yyyy, @instante) = 1900
       begin
-         Update TNGS_Rivn..MvlEquipamiento
+         Update TNGS_Mrln..MvlEquipamiento
             set deleted = 0,
                 version = ((version+1) % 32767),
                 instante= getdate(),
@@ -611,7 +611,7 @@ begin
       end
    else
       begin
-         Update TNGS_Rivn..MvlEquipamiento
+         Update TNGS_Mrln..MvlEquipamiento
             set deleted = 0,
                 version = ((version+1) % 32767),
                 instante= getdate(),
@@ -664,7 +664,7 @@ create procedure dbo.MVLEQUIPAMIENTO_DROP
 as
 begin
 
-   Delete from TNGS_Rivn..MvlEquipamiento
+   Delete from TNGS_Mrln..MvlEquipamiento
     where meq_ecd_patente = @meq_ecd_patente
       and meq_cod_codequip = @meq_cod_codequip
 
@@ -710,7 +710,7 @@ create procedure dbo.MVLEQUIPAMIENTO_FDROP
 as
 begin
 
-   Delete from TNGS_Rivn..MvlEquipamiento
+   Delete from TNGS_Mrln..MvlEquipamiento
     where meq_ecd_patente = @meq_ecd_patente
 
 fin:
@@ -753,7 +753,7 @@ create procedure dbo.MVLEQUIPAMIENTO_PACK
 as
 begin
 
-   Delete TNGS_Rivn..MvlEquipamiento
+   Delete TNGS_Mrln..MvlEquipamiento
     where deleted = 1
 
 fin:
@@ -798,7 +798,7 @@ create procedure dbo.MVLEQUIPAMIENTO_FPACK
 as
 begin
 
-   Delete from TNGS_Rivn..MvlEquipamiento
+   Delete from TNGS_Mrln..MvlEquipamiento
     where meq_ecd_patente = @meq_ecd_patente
       and deleted = 1
 
@@ -844,7 +844,7 @@ create procedure dbo.MVLEQUIPAMIENTO_ELIMINAREQUIPAMIENTO
 as
 begin
 
-   DELETE FROM TNGS_Rivn..MvlEquipamiento 
+   DELETE FROM TNGS_Mrln..MvlEquipamiento 
    WHERE @patente=meq_ecd_patente 
 
 fin:
@@ -891,8 +891,8 @@ begin
 
    SELECT TOP 5 eqi_des_des 
     
-   FROM TNGS_Rivn..MvlEquipamiento 
-   JOIN TNGS_Rivn..Equipamiento 
+   FROM TNGS_Mrln..MvlEquipamiento 
+   JOIN TNGS_Mrln..Equipamiento 
    on meq_cod_codequip = eqi_cod_cod 
    WHERE meq_ecd_patente = @patente 
    ORDER BY eqi_des_des 

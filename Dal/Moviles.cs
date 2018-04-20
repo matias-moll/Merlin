@@ -5,17 +5,17 @@ using System.Data.Common;
 using TNGS.NetRoutines;
 #endregion
 
-namespace Rivn.Dal
+namespace Mrln.Dal
 {
     //----------------------------------------------------------------------------
     //                         TNG Software DAL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 17/08/2015 10:49
-    // Sistema                  : Rivn
+    // Fecha                    : 20/04/2018 20:27
+    // Sistema                  : Mrln
     // Clase para Administrar   : Moviles del Sistema
     // Basada en la Tabla       : Moviles
     //----------------------------------------------------------------------------
-    // © 1996-2015 by TNG Software                                      Gndr 5.20
+    // © 1996-2018 by TNG Software                                      Gndr 5.20
     //----------------------------------------------------------------------------
 
     //****************************************************************************
@@ -54,7 +54,7 @@ namespace Rivn.Dal
             try {
                 // Recuperamos todos los registros
                 return DBRuts.Exec_DS(p_dbcAccess,
-                                      "TNGS_Rivn..MOVILES_UP",
+                                      "TNGS_Mrln..MOVILES_UP",
                                       new DbParameter[] {
                                           p_dbcAccess.MakeParam("@onlyactive", (p_bOnlyActive ? 1 : 0))
                                       },
@@ -86,7 +86,7 @@ namespace Rivn.Dal
             try {
                 // Verificamos el número de versión
                 DBRuts.Exec_DS(p_dbcAccess,
-                               "TNGS_Rivn..MOVILES_CHKVERSION",
+                               "TNGS_Mrln..MOVILES_CHKVERSION",
                                new DbParameter[] {
                                    p_dbcAccess.MakeParam("@mov_ecd_patente", p_strPatente),
                                    p_dbcAccess.MakeParam("@version", p_iFxdVersion)
@@ -118,7 +118,7 @@ namespace Rivn.Dal
             try {
                 // Recuperamos el registro de la clave
                 return DBRuts.Exec_DS(p_dbcAccess,
-                                      "TNGS_Rivn..MOVILES_SEARCH",
+                                      "TNGS_Mrln..MOVILES_SEARCH",
                                       new DbParameter[] {
                                           p_dbcAccess.MakeParam("@mov_ecd_patente", p_strPatente),
                                           p_dbcAccess.MakeParam("@onlyactive", (p_bOnlyActive ? 1 : 0))
@@ -162,7 +162,7 @@ namespace Rivn.Dal
             try {
                 // Insertamos el registro
                 return DBRuts.Exec(p_dbcAccess,
-                                   "TNGS_Rivn..MOVILES_INSERT",
+                                   "TNGS_Mrln..MOVILES_INSERT",
                                    new DbParameter[] {
                                        p_dbcAccess.MakeParam("@mov_ecd_patente", p_strPatente),
                                        p_dbcAccess.MakeParam("@mov_des_des", p_strDes),
@@ -210,7 +210,7 @@ namespace Rivn.Dal
             try {
                 // Modificamos el registro
                 return DBRuts.Exec(p_dbcAccess,
-                                   "TNGS_Rivn..MOVILES_UPDATE",
+                                   "TNGS_Mrln..MOVILES_UPDATE",
                                    new DbParameter[] {
                                        p_dbcAccess.MakeParam("@mov_ecd_patente", p_strPatente),
                                        p_dbcAccess.MakeParam("@mov_des_des", p_strDes),
@@ -244,7 +244,7 @@ namespace Rivn.Dal
             try {
                 // Borramos el registro
                 return DBRuts.Exec(p_dbcAccess,
-                                   "TNGS_Rivn..MOVILES_DELETE",
+                                   "TNGS_Mrln..MOVILES_DELETE",
                                    new DbParameter[] {
                                        p_dbcAccess.MakeParam("@mov_ecd_patente", p_strPatente),
                                        p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
@@ -271,7 +271,7 @@ namespace Rivn.Dal
             try {
                 // Borramos el registro
                 return DBRuts.Exec(p_dbcAccess,
-                                   "TNGS_Rivn..MOVILES_RECALL",
+                                   "TNGS_Mrln..MOVILES_RECALL",
                                    new DbParameter[] {
                                        p_dbcAccess.MakeParam("@mov_ecd_patente", p_strPatente),
                                        p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
@@ -298,7 +298,7 @@ namespace Rivn.Dal
             try {
                 // Borramos el registro
                 return DBRuts.Exec(p_dbcAccess,
-                                   "TNGS_Rivn..MOVILES_DROP",
+                                   "TNGS_Mrln..MOVILES_DROP",
                                    new DbParameter[] {
                                        p_dbcAccess.MakeParam("@mov_ecd_patente", p_strPatente),
                                        p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
@@ -323,7 +323,7 @@ namespace Rivn.Dal
             try {
                 // Borramos el registro
                 return DBRuts.Exec(p_dbcAccess,
-                                   "TNGS_Rivn..MOVILES_PACK",
+                                   "TNGS_Mrln..MOVILES_PACK",
                                    new DbParameter[] {
                                        p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
                                    }
@@ -353,7 +353,7 @@ namespace Rivn.Dal
         {
             try {
                 return DBRuts.Exec_DS(p_dbcAccess,
-                                      "TNGS_Rivn..MOVILES_GETMOVILESTREE",
+                                      "TNGS_Mrln..MOVILES_GETMOVILESTREE",
                                       new DbParameter[] {
                                           p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
                                       },

@@ -5,17 +5,17 @@ using System.Data.Common;
 using TNGS.NetRoutines;
 #endregion
 
-namespace Rivn.Dal
+namespace Mrln.Dal
 {
     //----------------------------------------------------------------------------
     //                         TNG Software DAL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 17/08/2015 10:49
-    // Sistema                  : Rivn
+    // Fecha                    : 20/04/2018 20:27
+    // Sistema                  : Mrln
     // Clase para Administrar   : Estados de los Moviles
     // Basada en la Tabla       : Estados
     //----------------------------------------------------------------------------
-    // © 1996-2015 by TNG Software                                      Gndr 5.20
+    // © 1996-2018 by TNG Software                                      Gndr 5.20
     //----------------------------------------------------------------------------
 
     //****************************************************************************
@@ -54,7 +54,7 @@ namespace Rivn.Dal
             try {
                 // Recuperamos todos los registros
                 return DBRuts.Exec_DS(p_dbcAccess,
-                                      "TNGS_Rivn..ESTADOS_UP",
+                                      "TNGS_Mrln..ESTADOS_UP",
                                       new DbParameter[] {
                                           p_dbcAccess.MakeParam("@onlyactive", (p_bOnlyActive ? 1 : 0))
                                       },
@@ -86,7 +86,7 @@ namespace Rivn.Dal
             try {
                 // Verificamos el número de versión
                 DBRuts.Exec_DS(p_dbcAccess,
-                               "TNGS_Rivn..ESTADOS_CHKVERSION",
+                               "TNGS_Mrln..ESTADOS_CHKVERSION",
                                new DbParameter[] {
                                    p_dbcAccess.MakeParam("@est_rcd_cod", p_strCod),
                                    p_dbcAccess.MakeParam("@version", p_iFxdVersion)
@@ -118,7 +118,7 @@ namespace Rivn.Dal
             try {
                 // Recuperamos el registro de la clave
                 return DBRuts.Exec_DS(p_dbcAccess,
-                                      "TNGS_Rivn..ESTADOS_SEARCH",
+                                      "TNGS_Mrln..ESTADOS_SEARCH",
                                       new DbParameter[] {
                                           p_dbcAccess.MakeParam("@est_rcd_cod", p_strCod),
                                           p_dbcAccess.MakeParam("@onlyactive", (p_bOnlyActive ? 1 : 0))
@@ -148,7 +148,7 @@ namespace Rivn.Dal
             try {
                 // Recuperamos la clave mas alta de la tabla
                 DBRuts.Exec_DS(p_dbcAccess,
-                               "TNGS_Rivn..ESTADOS_GETMAXKEY",
+                               "TNGS_Mrln..ESTADOS_GETMAXKEY",
                                new DbParameter[] {
                                    p_dbcAccess.MakeParam("@dummy", "X")
                                },
@@ -182,7 +182,7 @@ namespace Rivn.Dal
             try {
                 // Insertamos el registro
                 return DBRuts.Exec(p_dbcAccess,
-                                   "TNGS_Rivn..ESTADOS_INSERT",
+                                   "TNGS_Mrln..ESTADOS_INSERT",
                                    new DbParameter[] {
                                        p_dbcAccess.MakeParam("@est_rcd_cod", p_strCod),
                                        p_dbcAccess.MakeParam("@est_des_des", p_strDes),
@@ -218,7 +218,7 @@ namespace Rivn.Dal
             try {
                 // Modificamos el registro
                 return DBRuts.Exec(p_dbcAccess,
-                                   "TNGS_Rivn..ESTADOS_UPDATE",
+                                   "TNGS_Mrln..ESTADOS_UPDATE",
                                    new DbParameter[] {
                                        p_dbcAccess.MakeParam("@est_rcd_cod", p_strCod),
                                        p_dbcAccess.MakeParam("@est_des_des", p_strDes),
@@ -248,7 +248,7 @@ namespace Rivn.Dal
             try {
                 // Borramos el registro
                 return DBRuts.Exec(p_dbcAccess,
-                                   "TNGS_Rivn..ESTADOS_DELETE",
+                                   "TNGS_Mrln..ESTADOS_DELETE",
                                    new DbParameter[] {
                                        p_dbcAccess.MakeParam("@est_rcd_cod", p_strCod),
                                        p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
@@ -275,7 +275,7 @@ namespace Rivn.Dal
             try {
                 // Borramos el registro
                 return DBRuts.Exec(p_dbcAccess,
-                                   "TNGS_Rivn..ESTADOS_RECALL",
+                                   "TNGS_Mrln..ESTADOS_RECALL",
                                    new DbParameter[] {
                                        p_dbcAccess.MakeParam("@est_rcd_cod", p_strCod),
                                        p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
@@ -302,7 +302,7 @@ namespace Rivn.Dal
             try {
                 // Borramos el registro
                 return DBRuts.Exec(p_dbcAccess,
-                                   "TNGS_Rivn..ESTADOS_DROP",
+                                   "TNGS_Mrln..ESTADOS_DROP",
                                    new DbParameter[] {
                                        p_dbcAccess.MakeParam("@est_rcd_cod", p_strCod),
                                        p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
@@ -327,7 +327,7 @@ namespace Rivn.Dal
             try {
                 // Borramos el registro
                 return DBRuts.Exec(p_dbcAccess,
-                                   "TNGS_Rivn..ESTADOS_PACK",
+                                   "TNGS_Mrln..ESTADOS_PACK",
                                    new DbParameter[] {
                                        p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
                                    }

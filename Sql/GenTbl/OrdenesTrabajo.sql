@@ -1,11 +1,11 @@
 /*----------------------------------------------------------------------------
 //                 TNG Software Script Generator (Tablas)                     
 //----------------------------------------------------------------------------
-// Fecha              : 11/07/2015 08:29
-// Base de Datos      : TNGS_Rivn
+// Fecha              : 20/04/2018 19:32
+// Base de Datos      : TNGS_Mrln
 // Tabla              : OrdenesTrabajo
 //----------------------------------------------------------------------------
-// © 1999-2015 by TNG Software                                      Gndr 5.20
+// © 1999-2018 by TNG Software                                      Gndr 5.20
 //---------------------------------------------------------------------------*/
 
 /* ***************************************************************************
@@ -19,7 +19,7 @@
 /* Selecciono la base en la que se creara la tabla */
 /*-------------------------------------------------*/
 
-use TNGS_Rivn
+use TNGS_Mrln
 go
 
 /*-----------------------------------*/
@@ -44,6 +44,7 @@ create table OrdenesTrabajo
       odt_fyh_fecapertura tngs_fecyhor,
       odt_nom_operador tngs_nombre,
       odt_fyh_feccierre tngs_fecyhor,
+      odt_cod_encargado tngs_codigo,
       instante tngs_fecyhor,
       deleted tngs_borrado,
       usuario tngs_nombre,

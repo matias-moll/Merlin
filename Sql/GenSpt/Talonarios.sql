@@ -1,11 +1,11 @@
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 17/08/2015 10:48
-// Sistema     : Rivn
+// Fecha       : 20/04/2018 19:40
+// Sistema     : Mrln
 // Tabla       : Talonarios
 //----------------------------------------------------------------------------
-// © 1999-2015 by TNG Software                                      Gndr 5.20
+// © 1999-2018 by TNG Software                                      Gndr 5.20
 //---------------------------------------------------------------------------*/
 
 /* ***************************************************************************
@@ -19,7 +19,7 @@
 /* Selecciono la base en la que se crearan los SPs */
 /*-------------------------------------------------*/
 
-use TNGS_Rivn
+use TNGS_Mrln
 go
 
 ---////////////////////////////////////////////////////////
@@ -58,11 +58,11 @@ begin
                 tal_nro_valor,
                 tal_fyh_referencia,
                 tal_rob_detalle,
-                TNGS_Rivn..Talonarios.instante,
-                TNGS_Rivn..Talonarios.deleted,
-                TNGS_Rivn..Talonarios.usuario,
-                TNGS_Rivn..Talonarios.version
-           from TNGS_Rivn..Talonarios
+                TNGS_Mrln..Talonarios.instante,
+                TNGS_Mrln..Talonarios.deleted,
+                TNGS_Mrln..Talonarios.usuario,
+                TNGS_Mrln..Talonarios.version
+           from TNGS_Mrln..Talonarios
           where deleted = 0
           order by tal_xcd_codigo
       end
@@ -74,11 +74,11 @@ begin
                 tal_nro_valor,
                 tal_fyh_referencia,
                 tal_rob_detalle,
-                TNGS_Rivn..Talonarios.instante,
-                TNGS_Rivn..Talonarios.deleted,
-                TNGS_Rivn..Talonarios.usuario,
-                TNGS_Rivn..Talonarios.version
-           from TNGS_Rivn..Talonarios
+                TNGS_Mrln..Talonarios.instante,
+                TNGS_Mrln..Talonarios.deleted,
+                TNGS_Mrln..Talonarios.usuario,
+                TNGS_Mrln..Talonarios.version
+           from TNGS_Mrln..Talonarios
           order by tal_xcd_codigo
       end
 
@@ -125,7 +125,7 @@ as
 begin
 
    Select count(*) as cantidad
-     from TNGS_Rivn..Talonarios
+     from TNGS_Mrln..Talonarios
     where tal_xcd_codigo = @tal_xcd_codigo
       and version = @version
 
@@ -179,11 +179,11 @@ begin
                 tal_nro_valor,
                 tal_fyh_referencia,
                 tal_rob_detalle,
-                TNGS_Rivn..Talonarios.instante,
-                TNGS_Rivn..Talonarios.deleted,
-                TNGS_Rivn..Talonarios.usuario,
-                TNGS_Rivn..Talonarios.version
-           from TNGS_Rivn..Talonarios
+                TNGS_Mrln..Talonarios.instante,
+                TNGS_Mrln..Talonarios.deleted,
+                TNGS_Mrln..Talonarios.usuario,
+                TNGS_Mrln..Talonarios.version
+           from TNGS_Mrln..Talonarios with (XLOCK)
           where tal_xcd_codigo = @tal_xcd_codigo
             and deleted = 0
       end
@@ -195,11 +195,11 @@ begin
                 tal_nro_valor,
                 tal_fyh_referencia,
                 tal_rob_detalle,
-                TNGS_Rivn..Talonarios.instante,
-                TNGS_Rivn..Talonarios.deleted,
-                TNGS_Rivn..Talonarios.usuario,
-                TNGS_Rivn..Talonarios.version
-           from TNGS_Rivn..Talonarios
+                TNGS_Mrln..Talonarios.instante,
+                TNGS_Mrln..Talonarios.deleted,
+                TNGS_Mrln..Talonarios.usuario,
+                TNGS_Mrln..Talonarios.version
+           from TNGS_Mrln..Talonarios with (XLOCK)
           where tal_xcd_codigo = @tal_xcd_codigo
       end
 
@@ -255,7 +255,7 @@ create procedure dbo.TALONARIOS_INSERT
 as
 begin
 
-   Insert into TNGS_Rivn..Talonarios
+   Insert into TNGS_Mrln..Talonarios
    values (
            @tal_xcd_codigo,
            @tal_des_descripcion,
@@ -318,7 +318,7 @@ create procedure dbo.TALONARIOS_UPDATE
 as
 begin
 
-   Update TNGS_Rivn..Talonarios
+   Update TNGS_Mrln..Talonarios
       set tal_des_descripcion= @tal_des_descripcion,
           tal_cd1_tipo= @tal_cd1_tipo,
           tal_nro_valor= @tal_nro_valor,
@@ -371,7 +371,7 @@ create procedure dbo.TALONARIOS_DELETE
 as
 begin
 
-   Update TNGS_Rivn..Talonarios
+   Update TNGS_Mrln..Talonarios
       set deleted = 1,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -420,7 +420,7 @@ create procedure dbo.TALONARIOS_RECALL
 as
 begin
 
-   Update TNGS_Rivn..Talonarios
+   Update TNGS_Mrln..Talonarios
       set deleted = 0,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -469,7 +469,7 @@ create procedure dbo.TALONARIOS_DROP
 as
 begin
 
-   Delete from TNGS_Rivn..Talonarios
+   Delete from TNGS_Mrln..Talonarios
     where tal_xcd_codigo = @tal_xcd_codigo
 
 fin:
@@ -512,7 +512,7 @@ create procedure dbo.TALONARIOS_PACK
 as
 begin
 
-   Delete TNGS_Rivn..Talonarios
+   Delete TNGS_Mrln..Talonarios
     where deleted = 1
 
 fin:

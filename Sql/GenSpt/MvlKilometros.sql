@@ -1,11 +1,11 @@
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 17/08/2015 10:48
-// Sistema     : Rivn
+// Fecha       : 20/04/2018 19:40
+// Sistema     : Mrln
 // Tabla       : MvlKilometros
 //----------------------------------------------------------------------------
-// © 1999-2015 by TNG Software                                      Gndr 5.20
+// © 1999-2018 by TNG Software                                      Gndr 5.20
 //---------------------------------------------------------------------------*/
 
 /* ***************************************************************************
@@ -19,7 +19,7 @@
 /* Selecciono la base en la que se crearan los SPs */
 /*-------------------------------------------------*/
 
-use TNGS_Rivn
+use TNGS_Mrln
 go
 
 ---////////////////////////////////////////////////////////
@@ -55,11 +55,11 @@ begin
          Select mkm_ecd_patente,
                 mkm_fyh_fecha,
                 mkm_nro_km,
-                TNGS_Rivn..MvlKilometros.instante,
-                TNGS_Rivn..MvlKilometros.deleted,
-                TNGS_Rivn..MvlKilometros.usuario,
-                TNGS_Rivn..MvlKilometros.version
-           from TNGS_Rivn..MvlKilometros
+                TNGS_Mrln..MvlKilometros.instante,
+                TNGS_Mrln..MvlKilometros.deleted,
+                TNGS_Mrln..MvlKilometros.usuario,
+                TNGS_Mrln..MvlKilometros.version
+           from TNGS_Mrln..MvlKilometros
           where deleted = 0
           order by mkm_ecd_patente,
                 mkm_fyh_fecha
@@ -69,11 +69,11 @@ begin
          Select mkm_ecd_patente,
                 mkm_fyh_fecha,
                 mkm_nro_km,
-                TNGS_Rivn..MvlKilometros.instante,
-                TNGS_Rivn..MvlKilometros.deleted,
-                TNGS_Rivn..MvlKilometros.usuario,
-                TNGS_Rivn..MvlKilometros.version
-           from TNGS_Rivn..MvlKilometros
+                TNGS_Mrln..MvlKilometros.instante,
+                TNGS_Mrln..MvlKilometros.deleted,
+                TNGS_Mrln..MvlKilometros.usuario,
+                TNGS_Mrln..MvlKilometros.version
+           from TNGS_Mrln..MvlKilometros
           order by mkm_ecd_patente,
                 mkm_fyh_fecha
       end
@@ -123,7 +123,7 @@ as
 begin
 
    Select count(*) as cantidad
-     from TNGS_Rivn..MvlKilometros
+     from TNGS_Mrln..MvlKilometros
     where mkm_ecd_patente = @mkm_ecd_patente
       and mkm_fyh_fecha = @mkm_fyh_fecha
       and version = @version
@@ -177,11 +177,11 @@ begin
          Select mkm_ecd_patente,
                 mkm_fyh_fecha,
                 mkm_nro_km,
-                TNGS_Rivn..MvlKilometros.instante,
-                TNGS_Rivn..MvlKilometros.deleted,
-                TNGS_Rivn..MvlKilometros.usuario,
-                TNGS_Rivn..MvlKilometros.version
-           from TNGS_Rivn..MvlKilometros
+                TNGS_Mrln..MvlKilometros.instante,
+                TNGS_Mrln..MvlKilometros.deleted,
+                TNGS_Mrln..MvlKilometros.usuario,
+                TNGS_Mrln..MvlKilometros.version
+           from TNGS_Mrln..MvlKilometros
           where mkm_ecd_patente = @mkm_ecd_patente
             and mkm_fyh_fecha = @mkm_fyh_fecha
             and deleted = 0
@@ -191,11 +191,11 @@ begin
          Select mkm_ecd_patente,
                 mkm_fyh_fecha,
                 mkm_nro_km,
-                TNGS_Rivn..MvlKilometros.instante,
-                TNGS_Rivn..MvlKilometros.deleted,
-                TNGS_Rivn..MvlKilometros.usuario,
-                TNGS_Rivn..MvlKilometros.version
-           from TNGS_Rivn..MvlKilometros
+                TNGS_Mrln..MvlKilometros.instante,
+                TNGS_Mrln..MvlKilometros.deleted,
+                TNGS_Mrln..MvlKilometros.usuario,
+                TNGS_Mrln..MvlKilometros.version
+           from TNGS_Mrln..MvlKilometros
           where mkm_ecd_patente = @mkm_ecd_patente
             and mkm_fyh_fecha = @mkm_fyh_fecha
       end
@@ -247,11 +247,11 @@ begin
          Select mkm_ecd_patente,
                 mkm_fyh_fecha,
                 mkm_nro_km,
-                TNGS_Rivn..MvlKilometros.instante,
-                TNGS_Rivn..MvlKilometros.deleted,
-                TNGS_Rivn..MvlKilometros.usuario,
-                TNGS_Rivn..MvlKilometros.version
-           from TNGS_Rivn..MvlKilometros
+                TNGS_Mrln..MvlKilometros.instante,
+                TNGS_Mrln..MvlKilometros.deleted,
+                TNGS_Mrln..MvlKilometros.usuario,
+                TNGS_Mrln..MvlKilometros.version
+           from TNGS_Mrln..MvlKilometros
           where mkm_ecd_patente = @mkm_ecd_patente
             and deleted = 0
           order by mkm_fyh_fecha
@@ -261,11 +261,11 @@ begin
          Select mkm_ecd_patente,
                 mkm_fyh_fecha,
                 mkm_nro_km,
-                TNGS_Rivn..MvlKilometros.instante,
-                TNGS_Rivn..MvlKilometros.deleted,
-                TNGS_Rivn..MvlKilometros.usuario,
-                TNGS_Rivn..MvlKilometros.version
-           from TNGS_Rivn..MvlKilometros
+                TNGS_Mrln..MvlKilometros.instante,
+                TNGS_Mrln..MvlKilometros.deleted,
+                TNGS_Mrln..MvlKilometros.usuario,
+                TNGS_Mrln..MvlKilometros.version
+           from TNGS_Mrln..MvlKilometros
           where mkm_ecd_patente = @mkm_ecd_patente
           order by mkm_fyh_fecha
       end
@@ -316,7 +316,7 @@ create procedure dbo.MVLKILOMETROS_INSERT
 as
 begin
 
-   Insert into TNGS_Rivn..MvlKilometros
+   Insert into TNGS_Mrln..MvlKilometros
    values (
            @mkm_ecd_patente,
            @mkm_fyh_fecha,
@@ -370,7 +370,7 @@ create procedure dbo.MVLKILOMETROS_UPDATE
 as
 begin
 
-   Update TNGS_Rivn..MvlKilometros
+   Update TNGS_Mrln..MvlKilometros
       set mkm_nro_km= @mkm_nro_km,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -422,7 +422,7 @@ create procedure dbo.MVLKILOMETROS_DELETE
 as
 begin
 
-   Update TNGS_Rivn..MvlKilometros
+   Update TNGS_Mrln..MvlKilometros
       set deleted = 1,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -479,7 +479,7 @@ begin
          select @instante= getdate()
       end
 
-   Update TNGS_Rivn..MvlKilometros
+   Update TNGS_Mrln..MvlKilometros
       set deleted = 1,
           version = ((version+1) % 32767),
           instante= @instante,
@@ -530,7 +530,7 @@ create procedure dbo.MVLKILOMETROS_RECALL
 as
 begin
 
-   Update TNGS_Rivn..MvlKilometros
+   Update TNGS_Mrln..MvlKilometros
       set deleted = 0,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -584,7 +584,7 @@ begin
 
    if datepart(yyyy, @instante) = 1900
       begin
-         Update TNGS_Rivn..MvlKilometros
+         Update TNGS_Mrln..MvlKilometros
             set deleted = 0,
                 version = ((version+1) % 32767),
                 instante= getdate(),
@@ -593,7 +593,7 @@ begin
       end
    else
       begin
-         Update TNGS_Rivn..MvlKilometros
+         Update TNGS_Mrln..MvlKilometros
             set deleted = 0,
                 version = ((version+1) % 32767),
                 instante= getdate(),
@@ -646,7 +646,7 @@ create procedure dbo.MVLKILOMETROS_DROP
 as
 begin
 
-   Delete from TNGS_Rivn..MvlKilometros
+   Delete from TNGS_Mrln..MvlKilometros
     where mkm_ecd_patente = @mkm_ecd_patente
       and mkm_fyh_fecha = @mkm_fyh_fecha
 
@@ -692,7 +692,7 @@ create procedure dbo.MVLKILOMETROS_FDROP
 as
 begin
 
-   Delete from TNGS_Rivn..MvlKilometros
+   Delete from TNGS_Mrln..MvlKilometros
     where mkm_ecd_patente = @mkm_ecd_patente
 
 fin:
@@ -735,7 +735,7 @@ create procedure dbo.MVLKILOMETROS_PACK
 as
 begin
 
-   Delete TNGS_Rivn..MvlKilometros
+   Delete TNGS_Mrln..MvlKilometros
     where deleted = 1
 
 fin:
@@ -780,7 +780,7 @@ create procedure dbo.MVLKILOMETROS_FPACK
 as
 begin
 
-   Delete from TNGS_Rivn..MvlKilometros
+   Delete from TNGS_Mrln..MvlKilometros
     where mkm_ecd_patente = @mkm_ecd_patente
       and deleted = 1
 

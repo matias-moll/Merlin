@@ -5,17 +5,17 @@ using System.Data.Common;
 using TNGS.NetRoutines;
 #endregion
 
-namespace Rivn.Dal
+namespace Mrln.Dal
 {
     //----------------------------------------------------------------------------
     //                         TNG Software DAL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 17/08/2015 10:49
-    // Sistema                  : Rivn
+    // Fecha                    : 20/04/2018 20:27
+    // Sistema                  : Mrln
     // Clase para Administrar   : Moviles Equipamiento
     // Basada en la Tabla       : MvlEquipamiento
     //----------------------------------------------------------------------------
-    // © 1996-2015 by TNG Software                                      Gndr 5.20
+    // © 1996-2018 by TNG Software                                      Gndr 5.20
     //----------------------------------------------------------------------------
 
     //****************************************************************************
@@ -54,7 +54,7 @@ namespace Rivn.Dal
             try {
                 // Recuperamos todos los registros
                 return DBRuts.Exec_DS(p_dbcAccess,
-                                      "TNGS_Rivn..MVLEQUIPAMIENTO_UP",
+                                      "TNGS_Mrln..MVLEQUIPAMIENTO_UP",
                                       new DbParameter[] {
                                           p_dbcAccess.MakeParam("@onlyactive", (p_bOnlyActive ? 1 : 0))
                                       },
@@ -88,7 +88,7 @@ namespace Rivn.Dal
             try {
                 // Verificamos el número de versión
                 DBRuts.Exec_DS(p_dbcAccess,
-                               "TNGS_Rivn..MVLEQUIPAMIENTO_CHKVERSION",
+                               "TNGS_Mrln..MVLEQUIPAMIENTO_CHKVERSION",
                                new DbParameter[] {
                                    p_dbcAccess.MakeParam("@meq_ecd_patente", p_strPatente),
                                    p_dbcAccess.MakeParam("@meq_cod_codequip", p_strCodequip),
@@ -123,7 +123,7 @@ namespace Rivn.Dal
             try {
                 // Recuperamos el registro de la clave
                 return DBRuts.Exec_DS(p_dbcAccess,
-                                      "TNGS_Rivn..MVLEQUIPAMIENTO_SEARCH",
+                                      "TNGS_Mrln..MVLEQUIPAMIENTO_SEARCH",
                                       new DbParameter[] {
                                           p_dbcAccess.MakeParam("@meq_ecd_patente", p_strPatente),
                                           p_dbcAccess.MakeParam("@meq_cod_codequip", p_strCodequip),
@@ -157,7 +157,7 @@ namespace Rivn.Dal
             try {
                 // Recuperamos los registro de la clave foranea
                 return DBRuts.Exec_DS(p_dbcAccess,
-                                      "TNGS_Rivn..MVLEQUIPAMIENTO_FSEARCH",
+                                      "TNGS_Mrln..MVLEQUIPAMIENTO_FSEARCH",
                                       new DbParameter[] {
                                           p_dbcAccess.MakeParam("@meq_ecd_patente", p_strPatente),
                                           p_dbcAccess.MakeParam("@onlyactive", (p_bOnlyActive ? 1 : 0))
@@ -191,7 +191,7 @@ namespace Rivn.Dal
             try {
                 // Insertamos el registro
                 return DBRuts.Exec(p_dbcAccess,
-                                   "TNGS_Rivn..MVLEQUIPAMIENTO_INSERT",
+                                   "TNGS_Mrln..MVLEQUIPAMIENTO_INSERT",
                                    new DbParameter[] {
                                        p_dbcAccess.MakeParam("@meq_ecd_patente", p_strPatente),
                                        p_dbcAccess.MakeParam("@meq_cod_codequip", p_strCodequip),
@@ -224,7 +224,7 @@ namespace Rivn.Dal
             try {
                 // Modificamos el registro
                 return DBRuts.Exec(p_dbcAccess,
-                                   "TNGS_Rivn..MVLEQUIPAMIENTO_UPDATE",
+                                   "TNGS_Mrln..MVLEQUIPAMIENTO_UPDATE",
                                    new DbParameter[] {
                                        p_dbcAccess.MakeParam("@meq_ecd_patente", p_strPatente),
                                        p_dbcAccess.MakeParam("@meq_cod_codequip", p_strCodequip),
@@ -255,7 +255,7 @@ namespace Rivn.Dal
             try {
                 // Borramos el registro
                 return DBRuts.Exec(p_dbcAccess,
-                                   "TNGS_Rivn..MVLEQUIPAMIENTO_DELETE",
+                                   "TNGS_Mrln..MVLEQUIPAMIENTO_DELETE",
                                    new DbParameter[] {
                                        p_dbcAccess.MakeParam("@meq_ecd_patente", p_strPatente),
                                        p_dbcAccess.MakeParam("@meq_cod_codequip", p_strCodequip),
@@ -285,7 +285,7 @@ namespace Rivn.Dal
             try {
                 // Borramos los registro de la clave foranea
                 return DBRuts.Exec(p_dbcAccess,
-                                   "TNGS_Rivn..MVLEQUIPAMIENTO_FDELETE",
+                                   "TNGS_Mrln..MVLEQUIPAMIENTO_FDELETE",
                                    new DbParameter[] {
                                        p_dbcAccess.MakeParam("@meq_ecd_patente", p_strPatente),
                                        p_dbcAccess.MakeParam("@instante", p_dtInstante),
@@ -315,7 +315,7 @@ namespace Rivn.Dal
             try {
                 // Borramos el registro
                 return DBRuts.Exec(p_dbcAccess,
-                                   "TNGS_Rivn..MVLEQUIPAMIENTO_RECALL",
+                                   "TNGS_Mrln..MVLEQUIPAMIENTO_RECALL",
                                    new DbParameter[] {
                                        p_dbcAccess.MakeParam("@meq_ecd_patente", p_strPatente),
                                        p_dbcAccess.MakeParam("@meq_cod_codequip", p_strCodequip),
@@ -345,7 +345,7 @@ namespace Rivn.Dal
             try {
                 // Borramos los registro de la clave foranea
                 return DBRuts.Exec(p_dbcAccess,
-                                   "TNGS_Rivn..MVLEQUIPAMIENTO_FRECALL",
+                                   "TNGS_Mrln..MVLEQUIPAMIENTO_FRECALL",
                                    new DbParameter[] {
                                        p_dbcAccess.MakeParam("@meq_ecd_patente", p_strPatente),
                                        p_dbcAccess.MakeParam("@instante", p_dtInstante),
@@ -375,7 +375,7 @@ namespace Rivn.Dal
             try {
                 // Borramos el registro
                 return DBRuts.Exec(p_dbcAccess,
-                                   "TNGS_Rivn..MVLEQUIPAMIENTO_DROP",
+                                   "TNGS_Mrln..MVLEQUIPAMIENTO_DROP",
                                    new DbParameter[] {
                                        p_dbcAccess.MakeParam("@meq_ecd_patente", p_strPatente),
                                        p_dbcAccess.MakeParam("@meq_cod_codequip", p_strCodequip),
@@ -403,7 +403,7 @@ namespace Rivn.Dal
             try {
                 // Borramos los registro de la clave foranea
                 return DBRuts.Exec(p_dbcAccess,
-                                   "TNGS_Rivn..MVLEQUIPAMIENTO_FDROP",
+                                   "TNGS_Mrln..MVLEQUIPAMIENTO_FDROP",
                                    new DbParameter[] {
                                        p_dbcAccess.MakeParam("@meq_ecd_patente", p_strPatente),
                                        p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
@@ -428,7 +428,7 @@ namespace Rivn.Dal
             try {
                 // Borramos el registro
                 return DBRuts.Exec(p_dbcAccess,
-                                   "TNGS_Rivn..MVLEQUIPAMIENTO_PACK",
+                                   "TNGS_Mrln..MVLEQUIPAMIENTO_PACK",
                                    new DbParameter[] {
                                        p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
                                    }
@@ -454,7 +454,7 @@ namespace Rivn.Dal
             try {
                 // Borramos los registro de la clave foranea
                 return DBRuts.Exec(p_dbcAccess,
-                                   "TNGS_Rivn..MVLEQUIPAMIENTO_FPACK",
+                                   "TNGS_Mrln..MVLEQUIPAMIENTO_FPACK",
                                    new DbParameter[] {
                                        p_dbcAccess.MakeParam("@meq_ecd_patente", p_strPatente),
                                        p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
@@ -483,7 +483,7 @@ namespace Rivn.Dal
         {
             try {
                 return DBRuts.Exec(p_dbcAccess,
-                                   "TNGS_Rivn..MVLEQUIPAMIENTO_ELIMINAREQUIPAMIENTO",
+                                   "TNGS_Mrln..MVLEQUIPAMIENTO_ELIMINAREQUIPAMIENTO",
                                    new DbParameter[] {
                                        p_dbcAccess.MakeParam("@patente", p_strPatente),
                                        p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
@@ -513,7 +513,7 @@ namespace Rivn.Dal
         {
             try {
                 return DBRuts.Exec_DS(p_dbcAccess,
-                                      "TNGS_Rivn..MVLEQUIPAMIENTO_GETEQUIPAMIENTOS",
+                                      "TNGS_Mrln..MVLEQUIPAMIENTO_GETEQUIPAMIENTOS",
                                       new DbParameter[] {
                                           p_dbcAccess.MakeParam("@patente", p_strPatente),
                                           p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)

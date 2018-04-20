@@ -1,4 +1,4 @@
-﻿namespace Rivn.Ot
+﻿namespace Mrln.Ot
 {
     partial class OTItemsNuevo
     {

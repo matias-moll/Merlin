@@ -7,15 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Rivn.Bll;
-using Rivn.Bll.ObjetosSoporte;
-using Rivn.Bel;
+using Mrln.Bll;
+using Mrln.Bll.ObjetosSoporte;
+using Mrln.Bel;
 using TNGS;
 using TNGS.NetApp;
 using TNGS.NetRoutines;
 using TNGS.NetControls;
 
-namespace Rivn.Ct
+namespace Mrln.Ct
 {
     /// <summary>
     /// Formulario para consulta de datos del oficina

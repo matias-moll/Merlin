@@ -5,16 +5,16 @@ using System.Collections.Generic;
 using System.Data;
 using System.Xml;
 using TNGS.NetRoutines;
-using Rivn;
+using Mrln;
 #endregion
 
-namespace Rivn.Bel
+namespace Mrln.Bel
 {
     //----------------------------------------------------------------------------
     //                         TNG Software BEL Generator
     //----------------------------------------------------------------------------
     // Fecha                    : 31/10/2013 16:27
-    // Sistema                  : Rivn
+    // Sistema                  : Mrln
     // Clase para Administrar   : Ordenes de Trabajo y sus Items
     //----------------------------------------------------------------------------
     // © 1996-2013 by TNG Software                                      Gndr 5.20

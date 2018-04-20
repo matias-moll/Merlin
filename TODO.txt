@@ -1,0 +1,9 @@
+Explota en la grabacion de un nuevo movil.
+
+Explota en tablas generales en estaciones, hay algun problema con el contacto creo porque cuando
+cargue uno no me grabo ese dato o al menos no me lo muestra en la grilla.
+
+
+Revisar nuevamente la carga de controles y reparaciones.
+
+Pensar en pasar el abm de categorias al segundo menu ya que ahi es donde se usa.

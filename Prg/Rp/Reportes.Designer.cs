@@ -1,4 +1,4 @@
-﻿namespace Rivn.Rp
+﻿namespace Mrln.Rp
 {
     partial class Reportes
     {

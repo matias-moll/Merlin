@@ -8,12 +8,12 @@ using System.Reflection;
 using System.IO;
 using TNGS.NetRoutines;
 using TNGS.NetApp;
-using Rivn;
-using Rivn.Shr;
+using Mrln;
+using Mrln.Shr;
 using WeifenLuo.WinFormsUI.Docking;
 #endregion
 
-namespace Rivn.Mv
+namespace Mrln.Mv
 {
     /// <summary>
     /// Rutinas generales del programa

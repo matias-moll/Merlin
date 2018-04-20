@@ -27,7 +27,13 @@ obj/
 [Rr]elease*/
 _ReSharper*/
 [Tt]est[Rr]esult*
-foxuser.dbf
-foxuser.fpt
-*.iso
-Rivn.ini
+db.lock
+storage.ide
+.vs/
+
+#Ignore files TNGs
+XX - Release/
+ZZ - Varios/
+FOXUSER.DBF
+FOXUSER.FPT
+*.ini

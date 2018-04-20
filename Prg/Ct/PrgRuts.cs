@@ -8,11 +8,11 @@ using System.Reflection;
 using System.IO;
 using TNGS.NetRoutines;
 using TNGS.NetApp;
-using Rivn;
-using Rivn.Shr;
+using Mrln;
+using Mrln.Shr;
 #endregion
 
-namespace Rivn.Ct
+namespace Mrln.Ct
 {
     /// <summary>
     /// Rutinas generales del programa
@@ -50,7 +50,7 @@ namespace Rivn.Ct
         public static void MakeMainFrame()
         {
             // Fijamos el formulario de la aplicacion
-            m_frmCierreOt = new Rivn.Ct.CierreOT();
+            m_frmCierreOt = new Mrln.Ct.CierreOT();
             
         }
 

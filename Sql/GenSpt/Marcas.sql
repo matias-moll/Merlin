@@ -1,11 +1,11 @@
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 17/08/2015 10:48
-// Sistema     : Rivn
+// Fecha       : 20/04/2018 19:40
+// Sistema     : Mrln
 // Tabla       : Marcas
 //----------------------------------------------------------------------------
-// © 1999-2015 by TNG Software                                      Gndr 5.20
+// © 1999-2018 by TNG Software                                      Gndr 5.20
 //---------------------------------------------------------------------------*/
 
 /* ***************************************************************************
@@ -19,7 +19,7 @@
 /* Selecciono la base en la que se crearan los SPs */
 /*-------------------------------------------------*/
 
-use TNGS_Rivn
+use TNGS_Mrln
 go
 
 ---////////////////////////////////////////////////////////
@@ -54,11 +54,11 @@ begin
       begin
          Select mrc_rcd_codigo,
                 mrc_des_descripcion,
-                TNGS_Rivn..Marcas.instante,
-                TNGS_Rivn..Marcas.deleted,
-                TNGS_Rivn..Marcas.usuario,
-                TNGS_Rivn..Marcas.version
-           from TNGS_Rivn..Marcas
+                TNGS_Mrln..Marcas.instante,
+                TNGS_Mrln..Marcas.deleted,
+                TNGS_Mrln..Marcas.usuario,
+                TNGS_Mrln..Marcas.version
+           from TNGS_Mrln..Marcas
           where deleted = 0
           order by mrc_rcd_codigo
       end
@@ -66,11 +66,11 @@ begin
       begin
          Select mrc_rcd_codigo,
                 mrc_des_descripcion,
-                TNGS_Rivn..Marcas.instante,
-                TNGS_Rivn..Marcas.deleted,
-                TNGS_Rivn..Marcas.usuario,
-                TNGS_Rivn..Marcas.version
-           from TNGS_Rivn..Marcas
+                TNGS_Mrln..Marcas.instante,
+                TNGS_Mrln..Marcas.deleted,
+                TNGS_Mrln..Marcas.usuario,
+                TNGS_Mrln..Marcas.version
+           from TNGS_Mrln..Marcas
           order by mrc_rcd_codigo
       end
 
@@ -117,7 +117,7 @@ as
 begin
 
    Select count(*) as cantidad
-     from TNGS_Rivn..Marcas
+     from TNGS_Mrln..Marcas
     where mrc_rcd_codigo = @mrc_rcd_codigo
       and version = @version
 
@@ -167,11 +167,11 @@ begin
       begin
          Select mrc_rcd_codigo,
                 mrc_des_descripcion,
-                TNGS_Rivn..Marcas.instante,
-                TNGS_Rivn..Marcas.deleted,
-                TNGS_Rivn..Marcas.usuario,
-                TNGS_Rivn..Marcas.version
-           from TNGS_Rivn..Marcas
+                TNGS_Mrln..Marcas.instante,
+                TNGS_Mrln..Marcas.deleted,
+                TNGS_Mrln..Marcas.usuario,
+                TNGS_Mrln..Marcas.version
+           from TNGS_Mrln..Marcas
           where mrc_rcd_codigo = @mrc_rcd_codigo
             and deleted = 0
       end
@@ -179,11 +179,11 @@ begin
       begin
          Select mrc_rcd_codigo,
                 mrc_des_descripcion,
-                TNGS_Rivn..Marcas.instante,
-                TNGS_Rivn..Marcas.deleted,
-                TNGS_Rivn..Marcas.usuario,
-                TNGS_Rivn..Marcas.version
-           from TNGS_Rivn..Marcas
+                TNGS_Mrln..Marcas.instante,
+                TNGS_Mrln..Marcas.deleted,
+                TNGS_Mrln..Marcas.usuario,
+                TNGS_Mrln..Marcas.version
+           from TNGS_Mrln..Marcas
           where mrc_rcd_codigo = @mrc_rcd_codigo
       end
 
@@ -228,7 +228,7 @@ as
 begin
 
    Select isnull(max(mrc_rcd_codigo), '0') as mrc_rcd_codigo
-     from TNGS_Rivn..Marcas
+     from TNGS_Mrln..Marcas
 
 fin:
 
@@ -274,7 +274,7 @@ create procedure dbo.MARCAS_INSERT
 as
 begin
 
-   Insert into TNGS_Rivn..Marcas
+   Insert into TNGS_Mrln..Marcas
    values (
            @mrc_rcd_codigo,
            @mrc_des_descripcion,
@@ -325,7 +325,7 @@ create procedure dbo.MARCAS_UPDATE
 as
 begin
 
-   Update TNGS_Rivn..Marcas
+   Update TNGS_Mrln..Marcas
       set mrc_des_descripcion= @mrc_des_descripcion,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -374,7 +374,7 @@ create procedure dbo.MARCAS_DELETE
 as
 begin
 
-   Update TNGS_Rivn..Marcas
+   Update TNGS_Mrln..Marcas
       set deleted = 1,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -423,7 +423,7 @@ create procedure dbo.MARCAS_RECALL
 as
 begin
 
-   Update TNGS_Rivn..Marcas
+   Update TNGS_Mrln..Marcas
       set deleted = 0,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -472,7 +472,7 @@ create procedure dbo.MARCAS_DROP
 as
 begin
 
-   Delete from TNGS_Rivn..Marcas
+   Delete from TNGS_Mrln..Marcas
     where mrc_rcd_codigo = @mrc_rcd_codigo
 
 fin:
@@ -515,7 +515,7 @@ create procedure dbo.MARCAS_PACK
 as
 begin
 
-   Delete TNGS_Rivn..Marcas
+   Delete TNGS_Mrln..Marcas
     where deleted = 1
 
 fin:

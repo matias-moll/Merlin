@@ -5,17 +5,17 @@ using System.Data.Common;
 using TNGS.NetRoutines;
 #endregion
 
-namespace Rivn.Dal
+namespace Mrln.Dal
 {
     //----------------------------------------------------------------------------
     //                         TNG Software DAL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 17/08/2015 10:49
-    // Sistema                  : Rivn
+    // Fecha                    : 20/04/2018 20:27
+    // Sistema                  : Mrln
     // Clase para Administrar   : Controles de las reaparaciones
     // Basada en la Tabla       : ControlesReparations
     //----------------------------------------------------------------------------
-    // © 1996-2015 by TNG Software                                      Gndr 5.20
+    // © 1996-2018 by TNG Software                                      Gndr 5.20
     //----------------------------------------------------------------------------
 
     //****************************************************************************
@@ -54,7 +54,7 @@ namespace Rivn.Dal
             try {
                 // Recuperamos todos los registros
                 return DBRuts.Exec_DS(p_dbcAccess,
-                                      "TNGS_Rivn..CONTROLESREPARATIONS_UP",
+                                      "TNGS_Mrln..CONTROLESREPARATIONS_UP",
                                       new DbParameter[] {
                                           p_dbcAccess.MakeParam("@onlyactive", (p_bOnlyActive ? 1 : 0))
                                       },
@@ -88,7 +88,7 @@ namespace Rivn.Dal
             try {
                 // Verificamos el número de versión
                 DBRuts.Exec_DS(p_dbcAccess,
-                               "TNGS_Rivn..CONTROLESREPARATIONS_CHKVERSION",
+                               "TNGS_Mrln..CONTROLESREPARATIONS_CHKVERSION",
                                new DbParameter[] {
                                    p_dbcAccess.MakeParam("@ctr_cod_codctl", p_strCodctl),
                                    p_dbcAccess.MakeParam("@ctr_nro_nroitem", p_iNroitem),
@@ -123,7 +123,7 @@ namespace Rivn.Dal
             try {
                 // Recuperamos el registro de la clave
                 return DBRuts.Exec_DS(p_dbcAccess,
-                                      "TNGS_Rivn..CONTROLESREPARATIONS_SEARCH",
+                                      "TNGS_Mrln..CONTROLESREPARATIONS_SEARCH",
                                       new DbParameter[] {
                                           p_dbcAccess.MakeParam("@ctr_cod_codctl", p_strCodctl),
                                           p_dbcAccess.MakeParam("@ctr_nro_nroitem", p_iNroitem),
@@ -157,7 +157,7 @@ namespace Rivn.Dal
             try {
                 // Recuperamos los registro de la clave foranea
                 return DBRuts.Exec_DS(p_dbcAccess,
-                                      "TNGS_Rivn..CONTROLESREPARATIONS_FSEARCH",
+                                      "TNGS_Mrln..CONTROLESREPARATIONS_FSEARCH",
                                       new DbParameter[] {
                                           p_dbcAccess.MakeParam("@ctr_cod_codctl", p_strCodctl),
                                           p_dbcAccess.MakeParam("@onlyactive", (p_bOnlyActive ? 1 : 0))
@@ -191,7 +191,7 @@ namespace Rivn.Dal
             try {
                 // Insertamos el registro
                 return DBRuts.Exec(p_dbcAccess,
-                                   "TNGS_Rivn..CONTROLESREPARATIONS_INSERT",
+                                   "TNGS_Mrln..CONTROLESREPARATIONS_INSERT",
                                    new DbParameter[] {
                                        p_dbcAccess.MakeParam("@ctr_cod_codctl", p_strCodctl),
                                        p_dbcAccess.MakeParam("@ctr_nro_nroitem", p_iNroitem),
@@ -224,7 +224,7 @@ namespace Rivn.Dal
             try {
                 // Modificamos el registro
                 return DBRuts.Exec(p_dbcAccess,
-                                   "TNGS_Rivn..CONTROLESREPARATIONS_UPDATE",
+                                   "TNGS_Mrln..CONTROLESREPARATIONS_UPDATE",
                                    new DbParameter[] {
                                        p_dbcAccess.MakeParam("@ctr_cod_codctl", p_strCodctl),
                                        p_dbcAccess.MakeParam("@ctr_nro_nroitem", p_iNroitem),
@@ -255,7 +255,7 @@ namespace Rivn.Dal
             try {
                 // Borramos el registro
                 return DBRuts.Exec(p_dbcAccess,
-                                   "TNGS_Rivn..CONTROLESREPARATIONS_DELETE",
+                                   "TNGS_Mrln..CONTROLESREPARATIONS_DELETE",
                                    new DbParameter[] {
                                        p_dbcAccess.MakeParam("@ctr_cod_codctl", p_strCodctl),
                                        p_dbcAccess.MakeParam("@ctr_nro_nroitem", p_iNroitem),
@@ -285,7 +285,7 @@ namespace Rivn.Dal
             try {
                 // Borramos los registro de la clave foranea
                 return DBRuts.Exec(p_dbcAccess,
-                                   "TNGS_Rivn..CONTROLESREPARATIONS_FDELETE",
+                                   "TNGS_Mrln..CONTROLESREPARATIONS_FDELETE",
                                    new DbParameter[] {
                                        p_dbcAccess.MakeParam("@ctr_cod_codctl", p_strCodctl),
                                        p_dbcAccess.MakeParam("@instante", p_dtInstante),
@@ -315,7 +315,7 @@ namespace Rivn.Dal
             try {
                 // Borramos el registro
                 return DBRuts.Exec(p_dbcAccess,
-                                   "TNGS_Rivn..CONTROLESREPARATIONS_RECALL",
+                                   "TNGS_Mrln..CONTROLESREPARATIONS_RECALL",
                                    new DbParameter[] {
                                        p_dbcAccess.MakeParam("@ctr_cod_codctl", p_strCodctl),
                                        p_dbcAccess.MakeParam("@ctr_nro_nroitem", p_iNroitem),
@@ -345,7 +345,7 @@ namespace Rivn.Dal
             try {
                 // Borramos los registro de la clave foranea
                 return DBRuts.Exec(p_dbcAccess,
-                                   "TNGS_Rivn..CONTROLESREPARATIONS_FRECALL",
+                                   "TNGS_Mrln..CONTROLESREPARATIONS_FRECALL",
                                    new DbParameter[] {
                                        p_dbcAccess.MakeParam("@ctr_cod_codctl", p_strCodctl),
                                        p_dbcAccess.MakeParam("@instante", p_dtInstante),
@@ -375,7 +375,7 @@ namespace Rivn.Dal
             try {
                 // Borramos el registro
                 return DBRuts.Exec(p_dbcAccess,
-                                   "TNGS_Rivn..CONTROLESREPARATIONS_DROP",
+                                   "TNGS_Mrln..CONTROLESREPARATIONS_DROP",
                                    new DbParameter[] {
                                        p_dbcAccess.MakeParam("@ctr_cod_codctl", p_strCodctl),
                                        p_dbcAccess.MakeParam("@ctr_nro_nroitem", p_iNroitem),
@@ -403,7 +403,7 @@ namespace Rivn.Dal
             try {
                 // Borramos los registro de la clave foranea
                 return DBRuts.Exec(p_dbcAccess,
-                                   "TNGS_Rivn..CONTROLESREPARATIONS_FDROP",
+                                   "TNGS_Mrln..CONTROLESREPARATIONS_FDROP",
                                    new DbParameter[] {
                                        p_dbcAccess.MakeParam("@ctr_cod_codctl", p_strCodctl),
                                        p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
@@ -428,7 +428,7 @@ namespace Rivn.Dal
             try {
                 // Borramos el registro
                 return DBRuts.Exec(p_dbcAccess,
-                                   "TNGS_Rivn..CONTROLESREPARATIONS_PACK",
+                                   "TNGS_Mrln..CONTROLESREPARATIONS_PACK",
                                    new DbParameter[] {
                                        p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
                                    }
@@ -454,7 +454,7 @@ namespace Rivn.Dal
             try {
                 // Borramos los registro de la clave foranea
                 return DBRuts.Exec(p_dbcAccess,
-                                   "TNGS_Rivn..CONTROLESREPARATIONS_FPACK",
+                                   "TNGS_Mrln..CONTROLESREPARATIONS_FPACK",
                                    new DbParameter[] {
                                        p_dbcAccess.MakeParam("@ctr_cod_codctl", p_strCodctl),
                                        p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)

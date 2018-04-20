@@ -1,11 +1,11 @@
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 17/08/2015 10:48
-// Sistema     : Rivn
+// Fecha       : 20/04/2018 19:40
+// Sistema     : Mrln
 // Tabla       : Modelos
 //----------------------------------------------------------------------------
-// © 1999-2015 by TNG Software                                      Gndr 5.20
+// © 1999-2018 by TNG Software                                      Gndr 5.20
 //---------------------------------------------------------------------------*/
 
 /* ***************************************************************************
@@ -19,7 +19,7 @@
 /* Selecciono la base en la que se crearan los SPs */
 /*-------------------------------------------------*/
 
-use TNGS_Rivn
+use TNGS_Mrln
 go
 
 ---////////////////////////////////////////////////////////
@@ -55,11 +55,11 @@ begin
          Select mds_rcd_cod,
                 mds_des_des,
                 mds_rcd_codmarca,
-                TNGS_Rivn..Modelos.instante,
-                TNGS_Rivn..Modelos.deleted,
-                TNGS_Rivn..Modelos.usuario,
-                TNGS_Rivn..Modelos.version
-           from TNGS_Rivn..Modelos
+                TNGS_Mrln..Modelos.instante,
+                TNGS_Mrln..Modelos.deleted,
+                TNGS_Mrln..Modelos.usuario,
+                TNGS_Mrln..Modelos.version
+           from TNGS_Mrln..Modelos
           where deleted = 0
           order by mds_rcd_cod
       end
@@ -68,11 +68,11 @@ begin
          Select mds_rcd_cod,
                 mds_des_des,
                 mds_rcd_codmarca,
-                TNGS_Rivn..Modelos.instante,
-                TNGS_Rivn..Modelos.deleted,
-                TNGS_Rivn..Modelos.usuario,
-                TNGS_Rivn..Modelos.version
-           from TNGS_Rivn..Modelos
+                TNGS_Mrln..Modelos.instante,
+                TNGS_Mrln..Modelos.deleted,
+                TNGS_Mrln..Modelos.usuario,
+                TNGS_Mrln..Modelos.version
+           from TNGS_Mrln..Modelos
           order by mds_rcd_cod
       end
 
@@ -119,7 +119,7 @@ as
 begin
 
    Select count(*) as cantidad
-     from TNGS_Rivn..Modelos
+     from TNGS_Mrln..Modelos
     where mds_rcd_cod = @mds_rcd_cod
       and version = @version
 
@@ -170,11 +170,11 @@ begin
          Select mds_rcd_cod,
                 mds_des_des,
                 mds_rcd_codmarca,
-                TNGS_Rivn..Modelos.instante,
-                TNGS_Rivn..Modelos.deleted,
-                TNGS_Rivn..Modelos.usuario,
-                TNGS_Rivn..Modelos.version
-           from TNGS_Rivn..Modelos
+                TNGS_Mrln..Modelos.instante,
+                TNGS_Mrln..Modelos.deleted,
+                TNGS_Mrln..Modelos.usuario,
+                TNGS_Mrln..Modelos.version
+           from TNGS_Mrln..Modelos
           where mds_rcd_cod = @mds_rcd_cod
             and deleted = 0
       end
@@ -183,11 +183,11 @@ begin
          Select mds_rcd_cod,
                 mds_des_des,
                 mds_rcd_codmarca,
-                TNGS_Rivn..Modelos.instante,
-                TNGS_Rivn..Modelos.deleted,
-                TNGS_Rivn..Modelos.usuario,
-                TNGS_Rivn..Modelos.version
-           from TNGS_Rivn..Modelos
+                TNGS_Mrln..Modelos.instante,
+                TNGS_Mrln..Modelos.deleted,
+                TNGS_Mrln..Modelos.usuario,
+                TNGS_Mrln..Modelos.version
+           from TNGS_Mrln..Modelos
           where mds_rcd_cod = @mds_rcd_cod
       end
 
@@ -232,7 +232,7 @@ as
 begin
 
    Select isnull(max(mds_rcd_cod), '0') as mds_rcd_cod
-     from TNGS_Rivn..Modelos
+     from TNGS_Mrln..Modelos
 
 fin:
 
@@ -280,7 +280,7 @@ create procedure dbo.MODELOS_INSERT
 as
 begin
 
-   Insert into TNGS_Rivn..Modelos
+   Insert into TNGS_Mrln..Modelos
    values (
            @mds_rcd_cod,
            @mds_des_des,
@@ -334,7 +334,7 @@ create procedure dbo.MODELOS_UPDATE
 as
 begin
 
-   Update TNGS_Rivn..Modelos
+   Update TNGS_Mrln..Modelos
       set mds_des_des= @mds_des_des,
           mds_rcd_codmarca= @mds_rcd_codmarca,
           version = ((version+1) % 32767),
@@ -384,7 +384,7 @@ create procedure dbo.MODELOS_DELETE
 as
 begin
 
-   Update TNGS_Rivn..Modelos
+   Update TNGS_Mrln..Modelos
       set deleted = 1,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -433,7 +433,7 @@ create procedure dbo.MODELOS_RECALL
 as
 begin
 
-   Update TNGS_Rivn..Modelos
+   Update TNGS_Mrln..Modelos
       set deleted = 0,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -482,7 +482,7 @@ create procedure dbo.MODELOS_DROP
 as
 begin
 
-   Delete from TNGS_Rivn..Modelos
+   Delete from TNGS_Mrln..Modelos
     where mds_rcd_cod = @mds_rcd_cod
 
 fin:
@@ -525,7 +525,7 @@ create procedure dbo.MODELOS_PACK
 as
 begin
 
-   Delete TNGS_Rivn..Modelos
+   Delete TNGS_Mrln..Modelos
     where deleted = 1
 
 fin:

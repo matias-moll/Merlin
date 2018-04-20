@@ -10,19 +10,19 @@ using System.Xml;
 using TNGS.NetRoutines;
 using TNGS.NetAppBll;
 using TNGS.NetControls;
-using Rivn.Bll;
+using Mrln.Bll;
 #endregion
 
-namespace Rivn.Shr
+namespace Mrln.Shr
 {
     //----------------------------------------------------------------------------
     //                         TNG Software SHR Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 17/08/2015 10:49
-    // Sistema                  : Rivn
+    // Fecha                    : 20/04/2018 20:34
+    // Sistema                  : Mrln
     // Clase para Administrar   : Shr
     //----------------------------------------------------------------------------
-    // © 1996-2015 by TNG Software                                      Gndr 5.20
+    // © 1996-2018 by TNG Software                                      Gndr 5.20
     //----------------------------------------------------------------------------
 
     /// <summary>
@@ -109,11 +109,11 @@ namespace Rivn.Shr
         //---------------------------------------------------------------
     }
 
-    #region Clase: RivnStatMsg
+    #region Clase: MrlnStatMsg
     /// <summary>
     /// Clase con las rutinas del sistema
     /// </summary>
-    public sealed class RivnStatMsg
+    public sealed class MrlnStatMsg
     {
         #region Miembros de la clase
             StatMsg m_smResult= new StatMsg();
@@ -122,14 +122,14 @@ namespace Rivn.Shr
         /// <summary>
         /// Constructor
         /// </summary>
-        public RivnStatMsg()
+        public MrlnStatMsg()
         {
         }
 
         /// <summary>
         /// Constructor
         /// </summary>
-        public RivnStatMsg(string p_strUilMethod)
+        public MrlnStatMsg(string p_strUilMethod)
         {
         }
 

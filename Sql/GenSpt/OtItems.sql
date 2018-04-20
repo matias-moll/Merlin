@@ -1,11 +1,11 @@
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 17/08/2015 10:48
-// Sistema     : Rivn
+// Fecha       : 20/04/2018 19:40
+// Sistema     : Mrln
 // Tabla       : OtItems
 //----------------------------------------------------------------------------
-// © 1999-2015 by TNG Software                                      Gndr 5.20
+// © 1999-2018 by TNG Software                                      Gndr 5.20
 //---------------------------------------------------------------------------*/
 
 /* ***************************************************************************
@@ -19,7 +19,7 @@
 /* Selecciono la base en la que se crearan los SPs */
 /*-------------------------------------------------*/
 
-use TNGS_Rivn
+use TNGS_Mrln
 go
 
 ---////////////////////////////////////////////////////////
@@ -60,11 +60,11 @@ begin
                 oti_des_descategoria,
                 oti_imp_importe,
                 oti_ede_comentario,
-                TNGS_Rivn..OtItems.instante,
-                TNGS_Rivn..OtItems.deleted,
-                TNGS_Rivn..OtItems.usuario,
-                TNGS_Rivn..OtItems.version
-           from TNGS_Rivn..OtItems
+                TNGS_Mrln..OtItems.instante,
+                TNGS_Mrln..OtItems.deleted,
+                TNGS_Mrln..OtItems.usuario,
+                TNGS_Mrln..OtItems.version
+           from TNGS_Mrln..OtItems
           where deleted = 0
           order by oti_nro_nroot,
                 oti_nro_nroagrupador,
@@ -80,11 +80,11 @@ begin
                 oti_des_descategoria,
                 oti_imp_importe,
                 oti_ede_comentario,
-                TNGS_Rivn..OtItems.instante,
-                TNGS_Rivn..OtItems.deleted,
-                TNGS_Rivn..OtItems.usuario,
-                TNGS_Rivn..OtItems.version
-           from TNGS_Rivn..OtItems
+                TNGS_Mrln..OtItems.instante,
+                TNGS_Mrln..OtItems.deleted,
+                TNGS_Mrln..OtItems.usuario,
+                TNGS_Mrln..OtItems.version
+           from TNGS_Mrln..OtItems
           order by oti_nro_nroot,
                 oti_nro_nroagrupador,
                 oti_nro_nroitem
@@ -137,7 +137,7 @@ as
 begin
 
    Select count(*) as cantidad
-     from TNGS_Rivn..OtItems
+     from TNGS_Mrln..OtItems
     where oti_nro_nroot = @oti_nro_nroot
       and oti_nro_nroagrupador = @oti_nro_nroagrupador
       and oti_nro_nroitem = @oti_nro_nroitem
@@ -199,11 +199,11 @@ begin
                 oti_des_descategoria,
                 oti_imp_importe,
                 oti_ede_comentario,
-                TNGS_Rivn..OtItems.instante,
-                TNGS_Rivn..OtItems.deleted,
-                TNGS_Rivn..OtItems.usuario,
-                TNGS_Rivn..OtItems.version
-           from TNGS_Rivn..OtItems
+                TNGS_Mrln..OtItems.instante,
+                TNGS_Mrln..OtItems.deleted,
+                TNGS_Mrln..OtItems.usuario,
+                TNGS_Mrln..OtItems.version
+           from TNGS_Mrln..OtItems
           where oti_nro_nroot = @oti_nro_nroot
             and oti_nro_nroagrupador = @oti_nro_nroagrupador
             and oti_nro_nroitem = @oti_nro_nroitem
@@ -219,11 +219,11 @@ begin
                 oti_des_descategoria,
                 oti_imp_importe,
                 oti_ede_comentario,
-                TNGS_Rivn..OtItems.instante,
-                TNGS_Rivn..OtItems.deleted,
-                TNGS_Rivn..OtItems.usuario,
-                TNGS_Rivn..OtItems.version
-           from TNGS_Rivn..OtItems
+                TNGS_Mrln..OtItems.instante,
+                TNGS_Mrln..OtItems.deleted,
+                TNGS_Mrln..OtItems.usuario,
+                TNGS_Mrln..OtItems.version
+           from TNGS_Mrln..OtItems
           where oti_nro_nroot = @oti_nro_nroot
             and oti_nro_nroagrupador = @oti_nro_nroagrupador
             and oti_nro_nroitem = @oti_nro_nroitem
@@ -281,11 +281,11 @@ begin
                 oti_des_descategoria,
                 oti_imp_importe,
                 oti_ede_comentario,
-                TNGS_Rivn..OtItems.instante,
-                TNGS_Rivn..OtItems.deleted,
-                TNGS_Rivn..OtItems.usuario,
-                TNGS_Rivn..OtItems.version
-           from TNGS_Rivn..OtItems
+                TNGS_Mrln..OtItems.instante,
+                TNGS_Mrln..OtItems.deleted,
+                TNGS_Mrln..OtItems.usuario,
+                TNGS_Mrln..OtItems.version
+           from TNGS_Mrln..OtItems
           where oti_nro_nroot = @oti_nro_nroot
             and deleted = 0
           order by oti_nro_nroagrupador,
@@ -301,11 +301,11 @@ begin
                 oti_des_descategoria,
                 oti_imp_importe,
                 oti_ede_comentario,
-                TNGS_Rivn..OtItems.instante,
-                TNGS_Rivn..OtItems.deleted,
-                TNGS_Rivn..OtItems.usuario,
-                TNGS_Rivn..OtItems.version
-           from TNGS_Rivn..OtItems
+                TNGS_Mrln..OtItems.instante,
+                TNGS_Mrln..OtItems.deleted,
+                TNGS_Mrln..OtItems.usuario,
+                TNGS_Mrln..OtItems.version
+           from TNGS_Mrln..OtItems
           where oti_nro_nroot = @oti_nro_nroot
           order by oti_nro_nroagrupador,
                 oti_nro_nroitem
@@ -367,7 +367,7 @@ create procedure dbo.OTITEMS_INSERT
 as
 begin
 
-   Insert into TNGS_Rivn..OtItems
+   Insert into TNGS_Mrln..OtItems
    values (
            @oti_nro_nroot,
            @oti_nro_nroagrupador,
@@ -436,7 +436,7 @@ create procedure dbo.OTITEMS_UPDATE
 as
 begin
 
-   Update TNGS_Rivn..OtItems
+   Update TNGS_Mrln..OtItems
       set oti_des_desoperacion= @oti_des_desoperacion,
           oti_des_destarea= @oti_des_destarea,
           oti_des_descategoria= @oti_des_descategoria,
@@ -495,7 +495,7 @@ create procedure dbo.OTITEMS_DELETE
 as
 begin
 
-   Update TNGS_Rivn..OtItems
+   Update TNGS_Mrln..OtItems
       set deleted = 1,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -553,7 +553,7 @@ begin
          select @instante= getdate()
       end
 
-   Update TNGS_Rivn..OtItems
+   Update TNGS_Mrln..OtItems
       set deleted = 1,
           version = ((version+1) % 32767),
           instante= @instante,
@@ -606,7 +606,7 @@ create procedure dbo.OTITEMS_RECALL
 as
 begin
 
-   Update TNGS_Rivn..OtItems
+   Update TNGS_Mrln..OtItems
       set deleted = 0,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -661,7 +661,7 @@ begin
 
    if datepart(yyyy, @instante) = 1900
       begin
-         Update TNGS_Rivn..OtItems
+         Update TNGS_Mrln..OtItems
             set deleted = 0,
                 version = ((version+1) % 32767),
                 instante= getdate(),
@@ -670,7 +670,7 @@ begin
       end
    else
       begin
-         Update TNGS_Rivn..OtItems
+         Update TNGS_Mrln..OtItems
             set deleted = 0,
                 version = ((version+1) % 32767),
                 instante= getdate(),
@@ -725,7 +725,7 @@ create procedure dbo.OTITEMS_DROP
 as
 begin
 
-   Delete from TNGS_Rivn..OtItems
+   Delete from TNGS_Mrln..OtItems
     where oti_nro_nroot = @oti_nro_nroot
       and oti_nro_nroagrupador = @oti_nro_nroagrupador
       and oti_nro_nroitem = @oti_nro_nroitem
@@ -772,7 +772,7 @@ create procedure dbo.OTITEMS_FDROP
 as
 begin
 
-   Delete from TNGS_Rivn..OtItems
+   Delete from TNGS_Mrln..OtItems
     where oti_nro_nroot = @oti_nro_nroot
 
 fin:
@@ -815,7 +815,7 @@ create procedure dbo.OTITEMS_PACK
 as
 begin
 
-   Delete TNGS_Rivn..OtItems
+   Delete TNGS_Mrln..OtItems
     where deleted = 1
 
 fin:
@@ -860,7 +860,7 @@ create procedure dbo.OTITEMS_FPACK
 as
 begin
 
-   Delete from TNGS_Rivn..OtItems
+   Delete from TNGS_Mrln..OtItems
     where oti_nro_nroot = @oti_nro_nroot
       and deleted = 1
 

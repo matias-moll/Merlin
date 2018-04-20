@@ -1,11 +1,11 @@
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 17/08/2015 10:48
-// Sistema     : Rivn
+// Fecha       : 20/04/2018 19:40
+// Sistema     : Mrln
 // Tabla       : MvlCombustible
 //----------------------------------------------------------------------------
-// © 1999-2015 by TNG Software                                      Gndr 5.20
+// © 1999-2018 by TNG Software                                      Gndr 5.20
 //---------------------------------------------------------------------------*/
 
 /* ***************************************************************************
@@ -19,7 +19,7 @@
 /* Selecciono la base en la que se crearan los SPs */
 /*-------------------------------------------------*/
 
-use TNGS_Rivn
+use TNGS_Mrln
 go
 
 ---////////////////////////////////////////////////////////
@@ -57,11 +57,11 @@ begin
                 mco_val_litros,
                 mco_imp_importe,
                 mco_rcd_codestacion,
-                TNGS_Rivn..MvlCombustible.instante,
-                TNGS_Rivn..MvlCombustible.deleted,
-                TNGS_Rivn..MvlCombustible.usuario,
-                TNGS_Rivn..MvlCombustible.version
-           from TNGS_Rivn..MvlCombustible
+                TNGS_Mrln..MvlCombustible.instante,
+                TNGS_Mrln..MvlCombustible.deleted,
+                TNGS_Mrln..MvlCombustible.usuario,
+                TNGS_Mrln..MvlCombustible.version
+           from TNGS_Mrln..MvlCombustible
           where deleted = 0
           order by mco_ecd_patente,
                 mco_fyh_fecha
@@ -73,11 +73,11 @@ begin
                 mco_val_litros,
                 mco_imp_importe,
                 mco_rcd_codestacion,
-                TNGS_Rivn..MvlCombustible.instante,
-                TNGS_Rivn..MvlCombustible.deleted,
-                TNGS_Rivn..MvlCombustible.usuario,
-                TNGS_Rivn..MvlCombustible.version
-           from TNGS_Rivn..MvlCombustible
+                TNGS_Mrln..MvlCombustible.instante,
+                TNGS_Mrln..MvlCombustible.deleted,
+                TNGS_Mrln..MvlCombustible.usuario,
+                TNGS_Mrln..MvlCombustible.version
+           from TNGS_Mrln..MvlCombustible
           order by mco_ecd_patente,
                 mco_fyh_fecha
       end
@@ -127,7 +127,7 @@ as
 begin
 
    Select count(*) as cantidad
-     from TNGS_Rivn..MvlCombustible
+     from TNGS_Mrln..MvlCombustible
     where mco_ecd_patente = @mco_ecd_patente
       and mco_fyh_fecha = @mco_fyh_fecha
       and version = @version
@@ -183,11 +183,11 @@ begin
                 mco_val_litros,
                 mco_imp_importe,
                 mco_rcd_codestacion,
-                TNGS_Rivn..MvlCombustible.instante,
-                TNGS_Rivn..MvlCombustible.deleted,
-                TNGS_Rivn..MvlCombustible.usuario,
-                TNGS_Rivn..MvlCombustible.version
-           from TNGS_Rivn..MvlCombustible
+                TNGS_Mrln..MvlCombustible.instante,
+                TNGS_Mrln..MvlCombustible.deleted,
+                TNGS_Mrln..MvlCombustible.usuario,
+                TNGS_Mrln..MvlCombustible.version
+           from TNGS_Mrln..MvlCombustible
           where mco_ecd_patente = @mco_ecd_patente
             and mco_fyh_fecha = @mco_fyh_fecha
             and deleted = 0
@@ -199,11 +199,11 @@ begin
                 mco_val_litros,
                 mco_imp_importe,
                 mco_rcd_codestacion,
-                TNGS_Rivn..MvlCombustible.instante,
-                TNGS_Rivn..MvlCombustible.deleted,
-                TNGS_Rivn..MvlCombustible.usuario,
-                TNGS_Rivn..MvlCombustible.version
-           from TNGS_Rivn..MvlCombustible
+                TNGS_Mrln..MvlCombustible.instante,
+                TNGS_Mrln..MvlCombustible.deleted,
+                TNGS_Mrln..MvlCombustible.usuario,
+                TNGS_Mrln..MvlCombustible.version
+           from TNGS_Mrln..MvlCombustible
           where mco_ecd_patente = @mco_ecd_patente
             and mco_fyh_fecha = @mco_fyh_fecha
       end
@@ -257,11 +257,11 @@ begin
                 mco_val_litros,
                 mco_imp_importe,
                 mco_rcd_codestacion,
-                TNGS_Rivn..MvlCombustible.instante,
-                TNGS_Rivn..MvlCombustible.deleted,
-                TNGS_Rivn..MvlCombustible.usuario,
-                TNGS_Rivn..MvlCombustible.version
-           from TNGS_Rivn..MvlCombustible
+                TNGS_Mrln..MvlCombustible.instante,
+                TNGS_Mrln..MvlCombustible.deleted,
+                TNGS_Mrln..MvlCombustible.usuario,
+                TNGS_Mrln..MvlCombustible.version
+           from TNGS_Mrln..MvlCombustible
           where mco_ecd_patente = @mco_ecd_patente
             and deleted = 0
           order by mco_fyh_fecha
@@ -273,11 +273,11 @@ begin
                 mco_val_litros,
                 mco_imp_importe,
                 mco_rcd_codestacion,
-                TNGS_Rivn..MvlCombustible.instante,
-                TNGS_Rivn..MvlCombustible.deleted,
-                TNGS_Rivn..MvlCombustible.usuario,
-                TNGS_Rivn..MvlCombustible.version
-           from TNGS_Rivn..MvlCombustible
+                TNGS_Mrln..MvlCombustible.instante,
+                TNGS_Mrln..MvlCombustible.deleted,
+                TNGS_Mrln..MvlCombustible.usuario,
+                TNGS_Mrln..MvlCombustible.version
+           from TNGS_Mrln..MvlCombustible
           where mco_ecd_patente = @mco_ecd_patente
           order by mco_fyh_fecha
       end
@@ -332,7 +332,7 @@ create procedure dbo.MVLCOMBUSTIBLE_INSERT
 as
 begin
 
-   Insert into TNGS_Rivn..MvlCombustible
+   Insert into TNGS_Mrln..MvlCombustible
    values (
            @mco_ecd_patente,
            @mco_fyh_fecha,
@@ -392,7 +392,7 @@ create procedure dbo.MVLCOMBUSTIBLE_UPDATE
 as
 begin
 
-   Update TNGS_Rivn..MvlCombustible
+   Update TNGS_Mrln..MvlCombustible
       set mco_val_litros= @mco_val_litros,
           mco_imp_importe= @mco_imp_importe,
           mco_rcd_codestacion= @mco_rcd_codestacion,
@@ -446,7 +446,7 @@ create procedure dbo.MVLCOMBUSTIBLE_DELETE
 as
 begin
 
-   Update TNGS_Rivn..MvlCombustible
+   Update TNGS_Mrln..MvlCombustible
       set deleted = 1,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -503,7 +503,7 @@ begin
          select @instante= getdate()
       end
 
-   Update TNGS_Rivn..MvlCombustible
+   Update TNGS_Mrln..MvlCombustible
       set deleted = 1,
           version = ((version+1) % 32767),
           instante= @instante,
@@ -554,7 +554,7 @@ create procedure dbo.MVLCOMBUSTIBLE_RECALL
 as
 begin
 
-   Update TNGS_Rivn..MvlCombustible
+   Update TNGS_Mrln..MvlCombustible
       set deleted = 0,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -608,7 +608,7 @@ begin
 
    if datepart(yyyy, @instante) = 1900
       begin
-         Update TNGS_Rivn..MvlCombustible
+         Update TNGS_Mrln..MvlCombustible
             set deleted = 0,
                 version = ((version+1) % 32767),
                 instante= getdate(),
@@ -617,7 +617,7 @@ begin
       end
    else
       begin
-         Update TNGS_Rivn..MvlCombustible
+         Update TNGS_Mrln..MvlCombustible
             set deleted = 0,
                 version = ((version+1) % 32767),
                 instante= getdate(),
@@ -670,7 +670,7 @@ create procedure dbo.MVLCOMBUSTIBLE_DROP
 as
 begin
 
-   Delete from TNGS_Rivn..MvlCombustible
+   Delete from TNGS_Mrln..MvlCombustible
     where mco_ecd_patente = @mco_ecd_patente
       and mco_fyh_fecha = @mco_fyh_fecha
 
@@ -716,7 +716,7 @@ create procedure dbo.MVLCOMBUSTIBLE_FDROP
 as
 begin
 
-   Delete from TNGS_Rivn..MvlCombustible
+   Delete from TNGS_Mrln..MvlCombustible
     where mco_ecd_patente = @mco_ecd_patente
 
 fin:
@@ -759,7 +759,7 @@ create procedure dbo.MVLCOMBUSTIBLE_PACK
 as
 begin
 
-   Delete TNGS_Rivn..MvlCombustible
+   Delete TNGS_Mrln..MvlCombustible
     where deleted = 1
 
 fin:
@@ -804,7 +804,7 @@ create procedure dbo.MVLCOMBUSTIBLE_FPACK
 as
 begin
 
-   Delete from TNGS_Rivn..MvlCombustible
+   Delete from TNGS_Mrln..MvlCombustible
     where mco_ecd_patente = @mco_ecd_patente
       and deleted = 1
 
@@ -855,8 +855,8 @@ begin
    mco_fyh_fecha, 
    ets_des_des 
     
-   FROM TNGS_Rivn..MvlCombustible 
-   JOIN TNGS_Rivn..Estaciones 
+   FROM TNGS_Mrln..MvlCombustible 
+   JOIN TNGS_Mrln..Estaciones 
    on mco_rcd_codestacion = ets_rcd_cod 
    WHERE mco_ecd_patente = @patente 
    ORDER BY mco_fyh_fecha DESC 

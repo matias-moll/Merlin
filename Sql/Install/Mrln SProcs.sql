@@ -1,11 +1,11 @@
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 17/08/2015 10:48
-// Sistema     : Rivn
+// Fecha       : 20/04/2018 19:40
+// Sistema     : Mrln
 // Tabla       : Categorias
 //----------------------------------------------------------------------------
-// © 1999-2015 by TNG Software                                      Gndr 5.20
+// © 1999-2018 by TNG Software                                      Gndr 5.20
 //---------------------------------------------------------------------------*/
 
 /* ***************************************************************************
@@ -19,7 +19,7 @@
 /* Selecciono la base en la que se crearan los SPs */
 /*-------------------------------------------------*/
 
-use TNGS_Rivn
+use TNGS_Mrln
 go
 
 ---////////////////////////////////////////////////////////
@@ -54,11 +54,11 @@ begin
       begin
          Select cat_rcd_cod,
                 cat_des_des,
-                TNGS_Rivn..Categorias.instante,
-                TNGS_Rivn..Categorias.deleted,
-                TNGS_Rivn..Categorias.usuario,
-                TNGS_Rivn..Categorias.version
-           from TNGS_Rivn..Categorias
+                TNGS_Mrln..Categorias.instante,
+                TNGS_Mrln..Categorias.deleted,
+                TNGS_Mrln..Categorias.usuario,
+                TNGS_Mrln..Categorias.version
+           from TNGS_Mrln..Categorias
           where deleted = 0
           order by cat_rcd_cod
       end
@@ -66,11 +66,11 @@ begin
       begin
          Select cat_rcd_cod,
                 cat_des_des,
-                TNGS_Rivn..Categorias.instante,
-                TNGS_Rivn..Categorias.deleted,
-                TNGS_Rivn..Categorias.usuario,
-                TNGS_Rivn..Categorias.version
-           from TNGS_Rivn..Categorias
+                TNGS_Mrln..Categorias.instante,
+                TNGS_Mrln..Categorias.deleted,
+                TNGS_Mrln..Categorias.usuario,
+                TNGS_Mrln..Categorias.version
+           from TNGS_Mrln..Categorias
           order by cat_rcd_cod
       end
 
@@ -117,7 +117,7 @@ as
 begin
 
    Select count(*) as cantidad
-     from TNGS_Rivn..Categorias
+     from TNGS_Mrln..Categorias
     where cat_rcd_cod = @cat_rcd_cod
       and version = @version
 
@@ -167,11 +167,11 @@ begin
       begin
          Select cat_rcd_cod,
                 cat_des_des,
-                TNGS_Rivn..Categorias.instante,
-                TNGS_Rivn..Categorias.deleted,
-                TNGS_Rivn..Categorias.usuario,
-                TNGS_Rivn..Categorias.version
-           from TNGS_Rivn..Categorias
+                TNGS_Mrln..Categorias.instante,
+                TNGS_Mrln..Categorias.deleted,
+                TNGS_Mrln..Categorias.usuario,
+                TNGS_Mrln..Categorias.version
+           from TNGS_Mrln..Categorias
           where cat_rcd_cod = @cat_rcd_cod
             and deleted = 0
       end
@@ -179,11 +179,11 @@ begin
       begin
          Select cat_rcd_cod,
                 cat_des_des,
-                TNGS_Rivn..Categorias.instante,
-                TNGS_Rivn..Categorias.deleted,
-                TNGS_Rivn..Categorias.usuario,
-                TNGS_Rivn..Categorias.version
-           from TNGS_Rivn..Categorias
+                TNGS_Mrln..Categorias.instante,
+                TNGS_Mrln..Categorias.deleted,
+                TNGS_Mrln..Categorias.usuario,
+                TNGS_Mrln..Categorias.version
+           from TNGS_Mrln..Categorias
           where cat_rcd_cod = @cat_rcd_cod
       end
 
@@ -231,7 +231,7 @@ create procedure dbo.CATEGORIAS_INSERT
 as
 begin
 
-   Insert into TNGS_Rivn..Categorias
+   Insert into TNGS_Mrln..Categorias
    values (
            @cat_rcd_cod,
            @cat_des_des,
@@ -282,7 +282,7 @@ create procedure dbo.CATEGORIAS_UPDATE
 as
 begin
 
-   Update TNGS_Rivn..Categorias
+   Update TNGS_Mrln..Categorias
       set cat_des_des= @cat_des_des,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -331,7 +331,7 @@ create procedure dbo.CATEGORIAS_DELETE
 as
 begin
 
-   Update TNGS_Rivn..Categorias
+   Update TNGS_Mrln..Categorias
       set deleted = 1,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -380,7 +380,7 @@ create procedure dbo.CATEGORIAS_RECALL
 as
 begin
 
-   Update TNGS_Rivn..Categorias
+   Update TNGS_Mrln..Categorias
       set deleted = 0,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -429,7 +429,7 @@ create procedure dbo.CATEGORIAS_DROP
 as
 begin
 
-   Delete from TNGS_Rivn..Categorias
+   Delete from TNGS_Mrln..Categorias
     where cat_rcd_cod = @cat_rcd_cod
 
 fin:
@@ -472,7 +472,7 @@ create procedure dbo.CATEGORIAS_PACK
 as
 begin
 
-   Delete TNGS_Rivn..Categorias
+   Delete TNGS_Mrln..Categorias
     where deleted = 1
 
 fin:
@@ -518,8 +518,7 @@ as
 begin
 
    select * from Categorias 
-    
-         where cat_des_des like '%' + ltrim(rtrim(@desc)) + '%' 
+   where cat_des_des like '%' + ltrim(rtrim(@desc)) + '%' 
 
 fin:
 
@@ -539,11 +538,11 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 17/08/2015 10:48
-// Sistema     : Rivn
+// Fecha       : 20/04/2018 19:40
+// Sistema     : Mrln
 // Tabla       : Controles
 //----------------------------------------------------------------------------
-// © 1999-2015 by TNG Software                                      Gndr 5.20
+// © 1999-2018 by TNG Software                                      Gndr 5.20
 //---------------------------------------------------------------------------*/
 
 /* ***************************************************************************
@@ -557,7 +556,7 @@ go
 /* Selecciono la base en la que se crearan los SPs */
 /*-------------------------------------------------*/
 
-use TNGS_Rivn
+use TNGS_Mrln
 go
 
 ---////////////////////////////////////////////////////////
@@ -593,11 +592,11 @@ begin
          Select ctl_cod_cod,
                 ctl_des_des,
                 ctl_cd1_crit,
-                TNGS_Rivn..Controles.instante,
-                TNGS_Rivn..Controles.deleted,
-                TNGS_Rivn..Controles.usuario,
-                TNGS_Rivn..Controles.version
-           from TNGS_Rivn..Controles
+                TNGS_Mrln..Controles.instante,
+                TNGS_Mrln..Controles.deleted,
+                TNGS_Mrln..Controles.usuario,
+                TNGS_Mrln..Controles.version
+           from TNGS_Mrln..Controles
           where deleted = 0
           order by ctl_cod_cod
       end
@@ -606,11 +605,11 @@ begin
          Select ctl_cod_cod,
                 ctl_des_des,
                 ctl_cd1_crit,
-                TNGS_Rivn..Controles.instante,
-                TNGS_Rivn..Controles.deleted,
-                TNGS_Rivn..Controles.usuario,
-                TNGS_Rivn..Controles.version
-           from TNGS_Rivn..Controles
+                TNGS_Mrln..Controles.instante,
+                TNGS_Mrln..Controles.deleted,
+                TNGS_Mrln..Controles.usuario,
+                TNGS_Mrln..Controles.version
+           from TNGS_Mrln..Controles
           order by ctl_cod_cod
       end
 
@@ -657,7 +656,7 @@ as
 begin
 
    Select count(*) as cantidad
-     from TNGS_Rivn..Controles
+     from TNGS_Mrln..Controles
     where ctl_cod_cod = @ctl_cod_cod
       and version = @version
 
@@ -708,11 +707,11 @@ begin
          Select ctl_cod_cod,
                 ctl_des_des,
                 ctl_cd1_crit,
-                TNGS_Rivn..Controles.instante,
-                TNGS_Rivn..Controles.deleted,
-                TNGS_Rivn..Controles.usuario,
-                TNGS_Rivn..Controles.version
-           from TNGS_Rivn..Controles
+                TNGS_Mrln..Controles.instante,
+                TNGS_Mrln..Controles.deleted,
+                TNGS_Mrln..Controles.usuario,
+                TNGS_Mrln..Controles.version
+           from TNGS_Mrln..Controles
           where ctl_cod_cod = @ctl_cod_cod
             and deleted = 0
       end
@@ -721,11 +720,11 @@ begin
          Select ctl_cod_cod,
                 ctl_des_des,
                 ctl_cd1_crit,
-                TNGS_Rivn..Controles.instante,
-                TNGS_Rivn..Controles.deleted,
-                TNGS_Rivn..Controles.usuario,
-                TNGS_Rivn..Controles.version
-           from TNGS_Rivn..Controles
+                TNGS_Mrln..Controles.instante,
+                TNGS_Mrln..Controles.deleted,
+                TNGS_Mrln..Controles.usuario,
+                TNGS_Mrln..Controles.version
+           from TNGS_Mrln..Controles
           where ctl_cod_cod = @ctl_cod_cod
       end
 
@@ -770,7 +769,7 @@ as
 begin
 
    Select isnull(max(ctl_cod_cod), '0') as ctl_cod_cod
-     from TNGS_Rivn..Controles
+     from TNGS_Mrln..Controles
 
 fin:
 
@@ -818,7 +817,7 @@ create procedure dbo.CONTROLES_INSERT
 as
 begin
 
-   Insert into TNGS_Rivn..Controles
+   Insert into TNGS_Mrln..Controles
    values (
            @ctl_cod_cod,
            @ctl_des_des,
@@ -872,7 +871,7 @@ create procedure dbo.CONTROLES_UPDATE
 as
 begin
 
-   Update TNGS_Rivn..Controles
+   Update TNGS_Mrln..Controles
       set ctl_des_des= @ctl_des_des,
           ctl_cd1_crit= @ctl_cd1_crit,
           version = ((version+1) % 32767),
@@ -922,7 +921,7 @@ create procedure dbo.CONTROLES_DELETE
 as
 begin
 
-   Update TNGS_Rivn..Controles
+   Update TNGS_Mrln..Controles
       set deleted = 1,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -971,7 +970,7 @@ create procedure dbo.CONTROLES_RECALL
 as
 begin
 
-   Update TNGS_Rivn..Controles
+   Update TNGS_Mrln..Controles
       set deleted = 0,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -1020,7 +1019,7 @@ create procedure dbo.CONTROLES_DROP
 as
 begin
 
-   Delete from TNGS_Rivn..Controles
+   Delete from TNGS_Mrln..Controles
     where ctl_cod_cod = @ctl_cod_cod
 
 fin:
@@ -1063,7 +1062,7 @@ create procedure dbo.CONTROLES_PACK
 as
 begin
 
-   Delete TNGS_Rivn..Controles
+   Delete TNGS_Mrln..Controles
     where deleted = 1
 
 fin:
@@ -1084,11 +1083,11 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 17/08/2015 10:48
-// Sistema     : Rivn
+// Fecha       : 20/04/2018 19:40
+// Sistema     : Mrln
 // Tabla       : ControlesReparations
 //----------------------------------------------------------------------------
-// © 1999-2015 by TNG Software                                      Gndr 5.20
+// © 1999-2018 by TNG Software                                      Gndr 5.20
 //---------------------------------------------------------------------------*/
 
 /* ***************************************************************************
@@ -1102,7 +1101,7 @@ go
 /* Selecciono la base en la que se crearan los SPs */
 /*-------------------------------------------------*/
 
-use TNGS_Rivn
+use TNGS_Mrln
 go
 
 ---////////////////////////////////////////////////////////
@@ -1139,14 +1138,14 @@ begin
                 ctr_nro_nroitem,
                 rep_xde_des as ctr_des_descRep,
                 ctr_cd6_codrep,
-                TNGS_Rivn..ControlesReparations.instante,
-                TNGS_Rivn..ControlesReparations.deleted,
-                TNGS_Rivn..ControlesReparations.usuario,
-                TNGS_Rivn..ControlesReparations.version
-           from TNGS_Rivn..ControlesReparations
-                join TNGS_Rivn..Reparaciones
+                TNGS_Mrln..ControlesReparations.instante,
+                TNGS_Mrln..ControlesReparations.deleted,
+                TNGS_Mrln..ControlesReparations.usuario,
+                TNGS_Mrln..ControlesReparations.version
+           from TNGS_Mrln..ControlesReparations
+                join TNGS_Mrln..Reparaciones
                   on ctr_cd6_codRep = rep_cd6_cod
-          where TNGS_Rivn..ControlesReparations.deleted = 0
+          where TNGS_Mrln..ControlesReparations.deleted = 0
           order by ctr_cod_codctl,
                 ctr_nro_nroitem
       end
@@ -1156,12 +1155,12 @@ begin
                 ctr_nro_nroitem,
                 rep_xde_des as ctr_des_descRep,
                 ctr_cd6_codrep,
-                TNGS_Rivn..ControlesReparations.instante,
-                TNGS_Rivn..ControlesReparations.deleted,
-                TNGS_Rivn..ControlesReparations.usuario,
-                TNGS_Rivn..ControlesReparations.version
-           from TNGS_Rivn..ControlesReparations
-                join TNGS_Rivn..Reparaciones
+                TNGS_Mrln..ControlesReparations.instante,
+                TNGS_Mrln..ControlesReparations.deleted,
+                TNGS_Mrln..ControlesReparations.usuario,
+                TNGS_Mrln..ControlesReparations.version
+           from TNGS_Mrln..ControlesReparations
+                join TNGS_Mrln..Reparaciones
                   on ctr_cd6_codRep = rep_cd6_cod
           order by ctr_cod_codctl,
                 ctr_nro_nroitem
@@ -1212,7 +1211,7 @@ as
 begin
 
    Select count(*) as cantidad
-     from TNGS_Rivn..ControlesReparations
+     from TNGS_Mrln..ControlesReparations
     where ctr_cod_codctl = @ctr_cod_codctl
       and ctr_nro_nroitem = @ctr_nro_nroitem
       and version = @version
@@ -1267,16 +1266,16 @@ begin
                 ctr_nro_nroitem,
                 rep_xde_des as ctr_des_descRep,
                 ctr_cd6_codrep,
-                TNGS_Rivn..ControlesReparations.instante,
-                TNGS_Rivn..ControlesReparations.deleted,
-                TNGS_Rivn..ControlesReparations.usuario,
-                TNGS_Rivn..ControlesReparations.version
-           from TNGS_Rivn..ControlesReparations
-                join TNGS_Rivn..Reparaciones
+                TNGS_Mrln..ControlesReparations.instante,
+                TNGS_Mrln..ControlesReparations.deleted,
+                TNGS_Mrln..ControlesReparations.usuario,
+                TNGS_Mrln..ControlesReparations.version
+           from TNGS_Mrln..ControlesReparations
+                join TNGS_Mrln..Reparaciones
                   on ctr_cd6_codRep = rep_cd6_cod
           where ctr_cod_codctl = @ctr_cod_codctl
             and ctr_nro_nroitem = @ctr_nro_nroitem
-            and TNGS_Rivn..ControlesReparations.deleted = 0
+            and TNGS_Mrln..ControlesReparations.deleted = 0
       end
    else
       begin
@@ -1284,12 +1283,12 @@ begin
                 ctr_nro_nroitem,
                 rep_xde_des as ctr_des_descRep,
                 ctr_cd6_codrep,
-                TNGS_Rivn..ControlesReparations.instante,
-                TNGS_Rivn..ControlesReparations.deleted,
-                TNGS_Rivn..ControlesReparations.usuario,
-                TNGS_Rivn..ControlesReparations.version
-           from TNGS_Rivn..ControlesReparations
-                join TNGS_Rivn..Reparaciones
+                TNGS_Mrln..ControlesReparations.instante,
+                TNGS_Mrln..ControlesReparations.deleted,
+                TNGS_Mrln..ControlesReparations.usuario,
+                TNGS_Mrln..ControlesReparations.version
+           from TNGS_Mrln..ControlesReparations
+                join TNGS_Mrln..Reparaciones
                   on ctr_cd6_codRep = rep_cd6_cod
           where ctr_cod_codctl = @ctr_cod_codctl
             and ctr_nro_nroitem = @ctr_nro_nroitem
@@ -1343,15 +1342,15 @@ begin
                 ctr_nro_nroitem,
                 rep_xde_des as ctr_des_descRep,
                 ctr_cd6_codrep,
-                TNGS_Rivn..ControlesReparations.instante,
-                TNGS_Rivn..ControlesReparations.deleted,
-                TNGS_Rivn..ControlesReparations.usuario,
-                TNGS_Rivn..ControlesReparations.version
-           from TNGS_Rivn..ControlesReparations
-                join TNGS_Rivn..Reparaciones
+                TNGS_Mrln..ControlesReparations.instante,
+                TNGS_Mrln..ControlesReparations.deleted,
+                TNGS_Mrln..ControlesReparations.usuario,
+                TNGS_Mrln..ControlesReparations.version
+           from TNGS_Mrln..ControlesReparations
+                join TNGS_Mrln..Reparaciones
                   on ctr_cd6_codRep = rep_cd6_cod
           where ctr_cod_codctl = @ctr_cod_codctl
-            and TNGS_Rivn..ControlesReparations.deleted = 0
+            and TNGS_Mrln..ControlesReparations.deleted = 0
           order by ctr_nro_nroitem
       end
    else
@@ -1360,12 +1359,12 @@ begin
                 ctr_nro_nroitem,
                 rep_xde_des as ctr_des_descRep,
                 ctr_cd6_codrep,
-                TNGS_Rivn..ControlesReparations.instante,
-                TNGS_Rivn..ControlesReparations.deleted,
-                TNGS_Rivn..ControlesReparations.usuario,
-                TNGS_Rivn..ControlesReparations.version
-           from TNGS_Rivn..ControlesReparations
-                join TNGS_Rivn..Reparaciones
+                TNGS_Mrln..ControlesReparations.instante,
+                TNGS_Mrln..ControlesReparations.deleted,
+                TNGS_Mrln..ControlesReparations.usuario,
+                TNGS_Mrln..ControlesReparations.version
+           from TNGS_Mrln..ControlesReparations
+                join TNGS_Mrln..Reparaciones
                   on ctr_cd6_codRep = rep_cd6_cod
           where ctr_cod_codctl = @ctr_cod_codctl
           order by ctr_nro_nroitem
@@ -1417,7 +1416,7 @@ create procedure dbo.CONTROLESREPARATIONS_INSERT
 as
 begin
 
-   Insert into TNGS_Rivn..ControlesReparations
+   Insert into TNGS_Mrln..ControlesReparations
    values (
            @ctr_cod_codctl,
            @ctr_nro_nroitem,
@@ -1471,7 +1470,7 @@ create procedure dbo.CONTROLESREPARATIONS_UPDATE
 as
 begin
 
-   Update TNGS_Rivn..ControlesReparations
+   Update TNGS_Mrln..ControlesReparations
       set ctr_cd6_codrep= @ctr_cd6_codrep,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -1523,7 +1522,7 @@ create procedure dbo.CONTROLESREPARATIONS_DELETE
 as
 begin
 
-   Update TNGS_Rivn..ControlesReparations
+   Update TNGS_Mrln..ControlesReparations
       set deleted = 1,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -1580,7 +1579,7 @@ begin
          select @instante= getdate()
       end
 
-   Update TNGS_Rivn..ControlesReparations
+   Update TNGS_Mrln..ControlesReparations
       set deleted = 1,
           version = ((version+1) % 32767),
           instante= @instante,
@@ -1631,7 +1630,7 @@ create procedure dbo.CONTROLESREPARATIONS_RECALL
 as
 begin
 
-   Update TNGS_Rivn..ControlesReparations
+   Update TNGS_Mrln..ControlesReparations
       set deleted = 0,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -1685,7 +1684,7 @@ begin
 
    if datepart(yyyy, @instante) = 1900
       begin
-         Update TNGS_Rivn..ControlesReparations
+         Update TNGS_Mrln..ControlesReparations
             set deleted = 0,
                 version = ((version+1) % 32767),
                 instante= getdate(),
@@ -1694,7 +1693,7 @@ begin
       end
    else
       begin
-         Update TNGS_Rivn..ControlesReparations
+         Update TNGS_Mrln..ControlesReparations
             set deleted = 0,
                 version = ((version+1) % 32767),
                 instante= getdate(),
@@ -1747,7 +1746,7 @@ create procedure dbo.CONTROLESREPARATIONS_DROP
 as
 begin
 
-   Delete from TNGS_Rivn..ControlesReparations
+   Delete from TNGS_Mrln..ControlesReparations
     where ctr_cod_codctl = @ctr_cod_codctl
       and ctr_nro_nroitem = @ctr_nro_nroitem
 
@@ -1793,7 +1792,7 @@ create procedure dbo.CONTROLESREPARATIONS_FDROP
 as
 begin
 
-   Delete from TNGS_Rivn..ControlesReparations
+   Delete from TNGS_Mrln..ControlesReparations
     where ctr_cod_codctl = @ctr_cod_codctl
 
 fin:
@@ -1836,7 +1835,7 @@ create procedure dbo.CONTROLESREPARATIONS_PACK
 as
 begin
 
-   Delete TNGS_Rivn..ControlesReparations
+   Delete TNGS_Mrln..ControlesReparations
     where deleted = 1
 
 fin:
@@ -1881,7 +1880,7 @@ create procedure dbo.CONTROLESREPARATIONS_FPACK
 as
 begin
 
-   Delete from TNGS_Rivn..ControlesReparations
+   Delete from TNGS_Mrln..ControlesReparations
     where ctr_cod_codctl = @ctr_cod_codctl
       and deleted = 1
 
@@ -1903,11 +1902,11 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 17/08/2015 10:48
-// Sistema     : Rivn
+// Fecha       : 20/04/2018 19:40
+// Sistema     : Mrln
 // Tabla       : Encargados
 //----------------------------------------------------------------------------
-// © 1999-2015 by TNG Software                                      Gndr 5.20
+// © 1999-2018 by TNG Software                                      Gndr 5.20
 //---------------------------------------------------------------------------*/
 
 /* ***************************************************************************
@@ -1921,7 +1920,7 @@ go
 /* Selecciono la base en la que se crearan los SPs */
 /*-------------------------------------------------*/
 
-use TNGS_Rivn
+use TNGS_Mrln
 go
 
 ---////////////////////////////////////////////////////////
@@ -1956,11 +1955,11 @@ begin
       begin
          Select enc_cod_cod,
                 enc_des_des,
-                TNGS_Rivn..Encargados.instante,
-                TNGS_Rivn..Encargados.deleted,
-                TNGS_Rivn..Encargados.usuario,
-                TNGS_Rivn..Encargados.version
-           from TNGS_Rivn..Encargados
+                TNGS_Mrln..Encargados.instante,
+                TNGS_Mrln..Encargados.deleted,
+                TNGS_Mrln..Encargados.usuario,
+                TNGS_Mrln..Encargados.version
+           from TNGS_Mrln..Encargados
           where deleted = 0
           order by enc_cod_cod
       end
@@ -1968,11 +1967,11 @@ begin
       begin
          Select enc_cod_cod,
                 enc_des_des,
-                TNGS_Rivn..Encargados.instante,
-                TNGS_Rivn..Encargados.deleted,
-                TNGS_Rivn..Encargados.usuario,
-                TNGS_Rivn..Encargados.version
-           from TNGS_Rivn..Encargados
+                TNGS_Mrln..Encargados.instante,
+                TNGS_Mrln..Encargados.deleted,
+                TNGS_Mrln..Encargados.usuario,
+                TNGS_Mrln..Encargados.version
+           from TNGS_Mrln..Encargados
           order by enc_cod_cod
       end
 
@@ -2019,7 +2018,7 @@ as
 begin
 
    Select count(*) as cantidad
-     from TNGS_Rivn..Encargados
+     from TNGS_Mrln..Encargados
     where enc_cod_cod = @enc_cod_cod
       and version = @version
 
@@ -2069,11 +2068,11 @@ begin
       begin
          Select enc_cod_cod,
                 enc_des_des,
-                TNGS_Rivn..Encargados.instante,
-                TNGS_Rivn..Encargados.deleted,
-                TNGS_Rivn..Encargados.usuario,
-                TNGS_Rivn..Encargados.version
-           from TNGS_Rivn..Encargados
+                TNGS_Mrln..Encargados.instante,
+                TNGS_Mrln..Encargados.deleted,
+                TNGS_Mrln..Encargados.usuario,
+                TNGS_Mrln..Encargados.version
+           from TNGS_Mrln..Encargados
           where enc_cod_cod = @enc_cod_cod
             and deleted = 0
       end
@@ -2081,11 +2080,11 @@ begin
       begin
          Select enc_cod_cod,
                 enc_des_des,
-                TNGS_Rivn..Encargados.instante,
-                TNGS_Rivn..Encargados.deleted,
-                TNGS_Rivn..Encargados.usuario,
-                TNGS_Rivn..Encargados.version
-           from TNGS_Rivn..Encargados
+                TNGS_Mrln..Encargados.instante,
+                TNGS_Mrln..Encargados.deleted,
+                TNGS_Mrln..Encargados.usuario,
+                TNGS_Mrln..Encargados.version
+           from TNGS_Mrln..Encargados
           where enc_cod_cod = @enc_cod_cod
       end
 
@@ -2130,7 +2129,7 @@ as
 begin
 
    Select isnull(max(enc_cod_cod), '0') as enc_cod_cod
-     from TNGS_Rivn..Encargados
+     from TNGS_Mrln..Encargados
 
 fin:
 
@@ -2176,7 +2175,7 @@ create procedure dbo.ENCARGADOS_INSERT
 as
 begin
 
-   Insert into TNGS_Rivn..Encargados
+   Insert into TNGS_Mrln..Encargados
    values (
            @enc_cod_cod,
            @enc_des_des,
@@ -2227,7 +2226,7 @@ create procedure dbo.ENCARGADOS_UPDATE
 as
 begin
 
-   Update TNGS_Rivn..Encargados
+   Update TNGS_Mrln..Encargados
       set enc_des_des= @enc_des_des,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -2276,7 +2275,7 @@ create procedure dbo.ENCARGADOS_DELETE
 as
 begin
 
-   Update TNGS_Rivn..Encargados
+   Update TNGS_Mrln..Encargados
       set deleted = 1,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -2325,7 +2324,7 @@ create procedure dbo.ENCARGADOS_RECALL
 as
 begin
 
-   Update TNGS_Rivn..Encargados
+   Update TNGS_Mrln..Encargados
       set deleted = 0,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -2374,7 +2373,7 @@ create procedure dbo.ENCARGADOS_DROP
 as
 begin
 
-   Delete from TNGS_Rivn..Encargados
+   Delete from TNGS_Mrln..Encargados
     where enc_cod_cod = @enc_cod_cod
 
 fin:
@@ -2417,7 +2416,7 @@ create procedure dbo.ENCARGADOS_PACK
 as
 begin
 
-   Delete TNGS_Rivn..Encargados
+   Delete TNGS_Mrln..Encargados
     where deleted = 1
 
 fin:
@@ -2438,11 +2437,11 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 17/08/2015 10:48
-// Sistema     : Rivn
+// Fecha       : 20/04/2018 19:40
+// Sistema     : Mrln
 // Tabla       : Equipamiento
 //----------------------------------------------------------------------------
-// © 1999-2015 by TNG Software                                      Gndr 5.20
+// © 1999-2018 by TNG Software                                      Gndr 5.20
 //---------------------------------------------------------------------------*/
 
 /* ***************************************************************************
@@ -2456,7 +2455,7 @@ go
 /* Selecciono la base en la que se crearan los SPs */
 /*-------------------------------------------------*/
 
-use TNGS_Rivn
+use TNGS_Mrln
 go
 
 ---////////////////////////////////////////////////////////
@@ -2492,11 +2491,11 @@ begin
          Select eqi_cod_cod,
                 eqi_des_des,
                 eqi_imp_valor,
-                TNGS_Rivn..Equipamiento.instante,
-                TNGS_Rivn..Equipamiento.deleted,
-                TNGS_Rivn..Equipamiento.usuario,
-                TNGS_Rivn..Equipamiento.version
-           from TNGS_Rivn..Equipamiento
+                TNGS_Mrln..Equipamiento.instante,
+                TNGS_Mrln..Equipamiento.deleted,
+                TNGS_Mrln..Equipamiento.usuario,
+                TNGS_Mrln..Equipamiento.version
+           from TNGS_Mrln..Equipamiento
           where deleted = 0
           order by eqi_cod_cod
       end
@@ -2505,11 +2504,11 @@ begin
          Select eqi_cod_cod,
                 eqi_des_des,
                 eqi_imp_valor,
-                TNGS_Rivn..Equipamiento.instante,
-                TNGS_Rivn..Equipamiento.deleted,
-                TNGS_Rivn..Equipamiento.usuario,
-                TNGS_Rivn..Equipamiento.version
-           from TNGS_Rivn..Equipamiento
+                TNGS_Mrln..Equipamiento.instante,
+                TNGS_Mrln..Equipamiento.deleted,
+                TNGS_Mrln..Equipamiento.usuario,
+                TNGS_Mrln..Equipamiento.version
+           from TNGS_Mrln..Equipamiento
           order by eqi_cod_cod
       end
 
@@ -2556,7 +2555,7 @@ as
 begin
 
    Select count(*) as cantidad
-     from TNGS_Rivn..Equipamiento
+     from TNGS_Mrln..Equipamiento
     where eqi_cod_cod = @eqi_cod_cod
       and version = @version
 
@@ -2607,11 +2606,11 @@ begin
          Select eqi_cod_cod,
                 eqi_des_des,
                 eqi_imp_valor,
-                TNGS_Rivn..Equipamiento.instante,
-                TNGS_Rivn..Equipamiento.deleted,
-                TNGS_Rivn..Equipamiento.usuario,
-                TNGS_Rivn..Equipamiento.version
-           from TNGS_Rivn..Equipamiento
+                TNGS_Mrln..Equipamiento.instante,
+                TNGS_Mrln..Equipamiento.deleted,
+                TNGS_Mrln..Equipamiento.usuario,
+                TNGS_Mrln..Equipamiento.version
+           from TNGS_Mrln..Equipamiento
           where eqi_cod_cod = @eqi_cod_cod
             and deleted = 0
       end
@@ -2620,11 +2619,11 @@ begin
          Select eqi_cod_cod,
                 eqi_des_des,
                 eqi_imp_valor,
-                TNGS_Rivn..Equipamiento.instante,
-                TNGS_Rivn..Equipamiento.deleted,
-                TNGS_Rivn..Equipamiento.usuario,
-                TNGS_Rivn..Equipamiento.version
-           from TNGS_Rivn..Equipamiento
+                TNGS_Mrln..Equipamiento.instante,
+                TNGS_Mrln..Equipamiento.deleted,
+                TNGS_Mrln..Equipamiento.usuario,
+                TNGS_Mrln..Equipamiento.version
+           from TNGS_Mrln..Equipamiento
           where eqi_cod_cod = @eqi_cod_cod
       end
 
@@ -2669,7 +2668,7 @@ as
 begin
 
    Select isnull(max(eqi_cod_cod), '0') as eqi_cod_cod
-     from TNGS_Rivn..Equipamiento
+     from TNGS_Mrln..Equipamiento
 
 fin:
 
@@ -2717,7 +2716,7 @@ create procedure dbo.EQUIPAMIENTO_INSERT
 as
 begin
 
-   Insert into TNGS_Rivn..Equipamiento
+   Insert into TNGS_Mrln..Equipamiento
    values (
            @eqi_cod_cod,
            @eqi_des_des,
@@ -2771,7 +2770,7 @@ create procedure dbo.EQUIPAMIENTO_UPDATE
 as
 begin
 
-   Update TNGS_Rivn..Equipamiento
+   Update TNGS_Mrln..Equipamiento
       set eqi_des_des= @eqi_des_des,
           eqi_imp_valor= @eqi_imp_valor,
           version = ((version+1) % 32767),
@@ -2821,7 +2820,7 @@ create procedure dbo.EQUIPAMIENTO_DELETE
 as
 begin
 
-   Update TNGS_Rivn..Equipamiento
+   Update TNGS_Mrln..Equipamiento
       set deleted = 1,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -2870,7 +2869,7 @@ create procedure dbo.EQUIPAMIENTO_RECALL
 as
 begin
 
-   Update TNGS_Rivn..Equipamiento
+   Update TNGS_Mrln..Equipamiento
       set deleted = 0,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -2919,7 +2918,7 @@ create procedure dbo.EQUIPAMIENTO_DROP
 as
 begin
 
-   Delete from TNGS_Rivn..Equipamiento
+   Delete from TNGS_Mrln..Equipamiento
     where eqi_cod_cod = @eqi_cod_cod
 
 fin:
@@ -2962,7 +2961,7 @@ create procedure dbo.EQUIPAMIENTO_PACK
 as
 begin
 
-   Delete TNGS_Rivn..Equipamiento
+   Delete TNGS_Mrln..Equipamiento
     where deleted = 1
 
 fin:
@@ -2983,11 +2982,11 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 17/08/2015 10:48
-// Sistema     : Rivn
+// Fecha       : 20/04/2018 19:40
+// Sistema     : Mrln
 // Tabla       : Estaciones
 //----------------------------------------------------------------------------
-// © 1999-2015 by TNG Software                                      Gndr 5.20
+// © 1999-2018 by TNG Software                                      Gndr 5.20
 //---------------------------------------------------------------------------*/
 
 /* ***************************************************************************
@@ -3001,7 +3000,7 @@ go
 /* Selecciono la base en la que se crearan los SPs */
 /*-------------------------------------------------*/
 
-use TNGS_Rivn
+use TNGS_Mrln
 go
 
 ---////////////////////////////////////////////////////////
@@ -3039,11 +3038,11 @@ begin
                 ets_ede_domicilio,
                 ets_des_contacto,
                 ets_ete_telefono,
-                TNGS_Rivn..Estaciones.instante,
-                TNGS_Rivn..Estaciones.deleted,
-                TNGS_Rivn..Estaciones.usuario,
-                TNGS_Rivn..Estaciones.version
-           from TNGS_Rivn..Estaciones
+                TNGS_Mrln..Estaciones.instante,
+                TNGS_Mrln..Estaciones.deleted,
+                TNGS_Mrln..Estaciones.usuario,
+                TNGS_Mrln..Estaciones.version
+           from TNGS_Mrln..Estaciones
           where deleted = 0
           order by ets_rcd_cod
       end
@@ -3054,11 +3053,11 @@ begin
                 ets_ede_domicilio,
                 ets_des_contacto,
                 ets_ete_telefono,
-                TNGS_Rivn..Estaciones.instante,
-                TNGS_Rivn..Estaciones.deleted,
-                TNGS_Rivn..Estaciones.usuario,
-                TNGS_Rivn..Estaciones.version
-           from TNGS_Rivn..Estaciones
+                TNGS_Mrln..Estaciones.instante,
+                TNGS_Mrln..Estaciones.deleted,
+                TNGS_Mrln..Estaciones.usuario,
+                TNGS_Mrln..Estaciones.version
+           from TNGS_Mrln..Estaciones
           order by ets_rcd_cod
       end
 
@@ -3105,7 +3104,7 @@ as
 begin
 
    Select count(*) as cantidad
-     from TNGS_Rivn..Estaciones
+     from TNGS_Mrln..Estaciones
     where ets_rcd_cod = @ets_rcd_cod
       and version = @version
 
@@ -3158,11 +3157,11 @@ begin
                 ets_ede_domicilio,
                 ets_des_contacto,
                 ets_ete_telefono,
-                TNGS_Rivn..Estaciones.instante,
-                TNGS_Rivn..Estaciones.deleted,
-                TNGS_Rivn..Estaciones.usuario,
-                TNGS_Rivn..Estaciones.version
-           from TNGS_Rivn..Estaciones
+                TNGS_Mrln..Estaciones.instante,
+                TNGS_Mrln..Estaciones.deleted,
+                TNGS_Mrln..Estaciones.usuario,
+                TNGS_Mrln..Estaciones.version
+           from TNGS_Mrln..Estaciones
           where ets_rcd_cod = @ets_rcd_cod
             and deleted = 0
       end
@@ -3173,11 +3172,11 @@ begin
                 ets_ede_domicilio,
                 ets_des_contacto,
                 ets_ete_telefono,
-                TNGS_Rivn..Estaciones.instante,
-                TNGS_Rivn..Estaciones.deleted,
-                TNGS_Rivn..Estaciones.usuario,
-                TNGS_Rivn..Estaciones.version
-           from TNGS_Rivn..Estaciones
+                TNGS_Mrln..Estaciones.instante,
+                TNGS_Mrln..Estaciones.deleted,
+                TNGS_Mrln..Estaciones.usuario,
+                TNGS_Mrln..Estaciones.version
+           from TNGS_Mrln..Estaciones
           where ets_rcd_cod = @ets_rcd_cod
       end
 
@@ -3222,7 +3221,7 @@ as
 begin
 
    Select isnull(max(ets_rcd_cod), '0') as ets_rcd_cod
-     from TNGS_Rivn..Estaciones
+     from TNGS_Mrln..Estaciones
 
 fin:
 
@@ -3274,7 +3273,7 @@ create procedure dbo.ESTACIONES_INSERT
 as
 begin
 
-   Insert into TNGS_Rivn..Estaciones
+   Insert into TNGS_Mrln..Estaciones
    values (
            @ets_rcd_cod,
            @ets_des_des,
@@ -3334,7 +3333,7 @@ create procedure dbo.ESTACIONES_UPDATE
 as
 begin
 
-   Update TNGS_Rivn..Estaciones
+   Update TNGS_Mrln..Estaciones
       set ets_des_des= @ets_des_des,
           ets_ede_domicilio= @ets_ede_domicilio,
           ets_des_contacto= @ets_des_contacto,
@@ -3386,7 +3385,7 @@ create procedure dbo.ESTACIONES_DELETE
 as
 begin
 
-   Update TNGS_Rivn..Estaciones
+   Update TNGS_Mrln..Estaciones
       set deleted = 1,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -3435,7 +3434,7 @@ create procedure dbo.ESTACIONES_RECALL
 as
 begin
 
-   Update TNGS_Rivn..Estaciones
+   Update TNGS_Mrln..Estaciones
       set deleted = 0,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -3484,7 +3483,7 @@ create procedure dbo.ESTACIONES_DROP
 as
 begin
 
-   Delete from TNGS_Rivn..Estaciones
+   Delete from TNGS_Mrln..Estaciones
     where ets_rcd_cod = @ets_rcd_cod
 
 fin:
@@ -3527,7 +3526,7 @@ create procedure dbo.ESTACIONES_PACK
 as
 begin
 
-   Delete TNGS_Rivn..Estaciones
+   Delete TNGS_Mrln..Estaciones
     where deleted = 1
 
 fin:
@@ -3548,11 +3547,11 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 17/08/2015 10:48
-// Sistema     : Rivn
+// Fecha       : 20/04/2018 19:40
+// Sistema     : Mrln
 // Tabla       : Estados
 //----------------------------------------------------------------------------
-// © 1999-2015 by TNG Software                                      Gndr 5.20
+// © 1999-2018 by TNG Software                                      Gndr 5.20
 //---------------------------------------------------------------------------*/
 
 /* ***************************************************************************
@@ -3566,7 +3565,7 @@ go
 /* Selecciono la base en la que se crearan los SPs */
 /*-------------------------------------------------*/
 
-use TNGS_Rivn
+use TNGS_Mrln
 go
 
 ---////////////////////////////////////////////////////////
@@ -3603,11 +3602,11 @@ begin
                 est_des_des,
                 est_txt_txtcontingencia,
                 est_cd1_operativo,
-                TNGS_Rivn..Estados.instante,
-                TNGS_Rivn..Estados.deleted,
-                TNGS_Rivn..Estados.usuario,
-                TNGS_Rivn..Estados.version
-           from TNGS_Rivn..Estados
+                TNGS_Mrln..Estados.instante,
+                TNGS_Mrln..Estados.deleted,
+                TNGS_Mrln..Estados.usuario,
+                TNGS_Mrln..Estados.version
+           from TNGS_Mrln..Estados
           where deleted = 0
           order by est_rcd_cod
       end
@@ -3617,11 +3616,11 @@ begin
                 est_des_des,
                 est_txt_txtcontingencia,
                 est_cd1_operativo,
-                TNGS_Rivn..Estados.instante,
-                TNGS_Rivn..Estados.deleted,
-                TNGS_Rivn..Estados.usuario,
-                TNGS_Rivn..Estados.version
-           from TNGS_Rivn..Estados
+                TNGS_Mrln..Estados.instante,
+                TNGS_Mrln..Estados.deleted,
+                TNGS_Mrln..Estados.usuario,
+                TNGS_Mrln..Estados.version
+           from TNGS_Mrln..Estados
           order by est_rcd_cod
       end
 
@@ -3668,7 +3667,7 @@ as
 begin
 
    Select count(*) as cantidad
-     from TNGS_Rivn..Estados
+     from TNGS_Mrln..Estados
     where est_rcd_cod = @est_rcd_cod
       and version = @version
 
@@ -3720,11 +3719,11 @@ begin
                 est_des_des,
                 est_txt_txtcontingencia,
                 est_cd1_operativo,
-                TNGS_Rivn..Estados.instante,
-                TNGS_Rivn..Estados.deleted,
-                TNGS_Rivn..Estados.usuario,
-                TNGS_Rivn..Estados.version
-           from TNGS_Rivn..Estados
+                TNGS_Mrln..Estados.instante,
+                TNGS_Mrln..Estados.deleted,
+                TNGS_Mrln..Estados.usuario,
+                TNGS_Mrln..Estados.version
+           from TNGS_Mrln..Estados
           where est_rcd_cod = @est_rcd_cod
             and deleted = 0
       end
@@ -3734,11 +3733,11 @@ begin
                 est_des_des,
                 est_txt_txtcontingencia,
                 est_cd1_operativo,
-                TNGS_Rivn..Estados.instante,
-                TNGS_Rivn..Estados.deleted,
-                TNGS_Rivn..Estados.usuario,
-                TNGS_Rivn..Estados.version
-           from TNGS_Rivn..Estados
+                TNGS_Mrln..Estados.instante,
+                TNGS_Mrln..Estados.deleted,
+                TNGS_Mrln..Estados.usuario,
+                TNGS_Mrln..Estados.version
+           from TNGS_Mrln..Estados
           where est_rcd_cod = @est_rcd_cod
       end
 
@@ -3783,7 +3782,7 @@ as
 begin
 
    Select isnull(max(est_rcd_cod), '0') as est_rcd_cod
-     from TNGS_Rivn..Estados
+     from TNGS_Mrln..Estados
 
 fin:
 
@@ -3833,7 +3832,7 @@ create procedure dbo.ESTADOS_INSERT
 as
 begin
 
-   Insert into TNGS_Rivn..Estados
+   Insert into TNGS_Mrln..Estados
    values (
            @est_rcd_cod,
            @est_des_des,
@@ -3890,7 +3889,7 @@ create procedure dbo.ESTADOS_UPDATE
 as
 begin
 
-   Update TNGS_Rivn..Estados
+   Update TNGS_Mrln..Estados
       set est_des_des= @est_des_des,
           est_txt_txtcontingencia= @est_txt_txtcontingencia,
           est_cd1_operativo= @est_cd1_operativo,
@@ -3941,7 +3940,7 @@ create procedure dbo.ESTADOS_DELETE
 as
 begin
 
-   Update TNGS_Rivn..Estados
+   Update TNGS_Mrln..Estados
       set deleted = 1,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -3990,7 +3989,7 @@ create procedure dbo.ESTADOS_RECALL
 as
 begin
 
-   Update TNGS_Rivn..Estados
+   Update TNGS_Mrln..Estados
       set deleted = 0,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -4039,7 +4038,7 @@ create procedure dbo.ESTADOS_DROP
 as
 begin
 
-   Delete from TNGS_Rivn..Estados
+   Delete from TNGS_Mrln..Estados
     where est_rcd_cod = @est_rcd_cod
 
 fin:
@@ -4082,7 +4081,7 @@ create procedure dbo.ESTADOS_PACK
 as
 begin
 
-   Delete TNGS_Rivn..Estados
+   Delete TNGS_Mrln..Estados
     where deleted = 1
 
 fin:
@@ -4103,11 +4102,11 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 17/08/2015 10:48
-// Sistema     : Rivn
+// Fecha       : 20/04/2018 19:40
+// Sistema     : Mrln
 // Tabla       : Marcas
 //----------------------------------------------------------------------------
-// © 1999-2015 by TNG Software                                      Gndr 5.20
+// © 1999-2018 by TNG Software                                      Gndr 5.20
 //---------------------------------------------------------------------------*/
 
 /* ***************************************************************************
@@ -4121,7 +4120,7 @@ go
 /* Selecciono la base en la que se crearan los SPs */
 /*-------------------------------------------------*/
 
-use TNGS_Rivn
+use TNGS_Mrln
 go
 
 ---////////////////////////////////////////////////////////
@@ -4156,11 +4155,11 @@ begin
       begin
          Select mrc_rcd_codigo,
                 mrc_des_descripcion,
-                TNGS_Rivn..Marcas.instante,
-                TNGS_Rivn..Marcas.deleted,
-                TNGS_Rivn..Marcas.usuario,
-                TNGS_Rivn..Marcas.version
-           from TNGS_Rivn..Marcas
+                TNGS_Mrln..Marcas.instante,
+                TNGS_Mrln..Marcas.deleted,
+                TNGS_Mrln..Marcas.usuario,
+                TNGS_Mrln..Marcas.version
+           from TNGS_Mrln..Marcas
           where deleted = 0
           order by mrc_rcd_codigo
       end
@@ -4168,11 +4167,11 @@ begin
       begin
          Select mrc_rcd_codigo,
                 mrc_des_descripcion,
-                TNGS_Rivn..Marcas.instante,
-                TNGS_Rivn..Marcas.deleted,
-                TNGS_Rivn..Marcas.usuario,
-                TNGS_Rivn..Marcas.version
-           from TNGS_Rivn..Marcas
+                TNGS_Mrln..Marcas.instante,
+                TNGS_Mrln..Marcas.deleted,
+                TNGS_Mrln..Marcas.usuario,
+                TNGS_Mrln..Marcas.version
+           from TNGS_Mrln..Marcas
           order by mrc_rcd_codigo
       end
 
@@ -4219,7 +4218,7 @@ as
 begin
 
    Select count(*) as cantidad
-     from TNGS_Rivn..Marcas
+     from TNGS_Mrln..Marcas
     where mrc_rcd_codigo = @mrc_rcd_codigo
       and version = @version
 
@@ -4269,11 +4268,11 @@ begin
       begin
          Select mrc_rcd_codigo,
                 mrc_des_descripcion,
-                TNGS_Rivn..Marcas.instante,
-                TNGS_Rivn..Marcas.deleted,
-                TNGS_Rivn..Marcas.usuario,
-                TNGS_Rivn..Marcas.version
-           from TNGS_Rivn..Marcas
+                TNGS_Mrln..Marcas.instante,
+                TNGS_Mrln..Marcas.deleted,
+                TNGS_Mrln..Marcas.usuario,
+                TNGS_Mrln..Marcas.version
+           from TNGS_Mrln..Marcas
           where mrc_rcd_codigo = @mrc_rcd_codigo
             and deleted = 0
       end
@@ -4281,11 +4280,11 @@ begin
       begin
          Select mrc_rcd_codigo,
                 mrc_des_descripcion,
-                TNGS_Rivn..Marcas.instante,
-                TNGS_Rivn..Marcas.deleted,
-                TNGS_Rivn..Marcas.usuario,
-                TNGS_Rivn..Marcas.version
-           from TNGS_Rivn..Marcas
+                TNGS_Mrln..Marcas.instante,
+                TNGS_Mrln..Marcas.deleted,
+                TNGS_Mrln..Marcas.usuario,
+                TNGS_Mrln..Marcas.version
+           from TNGS_Mrln..Marcas
           where mrc_rcd_codigo = @mrc_rcd_codigo
       end
 
@@ -4330,7 +4329,7 @@ as
 begin
 
    Select isnull(max(mrc_rcd_codigo), '0') as mrc_rcd_codigo
-     from TNGS_Rivn..Marcas
+     from TNGS_Mrln..Marcas
 
 fin:
 
@@ -4376,7 +4375,7 @@ create procedure dbo.MARCAS_INSERT
 as
 begin
 
-   Insert into TNGS_Rivn..Marcas
+   Insert into TNGS_Mrln..Marcas
    values (
            @mrc_rcd_codigo,
            @mrc_des_descripcion,
@@ -4427,7 +4426,7 @@ create procedure dbo.MARCAS_UPDATE
 as
 begin
 
-   Update TNGS_Rivn..Marcas
+   Update TNGS_Mrln..Marcas
       set mrc_des_descripcion= @mrc_des_descripcion,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -4476,7 +4475,7 @@ create procedure dbo.MARCAS_DELETE
 as
 begin
 
-   Update TNGS_Rivn..Marcas
+   Update TNGS_Mrln..Marcas
       set deleted = 1,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -4525,7 +4524,7 @@ create procedure dbo.MARCAS_RECALL
 as
 begin
 
-   Update TNGS_Rivn..Marcas
+   Update TNGS_Mrln..Marcas
       set deleted = 0,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -4574,7 +4573,7 @@ create procedure dbo.MARCAS_DROP
 as
 begin
 
-   Delete from TNGS_Rivn..Marcas
+   Delete from TNGS_Mrln..Marcas
     where mrc_rcd_codigo = @mrc_rcd_codigo
 
 fin:
@@ -4617,7 +4616,7 @@ create procedure dbo.MARCAS_PACK
 as
 begin
 
-   Delete TNGS_Rivn..Marcas
+   Delete TNGS_Mrln..Marcas
     where deleted = 1
 
 fin:
@@ -4638,11 +4637,11 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 17/08/2015 10:48
-// Sistema     : Rivn
+// Fecha       : 20/04/2018 19:40
+// Sistema     : Mrln
 // Tabla       : Modelos
 //----------------------------------------------------------------------------
-// © 1999-2015 by TNG Software                                      Gndr 5.20
+// © 1999-2018 by TNG Software                                      Gndr 5.20
 //---------------------------------------------------------------------------*/
 
 /* ***************************************************************************
@@ -4656,7 +4655,7 @@ go
 /* Selecciono la base en la que se crearan los SPs */
 /*-------------------------------------------------*/
 
-use TNGS_Rivn
+use TNGS_Mrln
 go
 
 ---////////////////////////////////////////////////////////
@@ -4692,11 +4691,11 @@ begin
          Select mds_rcd_cod,
                 mds_des_des,
                 mds_rcd_codmarca,
-                TNGS_Rivn..Modelos.instante,
-                TNGS_Rivn..Modelos.deleted,
-                TNGS_Rivn..Modelos.usuario,
-                TNGS_Rivn..Modelos.version
-           from TNGS_Rivn..Modelos
+                TNGS_Mrln..Modelos.instante,
+                TNGS_Mrln..Modelos.deleted,
+                TNGS_Mrln..Modelos.usuario,
+                TNGS_Mrln..Modelos.version
+           from TNGS_Mrln..Modelos
           where deleted = 0
           order by mds_rcd_cod
       end
@@ -4705,11 +4704,11 @@ begin
          Select mds_rcd_cod,
                 mds_des_des,
                 mds_rcd_codmarca,
-                TNGS_Rivn..Modelos.instante,
-                TNGS_Rivn..Modelos.deleted,
-                TNGS_Rivn..Modelos.usuario,
-                TNGS_Rivn..Modelos.version
-           from TNGS_Rivn..Modelos
+                TNGS_Mrln..Modelos.instante,
+                TNGS_Mrln..Modelos.deleted,
+                TNGS_Mrln..Modelos.usuario,
+                TNGS_Mrln..Modelos.version
+           from TNGS_Mrln..Modelos
           order by mds_rcd_cod
       end
 
@@ -4756,7 +4755,7 @@ as
 begin
 
    Select count(*) as cantidad
-     from TNGS_Rivn..Modelos
+     from TNGS_Mrln..Modelos
     where mds_rcd_cod = @mds_rcd_cod
       and version = @version
 
@@ -4807,11 +4806,11 @@ begin
          Select mds_rcd_cod,
                 mds_des_des,
                 mds_rcd_codmarca,
-                TNGS_Rivn..Modelos.instante,
-                TNGS_Rivn..Modelos.deleted,
-                TNGS_Rivn..Modelos.usuario,
-                TNGS_Rivn..Modelos.version
-           from TNGS_Rivn..Modelos
+                TNGS_Mrln..Modelos.instante,
+                TNGS_Mrln..Modelos.deleted,
+                TNGS_Mrln..Modelos.usuario,
+                TNGS_Mrln..Modelos.version
+           from TNGS_Mrln..Modelos
           where mds_rcd_cod = @mds_rcd_cod
             and deleted = 0
       end
@@ -4820,11 +4819,11 @@ begin
          Select mds_rcd_cod,
                 mds_des_des,
                 mds_rcd_codmarca,
-                TNGS_Rivn..Modelos.instante,
-                TNGS_Rivn..Modelos.deleted,
-                TNGS_Rivn..Modelos.usuario,
-                TNGS_Rivn..Modelos.version
-           from TNGS_Rivn..Modelos
+                TNGS_Mrln..Modelos.instante,
+                TNGS_Mrln..Modelos.deleted,
+                TNGS_Mrln..Modelos.usuario,
+                TNGS_Mrln..Modelos.version
+           from TNGS_Mrln..Modelos
           where mds_rcd_cod = @mds_rcd_cod
       end
 
@@ -4869,7 +4868,7 @@ as
 begin
 
    Select isnull(max(mds_rcd_cod), '0') as mds_rcd_cod
-     from TNGS_Rivn..Modelos
+     from TNGS_Mrln..Modelos
 
 fin:
 
@@ -4917,7 +4916,7 @@ create procedure dbo.MODELOS_INSERT
 as
 begin
 
-   Insert into TNGS_Rivn..Modelos
+   Insert into TNGS_Mrln..Modelos
    values (
            @mds_rcd_cod,
            @mds_des_des,
@@ -4971,7 +4970,7 @@ create procedure dbo.MODELOS_UPDATE
 as
 begin
 
-   Update TNGS_Rivn..Modelos
+   Update TNGS_Mrln..Modelos
       set mds_des_des= @mds_des_des,
           mds_rcd_codmarca= @mds_rcd_codmarca,
           version = ((version+1) % 32767),
@@ -5021,7 +5020,7 @@ create procedure dbo.MODELOS_DELETE
 as
 begin
 
-   Update TNGS_Rivn..Modelos
+   Update TNGS_Mrln..Modelos
       set deleted = 1,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -5070,7 +5069,7 @@ create procedure dbo.MODELOS_RECALL
 as
 begin
 
-   Update TNGS_Rivn..Modelos
+   Update TNGS_Mrln..Modelos
       set deleted = 0,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -5119,7 +5118,7 @@ create procedure dbo.MODELOS_DROP
 as
 begin
 
-   Delete from TNGS_Rivn..Modelos
+   Delete from TNGS_Mrln..Modelos
     where mds_rcd_cod = @mds_rcd_cod
 
 fin:
@@ -5162,7 +5161,7 @@ create procedure dbo.MODELOS_PACK
 as
 begin
 
-   Delete TNGS_Rivn..Modelos
+   Delete TNGS_Mrln..Modelos
     where deleted = 1
 
 fin:
@@ -5183,11 +5182,11 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 17/08/2015 10:48
-// Sistema     : Rivn
+// Fecha       : 20/04/2018 19:40
+// Sistema     : Mrln
 // Tabla       : Moviles
 //----------------------------------------------------------------------------
-// © 1999-2015 by TNG Software                                      Gndr 5.20
+// © 1999-2018 by TNG Software                                      Gndr 5.20
 //---------------------------------------------------------------------------*/
 
 /* ***************************************************************************
@@ -5201,7 +5200,7 @@ go
 /* Selecciono la base en la que se crearan los SPs */
 /*-------------------------------------------------*/
 
-use TNGS_Rivn
+use TNGS_Mrln
 go
 
 ---////////////////////////////////////////////////////////
@@ -5242,11 +5241,11 @@ begin
                 mov_rcd_modelo,
                 mov_nro_aniofabric,
                 mov_cd1_propio,
-                TNGS_Rivn..Moviles.instante,
-                TNGS_Rivn..Moviles.deleted,
-                TNGS_Rivn..Moviles.usuario,
-                TNGS_Rivn..Moviles.version
-           from TNGS_Rivn..Moviles
+                TNGS_Mrln..Moviles.instante,
+                TNGS_Mrln..Moviles.deleted,
+                TNGS_Mrln..Moviles.usuario,
+                TNGS_Mrln..Moviles.version
+           from TNGS_Mrln..Moviles
           where deleted = 0
           order by mov_ecd_patente
       end
@@ -5260,11 +5259,11 @@ begin
                 mov_rcd_modelo,
                 mov_nro_aniofabric,
                 mov_cd1_propio,
-                TNGS_Rivn..Moviles.instante,
-                TNGS_Rivn..Moviles.deleted,
-                TNGS_Rivn..Moviles.usuario,
-                TNGS_Rivn..Moviles.version
-           from TNGS_Rivn..Moviles
+                TNGS_Mrln..Moviles.instante,
+                TNGS_Mrln..Moviles.deleted,
+                TNGS_Mrln..Moviles.usuario,
+                TNGS_Mrln..Moviles.version
+           from TNGS_Mrln..Moviles
           order by mov_ecd_patente
       end
 
@@ -5311,7 +5310,7 @@ as
 begin
 
    Select count(*) as cantidad
-     from TNGS_Rivn..Moviles
+     from TNGS_Mrln..Moviles
     where mov_ecd_patente = @mov_ecd_patente
       and version = @version
 
@@ -5367,11 +5366,11 @@ begin
                 mov_rcd_modelo,
                 mov_nro_aniofabric,
                 mov_cd1_propio,
-                TNGS_Rivn..Moviles.instante,
-                TNGS_Rivn..Moviles.deleted,
-                TNGS_Rivn..Moviles.usuario,
-                TNGS_Rivn..Moviles.version
-           from TNGS_Rivn..Moviles
+                TNGS_Mrln..Moviles.instante,
+                TNGS_Mrln..Moviles.deleted,
+                TNGS_Mrln..Moviles.usuario,
+                TNGS_Mrln..Moviles.version
+           from TNGS_Mrln..Moviles
           where mov_ecd_patente = @mov_ecd_patente
             and deleted = 0
       end
@@ -5385,11 +5384,11 @@ begin
                 mov_rcd_modelo,
                 mov_nro_aniofabric,
                 mov_cd1_propio,
-                TNGS_Rivn..Moviles.instante,
-                TNGS_Rivn..Moviles.deleted,
-                TNGS_Rivn..Moviles.usuario,
-                TNGS_Rivn..Moviles.version
-           from TNGS_Rivn..Moviles
+                TNGS_Mrln..Moviles.instante,
+                TNGS_Mrln..Moviles.deleted,
+                TNGS_Mrln..Moviles.usuario,
+                TNGS_Mrln..Moviles.version
+           from TNGS_Mrln..Moviles
           where mov_ecd_patente = @mov_ecd_patente
       end
 
@@ -5449,7 +5448,7 @@ create procedure dbo.MOVILES_INSERT
 as
 begin
 
-   Insert into TNGS_Rivn..Moviles
+   Insert into TNGS_Mrln..Moviles
    values (
            @mov_ecd_patente,
            @mov_des_des,
@@ -5518,7 +5517,7 @@ create procedure dbo.MOVILES_UPDATE
 as
 begin
 
-   Update TNGS_Rivn..Moviles
+   Update TNGS_Mrln..Moviles
       set mov_des_des= @mov_des_des,
           mov_txt_anot= @mov_txt_anot,
           mov_des_nrochasis= @mov_des_nrochasis,
@@ -5573,7 +5572,7 @@ create procedure dbo.MOVILES_DELETE
 as
 begin
 
-   Update TNGS_Rivn..Moviles
+   Update TNGS_Mrln..Moviles
       set deleted = 1,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -5622,7 +5621,7 @@ create procedure dbo.MOVILES_RECALL
 as
 begin
 
-   Update TNGS_Rivn..Moviles
+   Update TNGS_Mrln..Moviles
       set deleted = 0,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -5671,7 +5670,7 @@ create procedure dbo.MOVILES_DROP
 as
 begin
 
-   Delete from TNGS_Rivn..Moviles
+   Delete from TNGS_Mrln..Moviles
     where mov_ecd_patente = @mov_ecd_patente
 
 fin:
@@ -5714,7 +5713,7 @@ create procedure dbo.MOVILES_PACK
 as
 begin
 
-   Delete TNGS_Rivn..Moviles
+   Delete TNGS_Mrln..Moviles
     where deleted = 1
 
 fin:
@@ -5763,7 +5762,7 @@ begin
    		2 as Orden , 
    		1 as Imagen, 
    		2 as Niveles 
-     		from TNGS_Rivn..Moviles 
+     		from TNGS_Mrln..Moviles 
 
 fin:
 
@@ -5783,11 +5782,11 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 17/08/2015 10:48
-// Sistema     : Rivn
+// Fecha       : 20/04/2018 19:40
+// Sistema     : Mrln
 // Tabla       : MvlCombustible
 //----------------------------------------------------------------------------
-// © 1999-2015 by TNG Software                                      Gndr 5.20
+// © 1999-2018 by TNG Software                                      Gndr 5.20
 //---------------------------------------------------------------------------*/
 
 /* ***************************************************************************
@@ -5801,7 +5800,7 @@ go
 /* Selecciono la base en la que se crearan los SPs */
 /*-------------------------------------------------*/
 
-use TNGS_Rivn
+use TNGS_Mrln
 go
 
 ---////////////////////////////////////////////////////////
@@ -5839,11 +5838,11 @@ begin
                 mco_val_litros,
                 mco_imp_importe,
                 mco_rcd_codestacion,
-                TNGS_Rivn..MvlCombustible.instante,
-                TNGS_Rivn..MvlCombustible.deleted,
-                TNGS_Rivn..MvlCombustible.usuario,
-                TNGS_Rivn..MvlCombustible.version
-           from TNGS_Rivn..MvlCombustible
+                TNGS_Mrln..MvlCombustible.instante,
+                TNGS_Mrln..MvlCombustible.deleted,
+                TNGS_Mrln..MvlCombustible.usuario,
+                TNGS_Mrln..MvlCombustible.version
+           from TNGS_Mrln..MvlCombustible
           where deleted = 0
           order by mco_ecd_patente,
                 mco_fyh_fecha
@@ -5855,11 +5854,11 @@ begin
                 mco_val_litros,
                 mco_imp_importe,
                 mco_rcd_codestacion,
-                TNGS_Rivn..MvlCombustible.instante,
-                TNGS_Rivn..MvlCombustible.deleted,
-                TNGS_Rivn..MvlCombustible.usuario,
-                TNGS_Rivn..MvlCombustible.version
-           from TNGS_Rivn..MvlCombustible
+                TNGS_Mrln..MvlCombustible.instante,
+                TNGS_Mrln..MvlCombustible.deleted,
+                TNGS_Mrln..MvlCombustible.usuario,
+                TNGS_Mrln..MvlCombustible.version
+           from TNGS_Mrln..MvlCombustible
           order by mco_ecd_patente,
                 mco_fyh_fecha
       end
@@ -5909,7 +5908,7 @@ as
 begin
 
    Select count(*) as cantidad
-     from TNGS_Rivn..MvlCombustible
+     from TNGS_Mrln..MvlCombustible
     where mco_ecd_patente = @mco_ecd_patente
       and mco_fyh_fecha = @mco_fyh_fecha
       and version = @version
@@ -5965,11 +5964,11 @@ begin
                 mco_val_litros,
                 mco_imp_importe,
                 mco_rcd_codestacion,
-                TNGS_Rivn..MvlCombustible.instante,
-                TNGS_Rivn..MvlCombustible.deleted,
-                TNGS_Rivn..MvlCombustible.usuario,
-                TNGS_Rivn..MvlCombustible.version
-           from TNGS_Rivn..MvlCombustible
+                TNGS_Mrln..MvlCombustible.instante,
+                TNGS_Mrln..MvlCombustible.deleted,
+                TNGS_Mrln..MvlCombustible.usuario,
+                TNGS_Mrln..MvlCombustible.version
+           from TNGS_Mrln..MvlCombustible
           where mco_ecd_patente = @mco_ecd_patente
             and mco_fyh_fecha = @mco_fyh_fecha
             and deleted = 0
@@ -5981,11 +5980,11 @@ begin
                 mco_val_litros,
                 mco_imp_importe,
                 mco_rcd_codestacion,
-                TNGS_Rivn..MvlCombustible.instante,
-                TNGS_Rivn..MvlCombustible.deleted,
-                TNGS_Rivn..MvlCombustible.usuario,
-                TNGS_Rivn..MvlCombustible.version
-           from TNGS_Rivn..MvlCombustible
+                TNGS_Mrln..MvlCombustible.instante,
+                TNGS_Mrln..MvlCombustible.deleted,
+                TNGS_Mrln..MvlCombustible.usuario,
+                TNGS_Mrln..MvlCombustible.version
+           from TNGS_Mrln..MvlCombustible
           where mco_ecd_patente = @mco_ecd_patente
             and mco_fyh_fecha = @mco_fyh_fecha
       end
@@ -6039,11 +6038,11 @@ begin
                 mco_val_litros,
                 mco_imp_importe,
                 mco_rcd_codestacion,
-                TNGS_Rivn..MvlCombustible.instante,
-                TNGS_Rivn..MvlCombustible.deleted,
-                TNGS_Rivn..MvlCombustible.usuario,
-                TNGS_Rivn..MvlCombustible.version
-           from TNGS_Rivn..MvlCombustible
+                TNGS_Mrln..MvlCombustible.instante,
+                TNGS_Mrln..MvlCombustible.deleted,
+                TNGS_Mrln..MvlCombustible.usuario,
+                TNGS_Mrln..MvlCombustible.version
+           from TNGS_Mrln..MvlCombustible
           where mco_ecd_patente = @mco_ecd_patente
             and deleted = 0
           order by mco_fyh_fecha
@@ -6055,11 +6054,11 @@ begin
                 mco_val_litros,
                 mco_imp_importe,
                 mco_rcd_codestacion,
-                TNGS_Rivn..MvlCombustible.instante,
-                TNGS_Rivn..MvlCombustible.deleted,
-                TNGS_Rivn..MvlCombustible.usuario,
-                TNGS_Rivn..MvlCombustible.version
-           from TNGS_Rivn..MvlCombustible
+                TNGS_Mrln..MvlCombustible.instante,
+                TNGS_Mrln..MvlCombustible.deleted,
+                TNGS_Mrln..MvlCombustible.usuario,
+                TNGS_Mrln..MvlCombustible.version
+           from TNGS_Mrln..MvlCombustible
           where mco_ecd_patente = @mco_ecd_patente
           order by mco_fyh_fecha
       end
@@ -6114,7 +6113,7 @@ create procedure dbo.MVLCOMBUSTIBLE_INSERT
 as
 begin
 
-   Insert into TNGS_Rivn..MvlCombustible
+   Insert into TNGS_Mrln..MvlCombustible
    values (
            @mco_ecd_patente,
            @mco_fyh_fecha,
@@ -6174,7 +6173,7 @@ create procedure dbo.MVLCOMBUSTIBLE_UPDATE
 as
 begin
 
-   Update TNGS_Rivn..MvlCombustible
+   Update TNGS_Mrln..MvlCombustible
       set mco_val_litros= @mco_val_litros,
           mco_imp_importe= @mco_imp_importe,
           mco_rcd_codestacion= @mco_rcd_codestacion,
@@ -6228,7 +6227,7 @@ create procedure dbo.MVLCOMBUSTIBLE_DELETE
 as
 begin
 
-   Update TNGS_Rivn..MvlCombustible
+   Update TNGS_Mrln..MvlCombustible
       set deleted = 1,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -6285,7 +6284,7 @@ begin
          select @instante= getdate()
       end
 
-   Update TNGS_Rivn..MvlCombustible
+   Update TNGS_Mrln..MvlCombustible
       set deleted = 1,
           version = ((version+1) % 32767),
           instante= @instante,
@@ -6336,7 +6335,7 @@ create procedure dbo.MVLCOMBUSTIBLE_RECALL
 as
 begin
 
-   Update TNGS_Rivn..MvlCombustible
+   Update TNGS_Mrln..MvlCombustible
       set deleted = 0,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -6390,7 +6389,7 @@ begin
 
    if datepart(yyyy, @instante) = 1900
       begin
-         Update TNGS_Rivn..MvlCombustible
+         Update TNGS_Mrln..MvlCombustible
             set deleted = 0,
                 version = ((version+1) % 32767),
                 instante= getdate(),
@@ -6399,7 +6398,7 @@ begin
       end
    else
       begin
-         Update TNGS_Rivn..MvlCombustible
+         Update TNGS_Mrln..MvlCombustible
             set deleted = 0,
                 version = ((version+1) % 32767),
                 instante= getdate(),
@@ -6452,7 +6451,7 @@ create procedure dbo.MVLCOMBUSTIBLE_DROP
 as
 begin
 
-   Delete from TNGS_Rivn..MvlCombustible
+   Delete from TNGS_Mrln..MvlCombustible
     where mco_ecd_patente = @mco_ecd_patente
       and mco_fyh_fecha = @mco_fyh_fecha
 
@@ -6498,7 +6497,7 @@ create procedure dbo.MVLCOMBUSTIBLE_FDROP
 as
 begin
 
-   Delete from TNGS_Rivn..MvlCombustible
+   Delete from TNGS_Mrln..MvlCombustible
     where mco_ecd_patente = @mco_ecd_patente
 
 fin:
@@ -6541,7 +6540,7 @@ create procedure dbo.MVLCOMBUSTIBLE_PACK
 as
 begin
 
-   Delete TNGS_Rivn..MvlCombustible
+   Delete TNGS_Mrln..MvlCombustible
     where deleted = 1
 
 fin:
@@ -6586,7 +6585,7 @@ create procedure dbo.MVLCOMBUSTIBLE_FPACK
 as
 begin
 
-   Delete from TNGS_Rivn..MvlCombustible
+   Delete from TNGS_Mrln..MvlCombustible
     where mco_ecd_patente = @mco_ecd_patente
       and deleted = 1
 
@@ -6637,8 +6636,8 @@ begin
    mco_fyh_fecha, 
    ets_des_des 
     
-   FROM TNGS_Rivn..MvlCombustible 
-   JOIN TNGS_Rivn..Estaciones 
+   FROM TNGS_Mrln..MvlCombustible 
+   JOIN TNGS_Mrln..Estaciones 
    on mco_rcd_codestacion = ets_rcd_cod 
    WHERE mco_ecd_patente = @patente 
    ORDER BY mco_fyh_fecha DESC 
@@ -6661,11 +6660,11 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 17/08/2015 10:48
-// Sistema     : Rivn
+// Fecha       : 20/04/2018 19:40
+// Sistema     : Mrln
 // Tabla       : MvlEquipamiento
 //----------------------------------------------------------------------------
-// © 1999-2015 by TNG Software                                      Gndr 5.20
+// © 1999-2018 by TNG Software                                      Gndr 5.20
 //---------------------------------------------------------------------------*/
 
 /* ***************************************************************************
@@ -6679,7 +6678,7 @@ go
 /* Selecciono la base en la que se crearan los SPs */
 /*-------------------------------------------------*/
 
-use TNGS_Rivn
+use TNGS_Mrln
 go
 
 ---////////////////////////////////////////////////////////
@@ -6716,14 +6715,14 @@ begin
                 meq_cod_codequip,
                 eqi_des_des as meq_des_Equip,
                 meq_cd1_esfijo,
-                TNGS_Rivn..MvlEquipamiento.instante,
-                TNGS_Rivn..MvlEquipamiento.deleted,
-                TNGS_Rivn..MvlEquipamiento.usuario,
-                TNGS_Rivn..MvlEquipamiento.version
-           from TNGS_Rivn..MvlEquipamiento
-                join TNGS_Rivn..Equipamiento
+                TNGS_Mrln..MvlEquipamiento.instante,
+                TNGS_Mrln..MvlEquipamiento.deleted,
+                TNGS_Mrln..MvlEquipamiento.usuario,
+                TNGS_Mrln..MvlEquipamiento.version
+           from TNGS_Mrln..MvlEquipamiento
+                join TNGS_Mrln..Equipamiento
                   on meq_cod_codequip = eqi_cod_cod
-          where TNGS_Rivn..MvlEquipamiento.deleted = 0
+          where TNGS_Mrln..MvlEquipamiento.deleted = 0
           order by meq_ecd_patente,
                 meq_cod_codequip
       end
@@ -6733,12 +6732,12 @@ begin
                 meq_cod_codequip,
                 eqi_des_des as meq_des_Equip,
                 meq_cd1_esfijo,
-                TNGS_Rivn..MvlEquipamiento.instante,
-                TNGS_Rivn..MvlEquipamiento.deleted,
-                TNGS_Rivn..MvlEquipamiento.usuario,
-                TNGS_Rivn..MvlEquipamiento.version
-           from TNGS_Rivn..MvlEquipamiento
-                join TNGS_Rivn..Equipamiento
+                TNGS_Mrln..MvlEquipamiento.instante,
+                TNGS_Mrln..MvlEquipamiento.deleted,
+                TNGS_Mrln..MvlEquipamiento.usuario,
+                TNGS_Mrln..MvlEquipamiento.version
+           from TNGS_Mrln..MvlEquipamiento
+                join TNGS_Mrln..Equipamiento
                   on meq_cod_codequip = eqi_cod_cod
           order by meq_ecd_patente,
                 meq_cod_codequip
@@ -6789,7 +6788,7 @@ as
 begin
 
    Select count(*) as cantidad
-     from TNGS_Rivn..MvlEquipamiento
+     from TNGS_Mrln..MvlEquipamiento
     where meq_ecd_patente = @meq_ecd_patente
       and meq_cod_codequip = @meq_cod_codequip
       and version = @version
@@ -6844,16 +6843,16 @@ begin
                 meq_cod_codequip,
                 eqi_des_des as meq_des_Equip,
                 meq_cd1_esfijo,
-                TNGS_Rivn..MvlEquipamiento.instante,
-                TNGS_Rivn..MvlEquipamiento.deleted,
-                TNGS_Rivn..MvlEquipamiento.usuario,
-                TNGS_Rivn..MvlEquipamiento.version
-           from TNGS_Rivn..MvlEquipamiento
-                join TNGS_Rivn..Equipamiento
+                TNGS_Mrln..MvlEquipamiento.instante,
+                TNGS_Mrln..MvlEquipamiento.deleted,
+                TNGS_Mrln..MvlEquipamiento.usuario,
+                TNGS_Mrln..MvlEquipamiento.version
+           from TNGS_Mrln..MvlEquipamiento
+                join TNGS_Mrln..Equipamiento
                   on meq_cod_codequip = eqi_cod_cod
           where meq_ecd_patente = @meq_ecd_patente
             and meq_cod_codequip = @meq_cod_codequip
-            and TNGS_Rivn..MvlEquipamiento.deleted = 0
+            and TNGS_Mrln..MvlEquipamiento.deleted = 0
       end
    else
       begin
@@ -6861,12 +6860,12 @@ begin
                 meq_cod_codequip,
                 eqi_des_des as meq_des_Equip,
                 meq_cd1_esfijo,
-                TNGS_Rivn..MvlEquipamiento.instante,
-                TNGS_Rivn..MvlEquipamiento.deleted,
-                TNGS_Rivn..MvlEquipamiento.usuario,
-                TNGS_Rivn..MvlEquipamiento.version
-           from TNGS_Rivn..MvlEquipamiento
-                join TNGS_Rivn..Equipamiento
+                TNGS_Mrln..MvlEquipamiento.instante,
+                TNGS_Mrln..MvlEquipamiento.deleted,
+                TNGS_Mrln..MvlEquipamiento.usuario,
+                TNGS_Mrln..MvlEquipamiento.version
+           from TNGS_Mrln..MvlEquipamiento
+                join TNGS_Mrln..Equipamiento
                   on meq_cod_codequip = eqi_cod_cod
           where meq_ecd_patente = @meq_ecd_patente
             and meq_cod_codequip = @meq_cod_codequip
@@ -6920,15 +6919,15 @@ begin
                 meq_cod_codequip,
                 eqi_des_des as meq_des_Equip,
                 meq_cd1_esfijo,
-                TNGS_Rivn..MvlEquipamiento.instante,
-                TNGS_Rivn..MvlEquipamiento.deleted,
-                TNGS_Rivn..MvlEquipamiento.usuario,
-                TNGS_Rivn..MvlEquipamiento.version
-           from TNGS_Rivn..MvlEquipamiento
-                join TNGS_Rivn..Equipamiento
+                TNGS_Mrln..MvlEquipamiento.instante,
+                TNGS_Mrln..MvlEquipamiento.deleted,
+                TNGS_Mrln..MvlEquipamiento.usuario,
+                TNGS_Mrln..MvlEquipamiento.version
+           from TNGS_Mrln..MvlEquipamiento
+                join TNGS_Mrln..Equipamiento
                   on meq_cod_codequip = eqi_cod_cod
           where meq_ecd_patente = @meq_ecd_patente
-            and TNGS_Rivn..MvlEquipamiento.deleted = 0
+            and TNGS_Mrln..MvlEquipamiento.deleted = 0
           order by meq_cod_codequip
       end
    else
@@ -6937,12 +6936,12 @@ begin
                 meq_cod_codequip,
                 eqi_des_des as meq_des_Equip,
                 meq_cd1_esfijo,
-                TNGS_Rivn..MvlEquipamiento.instante,
-                TNGS_Rivn..MvlEquipamiento.deleted,
-                TNGS_Rivn..MvlEquipamiento.usuario,
-                TNGS_Rivn..MvlEquipamiento.version
-           from TNGS_Rivn..MvlEquipamiento
-                join TNGS_Rivn..Equipamiento
+                TNGS_Mrln..MvlEquipamiento.instante,
+                TNGS_Mrln..MvlEquipamiento.deleted,
+                TNGS_Mrln..MvlEquipamiento.usuario,
+                TNGS_Mrln..MvlEquipamiento.version
+           from TNGS_Mrln..MvlEquipamiento
+                join TNGS_Mrln..Equipamiento
                   on meq_cod_codequip = eqi_cod_cod
           where meq_ecd_patente = @meq_ecd_patente
           order by meq_cod_codequip
@@ -6994,7 +6993,7 @@ create procedure dbo.MVLEQUIPAMIENTO_INSERT
 as
 begin
 
-   Insert into TNGS_Rivn..MvlEquipamiento
+   Insert into TNGS_Mrln..MvlEquipamiento
    values (
            @meq_ecd_patente,
            @meq_cod_codequip,
@@ -7048,7 +7047,7 @@ create procedure dbo.MVLEQUIPAMIENTO_UPDATE
 as
 begin
 
-   Update TNGS_Rivn..MvlEquipamiento
+   Update TNGS_Mrln..MvlEquipamiento
       set meq_cd1_esfijo= @meq_cd1_esfijo,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -7100,7 +7099,7 @@ create procedure dbo.MVLEQUIPAMIENTO_DELETE
 as
 begin
 
-   Update TNGS_Rivn..MvlEquipamiento
+   Update TNGS_Mrln..MvlEquipamiento
       set deleted = 1,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -7157,7 +7156,7 @@ begin
          select @instante= getdate()
       end
 
-   Update TNGS_Rivn..MvlEquipamiento
+   Update TNGS_Mrln..MvlEquipamiento
       set deleted = 1,
           version = ((version+1) % 32767),
           instante= @instante,
@@ -7208,7 +7207,7 @@ create procedure dbo.MVLEQUIPAMIENTO_RECALL
 as
 begin
 
-   Update TNGS_Rivn..MvlEquipamiento
+   Update TNGS_Mrln..MvlEquipamiento
       set deleted = 0,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -7262,7 +7261,7 @@ begin
 
    if datepart(yyyy, @instante) = 1900
       begin
-         Update TNGS_Rivn..MvlEquipamiento
+         Update TNGS_Mrln..MvlEquipamiento
             set deleted = 0,
                 version = ((version+1) % 32767),
                 instante= getdate(),
@@ -7271,7 +7270,7 @@ begin
       end
    else
       begin
-         Update TNGS_Rivn..MvlEquipamiento
+         Update TNGS_Mrln..MvlEquipamiento
             set deleted = 0,
                 version = ((version+1) % 32767),
                 instante= getdate(),
@@ -7324,7 +7323,7 @@ create procedure dbo.MVLEQUIPAMIENTO_DROP
 as
 begin
 
-   Delete from TNGS_Rivn..MvlEquipamiento
+   Delete from TNGS_Mrln..MvlEquipamiento
     where meq_ecd_patente = @meq_ecd_patente
       and meq_cod_codequip = @meq_cod_codequip
 
@@ -7370,7 +7369,7 @@ create procedure dbo.MVLEQUIPAMIENTO_FDROP
 as
 begin
 
-   Delete from TNGS_Rivn..MvlEquipamiento
+   Delete from TNGS_Mrln..MvlEquipamiento
     where meq_ecd_patente = @meq_ecd_patente
 
 fin:
@@ -7413,7 +7412,7 @@ create procedure dbo.MVLEQUIPAMIENTO_PACK
 as
 begin
 
-   Delete TNGS_Rivn..MvlEquipamiento
+   Delete TNGS_Mrln..MvlEquipamiento
     where deleted = 1
 
 fin:
@@ -7458,7 +7457,7 @@ create procedure dbo.MVLEQUIPAMIENTO_FPACK
 as
 begin
 
-   Delete from TNGS_Rivn..MvlEquipamiento
+   Delete from TNGS_Mrln..MvlEquipamiento
     where meq_ecd_patente = @meq_ecd_patente
       and deleted = 1
 
@@ -7504,7 +7503,7 @@ create procedure dbo.MVLEQUIPAMIENTO_ELIMINAREQUIPAMIENTO
 as
 begin
 
-   DELETE FROM TNGS_Rivn..MvlEquipamiento 
+   DELETE FROM TNGS_Mrln..MvlEquipamiento 
    WHERE @patente=meq_ecd_patente 
 
 fin:
@@ -7551,8 +7550,8 @@ begin
 
    SELECT TOP 5 eqi_des_des 
     
-   FROM TNGS_Rivn..MvlEquipamiento 
-   JOIN TNGS_Rivn..Equipamiento 
+   FROM TNGS_Mrln..MvlEquipamiento 
+   JOIN TNGS_Mrln..Equipamiento 
    on meq_cod_codequip = eqi_cod_cod 
    WHERE meq_ecd_patente = @patente 
    ORDER BY eqi_des_des 
@@ -7575,11 +7574,11 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 17/08/2015 10:48
-// Sistema     : Rivn
+// Fecha       : 20/04/2018 19:40
+// Sistema     : Mrln
 // Tabla       : MvlEstados
 //----------------------------------------------------------------------------
-// © 1999-2015 by TNG Software                                      Gndr 5.20
+// © 1999-2018 by TNG Software                                      Gndr 5.20
 //---------------------------------------------------------------------------*/
 
 /* ***************************************************************************
@@ -7593,7 +7592,7 @@ go
 /* Selecciono la base en la que se crearan los SPs */
 /*-------------------------------------------------*/
 
-use TNGS_Rivn
+use TNGS_Mrln
 go
 
 ---////////////////////////////////////////////////////////
@@ -7630,11 +7629,11 @@ begin
                 mve_fyh_fecha,
                 mve_rcd_codestado,
                 mve_nro_km,
-                TNGS_Rivn..MvlEstados.instante,
-                TNGS_Rivn..MvlEstados.deleted,
-                TNGS_Rivn..MvlEstados.usuario,
-                TNGS_Rivn..MvlEstados.version
-           from TNGS_Rivn..MvlEstados
+                TNGS_Mrln..MvlEstados.instante,
+                TNGS_Mrln..MvlEstados.deleted,
+                TNGS_Mrln..MvlEstados.usuario,
+                TNGS_Mrln..MvlEstados.version
+           from TNGS_Mrln..MvlEstados
           where deleted = 0
           order by mve_ecd_patente,
                 mve_fyh_fecha
@@ -7645,11 +7644,11 @@ begin
                 mve_fyh_fecha,
                 mve_rcd_codestado,
                 mve_nro_km,
-                TNGS_Rivn..MvlEstados.instante,
-                TNGS_Rivn..MvlEstados.deleted,
-                TNGS_Rivn..MvlEstados.usuario,
-                TNGS_Rivn..MvlEstados.version
-           from TNGS_Rivn..MvlEstados
+                TNGS_Mrln..MvlEstados.instante,
+                TNGS_Mrln..MvlEstados.deleted,
+                TNGS_Mrln..MvlEstados.usuario,
+                TNGS_Mrln..MvlEstados.version
+           from TNGS_Mrln..MvlEstados
           order by mve_ecd_patente,
                 mve_fyh_fecha
       end
@@ -7699,7 +7698,7 @@ as
 begin
 
    Select count(*) as cantidad
-     from TNGS_Rivn..MvlEstados
+     from TNGS_Mrln..MvlEstados
     where mve_ecd_patente = @mve_ecd_patente
       and mve_fyh_fecha = @mve_fyh_fecha
       and version = @version
@@ -7754,11 +7753,11 @@ begin
                 mve_fyh_fecha,
                 mve_rcd_codestado,
                 mve_nro_km,
-                TNGS_Rivn..MvlEstados.instante,
-                TNGS_Rivn..MvlEstados.deleted,
-                TNGS_Rivn..MvlEstados.usuario,
-                TNGS_Rivn..MvlEstados.version
-           from TNGS_Rivn..MvlEstados
+                TNGS_Mrln..MvlEstados.instante,
+                TNGS_Mrln..MvlEstados.deleted,
+                TNGS_Mrln..MvlEstados.usuario,
+                TNGS_Mrln..MvlEstados.version
+           from TNGS_Mrln..MvlEstados
           where mve_ecd_patente = @mve_ecd_patente
             and mve_fyh_fecha = @mve_fyh_fecha
             and deleted = 0
@@ -7769,11 +7768,11 @@ begin
                 mve_fyh_fecha,
                 mve_rcd_codestado,
                 mve_nro_km,
-                TNGS_Rivn..MvlEstados.instante,
-                TNGS_Rivn..MvlEstados.deleted,
-                TNGS_Rivn..MvlEstados.usuario,
-                TNGS_Rivn..MvlEstados.version
-           from TNGS_Rivn..MvlEstados
+                TNGS_Mrln..MvlEstados.instante,
+                TNGS_Mrln..MvlEstados.deleted,
+                TNGS_Mrln..MvlEstados.usuario,
+                TNGS_Mrln..MvlEstados.version
+           from TNGS_Mrln..MvlEstados
           where mve_ecd_patente = @mve_ecd_patente
             and mve_fyh_fecha = @mve_fyh_fecha
       end
@@ -7826,11 +7825,11 @@ begin
                 mve_fyh_fecha,
                 mve_rcd_codestado,
                 mve_nro_km,
-                TNGS_Rivn..MvlEstados.instante,
-                TNGS_Rivn..MvlEstados.deleted,
-                TNGS_Rivn..MvlEstados.usuario,
-                TNGS_Rivn..MvlEstados.version
-           from TNGS_Rivn..MvlEstados
+                TNGS_Mrln..MvlEstados.instante,
+                TNGS_Mrln..MvlEstados.deleted,
+                TNGS_Mrln..MvlEstados.usuario,
+                TNGS_Mrln..MvlEstados.version
+           from TNGS_Mrln..MvlEstados
           where mve_ecd_patente = @mve_ecd_patente
             and deleted = 0
           order by mve_fyh_fecha
@@ -7841,11 +7840,11 @@ begin
                 mve_fyh_fecha,
                 mve_rcd_codestado,
                 mve_nro_km,
-                TNGS_Rivn..MvlEstados.instante,
-                TNGS_Rivn..MvlEstados.deleted,
-                TNGS_Rivn..MvlEstados.usuario,
-                TNGS_Rivn..MvlEstados.version
-           from TNGS_Rivn..MvlEstados
+                TNGS_Mrln..MvlEstados.instante,
+                TNGS_Mrln..MvlEstados.deleted,
+                TNGS_Mrln..MvlEstados.usuario,
+                TNGS_Mrln..MvlEstados.version
+           from TNGS_Mrln..MvlEstados
           where mve_ecd_patente = @mve_ecd_patente
           order by mve_fyh_fecha
       end
@@ -7898,7 +7897,7 @@ create procedure dbo.MVLESTADOS_INSERT
 as
 begin
 
-   Insert into TNGS_Rivn..MvlEstados
+   Insert into TNGS_Mrln..MvlEstados
    values (
            @mve_ecd_patente,
            @mve_fyh_fecha,
@@ -7955,7 +7954,7 @@ create procedure dbo.MVLESTADOS_UPDATE
 as
 begin
 
-   Update TNGS_Rivn..MvlEstados
+   Update TNGS_Mrln..MvlEstados
       set mve_rcd_codestado= @mve_rcd_codestado,
           mve_nro_km= @mve_nro_km,
           version = ((version+1) % 32767),
@@ -8008,7 +8007,7 @@ create procedure dbo.MVLESTADOS_DELETE
 as
 begin
 
-   Update TNGS_Rivn..MvlEstados
+   Update TNGS_Mrln..MvlEstados
       set deleted = 1,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -8065,7 +8064,7 @@ begin
          select @instante= getdate()
       end
 
-   Update TNGS_Rivn..MvlEstados
+   Update TNGS_Mrln..MvlEstados
       set deleted = 1,
           version = ((version+1) % 32767),
           instante= @instante,
@@ -8116,7 +8115,7 @@ create procedure dbo.MVLESTADOS_RECALL
 as
 begin
 
-   Update TNGS_Rivn..MvlEstados
+   Update TNGS_Mrln..MvlEstados
       set deleted = 0,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -8170,7 +8169,7 @@ begin
 
    if datepart(yyyy, @instante) = 1900
       begin
-         Update TNGS_Rivn..MvlEstados
+         Update TNGS_Mrln..MvlEstados
             set deleted = 0,
                 version = ((version+1) % 32767),
                 instante= getdate(),
@@ -8179,7 +8178,7 @@ begin
       end
    else
       begin
-         Update TNGS_Rivn..MvlEstados
+         Update TNGS_Mrln..MvlEstados
             set deleted = 0,
                 version = ((version+1) % 32767),
                 instante= getdate(),
@@ -8232,7 +8231,7 @@ create procedure dbo.MVLESTADOS_DROP
 as
 begin
 
-   Delete from TNGS_Rivn..MvlEstados
+   Delete from TNGS_Mrln..MvlEstados
     where mve_ecd_patente = @mve_ecd_patente
       and mve_fyh_fecha = @mve_fyh_fecha
 
@@ -8278,7 +8277,7 @@ create procedure dbo.MVLESTADOS_FDROP
 as
 begin
 
-   Delete from TNGS_Rivn..MvlEstados
+   Delete from TNGS_Mrln..MvlEstados
     where mve_ecd_patente = @mve_ecd_patente
 
 fin:
@@ -8321,7 +8320,7 @@ create procedure dbo.MVLESTADOS_PACK
 as
 begin
 
-   Delete TNGS_Rivn..MvlEstados
+   Delete TNGS_Mrln..MvlEstados
     where deleted = 1
 
 fin:
@@ -8366,7 +8365,7 @@ create procedure dbo.MVLESTADOS_FPACK
 as
 begin
 
-   Delete from TNGS_Rivn..MvlEstados
+   Delete from TNGS_Mrln..MvlEstados
     where mve_ecd_patente = @mve_ecd_patente
       and deleted = 1
 
@@ -8416,8 +8415,8 @@ begin
    mve_nro_km, 
    mve_fyh_fecha, 
    mve_rcd_codestado 
-   FROM TNGS_Rivn..MvlEstados 
-   JOIN TNGS_Rivn..Estados 
+   FROM TNGS_Mrln..MvlEstados 
+   JOIN TNGS_Mrln..Estados 
    on mve_rcd_codestado = est_rcd_cod 
    WHERE mve_ecd_patente = @patente 
    ORDER BY mve_fyh_fecha DESC 
@@ -8440,11 +8439,11 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 17/08/2015 10:48
-// Sistema     : Rivn
+// Fecha       : 20/04/2018 19:40
+// Sistema     : Mrln
 // Tabla       : MvlKilometros
 //----------------------------------------------------------------------------
-// © 1999-2015 by TNG Software                                      Gndr 5.20
+// © 1999-2018 by TNG Software                                      Gndr 5.20
 //---------------------------------------------------------------------------*/
 
 /* ***************************************************************************
@@ -8458,7 +8457,7 @@ go
 /* Selecciono la base en la que se crearan los SPs */
 /*-------------------------------------------------*/
 
-use TNGS_Rivn
+use TNGS_Mrln
 go
 
 ---////////////////////////////////////////////////////////
@@ -8494,11 +8493,11 @@ begin
          Select mkm_ecd_patente,
                 mkm_fyh_fecha,
                 mkm_nro_km,
-                TNGS_Rivn..MvlKilometros.instante,
-                TNGS_Rivn..MvlKilometros.deleted,
-                TNGS_Rivn..MvlKilometros.usuario,
-                TNGS_Rivn..MvlKilometros.version
-           from TNGS_Rivn..MvlKilometros
+                TNGS_Mrln..MvlKilometros.instante,
+                TNGS_Mrln..MvlKilometros.deleted,
+                TNGS_Mrln..MvlKilometros.usuario,
+                TNGS_Mrln..MvlKilometros.version
+           from TNGS_Mrln..MvlKilometros
           where deleted = 0
           order by mkm_ecd_patente,
                 mkm_fyh_fecha
@@ -8508,11 +8507,11 @@ begin
          Select mkm_ecd_patente,
                 mkm_fyh_fecha,
                 mkm_nro_km,
-                TNGS_Rivn..MvlKilometros.instante,
-                TNGS_Rivn..MvlKilometros.deleted,
-                TNGS_Rivn..MvlKilometros.usuario,
-                TNGS_Rivn..MvlKilometros.version
-           from TNGS_Rivn..MvlKilometros
+                TNGS_Mrln..MvlKilometros.instante,
+                TNGS_Mrln..MvlKilometros.deleted,
+                TNGS_Mrln..MvlKilometros.usuario,
+                TNGS_Mrln..MvlKilometros.version
+           from TNGS_Mrln..MvlKilometros
           order by mkm_ecd_patente,
                 mkm_fyh_fecha
       end
@@ -8562,7 +8561,7 @@ as
 begin
 
    Select count(*) as cantidad
-     from TNGS_Rivn..MvlKilometros
+     from TNGS_Mrln..MvlKilometros
     where mkm_ecd_patente = @mkm_ecd_patente
       and mkm_fyh_fecha = @mkm_fyh_fecha
       and version = @version
@@ -8616,11 +8615,11 @@ begin
          Select mkm_ecd_patente,
                 mkm_fyh_fecha,
                 mkm_nro_km,
-                TNGS_Rivn..MvlKilometros.instante,
-                TNGS_Rivn..MvlKilometros.deleted,
-                TNGS_Rivn..MvlKilometros.usuario,
-                TNGS_Rivn..MvlKilometros.version
-           from TNGS_Rivn..MvlKilometros
+                TNGS_Mrln..MvlKilometros.instante,
+                TNGS_Mrln..MvlKilometros.deleted,
+                TNGS_Mrln..MvlKilometros.usuario,
+                TNGS_Mrln..MvlKilometros.version
+           from TNGS_Mrln..MvlKilometros
           where mkm_ecd_patente = @mkm_ecd_patente
             and mkm_fyh_fecha = @mkm_fyh_fecha
             and deleted = 0
@@ -8630,11 +8629,11 @@ begin
          Select mkm_ecd_patente,
                 mkm_fyh_fecha,
                 mkm_nro_km,
-                TNGS_Rivn..MvlKilometros.instante,
-                TNGS_Rivn..MvlKilometros.deleted,
-                TNGS_Rivn..MvlKilometros.usuario,
-                TNGS_Rivn..MvlKilometros.version
-           from TNGS_Rivn..MvlKilometros
+                TNGS_Mrln..MvlKilometros.instante,
+                TNGS_Mrln..MvlKilometros.deleted,
+                TNGS_Mrln..MvlKilometros.usuario,
+                TNGS_Mrln..MvlKilometros.version
+           from TNGS_Mrln..MvlKilometros
           where mkm_ecd_patente = @mkm_ecd_patente
             and mkm_fyh_fecha = @mkm_fyh_fecha
       end
@@ -8686,11 +8685,11 @@ begin
          Select mkm_ecd_patente,
                 mkm_fyh_fecha,
                 mkm_nro_km,
-                TNGS_Rivn..MvlKilometros.instante,
-                TNGS_Rivn..MvlKilometros.deleted,
-                TNGS_Rivn..MvlKilometros.usuario,
-                TNGS_Rivn..MvlKilometros.version
-           from TNGS_Rivn..MvlKilometros
+                TNGS_Mrln..MvlKilometros.instante,
+                TNGS_Mrln..MvlKilometros.deleted,
+                TNGS_Mrln..MvlKilometros.usuario,
+                TNGS_Mrln..MvlKilometros.version
+           from TNGS_Mrln..MvlKilometros
           where mkm_ecd_patente = @mkm_ecd_patente
             and deleted = 0
           order by mkm_fyh_fecha
@@ -8700,11 +8699,11 @@ begin
          Select mkm_ecd_patente,
                 mkm_fyh_fecha,
                 mkm_nro_km,
-                TNGS_Rivn..MvlKilometros.instante,
-                TNGS_Rivn..MvlKilometros.deleted,
-                TNGS_Rivn..MvlKilometros.usuario,
-                TNGS_Rivn..MvlKilometros.version
-           from TNGS_Rivn..MvlKilometros
+                TNGS_Mrln..MvlKilometros.instante,
+                TNGS_Mrln..MvlKilometros.deleted,
+                TNGS_Mrln..MvlKilometros.usuario,
+                TNGS_Mrln..MvlKilometros.version
+           from TNGS_Mrln..MvlKilometros
           where mkm_ecd_patente = @mkm_ecd_patente
           order by mkm_fyh_fecha
       end
@@ -8755,7 +8754,7 @@ create procedure dbo.MVLKILOMETROS_INSERT
 as
 begin
 
-   Insert into TNGS_Rivn..MvlKilometros
+   Insert into TNGS_Mrln..MvlKilometros
    values (
            @mkm_ecd_patente,
            @mkm_fyh_fecha,
@@ -8809,7 +8808,7 @@ create procedure dbo.MVLKILOMETROS_UPDATE
 as
 begin
 
-   Update TNGS_Rivn..MvlKilometros
+   Update TNGS_Mrln..MvlKilometros
       set mkm_nro_km= @mkm_nro_km,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -8861,7 +8860,7 @@ create procedure dbo.MVLKILOMETROS_DELETE
 as
 begin
 
-   Update TNGS_Rivn..MvlKilometros
+   Update TNGS_Mrln..MvlKilometros
       set deleted = 1,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -8918,7 +8917,7 @@ begin
          select @instante= getdate()
       end
 
-   Update TNGS_Rivn..MvlKilometros
+   Update TNGS_Mrln..MvlKilometros
       set deleted = 1,
           version = ((version+1) % 32767),
           instante= @instante,
@@ -8969,7 +8968,7 @@ create procedure dbo.MVLKILOMETROS_RECALL
 as
 begin
 
-   Update TNGS_Rivn..MvlKilometros
+   Update TNGS_Mrln..MvlKilometros
       set deleted = 0,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -9023,7 +9022,7 @@ begin
 
    if datepart(yyyy, @instante) = 1900
       begin
-         Update TNGS_Rivn..MvlKilometros
+         Update TNGS_Mrln..MvlKilometros
             set deleted = 0,
                 version = ((version+1) % 32767),
                 instante= getdate(),
@@ -9032,7 +9031,7 @@ begin
       end
    else
       begin
-         Update TNGS_Rivn..MvlKilometros
+         Update TNGS_Mrln..MvlKilometros
             set deleted = 0,
                 version = ((version+1) % 32767),
                 instante= getdate(),
@@ -9085,7 +9084,7 @@ create procedure dbo.MVLKILOMETROS_DROP
 as
 begin
 
-   Delete from TNGS_Rivn..MvlKilometros
+   Delete from TNGS_Mrln..MvlKilometros
     where mkm_ecd_patente = @mkm_ecd_patente
       and mkm_fyh_fecha = @mkm_fyh_fecha
 
@@ -9131,7 +9130,7 @@ create procedure dbo.MVLKILOMETROS_FDROP
 as
 begin
 
-   Delete from TNGS_Rivn..MvlKilometros
+   Delete from TNGS_Mrln..MvlKilometros
     where mkm_ecd_patente = @mkm_ecd_patente
 
 fin:
@@ -9174,7 +9173,7 @@ create procedure dbo.MVLKILOMETROS_PACK
 as
 begin
 
-   Delete TNGS_Rivn..MvlKilometros
+   Delete TNGS_Mrln..MvlKilometros
     where deleted = 1
 
 fin:
@@ -9219,7 +9218,7 @@ create procedure dbo.MVLKILOMETROS_FPACK
 as
 begin
 
-   Delete from TNGS_Rivn..MvlKilometros
+   Delete from TNGS_Mrln..MvlKilometros
     where mkm_ecd_patente = @mkm_ecd_patente
       and deleted = 1
 
@@ -9330,11 +9329,11 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 17/08/2015 10:48
-// Sistema     : Rivn
+// Fecha       : 20/04/2018 19:40
+// Sistema     : Mrln
 // Tabla       : OrdenesTrabajo
 //----------------------------------------------------------------------------
-// © 1999-2015 by TNG Software                                      Gndr 5.20
+// © 1999-2018 by TNG Software                                      Gndr 5.20
 //---------------------------------------------------------------------------*/
 
 /* ***************************************************************************
@@ -9348,7 +9347,7 @@ go
 /* Selecciono la base en la que se crearan los SPs */
 /*-------------------------------------------------*/
 
-use TNGS_Rivn
+use TNGS_Mrln
 go
 
 ---////////////////////////////////////////////////////////
@@ -9387,11 +9386,11 @@ begin
                 odt_nom_operador,
                 odt_fyh_feccierre,
                 odt_cod_encargado,
-                TNGS_Rivn..OrdenesTrabajo.instante,
-                TNGS_Rivn..OrdenesTrabajo.deleted,
-                TNGS_Rivn..OrdenesTrabajo.usuario,
-                TNGS_Rivn..OrdenesTrabajo.version
-           from TNGS_Rivn..OrdenesTrabajo
+                TNGS_Mrln..OrdenesTrabajo.instante,
+                TNGS_Mrln..OrdenesTrabajo.deleted,
+                TNGS_Mrln..OrdenesTrabajo.usuario,
+                TNGS_Mrln..OrdenesTrabajo.version
+           from TNGS_Mrln..OrdenesTrabajo
           where deleted = 0
           order by odt_nro_nro
       end
@@ -9403,11 +9402,11 @@ begin
                 odt_nom_operador,
                 odt_fyh_feccierre,
                 odt_cod_encargado,
-                TNGS_Rivn..OrdenesTrabajo.instante,
-                TNGS_Rivn..OrdenesTrabajo.deleted,
-                TNGS_Rivn..OrdenesTrabajo.usuario,
-                TNGS_Rivn..OrdenesTrabajo.version
-           from TNGS_Rivn..OrdenesTrabajo
+                TNGS_Mrln..OrdenesTrabajo.instante,
+                TNGS_Mrln..OrdenesTrabajo.deleted,
+                TNGS_Mrln..OrdenesTrabajo.usuario,
+                TNGS_Mrln..OrdenesTrabajo.version
+           from TNGS_Mrln..OrdenesTrabajo
           order by odt_nro_nro
       end
 
@@ -9454,7 +9453,7 @@ as
 begin
 
    Select count(*) as cantidad
-     from TNGS_Rivn..OrdenesTrabajo
+     from TNGS_Mrln..OrdenesTrabajo
     where odt_nro_nro = @odt_nro_nro
       and version = @version
 
@@ -9508,11 +9507,11 @@ begin
                 odt_nom_operador,
                 odt_fyh_feccierre,
                 odt_cod_encargado,
-                TNGS_Rivn..OrdenesTrabajo.instante,
-                TNGS_Rivn..OrdenesTrabajo.deleted,
-                TNGS_Rivn..OrdenesTrabajo.usuario,
-                TNGS_Rivn..OrdenesTrabajo.version
-           from TNGS_Rivn..OrdenesTrabajo
+                TNGS_Mrln..OrdenesTrabajo.instante,
+                TNGS_Mrln..OrdenesTrabajo.deleted,
+                TNGS_Mrln..OrdenesTrabajo.usuario,
+                TNGS_Mrln..OrdenesTrabajo.version
+           from TNGS_Mrln..OrdenesTrabajo
           where odt_nro_nro = @odt_nro_nro
             and deleted = 0
       end
@@ -9524,11 +9523,11 @@ begin
                 odt_nom_operador,
                 odt_fyh_feccierre,
                 odt_cod_encargado,
-                TNGS_Rivn..OrdenesTrabajo.instante,
-                TNGS_Rivn..OrdenesTrabajo.deleted,
-                TNGS_Rivn..OrdenesTrabajo.usuario,
-                TNGS_Rivn..OrdenesTrabajo.version
-           from TNGS_Rivn..OrdenesTrabajo
+                TNGS_Mrln..OrdenesTrabajo.instante,
+                TNGS_Mrln..OrdenesTrabajo.deleted,
+                TNGS_Mrln..OrdenesTrabajo.usuario,
+                TNGS_Mrln..OrdenesTrabajo.version
+           from TNGS_Mrln..OrdenesTrabajo
           where odt_nro_nro = @odt_nro_nro
       end
 
@@ -9584,7 +9583,7 @@ create procedure dbo.ORDENESTRABAJO_INSERT
 as
 begin
 
-   Insert into TNGS_Rivn..OrdenesTrabajo
+   Insert into TNGS_Mrln..OrdenesTrabajo
    values (
            @odt_nro_nro,
            @odt_ecd_patente,
@@ -9647,7 +9646,7 @@ create procedure dbo.ORDENESTRABAJO_UPDATE
 as
 begin
 
-   Update TNGS_Rivn..OrdenesTrabajo
+   Update TNGS_Mrln..OrdenesTrabajo
       set odt_ecd_patente= @odt_ecd_patente,
           odt_fyh_fecapertura= @odt_fyh_fecapertura,
           odt_nom_operador= @odt_nom_operador,
@@ -9700,7 +9699,7 @@ create procedure dbo.ORDENESTRABAJO_DELETE
 as
 begin
 
-   Update TNGS_Rivn..OrdenesTrabajo
+   Update TNGS_Mrln..OrdenesTrabajo
       set deleted = 1,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -9749,7 +9748,7 @@ create procedure dbo.ORDENESTRABAJO_RECALL
 as
 begin
 
-   Update TNGS_Rivn..OrdenesTrabajo
+   Update TNGS_Mrln..OrdenesTrabajo
       set deleted = 0,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -9798,7 +9797,7 @@ create procedure dbo.ORDENESTRABAJO_DROP
 as
 begin
 
-   Delete from TNGS_Rivn..OrdenesTrabajo
+   Delete from TNGS_Mrln..OrdenesTrabajo
     where odt_nro_nro = @odt_nro_nro
 
 fin:
@@ -9841,7 +9840,7 @@ create procedure dbo.ORDENESTRABAJO_PACK
 as
 begin
 
-   Delete TNGS_Rivn..OrdenesTrabajo
+   Delete TNGS_Mrln..OrdenesTrabajo
     where deleted = 1
 
 fin:
@@ -9892,11 +9891,11 @@ begin
           odt_nom_operador,
           odt_fyh_feccierre,
           odt_cod_encargado,
-          TNGS_Rivn..OrdenesTrabajo.instante,
-          TNGS_Rivn..OrdenesTrabajo.deleted,
-          TNGS_Rivn..OrdenesTrabajo.usuario,
-          TNGS_Rivn..OrdenesTrabajo.version
-     from TNGS_Rivn..OrdenesTrabajo 
+          TNGS_Mrln..OrdenesTrabajo.instante,
+          TNGS_Mrln..OrdenesTrabajo.deleted,
+          TNGS_Mrln..OrdenesTrabajo.usuario,
+          TNGS_Mrln..OrdenesTrabajo.version
+     from TNGS_Mrln..OrdenesTrabajo 
      where odt_ecd_patente = @patente 
 
 fin:
@@ -9917,11 +9916,11 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 17/08/2015 10:48
-// Sistema     : Rivn
+// Fecha       : 20/04/2018 19:40
+// Sistema     : Mrln
 // Tabla       : OtItems
 //----------------------------------------------------------------------------
-// © 1999-2015 by TNG Software                                      Gndr 5.20
+// © 1999-2018 by TNG Software                                      Gndr 5.20
 //---------------------------------------------------------------------------*/
 
 /* ***************************************************************************
@@ -9935,7 +9934,7 @@ go
 /* Selecciono la base en la que se crearan los SPs */
 /*-------------------------------------------------*/
 
-use TNGS_Rivn
+use TNGS_Mrln
 go
 
 ---////////////////////////////////////////////////////////
@@ -9976,11 +9975,11 @@ begin
                 oti_des_descategoria,
                 oti_imp_importe,
                 oti_ede_comentario,
-                TNGS_Rivn..OtItems.instante,
-                TNGS_Rivn..OtItems.deleted,
-                TNGS_Rivn..OtItems.usuario,
-                TNGS_Rivn..OtItems.version
-           from TNGS_Rivn..OtItems
+                TNGS_Mrln..OtItems.instante,
+                TNGS_Mrln..OtItems.deleted,
+                TNGS_Mrln..OtItems.usuario,
+                TNGS_Mrln..OtItems.version
+           from TNGS_Mrln..OtItems
           where deleted = 0
           order by oti_nro_nroot,
                 oti_nro_nroagrupador,
@@ -9996,11 +9995,11 @@ begin
                 oti_des_descategoria,
                 oti_imp_importe,
                 oti_ede_comentario,
-                TNGS_Rivn..OtItems.instante,
-                TNGS_Rivn..OtItems.deleted,
-                TNGS_Rivn..OtItems.usuario,
-                TNGS_Rivn..OtItems.version
-           from TNGS_Rivn..OtItems
+                TNGS_Mrln..OtItems.instante,
+                TNGS_Mrln..OtItems.deleted,
+                TNGS_Mrln..OtItems.usuario,
+                TNGS_Mrln..OtItems.version
+           from TNGS_Mrln..OtItems
           order by oti_nro_nroot,
                 oti_nro_nroagrupador,
                 oti_nro_nroitem
@@ -10053,7 +10052,7 @@ as
 begin
 
    Select count(*) as cantidad
-     from TNGS_Rivn..OtItems
+     from TNGS_Mrln..OtItems
     where oti_nro_nroot = @oti_nro_nroot
       and oti_nro_nroagrupador = @oti_nro_nroagrupador
       and oti_nro_nroitem = @oti_nro_nroitem
@@ -10115,11 +10114,11 @@ begin
                 oti_des_descategoria,
                 oti_imp_importe,
                 oti_ede_comentario,
-                TNGS_Rivn..OtItems.instante,
-                TNGS_Rivn..OtItems.deleted,
-                TNGS_Rivn..OtItems.usuario,
-                TNGS_Rivn..OtItems.version
-           from TNGS_Rivn..OtItems
+                TNGS_Mrln..OtItems.instante,
+                TNGS_Mrln..OtItems.deleted,
+                TNGS_Mrln..OtItems.usuario,
+                TNGS_Mrln..OtItems.version
+           from TNGS_Mrln..OtItems
           where oti_nro_nroot = @oti_nro_nroot
             and oti_nro_nroagrupador = @oti_nro_nroagrupador
             and oti_nro_nroitem = @oti_nro_nroitem
@@ -10135,11 +10134,11 @@ begin
                 oti_des_descategoria,
                 oti_imp_importe,
                 oti_ede_comentario,
-                TNGS_Rivn..OtItems.instante,
-                TNGS_Rivn..OtItems.deleted,
-                TNGS_Rivn..OtItems.usuario,
-                TNGS_Rivn..OtItems.version
-           from TNGS_Rivn..OtItems
+                TNGS_Mrln..OtItems.instante,
+                TNGS_Mrln..OtItems.deleted,
+                TNGS_Mrln..OtItems.usuario,
+                TNGS_Mrln..OtItems.version
+           from TNGS_Mrln..OtItems
           where oti_nro_nroot = @oti_nro_nroot
             and oti_nro_nroagrupador = @oti_nro_nroagrupador
             and oti_nro_nroitem = @oti_nro_nroitem
@@ -10197,11 +10196,11 @@ begin
                 oti_des_descategoria,
                 oti_imp_importe,
                 oti_ede_comentario,
-                TNGS_Rivn..OtItems.instante,
-                TNGS_Rivn..OtItems.deleted,
-                TNGS_Rivn..OtItems.usuario,
-                TNGS_Rivn..OtItems.version
-           from TNGS_Rivn..OtItems
+                TNGS_Mrln..OtItems.instante,
+                TNGS_Mrln..OtItems.deleted,
+                TNGS_Mrln..OtItems.usuario,
+                TNGS_Mrln..OtItems.version
+           from TNGS_Mrln..OtItems
           where oti_nro_nroot = @oti_nro_nroot
             and deleted = 0
           order by oti_nro_nroagrupador,
@@ -10217,11 +10216,11 @@ begin
                 oti_des_descategoria,
                 oti_imp_importe,
                 oti_ede_comentario,
-                TNGS_Rivn..OtItems.instante,
-                TNGS_Rivn..OtItems.deleted,
-                TNGS_Rivn..OtItems.usuario,
-                TNGS_Rivn..OtItems.version
-           from TNGS_Rivn..OtItems
+                TNGS_Mrln..OtItems.instante,
+                TNGS_Mrln..OtItems.deleted,
+                TNGS_Mrln..OtItems.usuario,
+                TNGS_Mrln..OtItems.version
+           from TNGS_Mrln..OtItems
           where oti_nro_nroot = @oti_nro_nroot
           order by oti_nro_nroagrupador,
                 oti_nro_nroitem
@@ -10283,7 +10282,7 @@ create procedure dbo.OTITEMS_INSERT
 as
 begin
 
-   Insert into TNGS_Rivn..OtItems
+   Insert into TNGS_Mrln..OtItems
    values (
            @oti_nro_nroot,
            @oti_nro_nroagrupador,
@@ -10352,7 +10351,7 @@ create procedure dbo.OTITEMS_UPDATE
 as
 begin
 
-   Update TNGS_Rivn..OtItems
+   Update TNGS_Mrln..OtItems
       set oti_des_desoperacion= @oti_des_desoperacion,
           oti_des_destarea= @oti_des_destarea,
           oti_des_descategoria= @oti_des_descategoria,
@@ -10411,7 +10410,7 @@ create procedure dbo.OTITEMS_DELETE
 as
 begin
 
-   Update TNGS_Rivn..OtItems
+   Update TNGS_Mrln..OtItems
       set deleted = 1,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -10469,7 +10468,7 @@ begin
          select @instante= getdate()
       end
 
-   Update TNGS_Rivn..OtItems
+   Update TNGS_Mrln..OtItems
       set deleted = 1,
           version = ((version+1) % 32767),
           instante= @instante,
@@ -10522,7 +10521,7 @@ create procedure dbo.OTITEMS_RECALL
 as
 begin
 
-   Update TNGS_Rivn..OtItems
+   Update TNGS_Mrln..OtItems
       set deleted = 0,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -10577,7 +10576,7 @@ begin
 
    if datepart(yyyy, @instante) = 1900
       begin
-         Update TNGS_Rivn..OtItems
+         Update TNGS_Mrln..OtItems
             set deleted = 0,
                 version = ((version+1) % 32767),
                 instante= getdate(),
@@ -10586,7 +10585,7 @@ begin
       end
    else
       begin
-         Update TNGS_Rivn..OtItems
+         Update TNGS_Mrln..OtItems
             set deleted = 0,
                 version = ((version+1) % 32767),
                 instante= getdate(),
@@ -10641,7 +10640,7 @@ create procedure dbo.OTITEMS_DROP
 as
 begin
 
-   Delete from TNGS_Rivn..OtItems
+   Delete from TNGS_Mrln..OtItems
     where oti_nro_nroot = @oti_nro_nroot
       and oti_nro_nroagrupador = @oti_nro_nroagrupador
       and oti_nro_nroitem = @oti_nro_nroitem
@@ -10688,7 +10687,7 @@ create procedure dbo.OTITEMS_FDROP
 as
 begin
 
-   Delete from TNGS_Rivn..OtItems
+   Delete from TNGS_Mrln..OtItems
     where oti_nro_nroot = @oti_nro_nroot
 
 fin:
@@ -10731,7 +10730,7 @@ create procedure dbo.OTITEMS_PACK
 as
 begin
 
-   Delete TNGS_Rivn..OtItems
+   Delete TNGS_Mrln..OtItems
     where deleted = 1
 
 fin:
@@ -10776,7 +10775,7 @@ create procedure dbo.OTITEMS_FPACK
 as
 begin
 
-   Delete from TNGS_Rivn..OtItems
+   Delete from TNGS_Mrln..OtItems
     where oti_nro_nroot = @oti_nro_nroot
       and deleted = 1
 
@@ -10798,11 +10797,11 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 17/08/2015 10:48
-// Sistema     : Rivn
+// Fecha       : 20/04/2018 19:40
+// Sistema     : Mrln
 // Tabla       : Parametros
 //----------------------------------------------------------------------------
-// © 1999-2015 by TNG Software                                      Gndr 5.20
+// © 1999-2018 by TNG Software                                      Gndr 5.20
 //---------------------------------------------------------------------------*/
 
 /* ***************************************************************************
@@ -10816,7 +10815,7 @@ go
 /* Selecciono la base en la que se crearan los SPs */
 /*-------------------------------------------------*/
 
-use TNGS_Rivn
+use TNGS_Mrln
 go
 
 ---////////////////////////////////////////////////////////
@@ -10855,11 +10854,11 @@ begin
                 par_est_editable,
                 par_est_sololectura,
                 par_rob_detalle,
-                TNGS_Rivn..Parametros.instante,
-                TNGS_Rivn..Parametros.deleted,
-                TNGS_Rivn..Parametros.usuario,
-                TNGS_Rivn..Parametros.version
-           from TNGS_Rivn..Parametros
+                TNGS_Mrln..Parametros.instante,
+                TNGS_Mrln..Parametros.deleted,
+                TNGS_Mrln..Parametros.usuario,
+                TNGS_Mrln..Parametros.version
+           from TNGS_Mrln..Parametros
           where deleted = 0
           order by par_xcd_codigo
       end
@@ -10871,11 +10870,11 @@ begin
                 par_est_editable,
                 par_est_sololectura,
                 par_rob_detalle,
-                TNGS_Rivn..Parametros.instante,
-                TNGS_Rivn..Parametros.deleted,
-                TNGS_Rivn..Parametros.usuario,
-                TNGS_Rivn..Parametros.version
-           from TNGS_Rivn..Parametros
+                TNGS_Mrln..Parametros.instante,
+                TNGS_Mrln..Parametros.deleted,
+                TNGS_Mrln..Parametros.usuario,
+                TNGS_Mrln..Parametros.version
+           from TNGS_Mrln..Parametros
           order by par_xcd_codigo
       end
 
@@ -10922,7 +10921,7 @@ as
 begin
 
    Select count(*) as cantidad
-     from TNGS_Rivn..Parametros
+     from TNGS_Mrln..Parametros
     where par_xcd_codigo = @par_xcd_codigo
       and version = @version
 
@@ -10976,11 +10975,11 @@ begin
                 par_est_editable,
                 par_est_sololectura,
                 par_rob_detalle,
-                TNGS_Rivn..Parametros.instante,
-                TNGS_Rivn..Parametros.deleted,
-                TNGS_Rivn..Parametros.usuario,
-                TNGS_Rivn..Parametros.version
-           from TNGS_Rivn..Parametros
+                TNGS_Mrln..Parametros.instante,
+                TNGS_Mrln..Parametros.deleted,
+                TNGS_Mrln..Parametros.usuario,
+                TNGS_Mrln..Parametros.version
+           from TNGS_Mrln..Parametros
           where par_xcd_codigo = @par_xcd_codigo
             and deleted = 0
       end
@@ -10992,11 +10991,11 @@ begin
                 par_est_editable,
                 par_est_sololectura,
                 par_rob_detalle,
-                TNGS_Rivn..Parametros.instante,
-                TNGS_Rivn..Parametros.deleted,
-                TNGS_Rivn..Parametros.usuario,
-                TNGS_Rivn..Parametros.version
-           from TNGS_Rivn..Parametros
+                TNGS_Mrln..Parametros.instante,
+                TNGS_Mrln..Parametros.deleted,
+                TNGS_Mrln..Parametros.usuario,
+                TNGS_Mrln..Parametros.version
+           from TNGS_Mrln..Parametros
           where par_xcd_codigo = @par_xcd_codigo
       end
 
@@ -11052,7 +11051,7 @@ create procedure dbo.PARAMETROS_INSERT
 as
 begin
 
-   Insert into TNGS_Rivn..Parametros
+   Insert into TNGS_Mrln..Parametros
    values (
            @par_xcd_codigo,
            @par_des_descripcion,
@@ -11115,7 +11114,7 @@ create procedure dbo.PARAMETROS_UPDATE
 as
 begin
 
-   Update TNGS_Rivn..Parametros
+   Update TNGS_Mrln..Parametros
       set par_des_descripcion= @par_des_descripcion,
           par_xde_valor= @par_xde_valor,
           par_est_editable= @par_est_editable,
@@ -11168,7 +11167,7 @@ create procedure dbo.PARAMETROS_DELETE
 as
 begin
 
-   Update TNGS_Rivn..Parametros
+   Update TNGS_Mrln..Parametros
       set deleted = 1,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -11217,7 +11216,7 @@ create procedure dbo.PARAMETROS_RECALL
 as
 begin
 
-   Update TNGS_Rivn..Parametros
+   Update TNGS_Mrln..Parametros
       set deleted = 0,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -11266,7 +11265,7 @@ create procedure dbo.PARAMETROS_DROP
 as
 begin
 
-   Delete from TNGS_Rivn..Parametros
+   Delete from TNGS_Mrln..Parametros
     where par_xcd_codigo = @par_xcd_codigo
 
 fin:
@@ -11309,7 +11308,7 @@ create procedure dbo.PARAMETROS_PACK
 as
 begin
 
-   Delete TNGS_Rivn..Parametros
+   Delete TNGS_Mrln..Parametros
     where deleted = 1
 
 fin:
@@ -11330,11 +11329,11 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 17/08/2015 10:48
-// Sistema     : Rivn
+// Fecha       : 20/04/2018 19:40
+// Sistema     : Mrln
 // Tabla       : Reparaciones
 //----------------------------------------------------------------------------
-// © 1999-2015 by TNG Software                                      Gndr 5.20
+// © 1999-2018 by TNG Software                                      Gndr 5.20
 //---------------------------------------------------------------------------*/
 
 /* ***************************************************************************
@@ -11348,7 +11347,7 @@ go
 /* Selecciono la base en la que se crearan los SPs */
 /*-------------------------------------------------*/
 
-use TNGS_Rivn
+use TNGS_Mrln
 go
 
 ---////////////////////////////////////////////////////////
@@ -11385,11 +11384,11 @@ begin
                 rep_xde_des,
                 rep_rcd_codcat,
                 rep_cd1_solicitadetalle,
-                TNGS_Rivn..Reparaciones.instante,
-                TNGS_Rivn..Reparaciones.deleted,
-                TNGS_Rivn..Reparaciones.usuario,
-                TNGS_Rivn..Reparaciones.version
-           from TNGS_Rivn..Reparaciones
+                TNGS_Mrln..Reparaciones.instante,
+                TNGS_Mrln..Reparaciones.deleted,
+                TNGS_Mrln..Reparaciones.usuario,
+                TNGS_Mrln..Reparaciones.version
+           from TNGS_Mrln..Reparaciones
           where deleted = 0
           order by rep_cd6_cod
       end
@@ -11399,11 +11398,11 @@ begin
                 rep_xde_des,
                 rep_rcd_codcat,
                 rep_cd1_solicitadetalle,
-                TNGS_Rivn..Reparaciones.instante,
-                TNGS_Rivn..Reparaciones.deleted,
-                TNGS_Rivn..Reparaciones.usuario,
-                TNGS_Rivn..Reparaciones.version
-           from TNGS_Rivn..Reparaciones
+                TNGS_Mrln..Reparaciones.instante,
+                TNGS_Mrln..Reparaciones.deleted,
+                TNGS_Mrln..Reparaciones.usuario,
+                TNGS_Mrln..Reparaciones.version
+           from TNGS_Mrln..Reparaciones
           order by rep_cd6_cod
       end
 
@@ -11450,7 +11449,7 @@ as
 begin
 
    Select count(*) as cantidad
-     from TNGS_Rivn..Reparaciones
+     from TNGS_Mrln..Reparaciones
     where rep_cd6_cod = @rep_cd6_cod
       and version = @version
 
@@ -11502,11 +11501,11 @@ begin
                 rep_xde_des,
                 rep_rcd_codcat,
                 rep_cd1_solicitadetalle,
-                TNGS_Rivn..Reparaciones.instante,
-                TNGS_Rivn..Reparaciones.deleted,
-                TNGS_Rivn..Reparaciones.usuario,
-                TNGS_Rivn..Reparaciones.version
-           from TNGS_Rivn..Reparaciones
+                TNGS_Mrln..Reparaciones.instante,
+                TNGS_Mrln..Reparaciones.deleted,
+                TNGS_Mrln..Reparaciones.usuario,
+                TNGS_Mrln..Reparaciones.version
+           from TNGS_Mrln..Reparaciones
           where rep_cd6_cod = @rep_cd6_cod
             and deleted = 0
       end
@@ -11516,11 +11515,11 @@ begin
                 rep_xde_des,
                 rep_rcd_codcat,
                 rep_cd1_solicitadetalle,
-                TNGS_Rivn..Reparaciones.instante,
-                TNGS_Rivn..Reparaciones.deleted,
-                TNGS_Rivn..Reparaciones.usuario,
-                TNGS_Rivn..Reparaciones.version
-           from TNGS_Rivn..Reparaciones
+                TNGS_Mrln..Reparaciones.instante,
+                TNGS_Mrln..Reparaciones.deleted,
+                TNGS_Mrln..Reparaciones.usuario,
+                TNGS_Mrln..Reparaciones.version
+           from TNGS_Mrln..Reparaciones
           where rep_cd6_cod = @rep_cd6_cod
       end
 
@@ -11572,7 +11571,7 @@ create procedure dbo.REPARACIONES_INSERT
 as
 begin
 
-   Insert into TNGS_Rivn..Reparaciones
+   Insert into TNGS_Mrln..Reparaciones
    values (
            @rep_cd6_cod,
            @rep_xde_des,
@@ -11629,7 +11628,7 @@ create procedure dbo.REPARACIONES_UPDATE
 as
 begin
 
-   Update TNGS_Rivn..Reparaciones
+   Update TNGS_Mrln..Reparaciones
       set rep_xde_des= @rep_xde_des,
           rep_rcd_codcat= @rep_rcd_codcat,
           rep_cd1_solicitadetalle= @rep_cd1_solicitadetalle,
@@ -11680,7 +11679,7 @@ create procedure dbo.REPARACIONES_DELETE
 as
 begin
 
-   Update TNGS_Rivn..Reparaciones
+   Update TNGS_Mrln..Reparaciones
       set deleted = 1,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -11729,7 +11728,7 @@ create procedure dbo.REPARACIONES_RECALL
 as
 begin
 
-   Update TNGS_Rivn..Reparaciones
+   Update TNGS_Mrln..Reparaciones
       set deleted = 0,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -11778,7 +11777,7 @@ create procedure dbo.REPARACIONES_DROP
 as
 begin
 
-   Delete from TNGS_Rivn..Reparaciones
+   Delete from TNGS_Mrln..Reparaciones
     where rep_cd6_cod = @rep_cd6_cod
 
 fin:
@@ -11821,7 +11820,7 @@ create procedure dbo.REPARACIONES_PACK
 as
 begin
 
-   Delete TNGS_Rivn..Reparaciones
+   Delete TNGS_Mrln..Reparaciones
     where deleted = 1
 
 fin:
@@ -11888,11 +11887,11 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 17/08/2015 10:48
-// Sistema     : Rivn
+// Fecha       : 20/04/2018 19:40
+// Sistema     : Mrln
 // Tabla       : Talonarios
 //----------------------------------------------------------------------------
-// © 1999-2015 by TNG Software                                      Gndr 5.20
+// © 1999-2018 by TNG Software                                      Gndr 5.20
 //---------------------------------------------------------------------------*/
 
 /* ***************************************************************************
@@ -11906,7 +11905,7 @@ go
 /* Selecciono la base en la que se crearan los SPs */
 /*-------------------------------------------------*/
 
-use TNGS_Rivn
+use TNGS_Mrln
 go
 
 ---////////////////////////////////////////////////////////
@@ -11945,11 +11944,11 @@ begin
                 tal_nro_valor,
                 tal_fyh_referencia,
                 tal_rob_detalle,
-                TNGS_Rivn..Talonarios.instante,
-                TNGS_Rivn..Talonarios.deleted,
-                TNGS_Rivn..Talonarios.usuario,
-                TNGS_Rivn..Talonarios.version
-           from TNGS_Rivn..Talonarios
+                TNGS_Mrln..Talonarios.instante,
+                TNGS_Mrln..Talonarios.deleted,
+                TNGS_Mrln..Talonarios.usuario,
+                TNGS_Mrln..Talonarios.version
+           from TNGS_Mrln..Talonarios
           where deleted = 0
           order by tal_xcd_codigo
       end
@@ -11961,11 +11960,11 @@ begin
                 tal_nro_valor,
                 tal_fyh_referencia,
                 tal_rob_detalle,
-                TNGS_Rivn..Talonarios.instante,
-                TNGS_Rivn..Talonarios.deleted,
-                TNGS_Rivn..Talonarios.usuario,
-                TNGS_Rivn..Talonarios.version
-           from TNGS_Rivn..Talonarios
+                TNGS_Mrln..Talonarios.instante,
+                TNGS_Mrln..Talonarios.deleted,
+                TNGS_Mrln..Talonarios.usuario,
+                TNGS_Mrln..Talonarios.version
+           from TNGS_Mrln..Talonarios
           order by tal_xcd_codigo
       end
 
@@ -12012,7 +12011,7 @@ as
 begin
 
    Select count(*) as cantidad
-     from TNGS_Rivn..Talonarios
+     from TNGS_Mrln..Talonarios
     where tal_xcd_codigo = @tal_xcd_codigo
       and version = @version
 
@@ -12066,11 +12065,11 @@ begin
                 tal_nro_valor,
                 tal_fyh_referencia,
                 tal_rob_detalle,
-                TNGS_Rivn..Talonarios.instante,
-                TNGS_Rivn..Talonarios.deleted,
-                TNGS_Rivn..Talonarios.usuario,
-                TNGS_Rivn..Talonarios.version
-           from TNGS_Rivn..Talonarios
+                TNGS_Mrln..Talonarios.instante,
+                TNGS_Mrln..Talonarios.deleted,
+                TNGS_Mrln..Talonarios.usuario,
+                TNGS_Mrln..Talonarios.version
+           from TNGS_Mrln..Talonarios with (XLOCK)
           where tal_xcd_codigo = @tal_xcd_codigo
             and deleted = 0
       end
@@ -12082,11 +12081,11 @@ begin
                 tal_nro_valor,
                 tal_fyh_referencia,
                 tal_rob_detalle,
-                TNGS_Rivn..Talonarios.instante,
-                TNGS_Rivn..Talonarios.deleted,
-                TNGS_Rivn..Talonarios.usuario,
-                TNGS_Rivn..Talonarios.version
-           from TNGS_Rivn..Talonarios
+                TNGS_Mrln..Talonarios.instante,
+                TNGS_Mrln..Talonarios.deleted,
+                TNGS_Mrln..Talonarios.usuario,
+                TNGS_Mrln..Talonarios.version
+           from TNGS_Mrln..Talonarios with (XLOCK)
           where tal_xcd_codigo = @tal_xcd_codigo
       end
 
@@ -12142,7 +12141,7 @@ create procedure dbo.TALONARIOS_INSERT
 as
 begin
 
-   Insert into TNGS_Rivn..Talonarios
+   Insert into TNGS_Mrln..Talonarios
    values (
            @tal_xcd_codigo,
            @tal_des_descripcion,
@@ -12205,7 +12204,7 @@ create procedure dbo.TALONARIOS_UPDATE
 as
 begin
 
-   Update TNGS_Rivn..Talonarios
+   Update TNGS_Mrln..Talonarios
       set tal_des_descripcion= @tal_des_descripcion,
           tal_cd1_tipo= @tal_cd1_tipo,
           tal_nro_valor= @tal_nro_valor,
@@ -12258,7 +12257,7 @@ create procedure dbo.TALONARIOS_DELETE
 as
 begin
 
-   Update TNGS_Rivn..Talonarios
+   Update TNGS_Mrln..Talonarios
       set deleted = 1,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -12307,7 +12306,7 @@ create procedure dbo.TALONARIOS_RECALL
 as
 begin
 
-   Update TNGS_Rivn..Talonarios
+   Update TNGS_Mrln..Talonarios
       set deleted = 0,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -12356,7 +12355,7 @@ create procedure dbo.TALONARIOS_DROP
 as
 begin
 
-   Delete from TNGS_Rivn..Talonarios
+   Delete from TNGS_Mrln..Talonarios
     where tal_xcd_codigo = @tal_xcd_codigo
 
 fin:
@@ -12399,7 +12398,7 @@ create procedure dbo.TALONARIOS_PACK
 as
 begin
 
-   Delete TNGS_Rivn..Talonarios
+   Delete TNGS_Mrln..Talonarios
     where deleted = 1
 
 fin:

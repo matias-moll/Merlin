@@ -1,11 +1,11 @@
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 17/08/2015 10:48
-// Sistema     : Rivn
+// Fecha       : 20/04/2018 19:40
+// Sistema     : Mrln
 // Tabla       : Estados
 //----------------------------------------------------------------------------
-// © 1999-2015 by TNG Software                                      Gndr 5.20
+// © 1999-2018 by TNG Software                                      Gndr 5.20
 //---------------------------------------------------------------------------*/
 
 /* ***************************************************************************
@@ -19,7 +19,7 @@
 /* Selecciono la base en la que se crearan los SPs */
 /*-------------------------------------------------*/
 
-use TNGS_Rivn
+use TNGS_Mrln
 go
 
 ---////////////////////////////////////////////////////////
@@ -56,11 +56,11 @@ begin
                 est_des_des,
                 est_txt_txtcontingencia,
                 est_cd1_operativo,
-                TNGS_Rivn..Estados.instante,
-                TNGS_Rivn..Estados.deleted,
-                TNGS_Rivn..Estados.usuario,
-                TNGS_Rivn..Estados.version
-           from TNGS_Rivn..Estados
+                TNGS_Mrln..Estados.instante,
+                TNGS_Mrln..Estados.deleted,
+                TNGS_Mrln..Estados.usuario,
+                TNGS_Mrln..Estados.version
+           from TNGS_Mrln..Estados
           where deleted = 0
           order by est_rcd_cod
       end
@@ -70,11 +70,11 @@ begin
                 est_des_des,
                 est_txt_txtcontingencia,
                 est_cd1_operativo,
-                TNGS_Rivn..Estados.instante,
-                TNGS_Rivn..Estados.deleted,
-                TNGS_Rivn..Estados.usuario,
-                TNGS_Rivn..Estados.version
-           from TNGS_Rivn..Estados
+                TNGS_Mrln..Estados.instante,
+                TNGS_Mrln..Estados.deleted,
+                TNGS_Mrln..Estados.usuario,
+                TNGS_Mrln..Estados.version
+           from TNGS_Mrln..Estados
           order by est_rcd_cod
       end
 
@@ -121,7 +121,7 @@ as
 begin
 
    Select count(*) as cantidad
-     from TNGS_Rivn..Estados
+     from TNGS_Mrln..Estados
     where est_rcd_cod = @est_rcd_cod
       and version = @version
 
@@ -173,11 +173,11 @@ begin
                 est_des_des,
                 est_txt_txtcontingencia,
                 est_cd1_operativo,
-                TNGS_Rivn..Estados.instante,
-                TNGS_Rivn..Estados.deleted,
-                TNGS_Rivn..Estados.usuario,
-                TNGS_Rivn..Estados.version
-           from TNGS_Rivn..Estados
+                TNGS_Mrln..Estados.instante,
+                TNGS_Mrln..Estados.deleted,
+                TNGS_Mrln..Estados.usuario,
+                TNGS_Mrln..Estados.version
+           from TNGS_Mrln..Estados
           where est_rcd_cod = @est_rcd_cod
             and deleted = 0
       end
@@ -187,11 +187,11 @@ begin
                 est_des_des,
                 est_txt_txtcontingencia,
                 est_cd1_operativo,
-                TNGS_Rivn..Estados.instante,
-                TNGS_Rivn..Estados.deleted,
-                TNGS_Rivn..Estados.usuario,
-                TNGS_Rivn..Estados.version
-           from TNGS_Rivn..Estados
+                TNGS_Mrln..Estados.instante,
+                TNGS_Mrln..Estados.deleted,
+                TNGS_Mrln..Estados.usuario,
+                TNGS_Mrln..Estados.version
+           from TNGS_Mrln..Estados
           where est_rcd_cod = @est_rcd_cod
       end
 
@@ -236,7 +236,7 @@ as
 begin
 
    Select isnull(max(est_rcd_cod), '0') as est_rcd_cod
-     from TNGS_Rivn..Estados
+     from TNGS_Mrln..Estados
 
 fin:
 
@@ -286,7 +286,7 @@ create procedure dbo.ESTADOS_INSERT
 as
 begin
 
-   Insert into TNGS_Rivn..Estados
+   Insert into TNGS_Mrln..Estados
    values (
            @est_rcd_cod,
            @est_des_des,
@@ -343,7 +343,7 @@ create procedure dbo.ESTADOS_UPDATE
 as
 begin
 
-   Update TNGS_Rivn..Estados
+   Update TNGS_Mrln..Estados
       set est_des_des= @est_des_des,
           est_txt_txtcontingencia= @est_txt_txtcontingencia,
           est_cd1_operativo= @est_cd1_operativo,
@@ -394,7 +394,7 @@ create procedure dbo.ESTADOS_DELETE
 as
 begin
 
-   Update TNGS_Rivn..Estados
+   Update TNGS_Mrln..Estados
       set deleted = 1,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -443,7 +443,7 @@ create procedure dbo.ESTADOS_RECALL
 as
 begin
 
-   Update TNGS_Rivn..Estados
+   Update TNGS_Mrln..Estados
       set deleted = 0,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -492,7 +492,7 @@ create procedure dbo.ESTADOS_DROP
 as
 begin
 
-   Delete from TNGS_Rivn..Estados
+   Delete from TNGS_Mrln..Estados
     where est_rcd_cod = @est_rcd_cod
 
 fin:
@@ -535,7 +535,7 @@ create procedure dbo.ESTADOS_PACK
 as
 begin
 
-   Delete TNGS_Rivn..Estados
+   Delete TNGS_Mrln..Estados
     where deleted = 1
 
 fin:

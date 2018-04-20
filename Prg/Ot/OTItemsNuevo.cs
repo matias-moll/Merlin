@@ -12,9 +12,9 @@ using TNGS.NetControls;
 using TNGS.NetRoutines;
 using TNGS.NetApp;
 using WeifenLuo.WinFormsUI.Docking;
-using Rivn.Bel;
+using Mrln.Bel;
 
-namespace Rivn.Ot
+namespace Mrln.Ot
 {
     public partial class OTItemsNuevo:DockContent
     {

@@ -1,5 +1,5 @@
 ﻿using WeifenLuo.WinFormsUI.Docking;
-namespace Rivn.Mv
+namespace Mrln.Mv
 {
     partial class Moviles
     {
@@ -31,6 +31,14 @@ namespace Rivn.Mv
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Moviles));
             this.xpnlPanelAtras = new TNGS.NetControls.XPanel();
+            this.tgrpMoviles = new TNGS.NetControls.TitledGroup();
+            this.teEstado = new TNGS.NetControls.TextEdit();
+            this.ftrMoviles = new TNGS.NetControls.FullTreeView();
+            this.teModelo = new TNGS.NetControls.TextEdit();
+            this.lblPatente = new TNGS.NetControls.FullLabel();
+            this.lblEstado = new TNGS.NetControls.FullLabel();
+            this.tePatente = new TNGS.NetControls.TextEdit();
+            this.lblModelo = new TNGS.NetControls.FullLabel();
             this.fullLabel4 = new TNGS.NetControls.FullLabel();
             this.fullLabel3 = new TNGS.NetControls.FullLabel();
             this.fullLabel2 = new TNGS.NetControls.FullLabel();
@@ -52,15 +60,8 @@ namespace Rivn.Mv
             this.fgCombustibles = new TNGS.NetControls.FullGrid();
             this.fgEquipamiento = new TNGS.NetControls.FullGrid();
             this.fgKm = new TNGS.NetControls.FullGrid();
-            this.teEstado = new TNGS.NetControls.TextEdit();
-            this.teModelo = new TNGS.NetControls.TextEdit();
-            this.lblEstado = new TNGS.NetControls.FullLabel();
-            this.lblModelo = new TNGS.NetControls.FullLabel();
-            this.tePatente = new TNGS.NetControls.TextEdit();
-            this.lblPatente = new TNGS.NetControls.FullLabel();
-            this.ftrMoviles = new TNGS.NetControls.FullTreeView();
-            this.tgrpMoviles = new TNGS.NetControls.TitledGroup();
             this.xpnlPanelAtras.SuspendLayout();
+            this.tgrpMoviles.SuspendLayout();
             this.tsContainer1.SuspendLayout();
             this.tabPageSwitcher1.SuspendLayout();
             this.tabStripPage1.SuspendLayout();
@@ -71,7 +72,6 @@ namespace Rivn.Mv
             ((System.ComponentModel.ISupportInitialize)(this.fgCombustibles)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fgEquipamiento)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fgKm)).BeginInit();
-            this.tgrpMoviles.SuspendLayout();
             this.SuspendLayout();
             // 
             // xpnlPanelAtras
@@ -94,6 +94,115 @@ namespace Rivn.Mv
             this.xpnlPanelAtras.Size = new System.Drawing.Size(1008, 651);
             this.xpnlPanelAtras.SkinFixed = true;
             this.xpnlPanelAtras.TabIndex = 0;
+            // 
+            // tgrpMoviles
+            // 
+            this.tgrpMoviles.BackgroundColor = System.Drawing.Color.WhiteSmoke;
+            this.tgrpMoviles.BackgroundGradientColor = System.Drawing.Color.White;
+            this.tgrpMoviles.BackgroundGradientMode = TNGS.NetControls.TitledGroup.GroupBoxGradientMode.None;
+            this.tgrpMoviles.BlackBorder = true;
+            this.tgrpMoviles.BorderColor = System.Drawing.Color.WhiteSmoke;
+            this.tgrpMoviles.BorderThickness = 1F;
+            this.tgrpMoviles.Controls.Add(this.teEstado);
+            this.tgrpMoviles.Controls.Add(this.ftrMoviles);
+            this.tgrpMoviles.Controls.Add(this.teModelo);
+            this.tgrpMoviles.Controls.Add(this.lblPatente);
+            this.tgrpMoviles.Controls.Add(this.lblEstado);
+            this.tgrpMoviles.Controls.Add(this.tePatente);
+            this.tgrpMoviles.Controls.Add(this.lblModelo);
+            this.tgrpMoviles.CustomGroupBoxColor = System.Drawing.Color.White;
+            this.tgrpMoviles.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.tgrpMoviles.ForeColor = System.Drawing.Color.Black;
+            this.tgrpMoviles.ImageGroup = null;
+            this.tgrpMoviles.Location = new System.Drawing.Point(12, 120);
+            this.tgrpMoviles.Name = "tgrpMoviles";
+            this.tgrpMoviles.Padding = new System.Windows.Forms.Padding(20);
+            this.tgrpMoviles.PaintGroupBox = false;
+            this.tgrpMoviles.RoundCorners = 4;
+            this.tgrpMoviles.ShadowColor = System.Drawing.Color.DarkGray;
+            this.tgrpMoviles.ShadowControl = false;
+            this.tgrpMoviles.ShadowThickness = 3;
+            this.tgrpMoviles.Size = new System.Drawing.Size(243, 518);
+            this.tgrpMoviles.TabIndex = 38;
+            this.tgrpMoviles.Title = "Móviles";
+            this.tgrpMoviles.TitleAlignment = TNGS.NetControls.TitledGroup.TitleAlign.Center;
+            this.tgrpMoviles.TitleBackground = System.Drawing.SystemColors.HotTrack;
+            this.tgrpMoviles.TitleBackgroundDefault = TNGS.NetControls.ColorRuts.ColoresDefault.None;
+            this.tgrpMoviles.TitleFont = new System.Drawing.Font("Segoe UI", 10F);
+            this.tgrpMoviles.TitleFontColor = System.Drawing.Color.White;
+            // 
+            // teEstado
+            // 
+            this.teEstado.BackColor = System.Drawing.SystemColors.Window;
+            this.teEstado.Enabled = false;
+            this.teEstado.Location = new System.Drawing.Point(87, 489);
+            this.teEstado.Name = "teEstado";
+            this.teEstado.Size = new System.Drawing.Size(138, 23);
+            this.teEstado.TabIndex = 25;
+            this.teEstado.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // ftrMoviles
+            // 
+            this.ftrMoviles.IgnoreLevelInFill = false;
+            this.ftrMoviles.Location = new System.Drawing.Point(19, 39);
+            this.ftrMoviles.Name = "ftrMoviles";
+            this.ftrMoviles.Size = new System.Drawing.Size(206, 392);
+            this.ftrMoviles.TabIndex = 0;
+            this.ftrMoviles.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.ftrMoviles_AfterSelect);
+            this.ftrMoviles.DoubleClick += new System.EventHandler(this.ftrMoviles_DoubleClick);
+            // 
+            // teModelo
+            // 
+            this.teModelo.BackColor = System.Drawing.SystemColors.Window;
+            this.teModelo.Enabled = false;
+            this.teModelo.Location = new System.Drawing.Point(87, 463);
+            this.teModelo.Name = "teModelo";
+            this.teModelo.Size = new System.Drawing.Size(138, 23);
+            this.teModelo.TabIndex = 24;
+            this.teModelo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // lblPatente
+            // 
+            this.lblPatente.BackColor = System.Drawing.Color.Transparent;
+            this.lblPatente.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPatente.ForeColor = System.Drawing.Color.Black;
+            this.lblPatente.Location = new System.Drawing.Point(23, 439);
+            this.lblPatente.Name = "lblPatente";
+            this.lblPatente.Size = new System.Drawing.Size(58, 18);
+            this.lblPatente.TabIndex = 8;
+            this.lblPatente.Text = "Patente:";
+            // 
+            // lblEstado
+            // 
+            this.lblEstado.BackColor = System.Drawing.Color.Transparent;
+            this.lblEstado.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEstado.ForeColor = System.Drawing.Color.Black;
+            this.lblEstado.Location = new System.Drawing.Point(23, 489);
+            this.lblEstado.Name = "lblEstado";
+            this.lblEstado.Size = new System.Drawing.Size(55, 18);
+            this.lblEstado.TabIndex = 23;
+            this.lblEstado.Text = "Estado:";
+            // 
+            // tePatente
+            // 
+            this.tePatente.BackColor = System.Drawing.SystemColors.Window;
+            this.tePatente.Enabled = false;
+            this.tePatente.Location = new System.Drawing.Point(87, 437);
+            this.tePatente.Name = "tePatente";
+            this.tePatente.Size = new System.Drawing.Size(138, 23);
+            this.tePatente.TabIndex = 7;
+            this.tePatente.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // lblModelo
+            // 
+            this.lblModelo.BackColor = System.Drawing.Color.Transparent;
+            this.lblModelo.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblModelo.ForeColor = System.Drawing.Color.Black;
+            this.lblModelo.Location = new System.Drawing.Point(23, 464);
+            this.lblModelo.Name = "lblModelo";
+            this.lblModelo.Size = new System.Drawing.Size(55, 18);
+            this.lblModelo.TabIndex = 20;
+            this.lblModelo.Text = "Modelo:";
             // 
             // fullLabel4
             // 
@@ -429,115 +538,6 @@ namespace Rivn.Mv
             this.fgKm.SkinFixed = true;
             this.fgKm.TabIndex = 0;
             // 
-            // teEstado
-            // 
-            this.teEstado.BackColor = System.Drawing.SystemColors.Window;
-            this.teEstado.Enabled = false;
-            this.teEstado.Location = new System.Drawing.Point(87, 489);
-            this.teEstado.Name = "teEstado";
-            this.teEstado.Size = new System.Drawing.Size(138, 23);
-            this.teEstado.TabIndex = 25;
-            this.teEstado.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // teModelo
-            // 
-            this.teModelo.BackColor = System.Drawing.SystemColors.Window;
-            this.teModelo.Enabled = false;
-            this.teModelo.Location = new System.Drawing.Point(87, 463);
-            this.teModelo.Name = "teModelo";
-            this.teModelo.Size = new System.Drawing.Size(138, 23);
-            this.teModelo.TabIndex = 24;
-            this.teModelo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // lblEstado
-            // 
-            this.lblEstado.BackColor = System.Drawing.Color.Transparent;
-            this.lblEstado.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEstado.ForeColor = System.Drawing.Color.Black;
-            this.lblEstado.Location = new System.Drawing.Point(23, 489);
-            this.lblEstado.Name = "lblEstado";
-            this.lblEstado.Size = new System.Drawing.Size(55, 18);
-            this.lblEstado.TabIndex = 23;
-            this.lblEstado.Text = "Estado:";
-            // 
-            // lblModelo
-            // 
-            this.lblModelo.BackColor = System.Drawing.Color.Transparent;
-            this.lblModelo.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblModelo.ForeColor = System.Drawing.Color.Black;
-            this.lblModelo.Location = new System.Drawing.Point(23, 464);
-            this.lblModelo.Name = "lblModelo";
-            this.lblModelo.Size = new System.Drawing.Size(55, 18);
-            this.lblModelo.TabIndex = 20;
-            this.lblModelo.Text = "Modelo:";
-            // 
-            // tePatente
-            // 
-            this.tePatente.BackColor = System.Drawing.SystemColors.Window;
-            this.tePatente.Enabled = false;
-            this.tePatente.Location = new System.Drawing.Point(87, 437);
-            this.tePatente.Name = "tePatente";
-            this.tePatente.Size = new System.Drawing.Size(138, 23);
-            this.tePatente.TabIndex = 7;
-            this.tePatente.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // lblPatente
-            // 
-            this.lblPatente.BackColor = System.Drawing.Color.Transparent;
-            this.lblPatente.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPatente.ForeColor = System.Drawing.Color.Black;
-            this.lblPatente.Location = new System.Drawing.Point(23, 439);
-            this.lblPatente.Name = "lblPatente";
-            this.lblPatente.Size = new System.Drawing.Size(58, 18);
-            this.lblPatente.TabIndex = 8;
-            this.lblPatente.Text = "Patente:";
-            // 
-            // ftrMoviles
-            // 
-            this.ftrMoviles.IgnoreLevelInFill = false;
-            this.ftrMoviles.Location = new System.Drawing.Point(19, 39);
-            this.ftrMoviles.Name = "ftrMoviles";
-            this.ftrMoviles.Size = new System.Drawing.Size(206, 392);
-            this.ftrMoviles.TabIndex = 0;
-            this.ftrMoviles.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.ftrMoviles_AfterSelect);
-            this.ftrMoviles.DoubleClick += new System.EventHandler(this.ftrMoviles_DoubleClick);
-            // 
-            // tgrpMoviles
-            // 
-            this.tgrpMoviles.BackgroundColor = System.Drawing.Color.WhiteSmoke;
-            this.tgrpMoviles.BackgroundGradientColor = System.Drawing.Color.White;
-            this.tgrpMoviles.BackgroundGradientMode = TNGS.NetControls.TitledGroup.GroupBoxGradientMode.None;
-            this.tgrpMoviles.BlackBorder = true;
-            this.tgrpMoviles.BorderColor = System.Drawing.Color.WhiteSmoke;
-            this.tgrpMoviles.BorderThickness = 1F;
-            this.tgrpMoviles.Controls.Add(this.teEstado);
-            this.tgrpMoviles.Controls.Add(this.ftrMoviles);
-            this.tgrpMoviles.Controls.Add(this.teModelo);
-            this.tgrpMoviles.Controls.Add(this.lblPatente);
-            this.tgrpMoviles.Controls.Add(this.lblEstado);
-            this.tgrpMoviles.Controls.Add(this.tePatente);
-            this.tgrpMoviles.Controls.Add(this.lblModelo);
-            this.tgrpMoviles.CustomGroupBoxColor = System.Drawing.Color.White;
-            this.tgrpMoviles.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.tgrpMoviles.ForeColor = System.Drawing.Color.Black;
-            this.tgrpMoviles.ImageGroup = null;
-            this.tgrpMoviles.Location = new System.Drawing.Point(12, 120);
-            this.tgrpMoviles.Name = "tgrpMoviles";
-            this.tgrpMoviles.Padding = new System.Windows.Forms.Padding(20);
-            this.tgrpMoviles.PaintGroupBox = false;
-            this.tgrpMoviles.RoundCorners = 4;
-            this.tgrpMoviles.ShadowColor = System.Drawing.Color.DarkGray;
-            this.tgrpMoviles.ShadowControl = false;
-            this.tgrpMoviles.ShadowThickness = 3;
-            this.tgrpMoviles.Size = new System.Drawing.Size(243, 518);
-            this.tgrpMoviles.TabIndex = 38;
-            this.tgrpMoviles.Title = "Móviles";
-            this.tgrpMoviles.TitleAlignment = TNGS.NetControls.TitledGroup.TitleAlign.Center;
-            this.tgrpMoviles.TitleBackground = System.Drawing.SystemColors.HotTrack;
-            this.tgrpMoviles.TitleBackgroundDefault = TNGS.NetControls.ColorRuts.ColoresDefault.None;
-            this.tgrpMoviles.TitleFont = new System.Drawing.Font("Segoe UI", 10F);
-            this.tgrpMoviles.TitleFontColor = System.Drawing.Color.White;
-            // 
             // Moviles
             // 
             this.AllowEndUserDocking = false;
@@ -551,6 +551,8 @@ namespace Rivn.Mv
             this.Name = "Moviles";
             this.Text = "Moviles";
             this.xpnlPanelAtras.ResumeLayout(false);
+            this.tgrpMoviles.ResumeLayout(false);
+            this.tgrpMoviles.PerformLayout();
             this.tsContainer1.ResumeLayout(false);
             this.tabPageSwitcher1.ResumeLayout(false);
             this.tabStripPage1.ResumeLayout(false);
@@ -562,8 +564,6 @@ namespace Rivn.Mv
             ((System.ComponentModel.ISupportInitialize)(this.fgCombustibles)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fgEquipamiento)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fgKm)).EndInit();
-            this.tgrpMoviles.ResumeLayout(false);
-            this.tgrpMoviles.PerformLayout();
             this.ResumeLayout(false);
 
         }

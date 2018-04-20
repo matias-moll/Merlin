@@ -1,11 +1,11 @@
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 17/08/2015 10:48
-// Sistema     : Rivn
+// Fecha       : 20/04/2018 19:40
+// Sistema     : Mrln
 // Tabla       : Equipamiento
 //----------------------------------------------------------------------------
-// © 1999-2015 by TNG Software                                      Gndr 5.20
+// © 1999-2018 by TNG Software                                      Gndr 5.20
 //---------------------------------------------------------------------------*/
 
 /* ***************************************************************************
@@ -19,7 +19,7 @@
 /* Selecciono la base en la que se crearan los SPs */
 /*-------------------------------------------------*/
 
-use TNGS_Rivn
+use TNGS_Mrln
 go
 
 ---////////////////////////////////////////////////////////
@@ -55,11 +55,11 @@ begin
          Select eqi_cod_cod,
                 eqi_des_des,
                 eqi_imp_valor,
-                TNGS_Rivn..Equipamiento.instante,
-                TNGS_Rivn..Equipamiento.deleted,
-                TNGS_Rivn..Equipamiento.usuario,
-                TNGS_Rivn..Equipamiento.version
-           from TNGS_Rivn..Equipamiento
+                TNGS_Mrln..Equipamiento.instante,
+                TNGS_Mrln..Equipamiento.deleted,
+                TNGS_Mrln..Equipamiento.usuario,
+                TNGS_Mrln..Equipamiento.version
+           from TNGS_Mrln..Equipamiento
           where deleted = 0
           order by eqi_cod_cod
       end
@@ -68,11 +68,11 @@ begin
          Select eqi_cod_cod,
                 eqi_des_des,
                 eqi_imp_valor,
-                TNGS_Rivn..Equipamiento.instante,
-                TNGS_Rivn..Equipamiento.deleted,
-                TNGS_Rivn..Equipamiento.usuario,
-                TNGS_Rivn..Equipamiento.version
-           from TNGS_Rivn..Equipamiento
+                TNGS_Mrln..Equipamiento.instante,
+                TNGS_Mrln..Equipamiento.deleted,
+                TNGS_Mrln..Equipamiento.usuario,
+                TNGS_Mrln..Equipamiento.version
+           from TNGS_Mrln..Equipamiento
           order by eqi_cod_cod
       end
 
@@ -119,7 +119,7 @@ as
 begin
 
    Select count(*) as cantidad
-     from TNGS_Rivn..Equipamiento
+     from TNGS_Mrln..Equipamiento
     where eqi_cod_cod = @eqi_cod_cod
       and version = @version
 
@@ -170,11 +170,11 @@ begin
          Select eqi_cod_cod,
                 eqi_des_des,
                 eqi_imp_valor,
-                TNGS_Rivn..Equipamiento.instante,
-                TNGS_Rivn..Equipamiento.deleted,
-                TNGS_Rivn..Equipamiento.usuario,
-                TNGS_Rivn..Equipamiento.version
-           from TNGS_Rivn..Equipamiento
+                TNGS_Mrln..Equipamiento.instante,
+                TNGS_Mrln..Equipamiento.deleted,
+                TNGS_Mrln..Equipamiento.usuario,
+                TNGS_Mrln..Equipamiento.version
+           from TNGS_Mrln..Equipamiento
           where eqi_cod_cod = @eqi_cod_cod
             and deleted = 0
       end
@@ -183,11 +183,11 @@ begin
          Select eqi_cod_cod,
                 eqi_des_des,
                 eqi_imp_valor,
-                TNGS_Rivn..Equipamiento.instante,
-                TNGS_Rivn..Equipamiento.deleted,
-                TNGS_Rivn..Equipamiento.usuario,
-                TNGS_Rivn..Equipamiento.version
-           from TNGS_Rivn..Equipamiento
+                TNGS_Mrln..Equipamiento.instante,
+                TNGS_Mrln..Equipamiento.deleted,
+                TNGS_Mrln..Equipamiento.usuario,
+                TNGS_Mrln..Equipamiento.version
+           from TNGS_Mrln..Equipamiento
           where eqi_cod_cod = @eqi_cod_cod
       end
 
@@ -232,7 +232,7 @@ as
 begin
 
    Select isnull(max(eqi_cod_cod), '0') as eqi_cod_cod
-     from TNGS_Rivn..Equipamiento
+     from TNGS_Mrln..Equipamiento
 
 fin:
 
@@ -280,7 +280,7 @@ create procedure dbo.EQUIPAMIENTO_INSERT
 as
 begin
 
-   Insert into TNGS_Rivn..Equipamiento
+   Insert into TNGS_Mrln..Equipamiento
    values (
            @eqi_cod_cod,
            @eqi_des_des,
@@ -334,7 +334,7 @@ create procedure dbo.EQUIPAMIENTO_UPDATE
 as
 begin
 
-   Update TNGS_Rivn..Equipamiento
+   Update TNGS_Mrln..Equipamiento
       set eqi_des_des= @eqi_des_des,
           eqi_imp_valor= @eqi_imp_valor,
           version = ((version+1) % 32767),
@@ -384,7 +384,7 @@ create procedure dbo.EQUIPAMIENTO_DELETE
 as
 begin
 
-   Update TNGS_Rivn..Equipamiento
+   Update TNGS_Mrln..Equipamiento
       set deleted = 1,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -433,7 +433,7 @@ create procedure dbo.EQUIPAMIENTO_RECALL
 as
 begin
 
-   Update TNGS_Rivn..Equipamiento
+   Update TNGS_Mrln..Equipamiento
       set deleted = 0,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -482,7 +482,7 @@ create procedure dbo.EQUIPAMIENTO_DROP
 as
 begin
 
-   Delete from TNGS_Rivn..Equipamiento
+   Delete from TNGS_Mrln..Equipamiento
     where eqi_cod_cod = @eqi_cod_cod
 
 fin:
@@ -525,7 +525,7 @@ create procedure dbo.EQUIPAMIENTO_PACK
 as
 begin
 
-   Delete TNGS_Rivn..Equipamiento
+   Delete TNGS_Mrln..Equipamiento
     where deleted = 1
 
 fin:

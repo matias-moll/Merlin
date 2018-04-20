@@ -1,11 +1,11 @@
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 17/08/2015 10:48
-// Sistema     : Rivn
+// Fecha       : 20/04/2018 19:40
+// Sistema     : Mrln
 // Tabla       : Estaciones
 //----------------------------------------------------------------------------
-// © 1999-2015 by TNG Software                                      Gndr 5.20
+// © 1999-2018 by TNG Software                                      Gndr 5.20
 //---------------------------------------------------------------------------*/
 
 /* ***************************************************************************
@@ -19,7 +19,7 @@
 /* Selecciono la base en la que se crearan los SPs */
 /*-------------------------------------------------*/
 
-use TNGS_Rivn
+use TNGS_Mrln
 go
 
 ---////////////////////////////////////////////////////////
@@ -57,11 +57,11 @@ begin
                 ets_ede_domicilio,
                 ets_des_contacto,
                 ets_ete_telefono,
-                TNGS_Rivn..Estaciones.instante,
-                TNGS_Rivn..Estaciones.deleted,
-                TNGS_Rivn..Estaciones.usuario,
-                TNGS_Rivn..Estaciones.version
-           from TNGS_Rivn..Estaciones
+                TNGS_Mrln..Estaciones.instante,
+                TNGS_Mrln..Estaciones.deleted,
+                TNGS_Mrln..Estaciones.usuario,
+                TNGS_Mrln..Estaciones.version
+           from TNGS_Mrln..Estaciones
           where deleted = 0
           order by ets_rcd_cod
       end
@@ -72,11 +72,11 @@ begin
                 ets_ede_domicilio,
                 ets_des_contacto,
                 ets_ete_telefono,
-                TNGS_Rivn..Estaciones.instante,
-                TNGS_Rivn..Estaciones.deleted,
-                TNGS_Rivn..Estaciones.usuario,
-                TNGS_Rivn..Estaciones.version
-           from TNGS_Rivn..Estaciones
+                TNGS_Mrln..Estaciones.instante,
+                TNGS_Mrln..Estaciones.deleted,
+                TNGS_Mrln..Estaciones.usuario,
+                TNGS_Mrln..Estaciones.version
+           from TNGS_Mrln..Estaciones
           order by ets_rcd_cod
       end
 
@@ -123,7 +123,7 @@ as
 begin
 
    Select count(*) as cantidad
-     from TNGS_Rivn..Estaciones
+     from TNGS_Mrln..Estaciones
     where ets_rcd_cod = @ets_rcd_cod
       and version = @version
 
@@ -176,11 +176,11 @@ begin
                 ets_ede_domicilio,
                 ets_des_contacto,
                 ets_ete_telefono,
-                TNGS_Rivn..Estaciones.instante,
-                TNGS_Rivn..Estaciones.deleted,
-                TNGS_Rivn..Estaciones.usuario,
-                TNGS_Rivn..Estaciones.version
-           from TNGS_Rivn..Estaciones
+                TNGS_Mrln..Estaciones.instante,
+                TNGS_Mrln..Estaciones.deleted,
+                TNGS_Mrln..Estaciones.usuario,
+                TNGS_Mrln..Estaciones.version
+           from TNGS_Mrln..Estaciones
           where ets_rcd_cod = @ets_rcd_cod
             and deleted = 0
       end
@@ -191,11 +191,11 @@ begin
                 ets_ede_domicilio,
                 ets_des_contacto,
                 ets_ete_telefono,
-                TNGS_Rivn..Estaciones.instante,
-                TNGS_Rivn..Estaciones.deleted,
-                TNGS_Rivn..Estaciones.usuario,
-                TNGS_Rivn..Estaciones.version
-           from TNGS_Rivn..Estaciones
+                TNGS_Mrln..Estaciones.instante,
+                TNGS_Mrln..Estaciones.deleted,
+                TNGS_Mrln..Estaciones.usuario,
+                TNGS_Mrln..Estaciones.version
+           from TNGS_Mrln..Estaciones
           where ets_rcd_cod = @ets_rcd_cod
       end
 
@@ -240,7 +240,7 @@ as
 begin
 
    Select isnull(max(ets_rcd_cod), '0') as ets_rcd_cod
-     from TNGS_Rivn..Estaciones
+     from TNGS_Mrln..Estaciones
 
 fin:
 
@@ -292,7 +292,7 @@ create procedure dbo.ESTACIONES_INSERT
 as
 begin
 
-   Insert into TNGS_Rivn..Estaciones
+   Insert into TNGS_Mrln..Estaciones
    values (
            @ets_rcd_cod,
            @ets_des_des,
@@ -352,7 +352,7 @@ create procedure dbo.ESTACIONES_UPDATE
 as
 begin
 
-   Update TNGS_Rivn..Estaciones
+   Update TNGS_Mrln..Estaciones
       set ets_des_des= @ets_des_des,
           ets_ede_domicilio= @ets_ede_domicilio,
           ets_des_contacto= @ets_des_contacto,
@@ -404,7 +404,7 @@ create procedure dbo.ESTACIONES_DELETE
 as
 begin
 
-   Update TNGS_Rivn..Estaciones
+   Update TNGS_Mrln..Estaciones
       set deleted = 1,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -453,7 +453,7 @@ create procedure dbo.ESTACIONES_RECALL
 as
 begin
 
-   Update TNGS_Rivn..Estaciones
+   Update TNGS_Mrln..Estaciones
       set deleted = 0,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -502,7 +502,7 @@ create procedure dbo.ESTACIONES_DROP
 as
 begin
 
-   Delete from TNGS_Rivn..Estaciones
+   Delete from TNGS_Mrln..Estaciones
     where ets_rcd_cod = @ets_rcd_cod
 
 fin:
@@ -545,7 +545,7 @@ create procedure dbo.ESTACIONES_PACK
 as
 begin
 
-   Delete TNGS_Rivn..Estaciones
+   Delete TNGS_Mrln..Estaciones
     where deleted = 1
 
 fin:

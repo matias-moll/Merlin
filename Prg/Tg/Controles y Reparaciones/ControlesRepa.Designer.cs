@@ -6,7 +6,7 @@ using System.Windows.Forms;
 using WeifenLuo.WinFormsUI.Docking;
 #endregion
 
-namespace Rivn.Tg
+namespace Mrln.Tg
 {
     public partial class ControlesRepa : DockContent
     {
@@ -180,7 +180,7 @@ namespace Rivn.Tg
             this.tsPanel3.Location = new System.Drawing.Point(504, 3);
             this.tsPanel3.Name = "tsPanel3";
             this.tsPanel3.Opacity = 255;
-            this.tsPanel3.Size = new System.Drawing.Size(280, 85);
+            this.tsPanel3.Size = new System.Drawing.Size(292, 85);
             this.tsPanel3.Speed = 1;
             this.tsPanel3.TabIndex = 4;
             // 
@@ -188,17 +188,18 @@ namespace Rivn.Tg
             // 
             this.cmdHab.BlackBorder = true;
             this.cmdHab.CircleButton = false;
-            this.cmdHab.FixedImage = TNGS.NetControls.FixedGlassButtons.Disable;
+            this.cmdHab.FixedImage = TNGS.NetControls.FixedGlassButtons.Enable;
             this.cmdHab.FlatColor = System.Drawing.Color.RoyalBlue;
             this.cmdHab.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
             this.cmdHab.FlatFontSize = 9;
             this.cmdHab.FlatTextColor = System.Drawing.Color.Black;
-            this.cmdHab.Location = new System.Drawing.Point(161, 7);
+            this.cmdHab.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.cmdHab.Location = new System.Drawing.Point(161, 3);
             this.cmdHab.Name = "cmdHab";
             this.cmdHab.RoundCorners = 2;
-            this.cmdHab.Size = new System.Drawing.Size(113, 26);
+            this.cmdHab.Size = new System.Drawing.Size(118, 26);
             this.cmdHab.TabIndex = 11;
-            this.cmdHab.Text = "Deshabilitar";
+            this.cmdHab.Text = "Habilitar";
             this.cmdHab.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.cmdHab.W8Color = System.Drawing.Color.RoyalBlue;
             this.cmdHab.Click += new System.EventHandler(this.cmdDesHab_Click);
@@ -212,6 +213,7 @@ namespace Rivn.Tg
             this.cmdGrabar.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
             this.cmdGrabar.FlatFontSize = 9;
             this.cmdGrabar.FlatTextColor = System.Drawing.Color.Black;
+            this.cmdGrabar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.cmdGrabar.ImageOnTop = true;
             this.cmdGrabar.Location = new System.Drawing.Point(3, 4);
             this.cmdGrabar.Name = "cmdGrabar";
@@ -231,6 +233,7 @@ namespace Rivn.Tg
             this.cmdCancelar.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
             this.cmdCancelar.FlatFontSize = 9;
             this.cmdCancelar.FlatTextColor = System.Drawing.Color.Black;
+            this.cmdCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.cmdCancelar.ImageOnTop = true;
             this.cmdCancelar.Location = new System.Drawing.Point(82, 4);
             this.cmdCancelar.Name = "cmdCancelar";
@@ -245,17 +248,18 @@ namespace Rivn.Tg
             // 
             this.cmdDesHab.BlackBorder = true;
             this.cmdDesHab.CircleButton = false;
-            this.cmdDesHab.FixedImage = TNGS.NetControls.FixedGlassButtons.Enable;
+            this.cmdDesHab.FixedImage = TNGS.NetControls.FixedGlassButtons.Disable;
             this.cmdDesHab.FlatColor = System.Drawing.Color.RoyalBlue;
             this.cmdDesHab.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
             this.cmdDesHab.FlatFontSize = 9;
             this.cmdDesHab.FlatTextColor = System.Drawing.Color.Black;
-            this.cmdDesHab.Location = new System.Drawing.Point(161, 36);
+            this.cmdDesHab.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.cmdDesHab.Location = new System.Drawing.Point(161, 35);
             this.cmdDesHab.Name = "cmdDesHab";
             this.cmdDesHab.RoundCorners = 2;
-            this.cmdDesHab.Size = new System.Drawing.Size(113, 26);
+            this.cmdDesHab.Size = new System.Drawing.Size(118, 26);
             this.cmdDesHab.TabIndex = 11;
-            this.cmdDesHab.Text = "Habilitar";
+            this.cmdDesHab.Text = "Deshabilitar";
             this.cmdDesHab.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.cmdDesHab.W8Color = System.Drawing.Color.RoyalBlue;
             this.cmdDesHab.Click += new System.EventHandler(this.cmdDesHab_Click);
@@ -284,6 +288,7 @@ namespace Rivn.Tg
             this.cmdSalir.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
             this.cmdSalir.FlatFontSize = 9;
             this.cmdSalir.FlatTextColor = System.Drawing.Color.Black;
+            this.cmdSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.cmdSalir.Location = new System.Drawing.Point(170, 7);
             this.cmdSalir.Name = "cmdSalir";
             this.cmdSalir.RoundCorners = 2;
@@ -303,6 +308,7 @@ namespace Rivn.Tg
             this.cmdPurgar.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
             this.cmdPurgar.FlatFontSize = 9;
             this.cmdPurgar.FlatTextColor = System.Drawing.Color.Black;
+            this.cmdPurgar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.cmdPurgar.Location = new System.Drawing.Point(170, 36);
             this.cmdPurgar.Name = "cmdPurgar";
             this.cmdPurgar.RoundCorners = 2;
@@ -322,6 +328,7 @@ namespace Rivn.Tg
             this.cmdModificar.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
             this.cmdModificar.FlatFontSize = 9;
             this.cmdModificar.FlatTextColor = System.Drawing.Color.Black;
+            this.cmdModificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.cmdModificar.ImageOnTop = true;
             this.cmdModificar.Location = new System.Drawing.Point(87, 3);
             this.cmdModificar.Name = "cmdModificar";
@@ -341,6 +348,7 @@ namespace Rivn.Tg
             this.cmdNuevo.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
             this.cmdNuevo.FlatFontSize = 9;
             this.cmdNuevo.FlatTextColor = System.Drawing.Color.Black;
+            this.cmdNuevo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.cmdNuevo.ImageOnTop = true;
             this.cmdNuevo.Location = new System.Drawing.Point(8, 4);
             this.cmdNuevo.Name = "cmdNuevo";
@@ -386,6 +394,7 @@ namespace Rivn.Tg
             this.cmdModPadre.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
             this.cmdModPadre.FlatFontSize = 9;
             this.cmdModPadre.FlatTextColor = System.Drawing.Color.Black;
+            this.cmdModPadre.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.cmdModPadre.Location = new System.Drawing.Point(8, 7);
             this.cmdModPadre.Name = "cmdModPadre";
             this.cmdModPadre.PCode = "M.CONTROL";
@@ -456,6 +465,7 @@ namespace Rivn.Tg
             this.cmdPrint.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
             this.cmdPrint.FlatFontSize = 9;
             this.cmdPrint.FlatTextColor = System.Drawing.Color.Black;
+            this.cmdPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.cmdPrint.Location = new System.Drawing.Point(954, 117);
             this.cmdPrint.Name = "cmdPrint";
             this.cmdPrint.RoundCorners = 2;
@@ -475,6 +485,7 @@ namespace Rivn.Tg
             this.cmdExcel.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
             this.cmdExcel.FlatFontSize = 9;
             this.cmdExcel.FlatTextColor = System.Drawing.Color.Black;
+            this.cmdExcel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.cmdExcel.Location = new System.Drawing.Point(928, 117);
             this.cmdExcel.Name = "cmdExcel";
             this.cmdExcel.PCode = "TNGS.PRINT";

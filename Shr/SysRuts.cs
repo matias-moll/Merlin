@@ -7,16 +7,16 @@ using System.Drawing;
 using System.Xml;
 using TNGS.NetAppBll;
 using TNGS.NetRoutines;
-using Rivn;
+using Mrln;
 #endregion
 
-namespace Rivn.Shr
+namespace Mrln.Shr
 {
     //----------------------------------------------------------------------------
     //                         TNG Software BLL Generator
     //----------------------------------------------------------------------------
     // Fecha                    : 16/09/2013 17:37
-    // Sistema                  : Rivn
+    // Sistema                  : Mrln
     // Clase para Administrar   : Shr
     //----------------------------------------------------------------------------
     // © 1996-2013 by TNG Software                                      Gndr 5.20

@@ -9,17 +9,17 @@ using System.IO;
 using System.Threading;
 using TNGS.NetRoutines;
 using TNGS.NetApp;
-using Rivn;
-using Rivn.Shr;
+using Mrln;
+using Mrln.Shr;
 #endregion
 
-namespace Rivn.Ct
+namespace Mrln.Ct
 {
     //----------------------------------------------------------------------------
     //                         TNG Software PRG Generator
     //----------------------------------------------------------------------------
     // Fecha                    : 13/06/2015 15:38
-    // Sistema                  : Rivn
+    // Sistema                  : Mrln
     // Programa                 : Cierre Ordenes de Trabajo
     //----------------------------------------------------------------------------
     // © 1996-2015 by TNG Software                                      Gndr 5.20
@@ -73,7 +73,7 @@ namespace Rivn.Ct
 #endif
 
                 // Inicializamos nuestra clase App
-                App.Init("Rivn", "Ct",
+                App.Init("Mrln", "Ct",
                          FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location),
                          l_rmApp,
                          Application.StartupPath, 

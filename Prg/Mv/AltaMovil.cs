@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using Rivn.Bll;
+using Mrln.Bll;
 using TNGS;
 using TNGS.NetApp;
 using TNGS.NetRoutines;
@@ -14,7 +14,7 @@ using TNGS.NetControls;
 using WeifenLuo.WinFormsUI.Docking;
 
 
-namespace Rivn.Mv
+namespace Mrln.Mv
 {
     public partial class AltaMovil : DockContent
     {

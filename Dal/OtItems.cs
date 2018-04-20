@@ -5,17 +5,17 @@ using System.Data.Common;
 using TNGS.NetRoutines;
 #endregion
 
-namespace Rivn.Dal
+namespace Mrln.Dal
 {
     //----------------------------------------------------------------------------
     //                         TNG Software DAL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 17/08/2015 10:49
-    // Sistema                  : Rivn
+    // Fecha                    : 20/04/2018 20:27
+    // Sistema                  : Mrln
     // Clase para Administrar   : OrdenTrabajo Items
     // Basada en la Tabla       : OtItems
     //----------------------------------------------------------------------------
-    // © 1996-2015 by TNG Software                                      Gndr 5.20
+    // © 1996-2018 by TNG Software                                      Gndr 5.20
     //----------------------------------------------------------------------------
 
     //****************************************************************************
@@ -54,7 +54,7 @@ namespace Rivn.Dal
             try {
                 // Recuperamos todos los registros
                 return DBRuts.Exec_DS(p_dbcAccess,
-                                      "TNGS_Rivn..OTITEMS_UP",
+                                      "TNGS_Mrln..OTITEMS_UP",
                                       new DbParameter[] {
                                           p_dbcAccess.MakeParam("@onlyactive", (p_bOnlyActive ? 1 : 0))
                                       },
@@ -90,7 +90,7 @@ namespace Rivn.Dal
             try {
                 // Verificamos el número de versión
                 DBRuts.Exec_DS(p_dbcAccess,
-                               "TNGS_Rivn..OTITEMS_CHKVERSION",
+                               "TNGS_Mrln..OTITEMS_CHKVERSION",
                                new DbParameter[] {
                                    p_dbcAccess.MakeParam("@oti_nro_nroot", p_iNroot),
                                    p_dbcAccess.MakeParam("@oti_nro_nroagrupador", p_iNroagrupador),
@@ -128,7 +128,7 @@ namespace Rivn.Dal
             try {
                 // Recuperamos el registro de la clave
                 return DBRuts.Exec_DS(p_dbcAccess,
-                                      "TNGS_Rivn..OTITEMS_SEARCH",
+                                      "TNGS_Mrln..OTITEMS_SEARCH",
                                       new DbParameter[] {
                                           p_dbcAccess.MakeParam("@oti_nro_nroot", p_iNroot),
                                           p_dbcAccess.MakeParam("@oti_nro_nroagrupador", p_iNroagrupador),
@@ -163,7 +163,7 @@ namespace Rivn.Dal
             try {
                 // Recuperamos los registro de la clave foranea
                 return DBRuts.Exec_DS(p_dbcAccess,
-                                      "TNGS_Rivn..OTITEMS_FSEARCH",
+                                      "TNGS_Mrln..OTITEMS_FSEARCH",
                                       new DbParameter[] {
                                           p_dbcAccess.MakeParam("@oti_nro_nroot", p_iNroot),
                                           p_dbcAccess.MakeParam("@onlyactive", (p_bOnlyActive ? 1 : 0))
@@ -207,7 +207,7 @@ namespace Rivn.Dal
             try {
                 // Insertamos el registro
                 return DBRuts.Exec(p_dbcAccess,
-                                   "TNGS_Rivn..OTITEMS_INSERT",
+                                   "TNGS_Mrln..OTITEMS_INSERT",
                                    new DbParameter[] {
                                        p_dbcAccess.MakeParam("@oti_nro_nroot", p_iNroot),
                                        p_dbcAccess.MakeParam("@oti_nro_nroagrupador", p_iNroagrupador),
@@ -255,7 +255,7 @@ namespace Rivn.Dal
             try {
                 // Modificamos el registro
                 return DBRuts.Exec(p_dbcAccess,
-                                   "TNGS_Rivn..OTITEMS_UPDATE",
+                                   "TNGS_Mrln..OTITEMS_UPDATE",
                                    new DbParameter[] {
                                        p_dbcAccess.MakeParam("@oti_nro_nroot", p_iNroot),
                                        p_dbcAccess.MakeParam("@oti_nro_nroagrupador", p_iNroagrupador),
@@ -293,7 +293,7 @@ namespace Rivn.Dal
             try {
                 // Borramos el registro
                 return DBRuts.Exec(p_dbcAccess,
-                                   "TNGS_Rivn..OTITEMS_DELETE",
+                                   "TNGS_Mrln..OTITEMS_DELETE",
                                    new DbParameter[] {
                                        p_dbcAccess.MakeParam("@oti_nro_nroot", p_iNroot),
                                        p_dbcAccess.MakeParam("@oti_nro_nroagrupador", p_iNroagrupador),
@@ -324,7 +324,7 @@ namespace Rivn.Dal
             try {
                 // Borramos los registro de la clave foranea
                 return DBRuts.Exec(p_dbcAccess,
-                                   "TNGS_Rivn..OTITEMS_FDELETE",
+                                   "TNGS_Mrln..OTITEMS_FDELETE",
                                    new DbParameter[] {
                                        p_dbcAccess.MakeParam("@oti_nro_nroot", p_iNroot),
                                        p_dbcAccess.MakeParam("@instante", p_dtInstante),
@@ -356,7 +356,7 @@ namespace Rivn.Dal
             try {
                 // Borramos el registro
                 return DBRuts.Exec(p_dbcAccess,
-                                   "TNGS_Rivn..OTITEMS_RECALL",
+                                   "TNGS_Mrln..OTITEMS_RECALL",
                                    new DbParameter[] {
                                        p_dbcAccess.MakeParam("@oti_nro_nroot", p_iNroot),
                                        p_dbcAccess.MakeParam("@oti_nro_nroagrupador", p_iNroagrupador),
@@ -387,7 +387,7 @@ namespace Rivn.Dal
             try {
                 // Borramos los registro de la clave foranea
                 return DBRuts.Exec(p_dbcAccess,
-                                   "TNGS_Rivn..OTITEMS_FRECALL",
+                                   "TNGS_Mrln..OTITEMS_FRECALL",
                                    new DbParameter[] {
                                        p_dbcAccess.MakeParam("@oti_nro_nroot", p_iNroot),
                                        p_dbcAccess.MakeParam("@instante", p_dtInstante),
@@ -419,7 +419,7 @@ namespace Rivn.Dal
             try {
                 // Borramos el registro
                 return DBRuts.Exec(p_dbcAccess,
-                                   "TNGS_Rivn..OTITEMS_DROP",
+                                   "TNGS_Mrln..OTITEMS_DROP",
                                    new DbParameter[] {
                                        p_dbcAccess.MakeParam("@oti_nro_nroot", p_iNroot),
                                        p_dbcAccess.MakeParam("@oti_nro_nroagrupador", p_iNroagrupador),
@@ -448,7 +448,7 @@ namespace Rivn.Dal
             try {
                 // Borramos los registro de la clave foranea
                 return DBRuts.Exec(p_dbcAccess,
-                                   "TNGS_Rivn..OTITEMS_FDROP",
+                                   "TNGS_Mrln..OTITEMS_FDROP",
                                    new DbParameter[] {
                                        p_dbcAccess.MakeParam("@oti_nro_nroot", p_iNroot),
                                        p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
@@ -473,7 +473,7 @@ namespace Rivn.Dal
             try {
                 // Borramos el registro
                 return DBRuts.Exec(p_dbcAccess,
-                                   "TNGS_Rivn..OTITEMS_PACK",
+                                   "TNGS_Mrln..OTITEMS_PACK",
                                    new DbParameter[] {
                                        p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
                                    }
@@ -499,7 +499,7 @@ namespace Rivn.Dal
             try {
                 // Borramos los registro de la clave foranea
                 return DBRuts.Exec(p_dbcAccess,
-                                   "TNGS_Rivn..OTITEMS_FPACK",
+                                   "TNGS_Mrln..OTITEMS_FPACK",
                                    new DbParameter[] {
                                        p_dbcAccess.MakeParam("@oti_nro_nroot", p_iNroot),
                                        p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)

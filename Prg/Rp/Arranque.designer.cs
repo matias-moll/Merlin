@@ -9,17 +9,17 @@ using System.IO;
 using System.Threading;
 using TNGS.NetRoutines;
 using TNGS.NetApp;
-using Rivn;
-using Rivn.Shr;
+using Mrln;
+using Mrln.Shr;
 #endregion
 
-namespace Rivn.Rp
+namespace Mrln.Rp
 {
     //----------------------------------------------------------------------------
     //                         TNG Software PRG Generator
     //----------------------------------------------------------------------------
     // Fecha                    : 17/08/2015 10:58
-    // Sistema                  : Rivn
+    // Sistema                  : Mrln
     // Programa                 : Reportes
     //----------------------------------------------------------------------------
     // © 1996-2015 by TNG Software                                      Gndr 5.20
@@ -73,7 +73,7 @@ namespace Rivn.Rp
 #endif
 
                 // Inicializamos nuestra clase App
-                App.Init("Rivn", "Rp",
+                App.Init("Mrln", "Rp",
                          FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location),
                          l_rmApp,
                          Application.StartupPath, 

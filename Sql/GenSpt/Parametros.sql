@@ -1,11 +1,11 @@
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 17/08/2015 10:48
-// Sistema     : Rivn
+// Fecha       : 20/04/2018 19:40
+// Sistema     : Mrln
 // Tabla       : Parametros
 //----------------------------------------------------------------------------
-// © 1999-2015 by TNG Software                                      Gndr 5.20
+// © 1999-2018 by TNG Software                                      Gndr 5.20
 //---------------------------------------------------------------------------*/
 
 /* ***************************************************************************
@@ -19,7 +19,7 @@
 /* Selecciono la base en la que se crearan los SPs */
 /*-------------------------------------------------*/
 
-use TNGS_Rivn
+use TNGS_Mrln
 go
 
 ---////////////////////////////////////////////////////////
@@ -58,11 +58,11 @@ begin
                 par_est_editable,
                 par_est_sololectura,
                 par_rob_detalle,
-                TNGS_Rivn..Parametros.instante,
-                TNGS_Rivn..Parametros.deleted,
-                TNGS_Rivn..Parametros.usuario,
-                TNGS_Rivn..Parametros.version
-           from TNGS_Rivn..Parametros
+                TNGS_Mrln..Parametros.instante,
+                TNGS_Mrln..Parametros.deleted,
+                TNGS_Mrln..Parametros.usuario,
+                TNGS_Mrln..Parametros.version
+           from TNGS_Mrln..Parametros
           where deleted = 0
           order by par_xcd_codigo
       end
@@ -74,11 +74,11 @@ begin
                 par_est_editable,
                 par_est_sololectura,
                 par_rob_detalle,
-                TNGS_Rivn..Parametros.instante,
-                TNGS_Rivn..Parametros.deleted,
-                TNGS_Rivn..Parametros.usuario,
-                TNGS_Rivn..Parametros.version
-           from TNGS_Rivn..Parametros
+                TNGS_Mrln..Parametros.instante,
+                TNGS_Mrln..Parametros.deleted,
+                TNGS_Mrln..Parametros.usuario,
+                TNGS_Mrln..Parametros.version
+           from TNGS_Mrln..Parametros
           order by par_xcd_codigo
       end
 
@@ -125,7 +125,7 @@ as
 begin
 
    Select count(*) as cantidad
-     from TNGS_Rivn..Parametros
+     from TNGS_Mrln..Parametros
     where par_xcd_codigo = @par_xcd_codigo
       and version = @version
 
@@ -179,11 +179,11 @@ begin
                 par_est_editable,
                 par_est_sololectura,
                 par_rob_detalle,
-                TNGS_Rivn..Parametros.instante,
-                TNGS_Rivn..Parametros.deleted,
-                TNGS_Rivn..Parametros.usuario,
-                TNGS_Rivn..Parametros.version
-           from TNGS_Rivn..Parametros
+                TNGS_Mrln..Parametros.instante,
+                TNGS_Mrln..Parametros.deleted,
+                TNGS_Mrln..Parametros.usuario,
+                TNGS_Mrln..Parametros.version
+           from TNGS_Mrln..Parametros
           where par_xcd_codigo = @par_xcd_codigo
             and deleted = 0
       end
@@ -195,11 +195,11 @@ begin
                 par_est_editable,
                 par_est_sololectura,
                 par_rob_detalle,
-                TNGS_Rivn..Parametros.instante,
-                TNGS_Rivn..Parametros.deleted,
-                TNGS_Rivn..Parametros.usuario,
-                TNGS_Rivn..Parametros.version
-           from TNGS_Rivn..Parametros
+                TNGS_Mrln..Parametros.instante,
+                TNGS_Mrln..Parametros.deleted,
+                TNGS_Mrln..Parametros.usuario,
+                TNGS_Mrln..Parametros.version
+           from TNGS_Mrln..Parametros
           where par_xcd_codigo = @par_xcd_codigo
       end
 
@@ -255,7 +255,7 @@ create procedure dbo.PARAMETROS_INSERT
 as
 begin
 
-   Insert into TNGS_Rivn..Parametros
+   Insert into TNGS_Mrln..Parametros
    values (
            @par_xcd_codigo,
            @par_des_descripcion,
@@ -318,7 +318,7 @@ create procedure dbo.PARAMETROS_UPDATE
 as
 begin
 
-   Update TNGS_Rivn..Parametros
+   Update TNGS_Mrln..Parametros
       set par_des_descripcion= @par_des_descripcion,
           par_xde_valor= @par_xde_valor,
           par_est_editable= @par_est_editable,
@@ -371,7 +371,7 @@ create procedure dbo.PARAMETROS_DELETE
 as
 begin
 
-   Update TNGS_Rivn..Parametros
+   Update TNGS_Mrln..Parametros
       set deleted = 1,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -420,7 +420,7 @@ create procedure dbo.PARAMETROS_RECALL
 as
 begin
 
-   Update TNGS_Rivn..Parametros
+   Update TNGS_Mrln..Parametros
       set deleted = 0,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -469,7 +469,7 @@ create procedure dbo.PARAMETROS_DROP
 as
 begin
 
-   Delete from TNGS_Rivn..Parametros
+   Delete from TNGS_Mrln..Parametros
     where par_xcd_codigo = @par_xcd_codigo
 
 fin:
@@ -512,7 +512,7 @@ create procedure dbo.PARAMETROS_PACK
 as
 begin
 
-   Delete TNGS_Rivn..Parametros
+   Delete TNGS_Mrln..Parametros
     where deleted = 1
 
 fin:

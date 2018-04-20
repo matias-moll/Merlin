@@ -1,11 +1,11 @@
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 17/08/2015 10:48
-// Sistema     : Rivn
+// Fecha       : 20/04/2018 19:40
+// Sistema     : Mrln
 // Tabla       : OrdenesTrabajo
 //----------------------------------------------------------------------------
-// © 1999-2015 by TNG Software                                      Gndr 5.20
+// © 1999-2018 by TNG Software                                      Gndr 5.20
 //---------------------------------------------------------------------------*/
 
 /* ***************************************************************************
@@ -19,7 +19,7 @@
 /* Selecciono la base en la que se crearan los SPs */
 /*-------------------------------------------------*/
 
-use TNGS_Rivn
+use TNGS_Mrln
 go
 
 ---////////////////////////////////////////////////////////
@@ -58,11 +58,11 @@ begin
                 odt_nom_operador,
                 odt_fyh_feccierre,
                 odt_cod_encargado,
-                TNGS_Rivn..OrdenesTrabajo.instante,
-                TNGS_Rivn..OrdenesTrabajo.deleted,
-                TNGS_Rivn..OrdenesTrabajo.usuario,
-                TNGS_Rivn..OrdenesTrabajo.version
-           from TNGS_Rivn..OrdenesTrabajo
+                TNGS_Mrln..OrdenesTrabajo.instante,
+                TNGS_Mrln..OrdenesTrabajo.deleted,
+                TNGS_Mrln..OrdenesTrabajo.usuario,
+                TNGS_Mrln..OrdenesTrabajo.version
+           from TNGS_Mrln..OrdenesTrabajo
           where deleted = 0
           order by odt_nro_nro
       end
@@ -74,11 +74,11 @@ begin
                 odt_nom_operador,
                 odt_fyh_feccierre,
                 odt_cod_encargado,
-                TNGS_Rivn..OrdenesTrabajo.instante,
-                TNGS_Rivn..OrdenesTrabajo.deleted,
-                TNGS_Rivn..OrdenesTrabajo.usuario,
-                TNGS_Rivn..OrdenesTrabajo.version
-           from TNGS_Rivn..OrdenesTrabajo
+                TNGS_Mrln..OrdenesTrabajo.instante,
+                TNGS_Mrln..OrdenesTrabajo.deleted,
+                TNGS_Mrln..OrdenesTrabajo.usuario,
+                TNGS_Mrln..OrdenesTrabajo.version
+           from TNGS_Mrln..OrdenesTrabajo
           order by odt_nro_nro
       end
 
@@ -125,7 +125,7 @@ as
 begin
 
    Select count(*) as cantidad
-     from TNGS_Rivn..OrdenesTrabajo
+     from TNGS_Mrln..OrdenesTrabajo
     where odt_nro_nro = @odt_nro_nro
       and version = @version
 
@@ -179,11 +179,11 @@ begin
                 odt_nom_operador,
                 odt_fyh_feccierre,
                 odt_cod_encargado,
-                TNGS_Rivn..OrdenesTrabajo.instante,
-                TNGS_Rivn..OrdenesTrabajo.deleted,
-                TNGS_Rivn..OrdenesTrabajo.usuario,
-                TNGS_Rivn..OrdenesTrabajo.version
-           from TNGS_Rivn..OrdenesTrabajo
+                TNGS_Mrln..OrdenesTrabajo.instante,
+                TNGS_Mrln..OrdenesTrabajo.deleted,
+                TNGS_Mrln..OrdenesTrabajo.usuario,
+                TNGS_Mrln..OrdenesTrabajo.version
+           from TNGS_Mrln..OrdenesTrabajo
           where odt_nro_nro = @odt_nro_nro
             and deleted = 0
       end
@@ -195,11 +195,11 @@ begin
                 odt_nom_operador,
                 odt_fyh_feccierre,
                 odt_cod_encargado,
-                TNGS_Rivn..OrdenesTrabajo.instante,
-                TNGS_Rivn..OrdenesTrabajo.deleted,
-                TNGS_Rivn..OrdenesTrabajo.usuario,
-                TNGS_Rivn..OrdenesTrabajo.version
-           from TNGS_Rivn..OrdenesTrabajo
+                TNGS_Mrln..OrdenesTrabajo.instante,
+                TNGS_Mrln..OrdenesTrabajo.deleted,
+                TNGS_Mrln..OrdenesTrabajo.usuario,
+                TNGS_Mrln..OrdenesTrabajo.version
+           from TNGS_Mrln..OrdenesTrabajo
           where odt_nro_nro = @odt_nro_nro
       end
 
@@ -255,7 +255,7 @@ create procedure dbo.ORDENESTRABAJO_INSERT
 as
 begin
 
-   Insert into TNGS_Rivn..OrdenesTrabajo
+   Insert into TNGS_Mrln..OrdenesTrabajo
    values (
            @odt_nro_nro,
            @odt_ecd_patente,
@@ -318,7 +318,7 @@ create procedure dbo.ORDENESTRABAJO_UPDATE
 as
 begin
 
-   Update TNGS_Rivn..OrdenesTrabajo
+   Update TNGS_Mrln..OrdenesTrabajo
       set odt_ecd_patente= @odt_ecd_patente,
           odt_fyh_fecapertura= @odt_fyh_fecapertura,
           odt_nom_operador= @odt_nom_operador,
@@ -371,7 +371,7 @@ create procedure dbo.ORDENESTRABAJO_DELETE
 as
 begin
 
-   Update TNGS_Rivn..OrdenesTrabajo
+   Update TNGS_Mrln..OrdenesTrabajo
       set deleted = 1,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -420,7 +420,7 @@ create procedure dbo.ORDENESTRABAJO_RECALL
 as
 begin
 
-   Update TNGS_Rivn..OrdenesTrabajo
+   Update TNGS_Mrln..OrdenesTrabajo
       set deleted = 0,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -469,7 +469,7 @@ create procedure dbo.ORDENESTRABAJO_DROP
 as
 begin
 
-   Delete from TNGS_Rivn..OrdenesTrabajo
+   Delete from TNGS_Mrln..OrdenesTrabajo
     where odt_nro_nro = @odt_nro_nro
 
 fin:
@@ -512,7 +512,7 @@ create procedure dbo.ORDENESTRABAJO_PACK
 as
 begin
 
-   Delete TNGS_Rivn..OrdenesTrabajo
+   Delete TNGS_Mrln..OrdenesTrabajo
     where deleted = 1
 
 fin:
@@ -563,11 +563,11 @@ begin
           odt_nom_operador,
           odt_fyh_feccierre,
           odt_cod_encargado,
-          TNGS_Rivn..OrdenesTrabajo.instante,
-          TNGS_Rivn..OrdenesTrabajo.deleted,
-          TNGS_Rivn..OrdenesTrabajo.usuario,
-          TNGS_Rivn..OrdenesTrabajo.version
-     from TNGS_Rivn..OrdenesTrabajo 
+          TNGS_Mrln..OrdenesTrabajo.instante,
+          TNGS_Mrln..OrdenesTrabajo.deleted,
+          TNGS_Mrln..OrdenesTrabajo.usuario,
+          TNGS_Mrln..OrdenesTrabajo.version
+     from TNGS_Mrln..OrdenesTrabajo 
      where odt_ecd_patente = @patente 
 
 fin:

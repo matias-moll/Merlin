@@ -1,11 +1,11 @@
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 17/08/2015 10:48
-// Sistema     : Rivn
+// Fecha       : 20/04/2018 19:40
+// Sistema     : Mrln
 // Tabla       : Controles
 //----------------------------------------------------------------------------
-// © 1999-2015 by TNG Software                                      Gndr 5.20
+// © 1999-2018 by TNG Software                                      Gndr 5.20
 //---------------------------------------------------------------------------*/
 
 /* ***************************************************************************
@@ -19,7 +19,7 @@
 /* Selecciono la base en la que se crearan los SPs */
 /*-------------------------------------------------*/
 
-use TNGS_Rivn
+use TNGS_Mrln
 go
 
 ---////////////////////////////////////////////////////////
@@ -55,11 +55,11 @@ begin
          Select ctl_cod_cod,
                 ctl_des_des,
                 ctl_cd1_crit,
-                TNGS_Rivn..Controles.instante,
-                TNGS_Rivn..Controles.deleted,
-                TNGS_Rivn..Controles.usuario,
-                TNGS_Rivn..Controles.version
-           from TNGS_Rivn..Controles
+                TNGS_Mrln..Controles.instante,
+                TNGS_Mrln..Controles.deleted,
+                TNGS_Mrln..Controles.usuario,
+                TNGS_Mrln..Controles.version
+           from TNGS_Mrln..Controles
           where deleted = 0
           order by ctl_cod_cod
       end
@@ -68,11 +68,11 @@ begin
          Select ctl_cod_cod,
                 ctl_des_des,
                 ctl_cd1_crit,
-                TNGS_Rivn..Controles.instante,
-                TNGS_Rivn..Controles.deleted,
-                TNGS_Rivn..Controles.usuario,
-                TNGS_Rivn..Controles.version
-           from TNGS_Rivn..Controles
+                TNGS_Mrln..Controles.instante,
+                TNGS_Mrln..Controles.deleted,
+                TNGS_Mrln..Controles.usuario,
+                TNGS_Mrln..Controles.version
+           from TNGS_Mrln..Controles
           order by ctl_cod_cod
       end
 
@@ -119,7 +119,7 @@ as
 begin
 
    Select count(*) as cantidad
-     from TNGS_Rivn..Controles
+     from TNGS_Mrln..Controles
     where ctl_cod_cod = @ctl_cod_cod
       and version = @version
 
@@ -170,11 +170,11 @@ begin
          Select ctl_cod_cod,
                 ctl_des_des,
                 ctl_cd1_crit,
-                TNGS_Rivn..Controles.instante,
-                TNGS_Rivn..Controles.deleted,
-                TNGS_Rivn..Controles.usuario,
-                TNGS_Rivn..Controles.version
-           from TNGS_Rivn..Controles
+                TNGS_Mrln..Controles.instante,
+                TNGS_Mrln..Controles.deleted,
+                TNGS_Mrln..Controles.usuario,
+                TNGS_Mrln..Controles.version
+           from TNGS_Mrln..Controles
           where ctl_cod_cod = @ctl_cod_cod
             and deleted = 0
       end
@@ -183,11 +183,11 @@ begin
          Select ctl_cod_cod,
                 ctl_des_des,
                 ctl_cd1_crit,
-                TNGS_Rivn..Controles.instante,
-                TNGS_Rivn..Controles.deleted,
-                TNGS_Rivn..Controles.usuario,
-                TNGS_Rivn..Controles.version
-           from TNGS_Rivn..Controles
+                TNGS_Mrln..Controles.instante,
+                TNGS_Mrln..Controles.deleted,
+                TNGS_Mrln..Controles.usuario,
+                TNGS_Mrln..Controles.version
+           from TNGS_Mrln..Controles
           where ctl_cod_cod = @ctl_cod_cod
       end
 
@@ -232,7 +232,7 @@ as
 begin
 
    Select isnull(max(ctl_cod_cod), '0') as ctl_cod_cod
-     from TNGS_Rivn..Controles
+     from TNGS_Mrln..Controles
 
 fin:
 
@@ -280,7 +280,7 @@ create procedure dbo.CONTROLES_INSERT
 as
 begin
 
-   Insert into TNGS_Rivn..Controles
+   Insert into TNGS_Mrln..Controles
    values (
            @ctl_cod_cod,
            @ctl_des_des,
@@ -334,7 +334,7 @@ create procedure dbo.CONTROLES_UPDATE
 as
 begin
 
-   Update TNGS_Rivn..Controles
+   Update TNGS_Mrln..Controles
       set ctl_des_des= @ctl_des_des,
           ctl_cd1_crit= @ctl_cd1_crit,
           version = ((version+1) % 32767),
@@ -384,7 +384,7 @@ create procedure dbo.CONTROLES_DELETE
 as
 begin
 
-   Update TNGS_Rivn..Controles
+   Update TNGS_Mrln..Controles
       set deleted = 1,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -433,7 +433,7 @@ create procedure dbo.CONTROLES_RECALL
 as
 begin
 
-   Update TNGS_Rivn..Controles
+   Update TNGS_Mrln..Controles
       set deleted = 0,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -482,7 +482,7 @@ create procedure dbo.CONTROLES_DROP
 as
 begin
 
-   Delete from TNGS_Rivn..Controles
+   Delete from TNGS_Mrln..Controles
     where ctl_cod_cod = @ctl_cod_cod
 
 fin:
@@ -525,7 +525,7 @@ create procedure dbo.CONTROLES_PACK
 as
 begin
 
-   Delete TNGS_Rivn..Controles
+   Delete TNGS_Mrln..Controles
     where deleted = 1
 
 fin:

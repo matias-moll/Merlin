@@ -5,17 +5,17 @@ using System.Data.Common;
 using TNGS.NetRoutines;
 #endregion
 
-namespace Rivn.Dal
+namespace Mrln.Dal
 {
     //----------------------------------------------------------------------------
     //                         TNG Software DAL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 17/08/2015 10:49
-    // Sistema                  : Rivn
+    // Fecha                    : 20/04/2018 20:27
+    // Sistema                  : Mrln
     // Clase para Administrar   : Ordenes De Trabajo
     // Basada en la Tabla       : OrdenesTrabajo
     //----------------------------------------------------------------------------
-    // © 1996-2015 by TNG Software                                      Gndr 5.20
+    // © 1996-2018 by TNG Software                                      Gndr 5.20
     //----------------------------------------------------------------------------
 
     //****************************************************************************
@@ -54,7 +54,7 @@ namespace Rivn.Dal
             try {
                 // Recuperamos todos los registros
                 return DBRuts.Exec_DS(p_dbcAccess,
-                                      "TNGS_Rivn..ORDENESTRABAJO_UP",
+                                      "TNGS_Mrln..ORDENESTRABAJO_UP",
                                       new DbParameter[] {
                                           p_dbcAccess.MakeParam("@onlyactive", (p_bOnlyActive ? 1 : 0))
                                       },
@@ -86,7 +86,7 @@ namespace Rivn.Dal
             try {
                 // Verificamos el número de versión
                 DBRuts.Exec_DS(p_dbcAccess,
-                               "TNGS_Rivn..ORDENESTRABAJO_CHKVERSION",
+                               "TNGS_Mrln..ORDENESTRABAJO_CHKVERSION",
                                new DbParameter[] {
                                    p_dbcAccess.MakeParam("@odt_nro_nro", p_iNro),
                                    p_dbcAccess.MakeParam("@version", p_iFxdVersion)
@@ -118,7 +118,7 @@ namespace Rivn.Dal
             try {
                 // Recuperamos el registro de la clave
                 return DBRuts.Exec_DS(p_dbcAccess,
-                                      "TNGS_Rivn..ORDENESTRABAJO_SEARCH",
+                                      "TNGS_Mrln..ORDENESTRABAJO_SEARCH",
                                       new DbParameter[] {
                                           p_dbcAccess.MakeParam("@odt_nro_nro", p_iNro),
                                           p_dbcAccess.MakeParam("@onlyactive", (p_bOnlyActive ? 1 : 0))
@@ -158,7 +158,7 @@ namespace Rivn.Dal
             try {
                 // Insertamos el registro
                 return DBRuts.Exec(p_dbcAccess,
-                                   "TNGS_Rivn..ORDENESTRABAJO_INSERT",
+                                   "TNGS_Mrln..ORDENESTRABAJO_INSERT",
                                    new DbParameter[] {
                                        p_dbcAccess.MakeParam("@odt_nro_nro", p_iNro),
                                        p_dbcAccess.MakeParam("@odt_ecd_patente", p_strPatente),
@@ -200,7 +200,7 @@ namespace Rivn.Dal
             try {
                 // Modificamos el registro
                 return DBRuts.Exec(p_dbcAccess,
-                                   "TNGS_Rivn..ORDENESTRABAJO_UPDATE",
+                                   "TNGS_Mrln..ORDENESTRABAJO_UPDATE",
                                    new DbParameter[] {
                                        p_dbcAccess.MakeParam("@odt_nro_nro", p_iNro),
                                        p_dbcAccess.MakeParam("@odt_ecd_patente", p_strPatente),
@@ -232,7 +232,7 @@ namespace Rivn.Dal
             try {
                 // Borramos el registro
                 return DBRuts.Exec(p_dbcAccess,
-                                   "TNGS_Rivn..ORDENESTRABAJO_DELETE",
+                                   "TNGS_Mrln..ORDENESTRABAJO_DELETE",
                                    new DbParameter[] {
                                        p_dbcAccess.MakeParam("@odt_nro_nro", p_iNro),
                                        p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
@@ -259,7 +259,7 @@ namespace Rivn.Dal
             try {
                 // Borramos el registro
                 return DBRuts.Exec(p_dbcAccess,
-                                   "TNGS_Rivn..ORDENESTRABAJO_RECALL",
+                                   "TNGS_Mrln..ORDENESTRABAJO_RECALL",
                                    new DbParameter[] {
                                        p_dbcAccess.MakeParam("@odt_nro_nro", p_iNro),
                                        p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
@@ -286,7 +286,7 @@ namespace Rivn.Dal
             try {
                 // Borramos el registro
                 return DBRuts.Exec(p_dbcAccess,
-                                   "TNGS_Rivn..ORDENESTRABAJO_DROP",
+                                   "TNGS_Mrln..ORDENESTRABAJO_DROP",
                                    new DbParameter[] {
                                        p_dbcAccess.MakeParam("@odt_nro_nro", p_iNro),
                                        p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
@@ -311,7 +311,7 @@ namespace Rivn.Dal
             try {
                 // Borramos el registro
                 return DBRuts.Exec(p_dbcAccess,
-                                   "TNGS_Rivn..ORDENESTRABAJO_PACK",
+                                   "TNGS_Mrln..ORDENESTRABAJO_PACK",
                                    new DbParameter[] {
                                        p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
                                    }
@@ -343,7 +343,7 @@ namespace Rivn.Dal
         {
             try {
                 return DBRuts.Exec_DS(p_dbcAccess,
-                                      "TNGS_Rivn..ORDENESTRABAJO_GETBYPATENTE",
+                                      "TNGS_Mrln..ORDENESTRABAJO_GETBYPATENTE",
                                       new DbParameter[] {
                                           p_dbcAccess.MakeParam("@patente", p_strPatente),
                                           p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)

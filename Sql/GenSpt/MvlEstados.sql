@@ -1,11 +1,11 @@
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 17/08/2015 10:48
-// Sistema     : Rivn
+// Fecha       : 20/04/2018 19:40
+// Sistema     : Mrln
 // Tabla       : MvlEstados
 //----------------------------------------------------------------------------
-// © 1999-2015 by TNG Software                                      Gndr 5.20
+// © 1999-2018 by TNG Software                                      Gndr 5.20
 //---------------------------------------------------------------------------*/
 
 /* ***************************************************************************
@@ -19,7 +19,7 @@
 /* Selecciono la base en la que se crearan los SPs */
 /*-------------------------------------------------*/
 
-use TNGS_Rivn
+use TNGS_Mrln
 go
 
 ---////////////////////////////////////////////////////////
@@ -56,11 +56,11 @@ begin
                 mve_fyh_fecha,
                 mve_rcd_codestado,
                 mve_nro_km,
-                TNGS_Rivn..MvlEstados.instante,
-                TNGS_Rivn..MvlEstados.deleted,
-                TNGS_Rivn..MvlEstados.usuario,
-                TNGS_Rivn..MvlEstados.version
-           from TNGS_Rivn..MvlEstados
+                TNGS_Mrln..MvlEstados.instante,
+                TNGS_Mrln..MvlEstados.deleted,
+                TNGS_Mrln..MvlEstados.usuario,
+                TNGS_Mrln..MvlEstados.version
+           from TNGS_Mrln..MvlEstados
           where deleted = 0
           order by mve_ecd_patente,
                 mve_fyh_fecha
@@ -71,11 +71,11 @@ begin
                 mve_fyh_fecha,
                 mve_rcd_codestado,
                 mve_nro_km,
-                TNGS_Rivn..MvlEstados.instante,
-                TNGS_Rivn..MvlEstados.deleted,
-                TNGS_Rivn..MvlEstados.usuario,
-                TNGS_Rivn..MvlEstados.version
-           from TNGS_Rivn..MvlEstados
+                TNGS_Mrln..MvlEstados.instante,
+                TNGS_Mrln..MvlEstados.deleted,
+                TNGS_Mrln..MvlEstados.usuario,
+                TNGS_Mrln..MvlEstados.version
+           from TNGS_Mrln..MvlEstados
           order by mve_ecd_patente,
                 mve_fyh_fecha
       end
@@ -125,7 +125,7 @@ as
 begin
 
    Select count(*) as cantidad
-     from TNGS_Rivn..MvlEstados
+     from TNGS_Mrln..MvlEstados
     where mve_ecd_patente = @mve_ecd_patente
       and mve_fyh_fecha = @mve_fyh_fecha
       and version = @version
@@ -180,11 +180,11 @@ begin
                 mve_fyh_fecha,
                 mve_rcd_codestado,
                 mve_nro_km,
-                TNGS_Rivn..MvlEstados.instante,
-                TNGS_Rivn..MvlEstados.deleted,
-                TNGS_Rivn..MvlEstados.usuario,
-                TNGS_Rivn..MvlEstados.version
-           from TNGS_Rivn..MvlEstados
+                TNGS_Mrln..MvlEstados.instante,
+                TNGS_Mrln..MvlEstados.deleted,
+                TNGS_Mrln..MvlEstados.usuario,
+                TNGS_Mrln..MvlEstados.version
+           from TNGS_Mrln..MvlEstados
           where mve_ecd_patente = @mve_ecd_patente
             and mve_fyh_fecha = @mve_fyh_fecha
             and deleted = 0
@@ -195,11 +195,11 @@ begin
                 mve_fyh_fecha,
                 mve_rcd_codestado,
                 mve_nro_km,
-                TNGS_Rivn..MvlEstados.instante,
-                TNGS_Rivn..MvlEstados.deleted,
-                TNGS_Rivn..MvlEstados.usuario,
-                TNGS_Rivn..MvlEstados.version
-           from TNGS_Rivn..MvlEstados
+                TNGS_Mrln..MvlEstados.instante,
+                TNGS_Mrln..MvlEstados.deleted,
+                TNGS_Mrln..MvlEstados.usuario,
+                TNGS_Mrln..MvlEstados.version
+           from TNGS_Mrln..MvlEstados
           where mve_ecd_patente = @mve_ecd_patente
             and mve_fyh_fecha = @mve_fyh_fecha
       end
@@ -252,11 +252,11 @@ begin
                 mve_fyh_fecha,
                 mve_rcd_codestado,
                 mve_nro_km,
-                TNGS_Rivn..MvlEstados.instante,
-                TNGS_Rivn..MvlEstados.deleted,
-                TNGS_Rivn..MvlEstados.usuario,
-                TNGS_Rivn..MvlEstados.version
-           from TNGS_Rivn..MvlEstados
+                TNGS_Mrln..MvlEstados.instante,
+                TNGS_Mrln..MvlEstados.deleted,
+                TNGS_Mrln..MvlEstados.usuario,
+                TNGS_Mrln..MvlEstados.version
+           from TNGS_Mrln..MvlEstados
           where mve_ecd_patente = @mve_ecd_patente
             and deleted = 0
           order by mve_fyh_fecha
@@ -267,11 +267,11 @@ begin
                 mve_fyh_fecha,
                 mve_rcd_codestado,
                 mve_nro_km,
-                TNGS_Rivn..MvlEstados.instante,
-                TNGS_Rivn..MvlEstados.deleted,
-                TNGS_Rivn..MvlEstados.usuario,
-                TNGS_Rivn..MvlEstados.version
-           from TNGS_Rivn..MvlEstados
+                TNGS_Mrln..MvlEstados.instante,
+                TNGS_Mrln..MvlEstados.deleted,
+                TNGS_Mrln..MvlEstados.usuario,
+                TNGS_Mrln..MvlEstados.version
+           from TNGS_Mrln..MvlEstados
           where mve_ecd_patente = @mve_ecd_patente
           order by mve_fyh_fecha
       end
@@ -324,7 +324,7 @@ create procedure dbo.MVLESTADOS_INSERT
 as
 begin
 
-   Insert into TNGS_Rivn..MvlEstados
+   Insert into TNGS_Mrln..MvlEstados
    values (
            @mve_ecd_patente,
            @mve_fyh_fecha,
@@ -381,7 +381,7 @@ create procedure dbo.MVLESTADOS_UPDATE
 as
 begin
 
-   Update TNGS_Rivn..MvlEstados
+   Update TNGS_Mrln..MvlEstados
       set mve_rcd_codestado= @mve_rcd_codestado,
           mve_nro_km= @mve_nro_km,
           version = ((version+1) % 32767),
@@ -434,7 +434,7 @@ create procedure dbo.MVLESTADOS_DELETE
 as
 begin
 
-   Update TNGS_Rivn..MvlEstados
+   Update TNGS_Mrln..MvlEstados
       set deleted = 1,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -491,7 +491,7 @@ begin
          select @instante= getdate()
       end
 
-   Update TNGS_Rivn..MvlEstados
+   Update TNGS_Mrln..MvlEstados
       set deleted = 1,
           version = ((version+1) % 32767),
           instante= @instante,
@@ -542,7 +542,7 @@ create procedure dbo.MVLESTADOS_RECALL
 as
 begin
 
-   Update TNGS_Rivn..MvlEstados
+   Update TNGS_Mrln..MvlEstados
       set deleted = 0,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -596,7 +596,7 @@ begin
 
    if datepart(yyyy, @instante) = 1900
       begin
-         Update TNGS_Rivn..MvlEstados
+         Update TNGS_Mrln..MvlEstados
             set deleted = 0,
                 version = ((version+1) % 32767),
                 instante= getdate(),
@@ -605,7 +605,7 @@ begin
       end
    else
       begin
-         Update TNGS_Rivn..MvlEstados
+         Update TNGS_Mrln..MvlEstados
             set deleted = 0,
                 version = ((version+1) % 32767),
                 instante= getdate(),
@@ -658,7 +658,7 @@ create procedure dbo.MVLESTADOS_DROP
 as
 begin
 
-   Delete from TNGS_Rivn..MvlEstados
+   Delete from TNGS_Mrln..MvlEstados
     where mve_ecd_patente = @mve_ecd_patente
       and mve_fyh_fecha = @mve_fyh_fecha
 
@@ -704,7 +704,7 @@ create procedure dbo.MVLESTADOS_FDROP
 as
 begin
 
-   Delete from TNGS_Rivn..MvlEstados
+   Delete from TNGS_Mrln..MvlEstados
     where mve_ecd_patente = @mve_ecd_patente
 
 fin:
@@ -747,7 +747,7 @@ create procedure dbo.MVLESTADOS_PACK
 as
 begin
 
-   Delete TNGS_Rivn..MvlEstados
+   Delete TNGS_Mrln..MvlEstados
     where deleted = 1
 
 fin:
@@ -792,7 +792,7 @@ create procedure dbo.MVLESTADOS_FPACK
 as
 begin
 
-   Delete from TNGS_Rivn..MvlEstados
+   Delete from TNGS_Mrln..MvlEstados
     where mve_ecd_patente = @mve_ecd_patente
       and deleted = 1
 
@@ -842,8 +842,8 @@ begin
    mve_nro_km, 
    mve_fyh_fecha, 
    mve_rcd_codestado 
-   FROM TNGS_Rivn..MvlEstados 
-   JOIN TNGS_Rivn..Estados 
+   FROM TNGS_Mrln..MvlEstados 
+   JOIN TNGS_Mrln..Estados 
    on mve_rcd_codestado = est_rcd_cod 
    WHERE mve_ecd_patente = @patente 
    ORDER BY mve_fyh_fecha DESC 

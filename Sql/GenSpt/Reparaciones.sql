@@ -1,11 +1,11 @@
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 17/08/2015 10:48
-// Sistema     : Rivn
+// Fecha       : 20/04/2018 19:40
+// Sistema     : Mrln
 // Tabla       : Reparaciones
 //----------------------------------------------------------------------------
-// © 1999-2015 by TNG Software                                      Gndr 5.20
+// © 1999-2018 by TNG Software                                      Gndr 5.20
 //---------------------------------------------------------------------------*/
 
 /* ***************************************************************************
@@ -19,7 +19,7 @@
 /* Selecciono la base en la que se crearan los SPs */
 /*-------------------------------------------------*/
 
-use TNGS_Rivn
+use TNGS_Mrln
 go
 
 ---////////////////////////////////////////////////////////
@@ -56,11 +56,11 @@ begin
                 rep_xde_des,
                 rep_rcd_codcat,
                 rep_cd1_solicitadetalle,
-                TNGS_Rivn..Reparaciones.instante,
-                TNGS_Rivn..Reparaciones.deleted,
-                TNGS_Rivn..Reparaciones.usuario,
-                TNGS_Rivn..Reparaciones.version
-           from TNGS_Rivn..Reparaciones
+                TNGS_Mrln..Reparaciones.instante,
+                TNGS_Mrln..Reparaciones.deleted,
+                TNGS_Mrln..Reparaciones.usuario,
+                TNGS_Mrln..Reparaciones.version
+           from TNGS_Mrln..Reparaciones
           where deleted = 0
           order by rep_cd6_cod
       end
@@ -70,11 +70,11 @@ begin
                 rep_xde_des,
                 rep_rcd_codcat,
                 rep_cd1_solicitadetalle,
-                TNGS_Rivn..Reparaciones.instante,
-                TNGS_Rivn..Reparaciones.deleted,
-                TNGS_Rivn..Reparaciones.usuario,
-                TNGS_Rivn..Reparaciones.version
-           from TNGS_Rivn..Reparaciones
+                TNGS_Mrln..Reparaciones.instante,
+                TNGS_Mrln..Reparaciones.deleted,
+                TNGS_Mrln..Reparaciones.usuario,
+                TNGS_Mrln..Reparaciones.version
+           from TNGS_Mrln..Reparaciones
           order by rep_cd6_cod
       end
 
@@ -121,7 +121,7 @@ as
 begin
 
    Select count(*) as cantidad
-     from TNGS_Rivn..Reparaciones
+     from TNGS_Mrln..Reparaciones
     where rep_cd6_cod = @rep_cd6_cod
       and version = @version
 
@@ -173,11 +173,11 @@ begin
                 rep_xde_des,
                 rep_rcd_codcat,
                 rep_cd1_solicitadetalle,
-                TNGS_Rivn..Reparaciones.instante,
-                TNGS_Rivn..Reparaciones.deleted,
-                TNGS_Rivn..Reparaciones.usuario,
-                TNGS_Rivn..Reparaciones.version
-           from TNGS_Rivn..Reparaciones
+                TNGS_Mrln..Reparaciones.instante,
+                TNGS_Mrln..Reparaciones.deleted,
+                TNGS_Mrln..Reparaciones.usuario,
+                TNGS_Mrln..Reparaciones.version
+           from TNGS_Mrln..Reparaciones
           where rep_cd6_cod = @rep_cd6_cod
             and deleted = 0
       end
@@ -187,11 +187,11 @@ begin
                 rep_xde_des,
                 rep_rcd_codcat,
                 rep_cd1_solicitadetalle,
-                TNGS_Rivn..Reparaciones.instante,
-                TNGS_Rivn..Reparaciones.deleted,
-                TNGS_Rivn..Reparaciones.usuario,
-                TNGS_Rivn..Reparaciones.version
-           from TNGS_Rivn..Reparaciones
+                TNGS_Mrln..Reparaciones.instante,
+                TNGS_Mrln..Reparaciones.deleted,
+                TNGS_Mrln..Reparaciones.usuario,
+                TNGS_Mrln..Reparaciones.version
+           from TNGS_Mrln..Reparaciones
           where rep_cd6_cod = @rep_cd6_cod
       end
 
@@ -243,7 +243,7 @@ create procedure dbo.REPARACIONES_INSERT
 as
 begin
 
-   Insert into TNGS_Rivn..Reparaciones
+   Insert into TNGS_Mrln..Reparaciones
    values (
            @rep_cd6_cod,
            @rep_xde_des,
@@ -300,7 +300,7 @@ create procedure dbo.REPARACIONES_UPDATE
 as
 begin
 
-   Update TNGS_Rivn..Reparaciones
+   Update TNGS_Mrln..Reparaciones
       set rep_xde_des= @rep_xde_des,
           rep_rcd_codcat= @rep_rcd_codcat,
           rep_cd1_solicitadetalle= @rep_cd1_solicitadetalle,
@@ -351,7 +351,7 @@ create procedure dbo.REPARACIONES_DELETE
 as
 begin
 
-   Update TNGS_Rivn..Reparaciones
+   Update TNGS_Mrln..Reparaciones
       set deleted = 1,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -400,7 +400,7 @@ create procedure dbo.REPARACIONES_RECALL
 as
 begin
 
-   Update TNGS_Rivn..Reparaciones
+   Update TNGS_Mrln..Reparaciones
       set deleted = 0,
           version = ((version+1) % 32767),
           instante= getdate(),
@@ -449,7 +449,7 @@ create procedure dbo.REPARACIONES_DROP
 as
 begin
 
-   Delete from TNGS_Rivn..Reparaciones
+   Delete from TNGS_Mrln..Reparaciones
     where rep_cd6_cod = @rep_cd6_cod
 
 fin:
@@ -492,7 +492,7 @@ create procedure dbo.REPARACIONES_PACK
 as
 begin
 
-   Delete TNGS_Rivn..Reparaciones
+   Delete TNGS_Mrln..Reparaciones
     where deleted = 1
 
 fin:

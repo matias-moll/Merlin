@@ -8,11 +8,11 @@ using System.Reflection;
 using System.IO;
 using TNGS.NetRoutines;
 using TNGS.NetApp;
-using Rivn;
-using Rivn.Shr;
+using Mrln;
+using Mrln.Shr;
 #endregion
 
-namespace Rivn.Ct
+namespace Mrln.Ct
 {
     /// <summary>
     /// Rutinas generales del programa
