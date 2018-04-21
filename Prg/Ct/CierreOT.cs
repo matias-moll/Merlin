@@ -14,13 +14,14 @@ using TNGS;
 using TNGS.NetApp;
 using TNGS.NetRoutines;
 using TNGS.NetControls;
+using WeifenLuo.WinFormsUI.Docking;
 
 namespace Mrln.Ct
 {
     /// <summary>
     /// Formulario para consulta de datos del oficina
     /// </summary>
-    public partial class CierreOT : Form
+    public partial class CierreOT : DockContent
     {
         #region
         private LEMoviles m_LEMoviles = null;
@@ -42,8 +43,8 @@ namespace Mrln.Ct
             // Inicializar variables
             m_smResult = new StatMsg();
 
-            // Fijamos el formulario de la aplicacion
-            App.SetMainWindow(this, mnuMain, null, sbpMensaje, sbpConexion, sbpUsuario, sbpPercent, sbpAvance);
+            // Dockeamos el formulario
+            ((MainFrame)App.GetMainWindow()).AddContent(this);
 
             LlenarCombo();
         }

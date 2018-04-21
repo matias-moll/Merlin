@@ -35,12 +35,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CierreOT));
             this.imgTree = new System.Windows.Forms.ImageList(this.components);
             this.mnuMain = new System.Windows.Forms.MenuStrip();
-            this.sbMain = new System.Windows.Forms.StatusStrip();
-            this.sbpMensaje = new System.Windows.Forms.ToolStripStatusLabel();
-            this.sbpConexion = new System.Windows.Forms.ToolStripStatusLabel();
-            this.sbpUsuario = new System.Windows.Forms.ToolStripStatusLabel();
-            this.sbpPercent = new System.Windows.Forms.ToolStripStatusLabel();
-            this.sbpAvance = new System.Windows.Forms.ToolStripProgressBar();
             this.tmrRefresh = new System.Windows.Forms.Timer(this.components);
             this.niSysTray = new System.Windows.Forms.NotifyIcon(this.components);
             this.xpnlPanel1 = new TNGS.NetControls.XPanel();
@@ -62,7 +56,6 @@
             this.cdcMoviles = new TNGS.NetControls.CDCombo();
             this.tsBase1 = new TNGS.NetControls.TSBase();
             this.tab1 = new RibbonStyle.Tab();
-            this.sbMain.SuspendLayout();
             this.xpnlPanel1.SuspendLayout();
             this.xPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fgGrillaOT)).BeginInit();
@@ -94,61 +87,6 @@
             this.mnuMain.TabIndex = 2;
             this.mnuMain.Text = "menuStrip1";
             // 
-            // sbMain
-            // 
-            this.sbMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.sbpMensaje,
-            this.sbpConexion,
-            this.sbpUsuario,
-            this.sbpPercent,
-            this.sbpAvance});
-            this.sbMain.Location = new System.Drawing.Point(0, 625);
-            this.sbMain.Name = "sbMain";
-            this.sbMain.Size = new System.Drawing.Size(940, 23);
-            this.sbMain.SizingGrip = false;
-            this.sbMain.TabIndex = 13;
-            this.sbMain.Text = "statusStrip1";
-            // 
-            // sbpMensaje
-            // 
-            this.sbpMensaje.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sbpMensaje.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.sbpMensaje.Name = "sbpMensaje";
-            this.sbpMensaje.Size = new System.Drawing.Size(732, 18);
-            this.sbpMensaje.Spring = true;
-            this.sbpMensaje.Text = "XXX";
-            this.sbpMensaje.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // sbpConexion
-            // 
-            this.sbpConexion.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
-            this.sbpConexion.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sbpConexion.Name = "sbpConexion";
-            this.sbpConexion.Size = new System.Drawing.Size(27, 18);
-            this.sbpConexion.Text = "YY";
-            // 
-            // sbpUsuario
-            // 
-            this.sbpUsuario.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right)));
-            this.sbpUsuario.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sbpUsuario.Name = "sbpUsuario";
-            this.sbpUsuario.Size = new System.Drawing.Size(21, 18);
-            this.sbpUsuario.Text = "zz";
-            // 
-            // sbpPercent
-            // 
-            this.sbpPercent.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sbpPercent.Name = "sbpPercent";
-            this.sbpPercent.Size = new System.Drawing.Size(43, 18);
-            this.sbpPercent.Text = "(15%)";
-            // 
-            // sbpAvance
-            // 
-            this.sbpAvance.AutoSize = false;
-            this.sbpAvance.Margin = new System.Windows.Forms.Padding(1, 5, 1, 4);
-            this.sbpAvance.Name = "sbpAvance";
-            this.sbpAvance.Size = new System.Drawing.Size(100, 14);
-            // 
             // xpnlPanel1
             // 
             this.xpnlPanel1.BackColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
@@ -159,7 +97,7 @@
             this.xpnlPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.xpnlPanel1.Location = new System.Drawing.Point(0, 24);
             this.xpnlPanel1.Name = "xpnlPanel1";
-            this.xpnlPanel1.Size = new System.Drawing.Size(940, 601);
+            this.xpnlPanel1.Size = new System.Drawing.Size(940, 624);
             this.xpnlPanel1.SkinFixed = true;
             this.xpnlPanel1.TabIndex = 14;
             // 
@@ -171,7 +109,7 @@
             this.xPanel1.Controls.Add(this.itemBarra1);
             this.xPanel1.Location = new System.Drawing.Point(0, 110);
             this.xPanel1.Name = "xPanel1";
-            this.xPanel1.Size = new System.Drawing.Size(940, 96);
+            this.xPanel1.Size = new System.Drawing.Size(940, 120);
             this.xPanel1.SkinFixed = true;
             this.xPanel1.TabIndex = 3;
             // 
@@ -187,7 +125,7 @@
             this.itemBarra2.MinimumSize = new System.Drawing.Size(120, 90);
             this.itemBarra2.Name = "itemBarra2";
             this.itemBarra2.Numero = 0;
-            this.itemBarra2.Size = new System.Drawing.Size(120, 96);
+            this.itemBarra2.Size = new System.Drawing.Size(120, 120);
             this.itemBarra2.TabIndex = 1;
             this.itemBarra2.Titulo = "Orden de Trabajo";
             // 
@@ -203,7 +141,7 @@
             this.itemBarra1.MinimumSize = new System.Drawing.Size(120, 90);
             this.itemBarra1.Name = "itemBarra1";
             this.itemBarra1.Numero = 0;
-            this.itemBarra1.Size = new System.Drawing.Size(120, 96);
+            this.itemBarra1.Size = new System.Drawing.Size(120, 120);
             this.itemBarra1.TabIndex = 0;
             this.itemBarra1.Titulo = "Orden de Trabajo";
             // 
@@ -218,7 +156,7 @@
             this.fgGrillaOT.ExcelTitle = "";
             this.fgGrillaOT.GridOrder = "";
             this.fgGrillaOT.HeaderForeColor = System.Drawing.SystemColors.ControlText;
-            this.fgGrillaOT.Location = new System.Drawing.Point(12, 365);
+            this.fgGrillaOT.Location = new System.Drawing.Point(12, 272);
             this.fgGrillaOT.Margin = new System.Windows.Forms.Padding(10);
             this.fgGrillaOT.Name = "fgGrillaOT";
             this.fgGrillaOT.Padding = new System.Windows.Forms.Padding(10);
@@ -432,21 +370,21 @@
             // 
             // CierreOT
             // 
+            this.AllowEndUserDocking = false;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(940, 648);
             this.Controls.Add(this.xpnlPanel1);
-            this.Controls.Add(this.sbMain);
             this.Controls.Add(this.mnuMain);
+            this.DockAreas = WeifenLuo.WinFormsUI.Docking.DockAreas.Document;
             this.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.mnuMain;
             this.MaximizeBox = false;
             this.Name = "CierreOT";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Cierre De Ordenes De Trabajo";
-            this.sbMain.ResumeLayout(false);
-            this.sbMain.PerformLayout();
+            this.TabText = "Cierre De OTs";
+            this.Text = "Cierre De OTs";
             this.xpnlPanel1.ResumeLayout(false);
             this.xPanel1.ResumeLayout(false);
             this.xPanel1.PerformLayout();
@@ -468,12 +406,6 @@
 
         private System.Windows.Forms.ImageList imgTree;
         private System.Windows.Forms.MenuStrip mnuMain;
-        private System.Windows.Forms.StatusStrip sbMain;
-        private System.Windows.Forms.ToolStripStatusLabel sbpMensaje;
-        private System.Windows.Forms.ToolStripStatusLabel sbpConexion;
-        private System.Windows.Forms.ToolStripStatusLabel sbpUsuario;
-        private System.Windows.Forms.ToolStripStatusLabel sbpPercent;
-        private System.Windows.Forms.ToolStripProgressBar sbpAvance;
         private System.Windows.Forms.Timer tmrRefresh;
         private System.Windows.Forms.NotifyIcon niSysTray;
         private TNGS.NetControls.XPanel xpnlPanel1;

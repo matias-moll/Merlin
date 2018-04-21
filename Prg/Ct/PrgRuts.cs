@@ -35,6 +35,12 @@ namespace Mrln.Ct
         /// </summary>
         public static void AutoExec()
         {
+            // Creamos el DockManager
+            ((MainFrame)App.GetMainWindow()).CreateDockManager();
+
+            //Intanciamos el Dockeable principal.
+            m_frmCierreOt = new Mrln.Ct.CierreOT();
+
             // Liberamos el menu
             App.LockMenu(false);
             App.HideMsg();
@@ -45,13 +51,6 @@ namespace Mrln.Ct
         /// </summary>
         public static void EndExec()
         {
-        }
-
-        public static void MakeMainFrame()
-        {
-            // Fijamos el formulario de la aplicacion
-            m_frmCierreOt = new Mrln.Ct.CierreOT();
-            
         }
 
         #endregion

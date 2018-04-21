@@ -4,6 +4,52 @@ Explota en tablas generales en estaciones, hay algun problema con el contacto cr
 cargue uno no me grabo ese dato o al menos no me lo muestra en la grilla.
 
 
+Acomodar pantalla de cierre de ordenes de trabajo para que se escale bien.
+
 Revisar nuevamente la carga de controles y reparaciones.
 
 Pensar en pasar el abm de categorias al segundo menu ya que ahi es donde se usa.
+
+
+Agregar tabla Taller
+Codigo, descripcion, direccion, telefono, contacto (nombre).
+
+Referencia de esta tabla en Ordenes de trabajo.
+Hacer el ABM y modificar donde se creen las ordenes.
+Actualizar el diagrama.
+
+Tabla taller tiene tabla hija de tallerCategoria. QUe linkea contra la tabla categoria (ejemplos: electricidad, mecanica, etc).
+Y no permite cargar OTItems con una categoria que no la tenga el taller de la Orden de trabajo padre.
+
+
+Agregar campo en tabla moviles:
+Numero Ploteado. ecd.
+Agregarlo en donde se cargan los moviles
+
+
+Modificar en el alta de movil el nombre del campo Kilometros por Kilometros Adquisicion
+
+
+Tenemos que hacer una opcion de consulta de historia del movil donde vamos a tener que hacer un select union
+de todo lo que le paso al movil: combustibles, estados, ordenes de trabajo, etc. Usar una entidad fija 
+con datos en comun: patente, fecha, tipo, descripcion.
+El tipo de las ordenes de trabajo es fijo para combustibles, estados, y dsps para los items de OT es la categoria de la reparacion
+y ademas necesitamos otro para los controles que se le hicieron al auto donde el tipo seria la descripcion del control
+
+
+Agregar un campo de descripcion del Control en Ordenes de Trabajo, puede ser vacio.
+la idea es poder tocar un boton cuando se vence un control apra un auto y que me genere una orden de trabajo
+con todos los items de las reparaciones que lleva ese control.
+
+
+Agregar campo en OTItems de Realizado (si o no). Sirve para indicar cuando algun item de la OT no se pudo hacer en el taller.
+
+
+Crear pantalla de ordenes de trabajo pendientes donde me traiga todas las que no estan cerradas y me de la opcion
+de imprimirlas con un crystal report especial para tener cada una separada y poder darselas a un tecnico.
+Esta pantalla hay que agregarlas al programa de Cierre Ordenes de Trabajo.
+
+
+
+Una vez que tenga todo esto hay que ver los reportes.
+Y documentar el constructor de consultas.

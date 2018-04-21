@@ -18,11 +18,11 @@ namespace Mrln.Ct
     //----------------------------------------------------------------------------
     //                         TNG Software PRG Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 13/06/2015 15:38
+    // Fecha                    : 21/04/2018 18:32
     // Sistema                  : Mrln
     // Programa                 : Cierre Ordenes de Trabajo
     //----------------------------------------------------------------------------
-    // © 1996-2015 by TNG Software                                      Gndr 5.20
+    // © 1996-2018 by TNG Software                                      Gndr 5.20
     //----------------------------------------------------------------------------
 
     //****************************************************************************
@@ -99,8 +99,8 @@ namespace Mrln.Ct
             }
 
             try {
-                // Ejecutamos la funcion que construye la pantalla principal
-                PrgRuts.MakeMainFrame();
+                // Creamos la ventana MDI de la aplicacion
+                MainFrame l_frmMain= new MainFrame(MFSizes.MF1024x768, 0, false, true);
 
                 // Ejecutamos la funcion que arma la info de About
                 PrgRuts.MakeAboutInfo();
