@@ -36,9 +36,7 @@ namespace Mrln.Mv
             //creamos la nueva entidad VACIA
             m_entMovil = Bel.EMovil.NewEmpty();
 
-            
             m_EstadoAlta = true;
-
         }
 
         //constructor para modificacion
@@ -61,7 +59,7 @@ namespace Mrln.Mv
             tePatente.Enabled = false;
             teNroChasis.Enabled = false;
             teNroMotor.Enabled = false;
-            gbCancel.Enabled = false;
+            gbCancel.Enabled = true;
             tgrpDatosBasicos.Enabled = p_bImgHabilitado;
 
         }
@@ -190,14 +188,14 @@ namespace Mrln.Mv
             int l_iContador = 0;
             foreach (CodDesItems item in p_clEqui.Items)
             {
-                l_entMovilEquip = l_lentMovEquipamiento[p_eMovil.Patente, item.StrCode];
-
-                // si la entidad es null, es porque no existe ninguna en la lista entidad con ese StrCode. 
-                // si no es null, la chequeamos.
-                if (null != l_entMovilEquip)
-                    arraySoporte[l_iContador] = item.StrCode;
-                else
+                // Si la lista enteidades es null, es porque no existe ninguna en la lista entidad con ese StrCode. 
+                if (l_lentMovEquipamiento == null)
                     arraySoporte[l_iContador] = "";
+                else
+                {
+                    l_entMovilEquip = l_lentMovEquipamiento[p_eMovil.Patente, item.StrCode];
+                    arraySoporte[l_iContador] = item.StrCode;
+                }
 
                 l_iContador = l_iContador + 1;
             }

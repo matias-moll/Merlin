@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 20/04/2018 19:40
+// Fecha       : 21/04/2018 21:14
 // Sistema     : Mrln
 // Tabla       : MvlKilometros
 //----------------------------------------------------------------------------
@@ -869,7 +869,7 @@ begin
 
    SELECT TOP 5 mkm_nro_km, 
    mkm_fyh_fecha 
-   FROM TNGS_Rivn..MvlKilometros 
+   FROM TNGS_Mrln..MvlKilometros 
    WHERE mkm_ecd_patente = @patente 
    ORDER BY mkm_fyh_fecha DESC 
 

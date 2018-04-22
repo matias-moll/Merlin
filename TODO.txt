@@ -1,4 +1,8 @@
-Explota en la grabacion de un nuevo movil.
+TODO:
+
+
+El edit de moviles carga mal los tildes de equipamiento.
+
 
 Explota en tablas generales en estaciones, hay algun problema con el contacto creo porque cuando
 cargue uno no me grabo ese dato o al menos no me lo muestra en la grilla.

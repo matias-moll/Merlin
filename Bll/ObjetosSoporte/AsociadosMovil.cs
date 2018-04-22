@@ -80,7 +80,7 @@ namespace Mrln.Bll.ObjetosSoporte
 
         public LEMovilesEquip EquipamientoTip
         {
-            get { return (LEMovilesEquip)m_lstLEListaEntidades[3]; }
+            get { return m_lstLEListaEntidades.Count != 0 ? (LEMovilesEquip)m_lstLEListaEntidades[3] : null; }
         }
 
         #endregion
