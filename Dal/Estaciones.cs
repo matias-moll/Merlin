@@ -10,7 +10,7 @@ namespace Mrln.Dal
     //----------------------------------------------------------------------------
     //                         TNG Software DAL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 20/04/2018 20:27
+    // Fecha                    : 15/05/2018 19:47
     // Sistema                  : Mrln
     // Clase para Administrar   : estaciones de servicio
     // Basada en la Tabla       : Estaciones
@@ -365,6 +365,7 @@ namespace Mrln.Dal
                 DBRuts.ClearDTCaptions(ref p_dtResult);
 
                 // Fijamos los nuevos captions de la grilla
+                p_dtResult.Columns["ets_rcd_cod"].Caption= "V1Codigo EstacionCN1";
                 p_dtResult.Columns["ets_des_contacto"].Caption= "V1ContactoCN1";
                 p_dtResult.Columns["ets_des_des"].Caption= "V1EstacionCN1";
                 p_dtResult.Columns["ets_ede_domicilio"].Caption= "V1DomicilioCN1";

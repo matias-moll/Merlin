@@ -180,8 +180,8 @@ namespace Mrln.Mv
         {
             // recuperamos la LE de equipamientos del movil
             Bel.LEMovilesEquip l_lentMovEquipamiento = p_eMovil.MovilesEquip;
-            // creamos una nueva variable para llenarla con las entidadesde la lista entidad
-            Bel.EMovilEquip l_entMovilEquip;
+
+            bool tieneEseMovilEquipamiento = false;
 
             // instanciamos un array donde van a guardarse los codigos de los equipamientos seleccionados
             string[] arraySoporte = new string[p_clEqui.Items.Count];
@@ -193,8 +193,12 @@ namespace Mrln.Mv
                     arraySoporte[l_iContador] = "";
                 else
                 {
-                    l_entMovilEquip = l_lentMovEquipamiento[p_eMovil.Patente, item.StrCode];
-                    arraySoporte[l_iContador] = item.StrCode;
+                    tieneEseMovilEquipamiento = l_lentMovEquipamiento.Any(mvlEquip => mvlEquip.Codequip == item.StrCode);
+
+                    if (tieneEseMovilEquipamiento)
+                        arraySoporte[l_iContador] = item.StrCode;
+                    else
+                        arraySoporte[l_iContador] = "";
                 }
 
                 l_iContador = l_iContador + 1;

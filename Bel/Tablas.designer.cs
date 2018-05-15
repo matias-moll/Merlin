@@ -14,7 +14,7 @@ namespace Mrln.Bel
     //----------------------------------------------------------------------------
     //                         TNG Software BEL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 20/04/2018 20:34
+    // Fecha                    : 15/05/2018 19:48
     // Sistema                  : Mrln
     // Clase para Administrar   : Tablas de Rivn.
     //----------------------------------------------------------------------------
@@ -1909,10 +1909,10 @@ namespace Mrln.Bel
         /// </summary>
         public string Contacto
         {
-            get {return (string) InternalData["ets_des_contacto"];}
+            get {return ((string) InternalData["ets_des_contacto"]).Trim();}
             set {
                 if (value.Trim().Length > 30) value= value.Trim().Substring(0,30);
-                InternalData["ets_des_contacto"]= value.Trim().PadLeft(30);
+                InternalData["ets_des_contacto"]= value.Trim();
             }
         }
 

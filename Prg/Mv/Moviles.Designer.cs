@@ -289,12 +289,13 @@ namespace Mrln.Mv
             this.pnlOpcionesEspecificas.Caption = "Operaciones Sobre Movil Seleccionado";
             this.pnlOpcionesEspecificas.Controls.Add(this.gbCargarNafta);
             this.pnlOpcionesEspecificas.Controls.Add(this.gbAgregarKMs);
+            this.pnlOpcionesEspecificas.Controls.Add(this.gbModificarMovil);
             this.pnlOpcionesEspecificas.Controls.Add(this.gbCambiarEstado);
             this.pnlOpcionesEspecificas.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnlOpcionesEspecificas.Location = new System.Drawing.Point(378, 3);
+            this.pnlOpcionesEspecificas.Location = new System.Drawing.Point(263, 3);
             this.pnlOpcionesEspecificas.Name = "pnlOpcionesEspecificas";
             this.pnlOpcionesEspecificas.Opacity = 255;
-            this.pnlOpcionesEspecificas.Size = new System.Drawing.Size(375, 85);
+            this.pnlOpcionesEspecificas.Size = new System.Drawing.Size(508, 85);
             this.pnlOpcionesEspecificas.Speed = 1;
             this.pnlOpcionesEspecificas.TabIndex = 1;
             // 
@@ -310,7 +311,7 @@ namespace Mrln.Mv
             this.gbCargarNafta.FlatTextColor = System.Drawing.Color.Black;
             this.gbCargarNafta.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.gbCargarNafta.ImageOnTop = true;
-            this.gbCargarNafta.Location = new System.Drawing.Point(248, 0);
+            this.gbCargarNafta.Location = new System.Drawing.Point(377, 0);
             this.gbCargarNafta.Name = "gbCargarNafta";
             this.gbCargarNafta.RoundCorners = 2;
             this.gbCargarNafta.Size = new System.Drawing.Size(118, 63);
@@ -332,7 +333,7 @@ namespace Mrln.Mv
             this.gbAgregarKMs.FlatTextColor = System.Drawing.Color.Black;
             this.gbAgregarKMs.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.gbAgregarKMs.ImageOnTop = true;
-            this.gbAgregarKMs.Location = new System.Drawing.Point(124, 0);
+            this.gbAgregarKMs.Location = new System.Drawing.Point(253, 0);
             this.gbAgregarKMs.Name = "gbAgregarKMs";
             this.gbAgregarKMs.RoundCorners = 2;
             this.gbAgregarKMs.Size = new System.Drawing.Size(118, 63);
@@ -354,7 +355,7 @@ namespace Mrln.Mv
             this.gbCambiarEstado.FlatTextColor = System.Drawing.Color.Black;
             this.gbCambiarEstado.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.gbCambiarEstado.ImageOnTop = true;
-            this.gbCambiarEstado.Location = new System.Drawing.Point(6, 1);
+            this.gbCambiarEstado.Location = new System.Drawing.Point(135, 1);
             this.gbCambiarEstado.Name = "gbCambiarEstado";
             this.gbCambiarEstado.RoundCorners = 2;
             this.gbCambiarEstado.Size = new System.Drawing.Size(112, 62);
@@ -369,12 +370,11 @@ namespace Mrln.Mv
             this.pnlOpcionesGenerales.Caption = "Operaciones Sobre Moviles";
             this.pnlOpcionesGenerales.Controls.Add(this.gbNuevoMovil);
             this.pnlOpcionesGenerales.Controls.Add(this.gbBorrarMovil);
-            this.pnlOpcionesGenerales.Controls.Add(this.gbModificarMovil);
             this.pnlOpcionesGenerales.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlOpcionesGenerales.Location = new System.Drawing.Point(0, 3);
             this.pnlOpcionesGenerales.Name = "pnlOpcionesGenerales";
             this.pnlOpcionesGenerales.Opacity = 255;
-            this.pnlOpcionesGenerales.Size = new System.Drawing.Size(378, 85);
+            this.pnlOpcionesGenerales.Size = new System.Drawing.Size(263, 85);
             this.pnlOpcionesGenerales.Speed = 1;
             this.pnlOpcionesGenerales.TabIndex = 0;
             // 
@@ -390,7 +390,7 @@ namespace Mrln.Mv
             this.gbNuevoMovil.FlatFontSize = 9;
             this.gbNuevoMovil.FlatTextColor = System.Drawing.Color.Black;
             this.gbNuevoMovil.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.gbNuevoMovil.Location = new System.Drawing.Point(134, 6);
+            this.gbNuevoMovil.Location = new System.Drawing.Point(13, 6);
             this.gbNuevoMovil.Name = "gbNuevoMovil";
             this.gbNuevoMovil.RoundCorners = 2;
             this.gbNuevoMovil.Size = new System.Drawing.Size(111, 55);
@@ -411,7 +411,7 @@ namespace Mrln.Mv
             this.gbBorrarMovil.FlatFontSize = 9;
             this.gbBorrarMovil.FlatTextColor = System.Drawing.Color.Black;
             this.gbBorrarMovil.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.gbBorrarMovil.Location = new System.Drawing.Point(255, 6);
+            this.gbBorrarMovil.Location = new System.Drawing.Point(134, 6);
             this.gbBorrarMovil.Name = "gbBorrarMovil";
             this.gbBorrarMovil.RoundCorners = 2;
             this.gbBorrarMovil.Size = new System.Drawing.Size(117, 55);
@@ -432,10 +432,10 @@ namespace Mrln.Mv
             this.gbModificarMovil.FlatFontSize = 9;
             this.gbModificarMovil.FlatTextColor = System.Drawing.Color.Black;
             this.gbModificarMovil.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.gbModificarMovil.Location = new System.Drawing.Point(8, 6);
+            this.gbModificarMovil.Location = new System.Drawing.Point(7, 3);
             this.gbModificarMovil.Name = "gbModificarMovil";
             this.gbModificarMovil.RoundCorners = 2;
-            this.gbModificarMovil.Size = new System.Drawing.Size(118, 55);
+            this.gbModificarMovil.Size = new System.Drawing.Size(118, 60);
             this.gbModificarMovil.TabIndex = 30;
             this.gbModificarMovil.Text = "Modificar";
             this.gbModificarMovil.W8Color = System.Drawing.Color.RoyalBlue;

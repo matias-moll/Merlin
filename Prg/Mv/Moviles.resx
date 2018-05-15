@@ -265,6 +265,17 @@
         y8vXcLaHEN/NQxHib3cZpuZ36DMZvhg83xMQtHmrnxipyAAAAABJRU5ErkJggg==
 </value>
   </data>
+  <data name="gbModificarMovil.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1
+        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxIAAAsSAdLdfvwAAAD0SURBVDhPjdNB5kJBAMfxOUOr
+        VtEqogNEB4ho1QEi4n+JiOgMrTpAq4gO0AEiWkVEq7Z/IuL1/dVkpjEz3o/PM2/0fq83854pisJ4qeII
+        Taas4OIV1HCGJg4YR5ywg4staOCqU2uDWHRxtOCmoSdXoH/Xfp8ptkCHPRbWCLGoQL99oKsJv2CuQSZa
+        YP8xVdIrW+AvsO+vTEEdF/gXinaFUb4g3B15YohPMgW6c7g7eu4BXDIFE+it+8f34j5+kynQfnewxB3a
+        tgpmcEkUtKA5fRdTNKGsEX0TwwLdSWsQJvkq67BF+PGEkh+TFkiDMvQYNsa8AHXumC8XJdAsAAAAAElF
+        TkSuQmCC
+</value>
+  </data>
   <data name="gbCambiarEstado.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABwAAAAZCAYAAAAiwE4nAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAACH
@@ -364,17 +375,6 @@
         jcygshzx14hdu1yWxpEJvGLRAe7IGF7B8zMyhHewzg5pBujjAu9glRXCKHu4IWZkjRbCOXthNHItvPPk
         ZUsHd+ijletGNsjLShcP6JBG7EaNZaU8Yv8igUa2qCwrNvJEccRuskRjWSmPLBCdHl7QiOcdQki+6ZSC
         nwweYV0AAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="gbModificarMovil.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1
-        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxIAAAsSAdLdfvwAAAD0SURBVDhPjdNB5kJBAMfxOUOr
-        VtEqogNEB4ho1QEi4n+JiOgMrTpAq4gO0AEiWkVEq7Z/IuL1/dVkpjEz3o/PM2/0fq83854pisJ4qeII
-        Taas4OIV1HCGJg4YR5ywg4staOCqU2uDWHRxtOCmoSdXoH/Xfp8ptkCHPRbWCLGoQL99oKsJv2CuQSZa
-        YP8xVdIrW+AvsO+vTEEdF/gXinaFUb4g3B15YohPMgW6c7g7eu4BXDIFE+it+8f34j5+kynQfnewxB3a
-        tgpmcEkUtKA5fRdTNKGsEX0TwwLdSWsQJvkq67BF+PGEkh+TFkiDMvQYNsa8AHXumC8XJdAsAAAAAElF
-        TkSuQmCC
 </value>
   </data>
   <metadata name="tsBase1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">

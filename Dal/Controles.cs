@@ -10,7 +10,7 @@ namespace Mrln.Dal
     //----------------------------------------------------------------------------
     //                         TNG Software DAL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 20/04/2018 20:27
+    // Fecha                    : 15/05/2018 19:47
     // Sistema                  : Mrln
     // Clase para Administrar   : Controles de las reparaciones
     // Basada en la Tabla       : Controles
@@ -354,6 +354,7 @@ namespace Mrln.Dal
 
                 // Fijamos los nuevos captions de la grilla
                 p_dtResult.Columns["ctl_cod_cod"].Caption= "V1CodigoCN1";
+                p_dtResult.Columns["ctl_cd1_crit"].Caption= "V1CriticoCN1";
                 p_dtResult.Columns["ctl_des_des"].Caption= "V1ControlCN1";
                 p_dtResult.Columns["deleted"].Caption= "V1Borrado2N2";
             }

@@ -16,7 +16,7 @@ namespace Mrln.Bll
     //----------------------------------------------------------------------------
     //                         TNG Software BLL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 20/04/2018 20:34
+    // Fecha                    : 15/05/2018 19:48
     // Sistema                  : Mrln
     // Clase para Administrar   : Tablas de Rivn.
     //----------------------------------------------------------------------------
@@ -2625,6 +2625,12 @@ namespace Mrln.Bll
             if (p_entEstacion.Des.Trim() == "") {
                 // El campo [Estacion] no puede ser vacío
                 p_smResult.BllWarning("El dato [Estacion] no puede ser vacío","");
+                return;
+            }
+
+            if (p_entEstacion.Contacto.Trim() == "") {
+                // El campo [Contacto] no puede ser vacío
+                p_smResult.BllWarning("El dato [Contacto] no puede ser vacío","");
                 return;
             }
 
