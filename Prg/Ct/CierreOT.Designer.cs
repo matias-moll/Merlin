@@ -103,6 +103,8 @@
             // 
             // xPanel1
             // 
+            this.xPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.xPanel1.BackColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.xPanel1.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
             this.xPanel1.Controls.Add(this.itemBarra2);
@@ -147,6 +149,9 @@
             // 
             // fgGrillaOT
             // 
+            this.fgGrillaOT.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.fgGrillaOT.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
             this.fgGrillaOT.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.fgGrillaOT.CaptionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(163)))), ((int)(((byte)(226)))));
@@ -156,11 +161,11 @@
             this.fgGrillaOT.ExcelTitle = "";
             this.fgGrillaOT.GridOrder = "";
             this.fgGrillaOT.HeaderForeColor = System.Drawing.SystemColors.ControlText;
-            this.fgGrillaOT.Location = new System.Drawing.Point(12, 272);
+            this.fgGrillaOT.Location = new System.Drawing.Point(12, 243);
             this.fgGrillaOT.Margin = new System.Windows.Forms.Padding(10);
             this.fgGrillaOT.Name = "fgGrillaOT";
             this.fgGrillaOT.Padding = new System.Windows.Forms.Padding(10);
-            this.fgGrillaOT.Size = new System.Drawing.Size(916, 229);
+            this.fgGrillaOT.Size = new System.Drawing.Size(916, 371);
             this.fgGrillaOT.SkinFixed = true;
             this.fgGrillaOT.TabIndex = 2;
             // 

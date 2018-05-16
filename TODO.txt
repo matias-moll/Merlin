@@ -1,23 +1,6 @@
 TODO:
 
 
-El edit de moviles carga mal los tildes de equipamiento.
-
-
-Explota en tablas generales en estaciones, hay algun problema con el contacto creo porque cuando
-cargue uno no me grabo ese dato o al menos no me lo muestra en la grilla.
-
-
-Acomodar pantalla de cierre de ordenes de trabajo para que se escale bien.
-
-Revisar nuevamente la carga de controles y reparaciones.
-
-Pensar en pasar el abm de categorias al segundo menu ya que ahi es donde se usa.
-
-
-Agregar tabla Taller
-Codigo, descripcion, direccion, telefono, contacto (nombre).
-
 Referencia de esta tabla en Ordenes de trabajo.
 Hacer el ABM y modificar donde se creen las ordenes.
 Actualizar el diagrama.
@@ -29,6 +12,11 @@ Y no permite cargar OTItems con una categoria que no la tenga el taller de la Or
 Agregar campo en tabla moviles:
 Numero Ploteado. ecd.
 Agregarlo en donde se cargan los moviles
+
+
+Hasta aca hice todos los cambios en el documentador. Falta generar todo, impactar cambios y tocar la logica del programa.
+
+-----------------------------------------------------------------------------------------------------------------------------------
 
 
 Modificar en el alta de movil el nombre del campo Kilometros por Kilometros Adquisicion
