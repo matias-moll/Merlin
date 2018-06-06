@@ -1,7 +1,6 @@
 TODO:
 
 
-Referencia de esta tabla en Ordenes de trabajo.
 Hacer el ABM y modificar donde se creen las ordenes.
 Actualizar el diagrama.
 
@@ -10,11 +9,12 @@ Y no permite cargar OTItems con una categoria que no la tenga el taller de la Or
 
 
 Agregar campo en tabla moviles:
-Numero Ploteado. ecd.
-Agregarlo en donde se cargan los moviles
+Agregar nro de ploteado en donde se cargan los moviles
 
 
 Hasta aca hice todos los cambios en el documentador. Falta generar todo, impactar cambios y tocar la logica del programa.
+
+Impacte los cambios, cree el abm de talleres y talleres categorias. Falta modificar los lugares de altas de ordenes y moviles.
 
 -----------------------------------------------------------------------------------------------------------------------------------
 

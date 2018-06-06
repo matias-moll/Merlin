@@ -14,7 +14,7 @@ namespace Mrln.Bel
     //----------------------------------------------------------------------------
     //                         TNG Software BEL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 15/05/2018 19:48
+    // Fecha                    : 06/06/2018 03:56
     // Sistema                  : Mrln
     // Clase para Administrar   : Moviles y Tablas Hijas
     //----------------------------------------------------------------------------
@@ -2438,6 +2438,7 @@ namespace Mrln.Bel
             l_drTemp["mov_rcd_modelo"]= XMLRuts.ExtractXAttr(l_xndData, "mov_rcd_modelo");
             l_drTemp["mov_nro_aniofabric"]= XMLRuts.ExtractXAttr(l_xndData, "mov_nro_aniofabric", 1);
             l_drTemp["mov_cd1_propio"]= XMLRuts.ExtractXAttr(l_xndData, "mov_cd1_propio");
+            l_drTemp["mov_ecd_nroploteado"]= XMLRuts.ExtractXAttr(l_xndData, "mov_ecd_nroploteado");
 
             // Llenamos los campos fijos
             XML2FixedFields(ref l_drTemp, l_xndData);
@@ -2502,6 +2503,7 @@ namespace Mrln.Bel
             l_drTemp["mov_rcd_modelo"]= "";
             l_drTemp["mov_nro_aniofabric"]= 1;
             l_drTemp["mov_cd1_propio"]= "";
+            l_drTemp["mov_ecd_nroploteado"]= "";
 
             // Agregamos la Row creada a la tabla creada y creamos
             // una entidad a partir de la DataTable de 1 registro
@@ -2522,6 +2524,7 @@ namespace Mrln.Bel
         /// <param name="p_strModelo">Modelo</param>
         /// <param name="p_iAniofabric">Año de fabricación</param>
         /// <param name="p_strPropio">Propio o no</param>
+        /// <param name="p_strNroploteado">Numero Ploteado</param>
         /// <returns>Entidad: Movil</returns>
         public static EMovil NewFilled(string p_strPatente,
                                        string p_strDes,
@@ -2530,7 +2533,8 @@ namespace Mrln.Bel
                                        string p_strNromotor,
                                        string p_strModelo,
                                        int p_iAniofabric,
-                                       string p_strPropio)
+                                       string p_strPropio,
+                                       string p_strNroploteado)
         {
             // Creamos una tabla compatible con la entidad
             DataTable l_dtTemp= new DataTable();
@@ -2548,6 +2552,7 @@ namespace Mrln.Bel
             l_drTemp["mov_rcd_modelo"]= p_strModelo;
             l_drTemp["mov_nro_aniofabric"]= p_iAniofabric;
             l_drTemp["mov_cd1_propio"]= p_strPropio;
+            l_drTemp["mov_ecd_nroploteado"]= p_strNroploteado;
 
             // Agregamos la Row creada a la tabla creada y creamos
             // una entidad a partir de la DataTable de 1 registro
@@ -2588,7 +2593,7 @@ namespace Mrln.Bel
         {
             get {
                 // Creamos el vector de DataColumns y lo llenamos
-                DataColumn[] l_dcStruct= new DataColumn[12];
+                DataColumn[] l_dcStruct= new DataColumn[13];
 
                 l_dcStruct[0]= new DataColumn("mov_ecd_patente", typeof(string));
                 l_dcStruct[1]= new DataColumn("mov_des_des", typeof(string));
@@ -2598,7 +2603,8 @@ namespace Mrln.Bel
                 l_dcStruct[5]= new DataColumn("mov_rcd_modelo", typeof(string));
                 l_dcStruct[6]= new DataColumn("mov_nro_aniofabric", typeof(int));
                 l_dcStruct[7]= new DataColumn("mov_cd1_propio", typeof(string));
-                EMovil.FillFixedFields(ref l_dcStruct, 8);
+                l_dcStruct[8]= new DataColumn("mov_ecd_nroploteado", typeof(string));
+                EMovil.FillFixedFields(ref l_dcStruct, 9);
 
                 // Devolvemos el vector creado
                 return l_dcStruct;
@@ -2754,6 +2760,26 @@ namespace Mrln.Bel
         }
 
         /// <summary>
+        /// Numero Ploteado
+        /// </summary>
+        public static string NroploteadoCmp
+        {
+           get {return "mov_ecd_nroploteado";}
+        }
+
+        /// <summary>
+        /// Numero Ploteado
+        /// </summary>
+        public string Nroploteado
+        {
+            get {return ((string) InternalData["mov_ecd_nroploteado"]).Trim();}
+            set {
+                if (value.Trim().Length > 8) value= value.Trim().Substring(0,8);
+                InternalData["mov_ecd_nroploteado"]= value.Trim();
+            }
+        }
+
+        /// <summary>
         /// Combustible en moviles
         /// </summary>
         public LEMovilesCombus MovilesCombus
@@ -2816,6 +2842,7 @@ namespace Mrln.Bel
                 l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "mov_rcd_modelo", Modelo));
                 l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "mov_nro_aniofabric", Aniofabric));
                 l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "mov_cd1_propio", Propio));
+                l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "mov_ecd_nroploteado", Nroploteado));
 
                 // Asignamos los campos fijos
                 FixedFields2XML(l_xdocData, ref l_xndEntidad);

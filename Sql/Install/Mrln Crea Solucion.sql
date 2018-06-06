@@ -1,7 +1,7 @@
 /*---------------------------------------------------------------------------
 //                   TNG Software (Scripts iniciales de la Base)
 //---------------------------------------------------------------------------
-// Fecha              : 20/04/2018 19:32
+// Fecha              : 06/06/2018 01:17
 // Base de Datos      : TNGS_Mrln
 // Objetivo           : Creación de los usuarios de la base
 //----------------------------------------------------------------------------
@@ -46,7 +46,7 @@ go
 /*---------------------------------------------------------------------------
 //                   TNG Software (Scripts iniciales de la Base)
 //---------------------------------------------------------------------------
-// Fecha              : 20/04/2018 19:32
+// Fecha              : 06/06/2018 01:17
 // Base de Datos      : TNGS_Mrln
 // Objetivo           : Creación de los tipos de datos
 //----------------------------------------------------------------------------
@@ -313,7 +313,7 @@ go
 /*---------------------------------------------------------------------------
 //                   TNG Software (Scripts iniciales de la Base)
 //---------------------------------------------------------------------------
-// Fecha              : 20/04/2018 19:32
+// Fecha              : 06/06/2018 01:17
 // Base de Datos      : TNGS_Mrln
 // Objetivo           : Creación de las funciones básicas
 //----------------------------------------------------------------------------
@@ -2036,7 +2036,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 21/04/2018 21:14
+// Fecha       : 06/06/2018 03:58
 // Sistema     : Mrln
 // Tabla       : Categorias
 //----------------------------------------------------------------------------
@@ -2573,7 +2573,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 21/04/2018 21:14
+// Fecha       : 06/06/2018 03:58
 // Sistema     : Mrln
 // Tabla       : Controles
 //----------------------------------------------------------------------------
@@ -3118,7 +3118,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 21/04/2018 21:14
+// Fecha       : 06/06/2018 03:58
 // Sistema     : Mrln
 // Tabla       : ControlesReparations
 //----------------------------------------------------------------------------
@@ -3937,7 +3937,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 21/04/2018 21:14
+// Fecha       : 06/06/2018 03:58
 // Sistema     : Mrln
 // Tabla       : Encargados
 //----------------------------------------------------------------------------
@@ -4472,7 +4472,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 21/04/2018 21:14
+// Fecha       : 06/06/2018 03:58
 // Sistema     : Mrln
 // Tabla       : Equipamiento
 //----------------------------------------------------------------------------
@@ -5017,7 +5017,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 21/04/2018 21:14
+// Fecha       : 06/06/2018 03:58
 // Sistema     : Mrln
 // Tabla       : Estaciones
 //----------------------------------------------------------------------------
@@ -5582,7 +5582,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 21/04/2018 21:14
+// Fecha       : 06/06/2018 03:58
 // Sistema     : Mrln
 // Tabla       : Estados
 //----------------------------------------------------------------------------
@@ -6137,7 +6137,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 21/04/2018 21:14
+// Fecha       : 06/06/2018 03:58
 // Sistema     : Mrln
 // Tabla       : Marcas
 //----------------------------------------------------------------------------
@@ -6672,7 +6672,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 21/04/2018 21:14
+// Fecha       : 06/06/2018 03:58
 // Sistema     : Mrln
 // Tabla       : Modelos
 //----------------------------------------------------------------------------
@@ -7217,7 +7217,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 21/04/2018 21:14
+// Fecha       : 06/06/2018 03:58
 // Sistema     : Mrln
 // Tabla       : Moviles
 //----------------------------------------------------------------------------
@@ -7276,6 +7276,7 @@ begin
                 mov_rcd_modelo,
                 mov_nro_aniofabric,
                 mov_cd1_propio,
+                mov_ecd_nroploteado,
                 TNGS_Mrln..Moviles.instante,
                 TNGS_Mrln..Moviles.deleted,
                 TNGS_Mrln..Moviles.usuario,
@@ -7294,6 +7295,7 @@ begin
                 mov_rcd_modelo,
                 mov_nro_aniofabric,
                 mov_cd1_propio,
+                mov_ecd_nroploteado,
                 TNGS_Mrln..Moviles.instante,
                 TNGS_Mrln..Moviles.deleted,
                 TNGS_Mrln..Moviles.usuario,
@@ -7401,6 +7403,7 @@ begin
                 mov_rcd_modelo,
                 mov_nro_aniofabric,
                 mov_cd1_propio,
+                mov_ecd_nroploteado,
                 TNGS_Mrln..Moviles.instante,
                 TNGS_Mrln..Moviles.deleted,
                 TNGS_Mrln..Moviles.usuario,
@@ -7419,6 +7422,7 @@ begin
                 mov_rcd_modelo,
                 mov_nro_aniofabric,
                 mov_cd1_propio,
+                mov_ecd_nroploteado,
                 TNGS_Mrln..Moviles.instante,
                 TNGS_Mrln..Moviles.deleted,
                 TNGS_Mrln..Moviles.usuario,
@@ -7452,6 +7456,7 @@ go
 --- <param name="@mov_rcd_modelo">Modelo</param>
 --- <param name="@mov_nro_aniofabric">Año de fabricación</param>
 --- <param name="@mov_cd1_propio">Propio o no</param>
+--- <param name="@mov_ecd_nroploteado">Numero Ploteado</param>
 --- <param name="@usuario">Usuario que genera el insert</param>
 ---
 ---////////////////////////////////////////////////////////
@@ -7478,6 +7483,7 @@ create procedure dbo.MOVILES_INSERT
 @mov_rcd_modelo tngs_codigo_r,
 @mov_nro_aniofabric tngs_numero,
 @mov_cd1_propio tngs_codigo_1,
+@mov_ecd_nroploteado tngs_codigo_e,
 @usuario tngs_nombre
 )
 as
@@ -7493,6 +7499,7 @@ begin
            @mov_rcd_modelo,
            @mov_nro_aniofabric,
            @mov_cd1_propio,
+           @mov_ecd_nroploteado,
            getdate(), 0, @usuario, 1
           )
 
@@ -7521,6 +7528,7 @@ go
 --- <param name="@mov_rcd_modelo">Modelo</param>
 --- <param name="@mov_nro_aniofabric">Año de fabricación</param>
 --- <param name="@mov_cd1_propio">Propio o no</param>
+--- <param name="@mov_ecd_nroploteado">Numero Ploteado</param>
 --- <param name="@usuario">Usuario que genera el update</param>
 ---
 ---////////////////////////////////////////////////////////
@@ -7547,6 +7555,7 @@ create procedure dbo.MOVILES_UPDATE
 @mov_rcd_modelo tngs_codigo_r,
 @mov_nro_aniofabric tngs_numero,
 @mov_cd1_propio tngs_codigo_1,
+@mov_ecd_nroploteado tngs_codigo_e,
 @usuario tngs_nombre
 )
 as
@@ -7560,6 +7569,7 @@ begin
           mov_rcd_modelo= @mov_rcd_modelo,
           mov_nro_aniofabric= @mov_nro_aniofabric,
           mov_cd1_propio= @mov_cd1_propio,
+          mov_ecd_nroploteado= @mov_ecd_nroploteado,
           version = ((version+1) % 32767),
           instante= getdate(),
           usuario = @usuario
@@ -7817,7 +7827,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 21/04/2018 21:14
+// Fecha       : 06/06/2018 03:58
 // Sistema     : Mrln
 // Tabla       : MvlCombustible
 //----------------------------------------------------------------------------
@@ -8695,7 +8705,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 21/04/2018 21:14
+// Fecha       : 06/06/2018 03:58
 // Sistema     : Mrln
 // Tabla       : MvlEquipamiento
 //----------------------------------------------------------------------------
@@ -9609,7 +9619,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 21/04/2018 21:14
+// Fecha       : 06/06/2018 03:58
 // Sistema     : Mrln
 // Tabla       : MvlEstados
 //----------------------------------------------------------------------------
@@ -10474,7 +10484,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 21/04/2018 21:14
+// Fecha       : 06/06/2018 03:58
 // Sistema     : Mrln
 // Tabla       : MvlKilometros
 //----------------------------------------------------------------------------
@@ -11364,7 +11374,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 21/04/2018 21:14
+// Fecha       : 06/06/2018 03:58
 // Sistema     : Mrln
 // Tabla       : OrdenesTrabajo
 //----------------------------------------------------------------------------
@@ -11421,6 +11431,7 @@ begin
                 odt_nom_operador,
                 odt_fyh_feccierre,
                 odt_cod_encargado,
+                odt_cod_codtaller,
                 TNGS_Mrln..OrdenesTrabajo.instante,
                 TNGS_Mrln..OrdenesTrabajo.deleted,
                 TNGS_Mrln..OrdenesTrabajo.usuario,
@@ -11437,6 +11448,7 @@ begin
                 odt_nom_operador,
                 odt_fyh_feccierre,
                 odt_cod_encargado,
+                odt_cod_codtaller,
                 TNGS_Mrln..OrdenesTrabajo.instante,
                 TNGS_Mrln..OrdenesTrabajo.deleted,
                 TNGS_Mrln..OrdenesTrabajo.usuario,
@@ -11542,6 +11554,7 @@ begin
                 odt_nom_operador,
                 odt_fyh_feccierre,
                 odt_cod_encargado,
+                odt_cod_codtaller,
                 TNGS_Mrln..OrdenesTrabajo.instante,
                 TNGS_Mrln..OrdenesTrabajo.deleted,
                 TNGS_Mrln..OrdenesTrabajo.usuario,
@@ -11558,6 +11571,7 @@ begin
                 odt_nom_operador,
                 odt_fyh_feccierre,
                 odt_cod_encargado,
+                odt_cod_codtaller,
                 TNGS_Mrln..OrdenesTrabajo.instante,
                 TNGS_Mrln..OrdenesTrabajo.deleted,
                 TNGS_Mrln..OrdenesTrabajo.usuario,
@@ -11589,6 +11603,7 @@ go
 --- <param name="@odt_nom_operador">Operador</param>
 --- <param name="@odt_fyh_feccierre">Fecha de cierre.</param>
 --- <param name="@odt_cod_encargado">Encargado</param>
+--- <param name="@odt_cod_codtaller">Taller</param>
 --- <param name="@usuario">Usuario que genera el insert</param>
 ---
 ---////////////////////////////////////////////////////////
@@ -11613,6 +11628,7 @@ create procedure dbo.ORDENESTRABAJO_INSERT
 @odt_nom_operador tngs_nombre,
 @odt_fyh_feccierre tngs_fecyhor,
 @odt_cod_encargado tngs_codigo,
+@odt_cod_codtaller tngs_codigo,
 @usuario tngs_nombre
 )
 as
@@ -11626,6 +11642,7 @@ begin
            @odt_nom_operador,
            @odt_fyh_feccierre,
            @odt_cod_encargado,
+           @odt_cod_codtaller,
            getdate(), 0, @usuario, 1
           )
 
@@ -11652,6 +11669,7 @@ go
 --- <param name="@odt_nom_operador">Operador</param>
 --- <param name="@odt_fyh_feccierre">Fecha de cierre.</param>
 --- <param name="@odt_cod_encargado">Encargado</param>
+--- <param name="@odt_cod_codtaller">Taller</param>
 --- <param name="@usuario">Usuario que genera el update</param>
 ---
 ---////////////////////////////////////////////////////////
@@ -11676,6 +11694,7 @@ create procedure dbo.ORDENESTRABAJO_UPDATE
 @odt_nom_operador tngs_nombre,
 @odt_fyh_feccierre tngs_fecyhor,
 @odt_cod_encargado tngs_codigo,
+@odt_cod_codtaller tngs_codigo,
 @usuario tngs_nombre
 )
 as
@@ -11687,6 +11706,7 @@ begin
           odt_nom_operador= @odt_nom_operador,
           odt_fyh_feccierre= @odt_fyh_feccierre,
           odt_cod_encargado= @odt_cod_encargado,
+          odt_cod_codtaller= @odt_cod_codtaller,
           version = ((version+1) % 32767),
           instante= getdate(),
           usuario = @usuario
@@ -11926,6 +11946,7 @@ begin
           odt_nom_operador,
           odt_fyh_feccierre,
           odt_cod_encargado,
+          odt_cod_codtaller,
           TNGS_Mrln..OrdenesTrabajo.instante,
           TNGS_Mrln..OrdenesTrabajo.deleted,
           TNGS_Mrln..OrdenesTrabajo.usuario,
@@ -11951,7 +11972,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 21/04/2018 21:14
+// Fecha       : 06/06/2018 03:58
 // Sistema     : Mrln
 // Tabla       : OtItems
 //----------------------------------------------------------------------------
@@ -12832,7 +12853,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 21/04/2018 21:14
+// Fecha       : 06/06/2018 03:58
 // Sistema     : Mrln
 // Tabla       : Parametros
 //----------------------------------------------------------------------------
@@ -13364,7 +13385,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 21/04/2018 21:14
+// Fecha       : 06/06/2018 03:58
 // Sistema     : Mrln
 // Tabla       : Reparaciones
 //----------------------------------------------------------------------------
@@ -13922,7 +13943,1346 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 21/04/2018 21:14
+// Fecha       : 06/06/2018 03:58
+// Sistema     : Mrln
+// Tabla       : Taller
+//----------------------------------------------------------------------------
+// © 1999-2018 by TNG Software                                      Gndr 5.20
+//---------------------------------------------------------------------------*/
+
+/* ***************************************************************************
+/  Atencion!!!
+/     Este archivo fue generado por un programa en forma automática. Cualquier
+/     modificación que se realize sobre él se perderá en la próxima
+/     regeneración.
+/  **************************************************************************/
+
+/*-------------------------------------------------*/
+/* Selecciono la base en la que se crearan los SPs */
+/*-------------------------------------------------*/
+
+use TNGS_Mrln
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Levanta todos los registros de una tabla
+--- </summary>
+--- <param name="@onlyactive">Flag de SoloActivos</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.TALLER_UP'
+
+if exists (select * from sysobjects where id = object_id('dbo.TALLER_UP'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.TALLER_UP
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.TALLER_UP
+(
+@onlyactive tngs_valor
+)
+as
+begin
+
+   if @onlyactive = 1
+      begin
+         Select tll_cod_codigo,
+                tll_ede_descripcion,
+                tll_xde_direccion,
+                tll_tel_telefono,
+                tll_ede_contacto,
+                TNGS_Mrln..Taller.instante,
+                TNGS_Mrln..Taller.deleted,
+                TNGS_Mrln..Taller.usuario,
+                TNGS_Mrln..Taller.version
+           from TNGS_Mrln..Taller
+          where deleted = 0
+          order by tll_cod_codigo
+      end
+   else
+      begin
+         Select tll_cod_codigo,
+                tll_ede_descripcion,
+                tll_xde_direccion,
+                tll_tel_telefono,
+                tll_ede_contacto,
+                TNGS_Mrln..Taller.instante,
+                TNGS_Mrln..Taller.deleted,
+                TNGS_Mrln..Taller.usuario,
+                TNGS_Mrln..Taller.version
+           from TNGS_Mrln..Taller
+          order by tll_cod_codigo
+      end
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.TALLER_UP to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Verifica el número de versión de un registro
+--- </summary>
+--- <param name="@tll_cod_codigo">Codigo</param>
+--- <param name="@version">Número de version a verificar</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.TALLER_CHKVERSION'
+
+if exists (select * from sysobjects where id = object_id('dbo.TALLER_CHKVERSION'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.TALLER_CHKVERSION
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.TALLER_CHKVERSION
+(
+@tll_cod_codigo tngs_codigo,
+@version tngs_numero
+)
+as
+begin
+
+   Select count(*) as cantidad
+     from TNGS_Mrln..Taller
+    where tll_cod_codigo = @tll_cod_codigo
+      and version = @version
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.TALLER_CHKVERSION to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Busca el registro de una clave
+--- </summary>
+--- <param name="@tll_cod_codigo">Codigo</param>
+--- <param name="@onlyactive">Flag de SoloActivos</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.TALLER_SEARCH'
+
+if exists (select * from sysobjects where id = object_id('dbo.TALLER_SEARCH'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.TALLER_SEARCH
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.TALLER_SEARCH
+(
+@tll_cod_codigo tngs_codigo,
+@onlyactive tngs_valor
+)
+as
+begin
+
+   if @onlyactive = 1
+      begin
+         Select tll_cod_codigo,
+                tll_ede_descripcion,
+                tll_xde_direccion,
+                tll_tel_telefono,
+                tll_ede_contacto,
+                TNGS_Mrln..Taller.instante,
+                TNGS_Mrln..Taller.deleted,
+                TNGS_Mrln..Taller.usuario,
+                TNGS_Mrln..Taller.version
+           from TNGS_Mrln..Taller
+          where tll_cod_codigo = @tll_cod_codigo
+            and deleted = 0
+      end
+   else
+      begin
+         Select tll_cod_codigo,
+                tll_ede_descripcion,
+                tll_xde_direccion,
+                tll_tel_telefono,
+                tll_ede_contacto,
+                TNGS_Mrln..Taller.instante,
+                TNGS_Mrln..Taller.deleted,
+                TNGS_Mrln..Taller.usuario,
+                TNGS_Mrln..Taller.version
+           from TNGS_Mrln..Taller
+          where tll_cod_codigo = @tll_cod_codigo
+      end
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.TALLER_SEARCH to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Busca la clave máxima de la tabla
+--- </summary>
+--- <param name="@reservado">Reservado para futuras expansiones</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.TALLER_GETMAXKEY'
+
+if exists (select * from sysobjects where id = object_id('dbo.TALLER_GETMAXKEY'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.TALLER_GETMAXKEY
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.TALLER_GETMAXKEY
+(
+@dummy tngs_codigo_1
+)
+as
+begin
+
+   Select isnull(max(tll_cod_codigo), '0') as tll_cod_codigo
+     from TNGS_Mrln..Taller
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.TALLER_GETMAXKEY to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Inserta un registro en la tabla
+--- </summary>
+--- <param name="@tll_cod_codigo">Codigo</param>
+--- <param name="@tll_ede_descripcion">Descripcion</param>
+--- <param name="@tll_xde_direccion">Direccion</param>
+--- <param name="@tll_tel_telefono">Telefono</param>
+--- <param name="@tll_ede_contacto">Contacto</param>
+--- <param name="@usuario">Usuario que genera el insert</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.TALLER_INSERT'
+
+if exists (select * from sysobjects where id = object_id('dbo.TALLER_INSERT'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.TALLER_INSERT
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.TALLER_INSERT
+(
+@tll_cod_codigo tngs_codigo,
+@tll_ede_descripcion tngs_descripcion_e,
+@tll_xde_direccion tngs_descripcion_x,
+@tll_tel_telefono tngs_telefono,
+@tll_ede_contacto tngs_descripcion_e,
+@usuario tngs_nombre
+)
+as
+begin
+
+   Insert into TNGS_Mrln..Taller
+   values (
+           @tll_cod_codigo,
+           @tll_ede_descripcion,
+           @tll_xde_direccion,
+           @tll_tel_telefono,
+           @tll_ede_contacto,
+           getdate(), 0, @usuario, 1
+          )
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.TALLER_INSERT to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Actualiza un registro de la tabla
+--- </summary>
+--- <param name="@tll_cod_codigo">Codigo</param>
+--- <param name="@tll_ede_descripcion">Descripcion</param>
+--- <param name="@tll_xde_direccion">Direccion</param>
+--- <param name="@tll_tel_telefono">Telefono</param>
+--- <param name="@tll_ede_contacto">Contacto</param>
+--- <param name="@usuario">Usuario que genera el update</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.TALLER_UPDATE'
+
+if exists (select * from sysobjects where id = object_id('dbo.TALLER_UPDATE'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.TALLER_UPDATE
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.TALLER_UPDATE
+(
+@tll_cod_codigo tngs_codigo,
+@tll_ede_descripcion tngs_descripcion_e,
+@tll_xde_direccion tngs_descripcion_x,
+@tll_tel_telefono tngs_telefono,
+@tll_ede_contacto tngs_descripcion_e,
+@usuario tngs_nombre
+)
+as
+begin
+
+   Update TNGS_Mrln..Taller
+      set tll_ede_descripcion= @tll_ede_descripcion,
+          tll_xde_direccion= @tll_xde_direccion,
+          tll_tel_telefono= @tll_tel_telefono,
+          tll_ede_contacto= @tll_ede_contacto,
+          version = ((version+1) % 32767),
+          instante= getdate(),
+          usuario = @usuario
+    where tll_cod_codigo = @tll_cod_codigo
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.TALLER_UPDATE to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Borra lógicamente un registro
+--- </summary>
+--- <param name="@tll_cod_codigo">Codigo</param>
+--- <param name="@usuario">Usuario que realiza el delete</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.TALLER_DELETE'
+
+if exists (select * from sysobjects where id = object_id('dbo.TALLER_DELETE'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.TALLER_DELETE
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.TALLER_DELETE
+(
+@tll_cod_codigo tngs_codigo,
+@usuario tngs_nombre
+)
+as
+begin
+
+   Update TNGS_Mrln..Taller
+      set deleted = 1,
+          version = ((version+1) % 32767),
+          instante= getdate(),
+          usuario = @usuario
+    where tll_cod_codigo = @tll_cod_codigo
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.TALLER_DELETE to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Recupera un registro
+--- </summary>
+--- <param name="@tll_cod_codigo">Codigo</param>
+--- <param name="@usuario">Usuario que realiza el recall</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.TALLER_RECALL'
+
+if exists (select * from sysobjects where id = object_id('dbo.TALLER_RECALL'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.TALLER_RECALL
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.TALLER_RECALL
+(
+@tll_cod_codigo tngs_codigo,
+@usuario tngs_nombre
+)
+as
+begin
+
+   Update TNGS_Mrln..Taller
+      set deleted = 0,
+          version = ((version+1) % 32767),
+          instante= getdate(),
+          usuario = @usuario
+    where tll_cod_codigo = @tll_cod_codigo
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.TALLER_RECALL to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Borra físicamente un registro
+--- </summary>
+--- <param name="@tll_cod_codigo">Codigo</param>
+--- <param name="@usuario">Usuario que realiza el drop</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.TALLER_DROP'
+
+if exists (select * from sysobjects where id = object_id('dbo.TALLER_DROP'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.TALLER_DROP
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.TALLER_DROP
+(
+@tll_cod_codigo tngs_codigo,
+@usuario tngs_nombre
+)
+as
+begin
+
+   Delete from TNGS_Mrln..Taller
+    where tll_cod_codigo = @tll_cod_codigo
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.TALLER_DROP to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Borra físicamente los registros borrados lógicamente
+--- </summary>
+--- <param name="@usuario">Usuario que realiza el delete</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.TALLER_PACK'
+
+if exists (select * from sysobjects where id = object_id('dbo.TALLER_PACK'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.TALLER_PACK
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.TALLER_PACK
+(
+@usuario tngs_nombre
+)
+as
+begin
+
+   Delete TNGS_Mrln..Taller
+    where deleted = 1
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.TALLER_PACK to tngsmodulos
+
+print ' '
+go
+
+/*--------------------------------------------------------------------------
+// Fin del script de creacion de los SP de la tabla: Taller
+//--------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------
+//                         TNG Software SPs Generator
+//----------------------------------------------------------------------------
+// Fecha       : 06/06/2018 03:58
+// Sistema     : Mrln
+// Tabla       : TallerCategoria
+//----------------------------------------------------------------------------
+// © 1999-2018 by TNG Software                                      Gndr 5.20
+//---------------------------------------------------------------------------*/
+
+/* ***************************************************************************
+/  Atencion!!!
+/     Este archivo fue generado por un programa en forma automática. Cualquier
+/     modificación que se realize sobre él se perderá en la próxima
+/     regeneración.
+/  **************************************************************************/
+
+/*-------------------------------------------------*/
+/* Selecciono la base en la que se crearan los SPs */
+/*-------------------------------------------------*/
+
+use TNGS_Mrln
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Levanta todos los registros de una tabla
+--- </summary>
+--- <param name="@onlyactive">Flag de SoloActivos</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.TALLERCATEGORIA_UP'
+
+if exists (select * from sysobjects where id = object_id('dbo.TALLERCATEGORIA_UP'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.TALLERCATEGORIA_UP
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.TALLERCATEGORIA_UP
+(
+@onlyactive tngs_valor
+)
+as
+begin
+
+   if @onlyactive = 1
+      begin
+         Select tct_cod_codigotaller,
+                tll_ede_descripcion as ctl_taller,
+                tct_rcd_codigocategoria,
+                cat_des_des as tlc_categoria,
+                TNGS_Mrln..TallerCategoria.instante,
+                TNGS_Mrln..TallerCategoria.deleted,
+                TNGS_Mrln..TallerCategoria.usuario,
+                TNGS_Mrln..TallerCategoria.version
+           from TNGS_Mrln..TallerCategoria
+                join TNGS_Mrln..Taller
+                  on tct_cod_codigotaller = tll_cod_codigo
+                join TNGS_Mrln..Categorias
+                  on tct_rcd_codigocategoria = cat_rcd_cod
+          where TNGS_Mrln..TallerCategoria.deleted = 0
+          order by tct_cod_codigotaller,
+                tct_rcd_codigocategoria
+      end
+   else
+      begin
+         Select tct_cod_codigotaller,
+                tll_ede_descripcion as ctl_taller,
+                tct_rcd_codigocategoria,
+                cat_des_des as tlc_categoria,
+                TNGS_Mrln..TallerCategoria.instante,
+                TNGS_Mrln..TallerCategoria.deleted,
+                TNGS_Mrln..TallerCategoria.usuario,
+                TNGS_Mrln..TallerCategoria.version
+           from TNGS_Mrln..TallerCategoria
+                join TNGS_Mrln..Taller
+                  on tct_cod_codigotaller = tll_cod_codigo
+                join TNGS_Mrln..Categorias
+                  on tct_rcd_codigocategoria = cat_rcd_cod
+          order by tct_cod_codigotaller,
+                tct_rcd_codigocategoria
+      end
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.TALLERCATEGORIA_UP to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Verifica el número de versión de un registro
+--- </summary>
+--- <param name="@tct_cod_codigotaller">Codigo Taller</param>
+--- <param name="@tct_rcd_codigocategoria">Codigo Categoria</param>
+--- <param name="@version">Número de version a verificar</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.TALLERCATEGORIA_CHKVERSION'
+
+if exists (select * from sysobjects where id = object_id('dbo.TALLERCATEGORIA_CHKVERSION'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.TALLERCATEGORIA_CHKVERSION
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.TALLERCATEGORIA_CHKVERSION
+(
+@tct_cod_codigotaller tngs_codigo,
+@tct_rcd_codigocategoria tngs_codigo_r,
+@version tngs_numero
+)
+as
+begin
+
+   Select count(*) as cantidad
+     from TNGS_Mrln..TallerCategoria
+    where tct_cod_codigotaller = @tct_cod_codigotaller
+      and tct_rcd_codigocategoria = @tct_rcd_codigocategoria
+      and version = @version
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.TALLERCATEGORIA_CHKVERSION to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Busca el registro de una clave
+--- </summary>
+--- <param name="@tct_cod_codigotaller">Codigo Taller</param>
+--- <param name="@tct_rcd_codigocategoria">Codigo Categoria</param>
+--- <param name="@onlyactive">Flag de SoloActivos</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.TALLERCATEGORIA_SEARCH'
+
+if exists (select * from sysobjects where id = object_id('dbo.TALLERCATEGORIA_SEARCH'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.TALLERCATEGORIA_SEARCH
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.TALLERCATEGORIA_SEARCH
+(
+@tct_cod_codigotaller tngs_codigo,
+@tct_rcd_codigocategoria tngs_codigo_r,
+@onlyactive tngs_valor
+)
+as
+begin
+
+   if @onlyactive = 1
+      begin
+         Select tct_cod_codigotaller,
+                tll_ede_descripcion as ctl_taller,
+                tct_rcd_codigocategoria,
+                cat_des_des as tlc_categoria,
+                TNGS_Mrln..TallerCategoria.instante,
+                TNGS_Mrln..TallerCategoria.deleted,
+                TNGS_Mrln..TallerCategoria.usuario,
+                TNGS_Mrln..TallerCategoria.version
+           from TNGS_Mrln..TallerCategoria
+                join TNGS_Mrln..Taller
+                  on tct_cod_codigotaller = tll_cod_codigo
+                join TNGS_Mrln..Categorias
+                  on tct_rcd_codigocategoria = cat_rcd_cod
+          where tct_cod_codigotaller = @tct_cod_codigotaller
+            and tct_rcd_codigocategoria = @tct_rcd_codigocategoria
+            and TNGS_Mrln..TallerCategoria.deleted = 0
+      end
+   else
+      begin
+         Select tct_cod_codigotaller,
+                tll_ede_descripcion as ctl_taller,
+                tct_rcd_codigocategoria,
+                cat_des_des as tlc_categoria,
+                TNGS_Mrln..TallerCategoria.instante,
+                TNGS_Mrln..TallerCategoria.deleted,
+                TNGS_Mrln..TallerCategoria.usuario,
+                TNGS_Mrln..TallerCategoria.version
+           from TNGS_Mrln..TallerCategoria
+                join TNGS_Mrln..Taller
+                  on tct_cod_codigotaller = tll_cod_codigo
+                join TNGS_Mrln..Categorias
+                  on tct_rcd_codigocategoria = cat_rcd_cod
+          where tct_cod_codigotaller = @tct_cod_codigotaller
+            and tct_rcd_codigocategoria = @tct_rcd_codigocategoria
+      end
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.TALLERCATEGORIA_SEARCH to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Busca los registros de una clave foranea
+--- </summary>
+--- <param name="@tct_cod_codigotaller">Codigo Taller</param>
+--- <param name="@onlyactive">Flag de SoloActivos</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.TALLERCATEGORIA_FSEARCH'
+
+if exists (select * from sysobjects where id = object_id('dbo.TALLERCATEGORIA_FSEARCH'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.TALLERCATEGORIA_FSEARCH
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.TALLERCATEGORIA_FSEARCH
+(
+@tct_cod_codigotaller tngs_codigo,
+@onlyactive tngs_valor
+)
+as
+begin
+
+   if @onlyactive = 1
+      begin
+         Select tct_cod_codigotaller,
+                tll_ede_descripcion as ctl_taller,
+                tct_rcd_codigocategoria,
+                cat_des_des as tlc_categoria,
+                TNGS_Mrln..TallerCategoria.instante,
+                TNGS_Mrln..TallerCategoria.deleted,
+                TNGS_Mrln..TallerCategoria.usuario,
+                TNGS_Mrln..TallerCategoria.version
+           from TNGS_Mrln..TallerCategoria
+                join TNGS_Mrln..Taller
+                  on tct_cod_codigotaller = tll_cod_codigo
+                join TNGS_Mrln..Categorias
+                  on tct_rcd_codigocategoria = cat_rcd_cod
+          where tct_cod_codigotaller = @tct_cod_codigotaller
+            and TNGS_Mrln..TallerCategoria.deleted = 0
+          order by tct_rcd_codigocategoria
+      end
+   else
+      begin
+         Select tct_cod_codigotaller,
+                tll_ede_descripcion as ctl_taller,
+                tct_rcd_codigocategoria,
+                cat_des_des as tlc_categoria,
+                TNGS_Mrln..TallerCategoria.instante,
+                TNGS_Mrln..TallerCategoria.deleted,
+                TNGS_Mrln..TallerCategoria.usuario,
+                TNGS_Mrln..TallerCategoria.version
+           from TNGS_Mrln..TallerCategoria
+                join TNGS_Mrln..Taller
+                  on tct_cod_codigotaller = tll_cod_codigo
+                join TNGS_Mrln..Categorias
+                  on tct_rcd_codigocategoria = cat_rcd_cod
+          where tct_cod_codigotaller = @tct_cod_codigotaller
+          order by tct_rcd_codigocategoria
+      end
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.TALLERCATEGORIA_FSEARCH to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Inserta un registro en la tabla
+--- </summary>
+--- <param name="@tct_cod_codigotaller">Codigo Taller</param>
+--- <param name="@tct_rcd_codigocategoria">Codigo Categoria</param>
+--- <param name="@usuario">Usuario que genera el insert</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.TALLERCATEGORIA_INSERT'
+
+if exists (select * from sysobjects where id = object_id('dbo.TALLERCATEGORIA_INSERT'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.TALLERCATEGORIA_INSERT
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.TALLERCATEGORIA_INSERT
+(
+@tct_cod_codigotaller tngs_codigo,
+@tct_rcd_codigocategoria tngs_codigo_r,
+@usuario tngs_nombre
+)
+as
+begin
+
+   Insert into TNGS_Mrln..TallerCategoria
+   values (
+           @tct_cod_codigotaller,
+           @tct_rcd_codigocategoria,
+           getdate(), 0, @usuario, 1
+          )
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.TALLERCATEGORIA_INSERT to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Borra lógicamente un registro
+--- </summary>
+--- <param name="@tct_cod_codigotaller">Codigo Taller</param>
+--- <param name="@tct_rcd_codigocategoria">Codigo Categoria</param>
+--- <param name="@usuario">Usuario que realiza el delete</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.TALLERCATEGORIA_DELETE'
+
+if exists (select * from sysobjects where id = object_id('dbo.TALLERCATEGORIA_DELETE'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.TALLERCATEGORIA_DELETE
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.TALLERCATEGORIA_DELETE
+(
+@tct_cod_codigotaller tngs_codigo,
+@tct_rcd_codigocategoria tngs_codigo_r,
+@usuario tngs_nombre
+)
+as
+begin
+
+   Update TNGS_Mrln..TallerCategoria
+      set deleted = 1,
+          version = ((version+1) % 32767),
+          instante= getdate(),
+          usuario = @usuario
+    where tct_cod_codigotaller = @tct_cod_codigotaller
+      and tct_rcd_codigocategoria = @tct_rcd_codigocategoria
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.TALLERCATEGORIA_DELETE to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Borra lógicamente un registro por clave foranea
+--- </summary>
+--- <param name="@tct_cod_codigotaller">Codigo Taller</param>
+--- <param name="@instante">Instante del delete</param>
+--- <param name="@usuario">Usuario que realiza el delete</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.TALLERCATEGORIA_FDELETE'
+
+if exists (select * from sysobjects where id = object_id('dbo.TALLERCATEGORIA_FDELETE'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.TALLERCATEGORIA_FDELETE
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.TALLERCATEGORIA_FDELETE
+(
+@tct_cod_codigotaller tngs_codigo,
+@instante tngs_fecyhor,
+@usuario tngs_nombre
+)
+as
+begin
+
+   if datepart(yyyy, @instante) = 1900
+      begin
+         select @instante= getdate()
+      end
+
+   Update TNGS_Mrln..TallerCategoria
+      set deleted = 1,
+          version = ((version+1) % 32767),
+          instante= @instante,
+          usuario = @usuario
+    where tct_cod_codigotaller = @tct_cod_codigotaller
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.TALLERCATEGORIA_FDELETE to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Recupera un registro
+--- </summary>
+--- <param name="@tct_cod_codigotaller">Codigo Taller</param>
+--- <param name="@tct_rcd_codigocategoria">Codigo Categoria</param>
+--- <param name="@usuario">Usuario que realiza el recall</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.TALLERCATEGORIA_RECALL'
+
+if exists (select * from sysobjects where id = object_id('dbo.TALLERCATEGORIA_RECALL'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.TALLERCATEGORIA_RECALL
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.TALLERCATEGORIA_RECALL
+(
+@tct_cod_codigotaller tngs_codigo,
+@tct_rcd_codigocategoria tngs_codigo_r,
+@usuario tngs_nombre
+)
+as
+begin
+
+   Update TNGS_Mrln..TallerCategoria
+      set deleted = 0,
+          version = ((version+1) % 32767),
+          instante= getdate(),
+          usuario = @usuario
+    where tct_cod_codigotaller = @tct_cod_codigotaller
+      and tct_rcd_codigocategoria = @tct_rcd_codigocategoria
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.TALLERCATEGORIA_RECALL to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Recupera lógicamente los registros de una clave foranea
+--- </summary>
+--- <param name="@tct_cod_codigotaller">Codigo Taller</param>
+--- <param name="@instante">Instante de referencia</param>
+--- <param name="@usuario">Usuario que realiza el recall</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.TALLERCATEGORIA_FRECALL'
+
+if exists (select * from sysobjects where id = object_id('dbo.TALLERCATEGORIA_FRECALL'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.TALLERCATEGORIA_FRECALL
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.TALLERCATEGORIA_FRECALL
+(
+@tct_cod_codigotaller tngs_codigo,
+@instante tngs_fecyhor,
+@usuario tngs_nombre
+)
+as
+begin
+
+   if datepart(yyyy, @instante) = 1900
+      begin
+         Update TNGS_Mrln..TallerCategoria
+            set deleted = 0,
+                version = ((version+1) % 32767),
+                instante= getdate(),
+                usuario = @usuario
+          where tct_cod_codigotaller = @tct_cod_codigotaller
+      end
+   else
+      begin
+         Update TNGS_Mrln..TallerCategoria
+            set deleted = 0,
+                version = ((version+1) % 32767),
+                instante= getdate(),
+                usuario = @usuario
+          where tct_cod_codigotaller = @tct_cod_codigotaller
+            and instante= @instante
+      end
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.TALLERCATEGORIA_FRECALL to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Borra físicamente un registro
+--- </summary>
+--- <param name="@tct_cod_codigotaller">Codigo Taller</param>
+--- <param name="@tct_rcd_codigocategoria">Codigo Categoria</param>
+--- <param name="@usuario">Usuario que realiza el drop</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.TALLERCATEGORIA_DROP'
+
+if exists (select * from sysobjects where id = object_id('dbo.TALLERCATEGORIA_DROP'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.TALLERCATEGORIA_DROP
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.TALLERCATEGORIA_DROP
+(
+@tct_cod_codigotaller tngs_codigo,
+@tct_rcd_codigocategoria tngs_codigo_r,
+@usuario tngs_nombre
+)
+as
+begin
+
+   Delete from TNGS_Mrln..TallerCategoria
+    where tct_cod_codigotaller = @tct_cod_codigotaller
+      and tct_rcd_codigocategoria = @tct_rcd_codigocategoria
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.TALLERCATEGORIA_DROP to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Borra físicamente un registro por clave foránea
+--- </summary>
+--- <param name="@tct_cod_codigotaller">Codigo Taller</param>
+--- <param name="@usuario">Usuario que realiza el drop</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.TALLERCATEGORIA_FDROP'
+
+if exists (select * from sysobjects where id = object_id('dbo.TALLERCATEGORIA_FDROP'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.TALLERCATEGORIA_FDROP
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.TALLERCATEGORIA_FDROP
+(
+@tct_cod_codigotaller tngs_codigo,
+@usuario tngs_nombre
+)
+as
+begin
+
+   Delete from TNGS_Mrln..TallerCategoria
+    where tct_cod_codigotaller = @tct_cod_codigotaller
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.TALLERCATEGORIA_FDROP to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Borra físicamente los registros borrados lógicamente
+--- </summary>
+--- <param name="@usuario">Usuario que realiza el delete</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.TALLERCATEGORIA_PACK'
+
+if exists (select * from sysobjects where id = object_id('dbo.TALLERCATEGORIA_PACK'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.TALLERCATEGORIA_PACK
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.TALLERCATEGORIA_PACK
+(
+@usuario tngs_nombre
+)
+as
+begin
+
+   Delete TNGS_Mrln..TallerCategoria
+    where deleted = 1
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.TALLERCATEGORIA_PACK to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Borra físicamente los registro borrados lógicamente por clave foránea
+--- </summary>
+--- <param name="@tct_cod_codigotaller">Codigo Taller</param>
+--- <param name="@usuario">Usuario que realiza el pack</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.TALLERCATEGORIA_FPACK'
+
+if exists (select * from sysobjects where id = object_id('dbo.TALLERCATEGORIA_FPACK'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.TALLERCATEGORIA_FPACK
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.TALLERCATEGORIA_FPACK
+(
+@tct_cod_codigotaller tngs_codigo,
+@usuario tngs_nombre
+)
+as
+begin
+
+   Delete from TNGS_Mrln..TallerCategoria
+    where tct_cod_codigotaller = @tct_cod_codigotaller
+      and deleted = 1
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.TALLERCATEGORIA_FPACK to tngsmodulos
+
+print ' '
+go
+
+/*--------------------------------------------------------------------------
+// Fin del script de creacion de los SP de la tabla: TallerCategoria
+//--------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------
+//                         TNG Software SPs Generator
+//----------------------------------------------------------------------------
+// Fecha       : 06/06/2018 03:58
 // Sistema     : Mrln
 // Tabla       : Talonarios
 //----------------------------------------------------------------------------

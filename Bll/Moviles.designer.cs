@@ -16,7 +16,7 @@ namespace Mrln.Bll
     //----------------------------------------------------------------------------
     //                         TNG Software BLL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 15/05/2018 19:48
+    // Fecha                    : 06/06/2018 03:56
     // Sistema                  : Mrln
     // Clase para Administrar   : Moviles y Tablas Hijas
     //----------------------------------------------------------------------------
@@ -4364,6 +4364,7 @@ namespace Mrln.Bll
                                    p_entMovil.Modelo,
                                    p_entMovil.Aniofabric,
                                    p_entMovil.Propio,
+                                   p_entMovil.Nroploteado,
                                    ref p_smResult);
             }
             catch (Exception l_expData) {
@@ -4397,6 +4398,7 @@ namespace Mrln.Bll
                                    p_entMovil.Modelo,
                                    p_entMovil.Aniofabric,
                                    p_entMovil.Propio,
+                                   p_entMovil.Nroploteado,
                                    ref p_smResult);
             }
             catch (Exception l_expData) {

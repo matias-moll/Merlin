@@ -6,20 +6,20 @@ using System.Data;
 using System.Xml;
 using TNGS.NetAppBll;
 using TNGS.NetRoutines;
-using Rivn;
-using Rivn.Bel;
+using Mrln;
+using Mrln.Bel;
 #endregion
 
-namespace Rivn.Bll
+namespace Mrln.Bll
 {
     //----------------------------------------------------------------------------
     //                         TNG Software BLL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 17/08/2015 10:53
-    // Sistema                  : Rivn
-    // Clase para Administrar   : Tablas de Rivn.
+    // Fecha                    : 06/06/2018 01:24
+    // Sistema                  : Mrln
+    // Clase para Administrar   : Tablas Generales
     //----------------------------------------------------------------------------
-    // © 1996-2015 by TNG Software                                      Gndr 5.20
+    // © 1996-2018 by TNG Software                                      Gndr 5.20
     //----------------------------------------------------------------------------
 
     //****************************************************************************
@@ -27,7 +27,7 @@ namespace Rivn.Bll
     //****************************************************************************
 
     /// <summary>
-    /// Mantenimiento de: Tablas de Rivn.
+    /// Mantenimiento de: Tablas Generales
     /// </summary>
     public static partial class Tablas
     {
@@ -596,6 +596,76 @@ namespace Rivn.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void RepTInt_f(DBConn p_dbcAccess,
                                        EReparacion p_entReparacion,
+                                       ref StatMsg p_smResult)
+        {
+            // *********
+            // Agregar acá las validaciones adicionales
+            // *********
+        }
+
+        /// <summary>
+        /// Agrega o modifica un registro de la tabla: Taller
+        /// (Código Fijo)
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_entTaller">Entidad con los datos a procesar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static void TllSave_f(DBConn p_dbcAccess,
+                                       ref ETaller p_entTaller,
+                                       ref StatMsg p_smResult)
+        {
+            // *********
+            // Agregar acá los procesos adicionales
+            // *********
+        }
+
+        /// <summary>
+        /// Habilita/Deshabilita un registro de la tabla: Taller
+        /// (Código Fijo)
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_bEnable">Tipo de operacion</param>
+        /// <param name="p_strCodigo">Codigo</param>
+        /// <param name="p_iFxdVersion">Versión del registro a borrar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static void TllEnabled_f(DBConn p_dbcAccess,
+                                          bool p_bEnable,
+                                          string p_strCodigo,
+                                          ref int p_iFxdVersion,
+                                          ref StatMsg p_smResult)
+        {
+            // *********
+            // Agregar acá los procesos adicionales
+            // *********
+        }
+
+        /// <summary>
+        /// Borra físicamento un registro de la tabla: Taller
+        /// (Código Fijo)
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_strCodigo">Codigo</param>
+        /// <param name="p_iFxdVersion">Versión del registro a borrar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static void TllRemove_f(DBConn p_dbcAccess,
+                                         string p_strCodigo,
+                                         int p_iFxdVersion,
+                                         ref StatMsg p_smResult)
+        {
+            // *********
+            // Agregar acá los procesos adicionales
+            // *********
+        }
+
+        /// <summary>
+        /// Agrega validacion de integridad a una entidad: Taller
+        /// (Código Fijo)
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_entTaller">Entidad con los datos a validar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static void TllTInt_f(DBConn p_dbcAccess,
+                                       ETaller p_entTaller,
                                        ref StatMsg p_smResult)
         {
             // *********

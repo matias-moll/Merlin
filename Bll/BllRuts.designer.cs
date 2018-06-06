@@ -16,7 +16,7 @@ namespace Mrln.Bll
     //----------------------------------------------------------------------------
     //                         TNG Software BLL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 15/05/2018 19:48
+    // Fecha                    : 06/06/2018 03:56
     // Sistema                  : Mrln
     // Clase para Administrar   : 
     //----------------------------------------------------------------------------
@@ -182,6 +182,7 @@ namespace Mrln.Bll
                 case "mov_rcd_modelo"                  : {return "V1ModeloCN1";}
                 case "mov_nro_aniofabric"              : {return "V1Año de fabricaciónNN3";}
                 case "mov_cd1_propio"                  : {return "V1Propio o noCN2";}
+                case "mov_ecd_nroploteado"             : {return "V1Numero PloteadoCN1";}
 
                 // ****************************************
                 // Tabla: MvlCombustible      
@@ -219,6 +220,7 @@ namespace Mrln.Bll
                 case "odt_nom_operador"                : {return "V1OperadorCN1";}
                 case "odt_fyh_feccierre"               : {return "V1Fecha de cierre.DN2";}
                 case "odt_cod_encargado"               : {return "V1EncargadoCN1";}
+                case "odt_cod_codtaller"               : {return "V1TallerCN1";}
 
                 // ****************************************
                 // Tabla: OtItems             
@@ -246,6 +248,21 @@ namespace Mrln.Bll
                 case "rep_xde_des"                     : {return "V1ReparacionCN1";}
                 case "rep_rcd_codcat"                  : {return "V1CategoriaCN1";}
                 case "rep_cd1_solicitadetalle"         : {return "V1Se Solicita DetalleCN2";}
+
+                // ****************************************
+                // Tabla: Taller              
+                case "tll_cod_codigo"                  : {return "V1CodigoCN1";}
+                case "tll_ede_descripcion"             : {return "V1DescripcionCN1";}
+                case "tll_xde_direccion"               : {return "V1DireccionCN1";}
+                case "tll_tel_telefono"                : {return "V1TelefonoCN1";}
+                case "tll_ede_contacto"                : {return "V1ContactoCN1";}
+
+                // ****************************************
+                // Tabla: TallerCategoria     
+                case "tct_cod_codigotaller"            : {return "V1Codigo TallerCN1";}
+                case "tct_rcd_codigocategoria"         : {return "V1Codigo CategoriaCN1";}
+                case "ctl_taller"                      : {return "V1TallerCN1";}
+                case "tlc_categoria"                   : {return "V1CategoriaCN1";}
 
                 // ****************************************
                 // Tabla: Talonarios          

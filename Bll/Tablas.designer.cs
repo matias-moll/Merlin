@@ -16,9 +16,9 @@ namespace Mrln.Bll
     //----------------------------------------------------------------------------
     //                         TNG Software BLL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 15/05/2018 19:48
+    // Fecha                    : 06/06/2018 03:56
     // Sistema                  : Mrln
-    // Clase para Administrar   : Tablas de Rivn.
+    // Clase para Administrar   : Tablas Generales
     //----------------------------------------------------------------------------
     // © 1996-2018 by TNG Software                                      Gndr 5.20
     //----------------------------------------------------------------------------
@@ -31,7 +31,7 @@ namespace Mrln.Bll
     //****************************************************************************
 
     /// <summary>
-    /// Mantenimiento de: Tablas de Rivn.
+    /// Mantenimiento de: Tablas Generales
     /// </summary>
     public static partial class Tablas
     {

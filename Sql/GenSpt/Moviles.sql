@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 21/04/2018 21:14
+// Fecha       : 06/06/2018 03:58
 // Sistema     : Mrln
 // Tabla       : Moviles
 //----------------------------------------------------------------------------
@@ -60,6 +60,7 @@ begin
                 mov_rcd_modelo,
                 mov_nro_aniofabric,
                 mov_cd1_propio,
+                mov_ecd_nroploteado,
                 TNGS_Mrln..Moviles.instante,
                 TNGS_Mrln..Moviles.deleted,
                 TNGS_Mrln..Moviles.usuario,
@@ -78,6 +79,7 @@ begin
                 mov_rcd_modelo,
                 mov_nro_aniofabric,
                 mov_cd1_propio,
+                mov_ecd_nroploteado,
                 TNGS_Mrln..Moviles.instante,
                 TNGS_Mrln..Moviles.deleted,
                 TNGS_Mrln..Moviles.usuario,
@@ -185,6 +187,7 @@ begin
                 mov_rcd_modelo,
                 mov_nro_aniofabric,
                 mov_cd1_propio,
+                mov_ecd_nroploteado,
                 TNGS_Mrln..Moviles.instante,
                 TNGS_Mrln..Moviles.deleted,
                 TNGS_Mrln..Moviles.usuario,
@@ -203,6 +206,7 @@ begin
                 mov_rcd_modelo,
                 mov_nro_aniofabric,
                 mov_cd1_propio,
+                mov_ecd_nroploteado,
                 TNGS_Mrln..Moviles.instante,
                 TNGS_Mrln..Moviles.deleted,
                 TNGS_Mrln..Moviles.usuario,
@@ -236,6 +240,7 @@ go
 --- <param name="@mov_rcd_modelo">Modelo</param>
 --- <param name="@mov_nro_aniofabric">Año de fabricación</param>
 --- <param name="@mov_cd1_propio">Propio o no</param>
+--- <param name="@mov_ecd_nroploteado">Numero Ploteado</param>
 --- <param name="@usuario">Usuario que genera el insert</param>
 ---
 ---////////////////////////////////////////////////////////
@@ -262,6 +267,7 @@ create procedure dbo.MOVILES_INSERT
 @mov_rcd_modelo tngs_codigo_r,
 @mov_nro_aniofabric tngs_numero,
 @mov_cd1_propio tngs_codigo_1,
+@mov_ecd_nroploteado tngs_codigo_e,
 @usuario tngs_nombre
 )
 as
@@ -277,6 +283,7 @@ begin
            @mov_rcd_modelo,
            @mov_nro_aniofabric,
            @mov_cd1_propio,
+           @mov_ecd_nroploteado,
            getdate(), 0, @usuario, 1
           )
 
@@ -305,6 +312,7 @@ go
 --- <param name="@mov_rcd_modelo">Modelo</param>
 --- <param name="@mov_nro_aniofabric">Año de fabricación</param>
 --- <param name="@mov_cd1_propio">Propio o no</param>
+--- <param name="@mov_ecd_nroploteado">Numero Ploteado</param>
 --- <param name="@usuario">Usuario que genera el update</param>
 ---
 ---////////////////////////////////////////////////////////
@@ -331,6 +339,7 @@ create procedure dbo.MOVILES_UPDATE
 @mov_rcd_modelo tngs_codigo_r,
 @mov_nro_aniofabric tngs_numero,
 @mov_cd1_propio tngs_codigo_1,
+@mov_ecd_nroploteado tngs_codigo_e,
 @usuario tngs_nombre
 )
 as
@@ -344,6 +353,7 @@ begin
           mov_rcd_modelo= @mov_rcd_modelo,
           mov_nro_aniofabric= @mov_nro_aniofabric,
           mov_cd1_propio= @mov_cd1_propio,
+          mov_ecd_nroploteado= @mov_ecd_nroploteado,
           version = ((version+1) % 32767),
           instante= getdate(),
           usuario = @usuario

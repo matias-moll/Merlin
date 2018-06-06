@@ -10,7 +10,7 @@ namespace Mrln.Dal
     //----------------------------------------------------------------------------
     //                         TNG Software DAL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 15/05/2018 19:47
+    // Fecha                    : 06/06/2018 03:56
     // Sistema                  : Mrln
     // Clase para Administrar   : Encargados OTs
     // Basada en la Tabla       : Encargados

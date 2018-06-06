@@ -5,19 +5,19 @@ using System.Collections.Generic;
 using System.Data;
 using System.Xml;
 using TNGS.NetRoutines;
-using Rivn;
+using Mrln;
 #endregion
 
-namespace Rivn.Bel
+namespace Mrln.Bel
 {
     //----------------------------------------------------------------------------
     //                         TNG Software BEL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 17/08/2015 10:53
-    // Sistema                  : Rivn
-    // Clase para Administrar   : Tablas de Rivn.
+    // Fecha                    : 06/06/2018 01:24
+    // Sistema                  : Mrln
+    // Clase para Administrar   : Tablas Generales
     //----------------------------------------------------------------------------
-    // © 1996-2015 by TNG Software                                      Gndr 5.20
+    // © 1996-2018 by TNG Software                                      Gndr 5.20
     //----------------------------------------------------------------------------
 
     //****************************************************************************
@@ -848,6 +848,112 @@ namespace Rivn.Bel
     ///   - Elementos no producidos por el Generador
     /// </summary>
     public sealed partial class LETReparaciones : LET<EReparacion>
+    {
+        #region Metodos publicos de la clase
+        //---------------------------------------------------------------
+        // Metodos publicos
+        //---------------------------------------------------------------
+
+        #endregion
+
+        #region Metodos privados de la clase
+        //---------------------------------------------------------------
+        // Metodos privados
+        //---------------------------------------------------------------
+
+        #endregion
+
+        #region Propiedades de la clase
+        //---------------------------------------------------------------
+        // Propiedades de la clase
+        //---------------------------------------------------------------
+
+        #endregion
+    }
+    #endregion
+
+    #region Entidad: Taller
+    /// <summary>
+    /// Clase que representa la Entidad: Taller
+    ///   - Elementos no producidos por el Generador
+    /// </summary>
+    public sealed partial class ETaller : Entidad
+    {
+        #region Metodos publicos de la clase
+        //---------------------------------------------------------------
+        // Metodos públicos de la clase
+        //---------------------------------------------------------------
+
+        #endregion
+
+        #region Metodos privados de la clase
+        //---------------------------------------------------------------
+        // Metodos privados de la clase
+        //---------------------------------------------------------------
+
+        /// <summary>
+        /// Permite agregar datos al XML de la entidad
+        /// </summary>
+        private void fAddXMLData(ref XmlDocument p_xdocData,
+                                 ref XmlNode p_xndEntidad)
+        {
+        }
+
+        /// <summary>
+        /// Permite agregar datos a una entidad generada desde un XML
+        /// </summary>
+        private void fNewFromXML(ref DataRow p_drTemp,
+                                 XmlNode p_xndData)
+        {
+        }
+
+        #endregion
+
+        #region Propiedades de la clase
+        //---------------------------------------------------------------
+        // Propiedades de la clase
+        //---------------------------------------------------------------
+
+        #endregion
+    }
+    #endregion
+
+    #region Lista-Entidad: Talleres
+    /// <summary>
+    /// Clase que representa la Lista-Entidad: Talleres
+    ///   - Elementos no producidos por el Generador
+    /// </summary>
+    public sealed partial class LETalleres : ListaEntidades
+    {
+        #region Metodos publicos de la clase
+        //---------------------------------------------------------------
+        // Metodos publicos
+        //---------------------------------------------------------------
+
+        #endregion
+
+        #region Metodos privados de la clase
+        //---------------------------------------------------------------
+        // Metodos privados
+        //---------------------------------------------------------------
+
+        #endregion
+
+        #region Propiedades de la clase
+        //---------------------------------------------------------------
+        // Propiedades de la clase
+        //---------------------------------------------------------------
+
+        #endregion
+    }
+    #endregion
+
+    #region Lista-Entidad-Tipada: Talleres
+    /// <summary>
+    /// Clase que representa la Lista-Entidad-Tipada: Talleres
+    ///   - Elementos no producidos por el Generador
+    /// </summary>
+    public sealed partial class LETTalleres : LET<ETaller>
     {
         #region Metodos publicos de la clase
         //---------------------------------------------------------------

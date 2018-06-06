@@ -64,6 +64,10 @@
     <Compile Include="Tablas.designer.cs">
       <DependentUpon>Tablas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Talleres.cs" />
+    <Compile Include="Talleres.designer.cs">
+      <DependentUpon>Talleres.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Dal\DAL.csproj">

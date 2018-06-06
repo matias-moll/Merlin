@@ -146,6 +146,18 @@
     <Compile Include="Controles y Reparaciones\Reparaciones.Designer.cs">
       <DependentUpon>Reparaciones.cs</DependentUpon>
     </Compile>
+    <Compile Include="Talleres.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Talleres.Designer.cs">
+      <DependentUpon>Talleres.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TalleresCategorias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TalleresCategorias.Designer.cs">
+      <DependentUpon>TalleresCategorias.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Arranque.resx">
       <DependentUpon>Arranque.cs</DependentUpon>
     </EmbeddedResource>
@@ -185,6 +197,12 @@
     </Compile>
     <EmbeddedResource Include="Controles y Reparaciones\Reparaciones.resx">
       <DependentUpon>Reparaciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Talleres.resx">
+      <DependentUpon>Talleres.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TalleresCategorias.resx">
+      <DependentUpon>TalleresCategorias.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="Properties\Settings.settings">

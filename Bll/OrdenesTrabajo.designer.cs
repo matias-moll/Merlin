@@ -16,7 +16,7 @@ namespace Mrln.Bll
     //----------------------------------------------------------------------------
     //                         TNG Software BLL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 15/05/2018 19:48
+    // Fecha                    : 06/06/2018 03:56
     // Sistema                  : Mrln
     // Clase para Administrar   : Ordenes de Trabajo y sus Items
     //----------------------------------------------------------------------------
@@ -1297,6 +1297,19 @@ namespace Mrln.Bll
                 }
             }
 
+            if (p_entOrdenTrabajo.Codtaller.Trim() != "") {
+                Talleres.VKey(p_dbcAccess,
+                              p_entOrdenTrabajo.Codtaller,
+                              ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                if (p_smResult.ICodeEs(BllCodes.KeyDsntFound)) {
+                    // El campo [Taller] debe existir en la tabla [Talleres.]
+                    p_smResult.BllWarning("El dato [Taller] debe existir en la tabla [Talleres.]","");
+                    return;
+                }
+            }
+
             // Todas las validaciones fueron correctas
 
             // Llamamos a la funcion fija del usuario
@@ -1516,6 +1529,7 @@ namespace Mrln.Bll
                                           p_entOrdenTrabajo.Operador,
                                           p_entOrdenTrabajo.Feccierre,
                                           p_entOrdenTrabajo.Encargado,
+                                          p_entOrdenTrabajo.Codtaller,
                                           ref p_smResult);
             }
             catch (Exception l_expData) {
@@ -1547,6 +1561,7 @@ namespace Mrln.Bll
                                           p_entOrdenTrabajo.Operador,
                                           p_entOrdenTrabajo.Feccierre,
                                           p_entOrdenTrabajo.Encargado,
+                                          p_entOrdenTrabajo.Codtaller,
                                           ref p_smResult);
             }
             catch (Exception l_expData) {

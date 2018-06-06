@@ -18,11 +18,11 @@ namespace Mrln.Tg
     //----------------------------------------------------------------------------
     //                         TNG Software PRG Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 13/06/2015 15:38
+    // Fecha                    : 06/06/2018 02:43
     // Sistema                  : Mrln
     // Programa                 : Tablas Generales
     //----------------------------------------------------------------------------
-    // © 1996-2015 by TNG Software                                      Gndr 5.20
+    // © 1996-2018 by TNG Software                                      Gndr 5.20
     //----------------------------------------------------------------------------
 
     //****************************************************************************
@@ -146,8 +146,6 @@ namespace Mrln.Tg
                 // **
                 case "EQUI"          : {new Equipamientos().Show(); return;}
                 // **
-                case "CAT"           : {new Categorias().Show(); return;}
-                // **
                 case "MOD"           : {new Modelos().Show(); return;}
                 // **
                 case "MAR"           : {new Marcas().Show(); return;}
@@ -159,9 +157,15 @@ namespace Mrln.Tg
                 // *************************************************
                 // ** Menu: Controles y Reparaciones
                 // **
+                case "CAT"           : {new Categorias().Show(); return;}
+                // **
                 case "REP"           : {new Reparaciones().Show(); return;}
                 // **
                 case "CNRE"          : {new ControlesRepa().Show(); return;}
+                // **
+                case "TALL"          : {new Talleres().Show(); return;}
+                // **
+                case "TALC"          : {new TalleresCategorias().Show(); return;}
 
                 // *************************************************
                 // ** Ejecución automática al final del programa

@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 21/04/2018 21:14
+// Fecha       : 06/06/2018 03:58
 // Sistema     : Mrln
 // Tabla       : OrdenesTrabajo
 //----------------------------------------------------------------------------
@@ -58,6 +58,7 @@ begin
                 odt_nom_operador,
                 odt_fyh_feccierre,
                 odt_cod_encargado,
+                odt_cod_codtaller,
                 TNGS_Mrln..OrdenesTrabajo.instante,
                 TNGS_Mrln..OrdenesTrabajo.deleted,
                 TNGS_Mrln..OrdenesTrabajo.usuario,
@@ -74,6 +75,7 @@ begin
                 odt_nom_operador,
                 odt_fyh_feccierre,
                 odt_cod_encargado,
+                odt_cod_codtaller,
                 TNGS_Mrln..OrdenesTrabajo.instante,
                 TNGS_Mrln..OrdenesTrabajo.deleted,
                 TNGS_Mrln..OrdenesTrabajo.usuario,
@@ -179,6 +181,7 @@ begin
                 odt_nom_operador,
                 odt_fyh_feccierre,
                 odt_cod_encargado,
+                odt_cod_codtaller,
                 TNGS_Mrln..OrdenesTrabajo.instante,
                 TNGS_Mrln..OrdenesTrabajo.deleted,
                 TNGS_Mrln..OrdenesTrabajo.usuario,
@@ -195,6 +198,7 @@ begin
                 odt_nom_operador,
                 odt_fyh_feccierre,
                 odt_cod_encargado,
+                odt_cod_codtaller,
                 TNGS_Mrln..OrdenesTrabajo.instante,
                 TNGS_Mrln..OrdenesTrabajo.deleted,
                 TNGS_Mrln..OrdenesTrabajo.usuario,
@@ -226,6 +230,7 @@ go
 --- <param name="@odt_nom_operador">Operador</param>
 --- <param name="@odt_fyh_feccierre">Fecha de cierre.</param>
 --- <param name="@odt_cod_encargado">Encargado</param>
+--- <param name="@odt_cod_codtaller">Taller</param>
 --- <param name="@usuario">Usuario que genera el insert</param>
 ---
 ---////////////////////////////////////////////////////////
@@ -250,6 +255,7 @@ create procedure dbo.ORDENESTRABAJO_INSERT
 @odt_nom_operador tngs_nombre,
 @odt_fyh_feccierre tngs_fecyhor,
 @odt_cod_encargado tngs_codigo,
+@odt_cod_codtaller tngs_codigo,
 @usuario tngs_nombre
 )
 as
@@ -263,6 +269,7 @@ begin
            @odt_nom_operador,
            @odt_fyh_feccierre,
            @odt_cod_encargado,
+           @odt_cod_codtaller,
            getdate(), 0, @usuario, 1
           )
 
@@ -289,6 +296,7 @@ go
 --- <param name="@odt_nom_operador">Operador</param>
 --- <param name="@odt_fyh_feccierre">Fecha de cierre.</param>
 --- <param name="@odt_cod_encargado">Encargado</param>
+--- <param name="@odt_cod_codtaller">Taller</param>
 --- <param name="@usuario">Usuario que genera el update</param>
 ---
 ---////////////////////////////////////////////////////////
@@ -313,6 +321,7 @@ create procedure dbo.ORDENESTRABAJO_UPDATE
 @odt_nom_operador tngs_nombre,
 @odt_fyh_feccierre tngs_fecyhor,
 @odt_cod_encargado tngs_codigo,
+@odt_cod_codtaller tngs_codigo,
 @usuario tngs_nombre
 )
 as
@@ -324,6 +333,7 @@ begin
           odt_nom_operador= @odt_nom_operador,
           odt_fyh_feccierre= @odt_fyh_feccierre,
           odt_cod_encargado= @odt_cod_encargado,
+          odt_cod_codtaller= @odt_cod_codtaller,
           version = ((version+1) % 32767),
           instante= getdate(),
           usuario = @usuario
@@ -563,6 +573,7 @@ begin
           odt_nom_operador,
           odt_fyh_feccierre,
           odt_cod_encargado,
+          odt_cod_codtaller,
           TNGS_Mrln..OrdenesTrabajo.instante,
           TNGS_Mrln..OrdenesTrabajo.deleted,
           TNGS_Mrln..OrdenesTrabajo.usuario,

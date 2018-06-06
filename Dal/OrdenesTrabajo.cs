@@ -10,7 +10,7 @@ namespace Mrln.Dal
     //----------------------------------------------------------------------------
     //                         TNG Software DAL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 15/05/2018 19:47
+    // Fecha                    : 06/06/2018 03:56
     // Sistema                  : Mrln
     // Clase para Administrar   : Ordenes De Trabajo
     // Basada en la Tabla       : OrdenesTrabajo
@@ -145,6 +145,7 @@ namespace Mrln.Dal
         /// <param name="p_strOperador">Operador</param>
         /// <param name="p_dtFeccierre">Fecha de cierre.</param>
         /// <param name="p_strEncargado">Encargado</param>
+        /// <param name="p_strCodtaller">Taller</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static int Insert(DBConn p_dbcAccess,
                                  int p_iNro,
@@ -153,6 +154,7 @@ namespace Mrln.Dal
                                  string p_strOperador,
                                  DateTime p_dtFeccierre,
                                  string p_strEncargado,
+                                 string p_strCodtaller,
                                  ref StatMsg p_smResult)
         {
             try {
@@ -166,6 +168,7 @@ namespace Mrln.Dal
                                        p_dbcAccess.MakeParam("@odt_nom_operador", p_strOperador),
                                        p_dbcAccess.MakeParam("@odt_fyh_feccierre", p_dtFeccierre),
                                        p_dbcAccess.MakeParam("@odt_cod_encargado", p_strEncargado),
+                                       p_dbcAccess.MakeParam("@odt_cod_codtaller", p_strCodtaller),
                                        p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
                                    }
                                   );
@@ -187,6 +190,7 @@ namespace Mrln.Dal
         /// <param name="p_strOperador">Operador</param>
         /// <param name="p_dtFeccierre">Fecha de cierre.</param>
         /// <param name="p_strEncargado">Encargado</param>
+        /// <param name="p_strCodtaller">Taller</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static int Update(DBConn p_dbcAccess,
                                  int p_iNro,
@@ -195,6 +199,7 @@ namespace Mrln.Dal
                                  string p_strOperador,
                                  DateTime p_dtFeccierre,
                                  string p_strEncargado,
+                                 string p_strCodtaller,
                                  ref StatMsg p_smResult)
         {
             try {
@@ -208,6 +213,7 @@ namespace Mrln.Dal
                                        p_dbcAccess.MakeParam("@odt_nom_operador", p_strOperador),
                                        p_dbcAccess.MakeParam("@odt_fyh_feccierre", p_dtFeccierre),
                                        p_dbcAccess.MakeParam("@odt_cod_encargado", p_strEncargado),
+                                       p_dbcAccess.MakeParam("@odt_cod_codtaller", p_strCodtaller),
                                        p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
                                    }
                                   );
