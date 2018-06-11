@@ -125,7 +125,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAABu
-        DgAAAk1TRnQBSQFMAgEBBgEAARQBAQEUAQEBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        DgAAAk1TRnQBSQFMAgEBBgEAAXwBAQF8AQEBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAASADAAEBAQABCAYAAQgYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -199,6 +199,17 @@
     <value>403, 13</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="gbEditarOT.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1
+        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxIAAAsSAdLdfvwAAAD0SURBVDhPjdNB5kJBAMfxOUOr
+        VtEqogNEB4ho1QEi4n+JiOgMrTpAq4gO0AEiWkVEq7Z/IuL1/dVkpjEz3o/PM2/0fq83854pisJ4qeII
+        Taas4OIV1HCGJg4YR5ywg4staOCqU2uDWHRxtOCmoSdXoH/Xfp8ptkCHPRbWCLGoQL99oKsJv2CuQSZa
+        YP8xVdIrW+AvsO+vTEEdF/gXinaFUb4g3B15YohPMgW6c7g7eu4BXDIFE+it+8f34j5+kynQfnewxB3a
+        tgpmcEkUtKA5fRdTNKGsEX0TwwLdSWsQJvkq67BF+PGEkh+TFkiDMvQYNsa8AHXumC8XJdAsAAAAAElF
+        TkSuQmCC
+</value>
+  </data>
   <data name="gbVerItems.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1
@@ -229,6 +240,16 @@
         EFYmQUewBY3Pz1AFW0yccTibhNgmDK9Y3AZ22ox06lZYJ4l0zVqC1yQuYWgS3oale2KbxE1MP2MH0jWr
         CfElysfPyLCzKDtIbEIa5wdJMQNb8AsvV+EoK/69TFxiadjr/AQWHmACyXUO4Q2985oPYuN3OQAAAABJ
         RU5ErkJggg==
+</value>
+  </data>
+  <data name="gbNuevaOrden.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1
+        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxIAAAsSAdLdfvwAAAC+SURBVDhPpdOxCQJBEIXhBcHI
+        DgQ7MLIAC7ADWxGM7EAwFUwFCxBMBcHI1BoEQRAOBP2fsDKus97CPfiSYXfu5m43OOlihgPueOKIOfr4
+        mzGu0CZPhQla+MkS3ibPHh18oq7ewhEGuJlatMY7mtlbID0oubGGyD5d6hpsELamkKprcEE4m4Jmroua
+        2ibNG+ySglU0wtQUUkUfsfFvVHJvUXSQYlZIF+Xocn0d5ZjSy9RGNvY6P6CNJyyQXOcQXhU2pCN5qU/Z
+        AAAAAElFTkSuQmCC
 </value>
   </data>
   <data name="gbBuscar.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

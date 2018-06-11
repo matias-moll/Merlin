@@ -1,9 +1,9 @@
-﻿namespace Mrln.Ct
+﻿namespace Mrln.Ot
 {
     /*Datos para la grilla:
      * Fecha de generación, tipo, cantidad de solicitudes para el mismo cliente, codVend, codCli
      * */
-    partial class CierreOT
+    partial class VisorOrdenes
     {
         /// <summary>
         /// Variable del diseñador requerida.
@@ -31,25 +31,34 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CierreOT));
-            this.imgTree = new System.Windows.Forms.ImageList();
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VisorOrdenes));
+            this.imgTree = new System.Windows.Forms.ImageList(this.components);
             this.mnuMain = new System.Windows.Forms.MenuStrip();
-            this.tmrRefresh = new System.Windows.Forms.Timer();
-            this.niSysTray = new System.Windows.Forms.NotifyIcon();
+            this.tmrRefresh = new System.Windows.Forms.Timer(this.components);
+            this.niSysTray = new System.Windows.Forms.NotifyIcon(this.components);
             this.xpnlPanel1 = new TNGS.NetControls.XPanel();
             this.xPanel1 = new TNGS.NetControls.XPanel();
+            this.itemBarra10 = new ControlesCustom.itemBarra();
+            this.itemBarra9 = new ControlesCustom.itemBarra();
+            this.itemBarra7 = new ControlesCustom.itemBarra();
+            this.itemBarra6 = new ControlesCustom.itemBarra();
+            this.itemBarra5 = new ControlesCustom.itemBarra();
+            this.itemBarra4 = new ControlesCustom.itemBarra();
+            this.itemBarra3 = new ControlesCustom.itemBarra();
             this.itemBarra2 = new ControlesCustom.itemBarra();
             this.itemBarra1 = new ControlesCustom.itemBarra();
-            this.fgGrillaOT = new TNGS.NetControls.FullGrid();
+            this.itemBarra8 = new ControlesCustom.itemBarra();
+            this.fgGrillaItemsOT = new TNGS.NetControls.FullGrid();
             this.tsContainer1 = new TNGS.NetControls.TSContainer();
             this.tabStripPage1 = new RibbonStyle.TabStripPage();
-            this.tsPanel2 = new TNGS.NetControls.TSPanel();
-            this.textEdit1 = new TNGS.NetControls.TextEdit();
-            this.fullLabel1 = new TNGS.NetControls.FullLabel();
             this.tsPanel1 = new TNGS.NetControls.TSPanel();
+            this.gbEditarOT = new TNGS.NetControls.GlassButton();
             this.gbVerItems = new TNGS.NetControls.GlassButton();
             this.gbCerrarOT = new TNGS.NetControls.GlassButton();
             this.gbCancelar = new TNGS.NetControls.GlassButton();
+            this.tsPanel2 = new TNGS.NetControls.TSPanel();
+            this.gbNuevaOrden = new TNGS.NetControls.GlassButton();
             this.tsPpanel1 = new TNGS.NetControls.TSPanel();
             this.gbBuscar = new TNGS.NetControls.GlassButton();
             this.cdcMoviles = new TNGS.NetControls.CDCombo();
@@ -57,11 +66,11 @@
             this.tab1 = new RibbonStyle.Tab();
             this.xpnlPanel1.SuspendLayout();
             this.xPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.fgGrillaOT)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fgGrillaItemsOT)).BeginInit();
             this.tsContainer1.SuspendLayout();
             this.tabStripPage1.SuspendLayout();
-            this.tsPanel2.SuspendLayout();
             this.tsPanel1.SuspendLayout();
+            this.tsPanel2.SuspendLayout();
             this.tsPpanel1.SuspendLayout();
             this.tsBase1.SuspendLayout();
             this.SuspendLayout();
@@ -82,7 +91,7 @@
             this.mnuMain.Location = new System.Drawing.Point(0, 0);
             this.mnuMain.Name = "mnuMain";
             this.mnuMain.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
-            this.mnuMain.Size = new System.Drawing.Size(940, 24);
+            this.mnuMain.Size = new System.Drawing.Size(969, 24);
             this.mnuMain.TabIndex = 2;
             this.mnuMain.Text = "menuStrip1";
             // 
@@ -91,12 +100,12 @@
             this.xpnlPanel1.BackColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.xpnlPanel1.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
             this.xpnlPanel1.Controls.Add(this.xPanel1);
-            this.xpnlPanel1.Controls.Add(this.fgGrillaOT);
+            this.xpnlPanel1.Controls.Add(this.fgGrillaItemsOT);
             this.xpnlPanel1.Controls.Add(this.tsContainer1);
             this.xpnlPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.xpnlPanel1.Location = new System.Drawing.Point(0, 24);
             this.xpnlPanel1.Name = "xpnlPanel1";
-            this.xpnlPanel1.Size = new System.Drawing.Size(940, 624);
+            this.xpnlPanel1.Size = new System.Drawing.Size(969, 624);
             this.xpnlPanel1.SkinFixed = true;
             this.xpnlPanel1.TabIndex = 14;
             // 
@@ -104,69 +113,176 @@
             // 
             this.xPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.xPanel1.AutoScroll = true;
             this.xPanel1.BackColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.xPanel1.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
+            this.xPanel1.Controls.Add(this.itemBarra10);
+            this.xPanel1.Controls.Add(this.itemBarra9);
+            this.xPanel1.Controls.Add(this.itemBarra7);
+            this.xPanel1.Controls.Add(this.itemBarra6);
+            this.xPanel1.Controls.Add(this.itemBarra5);
+            this.xPanel1.Controls.Add(this.itemBarra4);
+            this.xPanel1.Controls.Add(this.itemBarra3);
             this.xPanel1.Controls.Add(this.itemBarra2);
             this.xPanel1.Controls.Add(this.itemBarra1);
-            this.xPanel1.Location = new System.Drawing.Point(0, 110);
+            this.xPanel1.Controls.Add(this.itemBarra8);
+            this.xPanel1.Location = new System.Drawing.Point(0, 115);
             this.xPanel1.Name = "xPanel1";
-            this.xPanel1.Size = new System.Drawing.Size(940, 120);
+            this.xPanel1.Size = new System.Drawing.Size(966, 302);
             this.xPanel1.SkinFixed = true;
             this.xPanel1.TabIndex = 3;
             // 
+            // itemBarra10
+            // 
+            this.itemBarra10.CambiarEstado = ControlesCustom.itemBarra.Estados.Verde;
+            this.itemBarra10.Fecha = new System.DateTime(1993, 1, 29, 0, 0, 0, 0);
+            this.itemBarra10.Location = new System.Drawing.Point(814, 0);
+            this.itemBarra10.MaximumSize = new System.Drawing.Size(160, 120);
+            this.itemBarra10.MinimumSize = new System.Drawing.Size(120, 90);
+            this.itemBarra10.Name = "itemBarra10";
+            this.itemBarra10.Numero = 0;
+            this.itemBarra10.Size = new System.Drawing.Size(120, 120);
+            this.itemBarra10.TabIndex = 16;
+            this.itemBarra10.Titulo = "Orden de Trabajo";
+            // 
+            // itemBarra9
+            // 
+            this.itemBarra9.CambiarEstado = ControlesCustom.itemBarra.Estados.Verde;
+            this.itemBarra9.Fecha = new System.DateTime(1993, 1, 29, 0, 0, 0, 0);
+            this.itemBarra9.Location = new System.Drawing.Point(138, 135);
+            this.itemBarra9.MaximumSize = new System.Drawing.Size(160, 120);
+            this.itemBarra9.MinimumSize = new System.Drawing.Size(120, 90);
+            this.itemBarra9.Name = "itemBarra9";
+            this.itemBarra9.Numero = 0;
+            this.itemBarra9.Size = new System.Drawing.Size(120, 120);
+            this.itemBarra9.TabIndex = 15;
+            this.itemBarra9.Titulo = "Orden de Trabajo";
+            // 
+            // itemBarra7
+            // 
+            this.itemBarra7.CambiarEstado = ControlesCustom.itemBarra.Estados.Verde;
+            this.itemBarra7.Fecha = new System.DateTime(1993, 1, 29, 0, 0, 0, 0);
+            this.itemBarra7.Location = new System.Drawing.Point(3, 135);
+            this.itemBarra7.MaximumSize = new System.Drawing.Size(160, 120);
+            this.itemBarra7.MinimumSize = new System.Drawing.Size(120, 90);
+            this.itemBarra7.Name = "itemBarra7";
+            this.itemBarra7.Numero = 0;
+            this.itemBarra7.Size = new System.Drawing.Size(120, 120);
+            this.itemBarra7.TabIndex = 14;
+            this.itemBarra7.Titulo = "Orden de Trabajo";
+            // 
+            // itemBarra6
+            // 
+            this.itemBarra6.CambiarEstado = ControlesCustom.itemBarra.Estados.Verde;
+            this.itemBarra6.Fecha = new System.DateTime(1993, 1, 29, 0, 0, 0, 0);
+            this.itemBarra6.Location = new System.Drawing.Point(3, 270);
+            this.itemBarra6.MaximumSize = new System.Drawing.Size(160, 120);
+            this.itemBarra6.MinimumSize = new System.Drawing.Size(120, 90);
+            this.itemBarra6.Name = "itemBarra6";
+            this.itemBarra6.Numero = 0;
+            this.itemBarra6.Size = new System.Drawing.Size(120, 120);
+            this.itemBarra6.TabIndex = 13;
+            this.itemBarra6.Titulo = "Orden de Trabajo";
+            // 
+            // itemBarra5
+            // 
+            this.itemBarra5.CambiarEstado = ControlesCustom.itemBarra.Estados.Verde;
+            this.itemBarra5.Fecha = new System.DateTime(1993, 1, 29, 0, 0, 0, 0);
+            this.itemBarra5.Location = new System.Drawing.Point(674, 0);
+            this.itemBarra5.MaximumSize = new System.Drawing.Size(160, 120);
+            this.itemBarra5.MinimumSize = new System.Drawing.Size(120, 90);
+            this.itemBarra5.Name = "itemBarra5";
+            this.itemBarra5.Numero = 0;
+            this.itemBarra5.Size = new System.Drawing.Size(120, 120);
+            this.itemBarra5.TabIndex = 12;
+            this.itemBarra5.Titulo = "Orden de Trabajo";
+            // 
+            // itemBarra4
+            // 
+            this.itemBarra4.CambiarEstado = ControlesCustom.itemBarra.Estados.Verde;
+            this.itemBarra4.Fecha = new System.DateTime(1993, 1, 29, 0, 0, 0, 0);
+            this.itemBarra4.Location = new System.Drawing.Point(533, 0);
+            this.itemBarra4.MaximumSize = new System.Drawing.Size(160, 120);
+            this.itemBarra4.MinimumSize = new System.Drawing.Size(120, 90);
+            this.itemBarra4.Name = "itemBarra4";
+            this.itemBarra4.Numero = 0;
+            this.itemBarra4.Size = new System.Drawing.Size(120, 120);
+            this.itemBarra4.TabIndex = 11;
+            this.itemBarra4.Titulo = "Orden de Trabajo";
+            // 
+            // itemBarra3
+            // 
+            this.itemBarra3.CambiarEstado = ControlesCustom.itemBarra.Estados.Verde;
+            this.itemBarra3.Fecha = new System.DateTime(1993, 1, 29, 0, 0, 0, 0);
+            this.itemBarra3.Location = new System.Drawing.Point(398, 3);
+            this.itemBarra3.MaximumSize = new System.Drawing.Size(160, 120);
+            this.itemBarra3.MinimumSize = new System.Drawing.Size(120, 90);
+            this.itemBarra3.Name = "itemBarra3";
+            this.itemBarra3.Numero = 0;
+            this.itemBarra3.Size = new System.Drawing.Size(120, 120);
+            this.itemBarra3.TabIndex = 10;
+            this.itemBarra3.Titulo = "Orden de Trabajo";
+            // 
             // itemBarra2
             // 
-            this.itemBarra2.AutoSize = true;
-            this.itemBarra2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.itemBarra2.CambiarEstado = ControlesCustom.itemBarra.Estados.Verde;
-            this.itemBarra2.Dock = System.Windows.Forms.DockStyle.Left;
             this.itemBarra2.Fecha = new System.DateTime(1993, 1, 29, 0, 0, 0, 0);
-            this.itemBarra2.Location = new System.Drawing.Point(120, 0);
+            this.itemBarra2.Location = new System.Drawing.Point(269, 3);
             this.itemBarra2.MaximumSize = new System.Drawing.Size(160, 120);
             this.itemBarra2.MinimumSize = new System.Drawing.Size(120, 90);
             this.itemBarra2.Name = "itemBarra2";
             this.itemBarra2.Numero = 0;
             this.itemBarra2.Size = new System.Drawing.Size(120, 120);
-            this.itemBarra2.TabIndex = 1;
+            this.itemBarra2.TabIndex = 9;
             this.itemBarra2.Titulo = "Orden de Trabajo";
             // 
             // itemBarra1
             // 
-            this.itemBarra1.AutoSize = true;
-            this.itemBarra1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.itemBarra1.CambiarEstado = ControlesCustom.itemBarra.Estados.Verde;
-            this.itemBarra1.Dock = System.Windows.Forms.DockStyle.Left;
             this.itemBarra1.Fecha = new System.DateTime(1993, 1, 29, 0, 0, 0, 0);
-            this.itemBarra1.Location = new System.Drawing.Point(0, 0);
+            this.itemBarra1.Location = new System.Drawing.Point(138, 3);
             this.itemBarra1.MaximumSize = new System.Drawing.Size(160, 120);
             this.itemBarra1.MinimumSize = new System.Drawing.Size(120, 90);
             this.itemBarra1.Name = "itemBarra1";
             this.itemBarra1.Numero = 0;
             this.itemBarra1.Size = new System.Drawing.Size(120, 120);
-            this.itemBarra1.TabIndex = 0;
+            this.itemBarra1.TabIndex = 8;
             this.itemBarra1.Titulo = "Orden de Trabajo";
             // 
-            // fgGrillaOT
+            // itemBarra8
             // 
-            this.fgGrillaOT.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.itemBarra8.CambiarEstado = ControlesCustom.itemBarra.Estados.Verde;
+            this.itemBarra8.Fecha = new System.DateTime(1993, 1, 29, 0, 0, 0, 0);
+            this.itemBarra8.Location = new System.Drawing.Point(3, 3);
+            this.itemBarra8.MaximumSize = new System.Drawing.Size(160, 120);
+            this.itemBarra8.MinimumSize = new System.Drawing.Size(120, 90);
+            this.itemBarra8.Name = "itemBarra8";
+            this.itemBarra8.Numero = 0;
+            this.itemBarra8.Size = new System.Drawing.Size(120, 120);
+            this.itemBarra8.TabIndex = 7;
+            this.itemBarra8.Titulo = "Orden de Trabajo";
+            // 
+            // fgGrillaItemsOT
+            // 
+            this.fgGrillaItemsOT.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.fgGrillaOT.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
-            this.fgGrillaOT.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.fgGrillaOT.CaptionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(163)))), ((int)(((byte)(226)))));
-            this.fgGrillaOT.CaptionFilterColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(119)))), ((int)(((byte)(7)))));
-            this.fgGrillaOT.CaptionVisible = false;
-            this.fgGrillaOT.DataMember = "";
-            this.fgGrillaOT.ExcelTitle = "";
-            this.fgGrillaOT.GridOrder = "";
-            this.fgGrillaOT.HeaderForeColor = System.Drawing.SystemColors.ControlText;
-            this.fgGrillaOT.Location = new System.Drawing.Point(12, 243);
-            this.fgGrillaOT.Margin = new System.Windows.Forms.Padding(10);
-            this.fgGrillaOT.Name = "fgGrillaOT";
-            this.fgGrillaOT.Padding = new System.Windows.Forms.Padding(10);
-            this.fgGrillaOT.Size = new System.Drawing.Size(916, 371);
-            this.fgGrillaOT.SkinFixed = true;
-            this.fgGrillaOT.TabIndex = 2;
+            this.fgGrillaItemsOT.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
+            this.fgGrillaItemsOT.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.fgGrillaItemsOT.CaptionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(163)))), ((int)(((byte)(226)))));
+            this.fgGrillaItemsOT.CaptionFilterColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(119)))), ((int)(((byte)(7)))));
+            this.fgGrillaItemsOT.CaptionVisible = false;
+            this.fgGrillaItemsOT.DataMember = "";
+            this.fgGrillaItemsOT.ExcelTitle = "";
+            this.fgGrillaItemsOT.GridOrder = "";
+            this.fgGrillaItemsOT.HeaderForeColor = System.Drawing.SystemColors.ControlText;
+            this.fgGrillaItemsOT.Location = new System.Drawing.Point(12, 430);
+            this.fgGrillaItemsOT.Margin = new System.Windows.Forms.Padding(10);
+            this.fgGrillaItemsOT.Name = "fgGrillaItemsOT";
+            this.fgGrillaItemsOT.Padding = new System.Windows.Forms.Padding(10);
+            this.fgGrillaItemsOT.Size = new System.Drawing.Size(945, 189);
+            this.fgGrillaItemsOT.SkinFixed = true;
+            this.fgGrillaItemsOT.TabIndex = 2;
             // 
             // tsContainer1
             // 
@@ -175,67 +291,59 @@
             this.tsContainer1.Dock = System.Windows.Forms.DockStyle.Top;
             this.tsContainer1.Location = new System.Drawing.Point(0, 0);
             this.tsContainer1.Name = "tsContainer1";
-            this.tsContainer1.Size = new System.Drawing.Size(940, 115);
+            this.tsContainer1.Size = new System.Drawing.Size(969, 115);
             this.tsContainer1.TabIndex = 0;
             // 
             // tabStripPage1
             // 
             this.tabStripPage1.Caption = "";
-            this.tabStripPage1.Controls.Add(this.tsPanel2);
             this.tabStripPage1.Controls.Add(this.tsPanel1);
+            this.tabStripPage1.Controls.Add(this.tsPanel2);
             this.tabStripPage1.Controls.Add(this.tsPpanel1);
             this.tabStripPage1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabStripPage1.Location = new System.Drawing.Point(0, 26);
             this.tabStripPage1.Name = "tabStripPage1";
             this.tabStripPage1.Opacity = 255;
             this.tabStripPage1.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
-            this.tabStripPage1.Size = new System.Drawing.Size(940, 89);
+            this.tabStripPage1.Size = new System.Drawing.Size(969, 89);
             this.tabStripPage1.Speed = 8;
             this.tabStripPage1.TabIndex = 2;
             // 
-            // tsPanel2
-            // 
-            this.tsPanel2.Caption = "Seleccion";
-            this.tsPanel2.Controls.Add(this.textEdit1);
-            this.tsPanel2.Controls.Add(this.fullLabel1);
-            this.tsPanel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.tsPanel2.Location = new System.Drawing.Point(708, 3);
-            this.tsPanel2.Name = "tsPanel2";
-            this.tsPanel2.Opacity = 255;
-            this.tsPanel2.Size = new System.Drawing.Size(223, 85);
-            this.tsPanel2.Speed = 1;
-            this.tsPanel2.TabIndex = 2;
-            // 
-            // textEdit1
-            // 
-            this.textEdit1.BackColor = System.Drawing.SystemColors.Window;
-            this.textEdit1.Enabled = false;
-            this.textEdit1.Location = new System.Drawing.Point(36, 28);
-            this.textEdit1.Name = "textEdit1";
-            this.textEdit1.Size = new System.Drawing.Size(161, 21);
-            this.textEdit1.TabIndex = 1;
-            // 
-            // fullLabel1
-            // 
-            this.fullLabel1.Location = new System.Drawing.Point(24, 13);
-            this.fullLabel1.Name = "fullLabel1";
-            this.fullLabel1.Size = new System.Drawing.Size(188, 23);
-            this.fullLabel1.TabIndex = 0;
-            this.fullLabel1.Text = "Orden De Trabajo Seleccionada:";
-            // 
             // tsPanel1
             // 
-            this.tsPanel1.Caption = "Cierre Orden De Trabajo";
+            this.tsPanel1.Caption = "Orden De Trabajo Seleccionada";
+            this.tsPanel1.Controls.Add(this.gbEditarOT);
             this.tsPanel1.Controls.Add(this.gbVerItems);
             this.tsPanel1.Controls.Add(this.gbCerrarOT);
             this.tsPanel1.Controls.Add(this.gbCancelar);
             this.tsPanel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.tsPanel1.Location = new System.Drawing.Point(320, 3);
+            this.tsPanel1.Location = new System.Drawing.Point(454, 3);
             this.tsPanel1.Name = "tsPanel1";
             this.tsPanel1.Opacity = 255;
-            this.tsPanel1.Size = new System.Drawing.Size(388, 85);
+            this.tsPanel1.Size = new System.Drawing.Size(506, 85);
             this.tsPanel1.Speed = 1;
             this.tsPanel1.TabIndex = 1;
+            // 
+            // gbEditarOT
+            // 
+            this.gbEditarOT.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("gbEditarOT.BackgroundImage")));
+            this.gbEditarOT.BlackBorder = true;
+            this.gbEditarOT.ButtonMode = TNGS.NetControls.GlassButton.GBMode.Flat;
+            this.gbEditarOT.CircleButton = false;
+            this.gbEditarOT.FixedFlatImage = TNGS.NetControls.FixedFlatImageButtons.Edit;
+            this.gbEditarOT.FlatColor = System.Drawing.Color.RoyalBlue;
+            this.gbEditarOT.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
+            this.gbEditarOT.FlatFontSize = 9;
+            this.gbEditarOT.FlatTextColor = System.Drawing.Color.Black;
+            this.gbEditarOT.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.gbEditarOT.Location = new System.Drawing.Point(135, 11);
+            this.gbEditarOT.Name = "gbEditarOT";
+            this.gbEditarOT.RoundCorners = 2;
+            this.gbEditarOT.Size = new System.Drawing.Size(103, 45);
+            this.gbEditarOT.TabIndex = 3;
+            this.gbEditarOT.Text = "Editar";
+            this.gbEditarOT.W8Color = System.Drawing.Color.RoyalBlue;
+            this.gbEditarOT.Click += new System.EventHandler(this.gbEditarOT_Click);
             // 
             // gbVerItems
             // 
@@ -249,10 +357,10 @@
             this.gbVerItems.FlatFontSize = 9;
             this.gbVerItems.FlatTextColor = System.Drawing.Color.Black;
             this.gbVerItems.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.gbVerItems.Location = new System.Drawing.Point(11, 4);
+            this.gbVerItems.Location = new System.Drawing.Point(16, 10);
             this.gbVerItems.Name = "gbVerItems";
             this.gbVerItems.RoundCorners = 2;
-            this.gbVerItems.Size = new System.Drawing.Size(107, 58);
+            this.gbVerItems.Size = new System.Drawing.Size(94, 45);
             this.gbVerItems.TabIndex = 2;
             this.gbVerItems.Text = "Ver Items ";
             this.gbVerItems.W8Color = System.Drawing.Color.RoyalBlue;
@@ -269,12 +377,12 @@
             this.gbCerrarOT.FlatFontSize = 9;
             this.gbCerrarOT.FlatTextColor = System.Drawing.Color.Black;
             this.gbCerrarOT.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.gbCerrarOT.Location = new System.Drawing.Point(131, 4);
+            this.gbCerrarOT.Location = new System.Drawing.Point(266, 11);
             this.gbCerrarOT.Name = "gbCerrarOT";
             this.gbCerrarOT.RoundCorners = 2;
-            this.gbCerrarOT.Size = new System.Drawing.Size(114, 56);
+            this.gbCerrarOT.Size = new System.Drawing.Size(103, 45);
             this.gbCerrarOT.TabIndex = 1;
-            this.gbCerrarOT.Text = "Cerrar Orden de Trabajo";
+            this.gbCerrarOT.Text = "Cerrar";
             this.gbCerrarOT.W8Color = System.Drawing.Color.RoyalBlue;
             // 
             // gbCancelar
@@ -289,13 +397,46 @@
             this.gbCancelar.FlatFontSize = 9;
             this.gbCancelar.FlatTextColor = System.Drawing.Color.Black;
             this.gbCancelar.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.gbCancelar.Location = new System.Drawing.Point(256, 4);
+            this.gbCancelar.Location = new System.Drawing.Point(398, 11);
             this.gbCancelar.Name = "gbCancelar";
             this.gbCancelar.RoundCorners = 2;
-            this.gbCancelar.Size = new System.Drawing.Size(126, 57);
+            this.gbCancelar.Size = new System.Drawing.Size(92, 45);
             this.gbCancelar.TabIndex = 0;
-            this.gbCancelar.Text = "Cancelar Orden de Trabajo";
+            this.gbCancelar.Text = "Cancelar";
             this.gbCancelar.W8Color = System.Drawing.Color.RoyalBlue;
+            // 
+            // tsPanel2
+            // 
+            this.tsPanel2.Caption = "Operación";
+            this.tsPanel2.Controls.Add(this.gbNuevaOrden);
+            this.tsPanel2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.tsPanel2.Location = new System.Drawing.Point(320, 3);
+            this.tsPanel2.Name = "tsPanel2";
+            this.tsPanel2.Opacity = 255;
+            this.tsPanel2.Size = new System.Drawing.Size(134, 85);
+            this.tsPanel2.Speed = 1;
+            this.tsPanel2.TabIndex = 2;
+            // 
+            // gbNuevaOrden
+            // 
+            this.gbNuevaOrden.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("gbNuevaOrden.BackgroundImage")));
+            this.gbNuevaOrden.BlackBorder = true;
+            this.gbNuevaOrden.ButtonMode = TNGS.NetControls.GlassButton.GBMode.Flat;
+            this.gbNuevaOrden.CircleButton = false;
+            this.gbNuevaOrden.FixedFlatImage = TNGS.NetControls.FixedFlatImageButtons.Add;
+            this.gbNuevaOrden.FlatColor = System.Drawing.Color.RoyalBlue;
+            this.gbNuevaOrden.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
+            this.gbNuevaOrden.FlatFontSize = 9;
+            this.gbNuevaOrden.FlatTextColor = System.Drawing.Color.Black;
+            this.gbNuevaOrden.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.gbNuevaOrden.Location = new System.Drawing.Point(19, 9);
+            this.gbNuevaOrden.Name = "gbNuevaOrden";
+            this.gbNuevaOrden.RoundCorners = 2;
+            this.gbNuevaOrden.Size = new System.Drawing.Size(99, 45);
+            this.gbNuevaOrden.TabIndex = 4;
+            this.gbNuevaOrden.Text = "Nueva";
+            this.gbNuevaOrden.W8Color = System.Drawing.Color.RoyalBlue;
+            this.gbNuevaOrden.Click += new System.EventHandler(this.gbNuevaOrden_Click);
             // 
             // tsPpanel1
             // 
@@ -322,12 +463,12 @@
             this.gbBuscar.FlatFontSize = 9;
             this.gbBuscar.FlatTextColor = System.Drawing.Color.Black;
             this.gbBuscar.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.gbBuscar.Location = new System.Drawing.Point(212, 5);
+            this.gbBuscar.Location = new System.Drawing.Point(213, 11);
             this.gbBuscar.Name = "gbBuscar";
             this.gbBuscar.RoundCorners = 2;
-            this.gbBuscar.Size = new System.Drawing.Size(98, 56);
+            this.gbBuscar.Size = new System.Drawing.Size(98, 45);
             this.gbBuscar.TabIndex = 1;
-            this.gbBuscar.Text = "Buscar";
+            this.gbBuscar.Text = "Filtrar";
             this.gbBuscar.W8Color = System.Drawing.Color.RoyalBlue;
             this.gbBuscar.Click += new System.EventHandler(this.gbBuscar_Click);
             // 
@@ -354,7 +495,7 @@
             this.tsBase1.Padding = new System.Windows.Forms.Padding(60, 3, 30, 0);
             this.tsBase1.SelectedTab = this.tab1;
             this.tsBase1.ShowItemToolTips = false;
-            this.tsBase1.Size = new System.Drawing.Size(940, 26);
+            this.tsBase1.Size = new System.Drawing.Size(969, 26);
             this.tsBase1.TabIndex = 1;
             this.tsBase1.TabOverlap = 0;
             this.tsBase1.Text = "tsBase1";
@@ -372,12 +513,12 @@
             this.tab1.TabStripPage = null;
             this.tab1.Text = "Cierre Ordenes De Trabajo";
             // 
-            // CierreOT
+            // VisorOrdenes
             // 
             this.AllowEndUserDocking = false;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(940, 648);
+            this.ClientSize = new System.Drawing.Size(969, 648);
             this.Controls.Add(this.xpnlPanel1);
             this.Controls.Add(this.mnuMain);
             this.DockAreas = WeifenLuo.WinFormsUI.Docking.DockAreas.Document;
@@ -385,19 +526,17 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.mnuMain;
             this.MaximizeBox = false;
-            this.Name = "CierreOT";
+            this.Name = "VisorOrdenes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.TabText = "Cierre De OTs";
-            this.Text = "Cierre De OTs";
+            this.TabText = "Visor de OTs";
+            this.Text = "Visor Ordenes de Trabajo";
             this.xpnlPanel1.ResumeLayout(false);
             this.xPanel1.ResumeLayout(false);
-            this.xPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.fgGrillaOT)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fgGrillaItemsOT)).EndInit();
             this.tsContainer1.ResumeLayout(false);
             this.tabStripPage1.ResumeLayout(false);
-            this.tsPanel2.ResumeLayout(false);
-            this.tsPanel2.PerformLayout();
             this.tsPanel1.ResumeLayout(false);
+            this.tsPanel2.ResumeLayout(false);
             this.tsPpanel1.ResumeLayout(false);
             this.tsBase1.ResumeLayout(false);
             this.tsBase1.PerformLayout();
@@ -418,8 +557,6 @@
         private RibbonStyle.Tab tab1;
         private RibbonStyle.TabStripPage tabStripPage1;
         private TNGS.NetControls.TSPanel tsPanel2;
-        private TNGS.NetControls.TextEdit textEdit1;
-        private TNGS.NetControls.FullLabel fullLabel1;
         private TNGS.NetControls.TSPanel tsPanel1;
         private TNGS.NetControls.GlassButton gbVerItems;
         private TNGS.NetControls.GlassButton gbCerrarOT;
@@ -427,8 +564,18 @@
         private TNGS.NetControls.TSPanel tsPpanel1;
         private TNGS.NetControls.GlassButton gbBuscar;
         private TNGS.NetControls.CDCombo cdcMoviles;
-        private TNGS.NetControls.FullGrid fgGrillaOT;
+        private TNGS.NetControls.FullGrid fgGrillaItemsOT;
         private TNGS.NetControls.XPanel xPanel1;
+        private TNGS.NetControls.GlassButton gbEditarOT;
+        private TNGS.NetControls.GlassButton gbNuevaOrden;
+        private ControlesCustom.itemBarra itemBarra8;
+        private ControlesCustom.itemBarra itemBarra10;
+        private ControlesCustom.itemBarra itemBarra9;
+        private ControlesCustom.itemBarra itemBarra7;
+        private ControlesCustom.itemBarra itemBarra6;
+        private ControlesCustom.itemBarra itemBarra5;
+        private ControlesCustom.itemBarra itemBarra4;
+        private ControlesCustom.itemBarra itemBarra3;
         private ControlesCustom.itemBarra itemBarra2;
         private ControlesCustom.itemBarra itemBarra1;
     }

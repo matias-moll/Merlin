@@ -16,7 +16,7 @@ using Mrln.Bel;
 
 namespace Mrln.Ot
 {
-    public partial class OTItemsNuevo:DockContent
+    public partial class AltaOrdenes:Form
     {
 
         // Variables Miembro
@@ -29,19 +29,15 @@ namespace Mrln.Ot
         private Bel.EOrdenTrabajo m_eOrdenAModificar;
 
         // Constructor Inicial
-        public OTItemsNuevo()
+        public AltaOrdenes()
         {
             InitializeComponent();
-            ((MainFrame)App.GetMainWindow()).AddContent(this);
-
-            estadoInicial();
         }
 
-        // Constructor Inicial
-        public OTItemsNuevo(int p_iNumeroOrdenTrabajo)
+        // Constructor Edit
+        public AltaOrdenes(int p_iNumeroOrdenTrabajo)
         {
             InitializeComponent();
-            ((MainFrame)App.GetMainWindow()).AddContent(this);
 
             // Estado Mofidicar es Verdadero
             m_estadoMofidicar = true;
@@ -84,7 +80,42 @@ namespace Mrln.Ot
         }
 
 
+        private void OTItemsNuevo_Load(object sender, EventArgs e)
+        {
+            estadoInicial();
+        }
+
         #region Metodos Privados
+
+        private void estadoInicial()
+        {
+            // Estado Modificar es FALSO
+            m_estadoMofidicar = false;
+
+            // desabilitamos los IG y los Botones Quitar para que no puedan usarlos si no selecciona nada
+            tgrpOpciones.Enabled = false;
+            tgrpControlesYRep.Enabled = false;
+            HabilitarBotonesQuitar(false);
+
+
+            // LLenamos Las combos 
+            LLenarComboPatentesMoviles();
+            LLenarComboTalleres();
+
+            // seteamos el numero de OT
+            neOrdenTrabajo.Numero = App.TaloGet("TaloOT", ref m_smResult).Valor;
+
+            // Seteamos como nueva la lista entidad OTItems
+            m_leOTItems = Bel.LEOTItems.NewEmpty();
+            ConfigurarCaptionsLEOitems(m_leOTItems);
+
+            // Nos traemos todas las reparaciones de la grilla a memoria 
+            m_leReparaciones = Bll.Tablas.RepUpFull(true, ref m_smResult);
+            if (MsgRuts.AnalizeError(this, m_smResult)) return;
+
+            //seteamos el numero de agrupador como 1
+            m_intNumeroAgrupador = 1;
+        }
 
         // LLena la combo de patente con todas las de la base .
         private void LLenarComboPatentesMoviles()
@@ -96,6 +127,17 @@ namespace Mrln.Ot
 
             //seteamos en el null para que se vea fancy
             cdcPatente.SelectedIndex = -1;
+        }
+
+        // LLena la combo de talleres
+        private void LLenarComboTalleres()
+        {
+            // llenamos la combo con los moviles
+            cdcTalleres.FillFromStrLEntidad(Bll.Talleres.UpFull(true, ref m_smResult), ETaller.CodigoCmp, ETaller.DescripcionCmp, "deleted");
+            if (MsgRuts.AnalizeError(this, m_smResult)) return;
+
+            //seteamos en el null para que se vea fancy
+            cdcTalleres.SelectedIndex = -1;
         }
 
         // Nos retorna la reparacion de Codigo pasado por parametro
@@ -144,6 +186,7 @@ namespace Mrln.Ot
             Bel.EOrdenTrabajo l_eOrdenNueva = Bel.EOrdenTrabajo.NewEmpty();
             l_eOrdenNueva.Nro = neOrdenTrabajo.Numero;
             l_eOrdenNueva.Patente = cdcPatente.Text;
+            l_eOrdenNueva.Codtaller = cdcTalleres.SelectedStrCode;
             l_eOrdenNueva.Fecapertura = DateTime.Today;
             // en la fecha cierre ponemos nuestra fecha null para que indique no esta abierta
             l_eOrdenNueva.Feccierre = new DateTime(1900, 1, 1);
@@ -169,35 +212,6 @@ namespace Mrln.Ot
         {
             p_fullGrid.FillFromLEntidad(p_leOTItems);
             p_fullGrid.ColWitdhs = "64;80;80;280;280;80;110;";
-        }
-
-        private void estadoInicial()
-        {
-            // Estado Modificar es FALSO
-            m_estadoMofidicar = false;
-
-            // desabilitamos los IG y los Botones Quitar para que no puedan usarlos si no selecciona nada
-            tgrpOpciones.Enabled = false;
-            tgrpControlesYRep.Enabled = false;
-            HabilitarBotonesQuitar(false);
-
-            
-            // LLenamos Las patentes que hay en la tabla.
-            LLenarComboPatentesMoviles();
-
-            // seteamos el numero de OT
-            neOrdenTrabajo.Numero = App.TaloGet("TaloOT", ref m_smResult).Valor;
-
-            // Seteamos como nueva la lista entidad OTItems
-            m_leOTItems = Bel.LEOTItems.NewEmpty();
-            ConfigurarCaptionsLEOitems(m_leOTItems);
-
-            // Nos traemos todas las reparaciones de la grilla a memoria 
-            m_leReparaciones = Bll.Tablas.RepUpFull(true, ref m_smResult);
-            if (MsgRuts.AnalizeError(this, m_smResult)) return;
-
-            //seteamos el numero de agrupador como 1
-            m_intNumeroAgrupador = 1;
         }
 
         private void reiniciarForm()
@@ -365,15 +379,17 @@ namespace Mrln.Ot
                 return;
             }
             // Procedemos al grabado
-            if(!m_estadoMofidicar){
+            if(!m_estadoMofidicar)
+            {
                 // Graba OrdenNueva con sus items
                 Bel.EOrdenTrabajo l_ordenAGrabar = CrearOrdenDeTrabajo(m_leOTItems);
                 Bll.OrdenesTrabajo.Save(l_ordenAGrabar,ref m_smResult);
                 if (MsgRuts.AnalizeError(this, m_smResult)) return;
                 MsgRuts.ShowMsg(this, "La nueva orden fue agregada exitosamente");
             }
-            else{
-            // Graba Orden a Actualizar
+            else
+            {
+                // Graba Orden a Actualizar
                 // primero asigna los nuevos items a la orden de trabajo
                 m_eOrdenAModificar.OTItems = m_leOTItems;
                 Bll.OrdenesTrabajo.Save(m_eOrdenAModificar,ref m_smResult);
@@ -523,7 +539,5 @@ namespace Mrln.Ot
         {
 
         }
-
-
     }
 }

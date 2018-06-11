@@ -1,26 +1,26 @@
 TODO:
 
-
-Hacer el ABM y modificar donde se creen las ordenes.
-Actualizar el diagrama.
-
 Tabla taller tiene tabla hija de tallerCategoria. QUe linkea contra la tabla categoria (ejemplos: electricidad, mecanica, etc).
-Y no permite cargar OTItems con una categoria que no la tenga el taller de la Orden de trabajo padre.
+Y no permite cargar OTItems con una categoria que no la tenga el taller de la Orden de trabajo padre. FALTA HACER ESTE CONTROL EN ALTA DE OTs
+
+Agregar campo codigo de tipo de movil, es cod.
+En el alta es una combo.
+El tema es que esta tabla sale del cedi, hay que agregar un parametro con la conexion a cedi y traer la tabla de ahi.
+El campo no puede ser vacio.
+
+Nota, pensar que pasa con los items de ordenes que no se hicieron. Idea: Dos botones en el cierre de OT, uno que diga
+no se hizo porque no es necesario y otro que diga no se pudo realizar, entonces despues en el alta de ordenes en controles le vamos 
+a mostrar los controles posibles + los items pendientes que tiene.
 
 
-Agregar campo en tabla moviles:
-Agregar nro de ploteado en donde se cargan los moviles
+Unificar ambos programas de OTs. La ventana de cierre de ordenes hay que repensarla desde 0.
+
+Armar logica en ventana de visor de ordenes para que tire los controles de orden de trabajo con un foreach y logica de location.
+Ver el tema de seleccion de orden de trabajo, necesito un evento o algo que me avise e ir trackeando el nro de orden seleccionado.
 
 
-Hasta aca hice todos los cambios en el documentador. Falta generar todo, impactar cambios y tocar la logica del programa.
-
-Impacte los cambios, cree el abm de talleres y talleres categorias. Falta modificar los lugares de altas de ordenes y moviles.
 
 -----------------------------------------------------------------------------------------------------------------------------------
-
-
-Modificar en el alta de movil el nombre del campo Kilometros por Kilometros Adquisicion
-
 
 Tenemos que hacer una opcion de consulta de historia del movil donde vamos a tener que hacer un select union
 de todo lo que le paso al movil: combustibles, estados, ordenes de trabajo, etc. Usar una entidad fija 

@@ -56,19 +56,26 @@
             this.xPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.xPanel1.Location = new System.Drawing.Point(0, 0);
             this.xPanel1.Name = "xPanel1";
-            this.xPanel1.Size = new System.Drawing.Size(118, 88);
+            this.xPanel1.Size = new System.Drawing.Size(158, 118);
             this.xPanel1.SkinFixed = true;
             this.xPanel1.TabIndex = 0;
             // 
             // gbButon
             // 
             this.gbButon.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.gbButon.BlackBorder = true;
+            this.gbButon.CircleButton = false;
             this.gbButon.FixedImage = TNGS.NetControls.FixedGlassButtons.bCopy;
-            this.gbButon.Location = new System.Drawing.Point(63, 61);
+            this.gbButon.FlatColor = System.Drawing.Color.RoyalBlue;
+            this.gbButon.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
+            this.gbButon.FlatTextColor = System.Drawing.Color.Black;
+            this.gbButon.Location = new System.Drawing.Point(83, 91);
             this.gbButon.Name = "gbButon";
+            this.gbButon.RoundCorners = 2;
             this.gbButon.Size = new System.Drawing.Size(24, 22);
             this.gbButon.TabIndex = 5;
             this.gbButon.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.gbButon.W8Color = System.Drawing.Color.RoyalBlue;
             // 
             // pbRojo
             // 
@@ -76,7 +83,7 @@
             this.pbRojo.BackColor = System.Drawing.Color.Transparent;
             this.pbRojo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbRojo.BackgroundImage")));
             this.pbRojo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pbRojo.Location = new System.Drawing.Point(36, 62);
+            this.pbRojo.Location = new System.Drawing.Point(56, 92);
             this.pbRojo.Name = "pbRojo";
             this.pbRojo.Size = new System.Drawing.Size(20, 20);
             this.pbRojo.TabIndex = 4;
@@ -88,7 +95,7 @@
             this.pbVerde.BackColor = System.Drawing.Color.Transparent;
             this.pbVerde.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbVerde.BackgroundImage")));
             this.pbVerde.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pbVerde.Location = new System.Drawing.Point(36, 62);
+            this.pbVerde.Location = new System.Drawing.Point(56, 92);
             this.pbVerde.Name = "pbVerde";
             this.pbVerde.Size = new System.Drawing.Size(20, 20);
             this.pbVerde.TabIndex = 3;
@@ -98,7 +105,7 @@
             // 
             this.lblFecha.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblFecha.BackColor = System.Drawing.Color.Transparent;
-            this.lblFecha.Location = new System.Drawing.Point(2, 39);
+            this.lblFecha.Location = new System.Drawing.Point(22, 39);
             this.lblFecha.Name = "lblFecha";
             this.lblFecha.Size = new System.Drawing.Size(116, 21);
             this.lblFecha.TabIndex = 2;
@@ -109,7 +116,7 @@
             this.lblNumero.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblNumero.BackColor = System.Drawing.Color.Transparent;
             this.lblNumero.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNumero.Location = new System.Drawing.Point(2, 21);
+            this.lblNumero.Location = new System.Drawing.Point(22, 21);
             this.lblNumero.Name = "lblNumero";
             this.lblNumero.Size = new System.Drawing.Size(116, 19);
             this.lblNumero.TabIndex = 1;
@@ -127,7 +134,7 @@
             this.xPanel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.xPanel2.Location = new System.Drawing.Point(0, 0);
             this.xPanel2.Name = "xPanel2";
-            this.xPanel2.Size = new System.Drawing.Size(118, 21);
+            this.xPanel2.Size = new System.Drawing.Size(158, 21);
             this.xPanel2.TabIndex = 0;
             // 
             // lblTitulo
@@ -135,7 +142,7 @@
             this.lblTitulo.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblTitulo.BackColor = System.Drawing.Color.Transparent;
             this.lblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitulo.Location = new System.Drawing.Point(0, 0);
+            this.lblTitulo.Location = new System.Drawing.Point(20, 0);
             this.lblTitulo.Name = "lblTitulo";
             this.lblTitulo.Size = new System.Drawing.Size(118, 19);
             this.lblTitulo.TabIndex = 0;
@@ -145,13 +152,11 @@
             // itemBarra
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.AutoSize = true;
-            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.xPanel1);
             this.MaximumSize = new System.Drawing.Size(160, 120);
             this.MinimumSize = new System.Drawing.Size(120, 90);
             this.Name = "itemBarra";
-            this.Size = new System.Drawing.Size(118, 88);
+            this.Size = new System.Drawing.Size(158, 118);
             this.xPanel1.ResumeLayout(false);
             this.xPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbRojo)).EndInit();

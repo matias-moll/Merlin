@@ -49,11 +49,11 @@ namespace Mrln.Mv
             this.pnlOpcionesEspecificas = new TNGS.NetControls.TSPanel();
             this.gbCargarNafta = new TNGS.NetControls.GlassButton();
             this.gbAgregarKMs = new TNGS.NetControls.GlassButton();
+            this.gbModificarMovil = new TNGS.NetControls.GlassButton();
             this.gbCambiarEstado = new TNGS.NetControls.GlassButton();
             this.pnlOpcionesGenerales = new TNGS.NetControls.TSPanel();
             this.gbNuevoMovil = new TNGS.NetControls.GlassButton();
             this.gbBorrarMovil = new TNGS.NetControls.GlassButton();
-            this.gbModificarMovil = new TNGS.NetControls.GlassButton();
             this.tsBase1 = new TNGS.NetControls.TSBase();
             this.tab1 = new RibbonStyle.Tab();
             this.fgMovilEstados = new TNGS.NetControls.FullGrid();
@@ -343,6 +343,27 @@ namespace Mrln.Mv
             this.gbAgregarKMs.W8Color = System.Drawing.Color.RoyalBlue;
             this.gbAgregarKMs.Click += new System.EventHandler(this.gbNuevoKM_Click);
             // 
+            // gbModificarMovil
+            // 
+            this.gbModificarMovil.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("gbModificarMovil.BackgroundImage")));
+            this.gbModificarMovil.BlackBorder = true;
+            this.gbModificarMovil.ButtonMode = TNGS.NetControls.GlassButton.GBMode.Flat;
+            this.gbModificarMovil.CircleButton = false;
+            this.gbModificarMovil.FixedFlatImage = TNGS.NetControls.FixedFlatImageButtons.Edit;
+            this.gbModificarMovil.FlatColor = System.Drawing.Color.RoyalBlue;
+            this.gbModificarMovil.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
+            this.gbModificarMovil.FlatFontSize = 9;
+            this.gbModificarMovil.FlatTextColor = System.Drawing.Color.Black;
+            this.gbModificarMovil.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.gbModificarMovil.Location = new System.Drawing.Point(7, 3);
+            this.gbModificarMovil.Name = "gbModificarMovil";
+            this.gbModificarMovil.RoundCorners = 2;
+            this.gbModificarMovil.Size = new System.Drawing.Size(118, 60);
+            this.gbModificarMovil.TabIndex = 30;
+            this.gbModificarMovil.Text = "Modificar";
+            this.gbModificarMovil.W8Color = System.Drawing.Color.RoyalBlue;
+            this.gbModificarMovil.Click += new System.EventHandler(this.gbModificarMovil_Click);
+            // 
             // gbCambiarEstado
             // 
             this.gbCambiarEstado.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("gbCambiarEstado.BackgroundImage")));
@@ -419,27 +440,6 @@ namespace Mrln.Mv
             this.gbBorrarMovil.Text = "Borrar";
             this.gbBorrarMovil.W8Color = System.Drawing.Color.RoyalBlue;
             this.gbBorrarMovil.Click += new System.EventHandler(this.gbBorrarMovil_Click);
-            // 
-            // gbModificarMovil
-            // 
-            this.gbModificarMovil.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("gbModificarMovil.BackgroundImage")));
-            this.gbModificarMovil.BlackBorder = true;
-            this.gbModificarMovil.ButtonMode = TNGS.NetControls.GlassButton.GBMode.Flat;
-            this.gbModificarMovil.CircleButton = false;
-            this.gbModificarMovil.FixedFlatImage = TNGS.NetControls.FixedFlatImageButtons.Edit;
-            this.gbModificarMovil.FlatColor = System.Drawing.Color.RoyalBlue;
-            this.gbModificarMovil.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
-            this.gbModificarMovil.FlatFontSize = 9;
-            this.gbModificarMovil.FlatTextColor = System.Drawing.Color.Black;
-            this.gbModificarMovil.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.gbModificarMovil.Location = new System.Drawing.Point(7, 3);
-            this.gbModificarMovil.Name = "gbModificarMovil";
-            this.gbModificarMovil.RoundCorners = 2;
-            this.gbModificarMovil.Size = new System.Drawing.Size(118, 60);
-            this.gbModificarMovil.TabIndex = 30;
-            this.gbModificarMovil.Text = "Modificar";
-            this.gbModificarMovil.W8Color = System.Drawing.Color.RoyalBlue;
-            this.gbModificarMovil.Click += new System.EventHandler(this.gbModificarMovil_Click);
             // 
             // tsBase1
             // 

@@ -59,6 +59,7 @@ namespace Mrln.Mv
             tePatente.Enabled = false;
             teNroChasis.Enabled = false;
             teNroMotor.Enabled = false;
+            teNroPloteado.Enabled = false;
             gbCancel.Enabled = true;
             tgrpDatosBasicos.Enabled = p_bImgHabilitado;
 
@@ -112,6 +113,7 @@ namespace Mrln.Mv
         {
             tePatente.Clear();
             teNroMotor.Clear();
+            teNroPloteado.Clear();
             teNroChasis.Clear();
             teDescripcionMovil.Clear();
             teAnotaciones.Clear();
@@ -149,6 +151,7 @@ namespace Mrln.Mv
                    || (!teDescripcionMovil.IsValid)
                    || (!teNroChasis.IsValid)
                    || (!teNroMotor.IsValid)
+                   || (!teNroPloteado.IsValid)
                    || (!tePatente.IsValid)
                    || (!cdcModelo.IsValid)
                    || (cdcModelo.SelectedStrCode == "")
@@ -217,6 +220,7 @@ namespace Mrln.Mv
             p_entMovil.Des = teDescripcionMovil.Text;
             p_entMovil.Nrochasis = teNroChasis.Text;
             p_entMovil.Nromotor = teNroMotor.Text;
+            p_entMovil.Nroploteado = teNroPloteado.Text;
             p_entMovil.Modelo = cdcModelo.SelectedStrCode; 
             p_entMovil.Aniofabric = neAnioFabric.Numero;
             p_entMovil.Propio = cdcMovilPropio.SelectedStrCode;
@@ -360,6 +364,7 @@ namespace Mrln.Mv
             teDescripcionMovil.Text = m_entMovil.Des;
             teNroChasis.Text = m_entMovil.Nrochasis;
             teNroMotor.Text = m_entMovil.Nromotor;
+            teNroPloteado.Text = m_entMovil.Nroploteado;
             tePatente.Text = m_entMovil.Patente;
             cdcModelo.SelectedStrCode = m_entMovil.Modelo;
             cdcMovilPropio.SelectedStrCode = m_entMovil.Propio;

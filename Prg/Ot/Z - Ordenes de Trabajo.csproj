@@ -98,11 +98,17 @@
     <Compile Include="Arranque.designer.cs">
       <DependentUpon>Arranque.cs</DependentUpon>
     </Compile>
-    <Compile Include="OTItemsNuevo.cs">
+    <Compile Include="VisorOrdenes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="OTItemsNuevo.Designer.cs">
-      <DependentUpon>OTItemsNuevo.cs</DependentUpon>
+    <Compile Include="VisorOrdenes.Designer.cs">
+      <DependentUpon>VisorOrdenes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AltaOrdenes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AltaOrdenes.Designer.cs">
+      <DependentUpon>AltaOrdenes.cs</DependentUpon>
     </Compile>
     <Compile Include="PrgRuts.cs" />
     <Compile Include="PrgRuts.designer.cs">
@@ -126,8 +132,11 @@
     <EmbeddedResource Include="Arranque.resx">
       <DependentUpon>Arranque.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="OTItemsNuevo.resx">
-      <DependentUpon>OTItemsNuevo.cs</DependentUpon>
+    <EmbeddedResource Include="VisorOrdenes.resx">
+      <DependentUpon>VisorOrdenes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AltaOrdenes.resx">
+      <DependentUpon>AltaOrdenes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -163,6 +172,10 @@
     <ProjectReference Include="..\..\Shr\Shr.csproj">
       <Project>{4ee82ba9-6046-419b-87af-014443954416}</Project>
       <Name>Shr</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ControlesCustom\Z - ControlesCustom.csproj">
+      <Project>{f0c6c8aa-f128-4f5a-bd1b-2332bfea1de4}</Project>
+      <Name>Z - ControlesCustom</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

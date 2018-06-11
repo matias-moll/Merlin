@@ -37,7 +37,7 @@ namespace Mrln.Ot
             ((MainFrame) App.GetMainWindow()).CreateDockManager();
 
             // Dockeamos el Principal
-            OTItemsNuevo l_dcNCR = new OTItemsNuevo();
+            VisorOrdenes l_dcNCR = new VisorOrdenes();
 
             // Liberamos el menu
             App.LockMenu(false);
