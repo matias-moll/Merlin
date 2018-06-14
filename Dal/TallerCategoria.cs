@@ -10,7 +10,7 @@ namespace Mrln.Dal
     //----------------------------------------------------------------------------
     //                         TNG Software DAL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 06/06/2018 03:56
+    // Fecha                    : 14/06/2018 00:00
     // Sistema                  : Mrln
     // Clase para Administrar   : Categorias de los talleres
     // Basada en la Tabla       : TallerCategoria
@@ -180,10 +180,12 @@ namespace Mrln.Dal
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
         /// <param name="p_strCodigotaller">Codigo Taller</param>
         /// <param name="p_strCodigocategoria">Codigo Categoria</param>
+        /// <param name="p_strDummy">dummy</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static int Insert(DBConn p_dbcAccess,
                                  string p_strCodigotaller,
                                  string p_strCodigocategoria,
+                                 string p_strDummy,
                                  ref StatMsg p_smResult)
         {
             try {
@@ -193,12 +195,46 @@ namespace Mrln.Dal
                                    new DbParameter[] {
                                        p_dbcAccess.MakeParam("@tct_cod_codigotaller", p_strCodigotaller),
                                        p_dbcAccess.MakeParam("@tct_rcd_codigocategoria", p_strCodigocategoria),
+                                       p_dbcAccess.MakeParam("@tct_cod_dummy", p_strDummy),
                                        p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
                                    }
                                   );
             }
             catch (Exception l_expData) {
                 // Error en el insert del registro
+                p_smResult.DalError(l_expData);
+                return -1;
+            }
+        }
+
+        /// <summary>
+        /// Actualiza un registro de la tabla
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_strCodigotaller">Codigo Taller</param>
+        /// <param name="p_strCodigocategoria">Codigo Categoria</param>
+        /// <param name="p_strDummy">dummy</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        public static int Update(DBConn p_dbcAccess,
+                                 string p_strCodigotaller,
+                                 string p_strCodigocategoria,
+                                 string p_strDummy,
+                                 ref StatMsg p_smResult)
+        {
+            try {
+                // Modificamos el registro
+                return DBRuts.Exec(p_dbcAccess,
+                                   "TNGS_Mrln..TALLERCATEGORIA_UPDATE",
+                                   new DbParameter[] {
+                                       p_dbcAccess.MakeParam("@tct_cod_codigotaller", p_strCodigotaller),
+                                       p_dbcAccess.MakeParam("@tct_rcd_codigocategoria", p_strCodigocategoria),
+                                       p_dbcAccess.MakeParam("@tct_cod_dummy", p_strDummy),
+                                       p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
+                                   }
+                                  );
+            }
+            catch (Exception l_expData) {
+                // Error en el update del registro
                 p_smResult.DalError(l_expData);
                 return -1;
             }

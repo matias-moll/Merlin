@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 06/06/2018 03:58
+// Fecha       : 14/06/2018 00:00
 // Sistema     : Mrln
 // Tabla       : Reparaciones
 //----------------------------------------------------------------------------
@@ -55,13 +55,16 @@ begin
          Select rep_cd6_cod,
                 rep_xde_des,
                 rep_rcd_codcat,
+                cat_des_des as rep_categoria,
                 rep_cd1_solicitadetalle,
                 TNGS_Mrln..Reparaciones.instante,
                 TNGS_Mrln..Reparaciones.deleted,
                 TNGS_Mrln..Reparaciones.usuario,
                 TNGS_Mrln..Reparaciones.version
            from TNGS_Mrln..Reparaciones
-          where deleted = 0
+                join TNGS_Mrln..Categorias
+                  on rep_rcd_codCat = cat_rcd_cod
+          where TNGS_Mrln..Reparaciones.deleted = 0
           order by rep_cd6_cod
       end
    else
@@ -69,12 +72,15 @@ begin
          Select rep_cd6_cod,
                 rep_xde_des,
                 rep_rcd_codcat,
+                cat_des_des as rep_categoria,
                 rep_cd1_solicitadetalle,
                 TNGS_Mrln..Reparaciones.instante,
                 TNGS_Mrln..Reparaciones.deleted,
                 TNGS_Mrln..Reparaciones.usuario,
                 TNGS_Mrln..Reparaciones.version
            from TNGS_Mrln..Reparaciones
+                join TNGS_Mrln..Categorias
+                  on rep_rcd_codCat = cat_rcd_cod
           order by rep_cd6_cod
       end
 
@@ -172,26 +178,32 @@ begin
          Select rep_cd6_cod,
                 rep_xde_des,
                 rep_rcd_codcat,
+                cat_des_des as rep_categoria,
                 rep_cd1_solicitadetalle,
                 TNGS_Mrln..Reparaciones.instante,
                 TNGS_Mrln..Reparaciones.deleted,
                 TNGS_Mrln..Reparaciones.usuario,
                 TNGS_Mrln..Reparaciones.version
            from TNGS_Mrln..Reparaciones
+                join TNGS_Mrln..Categorias
+                  on rep_rcd_codCat = cat_rcd_cod
           where rep_cd6_cod = @rep_cd6_cod
-            and deleted = 0
+            and TNGS_Mrln..Reparaciones.deleted = 0
       end
    else
       begin
          Select rep_cd6_cod,
                 rep_xde_des,
                 rep_rcd_codcat,
+                cat_des_des as rep_categoria,
                 rep_cd1_solicitadetalle,
                 TNGS_Mrln..Reparaciones.instante,
                 TNGS_Mrln..Reparaciones.deleted,
                 TNGS_Mrln..Reparaciones.usuario,
                 TNGS_Mrln..Reparaciones.version
            from TNGS_Mrln..Reparaciones
+                join TNGS_Mrln..Categorias
+                  on rep_rcd_codCat = cat_rcd_cod
           where rep_cd6_cod = @rep_cd6_cod
       end
 

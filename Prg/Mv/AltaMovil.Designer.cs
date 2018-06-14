@@ -32,6 +32,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AltaMovil));
             this.xPanel1 = new TNGS.NetControls.XPanel();
             this.tgrpDatosBasicos = new TNGS.NetControls.TitledGroup();
+            this.teNroPloteado = new TNGS.NetControls.TextEdit();
+            this.fullLabel2 = new TNGS.NetControls.FullLabel();
             this.neKilometros = new TNGS.NetControls.NumberEdit();
             this.teDescripcionMovil = new TNGS.NetControls.TextEdit();
             this.fullLabel1 = new TNGS.NetControls.FullLabel();
@@ -63,8 +65,6 @@
             this.gbGrabar = new TNGS.NetControls.GlassButton();
             this.tsBase1 = new TNGS.NetControls.TSBase();
             this.tab1 = new RibbonStyle.Tab();
-            this.fullLabel2 = new TNGS.NetControls.FullLabel();
-            this.teNroPloteado = new TNGS.NetControls.TextEdit();
             this.xPanel1.SuspendLayout();
             this.tgrpDatosBasicos.SuspendLayout();
             this.tgrpEquipamiento.SuspendLayout();
@@ -137,6 +137,28 @@
             this.tgrpDatosBasicos.TitleBackgroundDefault = TNGS.NetControls.ColorRuts.ColoresDefault.None;
             this.tgrpDatosBasicos.TitleFont = new System.Drawing.Font("Segoe UI", 10F);
             this.tgrpDatosBasicos.TitleFontColor = System.Drawing.Color.White;
+            // 
+            // teNroPloteado
+            // 
+            this.teNroPloteado.BackColor = System.Drawing.SystemColors.Window;
+            this.teNroPloteado.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.teNroPloteado.Location = new System.Drawing.Point(157, 275);
+            this.teNroPloteado.MaxLength = 8;
+            this.teNroPloteado.Name = "teNroPloteado";
+            this.teNroPloteado.Size = new System.Drawing.Size(136, 23);
+            this.teNroPloteado.TabIndex = 8;
+            this.teNroPloteado.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // fullLabel2
+            // 
+            this.fullLabel2.BackColor = System.Drawing.Color.Transparent;
+            this.fullLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fullLabel2.ForeColor = System.Drawing.Color.Black;
+            this.fullLabel2.Location = new System.Drawing.Point(46, 277);
+            this.fullLabel2.Name = "fullLabel2";
+            this.fullLabel2.Size = new System.Drawing.Size(99, 18);
+            this.fullLabel2.TabIndex = 22;
+            this.fullLabel2.Text = "Nro. Ploteado: ";
             // 
             // neKilometros
             // 
@@ -554,28 +576,6 @@
             this.tab1.Size = new System.Drawing.Size(154, 23);
             this.tab1.TabStripPage = this.tabStripPage1;
             this.tab1.Text = "Opciones Nuevo Movil";
-            // 
-            // fullLabel2
-            // 
-            this.fullLabel2.BackColor = System.Drawing.Color.Transparent;
-            this.fullLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fullLabel2.ForeColor = System.Drawing.Color.Black;
-            this.fullLabel2.Location = new System.Drawing.Point(46, 277);
-            this.fullLabel2.Name = "fullLabel2";
-            this.fullLabel2.Size = new System.Drawing.Size(99, 18);
-            this.fullLabel2.TabIndex = 22;
-            this.fullLabel2.Text = "Nro. Ploteado: ";
-            // 
-            // teNroPloteado
-            // 
-            this.teNroPloteado.BackColor = System.Drawing.SystemColors.Window;
-            this.teNroPloteado.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.teNroPloteado.Location = new System.Drawing.Point(157, 275);
-            this.teNroPloteado.MaxLength = 8;
-            this.teNroPloteado.Name = "teNroPloteado";
-            this.teNroPloteado.Size = new System.Drawing.Size(136, 23);
-            this.teNroPloteado.TabIndex = 8;
-            this.teNroPloteado.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // AltaMovil
             // 

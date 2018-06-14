@@ -14,7 +14,7 @@ namespace Mrln.Bel
     //----------------------------------------------------------------------------
     //                         TNG Software BEL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 06/06/2018 03:56
+    // Fecha                    : 13/06/2018 22:52
     // Sistema                  : Mrln
     // Clase para Administrar   : Ordenes de Trabajo y sus Items
     //----------------------------------------------------------------------------
@@ -83,7 +83,7 @@ namespace Mrln.Bel
             l_drTemp["oti_nro_nroitem"]= XMLRuts.ExtractXAttr(l_xndData, "oti_nro_nroitem", 1);
             l_drTemp["oti_des_desoperacion"]= XMLRuts.ExtractXAttr(l_xndData, "oti_des_desoperacion");
             l_drTemp["oti_des_destarea"]= XMLRuts.ExtractXAttr(l_xndData, "oti_des_destarea");
-            l_drTemp["oti_des_descategoria"]= XMLRuts.ExtractXAttr(l_xndData, "oti_des_descategoria");
+            l_drTemp["oti_rcd_codcategoria"]= XMLRuts.ExtractXAttr(l_xndData, "oti_rcd_codcategoria");
             l_drTemp["oti_imp_importe"]= XMLRuts.ExtractXAttr(l_xndData, "oti_imp_importe", (decimal) 0);
             l_drTemp["oti_ede_comentario"]= XMLRuts.ExtractXAttr(l_xndData, "oti_ede_comentario");
 
@@ -134,7 +134,7 @@ namespace Mrln.Bel
             l_drTemp["oti_nro_nroitem"]= 1;
             l_drTemp["oti_des_desoperacion"]= "";
             l_drTemp["oti_des_destarea"]= "";
-            l_drTemp["oti_des_descategoria"]= "";
+            l_drTemp["oti_rcd_codcategoria"]= "";
             l_drTemp["oti_imp_importe"]= 0;
             l_drTemp["oti_ede_comentario"]= "";
 
@@ -152,9 +152,9 @@ namespace Mrln.Bel
         /// <param name="p_iNroot">nroOt</param>
         /// <param name="p_iNroagrupador">Numero de agrupador</param>
         /// <param name="p_iNroitem">Numero del item</param>
-        /// <param name="p_strDesoperacion">Descripción de la operación.</param>
+        /// <param name="p_strDesoperacion">Descripción de la operación</param>
         /// <param name="p_strDestarea">Descripción de la tarea</param>
-        /// <param name="p_strDescategoria">Descripción de la categoría.</param>
+        /// <param name="p_strCodcategoria">Categoría</param>
         /// <param name="p_dcImporte">Importe</param>
         /// <param name="p_strComentario">Comentario</param>
         /// <returns>Entidad: OTItem</returns>
@@ -163,7 +163,7 @@ namespace Mrln.Bel
                                         int p_iNroitem,
                                         string p_strDesoperacion,
                                         string p_strDestarea,
-                                        string p_strDescategoria,
+                                        string p_strCodcategoria,
                                         decimal p_dcImporte,
                                         string p_strComentario)
         {
@@ -180,7 +180,7 @@ namespace Mrln.Bel
             l_drTemp["oti_nro_nroitem"]= p_iNroitem;
             l_drTemp["oti_des_desoperacion"]= p_strDesoperacion;
             l_drTemp["oti_des_destarea"]= p_strDestarea;
-            l_drTemp["oti_des_descategoria"]= p_strDescategoria;
+            l_drTemp["oti_rcd_codcategoria"]= p_strCodcategoria;
             l_drTemp["oti_imp_importe"]= p_dcImporte;
             l_drTemp["oti_ede_comentario"]= p_strComentario;
 
@@ -215,7 +215,7 @@ namespace Mrln.Bel
                 l_dcStruct[2]= new DataColumn("oti_nro_nroitem", typeof(int));
                 l_dcStruct[3]= new DataColumn("oti_des_desoperacion", typeof(string));
                 l_dcStruct[4]= new DataColumn("oti_des_destarea", typeof(string));
-                l_dcStruct[5]= new DataColumn("oti_des_descategoria", typeof(string));
+                l_dcStruct[5]= new DataColumn("oti_rcd_codcategoria", typeof(string));
                 l_dcStruct[6]= new DataColumn("oti_imp_importe", typeof(decimal));
                 l_dcStruct[7]= new DataColumn("oti_ede_comentario", typeof(string));
                 EOTItem.FillFixedFields(ref l_dcStruct, 8);
@@ -277,7 +277,7 @@ namespace Mrln.Bel
         }
 
         /// <summary>
-        /// Descripción de la operación.
+        /// Descripción de la operación
         /// </summary>
         public static string DesoperacionCmp
         {
@@ -285,7 +285,7 @@ namespace Mrln.Bel
         }
 
         /// <summary>
-        /// Descripción de la operación.
+        /// Descripción de la operación
         /// </summary>
         public string Desoperacion
         {
@@ -317,23 +317,20 @@ namespace Mrln.Bel
         }
 
         /// <summary>
-        /// Descripción de la categoría.
+        /// Categoría
         /// </summary>
-        public static string DescategoriaCmp
+        public static string CodcategoriaCmp
         {
-           get {return "oti_des_descategoria";}
+           get {return "oti_rcd_codcategoria";}
         }
 
         /// <summary>
-        /// Descripción de la categoría.
+        /// Categoría
         /// </summary>
-        public string Descategoria
+        public string Codcategoria
         {
-            get {return ((string) InternalData["oti_des_descategoria"]).Trim();}
-            set {
-                if (value.Trim().Length > 30) value= value.Trim().Substring(0,30);
-                InternalData["oti_des_descategoria"]= value.Trim().ToUpper();
-            }
+            get {return (string) InternalData["oti_rcd_codcategoria"];}
+            set {InternalData["oti_rcd_codcategoria"]= value;}
         }
 
         /// <summary>
@@ -397,7 +394,7 @@ namespace Mrln.Bel
                 l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "oti_nro_nroitem", Nroitem));
                 l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "oti_des_desoperacion", Desoperacion));
                 l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "oti_des_destarea", Destarea));
-                l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "oti_des_descategoria", Descategoria));
+                l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "oti_rcd_codcategoria", Codcategoria));
                 l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "oti_imp_importe", Importe));
                 l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "oti_ede_comentario", Comentario));
 

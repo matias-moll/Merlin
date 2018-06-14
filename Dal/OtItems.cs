@@ -10,7 +10,7 @@ namespace Mrln.Dal
     //----------------------------------------------------------------------------
     //                         TNG Software DAL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 06/06/2018 03:56
+    // Fecha                    : 13/06/2018 22:52
     // Sistema                  : Mrln
     // Clase para Administrar   : OrdenTrabajo Items
     // Basada en la Tabla       : OtItems
@@ -187,9 +187,9 @@ namespace Mrln.Dal
         /// <param name="p_iNroot">nroOt</param>
         /// <param name="p_iNroagrupador">Numero de agrupador</param>
         /// <param name="p_iNroitem">Numero del item</param>
-        /// <param name="p_strDesoperacion">Descripción de la operación.</param>
+        /// <param name="p_strDesoperacion">Descripción de la operación</param>
         /// <param name="p_strDestarea">Descripción de la tarea</param>
-        /// <param name="p_strDescategoria">Descripción de la categoría.</param>
+        /// <param name="p_strCodcategoria">Categoría</param>
         /// <param name="p_dcImporte">Importe</param>
         /// <param name="p_strComentario">Comentario</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
@@ -199,7 +199,7 @@ namespace Mrln.Dal
                                  int p_iNroitem,
                                  string p_strDesoperacion,
                                  string p_strDestarea,
-                                 string p_strDescategoria,
+                                 string p_strCodcategoria,
                                  decimal p_dcImporte,
                                  string p_strComentario,
                                  ref StatMsg p_smResult)
@@ -214,7 +214,7 @@ namespace Mrln.Dal
                                        p_dbcAccess.MakeParam("@oti_nro_nroitem", p_iNroitem),
                                        p_dbcAccess.MakeParam("@oti_des_desoperacion", p_strDesoperacion),
                                        p_dbcAccess.MakeParam("@oti_des_destarea", p_strDestarea),
-                                       p_dbcAccess.MakeParam("@oti_des_descategoria", p_strDescategoria),
+                                       p_dbcAccess.MakeParam("@oti_rcd_codcategoria", p_strCodcategoria),
                                        p_dbcAccess.MakeParam("@oti_imp_importe", p_dcImporte),
                                        p_dbcAccess.MakeParam("@oti_ede_comentario", p_strComentario),
                                        p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
@@ -235,9 +235,9 @@ namespace Mrln.Dal
         /// <param name="p_iNroot">nroOt</param>
         /// <param name="p_iNroagrupador">Numero de agrupador</param>
         /// <param name="p_iNroitem">Numero del item</param>
-        /// <param name="p_strDesoperacion">Descripción de la operación.</param>
+        /// <param name="p_strDesoperacion">Descripción de la operación</param>
         /// <param name="p_strDestarea">Descripción de la tarea</param>
-        /// <param name="p_strDescategoria">Descripción de la categoría.</param>
+        /// <param name="p_strCodcategoria">Categoría</param>
         /// <param name="p_dcImporte">Importe</param>
         /// <param name="p_strComentario">Comentario</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
@@ -247,7 +247,7 @@ namespace Mrln.Dal
                                  int p_iNroitem,
                                  string p_strDesoperacion,
                                  string p_strDestarea,
-                                 string p_strDescategoria,
+                                 string p_strCodcategoria,
                                  decimal p_dcImporte,
                                  string p_strComentario,
                                  ref StatMsg p_smResult)
@@ -262,7 +262,7 @@ namespace Mrln.Dal
                                        p_dbcAccess.MakeParam("@oti_nro_nroitem", p_iNroitem),
                                        p_dbcAccess.MakeParam("@oti_des_desoperacion", p_strDesoperacion),
                                        p_dbcAccess.MakeParam("@oti_des_destarea", p_strDestarea),
-                                       p_dbcAccess.MakeParam("@oti_des_descategoria", p_strDescategoria),
+                                       p_dbcAccess.MakeParam("@oti_rcd_codcategoria", p_strCodcategoria),
                                        p_dbcAccess.MakeParam("@oti_imp_importe", p_dcImporte),
                                        p_dbcAccess.MakeParam("@oti_ede_comentario", p_strComentario),
                                        p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
@@ -533,7 +533,7 @@ namespace Mrln.Dal
 
                 // Fijamos los nuevos captions de la grilla
                 p_dtResult.Columns["oti_ede_comentario"].Caption= "V1ComentarioCN1";
-                p_dtResult.Columns["oti_des_desoperacion"].Caption= "V1Descripción de la operación.CN1";
+                p_dtResult.Columns["oti_des_desoperacion"].Caption= "V1Descripción de la operaciónCN1";
                 p_dtResult.Columns["oti_des_destarea"].Caption= "V1Descripción de la tareaCN1";
                 p_dtResult.Columns["oti_imp_importe"].Caption= "V1Importe2N1";
                 p_dtResult.Columns["oti_nro_nroagrupador"].Caption= "V1Numero de agrupadorNN1";

@@ -27,6 +27,9 @@ namespace Mrln.Ot
         private int m_intNumeroAgrupador;
         private bool m_estadoMofidicar;
         private Bel.EOrdenTrabajo m_eOrdenAModificar;
+        private List<ETallerCategoria> m_leTalleresCategoriasFull;
+        private List<ETallerCategoria> m_leTalleresConTodasLasCategoriasNecesarias;
+
 
         // Constructor Inicial
         public AltaOrdenes()
@@ -113,6 +116,11 @@ namespace Mrln.Ot
             m_leReparaciones = Bll.Tablas.RepUpFull(true, ref m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
+            Bel.LETalleresCategorias talleresCategorias = Bll.Talleres.TalCUpFull(true, ref m_smResult);
+            if (MsgRuts.AnalizeError(this, m_smResult)) return;
+
+            m_leTalleresConTodasLasCategoriasNecesarias = m_leTalleresCategoriasFull = talleresCategorias.ToList();
+
             //seteamos el numero de agrupador como 1
             m_intNumeroAgrupador = 1;
         }
@@ -140,6 +148,13 @@ namespace Mrln.Ot
             cdcTalleres.SelectedIndex = -1;
         }
 
+        private void actualizaComboTalleresFiltrados()
+        {
+            cdcTalleres.Clear();
+            List<IGrouping<string, ETallerCategoria>> talleresConTodasLasCategoriasNecesarias = m_leTalleresConTodasLasCategoriasNecesarias.GroupBy(taller => taller.Codigotaller).ToList();
+            talleresConTodasLasCategoriasNecesarias.ForEach(tallerAgrupado => cdcTalleres.AddStrCD(tallerAgrupado.Key, tallerAgrupado.First().Ctl_taller, 0));
+        }
+
         // Nos retorna la reparacion de Codigo pasado por parametro
         private Bel.EReparacion obtenerReparacion(string p_sCodigoSelecionado)
         {
@@ -147,14 +162,14 @@ namespace Mrln.Ot
         }
 
         // LLena una Entidad OrdenTrabajoITEM y nos la devuelve para poder aniadirla a nuestra lista entidad.
-        private Bel.EOTItem LLenarOTItem(Bel.EReparacion p_eReparacion, int p_nroAgrupador, int p_nroItem,string p_sDescControl )
+        private Bel.EOTItem LLenarOTItem(Bel.EReparacion p_eReparacion, int p_nroAgrupador, int p_nroItem, string p_sDescControl)
         {
             Bel.EOTItem l_entOTitem = Bel.EOTItem.NewEmpty();
 
             l_entOTitem.Nroot = neOrdenTrabajo.Numero;
             l_entOTitem.Nroagrupador = p_nroAgrupador;
             l_entOTitem.Nroitem = p_nroItem;
-            l_entOTitem.Descategoria = p_eReparacion.Codcat;
+            l_entOTitem.Codcategoria = p_eReparacion.Codcat;
             l_entOTitem.Desoperacion = p_sDescControl;
             l_entOTitem.Destarea = p_eReparacion.Des;
             l_entOTitem.Comentario = teComentario.Text;
@@ -171,7 +186,7 @@ namespace Mrln.Ot
             p_leOTItems.ChangeCaption("oti_nro_nroitem", "V1ItemNN2");
             p_leOTItems.ChangeCaption("oti_des_desoperacion", "V1ControlCN2");
             p_leOTItems.ChangeCaption("oti_des_destarea", "V1ReparacionCN2");
-            p_leOTItems.ChangeCaption("oti_des_descategoria", "V1CategoriaCN2");
+            p_leOTItems.ChangeCaption("oti_rcd_codcategoria", "V1CategoriaCN2");
             p_leOTItems.ChangeCaption("oti_imp_importe", "V1Importe2N2");
             p_leOTItems.ChangeCaption("oti_ede_comentario","");
             p_leOTItems.ChangeCaption("instante","");
@@ -258,7 +273,7 @@ namespace Mrln.Ot
             tgrpControlesYRep.Title = "Controles";
             tgrpOpciones.Enabled = true;
             //llenamos la lista con los controles de la tabla
-            lstControlesReparaciones.FillFromStrLEntidad(Bll.Controles.UpFull(true, ref m_smResult), "ctl_cod_cod", "ctl_des_des", "deleted");
+            lstControlesReparaciones.FillFromStrLEntidad(Bll.Controles.UpFull(true, ref m_smResult), EControl.CodCmp, EControl.DesCmp, "deleted");
             // chequeamos que haya salido todo bien
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
@@ -282,8 +297,11 @@ namespace Mrln.Ot
             //cambiamos el nombre del ImgGroup y activamos las opciones
             tgrpControlesYRep.Title = "Reparaciones";
             tgrpOpciones.Enabled = true;
-            //llenamos la lista con los controles de la tabla
-            lstControlesReparaciones.FillFromStrLEntidad(Bll.Tablas.RepUpFull(true, ref m_smResult), "rep_cd6_cod", "rep_xde_des", "deleted");
+
+            // Llenamos la lista con las reparaciones disponibles dada la categoria del taller.
+            Bel.LEReparaciones reparaciones = Bll.Tablas.RepUpFull(true, ref m_smResult);
+            lstControlesReparaciones.FillFromStrLEntidad(reparaciones, Bel.EReparacion.CodCmp, EReparacion.DesCmp, "deleted");
+
             // chequeamos que haya salido todo bien
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
@@ -329,61 +347,85 @@ namespace Mrln.Ot
                 foreach (Bel.EControlRepa controlRepa in l_leControlReparaciones)
                 {
                     Bel.EReparacion l_eRepaSelec = obtenerReparacion(controlRepa.Codrep);
+
+                    if (!hayTallerQueResuelvaTodo(l_eRepaSelec))
+                        return;
+
+                    EOTItem itemToAdd = LLenarOTItem(l_eRepaSelec, m_intNumeroAgrupador, l_iContador, l_entControlSeleccionado.Des);
+
                     // LLenamos la OTitem y lo agregamos a la lista entidad
-                    m_leOTItems.AddEntity(LLenarOTItem(l_eRepaSelec, m_intNumeroAgrupador, l_iContador,l_entControlSeleccionado.Des));
+                    m_leOTItems.AddEntity(itemToAdd);
                     // Aumentamos el contador de items
                     l_iContador += 1;
-                    
                 }
-                // Si la lista no esta vacia habilitamos los Botones Quitar
-                if (m_leOTItems.Count != 0)
-                    HabilitarBotonesQuitar(true);
-
-                // LLenamos la grilla con lista entidad
-                FillFromLEOTItemsConAnchoDeColumna(fgControlRepaSeleccionados, m_leOTItems); 
-                //aumentamos en uno al Agrupador
-                m_intNumeroAgrupador += 1;
-
-                //desabilitamos el control seleccionado para que no lo pueda volver a usar
-                // No Se si hacerlo. 
             }
             if (rbReparaciones.Checked)
             {
                 Bel.EReparacion l_eRepaSelec = obtenerReparacion(lstControlesReparaciones.SelectedStrCode);
+
+                if (!hayTallerQueResuelvaTodo(l_eRepaSelec))
+                    return;
+
+                EOTItem itemToAdd = LLenarOTItem(l_eRepaSelec, m_intNumeroAgrupador, 1, l_eRepaSelec.Des);
+
                 // en una reparacion siempre la descripcion de control es la misma que la descripcion de reparacion
                 // en una reparacion el numero de item siempre es 1, (porque es unica)
-                m_leOTItems.AddEntity(LLenarOTItem(l_eRepaSelec, m_intNumeroAgrupador, 1, l_eRepaSelec.Des));
-
-                // Si la lista no esta vacia habilitamos los Botones Quitar
-                if (m_leOTItems.Count != 0)
-                    HabilitarBotonesQuitar(true);
-
-                // LLenamos la grilla con lista entidad
-                FillFromLEOTItemsConAnchoDeColumna(fgControlRepaSeleccionados, m_leOTItems);
-                //aumentamos en uno al Agrupador
-                m_intNumeroAgrupador += 1;
+                m_leOTItems.AddEntity(itemToAdd);
             }
 
-            limpiarPanelControlesYReparaciones();
+            // Si la lista no esta vacia habilitamos los Botones Quitar
+            if (m_leOTItems.Count != 0)
+                HabilitarBotonesQuitar(true);
+
+            // LLenamos la grilla con lista entidad
+            FillFromLEOTItemsConAnchoDeColumna(fgControlRepaSeleccionados, m_leOTItems);
+            //aumentamos en uno al Agrupador
+            m_intNumeroAgrupador += 1;
+
+            // Reseteamos los campos de item.
+            teComentario.Text = "";
+            deImporte.Decimal = 0;
         }
 
+        private bool hayTallerQueResuelvaTodo(EReparacion p_eRepaSelec)
+        {
+            // Filtramos los talleres que cumplan con la categoria del item a agregar. Hacemos interseccion con los que actualmente cumplen.
+            List<ETallerCategoria> tallerCategorias = m_leTalleresCategoriasFull.Where(categoria => categoria.Codigocategoria == p_eRepaSelec.Codcat).ToList();
+            List<ETallerCategoria> talleresInterseccion = m_leTalleresConTodasLasCategoriasNecesarias.Where(tallerConTodas => 
+                                                          tallerCategorias.Any(tallerCategoria => tallerCategoria.Codigotaller == tallerConTodas.Codigotaller)).ToList();
 
+            // Si no hay ningun taller que pueda resolver la orden actual
+            if (talleresInterseccion.Count == 0)
+            {
+                MsgRuts.ShowMsg(this, "No es posible agregar ese item ya que ningun Taller puede resolver todos los Controles/Reparaciones elegidos");
+                return false;
+            }
+            else
+            {
+                m_leTalleresConTodasLasCategoriasNecesarias = talleresInterseccion;
+                actualizaComboTalleresFiltrados();
+                return true;
+            }
+        }
+
+            
 
         // Graba la ListaEntidad de Items en la Base
         private void gbAccept_Click(object sender, EventArgs e)
         {
+
             // si la lista esta vacia no grabamos
-            if(m_leOTItems.Count == 0)
+            if (m_leOTItems.Count == 0)
             {
                 MsgRuts.ShowMsg(this, "No se puede grabar en la base por que no hay nada en la lista para grabar");
                 return;
             }
             // Procedemos al grabado
-            if(!m_estadoMofidicar)
+            if (!m_estadoMofidicar)
             {
                 // Graba OrdenNueva con sus items
                 Bel.EOrdenTrabajo l_ordenAGrabar = CrearOrdenDeTrabajo(m_leOTItems);
-                Bll.OrdenesTrabajo.Save(l_ordenAGrabar,ref m_smResult);
+                Bll.OrdenesTrabajo.Save(l_ordenAGrabar, ref m_smResult);
                 if (MsgRuts.AnalizeError(this, m_smResult)) return;
                 MsgRuts.ShowMsg(this, "La nueva orden fue agregada exitosamente");
             }
@@ -392,15 +434,14 @@ namespace Mrln.Ot
                 // Graba Orden a Actualizar
                 // primero asigna los nuevos items a la orden de trabajo
                 m_eOrdenAModificar.OTItems = m_leOTItems;
-                Bll.OrdenesTrabajo.Save(m_eOrdenAModificar,ref m_smResult);
+                Bll.OrdenesTrabajo.Save(m_eOrdenAModificar, ref m_smResult);
                 if (MsgRuts.AnalizeError(this, m_smResult)) return;
-                MsgRuts.ShowMsg(this, "La orden fue modificada exitosamente");            
+                MsgRuts.ShowMsg(this, "La orden fue modificada exitosamente");
             }
 
             // Despueste grabado se cierra el formulario para poder seguir con el programa principal
-            reiniciarForm();
+            this.Close();
         }
-
         // Borra el ultimo item agregado a la lista
         private void gbQuitarUltimo_Click(object sender, EventArgs e)
         {
@@ -534,10 +575,5 @@ namespace Mrln.Ot
         }
 
         #endregion
-
-        private void gbAsignar_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

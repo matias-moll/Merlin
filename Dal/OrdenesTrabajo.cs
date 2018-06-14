@@ -10,7 +10,7 @@ namespace Mrln.Dal
     //----------------------------------------------------------------------------
     //                         TNG Software DAL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 06/06/2018 03:56
+    // Fecha                    : 13/06/2018 22:52
     // Sistema                  : Mrln
     // Clase para Administrar   : Ordenes De Trabajo
     // Basada en la Tabla       : OrdenesTrabajo

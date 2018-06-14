@@ -10,7 +10,7 @@ namespace Mrln.Dal
     //----------------------------------------------------------------------------
     //                         TNG Software DAL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 06/06/2018 03:56
+    // Fecha                    : 13/06/2018 22:49
     // Sistema                  : Mrln
     // Clase para Administrar   : Reparaciones de móviles
     // Basada en la Tabla       : Reparaciones
@@ -361,7 +361,9 @@ namespace Mrln.Dal
                 DBRuts.ClearDTCaptions(ref p_dtResult);
 
                 // Fijamos los nuevos captions de la grilla
+                p_dtResult.Columns["rep_categoria"].Caption= "V1CategoriaCN1";
                 p_dtResult.Columns["rep_cd6_cod"].Caption= "V1Codigo ReparacionCN1";
+                p_dtResult.Columns["rep_rcd_codcat"].Caption= "V1CategoriaCN1";
                 p_dtResult.Columns["rep_xde_des"].Caption= "V1ReparacionCN1";
                 p_dtResult.Columns["deleted"].Caption= "V1Borrado2N2";
             }

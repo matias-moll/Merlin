@@ -16,7 +16,7 @@ namespace Mrln.Bll
     //----------------------------------------------------------------------------
     //                         TNG Software BLL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 06/06/2018 03:56
+    // Fecha                    : 14/06/2018 00:00
     // Sistema                  : Mrln
     // Clase para Administrar   : Talleres y sus categorias
     //----------------------------------------------------------------------------
@@ -694,7 +694,23 @@ namespace Mrln.Bll
                     return;
                 }
 
-                // Es un update. No hay campos de update. No hacemos nada
+                // Es un update. La clave debe existir y estar habilitada
+                if (!p_smResult.ICodeEs(BllCodes.KeyExists)) {
+                    // Error. La clave no existe o no está habilitada
+                    p_smResult.BllWarning("El ítem (TallerCategoria) que intenta modificar no existe en el sistema o no está habilitado.","");
+                    return;
+                }
+
+                // Debe coincidir el número de version
+                TalCVVer(p_dbcAccess, 
+                         p_entTallerCategoria.Codigotaller,
+                         p_entTallerCategoria.Codigocategoria,
+                         p_entTallerCategoria.FxdVersion,
+                         ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // Actualizamos el registro
+                TalCUpdt(p_dbcAccess, p_entTallerCategoria, ref p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion SSav
@@ -721,10 +737,39 @@ namespace Mrln.Bll
                 Dal.TallerCategoria.Insert(p_dbcAccess,
                                            p_entTallerCategoria.Codigotaller,
                                            p_entTallerCategoria.Codigocategoria,
+                                           p_entTallerCategoria.Dummy,
                                            ref p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Insr
+                p_smResult.BllError(l_expData);
+            }
+        }
+
+        /// <summary>
+        /// Actualiza un registro a la tabla a partir de una entidad: ETallerCategoria
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_entTallerCategoria">Entidad con los datos a procesar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static void TalCUpdt(DBConn p_dbcAccess,
+                                      ETallerCategoria p_entTallerCategoria,
+                                      ref StatMsg p_smResult)
+        {
+            try {
+                // Validamos la integridad de la entidad
+                TalCTInt(p_dbcAccess, p_entTallerCategoria, ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // Actualizamos un registro de la tabla: TallerCategoria
+                Dal.TallerCategoria.Update(p_dbcAccess,
+                                           p_entTallerCategoria.Codigotaller,
+                                           p_entTallerCategoria.Codigocategoria,
+                                           p_entTallerCategoria.Dummy,
+                                           ref p_smResult);
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Updt
                 p_smResult.BllError(l_expData);
             }
         }
@@ -845,13 +890,11 @@ namespace Mrln.Bll
                              ref p_smResult);
                     if (p_smResult.NOk) return;
 
-                    /* TODO: que hacer en estos casos que no hay updt, creo que es porque solo tiene 2 campos que son primary key.
                     // El número coincide. La Actualizamos si no está borrada
                     if (!l_entTallerCategoria.EstaBorrada) {
                         TalCUpdt(p_dbcAccess, l_entTallerCategoria, ref p_smResult);
                         if (p_smResult.NOk) return;
                     }
-                    */
                 }
             }
             catch (Exception l_expData) {

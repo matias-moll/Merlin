@@ -10,7 +10,7 @@ namespace Mrln.Dal
     //----------------------------------------------------------------------------
     //                         TNG Software DAL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 06/06/2018 03:56
+    // Fecha                    : 13/06/2018 22:49
     // Sistema                  : Mrln
     // Clase para Administrar   : Controles de las reaparaciones
     // Basada en la Tabla       : ControlesReparations

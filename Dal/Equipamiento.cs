@@ -10,7 +10,7 @@ namespace Mrln.Dal
     //----------------------------------------------------------------------------
     //                         TNG Software DAL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 06/06/2018 03:56
+    // Fecha                    : 13/06/2018 22:49
     // Sistema                  : Mrln
     // Clase para Administrar   : Equipamiento de los móviles
     // Basada en la Tabla       : Equipamiento

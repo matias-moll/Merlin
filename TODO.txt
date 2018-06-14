@@ -1,7 +1,5 @@
 TODO:
 
-Tabla taller tiene tabla hija de tallerCategoria. QUe linkea contra la tabla categoria (ejemplos: electricidad, mecanica, etc).
-Y no permite cargar OTItems con una categoria que no la tenga el taller de la Orden de trabajo padre. FALTA HACER ESTE CONTROL EN ALTA DE OTs
 
 Agregar campo codigo de tipo de movil, es cod.
 En el alta es una combo.
@@ -12,8 +10,6 @@ Nota, pensar que pasa con los items de ordenes que no se hicieron. Idea: Dos bot
 no se hizo porque no es necesario y otro que diga no se pudo realizar, entonces despues en el alta de ordenes en controles le vamos 
 a mostrar los controles posibles + los items pendientes que tiene.
 
-
-Unificar ambos programas de OTs. La ventana de cierre de ordenes hay que repensarla desde 0.
 
 Armar logica en ventana de visor de ordenes para que tire los controles de orden de trabajo con un foreach y logica de location.
 Ver el tema de seleccion de orden de trabajo, necesito un evento o algo que me avise e ir trackeando el nro de orden seleccionado.

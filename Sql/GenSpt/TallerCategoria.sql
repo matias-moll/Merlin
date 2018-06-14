@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 06/06/2018 03:58
+// Fecha       : 14/06/2018 00:00
 // Sistema     : Mrln
 // Tabla       : TallerCategoria
 //----------------------------------------------------------------------------
@@ -56,6 +56,7 @@ begin
                 tll_ede_descripcion as ctl_taller,
                 tct_rcd_codigocategoria,
                 cat_des_des as tlc_categoria,
+                tct_cod_dummy,
                 TNGS_Mrln..TallerCategoria.instante,
                 TNGS_Mrln..TallerCategoria.deleted,
                 TNGS_Mrln..TallerCategoria.usuario,
@@ -75,6 +76,7 @@ begin
                 tll_ede_descripcion as ctl_taller,
                 tct_rcd_codigocategoria,
                 cat_des_des as tlc_categoria,
+                tct_cod_dummy,
                 TNGS_Mrln..TallerCategoria.instante,
                 TNGS_Mrln..TallerCategoria.deleted,
                 TNGS_Mrln..TallerCategoria.usuario,
@@ -188,6 +190,7 @@ begin
                 tll_ede_descripcion as ctl_taller,
                 tct_rcd_codigocategoria,
                 cat_des_des as tlc_categoria,
+                tct_cod_dummy,
                 TNGS_Mrln..TallerCategoria.instante,
                 TNGS_Mrln..TallerCategoria.deleted,
                 TNGS_Mrln..TallerCategoria.usuario,
@@ -207,6 +210,7 @@ begin
                 tll_ede_descripcion as ctl_taller,
                 tct_rcd_codigocategoria,
                 cat_des_des as tlc_categoria,
+                tct_cod_dummy,
                 TNGS_Mrln..TallerCategoria.instante,
                 TNGS_Mrln..TallerCategoria.deleted,
                 TNGS_Mrln..TallerCategoria.usuario,
@@ -268,6 +272,7 @@ begin
                 tll_ede_descripcion as ctl_taller,
                 tct_rcd_codigocategoria,
                 cat_des_des as tlc_categoria,
+                tct_cod_dummy,
                 TNGS_Mrln..TallerCategoria.instante,
                 TNGS_Mrln..TallerCategoria.deleted,
                 TNGS_Mrln..TallerCategoria.usuario,
@@ -287,6 +292,7 @@ begin
                 tll_ede_descripcion as ctl_taller,
                 tct_rcd_codigocategoria,
                 cat_des_des as tlc_categoria,
+                tct_cod_dummy,
                 TNGS_Mrln..TallerCategoria.instante,
                 TNGS_Mrln..TallerCategoria.deleted,
                 TNGS_Mrln..TallerCategoria.usuario,
@@ -319,6 +325,7 @@ go
 --- </summary>
 --- <param name="@tct_cod_codigotaller">Codigo Taller</param>
 --- <param name="@tct_rcd_codigocategoria">Codigo Categoria</param>
+--- <param name="@tct_cod_dummy">dummy</param>
 --- <param name="@usuario">Usuario que genera el insert</param>
 ---
 ---////////////////////////////////////////////////////////
@@ -339,6 +346,7 @@ create procedure dbo.TALLERCATEGORIA_INSERT
 (
 @tct_cod_codigotaller tngs_codigo,
 @tct_rcd_codigocategoria tngs_codigo_r,
+@tct_cod_dummy tngs_codigo,
 @usuario tngs_nombre
 )
 as
@@ -348,6 +356,7 @@ begin
    values (
            @tct_cod_codigotaller,
            @tct_rcd_codigocategoria,
+           @tct_cod_dummy,
            getdate(), 0, @usuario, 1
           )
 
@@ -359,6 +368,60 @@ go
 print '       - Asignando permisos al nuevo SP'
 
 grant execute on dbo.TALLERCATEGORIA_INSERT to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Actualiza un registro de la tabla
+--- </summary>
+--- <param name="@tct_cod_codigotaller">Codigo Taller</param>
+--- <param name="@tct_rcd_codigocategoria">Codigo Categoria</param>
+--- <param name="@tct_cod_dummy">dummy</param>
+--- <param name="@usuario">Usuario que genera el update</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.TALLERCATEGORIA_UPDATE'
+
+if exists (select * from sysobjects where id = object_id('dbo.TALLERCATEGORIA_UPDATE'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.TALLERCATEGORIA_UPDATE
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.TALLERCATEGORIA_UPDATE
+(
+@tct_cod_codigotaller tngs_codigo,
+@tct_rcd_codigocategoria tngs_codigo_r,
+@tct_cod_dummy tngs_codigo,
+@usuario tngs_nombre
+)
+as
+begin
+
+   Update TNGS_Mrln..TallerCategoria
+      set tct_cod_dummy= @tct_cod_dummy,
+          version = ((version+1) % 32767),
+          instante= getdate(),
+          usuario = @usuario
+    where tct_cod_codigotaller = @tct_cod_codigotaller
+      and tct_rcd_codigocategoria = @tct_rcd_codigocategoria
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.TALLERCATEGORIA_UPDATE to tngsmodulos
 
 print ' '
 go

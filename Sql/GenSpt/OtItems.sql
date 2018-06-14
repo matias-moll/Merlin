@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 06/06/2018 03:58
+// Fecha       : 14/06/2018 00:00
 // Sistema     : Mrln
 // Tabla       : OtItems
 //----------------------------------------------------------------------------
@@ -57,7 +57,7 @@ begin
                 oti_nro_nroitem,
                 oti_des_desoperacion,
                 oti_des_destarea,
-                oti_des_descategoria,
+                oti_rcd_codcategoria,
                 oti_imp_importe,
                 oti_ede_comentario,
                 TNGS_Mrln..OtItems.instante,
@@ -77,7 +77,7 @@ begin
                 oti_nro_nroitem,
                 oti_des_desoperacion,
                 oti_des_destarea,
-                oti_des_descategoria,
+                oti_rcd_codcategoria,
                 oti_imp_importe,
                 oti_ede_comentario,
                 TNGS_Mrln..OtItems.instante,
@@ -196,7 +196,7 @@ begin
                 oti_nro_nroitem,
                 oti_des_desoperacion,
                 oti_des_destarea,
-                oti_des_descategoria,
+                oti_rcd_codcategoria,
                 oti_imp_importe,
                 oti_ede_comentario,
                 TNGS_Mrln..OtItems.instante,
@@ -216,7 +216,7 @@ begin
                 oti_nro_nroitem,
                 oti_des_desoperacion,
                 oti_des_destarea,
-                oti_des_descategoria,
+                oti_rcd_codcategoria,
                 oti_imp_importe,
                 oti_ede_comentario,
                 TNGS_Mrln..OtItems.instante,
@@ -278,7 +278,7 @@ begin
                 oti_nro_nroitem,
                 oti_des_desoperacion,
                 oti_des_destarea,
-                oti_des_descategoria,
+                oti_rcd_codcategoria,
                 oti_imp_importe,
                 oti_ede_comentario,
                 TNGS_Mrln..OtItems.instante,
@@ -298,7 +298,7 @@ begin
                 oti_nro_nroitem,
                 oti_des_desoperacion,
                 oti_des_destarea,
-                oti_des_descategoria,
+                oti_rcd_codcategoria,
                 oti_imp_importe,
                 oti_ede_comentario,
                 TNGS_Mrln..OtItems.instante,
@@ -331,9 +331,9 @@ go
 --- <param name="@oti_nro_nroot">nroOt</param>
 --- <param name="@oti_nro_nroagrupador">Numero de agrupador</param>
 --- <param name="@oti_nro_nroitem">Numero del item</param>
---- <param name="@oti_des_desoperacion">Descripción de la operación.</param>
+--- <param name="@oti_des_desoperacion">Descripción de la operación</param>
 --- <param name="@oti_des_destarea">Descripción de la tarea</param>
---- <param name="@oti_des_descategoria">Descripción de la categoría.</param>
+--- <param name="@oti_rcd_codcategoria">Categoría</param>
 --- <param name="@oti_imp_importe">Importe</param>
 --- <param name="@oti_ede_comentario">Comentario</param>
 --- <param name="@usuario">Usuario que genera el insert</param>
@@ -359,7 +359,7 @@ create procedure dbo.OTITEMS_INSERT
 @oti_nro_nroitem tngs_numero,
 @oti_des_desoperacion tngs_descripcion,
 @oti_des_destarea tngs_descripcion,
-@oti_des_descategoria tngs_descripcion,
+@oti_rcd_codcategoria tngs_codigo_r,
 @oti_imp_importe tngs_importe,
 @oti_ede_comentario tngs_descripcion_e,
 @usuario tngs_nombre
@@ -374,7 +374,7 @@ begin
            @oti_nro_nroitem,
            @oti_des_desoperacion,
            @oti_des_destarea,
-           @oti_des_descategoria,
+           @oti_rcd_codcategoria,
            @oti_imp_importe,
            @oti_ede_comentario,
            getdate(), 0, @usuario, 1
@@ -400,9 +400,9 @@ go
 --- <param name="@oti_nro_nroot">nroOt</param>
 --- <param name="@oti_nro_nroagrupador">Numero de agrupador</param>
 --- <param name="@oti_nro_nroitem">Numero del item</param>
---- <param name="@oti_des_desoperacion">Descripción de la operación.</param>
+--- <param name="@oti_des_desoperacion">Descripción de la operación</param>
 --- <param name="@oti_des_destarea">Descripción de la tarea</param>
---- <param name="@oti_des_descategoria">Descripción de la categoría.</param>
+--- <param name="@oti_rcd_codcategoria">Categoría</param>
 --- <param name="@oti_imp_importe">Importe</param>
 --- <param name="@oti_ede_comentario">Comentario</param>
 --- <param name="@usuario">Usuario que genera el update</param>
@@ -428,7 +428,7 @@ create procedure dbo.OTITEMS_UPDATE
 @oti_nro_nroitem tngs_numero,
 @oti_des_desoperacion tngs_descripcion,
 @oti_des_destarea tngs_descripcion,
-@oti_des_descategoria tngs_descripcion,
+@oti_rcd_codcategoria tngs_codigo_r,
 @oti_imp_importe tngs_importe,
 @oti_ede_comentario tngs_descripcion_e,
 @usuario tngs_nombre
@@ -439,7 +439,7 @@ begin
    Update TNGS_Mrln..OtItems
       set oti_des_desoperacion= @oti_des_desoperacion,
           oti_des_destarea= @oti_des_destarea,
-          oti_des_descategoria= @oti_des_descategoria,
+          oti_rcd_codcategoria= @oti_rcd_codcategoria,
           oti_imp_importe= @oti_imp_importe,
           oti_ede_comentario= @oti_ede_comentario,
           version = ((version+1) % 32767),

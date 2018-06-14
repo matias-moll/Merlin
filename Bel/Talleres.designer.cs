@@ -14,7 +14,7 @@ namespace Mrln.Bel
     //----------------------------------------------------------------------------
     //                         TNG Software BEL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 06/06/2018 03:56
+    // Fecha                    : 14/06/2018 00:00
     // Sistema                  : Mrln
     // Clase para Administrar   : Talleres y sus categorias
     //----------------------------------------------------------------------------
@@ -80,6 +80,7 @@ namespace Mrln.Bel
 
             l_drTemp["tct_cod_codigotaller"]= XMLRuts.ExtractXAttr(l_xndData, "tct_cod_codigotaller");
             l_drTemp["tct_rcd_codigocategoria"]= XMLRuts.ExtractXAttr(l_xndData, "tct_rcd_codigocategoria");
+            l_drTemp["tct_cod_dummy"]= XMLRuts.ExtractXAttr(l_xndData, "tct_cod_dummy");
             l_drTemp["ctl_taller"]= XMLRuts.ExtractXAttr(l_xndData, "ctl_taller");
             l_drTemp["tlc_categoria"]= XMLRuts.ExtractXAttr(l_xndData, "tlc_categoria");
 
@@ -127,6 +128,7 @@ namespace Mrln.Bel
 
             l_drTemp["tct_cod_codigotaller"]= "";
             l_drTemp["tct_rcd_codigocategoria"]= "";
+            l_drTemp["tct_cod_dummy"]= "";
             l_drTemp["ctl_taller"]= "";
             l_drTemp["tlc_categoria"]= "";
 
@@ -143,9 +145,11 @@ namespace Mrln.Bel
         /// </summary>
         /// <param name="p_strCodigotaller">Codigo Taller</param>
         /// <param name="p_strCodigocategoria">Codigo Categoria</param>
+        /// <param name="p_strDummy">dummy</param>
         /// <returns>Entidad: TallerCategoria</returns>
         public static ETallerCategoria NewFilled(string p_strCodigotaller,
-                                                 string p_strCodigocategoria)
+                                                 string p_strCodigocategoria,
+                                                 string p_strDummy)
         {
             // Creamos una tabla compatible con la entidad
             DataTable l_dtTemp= new DataTable();
@@ -157,6 +161,7 @@ namespace Mrln.Bel
 
             l_drTemp["tct_cod_codigotaller"]= p_strCodigotaller;
             l_drTemp["tct_rcd_codigocategoria"]= p_strCodigocategoria;
+            l_drTemp["tct_cod_dummy"]= p_strDummy;
             l_drTemp["ctl_taller"]= "";
             l_drTemp["tlc_categoria"]= "";
 
@@ -199,13 +204,14 @@ namespace Mrln.Bel
         {
             get {
                 // Creamos el vector de DataColumns y lo llenamos
-                DataColumn[] l_dcStruct= new DataColumn[8];
+                DataColumn[] l_dcStruct= new DataColumn[9];
 
                 l_dcStruct[0]= new DataColumn("tct_cod_codigotaller", typeof(string));
                 l_dcStruct[1]= new DataColumn("ctl_taller", typeof(string));
                 l_dcStruct[2]= new DataColumn("tct_rcd_codigocategoria", typeof(string));
                 l_dcStruct[3]= new DataColumn("tlc_categoria", typeof(string));
-                ETallerCategoria.FillFixedFields(ref l_dcStruct, 4);
+                l_dcStruct[4]= new DataColumn("tct_cod_dummy", typeof(string));
+                ETallerCategoria.FillFixedFields(ref l_dcStruct, 5);
 
                 // Devolvemos el vector creado
                 return l_dcStruct;
@@ -247,6 +253,26 @@ namespace Mrln.Bel
         }
 
         /// <summary>
+        /// dummy
+        /// </summary>
+        public static string DummyCmp
+        {
+           get {return "tct_cod_dummy";}
+        }
+
+        /// <summary>
+        /// dummy
+        /// </summary>
+        public string Dummy
+        {
+            get {return ((string) InternalData["tct_cod_dummy"]).Trim();}
+            set {
+                if (value.Trim().Length > 4) value= value.Trim().Substring(0,4);
+                InternalData["tct_cod_dummy"]= value.Trim();
+            }
+        }
+
+        /// <summary>
         /// Taller
         /// </summary>
         public string Ctl_taller
@@ -285,6 +311,7 @@ namespace Mrln.Bel
                 // Asignamos los atributos al nodo
                 l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "tct_cod_codigotaller", Codigotaller));
                 l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "tct_rcd_codigocategoria", Codigocategoria));
+                l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "tct_cod_dummy", Dummy));
                 l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "ctl_taller", Ctl_taller));
                 l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "tlc_categoria", Tlc_categoria));
 

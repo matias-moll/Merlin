@@ -183,7 +183,7 @@ namespace Mrln.Tg
             // 
             this.cmdHab.BlackBorder = true;
             this.cmdHab.CircleButton = false;
-            this.cmdHab.FixedImage = TNGS.NetControls.FixedGlassButtons.Disable;
+            this.cmdHab.FixedImage = TNGS.NetControls.FixedGlassButtons.Enable;
             this.cmdHab.FlatColor = System.Drawing.Color.RoyalBlue;
             this.cmdHab.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
             this.cmdHab.FlatFontSize = 9;
@@ -194,7 +194,7 @@ namespace Mrln.Tg
             this.cmdHab.RoundCorners = 2;
             this.cmdHab.Size = new System.Drawing.Size(134, 26);
             this.cmdHab.TabIndex = 11;
-            this.cmdHab.Text = "Deshabilitar";
+            this.cmdHab.Text = "Habilitar";
             this.cmdHab.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.cmdHab.W8Color = System.Drawing.Color.RoyalBlue;
             this.cmdHab.Click += new System.EventHandler(this.cmdDesHab_Click);
@@ -243,7 +243,7 @@ namespace Mrln.Tg
             // 
             this.cmdDesHab.BlackBorder = true;
             this.cmdDesHab.CircleButton = false;
-            this.cmdDesHab.FixedImage = TNGS.NetControls.FixedGlassButtons.Enable;
+            this.cmdDesHab.FixedImage = TNGS.NetControls.FixedGlassButtons.Disable;
             this.cmdDesHab.FlatColor = System.Drawing.Color.RoyalBlue;
             this.cmdDesHab.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
             this.cmdDesHab.FlatFontSize = 9;
@@ -254,7 +254,7 @@ namespace Mrln.Tg
             this.cmdDesHab.RoundCorners = 2;
             this.cmdDesHab.Size = new System.Drawing.Size(134, 26);
             this.cmdDesHab.TabIndex = 11;
-            this.cmdDesHab.Text = "Habilitar";
+            this.cmdDesHab.Text = "Deshabilitar";
             this.cmdDesHab.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.cmdDesHab.W8Color = System.Drawing.Color.RoyalBlue;
             this.cmdDesHab.Click += new System.EventHandler(this.cmdDesHab_Click);

@@ -83,7 +83,7 @@
             this.xPanel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xPanel1.Location = new System.Drawing.Point(0, 0);
             this.xPanel1.Name = "xPanel1";
-            this.xPanel1.Size = new System.Drawing.Size(860, 501);
+            this.xPanel1.Size = new System.Drawing.Size(860, 511);
             this.xPanel1.SkinFixed = true;
             this.xPanel1.TabIndex = 0;
             // 
@@ -94,9 +94,9 @@
             this.cdcTalleres.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cdcTalleres.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.cdcTalleres.FormattingEnabled = true;
-            this.cdcTalleres.Location = new System.Drawing.Point(356, 40);
+            this.cdcTalleres.Location = new System.Drawing.Point(311, 40);
             this.cdcTalleres.Name = "cdcTalleres";
-            this.cdcTalleres.Size = new System.Drawing.Size(197, 23);
+            this.cdcTalleres.Size = new System.Drawing.Size(242, 23);
             this.cdcTalleres.Sorted = true;
             this.cdcTalleres.TabIndex = 18;
             // 
@@ -104,7 +104,7 @@
             // 
             this.fullLabel6.BackColor = System.Drawing.Color.Transparent;
             this.fullLabel6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fullLabel6.Location = new System.Drawing.Point(308, 43);
+            this.fullLabel6.Location = new System.Drawing.Point(259, 43);
             this.fullLabel6.Name = "fullLabel6";
             this.fullLabel6.Size = new System.Drawing.Size(52, 23);
             this.fullLabel6.TabIndex = 19;
@@ -404,7 +404,7 @@
             this.gbAccept.FlatFontSize = 9;
             this.gbAccept.FlatTextColor = System.Drawing.Color.Black;
             this.gbAccept.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.gbAccept.Location = new System.Drawing.Point(755, 458);
+            this.gbAccept.Location = new System.Drawing.Point(755, 468);
             this.gbAccept.Name = "gbAccept";
             this.gbAccept.RoundCorners = 2;
             this.gbAccept.Size = new System.Drawing.Size(93, 31);
@@ -427,7 +427,7 @@
             this.fgControlRepaSeleccionados.HeaderForeColor = System.Drawing.SystemColors.ControlText;
             this.fgControlRepaSeleccionados.Location = new System.Drawing.Point(18, 283);
             this.fgControlRepaSeleccionados.Name = "fgControlRepaSeleccionados";
-            this.fgControlRepaSeleccionados.Size = new System.Drawing.Size(832, 158);
+            this.fgControlRepaSeleccionados.Size = new System.Drawing.Size(832, 169);
             this.fgControlRepaSeleccionados.SkinFixed = true;
             this.fgControlRepaSeleccionados.TabIndex = 0;
             this.fgControlRepaSeleccionados.CurrentCellChanged += new System.EventHandler(this.fgControlRepaSeleccionados_CurrentCellChanged);
@@ -444,7 +444,7 @@
             this.gbCancel.FlatFontSize = 9;
             this.gbCancel.FlatTextColor = System.Drawing.Color.Black;
             this.gbCancel.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.gbCancel.Location = new System.Drawing.Point(646, 458);
+            this.gbCancel.Location = new System.Drawing.Point(646, 468);
             this.gbCancel.Name = "gbCancel";
             this.gbCancel.RoundCorners = 2;
             this.gbCancel.Size = new System.Drawing.Size(103, 31);
@@ -477,7 +477,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(860, 501);
+            this.ClientSize = new System.Drawing.Size(860, 511);
             this.Controls.Add(this.xPanel1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "AltaOrdenes";

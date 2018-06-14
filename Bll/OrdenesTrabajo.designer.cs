@@ -16,7 +16,7 @@ namespace Mrln.Bll
     //----------------------------------------------------------------------------
     //                         TNG Software BLL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 06/06/2018 03:56
+    // Fecha                    : 13/06/2018 22:52
     // Sistema                  : Mrln
     // Clase para Administrar   : Ordenes de Trabajo y sus Items
     //----------------------------------------------------------------------------
@@ -407,8 +407,8 @@ namespace Mrln.Bll
             }
 
             if (p_entOTItem.Desoperacion.Trim() == "") {
-                // El campo [Descripción de la operación.] no puede ser vacío
-                p_smResult.BllWarning("El dato [Descripción de la operación.] no puede ser vacío","");
+                // El campo [Descripción de la operación] no puede ser vacío
+                p_smResult.BllWarning("El dato [Descripción de la operación] no puede ser vacío","");
                 return;
             }
 
@@ -418,15 +418,22 @@ namespace Mrln.Bll
                 return;
             }
 
-            if (p_entOTItem.Descategoria.Trim() == "") {
-                // El campo [Descripción de la categoría.] no puede ser vacío
-                p_smResult.BllWarning("El dato [Descripción de la categoría.] no puede ser vacío","");
-                return;
-            }
-
             // ********
             // Validaciones de los campos con conexion
             // ********
+
+            if (p_entOTItem.Codcategoria.Trim() != "") {
+                Tablas.CatVKey(p_dbcAccess,
+                               p_entOTItem.Codcategoria,
+                               ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                if (p_smResult.ICodeEs(BllCodes.KeyDsntFound)) {
+                    // El campo [Categoría] debe existir en la tabla [Tablas.Cat]
+                    p_smResult.BllWarning("El dato [Categoría] debe existir en la tabla [Tablas.Cat]","");
+                    return;
+                }
+            }
 
             // Verificamos la clave foranea
             OrdenesTrabajo.VKey(p_dbcAccess,
@@ -440,6 +447,8 @@ namespace Mrln.Bll
                 p_smResult.BllWarning("La clave (OrdenTrabajo) foranea no existe en el sistema.","");
                 return;
             }
+
+            // Todas las validaciones fueron correctas
 
             // Llamamos a la funcion fija del usuario
             OtitTInt_f(p_dbcAccess, p_entOTItem, ref p_smResult);
@@ -777,7 +786,7 @@ namespace Mrln.Bll
                                    p_entOTItem.Nroitem,
                                    p_entOTItem.Desoperacion,
                                    p_entOTItem.Destarea,
-                                   p_entOTItem.Descategoria,
+                                   p_entOTItem.Codcategoria,
                                    p_entOTItem.Importe,
                                    p_entOTItem.Comentario,
                                    ref p_smResult);
@@ -810,7 +819,7 @@ namespace Mrln.Bll
                                    p_entOTItem.Nroitem,
                                    p_entOTItem.Desoperacion,
                                    p_entOTItem.Destarea,
-                                   p_entOTItem.Descategoria,
+                                   p_entOTItem.Codcategoria,
                                    p_entOTItem.Importe,
                                    p_entOTItem.Comentario,
                                    ref p_smResult);
