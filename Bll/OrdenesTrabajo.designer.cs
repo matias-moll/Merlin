@@ -16,7 +16,7 @@ namespace Mrln.Bll
     //----------------------------------------------------------------------------
     //                         TNG Software BLL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 13/06/2018 22:52
+    // Fecha                    : 14/06/2018 03:27
     // Sistema                  : Mrln
     // Clase para Administrar   : Ordenes de Trabajo y sus Items
     //----------------------------------------------------------------------------
@@ -1249,6 +1249,35 @@ namespace Mrln.Bll
         #endregion
 
         #region Metodos para métodos DAL definidos por el usuario
+
+        /// <summary>
+        /// Ejecuta el SP definido por el usuario: getPendientes
+        /// </summary>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        /// <returns>ListaEntidad con los datos solicitados</returns>
+        public static LEOrdenesTrabajo getPendientes(ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            DBConn l_dbcAccess= null;
+
+            try {
+                // Abrimos una conexion
+                l_dbcAccess= DBRuts.GetConection(Connections.Dat);
+
+                // Llamamos al metodo interno
+                return getPendientes(l_dbcAccess,
+                                     ref p_smResult);
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion
+                p_smResult.BllError(l_expData);
+                return null;
+            }
+            finally {
+                // Si abrimos una conexion -> la cerramos
+                if (l_dbcAccess != null) l_dbcAccess.Close();
+            }
+        }
         #endregion
 
         //---------------------------------------------------------------
@@ -1712,25 +1741,63 @@ namespace Mrln.Bll
         #region Metodos para métodos DAL definidos por el usuario
 
         /// <summary>
-        /// Ejecuta el SP definido por el usuario: getByPatente
+        /// Ejecuta el SP definido por el usuario: getPendByPatente
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
         /// <param name= p_strPatente>patente de un movil</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         /// <returns>ListaEntidad con los datos solicitados</returns>
-        internal static LEOrdenesTrabajo getByPatente(DBConn p_dbcAccess,
-                                                      string p_strPatente,
-                                                      ref StatMsg p_smResult)
+        internal static LEOrdenesTrabajo getPendByPatente(DBConn p_dbcAccess,
+                                                          string p_strPatente,
+                                                          ref StatMsg p_smResult)
         {
             try {
                 // Llamamos al metodo definido por el usuario
                 DataSet l_dsTemp= new DataSet();
 
-                Dal.OrdenesTrabajo.getByPatente(p_dbcAccess,
-                                                p_strPatente,
-                                                ref l_dsTemp,
-                                                "Temporal",
-                                                ref p_smResult);
+                Dal.OrdenesTrabajo.getPendByPatente(p_dbcAccess,
+                                                    p_strPatente,
+                                                    ref l_dsTemp,
+                                                    "Temporal",
+                                                    ref p_smResult);
+                if (p_smResult.NOk) return null;
+
+                // Captionamos el resultado
+                Dal.OrdenesTrabajo.MakeGridCaptions(ref l_dsTemp, "Temporal", ref p_smResult);
+                if (p_smResult.NOk) return null;
+
+                // Creamos la ListaEntidad y la devolvemos
+                LEOrdenesTrabajo l_lentRet= new LEOrdenesTrabajo(l_dsTemp.Tables["Temporal"]);
+                l_dsTemp.Dispose();
+                return l_lentRet;
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion
+                p_smResult.BllError(l_expData);
+                return null;
+            }
+            finally {
+                // Terminamos
+            }
+        }
+
+        /// <summary>
+        /// Ejecuta el SP definido por el usuario: getPendientes
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        /// <returns>ListaEntidad con los datos solicitados</returns>
+        internal static LEOrdenesTrabajo getPendientes(DBConn p_dbcAccess,
+                                                       ref StatMsg p_smResult)
+        {
+            try {
+                // Llamamos al metodo definido por el usuario
+                DataSet l_dsTemp= new DataSet();
+
+                Dal.OrdenesTrabajo.getPendientes(p_dbcAccess,
+                                                 ref l_dsTemp,
+                                                 "Temporal",
+                                                 ref p_smResult);
                 if (p_smResult.NOk) return null;
 
                 // Captionamos el resultado

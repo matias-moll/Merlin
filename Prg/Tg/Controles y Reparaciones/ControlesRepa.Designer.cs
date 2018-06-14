@@ -63,7 +63,6 @@ namespace Mrln.Tg
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.xpnlBase = new TNGS.NetControls.XPanel();
             this.lblTitle = new System.Windows.Forms.Label();
             this.tsContainer1 = new TNGS.NetControls.TSContainer();

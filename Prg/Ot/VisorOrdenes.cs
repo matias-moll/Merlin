@@ -15,6 +15,7 @@ using TNGS.NetApp;
 using TNGS.NetRoutines;
 using TNGS.NetControls;
 using WeifenLuo.WinFormsUI.Docking;
+using ControlesCustom;
 
 namespace Mrln.Ot
 {
@@ -23,15 +24,10 @@ namespace Mrln.Ot
     /// </summary>
     public partial class VisorOrdenes : DockContent
     {
-        #region
+        #region Miembros
         private LEMoviles m_LEMoviles = null;
-        private LEOTItems m_LEOTitems = null;
-        private LEOrdenesTrabajo m_LEOTTrabajos = null;
-        private EOTItem m_EOTitemSeleccionado = null;
         private StatMsg m_smResult = null;
-        private ACLInfo m_aclInfo = null;
         #endregion
-            
 
         /// <summary>
         /// Constuctor
@@ -46,11 +42,66 @@ namespace Mrln.Ot
             // Dockeamos el formulario
             ((MainFrame)App.GetMainWindow()).AddContent(this);
 
-            LlenarCombo();
+            
         }
 
+        private void VisorOrdenes_Load(object sender, EventArgs e)
+        {
+            LlenarComboMoviles();
 
-        private void LlenarCombo()
+            LEOrdenesTrabajo ordenesPendientes = Bll.OrdenesTrabajo.getPendientes(ref m_smResult);
+            if (MsgRuts.AnalizeError(this, m_smResult)) return;
+            CargarOrdenes(ordenesPendientes);
+        }
+
+        private void CargarOrdenes(LEOrdenesTrabajo ordenesACargar)
+        {
+            xpPanelOrdenes.Controls.Clear();
+
+            
+
+            // Separamos el primer caso por cuestion de la location.
+            EOrdenTrabajo primeraOrden = ordenesACargar.First();
+            itemBarra primerItem = newItemFromOrden(primeraOrden);
+
+            primerItem.Location = new Point(0, 0);
+            xpPanelOrdenes.Controls.Add(primerItem);
+            ordenesACargar.RemoveEntity(primerItem.Numero);
+
+            // Recorremos el resto de la lista.
+            foreach (EOrdenTrabajo orden in ordenesACargar)
+            {
+                agregarOrdenPendiente(orden);
+            }
+        }
+
+        private itemBarra newItemFromOrden(EOrdenTrabajo orden)
+        {
+            return new itemBarra(orden.Nro, orden.Patente, orden.Fecapertura, orden.Ot_taller);
+        }
+
+        private void agregarOrdenPendiente(EOrdenTrabajo orden)
+        {
+            itemBarra item = newItemFromOrden(orden);
+            Point posicion = new Point();
+
+            // Entran 7 ordenes por cada row lateral.
+            if (xpPanelOrdenes.Controls.Count % 7 != 0)
+            {
+                posicion.X = xpPanelOrdenes.Controls[xpPanelOrdenes.Controls.Count - 1].Location.X + 140;
+                posicion.Y = xpPanelOrdenes.Controls[xpPanelOrdenes.Controls.Count - 1].Location.Y;
+            }
+            else
+            {
+                posicion.X = 0;
+                posicion.Y = xpPanelOrdenes.Controls[xpPanelOrdenes.Controls.Count - 1].Location.Y + 135;
+            }
+
+            item.Location = posicion;
+            xpPanelOrdenes.Controls.Add(item);
+        }
+
+        private void LlenarComboMoviles()
         {
             m_LEMoviles = Bll.Moviles.UpFull(true, ref m_smResult);
             cdcMoviles.FillFromStrLEntidad(m_LEMoviles, "mov_ecd_patente", "mov_des_des", "deleted");
@@ -58,23 +109,41 @@ namespace Mrln.Ot
 
         }
 
-        private void gbBuscar_Click(object sender, EventArgs e)
+        private void gbFiltrar_Click(object sender, EventArgs e)
         {
-            m_LEOTTrabajos = Bll.OrdenesTrabajo.ObtenerOTsPorPatente(cdcMoviles.SelectedStrCode, ref m_smResult);
-            if (m_LEOTTrabajos.Count == 0)
+            if (!gbFiltrar.Checked)
             {
-                MsgRuts.ShowMsg(this,"El Movil elegido no tiene ordenes de trabajo asociadas");
-                return;
-            }
-            fgGrillaItemsOT.FillFromLEntidad(m_LEOTTrabajos);
-            if (MsgRuts.AnalizeError(this, m_smResult)) return;
+                LEOrdenesTrabajo ordenesPorMovil = Bll.OrdenesTrabajo.ObtenerOTsPorPatente(cdcMoviles.SelectedStrCode, ref m_smResult);
+                if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
+                if (ordenesPorMovil.Count == 0)
+                {
+                    MsgRuts.ShowMsg(this, "El Movil elegido no tiene ordenes de trabajo asociadas");
+                    return;
+                }
+
+                CargarOrdenes(ordenesPorMovil);
+                gbFiltrar.Checked = true;
+                gbFiltrar.Text = "Quitar Filtro";
+                cdcMoviles.Enabled = false;
+            }
+            else
+            {
+                LEOrdenesTrabajo ordenesPendientes = Bll.OrdenesTrabajo.getPendientes(ref m_smResult);
+                if (MsgRuts.AnalizeError(this, m_smResult)) return;
+                CargarOrdenes(ordenesPendientes);
+                gbFiltrar.Checked = false;
+                gbFiltrar.Text = "Filtrar";
+                cdcMoviles.Enabled = true;
+            }
         }
 
         private void gbNuevaOrden_Click(object sender, EventArgs e)
         {
             AltaOrdenes l_frmAltaOrdenes = new AltaOrdenes();
             l_frmAltaOrdenes.ShowDialog(this);
+
+            this.agregarOrdenPendiente(l_frmAltaOrdenes.OrdenCreada);
         }
 
         private void gbEditarOT_Click(object sender, EventArgs e)
@@ -83,5 +152,6 @@ namespace Mrln.Ot
             AltaOrdenes l_frmAltaOrdenes = new AltaOrdenes();
             l_frmAltaOrdenes.ShowDialog(this);
         }
+
     }
 }

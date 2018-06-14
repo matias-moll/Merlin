@@ -16,7 +16,7 @@ namespace Mrln.Bll
     //----------------------------------------------------------------------------
     //                         TNG Software BLL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 06/06/2018 03:56
+    // Fecha                    : 14/06/2018 03:27
     // Sistema                  : Mrln
     // Clase para Administrar   : 
     //----------------------------------------------------------------------------
@@ -221,15 +221,16 @@ namespace Mrln.Bll
                 case "odt_fyh_feccierre"               : {return "V1Fecha de cierre.DN2";}
                 case "odt_cod_encargado"               : {return "V1EncargadoCN1";}
                 case "odt_cod_codtaller"               : {return "V1TallerCN1";}
+                case "ot_taller"                       : {return "V1TallerCN1";}
 
                 // ****************************************
                 // Tabla: OtItems             
                 case "oti_nro_nroot"                   : {return "V1nroOtNN3";}
                 case "oti_nro_nroagrupador"            : {return "V1Numero de agrupadorNN3";}
                 case "oti_nro_nroitem"                 : {return "V1Numero del itemNN3";}
-                case "oti_des_desoperacion"            : {return "V1Descripción de la operación.CN1";}
+                case "oti_des_desoperacion"            : {return "V1Descripción de la operaciónCN1";}
                 case "oti_des_destarea"                : {return "V1Descripción de la tareaCN1";}
-                case "oti_des_descategoria"            : {return "V1Descripción de la categoría.CN1";}
+                case "oti_rcd_codcategoria"            : {return "V1CategoríaCN1";}
                 case "oti_imp_importe"                 : {return "V1Importe2N3";}
                 case "oti_ede_comentario"              : {return "V1ComentarioCN1";}
 
@@ -248,6 +249,7 @@ namespace Mrln.Bll
                 case "rep_xde_des"                     : {return "V1ReparacionCN1";}
                 case "rep_rcd_codcat"                  : {return "V1CategoriaCN1";}
                 case "rep_cd1_solicitadetalle"         : {return "V1Se Solicita DetalleCN2";}
+                case "rep_categoria"                   : {return "V1CategoriaCN1";}
 
                 // ****************************************
                 // Tabla: Taller              
@@ -261,6 +263,7 @@ namespace Mrln.Bll
                 // Tabla: TallerCategoria     
                 case "tct_cod_codigotaller"            : {return "V1Codigo TallerCN1";}
                 case "tct_rcd_codigocategoria"         : {return "V1Codigo CategoriaCN1";}
+                case "tct_cod_dummy"                   : {return "V1dummyCN1";}
                 case "ctl_taller"                      : {return "V1TallerCN1";}
                 case "tlc_categoria"                   : {return "V1CategoriaCN1";}
 

@@ -55,7 +55,7 @@ namespace Mrln.Bll
                 l_dbcAccess.BeginTransaction();
 
                 // Por cada equipamiento de la lista lo grabamos, con la misma coneccion todos
-                 l_LEOrdenesTrabajo = Bll.OrdenesTrabajo.getByPatente(l_dbcAccess, p_strPatente, ref p_smResult);
+                 l_LEOrdenesTrabajo = Bll.OrdenesTrabajo.getPendByPatente(l_dbcAccess, p_strPatente, ref p_smResult);
 
             }
             catch (Exception l_expData)

@@ -10,7 +10,7 @@ namespace Mrln.Dal
     //----------------------------------------------------------------------------
     //                         TNG Software DAL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 14/06/2018 00:00
+    // Fecha                    : 14/06/2018 03:27
     // Sistema                  : Mrln
     // Clase para Administrar   : Taller
     // Basada en la Tabla       : Taller

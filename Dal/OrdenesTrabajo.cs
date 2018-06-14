@@ -10,7 +10,7 @@ namespace Mrln.Dal
     //----------------------------------------------------------------------------
     //                         TNG Software DAL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 13/06/2018 22:52
+    // Fecha                    : 14/06/2018 03:27
     // Sistema                  : Mrln
     // Clase para Administrar   : Ordenes De Trabajo
     // Basada en la Tabla       : OrdenesTrabajo
@@ -334,24 +334,51 @@ namespace Mrln.Dal
         #region Metodos del Usuario
 
         /// <summary>
-        /// Método Fijo: getByPatente
+        /// Método Fijo: getPendByPatente
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
         /// <param name= "p_strPatente">patente de un movil</param>
         /// <param name="p_dsResult">DataSet donde devolver el registro</param>
         /// <param name="p_strTabla">Nombre de la tabla a llenar</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
-        public static int getByPatente(DBConn p_dbcAccess,
-                                       string p_strPatente,
-                                       ref DataSet p_dsResult,
-                                       string p_strTabla,
-                                       ref StatMsg p_smResult)
+        public static int getPendByPatente(DBConn p_dbcAccess,
+                                           string p_strPatente,
+                                           ref DataSet p_dsResult,
+                                           string p_strTabla,
+                                           ref StatMsg p_smResult)
         {
             try {
                 return DBRuts.Exec_DS(p_dbcAccess,
-                                      "TNGS_Mrln..ORDENESTRABAJO_GETBYPATENTE",
+                                      "TNGS_Mrln..ORDENESTRABAJO_GETPENDBYPATENTE",
                                       new DbParameter[] {
                                           p_dbcAccess.MakeParam("@patente", p_strPatente),
+                                          p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
+                                      },
+                                      ref p_dsResult, p_strTabla);
+            }
+            catch (Exception l_expData) {
+                // Error en el método fijo
+                p_smResult.DalError(l_expData);
+                return -1;
+            }
+        }
+
+        /// <summary>
+        /// Método Fijo: getPendientes
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_dsResult">DataSet donde devolver el registro</param>
+        /// <param name="p_strTabla">Nombre de la tabla a llenar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        public static int getPendientes(DBConn p_dbcAccess,
+                                        ref DataSet p_dsResult,
+                                        string p_strTabla,
+                                        ref StatMsg p_smResult)
+        {
+            try {
+                return DBRuts.Exec_DS(p_dbcAccess,
+                                      "TNGS_Mrln..ORDENESTRABAJO_GETPENDIENTES",
+                                      new DbParameter[] {
                                           p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
                                       },
                                       ref p_dsResult, p_strTabla);
@@ -379,6 +406,7 @@ namespace Mrln.Dal
                 DBRuts.ClearDTCaptions(ref p_dtResult);
 
                 // Fijamos los nuevos captions de la grilla
+                p_dtResult.Columns["ot_taller"].Caption= "V1TallerCN1";
                 p_dtResult.Columns["odt_fyh_fecapertura"].Caption= "V1Fecha de aperturaDN1";
                 p_dtResult.Columns["odt_fyh_feccierre"].Caption= "V1Fecha de cierre.DN1";
                 p_dtResult.Columns["odt_nro_nro"].Caption= "V1nroNN1";

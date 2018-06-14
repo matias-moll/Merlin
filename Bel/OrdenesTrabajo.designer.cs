@@ -14,7 +14,7 @@ namespace Mrln.Bel
     //----------------------------------------------------------------------------
     //                         TNG Software BEL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 13/06/2018 22:52
+    // Fecha                    : 14/06/2018 03:27
     // Sistema                  : Mrln
     // Clase para Administrar   : Ordenes de Trabajo y sus Items
     //----------------------------------------------------------------------------
@@ -778,6 +778,7 @@ namespace Mrln.Bel
             l_drTemp["odt_fyh_feccierre"]= XMLRuts.ExtractXAttr(l_xndData, "odt_fyh_feccierre", true);
             l_drTemp["odt_cod_encargado"]= XMLRuts.ExtractXAttr(l_xndData, "odt_cod_encargado");
             l_drTemp["odt_cod_codtaller"]= XMLRuts.ExtractXAttr(l_xndData, "odt_cod_codtaller");
+            l_drTemp["ot_taller"]= XMLRuts.ExtractXAttr(l_xndData, "ot_taller");
 
             // Llenamos los campos fijos
             XML2FixedFields(ref l_drTemp, l_xndData);
@@ -835,6 +836,7 @@ namespace Mrln.Bel
             l_drTemp["odt_fyh_feccierre"]= DateTimeRuts.Empty;
             l_drTemp["odt_cod_encargado"]= "";
             l_drTemp["odt_cod_codtaller"]= "";
+            l_drTemp["ot_taller"]= "";
 
             // Agregamos la Row creada a la tabla creada y creamos
             // una entidad a partir de la DataTable de 1 registro
@@ -878,6 +880,7 @@ namespace Mrln.Bel
             l_drTemp["odt_fyh_feccierre"]= p_dtFeccierre;
             l_drTemp["odt_cod_encargado"]= p_strEncargado;
             l_drTemp["odt_cod_codtaller"]= p_strCodtaller;
+            l_drTemp["ot_taller"]= "";
 
             // Agregamos la Row creada a la tabla creada y creamos
             // una entidad a partir de la DataTable de 1 registro
@@ -929,7 +932,7 @@ namespace Mrln.Bel
         {
             get {
                 // Creamos el vector de DataColumns y lo llenamos
-                DataColumn[] l_dcStruct= new DataColumn[11];
+                DataColumn[] l_dcStruct= new DataColumn[12];
 
                 l_dcStruct[0]= new DataColumn("odt_nro_nro", typeof(int));
                 l_dcStruct[1]= new DataColumn("odt_ecd_patente", typeof(string));
@@ -938,7 +941,8 @@ namespace Mrln.Bel
                 l_dcStruct[4]= new DataColumn("odt_fyh_feccierre", typeof(DateTime));
                 l_dcStruct[5]= new DataColumn("odt_cod_encargado", typeof(string));
                 l_dcStruct[6]= new DataColumn("odt_cod_codtaller", typeof(string));
-                EOrdenTrabajo.FillFixedFields(ref l_dcStruct, 7);
+                l_dcStruct[7]= new DataColumn("ot_taller", typeof(string));
+                EOrdenTrabajo.FillFixedFields(ref l_dcStruct, 8);
 
                 // Devolvemos el vector creado
                 return l_dcStruct;
@@ -1080,6 +1084,15 @@ namespace Mrln.Bel
         }
 
         /// <summary>
+        /// Taller
+        /// </summary>
+        public string Ot_taller
+        {
+            get {return (string) InternalData["ot_taller"];}
+            set {InternalData["ot_taller"]= value;}
+        }
+
+        /// <summary>
         /// Devuelve la entidad [EOrdenTrabajo] como XMLDocument en formato string
         /// </summary>
         public string XMLData
@@ -1105,6 +1118,7 @@ namespace Mrln.Bel
                 l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "odt_fyh_feccierre", Feccierre));
                 l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "odt_cod_encargado", Encargado));
                 l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "odt_cod_codtaller", Codtaller));
+                l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "ot_taller", Ot_taller));
 
                 // Asignamos los campos fijos
                 FixedFields2XML(l_xdocData, ref l_xndEntidad);

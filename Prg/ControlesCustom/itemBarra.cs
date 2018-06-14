@@ -29,6 +29,14 @@ namespace ControlesCustom
             lblFecha.Text = inicialDate.Day.ToString() + "/" + inicialDate.Month.ToString() + "/" + inicialDate.Year.ToString();
         }
 
+        public itemBarra(int nro, string titulo, DateTime fecha, string descripcion): this()
+        {
+            this.Numero = nro;
+            this.Titulo = titulo;
+            this.Fecha = fecha;
+            this.Descripcion = descripcion;
+        }
+
         #endregion
 
         #region Propiedades del Control
@@ -66,10 +74,17 @@ namespace ControlesCustom
             set { lblTitulo.Text = value; }
         }
 
+
+        // cambia o devuelve el titulo
+        public string Descripcion
+        {
+            get { return fllDescripcion.Text; }
+            set { fllDescripcion.Text = value; }
+        }
         #endregion
 
         #region Metodos Privados del control
-        
+
         //cambia la foto del circulo de estado 
         private void CambiarFoto(Estados estado)
         {

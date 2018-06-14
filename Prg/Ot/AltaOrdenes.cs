@@ -29,6 +29,7 @@ namespace Mrln.Ot
         private Bel.EOrdenTrabajo m_eOrdenAModificar;
         private List<ETallerCategoria> m_leTalleresCategoriasFull;
         private List<ETallerCategoria> m_leTalleresConTodasLasCategoriasNecesarias;
+        private Bel.EOrdenTrabajo m_eOrdenNuevaCreada;
 
 
         // Constructor Inicial
@@ -424,8 +425,8 @@ namespace Mrln.Ot
             if (!m_estadoMofidicar)
             {
                 // Graba OrdenNueva con sus items
-                Bel.EOrdenTrabajo l_ordenAGrabar = CrearOrdenDeTrabajo(m_leOTItems);
-                Bll.OrdenesTrabajo.Save(l_ordenAGrabar, ref m_smResult);
+                m_eOrdenNuevaCreada = CrearOrdenDeTrabajo(m_leOTItems);
+                Bll.OrdenesTrabajo.Save(m_eOrdenNuevaCreada, ref m_smResult);
                 if (MsgRuts.AnalizeError(this, m_smResult)) return;
                 MsgRuts.ShowMsg(this, "La nueva orden fue agregada exitosamente");
             }
@@ -575,5 +576,7 @@ namespace Mrln.Ot
         }
 
         #endregion
+
+        public EOrdenTrabajo OrdenCreada { get { return m_eOrdenNuevaCreada; } }
     }
 }

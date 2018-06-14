@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 14/06/2018 00:00
+// Fecha       : 14/06/2018 03:28
 // Sistema     : Mrln
 // Tabla       : OrdenesTrabajo
 //----------------------------------------------------------------------------
@@ -59,12 +59,15 @@ begin
                 odt_fyh_feccierre,
                 odt_cod_encargado,
                 odt_cod_codtaller,
+                isnull(tll_ede_descripcion, '') as ot_taller,
                 TNGS_Mrln..OrdenesTrabajo.instante,
                 TNGS_Mrln..OrdenesTrabajo.deleted,
                 TNGS_Mrln..OrdenesTrabajo.usuario,
                 TNGS_Mrln..OrdenesTrabajo.version
            from TNGS_Mrln..OrdenesTrabajo
-          where deleted = 0
+                left outer join TNGS_Mrln..Taller
+                  on odt_cod_codtaller = tll_cod_codigo
+          where TNGS_Mrln..OrdenesTrabajo.deleted = 0
           order by odt_nro_nro
       end
    else
@@ -76,11 +79,14 @@ begin
                 odt_fyh_feccierre,
                 odt_cod_encargado,
                 odt_cod_codtaller,
+                isnull(tll_ede_descripcion, '') as ot_taller,
                 TNGS_Mrln..OrdenesTrabajo.instante,
                 TNGS_Mrln..OrdenesTrabajo.deleted,
                 TNGS_Mrln..OrdenesTrabajo.usuario,
                 TNGS_Mrln..OrdenesTrabajo.version
            from TNGS_Mrln..OrdenesTrabajo
+                left outer join TNGS_Mrln..Taller
+                  on odt_cod_codtaller = tll_cod_codigo
           order by odt_nro_nro
       end
 
@@ -182,13 +188,16 @@ begin
                 odt_fyh_feccierre,
                 odt_cod_encargado,
                 odt_cod_codtaller,
+                isnull(tll_ede_descripcion, '') as ot_taller,
                 TNGS_Mrln..OrdenesTrabajo.instante,
                 TNGS_Mrln..OrdenesTrabajo.deleted,
                 TNGS_Mrln..OrdenesTrabajo.usuario,
                 TNGS_Mrln..OrdenesTrabajo.version
            from TNGS_Mrln..OrdenesTrabajo
+                left outer join TNGS_Mrln..Taller
+                  on odt_cod_codtaller = tll_cod_codigo
           where odt_nro_nro = @odt_nro_nro
-            and deleted = 0
+            and TNGS_Mrln..OrdenesTrabajo.deleted = 0
       end
    else
       begin
@@ -199,11 +208,14 @@ begin
                 odt_fyh_feccierre,
                 odt_cod_encargado,
                 odt_cod_codtaller,
+                isnull(tll_ede_descripcion, '') as ot_taller,
                 TNGS_Mrln..OrdenesTrabajo.instante,
                 TNGS_Mrln..OrdenesTrabajo.deleted,
                 TNGS_Mrln..OrdenesTrabajo.usuario,
                 TNGS_Mrln..OrdenesTrabajo.version
            from TNGS_Mrln..OrdenesTrabajo
+                left outer join TNGS_Mrln..Taller
+                  on odt_cod_codtaller = tll_cod_codigo
           where odt_nro_nro = @odt_nro_nro
       end
 
@@ -540,26 +552,26 @@ go
 ---////////////////////////////////////////////////////////
 ---
 --- <summary>
---- Método Fijo: getByPatente
+--- Método Fijo: getPendByPatente
 --- </summary>
 --- <param name="@patente">patente de un movil</param>
 --- <param name="@usuario">Usuario que ejecuta el SP</param>
 ---
 ---////////////////////////////////////////////////////////
 
-print 'Store Procedure: dbo.ORDENESTRABAJO_GETBYPATENTE'
+print 'Store Procedure: dbo.ORDENESTRABAJO_GETPENDBYPATENTE'
 
-if exists (select * from sysobjects where id = object_id('dbo.ORDENESTRABAJO_GETBYPATENTE'))
+if exists (select * from sysobjects where id = object_id('dbo.ORDENESTRABAJO_GETPENDBYPATENTE'))
 begin
    print '       - Borrando el viejo SP'
-   drop procedure dbo.ORDENESTRABAJO_GETBYPATENTE
+   drop procedure dbo.ORDENESTRABAJO_GETPENDBYPATENTE
 end
 go
 
 print '       - Creando el nuevo SP'
 go
 
-create procedure dbo.ORDENESTRABAJO_GETBYPATENTE
+create procedure dbo.ORDENESTRABAJO_GETPENDBYPATENTE
 (
 @patente tngs_codigo_e,
 @usuario tngs_nombre
@@ -574,12 +586,15 @@ begin
           odt_fyh_feccierre,
           odt_cod_encargado,
           odt_cod_codtaller,
+          isnull(tll_ede_descripcion, '') as ot_taller,
           TNGS_Mrln..OrdenesTrabajo.instante,
           TNGS_Mrln..OrdenesTrabajo.deleted,
           TNGS_Mrln..OrdenesTrabajo.usuario,
           TNGS_Mrln..OrdenesTrabajo.version
      from TNGS_Mrln..OrdenesTrabajo 
-     where odt_ecd_patente = @patente 
+          left outer join TNGS_Mrln..Taller
+            on odt_cod_codtaller = tll_cod_codigo
+     where odt_ecd_patente = @patente and year(odt_fyh_feccierre) = 1900 
 
 fin:
 
@@ -588,7 +603,64 @@ go
 
 print '       - Asignando permisos al nuevo SP'
 
-grant execute on dbo.ORDENESTRABAJO_GETBYPATENTE to tngsmodulos
+grant execute on dbo.ORDENESTRABAJO_GETPENDBYPATENTE to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Método Fijo: getPendientes
+--- </summary>
+--- <param name="@usuario">Usuario que ejecuta el SP</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.ORDENESTRABAJO_GETPENDIENTES'
+
+if exists (select * from sysobjects where id = object_id('dbo.ORDENESTRABAJO_GETPENDIENTES'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.ORDENESTRABAJO_GETPENDIENTES
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.ORDENESTRABAJO_GETPENDIENTES
+(
+@usuario tngs_nombre
+)
+as
+begin
+
+   Select odt_nro_nro,
+          odt_ecd_patente,
+          odt_fyh_fecapertura,
+          odt_nom_operador,
+          odt_fyh_feccierre,
+          odt_cod_encargado,
+          odt_cod_codtaller,
+          isnull(tll_ede_descripcion, '') as ot_taller,
+          TNGS_Mrln..OrdenesTrabajo.instante,
+          TNGS_Mrln..OrdenesTrabajo.deleted,
+          TNGS_Mrln..OrdenesTrabajo.usuario,
+          TNGS_Mrln..OrdenesTrabajo.version
+     from TNGS_Mrln..OrdenesTrabajo 
+          left outer join TNGS_Mrln..Taller
+            on odt_cod_codtaller = tll_cod_codigo
+     where year(odt_fyh_feccierre) = 1900 
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.ORDENESTRABAJO_GETPENDIENTES to tngsmodulos
 
 print ' '
 go
