@@ -33,12 +33,12 @@ namespace ControlesCustom
             lblFecha.Text = inicialDate.Day.ToString() + "/" + inicialDate.Month.ToString() + "/" + inicialDate.Year.ToString();
         }
 
-        public itemBarra(int nro, string titulo, DateTime fecha, string descripcion): this()
+        public itemBarra(int nro, string titulo, DateTime fecha, string taller): this()
         {
             this.Numero = nro;
             this.Titulo = titulo;
             this.Fecha = fecha;
-            this.Descripcion = descripcion;
+            this.Taller = taller;
         }
 
         #endregion
@@ -80,10 +80,18 @@ namespace ControlesCustom
 
 
         // cambia o devuelve el titulo
-        public string Descripcion
+        public string Taller
         {
             get { return fllDescripcion.Text; }
-            set { fllDescripcion.Text = value; }
+            set
+            {
+                if (value.Trim() == "")
+                    this.CambiarFoto(Estados.Rojo);
+                else
+                    this.CambiarFoto(Estados.Verde);
+
+                fllDescripcion.Text = value;
+            }
         }
         #endregion
 
@@ -106,10 +114,6 @@ namespace ControlesCustom
         }
         #endregion
 
-        #region Eventos del Control
-
-
-        #endregion
 
         public bool Seleccionado
         {
@@ -125,18 +129,10 @@ namespace ControlesCustom
             }
         }
 
-        public bool fuisteClickeado(System.Drawing.Point pointClicked)
+        public bool EsEditable
         {
-            int xInicial, xFinal, yInicial, yFinal;
-            xInicial = this.Location.X;
-            xFinal = xInicial + this.Size.Width;
-            yInicial = this.Location.Y;
-            yFinal = yInicial + this.Size.Height;
-
-            if ((pointClicked.X >= xInicial && pointClicked.X <= xFinal) && (pointClicked.Y >= yInicial && pointClicked.Y <= yFinal))
-                return true;
-            else
-                return false;
+            // Si se muestra el boton rojo es porque no tiene taller aun y por lo tanto es editable.
+            get { return pbRojo.Visible; }
         }
 
         private void itemBarra_Click(object sender, EventArgs e)

@@ -149,9 +149,19 @@ namespace Mrln.Ot
 
         private void gbEditarOT_Click(object sender, EventArgs e)
         {
-            // TODO: Modificar para recuperar la orden seleccionada y usar ese constructor.
-            AltaOrdenes l_frmAltaOrdenes = new AltaOrdenes();
+            if (noHayItemSeleccionado())
+                return;
+
+            if(!m_ibItemSeleccionado.EsEditable)
+            {
+                MsgRuts.ShowMsg(this, "Una orden completa y con taller no puede ser editada");
+                return;
+            }
+
+            AltaOrdenes l_frmAltaOrdenes = new AltaOrdenes(m_ibItemSeleccionado.Numero);
             l_frmAltaOrdenes.ShowDialog(this);
+
+            m_ibItemSeleccionado.Taller = l_frmAltaOrdenes.OrdenModificada.Ot_taller;
         }
 
         private void unItem_FueSeleccionado(object sender, EventArgs e)

@@ -38,6 +38,16 @@
             this.niSysTray = new System.Windows.Forms.NotifyIcon(this.components);
             this.xpnlPanel1 = new TNGS.NetControls.XPanel();
             this.xpPanelOrdenes = new TNGS.NetControls.XPanel();
+            this.itemBarra10 = new ControlesCustom.itemBarra();
+            this.itemBarra9 = new ControlesCustom.itemBarra();
+            this.itemBarra7 = new ControlesCustom.itemBarra();
+            this.itemBarra6 = new ControlesCustom.itemBarra();
+            this.itemBarra5 = new ControlesCustom.itemBarra();
+            this.itemBarra4 = new ControlesCustom.itemBarra();
+            this.itemBarra3 = new ControlesCustom.itemBarra();
+            this.itemBarra2 = new ControlesCustom.itemBarra();
+            this.itemBarra1 = new ControlesCustom.itemBarra();
+            this.itemBarra8 = new ControlesCustom.itemBarra();
             this.fgGrillaItemsOT = new TNGS.NetControls.FullGrid();
             this.tsContainer1 = new TNGS.NetControls.TSContainer();
             this.tabStripPage1 = new RibbonStyle.TabStripPage();
@@ -53,16 +63,6 @@
             this.cdcMoviles = new TNGS.NetControls.CDCombo();
             this.tsBase1 = new TNGS.NetControls.TSBase();
             this.tab1 = new RibbonStyle.Tab();
-            this.itemBarra10 = new ControlesCustom.itemBarra();
-            this.itemBarra9 = new ControlesCustom.itemBarra();
-            this.itemBarra7 = new ControlesCustom.itemBarra();
-            this.itemBarra6 = new ControlesCustom.itemBarra();
-            this.itemBarra5 = new ControlesCustom.itemBarra();
-            this.itemBarra4 = new ControlesCustom.itemBarra();
-            this.itemBarra3 = new ControlesCustom.itemBarra();
-            this.itemBarra2 = new ControlesCustom.itemBarra();
-            this.itemBarra1 = new ControlesCustom.itemBarra();
-            this.itemBarra8 = new ControlesCustom.itemBarra();
             this.xpnlPanel1.SuspendLayout();
             this.xpPanelOrdenes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fgGrillaItemsOT)).BeginInit();
@@ -122,6 +122,156 @@
             this.xpPanelOrdenes.SkinFixed = true;
             this.xpPanelOrdenes.TabIndex = 3;
             this.xpPanelOrdenes.MouseClick += new System.Windows.Forms.MouseEventHandler(this.xpPanelOrdenes_MouseClick);
+            // 
+            // itemBarra10
+            // 
+            this.itemBarra10.CambiarEstado = ControlesCustom.itemBarra.Estados.Verde;
+            this.itemBarra10.Fecha = new System.DateTime(1993, 1, 29, 0, 0, 0, 0);
+            this.itemBarra10.Location = new System.Drawing.Point(810, 0);
+            this.itemBarra10.MaximumSize = new System.Drawing.Size(160, 120);
+            this.itemBarra10.MinimumSize = new System.Drawing.Size(120, 90);
+            this.itemBarra10.Name = "itemBarra10";
+            this.itemBarra10.Numero = 0;
+            this.itemBarra10.Seleccionado = false;
+            this.itemBarra10.Size = new System.Drawing.Size(130, 120);
+            this.itemBarra10.TabIndex = 16;
+            this.itemBarra10.Taller = "Descripcion testeando cantidad";
+            this.itemBarra10.Titulo = "Orden de Trabajo";
+            // 
+            // itemBarra9
+            // 
+            this.itemBarra9.CambiarEstado = ControlesCustom.itemBarra.Estados.Verde;
+            this.itemBarra9.Fecha = new System.DateTime(1993, 1, 29, 0, 0, 0, 0);
+            this.itemBarra9.Location = new System.Drawing.Point(138, 135);
+            this.itemBarra9.MaximumSize = new System.Drawing.Size(160, 120);
+            this.itemBarra9.MinimumSize = new System.Drawing.Size(120, 90);
+            this.itemBarra9.Name = "itemBarra9";
+            this.itemBarra9.Numero = 0;
+            this.itemBarra9.Seleccionado = false;
+            this.itemBarra9.Size = new System.Drawing.Size(130, 120);
+            this.itemBarra9.TabIndex = 15;
+            this.itemBarra9.Taller = "Descripcion testeando cantidad";
+            this.itemBarra9.Titulo = "Orden de Trabajo";
+            // 
+            // itemBarra7
+            // 
+            this.itemBarra7.CambiarEstado = ControlesCustom.itemBarra.Estados.Verde;
+            this.itemBarra7.Fecha = new System.DateTime(1993, 1, 29, 0, 0, 0, 0);
+            this.itemBarra7.Location = new System.Drawing.Point(0, 135);
+            this.itemBarra7.MaximumSize = new System.Drawing.Size(160, 120);
+            this.itemBarra7.MinimumSize = new System.Drawing.Size(120, 90);
+            this.itemBarra7.Name = "itemBarra7";
+            this.itemBarra7.Numero = 0;
+            this.itemBarra7.Seleccionado = false;
+            this.itemBarra7.Size = new System.Drawing.Size(130, 120);
+            this.itemBarra7.TabIndex = 14;
+            this.itemBarra7.Taller = "Descripcion testeando cantidad";
+            this.itemBarra7.Titulo = "Orden de Trabajo";
+            // 
+            // itemBarra6
+            // 
+            this.itemBarra6.CambiarEstado = ControlesCustom.itemBarra.Estados.Verde;
+            this.itemBarra6.Fecha = new System.DateTime(1993, 1, 29, 0, 0, 0, 0);
+            this.itemBarra6.Location = new System.Drawing.Point(3, 270);
+            this.itemBarra6.MaximumSize = new System.Drawing.Size(160, 120);
+            this.itemBarra6.MinimumSize = new System.Drawing.Size(120, 90);
+            this.itemBarra6.Name = "itemBarra6";
+            this.itemBarra6.Numero = 0;
+            this.itemBarra6.Seleccionado = false;
+            this.itemBarra6.Size = new System.Drawing.Size(130, 120);
+            this.itemBarra6.TabIndex = 13;
+            this.itemBarra6.Taller = "Descripcion testeando cantidad";
+            this.itemBarra6.Titulo = "Orden de Trabajo";
+            // 
+            // itemBarra5
+            // 
+            this.itemBarra5.CambiarEstado = ControlesCustom.itemBarra.Estados.Verde;
+            this.itemBarra5.Fecha = new System.DateTime(1993, 1, 29, 0, 0, 0, 0);
+            this.itemBarra5.Location = new System.Drawing.Point(675, 0);
+            this.itemBarra5.MaximumSize = new System.Drawing.Size(160, 120);
+            this.itemBarra5.MinimumSize = new System.Drawing.Size(120, 90);
+            this.itemBarra5.Name = "itemBarra5";
+            this.itemBarra5.Numero = 0;
+            this.itemBarra5.Seleccionado = false;
+            this.itemBarra5.Size = new System.Drawing.Size(130, 120);
+            this.itemBarra5.TabIndex = 12;
+            this.itemBarra5.Taller = "Descripcion testeando cantidad";
+            this.itemBarra5.Titulo = "Orden de Trabajo";
+            // 
+            // itemBarra4
+            // 
+            this.itemBarra4.CambiarEstado = ControlesCustom.itemBarra.Estados.Verde;
+            this.itemBarra4.Fecha = new System.DateTime(1993, 1, 29, 0, 0, 0, 0);
+            this.itemBarra4.Location = new System.Drawing.Point(540, 0);
+            this.itemBarra4.MaximumSize = new System.Drawing.Size(160, 120);
+            this.itemBarra4.MinimumSize = new System.Drawing.Size(120, 90);
+            this.itemBarra4.Name = "itemBarra4";
+            this.itemBarra4.Numero = 0;
+            this.itemBarra4.Seleccionado = false;
+            this.itemBarra4.Size = new System.Drawing.Size(130, 120);
+            this.itemBarra4.TabIndex = 11;
+            this.itemBarra4.Taller = "Descripcion testeando cantidad";
+            this.itemBarra4.Titulo = "Orden de Trabajo";
+            // 
+            // itemBarra3
+            // 
+            this.itemBarra3.CambiarEstado = ControlesCustom.itemBarra.Estados.Verde;
+            this.itemBarra3.Fecha = new System.DateTime(1993, 1, 29, 0, 0, 0, 0);
+            this.itemBarra3.Location = new System.Drawing.Point(405, 0);
+            this.itemBarra3.MaximumSize = new System.Drawing.Size(160, 120);
+            this.itemBarra3.MinimumSize = new System.Drawing.Size(120, 90);
+            this.itemBarra3.Name = "itemBarra3";
+            this.itemBarra3.Numero = 0;
+            this.itemBarra3.Seleccionado = false;
+            this.itemBarra3.Size = new System.Drawing.Size(130, 120);
+            this.itemBarra3.TabIndex = 10;
+            this.itemBarra3.Taller = "Descripcion testeando cantidad";
+            this.itemBarra3.Titulo = "Orden de Trabajo";
+            // 
+            // itemBarra2
+            // 
+            this.itemBarra2.CambiarEstado = ControlesCustom.itemBarra.Estados.Verde;
+            this.itemBarra2.Fecha = new System.DateTime(1993, 1, 29, 0, 0, 0, 0);
+            this.itemBarra2.Location = new System.Drawing.Point(270, 0);
+            this.itemBarra2.MaximumSize = new System.Drawing.Size(160, 120);
+            this.itemBarra2.MinimumSize = new System.Drawing.Size(120, 90);
+            this.itemBarra2.Name = "itemBarra2";
+            this.itemBarra2.Numero = 0;
+            this.itemBarra2.Seleccionado = false;
+            this.itemBarra2.Size = new System.Drawing.Size(130, 120);
+            this.itemBarra2.TabIndex = 9;
+            this.itemBarra2.Taller = "Descripcion testeando cantidad";
+            this.itemBarra2.Titulo = "Orden de Trabajo";
+            // 
+            // itemBarra1
+            // 
+            this.itemBarra1.CambiarEstado = ControlesCustom.itemBarra.Estados.Verde;
+            this.itemBarra1.Fecha = new System.DateTime(1993, 1, 29, 0, 0, 0, 0);
+            this.itemBarra1.Location = new System.Drawing.Point(135, 0);
+            this.itemBarra1.MaximumSize = new System.Drawing.Size(160, 120);
+            this.itemBarra1.MinimumSize = new System.Drawing.Size(120, 90);
+            this.itemBarra1.Name = "itemBarra1";
+            this.itemBarra1.Numero = 0;
+            this.itemBarra1.Seleccionado = false;
+            this.itemBarra1.Size = new System.Drawing.Size(130, 120);
+            this.itemBarra1.TabIndex = 8;
+            this.itemBarra1.Taller = "Descripcion testeando cantidad";
+            this.itemBarra1.Titulo = "Orden de Trabajo";
+            // 
+            // itemBarra8
+            // 
+            this.itemBarra8.CambiarEstado = ControlesCustom.itemBarra.Estados.Verde;
+            this.itemBarra8.Fecha = new System.DateTime(1993, 1, 29, 0, 0, 0, 0);
+            this.itemBarra8.Location = new System.Drawing.Point(0, 0);
+            this.itemBarra8.MaximumSize = new System.Drawing.Size(160, 120);
+            this.itemBarra8.MinimumSize = new System.Drawing.Size(120, 90);
+            this.itemBarra8.Name = "itemBarra8";
+            this.itemBarra8.Numero = 0;
+            this.itemBarra8.Seleccionado = false;
+            this.itemBarra8.Size = new System.Drawing.Size(130, 120);
+            this.itemBarra8.TabIndex = 7;
+            this.itemBarra8.Taller = "Descripcion testeando cantidad";
+            this.itemBarra8.Titulo = "Orden de Trabajo";
             // 
             // fgGrillaItemsOT
             // 
@@ -374,156 +524,6 @@
             this.tab1.Size = new System.Drawing.Size(139, 23);
             this.tab1.TabStripPage = null;
             this.tab1.Text = "Ordenes De Trabajo";
-            // 
-            // itemBarra10
-            // 
-            this.itemBarra10.CambiarEstado = ControlesCustom.itemBarra.Estados.Verde;
-            this.itemBarra10.Descripcion = "Descripcion testeando cantidad";
-            this.itemBarra10.Fecha = new System.DateTime(1993, 1, 29, 0, 0, 0, 0);
-            this.itemBarra10.Location = new System.Drawing.Point(810, 0);
-            this.itemBarra10.MaximumSize = new System.Drawing.Size(160, 120);
-            this.itemBarra10.MinimumSize = new System.Drawing.Size(120, 90);
-            this.itemBarra10.Name = "itemBarra10";
-            this.itemBarra10.Numero = 0;
-            this.itemBarra10.Seleccionado = false;
-            this.itemBarra10.Size = new System.Drawing.Size(130, 120);
-            this.itemBarra10.TabIndex = 16;
-            this.itemBarra10.Titulo = "Orden de Trabajo";
-            // 
-            // itemBarra9
-            // 
-            this.itemBarra9.CambiarEstado = ControlesCustom.itemBarra.Estados.Verde;
-            this.itemBarra9.Descripcion = "Descripcion testeando cantidad";
-            this.itemBarra9.Fecha = new System.DateTime(1993, 1, 29, 0, 0, 0, 0);
-            this.itemBarra9.Location = new System.Drawing.Point(138, 135);
-            this.itemBarra9.MaximumSize = new System.Drawing.Size(160, 120);
-            this.itemBarra9.MinimumSize = new System.Drawing.Size(120, 90);
-            this.itemBarra9.Name = "itemBarra9";
-            this.itemBarra9.Numero = 0;
-            this.itemBarra9.Seleccionado = false;
-            this.itemBarra9.Size = new System.Drawing.Size(130, 120);
-            this.itemBarra9.TabIndex = 15;
-            this.itemBarra9.Titulo = "Orden de Trabajo";
-            // 
-            // itemBarra7
-            // 
-            this.itemBarra7.CambiarEstado = ControlesCustom.itemBarra.Estados.Verde;
-            this.itemBarra7.Descripcion = "Descripcion testeando cantidad";
-            this.itemBarra7.Fecha = new System.DateTime(1993, 1, 29, 0, 0, 0, 0);
-            this.itemBarra7.Location = new System.Drawing.Point(0, 135);
-            this.itemBarra7.MaximumSize = new System.Drawing.Size(160, 120);
-            this.itemBarra7.MinimumSize = new System.Drawing.Size(120, 90);
-            this.itemBarra7.Name = "itemBarra7";
-            this.itemBarra7.Numero = 0;
-            this.itemBarra7.Seleccionado = false;
-            this.itemBarra7.Size = new System.Drawing.Size(130, 120);
-            this.itemBarra7.TabIndex = 14;
-            this.itemBarra7.Titulo = "Orden de Trabajo";
-            // 
-            // itemBarra6
-            // 
-            this.itemBarra6.CambiarEstado = ControlesCustom.itemBarra.Estados.Verde;
-            this.itemBarra6.Descripcion = "Descripcion testeando cantidad";
-            this.itemBarra6.Fecha = new System.DateTime(1993, 1, 29, 0, 0, 0, 0);
-            this.itemBarra6.Location = new System.Drawing.Point(3, 270);
-            this.itemBarra6.MaximumSize = new System.Drawing.Size(160, 120);
-            this.itemBarra6.MinimumSize = new System.Drawing.Size(120, 90);
-            this.itemBarra6.Name = "itemBarra6";
-            this.itemBarra6.Numero = 0;
-            this.itemBarra6.Seleccionado = false;
-            this.itemBarra6.Size = new System.Drawing.Size(130, 120);
-            this.itemBarra6.TabIndex = 13;
-            this.itemBarra6.Titulo = "Orden de Trabajo";
-            // 
-            // itemBarra5
-            // 
-            this.itemBarra5.CambiarEstado = ControlesCustom.itemBarra.Estados.Verde;
-            this.itemBarra5.Descripcion = "Descripcion testeando cantidad";
-            this.itemBarra5.Fecha = new System.DateTime(1993, 1, 29, 0, 0, 0, 0);
-            this.itemBarra5.Location = new System.Drawing.Point(675, 0);
-            this.itemBarra5.MaximumSize = new System.Drawing.Size(160, 120);
-            this.itemBarra5.MinimumSize = new System.Drawing.Size(120, 90);
-            this.itemBarra5.Name = "itemBarra5";
-            this.itemBarra5.Numero = 0;
-            this.itemBarra5.Seleccionado = false;
-            this.itemBarra5.Size = new System.Drawing.Size(130, 120);
-            this.itemBarra5.TabIndex = 12;
-            this.itemBarra5.Titulo = "Orden de Trabajo";
-            // 
-            // itemBarra4
-            // 
-            this.itemBarra4.CambiarEstado = ControlesCustom.itemBarra.Estados.Verde;
-            this.itemBarra4.Descripcion = "Descripcion testeando cantidad";
-            this.itemBarra4.Fecha = new System.DateTime(1993, 1, 29, 0, 0, 0, 0);
-            this.itemBarra4.Location = new System.Drawing.Point(540, 0);
-            this.itemBarra4.MaximumSize = new System.Drawing.Size(160, 120);
-            this.itemBarra4.MinimumSize = new System.Drawing.Size(120, 90);
-            this.itemBarra4.Name = "itemBarra4";
-            this.itemBarra4.Numero = 0;
-            this.itemBarra4.Seleccionado = false;
-            this.itemBarra4.Size = new System.Drawing.Size(130, 120);
-            this.itemBarra4.TabIndex = 11;
-            this.itemBarra4.Titulo = "Orden de Trabajo";
-            // 
-            // itemBarra3
-            // 
-            this.itemBarra3.CambiarEstado = ControlesCustom.itemBarra.Estados.Verde;
-            this.itemBarra3.Descripcion = "Descripcion testeando cantidad";
-            this.itemBarra3.Fecha = new System.DateTime(1993, 1, 29, 0, 0, 0, 0);
-            this.itemBarra3.Location = new System.Drawing.Point(405, 0);
-            this.itemBarra3.MaximumSize = new System.Drawing.Size(160, 120);
-            this.itemBarra3.MinimumSize = new System.Drawing.Size(120, 90);
-            this.itemBarra3.Name = "itemBarra3";
-            this.itemBarra3.Numero = 0;
-            this.itemBarra3.Seleccionado = false;
-            this.itemBarra3.Size = new System.Drawing.Size(130, 120);
-            this.itemBarra3.TabIndex = 10;
-            this.itemBarra3.Titulo = "Orden de Trabajo";
-            // 
-            // itemBarra2
-            // 
-            this.itemBarra2.CambiarEstado = ControlesCustom.itemBarra.Estados.Verde;
-            this.itemBarra2.Descripcion = "Descripcion testeando cantidad";
-            this.itemBarra2.Fecha = new System.DateTime(1993, 1, 29, 0, 0, 0, 0);
-            this.itemBarra2.Location = new System.Drawing.Point(270, 0);
-            this.itemBarra2.MaximumSize = new System.Drawing.Size(160, 120);
-            this.itemBarra2.MinimumSize = new System.Drawing.Size(120, 90);
-            this.itemBarra2.Name = "itemBarra2";
-            this.itemBarra2.Numero = 0;
-            this.itemBarra2.Seleccionado = false;
-            this.itemBarra2.Size = new System.Drawing.Size(130, 120);
-            this.itemBarra2.TabIndex = 9;
-            this.itemBarra2.Titulo = "Orden de Trabajo";
-            // 
-            // itemBarra1
-            // 
-            this.itemBarra1.CambiarEstado = ControlesCustom.itemBarra.Estados.Verde;
-            this.itemBarra1.Descripcion = "Descripcion testeando cantidad";
-            this.itemBarra1.Fecha = new System.DateTime(1993, 1, 29, 0, 0, 0, 0);
-            this.itemBarra1.Location = new System.Drawing.Point(135, 0);
-            this.itemBarra1.MaximumSize = new System.Drawing.Size(160, 120);
-            this.itemBarra1.MinimumSize = new System.Drawing.Size(120, 90);
-            this.itemBarra1.Name = "itemBarra1";
-            this.itemBarra1.Numero = 0;
-            this.itemBarra1.Seleccionado = false;
-            this.itemBarra1.Size = new System.Drawing.Size(130, 120);
-            this.itemBarra1.TabIndex = 8;
-            this.itemBarra1.Titulo = "Orden de Trabajo";
-            // 
-            // itemBarra8
-            // 
-            this.itemBarra8.CambiarEstado = ControlesCustom.itemBarra.Estados.Verde;
-            this.itemBarra8.Descripcion = "Descripcion testeando cantidad";
-            this.itemBarra8.Fecha = new System.DateTime(1993, 1, 29, 0, 0, 0, 0);
-            this.itemBarra8.Location = new System.Drawing.Point(0, 0);
-            this.itemBarra8.MaximumSize = new System.Drawing.Size(160, 120);
-            this.itemBarra8.MinimumSize = new System.Drawing.Size(120, 90);
-            this.itemBarra8.Name = "itemBarra8";
-            this.itemBarra8.Numero = 0;
-            this.itemBarra8.Seleccionado = false;
-            this.itemBarra8.Size = new System.Drawing.Size(130, 120);
-            this.itemBarra8.TabIndex = 7;
-            this.itemBarra8.Titulo = "Orden de Trabajo";
             // 
             // VisorOrdenes
             // 

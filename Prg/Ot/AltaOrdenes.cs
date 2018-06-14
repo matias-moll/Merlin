@@ -36,6 +36,7 @@ namespace Mrln.Ot
         public AltaOrdenes()
         {
             InitializeComponent();
+            estadoInicialParaAltas();
         }
 
         // Constructor Edit
@@ -47,9 +48,6 @@ namespace Mrln.Ot
             m_estadoMofidicar = true;
 
             // desabilitamos los controles necesarios para que el usuario no pueda interactuar con ellos 
-            tgrpControlesYRep.Enabled = false;
-            pnlOpciones.Enabled = false;
-            gbAgregar.Enabled = false;
             cdcPatente.Enabled = false;
 
             // Seteamos la el numero de orden trabajo en el TV
@@ -73,25 +71,30 @@ namespace Mrln.Ot
             cdcPatente.AddStrCD("patente",m_eOrdenAModificar.Patente,1);
             cdcPatente.SelectedStrCode = "patente";
 
+            CargarListasEntidadesMiembros();
+
             // por ultimo obtenemos el numero maximo de agrupador y le sumamos uno.
             m_intNumeroAgrupador = 1;
             foreach (Bel.EOTItem item in m_eOrdenAModificar.OTItems)
             {
                 if (m_intNumeroAgrupador < item.Nroagrupador)
                     m_intNumeroAgrupador = item.Nroagrupador;
+
+                // Tenemos que llamar a este metodo para cada item de la orden para que actualice la lista de talleres posibles.
+                EReparacion reparacionItem = EReparacion.NewEmpty();
+                reparacionItem.Codcat = item.Codcategoria;
+                hayTallerQueResuelvaTodo(reparacionItem);
             }
-            m_intNumeroAgrupador += 1; 
-        }
 
+            m_intNumeroAgrupador += 1;
 
-        private void OTItemsNuevo_Load(object sender, EventArgs e)
-        {
-            estadoInicial();
+            if (m_eOrdenAModificar.Codtaller.Trim() != "")
+                cdcTalleres.SelectedStrCode = m_eOrdenAModificar.Codtaller;
         }
 
         #region Metodos Privados
 
-        private void estadoInicial()
+        private void estadoInicialParaAltas()
         {
             // Estado Modificar es FALSO
             m_estadoMofidicar = false;
@@ -113,6 +116,14 @@ namespace Mrln.Ot
             m_leOTItems = Bel.LEOTItems.NewEmpty();
             ConfigurarCaptionsLEOitems(m_leOTItems);
 
+            CargarListasEntidadesMiembros();
+
+            //seteamos el numero de agrupador como 1
+            m_intNumeroAgrupador = 1;
+        }
+
+        private void CargarListasEntidadesMiembros()
+        {
             // Nos traemos todas las reparaciones de la grilla a memoria 
             m_leReparaciones = Bll.Tablas.RepUpFull(true, ref m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
@@ -121,9 +132,6 @@ namespace Mrln.Ot
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
             m_leTalleresConTodasLasCategoriasNecesarias = m_leTalleresCategoriasFull = talleresCategorias.ToList();
-
-            //seteamos el numero de agrupador como 1
-            m_intNumeroAgrupador = 1;
         }
 
         // LLena la combo de patente con todas las de la base .
@@ -151,9 +159,13 @@ namespace Mrln.Ot
 
         private void actualizaComboTalleresFiltrados()
         {
+            string tallerSeleccionado = cdcTalleres.SelectedStrCode;
+
             cdcTalleres.Clear();
             List<IGrouping<string, ETallerCategoria>> talleresConTodasLasCategoriasNecesarias = m_leTalleresConTodasLasCategoriasNecesarias.GroupBy(taller => taller.Codigotaller).ToList();
             talleresConTodasLasCategoriasNecesarias.ForEach(tallerAgrupado => cdcTalleres.AddStrCD(tallerAgrupado.Key, tallerAgrupado.First().Ctl_taller, 0));
+
+            cdcTalleres.SelectedStrCode = tallerSeleccionado;
         }
 
         // Nos retorna la reparacion de Codigo pasado por parametro
@@ -233,7 +245,7 @@ namespace Mrln.Ot
         private void reiniciarForm()
         {
             limpiarControles();
-            estadoInicial();
+            estadoInicialParaAltas();
         }
 
         private void limpiarControles()
@@ -388,6 +400,7 @@ namespace Mrln.Ot
             deImporte.Decimal = 0;
         }
 
+        // Este metodo no solo devuelve el booleando, tiene efecto colateral en la lista miembro de talleres con todas las categorias necesarias.
         private bool hayTallerQueResuelvaTodo(EReparacion p_eRepaSelec)
         {
             // Filtramos los talleres que cumplan con la categoria del item a agregar. Hacemos interseccion con los que actualmente cumplen.
@@ -409,12 +422,9 @@ namespace Mrln.Ot
             }
         }
 
-            
-
         // Graba la ListaEntidad de Items en la Base
         private void gbAccept_Click(object sender, EventArgs e)
         {
-
             // si la lista esta vacia no grabamos
             if (m_leOTItems.Count == 0)
             {
@@ -433,8 +443,14 @@ namespace Mrln.Ot
             else
             {
                 // Graba Orden a Actualizar
-                // primero asigna los nuevos items a la orden de trabajo
+                // primero asigna los nuevos items a la orden de trabajo y actualiza el taller si corresponde
                 m_eOrdenAModificar.OTItems = m_leOTItems;
+
+                if (cdcTalleres.SelectedStrCode.Trim() != "")
+                {
+                    m_eOrdenAModificar.Codtaller = cdcTalleres.SelectedStrCode;
+                    m_eOrdenAModificar.Ot_taller = cdcTalleres.SelectedItem.ToString();
+                }
                 Bll.OrdenesTrabajo.Save(m_eOrdenAModificar, ref m_smResult);
                 if (MsgRuts.AnalizeError(this, m_smResult)) return;
                 MsgRuts.ShowMsg(this, "La orden fue modificada exitosamente");
@@ -578,5 +594,7 @@ namespace Mrln.Ot
         #endregion
 
         public EOrdenTrabajo OrdenCreada { get { return m_eOrdenNuevaCreada; } }
+
+        public EOrdenTrabajo OrdenModificada {  get { return m_eOrdenAModificar; } }
     }
 }

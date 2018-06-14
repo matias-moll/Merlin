@@ -483,7 +483,6 @@
             this.Name = "AltaOrdenes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Nueva Orden de Trabajo";
-            this.Load += new System.EventHandler(this.OTItemsNuevo_Load);
             this.xPanel1.ResumeLayout(false);
             this.xPanel1.PerformLayout();
             this.tgrpOpciones.ResumeLayout(false);
