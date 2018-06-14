@@ -13,10 +13,14 @@ namespace ControlesCustom
 {
     public partial class itemBarra : UserControl
     {
+        public event EventHandler FuiSeleccionado;
 
         #region Variables Miembro y Constructores
         // fecha inicial que muestra el control (Cumpleanios de Juanchi :D)
         DateTime inicialDate = new DateTime(1993, 1, 29);
+
+        bool estoySeleccionado = false;
+
         // enumerado de tipos de estado
         public enum Estados { Verde, Rojo }
 
@@ -107,5 +111,40 @@ namespace ControlesCustom
 
         #endregion
 
+        public bool Seleccionado
+        {
+            get { return estoySeleccionado; }
+            set
+            {
+                if (value)
+                    this.BorderStyle = BorderStyle.FixedSingle;
+                else
+                    this.BorderStyle = BorderStyle.None;
+
+                estoySeleccionado = value;
+            }
+        }
+
+        public bool fuisteClickeado(System.Drawing.Point pointClicked)
+        {
+            int xInicial, xFinal, yInicial, yFinal;
+            xInicial = this.Location.X;
+            xFinal = xInicial + this.Size.Width;
+            yInicial = this.Location.Y;
+            yFinal = yInicial + this.Size.Height;
+
+            if ((pointClicked.X >= xInicial && pointClicked.X <= xFinal) && (pointClicked.Y >= yInicial && pointClicked.Y <= yFinal))
+                return true;
+            else
+                return false;
+        }
+
+        private void itemBarra_Click(object sender, EventArgs e)
+        {
+            this.Seleccionado = true;
+
+            // Manera compacta de chequear que alguien este colgado del evento y llamarlo.
+            FuiSeleccionado?.Invoke(this, null);
+        }
     }
 }

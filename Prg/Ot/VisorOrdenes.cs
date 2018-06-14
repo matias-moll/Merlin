@@ -27,11 +27,10 @@ namespace Mrln.Ot
         #region Miembros
         private LEMoviles m_LEMoviles = null;
         private StatMsg m_smResult = null;
+        private itemBarra m_ibItemSeleccionado = null;
         #endregion
 
-        /// <summary>
-        /// Constuctor
-        /// </summary>
+        // Constuctor
         public VisorOrdenes()
         {
             InitializeComponent();
@@ -58,12 +57,13 @@ namespace Mrln.Ot
         {
             xpPanelOrdenes.Controls.Clear();
 
-            
-
             // Separamos el primer caso por cuestion de la location.
             EOrdenTrabajo primeraOrden = ordenesACargar.First();
             itemBarra primerItem = newItemFromOrden(primeraOrden);
+            primerItem.FuiSeleccionado += unItem_FueSeleccionado;
 
+            primerItem.Seleccionado = true;
+            m_ibItemSeleccionado = primerItem;
             primerItem.Location = new Point(0, 0);
             xpPanelOrdenes.Controls.Add(primerItem);
             ordenesACargar.RemoveEntity(primerItem.Numero);
@@ -83,6 +83,7 @@ namespace Mrln.Ot
         private void agregarOrdenPendiente(EOrdenTrabajo orden)
         {
             itemBarra item = newItemFromOrden(orden);
+            item.FuiSeleccionado += unItem_FueSeleccionado;
             Point posicion = new Point();
 
             // Entran 7 ordenes por cada row lateral.
@@ -153,5 +154,43 @@ namespace Mrln.Ot
             l_frmAltaOrdenes.ShowDialog(this);
         }
 
+        private void unItem_FueSeleccionado(object sender, EventArgs e)
+        {
+            if(m_ibItemSeleccionado != null)
+                m_ibItemSeleccionado.Seleccionado = false;
+
+            m_ibItemSeleccionado = (itemBarra)sender;
+        }
+
+        private void xpPanelOrdenes_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (m_ibItemSeleccionado != null)
+                m_ibItemSeleccionado.Seleccionado = false;
+
+            m_ibItemSeleccionado = null;
+            fgGrillaItemsOT.Clear();
+        }
+
+        private void gbVerItems_Click(object sender, EventArgs e)
+        {
+            if (noHayItemSeleccionado())
+                return;
+
+            LEOTItems itemsOrdenSeleccionada = OrdenesTrabajo.OtitFGet(m_ibItemSeleccionado.Numero, true, ref m_smResult);
+            if (MsgRuts.AnalizeError(this, m_smResult)) return;
+
+            fgGrillaItemsOT.FillFromLEntidad(itemsOrdenSeleccionada);
+        }
+
+        private bool noHayItemSeleccionado()
+        {
+            if (m_ibItemSeleccionado == null)
+            {
+                MsgRuts.ShowMsg(this, "No puede realizar esa accion porque no hay ninguna orden seleccionada.");
+                return true;
+            }
+            else
+                return false;
+        }
     }
 }

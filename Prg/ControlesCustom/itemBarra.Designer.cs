@@ -30,14 +30,13 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(itemBarra));
             this.xPanel1 = new TNGS.NetControls.XPanel();
-            this.gbButon = new TNGS.NetControls.GlassButton();
+            this.fllDescripcion = new TNGS.NetControls.FullLabel();
             this.pbRojo = new System.Windows.Forms.PictureBox();
             this.pbVerde = new System.Windows.Forms.PictureBox();
             this.lblFecha = new TNGS.NetControls.FullLabel();
             this.lblNumero = new TNGS.NetControls.FullLabel();
             this.xPanel2 = new TNGS.NetControls.XPanel();
             this.lblTitulo = new TNGS.NetControls.FullLabel();
-            this.fllDescripcion = new TNGS.NetControls.FullLabel();
             this.xPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbRojo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbVerde)).BeginInit();
@@ -49,7 +48,6 @@
             this.xPanel1.BackColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.xPanel1.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
             this.xPanel1.Controls.Add(this.fllDescripcion);
-            this.xPanel1.Controls.Add(this.gbButon);
             this.xPanel1.Controls.Add(this.pbRojo);
             this.xPanel1.Controls.Add(this.pbVerde);
             this.xPanel1.Controls.Add(this.lblFecha);
@@ -61,23 +59,20 @@
             this.xPanel1.Size = new System.Drawing.Size(130, 120);
             this.xPanel1.SkinFixed = true;
             this.xPanel1.TabIndex = 0;
+            this.xPanel1.Click += new System.EventHandler(this.itemBarra_Click);
             // 
-            // gbButon
+            // fllDescripcion
             // 
-            this.gbButon.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.gbButon.BlackBorder = true;
-            this.gbButon.CircleButton = false;
-            this.gbButon.FixedImage = TNGS.NetControls.FixedGlassButtons.bCopy;
-            this.gbButon.FlatColor = System.Drawing.Color.RoyalBlue;
-            this.gbButon.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
-            this.gbButon.FlatTextColor = System.Drawing.Color.Black;
-            this.gbButon.Location = new System.Drawing.Point(69, 96);
-            this.gbButon.Name = "gbButon";
-            this.gbButon.RoundCorners = 2;
-            this.gbButon.Size = new System.Drawing.Size(24, 22);
-            this.gbButon.TabIndex = 5;
-            this.gbButon.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.gbButon.W8Color = System.Drawing.Color.RoyalBlue;
+            this.fllDescripcion.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.fllDescripcion.BackColor = System.Drawing.Color.Transparent;
+            this.fllDescripcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fllDescripcion.Location = new System.Drawing.Point(3, 55);
+            this.fllDescripcion.Name = "fllDescripcion";
+            this.fllDescripcion.Size = new System.Drawing.Size(124, 37);
+            this.fllDescripcion.TabIndex = 6;
+            this.fllDescripcion.Text = "Descripcion testeando cantidad";
+            this.fllDescripcion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.fllDescripcion.Click += new System.EventHandler(this.itemBarra_Click);
             // 
             // pbRojo
             // 
@@ -85,11 +80,12 @@
             this.pbRojo.BackColor = System.Drawing.Color.Transparent;
             this.pbRojo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbRojo.BackgroundImage")));
             this.pbRojo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pbRojo.Location = new System.Drawing.Point(42, 97);
+            this.pbRojo.Location = new System.Drawing.Point(53, 97);
             this.pbRojo.Name = "pbRojo";
             this.pbRojo.Size = new System.Drawing.Size(20, 20);
             this.pbRojo.TabIndex = 4;
             this.pbRojo.TabStop = false;
+            this.pbRojo.Click += new System.EventHandler(this.itemBarra_Click);
             // 
             // pbVerde
             // 
@@ -97,11 +93,12 @@
             this.pbVerde.BackColor = System.Drawing.Color.Transparent;
             this.pbVerde.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbVerde.BackgroundImage")));
             this.pbVerde.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pbVerde.Location = new System.Drawing.Point(42, 97);
+            this.pbVerde.Location = new System.Drawing.Point(53, 97);
             this.pbVerde.Name = "pbVerde";
             this.pbVerde.Size = new System.Drawing.Size(20, 20);
             this.pbVerde.TabIndex = 3;
             this.pbVerde.TabStop = false;
+            this.pbVerde.Click += new System.EventHandler(this.itemBarra_Click);
             // 
             // lblFecha
             // 
@@ -113,6 +110,7 @@
             this.lblFecha.TabIndex = 2;
             this.lblFecha.Text = "1/1/2010";
             this.lblFecha.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblFecha.Click += new System.EventHandler(this.itemBarra_Click);
             // 
             // lblNumero
             // 
@@ -125,6 +123,7 @@
             this.lblNumero.TabIndex = 1;
             this.lblNumero.Text = "000000";
             this.lblNumero.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblNumero.Click += new System.EventHandler(this.itemBarra_Click);
             // 
             // xPanel2
             // 
@@ -151,18 +150,7 @@
             this.lblTitulo.TabIndex = 0;
             this.lblTitulo.Text = "Orden de Trabajo";
             this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // fllDescripcion
-            // 
-            this.fllDescripcion.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.fllDescripcion.BackColor = System.Drawing.Color.Transparent;
-            this.fllDescripcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fllDescripcion.Location = new System.Drawing.Point(3, 55);
-            this.fllDescripcion.Name = "fllDescripcion";
-            this.fllDescripcion.Size = new System.Drawing.Size(124, 37);
-            this.fllDescripcion.TabIndex = 6;
-            this.fllDescripcion.Text = "Descripcion testeando cantidad";
-            this.fllDescripcion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblTitulo.Click += new System.EventHandler(this.itemBarra_Click);
             // 
             // itemBarra
             // 
@@ -172,6 +160,7 @@
             this.MinimumSize = new System.Drawing.Size(120, 90);
             this.Name = "itemBarra";
             this.Size = new System.Drawing.Size(130, 120);
+            this.Click += new System.EventHandler(this.itemBarra_Click);
             this.xPanel1.ResumeLayout(false);
             this.xPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbRojo)).EndInit();
@@ -184,7 +173,6 @@
         #endregion
 
         private TNGS.NetControls.XPanel xPanel1;
-        private TNGS.NetControls.GlassButton gbButon;
         private System.Windows.Forms.PictureBox pbRojo;
         private System.Windows.Forms.PictureBox pbVerde;
         private TNGS.NetControls.FullLabel lblFecha;

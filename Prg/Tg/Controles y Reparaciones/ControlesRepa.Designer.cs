@@ -47,11 +47,6 @@ namespace Mrln.Tg
         /// </summary>
         protected override void Dispose( bool disposing )
         {
-            if (disposing) {
-                if (components != null) {
-                    components.Dispose();
-                }
-            }
 
             base.Dispose(disposing);
        }
@@ -646,7 +641,6 @@ namespace Mrln.Tg
         }
         #endregion
 
-        private IContainer components;
         private TNGS.NetControls.CDCombo cdcCodRep;
         private TNGS.NetControls.CDCombo cmbControl;
     }
