@@ -189,6 +189,10 @@ namespace Mrln.Ot
             LEOTItems itemsOrdenSeleccionada = OrdenesTrabajo.OtitFGet(m_ibItemSeleccionado.Numero, true, ref m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
+            itemsOrdenSeleccionada.ChangeCaption(EOTItem.NroagrupadorCmp, "");
+            itemsOrdenSeleccionada.ChangeCaption(EOTItem.NroitemCmp, "");
+            itemsOrdenSeleccionada.ChangeCaption("deleted", "");
+
             fgGrillaItemsOT.FillFromLEntidad(itemsOrdenSeleccionada);
         }
 
@@ -201,6 +205,28 @@ namespace Mrln.Ot
             }
             else
                 return false;
+        }
+
+        private void gbCancelar_Click(object sender, EventArgs e)
+        {
+            if (noHayItemSeleccionado())
+                return;
+
+            // Pasamos la orden seleccionada a estado cancelada y la grabamos.
+            EOrdenTrabajo ordenSeleccionada = OrdenesTrabajo.Get(m_ibItemSeleccionado.Numero, true, ref m_smResult);
+            if (MsgRuts.AnalizeError(this, m_smResult)) return;
+
+            ordenSeleccionada.Cancelada();
+
+            OrdenesTrabajo.Save(ordenSeleccionada, ref m_smResult);
+            if (MsgRuts.AnalizeError(this, m_smResult)) return;
+
+            MsgRuts.ShowMsg(this, String.Format("La orden de trabajo numero {0} fue cancelada.", m_ibItemSeleccionado.Numero));
+
+            // Actualizamos la lista de ordenes.
+            LEOrdenesTrabajo ordenesPendientes = Bll.OrdenesTrabajo.getPendientes(ref m_smResult);
+            if (MsgRuts.AnalizeError(this, m_smResult)) return;
+            CargarOrdenes(ordenesPendientes);
         }
     }
 }

@@ -187,6 +187,7 @@ namespace Mrln.Ot
             l_entOTitem.Destarea = p_eReparacion.Des;
             l_entOTitem.Comentario = teComentario.Text;
             l_entOTitem.Importe = deImporte.Decimal;
+            l_entOTitem.Realizado = "N";
 
             return l_entOTitem;
         }
@@ -195,8 +196,8 @@ namespace Mrln.Ot
         private void ConfigurarCaptionsLEOitems(Bel.LEOTItems p_leOTItems)
         {
             p_leOTItems.ChangeCaption("oti_nro_nroot", "V1OrdenNN2");
-            p_leOTItems.ChangeCaption("oti_nro_nroagrupador", "V1AgrupadorNN2");
-            p_leOTItems.ChangeCaption("oti_nro_nroitem", "V1ItemNN2");
+            p_leOTItems.ChangeCaption("oti_nro_nroagrupador", "V1aNN2");
+            p_leOTItems.ChangeCaption("oti_nro_nroitem", "V1iNN2");
             p_leOTItems.ChangeCaption("oti_des_desoperacion", "V1ControlCN2");
             p_leOTItems.ChangeCaption("oti_des_destarea", "V1ReparacionCN2");
             p_leOTItems.ChangeCaption("oti_rcd_codcategoria", "V1CategoriaCN2");
@@ -224,6 +225,8 @@ namespace Mrln.Ot
             // Le asignamos los items que nos vienen por parametro
             l_eOrdenNueva.OTItems = p_leOTItems;
 
+            l_eOrdenNueva.Pendiente();
+
             return l_eOrdenNueva;
         }
 
@@ -239,7 +242,7 @@ namespace Mrln.Ot
         private void FillFromLEOTItemsConAnchoDeColumna(FullGrid p_fullGrid, Bel.LEOTItems p_leOTItems)
         {
             p_fullGrid.FillFromLEntidad(p_leOTItems);
-            p_fullGrid.ColWitdhs = "64;80;80;280;280;80;110;";
+            p_fullGrid.ColWitdhs = "64;0;0;280;280;80;110;";
         }
 
         private void reiniciarForm()

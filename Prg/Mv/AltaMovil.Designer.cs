@@ -65,6 +65,8 @@
             this.gbGrabar = new TNGS.NetControls.GlassButton();
             this.tsBase1 = new TNGS.NetControls.TSBase();
             this.tab1 = new RibbonStyle.Tab();
+            this.cdcTipoMovil = new TNGS.NetControls.CDCombo();
+            this.fullLabel3 = new TNGS.NetControls.FullLabel();
             this.xPanel1.SuspendLayout();
             this.tgrpDatosBasicos.SuspendLayout();
             this.tgrpEquipamiento.SuspendLayout();
@@ -97,6 +99,8 @@
             this.tgrpDatosBasicos.BlackBorder = true;
             this.tgrpDatosBasicos.BorderColor = System.Drawing.Color.WhiteSmoke;
             this.tgrpDatosBasicos.BorderThickness = 1F;
+            this.tgrpDatosBasicos.Controls.Add(this.cdcTipoMovil);
+            this.tgrpDatosBasicos.Controls.Add(this.fullLabel3);
             this.tgrpDatosBasicos.Controls.Add(this.teNroPloteado);
             this.tgrpDatosBasicos.Controls.Add(this.fullLabel2);
             this.tgrpDatosBasicos.Controls.Add(this.neKilometros);
@@ -175,7 +179,7 @@
             this.teDescripcionMovil.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.teDescripcionMovil.Location = new System.Drawing.Point(156, 88);
             this.teDescripcionMovil.Name = "teDescripcionMovil";
-            this.teDescripcionMovil.Size = new System.Drawing.Size(413, 23);
+            this.teDescripcionMovil.Size = new System.Drawing.Size(465, 23);
             this.teDescripcionMovil.TabIndex = 1;
             // 
             // fullLabel1
@@ -326,7 +330,7 @@
             this.cdcMovilPropio.FormattingEnabled = true;
             this.cdcMovilPropio.Location = new System.Drawing.Point(447, 135);
             this.cdcMovilPropio.Name = "cdcMovilPropio";
-            this.cdcMovilPropio.Size = new System.Drawing.Size(122, 23);
+            this.cdcMovilPropio.Size = new System.Drawing.Size(174, 23);
             this.cdcMovilPropio.Sorted = true;
             this.cdcMovilPropio.TabIndex = 3;
             // 
@@ -577,6 +581,29 @@
             this.tab1.TabStripPage = this.tabStripPage1;
             this.tab1.Text = "Opciones Nuevo Movil";
             // 
+            // cdcTipoMovil
+            // 
+            this.cdcTipoMovil.BackColor = System.Drawing.SystemColors.Window;
+            this.cdcTipoMovil.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cdcTipoMovil.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cdcTipoMovil.FormattingEnabled = true;
+            this.cdcTipoMovil.Location = new System.Drawing.Point(446, 275);
+            this.cdcTipoMovil.Name = "cdcTipoMovil";
+            this.cdcTipoMovil.Size = new System.Drawing.Size(175, 23);
+            this.cdcTipoMovil.Sorted = true;
+            this.cdcTipoMovil.TabIndex = 23;
+            // 
+            // fullLabel3
+            // 
+            this.fullLabel3.BackColor = System.Drawing.Color.Transparent;
+            this.fullLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fullLabel3.ForeColor = System.Drawing.Color.Black;
+            this.fullLabel3.Location = new System.Drawing.Point(336, 277);
+            this.fullLabel3.Name = "fullLabel3";
+            this.fullLabel3.Size = new System.Drawing.Size(96, 18);
+            this.fullLabel3.TabIndex = 24;
+            this.fullLabel3.Text = "Tipo de Móvil:";
+            // 
             // AltaMovil
             // 
             this.AcceptButton = this.gbGrabar;
@@ -643,5 +670,7 @@
         private TNGS.NetControls.TitledGroup tgrpEquipamiento;
         private TNGS.NetControls.TextEdit teNroPloteado;
         private TNGS.NetControls.FullLabel fullLabel2;
+        private TNGS.NetControls.CDCombo cdcTipoMovil;
+        private TNGS.NetControls.FullLabel fullLabel3;
     }
 }

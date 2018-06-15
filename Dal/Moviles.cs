@@ -10,7 +10,7 @@ namespace Mrln.Dal
     //----------------------------------------------------------------------------
     //                         TNG Software DAL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 14/06/2018 03:27
+    // Fecha                    : 15/06/2018 18:53
     // Sistema                  : Mrln
     // Clase para Administrar   : Moviles del Sistema
     // Basada en la Tabla       : Moviles
@@ -148,6 +148,7 @@ namespace Mrln.Dal
         /// <param name="p_iAniofabric">Año de fabricación</param>
         /// <param name="p_strPropio">Propio o no</param>
         /// <param name="p_strNroploteado">Numero Ploteado</param>
+        /// <param name="p_strTipodemovil">Código Tipo de Móvil</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static int Insert(DBConn p_dbcAccess,
                                  string p_strPatente,
@@ -159,6 +160,7 @@ namespace Mrln.Dal
                                  int p_iAniofabric,
                                  string p_strPropio,
                                  string p_strNroploteado,
+                                 string p_strTipodemovil,
                                  ref StatMsg p_smResult)
         {
             try {
@@ -175,6 +177,7 @@ namespace Mrln.Dal
                                        p_dbcAccess.MakeParam("@mov_nro_aniofabric", p_iAniofabric),
                                        p_dbcAccess.MakeParam("@mov_cd1_propio", p_strPropio),
                                        p_dbcAccess.MakeParam("@mov_ecd_nroploteado", p_strNroploteado),
+                                       p_dbcAccess.MakeParam("@mov_cod_tipodemovil", p_strTipodemovil),
                                        p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
                                    }
                                   );
@@ -199,6 +202,7 @@ namespace Mrln.Dal
         /// <param name="p_iAniofabric">Año de fabricación</param>
         /// <param name="p_strPropio">Propio o no</param>
         /// <param name="p_strNroploteado">Numero Ploteado</param>
+        /// <param name="p_strTipodemovil">Código Tipo de Móvil</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static int Update(DBConn p_dbcAccess,
                                  string p_strPatente,
@@ -210,6 +214,7 @@ namespace Mrln.Dal
                                  int p_iAniofabric,
                                  string p_strPropio,
                                  string p_strNroploteado,
+                                 string p_strTipodemovil,
                                  ref StatMsg p_smResult)
         {
             try {
@@ -226,6 +231,7 @@ namespace Mrln.Dal
                                        p_dbcAccess.MakeParam("@mov_nro_aniofabric", p_iAniofabric),
                                        p_dbcAccess.MakeParam("@mov_cd1_propio", p_strPropio),
                                        p_dbcAccess.MakeParam("@mov_ecd_nroploteado", p_strNroploteado),
+                                       p_dbcAccess.MakeParam("@mov_cod_tipodemovil", p_strTipodemovil),
                                        p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
                                    }
                                   );

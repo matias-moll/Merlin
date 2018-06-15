@@ -10,7 +10,7 @@ namespace Mrln.Dal
     //----------------------------------------------------------------------------
     //                         TNG Software DAL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 14/06/2018 03:27
+    // Fecha                    : 15/06/2018 18:53
     // Sistema                  : Mrln
     // Clase para Administrar   : Combustible en moviles
     // Basada en la Tabla       : MvlCombustible

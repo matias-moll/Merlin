@@ -66,6 +66,8 @@ namespace Mrln.Bel
         // Propiedades de la clase
         //---------------------------------------------------------------
 
+        public bool fueRealizado { get { return this.Realizado == "S"; } }
+
         #endregion
     }
     #endregion
@@ -137,10 +139,27 @@ namespace Mrln.Bel
     /// </summary>
     public sealed partial class EOrdenTrabajo : Entidad
     {
+        public enum Estados { Pendiente, Finalizada, Cancelada };
+
         #region Metodos publicos de la clase
         //---------------------------------------------------------------
         // Metodos públicos de la clase
         //---------------------------------------------------------------
+
+        public void Finalizada()
+        {
+            this.CambiarEstado(Estados.Finalizada);
+        }
+
+        public void Cancelada()
+        {
+            this.CambiarEstado(Estados.Cancelada);
+        }
+
+        public void Pendiente()
+        {
+            this.CambiarEstado(Estados.Pendiente);
+        }
 
         #endregion
 
@@ -148,6 +167,11 @@ namespace Mrln.Bel
         //---------------------------------------------------------------
         // Metodos privados de la clase
         //---------------------------------------------------------------
+
+        private void CambiarEstado(Estados estado)
+        {
+            this.Estado = estado.ToString();
+        }
 
         /// <summary>
         /// Permite agregar datos al XML de la entidad

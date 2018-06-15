@@ -121,6 +121,7 @@ namespace Mrln.Mv
             neKilometros.Clear();
             cdcModelo.SelectedIndex = -1;
             cdcMovilPropio.SelectedIndex = -1;
+            cdcTipoMovil.SelectedIndex = -1;
         }
 
         // Llenac la combo modelos con los modelos que hay en la tabla modelos.
@@ -128,8 +129,8 @@ namespace Mrln.Mv
         {
             //llenamos la combo
             cdcModelo.FillFromStrLEntidad(Bll.Tablas.ModUpFull(true, ref m_stResult), "mds_rcd_cod", "mds_des_des", "deleted");
-            //chequeamos errores
             if(MsgRuts.AnalizeError(this, m_stResult)) return;
+
             //seteamos en el valor vacio a la combo para que se vea fancy
             cdcModelo.SelectedIndex = -1;
         }
@@ -140,6 +141,15 @@ namespace Mrln.Mv
             //llenamos con los valores si Y no
             cdcMovilPropio.AddStrCD("N", "NO", 0);
             cdcMovilPropio.AddStrCD("S", "SI", 0);
+        }
+
+        private void llenarComboTipoMovil()
+        {
+            //TODO : Traer los tipos de movil del CEDI usando el parametro.
+            EParametro conexionCEDI = App.ParaGet("connCEDI", true, ref m_stResult);
+            if (MsgRuts.AnalizeError(this, m_stResult)) return;
+
+            cdcTipoMovil.AddStrCD("AAAA", "UTIM", 0);
         }
 
         // chequea que todos los campos tengan datos validos.
@@ -157,6 +167,7 @@ namespace Mrln.Mv
                    || (cdcModelo.SelectedStrCode == "")
                    || (!cdcMovilPropio.IsValid)
                    || (cdcMovilPropio.SelectedStrCode == "")
+                   || (cdcTipoMovil.SelectedStrCode == "")
                    || (!neAnioFabric.IsValid)
                    || (!neKilometros.IsValid)
                )
@@ -224,6 +235,7 @@ namespace Mrln.Mv
             p_entMovil.Modelo = cdcModelo.SelectedStrCode; 
             p_entMovil.Aniofabric = neAnioFabric.Numero;
             p_entMovil.Propio = cdcMovilPropio.SelectedStrCode;
+            p_entMovil.Tipodemovil = cdcTipoMovil.SelectedStrCode;
     
         }
 
@@ -357,6 +369,7 @@ namespace Mrln.Mv
             llenarCheckListEquipamiento();
             llenarComboModelos();
             llenarComboMovilPropio();
+            llenarComboTipoMovil();
 
 
             //seteamos todos los datos de la entidad existente en los campos
@@ -368,6 +381,7 @@ namespace Mrln.Mv
             tePatente.Text = m_entMovil.Patente;
             cdcModelo.SelectedStrCode = m_entMovil.Modelo;
             cdcMovilPropio.SelectedStrCode = m_entMovil.Propio;
+            cdcTipoMovil.SelectedStrCode = m_entMovil.Tipodemovil;
             neAnioFabric.Numero = m_entMovil.Aniofabric;
 
             //llenamos la CDCheckedList

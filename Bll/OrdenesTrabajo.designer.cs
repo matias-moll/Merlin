@@ -16,7 +16,7 @@ namespace Mrln.Bll
     //----------------------------------------------------------------------------
     //                         TNG Software BLL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 14/06/2018 03:27
+    // Fecha                    : 15/06/2018 19:16
     // Sistema                  : Mrln
     // Clase para Administrar   : Ordenes de Trabajo y sus Items
     //----------------------------------------------------------------------------
@@ -418,6 +418,13 @@ namespace Mrln.Bll
                 return;
             }
 
+            if ((p_entOTItem.Realizado != "S") &&
+                (p_entOTItem.Realizado != "N")) {
+                // El campo [Realizado] tiene opciones
+                p_smResult.BllWarning("El dato [Realizado] sólo admite\r\n\r\n[S]- SI\r\n[N]- NO\r\n","");
+                return;
+            }
+
             // ********
             // Validaciones de los campos con conexion
             // ********
@@ -789,6 +796,7 @@ namespace Mrln.Bll
                                    p_entOTItem.Codcategoria,
                                    p_entOTItem.Importe,
                                    p_entOTItem.Comentario,
+                                   p_entOTItem.Realizado,
                                    ref p_smResult);
             }
             catch (Exception l_expData) {
@@ -822,6 +830,7 @@ namespace Mrln.Bll
                                    p_entOTItem.Codcategoria,
                                    p_entOTItem.Importe,
                                    p_entOTItem.Comentario,
+                                   p_entOTItem.Realizado,
                                    ref p_smResult);
             }
             catch (Exception l_expData) {
@@ -1318,6 +1327,12 @@ namespace Mrln.Bll
                 return;
             }
 
+            if (p_entOrdenTrabajo.Estado.Trim() == "") {
+                // El campo [Estado] no puede ser vacío
+                p_smResult.BllWarning("El dato [Estado] no puede ser vacío","");
+                return;
+            }
+
             // ********
             // Validaciones de los campos con conexion
             // ********
@@ -1568,6 +1583,7 @@ namespace Mrln.Bll
                                           p_entOrdenTrabajo.Feccierre,
                                           p_entOrdenTrabajo.Encargado,
                                           p_entOrdenTrabajo.Codtaller,
+                                          p_entOrdenTrabajo.Estado,
                                           ref p_smResult);
             }
             catch (Exception l_expData) {
@@ -1600,6 +1616,7 @@ namespace Mrln.Bll
                                           p_entOrdenTrabajo.Feccierre,
                                           p_entOrdenTrabajo.Encargado,
                                           p_entOrdenTrabajo.Codtaller,
+                                          p_entOrdenTrabajo.Estado,
                                           ref p_smResult);
             }
             catch (Exception l_expData) {

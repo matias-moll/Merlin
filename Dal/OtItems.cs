@@ -10,7 +10,7 @@ namespace Mrln.Dal
     //----------------------------------------------------------------------------
     //                         TNG Software DAL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 14/06/2018 03:27
+    // Fecha                    : 15/06/2018 19:16
     // Sistema                  : Mrln
     // Clase para Administrar   : OrdenTrabajo Items
     // Basada en la Tabla       : OtItems
@@ -192,6 +192,7 @@ namespace Mrln.Dal
         /// <param name="p_strCodcategoria">Categoría</param>
         /// <param name="p_dcImporte">Importe</param>
         /// <param name="p_strComentario">Comentario</param>
+        /// <param name="p_strRealizado">Realizado</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static int Insert(DBConn p_dbcAccess,
                                  int p_iNroot,
@@ -202,6 +203,7 @@ namespace Mrln.Dal
                                  string p_strCodcategoria,
                                  decimal p_dcImporte,
                                  string p_strComentario,
+                                 string p_strRealizado,
                                  ref StatMsg p_smResult)
         {
             try {
@@ -217,6 +219,7 @@ namespace Mrln.Dal
                                        p_dbcAccess.MakeParam("@oti_rcd_codcategoria", p_strCodcategoria),
                                        p_dbcAccess.MakeParam("@oti_imp_importe", p_dcImporte),
                                        p_dbcAccess.MakeParam("@oti_ede_comentario", p_strComentario),
+                                       p_dbcAccess.MakeParam("@oti_cd1_realizado", p_strRealizado),
                                        p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
                                    }
                                   );
@@ -240,6 +243,7 @@ namespace Mrln.Dal
         /// <param name="p_strCodcategoria">Categoría</param>
         /// <param name="p_dcImporte">Importe</param>
         /// <param name="p_strComentario">Comentario</param>
+        /// <param name="p_strRealizado">Realizado</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static int Update(DBConn p_dbcAccess,
                                  int p_iNroot,
@@ -250,6 +254,7 @@ namespace Mrln.Dal
                                  string p_strCodcategoria,
                                  decimal p_dcImporte,
                                  string p_strComentario,
+                                 string p_strRealizado,
                                  ref StatMsg p_smResult)
         {
             try {
@@ -265,6 +270,7 @@ namespace Mrln.Dal
                                        p_dbcAccess.MakeParam("@oti_rcd_codcategoria", p_strCodcategoria),
                                        p_dbcAccess.MakeParam("@oti_imp_importe", p_dcImporte),
                                        p_dbcAccess.MakeParam("@oti_ede_comentario", p_strComentario),
+                                       p_dbcAccess.MakeParam("@oti_cd1_realizado", p_strRealizado),
                                        p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
                                    }
                                   );
@@ -532,6 +538,8 @@ namespace Mrln.Dal
                 DBRuts.ClearDTCaptions(ref p_dtResult);
 
                 // Fijamos los nuevos captions de la grilla
+                p_dtResult.Columns["oti_categoria"].Caption= "V1CategoriaCN1";
+                p_dtResult.Columns["oti_rcd_codcategoria"].Caption= "V1CategoríaCN1";
                 p_dtResult.Columns["oti_ede_comentario"].Caption= "V1ComentarioCN1";
                 p_dtResult.Columns["oti_des_desoperacion"].Caption= "V1Descripción de la operaciónCN1";
                 p_dtResult.Columns["oti_des_destarea"].Caption= "V1Descripción de la tareaCN1";

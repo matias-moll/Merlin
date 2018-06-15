@@ -1,18 +1,9 @@
 TODO:
 
 
-Agregar campo codigo de tipo de movil, es cod.
-En el alta es una combo.
-El tema es que esta tabla sale del cedi, hay que agregar un parametro con la conexion a cedi y traer la tabla de ahi.
-El campo no puede ser vacio.
-
 Nota, pensar que pasa con los items de ordenes que no se hicieron. Idea: Dos botones en el cierre de OT, uno que diga
 no se hizo porque no es necesario y otro que diga no se pudo realizar, entonces despues en el alta de ordenes en controles le vamos 
 a mostrar los controles posibles + los items pendientes que tiene.
-
-
-Armar logica en ventana de visor de ordenes para que tire los controles de orden de trabajo con un foreach y logica de location.
-Ver el tema de seleccion de orden de trabajo, necesito un evento o algo que me avise e ir trackeando el nro de orden seleccionado.
 
 
 
@@ -25,17 +16,9 @@ El tipo de las ordenes de trabajo es fijo para combustibles, estados, y dsps par
 y ademas necesitamos otro para los controles que se le hicieron al auto donde el tipo seria la descripcion del control
 
 
-Agregar un campo de descripcion del Control en Ordenes de Trabajo, puede ser vacio.
-la idea es poder tocar un boton cuando se vence un control apra un auto y que me genere una orden de trabajo
-con todos los items de las reparaciones que lleva ese control.
 
-
-Agregar campo en OTItems de Realizado (si o no). Sirve para indicar cuando algun item de la OT no se pudo hacer en el taller.
-
-
-Crear pantalla de ordenes de trabajo pendientes donde me traiga todas las que no estan cerradas y me de la opcion
-de imprimirlas con un crystal report especial para tener cada una separada y poder darselas a un tecnico.
-Esta pantalla hay que agregarlas al programa de Cierre Ordenes de Trabajo.
+Agregar opcion de imprimir las OTs Pendientes con un crystal report especial para tener cada una separada y poder darselas a un tecnico.
+En la pantalla de visor de ordenes de trabajo.
 
 
 

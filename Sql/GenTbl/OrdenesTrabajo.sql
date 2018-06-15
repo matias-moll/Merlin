@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------
 //                 TNG Software Script Generator (Tablas)                     
 //----------------------------------------------------------------------------
-// Fecha              : 20/04/2018 19:32
+// Fecha              : 15/06/2018 19:16
 // Base de Datos      : TNGS_Mrln
 // Tabla              : OrdenesTrabajo
 //----------------------------------------------------------------------------
@@ -45,6 +45,8 @@ create table OrdenesTrabajo
       odt_nom_operador tngs_nombre,
       odt_fyh_feccierre tngs_fecyhor,
       odt_cod_encargado tngs_codigo,
+      odt_cod_codtaller tngs_codigo,
+      odt_d20_estado tngs_descripcion_20,
       instante tngs_fecyhor,
       deleted tngs_borrado,
       usuario tngs_nombre,

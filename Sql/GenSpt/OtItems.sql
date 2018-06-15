@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 14/06/2018 03:28
+// Fecha       : 15/06/2018 19:31
 // Sistema     : Mrln
 // Tabla       : OtItems
 //----------------------------------------------------------------------------
@@ -58,14 +58,18 @@ begin
                 oti_des_desoperacion,
                 oti_des_destarea,
                 oti_rcd_codcategoria,
+                cat_des_des as oti_categoria,
                 oti_imp_importe,
                 oti_ede_comentario,
+                oti_cd1_realizado,
                 TNGS_Mrln..OtItems.instante,
                 TNGS_Mrln..OtItems.deleted,
                 TNGS_Mrln..OtItems.usuario,
                 TNGS_Mrln..OtItems.version
            from TNGS_Mrln..OtItems
-          where deleted = 0
+                join TNGS_Mrln..Categorias
+                  on oti_rcd_codCategoria = cat_rcd_cod
+          where TNGS_Mrln..OtItems.deleted = 0
           order by oti_nro_nroot,
                 oti_nro_nroagrupador,
                 oti_nro_nroitem
@@ -78,13 +82,17 @@ begin
                 oti_des_desoperacion,
                 oti_des_destarea,
                 oti_rcd_codcategoria,
+                cat_des_des as oti_categoria,
                 oti_imp_importe,
                 oti_ede_comentario,
+                oti_cd1_realizado,
                 TNGS_Mrln..OtItems.instante,
                 TNGS_Mrln..OtItems.deleted,
                 TNGS_Mrln..OtItems.usuario,
                 TNGS_Mrln..OtItems.version
            from TNGS_Mrln..OtItems
+                join TNGS_Mrln..Categorias
+                  on oti_rcd_codCategoria = cat_rcd_cod
           order by oti_nro_nroot,
                 oti_nro_nroagrupador,
                 oti_nro_nroitem
@@ -197,17 +205,21 @@ begin
                 oti_des_desoperacion,
                 oti_des_destarea,
                 oti_rcd_codcategoria,
+                cat_des_des as oti_categoria,
                 oti_imp_importe,
                 oti_ede_comentario,
+                oti_cd1_realizado,
                 TNGS_Mrln..OtItems.instante,
                 TNGS_Mrln..OtItems.deleted,
                 TNGS_Mrln..OtItems.usuario,
                 TNGS_Mrln..OtItems.version
            from TNGS_Mrln..OtItems
+                join TNGS_Mrln..Categorias
+                  on oti_rcd_codCategoria = cat_rcd_cod
           where oti_nro_nroot = @oti_nro_nroot
             and oti_nro_nroagrupador = @oti_nro_nroagrupador
             and oti_nro_nroitem = @oti_nro_nroitem
-            and deleted = 0
+            and TNGS_Mrln..OtItems.deleted = 0
       end
    else
       begin
@@ -217,13 +229,17 @@ begin
                 oti_des_desoperacion,
                 oti_des_destarea,
                 oti_rcd_codcategoria,
+                cat_des_des as oti_categoria,
                 oti_imp_importe,
                 oti_ede_comentario,
+                oti_cd1_realizado,
                 TNGS_Mrln..OtItems.instante,
                 TNGS_Mrln..OtItems.deleted,
                 TNGS_Mrln..OtItems.usuario,
                 TNGS_Mrln..OtItems.version
            from TNGS_Mrln..OtItems
+                join TNGS_Mrln..Categorias
+                  on oti_rcd_codCategoria = cat_rcd_cod
           where oti_nro_nroot = @oti_nro_nroot
             and oti_nro_nroagrupador = @oti_nro_nroagrupador
             and oti_nro_nroitem = @oti_nro_nroitem
@@ -279,15 +295,19 @@ begin
                 oti_des_desoperacion,
                 oti_des_destarea,
                 oti_rcd_codcategoria,
+                cat_des_des as oti_categoria,
                 oti_imp_importe,
                 oti_ede_comentario,
+                oti_cd1_realizado,
                 TNGS_Mrln..OtItems.instante,
                 TNGS_Mrln..OtItems.deleted,
                 TNGS_Mrln..OtItems.usuario,
                 TNGS_Mrln..OtItems.version
            from TNGS_Mrln..OtItems
+                join TNGS_Mrln..Categorias
+                  on oti_rcd_codCategoria = cat_rcd_cod
           where oti_nro_nroot = @oti_nro_nroot
-            and deleted = 0
+            and TNGS_Mrln..OtItems.deleted = 0
           order by oti_nro_nroagrupador,
                 oti_nro_nroitem
       end
@@ -299,13 +319,17 @@ begin
                 oti_des_desoperacion,
                 oti_des_destarea,
                 oti_rcd_codcategoria,
+                cat_des_des as oti_categoria,
                 oti_imp_importe,
                 oti_ede_comentario,
+                oti_cd1_realizado,
                 TNGS_Mrln..OtItems.instante,
                 TNGS_Mrln..OtItems.deleted,
                 TNGS_Mrln..OtItems.usuario,
                 TNGS_Mrln..OtItems.version
            from TNGS_Mrln..OtItems
+                join TNGS_Mrln..Categorias
+                  on oti_rcd_codCategoria = cat_rcd_cod
           where oti_nro_nroot = @oti_nro_nroot
           order by oti_nro_nroagrupador,
                 oti_nro_nroitem
@@ -336,6 +360,7 @@ go
 --- <param name="@oti_rcd_codcategoria">Categoría</param>
 --- <param name="@oti_imp_importe">Importe</param>
 --- <param name="@oti_ede_comentario">Comentario</param>
+--- <param name="@oti_cd1_realizado">Realizado</param>
 --- <param name="@usuario">Usuario que genera el insert</param>
 ---
 ---////////////////////////////////////////////////////////
@@ -362,6 +387,7 @@ create procedure dbo.OTITEMS_INSERT
 @oti_rcd_codcategoria tngs_codigo_r,
 @oti_imp_importe tngs_importe,
 @oti_ede_comentario tngs_descripcion_e,
+@oti_cd1_realizado tngs_codigo_1,
 @usuario tngs_nombre
 )
 as
@@ -377,6 +403,7 @@ begin
            @oti_rcd_codcategoria,
            @oti_imp_importe,
            @oti_ede_comentario,
+           @oti_cd1_realizado,
            getdate(), 0, @usuario, 1
           )
 
@@ -405,6 +432,7 @@ go
 --- <param name="@oti_rcd_codcategoria">Categoría</param>
 --- <param name="@oti_imp_importe">Importe</param>
 --- <param name="@oti_ede_comentario">Comentario</param>
+--- <param name="@oti_cd1_realizado">Realizado</param>
 --- <param name="@usuario">Usuario que genera el update</param>
 ---
 ---////////////////////////////////////////////////////////
@@ -431,6 +459,7 @@ create procedure dbo.OTITEMS_UPDATE
 @oti_rcd_codcategoria tngs_codigo_r,
 @oti_imp_importe tngs_importe,
 @oti_ede_comentario tngs_descripcion_e,
+@oti_cd1_realizado tngs_codigo_1,
 @usuario tngs_nombre
 )
 as
@@ -442,6 +471,7 @@ begin
           oti_rcd_codcategoria= @oti_rcd_codcategoria,
           oti_imp_importe= @oti_imp_importe,
           oti_ede_comentario= @oti_ede_comentario,
+          oti_cd1_realizado= @oti_cd1_realizado,
           version = ((version+1) % 32767),
           instante= getdate(),
           usuario = @usuario

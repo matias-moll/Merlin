@@ -16,7 +16,7 @@ namespace Mrln.Bll
     //----------------------------------------------------------------------------
     //                         TNG Software BLL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 14/06/2018 03:27
+    // Fecha                    : 15/06/2018 18:53
     // Sistema                  : Mrln
     // Clase para Administrar   : Moviles y Tablas Hijas
     //----------------------------------------------------------------------------
@@ -4128,6 +4128,12 @@ namespace Mrln.Bll
                 return;
             }
 
+            if (p_entMovil.Tipodemovil.Trim() == "") {
+                // El campo [Código Tipo de Móvil] no puede ser vacío
+                p_smResult.BllWarning("El dato [Código Tipo de Móvil] no puede ser vacío","");
+                return;
+            }
+
             // ********
             // Validaciones de los campos con conexion
             // ********
@@ -4365,6 +4371,7 @@ namespace Mrln.Bll
                                    p_entMovil.Aniofabric,
                                    p_entMovil.Propio,
                                    p_entMovil.Nroploteado,
+                                   p_entMovil.Tipodemovil,
                                    ref p_smResult);
             }
             catch (Exception l_expData) {
@@ -4399,6 +4406,7 @@ namespace Mrln.Bll
                                    p_entMovil.Aniofabric,
                                    p_entMovil.Propio,
                                    p_entMovil.Nroploteado,
+                                   p_entMovil.Tipodemovil,
                                    ref p_smResult);
             }
             catch (Exception l_expData) {

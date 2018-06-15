@@ -416,6 +416,7 @@
             this.gbCancelar.TabIndex = 0;
             this.gbCancelar.Text = "Cancelar";
             this.gbCancelar.W8Color = System.Drawing.Color.RoyalBlue;
+            this.gbCancelar.Click += new System.EventHandler(this.gbCancelar_Click);
             // 
             // tsPanel2
             // 
