@@ -228,5 +228,10 @@ namespace Mrln.Ot
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
             CargarOrdenes(ordenesPendientes);
         }
+
+        private void gbCerrarOT_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

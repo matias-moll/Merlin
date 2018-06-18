@@ -396,6 +396,7 @@
             this.gbCerrarOT.TabIndex = 1;
             this.gbCerrarOT.Text = "Cerrar";
             this.gbCerrarOT.W8Color = System.Drawing.Color.RoyalBlue;
+            this.gbCerrarOT.Click += new System.EventHandler(this.gbCerrarOT_Click);
             // 
             // gbCancelar
             // 

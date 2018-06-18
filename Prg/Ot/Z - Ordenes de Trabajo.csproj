@@ -94,6 +94,12 @@
     <Compile Include="..\..\Shr\Properties\ShrAssemblyInfo.cs">
       <Link>Properties\ShrAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="CierreOrdenes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CierreOrdenes.Designer.cs">
+      <DependentUpon>CierreOrdenes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Arranque.cs" />
     <Compile Include="Arranque.designer.cs">
       <DependentUpon>Arranque.cs</DependentUpon>
@@ -129,6 +135,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="CierreOrdenes.resx">
+      <DependentUpon>CierreOrdenes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Arranque.resx">
       <DependentUpon>Arranque.cs</DependentUpon>
     </EmbeddedResource>
