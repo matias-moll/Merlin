@@ -16,7 +16,7 @@ namespace Mrln.Bll
     //----------------------------------------------------------------------------
     //                         TNG Software BLL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 15/06/2018 19:16
+    // Fecha                    : 20/06/2018 22:19
     // Sistema                  : Mrln
     // Clase para Administrar   : Ordenes de Trabajo y sus Items
     //----------------------------------------------------------------------------
@@ -418,13 +418,6 @@ namespace Mrln.Bll
                 return;
             }
 
-            if ((p_entOTItem.Realizado != "S") &&
-                (p_entOTItem.Realizado != "N")) {
-                // El campo [Realizado] tiene opciones
-                p_smResult.BllWarning("El dato [Realizado] sólo admite\r\n\r\n[S]- SI\r\n[N]- NO\r\n","");
-                return;
-            }
-
             // ********
             // Validaciones de los campos con conexion
             // ********
@@ -796,7 +789,9 @@ namespace Mrln.Bll
                                    p_entOTItem.Codcategoria,
                                    p_entOTItem.Importe,
                                    p_entOTItem.Comentario,
-                                   p_entOTItem.Realizado,
+                                   p_entOTItem.Estado,
+                                   p_entOTItem.Importecierre,
+                                   p_entOTItem.Comentariocierre,
                                    ref p_smResult);
             }
             catch (Exception l_expData) {
@@ -830,7 +825,9 @@ namespace Mrln.Bll
                                    p_entOTItem.Codcategoria,
                                    p_entOTItem.Importe,
                                    p_entOTItem.Comentario,
-                                   p_entOTItem.Realizado,
+                                   p_entOTItem.Estado,
+                                   p_entOTItem.Importecierre,
+                                   p_entOTItem.Comentariocierre,
                                    ref p_smResult);
             }
             catch (Exception l_expData) {

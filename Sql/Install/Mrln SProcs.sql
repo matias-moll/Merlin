@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 15/06/2018 19:31
+// Fecha       : 20/06/2018 22:19
 // Sistema     : Mrln
 // Tabla       : Categorias
 //----------------------------------------------------------------------------
@@ -538,7 +538,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 15/06/2018 19:31
+// Fecha       : 20/06/2018 22:19
 // Sistema     : Mrln
 // Tabla       : Controles
 //----------------------------------------------------------------------------
@@ -1083,7 +1083,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 15/06/2018 19:31
+// Fecha       : 20/06/2018 22:19
 // Sistema     : Mrln
 // Tabla       : ControlesReparations
 //----------------------------------------------------------------------------
@@ -1902,7 +1902,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 15/06/2018 19:31
+// Fecha       : 20/06/2018 22:19
 // Sistema     : Mrln
 // Tabla       : Encargados
 //----------------------------------------------------------------------------
@@ -2437,7 +2437,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 15/06/2018 19:31
+// Fecha       : 20/06/2018 22:19
 // Sistema     : Mrln
 // Tabla       : Equipamiento
 //----------------------------------------------------------------------------
@@ -2982,7 +2982,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 15/06/2018 19:31
+// Fecha       : 20/06/2018 22:19
 // Sistema     : Mrln
 // Tabla       : Estaciones
 //----------------------------------------------------------------------------
@@ -3547,7 +3547,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 15/06/2018 19:31
+// Fecha       : 20/06/2018 22:19
 // Sistema     : Mrln
 // Tabla       : Estados
 //----------------------------------------------------------------------------
@@ -4102,7 +4102,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 15/06/2018 19:31
+// Fecha       : 20/06/2018 22:19
 // Sistema     : Mrln
 // Tabla       : Marcas
 //----------------------------------------------------------------------------
@@ -4637,7 +4637,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 15/06/2018 19:31
+// Fecha       : 20/06/2018 22:19
 // Sistema     : Mrln
 // Tabla       : Modelos
 //----------------------------------------------------------------------------
@@ -5182,7 +5182,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 15/06/2018 19:31
+// Fecha       : 20/06/2018 22:19
 // Sistema     : Mrln
 // Tabla       : Moviles
 //----------------------------------------------------------------------------
@@ -5802,7 +5802,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 15/06/2018 19:31
+// Fecha       : 20/06/2018 22:19
 // Sistema     : Mrln
 // Tabla       : MvlCombustible
 //----------------------------------------------------------------------------
@@ -6680,7 +6680,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 15/06/2018 19:31
+// Fecha       : 20/06/2018 22:19
 // Sistema     : Mrln
 // Tabla       : MvlEquipamiento
 //----------------------------------------------------------------------------
@@ -7594,7 +7594,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 15/06/2018 19:31
+// Fecha       : 20/06/2018 22:19
 // Sistema     : Mrln
 // Tabla       : MvlEstados
 //----------------------------------------------------------------------------
@@ -8459,7 +8459,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 15/06/2018 19:31
+// Fecha       : 20/06/2018 22:19
 // Sistema     : Mrln
 // Tabla       : MvlKilometros
 //----------------------------------------------------------------------------
@@ -9349,7 +9349,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 15/06/2018 19:31
+// Fecha       : 20/06/2018 22:19
 // Sistema     : Mrln
 // Tabla       : OrdenesTrabajo
 //----------------------------------------------------------------------------
@@ -10032,7 +10032,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 15/06/2018 19:31
+// Fecha       : 20/06/2018 22:19
 // Sistema     : Mrln
 // Tabla       : OtItems
 //----------------------------------------------------------------------------
@@ -10092,7 +10092,9 @@ begin
                 cat_des_des as oti_categoria,
                 oti_imp_importe,
                 oti_ede_comentario,
-                oti_cd1_realizado,
+                oti_d20_estado,
+                oti_imp_importecierre,
+                oti_ede_comentariocierre,
                 TNGS_Mrln..OtItems.instante,
                 TNGS_Mrln..OtItems.deleted,
                 TNGS_Mrln..OtItems.usuario,
@@ -10116,7 +10118,9 @@ begin
                 cat_des_des as oti_categoria,
                 oti_imp_importe,
                 oti_ede_comentario,
-                oti_cd1_realizado,
+                oti_d20_estado,
+                oti_imp_importecierre,
+                oti_ede_comentariocierre,
                 TNGS_Mrln..OtItems.instante,
                 TNGS_Mrln..OtItems.deleted,
                 TNGS_Mrln..OtItems.usuario,
@@ -10239,7 +10243,9 @@ begin
                 cat_des_des as oti_categoria,
                 oti_imp_importe,
                 oti_ede_comentario,
-                oti_cd1_realizado,
+                oti_d20_estado,
+                oti_imp_importecierre,
+                oti_ede_comentariocierre,
                 TNGS_Mrln..OtItems.instante,
                 TNGS_Mrln..OtItems.deleted,
                 TNGS_Mrln..OtItems.usuario,
@@ -10263,7 +10269,9 @@ begin
                 cat_des_des as oti_categoria,
                 oti_imp_importe,
                 oti_ede_comentario,
-                oti_cd1_realizado,
+                oti_d20_estado,
+                oti_imp_importecierre,
+                oti_ede_comentariocierre,
                 TNGS_Mrln..OtItems.instante,
                 TNGS_Mrln..OtItems.deleted,
                 TNGS_Mrln..OtItems.usuario,
@@ -10329,7 +10337,9 @@ begin
                 cat_des_des as oti_categoria,
                 oti_imp_importe,
                 oti_ede_comentario,
-                oti_cd1_realizado,
+                oti_d20_estado,
+                oti_imp_importecierre,
+                oti_ede_comentariocierre,
                 TNGS_Mrln..OtItems.instante,
                 TNGS_Mrln..OtItems.deleted,
                 TNGS_Mrln..OtItems.usuario,
@@ -10353,7 +10363,9 @@ begin
                 cat_des_des as oti_categoria,
                 oti_imp_importe,
                 oti_ede_comentario,
-                oti_cd1_realizado,
+                oti_d20_estado,
+                oti_imp_importecierre,
+                oti_ede_comentariocierre,
                 TNGS_Mrln..OtItems.instante,
                 TNGS_Mrln..OtItems.deleted,
                 TNGS_Mrln..OtItems.usuario,
@@ -10391,7 +10403,9 @@ go
 --- <param name="@oti_rcd_codcategoria">Categoría</param>
 --- <param name="@oti_imp_importe">Importe</param>
 --- <param name="@oti_ede_comentario">Comentario</param>
---- <param name="@oti_cd1_realizado">Realizado</param>
+--- <param name="@oti_d20_estado">Estado</param>
+--- <param name="@oti_imp_importecierre">Importe Cierre</param>
+--- <param name="@oti_ede_comentariocierre">Comentario Cierre</param>
 --- <param name="@usuario">Usuario que genera el insert</param>
 ---
 ---////////////////////////////////////////////////////////
@@ -10418,7 +10432,9 @@ create procedure dbo.OTITEMS_INSERT
 @oti_rcd_codcategoria tngs_codigo_r,
 @oti_imp_importe tngs_importe,
 @oti_ede_comentario tngs_descripcion_e,
-@oti_cd1_realizado tngs_codigo_1,
+@oti_d20_estado tngs_descripcion_20,
+@oti_imp_importecierre tngs_importe,
+@oti_ede_comentariocierre tngs_descripcion_e,
 @usuario tngs_nombre
 )
 as
@@ -10434,7 +10450,9 @@ begin
            @oti_rcd_codcategoria,
            @oti_imp_importe,
            @oti_ede_comentario,
-           @oti_cd1_realizado,
+           @oti_d20_estado,
+           @oti_imp_importecierre,
+           @oti_ede_comentariocierre,
            getdate(), 0, @usuario, 1
           )
 
@@ -10463,7 +10481,9 @@ go
 --- <param name="@oti_rcd_codcategoria">Categoría</param>
 --- <param name="@oti_imp_importe">Importe</param>
 --- <param name="@oti_ede_comentario">Comentario</param>
---- <param name="@oti_cd1_realizado">Realizado</param>
+--- <param name="@oti_d20_estado">Estado</param>
+--- <param name="@oti_imp_importecierre">Importe Cierre</param>
+--- <param name="@oti_ede_comentariocierre">Comentario Cierre</param>
 --- <param name="@usuario">Usuario que genera el update</param>
 ---
 ---////////////////////////////////////////////////////////
@@ -10490,7 +10510,9 @@ create procedure dbo.OTITEMS_UPDATE
 @oti_rcd_codcategoria tngs_codigo_r,
 @oti_imp_importe tngs_importe,
 @oti_ede_comentario tngs_descripcion_e,
-@oti_cd1_realizado tngs_codigo_1,
+@oti_d20_estado tngs_descripcion_20,
+@oti_imp_importecierre tngs_importe,
+@oti_ede_comentariocierre tngs_descripcion_e,
 @usuario tngs_nombre
 )
 as
@@ -10502,7 +10524,9 @@ begin
           oti_rcd_codcategoria= @oti_rcd_codcategoria,
           oti_imp_importe= @oti_imp_importe,
           oti_ede_comentario= @oti_ede_comentario,
-          oti_cd1_realizado= @oti_cd1_realizado,
+          oti_d20_estado= @oti_d20_estado,
+          oti_imp_importecierre= @oti_imp_importecierre,
+          oti_ede_comentariocierre= @oti_ede_comentariocierre,
           version = ((version+1) % 32767),
           instante= getdate(),
           usuario = @usuario
@@ -10943,7 +10967,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 15/06/2018 19:31
+// Fecha       : 20/06/2018 22:19
 // Sistema     : Mrln
 // Tabla       : Parametros
 //----------------------------------------------------------------------------
@@ -11475,7 +11499,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 15/06/2018 19:31
+// Fecha       : 20/06/2018 22:19
 // Sistema     : Mrln
 // Tabla       : Reparaciones
 //----------------------------------------------------------------------------
@@ -12045,7 +12069,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 15/06/2018 19:31
+// Fecha       : 20/06/2018 22:19
 // Sistema     : Mrln
 // Tabla       : Taller
 //----------------------------------------------------------------------------
@@ -12610,7 +12634,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 15/06/2018 19:31
+// Fecha       : 20/06/2018 22:19
 // Sistema     : Mrln
 // Tabla       : TallerCategoria
 //----------------------------------------------------------------------------
@@ -13447,7 +13471,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 15/06/2018 19:31
+// Fecha       : 20/06/2018 22:19
 // Sistema     : Mrln
 // Tabla       : Talonarios
 //----------------------------------------------------------------------------

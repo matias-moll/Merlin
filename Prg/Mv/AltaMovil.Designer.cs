@@ -32,6 +32,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AltaMovil));
             this.xPanel1 = new TNGS.NetControls.XPanel();
             this.tgrpDatosBasicos = new TNGS.NetControls.TitledGroup();
+            this.cdcTipoMovil = new TNGS.NetControls.CDCombo();
+            this.fullLabel3 = new TNGS.NetControls.FullLabel();
             this.teNroPloteado = new TNGS.NetControls.TextEdit();
             this.fullLabel2 = new TNGS.NetControls.FullLabel();
             this.neKilometros = new TNGS.NetControls.NumberEdit();
@@ -65,8 +67,6 @@
             this.gbGrabar = new TNGS.NetControls.GlassButton();
             this.tsBase1 = new TNGS.NetControls.TSBase();
             this.tab1 = new RibbonStyle.Tab();
-            this.cdcTipoMovil = new TNGS.NetControls.CDCombo();
-            this.fullLabel3 = new TNGS.NetControls.FullLabel();
             this.xPanel1.SuspendLayout();
             this.tgrpDatosBasicos.SuspendLayout();
             this.tgrpEquipamiento.SuspendLayout();
@@ -141,6 +141,29 @@
             this.tgrpDatosBasicos.TitleBackgroundDefault = TNGS.NetControls.ColorRuts.ColoresDefault.None;
             this.tgrpDatosBasicos.TitleFont = new System.Drawing.Font("Segoe UI", 10F);
             this.tgrpDatosBasicos.TitleFontColor = System.Drawing.Color.White;
+            // 
+            // cdcTipoMovil
+            // 
+            this.cdcTipoMovil.BackColor = System.Drawing.SystemColors.Window;
+            this.cdcTipoMovil.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cdcTipoMovil.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cdcTipoMovil.FormattingEnabled = true;
+            this.cdcTipoMovil.Location = new System.Drawing.Point(446, 275);
+            this.cdcTipoMovil.Name = "cdcTipoMovil";
+            this.cdcTipoMovil.Size = new System.Drawing.Size(175, 23);
+            this.cdcTipoMovil.Sorted = true;
+            this.cdcTipoMovil.TabIndex = 23;
+            // 
+            // fullLabel3
+            // 
+            this.fullLabel3.BackColor = System.Drawing.Color.Transparent;
+            this.fullLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fullLabel3.ForeColor = System.Drawing.Color.Black;
+            this.fullLabel3.Location = new System.Drawing.Point(336, 277);
+            this.fullLabel3.Name = "fullLabel3";
+            this.fullLabel3.Size = new System.Drawing.Size(96, 18);
+            this.fullLabel3.TabIndex = 24;
+            this.fullLabel3.Text = "Tipo de Móvil:";
             // 
             // teNroPloteado
             // 
@@ -580,29 +603,6 @@
             this.tab1.Size = new System.Drawing.Size(154, 23);
             this.tab1.TabStripPage = this.tabStripPage1;
             this.tab1.Text = "Opciones Nuevo Movil";
-            // 
-            // cdcTipoMovil
-            // 
-            this.cdcTipoMovil.BackColor = System.Drawing.SystemColors.Window;
-            this.cdcTipoMovil.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cdcTipoMovil.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cdcTipoMovil.FormattingEnabled = true;
-            this.cdcTipoMovil.Location = new System.Drawing.Point(446, 275);
-            this.cdcTipoMovil.Name = "cdcTipoMovil";
-            this.cdcTipoMovil.Size = new System.Drawing.Size(175, 23);
-            this.cdcTipoMovil.Sorted = true;
-            this.cdcTipoMovil.TabIndex = 23;
-            // 
-            // fullLabel3
-            // 
-            this.fullLabel3.BackColor = System.Drawing.Color.Transparent;
-            this.fullLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fullLabel3.ForeColor = System.Drawing.Color.Black;
-            this.fullLabel3.Location = new System.Drawing.Point(336, 277);
-            this.fullLabel3.Name = "fullLabel3";
-            this.fullLabel3.Size = new System.Drawing.Size(96, 18);
-            this.fullLabel3.TabIndex = 24;
-            this.fullLabel3.Text = "Tipo de Móvil:";
             // 
             // AltaMovil
             // 

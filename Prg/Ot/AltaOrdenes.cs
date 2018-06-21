@@ -187,7 +187,7 @@ namespace Mrln.Ot
             l_entOTitem.Destarea = p_eReparacion.Des;
             l_entOTitem.Comentario = teComentario.Text;
             l_entOTitem.Importe = deImporte.Decimal;
-            l_entOTitem.Realizado = "N";
+            l_entOTitem.Importecierre = l_entOTitem.Importe;
 
             return l_entOTitem;
         }
@@ -241,8 +241,12 @@ namespace Mrln.Ot
         // LLena una grilla con la ListaEntidad y Pone Tamanos de columnas para ajustar a pantalla
         private void FillFromLEOTItemsConAnchoDeColumna(FullGrid p_fullGrid, Bel.LEOTItems p_leOTItems)
         {
+            p_leOTItems.ChangeCaption(EOTItem.NroagrupadorCmp, "");
+            p_leOTItems.ChangeCaption(EOTItem.NroitemCmp, "");
+            p_leOTItems.ChangeCaption(EOTItem.ImportecierreCmp, "");
+            p_leOTItems.ChangeCaption(EOTItem.EstadoCmp, "");
             p_fullGrid.FillFromLEntidad(p_leOTItems);
-            p_fullGrid.ColWitdhs = "64;0;0;280;280;80;110;";
+            p_fullGrid.ColWitdhs = "64;280;280;80;110;";
         }
 
         private void reiniciarForm()
@@ -341,6 +345,8 @@ namespace Mrln.Ot
                     MessageBoxButtons.OKCancel) == DialogResult.Cancel) return;
                 // si el dialog es OK cerramos.
             }
+
+            this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
 
@@ -460,6 +466,7 @@ namespace Mrln.Ot
             }
 
             // Despueste grabado se cierra el formulario para poder seguir con el programa principal
+            this.DialogResult = DialogResult.OK;
             this.Close();
         }
         // Borra el ultimo item agregado a la lista

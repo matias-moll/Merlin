@@ -53,6 +53,127 @@ namespace Mrln.Ot
             CargarOrdenes(ordenesPendientes);
         }
 
+        #region Eventos 
+
+        private void gbFiltrar_Click(object sender, EventArgs e)
+        {
+            if (!gbFiltrar.Checked)
+            {
+                LEOrdenesTrabajo ordenesPorMovil = Bll.OrdenesTrabajo.ObtenerOTsPorPatente(cdcMoviles.SelectedStrCode, ref m_smResult);
+                if (MsgRuts.AnalizeError(this, m_smResult)) return;
+
+                if (ordenesPorMovil.Count == 0)
+                {
+                    MsgRuts.ShowMsg(this, "El Movil elegido no tiene ordenes de trabajo asociadas");
+                    return;
+                }
+
+                CargarOrdenes(ordenesPorMovil);
+                gbFiltrar.Checked = true;
+                gbFiltrar.Text = "Quitar Filtro";
+                cdcMoviles.Enabled = false;
+            }
+            else
+            {
+                LEOrdenesTrabajo ordenesPendientes = Bll.OrdenesTrabajo.getPendientes(ref m_smResult);
+                if (MsgRuts.AnalizeError(this, m_smResult)) return;
+                CargarOrdenes(ordenesPendientes);
+                gbFiltrar.Checked = false;
+                gbFiltrar.Text = "Filtrar";
+                cdcMoviles.Enabled = true;
+            }
+        }
+
+        private void gbNuevaOrden_Click(object sender, EventArgs e)
+        {
+            AltaOrdenes l_frmAltaOrdenes = new AltaOrdenes();
+            l_frmAltaOrdenes.ShowDialog(this);
+
+            this.agregarOrdenPendiente(l_frmAltaOrdenes.OrdenCreada);
+        }
+
+        private void gbEditarOT_Click(object sender, EventArgs e)
+        {
+            if (noHayItemSeleccionado())
+                return;
+
+            if (!m_ibItemSeleccionado.EsEditable)
+            {
+                MsgRuts.ShowMsg(this, "Una orden completa y con taller no puede ser editada");
+                return;
+            }
+
+            AltaOrdenes l_frmAltaOrdenes = new AltaOrdenes(m_ibItemSeleccionado.Numero);
+            l_frmAltaOrdenes.ShowDialog(this);
+
+            if (l_frmAltaOrdenes.DialogResult == DialogResult.OK)
+                m_ibItemSeleccionado.Taller = l_frmAltaOrdenes.OrdenModificada.Ot_taller;
+        }
+
+        private void gbVerItems_Click(object sender, EventArgs e)
+        {
+            if (noHayItemSeleccionado())
+                return;
+
+            LEOTItems itemsOrdenSeleccionada = OrdenesTrabajo.OtitFGet(m_ibItemSeleccionado.Numero, true, ref m_smResult);
+            if (MsgRuts.AnalizeError(this, m_smResult)) return;
+
+            itemsOrdenSeleccionada.ChangeCaption(EOTItem.NroagrupadorCmp, "");
+            itemsOrdenSeleccionada.ChangeCaption(EOTItem.NroitemCmp, "");
+            itemsOrdenSeleccionada.ChangeCaption("deleted", "");
+
+            fgGrillaItemsOT.FillFromLEntidad(itemsOrdenSeleccionada);
+        }
+
+        private void gbCancelar_Click(object sender, EventArgs e)
+        {
+            if (noHayItemSeleccionado())
+                return;
+
+            // Pasamos la orden seleccionada a estado cancelada y la grabamos.
+            EOrdenTrabajo ordenSeleccionada = OrdenesTrabajo.Get(m_ibItemSeleccionado.Numero, true, ref m_smResult);
+            if (MsgRuts.AnalizeError(this, m_smResult)) return;
+
+            ordenSeleccionada.Cancelada();
+
+            OrdenesTrabajo.Save(ordenSeleccionada, ref m_smResult);
+            if (MsgRuts.AnalizeError(this, m_smResult)) return;
+
+            MsgRuts.ShowMsg(this, String.Format("La orden de trabajo numero {0} fue cancelada.", m_ibItemSeleccionado.Numero));
+
+            // Actualizamos la lista de ordenes.
+            LEOrdenesTrabajo ordenesPendientes = Bll.OrdenesTrabajo.getPendientes(ref m_smResult);
+            if (MsgRuts.AnalizeError(this, m_smResult)) return;
+            CargarOrdenes(ordenesPendientes);
+        }
+
+        private void gbCerrarOT_Click(object sender, EventArgs e)
+        {
+            if (noHayItemSeleccionado())
+                return;
+
+            if (m_ibItemSeleccionado.EsEditable)
+            {
+                MsgRuts.ShowMsg(this, "Una orden sin taller no puede ser cerrada.");
+                return;
+            }
+
+            CierreOrdenes l_frmCierre = new CierreOrdenes(m_ibItemSeleccionado.Numero);
+            l_frmCierre.ShowDialog(this);
+
+            if (l_frmCierre.DialogResult == DialogResult.OK)
+            {
+                // Actualizamos la lista de ordenes.
+                LEOrdenesTrabajo ordenesPendientes = Bll.OrdenesTrabajo.getPendientes(ref m_smResult);
+                if (MsgRuts.AnalizeError(this, m_smResult)) return;
+                CargarOrdenes(ordenesPendientes);
+            }
+        }
+
+        #endregion
+
+        #region Metodos Privados
+
         private void CargarOrdenes(LEOrdenesTrabajo ordenesACargar)
         {
             xpPanelOrdenes.Controls.Clear();
@@ -110,60 +231,6 @@ namespace Mrln.Ot
 
         }
 
-        private void gbFiltrar_Click(object sender, EventArgs e)
-        {
-            if (!gbFiltrar.Checked)
-            {
-                LEOrdenesTrabajo ordenesPorMovil = Bll.OrdenesTrabajo.ObtenerOTsPorPatente(cdcMoviles.SelectedStrCode, ref m_smResult);
-                if (MsgRuts.AnalizeError(this, m_smResult)) return;
-
-                if (ordenesPorMovil.Count == 0)
-                {
-                    MsgRuts.ShowMsg(this, "El Movil elegido no tiene ordenes de trabajo asociadas");
-                    return;
-                }
-
-                CargarOrdenes(ordenesPorMovil);
-                gbFiltrar.Checked = true;
-                gbFiltrar.Text = "Quitar Filtro";
-                cdcMoviles.Enabled = false;
-            }
-            else
-            {
-                LEOrdenesTrabajo ordenesPendientes = Bll.OrdenesTrabajo.getPendientes(ref m_smResult);
-                if (MsgRuts.AnalizeError(this, m_smResult)) return;
-                CargarOrdenes(ordenesPendientes);
-                gbFiltrar.Checked = false;
-                gbFiltrar.Text = "Filtrar";
-                cdcMoviles.Enabled = true;
-            }
-        }
-
-        private void gbNuevaOrden_Click(object sender, EventArgs e)
-        {
-            AltaOrdenes l_frmAltaOrdenes = new AltaOrdenes();
-            l_frmAltaOrdenes.ShowDialog(this);
-
-            this.agregarOrdenPendiente(l_frmAltaOrdenes.OrdenCreada);
-        }
-
-        private void gbEditarOT_Click(object sender, EventArgs e)
-        {
-            if (noHayItemSeleccionado())
-                return;
-
-            if(!m_ibItemSeleccionado.EsEditable)
-            {
-                MsgRuts.ShowMsg(this, "Una orden completa y con taller no puede ser editada");
-                return;
-            }
-
-            AltaOrdenes l_frmAltaOrdenes = new AltaOrdenes(m_ibItemSeleccionado.Numero);
-            l_frmAltaOrdenes.ShowDialog(this);
-
-            m_ibItemSeleccionado.Taller = l_frmAltaOrdenes.OrdenModificada.Ot_taller;
-        }
-
         private void unItem_FueSeleccionado(object sender, EventArgs e)
         {
             if(m_ibItemSeleccionado != null)
@@ -181,21 +248,6 @@ namespace Mrln.Ot
             fgGrillaItemsOT.Clear();
         }
 
-        private void gbVerItems_Click(object sender, EventArgs e)
-        {
-            if (noHayItemSeleccionado())
-                return;
-
-            LEOTItems itemsOrdenSeleccionada = OrdenesTrabajo.OtitFGet(m_ibItemSeleccionado.Numero, true, ref m_smResult);
-            if (MsgRuts.AnalizeError(this, m_smResult)) return;
-
-            itemsOrdenSeleccionada.ChangeCaption(EOTItem.NroagrupadorCmp, "");
-            itemsOrdenSeleccionada.ChangeCaption(EOTItem.NroitemCmp, "");
-            itemsOrdenSeleccionada.ChangeCaption("deleted", "");
-
-            fgGrillaItemsOT.FillFromLEntidad(itemsOrdenSeleccionada);
-        }
-
         private bool noHayItemSeleccionado()
         {
             if (m_ibItemSeleccionado == null)
@@ -207,31 +259,7 @@ namespace Mrln.Ot
                 return false;
         }
 
-        private void gbCancelar_Click(object sender, EventArgs e)
-        {
-            if (noHayItemSeleccionado())
-                return;
+        #endregion
 
-            // Pasamos la orden seleccionada a estado cancelada y la grabamos.
-            EOrdenTrabajo ordenSeleccionada = OrdenesTrabajo.Get(m_ibItemSeleccionado.Numero, true, ref m_smResult);
-            if (MsgRuts.AnalizeError(this, m_smResult)) return;
-
-            ordenSeleccionada.Cancelada();
-
-            OrdenesTrabajo.Save(ordenSeleccionada, ref m_smResult);
-            if (MsgRuts.AnalizeError(this, m_smResult)) return;
-
-            MsgRuts.ShowMsg(this, String.Format("La orden de trabajo numero {0} fue cancelada.", m_ibItemSeleccionado.Numero));
-
-            // Actualizamos la lista de ordenes.
-            LEOrdenesTrabajo ordenesPendientes = Bll.OrdenesTrabajo.getPendientes(ref m_smResult);
-            if (MsgRuts.AnalizeError(this, m_smResult)) return;
-            CargarOrdenes(ordenesPendientes);
-        }
-
-        private void gbCerrarOT_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

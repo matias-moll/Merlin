@@ -10,7 +10,7 @@ namespace Mrln.Dal
     //----------------------------------------------------------------------------
     //                         TNG Software DAL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 15/06/2018 19:16
+    // Fecha                    : 20/06/2018 22:19
     // Sistema                  : Mrln
     // Clase para Administrar   : OrdenTrabajo Items
     // Basada en la Tabla       : OtItems
@@ -192,7 +192,9 @@ namespace Mrln.Dal
         /// <param name="p_strCodcategoria">Categoría</param>
         /// <param name="p_dcImporte">Importe</param>
         /// <param name="p_strComentario">Comentario</param>
-        /// <param name="p_strRealizado">Realizado</param>
+        /// <param name="p_strEstado">Estado</param>
+        /// <param name="p_dcImportecierre">Importe Cierre</param>
+        /// <param name="p_strComentariocierre">Comentario Cierre</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static int Insert(DBConn p_dbcAccess,
                                  int p_iNroot,
@@ -203,7 +205,9 @@ namespace Mrln.Dal
                                  string p_strCodcategoria,
                                  decimal p_dcImporte,
                                  string p_strComentario,
-                                 string p_strRealizado,
+                                 string p_strEstado,
+                                 decimal p_dcImportecierre,
+                                 string p_strComentariocierre,
                                  ref StatMsg p_smResult)
         {
             try {
@@ -219,7 +223,9 @@ namespace Mrln.Dal
                                        p_dbcAccess.MakeParam("@oti_rcd_codcategoria", p_strCodcategoria),
                                        p_dbcAccess.MakeParam("@oti_imp_importe", p_dcImporte),
                                        p_dbcAccess.MakeParam("@oti_ede_comentario", p_strComentario),
-                                       p_dbcAccess.MakeParam("@oti_cd1_realizado", p_strRealizado),
+                                       p_dbcAccess.MakeParam("@oti_d20_estado", p_strEstado),
+                                       p_dbcAccess.MakeParam("@oti_imp_importecierre", p_dcImportecierre),
+                                       p_dbcAccess.MakeParam("@oti_ede_comentariocierre", p_strComentariocierre),
                                        p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
                                    }
                                   );
@@ -243,7 +249,9 @@ namespace Mrln.Dal
         /// <param name="p_strCodcategoria">Categoría</param>
         /// <param name="p_dcImporte">Importe</param>
         /// <param name="p_strComentario">Comentario</param>
-        /// <param name="p_strRealizado">Realizado</param>
+        /// <param name="p_strEstado">Estado</param>
+        /// <param name="p_dcImportecierre">Importe Cierre</param>
+        /// <param name="p_strComentariocierre">Comentario Cierre</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static int Update(DBConn p_dbcAccess,
                                  int p_iNroot,
@@ -254,7 +262,9 @@ namespace Mrln.Dal
                                  string p_strCodcategoria,
                                  decimal p_dcImporte,
                                  string p_strComentario,
-                                 string p_strRealizado,
+                                 string p_strEstado,
+                                 decimal p_dcImportecierre,
+                                 string p_strComentariocierre,
                                  ref StatMsg p_smResult)
         {
             try {
@@ -270,7 +280,9 @@ namespace Mrln.Dal
                                        p_dbcAccess.MakeParam("@oti_rcd_codcategoria", p_strCodcategoria),
                                        p_dbcAccess.MakeParam("@oti_imp_importe", p_dcImporte),
                                        p_dbcAccess.MakeParam("@oti_ede_comentario", p_strComentario),
-                                       p_dbcAccess.MakeParam("@oti_cd1_realizado", p_strRealizado),
+                                       p_dbcAccess.MakeParam("@oti_d20_estado", p_strEstado),
+                                       p_dbcAccess.MakeParam("@oti_imp_importecierre", p_dcImportecierre),
+                                       p_dbcAccess.MakeParam("@oti_ede_comentariocierre", p_strComentariocierre),
                                        p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
                                    }
                                   );
@@ -543,7 +555,9 @@ namespace Mrln.Dal
                 p_dtResult.Columns["oti_ede_comentario"].Caption= "V1ComentarioCN1";
                 p_dtResult.Columns["oti_des_desoperacion"].Caption= "V1Descripción de la operaciónCN1";
                 p_dtResult.Columns["oti_des_destarea"].Caption= "V1Descripción de la tareaCN1";
+                p_dtResult.Columns["oti_d20_estado"].Caption= "V1EstadoCN1";
                 p_dtResult.Columns["oti_imp_importe"].Caption= "V1Importe2N1";
+                p_dtResult.Columns["oti_imp_importecierre"].Caption= "V1Importe Cierre2N1";
                 p_dtResult.Columns["oti_nro_nroagrupador"].Caption= "V1Numero de agrupadorNN1";
                 p_dtResult.Columns["oti_nro_nroitem"].Caption= "V1Numero del itemNN1";
                 p_dtResult.Columns["deleted"].Caption= "V1Borrado2N2";

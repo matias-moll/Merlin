@@ -31,13 +31,73 @@ namespace Mrln.Ot
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
         }
 
-        #region Metodos Privados
-
-        #endregion
+        private void CierreOrdenes_Load(object sender, EventArgs e)
+        {
+            teMovilPatente.Text = m_eOrdenACerrar.Patente;
+            teTaller.Text = m_eOrdenACerrar.Ot_taller;
+            neOrdenTrabajo.Numero = m_eOrdenACerrar.Nro;
+            CargarItems();
+        }
 
         #region Eventos de los Controles
 
-        // Cierra el formulario
+        private void gbCheckAll_Click(object sender, EventArgs e)
+        {
+            // TODO: Averiguar si hay una manera mas facil de hacer el check all que un for de cantidad de items y metodo checkrow.
+            // Same para el uncheck all 
+        }
+
+        private void gbUncheckAll_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void fgItems_CurrentCellChanged(object sender, EventArgs e)
+        {
+            EOTItem itemSeleccionado = m_eOrdenACerrar.OTItems[fgItems.CurrentRowIndex];
+            teComentarioCierre.Text = itemSeleccionado.Comentariocierre;
+            deImporteCierre.Decimal = itemSeleccionado.Importecierre;
+            tgrpItem.Enabled = true;
+            deImporteCierre.Enabled = true;
+            teComentarioCierre.Enabled = true;
+            gbAceptarItem.Enabled = true;
+        }
+
+        private void gbAceptarItem_Click(object sender, EventArgs e)
+        {
+            // Actualizamos ambos campos en la entidad seleccionado y recargamos la UI.
+            m_eOrdenACerrar.OTItems.InternalData[fgItems.CurrentRowIndex][EOTItem.ComentariocierreCmp] = teComentarioCierre.Text;
+            m_eOrdenACerrar.OTItems.InternalData[fgItems.CurrentRowIndex][EOTItem.ImportecierreCmp] = deImporteCierre.Decimal;
+            CargarItems();
+
+            teComentarioCierre.Text = "";
+            deImporteCierre.Decimal = 0;
+            tgrpItem.Enabled = false;
+        }
+
+        private void gbPendiente_Click(object sender, EventArgs e)
+        {
+            CambiarEstadoEnItemsChequeados(EOTItem.Estados.Pendiente);
+        }
+
+        private void gbCancelado_Click(object sender, EventArgs e)
+        {
+            CambiarEstadoEnItemsChequeados(EOTItem.Estados.Cancelado);
+        }
+
+        private void gbRealizado_Click(object sender, EventArgs e)
+        {
+            CambiarEstadoEnItemsChequeados(EOTItem.Estados.Realizado);
+        }
+
+        private void gbCerrarOrden_Click(object sender, EventArgs e)
+        {
+            decimal importecierre = m_eOrdenACerrar.OTItems[0].Importecierre;
+
+            this.DialogResult = DialogResult.OK;
+            this.Close();
+        }
+
         private void gbCancel_Click(object sender, EventArgs e)
         {
             // TODO: Agregar if de que todos los items tengan un estado asociado.
@@ -46,10 +106,55 @@ namespace Mrln.Ot
             if (MsgRuts.ShowMsg(this,
                 "Si cierra la pantalla perdera todo lo hecho en ella",
                 MessageBoxButtons.OKCancel) == DialogResult.Cancel) return;
-            
+
+            this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
 
         #endregion
+
+        #region Metodos Privados
+
+        private void CargarItems()
+        {
+            m_eOrdenACerrar.OTItems.ChangeCaption(EOTItem.NroagrupadorCmp, "");
+            m_eOrdenACerrar.OTItems.ChangeCaption(EOTItem.NroitemCmp, "");
+            m_eOrdenACerrar.OTItems.ChangeCaption(EOTItem.CodcategoriaCmp, "");
+            m_eOrdenACerrar.OTItems.ChangeCaption(EOTItem.ComentarioCmp, "");
+            m_eOrdenACerrar.OTItems.ChangeCaption("deleted", "");
+            fgItems.FillFromLEntidad(m_eOrdenACerrar.OTItems);
+        }
+
+        private void CambiarEstadoEnItemsChequeados(EOTItem.Estados estado)
+        {
+            LEOTItems itemsSinModificar = m_eOrdenACerrar.OTItems;
+
+            bool hayUnItemChequeado = false;
+
+            // Recorremos todas las entidades para ver cuales estan chequeadas y les cambiamos su estado.
+            for (int index = 0; index < fgItems.Count; index++)
+            {
+                if (fgItems.GetCheckState(index))
+                {
+                    m_eOrdenACerrar.OTItems.InternalData[index][EOTItem.EstadoCmp] = estado.ToString();
+
+                    hayUnItemChequeado = true;
+                }
+            }
+
+            if (!hayUnItemChequeado)
+            {
+                MsgRuts.ShowMsg(this, "No hay ningun item seleccionado para modificar su estado");
+                return;
+            }
+
+            // Actualizamos la UI
+            CargarItems();
+
+        }
+
+        #endregion
+
+
     }
 }

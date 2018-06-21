@@ -14,7 +14,7 @@ namespace Mrln.Bel
     //----------------------------------------------------------------------------
     //                         TNG Software BEL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 15/06/2018 19:16
+    // Fecha                    : 20/06/2018 22:19
     // Sistema                  : Mrln
     // Clase para Administrar   : Ordenes de Trabajo y sus Items
     //----------------------------------------------------------------------------
@@ -86,7 +86,9 @@ namespace Mrln.Bel
             l_drTemp["oti_rcd_codcategoria"]= XMLRuts.ExtractXAttr(l_xndData, "oti_rcd_codcategoria");
             l_drTemp["oti_imp_importe"]= XMLRuts.ExtractXAttr(l_xndData, "oti_imp_importe", (decimal) 0);
             l_drTemp["oti_ede_comentario"]= XMLRuts.ExtractXAttr(l_xndData, "oti_ede_comentario");
-            l_drTemp["oti_cd1_realizado"]= XMLRuts.ExtractXAttr(l_xndData, "oti_cd1_realizado");
+            l_drTemp["oti_d20_estado"]= XMLRuts.ExtractXAttr(l_xndData, "oti_d20_estado");
+            l_drTemp["oti_imp_importecierre"]= XMLRuts.ExtractXAttr(l_xndData, "oti_imp_importecierre", (decimal) 0);
+            l_drTemp["oti_ede_comentariocierre"]= XMLRuts.ExtractXAttr(l_xndData, "oti_ede_comentariocierre");
             l_drTemp["oti_categoria"]= XMLRuts.ExtractXAttr(l_xndData, "oti_categoria");
 
             // Llenamos los campos fijos
@@ -139,7 +141,9 @@ namespace Mrln.Bel
             l_drTemp["oti_rcd_codcategoria"]= "";
             l_drTemp["oti_imp_importe"]= 0;
             l_drTemp["oti_ede_comentario"]= "";
-            l_drTemp["oti_cd1_realizado"]= "";
+            l_drTemp["oti_d20_estado"]= "";
+            l_drTemp["oti_imp_importecierre"]= 0;
+            l_drTemp["oti_ede_comentariocierre"]= "";
             l_drTemp["oti_categoria"]= "";
 
             // Agregamos la Row creada a la tabla creada y creamos
@@ -161,7 +165,9 @@ namespace Mrln.Bel
         /// <param name="p_strCodcategoria">Categoría</param>
         /// <param name="p_dcImporte">Importe</param>
         /// <param name="p_strComentario">Comentario</param>
-        /// <param name="p_strRealizado">Realizado</param>
+        /// <param name="p_strEstado">Estado</param>
+        /// <param name="p_dcImportecierre">Importe Cierre</param>
+        /// <param name="p_strComentariocierre">Comentario Cierre</param>
         /// <returns>Entidad: OTItem</returns>
         public static EOTItem NewFilled(int p_iNroot,
                                         int p_iNroagrupador,
@@ -171,7 +177,9 @@ namespace Mrln.Bel
                                         string p_strCodcategoria,
                                         decimal p_dcImporte,
                                         string p_strComentario,
-                                        string p_strRealizado)
+                                        string p_strEstado,
+                                        decimal p_dcImportecierre,
+                                        string p_strComentariocierre)
         {
             // Creamos una tabla compatible con la entidad
             DataTable l_dtTemp= new DataTable();
@@ -189,7 +197,9 @@ namespace Mrln.Bel
             l_drTemp["oti_rcd_codcategoria"]= p_strCodcategoria;
             l_drTemp["oti_imp_importe"]= p_dcImporte;
             l_drTemp["oti_ede_comentario"]= p_strComentario;
-            l_drTemp["oti_cd1_realizado"]= p_strRealizado;
+            l_drTemp["oti_d20_estado"]= p_strEstado;
+            l_drTemp["oti_imp_importecierre"]= p_dcImportecierre;
+            l_drTemp["oti_ede_comentariocierre"]= p_strComentariocierre;
             l_drTemp["oti_categoria"]= "";
 
             // Agregamos la Row creada a la tabla creada y creamos
@@ -216,7 +226,7 @@ namespace Mrln.Bel
         {
             get {
                 // Creamos el vector de DataColumns y lo llenamos
-                DataColumn[] l_dcStruct= new DataColumn[14];
+                DataColumn[] l_dcStruct= new DataColumn[16];
 
                 l_dcStruct[0]= new DataColumn("oti_nro_nroot", typeof(int));
                 l_dcStruct[1]= new DataColumn("oti_nro_nroagrupador", typeof(int));
@@ -227,8 +237,10 @@ namespace Mrln.Bel
                 l_dcStruct[6]= new DataColumn("oti_categoria", typeof(string));
                 l_dcStruct[7]= new DataColumn("oti_imp_importe", typeof(decimal));
                 l_dcStruct[8]= new DataColumn("oti_ede_comentario", typeof(string));
-                l_dcStruct[9]= new DataColumn("oti_cd1_realizado", typeof(string));
-                EOTItem.FillFixedFields(ref l_dcStruct, 10);
+                l_dcStruct[9]= new DataColumn("oti_d20_estado", typeof(string));
+                l_dcStruct[10]= new DataColumn("oti_imp_importecierre", typeof(decimal));
+                l_dcStruct[11]= new DataColumn("oti_ede_comentariocierre", typeof(string));
+                EOTItem.FillFixedFields(ref l_dcStruct, 12);
 
                 // Devolvemos el vector creado
                 return l_dcStruct;
@@ -381,20 +393,60 @@ namespace Mrln.Bel
         }
 
         /// <summary>
-        /// Realizado
+        /// Estado
         /// </summary>
-        public static string RealizadoCmp
+        public static string EstadoCmp
         {
-           get {return "oti_cd1_realizado";}
+           get {return "oti_d20_estado";}
         }
 
         /// <summary>
-        /// Realizado
+        /// Estado
         /// </summary>
-        public string Realizado
+        public string Estado
         {
-            get {return (string) InternalData["oti_cd1_realizado"];}
-            set {InternalData["oti_cd1_realizado"]= value;}
+            get {return ((string) InternalData["oti_d20_estado"]).Trim();}
+            set {
+                if (value.Trim().Length > 20) value= value.Trim().Substring(0,20);
+                InternalData["oti_d20_estado"]= value.Trim();
+            }
+        }
+
+        /// <summary>
+        /// Importe Cierre
+        /// </summary>
+        public static string ImportecierreCmp
+        {
+           get {return "oti_imp_importecierre";}
+        }
+
+        /// <summary>
+        /// Importe Cierre
+        /// </summary>
+        public decimal Importecierre
+        {
+            get {return (decimal) InternalData["oti_imp_importecierre"];}
+            set {InternalData["oti_imp_importecierre"]= value;}
+        }
+
+        /// <summary>
+        /// Comentario Cierre
+        /// </summary>
+        public static string ComentariocierreCmp
+        {
+           get {return "oti_ede_comentariocierre";}
+        }
+
+        /// <summary>
+        /// Comentario Cierre
+        /// </summary>
+        public string Comentariocierre
+        {
+            get {return ((string) InternalData["oti_ede_comentariocierre"]).Trim();}
+            set {
+                if (value.Trim().Length > 60) value= value.Trim().Substring(0,60);
+                InternalData["oti_ede_comentariocierre"]= value.Trim().ToUpper();
+            }
         }
 
         /// <summary>
@@ -433,7 +485,9 @@ namespace Mrln.Bel
                 l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "oti_rcd_codcategoria", Codcategoria));
                 l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "oti_imp_importe", Importe));
                 l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "oti_ede_comentario", Comentario));
-                l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "oti_cd1_realizado", Realizado));
+                l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "oti_d20_estado", Estado));
+                l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "oti_imp_importecierre", Importecierre));
+                l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "oti_ede_comentariocierre", Comentariocierre));
                 l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "oti_categoria", Oti_categoria));
 
                 // Asignamos los campos fijos

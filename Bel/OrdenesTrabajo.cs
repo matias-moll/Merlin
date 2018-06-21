@@ -31,10 +31,27 @@ namespace Mrln.Bel
     /// </summary>
     public sealed partial class EOTItem : Entidad
     {
+        public enum Estados { Pendiente, Realizado, Cancelado };
+
         #region Metodos publicos de la clase
         //---------------------------------------------------------------
         // Metodos públicos de la clase
         //---------------------------------------------------------------
+
+        public void Pendiente()
+        {
+            this.Estado = Estados.Pendiente.ToString();
+        }
+
+        public void Realizado()
+        {
+            this.Estado = Estados.Realizado.ToString();
+        }
+        public void Cancelado()
+        {
+            this.Estado = Estados.Cancelado.ToString();
+        }
+
 
         #endregion
 
@@ -65,8 +82,6 @@ namespace Mrln.Bel
         //---------------------------------------------------------------
         // Propiedades de la clase
         //---------------------------------------------------------------
-
-        public bool fueRealizado { get { return this.Realizado == "S"; } }
 
         #endregion
     }
