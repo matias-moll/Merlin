@@ -83,6 +83,26 @@ namespace Mrln.Bel
         // Propiedades de la clase
         //---------------------------------------------------------------
 
+        public bool tieneEstadoCargado
+        {
+            get { return this.estaPendiente || this.fueCancelado || this.fueRealizado; }
+        }
+
+        public bool estaPendiente
+        {
+            get { return this.Estado == Estados.Pendiente.ToString(); }
+        }
+
+        public bool fueRealizado
+        {
+            get { return this.Estado == Estados.Realizado.ToString(); }
+        }
+
+        public bool fueCancelado
+        {
+            get { return this.Estado == Estados.Cancelado.ToString(); }
+        }
+
         #endregion
     }
     #endregion

@@ -43,13 +43,12 @@ namespace Mrln.Ot
 
         private void gbCheckAll_Click(object sender, EventArgs e)
         {
-            // TODO: Averiguar si hay una manera mas facil de hacer el check all que un for de cantidad de items y metodo checkrow.
-            // Same para el uncheck all 
+            CambiarCheckEnTodasLasFilas(true);
         }
 
         private void gbUncheckAll_Click(object sender, EventArgs e)
         {
-
+            CambiarCheckEnTodasLasFilas(false);
         }
 
         private void fgItems_CurrentCellChanged(object sender, EventArgs e)
@@ -92,7 +91,18 @@ namespace Mrln.Ot
 
         private void gbCerrarOrden_Click(object sender, EventArgs e)
         {
-            decimal importecierre = m_eOrdenACerrar.OTItems[0].Importecierre;
+            if (m_eOrdenACerrar.OTItems.Any(item => !item.tieneEstadoCargado))
+            {
+                MsgRuts.ShowMsg(this, "No se puede cerrar una orden de trabajo con items que no tengan un estado cargado.");
+                return;
+            }
+
+            m_eOrdenACerrar.Finalizada();
+
+            Bll.OrdenesTrabajo.Save(m_eOrdenACerrar, ref m_smResult);
+            if (MsgRuts.AnalizeError(this, m_smResult)) return;
+
+            MsgRuts.ShowMsg(this, "La orden de trabajo fue cerrada exitosamente");
 
             this.DialogResult = DialogResult.OK;
             this.Close();
@@ -153,8 +163,14 @@ namespace Mrln.Ot
 
         }
 
+        private void CambiarCheckEnTodasLasFilas(bool nuevoValor)
+        {
+            for (int index = 0; index < fgItems.Count; index++)
+            {
+                fgItems.CheckRow(index, nuevoValor);
+            }
+        }
+
         #endregion
-
-
     }
 }
