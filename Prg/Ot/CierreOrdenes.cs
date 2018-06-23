@@ -110,8 +110,6 @@ namespace Mrln.Ot
 
         private void gbCancel_Click(object sender, EventArgs e)
         {
-            // TODO: Agregar if de que todos los items tengan un estado asociado.
-
             // mostramos un mensaje si esta seguro de cerrar
             if (MsgRuts.ShowMsg(this,
                 "Si cierra la pantalla perdera todo lo hecho en ella",

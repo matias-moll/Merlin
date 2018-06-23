@@ -62,6 +62,7 @@ namespace Mrln.Tg
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TalleresCategorias));
             this.xpnlBase = new TNGS.NetControls.XPanel();
             this.lblTitle = new System.Windows.Forms.Label();
             this.tsContainer1 = new TNGS.NetControls.TSContainer();
@@ -569,6 +570,7 @@ namespace Mrln.Tg
             this.DockAreas = WeifenLuo.WinFormsUI.Docking.DockAreas.Document;
             this.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "TalleresCategorias";
             this.ShowHint = WeifenLuo.WinFormsUI.Docking.DockState.Document;

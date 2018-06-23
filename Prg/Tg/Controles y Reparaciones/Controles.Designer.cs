@@ -63,6 +63,7 @@ namespace Mrln.Tg
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Controles));
             this.xpnlBase = new TNGS.NetControls.XPanel();
             this.tsContainer1 = new TNGS.NetControls.TSContainer();
             this.tabPageSwitcher1 = new RibbonStyle.TabPageSwitcher();
@@ -552,6 +553,7 @@ namespace Mrln.Tg
             this.Controls.Add(this.xpnlBase);
             this.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Controles";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

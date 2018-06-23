@@ -60,6 +60,7 @@ namespace Mrln.Tg
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Equipamientos));
             this.xpnlBase = new TNGS.NetControls.XPanel();
             this.tsContainer1 = new TNGS.NetControls.TSContainer();
             this.tabPageSwitcher1 = new RibbonStyle.TabPageSwitcher();
@@ -175,6 +176,7 @@ namespace Mrln.Tg
             this.cmdHab.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
             this.cmdHab.FlatFontSize = 9;
             this.cmdHab.FlatTextColor = System.Drawing.Color.Black;
+            this.cmdHab.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.cmdHab.Location = new System.Drawing.Point(161, 7);
             this.cmdHab.Name = "cmdHab";
             this.cmdHab.RoundCorners = 2;
@@ -194,6 +196,7 @@ namespace Mrln.Tg
             this.cmdCancelar.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
             this.cmdCancelar.FlatFontSize = 9;
             this.cmdCancelar.FlatTextColor = System.Drawing.Color.Black;
+            this.cmdCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.cmdCancelar.ImageOnTop = true;
             this.cmdCancelar.Location = new System.Drawing.Point(82, 3);
             this.cmdCancelar.Name = "cmdCancelar";
@@ -213,6 +216,7 @@ namespace Mrln.Tg
             this.cmdGrabar.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
             this.cmdGrabar.FlatFontSize = 9;
             this.cmdGrabar.FlatTextColor = System.Drawing.Color.Black;
+            this.cmdGrabar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.cmdGrabar.ImageOnTop = true;
             this.cmdGrabar.Location = new System.Drawing.Point(3, 3);
             this.cmdGrabar.Name = "cmdGrabar";
@@ -232,6 +236,7 @@ namespace Mrln.Tg
             this.cmdDesHab.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
             this.cmdDesHab.FlatFontSize = 9;
             this.cmdDesHab.FlatTextColor = System.Drawing.Color.Black;
+            this.cmdDesHab.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.cmdDesHab.Location = new System.Drawing.Point(161, 35);
             this.cmdDesHab.Name = "cmdDesHab";
             this.cmdDesHab.RoundCorners = 2;
@@ -266,6 +271,7 @@ namespace Mrln.Tg
             this.cmdSalir.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
             this.cmdSalir.FlatFontSize = 9;
             this.cmdSalir.FlatTextColor = System.Drawing.Color.Black;
+            this.cmdSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.cmdSalir.Location = new System.Drawing.Point(161, 7);
             this.cmdSalir.Name = "cmdSalir";
             this.cmdSalir.RoundCorners = 2;
@@ -285,6 +291,7 @@ namespace Mrln.Tg
             this.cmdPurgar.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
             this.cmdPurgar.FlatFontSize = 9;
             this.cmdPurgar.FlatTextColor = System.Drawing.Color.Black;
+            this.cmdPurgar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.cmdPurgar.Location = new System.Drawing.Point(161, 35);
             this.cmdPurgar.Name = "cmdPurgar";
             this.cmdPurgar.RoundCorners = 2;
@@ -304,6 +311,7 @@ namespace Mrln.Tg
             this.cmdModificar.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
             this.cmdModificar.FlatFontSize = 9;
             this.cmdModificar.FlatTextColor = System.Drawing.Color.Black;
+            this.cmdModificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.cmdModificar.ImageOnTop = true;
             this.cmdModificar.Location = new System.Drawing.Point(87, 3);
             this.cmdModificar.Name = "cmdModificar";
@@ -323,6 +331,7 @@ namespace Mrln.Tg
             this.cmdNuevo.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
             this.cmdNuevo.FlatFontSize = 9;
             this.cmdNuevo.FlatTextColor = System.Drawing.Color.Black;
+            this.cmdNuevo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.cmdNuevo.ImageOnTop = true;
             this.cmdNuevo.Location = new System.Drawing.Point(8, 3);
             this.cmdNuevo.Name = "cmdNuevo";
@@ -402,6 +411,7 @@ namespace Mrln.Tg
             this.cmdPrint.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
             this.cmdPrint.FlatFontSize = 9;
             this.cmdPrint.FlatTextColor = System.Drawing.Color.Black;
+            this.cmdPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.cmdPrint.Location = new System.Drawing.Point(952, 118);
             this.cmdPrint.Name = "cmdPrint";
             this.cmdPrint.PCode = "TNGS.PRINT";
@@ -422,6 +432,7 @@ namespace Mrln.Tg
             this.cmdExcel.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
             this.cmdExcel.FlatFontSize = 9;
             this.cmdExcel.FlatTextColor = System.Drawing.Color.Black;
+            this.cmdExcel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.cmdExcel.Location = new System.Drawing.Point(927, 118);
             this.cmdExcel.Name = "cmdExcel";
             this.cmdExcel.PCode = "TNGS.EXCEL";
@@ -528,7 +539,7 @@ namespace Mrln.Tg
             this.txtValor.Name = "txtValor";
             this.txtValor.Size = new System.Drawing.Size(138, 22);
             this.txtValor.TabIndex = 8;
-            this.txtValor.Text = "0.00";
+            this.txtValor.Text = "0,00";
             // 
             // Equipamientos
             // 
@@ -539,6 +550,7 @@ namespace Mrln.Tg
             this.DockAreas = WeifenLuo.WinFormsUI.Docking.DockAreas.Document;
             this.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Equipamientos";
             this.ShowHint = WeifenLuo.WinFormsUI.Docking.DockState.Document;
