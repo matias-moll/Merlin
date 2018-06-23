@@ -16,7 +16,7 @@ namespace Mrln.Bll
     //----------------------------------------------------------------------------
     //                         TNG Software BLL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 14/06/2018 03:27
+    // Fecha                    : 23/06/2018 19:06
     // Sistema                  : Mrln
     // Clase para Administrar   : 
     //----------------------------------------------------------------------------
@@ -183,6 +183,7 @@ namespace Mrln.Bll
                 case "mov_nro_aniofabric"              : {return "V1Año de fabricaciónNN3";}
                 case "mov_cd1_propio"                  : {return "V1Propio o noCN2";}
                 case "mov_ecd_nroploteado"             : {return "V1Numero PloteadoCN1";}
+                case "mov_cod_tipodemovil"             : {return "V1Código Tipo de MóvilCN1";}
 
                 // ****************************************
                 // Tabla: MvlCombustible      
@@ -221,6 +222,7 @@ namespace Mrln.Bll
                 case "odt_fyh_feccierre"               : {return "V1Fecha de cierre.DN2";}
                 case "odt_cod_encargado"               : {return "V1EncargadoCN1";}
                 case "odt_cod_codtaller"               : {return "V1TallerCN1";}
+                case "odt_d20_estado"                  : {return "V1EstadoCN1";}
                 case "ot_taller"                       : {return "V1TallerCN1";}
 
                 // ****************************************
@@ -233,6 +235,10 @@ namespace Mrln.Bll
                 case "oti_rcd_codcategoria"            : {return "V1CategoríaCN1";}
                 case "oti_imp_importe"                 : {return "V1Importe2N3";}
                 case "oti_ede_comentario"              : {return "V1ComentarioCN1";}
+                case "oti_d20_estado"                  : {return "V1EstadoCN1";}
+                case "oti_imp_importecierre"           : {return "V1Importe Cierre2N3";}
+                case "oti_ede_comentariocierre"        : {return "V1Comentario CierreCN1";}
+                case "oti_categoria"                   : {return "V1CategoriaCN1";}
 
                 // ****************************************
                 // Tabla: Parametros          
@@ -275,6 +281,12 @@ namespace Mrln.Bll
                 case "tal_nro_valor"                   : {return "V1NúmeroNN3";}
                 case "tal_fyh_referencia"              : {return "V1ReferenciaDN2";}
                 case "tal_rob_detalle"                 : {return "V1DetalleCN1";}
+
+                // ****************************************
+                // Entidad: RowHistorial        
+                case "rhi_fyh_fecha"                   : {return "V1FechaFN2";}
+                case "rhi_des_tipo"                    : {return "V1TipoCN1";}
+                case "rhi_xde_descripcion"             : {return "V1DescripciónCN1";}
 
                 // ****************************************
                 // Captions Fijos

@@ -51,6 +51,10 @@
     <Compile Include="Controles.designer.cs">
       <DependentUpon>Controles.cs</DependentUpon>
     </Compile>
+    <Compile Include="EntidadesF.cs" />
+    <Compile Include="EntidadesF.designer.cs">
+      <DependentUpon>EntidadesF.cs</DependentUpon>
+    </Compile>
     <Compile Include="Moviles.cs" />
     <Compile Include="Moviles.designer.cs">
       <DependentUpon>Moviles.cs</DependentUpon>

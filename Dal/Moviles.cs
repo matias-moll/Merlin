@@ -10,7 +10,7 @@ namespace Mrln.Dal
     //----------------------------------------------------------------------------
     //                         TNG Software DAL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 15/06/2018 18:53
+    // Fecha                    : 23/06/2018 19:06
     // Sistema                  : Mrln
     // Clase para Administrar   : Moviles del Sistema
     // Basada en la Tabla       : Moviles
@@ -350,6 +350,36 @@ namespace Mrln.Dal
         #endregion
 
         #region Metodos del Usuario
+
+        /// <summary>
+        /// Método Fijo: GetHistorialFull
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name= "p_strPatente">Patente Movil</param>
+        /// <param name="p_dsResult">DataSet donde devolver el registro</param>
+        /// <param name="p_strTabla">Nombre de la tabla a llenar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        public static int GetHistorialFull(DBConn p_dbcAccess,
+                                           string p_strPatente,
+                                           ref DataSet p_dsResult,
+                                           string p_strTabla,
+                                           ref StatMsg p_smResult)
+        {
+            try {
+                return DBRuts.Exec_DS(p_dbcAccess,
+                                      "TNGS_Mrln..MOVILES_GETHISTORIALFULL",
+                                      new DbParameter[] {
+                                          p_dbcAccess.MakeParam("@patente", p_strPatente),
+                                          p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
+                                      },
+                                      ref p_dsResult, p_strTabla);
+            }
+            catch (Exception l_expData) {
+                // Error en el método fijo
+                p_smResult.DalError(l_expData);
+                return -1;
+            }
+        }
 
         /// <summary>
         /// Método Fijo: getMovilesTree

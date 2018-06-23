@@ -16,7 +16,7 @@ namespace Mrln.Bll
     //----------------------------------------------------------------------------
     //                         TNG Software BLL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 15/06/2018 18:53
+    // Fecha                    : 23/06/2018 19:06
     // Sistema                  : Mrln
     // Clase para Administrar   : Moviles y Tablas Hijas
     //----------------------------------------------------------------------------
@@ -4069,6 +4069,38 @@ namespace Mrln.Bll
         #endregion
 
         #region Metodos para métodos DAL definidos por el usuario
+
+        /// <summary>
+        /// Ejecuta el SP definido por el usuario: GetHistorialFull
+        /// </summary>
+        /// <param name= p_strPatente>Patente Movil</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        /// <returns>ListaEntidad con los datos solicitados</returns>
+        public static ListaEntidades GetHistorialFull(string p_strPatente,
+                                                      ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            DBConn l_dbcAccess= null;
+
+            try {
+                // Abrimos una conexion
+                l_dbcAccess= DBRuts.GetConection(Connections.Dat);
+
+                // Llamamos al metodo interno
+                return GetHistorialFull(l_dbcAccess,
+                                        p_strPatente,
+                                        ref p_smResult);
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion
+                p_smResult.BllError(l_expData);
+                return null;
+            }
+            finally {
+                // Si abrimos una conexion -> la cerramos
+                if (l_dbcAccess != null) l_dbcAccess.Close();
+            }
+        }
         #endregion
 
         //---------------------------------------------------------------
@@ -4567,6 +4599,46 @@ namespace Mrln.Bll
         #endregion
 
         #region Metodos para métodos DAL definidos por el usuario
+
+        /// <summary>
+        /// Ejecuta el SP definido por el usuario: GetHistorialFull
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name= p_strPatente>Patente Movil</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        /// <returns>ListaEntidad con los datos solicitados</returns>
+        internal static ListaEntidades GetHistorialFull(DBConn p_dbcAccess,
+                                                        string p_strPatente,
+                                                        ref StatMsg p_smResult)
+        {
+            try {
+                // Llamamos al metodo definido por el usuario
+                DataSet l_dsTemp= new DataSet();
+
+                Dal.Moviles.GetHistorialFull(p_dbcAccess,
+                                             p_strPatente,
+                                             ref l_dsTemp,
+                                             "Temporal",
+                                             ref p_smResult);
+                if (p_smResult.NOk) return null;
+
+                // Creamos la LE y Captionamos
+                ListaEntidades l_lentRet= new ListaEntidades(l_dsTemp.Tables["Temporal"]);
+                BllRuts.FillStdCaptions(ref l_lentRet);
+
+                // Devolvemos la LE
+                l_dsTemp.Dispose();
+                return l_lentRet;
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion
+                p_smResult.BllError(l_expData);
+                return null;
+            }
+            finally {
+                // Terminamos
+            }
+        }
 
         /// <summary>
         /// Ejecuta el SP definido por el usuario: getMovilesTree

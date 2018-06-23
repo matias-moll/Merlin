@@ -10,7 +10,7 @@ namespace Mrln.Dal
     //----------------------------------------------------------------------------
     //                         TNG Software DAL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 15/06/2018 18:53
+    // Fecha                    : 23/06/2018 19:06
     // Sistema                  : Mrln
     // Clase para Administrar   : Kilometros de los moviles
     // Basada en la Tabla       : MvlKilometros
