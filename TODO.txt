@@ -1,26 +1,24 @@
 TODO:
 
-
-Nota, pensar que pasa con los items de ordenes que no se hicieron. Idea: Dos botones en el cierre de OT, uno que diga
-no se hizo porque no es necesario y otro que diga no se pudo realizar, entonces despues en el alta de ordenes en controles le vamos 
-a mostrar los controles posibles + los items pendientes que tiene.
-
-
-
------------------------------------------------------------------------------------------------------------------------------------
-
-Tenemos que hacer una opcion de consulta de historia del movil donde vamos a tener que hacer un select union
-de todo lo que le paso al movil: combustibles, estados, ordenes de trabajo, etc. Usar una entidad fija 
-con datos en comun: patente, fecha, tipo, descripcion.
-El tipo de las ordenes de trabajo es fijo para combustibles, estados, y dsps para los items de OT es la categoria de la reparacion
-y ademas necesitamos otro para los controles que se le hicieron al auto donde el tipo seria la descripcion del control
-
-
-
 Agregar opcion de imprimir las OTs Pendientes con un crystal report especial para tener cada una separada y poder darselas a un tecnico.
 En la pantalla de visor de ordenes de trabajo.
 
+Discutir y diseñar la idea de MovilesAlertas.
+Controles desde los 10k km cada 10k km hasta los 100k km
+Controles especificos a tal kilometraje
+Controles despues de X km de haber realizado tal reparacion.
+
+
+Pregunta:
+Tipo de nafta no les interesara saber? Para cuando cargan el MvlCombustibles.
+
+En el select union complejo, para las OT, la fecha debe ser la de apertura o la de cierre?
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------
 
 
 Una vez que tenga todo esto hay que ver los reportes.
 Y documentar el constructor de consultas.
+
+Hacer un reporte de OTItems de estado Pendientes (que no se hicieron pero deben hacerse alguna vez) por movil.
