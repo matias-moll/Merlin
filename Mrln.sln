@@ -13,13 +13,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shr", "Shr\Shr.csproj", "{4
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Z - Tablas Generales", "Prg\Tg\Z - Tablas Generales.csproj", "{C0BF2586-5CC3-4B00-BFE7-FC9C128E6684}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Z - Moviles", "T:\Rivn0100\Prg\Mv\Z - Moviles.csproj", "{651E45C5-5EF4-40A0-AD9E-174516173285}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Z - Ordenes de Trabajo", "Prg\Ot\Z - Ordenes de Trabajo.csproj", "{D5B433DC-DA68-4E6B-BBD3-578604601232}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Z - ControlesCustom", "Prg\ControlesCustom\Z - ControlesCustom.csproj", "{F0C6C8AA-F128-4F5A-BD1B-2332BFEA1DE4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Z - Reportes", "Prg\Rp\Z - Reportes.csproj", "{058FDFEF-4ED6-4628-9C13-059343220504}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Z - Moviles", "C:\DiscoT\Mrln0200\Prg\Mv\Z - Moviles.csproj", "{651E45C5-5EF4-40A0-AD9E-174516173285}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -81,16 +81,6 @@ Global
 		{C0BF2586-5CC3-4B00-BFE7-FC9C128E6684}.Release|Mixed Platforms.Build.0 = Release|x86
 		{C0BF2586-5CC3-4B00-BFE7-FC9C128E6684}.Release|x86.ActiveCfg = Release|x86
 		{C0BF2586-5CC3-4B00-BFE7-FC9C128E6684}.Release|x86.Build.0 = Release|x86
-		{651E45C5-5EF4-40A0-AD9E-174516173285}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{651E45C5-5EF4-40A0-AD9E-174516173285}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{651E45C5-5EF4-40A0-AD9E-174516173285}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{651E45C5-5EF4-40A0-AD9E-174516173285}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{651E45C5-5EF4-40A0-AD9E-174516173285}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{651E45C5-5EF4-40A0-AD9E-174516173285}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{651E45C5-5EF4-40A0-AD9E-174516173285}.Release|Any CPU.Build.0 = Release|Any CPU
-		{651E45C5-5EF4-40A0-AD9E-174516173285}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{651E45C5-5EF4-40A0-AD9E-174516173285}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{651E45C5-5EF4-40A0-AD9E-174516173285}.Release|x86.ActiveCfg = Release|Any CPU
 		{D5B433DC-DA68-4E6B-BBD3-578604601232}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D5B433DC-DA68-4E6B-BBD3-578604601232}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D5B433DC-DA68-4E6B-BBD3-578604601232}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
@@ -121,6 +111,18 @@ Global
 		{058FDFEF-4ED6-4628-9C13-059343220504}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{058FDFEF-4ED6-4628-9C13-059343220504}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{058FDFEF-4ED6-4628-9C13-059343220504}.Release|x86.ActiveCfg = Release|Any CPU
+		{651E45C5-5EF4-40A0-AD9E-174516173285}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{651E45C5-5EF4-40A0-AD9E-174516173285}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{651E45C5-5EF4-40A0-AD9E-174516173285}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{651E45C5-5EF4-40A0-AD9E-174516173285}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{651E45C5-5EF4-40A0-AD9E-174516173285}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{651E45C5-5EF4-40A0-AD9E-174516173285}.Debug|x86.Build.0 = Debug|Any CPU
+		{651E45C5-5EF4-40A0-AD9E-174516173285}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{651E45C5-5EF4-40A0-AD9E-174516173285}.Release|Any CPU.Build.0 = Release|Any CPU
+		{651E45C5-5EF4-40A0-AD9E-174516173285}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{651E45C5-5EF4-40A0-AD9E-174516173285}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{651E45C5-5EF4-40A0-AD9E-174516173285}.Release|x86.ActiveCfg = Release|Any CPU
+		{651E45C5-5EF4-40A0-AD9E-174516173285}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -7,8 +7,8 @@
     <ProjectGuid>{D5B433DC-DA68-4E6B-BBD3-578604601232}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Rivn.Ot</RootNamespace>
-    <AssemblyName>Rivn.Ot</AssemblyName>
+    <RootNamespace>Mrln.Ot</RootNamespace>
+    <AssemblyName>Mrln.Ot</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -158,6 +158,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -7,8 +7,8 @@
     <ProjectGuid>{7969C80F-3E89-4E03-A01B-776686783353}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Rivn.Bel</RootNamespace>
-    <AssemblyName>Rivn.Bel</AssemblyName>
+    <RootNamespace>Mrln.Bel</RootNamespace>
+    <AssemblyName>Mrln.Bel</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />

@@ -387,12 +387,9 @@ namespace Mrln.Mv
             l_EMEstMovilEstado.Km = DameUltimoKms();
 
             Bll.Moviles.MvesSave(l_EMEstMovilEstado, ref m_smResult);
-            SwitchTo(ModoForm.Edicion, OpGrid.Estados);
-
-
-
-
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
+
+            SwitchTo(ModoForm.Edicion, OpGrid.Estados);
         }
         #endregion
         #endregion
@@ -611,9 +608,19 @@ namespace Mrln.Mv
 
 
 
+
+
         #endregion
 
+        private void gbHistorialCompleto_Click(object sender, EventArgs e)
+        {
+            HistorialUnificado l_frmHistorial = new HistorialUnificado(m_entMovil.Patente);
+            l_frmHistorial.ShowDialog();
+        }
 
+        private void gbAccidentes_Click(object sender, EventArgs e)
+        {
 
+        }
     }
 }

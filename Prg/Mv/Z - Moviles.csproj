@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Moviles.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -105,6 +108,12 @@
     <Compile Include="Arranque.designer.cs">
       <DependentUpon>Arranque.cs</DependentUpon>
     </Compile>
+    <Compile Include="HistorialUnificado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HistorialUnificado.Designer.cs">
+      <DependentUpon>HistorialUnificado.cs</DependentUpon>
+    </Compile>
     <Compile Include="Moviles.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -154,6 +163,9 @@
     <EmbeddedResource Include="Arranque.resx">
       <DependentUpon>Arranque.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="HistorialUnificado.resx">
+      <DependentUpon>HistorialUnificado.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Moviles.resx">
       <DependentUpon>Moviles.cs</DependentUpon>
     </EmbeddedResource>
@@ -190,25 +202,28 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ControlesCustom\Z - ControlesCustom.csproj">
-      <Project>{F0C6C8AA-F128-4F5A-BD1B-2332BFEA1DE4}</Project>
-      <Name>Z - ControlesCustom</Name>
-    </ProjectReference>
-    <ProjectReference Include="C:\DiscoT\Mrln0200\Bel\BEL.csproj">
-      <Project>{7969C80F-3E89-4E03-A01B-776686783353}</Project>
-      <Name>BEL</Name>
-    </ProjectReference>
-    <ProjectReference Include="C:\DiscoT\Mrln0200\Bll\BLL.csproj">
-      <Project>{58EC503E-05DD-4F0F-B55A-318733142682}</Project>
-      <Name>BLL</Name>
-    </ProjectReference>
-    <ProjectReference Include="C:\DiscoT\Mrln0200\Shr\Shr.csproj">
-      <Project>{4EE82BA9-6046-419B-87AF-014443954416}</Project>
-      <Name>Shr</Name>
-    </ProjectReference>
+    <None Include="Resources\ambulance car.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\ambulance car.png" />
+    <Content Include="Moviles.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Mrln0200\Bel\BEL.csproj">
+      <Project>{7969c80f-3e89-4e03-a01b-776686783353}</Project>
+      <Name>BEL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Mrln0200\Bll\BLL.csproj">
+      <Project>{58ec503e-05dd-4f0f-b55a-318733142682}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Mrln0200\Prg\ControlesCustom\Z - ControlesCustom.csproj">
+      <Project>{f0c6c8aa-f128-4f5a-bd1b-2332bfea1de4}</Project>
+      <Name>Z - ControlesCustom</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Mrln0200\Shr\Shr.csproj">
+      <Project>{4ee82ba9-6046-419b-87af-014443954416}</Project>
+      <Name>Shr</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
