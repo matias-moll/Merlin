@@ -138,6 +138,12 @@
     <Compile Include="Modelos.Designer.cs">
       <DependentUpon>Modelos.cs</DependentUpon>
     </Compile>
+    <Compile Include="MotivosInfracciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MotivosInfracciones.Designer.cs">
+      <DependentUpon>MotivosInfracciones.cs</DependentUpon>
+    </Compile>
     <Compile Include="PrgRuts.cs" />
     <Compile Include="PrgRuts.designer.cs">
       <DependentUpon>PrgRuts.cs</DependentUpon>
@@ -187,6 +193,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modelos.resx">
       <DependentUpon>Modelos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MotivosInfracciones.resx">
+      <DependentUpon>MotivosInfracciones.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

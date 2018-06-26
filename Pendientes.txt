@@ -1,5 +1,0 @@
-- Conseguir el icono de la ambulacia para poner en la ventana de modificar estado del movil.
-
-- Comenzar con el programa de Ordenes de Trabajo. Revisar como seguir con este programa.
-
-

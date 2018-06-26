@@ -12,42 +12,43 @@ using TNGS.NetApp;
 using Mrln;
 #endregion
 
-namespace Mrln.Mv
+namespace Mrln.Tg
 {
     //----------------------------------------------------------------------------
     //                         TNG Software UIL Generator
     //----------------------------------------------------------------------------
-    // Fecha                     : 25/06/2018 15:43
+    // Fecha                     : 26/06/2018 17:41
     // Sistema                   : Mrln
-    // Interface para la Entidad : MvlInfraccion
+    // Interface para la Entidad : MotivoInfraccion
     // Tipo de Interface         : Mantenimiento de Tabla Clasificadora
     //----------------------------------------------------------------------------
     // © 1996-2018 by TNG Software                                      Gndr 5.20
     //----------------------------------------------------------------------------
 
     /// <summary>
-    /// Formulario para Mantenimiento de la Tabla:MvlInfracciones
+    /// Formulario para Mantenimiento de la Tabla:MotivosInfracciones
     /// </summary>
-    public partial class MovilesInfracciones : Form
+    public partial class MotivosInfracciones : DockContent
     {
         #region Miembros de la Clase
-            private Bel.EMvlInfraccion m_entMvlInfraccion= null;
-            private string m_strPatenteMovilSeleccionado = "";
+            private Bel.EMotivoInfraccion m_entMotivoInfraccion= null;
             private StatMsg m_smResult= null;
+            private ACLInfo m_aclInfo= null;
             private string m_strSort= "";
         #endregion
 
         /// <summary>
         /// Constructor de la clase
         /// </summary>
-        public MovilesInfracciones(string p_strPatenteMovilSeleccionado)
+        public MotivosInfracciones()
         {
             //
             // Required for Windows Form Designer support
             //
             InitializeComponent();
 
-            m_strPatenteMovilSeleccionado = p_strPatenteMovilSeleccionado;
+            // Obtenemos los permisos ACL
+            m_aclInfo= App.ACLInfo;
 
             // Aplicamos los nieves de seguridad
             App.ApplySecurity(this);
@@ -60,6 +61,9 @@ namespace Mrln.Mv
             frmEdicion.SkinFixed= App.WithSkin;
             grdDatos.SkinFixed= App.WithSkin;
 
+            // Dockeamos el formulario
+            ((MainFrame) App.GetMainWindow()).AddContent(this);
+
             // Fijamos la imagen del Frm de edicion
             frmEdicion.GroupImage= Icon.ToBitmap();
         }
@@ -71,23 +75,10 @@ namespace Mrln.Mv
         /// <summary>
         /// Carga del Formulario
         /// </summary>
-        private void MovilesInfracciones_Load(object sender, System.EventArgs e)
+        private void MotivosInfracciones_Load(object sender, System.EventArgs e)
         {
             // Inicializamos el form
             App.ShowMsg("Inicializando el formulario...");
-
-            // Llenamos las Combos (por Lista)
-            cmbPagada.AddStrCD("S", "SI", 0);
-            cmbPagada.AddStrCD(" N", "NO", 0);
-
-            // Llenamos las Combos (por Lista)
-            cdcAnulada.AddStrCD("S", "SI", 0);
-            cdcAnulada.AddStrCD(" N", "NO", 0);
-
-            // Llenamos las Combos (por Tablas)
-            Bel.LEMotivosInfracciones l_lentMotivosInfracciones= Bll.Tablas.MtiUpFull(false, ref m_smResult);
-            if (MsgRuts.AnalizeError(this, m_smResult)) return;
-            cmbCodmotivo.FillFromStrLEntidad(l_lentMotivosInfracciones, Bel.EMotivoInfraccion.CodigoCmp, Bel.EMotivoInfraccion.DescripcionCmp, "deleted");
 
             // Pasamos a modo Operaciones, llenamos la grilla y 
             // damos foco al primer campo
@@ -101,7 +92,7 @@ namespace Mrln.Mv
         /// <summary>
         /// Cierre del formulario
         /// </summary>
-        private void MovilesInfracciones_FormClosed(object sender, FormClosedEventArgs e)
+        private void MotivosInfracciones_FormClosed(object sender, FormClosedEventArgs e)
         {
             // Liberamos el menu
             App.LockMenu(false);
@@ -136,7 +127,7 @@ namespace Mrln.Mv
                 if (m_strSort != grdDatos.GridOrder) {
                     // Grabamos el nuevo sort
                     m_strSort= grdDatos.GridOrder;
-                    App.SetStrURegistry(false, "GridFormat", "MovilesInfraccionesGrdSort", m_strSort);
+                    App.SetStrURegistry(false, "GridFormat", "MotivosInfraccionesGrdSort", m_strSort);
                     return;
                 }
             }
@@ -147,7 +138,7 @@ namespace Mrln.Mv
                 if (m_strSort != "") {
                     // Quitamos el orden, grabamos y recargamos
                     m_strSort= "";
-                    App.SetStrURegistry(false, "GridFormat", "MovilesInfraccionesGrdSort", m_strSort);
+                    App.SetStrURegistry(false, "GridFormat", "MotivosInfraccionesGrdSort", m_strSort);
                     FillGrid();
                     return;
                 }
@@ -160,7 +151,7 @@ namespace Mrln.Mv
         private void GrdColumn_WidthChanged(object sender, EventArgs e)
         {
             // Guardamos el ancho de las columnas
-            App.SetStrURegistry(false, "GridFormat", "MovilesInfraccionesGrdWidths", grdDatos.ColWitdhs);
+            App.SetStrURegistry(false, "GridFormat", "MotivosInfraccionesGrdWidths", grdDatos.ColWitdhs);
         }
 
         //--------------------------------------------------------------
@@ -174,7 +165,7 @@ namespace Mrln.Mv
         {
             App.ShowMsg("Generando planilla...");
             App.InitAdvance("Excel:");
-            grdDatos.ExportToExcel(false, false, "", "MovilesInfracciones", ref m_smResult);
+            grdDatos.ExportToExcel(false, false, "", "MotivosInfracciones", ref m_smResult);
             App.EndAdvance();
             App.HideMsg();
         }
@@ -187,7 +178,7 @@ namespace Mrln.Mv
             App.ShowMsg("Imprimiendo datos...");
             App.InitAdvance("Imprimiendo:");
             grdDatos.Print(App.ROParams["EMPRESA"].VStr, App.Programa.Nombre,
-                           "Lista de MovilesInfracciones", "");
+                           "Lista de MotivosInfracciones", "");
             App.EndAdvance();
             App.HideMsg();
         }
@@ -199,10 +190,9 @@ namespace Mrln.Mv
         {
             // Creamos una nueva entidad, pasamos a modo de edicion y
             // damos foco al primer campo
-            m_entMvlInfraccion= Bel.EMvlInfraccion.NewEmpty();
-            m_entMvlInfraccion.Fecha = DateTime.Now;
+            m_entMotivoInfraccion= Bel.EMotivoInfraccion.NewEmpty();
             SwitchTo(FormModes.Edit, GridOps.DontFill);
-            txtPatente.Focus();
+            txtCodigo.Focus();
         }
 
         /// <summary>
@@ -216,19 +206,17 @@ namespace Mrln.Mv
 
             // Obtenemos la entidad del item seleccionado en la grilla
             App.ShowMsg("Recuperando Datos...");
-            m_entMvlInfraccion= Bll.Moviles.MvifGet((string) grdDatos.GetMatrixValueObj(l_iRow, 1),
-                                                    (DateTime) grdDatos.GetMatrixValueObj(l_iRow, 2),
-                                                    false, ref m_smResult);
+            m_entMotivoInfraccion= Bll.Tablas.MtiGet((string) grdDatos.GetMatrixValueObj(l_iRow, 1),
+                                                     false, ref m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
             // Tenemos la entidad. Pasamos a modo de edicion y damos foco
             // al campo que corresponda
             SwitchTo(FormModes.Edit, GridOps.DontFill);
-            if (m_entMvlInfraccion.EstaBorrada) {
+            if (m_entMotivoInfraccion.EstaBorrada) {
                 cmdCancelar.Focus();
             }
             else {
-                txtLugar.Focus();
             }
             App.HideMsg();
         }
@@ -243,11 +231,11 @@ namespace Mrln.Mv
                                       "La compactación de la tabla borra en forma " +
                                       "definitiva los items deshabilitados. " +
                                       "¿Confirma la compactación?",
-                                      /*App.Usuario.Usuario +*/ "MovilesInfraccionesPurge") == DialogResult.No) return;
+                                      /*App.Usuario.Usuario +*/ "MotivosInfraccionesPurge") == DialogResult.No) return;
 
             // Purgamos la tabla
             App.ShowMsg("Compactando la tabla...");
-            Bll.Moviles.MvifPurge(ref m_smResult);
+            Bll.Tablas.MtiPurge(ref m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
             // Terminamos
@@ -281,11 +269,10 @@ namespace Mrln.Mv
         {
             // Realizamos la operacion
             App.ShowMsg("Procesando...");
-            Bll.Moviles.MvifEnabled(m_entMvlInfraccion.EstaBorrada,
-                                    m_entMvlInfraccion.Patente,
-                                    m_entMvlInfraccion.Fecha,
-                                    m_entMvlInfraccion.FxdVersion,
-                                    ref m_smResult);
+            Bll.Tablas.MtiEnabled(m_entMotivoInfraccion.EstaBorrada,
+                                  m_entMotivoInfraccion.Codigo,
+                                  m_entMotivoInfraccion.FxdVersion,
+                                  ref m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
             // Pasamos a modo Operaciones, rellenamos la grilla y 
@@ -301,18 +288,12 @@ namespace Mrln.Mv
         private void cmdGrabar_Click(object sender, System.EventArgs e)
         {
             // Pasamos los datos a la Entidad
-            m_entMvlInfraccion.Patente= txtPatente.Text;
-            m_entMvlInfraccion.Fecha= txtFecha.FechaHora;
-            m_entMvlInfraccion.Codmotivo= cmbCodmotivo.SelectedStrCode;
-            m_entMvlInfraccion.Lugar= txtLugar.Text;
-            m_entMvlInfraccion.Pagada= cmbPagada.SelectedStrCode;
-            m_entMvlInfraccion.Importe= txtImporte.Decimal;
-            m_entMvlInfraccion.Comentario= txtComentario.Text;
-            m_entMvlInfraccion.Anulada = cdcAnulada.SelectedItem.ToString();
+            m_entMotivoInfraccion.Codigo= txtCodigo.Text;
+            m_entMotivoInfraccion.Descripcion= txtDescripcion.Text;
 
             // Tratamos de grabar la entidad
             App.ShowMsg("Grabando...");
-            Bll.Moviles.MvifSave(m_entMvlInfraccion, ref m_smResult);
+            Bll.Tablas.MtiSave(m_entMotivoInfraccion, ref m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
             // Pasamos a modo Operaciones, rellenamos la grilla y 
@@ -333,19 +314,19 @@ namespace Mrln.Mv
         {
             // Recuperamos los datos para la grilla
             App.ShowMsg("Recuperando datos...");
-            Bel.LEMovilesInfracciones l_lentMovilesInfracciones= Bll.Moviles.MvifFGet(m_strPatenteMovilSeleccionado, false, ref m_smResult);
+            Bel.LEMotivosInfracciones l_lentMotivosInfracciones= Bll.Tablas.MtiUpFull(false, ref m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
             // Asignamos a la grilla
             App.InitAdvance("Cargando:");
             grdDatos.Focus();
-            grdDatos.FillFromLEntidad(l_lentMovilesInfracciones, "deleted");
-            grdDatos.ColWitdhs= App.GetStrURegistry(false, "GridFormat", "MovilesInfraccionesGrdWidths", "");
-            grdDatos.GridOrder= App.GetStrURegistry(false, "GridFormat", "MovilesInfraccionesGrdSort", "");
+            grdDatos.FillFromLEntidad(l_lentMotivosInfracciones, "deleted");
+            grdDatos.ColWitdhs= App.GetStrURegistry(false, "GridFormat", "MotivosInfraccionesGrdWidths", "");
+            grdDatos.GridOrder= App.GetStrURegistry(false, "GridFormat", "MotivosInfraccionesGrdSort", "");
             App.EndAdvance();
 
             // Fijamos el evento de cambio de ancho de la grilla
-            if (l_lentMovilesInfracciones.Count > 0)
+            if (l_lentMotivosInfracciones.Count > 0)
                 foreach (DataGridColumnStyle l_dcsItem in grdDatos.TableStyles[0].GridColumnStyles)
                     l_dcsItem.WidthChanged += new EventHandler(GrdColumn_WidthChanged);
 
@@ -378,36 +359,18 @@ namespace Mrln.Mv
         private void OperationMode()
         {
             // Deshabilitamos el frame
-            txtPatente.NormalDisable= true;
-            txtPatente.Enabled= false;
-            txtFecha.NormalDisable= true;
-            txtFecha.Enabled= false;
-            cmbCodmotivo.NormalDisable= true;
-            cmbCodmotivo.Enabled= false;
-            txtLugar.NormalDisable= true;
-            txtLugar.Enabled= false;
-            cmbPagada.NormalDisable= true;
-            cmbPagada.Enabled= false;
-            txtImporte.NormalDisable= true;
-            txtImporte.Enabled= false;
-            txtComentario.NormalDisable= true;
-            txtComentario.Enabled= false;
-            cdcAnulada.NormalDisable= true;
-            cdcAnulada.Enabled= false;
+            txtCodigo.NormalDisable= true;
+            txtCodigo.Enabled= false;
+            txtDescripcion.NormalDisable= true;
+            txtDescripcion.Enabled= false;
             cmdCancelar.Enabled= false;
             cmdGrabar.Enabled= false;
             cmdDesHab.Enabled= false;
             cmdHab.Enabled= false;
 
             // Blanqueamos los campos
-            txtPatente.Text= "";
-            txtFecha.FechaHora = new DateTime(1900,1,1,0,0,0);
-            cmbCodmotivo.SelectedStrCode= "";
-            txtLugar.Text= "";
-            cmbPagada.SelectedStrCode= "";
-            txtImporte.Decimal= 0;
-            txtComentario.Text= "";
-            cdcAnulada.SelectedStrCode= "";
+            txtCodigo.Text= "";
+            txtDescripcion.Text= "";
 
             // Habilitamos la grilla y los controles operativos
             cmdNuevo.Enabled= true;
@@ -417,6 +380,11 @@ namespace Mrln.Mv
             cmdPrint.Enabled= true;
             cmdExcel.Enabled= true;
             grdDatos.Enabled= true;
+
+            // Procesamos los comandos ACL
+            cmdNuevo.Visible= ((m_aclInfo[0].VStr == "S") || (m_aclInfo[1].VStr == "S"));
+            cmdModificar.Visible= ((m_aclInfo[0].VStr == "S") || (m_aclInfo[3].VStr == "S"));
+            cmdPurgar.Visible= ((m_aclInfo[0].VStr == "S") || (m_aclInfo[5].VStr == "S"));
 
             // El ESC sale del formulario
             CancelButton= cmdSalir;
@@ -428,36 +396,22 @@ namespace Mrln.Mv
         private void EditMode()
         {
             // Llenamos los campos a partir de la entidad a editar
-            txtPatente.Text= m_strPatenteMovilSeleccionado;
-            txtFecha.FechaHora = m_entMvlInfraccion.Fecha;
-            cmbCodmotivo.SelectedStrCode= m_entMvlInfraccion.Codmotivo;
-            txtLugar.Text= m_entMvlInfraccion.Lugar;
-            cmbPagada.SelectedStrCode= m_entMvlInfraccion.Pagada;
-            txtImporte.Decimal= m_entMvlInfraccion.Importe;
-            txtComentario.Text= m_entMvlInfraccion.Comentario;
-            cdcAnulada.Text= m_entMvlInfraccion.Anulada;
+            txtCodigo.Text= m_entMotivoInfraccion.Codigo;
+            txtDescripcion.Text= m_entMotivoInfraccion.Descripcion;
 
             // Habilitamos el frame
-            txtPatente.NormalDisable= false;
-            txtPatente.Enabled= false;
-            txtFecha.NormalDisable= false;
-            txtFecha.Enabled= m_entMvlInfraccion.EsNueva;
-            cmbCodmotivo.NormalDisable= false;
-            cmbCodmotivo.Enabled= m_entMvlInfraccion.EsNueva;
-            txtLugar.NormalDisable= false;
-            txtLugar.Enabled= !m_entMvlInfraccion.EstaBorrada;
-            cmbPagada.NormalDisable= false;
-            cmbPagada.Enabled= !m_entMvlInfraccion.EstaBorrada;
-            txtImporte.NormalDisable= false;
-            txtImporte.Enabled= !m_entMvlInfraccion.EstaBorrada;
-            txtComentario.NormalDisable= false;
-            txtComentario.Enabled= !m_entMvlInfraccion.EstaBorrada;
-            cdcAnulada.NormalDisable= false;
-            cdcAnulada.Enabled= !m_entMvlInfraccion.EstaBorrada;
+            txtCodigo.NormalDisable= false;
+            txtCodigo.Enabled= m_entMotivoInfraccion.EsNueva;
+            txtDescripcion.NormalDisable= false;
+            txtDescripcion.Enabled= m_entMotivoInfraccion.EsNueva;
             cmdCancelar.Enabled= true;
-            cmdGrabar.Enabled= !m_entMvlInfraccion.EstaBorrada;
-            cmdDesHab.Enabled= ((!m_entMvlInfraccion.EsNueva) &&(!m_entMvlInfraccion.EstaBorrada));
+            cmdGrabar.Enabled= !m_entMotivoInfraccion.EstaBorrada;
+            cmdDesHab.Enabled= ((!m_entMotivoInfraccion.EsNueva) &&(!m_entMotivoInfraccion.EstaBorrada));
             cmdHab.Enabled= !cmdDesHab.Enabled;
+
+            // Procesamos los comandos ACL
+            cmdHab.Visible= ((m_aclInfo[0].VStr == "S") || (m_aclInfo[4].VStr == "S"));
+            cmdDesHab.Visible= ((m_aclInfo[0].VStr == "S") || (m_aclInfo[2].VStr == "S"));
 
             // Dehabilitamos la grilla y los controles operativos
             cmdNuevo.Enabled= false;

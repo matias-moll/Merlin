@@ -14,7 +14,7 @@ namespace Mrln.Bel
     //----------------------------------------------------------------------------
     //                         TNG Software BEL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 26/06/2018 00:37
+    // Fecha                    : 26/06/2018 18:11
     // Sistema                  : Mrln
     // Clase para Administrar   : Moviles y Tablas Hijas
     //----------------------------------------------------------------------------
@@ -2533,6 +2533,7 @@ namespace Mrln.Bel
             l_drTemp["mvi_imp_importe"]= XMLRuts.ExtractXAttr(l_xndData, "mvi_imp_importe", (decimal) 0);
             l_drTemp["mvi_txt_comentario"]= XMLRuts.ExtractXAttr(l_xndData, "mvi_txt_comentario");
             l_drTemp["mvi_cd1_anulada"]= XMLRuts.ExtractXAttr(l_xndData, "mvi_cd1_anulada");
+            l_drTemp["mif_motivo"]= XMLRuts.ExtractXAttr(l_xndData, "mif_motivo");
 
             // Llenamos los campos fijos
             XML2FixedFields(ref l_drTemp, l_xndData);
@@ -2584,6 +2585,7 @@ namespace Mrln.Bel
             l_drTemp["mvi_imp_importe"]= 0;
             l_drTemp["mvi_txt_comentario"]= "";
             l_drTemp["mvi_cd1_anulada"]= "";
+            l_drTemp["mif_motivo"]= "";
 
             // Agregamos la Row creada a la tabla creada y creamos
             // una entidad a partir de la DataTable de 1 registro
@@ -2630,6 +2632,7 @@ namespace Mrln.Bel
             l_drTemp["mvi_imp_importe"]= p_dcImporte;
             l_drTemp["mvi_txt_comentario"]= p_strComentario;
             l_drTemp["mvi_cd1_anulada"]= p_strAnulada;
+            l_drTemp["mif_motivo"]= "";
 
             // Agregamos la Row creada a la tabla creada y creamos
             // una entidad a partir de la DataTable de 1 registro
@@ -2655,17 +2658,18 @@ namespace Mrln.Bel
         {
             get {
                 // Creamos el vector de DataColumns y lo llenamos
-                DataColumn[] l_dcStruct= new DataColumn[12];
+                DataColumn[] l_dcStruct= new DataColumn[13];
 
                 l_dcStruct[0]= new DataColumn("mvi_ecd_patente", typeof(string));
                 l_dcStruct[1]= new DataColumn("mvi_fyh_fecha", typeof(DateTime));
                 l_dcStruct[2]= new DataColumn("mvi_cod_codmotivo", typeof(string));
-                l_dcStruct[3]= new DataColumn("mvi_ede_lugar", typeof(string));
-                l_dcStruct[4]= new DataColumn("mvi_cd1_pagada", typeof(string));
-                l_dcStruct[5]= new DataColumn("mvi_imp_importe", typeof(decimal));
-                l_dcStruct[6]= new DataColumn("mvi_txt_comentario", typeof(string));
-                l_dcStruct[7]= new DataColumn("mvi_cd1_anulada", typeof(string));
-                EMvlInfraccion.FillFixedFields(ref l_dcStruct, 8);
+                l_dcStruct[3]= new DataColumn("mif_motivo", typeof(string));
+                l_dcStruct[4]= new DataColumn("mvi_ede_lugar", typeof(string));
+                l_dcStruct[5]= new DataColumn("mvi_cd1_pagada", typeof(string));
+                l_dcStruct[6]= new DataColumn("mvi_imp_importe", typeof(decimal));
+                l_dcStruct[7]= new DataColumn("mvi_txt_comentario", typeof(string));
+                l_dcStruct[8]= new DataColumn("mvi_cd1_anulada", typeof(string));
+                EMvlInfraccion.FillFixedFields(ref l_dcStruct, 9);
 
                 // Devolvemos el vector creado
                 return l_dcStruct;
@@ -2818,6 +2822,15 @@ namespace Mrln.Bel
         }
 
         /// <summary>
+        /// Motivo
+        /// </summary>
+        public string Mif_motivo
+        {
+            get {return (string) InternalData["mif_motivo"];}
+            set {InternalData["mif_motivo"]= value;}
+        }
+
+        /// <summary>
         /// Devuelve la entidad [EMvlInfraccion] como XMLDocument en formato string
         /// </summary>
         public string XMLData
@@ -2844,6 +2857,7 @@ namespace Mrln.Bel
                 l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "mvi_imp_importe", Importe));
                 l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "mvi_txt_comentario", Comentario));
                 l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "mvi_cd1_anulada", Anulada));
+                l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "mif_motivo", Mif_motivo));
 
                 // Asignamos los campos fijos
                 FixedFields2XML(l_xdocData, ref l_xndEntidad);

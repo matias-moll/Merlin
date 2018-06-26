@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 25/06/2018 15:42
+// Fecha       : 26/06/2018 18:11
 // Sistema     : Mrln
 // Tabla       : MvlInfracciones
 //----------------------------------------------------------------------------
@@ -55,6 +55,7 @@ begin
          Select mvi_ecd_patente,
                 mvi_fyh_fecha,
                 mvi_cod_codmotivo,
+                mti_ede_descripcion as mif_motivo,
                 mvi_ede_lugar,
                 mvi_cd1_pagada,
                 mvi_imp_importe,
@@ -65,7 +66,9 @@ begin
                 TNGS_Mrln..MvlInfracciones.usuario,
                 TNGS_Mrln..MvlInfracciones.version
            from TNGS_Mrln..MvlInfracciones
-          where deleted = 0
+                join TNGS_Mrln..MotivosInfracciones
+                  on mvi_cod_codmotivo = mti_cod_codigo
+          where TNGS_Mrln..MvlInfracciones.deleted = 0
           order by mvi_ecd_patente,
                 mvi_fyh_fecha
       end
@@ -74,6 +77,7 @@ begin
          Select mvi_ecd_patente,
                 mvi_fyh_fecha,
                 mvi_cod_codmotivo,
+                mti_ede_descripcion as mif_motivo,
                 mvi_ede_lugar,
                 mvi_cd1_pagada,
                 mvi_imp_importe,
@@ -84,6 +88,8 @@ begin
                 TNGS_Mrln..MvlInfracciones.usuario,
                 TNGS_Mrln..MvlInfracciones.version
            from TNGS_Mrln..MvlInfracciones
+                join TNGS_Mrln..MotivosInfracciones
+                  on mvi_cod_codmotivo = mti_cod_codigo
           order by mvi_ecd_patente,
                 mvi_fyh_fecha
       end
@@ -187,6 +193,7 @@ begin
          Select mvi_ecd_patente,
                 mvi_fyh_fecha,
                 mvi_cod_codmotivo,
+                mti_ede_descripcion as mif_motivo,
                 mvi_ede_lugar,
                 mvi_cd1_pagada,
                 mvi_imp_importe,
@@ -197,15 +204,18 @@ begin
                 TNGS_Mrln..MvlInfracciones.usuario,
                 TNGS_Mrln..MvlInfracciones.version
            from TNGS_Mrln..MvlInfracciones
+                join TNGS_Mrln..MotivosInfracciones
+                  on mvi_cod_codmotivo = mti_cod_codigo
           where mvi_ecd_patente = @mvi_ecd_patente
             and mvi_fyh_fecha = @mvi_fyh_fecha
-            and deleted = 0
+            and TNGS_Mrln..MvlInfracciones.deleted = 0
       end
    else
       begin
          Select mvi_ecd_patente,
                 mvi_fyh_fecha,
                 mvi_cod_codmotivo,
+                mti_ede_descripcion as mif_motivo,
                 mvi_ede_lugar,
                 mvi_cd1_pagada,
                 mvi_imp_importe,
@@ -216,6 +226,8 @@ begin
                 TNGS_Mrln..MvlInfracciones.usuario,
                 TNGS_Mrln..MvlInfracciones.version
            from TNGS_Mrln..MvlInfracciones
+                join TNGS_Mrln..MotivosInfracciones
+                  on mvi_cod_codmotivo = mti_cod_codigo
           where mvi_ecd_patente = @mvi_ecd_patente
             and mvi_fyh_fecha = @mvi_fyh_fecha
       end
@@ -267,6 +279,7 @@ begin
          Select mvi_ecd_patente,
                 mvi_fyh_fecha,
                 mvi_cod_codmotivo,
+                mti_ede_descripcion as mif_motivo,
                 mvi_ede_lugar,
                 mvi_cd1_pagada,
                 mvi_imp_importe,
@@ -277,8 +290,10 @@ begin
                 TNGS_Mrln..MvlInfracciones.usuario,
                 TNGS_Mrln..MvlInfracciones.version
            from TNGS_Mrln..MvlInfracciones
+                join TNGS_Mrln..MotivosInfracciones
+                  on mvi_cod_codmotivo = mti_cod_codigo
           where mvi_ecd_patente = @mvi_ecd_patente
-            and deleted = 0
+            and TNGS_Mrln..MvlInfracciones.deleted = 0
           order by mvi_fyh_fecha
       end
    else
@@ -286,6 +301,7 @@ begin
          Select mvi_ecd_patente,
                 mvi_fyh_fecha,
                 mvi_cod_codmotivo,
+                mti_ede_descripcion as mif_motivo,
                 mvi_ede_lugar,
                 mvi_cd1_pagada,
                 mvi_imp_importe,
@@ -296,6 +312,8 @@ begin
                 TNGS_Mrln..MvlInfracciones.usuario,
                 TNGS_Mrln..MvlInfracciones.version
            from TNGS_Mrln..MvlInfracciones
+                join TNGS_Mrln..MotivosInfracciones
+                  on mvi_cod_codmotivo = mti_cod_codigo
           where mvi_ecd_patente = @mvi_ecd_patente
           order by mvi_fyh_fecha
       end

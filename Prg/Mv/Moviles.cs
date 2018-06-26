@@ -20,6 +20,7 @@ namespace Mrln.Mv
 {
     public partial class Moviles : DockContent
     {
+
         #region Miembros de la Clase
         public enum ModoForm { Inicio, EdicionBase,Edicion };
         public enum OpGrid { Igual,Todas, Km, Combus, Equip, Estados };
@@ -31,8 +32,6 @@ namespace Mrln.Mv
         private StatMsg m_smResult = null;
         private ACLInfo m_aclInfo = null;
         #endregion
-
-        #region Constructores
 
         public Moviles()
         {
@@ -51,33 +50,21 @@ namespace Mrln.Mv
 
             TraerInfoBase();
             TraerInfoEstados();
-            //LlenarComboEstados();
             SwitchTo(ModoForm.Inicio);
             m_AMAsocMoviles = new AsociadosMovil(ref m_smResult);
 
         }
 
-
-        #endregion
-
-
         #region Relleno De Datos
 
-
-        /// <summary>
-        /// Hace Upfull de todos los moviles con sus tablas hijo
-        /// </summary>
+        // Hace Upfull de todos los moviles con sus tablas hijo
         private void TraerInfoBase()
         {
             m_LEMoviles = Bll.Moviles.UpFull(true, ref m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
         }
 
-
-
-        /// <summary>
-        /// Hace traer la infomracion de los estados disponibles
-        /// </summary>
+        // Hace traer la infomracion de los estados disponibles
         private void TraerInfoEstados()
         {
             m_LEEdsEstados = Bll.Tablas.EdsUpFull(true, ref m_smResult);
@@ -85,9 +72,7 @@ namespace Mrln.Mv
 
         }
 
-        /// <summary>
-        /// Llena la tree con todos los moviles activos
-        /// </summary>
+        // Llena la tree con todos los moviles activos
         private void LlenarTreeMoviles()
         {
             ListaEntidades l_LEMovilesTree = Bll.Moviles.fArmarTree(true, ref m_smResult);
@@ -98,26 +83,7 @@ namespace Mrln.Mv
 
         }
 
-
-        /// <summary>
-        /// Llena la grid de los Estados con el historial de los estados que tuvo un movil
-        /// </summary>
-        private void LlenarGridEstados()
-        {
-            if (m_AMAsocMoviles.Estados.Count != 0)
-            {
-                //m_entMovil.MovilesEstado.Sort("mve_fyh_fecha desc");
-                fgMovilEstados.FillFromLEntidad(m_AMAsocMoviles.Estados);
-                fgMovilEstados.ColWitdhs = "105;105;105;0;";
-            }
-           
-        }
-
-
-
-        /// <summary>
-        /// Se llenan los datos importantes del movil
-        /// </summary>
+        // Se llenan los datos importantes del movil
         private void LlenarDatos()
         {
             tePatente.Text = m_entMovil.Patente;
@@ -137,25 +103,29 @@ namespace Mrln.Mv
             return l_strEstado;
         }
 
+        // Llena la grid de los Estados con el historial de los estados que tuvo un movil
+        private void LlenarGridEstados()
+        {
+            if (m_AMAsocMoviles.Estados.Count != 0)
+            {
+                //m_entMovil.MovilesEstado.Sort("mve_fyh_fecha desc");
+                fgMovilEstados.FillFromLEntidad(m_AMAsocMoviles.Estados);
+                fgMovilEstados.ColWitdhs = "177;105;105;0;";
+            }
 
+        }
 
-        /// <summary>
-        /// Se llena la grid con el historial de carga de combustible
-        /// </summary>
+        // Se llena la grid con el historial de carga de combustible
         private void LlenarGridCombustible()
         {
-
             if (m_AMAsocMoviles.Combustibles.Count != 0)
             {
                 fgCombustibles.FillFromLEntidad(m_AMAsocMoviles.Combustibles);
-                fgCombustibles.ColWitdhs = "57;57;100;100;";
+                fgCombustibles.ColWitdhs = "57;57;100;173;";
             }
         }
 
-
-        /// <summary>
-        /// Se llena la grid de kilometros con el historial del kilometraje
-        /// </summary>
+        // Se llena la grid de kilometros con el historial del kilometraje
         private void LlenarGridKm()
         {
             //m_entMovil.MovilesKms = Bll.Moviles.MvkmFGet(m_entMovil.Patente, true, ref m_smResult);
@@ -163,29 +133,23 @@ namespace Mrln.Mv
             {
 
                 fgKm.FillFromLEntidad(m_AMAsocMoviles.Kms);
-                fgKm.ColWitdhs = "157;157;";
+                fgKm.ColWitdhs = "157;163;";
             }
         }
 
-
-
-        /// <summary>
-        /// Se llena el equipamiento del movil seleccionado
-        /// </summary>
+        // Se llena el equipamiento del movil seleccionado
         private void LlenarGridEquipamiento()
         {
             if (m_AMAsocMoviles.Equipamiento.Count != 0)
             {
                   //Propiedad .Colwitdhs (para el ancho de las columnas) colwitdhs
                 fgEquipamiento.FillFromLEntidad(m_AMAsocMoviles.Equipamiento);
-                fgEquipamiento.ColWitdhs = "0;"+(fgEquipamiento.Size.Width -5).ToString()+";";
+                fgEquipamiento.ColWitdhs = "0;"+(fgEquipamiento.Size.Width -4).ToString()+";";
             }
         }
 
 
-        /// <summary>
-        /// Se limpian los campos
-        /// </summary>
+        // Se limpian los campos
         private void LimpiarCampos()
         {
             teModelo.Clear();
@@ -196,11 +160,7 @@ namespace Mrln.Mv
 
         #region Eventos
 
-        /// <summary>
-        /// Se realiza el llenado de datos y el seteo del miembro Entidad Movil Luego de elegir un Movil
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        // Se realiza el llenado de datos y el seteo del miembro Entidad Movil Luego de elegir un Movil
         private void ftrMoviles_AfterSelect(object sender, TreeViewEventArgs e)
         {
             string l_strCodigo = ftrMoviles.SelectedNodeAsCDI.StrCode;
@@ -211,15 +171,7 @@ namespace Mrln.Mv
             SwitchTo(ModoForm.EdicionBase, OpGrid.Igual);
         }
 
-
-        #region Clicks
-
-
-        /// <summary>
-        /// Permite modificar un Movil y setea el evento ante la modificacion
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        // Permite modificar un Movil y setea el evento ante la modificacion
         private void gbModificarMovil_Click(object sender, EventArgs e)
         {
             m_entMovil.MovilesEquip = m_AMAsocMoviles.EquipamientoTip;
@@ -228,13 +180,7 @@ namespace Mrln.Mv
             l_formAltaMovil.m_evChangedMovil += new AltaMovil.ChangedMovilEventHandler(movilChanged);
         }
 
-
-
-        /// <summary>
-        /// Abre ventana de AltaMoviles modificada para cambiar los equipamientos que tiene disponible el movil
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        // Abre ventana de AltaMoviles modificada para cambiar los equipamientos que tiene disponible el movil
         private void gbModificarEq_Click(object sender, EventArgs e)
         {
             m_entMovil.MovilesEquip = m_AMAsocMoviles.EquipamientoTip;
@@ -243,13 +189,7 @@ namespace Mrln.Mv
             l_formAltaMovil.m_evChangedMovil += new AltaMovil.ChangedMovilEventHandler(equipChanged);
         }
 
-
-        /// <summary>
-        /// Borrado de un Movil
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        /// 
+        // Borrado de un Movil
         private void gbBorrarMovil_Click(object sender, EventArgs e)
         {
             if (!BorradoSeguro()) return;
@@ -259,11 +199,7 @@ namespace Mrln.Mv
             MsgRuts.AnalizeError(this, m_smResult);
         }
 
-        /// <summary>
-        /// Agrega un nuevo Movil y engancha el evento al metodo movilChanged
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        // Agrega un nuevo Movil y engancha el evento al metodo movilChanged
         private void gbNuevoMovil_Click(object sender, EventArgs e)
         {
             AltaMovil l_formAltaMovil = new AltaMovil();
@@ -273,23 +209,15 @@ namespace Mrln.Mv
             
         }
 
-
-        /// <summary>
-        /// Manejo de evento para la modificacion o alta de un movil
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="s"></param>
+        // Manejo de evento para la modificacion o alta de un movil
         private void movilChanged(object sender, EventArgs s)
         {
             SwitchTo(ModoForm.Inicio);
 
 
         }
-        /// <summary>
-        /// Metodo de manejo de evento del formulario de AltaMovil al modificar un equipamiento
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="s"></param>
+
+        // Metodo de manejo de evento del formulario de AltaMovil al modificar un equipamiento
         private void equipChanged(object sender, EventArgs s)
         {
             SwitchTo(ModoForm.Edicion, OpGrid.Equip);
@@ -297,13 +225,7 @@ namespace Mrln.Mv
 
         }  
 
-
-
-        /// <summary>
-        /// Lanza el formulario de carga de combustible y luego graba en la base el resultado
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        // Lanza el formulario de carga de combustible y luego graba en la base el resultado
         private void gbAgregarCombustible_Click(object sender, EventArgs e)
         {
             MovilCombustible l_frmMovilCombustible = new MovilCombustible();
@@ -324,12 +246,8 @@ namespace Mrln.Mv
 
 
         }
-        /// <summary>
-        /// Ingresar un nuevo kilometraje
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        /// 
+
+        // Ingresar un nuevo kilometraje
         private void gbNuevoKM_Click(object sender, EventArgs e)
         {
             NuevoKm l_frmNuevoKm = new NuevoKm();
@@ -351,22 +269,13 @@ namespace Mrln.Mv
 
         }
 
-        /// <summary>
-        /// Cambia el estado del form y llena las grillas
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        // Cambia el estado del form y llena las grillas
         private void ftrMoviles_DoubleClick(object sender, EventArgs e)
         {
             SwitchTo(ModoForm.Edicion, OpGrid.Todas);
         }
 
-
-        /// <summary>
-        /// Metodo que permite modificar El Estado de un movil seleccionado
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        // Metodo que permite modificar El Estado de un movil seleccionado
         private void gbModificarEstado_Click(object sender, EventArgs e)
         {
             ModificarEstado l_frmModificarEstado = new ModificarEstado(m_LEEdsEstados);
@@ -391,7 +300,25 @@ namespace Mrln.Mv
 
             SwitchTo(ModoForm.Edicion, OpGrid.Estados);
         }
-        #endregion
+
+        private void gbHistorialCompleto_Click(object sender, EventArgs e)
+        {
+            HistorialUnificado l_frmHistorial = new HistorialUnificado(m_entMovil.Patente);
+            l_frmHistorial.ShowDialog();
+        }
+
+        private void gbAccidentes_Click(object sender, EventArgs e)
+        {
+            MovilesAccidentes l_frmAccidentes = new MovilesAccidentes(m_entMovil.Patente);
+            l_frmAccidentes.ShowDialog();
+        }
+
+        private void gbInfracciones_Click(object sender, EventArgs e)
+        {
+            MovilesInfracciones l_frmInfracciones = new MovilesInfracciones(m_entMovil.Patente);
+            l_frmInfracciones.ShowDialog();
+        }
+
         #endregion
 
         #region Otros Metodos
@@ -612,22 +539,5 @@ namespace Mrln.Mv
 
         #endregion
 
-        private void gbHistorialCompleto_Click(object sender, EventArgs e)
-        {
-            HistorialUnificado l_frmHistorial = new HistorialUnificado(m_entMovil.Patente);
-            l_frmHistorial.ShowDialog();
-        }
-
-        private void gbAccidentes_Click(object sender, EventArgs e)
-        {
-            MovilesAccidentes l_frmAccidentes = new MovilesAccidentes(m_entMovil.Patente);
-            l_frmAccidentes.ShowDialog();
-        }
-
-        private void gbInfracciones_Click(object sender, EventArgs e)
-        {
-            MovilesInfracciones l_frmInfracciones = new MovilesInfracciones(m_entMovil.Patente);
-            l_frmInfracciones.ShowDialog();
-        }
     }
 }

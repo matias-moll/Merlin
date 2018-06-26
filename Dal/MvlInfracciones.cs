@@ -10,7 +10,7 @@ namespace Mrln.Dal
     //----------------------------------------------------------------------------
     //                         TNG Software DAL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 26/06/2018 00:32
+    // Fecha                    : 26/06/2018 18:11
     // Sistema                  : Mrln
     // Clase para Administrar   : Infracciones de los Moviles
     // Basada en la Tabla       : MvlInfracciones
@@ -517,7 +517,10 @@ namespace Mrln.Dal
                 DBRuts.ClearDTCaptions(ref p_dtResult);
 
                 // Fijamos los nuevos captions de la grilla
+                p_dtResult.Columns["mif_motivo"].Caption= "V1MotivoCN1";
+                p_dtResult.Columns["mvi_cd1_anulada"].Caption= "V1AnuladaCN1";
                 p_dtResult.Columns["mvi_fyh_fecha"].Caption= "V1FechaDN1";
+                p_dtResult.Columns["mvi_imp_importe"].Caption= "V1Importe2N1";
                 p_dtResult.Columns["mvi_ede_lugar"].Caption= "V1LugarCN1";
                 p_dtResult.Columns["mvi_cd1_pagada"].Caption= "V1PagadaCN1";
                 p_dtResult.Columns["mvi_ecd_patente"].Caption= "V1PatenteCN1";

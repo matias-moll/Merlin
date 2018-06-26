@@ -211,7 +211,7 @@ namespace Mrln.Mv
             // 
             this.fullLabel4.BackColor = System.Drawing.Color.Transparent;
             this.fullLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fullLabel4.Location = new System.Drawing.Point(773, 394);
+            this.fullLabel4.Location = new System.Drawing.Point(752, 403);
             this.fullLabel4.Name = "fullLabel4";
             this.fullLabel4.Size = new System.Drawing.Size(100, 15);
             this.fullLabel4.TabIndex = 37;
@@ -222,7 +222,7 @@ namespace Mrln.Mv
             // 
             this.fullLabel3.BackColor = System.Drawing.Color.Transparent;
             this.fullLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fullLabel3.Location = new System.Drawing.Point(386, 392);
+            this.fullLabel3.Location = new System.Drawing.Point(752, 139);
             this.fullLabel3.Name = "fullLabel3";
             this.fullLabel3.Size = new System.Drawing.Size(100, 15);
             this.fullLabel3.TabIndex = 36;
@@ -233,7 +233,7 @@ namespace Mrln.Mv
             // 
             this.fullLabel2.BackColor = System.Drawing.Color.Transparent;
             this.fullLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fullLabel2.Location = new System.Drawing.Point(773, 142);
+            this.fullLabel2.Location = new System.Drawing.Point(370, 403);
             this.fullLabel2.Name = "fullLabel2";
             this.fullLabel2.Size = new System.Drawing.Size(100, 15);
             this.fullLabel2.TabIndex = 35;
@@ -244,7 +244,7 @@ namespace Mrln.Mv
             // 
             this.fullLabel1.BackColor = System.Drawing.Color.Transparent;
             this.fullLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fullLabel1.Location = new System.Drawing.Point(386, 142);
+            this.fullLabel1.Location = new System.Drawing.Point(370, 139);
             this.fullLabel1.Name = "fullLabel1";
             this.fullLabel1.Size = new System.Drawing.Size(100, 15);
             this.fullLabel1.TabIndex = 34;
@@ -554,9 +554,9 @@ namespace Mrln.Mv
             this.fgMovilEstados.ExcelTitle = "";
             this.fgMovilEstados.GridOrder = "";
             this.fgMovilEstados.HeaderForeColor = System.Drawing.SystemColors.ControlText;
-            this.fgMovilEstados.Location = new System.Drawing.Point(650, 412);
+            this.fgMovilEstados.Location = new System.Drawing.Point(604, 421);
             this.fgMovilEstados.Name = "fgMovilEstados";
-            this.fgMovilEstados.Size = new System.Drawing.Size(326, 213);
+            this.fgMovilEstados.Size = new System.Drawing.Size(392, 211);
             this.fgMovilEstados.SkinFixed = true;
             this.fgMovilEstados.TabIndex = 0;
             // 
@@ -571,9 +571,9 @@ namespace Mrln.Mv
             this.fgCombustibles.ExcelTitle = "";
             this.fgCombustibles.GridOrder = "";
             this.fgCombustibles.HeaderForeColor = System.Drawing.SystemColors.ControlText;
-            this.fgCombustibles.Location = new System.Drawing.Point(277, 412);
+            this.fgCombustibles.Location = new System.Drawing.Point(605, 159);
             this.fgCombustibles.Name = "fgCombustibles";
-            this.fgCombustibles.Size = new System.Drawing.Size(325, 213);
+            this.fgCombustibles.Size = new System.Drawing.Size(391, 211);
             this.fgCombustibles.SkinFixed = true;
             this.fgCombustibles.TabIndex = 0;
             // 
@@ -588,7 +588,7 @@ namespace Mrln.Mv
             this.fgEquipamiento.ExcelTitle = "";
             this.fgEquipamiento.GridOrder = "";
             this.fgEquipamiento.HeaderForeColor = System.Drawing.SystemColors.ControlText;
-            this.fgEquipamiento.Location = new System.Drawing.Point(650, 162);
+            this.fgEquipamiento.Location = new System.Drawing.Point(260, 421);
             this.fgEquipamiento.Name = "fgEquipamiento";
             this.fgEquipamiento.Size = new System.Drawing.Size(326, 211);
             this.fgEquipamiento.SkinFixed = true;
@@ -605,7 +605,7 @@ namespace Mrln.Mv
             this.fgKm.ExcelTitle = "";
             this.fgKm.GridOrder = "";
             this.fgKm.HeaderForeColor = System.Drawing.SystemColors.ControlText;
-            this.fgKm.Location = new System.Drawing.Point(277, 162);
+            this.fgKm.Location = new System.Drawing.Point(261, 159);
             this.fgKm.Name = "fgKm";
             this.fgKm.Size = new System.Drawing.Size(325, 211);
             this.fgKm.SkinFixed = true;
