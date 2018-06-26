@@ -533,6 +533,77 @@ namespace Mrln.Bll
             // *********
         }
 
+
+        /// <summary>
+        /// Agrega o modifica un registro de la tabla: MotivosInfracciones
+        /// (Código Fijo)
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_entMotivoInfraccion">Entidad con los datos a procesar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static void MtiSave_f(DBConn p_dbcAccess,
+                                       ref EMotivoInfraccion p_entMotivoInfraccion,
+                                       ref StatMsg p_smResult)
+        {
+            // *********
+            // Agregar acá los procesos adicionales
+            // *********
+        }
+
+        /// <summary>
+        /// Habilita/Deshabilita un registro de la tabla: MotivosInfracciones
+        /// (Código Fijo)
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_bEnable">Tipo de operacion</param>
+        /// <param name="p_strCodigo">Código</param>
+        /// <param name="p_iFxdVersion">Versión del registro a borrar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static void MtiEnabled_f(DBConn p_dbcAccess,
+                                          bool p_bEnable,
+                                          string p_strCodigo,
+                                          ref int p_iFxdVersion,
+                                          ref StatMsg p_smResult)
+        {
+            // *********
+            // Agregar acá los procesos adicionales
+            // *********
+        }
+
+        /// <summary>
+        /// Borra físicamento un registro de la tabla: MotivosInfracciones
+        /// (Código Fijo)
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_strCodigo">Código</param>
+        /// <param name="p_iFxdVersion">Versión del registro a borrar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static void MtiRemove_f(DBConn p_dbcAccess,
+                                         string p_strCodigo,
+                                         int p_iFxdVersion,
+                                         ref StatMsg p_smResult)
+        {
+            // *********
+            // Agregar acá los procesos adicionales
+            // *********
+        }
+
+        /// <summary>
+        /// Agrega validacion de integridad a una entidad: MotivoInfraccion
+        /// (Código Fijo)
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_entMotivoInfraccion">Entidad con los datos a validar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static void MtiTInt_f(DBConn p_dbcAccess,
+                                       EMotivoInfraccion p_entMotivoInfraccion,
+                                       ref StatMsg p_smResult)
+        {
+            // *********
+            // Agregar acá las validaciones adicionales
+            // *********
+        }
+
         /// <summary>
         /// Agrega o modifica un registro de la tabla: Reparaciones
         /// (Código Fijo)

@@ -16,7 +16,7 @@ namespace Mrln.Bll
     //----------------------------------------------------------------------------
     //                         TNG Software BLL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 23/06/2018 19:06
+    // Fecha                    : 26/06/2018 00:37
     // Sistema                  : Mrln
     // Clase para Administrar   : Moviles y Tablas Hijas
     //----------------------------------------------------------------------------
@@ -35,6 +35,880 @@ namespace Mrln.Bll
     /// </summary>
     public static partial class Moviles
     {
+
+        //**********************************************************
+        //
+        // Funciones para la Tabla: MvlAccidentes
+        // Usando ClaseDal        : MvlAccidentes
+        //
+        //**********************************************************
+
+        //---------------------------------------------------------------
+        // Metodos públicos de la clase (visibles para la UIL)
+        //---------------------------------------------------------------
+        #region Metodos publicos de recupero
+
+        /// <summary>
+        /// Devuelve la grilla de la tabla: MvlAccidentes
+        /// </summary>
+        /// <param name="p_bOnlyActive">Indica si solo se analizan los registros activos</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        /// <returns>Lista-entidad: LEMovilesAccidentes</returns>
+        public static LEMovilesAccidentes MvacUpFull(bool p_bOnlyActive,
+                                                     ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            DBConn l_dbcAccess= null;
+
+            try {
+                // Obtenemos una conexion
+                l_dbcAccess= DBRuts.GetConection(Connections.Dat);
+
+                // Pedimos los registros de la tabla
+                return MvacUpfl(l_dbcAccess, p_bOnlyActive, ref p_smResult);
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion UpFull
+                p_smResult.BllError(l_expData);
+                return null;
+            }
+            finally {
+                // Si pude abrir la conexion -> la cierro
+                if (l_dbcAccess != null) l_dbcAccess.Close();
+            }
+        }
+
+        /// <summary>
+        /// Devuelve una entidad: EMvlAccidente
+        /// </summary>
+        /// <param name="p_strPatente">Patente</param>
+        /// <param name="p_dtFecha">Fecha</param>
+        /// <param name="p_bOnlyActive">Indica si solo se analizan los registros activos</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        /// <returns>Entidad: EMvlAccidente</returns>
+        public static EMvlAccidente MvacGet(string p_strPatente,
+                                            DateTime p_dtFecha,
+                                            bool p_bOnlyActive,
+                                            ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            DBConn l_dbcAccess= null;
+
+            try {
+                // Obtenemos una conexion
+                l_dbcAccess= DBRuts.GetConection(Connections.Dat);
+
+                // Pedimos la entidad: EMvlAccidente
+                return MvacSrch(l_dbcAccess,
+                                p_strPatente,
+                                p_dtFecha,
+                                p_bOnlyActive,
+                                ref p_smResult);
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Get
+                p_smResult.BllError(l_expData);
+                return null;
+            }
+            finally {
+                // Si pude abrir la conexion -> la cierro
+                if (l_dbcAccess != null) l_dbcAccess.Close();
+            }
+        }
+
+        /// <summary>
+        /// Devuelve una lista-entidad: LEMovilesAccidentes
+        /// asociada a una Foreing key de la tabla: MvlAccidentes
+        /// </summary>
+        /// <param name="p_strPatente">Patente</param>
+        /// <param name="p_bOnlyActive">Indica si solo se analizan los registros activos</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        /// <returns>Lista-Entidad: LEMovilesAccidentes</returns>
+        public static LEMovilesAccidentes MvacFGet(string p_strPatente,
+                                                   bool p_bOnlyActive,
+                                                   ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            DBConn l_dbcAccess= null;
+
+            try {
+                // Obtenemos una conexion
+                l_dbcAccess= DBRuts.GetConection(Connections.Dat);
+
+                // Pedimos la lista-entidad: LEMovilesAccidentes
+                return MvacFSch(l_dbcAccess,
+                                p_strPatente,
+                                p_bOnlyActive,
+                                ref p_smResult);
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion FGet
+                p_smResult.BllError(l_expData);
+                return null;
+            }
+            finally {
+                // Si pude abrir la conexion -> la cierro
+                if (l_dbcAccess != null) l_dbcAccess.Close();
+            }
+        }
+        #endregion
+
+        #region Metodos publicos de grabacion
+
+        /// <summary>
+        /// Agrega o modifica un registro de la tabla: MvlAccidentes
+        /// </summary>
+        /// <param name="p_entMvlAccidente">Entidad con los datos a procesar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        public static void MvacSave(EMvlAccidente p_entMvlAccidente,
+                                    ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            DBConn l_dbcAccess= null;
+
+            try {
+                // Obtenemos una conexion y abrimos una transaccion
+                l_dbcAccess= DBRuts.GetConection(Connections.Dat);
+                l_dbcAccess.BeginTransaction();
+
+                // Grabamos la entidad: EMvlAccidente
+                MvacSSav(l_dbcAccess, p_entMvlAccidente, ref p_smResult);
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Save
+                p_smResult.BllError(l_expData);
+            }
+            finally {
+                // Si pude abrir la conexion
+                if (l_dbcAccess != null) {
+                    // Finalizo la transacción y la cierro
+                    l_dbcAccess.EndTransaction(p_smResult);
+                    l_dbcAccess.Close();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Habilita/Deshabilita un registro de la tabla: MvlAccidentes
+        /// </summary>
+        /// <param name="p_bEnable">Tipo de operacion</param>
+        /// <param name="p_strPatente">Patente</param>
+        /// <param name="p_dtFecha">Fecha</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        public static void MvacEnabled(bool p_bEnable,
+                                       string p_strPatente,
+                                       DateTime p_dtFecha,
+                                       int p_iFxdVersion,
+                                       ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            DBConn l_dbcAccess= null;
+
+            try {
+                // Obtenemos una conexion
+                l_dbcAccess= DBRuts.GetConection(Connections.Dat);
+                l_dbcAccess.BeginTransaction();
+
+                // Procesamos codigo fijo
+                MvacEnabled_f(l_dbcAccess,
+                              p_bEnable,
+                              p_strPatente,
+                              p_dtFecha,
+                              ref p_iFxdVersion,
+                              ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // Verificamos la clave a modificar
+                MvacVKey(l_dbcAccess,
+                         p_strPatente,
+                         p_dtFecha,
+                         ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // El registro tiene que existir
+                if (p_smResult.ICodeEs(BllCodes.KeyDsntFound)) {
+                    // Error. La clave no existe
+                    p_smResult.BllWarning("El ítem (MvlAccidente) que intenta modificar no existe en el sistema.","");
+                    return;
+                }
+
+                // Debe coincidir el número de version
+                MvacVVer(l_dbcAccess, 
+                         p_strPatente,
+                         p_dtFecha,
+                         p_iFxdVersion,
+                         ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // Segun el modo
+                if (p_bEnable) {
+                    // Hay que habilitar el registro
+                    Dal.MvlAccidentes.Recall(l_dbcAccess,
+                                             p_strPatente,
+                                             p_dtFecha,
+                                             ref p_smResult);
+                }
+                else {
+                    // Hay que deshabilitar el registro
+                    Dal.MvlAccidentes.Delete(l_dbcAccess,
+                                             p_strPatente,
+                                             p_dtFecha,
+                                             ref p_smResult);
+                }
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Enabled
+                p_smResult.BllError(l_expData);
+            }
+            finally {
+                // Si pude abrir la conexion
+                if (l_dbcAccess != null) {
+                    // Finalizo la transacción y la cierro
+                    l_dbcAccess.EndTransaction(p_smResult);
+                    l_dbcAccess.Close();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Borra físicamento un registro de la tabla: MvlAccidentes
+        /// </summary>
+        /// <param name="p_strPatente">Patente</param>
+        /// <param name="p_dtFecha">Fecha</param>
+        /// <param name="p_iFxdVersion">Versión del registro a borrar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        public static void MvacRemove(string p_strPatente,
+                                      DateTime p_dtFecha,
+                                      int p_iFxdVersion,
+                                      ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            DBConn l_dbcAccess= null;
+
+            try {
+                // Obtenemos una conexion
+                l_dbcAccess= DBRuts.GetConection(Connections.Dat);
+                l_dbcAccess.BeginTransaction();
+
+                // Procesamos codigo fijo
+                MvacRemove_f(l_dbcAccess,
+                             p_strPatente,
+                             p_dtFecha,
+                             p_iFxdVersion,
+                             ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // Borramos el registro solicitado
+                MvacDrop(l_dbcAccess,
+                         p_strPatente,
+                         p_dtFecha,
+                         p_iFxdVersion,
+                         ref p_smResult);
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Remove
+                p_smResult.BllError(l_expData);
+            }
+            finally {
+                // Si pude abrir la conexion
+                if (l_dbcAccess != null) {
+                    // Finalizo la transacción y la cierro
+                    l_dbcAccess.EndTransaction(p_smResult);
+                    l_dbcAccess.Close();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Compacta una tabla borrando los registros deshabilitados
+        /// </summary>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        public static void MvacPurge(ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            DBConn l_dbcAccess= null;
+            try {
+                // Obtenemos una conexion
+                l_dbcAccess= DBRuts.GetConection(Connections.Dat);
+                l_dbcAccess.BeginTransaction();
+
+                // Realizamos el borrado
+                MvacPack(l_dbcAccess,
+                         ref p_smResult);
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Enabled
+                p_smResult.BllError(l_expData);
+            }
+            finally {
+                // Si pude abrir la conexion
+                if (l_dbcAccess != null) {
+                    // Finalizo la transacción y la cierro
+                    l_dbcAccess.EndTransaction(p_smResult);
+                    l_dbcAccess.Close();
+                }
+            }
+        }
+        #endregion
+
+        #region Metodos para métodos DAL definidos por el usuario
+        #endregion
+
+        //---------------------------------------------------------------
+        // Metodos públicos de la clase (no visibles para la UIL)
+        //---------------------------------------------------------------
+
+        #region Metodos internos de validacion
+
+        /// <summary>
+        /// Valida la integridad de una entidad: MvlAccidente
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_entMvlAccidente">Entidad con los datos a validar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static void MvacTInt(DBConn p_dbcAccess,
+                                      EMvlAccidente p_entMvlAccidente,
+                                      ref StatMsg p_smResult)
+        {
+            // ********
+            // Validaciones de los campos sin conexion
+            // ********
+
+            if (p_entMvlAccidente.Patente.Trim() == "") {
+                // El campo [Patente] no puede ser vacío
+                p_smResult.BllWarning("El dato [Patente] no puede ser vacío","");
+                return;
+            }
+
+            if (p_entMvlAccidente.Localidad.Trim() == "") {
+                // El campo [Localidad] no puede ser vacío
+                p_smResult.BllWarning("El dato [Localidad] no puede ser vacío","");
+                return;
+            }
+
+            if (p_entMvlAccidente.Motivo.Trim() == "") {
+                // El campo [Motivo] no puede ser vacío
+                p_smResult.BllWarning("El dato [Motivo] no puede ser vacío","");
+                return;
+            }
+
+            // ********
+            // Validaciones de los campos con conexion
+            // ********
+
+            // Verificamos la clave foranea
+            Moviles.VKey(p_dbcAccess,
+                         p_entMvlAccidente.Patente,
+                         ref p_smResult);
+            if (p_smResult.NOk) return;
+
+            // El registro tiene que existir
+            if (p_smResult.ICodeEs(BllCodes.KeyDsntFound)) {
+                // Error. La clave foranea no existe
+                p_smResult.BllWarning("La clave (Movil) foranea no existe en el sistema.","");
+                return;
+            }
+
+            // Llamamos a la funcion fija del usuario
+            MvacTInt_f(p_dbcAccess, p_entMvlAccidente, ref p_smResult);
+            if (p_smResult.NOk) return;
+        }
+
+        /// <summary>
+        /// Verifica el número de version de una tabla
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_strPatente">Patente</param>
+        /// <param name="p_dtFecha">Fecha</param>
+        /// <param name="p_iFxdVersion">Número de version</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static void MvacVVer(DBConn p_dbcAccess,
+                                      string p_strPatente,
+                                      DateTime p_dtFecha,
+                                      int p_iFxdVersion,
+                                      ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            DataSet l_dsTemp= new DataSet();
+
+            // Verificamos el número de versión
+            Dal.MvlAccidentes.ChkVersion(p_dbcAccess,
+                                         p_strPatente,
+                                         p_dtFecha,
+                                         p_iFxdVersion,
+                                         ref l_dsTemp,
+                                         "Temporal",
+                                         ref p_smResult);
+            if (p_smResult.NOk) return;
+
+            // Verificamos el resultado que vino
+            if (l_dsTemp.Tables["Temporal"].Rows.Count != 0) {
+                // Verificamos si la cantidad es 1
+                if ((int) l_dsTemp.Tables["Temporal"].Rows[0]["cantidad"] == 1) {
+                    // La versión coincide
+                    l_dsTemp.Dispose();
+                    return;
+                }
+            }
+
+            // El número de versión no coincide
+            StreamWriter l_swErrorFile= null;
+            string l_strErrFName= String.Format("C:\\V{0:ddMMyyyyHHmmss}.Err",
+                                                DateTime.Now);
+            try {
+                // Creamos el archivo del error
+                l_swErrorFile= new StreamWriter(File.Create(l_strErrFName),
+                                                System.Text.Encoding.ASCII);
+
+                // Grabamos los datos del error
+                l_swErrorFile.WriteLine("Instante    : {0:dd/MM/yyyy HH:mm:ss}", DateTime.Now);
+                l_swErrorFile.WriteLine("Metodo      : {0}", p_smResult.Method);
+                l_swErrorFile.WriteLine("Message     : No coincide el numero de version");
+            }
+            catch (Exception l_expData) {
+                // Error en el acceso al archivo.
+                string l_strLinea= l_expData.Message;
+            }
+            finally {
+                // Si llegamos a abrir el archivo -> lo cerramos
+                if (l_swErrorFile != null) {
+                    l_swErrorFile.Close();
+                    l_swErrorFile.Dispose();
+                }
+            }
+
+            // El número de versión no coincide
+            l_dsTemp.Dispose();
+            p_smResult.BllWarning("El número de versión del registro del ítem (MvlAccidente) no coincide.\r\nOperación cancelada.","");
+        }
+
+        /// <summary>
+        /// Verifica si existe en la tabla una entidad: EMvlAccidente
+        ///      Retorno: p_smResult.Stat= BllAvisos.KeyExists   - La clave existe
+        ///               p_smResult.Stat= BllAvisos.KeyNotFound - La clave no existe
+        ///               p_smResult.Stat= BllAvisos.KeyDisabled - La clave está deshabilitada
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_strPatente">Patente</param>
+        /// <param name="p_dtFecha">Fecha</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static void MvacVKey(DBConn p_dbcAccess,
+                                      string p_strPatente,
+                                      DateTime p_dtFecha,
+                                      ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            DataSet l_dsTemp= new DataSet();
+
+            Dal.MvlAccidentes.Search(p_dbcAccess,
+                                     p_strPatente,
+                                     p_dtFecha,
+                                     false,
+                                     ref l_dsTemp,
+                                     "Temporal",
+                                     ref p_smResult);
+            if (p_smResult.NOk) return;
+
+            try {
+                // Verificamos si vino algun registro
+                p_smResult.BllICode(BllCodes.KeyDsntFound);
+                if (l_dsTemp.Tables["Temporal"].Rows.Count == 0) return;
+
+                // Verificamos si el registro que vino esta habilitado
+                p_smResult.BllICode(BllCodes.KeyDisabled);
+                if ((decimal) l_dsTemp.Tables["Temporal"].Rows[0]["deleted"] == 1) return;
+
+                // La clave existia y estaba habilitada
+                p_smResult.BllICode(BllCodes.KeyExists);
+            }
+            finally {
+                // Terminamos
+                l_dsTemp.Dispose();
+            }
+        }
+        #endregion
+
+        #region Metodos internos de recupero
+
+        /// <summary>
+        /// Devuelve una Lista-entidad: LEMovilesAccidentes
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_bOnlyActive">Indica si solo se analizan los registros activos</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        /// <returns>Lista-entidad: LEMovilesAccidentes</returns>
+        internal static LEMovilesAccidentes MvacUpfl(DBConn p_dbcAccess,
+                                                     bool p_bOnlyActive,
+                                                     ref StatMsg p_smResult)
+        {
+            try {
+                // Pedimos los registros de la tabla: MvlAccidentes
+                DataSet l_dsTemp= new DataSet();
+
+                Dal.MvlAccidentes.Up(p_dbcAccess, 
+                                     p_bOnlyActive,
+                                     ref l_dsTemp, "Temporal",
+                                     ref p_smResult);
+                if (p_smResult.NOk) return null;
+
+                // Fijamos los captions de la grilla
+                Dal.MvlAccidentes.MakeGridCaptions(ref l_dsTemp, "Temporal", ref p_smResult);
+
+                // Contruimos la lista-entidad y la devolvemos (si vino algun registro)
+                LEMovilesAccidentes l_lentRet= new LEMovilesAccidentes(l_dsTemp.Tables["Temporal"]);
+                l_dsTemp.Dispose();
+                return l_lentRet;
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Upfl
+                p_smResult.BllError(l_expData);
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Devuelve una entidad: EMvlAccidente
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_strPatente">Patente</param>
+        /// <param name="p_dtFecha">Fecha</param>
+        /// <param name="p_bOnlyActive">Indica si solo se analizan los registros activos</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        /// <returns>Entidad: EMvlAccidente</returns>
+        internal static EMvlAccidente MvacSrch(DBConn p_dbcAccess,
+                                               string p_strPatente,
+                                               DateTime p_dtFecha,
+                                               bool p_bOnlyActive,
+                                               ref StatMsg p_smResult)
+        {
+            try {
+                // Pedimos el registro de la tabla: MvlAccidentes
+                DataSet l_dsTemp= new DataSet();
+
+                Dal.MvlAccidentes.Search(p_dbcAccess, 
+                                         p_strPatente,
+                                         p_dtFecha,
+                                         p_bOnlyActive,
+                                         ref l_dsTemp, "Temporal",
+                                         ref p_smResult);
+                if (p_smResult.NOk) return null;
+
+                // Constuimos la entidad y la devolvemos (si vino un registro)
+                EMvlAccidente l_entRet= null;
+
+                if (l_dsTemp.Tables["Temporal"].Rows.Count == 1)
+                    l_entRet= new EMvlAccidente(l_dsTemp.Tables["Temporal"].Rows[0]);
+
+                l_dsTemp.Dispose();
+                return l_entRet;
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Srch
+                p_smResult.BllError(l_expData);
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Devuelve una lista-entidad: LEMovilesAccidentes
+        /// a partir de una clave foranea de la tabla: MvlAccidentes
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_strPatente">Patente</param>
+        /// <param name="p_bOnlyActive">Indica si solo se analizan los registros activos</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static LEMovilesAccidentes MvacFSch(DBConn p_dbcAccess,
+                                                     string p_strPatente,
+                                                     bool p_bOnlyActive,
+                                                     ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            DataSet l_dsTemp= new DataSet();
+
+            try {
+                // Pedimos los registros de la tabla por Foreing Key
+                Dal.MvlAccidentes.FSearch(p_dbcAccess,
+                                          p_strPatente,
+                                          p_bOnlyActive,
+                                          ref l_dsTemp, "Temporal",
+                                          ref p_smResult);
+                if (p_smResult.NOk) return null;
+
+                // Fijamos los captions de la grilla
+                Dal.MvlAccidentes.MakeGridCaptions(ref l_dsTemp, "Temporal", ref p_smResult);
+
+                // Contruimos la lista-entidad y la devolvemos
+                LEMovilesAccidentes l_entRet= new LEMovilesAccidentes(l_dsTemp.Tables["Temporal"]);
+                l_dsTemp.Dispose();
+                return l_entRet;
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion FSch
+                p_smResult.BllError(l_expData);
+                return null;
+            }
+        }
+        #endregion
+
+        #region Metodos internos de modificacion
+
+        /// <summary>
+        /// Agrega o modifica un registro de la tabla: MvlAccidentes
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_entMvlAccidente">Entidad con los datos a procesar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static void MvacSSav(DBConn p_dbcAccess,
+                                      EMvlAccidente p_entMvlAccidente,
+                                      ref StatMsg p_smResult)
+        {
+            try {
+                // Procesamos codigo fijo
+                MvacSave_f(p_dbcAccess, ref p_entMvlAccidente, ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // Verificamos la clave a grabar
+                MvacVKey(p_dbcAccess, 
+                         p_entMvlAccidente.Patente,
+                         p_entMvlAccidente.Fecha,
+                         ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // Si es una entidad nueva
+                if (p_entMvlAccidente.EsNueva) {
+                    // Es un alta. La clave no debe existir
+                    if (!p_smResult.ICodeEs(BllCodes.KeyDsntFound)) {
+                        // Error. La clave ya existe
+                        p_smResult.BllWarning("El ítem (MvlAccidente) que intenta agregar ya existe en el sistema.","");
+                        return;
+                    }
+
+                    // Agregamos el registro
+                    MvacInsr(p_dbcAccess, p_entMvlAccidente, ref p_smResult);
+                    return;
+                }
+
+                // Es un update. La clave debe existir y estar habilitada
+                if (!p_smResult.ICodeEs(BllCodes.KeyExists)) {
+                    // Error. La clave no existe o no está habilitada
+                    p_smResult.BllWarning("El ítem (MvlAccidente) que intenta modificar no existe en el sistema o no está habilitado.","");
+                    return;
+                }
+
+                // Debe coincidir el número de version
+                MvacVVer(p_dbcAccess, 
+                         p_entMvlAccidente.Patente,
+                         p_entMvlAccidente.Fecha,
+                         p_entMvlAccidente.FxdVersion,
+                         ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // Actualizamos el registro
+                MvacUpdt(p_dbcAccess, p_entMvlAccidente, ref p_smResult);
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion SSav
+                p_smResult.BllError(l_expData);
+            }
+        }
+
+        /// <summary>
+        /// Agrega un registro a la tabla a partir de una entidad: EMvlAccidente
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_entMvlAccidente">Entidad con los datos a procesar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static void MvacInsr(DBConn p_dbcAccess,
+                                      EMvlAccidente p_entMvlAccidente,
+                                      ref StatMsg p_smResult)
+        {
+            try {
+                // Validamos la integridad de la entidad
+                MvacTInt(p_dbcAccess, p_entMvlAccidente, ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // Creamos un nuevo registro de la tabla: MvlAccidentes
+                Dal.MvlAccidentes.Insert(p_dbcAccess,
+                                         p_entMvlAccidente.Patente,
+                                         p_entMvlAccidente.Fecha,
+                                         p_entMvlAccidente.Localidad,
+                                         p_entMvlAccidente.Direccion,
+                                         p_entMvlAccidente.Motivo,
+                                         p_entMvlAccidente.Detalle,
+                                         p_entMvlAccidente.Dotacion,
+                                         ref p_smResult);
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Insr
+                p_smResult.BllError(l_expData);
+            }
+        }
+
+        /// <summary>
+        /// Actualiza un registro a la tabla a partir de una entidad: EMvlAccidente
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_entMvlAccidente">Entidad con los datos a procesar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static void MvacUpdt(DBConn p_dbcAccess,
+                                      EMvlAccidente p_entMvlAccidente,
+                                      ref StatMsg p_smResult)
+        {
+            try {
+                // Validamos la integridad de la entidad
+                MvacTInt(p_dbcAccess, p_entMvlAccidente, ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // Actualizamos un registro de la tabla: MvlAccidentes
+                Dal.MvlAccidentes.Update(p_dbcAccess,
+                                         p_entMvlAccidente.Patente,
+                                         p_entMvlAccidente.Fecha,
+                                         p_entMvlAccidente.Localidad,
+                                         p_entMvlAccidente.Direccion,
+                                         p_entMvlAccidente.Motivo,
+                                         p_entMvlAccidente.Detalle,
+                                         p_entMvlAccidente.Dotacion,
+                                         ref p_smResult);
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Updt
+                p_smResult.BllError(l_expData);
+            }
+        }
+
+        /// <summary>
+        /// Borra físicamente un registro de a tabla: MvlAccidentes
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_strPatente">Patente</param>
+        /// <param name="p_dtFecha">Fecha</param>
+        /// <param name="p_iFxdVersion">Versión del registro a borrar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static void MvacDrop(DBConn p_dbcAccess,
+                                      string p_strPatente,
+                                      DateTime p_dtFecha,
+                                      int p_iFxdVersion,
+                                      ref StatMsg p_smResult)
+        {
+            try {
+                // Verificamos la clave a borrar
+                MvacVKey(p_dbcAccess,
+                         p_strPatente,
+                         p_dtFecha,
+                         ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // El registro tiene que existir
+                if (p_smResult.ICodeEs(BllCodes.KeyDsntFound)) {
+                    // Error. La clave no existe
+                    p_smResult.BllWarning("El ítem (MvlAccidente) que intenta borrar no existe en el sistema.","");
+                    return;
+                }
+
+                // Debe coincidir el número de version
+                MvacVVer(p_dbcAccess, 
+                         p_strPatente,
+                         p_dtFecha,
+                         p_iFxdVersion,
+                         ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // Borramos físicamente el registro
+                Dal.MvlAccidentes.Drop(p_dbcAccess,
+                                       p_strPatente,
+                                       p_dtFecha,
+                                       ref p_smResult);
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Remove
+                p_smResult.BllError(l_expData);
+            }
+        }
+
+        /// <summary>
+        /// Borra los registros borrados lógicamente de la tabla
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static void MvacPack(DBConn p_dbcAccess,
+                                      ref StatMsg p_smResult)
+        {
+            try {
+                // Borramos los borrados lógicamente
+                Dal.MvlAccidentes.Pack(p_dbcAccess,
+                                       ref p_smResult);
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Updt
+                p_smResult.BllError(l_expData);
+            }
+        }
+
+        /// <summary>
+        /// Realiza una actualización inteligente de la tabla a partir de una
+        /// lista-entidad: LEMovilesAccidentes
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_strPatente">Patente</param>
+        /// <param name="p_lentMovilesAccidentes">Lista-entidad a actualizar sobre la tabla</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static void MvacSSav(DBConn p_dbcAccess,
+                                      string p_strPatente,
+                                      LEMovilesAccidentes p_lentMovilesAccidentes,
+                                      ref StatMsg p_smResult)
+        {
+            try {
+                // Deshabilitamos todas las entidades existentes
+                Dal.MvlAccidentes.FDrop(p_dbcAccess,
+                                        p_strPatente,
+                                        ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // Recorremos la lista de entidades
+                foreach (EMvlAccidente l_entMvlAccidente in p_lentMovilesAccidentes) {
+                    // Forzamos la clave foranea
+                    l_entMvlAccidente.Patente= p_strPatente;
+
+                    // Verificamos si existe
+                    MvacVKey(p_dbcAccess,
+                             l_entMvlAccidente.Patente,
+                             l_entMvlAccidente.Fecha,
+                             ref p_smResult);
+                    if (p_smResult.NOk) return;
+
+                    // Si no existe
+                    if (p_smResult.ICodeEs(BllCodes.KeyDsntFound)) {
+                        // Hay que darla de alta
+                        MvacInsr(p_dbcAccess, l_entMvlAccidente, ref p_smResult);
+                        if (p_smResult.NOk) return;
+                        continue;
+                    }
+
+                    // Existe. Debe coincidir el número de version
+                    MvacVVer(p_dbcAccess, 
+                             l_entMvlAccidente.Patente,
+                             l_entMvlAccidente.Fecha,
+                             l_entMvlAccidente.FxdVersion,
+                             ref p_smResult);
+                    if (p_smResult.NOk) return;
+
+                    // El número coincide. La Actualizamos si no está borrada
+                    if (!l_entMvlAccidente.EstaBorrada) {
+                        MvacUpdt(p_dbcAccess, l_entMvlAccidente, ref p_smResult);
+                        if (p_smResult.NOk) return;
+                    }
+                }
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion SSav
+                p_smResult.BllError(l_expData);
+            }
+        }
+        #endregion
+
+        #region Metodos para métodos DAL definidos por el usuario
+        #endregion
+
 
         //**********************************************************
         //
@@ -2829,6 +3703,890 @@ namespace Mrln.Bll
 
         //**********************************************************
         //
+        // Funciones para la Tabla: MvlInfracciones
+        // Usando ClaseDal        : MvlInfracciones
+        //
+        //**********************************************************
+
+        //---------------------------------------------------------------
+        // Metodos públicos de la clase (visibles para la UIL)
+        //---------------------------------------------------------------
+        #region Metodos publicos de recupero
+
+        /// <summary>
+        /// Devuelve la grilla de la tabla: MvlInfracciones
+        /// </summary>
+        /// <param name="p_bOnlyActive">Indica si solo se analizan los registros activos</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        /// <returns>Lista-entidad: LEMovilesInfracciones</returns>
+        public static LEMovilesInfracciones MvifUpFull(bool p_bOnlyActive,
+                                                       ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            DBConn l_dbcAccess= null;
+
+            try {
+                // Obtenemos una conexion
+                l_dbcAccess= DBRuts.GetConection(Connections.Dat);
+
+                // Pedimos los registros de la tabla
+                return MvifUpfl(l_dbcAccess, p_bOnlyActive, ref p_smResult);
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion UpFull
+                p_smResult.BllError(l_expData);
+                return null;
+            }
+            finally {
+                // Si pude abrir la conexion -> la cierro
+                if (l_dbcAccess != null) l_dbcAccess.Close();
+            }
+        }
+
+        /// <summary>
+        /// Devuelve una entidad: EMvlInfraccion
+        /// </summary>
+        /// <param name="p_strPatente">Patente</param>
+        /// <param name="p_dtFecha">Fecha</param>
+        /// <param name="p_bOnlyActive">Indica si solo se analizan los registros activos</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        /// <returns>Entidad: EMvlInfraccion</returns>
+        public static EMvlInfraccion MvifGet(string p_strPatente,
+                                             DateTime p_dtFecha,
+                                             bool p_bOnlyActive,
+                                             ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            DBConn l_dbcAccess= null;
+
+            try {
+                // Obtenemos una conexion
+                l_dbcAccess= DBRuts.GetConection(Connections.Dat);
+
+                // Pedimos la entidad: EMvlInfraccion
+                return MvifSrch(l_dbcAccess,
+                                p_strPatente,
+                                p_dtFecha,
+                                p_bOnlyActive,
+                                ref p_smResult);
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Get
+                p_smResult.BllError(l_expData);
+                return null;
+            }
+            finally {
+                // Si pude abrir la conexion -> la cierro
+                if (l_dbcAccess != null) l_dbcAccess.Close();
+            }
+        }
+
+        /// <summary>
+        /// Devuelve una lista-entidad: LEMovilesInfracciones
+        /// asociada a una Foreing key de la tabla: MvlInfracciones
+        /// </summary>
+        /// <param name="p_strPatente">Patente</param>
+        /// <param name="p_bOnlyActive">Indica si solo se analizan los registros activos</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        /// <returns>Lista-Entidad: LEMovilesInfracciones</returns>
+        public static LEMovilesInfracciones MvifFGet(string p_strPatente,
+                                                     bool p_bOnlyActive,
+                                                     ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            DBConn l_dbcAccess= null;
+
+            try {
+                // Obtenemos una conexion
+                l_dbcAccess= DBRuts.GetConection(Connections.Dat);
+
+                // Pedimos la lista-entidad: LEMovilesInfracciones
+                return MvifFSch(l_dbcAccess,
+                                p_strPatente,
+                                p_bOnlyActive,
+                                ref p_smResult);
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion FGet
+                p_smResult.BllError(l_expData);
+                return null;
+            }
+            finally {
+                // Si pude abrir la conexion -> la cierro
+                if (l_dbcAccess != null) l_dbcAccess.Close();
+            }
+        }
+        #endregion
+
+        #region Metodos publicos de grabacion
+
+        /// <summary>
+        /// Agrega o modifica un registro de la tabla: MvlInfracciones
+        /// </summary>
+        /// <param name="p_entMvlInfraccion">Entidad con los datos a procesar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        public static void MvifSave(EMvlInfraccion p_entMvlInfraccion,
+                                    ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            DBConn l_dbcAccess= null;
+
+            try {
+                // Obtenemos una conexion y abrimos una transaccion
+                l_dbcAccess= DBRuts.GetConection(Connections.Dat);
+                l_dbcAccess.BeginTransaction();
+
+                // Grabamos la entidad: EMvlInfraccion
+                MvifSSav(l_dbcAccess, p_entMvlInfraccion, ref p_smResult);
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Save
+                p_smResult.BllError(l_expData);
+            }
+            finally {
+                // Si pude abrir la conexion
+                if (l_dbcAccess != null) {
+                    // Finalizo la transacción y la cierro
+                    l_dbcAccess.EndTransaction(p_smResult);
+                    l_dbcAccess.Close();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Habilita/Deshabilita un registro de la tabla: MvlInfracciones
+        /// </summary>
+        /// <param name="p_bEnable">Tipo de operacion</param>
+        /// <param name="p_strPatente">Patente</param>
+        /// <param name="p_dtFecha">Fecha</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        public static void MvifEnabled(bool p_bEnable,
+                                       string p_strPatente,
+                                       DateTime p_dtFecha,
+                                       int p_iFxdVersion,
+                                       ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            DBConn l_dbcAccess= null;
+
+            try {
+                // Obtenemos una conexion
+                l_dbcAccess= DBRuts.GetConection(Connections.Dat);
+                l_dbcAccess.BeginTransaction();
+
+                // Procesamos codigo fijo
+                MvifEnabled_f(l_dbcAccess,
+                              p_bEnable,
+                              p_strPatente,
+                              p_dtFecha,
+                              ref p_iFxdVersion,
+                              ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // Verificamos la clave a modificar
+                MvifVKey(l_dbcAccess,
+                         p_strPatente,
+                         p_dtFecha,
+                         ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // El registro tiene que existir
+                if (p_smResult.ICodeEs(BllCodes.KeyDsntFound)) {
+                    // Error. La clave no existe
+                    p_smResult.BllWarning("El ítem (MvlInfraccion) que intenta modificar no existe en el sistema.","");
+                    return;
+                }
+
+                // Debe coincidir el número de version
+                MvifVVer(l_dbcAccess, 
+                         p_strPatente,
+                         p_dtFecha,
+                         p_iFxdVersion,
+                         ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // Segun el modo
+                if (p_bEnable) {
+                    // Hay que habilitar el registro
+                    Dal.MvlInfracciones.Recall(l_dbcAccess,
+                                               p_strPatente,
+                                               p_dtFecha,
+                                               ref p_smResult);
+                }
+                else {
+                    // Hay que deshabilitar el registro
+                    Dal.MvlInfracciones.Delete(l_dbcAccess,
+                                               p_strPatente,
+                                               p_dtFecha,
+                                               ref p_smResult);
+                }
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Enabled
+                p_smResult.BllError(l_expData);
+            }
+            finally {
+                // Si pude abrir la conexion
+                if (l_dbcAccess != null) {
+                    // Finalizo la transacción y la cierro
+                    l_dbcAccess.EndTransaction(p_smResult);
+                    l_dbcAccess.Close();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Borra físicamento un registro de la tabla: MvlInfracciones
+        /// </summary>
+        /// <param name="p_strPatente">Patente</param>
+        /// <param name="p_dtFecha">Fecha</param>
+        /// <param name="p_iFxdVersion">Versión del registro a borrar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        public static void MvifRemove(string p_strPatente,
+                                      DateTime p_dtFecha,
+                                      int p_iFxdVersion,
+                                      ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            DBConn l_dbcAccess= null;
+
+            try {
+                // Obtenemos una conexion
+                l_dbcAccess= DBRuts.GetConection(Connections.Dat);
+                l_dbcAccess.BeginTransaction();
+
+                // Procesamos codigo fijo
+                MvifRemove_f(l_dbcAccess,
+                             p_strPatente,
+                             p_dtFecha,
+                             p_iFxdVersion,
+                             ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // Borramos el registro solicitado
+                MvifDrop(l_dbcAccess,
+                         p_strPatente,
+                         p_dtFecha,
+                         p_iFxdVersion,
+                         ref p_smResult);
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Remove
+                p_smResult.BllError(l_expData);
+            }
+            finally {
+                // Si pude abrir la conexion
+                if (l_dbcAccess != null) {
+                    // Finalizo la transacción y la cierro
+                    l_dbcAccess.EndTransaction(p_smResult);
+                    l_dbcAccess.Close();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Compacta una tabla borrando los registros deshabilitados
+        /// </summary>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        public static void MvifPurge(ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            DBConn l_dbcAccess= null;
+            try {
+                // Obtenemos una conexion
+                l_dbcAccess= DBRuts.GetConection(Connections.Dat);
+                l_dbcAccess.BeginTransaction();
+
+                // Realizamos el borrado
+                MvifPack(l_dbcAccess,
+                         ref p_smResult);
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Enabled
+                p_smResult.BllError(l_expData);
+            }
+            finally {
+                // Si pude abrir la conexion
+                if (l_dbcAccess != null) {
+                    // Finalizo la transacción y la cierro
+                    l_dbcAccess.EndTransaction(p_smResult);
+                    l_dbcAccess.Close();
+                }
+            }
+        }
+        #endregion
+
+        #region Metodos para métodos DAL definidos por el usuario
+        #endregion
+
+        //---------------------------------------------------------------
+        // Metodos públicos de la clase (no visibles para la UIL)
+        //---------------------------------------------------------------
+
+        #region Metodos internos de validacion
+
+        /// <summary>
+        /// Valida la integridad de una entidad: MvlInfraccion
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_entMvlInfraccion">Entidad con los datos a validar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static void MvifTInt(DBConn p_dbcAccess,
+                                      EMvlInfraccion p_entMvlInfraccion,
+                                      ref StatMsg p_smResult)
+        {
+            // ********
+            // Validaciones de los campos sin conexion
+            // ********
+
+            if (p_entMvlInfraccion.Patente.Trim() == "") {
+                // El campo [Patente] no puede ser vacío
+                p_smResult.BllWarning("El dato [Patente] no puede ser vacío","");
+                return;
+            }
+
+            if ((p_entMvlInfraccion.Pagada != "S") &&
+                (p_entMvlInfraccion.Pagada != " N")) {
+                // El campo [Pagada] tiene opciones
+                p_smResult.BllWarning("El dato [Pagada] sólo admite\r\n\r\n[S]- SI\r\n[ N]- NO\r\n","");
+                return;
+            }
+
+            // ********
+            // Validaciones de los campos con conexion
+            // ********
+
+            Tablas.MtiVKey(p_dbcAccess,
+                           p_entMvlInfraccion.Codmotivo,
+                           ref p_smResult);
+            if (p_smResult.NOk) return;
+
+            if (p_smResult.ICodeEs(BllCodes.KeyDsntFound)) {
+                // El campo [Motivo] debe existir en la tabla [Tablas.Mti]
+                p_smResult.BllWarning("El dato [Motivo] debe existir en la tabla [Tablas.Mti]","");
+                return;
+            }
+
+            // Verificamos la clave foranea
+            Moviles.VKey(p_dbcAccess,
+                         p_entMvlInfraccion.Patente,
+                         ref p_smResult);
+            if (p_smResult.NOk) return;
+
+            // El registro tiene que existir
+            if (p_smResult.ICodeEs(BllCodes.KeyDsntFound)) {
+                // Error. La clave foranea no existe
+                p_smResult.BllWarning("La clave (Movil) foranea no existe en el sistema.","");
+                return;
+            }
+
+            // Todas las validaciones fueron correctas
+
+            // Llamamos a la funcion fija del usuario
+            MvifTInt_f(p_dbcAccess, p_entMvlInfraccion, ref p_smResult);
+            if (p_smResult.NOk) return;
+        }
+
+        /// <summary>
+        /// Verifica el número de version de una tabla
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_strPatente">Patente</param>
+        /// <param name="p_dtFecha">Fecha</param>
+        /// <param name="p_iFxdVersion">Número de version</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static void MvifVVer(DBConn p_dbcAccess,
+                                      string p_strPatente,
+                                      DateTime p_dtFecha,
+                                      int p_iFxdVersion,
+                                      ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            DataSet l_dsTemp= new DataSet();
+
+            // Verificamos el número de versión
+            Dal.MvlInfracciones.ChkVersion(p_dbcAccess,
+                                           p_strPatente,
+                                           p_dtFecha,
+                                           p_iFxdVersion,
+                                           ref l_dsTemp,
+                                           "Temporal",
+                                           ref p_smResult);
+            if (p_smResult.NOk) return;
+
+            // Verificamos el resultado que vino
+            if (l_dsTemp.Tables["Temporal"].Rows.Count != 0) {
+                // Verificamos si la cantidad es 1
+                if ((int) l_dsTemp.Tables["Temporal"].Rows[0]["cantidad"] == 1) {
+                    // La versión coincide
+                    l_dsTemp.Dispose();
+                    return;
+                }
+            }
+
+            // El número de versión no coincide
+            StreamWriter l_swErrorFile= null;
+            string l_strErrFName= String.Format("C:\\V{0:ddMMyyyyHHmmss}.Err",
+                                                DateTime.Now);
+            try {
+                // Creamos el archivo del error
+                l_swErrorFile= new StreamWriter(File.Create(l_strErrFName),
+                                                System.Text.Encoding.ASCII);
+
+                // Grabamos los datos del error
+                l_swErrorFile.WriteLine("Instante    : {0:dd/MM/yyyy HH:mm:ss}", DateTime.Now);
+                l_swErrorFile.WriteLine("Metodo      : {0}", p_smResult.Method);
+                l_swErrorFile.WriteLine("Message     : No coincide el numero de version");
+            }
+            catch (Exception l_expData) {
+                // Error en el acceso al archivo.
+                string l_strLinea= l_expData.Message;
+            }
+            finally {
+                // Si llegamos a abrir el archivo -> lo cerramos
+                if (l_swErrorFile != null) {
+                    l_swErrorFile.Close();
+                    l_swErrorFile.Dispose();
+                }
+            }
+
+            // El número de versión no coincide
+            l_dsTemp.Dispose();
+            p_smResult.BllWarning("El número de versión del registro del ítem (MvlInfraccion) no coincide.\r\nOperación cancelada.","");
+        }
+
+        /// <summary>
+        /// Verifica si existe en la tabla una entidad: EMvlInfraccion
+        ///      Retorno: p_smResult.Stat= BllAvisos.KeyExists   - La clave existe
+        ///               p_smResult.Stat= BllAvisos.KeyNotFound - La clave no existe
+        ///               p_smResult.Stat= BllAvisos.KeyDisabled - La clave está deshabilitada
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_strPatente">Patente</param>
+        /// <param name="p_dtFecha">Fecha</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static void MvifVKey(DBConn p_dbcAccess,
+                                      string p_strPatente,
+                                      DateTime p_dtFecha,
+                                      ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            DataSet l_dsTemp= new DataSet();
+
+            Dal.MvlInfracciones.Search(p_dbcAccess,
+                                       p_strPatente,
+                                       p_dtFecha,
+                                       false,
+                                       ref l_dsTemp,
+                                       "Temporal",
+                                       ref p_smResult);
+            if (p_smResult.NOk) return;
+
+            try {
+                // Verificamos si vino algun registro
+                p_smResult.BllICode(BllCodes.KeyDsntFound);
+                if (l_dsTemp.Tables["Temporal"].Rows.Count == 0) return;
+
+                // Verificamos si el registro que vino esta habilitado
+                p_smResult.BllICode(BllCodes.KeyDisabled);
+                if ((decimal) l_dsTemp.Tables["Temporal"].Rows[0]["deleted"] == 1) return;
+
+                // La clave existia y estaba habilitada
+                p_smResult.BllICode(BllCodes.KeyExists);
+            }
+            finally {
+                // Terminamos
+                l_dsTemp.Dispose();
+            }
+        }
+        #endregion
+
+        #region Metodos internos de recupero
+
+        /// <summary>
+        /// Devuelve una Lista-entidad: LEMovilesInfracciones
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_bOnlyActive">Indica si solo se analizan los registros activos</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        /// <returns>Lista-entidad: LEMovilesInfracciones</returns>
+        internal static LEMovilesInfracciones MvifUpfl(DBConn p_dbcAccess,
+                                                       bool p_bOnlyActive,
+                                                       ref StatMsg p_smResult)
+        {
+            try {
+                // Pedimos los registros de la tabla: MvlInfracciones
+                DataSet l_dsTemp= new DataSet();
+
+                Dal.MvlInfracciones.Up(p_dbcAccess, 
+                                       p_bOnlyActive,
+                                       ref l_dsTemp, "Temporal",
+                                       ref p_smResult);
+                if (p_smResult.NOk) return null;
+
+                // Fijamos los captions de la grilla
+                Dal.MvlInfracciones.MakeGridCaptions(ref l_dsTemp, "Temporal", ref p_smResult);
+
+                // Contruimos la lista-entidad y la devolvemos (si vino algun registro)
+                LEMovilesInfracciones l_lentRet= new LEMovilesInfracciones(l_dsTemp.Tables["Temporal"]);
+                l_dsTemp.Dispose();
+                return l_lentRet;
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Upfl
+                p_smResult.BllError(l_expData);
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Devuelve una entidad: EMvlInfraccion
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_strPatente">Patente</param>
+        /// <param name="p_dtFecha">Fecha</param>
+        /// <param name="p_bOnlyActive">Indica si solo se analizan los registros activos</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        /// <returns>Entidad: EMvlInfraccion</returns>
+        internal static EMvlInfraccion MvifSrch(DBConn p_dbcAccess,
+                                                string p_strPatente,
+                                                DateTime p_dtFecha,
+                                                bool p_bOnlyActive,
+                                                ref StatMsg p_smResult)
+        {
+            try {
+                // Pedimos el registro de la tabla: MvlInfracciones
+                DataSet l_dsTemp= new DataSet();
+
+                Dal.MvlInfracciones.Search(p_dbcAccess, 
+                                           p_strPatente,
+                                           p_dtFecha,
+                                           p_bOnlyActive,
+                                           ref l_dsTemp, "Temporal",
+                                           ref p_smResult);
+                if (p_smResult.NOk) return null;
+
+                // Constuimos la entidad y la devolvemos (si vino un registro)
+                EMvlInfraccion l_entRet= null;
+
+                if (l_dsTemp.Tables["Temporal"].Rows.Count == 1)
+                    l_entRet= new EMvlInfraccion(l_dsTemp.Tables["Temporal"].Rows[0]);
+
+                l_dsTemp.Dispose();
+                return l_entRet;
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Srch
+                p_smResult.BllError(l_expData);
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Devuelve una lista-entidad: LEMovilesInfracciones
+        /// a partir de una clave foranea de la tabla: MvlInfracciones
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_strPatente">Patente</param>
+        /// <param name="p_bOnlyActive">Indica si solo se analizan los registros activos</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static LEMovilesInfracciones MvifFSch(DBConn p_dbcAccess,
+                                                       string p_strPatente,
+                                                       bool p_bOnlyActive,
+                                                       ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            DataSet l_dsTemp= new DataSet();
+
+            try {
+                // Pedimos los registros de la tabla por Foreing Key
+                Dal.MvlInfracciones.FSearch(p_dbcAccess,
+                                            p_strPatente,
+                                            p_bOnlyActive,
+                                            ref l_dsTemp, "Temporal",
+                                            ref p_smResult);
+                if (p_smResult.NOk) return null;
+
+                // Fijamos los captions de la grilla
+                Dal.MvlInfracciones.MakeGridCaptions(ref l_dsTemp, "Temporal", ref p_smResult);
+
+                // Contruimos la lista-entidad y la devolvemos
+                LEMovilesInfracciones l_entRet= new LEMovilesInfracciones(l_dsTemp.Tables["Temporal"]);
+                l_dsTemp.Dispose();
+                return l_entRet;
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion FSch
+                p_smResult.BllError(l_expData);
+                return null;
+            }
+        }
+        #endregion
+
+        #region Metodos internos de modificacion
+
+        /// <summary>
+        /// Agrega o modifica un registro de la tabla: MvlInfracciones
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_entMvlInfraccion">Entidad con los datos a procesar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static void MvifSSav(DBConn p_dbcAccess,
+                                      EMvlInfraccion p_entMvlInfraccion,
+                                      ref StatMsg p_smResult)
+        {
+            try {
+                // Procesamos codigo fijo
+                MvifSave_f(p_dbcAccess, ref p_entMvlInfraccion, ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // Verificamos la clave a grabar
+                MvifVKey(p_dbcAccess, 
+                         p_entMvlInfraccion.Patente,
+                         p_entMvlInfraccion.Fecha,
+                         ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // Si es una entidad nueva
+                if (p_entMvlInfraccion.EsNueva) {
+                    // Es un alta. La clave no debe existir
+                    if (!p_smResult.ICodeEs(BllCodes.KeyDsntFound)) {
+                        // Error. La clave ya existe
+                        p_smResult.BllWarning("El ítem (MvlInfraccion) que intenta agregar ya existe en el sistema.","");
+                        return;
+                    }
+
+                    // Agregamos el registro
+                    MvifInsr(p_dbcAccess, p_entMvlInfraccion, ref p_smResult);
+                    return;
+                }
+
+                // Es un update. La clave debe existir y estar habilitada
+                if (!p_smResult.ICodeEs(BllCodes.KeyExists)) {
+                    // Error. La clave no existe o no está habilitada
+                    p_smResult.BllWarning("El ítem (MvlInfraccion) que intenta modificar no existe en el sistema o no está habilitado.","");
+                    return;
+                }
+
+                // Debe coincidir el número de version
+                MvifVVer(p_dbcAccess, 
+                         p_entMvlInfraccion.Patente,
+                         p_entMvlInfraccion.Fecha,
+                         p_entMvlInfraccion.FxdVersion,
+                         ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // Actualizamos el registro
+                MvifUpdt(p_dbcAccess, p_entMvlInfraccion, ref p_smResult);
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion SSav
+                p_smResult.BllError(l_expData);
+            }
+        }
+
+        /// <summary>
+        /// Agrega un registro a la tabla a partir de una entidad: EMvlInfraccion
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_entMvlInfraccion">Entidad con los datos a procesar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static void MvifInsr(DBConn p_dbcAccess,
+                                      EMvlInfraccion p_entMvlInfraccion,
+                                      ref StatMsg p_smResult)
+        {
+            try {
+                // Validamos la integridad de la entidad
+                MvifTInt(p_dbcAccess, p_entMvlInfraccion, ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // Creamos un nuevo registro de la tabla: MvlInfracciones
+                Dal.MvlInfracciones.Insert(p_dbcAccess,
+                                           p_entMvlInfraccion.Patente,
+                                           p_entMvlInfraccion.Fecha,
+                                           p_entMvlInfraccion.Codmotivo,
+                                           p_entMvlInfraccion.Lugar,
+                                           p_entMvlInfraccion.Pagada,
+                                           p_entMvlInfraccion.Importe,
+                                           p_entMvlInfraccion.Comentario,
+                                           p_entMvlInfraccion.Anulada,
+                                           ref p_smResult);
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Insr
+                p_smResult.BllError(l_expData);
+            }
+        }
+
+        /// <summary>
+        /// Actualiza un registro a la tabla a partir de una entidad: EMvlInfraccion
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_entMvlInfraccion">Entidad con los datos a procesar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static void MvifUpdt(DBConn p_dbcAccess,
+                                      EMvlInfraccion p_entMvlInfraccion,
+                                      ref StatMsg p_smResult)
+        {
+            try {
+                // Validamos la integridad de la entidad
+                MvifTInt(p_dbcAccess, p_entMvlInfraccion, ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // Actualizamos un registro de la tabla: MvlInfracciones
+                Dal.MvlInfracciones.Update(p_dbcAccess,
+                                           p_entMvlInfraccion.Patente,
+                                           p_entMvlInfraccion.Fecha,
+                                           p_entMvlInfraccion.Codmotivo,
+                                           p_entMvlInfraccion.Lugar,
+                                           p_entMvlInfraccion.Pagada,
+                                           p_entMvlInfraccion.Importe,
+                                           p_entMvlInfraccion.Comentario,
+                                           p_entMvlInfraccion.Anulada,
+                                           ref p_smResult);
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Updt
+                p_smResult.BllError(l_expData);
+            }
+        }
+
+        /// <summary>
+        /// Borra físicamente un registro de a tabla: MvlInfracciones
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_strPatente">Patente</param>
+        /// <param name="p_dtFecha">Fecha</param>
+        /// <param name="p_iFxdVersion">Versión del registro a borrar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static void MvifDrop(DBConn p_dbcAccess,
+                                      string p_strPatente,
+                                      DateTime p_dtFecha,
+                                      int p_iFxdVersion,
+                                      ref StatMsg p_smResult)
+        {
+            try {
+                // Verificamos la clave a borrar
+                MvifVKey(p_dbcAccess,
+                         p_strPatente,
+                         p_dtFecha,
+                         ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // El registro tiene que existir
+                if (p_smResult.ICodeEs(BllCodes.KeyDsntFound)) {
+                    // Error. La clave no existe
+                    p_smResult.BllWarning("El ítem (MvlInfraccion) que intenta borrar no existe en el sistema.","");
+                    return;
+                }
+
+                // Debe coincidir el número de version
+                MvifVVer(p_dbcAccess, 
+                         p_strPatente,
+                         p_dtFecha,
+                         p_iFxdVersion,
+                         ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // Borramos físicamente el registro
+                Dal.MvlInfracciones.Drop(p_dbcAccess,
+                                         p_strPatente,
+                                         p_dtFecha,
+                                         ref p_smResult);
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Remove
+                p_smResult.BllError(l_expData);
+            }
+        }
+
+        /// <summary>
+        /// Borra los registros borrados lógicamente de la tabla
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static void MvifPack(DBConn p_dbcAccess,
+                                      ref StatMsg p_smResult)
+        {
+            try {
+                // Borramos los borrados lógicamente
+                Dal.MvlInfracciones.Pack(p_dbcAccess,
+                                         ref p_smResult);
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Updt
+                p_smResult.BllError(l_expData);
+            }
+        }
+
+        /// <summary>
+        /// Realiza una actualización inteligente de la tabla a partir de una
+        /// lista-entidad: LEMovilesInfracciones
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_strPatente">Patente</param>
+        /// <param name="p_lentMovilesInfracciones">Lista-entidad a actualizar sobre la tabla</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static void MvifSSav(DBConn p_dbcAccess,
+                                      string p_strPatente,
+                                      LEMovilesInfracciones p_lentMovilesInfracciones,
+                                      ref StatMsg p_smResult)
+        {
+            try {
+                // Deshabilitamos todas las entidades existentes
+                Dal.MvlInfracciones.FDrop(p_dbcAccess,
+                                          p_strPatente,
+                                          ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // Recorremos la lista de entidades
+                foreach (EMvlInfraccion l_entMvlInfraccion in p_lentMovilesInfracciones) {
+                    // Forzamos la clave foranea
+                    l_entMvlInfraccion.Patente= p_strPatente;
+
+                    // Verificamos si existe
+                    MvifVKey(p_dbcAccess,
+                             l_entMvlInfraccion.Patente,
+                             l_entMvlInfraccion.Fecha,
+                             ref p_smResult);
+                    if (p_smResult.NOk) return;
+
+                    // Si no existe
+                    if (p_smResult.ICodeEs(BllCodes.KeyDsntFound)) {
+                        // Hay que darla de alta
+                        MvifInsr(p_dbcAccess, l_entMvlInfraccion, ref p_smResult);
+                        if (p_smResult.NOk) return;
+                        continue;
+                    }
+
+                    // Existe. Debe coincidir el número de version
+                    MvifVVer(p_dbcAccess, 
+                             l_entMvlInfraccion.Patente,
+                             l_entMvlInfraccion.Fecha,
+                             l_entMvlInfraccion.FxdVersion,
+                             ref p_smResult);
+                    if (p_smResult.NOk) return;
+
+                    // El número coincide. La Actualizamos si no está borrada
+                    if (!l_entMvlInfraccion.EstaBorrada) {
+                        MvifUpdt(p_dbcAccess, l_entMvlInfraccion, ref p_smResult);
+                        if (p_smResult.NOk) return;
+                    }
+                }
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion SSav
+                p_smResult.BllError(l_expData);
+            }
+        }
+        #endregion
+
+        #region Metodos para métodos DAL definidos por el usuario
+        #endregion
+
+
+        //**********************************************************
+        //
         // Funciones para la Tabla: MvlKilometros
         // Usando ClaseDal        : MvlKilometros
         //
@@ -3838,6 +5596,13 @@ namespace Mrln.Bll
                 if (p_smResult.NOk) return null;
                 if (l_entMovil == null) return null;
 
+                // Completamos la lista-entidad: LEMovilesAccidentes
+                l_entMovil.MovilesAccidentes= MvacFSch(l_dbcAccess,
+                                                       p_strPatente,
+                                                       p_bOnlyActive,
+                                                       ref p_smResult);
+                if (p_smResult.NOk) return null;
+
                 // Completamos la lista-entidad: LEMovilesCombus
                 l_entMovil.MovilesCombus= MvcoFSch(l_dbcAccess,
                                                    p_strPatente,
@@ -3857,6 +5622,13 @@ namespace Mrln.Bll
                                                    p_strPatente,
                                                    p_bOnlyActive,
                                                    ref p_smResult);
+                if (p_smResult.NOk) return null;
+
+                // Completamos la lista-entidad: LEMovilesInfracciones
+                l_entMovil.MovilesInfracciones= MvifFSch(l_dbcAccess,
+                                                         p_strPatente,
+                                                         p_bOnlyActive,
+                                                         ref p_smResult);
                 if (p_smResult.NOk) return null;
 
                 // Completamos la lista-entidad: LEMovilesKms
@@ -4563,6 +6335,13 @@ namespace Mrln.Bll
                 }
                 if (p_smResult.NOk) return;
 
+                // Grabamos la lista-entidad: LEMovilesAccidentes
+                MvacSSav(p_dbcAccess,
+                         p_entMovil.Patente,
+                         p_entMovil.MovilesAccidentes,
+                         ref p_smResult);
+                if (p_smResult.NOk) return;
+
                 // Grabamos la lista-entidad: LEMovilesCombus
                 MvcoSSav(p_dbcAccess,
                          p_entMovil.Patente,
@@ -4581,6 +6360,13 @@ namespace Mrln.Bll
                 MvesSSav(p_dbcAccess,
                          p_entMovil.Patente,
                          p_entMovil.MovilesEstado,
+                         ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // Grabamos la lista-entidad: LEMovilesInfracciones
+                MvifSSav(p_dbcAccess,
+                         p_entMovil.Patente,
+                         p_entMovil.MovilesInfracciones,
                          ref p_smResult);
                 if (p_smResult.NOk) return;
 

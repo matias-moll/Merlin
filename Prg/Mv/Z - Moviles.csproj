@@ -132,6 +132,18 @@
     <Compile Include="MovilCombustible.Designer.cs">
       <DependentUpon>MovilCombustible.cs</DependentUpon>
     </Compile>
+    <Compile Include="MovilesAccidentes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MovilesAccidentes.Designer.cs">
+      <DependentUpon>MovilesAccidentes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MovilesInfracciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MovilesInfracciones.Designer.cs">
+      <DependentUpon>MovilesInfracciones.cs</DependentUpon>
+    </Compile>
     <Compile Include="NuevoKm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -174,6 +186,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MovilCombustible.resx">
       <DependentUpon>MovilCombustible.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MovilesAccidentes.resx">
+      <DependentUpon>MovilesAccidentes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MovilesInfracciones.resx">
+      <DependentUpon>MovilesInfracciones.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NuevoKm.resx">
       <DependentUpon>NuevoKm.cs</DependentUpon>

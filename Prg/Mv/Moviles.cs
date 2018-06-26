@@ -620,7 +620,14 @@ namespace Mrln.Mv
 
         private void gbAccidentes_Click(object sender, EventArgs e)
         {
+            MovilesAccidentes l_frmAccidentes = new MovilesAccidentes(m_entMovil.Patente);
+            l_frmAccidentes.ShowDialog();
+        }
 
+        private void gbInfracciones_Click(object sender, EventArgs e)
+        {
+            MovilesInfracciones l_frmInfracciones = new MovilesInfracciones(m_entMovil.Patente);
+            l_frmInfracciones.ShowDialog();
         }
     }
 }

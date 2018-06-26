@@ -3,7 +3,7 @@
 //----------------------------------------------------------------------------
 // Fecha       : 25/06/2018 15:42
 // Sistema     : Mrln
-// Tabla       : Categorias
+// Tabla       : MotivosInfracciones
 //----------------------------------------------------------------------------
 // © 1999-2018 by TNG Software                                      Gndr 5.20
 //---------------------------------------------------------------------------*/
@@ -31,19 +31,19 @@ go
 ---
 ---////////////////////////////////////////////////////////
 
-print 'Store Procedure: dbo.CATEGORIAS_UP'
+print 'Store Procedure: dbo.MOTIVOSINFRACCIONES_UP'
 
-if exists (select * from sysobjects where id = object_id('dbo.CATEGORIAS_UP'))
+if exists (select * from sysobjects where id = object_id('dbo.MOTIVOSINFRACCIONES_UP'))
 begin
    print '       - Borrando el viejo SP'
-   drop procedure dbo.CATEGORIAS_UP
+   drop procedure dbo.MOTIVOSINFRACCIONES_UP
 end
 go
 
 print '       - Creando el nuevo SP'
 go
 
-create procedure dbo.CATEGORIAS_UP
+create procedure dbo.MOTIVOSINFRACCIONES_UP
 (
 @onlyactive tngs_valor
 )
@@ -52,26 +52,26 @@ begin
 
    if @onlyactive = 1
       begin
-         Select cat_rcd_cod,
-                cat_des_des,
-                TNGS_Mrln..Categorias.instante,
-                TNGS_Mrln..Categorias.deleted,
-                TNGS_Mrln..Categorias.usuario,
-                TNGS_Mrln..Categorias.version
-           from TNGS_Mrln..Categorias
+         Select mti_cod_codigo,
+                mti_ede_descripcion,
+                TNGS_Mrln..MotivosInfracciones.instante,
+                TNGS_Mrln..MotivosInfracciones.deleted,
+                TNGS_Mrln..MotivosInfracciones.usuario,
+                TNGS_Mrln..MotivosInfracciones.version
+           from TNGS_Mrln..MotivosInfracciones
           where deleted = 0
-          order by cat_rcd_cod
+          order by mti_cod_codigo
       end
    else
       begin
-         Select cat_rcd_cod,
-                cat_des_des,
-                TNGS_Mrln..Categorias.instante,
-                TNGS_Mrln..Categorias.deleted,
-                TNGS_Mrln..Categorias.usuario,
-                TNGS_Mrln..Categorias.version
-           from TNGS_Mrln..Categorias
-          order by cat_rcd_cod
+         Select mti_cod_codigo,
+                mti_ede_descripcion,
+                TNGS_Mrln..MotivosInfracciones.instante,
+                TNGS_Mrln..MotivosInfracciones.deleted,
+                TNGS_Mrln..MotivosInfracciones.usuario,
+                TNGS_Mrln..MotivosInfracciones.version
+           from TNGS_Mrln..MotivosInfracciones
+          order by mti_cod_codigo
       end
 
 fin:
@@ -81,7 +81,7 @@ go
 
 print '       - Asignando permisos al nuevo SP'
 
-grant execute on dbo.CATEGORIAS_UP to tngsmodulos
+grant execute on dbo.MOTIVOSINFRACCIONES_UP to tngsmodulos
 
 print ' '
 go
@@ -91,34 +91,34 @@ go
 --- <summary>
 --- Verifica el número de versión de un registro
 --- </summary>
---- <param name="@cat_rcd_cod">Cod Categoria</param>
+--- <param name="@mti_cod_codigo">Código</param>
 --- <param name="@version">Número de version a verificar</param>
 ---
 ---////////////////////////////////////////////////////////
 
-print 'Store Procedure: dbo.CATEGORIAS_CHKVERSION'
+print 'Store Procedure: dbo.MOTIVOSINFRACCIONES_CHKVERSION'
 
-if exists (select * from sysobjects where id = object_id('dbo.CATEGORIAS_CHKVERSION'))
+if exists (select * from sysobjects where id = object_id('dbo.MOTIVOSINFRACCIONES_CHKVERSION'))
 begin
    print '       - Borrando el viejo SP'
-   drop procedure dbo.CATEGORIAS_CHKVERSION
+   drop procedure dbo.MOTIVOSINFRACCIONES_CHKVERSION
 end
 go
 
 print '       - Creando el nuevo SP'
 go
 
-create procedure dbo.CATEGORIAS_CHKVERSION
+create procedure dbo.MOTIVOSINFRACCIONES_CHKVERSION
 (
-@cat_rcd_cod tngs_codigo_r,
+@mti_cod_codigo tngs_codigo,
 @version tngs_numero
 )
 as
 begin
 
    Select count(*) as cantidad
-     from TNGS_Mrln..Categorias
-    where cat_rcd_cod = @cat_rcd_cod
+     from TNGS_Mrln..MotivosInfracciones
+    where mti_cod_codigo = @mti_cod_codigo
       and version = @version
 
 fin:
@@ -128,7 +128,7 @@ go
 
 print '       - Asignando permisos al nuevo SP'
 
-grant execute on dbo.CATEGORIAS_CHKVERSION to tngsmodulos
+grant execute on dbo.MOTIVOSINFRACCIONES_CHKVERSION to tngsmodulos
 
 print ' '
 go
@@ -138,26 +138,26 @@ go
 --- <summary>
 --- Busca el registro de una clave
 --- </summary>
---- <param name="@cat_rcd_cod">Cod Categoria</param>
+--- <param name="@mti_cod_codigo">Código</param>
 --- <param name="@onlyactive">Flag de SoloActivos</param>
 ---
 ---////////////////////////////////////////////////////////
 
-print 'Store Procedure: dbo.CATEGORIAS_SEARCH'
+print 'Store Procedure: dbo.MOTIVOSINFRACCIONES_SEARCH'
 
-if exists (select * from sysobjects where id = object_id('dbo.CATEGORIAS_SEARCH'))
+if exists (select * from sysobjects where id = object_id('dbo.MOTIVOSINFRACCIONES_SEARCH'))
 begin
    print '       - Borrando el viejo SP'
-   drop procedure dbo.CATEGORIAS_SEARCH
+   drop procedure dbo.MOTIVOSINFRACCIONES_SEARCH
 end
 go
 
 print '       - Creando el nuevo SP'
 go
 
-create procedure dbo.CATEGORIAS_SEARCH
+create procedure dbo.MOTIVOSINFRACCIONES_SEARCH
 (
-@cat_rcd_cod tngs_codigo_r,
+@mti_cod_codigo tngs_codigo,
 @onlyactive tngs_valor
 )
 as
@@ -165,26 +165,26 @@ begin
 
    if @onlyactive = 1
       begin
-         Select cat_rcd_cod,
-                cat_des_des,
-                TNGS_Mrln..Categorias.instante,
-                TNGS_Mrln..Categorias.deleted,
-                TNGS_Mrln..Categorias.usuario,
-                TNGS_Mrln..Categorias.version
-           from TNGS_Mrln..Categorias
-          where cat_rcd_cod = @cat_rcd_cod
+         Select mti_cod_codigo,
+                mti_ede_descripcion,
+                TNGS_Mrln..MotivosInfracciones.instante,
+                TNGS_Mrln..MotivosInfracciones.deleted,
+                TNGS_Mrln..MotivosInfracciones.usuario,
+                TNGS_Mrln..MotivosInfracciones.version
+           from TNGS_Mrln..MotivosInfracciones
+          where mti_cod_codigo = @mti_cod_codigo
             and deleted = 0
       end
    else
       begin
-         Select cat_rcd_cod,
-                cat_des_des,
-                TNGS_Mrln..Categorias.instante,
-                TNGS_Mrln..Categorias.deleted,
-                TNGS_Mrln..Categorias.usuario,
-                TNGS_Mrln..Categorias.version
-           from TNGS_Mrln..Categorias
-          where cat_rcd_cod = @cat_rcd_cod
+         Select mti_cod_codigo,
+                mti_ede_descripcion,
+                TNGS_Mrln..MotivosInfracciones.instante,
+                TNGS_Mrln..MotivosInfracciones.deleted,
+                TNGS_Mrln..MotivosInfracciones.usuario,
+                TNGS_Mrln..MotivosInfracciones.version
+           from TNGS_Mrln..MotivosInfracciones
+          where mti_cod_codigo = @mti_cod_codigo
       end
 
 fin:
@@ -194,7 +194,7 @@ go
 
 print '       - Asignando permisos al nuevo SP'
 
-grant execute on dbo.CATEGORIAS_SEARCH to tngsmodulos
+grant execute on dbo.MOTIVOSINFRACCIONES_SEARCH to tngsmodulos
 
 print ' '
 go
@@ -204,37 +204,37 @@ go
 --- <summary>
 --- Inserta un registro en la tabla
 --- </summary>
---- <param name="@cat_rcd_cod">Cod Categoria</param>
---- <param name="@cat_des_des">Categoria</param>
+--- <param name="@mti_cod_codigo">Código</param>
+--- <param name="@mti_ede_descripcion">Descripción</param>
 --- <param name="@usuario">Usuario que genera el insert</param>
 ---
 ---////////////////////////////////////////////////////////
 
-print 'Store Procedure: dbo.CATEGORIAS_INSERT'
+print 'Store Procedure: dbo.MOTIVOSINFRACCIONES_INSERT'
 
-if exists (select * from sysobjects where id = object_id('dbo.CATEGORIAS_INSERT'))
+if exists (select * from sysobjects where id = object_id('dbo.MOTIVOSINFRACCIONES_INSERT'))
 begin
    print '       - Borrando el viejo SP'
-   drop procedure dbo.CATEGORIAS_INSERT
+   drop procedure dbo.MOTIVOSINFRACCIONES_INSERT
 end
 go
 
 print '       - Creando el nuevo SP'
 go
 
-create procedure dbo.CATEGORIAS_INSERT
+create procedure dbo.MOTIVOSINFRACCIONES_INSERT
 (
-@cat_rcd_cod tngs_codigo_r,
-@cat_des_des tngs_descripcion,
+@mti_cod_codigo tngs_codigo,
+@mti_ede_descripcion tngs_descripcion_e,
 @usuario tngs_nombre
 )
 as
 begin
 
-   Insert into TNGS_Mrln..Categorias
+   Insert into TNGS_Mrln..MotivosInfracciones
    values (
-           @cat_rcd_cod,
-           @cat_des_des,
+           @mti_cod_codigo,
+           @mti_ede_descripcion,
            getdate(), 0, @usuario, 1
           )
 
@@ -245,7 +245,7 @@ go
 
 print '       - Asignando permisos al nuevo SP'
 
-grant execute on dbo.CATEGORIAS_INSERT to tngsmodulos
+grant execute on dbo.MOTIVOSINFRACCIONES_INSERT to tngsmodulos
 
 print ' '
 go
@@ -255,39 +255,39 @@ go
 --- <summary>
 --- Actualiza un registro de la tabla
 --- </summary>
---- <param name="@cat_rcd_cod">Cod Categoria</param>
---- <param name="@cat_des_des">Categoria</param>
+--- <param name="@mti_cod_codigo">Código</param>
+--- <param name="@mti_ede_descripcion">Descripción</param>
 --- <param name="@usuario">Usuario que genera el update</param>
 ---
 ---////////////////////////////////////////////////////////
 
-print 'Store Procedure: dbo.CATEGORIAS_UPDATE'
+print 'Store Procedure: dbo.MOTIVOSINFRACCIONES_UPDATE'
 
-if exists (select * from sysobjects where id = object_id('dbo.CATEGORIAS_UPDATE'))
+if exists (select * from sysobjects where id = object_id('dbo.MOTIVOSINFRACCIONES_UPDATE'))
 begin
    print '       - Borrando el viejo SP'
-   drop procedure dbo.CATEGORIAS_UPDATE
+   drop procedure dbo.MOTIVOSINFRACCIONES_UPDATE
 end
 go
 
 print '       - Creando el nuevo SP'
 go
 
-create procedure dbo.CATEGORIAS_UPDATE
+create procedure dbo.MOTIVOSINFRACCIONES_UPDATE
 (
-@cat_rcd_cod tngs_codigo_r,
-@cat_des_des tngs_descripcion,
+@mti_cod_codigo tngs_codigo,
+@mti_ede_descripcion tngs_descripcion_e,
 @usuario tngs_nombre
 )
 as
 begin
 
-   Update TNGS_Mrln..Categorias
-      set cat_des_des= @cat_des_des,
+   Update TNGS_Mrln..MotivosInfracciones
+      set mti_ede_descripcion= @mti_ede_descripcion,
           version = ((version+1) % 32767),
           instante= getdate(),
           usuario = @usuario
-    where cat_rcd_cod = @cat_rcd_cod
+    where mti_cod_codigo = @mti_cod_codigo
 
 fin:
 
@@ -296,7 +296,7 @@ go
 
 print '       - Asignando permisos al nuevo SP'
 
-grant execute on dbo.CATEGORIAS_UPDATE to tngsmodulos
+grant execute on dbo.MOTIVOSINFRACCIONES_UPDATE to tngsmodulos
 
 print ' '
 go
@@ -306,37 +306,37 @@ go
 --- <summary>
 --- Borra lógicamente un registro
 --- </summary>
---- <param name="@cat_rcd_cod">Cod Categoria</param>
+--- <param name="@mti_cod_codigo">Código</param>
 --- <param name="@usuario">Usuario que realiza el delete</param>
 ---
 ---////////////////////////////////////////////////////////
 
-print 'Store Procedure: dbo.CATEGORIAS_DELETE'
+print 'Store Procedure: dbo.MOTIVOSINFRACCIONES_DELETE'
 
-if exists (select * from sysobjects where id = object_id('dbo.CATEGORIAS_DELETE'))
+if exists (select * from sysobjects where id = object_id('dbo.MOTIVOSINFRACCIONES_DELETE'))
 begin
    print '       - Borrando el viejo SP'
-   drop procedure dbo.CATEGORIAS_DELETE
+   drop procedure dbo.MOTIVOSINFRACCIONES_DELETE
 end
 go
 
 print '       - Creando el nuevo SP'
 go
 
-create procedure dbo.CATEGORIAS_DELETE
+create procedure dbo.MOTIVOSINFRACCIONES_DELETE
 (
-@cat_rcd_cod tngs_codigo_r,
+@mti_cod_codigo tngs_codigo,
 @usuario tngs_nombre
 )
 as
 begin
 
-   Update TNGS_Mrln..Categorias
+   Update TNGS_Mrln..MotivosInfracciones
       set deleted = 1,
           version = ((version+1) % 32767),
           instante= getdate(),
           usuario = @usuario
-    where cat_rcd_cod = @cat_rcd_cod
+    where mti_cod_codigo = @mti_cod_codigo
 
 fin:
 
@@ -345,7 +345,7 @@ go
 
 print '       - Asignando permisos al nuevo SP'
 
-grant execute on dbo.CATEGORIAS_DELETE to tngsmodulos
+grant execute on dbo.MOTIVOSINFRACCIONES_DELETE to tngsmodulos
 
 print ' '
 go
@@ -355,37 +355,37 @@ go
 --- <summary>
 --- Recupera un registro
 --- </summary>
---- <param name="@cat_rcd_cod">Cod Categoria</param>
+--- <param name="@mti_cod_codigo">Código</param>
 --- <param name="@usuario">Usuario que realiza el recall</param>
 ---
 ---////////////////////////////////////////////////////////
 
-print 'Store Procedure: dbo.CATEGORIAS_RECALL'
+print 'Store Procedure: dbo.MOTIVOSINFRACCIONES_RECALL'
 
-if exists (select * from sysobjects where id = object_id('dbo.CATEGORIAS_RECALL'))
+if exists (select * from sysobjects where id = object_id('dbo.MOTIVOSINFRACCIONES_RECALL'))
 begin
    print '       - Borrando el viejo SP'
-   drop procedure dbo.CATEGORIAS_RECALL
+   drop procedure dbo.MOTIVOSINFRACCIONES_RECALL
 end
 go
 
 print '       - Creando el nuevo SP'
 go
 
-create procedure dbo.CATEGORIAS_RECALL
+create procedure dbo.MOTIVOSINFRACCIONES_RECALL
 (
-@cat_rcd_cod tngs_codigo_r,
+@mti_cod_codigo tngs_codigo,
 @usuario tngs_nombre
 )
 as
 begin
 
-   Update TNGS_Mrln..Categorias
+   Update TNGS_Mrln..MotivosInfracciones
       set deleted = 0,
           version = ((version+1) % 32767),
           instante= getdate(),
           usuario = @usuario
-    where cat_rcd_cod = @cat_rcd_cod
+    where mti_cod_codigo = @mti_cod_codigo
 
 fin:
 
@@ -394,7 +394,7 @@ go
 
 print '       - Asignando permisos al nuevo SP'
 
-grant execute on dbo.CATEGORIAS_RECALL to tngsmodulos
+grant execute on dbo.MOTIVOSINFRACCIONES_RECALL to tngsmodulos
 
 print ' '
 go
@@ -404,33 +404,33 @@ go
 --- <summary>
 --- Borra físicamente un registro
 --- </summary>
---- <param name="@cat_rcd_cod">Cod Categoria</param>
+--- <param name="@mti_cod_codigo">Código</param>
 --- <param name="@usuario">Usuario que realiza el drop</param>
 ---
 ---////////////////////////////////////////////////////////
 
-print 'Store Procedure: dbo.CATEGORIAS_DROP'
+print 'Store Procedure: dbo.MOTIVOSINFRACCIONES_DROP'
 
-if exists (select * from sysobjects where id = object_id('dbo.CATEGORIAS_DROP'))
+if exists (select * from sysobjects where id = object_id('dbo.MOTIVOSINFRACCIONES_DROP'))
 begin
    print '       - Borrando el viejo SP'
-   drop procedure dbo.CATEGORIAS_DROP
+   drop procedure dbo.MOTIVOSINFRACCIONES_DROP
 end
 go
 
 print '       - Creando el nuevo SP'
 go
 
-create procedure dbo.CATEGORIAS_DROP
+create procedure dbo.MOTIVOSINFRACCIONES_DROP
 (
-@cat_rcd_cod tngs_codigo_r,
+@mti_cod_codigo tngs_codigo,
 @usuario tngs_nombre
 )
 as
 begin
 
-   Delete from TNGS_Mrln..Categorias
-    where cat_rcd_cod = @cat_rcd_cod
+   Delete from TNGS_Mrln..MotivosInfracciones
+    where mti_cod_codigo = @mti_cod_codigo
 
 fin:
 
@@ -439,7 +439,7 @@ go
 
 print '       - Asignando permisos al nuevo SP'
 
-grant execute on dbo.CATEGORIAS_DROP to tngsmodulos
+grant execute on dbo.MOTIVOSINFRACCIONES_DROP to tngsmodulos
 
 print ' '
 go
@@ -453,26 +453,26 @@ go
 ---
 ---////////////////////////////////////////////////////////
 
-print 'Store Procedure: dbo.CATEGORIAS_PACK'
+print 'Store Procedure: dbo.MOTIVOSINFRACCIONES_PACK'
 
-if exists (select * from sysobjects where id = object_id('dbo.CATEGORIAS_PACK'))
+if exists (select * from sysobjects where id = object_id('dbo.MOTIVOSINFRACCIONES_PACK'))
 begin
    print '       - Borrando el viejo SP'
-   drop procedure dbo.CATEGORIAS_PACK
+   drop procedure dbo.MOTIVOSINFRACCIONES_PACK
 end
 go
 
 print '       - Creando el nuevo SP'
 go
 
-create procedure dbo.CATEGORIAS_PACK
+create procedure dbo.MOTIVOSINFRACCIONES_PACK
 (
 @usuario tngs_nombre
 )
 as
 begin
 
-   Delete TNGS_Mrln..Categorias
+   Delete TNGS_Mrln..MotivosInfracciones
     where deleted = 1
 
 fin:
@@ -482,56 +482,11 @@ go
 
 print '       - Asignando permisos al nuevo SP'
 
-grant execute on dbo.CATEGORIAS_PACK to tngsmodulos
-
-print ' '
-go
-
----////////////////////////////////////////////////////////
----
---- <summary>
---- Método Fijo: getByDesc
---- </summary>
---- <param name="@desc">.</param>
---- <param name="@usuario">Usuario que ejecuta el SP</param>
----
----////////////////////////////////////////////////////////
-
-print 'Store Procedure: dbo.CATEGORIAS_GETBYDESC'
-
-if exists (select * from sysobjects where id = object_id('dbo.CATEGORIAS_GETBYDESC'))
-begin
-   print '       - Borrando el viejo SP'
-   drop procedure dbo.CATEGORIAS_GETBYDESC
-end
-go
-
-print '       - Creando el nuevo SP'
-go
-
-create procedure dbo.CATEGORIAS_GETBYDESC
-(
-@desc tngs_descripcion,
-@usuario tngs_nombre
-)
-as
-begin
-
-   select * from Categorias 
-   where cat_des_des like '%' + ltrim(rtrim(@desc)) + '%' 
-
-fin:
-
-end
-go
-
-print '       - Asignando permisos al nuevo SP'
-
-grant execute on dbo.CATEGORIAS_GETBYDESC to tngsmodulos
+grant execute on dbo.MOTIVOSINFRACCIONES_PACK to tngsmodulos
 
 print ' '
 go
 
 /*--------------------------------------------------------------------------
-// Fin del script de creacion de los SP de la tabla: Categorias
+// Fin del script de creacion de los SP de la tabla: MotivosInfracciones
 //--------------------------------------------------------------------------*/

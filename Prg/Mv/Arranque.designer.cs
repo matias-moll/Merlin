@@ -18,11 +18,11 @@ namespace Mrln.Mv
     //----------------------------------------------------------------------------
     //                         TNG Software PRG Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 13/06/2015 15:38
+    // Fecha                    : 25/06/2018 15:52
     // Sistema                  : Mrln
     // Programa                 : Moviles
     //----------------------------------------------------------------------------
-    // © 1996-2015 by TNG Software                                      Gndr 5.20
+    // © 1996-2018 by TNG Software                                      Gndr 5.20
     //----------------------------------------------------------------------------
 
     //****************************************************************************
@@ -102,9 +102,6 @@ namespace Mrln.Mv
                 // Creamos la ventana MDI de la aplicacion
                 MainFrame l_frmMain= new MainFrame(MFSizes.MF1024x768, 0, false, true);
 
-                // Ejecutamos la funcion que arma la info de About
-                PrgRuts.MakeAboutInfo();
-
                 // Llamamos al PreRun del Shr y del Programa
                 if (!SysRuts.PreRun()) return;
                 if (!Arranque.PreRun()) return;
@@ -114,7 +111,7 @@ namespace Mrln.Mv
                 App.MnuCommands += new MnuCommandsEventHandler(Arranque_MnuCommandsMF);
 
                 App.Run(LoginModes.Full,
-                        IMenuOptions.MAll,
+                        IMenuOptions.None,
                         ExitModes.Confirm,
                         ref l_smResult);
             }
@@ -140,11 +137,6 @@ namespace Mrln.Mv
                 // ** Ejecución automática al inicio del programa
                 // **
                 case "$$AUTOEXEC$$"  : {SysRuts.AutoExecIni(App.Programa.Codigo); PrgRuts.AutoExec(); SysRuts.AutoExecEnd(App.Programa.Codigo); return;}
-
-                // *************************************************
-                // ** Menu: Estado
-                // **
-                case "CAME"          : {return;}
 
                 // *************************************************
                 // ** Ejecución automática al final del programa

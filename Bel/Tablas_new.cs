@@ -13,7 +13,7 @@ namespace Mrln.Bel
     //----------------------------------------------------------------------------
     //                         TNG Software BEL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 06/06/2018 01:24
+    // Fecha                    : 26/06/2018 00:37
     // Sistema                  : Mrln
     // Clase para Administrar   : Tablas Generales
     //----------------------------------------------------------------------------
@@ -766,6 +766,112 @@ namespace Mrln.Bel
     }
     #endregion
 
+    #region Entidad: MotivoInfraccion
+    /// <summary>
+    /// Clase que representa la Entidad: MotivoInfraccion
+    ///   - Elementos no producidos por el Generador
+    /// </summary>
+    public sealed partial class EMotivoInfraccion : Entidad
+    {
+        #region Metodos publicos de la clase
+        //---------------------------------------------------------------
+        // Metodos públicos de la clase
+        //---------------------------------------------------------------
+
+        #endregion
+
+        #region Metodos privados de la clase
+        //---------------------------------------------------------------
+        // Metodos privados de la clase
+        //---------------------------------------------------------------
+
+        /// <summary>
+        /// Permite agregar datos al XML de la entidad
+        /// </summary>
+        private void fAddXMLData(ref XmlDocument p_xdocData,
+                                 ref XmlNode p_xndEntidad)
+        {
+        }
+
+        /// <summary>
+        /// Permite agregar datos a una entidad generada desde un XML
+        /// </summary>
+        private void fNewFromXML(ref DataRow p_drTemp,
+                                 XmlNode p_xndData)
+        {
+        }
+
+        #endregion
+
+        #region Propiedades de la clase
+        //---------------------------------------------------------------
+        // Propiedades de la clase
+        //---------------------------------------------------------------
+
+        #endregion
+    }
+    #endregion
+
+    #region Lista-Entidad: MotivosInfracciones
+    /// <summary>
+    /// Clase que representa la Lista-Entidad: MotivosInfracciones
+    ///   - Elementos no producidos por el Generador
+    /// </summary>
+    public sealed partial class LEMotivosInfracciones : ListaEntidades
+    {
+        #region Metodos publicos de la clase
+        //---------------------------------------------------------------
+        // Metodos publicos
+        //---------------------------------------------------------------
+
+        #endregion
+
+        #region Metodos privados de la clase
+        //---------------------------------------------------------------
+        // Metodos privados
+        //---------------------------------------------------------------
+
+        #endregion
+
+        #region Propiedades de la clase
+        //---------------------------------------------------------------
+        // Propiedades de la clase
+        //---------------------------------------------------------------
+
+        #endregion
+    }
+    #endregion
+
+    #region Lista-Entidad-Tipada: MotivosInfracciones
+    /// <summary>
+    /// Clase que representa la Lista-Entidad-Tipada: MotivosInfracciones
+    ///   - Elementos no producidos por el Generador
+    /// </summary>
+    public sealed partial class LETMotivosInfracciones : LET<EMotivoInfraccion>
+    {
+        #region Metodos publicos de la clase
+        //---------------------------------------------------------------
+        // Metodos publicos
+        //---------------------------------------------------------------
+
+        #endregion
+
+        #region Metodos privados de la clase
+        //---------------------------------------------------------------
+        // Metodos privados
+        //---------------------------------------------------------------
+
+        #endregion
+
+        #region Propiedades de la clase
+        //---------------------------------------------------------------
+        // Propiedades de la clase
+        //---------------------------------------------------------------
+
+        #endregion
+    }
+    #endregion
+
     #region Entidad: Reparacion
     /// <summary>
     /// Clase que representa la Entidad: Reparacion
@@ -848,112 +954,6 @@ namespace Mrln.Bel
     ///   - Elementos no producidos por el Generador
     /// </summary>
     public sealed partial class LETReparaciones : LET<EReparacion>
-    {
-        #region Metodos publicos de la clase
-        //---------------------------------------------------------------
-        // Metodos publicos
-        //---------------------------------------------------------------
-
-        #endregion
-
-        #region Metodos privados de la clase
-        //---------------------------------------------------------------
-        // Metodos privados
-        //---------------------------------------------------------------
-
-        #endregion
-
-        #region Propiedades de la clase
-        //---------------------------------------------------------------
-        // Propiedades de la clase
-        //---------------------------------------------------------------
-
-        #endregion
-    }
-    #endregion
-
-    #region Entidad: Taller
-    /// <summary>
-    /// Clase que representa la Entidad: Taller
-    ///   - Elementos no producidos por el Generador
-    /// </summary>
-    public sealed partial class ETaller : Entidad
-    {
-        #region Metodos publicos de la clase
-        //---------------------------------------------------------------
-        // Metodos públicos de la clase
-        //---------------------------------------------------------------
-
-        #endregion
-
-        #region Metodos privados de la clase
-        //---------------------------------------------------------------
-        // Metodos privados de la clase
-        //---------------------------------------------------------------
-
-        /// <summary>
-        /// Permite agregar datos al XML de la entidad
-        /// </summary>
-        private void fAddXMLData(ref XmlDocument p_xdocData,
-                                 ref XmlNode p_xndEntidad)
-        {
-        }
-
-        /// <summary>
-        /// Permite agregar datos a una entidad generada desde un XML
-        /// </summary>
-        private void fNewFromXML(ref DataRow p_drTemp,
-                                 XmlNode p_xndData)
-        {
-        }
-
-        #endregion
-
-        #region Propiedades de la clase
-        //---------------------------------------------------------------
-        // Propiedades de la clase
-        //---------------------------------------------------------------
-
-        #endregion
-    }
-    #endregion
-
-    #region Lista-Entidad: Talleres
-    /// <summary>
-    /// Clase que representa la Lista-Entidad: Talleres
-    ///   - Elementos no producidos por el Generador
-    /// </summary>
-    public sealed partial class LETalleres : ListaEntidades
-    {
-        #region Metodos publicos de la clase
-        //---------------------------------------------------------------
-        // Metodos publicos
-        //---------------------------------------------------------------
-
-        #endregion
-
-        #region Metodos privados de la clase
-        //---------------------------------------------------------------
-        // Metodos privados
-        //---------------------------------------------------------------
-
-        #endregion
-
-        #region Propiedades de la clase
-        //---------------------------------------------------------------
-        // Propiedades de la clase
-        //---------------------------------------------------------------
-
-        #endregion
-    }
-    #endregion
-
-    #region Lista-Entidad-Tipada: Talleres
-    /// <summary>
-    /// Clase que representa la Lista-Entidad-Tipada: Talleres
-    ///   - Elementos no producidos por el Generador
-    /// </summary>
-    public sealed partial class LETTalleres : LET<ETaller>
     {
         #region Metodos publicos de la clase
         //---------------------------------------------------------------

@@ -56,10 +56,13 @@
     <Compile Include="Estados.cs" />
     <Compile Include="Marcas.cs" />
     <Compile Include="Modelos.cs" />
+    <Compile Include="MotivosInfracciones.cs" />
     <Compile Include="Moviles.cs" />
+    <Compile Include="MvlAccidentes.cs" />
     <Compile Include="MvlCombustible.cs" />
     <Compile Include="MvlEquipamiento.cs" />
     <Compile Include="MvlEstados.cs" />
+    <Compile Include="MvlInfracciones.cs" />
     <Compile Include="MvlKilometros.cs" />
     <Compile Include="OrdenesTrabajo.cs" />
     <Compile Include="OtItems.cs" />

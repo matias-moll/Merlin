@@ -24,6 +24,112 @@ namespace Mrln.Bel
     //    Agregue en esta clase los metodos fijos que desea incorporar 
     //****************************************************************************
 
+    #region Entidad: MvlAccidente
+    /// <summary>
+    /// Clase que representa la Entidad: MvlAccidente
+    ///   - Elementos no producidos por el Generador
+    /// </summary>
+    public sealed partial class EMvlAccidente : Entidad
+    {
+        #region Metodos publicos de la clase
+        //---------------------------------------------------------------
+        // Metodos públicos de la clase
+        //---------------------------------------------------------------
+
+        #endregion
+
+        #region Metodos privados de la clase
+        //---------------------------------------------------------------
+        // Metodos privados de la clase
+        //---------------------------------------------------------------
+
+        /// <summary>
+        /// Permite agregar datos al XML de la entidad
+        /// </summary>
+        private void fAddXMLData(ref XmlDocument p_xdocData,
+                                 ref XmlNode p_xndEntidad)
+        {
+        }
+
+        /// <summary>
+        /// Permite agregar datos a una entidad generada desde un XML
+        /// </summary>
+        private void fNewFromXML(ref DataRow p_drTemp,
+                                 XmlNode p_xndData)
+        {
+        }
+
+        #endregion
+
+        #region Propiedades de la clase
+        //---------------------------------------------------------------
+        // Propiedades de la clase
+        //---------------------------------------------------------------
+
+        #endregion
+    }
+    #endregion
+
+    #region Lista-Entidad: MovilesAccidentes
+    /// <summary>
+    /// Clase que representa la Lista-Entidad: MovilesAccidentes
+    ///   - Elementos no producidos por el Generador
+    /// </summary>
+    public sealed partial class LEMovilesAccidentes : ListaEntidades
+    {
+        #region Metodos publicos de la clase
+        //---------------------------------------------------------------
+        // Metodos publicos
+        //---------------------------------------------------------------
+
+        #endregion
+
+        #region Metodos privados de la clase
+        //---------------------------------------------------------------
+        // Metodos privados
+        //---------------------------------------------------------------
+
+        #endregion
+
+        #region Propiedades de la clase
+        //---------------------------------------------------------------
+        // Propiedades de la clase
+        //---------------------------------------------------------------
+
+        #endregion
+    }
+    #endregion
+
+    #region Lista-Entidad-Tipada: MovilesAccidentes
+    /// <summary>
+    /// Clase que representa la Lista-Entidad-Tipada: MovilesAccidentes
+    ///   - Elementos no producidos por el Generador
+    /// </summary>
+    public sealed partial class LETMovilesAccidentes : LET<EMvlAccidente>
+    {
+        #region Metodos publicos de la clase
+        //---------------------------------------------------------------
+        // Metodos publicos
+        //---------------------------------------------------------------
+
+        #endregion
+
+        #region Metodos privados de la clase
+        //---------------------------------------------------------------
+        // Metodos privados
+        //---------------------------------------------------------------
+
+        #endregion
+
+        #region Propiedades de la clase
+        //---------------------------------------------------------------
+        // Propiedades de la clase
+        //---------------------------------------------------------------
+
+        #endregion
+    }
+    #endregion
+
     #region Entidad: MovilCombus
     /// <summary>
     /// Clase que representa la Entidad: MovilCombus
@@ -318,6 +424,112 @@ namespace Mrln.Bel
     ///   - Elementos no producidos por el Generador
     /// </summary>
     public sealed partial class LETMovilesEstado : LET<EMovilEstado>
+    {
+        #region Metodos publicos de la clase
+        //---------------------------------------------------------------
+        // Metodos publicos
+        //---------------------------------------------------------------
+
+        #endregion
+
+        #region Metodos privados de la clase
+        //---------------------------------------------------------------
+        // Metodos privados
+        //---------------------------------------------------------------
+
+        #endregion
+
+        #region Propiedades de la clase
+        //---------------------------------------------------------------
+        // Propiedades de la clase
+        //---------------------------------------------------------------
+
+        #endregion
+    }
+    #endregion
+
+    #region Entidad: MvlInfraccion
+    /// <summary>
+    /// Clase que representa la Entidad: MvlInfraccion
+    ///   - Elementos no producidos por el Generador
+    /// </summary>
+    public sealed partial class EMvlInfraccion : Entidad
+    {
+        #region Metodos publicos de la clase
+        //---------------------------------------------------------------
+        // Metodos públicos de la clase
+        //---------------------------------------------------------------
+
+        #endregion
+
+        #region Metodos privados de la clase
+        //---------------------------------------------------------------
+        // Metodos privados de la clase
+        //---------------------------------------------------------------
+
+        /// <summary>
+        /// Permite agregar datos al XML de la entidad
+        /// </summary>
+        private void fAddXMLData(ref XmlDocument p_xdocData,
+                                 ref XmlNode p_xndEntidad)
+        {
+        }
+
+        /// <summary>
+        /// Permite agregar datos a una entidad generada desde un XML
+        /// </summary>
+        private void fNewFromXML(ref DataRow p_drTemp,
+                                 XmlNode p_xndData)
+        {
+        }
+
+        #endregion
+
+        #region Propiedades de la clase
+        //---------------------------------------------------------------
+        // Propiedades de la clase
+        //---------------------------------------------------------------
+
+        #endregion
+    }
+    #endregion
+
+    #region Lista-Entidad: MovilesInfracciones
+    /// <summary>
+    /// Clase que representa la Lista-Entidad: MovilesInfracciones
+    ///   - Elementos no producidos por el Generador
+    /// </summary>
+    public sealed partial class LEMovilesInfracciones : ListaEntidades
+    {
+        #region Metodos publicos de la clase
+        //---------------------------------------------------------------
+        // Metodos publicos
+        //---------------------------------------------------------------
+
+        #endregion
+
+        #region Metodos privados de la clase
+        //---------------------------------------------------------------
+        // Metodos privados
+        //---------------------------------------------------------------
+
+        #endregion
+
+        #region Propiedades de la clase
+        //---------------------------------------------------------------
+        // Propiedades de la clase
+        //---------------------------------------------------------------
+
+        #endregion
+    }
+    #endregion
+
+    #region Lista-Entidad-Tipada: MovilesInfracciones
+    /// <summary>
+    /// Clase que representa la Lista-Entidad-Tipada: MovilesInfracciones
+    ///   - Elementos no producidos por el Generador
+    /// </summary>
+    public sealed partial class LETMovilesInfracciones : LET<EMvlInfraccion>
     {
         #region Metodos publicos de la clase
         //---------------------------------------------------------------

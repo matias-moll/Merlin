@@ -326,6 +326,7 @@ namespace Mrln.Mv
             this.gbInfracciones.Text = "Infracciónes";
             this.gbInfracciones.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.gbInfracciones.W8Color = System.Drawing.Color.RoyalBlue;
+            this.gbInfracciones.Click += new System.EventHandler(this.gbInfracciones_Click);
             // 
             // gbAccidentes
             // 

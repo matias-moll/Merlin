@@ -14,7 +14,7 @@ namespace Mrln.Bel
     //----------------------------------------------------------------------------
     //                         TNG Software BEL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 23/06/2018 19:06
+    // Fecha                    : 26/06/2018 00:37
     // Sistema                  : Mrln
     // Clase para Administrar   : Moviles y Tablas Hijas
     //----------------------------------------------------------------------------
@@ -27,6 +27,666 @@ namespace Mrln.Bel
     //    modificación que se realize sobre ella se perderá en la próxima
     //    regeneración.
     //****************************************************************************
+
+    #region Entidad: MvlAccidente
+    /// <summary>
+    /// Clase que representa la Entidad: MvlAccidente
+    /// </summary>
+    public sealed partial class EMvlAccidente : Entidad
+    {
+        #region Constructores
+        /// <summary>
+        /// Constructor
+        /// Llena la entidad a partir de una Row de la tabla: MvlAccidentes
+        /// </summary>
+        /// <param name="p_drDatos">DataRow con los datos de la entidad</param>
+        public EMvlAccidente(DataRow p_drDatos) :
+            base(p_drDatos)
+        {
+        }
+
+        /// <summary>
+        /// Construye una entidad desde un XML: MvlAccidente
+        /// </summary>
+        /// <param name="p_strXML">Datos en XML</param>
+        /// <param name="p_bEsNueva">T- La Entidad es Nueva / F- No</param>
+        public EMvlAccidente(string p_strXML) :
+            this(p_strXML, false)
+        {
+        }
+
+        /// <summary>
+        /// Construye una entidad desde un XML: MvlAccidente
+        /// </summary>
+        /// <param name="p_strXML">Datos en XML</param>
+        public EMvlAccidente(string p_strXML,
+                             bool p_bEsNueva)
+        {
+            // Fijamos la condicion de entidad nueva
+            base.m_bNew= p_bEsNueva;
+
+            // Obtenemos el Nodo de datos del XML
+            XmlDocument l_xdocData= new XmlDocument();
+            l_xdocData.InnerXml= p_strXML;
+            XmlNode l_xndData= l_xdocData.ChildNodes[0];
+
+            // Creamos una tabla compatible con la entidad
+            DataTable l_dtTemp= new DataTable();
+            l_dtTemp.Columns.AddRange(EMvlAccidente.Struct);
+
+            // Creamos una row a partir de la tabla creada y la
+            // llenamos con los valores iniciales
+            DataRow l_drTemp= l_dtTemp.NewRow();
+
+            l_drTemp["mva_ecd_patente"]= XMLRuts.ExtractXAttr(l_xndData, "mva_ecd_patente");
+            l_drTemp["mva_fyh_fecha"]= XMLRuts.ExtractXAttr(l_xndData, "mva_fyh_fecha", true);
+            l_drTemp["mva_ede_localidad"]= XMLRuts.ExtractXAttr(l_xndData, "mva_ede_localidad");
+            l_drTemp["mva_xde_direccion"]= XMLRuts.ExtractXAttr(l_xndData, "mva_xde_direccion");
+            l_drTemp["mva_ede_motivo"]= XMLRuts.ExtractXAttr(l_xndData, "mva_ede_motivo");
+            l_drTemp["mva_txt_detalle"]= XMLRuts.ExtractXAttr(l_xndData, "mva_txt_detalle");
+            l_drTemp["mva_xde_dotacion"]= XMLRuts.ExtractXAttr(l_xndData, "mva_xde_dotacion");
+
+            // Llenamos los campos fijos
+            XML2FixedFields(ref l_drTemp, l_xndData);
+
+            // Llamamos al metodo fijo
+            fNewFromXML(ref l_drTemp, l_xndData);
+
+            // Agregamos la Row creada a la tabla creada y creamos
+            // una entidad a partir de los datos
+            l_dtTemp.Rows.Add(l_drTemp);
+            SetInternalData(l_dtTemp, l_dtTemp.Rows[0]);
+        }
+
+        /// <summary>
+        /// Constructor 
+        /// Privado para crear clases vacias
+        /// </summary>
+        /// <param name="p_dtDatos">DataTable con 1 registro con los datos de la entidad</param>
+        private EMvlAccidente(DataTable p_dtDatos) :
+            base(p_dtDatos)
+        {
+        }
+        #endregion
+
+        #region Metodos publicos de la clase
+        //---------------------------------------------------------------
+        // Metodos públicos de la clase
+        //---------------------------------------------------------------
+
+        /// <summary>
+        /// Construye una entidad vacía: MvlAccidente
+        /// </summary>
+        /// <returns>Entidad vacia: MvlAccidente</returns>
+        public static EMvlAccidente NewEmpty()
+        {
+            // Creamos una tabla compatible con la entidad
+            DataTable l_dtTemp= new DataTable();
+            l_dtTemp.Columns.AddRange(EMvlAccidente.Struct);
+
+            // Creamos una row a partir de la tabla creada y la
+            // llenamos con los valores iniciales
+            DataRow l_drTemp= l_dtTemp.NewRow();
+
+            l_drTemp["mva_ecd_patente"]= "";
+            l_drTemp["mva_fyh_fecha"]= DateTimeRuts.Empty;
+            l_drTemp["mva_ede_localidad"]= "";
+            l_drTemp["mva_xde_direccion"]= "";
+            l_drTemp["mva_ede_motivo"]= "";
+            l_drTemp["mva_txt_detalle"]= "";
+            l_drTemp["mva_xde_dotacion"]= "";
+
+            // Agregamos la Row creada a la tabla creada y creamos
+            // una entidad a partir de la DataTable de 1 registro
+            l_dtTemp.Rows.Add(l_drTemp);
+            EMvlAccidente l_entRet= new EMvlAccidente(l_dtTemp);
+            l_dtTemp.Dispose();
+            return l_entRet;
+        }
+
+        /// <summary>
+        /// Construye una entidad con datos de parametro: MvlAccidente
+        /// </summary>
+        /// <param name="p_strPatente">Patente</param>
+        /// <param name="p_dtFecha">Fecha</param>
+        /// <param name="p_strLocalidad">Localidad</param>
+        /// <param name="p_strDireccion">Direccion</param>
+        /// <param name="p_strMotivo">Motivo</param>
+        /// <param name="p_strDetalle">Detalle</param>
+        /// <param name="p_strDotacion">Dotación</param>
+        /// <returns>Entidad: MvlAccidente</returns>
+        public static EMvlAccidente NewFilled(string p_strPatente,
+                                              DateTime p_dtFecha,
+                                              string p_strLocalidad,
+                                              string p_strDireccion,
+                                              string p_strMotivo,
+                                              string p_strDetalle,
+                                              string p_strDotacion)
+        {
+            // Creamos una tabla compatible con la entidad
+            DataTable l_dtTemp= new DataTable();
+            l_dtTemp.Columns.AddRange(EMvlAccidente.Struct);
+
+            // Creamos una row a partir de la tabla creada y la
+            // llenamos con los valores iniciales
+            DataRow l_drTemp= l_dtTemp.NewRow();
+
+            l_drTemp["mva_ecd_patente"]= p_strPatente;
+            l_drTemp["mva_fyh_fecha"]= p_dtFecha;
+            l_drTemp["mva_ede_localidad"]= p_strLocalidad;
+            l_drTemp["mva_xde_direccion"]= p_strDireccion;
+            l_drTemp["mva_ede_motivo"]= p_strMotivo;
+            l_drTemp["mva_txt_detalle"]= p_strDetalle;
+            l_drTemp["mva_xde_dotacion"]= p_strDotacion;
+
+            // Agregamos la Row creada a la tabla creada y creamos
+            // una entidad a partir de la DataTable de 1 registro
+            l_dtTemp.Rows.Add(l_drTemp);
+            EMvlAccidente l_entRet= new EMvlAccidente(l_dtTemp);
+            l_dtTemp.Dispose();
+            return l_entRet;
+        }
+        #endregion
+
+        #region Formateadores
+        #endregion
+
+        #region Propiedades de la clase
+        //---------------------------------------------------------------
+        // Propiedades de la clase
+        //---------------------------------------------------------------
+
+        /// <summary>
+        /// Devuelve la estructura de la tabla interna de la entidad
+        /// </summary>
+        public static DataColumn[] Struct
+        {
+            get {
+                // Creamos el vector de DataColumns y lo llenamos
+                DataColumn[] l_dcStruct= new DataColumn[11];
+
+                l_dcStruct[0]= new DataColumn("mva_ecd_patente", typeof(string));
+                l_dcStruct[1]= new DataColumn("mva_fyh_fecha", typeof(DateTime));
+                l_dcStruct[2]= new DataColumn("mva_ede_localidad", typeof(string));
+                l_dcStruct[3]= new DataColumn("mva_xde_direccion", typeof(string));
+                l_dcStruct[4]= new DataColumn("mva_ede_motivo", typeof(string));
+                l_dcStruct[5]= new DataColumn("mva_txt_detalle", typeof(string));
+                l_dcStruct[6]= new DataColumn("mva_xde_dotacion", typeof(string));
+                EMvlAccidente.FillFixedFields(ref l_dcStruct, 7);
+
+                // Devolvemos el vector creado
+                return l_dcStruct;
+            }
+        }
+
+        /// <summary>
+        /// Patente
+        /// </summary>
+        public static string PatenteCmp
+        {
+           get {return "mva_ecd_patente";}
+        }
+
+        /// <summary>
+        /// Patente
+        /// </summary>
+        public string Patente
+        {
+            get {return (string) InternalData["mva_ecd_patente"];}
+            set {
+                if (value.Trim().Length > 8) value= value.Trim().Substring(0,8);
+                InternalData["mva_ecd_patente"]= value.Trim().ToUpper();
+            }
+        }
+
+        /// <summary>
+        /// Fecha
+        /// </summary>
+        public static string FechaCmp
+        {
+           get {return "mva_fyh_fecha";}
+        }
+
+        /// <summary>
+        /// Fecha
+        /// </summary>
+        public DateTime Fecha
+        {
+            get {return (DateTime) InternalData["mva_fyh_fecha"];}
+            set {InternalData["mva_fyh_fecha"]= value;}
+        }
+
+        /// <summary>
+        /// Localidad
+        /// </summary>
+        public static string LocalidadCmp
+        {
+           get {return "mva_ede_localidad";}
+        }
+
+        /// <summary>
+        /// Localidad
+        /// </summary>
+        public string Localidad
+        {
+            get {return ((string) InternalData["mva_ede_localidad"]).Trim();}
+            set {
+                if (value.Trim().Length > 60) value= value.Trim().Substring(0,60);
+                InternalData["mva_ede_localidad"]= value.Trim().ToUpper();
+            }
+        }
+
+        /// <summary>
+        /// Direccion
+        /// </summary>
+        public static string DireccionCmp
+        {
+           get {return "mva_xde_direccion";}
+        }
+
+        /// <summary>
+        /// Direccion
+        /// </summary>
+        public string Direccion
+        {
+            get {return ((string) InternalData["mva_xde_direccion"]).Trim();}
+            set {
+                if (value.Trim().Length > 120) value= value.Trim().Substring(0,120);
+                InternalData["mva_xde_direccion"]= value.Trim();
+            }
+        }
+
+        /// <summary>
+        /// Motivo
+        /// </summary>
+        public static string MotivoCmp
+        {
+           get {return "mva_ede_motivo";}
+        }
+
+        /// <summary>
+        /// Motivo
+        /// </summary>
+        public string Motivo
+        {
+            get {return ((string) InternalData["mva_ede_motivo"]).Trim();}
+            set {
+                if (value.Trim().Length > 60) value= value.Trim().Substring(0,60);
+                InternalData["mva_ede_motivo"]= value.Trim().ToUpper();
+            }
+        }
+
+        /// <summary>
+        /// Detalle
+        /// </summary>
+        public static string DetalleCmp
+        {
+           get {return "mva_txt_detalle";}
+        }
+
+        /// <summary>
+        /// Detalle
+        /// </summary>
+        public string Detalle
+        {
+            get {return (string) InternalData["mva_txt_detalle"];}
+            set {InternalData["mva_txt_detalle"]= value;}
+        }
+
+        /// <summary>
+        /// Dotación
+        /// </summary>
+        public static string DotacionCmp
+        {
+           get {return "mva_xde_dotacion";}
+        }
+
+        /// <summary>
+        /// Dotación
+        /// </summary>
+        public string Dotacion
+        {
+            get {return ((string) InternalData["mva_xde_dotacion"]).Trim();}
+            set {
+                if (value.Trim().Length > 120) value= value.Trim().Substring(0,120);
+                InternalData["mva_xde_dotacion"]= value.Trim();
+            }
+        }
+
+        /// <summary>
+        /// Devuelve la entidad [EMvlAccidente] como XMLDocument en formato string
+        /// </summary>
+        public string XMLData
+        {
+            get {return XMLEncode.InnerXml;}
+        }
+
+        /// <summary>
+        /// Devuelve la entidad [EMvlAccidente] como XMLDocument
+        /// </summary>
+        public XmlDocument XMLEncode
+        {
+            get {
+                //Creamos un Nodo de un Documento XML
+                XmlDocument l_xdocData= new XmlDocument();
+                XmlNode l_xndEntidad= l_xdocData.CreateNode(XmlNodeType.Element, "EMvlAccidente", null);
+
+                // Asignamos los atributos al nodo
+                l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "mva_ecd_patente", Patente));
+                l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "mva_fyh_fecha", Fecha));
+                l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "mva_ede_localidad", Localidad));
+                l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "mva_xde_direccion", Direccion));
+                l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "mva_ede_motivo", Motivo));
+                l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "mva_txt_detalle", Detalle));
+                l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "mva_xde_dotacion", Dotacion));
+
+                // Asignamos los campos fijos
+                FixedFields2XML(l_xdocData, ref l_xndEntidad);
+
+                // Llamamos al metodo fijo
+                fAddXMLData(ref l_xdocData, ref l_xndEntidad);
+
+                // Armamos el documento y lo devolvemos
+                l_xdocData.AppendChild(l_xndEntidad);
+                return l_xdocData;
+            }
+        }
+        #endregion
+    }
+    #endregion
+
+    #region Lista-Entidad: MovilesAccidentes
+    /// <summary>
+    /// Clase que representa la Lista-Entidad: MovilesAccidentes
+    /// </summary>
+    public sealed partial class LEMovilesAccidentes : ListaEntidades, IEnumerable<EMvlAccidente>
+    {
+        #region Constructores
+        /// <summary>
+        /// Constructor
+        /// Llena la lista-entidad a partir de una Tabla: MvlAccidentes
+        /// </summary>
+        /// <param name="p_dtDatos">DataTable con los datos de la entidad</param>
+        public LEMovilesAccidentes(DataTable p_dtDatos) :
+            base(p_dtDatos)
+        {
+        }
+
+        /// <summary>
+        /// Constructor
+        /// Llena la lista-entidad a partir de un XML
+        /// </summary>
+        /// <param name="p_dtDatos">DataTable con los datos de la entidad</param>
+        public LEMovilesAccidentes(string p_strXMLData) :
+            base(EMvlAccidente.Struct)
+        {
+            // Creamos el documento XML
+            XmlDocument l_xdocData= new XmlDocument();
+            l_xdocData.InnerXml= p_strXMLData;
+            XmlElement l_xelTemp= l_xdocData.DocumentElement;
+
+            // Agregamos cada item a la LE
+            foreach (XmlNode l_xndItem in l_xelTemp.ChildNodes)
+                AddEntity(new EMvlAccidente(l_xndItem.OuterXml));
+        }
+
+        /// <summary>
+        /// Constructor
+        /// Constuye la lista-entidad vacia a partir de una lista de columnas
+        /// correspondiente a una entidad
+        /// </summary>
+        /// <param name="p_dcEstructura">Columnas de la estructura</param>
+        private LEMovilesAccidentes(DataColumn[] p_dcEstructura) :
+            base(p_dcEstructura)
+        {
+        }
+        #endregion
+
+        #region Metodos publicos de la clase
+        //---------------------------------------------------------------
+        // Metodos publicos
+        //---------------------------------------------------------------
+
+        /// <summary>
+        /// Construye una lista-entidad vacía: MovilesAccidentes
+        /// </summary>
+        /// <returns>Lista-Entidad vacia: MvlAccidentes</returns>
+        public static LEMovilesAccidentes NewEmpty()
+        {
+            return new LEMovilesAccidentes(EMvlAccidente.Struct);
+        }
+
+        /// <summary>
+        /// Agrega una entidad a la lista
+        /// </summary>
+        /// <param name="p_entEMvlAccidente">Entidad a agregar</param>
+        public void AddEntity(EMvlAccidente p_entEMvlAccidente)
+        {
+            base.AddEntity(p_entEMvlAccidente);
+        }
+
+        /// <summary>
+        /// Remueve una entidad [MvlAccidente] por clave
+        /// </summary>
+        public int RemoveEntity(string p_strPatente,
+                                DateTime p_dtFecha)
+        {
+            // Buscamos la fila mediante un filtro
+            int l_iRet= 0;
+
+            m_dtDatos.DefaultView.RowFilter= 
+                "mva_ecd_patente = " + Ruts.Co(p_strPatente) + " and " + 
+                "convert(mva_fyh_fecha,'System.String') = '" + p_dtFecha + "'";
+
+            if (m_dtDatos.DefaultView.Count == 1) {
+                // La borramos
+                m_dtDatos.Rows.Remove(m_dtDatos.DefaultView[0].Row);
+                l_iRet= 1;
+            }
+
+            // Quito el filtro
+            m_dtDatos.DefaultView.RowFilter= "";
+            return l_iRet;
+        }
+
+        /// <summary>
+        /// Verifca si una entidad [MvlAccidente] esta en la lista
+        /// </summary>
+        public bool Contains(string p_strPatente,
+                             DateTime p_dtFecha)
+        {
+            using (EMvlAccidente l_entTemp= this[p_strPatente,
+                                                 p_dtFecha])
+            {
+                // Indicamos si existe o no
+                return (l_entTemp != null);
+            }
+        }
+
+        /// <summary>
+        /// Devuelve el enumerador de la lista-entidades: MovilesAccidentes
+        /// </summary>
+        /// <returns>Enumerador de las entidades en la lista</returns>
+        public new IEnumerator<EMvlAccidente> GetEnumerator() 
+        {
+            EMvlAccidente l_entTemp= null;
+
+            foreach (DataRowView l_drvTemp in m_dtDatos.DefaultView) {
+                l_entTemp= new EMvlAccidente(l_drvTemp.Row);
+                yield return l_entTemp;
+            }
+        }
+
+        /// <summary>
+        /// Devuelve la lista entidad como un array de entidades: MovilesAccidentes
+        /// </summary>
+        /// <returns>Array de entidades</returns>
+        public ArrayList GetAsArray()
+        {
+            // Llenamos el array con las entidades
+            ArrayList l_alRet= new ArrayList();
+
+            foreach (EMvlAccidente l_entItem in this)
+                l_alRet.Add(l_entItem);
+
+            return l_alRet;
+        }
+
+        /// <summary>
+        /// Devuelve la lista entidad como una LET: MovilesAccidentes
+        /// </summary>
+        /// <returns>Lista Entidad Tipada</returns>
+        public LETMovilesAccidentes GetAsLET()
+        {
+            // Llenamos la lista tipada
+            LETMovilesAccidentes l_lentRet= new LETMovilesAccidentes();
+
+            foreach (EMvlAccidente l_entItem in this)
+                l_lentRet.Add(l_entItem);
+
+            return l_lentRet;
+        }
+
+        /// <summary>
+        /// Devuelve la lista entidad como una List<MovilesAccidentes>
+        /// </summary>
+        /// <returns>Lista de entidades</returns>
+        public List<EMvlAccidente> ToList()
+        {
+            // Usamos el metodo GetAsLET
+            return (List<EMvlAccidente>) GetAsLET();
+        }
+        #endregion
+
+        #region Propiedades de la clase
+        //---------------------------------------------------------------
+        // Propiedades de la clase
+        //---------------------------------------------------------------
+
+        /// <summary>
+        /// Indexer para acceder a cada entidad [MvlAccidente] por indice
+        /// </summary>
+        public new EMvlAccidente this[long p_lRow]
+        {
+            get {
+                // Recuperamos la fila solicitada
+                DataRow l_drDatos= base[(int) p_lRow];
+                if (l_drDatos == null) return null;
+
+                // Devolvemos una entidad MvlAccidente con los datos de la fila
+                return new EMvlAccidente(l_drDatos);
+            }
+        }
+
+        /// <summary>
+        /// Indexer para acceder a cada entidad [MvlAccidente] por clave
+        /// </summary>
+        public EMvlAccidente this[string p_strPatente,
+                                  DateTime p_dtFecha]
+        {
+            get {
+                // Buscamos la fila mediante un filtro
+                DataRow l_drData= null;
+
+                m_dtDatos.DefaultView.RowFilter= 
+                    "mva_ecd_patente = " + Ruts.Co(p_strPatente) + " and " + 
+                    "convert(mva_fyh_fecha,'System.String') = '" + p_dtFecha + "'";
+
+                if (m_dtDatos.DefaultView.Count == 1)
+                    l_drData= m_dtDatos.DefaultView[0].Row;
+
+                // Quito el filtro
+                m_dtDatos.DefaultView.RowFilter= "";
+
+                // Devolvemos una entidad MvlAccidente con los datos de la fila
+                if (l_drData == null) return null;
+                return new EMvlAccidente(l_drData);
+            }
+        }
+
+        /// <summary>
+        /// Devuelve la ListaEntidad como XML en string
+        /// </summary>
+        public string XMLData
+        {
+            get {return XMLEncode.InnerXml;}
+        }
+
+        /// <summary>
+        /// Devuelve la ListaEntidad como XML
+        /// </summary>
+        public XmlDocument XMLEncode
+        {
+            get {
+                // Construimos el XML
+                XmlDocument l_xdocData= new XmlDocument();
+                XmlNode l_xndEntidad= l_xdocData.CreateNode(XmlNodeType.Element, "LEMovilesAccidentes", null);
+
+                foreach (EMvlAccidente l_entDExtra in this)
+                    l_xndEntidad.AppendChild(l_xdocData.ImportNode(l_entDExtra.XMLEncode.ChildNodes[0], false));
+
+                l_xdocData.AppendChild(l_xndEntidad);
+                return l_xdocData;
+            }
+        }
+        #endregion
+    }
+    #endregion
+
+    #region Lista-Entidad-Tipada: MovilesAccidentes
+    /// <summary>
+    /// Clase que representa la Lista-Entidad-Tipada: MovilesAccidentes
+    /// </summary>
+    public sealed partial class LETMovilesAccidentes : LET<EMvlAccidente>
+    {
+        #region Metodos publicos de la clase
+        //---------------------------------------------------------------
+        // Metodos publicos
+        //---------------------------------------------------------------
+
+        /// <summary>
+        /// Devuelve la lista entidad tipada como una LE: MovilesAccidentes
+        /// </summary>
+        /// <returns>Lista Entidad</returns>
+        public LEMovilesAccidentes GetAsLE()
+        {
+            // Llenamos la lista
+            LEMovilesAccidentes l_lentRet= LEMovilesAccidentes.NewEmpty();
+
+            foreach (EMvlAccidente l_entItem in this)
+                l_lentRet.AddEntity(l_entItem);
+
+            return l_lentRet;
+        }
+        #endregion
+
+        #region Propiedades de la clase
+        //---------------------------------------------------------------
+        // Propiedades de la clase
+        //---------------------------------------------------------------
+
+        /// <summary>
+        /// Indexer para acceder a cada entidad [MvlAccidente] por clave
+        /// </summary>
+        public EMvlAccidente this[string p_strPatente,
+                                  DateTime p_dtFecha]
+        {
+            get {
+                // Buscamos la entidad
+                foreach (EMvlAccidente l_entItem in this) {
+                    // Si existe -> la devolvemos
+                    if ((l_entItem.Patente == p_strPatente) &&
+                        (l_entItem.Fecha == p_dtFecha))
+                        return l_entItem;
+                }
+
+                // No existe
+                return null;
+            }
+        }
+        #endregion
+    }
+    #endregion
 
     #region Entidad: MovilCombus
     /// <summary>
@@ -1815,6 +2475,684 @@ namespace Mrln.Bel
     }
     #endregion
 
+    #region Entidad: MvlInfraccion
+    /// <summary>
+    /// Clase que representa la Entidad: MvlInfraccion
+    /// </summary>
+    public sealed partial class EMvlInfraccion : Entidad
+    {
+        #region Constructores
+        /// <summary>
+        /// Constructor
+        /// Llena la entidad a partir de una Row de la tabla: MvlInfracciones
+        /// </summary>
+        /// <param name="p_drDatos">DataRow con los datos de la entidad</param>
+        public EMvlInfraccion(DataRow p_drDatos) :
+            base(p_drDatos)
+        {
+        }
+
+        /// <summary>
+        /// Construye una entidad desde un XML: MvlInfraccion
+        /// </summary>
+        /// <param name="p_strXML">Datos en XML</param>
+        /// <param name="p_bEsNueva">T- La Entidad es Nueva / F- No</param>
+        public EMvlInfraccion(string p_strXML) :
+            this(p_strXML, false)
+        {
+        }
+
+        /// <summary>
+        /// Construye una entidad desde un XML: MvlInfraccion
+        /// </summary>
+        /// <param name="p_strXML">Datos en XML</param>
+        public EMvlInfraccion(string p_strXML,
+                              bool p_bEsNueva)
+        {
+            // Fijamos la condicion de entidad nueva
+            base.m_bNew= p_bEsNueva;
+
+            // Obtenemos el Nodo de datos del XML
+            XmlDocument l_xdocData= new XmlDocument();
+            l_xdocData.InnerXml= p_strXML;
+            XmlNode l_xndData= l_xdocData.ChildNodes[0];
+
+            // Creamos una tabla compatible con la entidad
+            DataTable l_dtTemp= new DataTable();
+            l_dtTemp.Columns.AddRange(EMvlInfraccion.Struct);
+
+            // Creamos una row a partir de la tabla creada y la
+            // llenamos con los valores iniciales
+            DataRow l_drTemp= l_dtTemp.NewRow();
+
+            l_drTemp["mvi_ecd_patente"]= XMLRuts.ExtractXAttr(l_xndData, "mvi_ecd_patente");
+            l_drTemp["mvi_fyh_fecha"]= XMLRuts.ExtractXAttr(l_xndData, "mvi_fyh_fecha", true);
+            l_drTemp["mvi_cod_codmotivo"]= XMLRuts.ExtractXAttr(l_xndData, "mvi_cod_codmotivo");
+            l_drTemp["mvi_ede_lugar"]= XMLRuts.ExtractXAttr(l_xndData, "mvi_ede_lugar");
+            l_drTemp["mvi_cd1_pagada"]= XMLRuts.ExtractXAttr(l_xndData, "mvi_cd1_pagada");
+            l_drTemp["mvi_imp_importe"]= XMLRuts.ExtractXAttr(l_xndData, "mvi_imp_importe", (decimal) 0);
+            l_drTemp["mvi_txt_comentario"]= XMLRuts.ExtractXAttr(l_xndData, "mvi_txt_comentario");
+            l_drTemp["mvi_cd1_anulada"]= XMLRuts.ExtractXAttr(l_xndData, "mvi_cd1_anulada");
+
+            // Llenamos los campos fijos
+            XML2FixedFields(ref l_drTemp, l_xndData);
+
+            // Llamamos al metodo fijo
+            fNewFromXML(ref l_drTemp, l_xndData);
+
+            // Agregamos la Row creada a la tabla creada y creamos
+            // una entidad a partir de los datos
+            l_dtTemp.Rows.Add(l_drTemp);
+            SetInternalData(l_dtTemp, l_dtTemp.Rows[0]);
+        }
+
+        /// <summary>
+        /// Constructor 
+        /// Privado para crear clases vacias
+        /// </summary>
+        /// <param name="p_dtDatos">DataTable con 1 registro con los datos de la entidad</param>
+        private EMvlInfraccion(DataTable p_dtDatos) :
+            base(p_dtDatos)
+        {
+        }
+        #endregion
+
+        #region Metodos publicos de la clase
+        //---------------------------------------------------------------
+        // Metodos públicos de la clase
+        //---------------------------------------------------------------
+
+        /// <summary>
+        /// Construye una entidad vacía: MvlInfraccion
+        /// </summary>
+        /// <returns>Entidad vacia: MvlInfraccion</returns>
+        public static EMvlInfraccion NewEmpty()
+        {
+            // Creamos una tabla compatible con la entidad
+            DataTable l_dtTemp= new DataTable();
+            l_dtTemp.Columns.AddRange(EMvlInfraccion.Struct);
+
+            // Creamos una row a partir de la tabla creada y la
+            // llenamos con los valores iniciales
+            DataRow l_drTemp= l_dtTemp.NewRow();
+
+            l_drTemp["mvi_ecd_patente"]= "";
+            l_drTemp["mvi_fyh_fecha"]= DateTimeRuts.Empty;
+            l_drTemp["mvi_cod_codmotivo"]= "";
+            l_drTemp["mvi_ede_lugar"]= "";
+            l_drTemp["mvi_cd1_pagada"]= "";
+            l_drTemp["mvi_imp_importe"]= 0;
+            l_drTemp["mvi_txt_comentario"]= "";
+            l_drTemp["mvi_cd1_anulada"]= "";
+
+            // Agregamos la Row creada a la tabla creada y creamos
+            // una entidad a partir de la DataTable de 1 registro
+            l_dtTemp.Rows.Add(l_drTemp);
+            EMvlInfraccion l_entRet= new EMvlInfraccion(l_dtTemp);
+            l_dtTemp.Dispose();
+            return l_entRet;
+        }
+
+        /// <summary>
+        /// Construye una entidad con datos de parametro: MvlInfraccion
+        /// </summary>
+        /// <param name="p_strPatente">Patente</param>
+        /// <param name="p_dtFecha">Fecha</param>
+        /// <param name="p_strCodmotivo">Motivo</param>
+        /// <param name="p_strLugar">Lugar</param>
+        /// <param name="p_strPagada">Pagada</param>
+        /// <param name="p_dcImporte">Importe</param>
+        /// <param name="p_strComentario">Comentario</param>
+        /// <param name="p_strAnulada">Anulada</param>
+        /// <returns>Entidad: MvlInfraccion</returns>
+        public static EMvlInfraccion NewFilled(string p_strPatente,
+                                               DateTime p_dtFecha,
+                                               string p_strCodmotivo,
+                                               string p_strLugar,
+                                               string p_strPagada,
+                                               decimal p_dcImporte,
+                                               string p_strComentario,
+                                               string p_strAnulada)
+        {
+            // Creamos una tabla compatible con la entidad
+            DataTable l_dtTemp= new DataTable();
+            l_dtTemp.Columns.AddRange(EMvlInfraccion.Struct);
+
+            // Creamos una row a partir de la tabla creada y la
+            // llenamos con los valores iniciales
+            DataRow l_drTemp= l_dtTemp.NewRow();
+
+            l_drTemp["mvi_ecd_patente"]= p_strPatente;
+            l_drTemp["mvi_fyh_fecha"]= p_dtFecha;
+            l_drTemp["mvi_cod_codmotivo"]= p_strCodmotivo;
+            l_drTemp["mvi_ede_lugar"]= p_strLugar;
+            l_drTemp["mvi_cd1_pagada"]= p_strPagada;
+            l_drTemp["mvi_imp_importe"]= p_dcImporte;
+            l_drTemp["mvi_txt_comentario"]= p_strComentario;
+            l_drTemp["mvi_cd1_anulada"]= p_strAnulada;
+
+            // Agregamos la Row creada a la tabla creada y creamos
+            // una entidad a partir de la DataTable de 1 registro
+            l_dtTemp.Rows.Add(l_drTemp);
+            EMvlInfraccion l_entRet= new EMvlInfraccion(l_dtTemp);
+            l_dtTemp.Dispose();
+            return l_entRet;
+        }
+        #endregion
+
+        #region Formateadores
+        #endregion
+
+        #region Propiedades de la clase
+        //---------------------------------------------------------------
+        // Propiedades de la clase
+        //---------------------------------------------------------------
+
+        /// <summary>
+        /// Devuelve la estructura de la tabla interna de la entidad
+        /// </summary>
+        public static DataColumn[] Struct
+        {
+            get {
+                // Creamos el vector de DataColumns y lo llenamos
+                DataColumn[] l_dcStruct= new DataColumn[12];
+
+                l_dcStruct[0]= new DataColumn("mvi_ecd_patente", typeof(string));
+                l_dcStruct[1]= new DataColumn("mvi_fyh_fecha", typeof(DateTime));
+                l_dcStruct[2]= new DataColumn("mvi_cod_codmotivo", typeof(string));
+                l_dcStruct[3]= new DataColumn("mvi_ede_lugar", typeof(string));
+                l_dcStruct[4]= new DataColumn("mvi_cd1_pagada", typeof(string));
+                l_dcStruct[5]= new DataColumn("mvi_imp_importe", typeof(decimal));
+                l_dcStruct[6]= new DataColumn("mvi_txt_comentario", typeof(string));
+                l_dcStruct[7]= new DataColumn("mvi_cd1_anulada", typeof(string));
+                EMvlInfraccion.FillFixedFields(ref l_dcStruct, 8);
+
+                // Devolvemos el vector creado
+                return l_dcStruct;
+            }
+        }
+
+        /// <summary>
+        /// Patente
+        /// </summary>
+        public static string PatenteCmp
+        {
+           get {return "mvi_ecd_patente";}
+        }
+
+        /// <summary>
+        /// Patente
+        /// </summary>
+        public string Patente
+        {
+            get {return (string) InternalData["mvi_ecd_patente"];}
+            set {
+                if (value.Trim().Length > 8) value= value.Trim().Substring(0,8);
+                InternalData["mvi_ecd_patente"]= value.Trim().ToUpper();
+            }
+        }
+
+        /// <summary>
+        /// Fecha
+        /// </summary>
+        public static string FechaCmp
+        {
+           get {return "mvi_fyh_fecha";}
+        }
+
+        /// <summary>
+        /// Fecha
+        /// </summary>
+        public DateTime Fecha
+        {
+            get {return (DateTime) InternalData["mvi_fyh_fecha"];}
+            set {InternalData["mvi_fyh_fecha"]= value;}
+        }
+
+        /// <summary>
+        /// Motivo
+        /// </summary>
+        public static string CodmotivoCmp
+        {
+           get {return "mvi_cod_codmotivo";}
+        }
+
+        /// <summary>
+        /// Motivo
+        /// </summary>
+        public string Codmotivo
+        {
+            get {return (string) InternalData["mvi_cod_codmotivo"];}
+            set {InternalData["mvi_cod_codmotivo"]= value;}
+        }
+
+        /// <summary>
+        /// Lugar
+        /// </summary>
+        public static string LugarCmp
+        {
+           get {return "mvi_ede_lugar";}
+        }
+
+        /// <summary>
+        /// Lugar
+        /// </summary>
+        public string Lugar
+        {
+            get {return ((string) InternalData["mvi_ede_lugar"]).Trim();}
+            set {
+                if (value.Trim().Length > 60) value= value.Trim().Substring(0,60);
+                InternalData["mvi_ede_lugar"]= value.Trim();
+            }
+        }
+
+        /// <summary>
+        /// Pagada
+        /// </summary>
+        public static string PagadaCmp
+        {
+           get {return "mvi_cd1_pagada";}
+        }
+
+        /// <summary>
+        /// Pagada
+        /// </summary>
+        public string Pagada
+        {
+            get {return (string) InternalData["mvi_cd1_pagada"];}
+            set {InternalData["mvi_cd1_pagada"]= value;}
+        }
+
+        /// <summary>
+        /// Importe
+        /// </summary>
+        public static string ImporteCmp
+        {
+           get {return "mvi_imp_importe";}
+        }
+
+        /// <summary>
+        /// Importe
+        /// </summary>
+        public decimal Importe
+        {
+            get {return (decimal) InternalData["mvi_imp_importe"];}
+            set {InternalData["mvi_imp_importe"]= value;}
+        }
+
+        /// <summary>
+        /// Comentario
+        /// </summary>
+        public static string ComentarioCmp
+        {
+           get {return "mvi_txt_comentario";}
+        }
+
+        /// <summary>
+        /// Comentario
+        /// </summary>
+        public string Comentario
+        {
+            get {return (string) InternalData["mvi_txt_comentario"];}
+            set {InternalData["mvi_txt_comentario"]= value;}
+        }
+
+        /// <summary>
+        /// Anulada
+        /// </summary>
+        public static string AnuladaCmp
+        {
+           get {return "mvi_cd1_anulada";}
+        }
+
+        /// <summary>
+        /// Anulada
+        /// </summary>
+        public string Anulada
+        {
+            get {return ((string) InternalData["mvi_cd1_anulada"]).Trim();}
+            set {
+                if (value.Trim().Length > 1) value= value.Trim().Substring(0,1);
+                InternalData["mvi_cd1_anulada"]= value.Trim();
+            }
+        }
+
+        /// <summary>
+        /// Devuelve la entidad [EMvlInfraccion] como XMLDocument en formato string
+        /// </summary>
+        public string XMLData
+        {
+            get {return XMLEncode.InnerXml;}
+        }
+
+        /// <summary>
+        /// Devuelve la entidad [EMvlInfraccion] como XMLDocument
+        /// </summary>
+        public XmlDocument XMLEncode
+        {
+            get {
+                //Creamos un Nodo de un Documento XML
+                XmlDocument l_xdocData= new XmlDocument();
+                XmlNode l_xndEntidad= l_xdocData.CreateNode(XmlNodeType.Element, "EMvlInfraccion", null);
+
+                // Asignamos los atributos al nodo
+                l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "mvi_ecd_patente", Patente));
+                l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "mvi_fyh_fecha", Fecha));
+                l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "mvi_cod_codmotivo", Codmotivo));
+                l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "mvi_ede_lugar", Lugar));
+                l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "mvi_cd1_pagada", Pagada));
+                l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "mvi_imp_importe", Importe));
+                l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "mvi_txt_comentario", Comentario));
+                l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "mvi_cd1_anulada", Anulada));
+
+                // Asignamos los campos fijos
+                FixedFields2XML(l_xdocData, ref l_xndEntidad);
+
+                // Llamamos al metodo fijo
+                fAddXMLData(ref l_xdocData, ref l_xndEntidad);
+
+                // Armamos el documento y lo devolvemos
+                l_xdocData.AppendChild(l_xndEntidad);
+                return l_xdocData;
+            }
+        }
+        #endregion
+    }
+    #endregion
+
+    #region Lista-Entidad: MovilesInfracciones
+    /// <summary>
+    /// Clase que representa la Lista-Entidad: MovilesInfracciones
+    /// </summary>
+    public sealed partial class LEMovilesInfracciones : ListaEntidades, IEnumerable<EMvlInfraccion>
+    {
+        #region Constructores
+        /// <summary>
+        /// Constructor
+        /// Llena la lista-entidad a partir de una Tabla: MvlInfracciones
+        /// </summary>
+        /// <param name="p_dtDatos">DataTable con los datos de la entidad</param>
+        public LEMovilesInfracciones(DataTable p_dtDatos) :
+            base(p_dtDatos)
+        {
+        }
+
+        /// <summary>
+        /// Constructor
+        /// Llena la lista-entidad a partir de un XML
+        /// </summary>
+        /// <param name="p_dtDatos">DataTable con los datos de la entidad</param>
+        public LEMovilesInfracciones(string p_strXMLData) :
+            base(EMvlInfraccion.Struct)
+        {
+            // Creamos el documento XML
+            XmlDocument l_xdocData= new XmlDocument();
+            l_xdocData.InnerXml= p_strXMLData;
+            XmlElement l_xelTemp= l_xdocData.DocumentElement;
+
+            // Agregamos cada item a la LE
+            foreach (XmlNode l_xndItem in l_xelTemp.ChildNodes)
+                AddEntity(new EMvlInfraccion(l_xndItem.OuterXml));
+        }
+
+        /// <summary>
+        /// Constructor
+        /// Constuye la lista-entidad vacia a partir de una lista de columnas
+        /// correspondiente a una entidad
+        /// </summary>
+        /// <param name="p_dcEstructura">Columnas de la estructura</param>
+        private LEMovilesInfracciones(DataColumn[] p_dcEstructura) :
+            base(p_dcEstructura)
+        {
+        }
+        #endregion
+
+        #region Metodos publicos de la clase
+        //---------------------------------------------------------------
+        // Metodos publicos
+        //---------------------------------------------------------------
+
+        /// <summary>
+        /// Construye una lista-entidad vacía: MovilesInfracciones
+        /// </summary>
+        /// <returns>Lista-Entidad vacia: MvlInfracciones</returns>
+        public static LEMovilesInfracciones NewEmpty()
+        {
+            return new LEMovilesInfracciones(EMvlInfraccion.Struct);
+        }
+
+        /// <summary>
+        /// Agrega una entidad a la lista
+        /// </summary>
+        /// <param name="p_entEMvlInfraccion">Entidad a agregar</param>
+        public void AddEntity(EMvlInfraccion p_entEMvlInfraccion)
+        {
+            base.AddEntity(p_entEMvlInfraccion);
+        }
+
+        /// <summary>
+        /// Remueve una entidad [MvlInfraccion] por clave
+        /// </summary>
+        public int RemoveEntity(string p_strPatente,
+                                DateTime p_dtFecha)
+        {
+            // Buscamos la fila mediante un filtro
+            int l_iRet= 0;
+
+            m_dtDatos.DefaultView.RowFilter= 
+                "mvi_ecd_patente = " + Ruts.Co(p_strPatente) + " and " + 
+                "convert(mvi_fyh_fecha,'System.String') = '" + p_dtFecha + "'";
+
+            if (m_dtDatos.DefaultView.Count == 1) {
+                // La borramos
+                m_dtDatos.Rows.Remove(m_dtDatos.DefaultView[0].Row);
+                l_iRet= 1;
+            }
+
+            // Quito el filtro
+            m_dtDatos.DefaultView.RowFilter= "";
+            return l_iRet;
+        }
+
+        /// <summary>
+        /// Verifca si una entidad [MvlInfraccion] esta en la lista
+        /// </summary>
+        public bool Contains(string p_strPatente,
+                             DateTime p_dtFecha)
+        {
+            using (EMvlInfraccion l_entTemp= this[p_strPatente,
+                                                  p_dtFecha])
+            {
+                // Indicamos si existe o no
+                return (l_entTemp != null);
+            }
+        }
+
+        /// <summary>
+        /// Devuelve el enumerador de la lista-entidades: MovilesInfracciones
+        /// </summary>
+        /// <returns>Enumerador de las entidades en la lista</returns>
+        public new IEnumerator<EMvlInfraccion> GetEnumerator() 
+        {
+            EMvlInfraccion l_entTemp= null;
+
+            foreach (DataRowView l_drvTemp in m_dtDatos.DefaultView) {
+                l_entTemp= new EMvlInfraccion(l_drvTemp.Row);
+                yield return l_entTemp;
+            }
+        }
+
+        /// <summary>
+        /// Devuelve la lista entidad como un array de entidades: MovilesInfracciones
+        /// </summary>
+        /// <returns>Array de entidades</returns>
+        public ArrayList GetAsArray()
+        {
+            // Llenamos el array con las entidades
+            ArrayList l_alRet= new ArrayList();
+
+            foreach (EMvlInfraccion l_entItem in this)
+                l_alRet.Add(l_entItem);
+
+            return l_alRet;
+        }
+
+        /// <summary>
+        /// Devuelve la lista entidad como una LET: MovilesInfracciones
+        /// </summary>
+        /// <returns>Lista Entidad Tipada</returns>
+        public LETMovilesInfracciones GetAsLET()
+        {
+            // Llenamos la lista tipada
+            LETMovilesInfracciones l_lentRet= new LETMovilesInfracciones();
+
+            foreach (EMvlInfraccion l_entItem in this)
+                l_lentRet.Add(l_entItem);
+
+            return l_lentRet;
+        }
+
+        /// <summary>
+        /// Devuelve la lista entidad como una List<MovilesInfracciones>
+        /// </summary>
+        /// <returns>Lista de entidades</returns>
+        public List<EMvlInfraccion> ToList()
+        {
+            // Usamos el metodo GetAsLET
+            return (List<EMvlInfraccion>) GetAsLET();
+        }
+        #endregion
+
+        #region Propiedades de la clase
+        //---------------------------------------------------------------
+        // Propiedades de la clase
+        //---------------------------------------------------------------
+
+        /// <summary>
+        /// Indexer para acceder a cada entidad [MvlInfraccion] por indice
+        /// </summary>
+        public new EMvlInfraccion this[long p_lRow]
+        {
+            get {
+                // Recuperamos la fila solicitada
+                DataRow l_drDatos= base[(int) p_lRow];
+                if (l_drDatos == null) return null;
+
+                // Devolvemos una entidad MvlInfraccion con los datos de la fila
+                return new EMvlInfraccion(l_drDatos);
+            }
+        }
+
+        /// <summary>
+        /// Indexer para acceder a cada entidad [MvlInfraccion] por clave
+        /// </summary>
+        public EMvlInfraccion this[string p_strPatente,
+                                   DateTime p_dtFecha]
+        {
+            get {
+                // Buscamos la fila mediante un filtro
+                DataRow l_drData= null;
+
+                m_dtDatos.DefaultView.RowFilter= 
+                    "mvi_ecd_patente = " + Ruts.Co(p_strPatente) + " and " + 
+                    "convert(mvi_fyh_fecha,'System.String') = '" + p_dtFecha + "'";
+
+                if (m_dtDatos.DefaultView.Count == 1)
+                    l_drData= m_dtDatos.DefaultView[0].Row;
+
+                // Quito el filtro
+                m_dtDatos.DefaultView.RowFilter= "";
+
+                // Devolvemos una entidad MvlInfraccion con los datos de la fila
+                if (l_drData == null) return null;
+                return new EMvlInfraccion(l_drData);
+            }
+        }
+
+        /// <summary>
+        /// Devuelve la ListaEntidad como XML en string
+        /// </summary>
+        public string XMLData
+        {
+            get {return XMLEncode.InnerXml;}
+        }
+
+        /// <summary>
+        /// Devuelve la ListaEntidad como XML
+        /// </summary>
+        public XmlDocument XMLEncode
+        {
+            get {
+                // Construimos el XML
+                XmlDocument l_xdocData= new XmlDocument();
+                XmlNode l_xndEntidad= l_xdocData.CreateNode(XmlNodeType.Element, "LEMovilesInfracciones", null);
+
+                foreach (EMvlInfraccion l_entDExtra in this)
+                    l_xndEntidad.AppendChild(l_xdocData.ImportNode(l_entDExtra.XMLEncode.ChildNodes[0], false));
+
+                l_xdocData.AppendChild(l_xndEntidad);
+                return l_xdocData;
+            }
+        }
+        #endregion
+    }
+    #endregion
+
+    #region Lista-Entidad-Tipada: MovilesInfracciones
+    /// <summary>
+    /// Clase que representa la Lista-Entidad-Tipada: MovilesInfracciones
+    /// </summary>
+    public sealed partial class LETMovilesInfracciones : LET<EMvlInfraccion>
+    {
+        #region Metodos publicos de la clase
+        //---------------------------------------------------------------
+        // Metodos publicos
+        //---------------------------------------------------------------
+
+        /// <summary>
+        /// Devuelve la lista entidad tipada como una LE: MovilesInfracciones
+        /// </summary>
+        /// <returns>Lista Entidad</returns>
+        public LEMovilesInfracciones GetAsLE()
+        {
+            // Llenamos la lista
+            LEMovilesInfracciones l_lentRet= LEMovilesInfracciones.NewEmpty();
+
+            foreach (EMvlInfraccion l_entItem in this)
+                l_lentRet.AddEntity(l_entItem);
+
+            return l_lentRet;
+        }
+        #endregion
+
+        #region Propiedades de la clase
+        //---------------------------------------------------------------
+        // Propiedades de la clase
+        //---------------------------------------------------------------
+
+        /// <summary>
+        /// Indexer para acceder a cada entidad [MvlInfraccion] por clave
+        /// </summary>
+        public EMvlInfraccion this[string p_strPatente,
+                                   DateTime p_dtFecha]
+        {
+            get {
+                // Buscamos la entidad
+                foreach (EMvlInfraccion l_entItem in this) {
+                    // Si existe -> la devolvemos
+                    if ((l_entItem.Patente == p_strPatente) &&
+                        (l_entItem.Fecha == p_dtFecha))
+                        return l_entItem;
+                }
+
+                // No existe
+                return null;
+            }
+        }
+        #endregion
+    }
+    #endregion
+
     #region Entidad: MovilKms
     /// <summary>
     /// Clase que representa la Entidad: MovilKms
@@ -2374,9 +3712,11 @@ namespace Mrln.Bel
     public sealed partial class EMovil : Entidad
     {
         #region Miembros de la clase
+            private LEMovilesAccidentes m_lentMovilesAccidentes= null;
             private LEMovilesCombus m_lentMovilesCombus= null;
             private LEMovilesEquip m_lentMovilesEquip= null;
             private LEMovilesEstado m_lentMovilesEstado= null;
+            private LEMovilesInfracciones m_lentMovilesInfracciones= null;
             private LEMovilesKms m_lentMovilesKms= null;
         #endregion
 
@@ -2400,9 +3740,11 @@ namespace Mrln.Bel
             this(p_strXML, false)
         {
             // Creamos las listas-entidad hijas vacias
+            m_lentMovilesAccidentes= LEMovilesAccidentes.NewEmpty();
             m_lentMovilesCombus= LEMovilesCombus.NewEmpty();
             m_lentMovilesEquip= LEMovilesEquip.NewEmpty();
             m_lentMovilesEstado= LEMovilesEstado.NewEmpty();
+            m_lentMovilesInfracciones= LEMovilesInfracciones.NewEmpty();
             m_lentMovilesKms= LEMovilesKms.NewEmpty();
         }
 
@@ -2455,9 +3797,11 @@ namespace Mrln.Bel
             if (!p_bInitChilds) return;
 
             // Creamos las listas-entidad hijas vacias
+            m_lentMovilesAccidentes= LEMovilesAccidentes.NewEmpty();
             m_lentMovilesCombus= LEMovilesCombus.NewEmpty();
             m_lentMovilesEquip= LEMovilesEquip.NewEmpty();
             m_lentMovilesEstado= LEMovilesEstado.NewEmpty();
+            m_lentMovilesInfracciones= LEMovilesInfracciones.NewEmpty();
             m_lentMovilesKms= LEMovilesKms.NewEmpty();
         }
 
@@ -2470,9 +3814,11 @@ namespace Mrln.Bel
             base(p_dtDatos)
         {
             // Creamos las listas-entidad hijas vacias
+            m_lentMovilesAccidentes= LEMovilesAccidentes.NewEmpty();
             m_lentMovilesCombus= LEMovilesCombus.NewEmpty();
             m_lentMovilesEquip= LEMovilesEquip.NewEmpty();
             m_lentMovilesEstado= LEMovilesEstado.NewEmpty();
+            m_lentMovilesInfracciones= LEMovilesInfracciones.NewEmpty();
             m_lentMovilesKms= LEMovilesKms.NewEmpty();
         }
         #endregion
@@ -2806,6 +4152,15 @@ namespace Mrln.Bel
         }
 
         /// <summary>
+        /// Accidentes de los Moviles
+        /// </summary>
+        public LEMovilesAccidentes MovilesAccidentes
+        {
+            get {return m_lentMovilesAccidentes;}
+            set {m_lentMovilesAccidentes= value;}
+        }
+
+        /// <summary>
         /// Combustible en moviles
         /// </summary>
         public LEMovilesCombus MovilesCombus
@@ -2830,6 +4185,15 @@ namespace Mrln.Bel
         {
             get {return m_lentMovilesEstado;}
             set {m_lentMovilesEstado= value;}
+        }
+
+        /// <summary>
+        /// Infracciones de los Moviles
+        /// </summary>
+        public LEMovilesInfracciones MovilesInfracciones
+        {
+            get {return m_lentMovilesInfracciones;}
+            set {m_lentMovilesInfracciones= value;}
         }
 
         /// <summary>

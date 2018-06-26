@@ -16,7 +16,7 @@ namespace Mrln.Bll
     //----------------------------------------------------------------------------
     //                         TNG Software BLL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 23/06/2018 19:06
+    // Fecha                    : 26/06/2018 00:37
     // Sistema                  : Mrln
     // Clase para Administrar   : Tablas Generales
     //----------------------------------------------------------------------------
@@ -5334,6 +5334,678 @@ namespace Mrln.Bll
                 // Borramos los borrados lógicamente
                 Dal.Modelos.Pack(p_dbcAccess,
                                  ref p_smResult);
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Updt
+                p_smResult.BllError(l_expData);
+            }
+        }
+        #endregion
+
+        #region Metodos para métodos DAL definidos por el usuario
+        #endregion
+
+
+        //**********************************************************
+        //
+        // Funciones para la Tabla: MotivosInfracciones
+        // Usando ClaseDal        : MotivosInfracciones
+        //
+        //**********************************************************
+
+        //---------------------------------------------------------------
+        // Metodos públicos de la clase (visibles para la UIL)
+        //---------------------------------------------------------------
+        #region Metodos publicos de recupero
+
+        /// <summary>
+        /// Devuelve la grilla de la tabla: MotivosInfracciones
+        /// </summary>
+        /// <param name="p_bOnlyActive">Indica si solo se analizan los registros activos</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        /// <returns>Lista-entidad: LEMotivosInfracciones</returns>
+        public static LEMotivosInfracciones MtiUpFull(bool p_bOnlyActive,
+                                                      ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            DBConn l_dbcAccess= null;
+
+            try {
+                // Obtenemos una conexion
+                l_dbcAccess= DBRuts.GetConection(Connections.Dat);
+
+                // Pedimos los registros de la tabla
+                return MtiUpfl(l_dbcAccess, p_bOnlyActive, ref p_smResult);
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion UpFull
+                p_smResult.BllError(l_expData);
+                return null;
+            }
+            finally {
+                // Si pude abrir la conexion -> la cierro
+                if (l_dbcAccess != null) l_dbcAccess.Close();
+            }
+        }
+
+        /// <summary>
+        /// Devuelve una entidad: EMotivoInfraccion
+        /// </summary>
+        /// <param name="p_strCodigo">Código</param>
+        /// <param name="p_bOnlyActive">Indica si solo se analizan los registros activos</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        /// <returns>Entidad: EMotivoInfraccion</returns>
+        public static EMotivoInfraccion MtiGet(string p_strCodigo,
+                                               bool p_bOnlyActive,
+                                               ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            DBConn l_dbcAccess= null;
+
+            try {
+                // Obtenemos una conexion
+                l_dbcAccess= DBRuts.GetConection(Connections.Dat);
+
+                // Pedimos la entidad: EMotivoInfraccion
+                return MtiSrch(l_dbcAccess,
+                               p_strCodigo,
+                               p_bOnlyActive,
+                               ref p_smResult);
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Get
+                p_smResult.BllError(l_expData);
+                return null;
+            }
+            finally {
+                // Si pude abrir la conexion -> la cierro
+                if (l_dbcAccess != null) l_dbcAccess.Close();
+            }
+        }
+        #endregion
+
+        #region Metodos publicos de grabacion
+
+        /// <summary>
+        /// Agrega o modifica un registro de la tabla: MotivosInfracciones
+        /// </summary>
+        /// <param name="p_entMotivoInfraccion">Entidad con los datos a procesar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        public static void MtiSave(EMotivoInfraccion p_entMotivoInfraccion,
+                                   ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            DBConn l_dbcAccess= null;
+
+            try {
+                // Obtenemos una conexion y abrimos una transaccion
+                l_dbcAccess= DBRuts.GetConection(Connections.Dat);
+                l_dbcAccess.BeginTransaction();
+
+                // Grabamos la entidad: EMotivoInfraccion
+                MtiSSav(l_dbcAccess, p_entMotivoInfraccion, ref p_smResult);
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Save
+                p_smResult.BllError(l_expData);
+            }
+            finally {
+                // Si pude abrir la conexion
+                if (l_dbcAccess != null) {
+                    // Finalizo la transacción y la cierro
+                    l_dbcAccess.EndTransaction(p_smResult);
+                    l_dbcAccess.Close();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Habilita/Deshabilita un registro de la tabla: MotivosInfracciones
+        /// </summary>
+        /// <param name="p_bEnable">Tipo de operacion</param>
+        /// <param name="p_strCodigo">Código</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        public static void MtiEnabled(bool p_bEnable,
+                                      string p_strCodigo,
+                                      int p_iFxdVersion,
+                                      ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            DBConn l_dbcAccess= null;
+
+            try {
+                // Obtenemos una conexion
+                l_dbcAccess= DBRuts.GetConection(Connections.Dat);
+                l_dbcAccess.BeginTransaction();
+
+                // Procesamos codigo fijo
+                MtiEnabled_f(l_dbcAccess,
+                             p_bEnable,
+                             p_strCodigo,
+                             ref p_iFxdVersion,
+                             ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // Verificamos la clave a modificar
+                MtiVKey(l_dbcAccess,
+                        p_strCodigo,
+                        ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // El registro tiene que existir
+                if (p_smResult.ICodeEs(BllCodes.KeyDsntFound)) {
+                    // Error. La clave no existe
+                    p_smResult.BllWarning("El ítem (MotivoInfraccion) que intenta modificar no existe en el sistema.","");
+                    return;
+                }
+
+                // Debe coincidir el número de version
+                MtiVVer(l_dbcAccess, 
+                        p_strCodigo,
+                        p_iFxdVersion,
+                        ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // Segun el modo
+                if (p_bEnable) {
+                    // Hay que habilitar el registro
+                    Dal.MotivosInfracciones.Recall(l_dbcAccess,
+                                                   p_strCodigo,
+                                                   ref p_smResult);
+                }
+                else {
+                    // Hay que deshabilitar el registro
+                    Dal.MotivosInfracciones.Delete(l_dbcAccess,
+                                                   p_strCodigo,
+                                                   ref p_smResult);
+                }
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Enabled
+                p_smResult.BllError(l_expData);
+            }
+            finally {
+                // Si pude abrir la conexion
+                if (l_dbcAccess != null) {
+                    // Finalizo la transacción y la cierro
+                    l_dbcAccess.EndTransaction(p_smResult);
+                    l_dbcAccess.Close();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Borra físicamento un registro de la tabla: MotivosInfracciones
+        /// </summary>
+        /// <param name="p_strCodigo">Código</param>
+        /// <param name="p_iFxdVersion">Versión del registro a borrar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        public static void MtiRemove(string p_strCodigo,
+                                     int p_iFxdVersion,
+                                     ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            DBConn l_dbcAccess= null;
+
+            try {
+                // Obtenemos una conexion
+                l_dbcAccess= DBRuts.GetConection(Connections.Dat);
+                l_dbcAccess.BeginTransaction();
+
+                // Procesamos codigo fijo
+                MtiRemove_f(l_dbcAccess,
+                            p_strCodigo,
+                            p_iFxdVersion,
+                            ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // Borramos el registro solicitado
+                MtiDrop(l_dbcAccess,
+                        p_strCodigo,
+                        p_iFxdVersion,
+                        ref p_smResult);
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Remove
+                p_smResult.BllError(l_expData);
+            }
+            finally {
+                // Si pude abrir la conexion
+                if (l_dbcAccess != null) {
+                    // Finalizo la transacción y la cierro
+                    l_dbcAccess.EndTransaction(p_smResult);
+                    l_dbcAccess.Close();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Compacta una tabla borrando los registros deshabilitados
+        /// </summary>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        public static void MtiPurge(ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            DBConn l_dbcAccess= null;
+            try {
+                // Obtenemos una conexion
+                l_dbcAccess= DBRuts.GetConection(Connections.Dat);
+                l_dbcAccess.BeginTransaction();
+
+                // Realizamos el borrado
+                MtiPack(l_dbcAccess,
+                        ref p_smResult);
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Enabled
+                p_smResult.BllError(l_expData);
+            }
+            finally {
+                // Si pude abrir la conexion
+                if (l_dbcAccess != null) {
+                    // Finalizo la transacción y la cierro
+                    l_dbcAccess.EndTransaction(p_smResult);
+                    l_dbcAccess.Close();
+                }
+            }
+        }
+        #endregion
+
+        #region Metodos para métodos DAL definidos por el usuario
+        #endregion
+
+        //---------------------------------------------------------------
+        // Metodos públicos de la clase (no visibles para la UIL)
+        //---------------------------------------------------------------
+
+        #region Metodos internos de validacion
+
+        /// <summary>
+        /// Valida la integridad de una entidad: MotivoInfraccion
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_entMotivoInfraccion">Entidad con los datos a validar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static void MtiTInt(DBConn p_dbcAccess,
+                                     EMotivoInfraccion p_entMotivoInfraccion,
+                                     ref StatMsg p_smResult)
+        {
+            // ********
+            // Validaciones de los campos sin conexion
+            // ********
+
+            if (p_entMotivoInfraccion.Codigo.Trim() == "") {
+                // El campo [Código] no puede ser vacío
+                p_smResult.BllWarning("El dato [Código] no puede ser vacío","");
+                return;
+            }
+
+            // ********
+            // Validaciones de los campos con conexion
+            // ********
+
+            // Llamamos a la funcion fija del usuario
+            MtiTInt_f(p_dbcAccess, p_entMotivoInfraccion, ref p_smResult);
+            if (p_smResult.NOk) return;
+        }
+
+        /// <summary>
+        /// Verifica si existe en la tabla una entidad: EMotivoInfraccion
+        ///      Retorno: p_smResult.Stat= BllAvisos.KeyExists   - La clave existe
+        ///               p_smResult.Stat= BllAvisos.KeyNotFound - La clave no existe
+        ///               p_smResult.Stat= BllAvisos.KeyDisabled - La clave está deshabilitada
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_strCodigo">Código</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static void MtiVKey(DBConn p_dbcAccess,
+                                     string p_strCodigo,
+                                     ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            DataSet l_dsTemp= new DataSet();
+
+            Dal.MotivosInfracciones.Search(p_dbcAccess,
+                                           p_strCodigo,
+                                           false,
+                                           ref l_dsTemp,
+                                           "Temporal",
+                                           ref p_smResult);
+            if (p_smResult.NOk) return;
+
+            try {
+                // Verificamos si vino algun registro
+                p_smResult.BllICode(BllCodes.KeyDsntFound);
+                if (l_dsTemp.Tables["Temporal"].Rows.Count == 0) return;
+
+                // Verificamos si el registro que vino esta habilitado
+                p_smResult.BllICode(BllCodes.KeyDisabled);
+                if ((decimal) l_dsTemp.Tables["Temporal"].Rows[0]["deleted"] == 1) return;
+
+                // La clave existia y estaba habilitada
+                p_smResult.BllICode(BllCodes.KeyExists);
+            }
+            finally {
+                // Terminamos
+                l_dsTemp.Dispose();
+            }
+        }
+
+        /// <summary>
+        /// Verifica el número de version de una tabla
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_strCodigo">Código</param>
+        /// <param name="p_iFxdVersion">Número de version</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static void MtiVVer(DBConn p_dbcAccess,
+                                     string p_strCodigo,
+                                     int p_iFxdVersion,
+                                     ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            DataSet l_dsTemp= new DataSet();
+
+            // Verificamos el número de versión
+            Dal.MotivosInfracciones.ChkVersion(p_dbcAccess,
+                                               p_strCodigo,
+                                               p_iFxdVersion,
+                                               ref l_dsTemp,
+                                               "Temporal",
+                                               ref p_smResult);
+            if (p_smResult.NOk) return;
+
+            // Verificamos el resultado que vino
+            if (l_dsTemp.Tables["Temporal"].Rows.Count != 0) {
+                // Verificamos si la cantidad es 1
+                if ((int) l_dsTemp.Tables["Temporal"].Rows[0]["cantidad"] == 1) {
+                    // La versión coincide
+                    l_dsTemp.Dispose();
+                    return;
+                }
+            }
+
+            // El número de versión no coincide
+            StreamWriter l_swErrorFile= null;
+            string l_strErrFName= String.Format("C:\\V{0:ddMMyyyyHHmmss}.Err",
+                                                DateTime.Now);
+            try {
+                // Creamos el archivo del error
+                l_swErrorFile= new StreamWriter(File.Create(l_strErrFName),
+                                                System.Text.Encoding.ASCII);
+
+                // Grabamos los datos del error
+                l_swErrorFile.WriteLine("Instante    : {0:dd/MM/yyyy HH:mm:ss}", DateTime.Now);
+                l_swErrorFile.WriteLine("Metodo      : {0}", p_smResult.Method);
+                l_swErrorFile.WriteLine("Message     : No coincide el numero de version");
+            }
+            catch (Exception l_expData) {
+                // Error en el acceso al archivo.
+                string l_strLinea= l_expData.Message;
+            }
+            finally {
+                // Si llegamos a abrir el archivo -> lo cerramos
+                if (l_swErrorFile != null) {
+                    l_swErrorFile.Close();
+                    l_swErrorFile.Dispose();
+                }
+            }
+
+            // El número de versión no coincide
+            l_dsTemp.Dispose();
+            p_smResult.BllWarning("El número de versión del registro del ítem (MotivoInfraccion) no coincide.\r\nOperación cancelada.","");
+        }
+        #endregion
+
+        #region Metodos internos de recupero
+
+        /// <summary>
+        /// Devuelve una Lista-entidad: LEMotivosInfracciones
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_bOnlyActive">Indica si solo se analizan los registros activos</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        /// <returns>Lista-entidad: LEMotivosInfracciones</returns>
+        internal static LEMotivosInfracciones MtiUpfl(DBConn p_dbcAccess,
+                                                       bool p_bOnlyActive,
+                                                       ref StatMsg p_smResult)
+        {
+            try {
+                // Pedimos los registros de la tabla: MotivosInfracciones
+                DataSet l_dsTemp= new DataSet();
+
+                Dal.MotivosInfracciones.Up(p_dbcAccess, 
+                                           p_bOnlyActive,
+                                           ref l_dsTemp, "Temporal",
+                                           ref p_smResult);
+                if (p_smResult.NOk) return null;
+
+                // Fijamos los captions de la grilla
+                Dal.MotivosInfracciones.MakeGridCaptions(ref l_dsTemp, "Temporal", ref p_smResult);
+
+                // Contruimos la lista-entidad y la devolvemos (si vino algun registro)
+                LEMotivosInfracciones l_lentRet= new LEMotivosInfracciones(l_dsTemp.Tables["Temporal"]);
+                l_dsTemp.Dispose();
+                return l_lentRet;
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Upfl
+                p_smResult.BllError(l_expData);
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Devuelve una entidad: EMotivoInfraccion
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_strCodigo">Código</param>
+        /// <param name="p_bOnlyActive">Indica si solo se analizan los registros activos</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        /// <returns>Entidad: EMotivoInfraccion</returns>
+        internal static EMotivoInfraccion MtiSrch(DBConn p_dbcAccess,
+                                                  string p_strCodigo,
+                                                  bool p_bOnlyActive,
+                                                  ref StatMsg p_smResult)
+        {
+            try {
+                // Pedimos el registro de la tabla: MotivosInfracciones
+                DataSet l_dsTemp= new DataSet();
+
+                Dal.MotivosInfracciones.Search(p_dbcAccess, 
+                                               p_strCodigo,
+                                               p_bOnlyActive,
+                                               ref l_dsTemp, "Temporal",
+                                               ref p_smResult);
+                if (p_smResult.NOk) return null;
+
+                // Constuimos la entidad y la devolvemos (si vino un registro)
+                EMotivoInfraccion l_entRet= null;
+
+                if (l_dsTemp.Tables["Temporal"].Rows.Count == 1)
+                    l_entRet= new EMotivoInfraccion(l_dsTemp.Tables["Temporal"].Rows[0]);
+
+                l_dsTemp.Dispose();
+                return l_entRet;
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Srch
+                p_smResult.BllError(l_expData);
+                return null;
+            }
+        }
+        #endregion
+
+        #region Metodos internos de modificacion
+
+        /// <summary>
+        /// Agrega o modifica un registro de la tabla: MotivosInfracciones
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_entMotivoInfraccion">Entidad con los datos a procesar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static void MtiSSav(DBConn p_dbcAccess,
+                                     EMotivoInfraccion p_entMotivoInfraccion,
+                                     ref StatMsg p_smResult)
+        {
+            try {
+                // Procesamos codigo fijo
+                MtiSave_f(p_dbcAccess, ref p_entMotivoInfraccion, ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // Verificamos la clave a grabar
+                MtiVKey(p_dbcAccess, 
+                        p_entMotivoInfraccion.Codigo,
+                        ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // Si es una entidad nueva
+                if (p_entMotivoInfraccion.EsNueva) {
+                    // Es un alta. La clave no debe existir
+                    if (!p_smResult.ICodeEs(BllCodes.KeyDsntFound)) {
+                        // Error. La clave ya existe
+                        p_smResult.BllWarning("El ítem (MotivoInfraccion) que intenta agregar ya existe en el sistema.","");
+                        return;
+                    }
+
+                    // Agregamos el registro
+                    MtiInsr(p_dbcAccess, p_entMotivoInfraccion, ref p_smResult);
+                    return;
+                }
+
+                // Es un update. La clave debe existir y estar habilitada
+                if (!p_smResult.ICodeEs(BllCodes.KeyExists)) {
+                    // Error. La clave no existe o no está habilitada
+                    p_smResult.BllWarning("El ítem (MotivoInfraccion) que intenta modificar no existe en el sistema o no está habilitado.","");
+                    return;
+                }
+
+                // Debe coincidir el número de version
+                MtiVVer(p_dbcAccess, 
+                        p_entMotivoInfraccion.Codigo,
+                        p_entMotivoInfraccion.FxdVersion,
+                        ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // Actualizamos el registro
+                MtiUpdt(p_dbcAccess, p_entMotivoInfraccion, ref p_smResult);
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion SSav
+                p_smResult.BllError(l_expData);
+            }
+        }
+
+        /// <summary>
+        /// Agrega un registro a la tabla a partir de una entidad: EMotivoInfraccion
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_entMotivoInfraccion">Entidad con los datos a procesar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static void MtiInsr(DBConn p_dbcAccess,
+                                     EMotivoInfraccion p_entMotivoInfraccion,
+                                     ref StatMsg p_smResult)
+        {
+            try {
+                // Validamos la integridad de la entidad
+                MtiTInt(p_dbcAccess, p_entMotivoInfraccion, ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // Creamos un nuevo registro de la tabla: MotivosInfracciones
+                Dal.MotivosInfracciones.Insert(p_dbcAccess,
+                                               p_entMotivoInfraccion.Codigo,
+                                               p_entMotivoInfraccion.Descripcion,
+                                               ref p_smResult);
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Insr
+                p_smResult.BllError(l_expData);
+            }
+        }
+
+        /// <summary>
+        /// Actualiza un registro a la tabla a partir de una entidad: EMotivoInfraccion
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_entMotivoInfraccion">Entidad con los datos a procesar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static void MtiUpdt(DBConn p_dbcAccess,
+                                     EMotivoInfraccion p_entMotivoInfraccion,
+                                     ref StatMsg p_smResult)
+        {
+            try {
+                // Validamos la integridad de la entidad
+                MtiTInt(p_dbcAccess, p_entMotivoInfraccion, ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // Actualizamos un registro de la tabla: MotivosInfracciones
+                Dal.MotivosInfracciones.Update(p_dbcAccess,
+                                               p_entMotivoInfraccion.Codigo,
+                                               p_entMotivoInfraccion.Descripcion,
+                                               ref p_smResult);
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Updt
+                p_smResult.BllError(l_expData);
+            }
+        }
+
+        /// <summary>
+        /// Borra físicamente un registro de a tabla: MotivosInfracciones
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_strCodigo">Código</param>
+        /// <param name="p_iFxdVersion">Versión del registro a borrar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static void MtiDrop(DBConn p_dbcAccess,
+                                     string p_strCodigo,
+                                     int p_iFxdVersion,
+                                     ref StatMsg p_smResult)
+        {
+            try {
+                // Verificamos la clave a borrar
+                MtiVKey(p_dbcAccess,
+                        p_strCodigo,
+                        ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // El registro tiene que existir
+                if (p_smResult.ICodeEs(BllCodes.KeyDsntFound)) {
+                    // Error. La clave no existe
+                    p_smResult.BllWarning("El ítem (MotivoInfraccion) que intenta borrar no existe en el sistema.","");
+                    return;
+                }
+
+                // Debe coincidir el número de version
+                MtiVVer(p_dbcAccess, 
+                        p_strCodigo,
+                        p_iFxdVersion,
+                        ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // Borramos físicamente el registro
+                Dal.MotivosInfracciones.Drop(p_dbcAccess,
+                                             p_strCodigo,
+                                             ref p_smResult);
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Remove
+                p_smResult.BllError(l_expData);
+            }
+        }
+
+        /// <summary>
+        /// Borra los registros borrados lógicamente de la tabla
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static void MtiPack(DBConn p_dbcAccess,
+                                     ref StatMsg p_smResult)
+        {
+            try {
+                // Borramos los borrados lógicamente
+                Dal.MotivosInfracciones.Pack(p_dbcAccess,
+                                             ref p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Updt
