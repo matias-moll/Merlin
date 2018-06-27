@@ -8,7 +8,7 @@ Controles despues de X km de haber realizado tal reparacion.
 
 
 Agregar opcion de imprimir las OTs Pendientes con un crystal report especial para tener cada una separada y poder darselas a un tecnico.
-En la pantalla de visor de ordenes de trabajo.
+
 
 
 Pregunta:
@@ -23,5 +23,3 @@ Va la de cierre, pensar como hacer el ordenamiento porque las que no tengan fech
 
 Una vez que tenga todo esto hay que ver los reportes.
 Y documentar el constructor de consultas.
-
-Hacer un reporte de OTItems de estado Pendientes (que no se hicieron pero deben hacerse alguna vez) por movil.
