@@ -85,11 +85,11 @@ namespace Mrln.Mv
             this.lblDireccion = new System.Windows.Forms.Label();
             this.txtDireccion = new TNGS.NetControls.TextEdit();
             this.lblMotivo = new System.Windows.Forms.Label();
+            this.txtMotivo = new TNGS.NetControls.TextEdit();
             this.lblDetalle = new System.Windows.Forms.Label();
             this.txtDetalle = new TNGS.NetControls.TextEdit();
             this.lblDotacion = new System.Windows.Forms.Label();
             this.txtDotacion = new TNGS.NetControls.TextEdit();
-            this.txtMotivo = new TNGS.NetControls.TextEdit();
             this.xpnlBase.SuspendLayout();
             this.tsContainer1.SuspendLayout();
             this.tabPageSwitcher1.SuspendLayout();
@@ -579,6 +579,19 @@ namespace Mrln.Mv
             this.lblMotivo.Text = "Motivo:";
             this.lblMotivo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // txtMotivo
+            // 
+            this.txtMotivo.BackColor = System.Drawing.SystemColors.Window;
+            this.txtMotivo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtMotivo.EmptyValid = false;
+            this.txtMotivo.Enabled = false;
+            this.txtMotivo.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMotivo.Location = new System.Drawing.Point(652, 47);
+            this.txtMotivo.MaxLength = 60;
+            this.txtMotivo.Name = "txtMotivo";
+            this.txtMotivo.Size = new System.Drawing.Size(228, 22);
+            this.txtMotivo.TabIndex = 10;
+            // 
             // lblDetalle
             // 
             this.lblDetalle.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -621,19 +634,6 @@ namespace Mrln.Mv
             this.txtDotacion.Name = "txtDotacion";
             this.txtDotacion.Size = new System.Drawing.Size(490, 22);
             this.txtDotacion.TabIndex = 12;
-            // 
-            // txtMotivo
-            // 
-            this.txtMotivo.BackColor = System.Drawing.SystemColors.Window;
-            this.txtMotivo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtMotivo.EmptyValid = false;
-            this.txtMotivo.Enabled = false;
-            this.txtMotivo.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMotivo.Location = new System.Drawing.Point(652, 47);
-            this.txtMotivo.MaxLength = 60;
-            this.txtMotivo.Name = "txtMotivo";
-            this.txtMotivo.Size = new System.Drawing.Size(228, 22);
-            this.txtMotivo.TabIndex = 10;
             // 
             // MovilesAccidentes
             // 

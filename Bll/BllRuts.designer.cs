@@ -16,7 +16,7 @@ namespace Mrln.Bll
     //----------------------------------------------------------------------------
     //                         TNG Software BLL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 23/06/2018 19:06
+    // Fecha                    : 27/06/2018 00:45
     // Sistema                  : Mrln
     // Clase para Administrar   : 
     //----------------------------------------------------------------------------
@@ -173,6 +173,11 @@ namespace Mrln.Bll
                 case "mds_rcd_codmarca"                : {return "V1Codigo de la marcaCN1";}
 
                 // ****************************************
+                // Tabla: MotivosInfracciones 
+                case "mti_cod_codigo"                  : {return "V1CódigoCN1";}
+                case "mti_ede_descripcion"             : {return "V1DescripciónCN1";}
+
+                // ****************************************
                 // Tabla: Moviles             
                 case "mov_ecd_patente"                 : {return "V1Patente de la AmbulanciaCN1";}
                 case "mov_des_des"                     : {return "V1DescripcionCN1";}
@@ -184,6 +189,16 @@ namespace Mrln.Bll
                 case "mov_cd1_propio"                  : {return "V1Propio o noCN2";}
                 case "mov_ecd_nroploteado"             : {return "V1Numero PloteadoCN1";}
                 case "mov_cod_tipodemovil"             : {return "V1Código Tipo de MóvilCN1";}
+
+                // ****************************************
+                // Tabla: MvlAccidentes       
+                case "mva_ecd_patente"                 : {return "V1PatenteCN1";}
+                case "mva_fyh_fecha"                   : {return "V1FechaDN2";}
+                case "mva_ede_localidad"               : {return "V1LocalidadCN1";}
+                case "mva_xde_direccion"               : {return "V1DireccionCN1";}
+                case "mva_ede_motivo"                  : {return "V1MotivoCN1";}
+                case "mva_txt_detalle"                 : {return "V1DetalleCN1";}
+                case "mva_xde_dotacion"                : {return "V1DotaciónCN1";}
 
                 // ****************************************
                 // Tabla: MvlCombustible      
@@ -208,6 +223,18 @@ namespace Mrln.Bll
                 case "mve_nro_km"                      : {return "V1KilometrajeNN3";}
 
                 // ****************************************
+                // Tabla: MvlInfracciones     
+                case "mvi_ecd_patente"                 : {return "V1PatenteCN1";}
+                case "mvi_fyh_fecha"                   : {return "V1FechaDN2";}
+                case "mvi_cod_codmotivo"               : {return "V1MotivoCN1";}
+                case "mvi_ede_lugar"                   : {return "V1LugarCN1";}
+                case "mvi_cd1_pagada"                  : {return "V1PagadaCN2";}
+                case "mvi_imp_importe"                 : {return "V1Importe2N3";}
+                case "mvi_txt_comentario"              : {return "V1ComentarioCN1";}
+                case "mvi_cd1_anulada"                 : {return "V1AnuladaCN2";}
+                case "mif_motivo"                      : {return "V1MotivoCN1";}
+
+                // ****************************************
                 // Tabla: MvlKilometros       
                 case "mkm_ecd_patente"                 : {return "V1PatenteCN1";}
                 case "mkm_fyh_fecha"                   : {return "V1FechaDN2";}
@@ -215,11 +242,11 @@ namespace Mrln.Bll
 
                 // ****************************************
                 // Tabla: OrdenesTrabajo      
-                case "odt_nro_nro"                     : {return "V1nroNN3";}
+                case "odt_nro_nro"                     : {return "V1Número OTNN3";}
                 case "odt_ecd_patente"                 : {return "V1PatenteCN1";}
                 case "odt_fyh_fecapertura"             : {return "V1Fecha de aperturaDN2";}
                 case "odt_nom_operador"                : {return "V1OperadorCN1";}
-                case "odt_fyh_feccierre"               : {return "V1Fecha de cierre.DN2";}
+                case "odt_fyh_feccierre"               : {return "V1Fecha de cierreDN2";}
                 case "odt_cod_encargado"               : {return "V1EncargadoCN1";}
                 case "odt_cod_codtaller"               : {return "V1TallerCN1";}
                 case "odt_d20_estado"                  : {return "V1EstadoCN1";}

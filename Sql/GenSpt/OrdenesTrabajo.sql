@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 26/06/2018 18:11
+// Fecha       : 27/06/2018 00:45
 // Sistema     : Mrln
 // Tabla       : OrdenesTrabajo
 //----------------------------------------------------------------------------
@@ -109,7 +109,7 @@ go
 --- <summary>
 --- Verifica el número de versión de un registro
 --- </summary>
---- <param name="@odt_nro_nro">nro</param>
+--- <param name="@odt_nro_nro">Número OT</param>
 --- <param name="@version">Número de version a verificar</param>
 ---
 ---////////////////////////////////////////////////////////
@@ -156,7 +156,7 @@ go
 --- <summary>
 --- Busca el registro de una clave
 --- </summary>
---- <param name="@odt_nro_nro">nro</param>
+--- <param name="@odt_nro_nro">Número OT</param>
 --- <param name="@onlyactive">Flag de SoloActivos</param>
 ---
 ---////////////////////////////////////////////////////////
@@ -240,11 +240,11 @@ go
 --- <summary>
 --- Inserta un registro en la tabla
 --- </summary>
---- <param name="@odt_nro_nro">nro</param>
+--- <param name="@odt_nro_nro">Número OT</param>
 --- <param name="@odt_ecd_patente">Patente</param>
 --- <param name="@odt_fyh_fecapertura">Fecha de apertura</param>
 --- <param name="@odt_nom_operador">Operador</param>
---- <param name="@odt_fyh_feccierre">Fecha de cierre.</param>
+--- <param name="@odt_fyh_feccierre">Fecha de cierre</param>
 --- <param name="@odt_cod_encargado">Encargado</param>
 --- <param name="@odt_cod_codtaller">Taller</param>
 --- <param name="@odt_d20_estado">Estado</param>
@@ -309,11 +309,11 @@ go
 --- <summary>
 --- Actualiza un registro de la tabla
 --- </summary>
---- <param name="@odt_nro_nro">nro</param>
+--- <param name="@odt_nro_nro">Número OT</param>
 --- <param name="@odt_ecd_patente">Patente</param>
 --- <param name="@odt_fyh_fecapertura">Fecha de apertura</param>
 --- <param name="@odt_nom_operador">Operador</param>
---- <param name="@odt_fyh_feccierre">Fecha de cierre.</param>
+--- <param name="@odt_fyh_feccierre">Fecha de cierre</param>
 --- <param name="@odt_cod_encargado">Encargado</param>
 --- <param name="@odt_cod_codtaller">Taller</param>
 --- <param name="@odt_d20_estado">Estado</param>
@@ -378,7 +378,7 @@ go
 --- <summary>
 --- Borra lógicamente un registro
 --- </summary>
---- <param name="@odt_nro_nro">nro</param>
+--- <param name="@odt_nro_nro">Número OT</param>
 --- <param name="@usuario">Usuario que realiza el delete</param>
 ---
 ---////////////////////////////////////////////////////////
@@ -427,7 +427,7 @@ go
 --- <summary>
 --- Recupera un registro
 --- </summary>
---- <param name="@odt_nro_nro">nro</param>
+--- <param name="@odt_nro_nro">Número OT</param>
 --- <param name="@usuario">Usuario que realiza el recall</param>
 ---
 ---////////////////////////////////////////////////////////
@@ -476,7 +476,7 @@ go
 --- <summary>
 --- Borra físicamente un registro
 --- </summary>
---- <param name="@odt_nro_nro">nro</param>
+--- <param name="@odt_nro_nro">Número OT</param>
 --- <param name="@usuario">Usuario que realiza el drop</param>
 ---
 ---////////////////////////////////////////////////////////

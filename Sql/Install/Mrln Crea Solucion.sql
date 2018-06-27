@@ -2168,7 +2168,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 26/06/2018 18:11
+// Fecha       : 27/06/2018 00:45
 // Sistema     : Mrln
 // Tabla       : Categorias
 //----------------------------------------------------------------------------
@@ -2705,7 +2705,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 26/06/2018 18:11
+// Fecha       : 27/06/2018 00:45
 // Sistema     : Mrln
 // Tabla       : Controles
 //----------------------------------------------------------------------------
@@ -3250,7 +3250,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 26/06/2018 18:11
+// Fecha       : 27/06/2018 00:45
 // Sistema     : Mrln
 // Tabla       : ControlesReparations
 //----------------------------------------------------------------------------
@@ -4069,7 +4069,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 26/06/2018 18:11
+// Fecha       : 27/06/2018 00:45
 // Sistema     : Mrln
 // Tabla       : Encargados
 //----------------------------------------------------------------------------
@@ -4604,7 +4604,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 26/06/2018 18:11
+// Fecha       : 27/06/2018 00:45
 // Sistema     : Mrln
 // Tabla       : Equipamiento
 //----------------------------------------------------------------------------
@@ -5149,7 +5149,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 26/06/2018 18:11
+// Fecha       : 27/06/2018 00:45
 // Sistema     : Mrln
 // Tabla       : Estaciones
 //----------------------------------------------------------------------------
@@ -5714,7 +5714,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 26/06/2018 18:11
+// Fecha       : 27/06/2018 00:45
 // Sistema     : Mrln
 // Tabla       : Estados
 //----------------------------------------------------------------------------
@@ -6269,7 +6269,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 26/06/2018 18:11
+// Fecha       : 27/06/2018 00:45
 // Sistema     : Mrln
 // Tabla       : Marcas
 //----------------------------------------------------------------------------
@@ -6804,7 +6804,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 26/06/2018 18:11
+// Fecha       : 27/06/2018 00:45
 // Sistema     : Mrln
 // Tabla       : Modelos
 //----------------------------------------------------------------------------
@@ -7349,7 +7349,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 26/06/2018 18:11
+// Fecha       : 27/06/2018 00:45
 // Sistema     : Mrln
 // Tabla       : MotivosInfracciones
 //----------------------------------------------------------------------------
@@ -7841,7 +7841,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 26/06/2018 18:11
+// Fecha       : 27/06/2018 00:45
 // Sistema     : Mrln
 // Tabla       : Moviles
 //----------------------------------------------------------------------------
@@ -8550,7 +8550,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 26/06/2018 18:11
+// Fecha       : 27/06/2018 00:45
 // Sistema     : Mrln
 // Tabla       : MvlAccidentes
 //----------------------------------------------------------------------------
@@ -9399,7 +9399,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 26/06/2018 18:11
+// Fecha       : 27/06/2018 00:45
 // Sistema     : Mrln
 // Tabla       : MvlCombustible
 //----------------------------------------------------------------------------
@@ -10277,7 +10277,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 26/06/2018 18:11
+// Fecha       : 27/06/2018 00:45
 // Sistema     : Mrln
 // Tabla       : MvlEquipamiento
 //----------------------------------------------------------------------------
@@ -11191,7 +11191,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 26/06/2018 18:11
+// Fecha       : 27/06/2018 00:45
 // Sistema     : Mrln
 // Tabla       : MvlEstados
 //----------------------------------------------------------------------------
@@ -12056,7 +12056,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 26/06/2018 18:11
+// Fecha       : 27/06/2018 00:45
 // Sistema     : Mrln
 // Tabla       : MvlInfracciones
 //----------------------------------------------------------------------------
@@ -12935,7 +12935,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 26/06/2018 18:11
+// Fecha       : 27/06/2018 00:45
 // Sistema     : Mrln
 // Tabla       : MvlKilometros
 //----------------------------------------------------------------------------
@@ -13825,7 +13825,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 26/06/2018 18:11
+// Fecha       : 27/06/2018 00:45
 // Sistema     : Mrln
 // Tabla       : OrdenesTrabajo
 //----------------------------------------------------------------------------
@@ -13933,7 +13933,7 @@ go
 --- <summary>
 --- Verifica el número de versión de un registro
 --- </summary>
---- <param name="@odt_nro_nro">nro</param>
+--- <param name="@odt_nro_nro">Número OT</param>
 --- <param name="@version">Número de version a verificar</param>
 ---
 ---////////////////////////////////////////////////////////
@@ -13980,7 +13980,7 @@ go
 --- <summary>
 --- Busca el registro de una clave
 --- </summary>
---- <param name="@odt_nro_nro">nro</param>
+--- <param name="@odt_nro_nro">Número OT</param>
 --- <param name="@onlyactive">Flag de SoloActivos</param>
 ---
 ---////////////////////////////////////////////////////////
@@ -14064,11 +14064,11 @@ go
 --- <summary>
 --- Inserta un registro en la tabla
 --- </summary>
---- <param name="@odt_nro_nro">nro</param>
+--- <param name="@odt_nro_nro">Número OT</param>
 --- <param name="@odt_ecd_patente">Patente</param>
 --- <param name="@odt_fyh_fecapertura">Fecha de apertura</param>
 --- <param name="@odt_nom_operador">Operador</param>
---- <param name="@odt_fyh_feccierre">Fecha de cierre.</param>
+--- <param name="@odt_fyh_feccierre">Fecha de cierre</param>
 --- <param name="@odt_cod_encargado">Encargado</param>
 --- <param name="@odt_cod_codtaller">Taller</param>
 --- <param name="@odt_d20_estado">Estado</param>
@@ -14133,11 +14133,11 @@ go
 --- <summary>
 --- Actualiza un registro de la tabla
 --- </summary>
---- <param name="@odt_nro_nro">nro</param>
+--- <param name="@odt_nro_nro">Número OT</param>
 --- <param name="@odt_ecd_patente">Patente</param>
 --- <param name="@odt_fyh_fecapertura">Fecha de apertura</param>
 --- <param name="@odt_nom_operador">Operador</param>
---- <param name="@odt_fyh_feccierre">Fecha de cierre.</param>
+--- <param name="@odt_fyh_feccierre">Fecha de cierre</param>
 --- <param name="@odt_cod_encargado">Encargado</param>
 --- <param name="@odt_cod_codtaller">Taller</param>
 --- <param name="@odt_d20_estado">Estado</param>
@@ -14202,7 +14202,7 @@ go
 --- <summary>
 --- Borra lógicamente un registro
 --- </summary>
---- <param name="@odt_nro_nro">nro</param>
+--- <param name="@odt_nro_nro">Número OT</param>
 --- <param name="@usuario">Usuario que realiza el delete</param>
 ---
 ---////////////////////////////////////////////////////////
@@ -14251,7 +14251,7 @@ go
 --- <summary>
 --- Recupera un registro
 --- </summary>
---- <param name="@odt_nro_nro">nro</param>
+--- <param name="@odt_nro_nro">Número OT</param>
 --- <param name="@usuario">Usuario que realiza el recall</param>
 ---
 ---////////////////////////////////////////////////////////
@@ -14300,7 +14300,7 @@ go
 --- <summary>
 --- Borra físicamente un registro
 --- </summary>
---- <param name="@odt_nro_nro">nro</param>
+--- <param name="@odt_nro_nro">Número OT</param>
 --- <param name="@usuario">Usuario que realiza el drop</param>
 ---
 ---////////////////////////////////////////////////////////
@@ -14508,7 +14508,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 26/06/2018 18:11
+// Fecha       : 27/06/2018 00:45
 // Sistema     : Mrln
 // Tabla       : OtItems
 //----------------------------------------------------------------------------
@@ -15437,13 +15437,64 @@ grant execute on dbo.OTITEMS_FPACK to tngsmodulos
 print ' '
 go
 
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Método Fijo: ZPendientes
+--- </summary>
+--- <param name="@inipatente">Inicio Patentes</param>
+--- <param name="@finpatente">Fin Patentes</param>
+--- <param name="@usuario">Usuario que ejecuta el SP</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.OTITEMS_ZPENDIENTES'
+
+if exists (select * from sysobjects where id = object_id('dbo.OTITEMS_ZPENDIENTES'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.OTITEMS_ZPENDIENTES
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.OTITEMS_ZPENDIENTES
+(
+@inipatente tngs_codigo_e,
+@finpatente tngs_codigo_e,
+@usuario tngs_nombre
+)
+as
+begin
+
+   select odt_ecd_patente, odt_nro_nro,odt_fyh_fecapertura, odt_fyh_feccierre, oti_des_desoperacion, oti_des_destarea, oti_imp_importe 
+    from OtItems 
+   join OrdenesTrabajo 
+   	on odt_nro_nro = oti_nro_nroot 
+   where oti_d20_estado = 'Pendiente' 
+   and odt_ecd_patente between @inipatente and @finpatente 
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.OTITEMS_ZPENDIENTES to tngsmodulos
+
+print ' '
+go
+
 /*--------------------------------------------------------------------------
 // Fin del script de creacion de los SP de la tabla: OtItems
 //--------------------------------------------------------------------------*/
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 26/06/2018 18:11
+// Fecha       : 27/06/2018 00:45
 // Sistema     : Mrln
 // Tabla       : Parametros
 //----------------------------------------------------------------------------
@@ -15975,7 +16026,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 26/06/2018 18:11
+// Fecha       : 27/06/2018 00:45
 // Sistema     : Mrln
 // Tabla       : Reparaciones
 //----------------------------------------------------------------------------
@@ -16545,7 +16596,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 26/06/2018 18:11
+// Fecha       : 27/06/2018 00:45
 // Sistema     : Mrln
 // Tabla       : Taller
 //----------------------------------------------------------------------------
@@ -17110,7 +17161,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 26/06/2018 18:11
+// Fecha       : 27/06/2018 00:45
 // Sistema     : Mrln
 // Tabla       : TallerCategoria
 //----------------------------------------------------------------------------
@@ -17947,7 +17998,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 26/06/2018 18:11
+// Fecha       : 27/06/2018 00:45
 // Sistema     : Mrln
 // Tabla       : Talonarios
 //----------------------------------------------------------------------------

@@ -18,11 +18,11 @@ namespace Mrln.Rp
     //----------------------------------------------------------------------------
     //                         TNG Software PRG Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 17/08/2015 10:58
+    // Fecha                    : 27/06/2018 00:26
     // Sistema                  : Mrln
     // Programa                 : Reportes
     //----------------------------------------------------------------------------
-    // © 1996-2015 by TNG Software                                      Gndr 5.20
+    // © 1996-2018 by TNG Software                                      Gndr 5.20
     //----------------------------------------------------------------------------
 
     //****************************************************************************
@@ -100,7 +100,7 @@ namespace Mrln.Rp
 
             try {
                 // Creamos la ventana MDI de la aplicacion
-                MainFrame l_frmMain= new MainFrame(MFSizes.MF1024x768, 0, false, true);
+                MainFrame l_frmMain= new MainFrame(MFSizes.FREESIZE, 0, false, true);
 
                 // Ejecutamos la funcion que arma la info de About
                 PrgRuts.MakeAboutInfo();
@@ -115,7 +115,7 @@ namespace Mrln.Rp
 
                 App.Run(LoginModes.Full,
                         IMenuOptions.MAll,
-                        ExitModes.Confirm,
+                        ExitModes.Normal,
                         ref l_smResult);
             }
             catch (Exception l_expData) {
@@ -140,6 +140,11 @@ namespace Mrln.Rp
                 // ** Ejecución automática al inicio del programa
                 // **
                 case "$$AUTOEXEC$$"  : {SysRuts.AutoExecIni(App.Programa.Codigo); PrgRuts.AutoExec(); SysRuts.AutoExecEnd(App.Programa.Codigo); return;}
+
+                // *************************************************
+                // ** Menu: Ordenes de Trabajo
+                // **
+                case "ITPND"         : {new ItemsPendientes().Show(); return;}
 
                 // *************************************************
                 // ** Ejecución automática al final del programa

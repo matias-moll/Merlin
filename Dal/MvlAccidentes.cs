@@ -10,7 +10,7 @@ namespace Mrln.Dal
     //----------------------------------------------------------------------------
     //                         TNG Software DAL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 26/06/2018 00:32
+    // Fecha                    : 27/06/2018 00:45
     // Sistema                  : Mrln
     // Clase para Administrar   : Accidentes de los Moviles
     // Basada en la Tabla       : MvlAccidentes

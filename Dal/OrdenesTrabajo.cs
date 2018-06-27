@@ -10,7 +10,7 @@ namespace Mrln.Dal
     //----------------------------------------------------------------------------
     //                         TNG Software DAL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 23/06/2018 19:06
+    // Fecha                    : 27/06/2018 00:45
     // Sistema                  : Mrln
     // Clase para Administrar   : Ordenes De Trabajo
     // Basada en la Tabla       : OrdenesTrabajo
@@ -71,7 +71,7 @@ namespace Mrln.Dal
         /// Verifica el número de versión de un registro
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_iNro">nro</param>
+        /// <param name="p_iNro">Número OT</param>
         /// <param name="p_iFxdVersion">Número de version a verificar</param>
         /// <param name="p_dsResult">DataSet donde devolver el registro</param>
         /// <param name="p_strTabla">Nombre de la tabla a llenar</param>
@@ -103,7 +103,7 @@ namespace Mrln.Dal
         /// Busca el registro de una clave (Grilla)
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_iNro">nro</param>
+        /// <param name="p_iNro">Número OT</param>
         /// <param name="p_bOnlyActive">Indica si solo se analizan los registros activos</param>
         /// <param name="p_dsResult">DataSet donde devolver el registro</param>
         /// <param name="p_strTabla">Nombre de la tabla a llenar</param>
@@ -139,11 +139,11 @@ namespace Mrln.Dal
         /// Inserta un registro en la tabla
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_iNro">nro</param>
+        /// <param name="p_iNro">Número OT</param>
         /// <param name="p_strPatente">Patente</param>
         /// <param name="p_dtFecapertura">Fecha de apertura</param>
         /// <param name="p_strOperador">Operador</param>
-        /// <param name="p_dtFeccierre">Fecha de cierre.</param>
+        /// <param name="p_dtFeccierre">Fecha de cierre</param>
         /// <param name="p_strEncargado">Encargado</param>
         /// <param name="p_strCodtaller">Taller</param>
         /// <param name="p_strEstado">Estado</param>
@@ -187,11 +187,11 @@ namespace Mrln.Dal
         /// Actualiza un registro de la tabla
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_iNro">nro</param>
+        /// <param name="p_iNro">Número OT</param>
         /// <param name="p_strPatente">Patente</param>
         /// <param name="p_dtFecapertura">Fecha de apertura</param>
         /// <param name="p_strOperador">Operador</param>
-        /// <param name="p_dtFeccierre">Fecha de cierre.</param>
+        /// <param name="p_dtFeccierre">Fecha de cierre</param>
         /// <param name="p_strEncargado">Encargado</param>
         /// <param name="p_strCodtaller">Taller</param>
         /// <param name="p_strEstado">Estado</param>
@@ -235,7 +235,7 @@ namespace Mrln.Dal
         /// Borra logicamente un registro
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_iNro">nro</param>
+        /// <param name="p_iNro">Número OT</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static int Delete(DBConn p_dbcAccess,
                                  int p_iNro,
@@ -262,7 +262,7 @@ namespace Mrln.Dal
         /// Recupera un registro
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_iNro">nro</param>
+        /// <param name="p_iNro">Número OT</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static int Recall(DBConn p_dbcAccess,
                                  int p_iNro,
@@ -289,7 +289,7 @@ namespace Mrln.Dal
         /// Borra fisicamente un registro
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_iNro">nro</param>
+        /// <param name="p_iNro">Número OT</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static int Drop(DBConn p_dbcAccess,
                                int p_iNro,
@@ -414,8 +414,8 @@ namespace Mrln.Dal
                 // Fijamos los nuevos captions de la grilla
                 p_dtResult.Columns["ot_taller"].Caption= "V1TallerCN1";
                 p_dtResult.Columns["odt_fyh_fecapertura"].Caption= "V1Fecha de aperturaDN1";
-                p_dtResult.Columns["odt_fyh_feccierre"].Caption= "V1Fecha de cierre.DN1";
-                p_dtResult.Columns["odt_nro_nro"].Caption= "V1nroNN1";
+                p_dtResult.Columns["odt_fyh_feccierre"].Caption= "V1Fecha de cierreDN1";
+                p_dtResult.Columns["odt_nro_nro"].Caption= "V1Número OTNN1";
                 p_dtResult.Columns["odt_nom_operador"].Caption= "V1OperadorCN1";
                 p_dtResult.Columns["odt_ecd_patente"].Caption= "V1PatenteCN1";
                 p_dtResult.Columns["deleted"].Caption= "V1Borrado2N2";

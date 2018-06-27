@@ -68,6 +68,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>T:\Ambiente0520\DNet0520\Release_Uil\TNGS.NetApp.520.dll</HintPath>
     </Reference>
+    <Reference Include="TNGS.NetAppSupport.520">
+      <HintPath>..\..\..\Ambiente0520\DNet0520\Release_Uil\TNGS.NetAppSupport.520.dll</HintPath>
+    </Reference>
     <Reference Include="TNGS.NetControls.520">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>T:\Ambiente0520\DNet0520\Release_Uil\TNGS.NetControls.520.dll</HintPath>
@@ -101,15 +104,15 @@
     <Compile Include="Arranque.designer.cs">
       <DependentUpon>Arranque.cs</DependentUpon>
     </Compile>
+    <Compile Include="Ordenes de Trabajo\ItemsPendientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ordenes de Trabajo\ItemsPendientes.Designer.cs">
+      <DependentUpon>ItemsPendientes.cs</DependentUpon>
+    </Compile>
     <Compile Include="PrgRuts.cs" />
     <Compile Include="PrgRuts.designer.cs">
       <DependentUpon>PrgRuts.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Reportes.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Reportes.Designer.cs">
-      <DependentUpon>Reportes.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -128,6 +131,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Arranque.resx">
       <DependentUpon>Arranque.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ordenes de Trabajo\ItemsPendientes.resx">
+      <DependentUpon>ItemsPendientes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -153,21 +159,24 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="T:\Rivn0100\Bel\BEL.csproj">
+    <Content Include="Reportes.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Moviles\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Bel\BEL.csproj">
       <Project>{7969c80f-3e89-4e03-a01b-776686783353}</Project>
       <Name>BEL</Name>
     </ProjectReference>
-    <ProjectReference Include="T:\Rivn0100\Bll\BLL.csproj">
+    <ProjectReference Include="..\..\Bll\BLL.csproj">
       <Project>{58ec503e-05dd-4f0f-b55a-318733142682}</Project>
       <Name>BLL</Name>
     </ProjectReference>
-    <ProjectReference Include="T:\Rivn0100\Shr\Shr.csproj">
+    <ProjectReference Include="..\..\Shr\Shr.csproj">
       <Project>{4ee82ba9-6046-419b-87af-014443954416}</Project>
       <Name>Shr</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Reportes.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

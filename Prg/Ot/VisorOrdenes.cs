@@ -170,6 +170,34 @@ namespace Mrln.Ot
             }
         }
 
+        private void gbImprimirSeleccionado_Click(object sender, EventArgs e)
+        {
+            if (noHayItemSeleccionado())
+                return;
+
+            EOrdenTrabajo ordenAImprimir = Bll.OrdenesTrabajo.Get(m_ibItemSeleccionado.Numero, true, ref m_smResult);
+            if (MsgRuts.AnalizeError(this, m_smResult)) return;
+
+            imprimirConCrystalReport(ordenAImprimir);
+        }
+        private void gbImprimirTodos_Click(object sender, EventArgs e)
+        {
+            LEOrdenesTrabajo ordenesPendientes;
+
+            if (cdcMoviles.SelectedStrCode.Trim() != "")
+            {
+                ordenesPendientes = Bll.OrdenesTrabajo.ObtenerOTsPorPatente(cdcMoviles.SelectedStrCode, ref m_smResult);
+                if (MsgRuts.AnalizeError(this, m_smResult)) return;
+            }
+            else
+            {
+                ordenesPendientes = Bll.OrdenesTrabajo.getPendientes(ref m_smResult);
+                if (MsgRuts.AnalizeError(this, m_smResult)) return;
+            }
+
+            ordenesPendientes.ToList().ForEach(ordenAImprimir => imprimirConCrystalReport(ordenAImprimir));
+        }
+
         #endregion
 
         #region Metodos Privados
@@ -260,6 +288,11 @@ namespace Mrln.Ot
         }
 
         #endregion
+
+        private void imprimirConCrystalReport(EOrdenTrabajo ordenAImprimir)
+        {
+            // TODO: magic.
+        }
 
     }
 }

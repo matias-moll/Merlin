@@ -16,7 +16,7 @@ namespace Mrln.Bll
     //----------------------------------------------------------------------------
     //                         TNG Software BLL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 23/06/2018 19:06
+    // Fecha                    : 27/06/2018 00:45
     // Sistema                  : Mrln
     // Clase para Administrar   : Ordenes de Trabajo y sus Items
     //----------------------------------------------------------------------------
@@ -366,6 +366,41 @@ namespace Mrln.Bll
         #endregion
 
         #region Metodos para métodos DAL definidos por el usuario
+
+        /// <summary>
+        /// Ejecuta el SP definido por el usuario: ZPendientes
+        /// </summary>
+        /// <param name= p_strInipatente>Inicio Patentes</param>
+        /// <param name= p_strFinpatente>Fin Patentes</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        /// <returns>ListaEntidad con los datos solicitados</returns>
+        public static ListaEntidades OtitZPendientes(string p_strInipatente,
+                                                     string p_strFinpatente,
+                                                     ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            DBConn l_dbcAccess= null;
+
+            try {
+                // Abrimos una conexion
+                l_dbcAccess= DBRuts.GetConection(Connections.Dat);
+
+                // Llamamos al metodo interno
+                return OtitZPendientes(l_dbcAccess,
+                                       p_strInipatente,
+                                       p_strFinpatente,
+                                       ref p_smResult);
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion
+                p_smResult.BllError(l_expData);
+                return null;
+            }
+            finally {
+                // Si abrimos una conexion -> la cerramos
+                if (l_dbcAccess != null) l_dbcAccess.Close();
+            }
+        }
         #endregion
 
         //---------------------------------------------------------------
@@ -974,6 +1009,49 @@ namespace Mrln.Bll
         #endregion
 
         #region Metodos para métodos DAL definidos por el usuario
+
+        /// <summary>
+        /// Ejecuta el SP definido por el usuario: ZPendientes
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name= p_strInipatente>Inicio Patentes</param>
+        /// <param name= p_strFinpatente>Fin Patentes</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        /// <returns>ListaEntidad con los datos solicitados</returns>
+        internal static ListaEntidades OtitZPendientes(DBConn p_dbcAccess,
+                                                       string p_strInipatente,
+                                                       string p_strFinpatente,
+                                                       ref StatMsg p_smResult)
+        {
+            try {
+                // Llamamos al metodo definido por el usuario
+                DataSet l_dsTemp= new DataSet();
+
+                Dal.OtItems.ZPendientes(p_dbcAccess,
+                                        p_strInipatente,
+                                        p_strFinpatente,
+                                        ref l_dsTemp,
+                                        "Temporal",
+                                        ref p_smResult);
+                if (p_smResult.NOk) return null;
+
+                // Creamos la LE y Captionamos
+                ListaEntidades l_lentRet= new ListaEntidades(l_dsTemp.Tables["Temporal"]);
+                BllRuts.FillStdCaptions(ref l_lentRet);
+
+                // Devolvemos la LE
+                l_dsTemp.Dispose();
+                return l_lentRet;
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion
+                p_smResult.BllError(l_expData);
+                return null;
+            }
+            finally {
+                // Terminamos
+            }
+        }
         #endregion
 
 
@@ -1022,7 +1100,7 @@ namespace Mrln.Bll
         /// <summary>
         /// Devuelve una entidad: EOrdenTrabajo
         /// </summary>
-        /// <param name="p_iNro">nro</param>
+        /// <param name="p_iNro">Número OT</param>
         /// <param name="p_bOnlyActive">Indica si solo se analizan los registros activos</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         /// <returns>Entidad: EOrdenTrabajo</returns>
@@ -1106,7 +1184,7 @@ namespace Mrln.Bll
         /// Habilita/Deshabilita un registro de la tabla: OrdenesTrabajo
         /// </summary>
         /// <param name="p_bEnable">Tipo de operacion</param>
-        /// <param name="p_iNro">nro</param>
+        /// <param name="p_iNro">Número OT</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static void Enabled(bool p_bEnable,
                                    int p_iNro,
@@ -1180,7 +1258,7 @@ namespace Mrln.Bll
         /// <summary>
         /// Borra físicamento un registro de la tabla: OrdenesTrabajo
         /// </summary>
-        /// <param name="p_iNro">nro</param>
+        /// <param name="p_iNro">Número OT</param>
         /// <param name="p_iFxdVersion">Versión del registro a borrar</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static void Remove(int p_iNro,
@@ -1307,8 +1385,8 @@ namespace Mrln.Bll
             // ********
 
             if (p_entOrdenTrabajo.Nro < 0) {
-                // El campo [nro] no puede menor a cero
-                p_smResult.BllWarning("El dato [nro] no puede ser negativo","");
+                // El campo [Número OT] no puede menor a cero
+                p_smResult.BllWarning("El dato [Número OT] no puede ser negativo","");
                 return;
             }
 
@@ -1371,7 +1449,7 @@ namespace Mrln.Bll
         /// Verifica el número de version de una tabla
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_iNro">nro</param>
+        /// <param name="p_iNro">Número OT</param>
         /// <param name="p_iFxdVersion">Número de version</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void VVer(DBConn p_dbcAccess,
@@ -1439,7 +1517,7 @@ namespace Mrln.Bll
         ///               p_smResult.Stat= BllAvisos.KeyDisabled - La clave está deshabilitada
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_iNro">nro</param>
+        /// <param name="p_iNro">Número OT</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void VKey(DBConn p_dbcAccess,
                                   int p_iNro,
@@ -1517,7 +1595,7 @@ namespace Mrln.Bll
         /// Devuelve una entidad: EOrdenTrabajo
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_iNro">nro</param>
+        /// <param name="p_iNro">Número OT</param>
         /// <param name="p_bOnlyActive">Indica si solo se analizan los registros activos</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         /// <returns>Entidad: EOrdenTrabajo</returns>
@@ -1626,7 +1704,7 @@ namespace Mrln.Bll
         /// Borra físicamente un registro de a tabla: OrdenesTrabajo
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_iNro">nro</param>
+        /// <param name="p_iNro">Número OT</param>
         /// <param name="p_iFxdVersion">Versión del registro a borrar</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void Drop(DBConn p_dbcAccess,

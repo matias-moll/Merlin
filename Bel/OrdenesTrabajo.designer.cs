@@ -14,7 +14,7 @@ namespace Mrln.Bel
     //----------------------------------------------------------------------------
     //                         TNG Software BEL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 23/06/2018 19:06
+    // Fecha                    : 27/06/2018 00:45
     // Sistema                  : Mrln
     // Clase para Administrar   : Ordenes de Trabajo y sus Items
     //----------------------------------------------------------------------------
@@ -943,11 +943,11 @@ namespace Mrln.Bel
         /// <summary>
         /// Construye una entidad con datos de parametro: OrdenTrabajo
         /// </summary>
-        /// <param name="p_iNro">nro</param>
+        /// <param name="p_iNro">Número OT</param>
         /// <param name="p_strPatente">Patente</param>
         /// <param name="p_dtFecapertura">Fecha de apertura</param>
         /// <param name="p_strOperador">Operador</param>
-        /// <param name="p_dtFeccierre">Fecha de cierre.</param>
+        /// <param name="p_dtFeccierre">Fecha de cierre</param>
         /// <param name="p_strEncargado">Encargado</param>
         /// <param name="p_strCodtaller">Taller</param>
         /// <param name="p_strEstado">Estado</param>
@@ -1048,7 +1048,7 @@ namespace Mrln.Bel
         }
 
         /// <summary>
-        /// nro
+        /// Número OT
         /// </summary>
         public static string NroCmp
         {
@@ -1056,7 +1056,7 @@ namespace Mrln.Bel
         }
 
         /// <summary>
-        /// nro
+        /// Número OT
         /// </summary>
         public int Nro
         {
@@ -1122,7 +1122,7 @@ namespace Mrln.Bel
         }
 
         /// <summary>
-        /// Fecha de cierre.
+        /// Fecha de cierre
         /// </summary>
         public static string FeccierreCmp
         {
@@ -1130,7 +1130,7 @@ namespace Mrln.Bel
         }
 
         /// <summary>
-        /// Fecha de cierre.
+        /// Fecha de cierre
         /// </summary>
         public DateTime Feccierre
         {

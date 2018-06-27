@@ -57,12 +57,14 @@
             this.gbCerrarOT = new TNGS.NetControls.GlassButton();
             this.gbCancelar = new TNGS.NetControls.GlassButton();
             this.tsPanel2 = new TNGS.NetControls.TSPanel();
+            this.gbImprimirTodos = new TNGS.NetControls.GlassButton();
             this.gbNuevaOrden = new TNGS.NetControls.GlassButton();
             this.tsPpanel1 = new TNGS.NetControls.TSPanel();
             this.gbFiltrar = new TNGS.NetControls.GlassButton();
             this.cdcMoviles = new TNGS.NetControls.CDCombo();
             this.tsBase1 = new TNGS.NetControls.TSBase();
             this.tab1 = new RibbonStyle.Tab();
+            this.gbImprimirSeleccionado = new TNGS.NetControls.GlassButton();
             this.xpnlPanel1.SuspendLayout();
             this.xpPanelOrdenes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fgGrillaItemsOT)).BeginInit();
@@ -323,15 +325,16 @@
             // tsPanel1
             // 
             this.tsPanel1.Caption = "Orden De Trabajo Seleccionada";
+            this.tsPanel1.Controls.Add(this.gbImprimirSeleccionado);
             this.tsPanel1.Controls.Add(this.gbEditarOT);
             this.tsPanel1.Controls.Add(this.gbVerItems);
             this.tsPanel1.Controls.Add(this.gbCerrarOT);
             this.tsPanel1.Controls.Add(this.gbCancelar);
             this.tsPanel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.tsPanel1.Location = new System.Drawing.Point(454, 3);
+            this.tsPanel1.Location = new System.Drawing.Point(502, 3);
             this.tsPanel1.Name = "tsPanel1";
             this.tsPanel1.Opacity = 255;
-            this.tsPanel1.Size = new System.Drawing.Size(512, 85);
+            this.tsPanel1.Size = new System.Drawing.Size(464, 85);
             this.tsPanel1.Speed = 1;
             this.tsPanel1.TabIndex = 1;
             // 
@@ -347,10 +350,10 @@
             this.gbEditarOT.FlatFontSize = 9;
             this.gbEditarOT.FlatTextColor = System.Drawing.Color.Black;
             this.gbEditarOT.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.gbEditarOT.Location = new System.Drawing.Point(135, 11);
+            this.gbEditarOT.Location = new System.Drawing.Point(106, 10);
             this.gbEditarOT.Name = "gbEditarOT";
             this.gbEditarOT.RoundCorners = 2;
-            this.gbEditarOT.Size = new System.Drawing.Size(103, 45);
+            this.gbEditarOT.Size = new System.Drawing.Size(81, 45);
             this.gbEditarOT.TabIndex = 3;
             this.gbEditarOT.Text = "Editar";
             this.gbEditarOT.W8Color = System.Drawing.Color.RoyalBlue;
@@ -368,7 +371,7 @@
             this.gbVerItems.FlatFontSize = 9;
             this.gbVerItems.FlatTextColor = System.Drawing.Color.Black;
             this.gbVerItems.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.gbVerItems.Location = new System.Drawing.Point(16, 10);
+            this.gbVerItems.Location = new System.Drawing.Point(6, 10);
             this.gbVerItems.Name = "gbVerItems";
             this.gbVerItems.RoundCorners = 2;
             this.gbVerItems.Size = new System.Drawing.Size(94, 45);
@@ -389,10 +392,10 @@
             this.gbCerrarOT.FlatFontSize = 9;
             this.gbCerrarOT.FlatTextColor = System.Drawing.Color.Black;
             this.gbCerrarOT.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.gbCerrarOT.Location = new System.Drawing.Point(266, 11);
+            this.gbCerrarOT.Location = new System.Drawing.Point(193, 10);
             this.gbCerrarOT.Name = "gbCerrarOT";
             this.gbCerrarOT.RoundCorners = 2;
-            this.gbCerrarOT.Size = new System.Drawing.Size(103, 45);
+            this.gbCerrarOT.Size = new System.Drawing.Size(81, 45);
             this.gbCerrarOT.TabIndex = 1;
             this.gbCerrarOT.Text = "Cerrar";
             this.gbCerrarOT.W8Color = System.Drawing.Color.RoyalBlue;
@@ -410,10 +413,10 @@
             this.gbCancelar.FlatFontSize = 9;
             this.gbCancelar.FlatTextColor = System.Drawing.Color.Black;
             this.gbCancelar.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.gbCancelar.Location = new System.Drawing.Point(398, 11);
+            this.gbCancelar.Location = new System.Drawing.Point(280, 9);
             this.gbCancelar.Name = "gbCancelar";
             this.gbCancelar.RoundCorners = 2;
-            this.gbCancelar.Size = new System.Drawing.Size(92, 45);
+            this.gbCancelar.Size = new System.Drawing.Size(85, 45);
             this.gbCancelar.TabIndex = 0;
             this.gbCancelar.Text = "Cancelar";
             this.gbCancelar.W8Color = System.Drawing.Color.RoyalBlue;
@@ -422,14 +425,36 @@
             // tsPanel2
             // 
             this.tsPanel2.Caption = "Operación";
+            this.tsPanel2.Controls.Add(this.gbImprimirTodos);
             this.tsPanel2.Controls.Add(this.gbNuevaOrden);
             this.tsPanel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.tsPanel2.Location = new System.Drawing.Point(320, 3);
+            this.tsPanel2.Location = new System.Drawing.Point(287, 3);
             this.tsPanel2.Name = "tsPanel2";
             this.tsPanel2.Opacity = 255;
-            this.tsPanel2.Size = new System.Drawing.Size(134, 85);
+            this.tsPanel2.Size = new System.Drawing.Size(215, 85);
             this.tsPanel2.Speed = 1;
             this.tsPanel2.TabIndex = 2;
+            // 
+            // gbImprimirTodos
+            // 
+            this.gbImprimirTodos.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("gbImprimirTodos.BackgroundImage")));
+            this.gbImprimirTodos.BlackBorder = true;
+            this.gbImprimirTodos.ButtonMode = TNGS.NetControls.GlassButton.GBMode.Flat;
+            this.gbImprimirTodos.CircleButton = false;
+            this.gbImprimirTodos.FixedFlatImage = TNGS.NetControls.FixedFlatImageButtons.Print2;
+            this.gbImprimirTodos.FlatColor = System.Drawing.Color.RoyalBlue;
+            this.gbImprimirTodos.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
+            this.gbImprimirTodos.FlatFontSize = 9;
+            this.gbImprimirTodos.FlatTextColor = System.Drawing.Color.Black;
+            this.gbImprimirTodos.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.gbImprimirTodos.Location = new System.Drawing.Point(105, 9);
+            this.gbImprimirTodos.Name = "gbImprimirTodos";
+            this.gbImprimirTodos.RoundCorners = 2;
+            this.gbImprimirTodos.Size = new System.Drawing.Size(97, 45);
+            this.gbImprimirTodos.TabIndex = 5;
+            this.gbImprimirTodos.Text = "Imprimir Todas";
+            this.gbImprimirTodos.W8Color = System.Drawing.Color.RoyalBlue;
+            this.gbImprimirTodos.Click += new System.EventHandler(this.gbImprimirTodos_Click);
             // 
             // gbNuevaOrden
             // 
@@ -443,10 +468,10 @@
             this.gbNuevaOrden.FlatFontSize = 9;
             this.gbNuevaOrden.FlatTextColor = System.Drawing.Color.Black;
             this.gbNuevaOrden.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.gbNuevaOrden.Location = new System.Drawing.Point(19, 9);
+            this.gbNuevaOrden.Location = new System.Drawing.Point(9, 9);
             this.gbNuevaOrden.Name = "gbNuevaOrden";
             this.gbNuevaOrden.RoundCorners = 2;
-            this.gbNuevaOrden.Size = new System.Drawing.Size(99, 45);
+            this.gbNuevaOrden.Size = new System.Drawing.Size(89, 45);
             this.gbNuevaOrden.TabIndex = 4;
             this.gbNuevaOrden.Text = "Nueva";
             this.gbNuevaOrden.W8Color = System.Drawing.Color.RoyalBlue;
@@ -461,7 +486,7 @@
             this.tsPpanel1.Location = new System.Drawing.Point(0, 3);
             this.tsPpanel1.Name = "tsPpanel1";
             this.tsPpanel1.Opacity = 255;
-            this.tsPpanel1.Size = new System.Drawing.Size(320, 85);
+            this.tsPpanel1.Size = new System.Drawing.Size(287, 85);
             this.tsPpanel1.Speed = 1;
             this.tsPpanel1.TabIndex = 0;
             // 
@@ -477,10 +502,10 @@
             this.gbFiltrar.FlatFontSize = 9;
             this.gbFiltrar.FlatTextColor = System.Drawing.Color.Black;
             this.gbFiltrar.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.gbFiltrar.Location = new System.Drawing.Point(213, 11);
+            this.gbFiltrar.Location = new System.Drawing.Point(202, 11);
             this.gbFiltrar.Name = "gbFiltrar";
             this.gbFiltrar.RoundCorners = 2;
-            this.gbFiltrar.Size = new System.Drawing.Size(98, 45);
+            this.gbFiltrar.Size = new System.Drawing.Size(73, 45);
             this.gbFiltrar.TabIndex = 1;
             this.gbFiltrar.Text = "Filtrar";
             this.gbFiltrar.W8Color = System.Drawing.Color.RoyalBlue;
@@ -526,6 +551,27 @@
             this.tab1.Size = new System.Drawing.Size(139, 23);
             this.tab1.TabStripPage = null;
             this.tab1.Text = "Ordenes De Trabajo";
+            // 
+            // gbImprimirSeleccionado
+            // 
+            this.gbImprimirSeleccionado.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("gbImprimirSeleccionado.BackgroundImage")));
+            this.gbImprimirSeleccionado.BlackBorder = true;
+            this.gbImprimirSeleccionado.ButtonMode = TNGS.NetControls.GlassButton.GBMode.Flat;
+            this.gbImprimirSeleccionado.CircleButton = false;
+            this.gbImprimirSeleccionado.FixedFlatImage = TNGS.NetControls.FixedFlatImageButtons.Print;
+            this.gbImprimirSeleccionado.FlatColor = System.Drawing.Color.RoyalBlue;
+            this.gbImprimirSeleccionado.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
+            this.gbImprimirSeleccionado.FlatFontSize = 9;
+            this.gbImprimirSeleccionado.FlatTextColor = System.Drawing.Color.Black;
+            this.gbImprimirSeleccionado.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.gbImprimirSeleccionado.Location = new System.Drawing.Point(370, 9);
+            this.gbImprimirSeleccionado.Name = "gbImprimirSeleccionado";
+            this.gbImprimirSeleccionado.RoundCorners = 2;
+            this.gbImprimirSeleccionado.Size = new System.Drawing.Size(85, 45);
+            this.gbImprimirSeleccionado.TabIndex = 6;
+            this.gbImprimirSeleccionado.Text = "Imprimir";
+            this.gbImprimirSeleccionado.W8Color = System.Drawing.Color.RoyalBlue;
+            this.gbImprimirSeleccionado.Click += new System.EventHandler(this.gbImprimirSeleccionado_Click);
             // 
             // VisorOrdenes
             // 
@@ -590,5 +636,7 @@
         private ControlesCustom.itemBarra itemBarra3;
         private ControlesCustom.itemBarra itemBarra2;
         private ControlesCustom.itemBarra itemBarra1;
+        private TNGS.NetControls.GlassButton gbImprimirTodos;
+        private TNGS.NetControls.GlassButton gbImprimirSeleccionado;
     }
 }

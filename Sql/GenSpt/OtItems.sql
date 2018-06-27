@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 26/06/2018 18:11
+// Fecha       : 27/06/2018 00:45
 // Sistema     : Mrln
 // Tabla       : OtItems
 //----------------------------------------------------------------------------
@@ -926,6 +926,57 @@ go
 print '       - Asignando permisos al nuevo SP'
 
 grant execute on dbo.OTITEMS_FPACK to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Método Fijo: ZPendientes
+--- </summary>
+--- <param name="@inipatente">Inicio Patentes</param>
+--- <param name="@finpatente">Fin Patentes</param>
+--- <param name="@usuario">Usuario que ejecuta el SP</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.OTITEMS_ZPENDIENTES'
+
+if exists (select * from sysobjects where id = object_id('dbo.OTITEMS_ZPENDIENTES'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.OTITEMS_ZPENDIENTES
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.OTITEMS_ZPENDIENTES
+(
+@inipatente tngs_codigo_e,
+@finpatente tngs_codigo_e,
+@usuario tngs_nombre
+)
+as
+begin
+
+   select odt_ecd_patente, odt_nro_nro,odt_fyh_fecapertura, odt_fyh_feccierre, oti_des_desoperacion, oti_des_destarea, oti_imp_importe 
+    from OtItems 
+   join OrdenesTrabajo 
+   	on odt_nro_nro = oti_nro_nroot 
+   where oti_d20_estado = 'Pendiente' 
+   and odt_ecd_patente between @inipatente and @finpatente 
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.OTITEMS_ZPENDIENTES to tngsmodulos
 
 print ' '
 go
