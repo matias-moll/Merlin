@@ -12,8 +12,8 @@ namespace Mrln.Dal
     //----------------------------------------------------------------------------
     // Fecha                    : 28/06/2018 17:06
     // Sistema                  : Mrln
-    // Clase para Administrar   : Motivos Infracciones
-    // Basada en la Tabla       : MotivosInfracciones
+    // Clase para Administrar   : Alertas
+    // Basada en la Tabla       : Alertas
     //----------------------------------------------------------------------------
     // © 1996-2018 by TNG Software                                      Gndr 5.20
     //----------------------------------------------------------------------------
@@ -26,9 +26,9 @@ namespace Mrln.Dal
     //****************************************************************************
 
     /// <summary>
-    /// Modulo DAL de Acceso a la tabla: MotivosInfracciones
+    /// Modulo DAL de Acceso a la tabla: Alertas
     /// </summary>
-    public static class MotivosInfracciones
+    public static class Alertas
     {
         //---------------------------------------------------------------
         // Métodos públicos estáticos de la clase para realizar
@@ -54,7 +54,7 @@ namespace Mrln.Dal
             try {
                 // Recuperamos todos los registros
                 return DBRuts.Exec_DS(p_dbcAccess,
-                                      "TNGS_Mrln..MOTIVOSINFRACCIONES_UP",
+                                      "TNGS_Mrln..ALERTAS_UP",
                                       new DbParameter[] {
                                           p_dbcAccess.MakeParam("@onlyactive", (p_bOnlyActive ? 1 : 0))
                                       },
@@ -71,13 +71,15 @@ namespace Mrln.Dal
         /// Verifica el número de versión de un registro
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_strCodigo">Código</param>
+        /// <param name="p_iNroconfig">Nro Config Alerta</param>
+        /// <param name="p_iNroalerta">Nro Alerta</param>
         /// <param name="p_iFxdVersion">Número de version a verificar</param>
         /// <param name="p_dsResult">DataSet donde devolver el registro</param>
         /// <param name="p_strTabla">Nombre de la tabla a llenar</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static void ChkVersion(DBConn p_dbcAccess,
-                                      string p_strCodigo,
+                                      int p_iNroconfig,
+                                      int p_iNroalerta,
                                       int p_iFxdVersion,
                                       ref DataSet p_dsResult,
                                       string p_strTabla,
@@ -86,9 +88,10 @@ namespace Mrln.Dal
             try {
                 // Verificamos el número de versión
                 DBRuts.Exec_DS(p_dbcAccess,
-                               "TNGS_Mrln..MOTIVOSINFRACCIONES_CHKVERSION",
+                               "TNGS_Mrln..ALERTAS_CHKVERSION",
                                new DbParameter[] {
-                                   p_dbcAccess.MakeParam("@mti_cod_codigo", p_strCodigo),
+                                   p_dbcAccess.MakeParam("@alr_nro_nroconfig", p_iNroconfig),
+                                   p_dbcAccess.MakeParam("@alr_nro_nroalerta", p_iNroalerta),
                                    p_dbcAccess.MakeParam("@version", p_iFxdVersion)
                                },
                                ref p_dsResult, p_strTabla);
@@ -103,13 +106,15 @@ namespace Mrln.Dal
         /// Busca el registro de una clave (Grilla)
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_strCodigo">Código</param>
+        /// <param name="p_iNroconfig">Nro Config Alerta</param>
+        /// <param name="p_iNroalerta">Nro Alerta</param>
         /// <param name="p_bOnlyActive">Indica si solo se analizan los registros activos</param>
         /// <param name="p_dsResult">DataSet donde devolver el registro</param>
         /// <param name="p_strTabla">Nombre de la tabla a llenar</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static int Search(DBConn p_dbcAccess,
-                                 string p_strCodigo,
+                                 int p_iNroconfig,
+                                 int p_iNroalerta,
                                  bool p_bOnlyActive,
                                  ref DataSet p_dsResult,
                                  string p_strTabla,
@@ -118,9 +123,10 @@ namespace Mrln.Dal
             try {
                 // Recuperamos el registro de la clave
                 return DBRuts.Exec_DS(p_dbcAccess,
-                                      "TNGS_Mrln..MOTIVOSINFRACCIONES_SEARCH",
+                                      "TNGS_Mrln..ALERTAS_SEARCH",
                                       new DbParameter[] {
-                                          p_dbcAccess.MakeParam("@mti_cod_codigo", p_strCodigo),
+                                          p_dbcAccess.MakeParam("@alr_nro_nroconfig", p_iNroconfig),
+                                          p_dbcAccess.MakeParam("@alr_nro_nroalerta", p_iNroalerta),
                                           p_dbcAccess.MakeParam("@onlyactive", (p_bOnlyActive ? 1 : 0))
                                       },
                                       ref p_dsResult, p_strTabla);
@@ -139,21 +145,45 @@ namespace Mrln.Dal
         /// Inserta un registro en la tabla
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_strCodigo">Código</param>
+        /// <param name="p_iNroconfig">Nro Config Alerta</param>
+        /// <param name="p_iNroalerta">Nro Alerta</param>
         /// <param name="p_strDescripcion">Descripción</param>
+        /// <param name="p_strDetalle">Detalle</param>
+        /// <param name="p_strImportancia">Importancia</param>
+        /// <param name="p_dtFechadisparada">Fecha Disparada</param>
+        /// <param name="p_dtFechavista">Fecha Vista</param>
+        /// <param name="p_strUsuariovista">Usuario Vista</param>
+        /// <param name="p_iRepetirendias">Repetir en Dias</param>
+        /// <param name="p_strFinalizada">Finalizada</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static int Insert(DBConn p_dbcAccess,
-                                 string p_strCodigo,
+                                 int p_iNroconfig,
+                                 int p_iNroalerta,
                                  string p_strDescripcion,
+                                 string p_strDetalle,
+                                 string p_strImportancia,
+                                 DateTime p_dtFechadisparada,
+                                 DateTime p_dtFechavista,
+                                 string p_strUsuariovista,
+                                 int p_iRepetirendias,
+                                 string p_strFinalizada,
                                  ref StatMsg p_smResult)
         {
             try {
                 // Insertamos el registro
                 return DBRuts.Exec(p_dbcAccess,
-                                   "TNGS_Mrln..MOTIVOSINFRACCIONES_INSERT",
+                                   "TNGS_Mrln..ALERTAS_INSERT",
                                    new DbParameter[] {
-                                       p_dbcAccess.MakeParam("@mti_cod_codigo", p_strCodigo),
-                                       p_dbcAccess.MakeParam("@mti_ede_descripcion", p_strDescripcion),
+                                       p_dbcAccess.MakeParam("@alr_nro_nroconfig", p_iNroconfig),
+                                       p_dbcAccess.MakeParam("@alr_nro_nroalerta", p_iNroalerta),
+                                       p_dbcAccess.MakeParam("@alr_des_descripcion", p_strDescripcion),
+                                       p_dbcAccess.MakeParam("@alr_xde_detalle", p_strDetalle),
+                                       p_dbcAccess.MakeParam("@alr_cd1_importancia", p_strImportancia),
+                                       p_dbcAccess.MakeParam("@alr_fyh_fechadisparada", p_dtFechadisparada),
+                                       p_dbcAccess.MakeParam("@alr_fyh_fechavista", p_dtFechavista),
+                                       p_dbcAccess.MakeParam("@alr_nom_usuariovista", p_strUsuariovista),
+                                       p_dbcAccess.MakeParam("@alr_nro_repetirendias", p_iRepetirendias),
+                                       p_dbcAccess.MakeParam("@alr_cd1_finalizada", p_strFinalizada),
                                        p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
                                    }
                                   );
@@ -169,21 +199,45 @@ namespace Mrln.Dal
         /// Actualiza un registro de la tabla
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_strCodigo">Código</param>
+        /// <param name="p_iNroconfig">Nro Config Alerta</param>
+        /// <param name="p_iNroalerta">Nro Alerta</param>
         /// <param name="p_strDescripcion">Descripción</param>
+        /// <param name="p_strDetalle">Detalle</param>
+        /// <param name="p_strImportancia">Importancia</param>
+        /// <param name="p_dtFechadisparada">Fecha Disparada</param>
+        /// <param name="p_dtFechavista">Fecha Vista</param>
+        /// <param name="p_strUsuariovista">Usuario Vista</param>
+        /// <param name="p_iRepetirendias">Repetir en Dias</param>
+        /// <param name="p_strFinalizada">Finalizada</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static int Update(DBConn p_dbcAccess,
-                                 string p_strCodigo,
+                                 int p_iNroconfig,
+                                 int p_iNroalerta,
                                  string p_strDescripcion,
+                                 string p_strDetalle,
+                                 string p_strImportancia,
+                                 DateTime p_dtFechadisparada,
+                                 DateTime p_dtFechavista,
+                                 string p_strUsuariovista,
+                                 int p_iRepetirendias,
+                                 string p_strFinalizada,
                                  ref StatMsg p_smResult)
         {
             try {
                 // Modificamos el registro
                 return DBRuts.Exec(p_dbcAccess,
-                                   "TNGS_Mrln..MOTIVOSINFRACCIONES_UPDATE",
+                                   "TNGS_Mrln..ALERTAS_UPDATE",
                                    new DbParameter[] {
-                                       p_dbcAccess.MakeParam("@mti_cod_codigo", p_strCodigo),
-                                       p_dbcAccess.MakeParam("@mti_ede_descripcion", p_strDescripcion),
+                                       p_dbcAccess.MakeParam("@alr_nro_nroconfig", p_iNroconfig),
+                                       p_dbcAccess.MakeParam("@alr_nro_nroalerta", p_iNroalerta),
+                                       p_dbcAccess.MakeParam("@alr_des_descripcion", p_strDescripcion),
+                                       p_dbcAccess.MakeParam("@alr_xde_detalle", p_strDetalle),
+                                       p_dbcAccess.MakeParam("@alr_cd1_importancia", p_strImportancia),
+                                       p_dbcAccess.MakeParam("@alr_fyh_fechadisparada", p_dtFechadisparada),
+                                       p_dbcAccess.MakeParam("@alr_fyh_fechavista", p_dtFechavista),
+                                       p_dbcAccess.MakeParam("@alr_nom_usuariovista", p_strUsuariovista),
+                                       p_dbcAccess.MakeParam("@alr_nro_repetirendias", p_iRepetirendias),
+                                       p_dbcAccess.MakeParam("@alr_cd1_finalizada", p_strFinalizada),
                                        p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
                                    }
                                   );
@@ -199,18 +253,21 @@ namespace Mrln.Dal
         /// Borra logicamente un registro
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_strCodigo">Código</param>
+        /// <param name="p_iNroconfig">Nro Config Alerta</param>
+        /// <param name="p_iNroalerta">Nro Alerta</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static int Delete(DBConn p_dbcAccess,
-                                 string p_strCodigo,
+                                 int p_iNroconfig,
+                                 int p_iNroalerta,
                                  ref StatMsg p_smResult)
         {
             try {
                 // Borramos el registro
                 return DBRuts.Exec(p_dbcAccess,
-                                   "TNGS_Mrln..MOTIVOSINFRACCIONES_DELETE",
+                                   "TNGS_Mrln..ALERTAS_DELETE",
                                    new DbParameter[] {
-                                       p_dbcAccess.MakeParam("@mti_cod_codigo", p_strCodigo),
+                                       p_dbcAccess.MakeParam("@alr_nro_nroconfig", p_iNroconfig),
+                                       p_dbcAccess.MakeParam("@alr_nro_nroalerta", p_iNroalerta),
                                        p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
                                    }
                                   );
@@ -226,18 +283,21 @@ namespace Mrln.Dal
         /// Recupera un registro
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_strCodigo">Código</param>
+        /// <param name="p_iNroconfig">Nro Config Alerta</param>
+        /// <param name="p_iNroalerta">Nro Alerta</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static int Recall(DBConn p_dbcAccess,
-                                 string p_strCodigo,
+                                 int p_iNroconfig,
+                                 int p_iNroalerta,
                                  ref StatMsg p_smResult)
         {
             try {
                 // Borramos el registro
                 return DBRuts.Exec(p_dbcAccess,
-                                   "TNGS_Mrln..MOTIVOSINFRACCIONES_RECALL",
+                                   "TNGS_Mrln..ALERTAS_RECALL",
                                    new DbParameter[] {
-                                       p_dbcAccess.MakeParam("@mti_cod_codigo", p_strCodigo),
+                                       p_dbcAccess.MakeParam("@alr_nro_nroconfig", p_iNroconfig),
+                                       p_dbcAccess.MakeParam("@alr_nro_nroalerta", p_iNroalerta),
                                        p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
                                    }
                                   );
@@ -253,18 +313,21 @@ namespace Mrln.Dal
         /// Borra fisicamente un registro
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_strCodigo">Código</param>
+        /// <param name="p_iNroconfig">Nro Config Alerta</param>
+        /// <param name="p_iNroalerta">Nro Alerta</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static int Drop(DBConn p_dbcAccess,
-                               string p_strCodigo,
+                               int p_iNroconfig,
+                               int p_iNroalerta,
                                ref StatMsg p_smResult)
         {
             try {
                 // Borramos el registro
                 return DBRuts.Exec(p_dbcAccess,
-                                   "TNGS_Mrln..MOTIVOSINFRACCIONES_DROP",
+                                   "TNGS_Mrln..ALERTAS_DROP",
                                    new DbParameter[] {
-                                       p_dbcAccess.MakeParam("@mti_cod_codigo", p_strCodigo),
+                                       p_dbcAccess.MakeParam("@alr_nro_nroconfig", p_iNroconfig),
+                                       p_dbcAccess.MakeParam("@alr_nro_nroalerta", p_iNroalerta),
                                        p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
                                    }
                                   );
@@ -287,7 +350,7 @@ namespace Mrln.Dal
             try {
                 // Borramos el registro
                 return DBRuts.Exec(p_dbcAccess,
-                                   "TNGS_Mrln..MOTIVOSINFRACCIONES_PACK",
+                                   "TNGS_Mrln..ALERTAS_PACK",
                                    new DbParameter[] {
                                        p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
                                    }
@@ -319,8 +382,13 @@ namespace Mrln.Dal
                 DBRuts.ClearDTCaptions(ref p_dtResult);
 
                 // Fijamos los nuevos captions de la grilla
-                p_dtResult.Columns["mti_cod_codigo"].Caption= "V1CódigoCN1";
-                p_dtResult.Columns["mti_ede_descripcion"].Caption= "V1DescripciónCN1";
+                p_dtResult.Columns["alr_des_descripcion"].Caption= "V1DescripciónCN1";
+                p_dtResult.Columns["alr_fyh_fechadisparada"].Caption= "V1Fecha DisparadaDN1";
+                p_dtResult.Columns["alr_fyh_fechavista"].Caption= "V1Fecha VistaDN1";
+                p_dtResult.Columns["alr_cd1_finalizada"].Caption= "V1FinalizadaCN1";
+                p_dtResult.Columns["alr_nro_nroalerta"].Caption= "V1Nro AlertaNN1";
+                p_dtResult.Columns["alr_nro_repetirendias"].Caption= "V1Repetir en DiasNN1";
+                p_dtResult.Columns["alr_nom_usuariovista"].Caption= "V1Usuario VistaCN1";
                 p_dtResult.Columns["deleted"].Caption= "V1Borrado2N2";
             }
             catch (Exception l_expData) {

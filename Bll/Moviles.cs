@@ -407,7 +407,7 @@ namespace Mrln.Bll
         /// <param name="p_entMvlAccidente">Entidad con los datos a procesar</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void MvacSave_f(DBConn p_dbcAccess,
-                                        ref EMvlAccidente p_entMvlAccidente,
+                                        ref EMovilAccidente p_entMvlAccidente,
                                         ref StatMsg p_smResult)
         {
             // *********
@@ -465,7 +465,80 @@ namespace Mrln.Bll
         /// <param name="p_entMvlAccidente">Entidad con los datos a validar</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void MvacTInt_f(DBConn p_dbcAccess,
-                                        EMvlAccidente p_entMvlAccidente,
+                                        EMovilAccidente p_entMvlAccidente,
+                                        ref StatMsg p_smResult)
+        {
+            // *********
+            // Agregar acá las validaciones adicionales
+            // *********
+        }
+        /// <summary>
+        /// Agrega o modifica un registro de la tabla: MvlAlertas
+        /// (Código Fijo)
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_entMovilAlerta">Entidad con los datos a procesar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static void MvalSave_f(DBConn p_dbcAccess,
+                                        ref EMovilAlerta p_entMovilAlerta,
+                                        ref StatMsg p_smResult)
+        {
+            // *********
+            // Agregar acá los procesos adicionales
+            // *********
+        }
+
+        /// <summary>
+        /// Habilita/Deshabilita un registro de la tabla: MvlAlertas
+        /// (Código Fijo)
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_bEnable">Tipo de operacion</param>
+        /// <param name="p_strPatente">Patente</param>
+        /// <param name="p_iNroconfigalerta">Nro Config Alerta</param>
+        /// <param name="p_iFxdVersion">Versión del registro a borrar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static void MvalEnabled_f(DBConn p_dbcAccess,
+                                           bool p_bEnable,
+                                           string p_strPatente,
+                                           int p_iNroconfigalerta,
+                                           ref int p_iFxdVersion,
+                                           ref StatMsg p_smResult)
+        {
+            // *********
+            // Agregar acá los procesos adicionales
+            // *********
+        }
+
+        /// <summary>
+        /// Borra físicamento un registro de la tabla: MvlAlertas
+        /// (Código Fijo)
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_strPatente">Patente</param>
+        /// <param name="p_iNroconfigalerta">Nro Config Alerta</param>
+        /// <param name="p_iFxdVersion">Versión del registro a borrar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static void MvalRemove_f(DBConn p_dbcAccess,
+                                          string p_strPatente,
+                                          int p_iNroconfigalerta,
+                                          int p_iFxdVersion,
+                                          ref StatMsg p_smResult)
+        {
+            // *********
+            // Agregar acá los procesos adicionales
+            // *********
+        }
+
+        /// <summary>
+        /// Agrega validacion de integridad a una entidad: MovilAlerta
+        /// (Código Fijo)
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_entMovilAlerta">Entidad con los datos a validar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static void MvalTInt_f(DBConn p_dbcAccess,
+                                        EMovilAlerta p_entMovilAlerta,
                                         ref StatMsg p_smResult)
         {
             // *********
@@ -704,7 +777,7 @@ namespace Mrln.Bll
         /// <param name="p_entMvlInfraccion">Entidad con los datos a procesar</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void MvifSave_f(DBConn p_dbcAccess,
-                                        ref EMvlInfraccion p_entMvlInfraccion,
+                                        ref EMovilInfraccion p_entMvlInfraccion,
                                         ref StatMsg p_smResult)
         {
             // *********
@@ -762,7 +835,7 @@ namespace Mrln.Bll
         /// <param name="p_entMvlInfraccion">Entidad con los datos a validar</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void MvifTInt_f(DBConn p_dbcAccess,
-                                        EMvlInfraccion p_entMvlInfraccion,
+                                        EMovilInfraccion p_entMvlInfraccion,
                                         ref StatMsg p_smResult)
         {
             // *********

@@ -51,6 +51,10 @@
     <Compile Include="..\Shr\Properties\ShrAssemblyInfo.cs">
       <Link>Properties\ShrAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="Alertas.cs" />
+    <Compile Include="Alertas.designer.cs">
+      <DependentUpon>Alertas.cs</DependentUpon>
+    </Compile>
     <Compile Include="BllRuts.cs" />
     <Compile Include="BllRuts.designer.cs">
       <DependentUpon>BllRuts.cs</DependentUpon>

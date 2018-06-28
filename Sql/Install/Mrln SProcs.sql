@@ -1,7 +1,597 @@
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/06/2018 19:52
+// Fecha       : 28/06/2018 17:05
+// Sistema     : Mrln
+// Tabla       : Alertas
+//----------------------------------------------------------------------------
+// © 1999-2018 by TNG Software                                      Gndr 5.20
+//---------------------------------------------------------------------------*/
+
+/* ***************************************************************************
+/  Atencion!!!
+/     Este archivo fue generado por un programa en forma automática. Cualquier
+/     modificación que se realize sobre él se perderá en la próxima
+/     regeneración.
+/  **************************************************************************/
+
+/*-------------------------------------------------*/
+/* Selecciono la base en la que se crearan los SPs */
+/*-------------------------------------------------*/
+
+use TNGS_Mrln
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Levanta todos los registros de una tabla
+--- </summary>
+--- <param name="@onlyactive">Flag de SoloActivos</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.ALERTAS_UP'
+
+if exists (select * from sysobjects where id = object_id('dbo.ALERTAS_UP'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.ALERTAS_UP
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.ALERTAS_UP
+(
+@onlyactive tngs_valor
+)
+as
+begin
+
+   if @onlyactive = 1
+      begin
+         Select alr_nro_nroconfig,
+                alr_nro_nroalerta,
+                alr_des_descripcion,
+                alr_xde_detalle,
+                alr_cd1_importancia,
+                alr_fyh_fechadisparada,
+                alr_fyh_fechavista,
+                alr_nom_usuariovista,
+                alr_nro_repetirendias,
+                alr_cd1_finalizada,
+                TNGS_Mrln..Alertas.instante,
+                TNGS_Mrln..Alertas.deleted,
+                TNGS_Mrln..Alertas.usuario,
+                TNGS_Mrln..Alertas.version
+           from TNGS_Mrln..Alertas
+          where deleted = 0
+          order by alr_nro_nroconfig,
+                alr_nro_nroalerta
+      end
+   else
+      begin
+         Select alr_nro_nroconfig,
+                alr_nro_nroalerta,
+                alr_des_descripcion,
+                alr_xde_detalle,
+                alr_cd1_importancia,
+                alr_fyh_fechadisparada,
+                alr_fyh_fechavista,
+                alr_nom_usuariovista,
+                alr_nro_repetirendias,
+                alr_cd1_finalizada,
+                TNGS_Mrln..Alertas.instante,
+                TNGS_Mrln..Alertas.deleted,
+                TNGS_Mrln..Alertas.usuario,
+                TNGS_Mrln..Alertas.version
+           from TNGS_Mrln..Alertas
+          order by alr_nro_nroconfig,
+                alr_nro_nroalerta
+      end
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.ALERTAS_UP to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Verifica el número de versión de un registro
+--- </summary>
+--- <param name="@alr_nro_nroconfig">Nro Config Alerta</param>
+--- <param name="@alr_nro_nroalerta">Nro Alerta</param>
+--- <param name="@version">Número de version a verificar</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.ALERTAS_CHKVERSION'
+
+if exists (select * from sysobjects where id = object_id('dbo.ALERTAS_CHKVERSION'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.ALERTAS_CHKVERSION
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.ALERTAS_CHKVERSION
+(
+@alr_nro_nroconfig tngs_numero,
+@alr_nro_nroalerta tngs_numero,
+@version tngs_numero
+)
+as
+begin
+
+   Select count(*) as cantidad
+     from TNGS_Mrln..Alertas
+    where alr_nro_nroconfig = @alr_nro_nroconfig
+      and alr_nro_nroalerta = @alr_nro_nroalerta
+      and version = @version
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.ALERTAS_CHKVERSION to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Busca el registro de una clave
+--- </summary>
+--- <param name="@alr_nro_nroconfig">Nro Config Alerta</param>
+--- <param name="@alr_nro_nroalerta">Nro Alerta</param>
+--- <param name="@onlyactive">Flag de SoloActivos</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.ALERTAS_SEARCH'
+
+if exists (select * from sysobjects where id = object_id('dbo.ALERTAS_SEARCH'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.ALERTAS_SEARCH
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.ALERTAS_SEARCH
+(
+@alr_nro_nroconfig tngs_numero,
+@alr_nro_nroalerta tngs_numero,
+@onlyactive tngs_valor
+)
+as
+begin
+
+   if @onlyactive = 1
+      begin
+         Select alr_nro_nroconfig,
+                alr_nro_nroalerta,
+                alr_des_descripcion,
+                alr_xde_detalle,
+                alr_cd1_importancia,
+                alr_fyh_fechadisparada,
+                alr_fyh_fechavista,
+                alr_nom_usuariovista,
+                alr_nro_repetirendias,
+                alr_cd1_finalizada,
+                TNGS_Mrln..Alertas.instante,
+                TNGS_Mrln..Alertas.deleted,
+                TNGS_Mrln..Alertas.usuario,
+                TNGS_Mrln..Alertas.version
+           from TNGS_Mrln..Alertas
+          where alr_nro_nroconfig = @alr_nro_nroconfig
+            and alr_nro_nroalerta = @alr_nro_nroalerta
+            and deleted = 0
+      end
+   else
+      begin
+         Select alr_nro_nroconfig,
+                alr_nro_nroalerta,
+                alr_des_descripcion,
+                alr_xde_detalle,
+                alr_cd1_importancia,
+                alr_fyh_fechadisparada,
+                alr_fyh_fechavista,
+                alr_nom_usuariovista,
+                alr_nro_repetirendias,
+                alr_cd1_finalizada,
+                TNGS_Mrln..Alertas.instante,
+                TNGS_Mrln..Alertas.deleted,
+                TNGS_Mrln..Alertas.usuario,
+                TNGS_Mrln..Alertas.version
+           from TNGS_Mrln..Alertas
+          where alr_nro_nroconfig = @alr_nro_nroconfig
+            and alr_nro_nroalerta = @alr_nro_nroalerta
+      end
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.ALERTAS_SEARCH to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Inserta un registro en la tabla
+--- </summary>
+--- <param name="@alr_nro_nroconfig">Nro Config Alerta</param>
+--- <param name="@alr_nro_nroalerta">Nro Alerta</param>
+--- <param name="@alr_des_descripcion">Descripción</param>
+--- <param name="@alr_xde_detalle">Detalle</param>
+--- <param name="@alr_cd1_importancia">Importancia</param>
+--- <param name="@alr_fyh_fechadisparada">Fecha Disparada</param>
+--- <param name="@alr_fyh_fechavista">Fecha Vista</param>
+--- <param name="@alr_nom_usuariovista">Usuario Vista</param>
+--- <param name="@alr_nro_repetirendias">Repetir en Dias</param>
+--- <param name="@alr_cd1_finalizada">Finalizada</param>
+--- <param name="@usuario">Usuario que genera el insert</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.ALERTAS_INSERT'
+
+if exists (select * from sysobjects where id = object_id('dbo.ALERTAS_INSERT'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.ALERTAS_INSERT
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.ALERTAS_INSERT
+(
+@alr_nro_nroconfig tngs_numero,
+@alr_nro_nroalerta tngs_numero,
+@alr_des_descripcion tngs_descripcion,
+@alr_xde_detalle tngs_descripcion_x,
+@alr_cd1_importancia tngs_codigo_1,
+@alr_fyh_fechadisparada tngs_fecyhor,
+@alr_fyh_fechavista tngs_fecyhor,
+@alr_nom_usuariovista tngs_nombre,
+@alr_nro_repetirendias tngs_numero,
+@alr_cd1_finalizada tngs_codigo_1,
+@usuario tngs_nombre
+)
+as
+begin
+
+   Insert into TNGS_Mrln..Alertas
+   values (
+           @alr_nro_nroconfig,
+           @alr_nro_nroalerta,
+           @alr_des_descripcion,
+           @alr_xde_detalle,
+           @alr_cd1_importancia,
+           @alr_fyh_fechadisparada,
+           @alr_fyh_fechavista,
+           @alr_nom_usuariovista,
+           @alr_nro_repetirendias,
+           @alr_cd1_finalizada,
+           getdate(), 0, @usuario, 1
+          )
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.ALERTAS_INSERT to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Actualiza un registro de la tabla
+--- </summary>
+--- <param name="@alr_nro_nroconfig">Nro Config Alerta</param>
+--- <param name="@alr_nro_nroalerta">Nro Alerta</param>
+--- <param name="@alr_des_descripcion">Descripción</param>
+--- <param name="@alr_xde_detalle">Detalle</param>
+--- <param name="@alr_cd1_importancia">Importancia</param>
+--- <param name="@alr_fyh_fechadisparada">Fecha Disparada</param>
+--- <param name="@alr_fyh_fechavista">Fecha Vista</param>
+--- <param name="@alr_nom_usuariovista">Usuario Vista</param>
+--- <param name="@alr_nro_repetirendias">Repetir en Dias</param>
+--- <param name="@alr_cd1_finalizada">Finalizada</param>
+--- <param name="@usuario">Usuario que genera el update</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.ALERTAS_UPDATE'
+
+if exists (select * from sysobjects where id = object_id('dbo.ALERTAS_UPDATE'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.ALERTAS_UPDATE
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.ALERTAS_UPDATE
+(
+@alr_nro_nroconfig tngs_numero,
+@alr_nro_nroalerta tngs_numero,
+@alr_des_descripcion tngs_descripcion,
+@alr_xde_detalle tngs_descripcion_x,
+@alr_cd1_importancia tngs_codigo_1,
+@alr_fyh_fechadisparada tngs_fecyhor,
+@alr_fyh_fechavista tngs_fecyhor,
+@alr_nom_usuariovista tngs_nombre,
+@alr_nro_repetirendias tngs_numero,
+@alr_cd1_finalizada tngs_codigo_1,
+@usuario tngs_nombre
+)
+as
+begin
+
+   Update TNGS_Mrln..Alertas
+      set alr_des_descripcion= @alr_des_descripcion,
+          alr_xde_detalle= @alr_xde_detalle,
+          alr_cd1_importancia= @alr_cd1_importancia,
+          alr_fyh_fechadisparada= @alr_fyh_fechadisparada,
+          alr_fyh_fechavista= @alr_fyh_fechavista,
+          alr_nom_usuariovista= @alr_nom_usuariovista,
+          alr_nro_repetirendias= @alr_nro_repetirendias,
+          alr_cd1_finalizada= @alr_cd1_finalizada,
+          version = ((version+1) % 32767),
+          instante= getdate(),
+          usuario = @usuario
+    where alr_nro_nroconfig = @alr_nro_nroconfig
+      and alr_nro_nroalerta = @alr_nro_nroalerta
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.ALERTAS_UPDATE to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Borra lógicamente un registro
+--- </summary>
+--- <param name="@alr_nro_nroconfig">Nro Config Alerta</param>
+--- <param name="@alr_nro_nroalerta">Nro Alerta</param>
+--- <param name="@usuario">Usuario que realiza el delete</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.ALERTAS_DELETE'
+
+if exists (select * from sysobjects where id = object_id('dbo.ALERTAS_DELETE'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.ALERTAS_DELETE
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.ALERTAS_DELETE
+(
+@alr_nro_nroconfig tngs_numero,
+@alr_nro_nroalerta tngs_numero,
+@usuario tngs_nombre
+)
+as
+begin
+
+   Update TNGS_Mrln..Alertas
+      set deleted = 1,
+          version = ((version+1) % 32767),
+          instante= getdate(),
+          usuario = @usuario
+    where alr_nro_nroconfig = @alr_nro_nroconfig
+      and alr_nro_nroalerta = @alr_nro_nroalerta
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.ALERTAS_DELETE to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Recupera un registro
+--- </summary>
+--- <param name="@alr_nro_nroconfig">Nro Config Alerta</param>
+--- <param name="@alr_nro_nroalerta">Nro Alerta</param>
+--- <param name="@usuario">Usuario que realiza el recall</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.ALERTAS_RECALL'
+
+if exists (select * from sysobjects where id = object_id('dbo.ALERTAS_RECALL'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.ALERTAS_RECALL
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.ALERTAS_RECALL
+(
+@alr_nro_nroconfig tngs_numero,
+@alr_nro_nroalerta tngs_numero,
+@usuario tngs_nombre
+)
+as
+begin
+
+   Update TNGS_Mrln..Alertas
+      set deleted = 0,
+          version = ((version+1) % 32767),
+          instante= getdate(),
+          usuario = @usuario
+    where alr_nro_nroconfig = @alr_nro_nroconfig
+      and alr_nro_nroalerta = @alr_nro_nroalerta
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.ALERTAS_RECALL to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Borra físicamente un registro
+--- </summary>
+--- <param name="@alr_nro_nroconfig">Nro Config Alerta</param>
+--- <param name="@alr_nro_nroalerta">Nro Alerta</param>
+--- <param name="@usuario">Usuario que realiza el drop</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.ALERTAS_DROP'
+
+if exists (select * from sysobjects where id = object_id('dbo.ALERTAS_DROP'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.ALERTAS_DROP
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.ALERTAS_DROP
+(
+@alr_nro_nroconfig tngs_numero,
+@alr_nro_nroalerta tngs_numero,
+@usuario tngs_nombre
+)
+as
+begin
+
+   Delete from TNGS_Mrln..Alertas
+    where alr_nro_nroconfig = @alr_nro_nroconfig
+      and alr_nro_nroalerta = @alr_nro_nroalerta
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.ALERTAS_DROP to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Borra físicamente los registros borrados lógicamente
+--- </summary>
+--- <param name="@usuario">Usuario que realiza el delete</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.ALERTAS_PACK'
+
+if exists (select * from sysobjects where id = object_id('dbo.ALERTAS_PACK'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.ALERTAS_PACK
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.ALERTAS_PACK
+(
+@usuario tngs_nombre
+)
+as
+begin
+
+   Delete TNGS_Mrln..Alertas
+    where deleted = 1
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.ALERTAS_PACK to tngsmodulos
+
+print ' '
+go
+
+/*--------------------------------------------------------------------------
+// Fin del script de creacion de los SP de la tabla: Alertas
+//--------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------
+//                         TNG Software SPs Generator
+//----------------------------------------------------------------------------
+// Fecha       : 28/06/2018 17:05
 // Sistema     : Mrln
 // Tabla       : Categorias
 //----------------------------------------------------------------------------
@@ -538,7 +1128,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/06/2018 19:52
+// Fecha       : 28/06/2018 17:05
 // Sistema     : Mrln
 // Tabla       : Controles
 //----------------------------------------------------------------------------
@@ -1083,7 +1673,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/06/2018 19:52
+// Fecha       : 28/06/2018 17:05
 // Sistema     : Mrln
 // Tabla       : ControlesReparations
 //----------------------------------------------------------------------------
@@ -2437,7 +3027,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/06/2018 19:52
+// Fecha       : 28/06/2018 17:05
 // Sistema     : Mrln
 // Tabla       : Equipamiento
 //----------------------------------------------------------------------------
@@ -2982,7 +3572,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/06/2018 19:52
+// Fecha       : 28/06/2018 17:05
 // Sistema     : Mrln
 // Tabla       : Estaciones
 //----------------------------------------------------------------------------
@@ -3547,7 +4137,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/06/2018 19:52
+// Fecha       : 28/06/2018 17:05
 // Sistema     : Mrln
 // Tabla       : Estados
 //----------------------------------------------------------------------------
@@ -4102,7 +4692,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/06/2018 19:52
+// Fecha       : 28/06/2018 17:05
 // Sistema     : Mrln
 // Tabla       : Marcas
 //----------------------------------------------------------------------------
@@ -4637,7 +5227,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/06/2018 19:52
+// Fecha       : 28/06/2018 17:05
 // Sistema     : Mrln
 // Tabla       : Modelos
 //----------------------------------------------------------------------------
@@ -5182,7 +5772,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/06/2018 19:52
+// Fecha       : 28/06/2018 17:05
 // Sistema     : Mrln
 // Tabla       : MotivosInfracciones
 //----------------------------------------------------------------------------
@@ -5674,7 +6264,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/06/2018 19:52
+// Fecha       : 28/06/2018 17:05
 // Sistema     : Mrln
 // Tabla       : Moviles
 //----------------------------------------------------------------------------
@@ -6383,7 +6973,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/06/2018 19:52
+// Fecha       : 28/06/2018 17:05
 // Sistema     : Mrln
 // Tabla       : MvlAccidentes
 //----------------------------------------------------------------------------
@@ -7232,7 +7822,868 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/06/2018 19:52
+// Fecha       : 28/06/2018 17:05
+// Sistema     : Mrln
+// Tabla       : MvlAlertas
+//----------------------------------------------------------------------------
+// © 1999-2018 by TNG Software                                      Gndr 5.20
+//---------------------------------------------------------------------------*/
+
+/* ***************************************************************************
+/  Atencion!!!
+/     Este archivo fue generado por un programa en forma automática. Cualquier
+/     modificación que se realize sobre él se perderá en la próxima
+/     regeneración.
+/  **************************************************************************/
+
+/*-------------------------------------------------*/
+/* Selecciono la base en la que se crearan los SPs */
+/*-------------------------------------------------*/
+
+use TNGS_Mrln
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Levanta todos los registros de una tabla
+--- </summary>
+--- <param name="@onlyactive">Flag de SoloActivos</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.MVLALERTAS_UP'
+
+if exists (select * from sysobjects where id = object_id('dbo.MVLALERTAS_UP'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.MVLALERTAS_UP
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.MVLALERTAS_UP
+(
+@onlyactive tngs_valor
+)
+as
+begin
+
+   if @onlyactive = 1
+      begin
+         Select mal_ecd_patente,
+                mal_nro_nroconfigalerta,
+                mal_nro_kilometros,
+                mal_cd6_codreparacion,
+                rep_xde_des as mal_reparacion,
+                mal_cod_codcontrol,
+                ctl_des_des as mal_control,
+                TNGS_Mrln..MvlAlertas.instante,
+                TNGS_Mrln..MvlAlertas.deleted,
+                TNGS_Mrln..MvlAlertas.usuario,
+                TNGS_Mrln..MvlAlertas.version
+           from TNGS_Mrln..MvlAlertas
+                join TNGS_Mrln..Controles
+                  on mal_cod_codcontrol = ctl_cod_cod
+                join TNGS_Mrln..Reparaciones
+                  on mal_cd6_codreparacion = rep_cd6_cod
+          where TNGS_Mrln..MvlAlertas.deleted = 0
+          order by mal_ecd_patente,
+                mal_nro_nroconfigalerta
+      end
+   else
+      begin
+         Select mal_ecd_patente,
+                mal_nro_nroconfigalerta,
+                mal_nro_kilometros,
+                mal_cd6_codreparacion,
+                rep_xde_des as mal_reparacion,
+                mal_cod_codcontrol,
+                ctl_des_des as mal_control,
+                TNGS_Mrln..MvlAlertas.instante,
+                TNGS_Mrln..MvlAlertas.deleted,
+                TNGS_Mrln..MvlAlertas.usuario,
+                TNGS_Mrln..MvlAlertas.version
+           from TNGS_Mrln..MvlAlertas
+                join TNGS_Mrln..Controles
+                  on mal_cod_codcontrol = ctl_cod_cod
+                join TNGS_Mrln..Reparaciones
+                  on mal_cd6_codreparacion = rep_cd6_cod
+          order by mal_ecd_patente,
+                mal_nro_nroconfigalerta
+      end
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.MVLALERTAS_UP to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Verifica el número de versión de un registro
+--- </summary>
+--- <param name="@mal_ecd_patente">Patente</param>
+--- <param name="@mal_nro_nroconfigalerta">Nro Config Alerta</param>
+--- <param name="@version">Número de version a verificar</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.MVLALERTAS_CHKVERSION'
+
+if exists (select * from sysobjects where id = object_id('dbo.MVLALERTAS_CHKVERSION'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.MVLALERTAS_CHKVERSION
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.MVLALERTAS_CHKVERSION
+(
+@mal_ecd_patente tngs_codigo_e,
+@mal_nro_nroconfigalerta tngs_numero,
+@version tngs_numero
+)
+as
+begin
+
+   Select count(*) as cantidad
+     from TNGS_Mrln..MvlAlertas
+    where mal_ecd_patente = @mal_ecd_patente
+      and mal_nro_nroconfigalerta = @mal_nro_nroconfigalerta
+      and version = @version
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.MVLALERTAS_CHKVERSION to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Busca el registro de una clave
+--- </summary>
+--- <param name="@mal_ecd_patente">Patente</param>
+--- <param name="@mal_nro_nroconfigalerta">Nro Config Alerta</param>
+--- <param name="@onlyactive">Flag de SoloActivos</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.MVLALERTAS_SEARCH'
+
+if exists (select * from sysobjects where id = object_id('dbo.MVLALERTAS_SEARCH'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.MVLALERTAS_SEARCH
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.MVLALERTAS_SEARCH
+(
+@mal_ecd_patente tngs_codigo_e,
+@mal_nro_nroconfigalerta tngs_numero,
+@onlyactive tngs_valor
+)
+as
+begin
+
+   if @onlyactive = 1
+      begin
+         Select mal_ecd_patente,
+                mal_nro_nroconfigalerta,
+                mal_nro_kilometros,
+                mal_cd6_codreparacion,
+                rep_xde_des as mal_reparacion,
+                mal_cod_codcontrol,
+                ctl_des_des as mal_control,
+                TNGS_Mrln..MvlAlertas.instante,
+                TNGS_Mrln..MvlAlertas.deleted,
+                TNGS_Mrln..MvlAlertas.usuario,
+                TNGS_Mrln..MvlAlertas.version
+           from TNGS_Mrln..MvlAlertas
+                join TNGS_Mrln..Controles
+                  on mal_cod_codcontrol = ctl_cod_cod
+                join TNGS_Mrln..Reparaciones
+                  on mal_cd6_codreparacion = rep_cd6_cod
+          where mal_ecd_patente = @mal_ecd_patente
+            and mal_nro_nroconfigalerta = @mal_nro_nroconfigalerta
+            and TNGS_Mrln..MvlAlertas.deleted = 0
+      end
+   else
+      begin
+         Select mal_ecd_patente,
+                mal_nro_nroconfigalerta,
+                mal_nro_kilometros,
+                mal_cd6_codreparacion,
+                rep_xde_des as mal_reparacion,
+                mal_cod_codcontrol,
+                ctl_des_des as mal_control,
+                TNGS_Mrln..MvlAlertas.instante,
+                TNGS_Mrln..MvlAlertas.deleted,
+                TNGS_Mrln..MvlAlertas.usuario,
+                TNGS_Mrln..MvlAlertas.version
+           from TNGS_Mrln..MvlAlertas
+                join TNGS_Mrln..Controles
+                  on mal_cod_codcontrol = ctl_cod_cod
+                join TNGS_Mrln..Reparaciones
+                  on mal_cd6_codreparacion = rep_cd6_cod
+          where mal_ecd_patente = @mal_ecd_patente
+            and mal_nro_nroconfigalerta = @mal_nro_nroconfigalerta
+      end
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.MVLALERTAS_SEARCH to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Busca los registros de una clave foranea
+--- </summary>
+--- <param name="@mal_ecd_patente">Patente</param>
+--- <param name="@onlyactive">Flag de SoloActivos</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.MVLALERTAS_FSEARCH'
+
+if exists (select * from sysobjects where id = object_id('dbo.MVLALERTAS_FSEARCH'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.MVLALERTAS_FSEARCH
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.MVLALERTAS_FSEARCH
+(
+@mal_ecd_patente tngs_codigo_e,
+@onlyactive tngs_valor
+)
+as
+begin
+
+   if @onlyactive = 1
+      begin
+         Select mal_ecd_patente,
+                mal_nro_nroconfigalerta,
+                mal_nro_kilometros,
+                mal_cd6_codreparacion,
+                rep_xde_des as mal_reparacion,
+                mal_cod_codcontrol,
+                ctl_des_des as mal_control,
+                TNGS_Mrln..MvlAlertas.instante,
+                TNGS_Mrln..MvlAlertas.deleted,
+                TNGS_Mrln..MvlAlertas.usuario,
+                TNGS_Mrln..MvlAlertas.version
+           from TNGS_Mrln..MvlAlertas
+                join TNGS_Mrln..Controles
+                  on mal_cod_codcontrol = ctl_cod_cod
+                join TNGS_Mrln..Reparaciones
+                  on mal_cd6_codreparacion = rep_cd6_cod
+          where mal_ecd_patente = @mal_ecd_patente
+            and TNGS_Mrln..MvlAlertas.deleted = 0
+          order by mal_nro_nroconfigalerta
+      end
+   else
+      begin
+         Select mal_ecd_patente,
+                mal_nro_nroconfigalerta,
+                mal_nro_kilometros,
+                mal_cd6_codreparacion,
+                rep_xde_des as mal_reparacion,
+                mal_cod_codcontrol,
+                ctl_des_des as mal_control,
+                TNGS_Mrln..MvlAlertas.instante,
+                TNGS_Mrln..MvlAlertas.deleted,
+                TNGS_Mrln..MvlAlertas.usuario,
+                TNGS_Mrln..MvlAlertas.version
+           from TNGS_Mrln..MvlAlertas
+                join TNGS_Mrln..Controles
+                  on mal_cod_codcontrol = ctl_cod_cod
+                join TNGS_Mrln..Reparaciones
+                  on mal_cd6_codreparacion = rep_cd6_cod
+          where mal_ecd_patente = @mal_ecd_patente
+          order by mal_nro_nroconfigalerta
+      end
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.MVLALERTAS_FSEARCH to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Inserta un registro en la tabla
+--- </summary>
+--- <param name="@mal_ecd_patente">Patente</param>
+--- <param name="@mal_nro_nroconfigalerta">Nro Config Alerta</param>
+--- <param name="@mal_nro_kilometros">Kilometros</param>
+--- <param name="@mal_cd6_codreparacion">Reparacion</param>
+--- <param name="@mal_cod_codcontrol">Control</param>
+--- <param name="@usuario">Usuario que genera el insert</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.MVLALERTAS_INSERT'
+
+if exists (select * from sysobjects where id = object_id('dbo.MVLALERTAS_INSERT'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.MVLALERTAS_INSERT
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.MVLALERTAS_INSERT
+(
+@mal_ecd_patente tngs_codigo_e,
+@mal_nro_nroconfigalerta tngs_numero,
+@mal_nro_kilometros tngs_numero,
+@mal_cd6_codreparacion tngs_codigo_6,
+@mal_cod_codcontrol tngs_codigo,
+@usuario tngs_nombre
+)
+as
+begin
+
+   Insert into TNGS_Mrln..MvlAlertas
+   values (
+           @mal_ecd_patente,
+           @mal_nro_nroconfigalerta,
+           @mal_nro_kilometros,
+           @mal_cd6_codreparacion,
+           @mal_cod_codcontrol,
+           getdate(), 0, @usuario, 1
+          )
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.MVLALERTAS_INSERT to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Actualiza un registro de la tabla
+--- </summary>
+--- <param name="@mal_ecd_patente">Patente</param>
+--- <param name="@mal_nro_nroconfigalerta">Nro Config Alerta</param>
+--- <param name="@mal_nro_kilometros">Kilometros</param>
+--- <param name="@mal_cd6_codreparacion">Reparacion</param>
+--- <param name="@mal_cod_codcontrol">Control</param>
+--- <param name="@usuario">Usuario que genera el update</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.MVLALERTAS_UPDATE'
+
+if exists (select * from sysobjects where id = object_id('dbo.MVLALERTAS_UPDATE'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.MVLALERTAS_UPDATE
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.MVLALERTAS_UPDATE
+(
+@mal_ecd_patente tngs_codigo_e,
+@mal_nro_nroconfigalerta tngs_numero,
+@mal_nro_kilometros tngs_numero,
+@mal_cd6_codreparacion tngs_codigo_6,
+@mal_cod_codcontrol tngs_codigo,
+@usuario tngs_nombre
+)
+as
+begin
+
+   Update TNGS_Mrln..MvlAlertas
+      set mal_nro_kilometros= @mal_nro_kilometros,
+          mal_cd6_codreparacion= @mal_cd6_codreparacion,
+          mal_cod_codcontrol= @mal_cod_codcontrol,
+          version = ((version+1) % 32767),
+          instante= getdate(),
+          usuario = @usuario
+    where mal_ecd_patente = @mal_ecd_patente
+      and mal_nro_nroconfigalerta = @mal_nro_nroconfigalerta
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.MVLALERTAS_UPDATE to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Borra lógicamente un registro
+--- </summary>
+--- <param name="@mal_ecd_patente">Patente</param>
+--- <param name="@mal_nro_nroconfigalerta">Nro Config Alerta</param>
+--- <param name="@usuario">Usuario que realiza el delete</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.MVLALERTAS_DELETE'
+
+if exists (select * from sysobjects where id = object_id('dbo.MVLALERTAS_DELETE'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.MVLALERTAS_DELETE
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.MVLALERTAS_DELETE
+(
+@mal_ecd_patente tngs_codigo_e,
+@mal_nro_nroconfigalerta tngs_numero,
+@usuario tngs_nombre
+)
+as
+begin
+
+   Update TNGS_Mrln..MvlAlertas
+      set deleted = 1,
+          version = ((version+1) % 32767),
+          instante= getdate(),
+          usuario = @usuario
+    where mal_ecd_patente = @mal_ecd_patente
+      and mal_nro_nroconfigalerta = @mal_nro_nroconfigalerta
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.MVLALERTAS_DELETE to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Borra lógicamente un registro por clave foranea
+--- </summary>
+--- <param name="@mal_ecd_patente">Patente</param>
+--- <param name="@instante">Instante del delete</param>
+--- <param name="@usuario">Usuario que realiza el delete</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.MVLALERTAS_FDELETE'
+
+if exists (select * from sysobjects where id = object_id('dbo.MVLALERTAS_FDELETE'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.MVLALERTAS_FDELETE
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.MVLALERTAS_FDELETE
+(
+@mal_ecd_patente tngs_codigo_e,
+@instante tngs_fecyhor,
+@usuario tngs_nombre
+)
+as
+begin
+
+   if datepart(yyyy, @instante) = 1900
+      begin
+         select @instante= getdate()
+      end
+
+   Update TNGS_Mrln..MvlAlertas
+      set deleted = 1,
+          version = ((version+1) % 32767),
+          instante= @instante,
+          usuario = @usuario
+    where mal_ecd_patente = @mal_ecd_patente
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.MVLALERTAS_FDELETE to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Recupera un registro
+--- </summary>
+--- <param name="@mal_ecd_patente">Patente</param>
+--- <param name="@mal_nro_nroconfigalerta">Nro Config Alerta</param>
+--- <param name="@usuario">Usuario que realiza el recall</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.MVLALERTAS_RECALL'
+
+if exists (select * from sysobjects where id = object_id('dbo.MVLALERTAS_RECALL'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.MVLALERTAS_RECALL
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.MVLALERTAS_RECALL
+(
+@mal_ecd_patente tngs_codigo_e,
+@mal_nro_nroconfigalerta tngs_numero,
+@usuario tngs_nombre
+)
+as
+begin
+
+   Update TNGS_Mrln..MvlAlertas
+      set deleted = 0,
+          version = ((version+1) % 32767),
+          instante= getdate(),
+          usuario = @usuario
+    where mal_ecd_patente = @mal_ecd_patente
+      and mal_nro_nroconfigalerta = @mal_nro_nroconfigalerta
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.MVLALERTAS_RECALL to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Recupera lógicamente los registros de una clave foranea
+--- </summary>
+--- <param name="@mal_ecd_patente">Patente</param>
+--- <param name="@instante">Instante de referencia</param>
+--- <param name="@usuario">Usuario que realiza el recall</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.MVLALERTAS_FRECALL'
+
+if exists (select * from sysobjects where id = object_id('dbo.MVLALERTAS_FRECALL'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.MVLALERTAS_FRECALL
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.MVLALERTAS_FRECALL
+(
+@mal_ecd_patente tngs_codigo_e,
+@instante tngs_fecyhor,
+@usuario tngs_nombre
+)
+as
+begin
+
+   if datepart(yyyy, @instante) = 1900
+      begin
+         Update TNGS_Mrln..MvlAlertas
+            set deleted = 0,
+                version = ((version+1) % 32767),
+                instante= getdate(),
+                usuario = @usuario
+          where mal_ecd_patente = @mal_ecd_patente
+      end
+   else
+      begin
+         Update TNGS_Mrln..MvlAlertas
+            set deleted = 0,
+                version = ((version+1) % 32767),
+                instante= getdate(),
+                usuario = @usuario
+          where mal_ecd_patente = @mal_ecd_patente
+            and instante= @instante
+      end
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.MVLALERTAS_FRECALL to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Borra físicamente un registro
+--- </summary>
+--- <param name="@mal_ecd_patente">Patente</param>
+--- <param name="@mal_nro_nroconfigalerta">Nro Config Alerta</param>
+--- <param name="@usuario">Usuario que realiza el drop</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.MVLALERTAS_DROP'
+
+if exists (select * from sysobjects where id = object_id('dbo.MVLALERTAS_DROP'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.MVLALERTAS_DROP
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.MVLALERTAS_DROP
+(
+@mal_ecd_patente tngs_codigo_e,
+@mal_nro_nroconfigalerta tngs_numero,
+@usuario tngs_nombre
+)
+as
+begin
+
+   Delete from TNGS_Mrln..MvlAlertas
+    where mal_ecd_patente = @mal_ecd_patente
+      and mal_nro_nroconfigalerta = @mal_nro_nroconfigalerta
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.MVLALERTAS_DROP to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Borra físicamente un registro por clave foránea
+--- </summary>
+--- <param name="@mal_ecd_patente">Patente</param>
+--- <param name="@usuario">Usuario que realiza el drop</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.MVLALERTAS_FDROP'
+
+if exists (select * from sysobjects where id = object_id('dbo.MVLALERTAS_FDROP'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.MVLALERTAS_FDROP
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.MVLALERTAS_FDROP
+(
+@mal_ecd_patente tngs_codigo_e,
+@usuario tngs_nombre
+)
+as
+begin
+
+   Delete from TNGS_Mrln..MvlAlertas
+    where mal_ecd_patente = @mal_ecd_patente
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.MVLALERTAS_FDROP to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Borra físicamente los registros borrados lógicamente
+--- </summary>
+--- <param name="@usuario">Usuario que realiza el delete</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.MVLALERTAS_PACK'
+
+if exists (select * from sysobjects where id = object_id('dbo.MVLALERTAS_PACK'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.MVLALERTAS_PACK
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.MVLALERTAS_PACK
+(
+@usuario tngs_nombre
+)
+as
+begin
+
+   Delete TNGS_Mrln..MvlAlertas
+    where deleted = 1
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.MVLALERTAS_PACK to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Borra físicamente los registro borrados lógicamente por clave foránea
+--- </summary>
+--- <param name="@mal_ecd_patente">Patente</param>
+--- <param name="@usuario">Usuario que realiza el pack</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.MVLALERTAS_FPACK'
+
+if exists (select * from sysobjects where id = object_id('dbo.MVLALERTAS_FPACK'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.MVLALERTAS_FPACK
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.MVLALERTAS_FPACK
+(
+@mal_ecd_patente tngs_codigo_e,
+@usuario tngs_nombre
+)
+as
+begin
+
+   Delete from TNGS_Mrln..MvlAlertas
+    where mal_ecd_patente = @mal_ecd_patente
+      and deleted = 1
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.MVLALERTAS_FPACK to tngsmodulos
+
+print ' '
+go
+
+/*--------------------------------------------------------------------------
+// Fin del script de creacion de los SP de la tabla: MvlAlertas
+//--------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------
+//                         TNG Software SPs Generator
+//----------------------------------------------------------------------------
+// Fecha       : 28/06/2018 17:05
 // Sistema     : Mrln
 // Tabla       : MvlCombustible
 //----------------------------------------------------------------------------
@@ -8110,7 +9561,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/06/2018 19:52
+// Fecha       : 28/06/2018 17:05
 // Sistema     : Mrln
 // Tabla       : MvlEquipamiento
 //----------------------------------------------------------------------------
@@ -9024,7 +10475,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/06/2018 19:52
+// Fecha       : 28/06/2018 17:05
 // Sistema     : Mrln
 // Tabla       : MvlEstados
 //----------------------------------------------------------------------------
@@ -9889,7 +11340,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/06/2018 19:52
+// Fecha       : 28/06/2018 17:05
 // Sistema     : Mrln
 // Tabla       : MvlInfracciones
 //----------------------------------------------------------------------------
@@ -10768,7 +12219,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/06/2018 19:52
+// Fecha       : 28/06/2018 17:05
 // Sistema     : Mrln
 // Tabla       : MvlKilometros
 //----------------------------------------------------------------------------
@@ -11658,7 +13109,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/06/2018 19:52
+// Fecha       : 28/06/2018 17:05
 // Sistema     : Mrln
 // Tabla       : OrdenesTrabajo
 //----------------------------------------------------------------------------
@@ -12329,7 +13780,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/06/2018 19:52
+// Fecha       : 28/06/2018 17:05
 // Sistema     : Mrln
 // Tabla       : OtItems
 //----------------------------------------------------------------------------
@@ -13315,7 +14766,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/06/2018 19:52
+// Fecha       : 28/06/2018 17:05
 // Sistema     : Mrln
 // Tabla       : Parametros
 //----------------------------------------------------------------------------
@@ -13847,7 +15298,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/06/2018 19:52
+// Fecha       : 28/06/2018 17:05
 // Sistema     : Mrln
 // Tabla       : Reparaciones
 //----------------------------------------------------------------------------
@@ -14417,7 +15868,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/06/2018 19:52
+// Fecha       : 28/06/2018 17:05
 // Sistema     : Mrln
 // Tabla       : Taller
 //----------------------------------------------------------------------------
@@ -14982,7 +16433,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/06/2018 19:52
+// Fecha       : 28/06/2018 17:05
 // Sistema     : Mrln
 // Tabla       : TallerCategoria
 //----------------------------------------------------------------------------
@@ -15819,7 +17270,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/06/2018 19:52
+// Fecha       : 28/06/2018 17:05
 // Sistema     : Mrln
 // Tabla       : Talonarios
 //----------------------------------------------------------------------------

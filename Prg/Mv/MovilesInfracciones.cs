@@ -31,7 +31,7 @@ namespace Mrln.Mv
     public partial class MovilesInfracciones : Form
     {
         #region Miembros de la Clase
-            private Bel.EMvlInfraccion m_entMvlInfraccion= null;
+            private Bel.EMovilInfraccion m_entMvlInfraccion= null;
             private string m_strPatenteMovilSeleccionado = "";
             private StatMsg m_smResult= null;
             private string m_strSort= "";
@@ -199,7 +199,7 @@ namespace Mrln.Mv
         {
             // Creamos una nueva entidad, pasamos a modo de edicion y
             // damos foco al primer campo
-            m_entMvlInfraccion= Bel.EMvlInfraccion.NewEmpty();
+            m_entMvlInfraccion= Bel.EMovilInfraccion.NewEmpty();
             m_entMvlInfraccion.Fecha = DateTime.Now;
             SwitchTo(FormModes.Edit, GridOps.DontFill);
             txtPatente.Focus();

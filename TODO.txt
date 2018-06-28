@@ -7,12 +7,6 @@ Controles despues de X km de haber realizado tal reparacion.
 
 
 
-Agregar opcion de imprimir las OTs Pendientes con un crystal report especial para tener cada una separada y poder darselas a un tecnico.
-
-
-
-
-
 Pregunta:
 Tipo de nafta no les interesara saber? Para cuando cargan el MvlCombustibles.
 

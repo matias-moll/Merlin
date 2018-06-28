@@ -12,8 +12,8 @@ namespace Mrln.Dal
     //----------------------------------------------------------------------------
     // Fecha                    : 28/06/2018 17:06
     // Sistema                  : Mrln
-    // Clase para Administrar   : Motivos Infracciones
-    // Basada en la Tabla       : MotivosInfracciones
+    // Clase para Administrar   : Alertas de los Moviles
+    // Basada en la Tabla       : MvlAlertas
     //----------------------------------------------------------------------------
     // © 1996-2018 by TNG Software                                      Gndr 5.20
     //----------------------------------------------------------------------------
@@ -26,9 +26,9 @@ namespace Mrln.Dal
     //****************************************************************************
 
     /// <summary>
-    /// Modulo DAL de Acceso a la tabla: MotivosInfracciones
+    /// Modulo DAL de Acceso a la tabla: MvlAlertas
     /// </summary>
-    public static class MotivosInfracciones
+    public static class MvlAlertas
     {
         //---------------------------------------------------------------
         // Métodos públicos estáticos de la clase para realizar
@@ -54,7 +54,7 @@ namespace Mrln.Dal
             try {
                 // Recuperamos todos los registros
                 return DBRuts.Exec_DS(p_dbcAccess,
-                                      "TNGS_Mrln..MOTIVOSINFRACCIONES_UP",
+                                      "TNGS_Mrln..MVLALERTAS_UP",
                                       new DbParameter[] {
                                           p_dbcAccess.MakeParam("@onlyactive", (p_bOnlyActive ? 1 : 0))
                                       },
@@ -71,13 +71,15 @@ namespace Mrln.Dal
         /// Verifica el número de versión de un registro
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_strCodigo">Código</param>
+        /// <param name="p_strPatente">Patente</param>
+        /// <param name="p_iNroconfigalerta">Nro Config Alerta</param>
         /// <param name="p_iFxdVersion">Número de version a verificar</param>
         /// <param name="p_dsResult">DataSet donde devolver el registro</param>
         /// <param name="p_strTabla">Nombre de la tabla a llenar</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static void ChkVersion(DBConn p_dbcAccess,
-                                      string p_strCodigo,
+                                      string p_strPatente,
+                                      int p_iNroconfigalerta,
                                       int p_iFxdVersion,
                                       ref DataSet p_dsResult,
                                       string p_strTabla,
@@ -86,9 +88,10 @@ namespace Mrln.Dal
             try {
                 // Verificamos el número de versión
                 DBRuts.Exec_DS(p_dbcAccess,
-                               "TNGS_Mrln..MOTIVOSINFRACCIONES_CHKVERSION",
+                               "TNGS_Mrln..MVLALERTAS_CHKVERSION",
                                new DbParameter[] {
-                                   p_dbcAccess.MakeParam("@mti_cod_codigo", p_strCodigo),
+                                   p_dbcAccess.MakeParam("@mal_ecd_patente", p_strPatente),
+                                   p_dbcAccess.MakeParam("@mal_nro_nroconfigalerta", p_iNroconfigalerta),
                                    p_dbcAccess.MakeParam("@version", p_iFxdVersion)
                                },
                                ref p_dsResult, p_strTabla);
@@ -103,13 +106,15 @@ namespace Mrln.Dal
         /// Busca el registro de una clave (Grilla)
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_strCodigo">Código</param>
+        /// <param name="p_strPatente">Patente</param>
+        /// <param name="p_iNroconfigalerta">Nro Config Alerta</param>
         /// <param name="p_bOnlyActive">Indica si solo se analizan los registros activos</param>
         /// <param name="p_dsResult">DataSet donde devolver el registro</param>
         /// <param name="p_strTabla">Nombre de la tabla a llenar</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static int Search(DBConn p_dbcAccess,
-                                 string p_strCodigo,
+                                 string p_strPatente,
+                                 int p_iNroconfigalerta,
                                  bool p_bOnlyActive,
                                  ref DataSet p_dsResult,
                                  string p_strTabla,
@@ -118,15 +123,49 @@ namespace Mrln.Dal
             try {
                 // Recuperamos el registro de la clave
                 return DBRuts.Exec_DS(p_dbcAccess,
-                                      "TNGS_Mrln..MOTIVOSINFRACCIONES_SEARCH",
+                                      "TNGS_Mrln..MVLALERTAS_SEARCH",
                                       new DbParameter[] {
-                                          p_dbcAccess.MakeParam("@mti_cod_codigo", p_strCodigo),
+                                          p_dbcAccess.MakeParam("@mal_ecd_patente", p_strPatente),
+                                          p_dbcAccess.MakeParam("@mal_nro_nroconfigalerta", p_iNroconfigalerta),
                                           p_dbcAccess.MakeParam("@onlyactive", (p_bOnlyActive ? 1 : 0))
                                       },
                                       ref p_dsResult, p_strTabla);
             }
             catch (Exception l_expData) {
                 // Error en el search del registro
+                p_smResult.DalError(l_expData);
+                return -1;
+            }
+        }
+
+        /// <summary>
+        /// Busca los registros de una clave foranea (Grilla)
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_strPatente">Patente</param>
+        /// <param name="p_bOnlyActive">Indica si solo se analizan los registros activos</param>
+        /// <param name="p_dsResult">DataSet donde devolver el registro</param>
+        /// <param name="p_strTabla">Nombre de la tabla a llenar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        public static int FSearch(DBConn p_dbcAccess,
+                                  string p_strPatente,
+                                  bool p_bOnlyActive,
+                                  ref DataSet p_dsResult,
+                                  string p_strTabla,
+                                  ref StatMsg p_smResult)
+        {
+            try {
+                // Recuperamos los registro de la clave foranea
+                return DBRuts.Exec_DS(p_dbcAccess,
+                                      "TNGS_Mrln..MVLALERTAS_FSEARCH",
+                                      new DbParameter[] {
+                                          p_dbcAccess.MakeParam("@mal_ecd_patente", p_strPatente),
+                                          p_dbcAccess.MakeParam("@onlyactive", (p_bOnlyActive ? 1 : 0))
+                                      },
+                                      ref p_dsResult, p_strTabla);
+            }
+            catch (Exception l_expData) {
+                // Error en el search de los registros
                 p_smResult.DalError(l_expData);
                 return -1;
             }
@@ -139,21 +178,30 @@ namespace Mrln.Dal
         /// Inserta un registro en la tabla
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_strCodigo">Código</param>
-        /// <param name="p_strDescripcion">Descripción</param>
+        /// <param name="p_strPatente">Patente</param>
+        /// <param name="p_iNroconfigalerta">Nro Config Alerta</param>
+        /// <param name="p_iKilometros">Kilometros</param>
+        /// <param name="p_strCodreparacion">Reparacion</param>
+        /// <param name="p_strCodcontrol">Control</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static int Insert(DBConn p_dbcAccess,
-                                 string p_strCodigo,
-                                 string p_strDescripcion,
+                                 string p_strPatente,
+                                 int p_iNroconfigalerta,
+                                 int p_iKilometros,
+                                 string p_strCodreparacion,
+                                 string p_strCodcontrol,
                                  ref StatMsg p_smResult)
         {
             try {
                 // Insertamos el registro
                 return DBRuts.Exec(p_dbcAccess,
-                                   "TNGS_Mrln..MOTIVOSINFRACCIONES_INSERT",
+                                   "TNGS_Mrln..MVLALERTAS_INSERT",
                                    new DbParameter[] {
-                                       p_dbcAccess.MakeParam("@mti_cod_codigo", p_strCodigo),
-                                       p_dbcAccess.MakeParam("@mti_ede_descripcion", p_strDescripcion),
+                                       p_dbcAccess.MakeParam("@mal_ecd_patente", p_strPatente),
+                                       p_dbcAccess.MakeParam("@mal_nro_nroconfigalerta", p_iNroconfigalerta),
+                                       p_dbcAccess.MakeParam("@mal_nro_kilometros", p_iKilometros),
+                                       p_dbcAccess.MakeParam("@mal_cd6_codreparacion", p_strCodreparacion),
+                                       p_dbcAccess.MakeParam("@mal_cod_codcontrol", p_strCodcontrol),
                                        p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
                                    }
                                   );
@@ -169,21 +217,30 @@ namespace Mrln.Dal
         /// Actualiza un registro de la tabla
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_strCodigo">Código</param>
-        /// <param name="p_strDescripcion">Descripción</param>
+        /// <param name="p_strPatente">Patente</param>
+        /// <param name="p_iNroconfigalerta">Nro Config Alerta</param>
+        /// <param name="p_iKilometros">Kilometros</param>
+        /// <param name="p_strCodreparacion">Reparacion</param>
+        /// <param name="p_strCodcontrol">Control</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static int Update(DBConn p_dbcAccess,
-                                 string p_strCodigo,
-                                 string p_strDescripcion,
+                                 string p_strPatente,
+                                 int p_iNroconfigalerta,
+                                 int p_iKilometros,
+                                 string p_strCodreparacion,
+                                 string p_strCodcontrol,
                                  ref StatMsg p_smResult)
         {
             try {
                 // Modificamos el registro
                 return DBRuts.Exec(p_dbcAccess,
-                                   "TNGS_Mrln..MOTIVOSINFRACCIONES_UPDATE",
+                                   "TNGS_Mrln..MVLALERTAS_UPDATE",
                                    new DbParameter[] {
-                                       p_dbcAccess.MakeParam("@mti_cod_codigo", p_strCodigo),
-                                       p_dbcAccess.MakeParam("@mti_ede_descripcion", p_strDescripcion),
+                                       p_dbcAccess.MakeParam("@mal_ecd_patente", p_strPatente),
+                                       p_dbcAccess.MakeParam("@mal_nro_nroconfigalerta", p_iNroconfigalerta),
+                                       p_dbcAccess.MakeParam("@mal_nro_kilometros", p_iKilometros),
+                                       p_dbcAccess.MakeParam("@mal_cd6_codreparacion", p_strCodreparacion),
+                                       p_dbcAccess.MakeParam("@mal_cod_codcontrol", p_strCodcontrol),
                                        p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
                                    }
                                   );
@@ -199,24 +256,57 @@ namespace Mrln.Dal
         /// Borra logicamente un registro
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_strCodigo">Código</param>
+        /// <param name="p_strPatente">Patente</param>
+        /// <param name="p_iNroconfigalerta">Nro Config Alerta</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static int Delete(DBConn p_dbcAccess,
-                                 string p_strCodigo,
+                                 string p_strPatente,
+                                 int p_iNroconfigalerta,
                                  ref StatMsg p_smResult)
         {
             try {
                 // Borramos el registro
                 return DBRuts.Exec(p_dbcAccess,
-                                   "TNGS_Mrln..MOTIVOSINFRACCIONES_DELETE",
+                                   "TNGS_Mrln..MVLALERTAS_DELETE",
                                    new DbParameter[] {
-                                       p_dbcAccess.MakeParam("@mti_cod_codigo", p_strCodigo),
+                                       p_dbcAccess.MakeParam("@mal_ecd_patente", p_strPatente),
+                                       p_dbcAccess.MakeParam("@mal_nro_nroconfigalerta", p_iNroconfigalerta),
                                        p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
                                    }
                                   );
             }
             catch (Exception l_expData) {
                 // Error en el update del registro
+                p_smResult.DalError(l_expData);
+                return -1;
+            }
+        }
+
+        /// <summary>
+        /// Borra logicamente los registros de una clave foranea
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_strPatente">Patente</param>
+        /// <param name="p_dtInstante">Instante del borrado</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        public static int FDelete(DBConn p_dbcAccess,
+                                  string p_strPatente,
+                                  DateTime p_dtInstante,
+                                  ref StatMsg p_smResult)
+        {
+            try {
+                // Borramos los registro de la clave foranea
+                return DBRuts.Exec(p_dbcAccess,
+                                   "TNGS_Mrln..MVLALERTAS_FDELETE",
+                                   new DbParameter[] {
+                                       p_dbcAccess.MakeParam("@mal_ecd_patente", p_strPatente),
+                                       p_dbcAccess.MakeParam("@instante", p_dtInstante),
+                                       p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
+                                   }
+                                  );
+            }
+            catch (Exception l_expData) {
+                // Error en el update de los registros
                 p_smResult.DalError(l_expData);
                 return -1;
             }
@@ -226,18 +316,21 @@ namespace Mrln.Dal
         /// Recupera un registro
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_strCodigo">Código</param>
+        /// <param name="p_strPatente">Patente</param>
+        /// <param name="p_iNroconfigalerta">Nro Config Alerta</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static int Recall(DBConn p_dbcAccess,
-                                 string p_strCodigo,
+                                 string p_strPatente,
+                                 int p_iNroconfigalerta,
                                  ref StatMsg p_smResult)
         {
             try {
                 // Borramos el registro
                 return DBRuts.Exec(p_dbcAccess,
-                                   "TNGS_Mrln..MOTIVOSINFRACCIONES_RECALL",
+                                   "TNGS_Mrln..MVLALERTAS_RECALL",
                                    new DbParameter[] {
-                                       p_dbcAccess.MakeParam("@mti_cod_codigo", p_strCodigo),
+                                       p_dbcAccess.MakeParam("@mal_ecd_patente", p_strPatente),
+                                       p_dbcAccess.MakeParam("@mal_nro_nroconfigalerta", p_iNroconfigalerta),
                                        p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
                                    }
                                   );
@@ -250,27 +343,87 @@ namespace Mrln.Dal
         }
 
         /// <summary>
+        /// Recupera logicamente los registros de una clave foranea
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_strPatente">Patente</param>
+        /// <param name="p_dtInstante">Instante del borrado</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        public static int FRecall(DBConn p_dbcAccess,
+                                  string p_strPatente,
+                                  DateTime p_dtInstante,
+                                  ref StatMsg p_smResult)
+        {
+            try {
+                // Borramos los registro de la clave foranea
+                return DBRuts.Exec(p_dbcAccess,
+                                   "TNGS_Mrln..MVLALERTAS_FRECALL",
+                                   new DbParameter[] {
+                                       p_dbcAccess.MakeParam("@mal_ecd_patente", p_strPatente),
+                                       p_dbcAccess.MakeParam("@instante", p_dtInstante),
+                                       p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
+                                   }
+                                  );
+            }
+            catch (Exception l_expData) {
+                // Error en el update de los registros
+                p_smResult.DalError(l_expData);
+                return -1;
+            }
+        }
+
+        /// <summary>
         /// Borra fisicamente un registro
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_strCodigo">Código</param>
+        /// <param name="p_strPatente">Patente</param>
+        /// <param name="p_iNroconfigalerta">Nro Config Alerta</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static int Drop(DBConn p_dbcAccess,
-                               string p_strCodigo,
+                               string p_strPatente,
+                               int p_iNroconfigalerta,
                                ref StatMsg p_smResult)
         {
             try {
                 // Borramos el registro
                 return DBRuts.Exec(p_dbcAccess,
-                                   "TNGS_Mrln..MOTIVOSINFRACCIONES_DROP",
+                                   "TNGS_Mrln..MVLALERTAS_DROP",
                                    new DbParameter[] {
-                                       p_dbcAccess.MakeParam("@mti_cod_codigo", p_strCodigo),
+                                       p_dbcAccess.MakeParam("@mal_ecd_patente", p_strPatente),
+                                       p_dbcAccess.MakeParam("@mal_nro_nroconfigalerta", p_iNroconfigalerta),
                                        p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
                                    }
                                   );
             }
             catch (Exception l_expData) {
                 // Error en el delete del registro
+                p_smResult.DalError(l_expData);
+                return -1;
+            }
+        }
+
+        /// <summary>
+        /// Borra fisicamente los registros de una clave foranea
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_strPatente">Patente</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        public static int FDrop(DBConn p_dbcAccess,
+                                string p_strPatente,
+                                ref StatMsg p_smResult)
+        {
+            try {
+                // Borramos los registro de la clave foranea
+                return DBRuts.Exec(p_dbcAccess,
+                                   "TNGS_Mrln..MVLALERTAS_FDROP",
+                                   new DbParameter[] {
+                                       p_dbcAccess.MakeParam("@mal_ecd_patente", p_strPatente),
+                                       p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
+                                   }
+                                  );
+            }
+            catch (Exception l_expData) {
+                // Error en el delete de los registros
                 p_smResult.DalError(l_expData);
                 return -1;
             }
@@ -287,7 +440,7 @@ namespace Mrln.Dal
             try {
                 // Borramos el registro
                 return DBRuts.Exec(p_dbcAccess,
-                                   "TNGS_Mrln..MOTIVOSINFRACCIONES_PACK",
+                                   "TNGS_Mrln..MVLALERTAS_PACK",
                                    new DbParameter[] {
                                        p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
                                    }
@@ -295,6 +448,33 @@ namespace Mrln.Dal
             }
             catch (Exception l_expData) {
                 // Error en el delete del registro
+                p_smResult.DalError(l_expData);
+                return -1;
+            }
+        }
+
+        /// <summary>
+        /// Borra fisicamente los registros borrado lógicamente de una clave foranea
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_strPatente">Patente</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        public static int FPack(DBConn p_dbcAccess,
+                                string p_strPatente,
+                                ref StatMsg p_smResult)
+        {
+            try {
+                // Borramos los registro de la clave foranea
+                return DBRuts.Exec(p_dbcAccess,
+                                   "TNGS_Mrln..MVLALERTAS_FPACK",
+                                   new DbParameter[] {
+                                       p_dbcAccess.MakeParam("@mal_ecd_patente", p_strPatente),
+                                       p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
+                                   }
+                                  );
+            }
+            catch (Exception l_expData) {
+                // Error en el delete de los registros
                 p_smResult.DalError(l_expData);
                 return -1;
             }
@@ -319,8 +499,11 @@ namespace Mrln.Dal
                 DBRuts.ClearDTCaptions(ref p_dtResult);
 
                 // Fijamos los nuevos captions de la grilla
-                p_dtResult.Columns["mti_cod_codigo"].Caption= "V1CódigoCN1";
-                p_dtResult.Columns["mti_ede_descripcion"].Caption= "V1DescripciónCN1";
+                p_dtResult.Columns["mal_control"].Caption= "V1ControlCN1";
+                p_dtResult.Columns["mal_reparacion"].Caption= "V1ReparacionCN1";
+                p_dtResult.Columns["mal_nro_kilometros"].Caption= "V1KilometrosNN1";
+                p_dtResult.Columns["mal_nro_nroconfigalerta"].Caption= "V1Nro Config AlertaNN1";
+                p_dtResult.Columns["mal_ecd_patente"].Caption= "V1PatenteCN1";
                 p_dtResult.Columns["deleted"].Caption= "V1Borrado2N2";
             }
             catch (Exception l_expData) {
