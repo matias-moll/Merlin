@@ -98,6 +98,12 @@
     <Compile Include="..\..\Shr\Properties\ShrAssemblyInfo.cs">
       <Link>Properties\ShrAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="Alertas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Alertas.Designer.cs">
+      <DependentUpon>Alertas.cs</DependentUpon>
+    </Compile>
     <Compile Include="AltaMovil.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -169,6 +175,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Alertas.resx">
+      <DependentUpon>Alertas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AltaMovil.resx">
       <DependentUpon>AltaMovil.cs</DependentUpon>
     </EmbeddedResource>
