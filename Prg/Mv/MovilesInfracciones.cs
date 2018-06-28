@@ -417,9 +417,6 @@ namespace Mrln.Mv
             cmdPrint.Enabled= true;
             cmdExcel.Enabled= true;
             grdDatos.Enabled= true;
-
-            // El ESC sale del formulario
-            CancelButton= cmdSalir;
         }
 
         /// <summary>
@@ -467,9 +464,6 @@ namespace Mrln.Mv
             cmdPrint.Enabled= false;
             cmdExcel.Enabled= false;
             grdDatos.Enabled= false;
-
-            // El ESC sale de la edicion
-            CancelButton= cmdCancelar;
         }
     }
 }

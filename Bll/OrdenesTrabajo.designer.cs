@@ -16,7 +16,7 @@ namespace Mrln.Bll
     //----------------------------------------------------------------------------
     //                         TNG Software BLL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 27/06/2018 00:45
+    // Fecha                    : 27/06/2018 19:51
     // Sistema                  : Mrln
     // Clase para Administrar   : Ordenes de Trabajo y sus Items
     //----------------------------------------------------------------------------
@@ -1412,19 +1412,6 @@ namespace Mrln.Bll
             // Validaciones de los campos con conexion
             // ********
 
-            if (p_entOrdenTrabajo.Encargado.Trim() != "") {
-                Tablas.EncVKey(p_dbcAccess,
-                               p_entOrdenTrabajo.Encargado,
-                               ref p_smResult);
-                if (p_smResult.NOk) return;
-
-                if (p_smResult.ICodeEs(BllCodes.KeyDsntFound)) {
-                    // El campo [Encargado] debe existir en la tabla [Tablas.Enc]
-                    p_smResult.BllWarning("El dato [Encargado] debe existir en la tabla [Tablas.Enc]","");
-                    return;
-                }
-            }
-
             if (p_entOrdenTrabajo.Codtaller.Trim() != "") {
                 Talleres.VKey(p_dbcAccess,
                               p_entOrdenTrabajo.Codtaller,
@@ -1656,7 +1643,6 @@ namespace Mrln.Bll
                                           p_entOrdenTrabajo.Fecapertura,
                                           p_entOrdenTrabajo.Operador,
                                           p_entOrdenTrabajo.Feccierre,
-                                          p_entOrdenTrabajo.Encargado,
                                           p_entOrdenTrabajo.Codtaller,
                                           p_entOrdenTrabajo.Estado,
                                           ref p_smResult);
@@ -1689,7 +1675,6 @@ namespace Mrln.Bll
                                           p_entOrdenTrabajo.Fecapertura,
                                           p_entOrdenTrabajo.Operador,
                                           p_entOrdenTrabajo.Feccierre,
-                                          p_entOrdenTrabajo.Encargado,
                                           p_entOrdenTrabajo.Codtaller,
                                           p_entOrdenTrabajo.Estado,
                                           ref p_smResult);

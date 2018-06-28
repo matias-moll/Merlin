@@ -10,7 +10,7 @@ namespace Mrln.Dal
     //----------------------------------------------------------------------------
     //                         TNG Software DAL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 27/06/2018 00:45
+    // Fecha                    : 27/06/2018 19:52
     // Sistema                  : Mrln
     // Clase para Administrar   : Ordenes De Trabajo
     // Basada en la Tabla       : OrdenesTrabajo
@@ -144,7 +144,6 @@ namespace Mrln.Dal
         /// <param name="p_dtFecapertura">Fecha de apertura</param>
         /// <param name="p_strOperador">Operador</param>
         /// <param name="p_dtFeccierre">Fecha de cierre</param>
-        /// <param name="p_strEncargado">Encargado</param>
         /// <param name="p_strCodtaller">Taller</param>
         /// <param name="p_strEstado">Estado</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
@@ -154,7 +153,6 @@ namespace Mrln.Dal
                                  DateTime p_dtFecapertura,
                                  string p_strOperador,
                                  DateTime p_dtFeccierre,
-                                 string p_strEncargado,
                                  string p_strCodtaller,
                                  string p_strEstado,
                                  ref StatMsg p_smResult)
@@ -169,7 +167,6 @@ namespace Mrln.Dal
                                        p_dbcAccess.MakeParam("@odt_fyh_fecapertura", p_dtFecapertura),
                                        p_dbcAccess.MakeParam("@odt_nom_operador", p_strOperador),
                                        p_dbcAccess.MakeParam("@odt_fyh_feccierre", p_dtFeccierre),
-                                       p_dbcAccess.MakeParam("@odt_cod_encargado", p_strEncargado),
                                        p_dbcAccess.MakeParam("@odt_cod_codtaller", p_strCodtaller),
                                        p_dbcAccess.MakeParam("@odt_d20_estado", p_strEstado),
                                        p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
@@ -192,7 +189,6 @@ namespace Mrln.Dal
         /// <param name="p_dtFecapertura">Fecha de apertura</param>
         /// <param name="p_strOperador">Operador</param>
         /// <param name="p_dtFeccierre">Fecha de cierre</param>
-        /// <param name="p_strEncargado">Encargado</param>
         /// <param name="p_strCodtaller">Taller</param>
         /// <param name="p_strEstado">Estado</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
@@ -202,7 +198,6 @@ namespace Mrln.Dal
                                  DateTime p_dtFecapertura,
                                  string p_strOperador,
                                  DateTime p_dtFeccierre,
-                                 string p_strEncargado,
                                  string p_strCodtaller,
                                  string p_strEstado,
                                  ref StatMsg p_smResult)
@@ -217,7 +212,6 @@ namespace Mrln.Dal
                                        p_dbcAccess.MakeParam("@odt_fyh_fecapertura", p_dtFecapertura),
                                        p_dbcAccess.MakeParam("@odt_nom_operador", p_strOperador),
                                        p_dbcAccess.MakeParam("@odt_fyh_feccierre", p_dtFeccierre),
-                                       p_dbcAccess.MakeParam("@odt_cod_encargado", p_strEncargado),
                                        p_dbcAccess.MakeParam("@odt_cod_codtaller", p_strCodtaller),
                                        p_dbcAccess.MakeParam("@odt_d20_estado", p_strEstado),
                                        p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)

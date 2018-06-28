@@ -14,7 +14,7 @@ namespace Mrln.Bel
     //----------------------------------------------------------------------------
     //                         TNG Software BEL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 27/06/2018 00:45
+    // Fecha                    : 27/06/2018 19:51
     // Sistema                  : Mrln
     // Clase para Administrar   : Ordenes de Trabajo y sus Items
     //----------------------------------------------------------------------------
@@ -868,7 +868,6 @@ namespace Mrln.Bel
             l_drTemp["odt_fyh_fecapertura"]= XMLRuts.ExtractXAttr(l_xndData, "odt_fyh_fecapertura", true);
             l_drTemp["odt_nom_operador"]= XMLRuts.ExtractXAttr(l_xndData, "odt_nom_operador");
             l_drTemp["odt_fyh_feccierre"]= XMLRuts.ExtractXAttr(l_xndData, "odt_fyh_feccierre", true);
-            l_drTemp["odt_cod_encargado"]= XMLRuts.ExtractXAttr(l_xndData, "odt_cod_encargado");
             l_drTemp["odt_cod_codtaller"]= XMLRuts.ExtractXAttr(l_xndData, "odt_cod_codtaller");
             l_drTemp["odt_d20_estado"]= XMLRuts.ExtractXAttr(l_xndData, "odt_d20_estado");
             l_drTemp["ot_taller"]= XMLRuts.ExtractXAttr(l_xndData, "ot_taller");
@@ -927,7 +926,6 @@ namespace Mrln.Bel
             l_drTemp["odt_fyh_fecapertura"]= DateTimeRuts.Empty;
             l_drTemp["odt_nom_operador"]= "";
             l_drTemp["odt_fyh_feccierre"]= DateTimeRuts.Empty;
-            l_drTemp["odt_cod_encargado"]= "";
             l_drTemp["odt_cod_codtaller"]= "";
             l_drTemp["odt_d20_estado"]= "";
             l_drTemp["ot_taller"]= "";
@@ -948,7 +946,6 @@ namespace Mrln.Bel
         /// <param name="p_dtFecapertura">Fecha de apertura</param>
         /// <param name="p_strOperador">Operador</param>
         /// <param name="p_dtFeccierre">Fecha de cierre</param>
-        /// <param name="p_strEncargado">Encargado</param>
         /// <param name="p_strCodtaller">Taller</param>
         /// <param name="p_strEstado">Estado</param>
         /// <returns>Entidad: OrdenTrabajo</returns>
@@ -957,7 +954,6 @@ namespace Mrln.Bel
                                               DateTime p_dtFecapertura,
                                               string p_strOperador,
                                               DateTime p_dtFeccierre,
-                                              string p_strEncargado,
                                               string p_strCodtaller,
                                               string p_strEstado)
         {
@@ -974,7 +970,6 @@ namespace Mrln.Bel
             l_drTemp["odt_fyh_fecapertura"]= p_dtFecapertura;
             l_drTemp["odt_nom_operador"]= p_strOperador;
             l_drTemp["odt_fyh_feccierre"]= p_dtFeccierre;
-            l_drTemp["odt_cod_encargado"]= p_strEncargado;
             l_drTemp["odt_cod_codtaller"]= p_strCodtaller;
             l_drTemp["odt_d20_estado"]= p_strEstado;
             l_drTemp["ot_taller"]= "";
@@ -993,17 +988,6 @@ namespace Mrln.Bel
         //---------------------------------------------------------------
         // Metodos estáticos (Formateo de codigos alineados a derecha)
         //---------------------------------------------------------------
-
-        /// <summary>
-        /// Formatea una string: Encargado
-        /// </summary>
-        public static string FrmtEncargado(string p_strEncargado)
-        {
-            if (p_strEncargado.Trim().Length > 4)
-                p_strEncargado= p_strEncargado.Trim().Substring(0,4);
-
-            return p_strEncargado.Trim().PadLeft(4).ToUpper();
-        }
 
         /// <summary>
         /// Formatea una string: Taller
@@ -1029,18 +1013,17 @@ namespace Mrln.Bel
         {
             get {
                 // Creamos el vector de DataColumns y lo llenamos
-                DataColumn[] l_dcStruct= new DataColumn[13];
+                DataColumn[] l_dcStruct= new DataColumn[12];
 
                 l_dcStruct[0]= new DataColumn("odt_nro_nro", typeof(int));
                 l_dcStruct[1]= new DataColumn("odt_ecd_patente", typeof(string));
                 l_dcStruct[2]= new DataColumn("odt_fyh_fecapertura", typeof(DateTime));
                 l_dcStruct[3]= new DataColumn("odt_nom_operador", typeof(string));
                 l_dcStruct[4]= new DataColumn("odt_fyh_feccierre", typeof(DateTime));
-                l_dcStruct[5]= new DataColumn("odt_cod_encargado", typeof(string));
-                l_dcStruct[6]= new DataColumn("odt_cod_codtaller", typeof(string));
-                l_dcStruct[7]= new DataColumn("ot_taller", typeof(string));
-                l_dcStruct[8]= new DataColumn("odt_d20_estado", typeof(string));
-                EOrdenTrabajo.FillFixedFields(ref l_dcStruct, 9);
+                l_dcStruct[5]= new DataColumn("odt_cod_codtaller", typeof(string));
+                l_dcStruct[6]= new DataColumn("ot_taller", typeof(string));
+                l_dcStruct[7]= new DataColumn("odt_d20_estado", typeof(string));
+                EOrdenTrabajo.FillFixedFields(ref l_dcStruct, 8);
 
                 // Devolvemos el vector creado
                 return l_dcStruct;
@@ -1139,23 +1122,6 @@ namespace Mrln.Bel
         }
 
         /// <summary>
-        /// Encargado
-        /// </summary>
-        public static string EncargadoCmp
-        {
-           get {return "odt_cod_encargado";}
-        }
-
-        /// <summary>
-        /// Encargado
-        /// </summary>
-        public string Encargado
-        {
-            get {return (string) InternalData["odt_cod_encargado"];}
-            set {InternalData["odt_cod_encargado"]= EOrdenTrabajo.FrmtEncargado(value);}
-        }
-
-        /// <summary>
         /// Taller
         /// </summary>
         public static string CodtallerCmp
@@ -1234,7 +1200,6 @@ namespace Mrln.Bel
                 l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "odt_fyh_fecapertura", Fecapertura));
                 l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "odt_nom_operador", Operador));
                 l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "odt_fyh_feccierre", Feccierre));
-                l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "odt_cod_encargado", Encargado));
                 l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "odt_cod_codtaller", Codtaller));
                 l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "odt_d20_estado", Estado));
                 l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "ot_taller", Ot_taller));

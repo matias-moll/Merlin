@@ -231,6 +231,11 @@ namespace Mrln.Bel
         // Propiedades de la clase
         //---------------------------------------------------------------
 
+        public string CRPatente
+        {
+            get { return this.Patente; }
+        }
+
         #endregion
     }
     #endregion

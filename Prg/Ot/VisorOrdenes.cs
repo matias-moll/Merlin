@@ -16,6 +16,7 @@ using TNGS.NetRoutines;
 using TNGS.NetControls;
 using WeifenLuo.WinFormsUI.Docking;
 using ControlesCustom;
+using System.Collections;
 
 namespace Mrln.Ot
 {
@@ -291,7 +292,28 @@ namespace Mrln.Ot
 
         private void imprimirConCrystalReport(EOrdenTrabajo ordenAImprimir)
         {
-            // TODO: magic.
+            // Creo el reporte
+            Bel.CrystalReports.OrdenDeTrabajo reporteOrdenesPendientes = new Bel.CrystalReports.OrdenDeTrabajo();
+
+            // Creo un Arraylist para cargar la entidad
+            ArrayList l_arFc = new ArrayList();
+
+            // Cargo la entidad a la lista
+            l_arFc.Add(ordenAImprimir);
+
+            // Seteo el arraylist como DataSource del reporte
+            reporteOrdenesPendientes.SetDataSource(l_arFc);
+
+            // Seteamos los DataSource de los subreportes
+            reporteOrdenesPendientes.Subreports["OTItems"].SetDataSource(ordenAImprimir.OTItems.GetAsArray());
+
+            // Actualizo los datos en el reporte
+            reporteOrdenesPendientes.Refresh();
+
+            // Imprimo
+            reporteOrdenesPendientes.PrintToPrinter(1, false, 0, 0);
+            reporteOrdenesPendientes.Close();
+            reporteOrdenesPendientes.Dispose();
         }
 
     }

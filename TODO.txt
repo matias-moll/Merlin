@@ -11,6 +11,8 @@ Agregar opcion de imprimir las OTs Pendientes con un crystal report especial par
 
 
 
+
+
 Pregunta:
 Tipo de nafta no les interesara saber? Para cuando cargan el MvlCombustibles.
 

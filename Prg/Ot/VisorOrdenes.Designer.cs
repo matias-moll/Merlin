@@ -52,6 +52,7 @@
             this.tsContainer1 = new TNGS.NetControls.TSContainer();
             this.tabStripPage1 = new RibbonStyle.TabStripPage();
             this.tsPanel1 = new TNGS.NetControls.TSPanel();
+            this.gbImprimirSeleccionado = new TNGS.NetControls.GlassButton();
             this.gbEditarOT = new TNGS.NetControls.GlassButton();
             this.gbVerItems = new TNGS.NetControls.GlassButton();
             this.gbCerrarOT = new TNGS.NetControls.GlassButton();
@@ -64,7 +65,6 @@
             this.cdcMoviles = new TNGS.NetControls.CDCombo();
             this.tsBase1 = new TNGS.NetControls.TSBase();
             this.tab1 = new RibbonStyle.Tab();
-            this.gbImprimirSeleccionado = new TNGS.NetControls.GlassButton();
             this.xpnlPanel1.SuspendLayout();
             this.xpPanelOrdenes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fgGrillaItemsOT)).BeginInit();
@@ -338,6 +338,27 @@
             this.tsPanel1.Speed = 1;
             this.tsPanel1.TabIndex = 1;
             // 
+            // gbImprimirSeleccionado
+            // 
+            this.gbImprimirSeleccionado.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("gbImprimirSeleccionado.BackgroundImage")));
+            this.gbImprimirSeleccionado.BlackBorder = true;
+            this.gbImprimirSeleccionado.ButtonMode = TNGS.NetControls.GlassButton.GBMode.Flat;
+            this.gbImprimirSeleccionado.CircleButton = false;
+            this.gbImprimirSeleccionado.FixedFlatImage = TNGS.NetControls.FixedFlatImageButtons.Print;
+            this.gbImprimirSeleccionado.FlatColor = System.Drawing.Color.RoyalBlue;
+            this.gbImprimirSeleccionado.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
+            this.gbImprimirSeleccionado.FlatFontSize = 9;
+            this.gbImprimirSeleccionado.FlatTextColor = System.Drawing.Color.Black;
+            this.gbImprimirSeleccionado.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.gbImprimirSeleccionado.Location = new System.Drawing.Point(370, 9);
+            this.gbImprimirSeleccionado.Name = "gbImprimirSeleccionado";
+            this.gbImprimirSeleccionado.RoundCorners = 2;
+            this.gbImprimirSeleccionado.Size = new System.Drawing.Size(85, 45);
+            this.gbImprimirSeleccionado.TabIndex = 6;
+            this.gbImprimirSeleccionado.Text = "Imprimir";
+            this.gbImprimirSeleccionado.W8Color = System.Drawing.Color.RoyalBlue;
+            this.gbImprimirSeleccionado.Click += new System.EventHandler(this.gbImprimirSeleccionado_Click);
+            // 
             // gbEditarOT
             // 
             this.gbEditarOT.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("gbEditarOT.BackgroundImage")));
@@ -551,27 +572,6 @@
             this.tab1.Size = new System.Drawing.Size(139, 23);
             this.tab1.TabStripPage = null;
             this.tab1.Text = "Ordenes De Trabajo";
-            // 
-            // gbImprimirSeleccionado
-            // 
-            this.gbImprimirSeleccionado.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("gbImprimirSeleccionado.BackgroundImage")));
-            this.gbImprimirSeleccionado.BlackBorder = true;
-            this.gbImprimirSeleccionado.ButtonMode = TNGS.NetControls.GlassButton.GBMode.Flat;
-            this.gbImprimirSeleccionado.CircleButton = false;
-            this.gbImprimirSeleccionado.FixedFlatImage = TNGS.NetControls.FixedFlatImageButtons.Print;
-            this.gbImprimirSeleccionado.FlatColor = System.Drawing.Color.RoyalBlue;
-            this.gbImprimirSeleccionado.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
-            this.gbImprimirSeleccionado.FlatFontSize = 9;
-            this.gbImprimirSeleccionado.FlatTextColor = System.Drawing.Color.Black;
-            this.gbImprimirSeleccionado.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.gbImprimirSeleccionado.Location = new System.Drawing.Point(370, 9);
-            this.gbImprimirSeleccionado.Name = "gbImprimirSeleccionado";
-            this.gbImprimirSeleccionado.RoundCorners = 2;
-            this.gbImprimirSeleccionado.Size = new System.Drawing.Size(85, 45);
-            this.gbImprimirSeleccionado.TabIndex = 6;
-            this.gbImprimirSeleccionado.Text = "Imprimir";
-            this.gbImprimirSeleccionado.W8Color = System.Drawing.Color.RoyalBlue;
-            this.gbImprimirSeleccionado.Click += new System.EventHandler(this.gbImprimirSeleccionado_Click);
             // 
             // VisorOrdenes
             // 

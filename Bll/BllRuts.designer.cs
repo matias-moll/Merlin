@@ -16,7 +16,7 @@ namespace Mrln.Bll
     //----------------------------------------------------------------------------
     //                         TNG Software BLL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 27/06/2018 00:45
+    // Fecha                    : 27/06/2018 19:49
     // Sistema                  : Mrln
     // Clase para Administrar   : 
     //----------------------------------------------------------------------------
@@ -136,11 +136,6 @@ namespace Mrln.Bll
                 case "ctr_des_descRep"                 : {return "V1ReparacionCN1";}
 
                 // ****************************************
-                // Tabla: Encargados          
-                case "enc_cod_cod"                     : {return "V1CodCN1";}
-                case "enc_des_des"                     : {return "V1DescripcionCN1";}
-
-                // ****************************************
                 // Tabla: Equipamiento        
                 case "eqi_cod_cod"                     : {return "V1Codigo EquipamientoCN1";}
                 case "eqi_des_des"                     : {return "V1EquipamientoCN1";}
@@ -247,7 +242,6 @@ namespace Mrln.Bll
                 case "odt_fyh_fecapertura"             : {return "V1Fecha de aperturaDN2";}
                 case "odt_nom_operador"                : {return "V1OperadorCN1";}
                 case "odt_fyh_feccierre"               : {return "V1Fecha de cierreDN2";}
-                case "odt_cod_encargado"               : {return "V1EncargadoCN1";}
                 case "odt_cod_codtaller"               : {return "V1TallerCN1";}
                 case "odt_d20_estado"                  : {return "V1EstadoCN1";}
                 case "ot_taller"                       : {return "V1TallerCN1";}

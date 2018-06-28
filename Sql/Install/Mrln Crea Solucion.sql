@@ -2168,7 +2168,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/06/2018 00:45
+// Fecha       : 27/06/2018 19:52
 // Sistema     : Mrln
 // Tabla       : Categorias
 //----------------------------------------------------------------------------
@@ -2705,7 +2705,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/06/2018 00:45
+// Fecha       : 27/06/2018 19:52
 // Sistema     : Mrln
 // Tabla       : Controles
 //----------------------------------------------------------------------------
@@ -3250,7 +3250,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/06/2018 00:45
+// Fecha       : 27/06/2018 19:52
 // Sistema     : Mrln
 // Tabla       : ControlesReparations
 //----------------------------------------------------------------------------
@@ -4604,7 +4604,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/06/2018 00:45
+// Fecha       : 27/06/2018 19:52
 // Sistema     : Mrln
 // Tabla       : Equipamiento
 //----------------------------------------------------------------------------
@@ -5149,7 +5149,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/06/2018 00:45
+// Fecha       : 27/06/2018 19:52
 // Sistema     : Mrln
 // Tabla       : Estaciones
 //----------------------------------------------------------------------------
@@ -5714,7 +5714,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/06/2018 00:45
+// Fecha       : 27/06/2018 19:52
 // Sistema     : Mrln
 // Tabla       : Estados
 //----------------------------------------------------------------------------
@@ -6269,7 +6269,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/06/2018 00:45
+// Fecha       : 27/06/2018 19:52
 // Sistema     : Mrln
 // Tabla       : Marcas
 //----------------------------------------------------------------------------
@@ -6804,7 +6804,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/06/2018 00:45
+// Fecha       : 27/06/2018 19:52
 // Sistema     : Mrln
 // Tabla       : Modelos
 //----------------------------------------------------------------------------
@@ -7349,7 +7349,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/06/2018 00:45
+// Fecha       : 27/06/2018 19:52
 // Sistema     : Mrln
 // Tabla       : MotivosInfracciones
 //----------------------------------------------------------------------------
@@ -7841,7 +7841,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/06/2018 00:45
+// Fecha       : 27/06/2018 19:52
 // Sistema     : Mrln
 // Tabla       : Moviles
 //----------------------------------------------------------------------------
@@ -8550,7 +8550,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/06/2018 00:45
+// Fecha       : 27/06/2018 19:52
 // Sistema     : Mrln
 // Tabla       : MvlAccidentes
 //----------------------------------------------------------------------------
@@ -9399,7 +9399,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/06/2018 00:45
+// Fecha       : 27/06/2018 19:52
 // Sistema     : Mrln
 // Tabla       : MvlCombustible
 //----------------------------------------------------------------------------
@@ -10277,7 +10277,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/06/2018 00:45
+// Fecha       : 27/06/2018 19:52
 // Sistema     : Mrln
 // Tabla       : MvlEquipamiento
 //----------------------------------------------------------------------------
@@ -11191,7 +11191,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/06/2018 00:45
+// Fecha       : 27/06/2018 19:52
 // Sistema     : Mrln
 // Tabla       : MvlEstados
 //----------------------------------------------------------------------------
@@ -12056,7 +12056,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/06/2018 00:45
+// Fecha       : 27/06/2018 19:52
 // Sistema     : Mrln
 // Tabla       : MvlInfracciones
 //----------------------------------------------------------------------------
@@ -12935,7 +12935,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/06/2018 00:45
+// Fecha       : 27/06/2018 19:52
 // Sistema     : Mrln
 // Tabla       : MvlKilometros
 //----------------------------------------------------------------------------
@@ -13825,7 +13825,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/06/2018 00:45
+// Fecha       : 27/06/2018 19:52
 // Sistema     : Mrln
 // Tabla       : OrdenesTrabajo
 //----------------------------------------------------------------------------
@@ -13881,7 +13881,6 @@ begin
                 odt_fyh_fecapertura,
                 odt_nom_operador,
                 odt_fyh_feccierre,
-                odt_cod_encargado,
                 odt_cod_codtaller,
                 isnull(tll_ede_descripcion, '') as ot_taller,
                 odt_d20_estado,
@@ -13902,7 +13901,6 @@ begin
                 odt_fyh_fecapertura,
                 odt_nom_operador,
                 odt_fyh_feccierre,
-                odt_cod_encargado,
                 odt_cod_codtaller,
                 isnull(tll_ede_descripcion, '') as ot_taller,
                 odt_d20_estado,
@@ -14012,7 +14010,6 @@ begin
                 odt_fyh_fecapertura,
                 odt_nom_operador,
                 odt_fyh_feccierre,
-                odt_cod_encargado,
                 odt_cod_codtaller,
                 isnull(tll_ede_descripcion, '') as ot_taller,
                 odt_d20_estado,
@@ -14033,7 +14030,6 @@ begin
                 odt_fyh_fecapertura,
                 odt_nom_operador,
                 odt_fyh_feccierre,
-                odt_cod_encargado,
                 odt_cod_codtaller,
                 isnull(tll_ede_descripcion, '') as ot_taller,
                 odt_d20_estado,
@@ -14069,7 +14065,6 @@ go
 --- <param name="@odt_fyh_fecapertura">Fecha de apertura</param>
 --- <param name="@odt_nom_operador">Operador</param>
 --- <param name="@odt_fyh_feccierre">Fecha de cierre</param>
---- <param name="@odt_cod_encargado">Encargado</param>
 --- <param name="@odt_cod_codtaller">Taller</param>
 --- <param name="@odt_d20_estado">Estado</param>
 --- <param name="@usuario">Usuario que genera el insert</param>
@@ -14095,7 +14090,6 @@ create procedure dbo.ORDENESTRABAJO_INSERT
 @odt_fyh_fecapertura tngs_fecyhor,
 @odt_nom_operador tngs_nombre,
 @odt_fyh_feccierre tngs_fecyhor,
-@odt_cod_encargado tngs_codigo,
 @odt_cod_codtaller tngs_codigo,
 @odt_d20_estado tngs_descripcion_20,
 @usuario tngs_nombre
@@ -14110,7 +14104,6 @@ begin
            @odt_fyh_fecapertura,
            @odt_nom_operador,
            @odt_fyh_feccierre,
-           @odt_cod_encargado,
            @odt_cod_codtaller,
            @odt_d20_estado,
            getdate(), 0, @usuario, 1
@@ -14138,7 +14131,6 @@ go
 --- <param name="@odt_fyh_fecapertura">Fecha de apertura</param>
 --- <param name="@odt_nom_operador">Operador</param>
 --- <param name="@odt_fyh_feccierre">Fecha de cierre</param>
---- <param name="@odt_cod_encargado">Encargado</param>
 --- <param name="@odt_cod_codtaller">Taller</param>
 --- <param name="@odt_d20_estado">Estado</param>
 --- <param name="@usuario">Usuario que genera el update</param>
@@ -14164,7 +14156,6 @@ create procedure dbo.ORDENESTRABAJO_UPDATE
 @odt_fyh_fecapertura tngs_fecyhor,
 @odt_nom_operador tngs_nombre,
 @odt_fyh_feccierre tngs_fecyhor,
-@odt_cod_encargado tngs_codigo,
 @odt_cod_codtaller tngs_codigo,
 @odt_d20_estado tngs_descripcion_20,
 @usuario tngs_nombre
@@ -14177,7 +14168,6 @@ begin
           odt_fyh_fecapertura= @odt_fyh_fecapertura,
           odt_nom_operador= @odt_nom_operador,
           odt_fyh_feccierre= @odt_fyh_feccierre,
-          odt_cod_encargado= @odt_cod_encargado,
           odt_cod_codtaller= @odt_cod_codtaller,
           odt_d20_estado= @odt_d20_estado,
           version = ((version+1) % 32767),
@@ -14418,7 +14408,6 @@ begin
           odt_fyh_fecapertura,
           odt_nom_operador,
           odt_fyh_feccierre,
-          odt_cod_encargado,
           odt_cod_codtaller,
           isnull(tll_ede_descripcion, '') as ot_taller,
           odt_d20_estado,
@@ -14477,7 +14466,6 @@ begin
           odt_fyh_fecapertura,
           odt_nom_operador,
           odt_fyh_feccierre,
-          odt_cod_encargado,
           odt_cod_codtaller,
           isnull(tll_ede_descripcion, '') as ot_taller,
           odt_d20_estado,
@@ -14508,7 +14496,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/06/2018 00:45
+// Fecha       : 27/06/2018 19:52
 // Sistema     : Mrln
 // Tabla       : OtItems
 //----------------------------------------------------------------------------
@@ -15494,7 +15482,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/06/2018 00:45
+// Fecha       : 27/06/2018 19:52
 // Sistema     : Mrln
 // Tabla       : Parametros
 //----------------------------------------------------------------------------
@@ -16026,7 +16014,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/06/2018 00:45
+// Fecha       : 27/06/2018 19:52
 // Sistema     : Mrln
 // Tabla       : Reparaciones
 //----------------------------------------------------------------------------
@@ -16596,7 +16584,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/06/2018 00:45
+// Fecha       : 27/06/2018 19:52
 // Sistema     : Mrln
 // Tabla       : Taller
 //----------------------------------------------------------------------------
@@ -17161,7 +17149,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/06/2018 00:45
+// Fecha       : 27/06/2018 19:52
 // Sistema     : Mrln
 // Tabla       : TallerCategoria
 //----------------------------------------------------------------------------
@@ -17998,7 +17986,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/06/2018 00:45
+// Fecha       : 27/06/2018 19:52
 // Sistema     : Mrln
 // Tabla       : Talonarios
 //----------------------------------------------------------------------------

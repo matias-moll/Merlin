@@ -146,7 +146,7 @@ namespace Mrln.Bll
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
         /// <param name="p_bEnable">Tipo de operacion</param>
-        /// <param name="p_iNro">nro</param>
+        /// <param name="p_iNro">Número OT</param>
         /// <param name="p_iFxdVersion">Versión del registro a borrar</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void Enabled_f(DBConn p_dbcAccess,
@@ -165,7 +165,7 @@ namespace Mrln.Bll
         /// (Código Fijo)
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_iNro">nro</param>
+        /// <param name="p_iNro">Número OT</param>
         /// <param name="p_iFxdVersion">Versión del registro a borrar</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void Remove_f(DBConn p_dbcAccess,
