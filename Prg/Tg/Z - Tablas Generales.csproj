@@ -108,6 +108,12 @@
     <Compile Include="Controles y Reparaciones\ControlesRepa.Designer.cs">
       <DependentUpon>ControlesRepa.cs</DependentUpon>
     </Compile>
+    <Compile Include="DestinatariosMails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DestinatariosMails.Designer.cs">
+      <DependentUpon>DestinatariosMails.cs</DependentUpon>
+    </Compile>
     <Compile Include="Equipamientos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -178,6 +184,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controles y Reparaciones\ControlesRepa.resx">
       <DependentUpon>ControlesRepa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DestinatariosMails.resx">
+      <DependentUpon>DestinatariosMails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Equipamientos.resx">
       <DependentUpon>Equipamientos.cs</DependentUpon>

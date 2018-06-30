@@ -16,7 +16,7 @@ namespace Mrln.Bll
     //----------------------------------------------------------------------------
     //                         TNG Software BLL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 27/06/2018 19:49
+    // Fecha                    : 29/06/2018 20:46
     // Sistema                  : Mrln
     // Clase para Administrar   : Tablas Generales
     //----------------------------------------------------------------------------
@@ -783,6 +783,686 @@ namespace Mrln.Bll
                 // Terminamos
             }
         }
+        #endregion
+
+
+        //**********************************************************
+        //
+        // Funciones para la Tabla: DestinatariosMails
+        // Usando ClaseDal        : DestinatariosMails
+        //
+        //**********************************************************
+
+        //---------------------------------------------------------------
+        // Metodos públicos de la clase (visibles para la UIL)
+        //---------------------------------------------------------------
+        #region Metodos publicos de recupero
+
+        /// <summary>
+        /// Devuelve la grilla de la tabla: DestinatariosMails
+        /// </summary>
+        /// <param name="p_bOnlyActive">Indica si solo se analizan los registros activos</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        /// <returns>Lista-entidad: LEDestinatariosMails</returns>
+        public static LEDestinatariosMails DemUpFull(bool p_bOnlyActive,
+                                                     ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            DBConn l_dbcAccess= null;
+
+            try {
+                // Obtenemos una conexion
+                l_dbcAccess= DBRuts.GetConection(Connections.Dat);
+
+                // Pedimos los registros de la tabla
+                return DemUpfl(l_dbcAccess, p_bOnlyActive, ref p_smResult);
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion UpFull
+                p_smResult.BllError(l_expData);
+                return null;
+            }
+            finally {
+                // Si pude abrir la conexion -> la cierro
+                if (l_dbcAccess != null) l_dbcAccess.Close();
+            }
+        }
+
+        /// <summary>
+        /// Devuelve una entidad: EDestinatariosMail
+        /// </summary>
+        /// <param name="p_strCodigo">Código</param>
+        /// <param name="p_bOnlyActive">Indica si solo se analizan los registros activos</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        /// <returns>Entidad: EDestinatariosMail</returns>
+        public static EDestinatariosMail DemGet(string p_strCodigo,
+                                                bool p_bOnlyActive,
+                                                ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            DBConn l_dbcAccess= null;
+
+            try {
+                // Obtenemos una conexion
+                l_dbcAccess= DBRuts.GetConection(Connections.Dat);
+
+                // Pedimos la entidad: EDestinatariosMail
+                return DemSrch(l_dbcAccess,
+                               p_strCodigo,
+                               p_bOnlyActive,
+                               ref p_smResult);
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Get
+                p_smResult.BllError(l_expData);
+                return null;
+            }
+            finally {
+                // Si pude abrir la conexion -> la cierro
+                if (l_dbcAccess != null) l_dbcAccess.Close();
+            }
+        }
+        #endregion
+
+        #region Metodos publicos de grabacion
+
+        /// <summary>
+        /// Agrega o modifica un registro de la tabla: DestinatariosMails
+        /// </summary>
+        /// <param name="p_entDestinatariosMail">Entidad con los datos a procesar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        public static void DemSave(EDestinatariosMail p_entDestinatariosMail,
+                                   ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            DBConn l_dbcAccess= null;
+
+            try {
+                // Obtenemos una conexion y abrimos una transaccion
+                l_dbcAccess= DBRuts.GetConection(Connections.Dat);
+                l_dbcAccess.BeginTransaction();
+
+                // Grabamos la entidad: EDestinatariosMail
+                DemSSav(l_dbcAccess, p_entDestinatariosMail, ref p_smResult);
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Save
+                p_smResult.BllError(l_expData);
+            }
+            finally {
+                // Si pude abrir la conexion
+                if (l_dbcAccess != null) {
+                    // Finalizo la transacción y la cierro
+                    l_dbcAccess.EndTransaction(p_smResult);
+                    l_dbcAccess.Close();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Habilita/Deshabilita un registro de la tabla: DestinatariosMails
+        /// </summary>
+        /// <param name="p_bEnable">Tipo de operacion</param>
+        /// <param name="p_strCodigo">Código</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        public static void DemEnabled(bool p_bEnable,
+                                      string p_strCodigo,
+                                      int p_iFxdVersion,
+                                      ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            DBConn l_dbcAccess= null;
+
+            try {
+                // Obtenemos una conexion
+                l_dbcAccess= DBRuts.GetConection(Connections.Dat);
+                l_dbcAccess.BeginTransaction();
+
+                // Procesamos codigo fijo
+                DemEnabled_f(l_dbcAccess,
+                             p_bEnable,
+                             p_strCodigo,
+                             ref p_iFxdVersion,
+                             ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // Verificamos la clave a modificar
+                DemVKey(l_dbcAccess,
+                        p_strCodigo,
+                        ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // El registro tiene que existir
+                if (p_smResult.ICodeEs(BllCodes.KeyDsntFound)) {
+                    // Error. La clave no existe
+                    p_smResult.BllWarning("El ítem (DestinatariosMail) que intenta modificar no existe en el sistema.","");
+                    return;
+                }
+
+                // Debe coincidir el número de version
+                DemVVer(l_dbcAccess, 
+                        p_strCodigo,
+                        p_iFxdVersion,
+                        ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // Segun el modo
+                if (p_bEnable) {
+                    // Hay que habilitar el registro
+                    Dal.DestinatariosMails.Recall(l_dbcAccess,
+                                                  p_strCodigo,
+                                                  ref p_smResult);
+                }
+                else {
+                    // Hay que deshabilitar el registro
+                    Dal.DestinatariosMails.Delete(l_dbcAccess,
+                                                  p_strCodigo,
+                                                  ref p_smResult);
+                }
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Enabled
+                p_smResult.BllError(l_expData);
+            }
+            finally {
+                // Si pude abrir la conexion
+                if (l_dbcAccess != null) {
+                    // Finalizo la transacción y la cierro
+                    l_dbcAccess.EndTransaction(p_smResult);
+                    l_dbcAccess.Close();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Borra físicamento un registro de la tabla: DestinatariosMails
+        /// </summary>
+        /// <param name="p_strCodigo">Código</param>
+        /// <param name="p_iFxdVersion">Versión del registro a borrar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        public static void DemRemove(string p_strCodigo,
+                                     int p_iFxdVersion,
+                                     ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            DBConn l_dbcAccess= null;
+
+            try {
+                // Obtenemos una conexion
+                l_dbcAccess= DBRuts.GetConection(Connections.Dat);
+                l_dbcAccess.BeginTransaction();
+
+                // Procesamos codigo fijo
+                DemRemove_f(l_dbcAccess,
+                            p_strCodigo,
+                            p_iFxdVersion,
+                            ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // Borramos el registro solicitado
+                DemDrop(l_dbcAccess,
+                        p_strCodigo,
+                        p_iFxdVersion,
+                        ref p_smResult);
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Remove
+                p_smResult.BllError(l_expData);
+            }
+            finally {
+                // Si pude abrir la conexion
+                if (l_dbcAccess != null) {
+                    // Finalizo la transacción y la cierro
+                    l_dbcAccess.EndTransaction(p_smResult);
+                    l_dbcAccess.Close();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Compacta una tabla borrando los registros deshabilitados
+        /// </summary>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        public static void DemPurge(ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            DBConn l_dbcAccess= null;
+            try {
+                // Obtenemos una conexion
+                l_dbcAccess= DBRuts.GetConection(Connections.Dat);
+                l_dbcAccess.BeginTransaction();
+
+                // Realizamos el borrado
+                DemPack(l_dbcAccess,
+                        ref p_smResult);
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Enabled
+                p_smResult.BllError(l_expData);
+            }
+            finally {
+                // Si pude abrir la conexion
+                if (l_dbcAccess != null) {
+                    // Finalizo la transacción y la cierro
+                    l_dbcAccess.EndTransaction(p_smResult);
+                    l_dbcAccess.Close();
+                }
+            }
+        }
+        #endregion
+
+        #region Metodos para métodos DAL definidos por el usuario
+        #endregion
+
+        //---------------------------------------------------------------
+        // Metodos públicos de la clase (no visibles para la UIL)
+        //---------------------------------------------------------------
+
+        #region Metodos internos de validacion
+
+        /// <summary>
+        /// Valida la integridad de una entidad: DestinatariosMail
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_entDestinatariosMail">Entidad con los datos a validar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static void DemTInt(DBConn p_dbcAccess,
+                                     EDestinatariosMail p_entDestinatariosMail,
+                                     ref StatMsg p_smResult)
+        {
+            // ********
+            // Validaciones de los campos sin conexion
+            // ********
+
+            if (p_entDestinatariosMail.Codigo.Trim() == "") {
+                // El campo [Código] no puede ser vacío
+                p_smResult.BllWarning("El dato [Código] no puede ser vacío","");
+                return;
+            }
+
+            if (p_entDestinatariosMail.Descripcion.Trim() == "") {
+                // El campo [Descripción] no puede ser vacío
+                p_smResult.BllWarning("El dato [Descripción] no puede ser vacío","");
+                return;
+            }
+
+            // ********
+            // Validaciones de los campos con conexion
+            // ********
+
+            // Llamamos a la funcion fija del usuario
+            DemTInt_f(p_dbcAccess, p_entDestinatariosMail, ref p_smResult);
+            if (p_smResult.NOk) return;
+        }
+
+        /// <summary>
+        /// Verifica si existe en la tabla una entidad: EDestinatariosMail
+        ///      Retorno: p_smResult.Stat= BllAvisos.KeyExists   - La clave existe
+        ///               p_smResult.Stat= BllAvisos.KeyNotFound - La clave no existe
+        ///               p_smResult.Stat= BllAvisos.KeyDisabled - La clave está deshabilitada
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_strCodigo">Código</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static void DemVKey(DBConn p_dbcAccess,
+                                     string p_strCodigo,
+                                     ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            DataSet l_dsTemp= new DataSet();
+
+            Dal.DestinatariosMails.Search(p_dbcAccess,
+                                          p_strCodigo,
+                                          false,
+                                          ref l_dsTemp,
+                                          "Temporal",
+                                          ref p_smResult);
+            if (p_smResult.NOk) return;
+
+            try {
+                // Verificamos si vino algun registro
+                p_smResult.BllICode(BllCodes.KeyDsntFound);
+                if (l_dsTemp.Tables["Temporal"].Rows.Count == 0) return;
+
+                // Verificamos si el registro que vino esta habilitado
+                p_smResult.BllICode(BllCodes.KeyDisabled);
+                if ((decimal) l_dsTemp.Tables["Temporal"].Rows[0]["deleted"] == 1) return;
+
+                // La clave existia y estaba habilitada
+                p_smResult.BllICode(BllCodes.KeyExists);
+            }
+            finally {
+                // Terminamos
+                l_dsTemp.Dispose();
+            }
+        }
+
+        /// <summary>
+        /// Verifica el número de version de una tabla
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_strCodigo">Código</param>
+        /// <param name="p_iFxdVersion">Número de version</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static void DemVVer(DBConn p_dbcAccess,
+                                     string p_strCodigo,
+                                     int p_iFxdVersion,
+                                     ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            DataSet l_dsTemp= new DataSet();
+
+            // Verificamos el número de versión
+            Dal.DestinatariosMails.ChkVersion(p_dbcAccess,
+                                              p_strCodigo,
+                                              p_iFxdVersion,
+                                              ref l_dsTemp,
+                                              "Temporal",
+                                              ref p_smResult);
+            if (p_smResult.NOk) return;
+
+            // Verificamos el resultado que vino
+            if (l_dsTemp.Tables["Temporal"].Rows.Count != 0) {
+                // Verificamos si la cantidad es 1
+                if ((int) l_dsTemp.Tables["Temporal"].Rows[0]["cantidad"] == 1) {
+                    // La versión coincide
+                    l_dsTemp.Dispose();
+                    return;
+                }
+            }
+
+            // El número de versión no coincide
+            StreamWriter l_swErrorFile= null;
+            string l_strErrFName= String.Format("C:\\V{0:ddMMyyyyHHmmss}.Err",
+                                                DateTime.Now);
+            try {
+                // Creamos el archivo del error
+                l_swErrorFile= new StreamWriter(File.Create(l_strErrFName),
+                                                System.Text.Encoding.ASCII);
+
+                // Grabamos los datos del error
+                l_swErrorFile.WriteLine("Instante    : {0:dd/MM/yyyy HH:mm:ss}", DateTime.Now);
+                l_swErrorFile.WriteLine("Metodo      : {0}", p_smResult.Method);
+                l_swErrorFile.WriteLine("Message     : No coincide el numero de version");
+            }
+            catch (Exception l_expData) {
+                // Error en el acceso al archivo.
+                string l_strLinea= l_expData.Message;
+            }
+            finally {
+                // Si llegamos a abrir el archivo -> lo cerramos
+                if (l_swErrorFile != null) {
+                    l_swErrorFile.Close();
+                    l_swErrorFile.Dispose();
+                }
+            }
+
+            // El número de versión no coincide
+            l_dsTemp.Dispose();
+            p_smResult.BllWarning("El número de versión del registro del ítem (DestinatariosMail) no coincide.\r\nOperación cancelada.","");
+        }
+        #endregion
+
+        #region Metodos internos de recupero
+
+        /// <summary>
+        /// Devuelve una Lista-entidad: LEDestinatariosMails
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_bOnlyActive">Indica si solo se analizan los registros activos</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        /// <returns>Lista-entidad: LEDestinatariosMails</returns>
+        internal static LEDestinatariosMails DemUpfl(DBConn p_dbcAccess,
+                                                      bool p_bOnlyActive,
+                                                      ref StatMsg p_smResult)
+        {
+            try {
+                // Pedimos los registros de la tabla: DestinatariosMails
+                DataSet l_dsTemp= new DataSet();
+
+                Dal.DestinatariosMails.Up(p_dbcAccess, 
+                                          p_bOnlyActive,
+                                          ref l_dsTemp, "Temporal",
+                                          ref p_smResult);
+                if (p_smResult.NOk) return null;
+
+                // Fijamos los captions de la grilla
+                Dal.DestinatariosMails.MakeGridCaptions(ref l_dsTemp, "Temporal", ref p_smResult);
+
+                // Contruimos la lista-entidad y la devolvemos (si vino algun registro)
+                LEDestinatariosMails l_lentRet= new LEDestinatariosMails(l_dsTemp.Tables["Temporal"]);
+                l_dsTemp.Dispose();
+                return l_lentRet;
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Upfl
+                p_smResult.BllError(l_expData);
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Devuelve una entidad: EDestinatariosMail
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_strCodigo">Código</param>
+        /// <param name="p_bOnlyActive">Indica si solo se analizan los registros activos</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        /// <returns>Entidad: EDestinatariosMail</returns>
+        internal static EDestinatariosMail DemSrch(DBConn p_dbcAccess,
+                                                   string p_strCodigo,
+                                                   bool p_bOnlyActive,
+                                                   ref StatMsg p_smResult)
+        {
+            try {
+                // Pedimos el registro de la tabla: DestinatariosMails
+                DataSet l_dsTemp= new DataSet();
+
+                Dal.DestinatariosMails.Search(p_dbcAccess, 
+                                              p_strCodigo,
+                                              p_bOnlyActive,
+                                              ref l_dsTemp, "Temporal",
+                                              ref p_smResult);
+                if (p_smResult.NOk) return null;
+
+                // Constuimos la entidad y la devolvemos (si vino un registro)
+                EDestinatariosMail l_entRet= null;
+
+                if (l_dsTemp.Tables["Temporal"].Rows.Count == 1)
+                    l_entRet= new EDestinatariosMail(l_dsTemp.Tables["Temporal"].Rows[0]);
+
+                l_dsTemp.Dispose();
+                return l_entRet;
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Srch
+                p_smResult.BllError(l_expData);
+                return null;
+            }
+        }
+        #endregion
+
+        #region Metodos internos de modificacion
+
+        /// <summary>
+        /// Agrega o modifica un registro de la tabla: DestinatariosMails
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_entDestinatariosMail">Entidad con los datos a procesar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static void DemSSav(DBConn p_dbcAccess,
+                                     EDestinatariosMail p_entDestinatariosMail,
+                                     ref StatMsg p_smResult)
+        {
+            try {
+                // Procesamos codigo fijo
+                DemSave_f(p_dbcAccess, ref p_entDestinatariosMail, ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // Verificamos la clave a grabar
+                DemVKey(p_dbcAccess, 
+                        p_entDestinatariosMail.Codigo,
+                        ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // Si es una entidad nueva
+                if (p_entDestinatariosMail.EsNueva) {
+                    // Es un alta. La clave no debe existir
+                    if (!p_smResult.ICodeEs(BllCodes.KeyDsntFound)) {
+                        // Error. La clave ya existe
+                        p_smResult.BllWarning("El ítem (DestinatariosMail) que intenta agregar ya existe en el sistema.","");
+                        return;
+                    }
+
+                    // Agregamos el registro
+                    DemInsr(p_dbcAccess, p_entDestinatariosMail, ref p_smResult);
+                    return;
+                }
+
+                // Es un update. La clave debe existir y estar habilitada
+                if (!p_smResult.ICodeEs(BllCodes.KeyExists)) {
+                    // Error. La clave no existe o no está habilitada
+                    p_smResult.BllWarning("El ítem (DestinatariosMail) que intenta modificar no existe en el sistema o no está habilitado.","");
+                    return;
+                }
+
+                // Debe coincidir el número de version
+                DemVVer(p_dbcAccess, 
+                        p_entDestinatariosMail.Codigo,
+                        p_entDestinatariosMail.FxdVersion,
+                        ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // Actualizamos el registro
+                DemUpdt(p_dbcAccess, p_entDestinatariosMail, ref p_smResult);
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion SSav
+                p_smResult.BllError(l_expData);
+            }
+        }
+
+        /// <summary>
+        /// Agrega un registro a la tabla a partir de una entidad: EDestinatariosMail
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_entDestinatariosMail">Entidad con los datos a procesar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static void DemInsr(DBConn p_dbcAccess,
+                                     EDestinatariosMail p_entDestinatariosMail,
+                                     ref StatMsg p_smResult)
+        {
+            try {
+                // Validamos la integridad de la entidad
+                DemTInt(p_dbcAccess, p_entDestinatariosMail, ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // Creamos un nuevo registro de la tabla: DestinatariosMails
+                Dal.DestinatariosMails.Insert(p_dbcAccess,
+                                              p_entDestinatariosMail.Codigo,
+                                              p_entDestinatariosMail.Descripcion,
+                                              p_entDestinatariosMail.Destinatarios,
+                                              ref p_smResult);
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Insr
+                p_smResult.BllError(l_expData);
+            }
+        }
+
+        /// <summary>
+        /// Actualiza un registro a la tabla a partir de una entidad: EDestinatariosMail
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_entDestinatariosMail">Entidad con los datos a procesar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static void DemUpdt(DBConn p_dbcAccess,
+                                     EDestinatariosMail p_entDestinatariosMail,
+                                     ref StatMsg p_smResult)
+        {
+            try {
+                // Validamos la integridad de la entidad
+                DemTInt(p_dbcAccess, p_entDestinatariosMail, ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // Actualizamos un registro de la tabla: DestinatariosMails
+                Dal.DestinatariosMails.Update(p_dbcAccess,
+                                              p_entDestinatariosMail.Codigo,
+                                              p_entDestinatariosMail.Descripcion,
+                                              p_entDestinatariosMail.Destinatarios,
+                                              ref p_smResult);
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Updt
+                p_smResult.BllError(l_expData);
+            }
+        }
+
+        /// <summary>
+        /// Borra físicamente un registro de a tabla: DestinatariosMails
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_strCodigo">Código</param>
+        /// <param name="p_iFxdVersion">Versión del registro a borrar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static void DemDrop(DBConn p_dbcAccess,
+                                     string p_strCodigo,
+                                     int p_iFxdVersion,
+                                     ref StatMsg p_smResult)
+        {
+            try {
+                // Verificamos la clave a borrar
+                DemVKey(p_dbcAccess,
+                        p_strCodigo,
+                        ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // El registro tiene que existir
+                if (p_smResult.ICodeEs(BllCodes.KeyDsntFound)) {
+                    // Error. La clave no existe
+                    p_smResult.BllWarning("El ítem (DestinatariosMail) que intenta borrar no existe en el sistema.","");
+                    return;
+                }
+
+                // Debe coincidir el número de version
+                DemVVer(p_dbcAccess, 
+                        p_strCodigo,
+                        p_iFxdVersion,
+                        ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // Borramos físicamente el registro
+                Dal.DestinatariosMails.Drop(p_dbcAccess,
+                                            p_strCodigo,
+                                            ref p_smResult);
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Remove
+                p_smResult.BllError(l_expData);
+            }
+        }
+
+        /// <summary>
+        /// Borra los registros borrados lógicamente de la tabla
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        internal static void DemPack(DBConn p_dbcAccess,
+                                     ref StatMsg p_smResult)
+        {
+            try {
+                // Borramos los borrados lógicamente
+                Dal.DestinatariosMails.Pack(p_dbcAccess,
+                                            ref p_smResult);
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion Updt
+                p_smResult.BllError(l_expData);
+            }
+        }
+        #endregion
+
+        #region Metodos para métodos DAL definidos por el usuario
         #endregion
 
 

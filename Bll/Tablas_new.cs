@@ -15,7 +15,7 @@ namespace Mrln.Bll
     //----------------------------------------------------------------------------
     //                         TNG Software BLL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 26/06/2018 00:37
+    // Fecha                    : 29/06/2018 20:46
     // Sistema                  : Mrln
     // Clase para Administrar   : Tablas Generales
     //----------------------------------------------------------------------------
@@ -114,14 +114,14 @@ namespace Mrln.Bll
         }
 
         /// <summary>
-        /// Agrega o modifica un registro de la tabla: Encargados
+        /// Agrega o modifica un registro de la tabla: DestinatariosMails
         /// (Código Fijo)
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_entEncargado">Entidad con los datos a procesar</param>
+        /// <param name="p_entDestinatariosMail">Entidad con los datos a procesar</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
-        internal static void EncSave_f(DBConn p_dbcAccess,
-                                       ref EEncargado p_entEncargado,
+        internal static void DemSave_f(DBConn p_dbcAccess,
+                                       ref EDestinatariosMail p_entDestinatariosMail,
                                        ref StatMsg p_smResult)
         {
             // *********
@@ -130,17 +130,17 @@ namespace Mrln.Bll
         }
 
         /// <summary>
-        /// Habilita/Deshabilita un registro de la tabla: Encargados
+        /// Habilita/Deshabilita un registro de la tabla: DestinatariosMails
         /// (Código Fijo)
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
         /// <param name="p_bEnable">Tipo de operacion</param>
-        /// <param name="p_strCod">Cod</param>
+        /// <param name="p_strCodigo">Código</param>
         /// <param name="p_iFxdVersion">Versión del registro a borrar</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
-        internal static void EncEnabled_f(DBConn p_dbcAccess,
+        internal static void DemEnabled_f(DBConn p_dbcAccess,
                                           bool p_bEnable,
-                                          string p_strCod,
+                                          string p_strCodigo,
                                           ref int p_iFxdVersion,
                                           ref StatMsg p_smResult)
         {
@@ -150,15 +150,15 @@ namespace Mrln.Bll
         }
 
         /// <summary>
-        /// Borra físicamento un registro de la tabla: Encargados
+        /// Borra físicamento un registro de la tabla: DestinatariosMails
         /// (Código Fijo)
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_strCod">Cod</param>
+        /// <param name="p_strCodigo">Código</param>
         /// <param name="p_iFxdVersion">Versión del registro a borrar</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
-        internal static void EncRemove_f(DBConn p_dbcAccess,
-                                         string p_strCod,
+        internal static void DemRemove_f(DBConn p_dbcAccess,
+                                         string p_strCodigo,
                                          int p_iFxdVersion,
                                          ref StatMsg p_smResult)
         {
@@ -168,14 +168,14 @@ namespace Mrln.Bll
         }
 
         /// <summary>
-        /// Agrega validacion de integridad a una entidad: Encargado
+        /// Agrega validacion de integridad a una entidad: DestinatariosMail
         /// (Código Fijo)
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_entEncargado">Entidad con los datos a validar</param>
+        /// <param name="p_entDestinatariosMail">Entidad con los datos a validar</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
-        internal static void EncTInt_f(DBConn p_dbcAccess,
-                                       EEncargado p_entEncargado,
+        internal static void DemTInt_f(DBConn p_dbcAccess,
+                                       EDestinatariosMail p_entDestinatariosMail,
                                        ref StatMsg p_smResult)
         {
             // *********

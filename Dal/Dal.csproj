@@ -51,6 +51,7 @@
     <Compile Include="Categorias.cs" />
     <Compile Include="Controles.cs" />
     <Compile Include="ControlesReparations.cs" />
+    <Compile Include="DestinatariosMails.cs" />
     <Compile Include="Encargados.cs" />
     <Compile Include="Equipamiento.cs" />
     <Compile Include="Estaciones.cs" />

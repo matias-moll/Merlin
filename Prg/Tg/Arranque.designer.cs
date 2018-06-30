@@ -18,7 +18,7 @@ namespace Mrln.Tg
     //----------------------------------------------------------------------------
     //                         TNG Software PRG Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 26/06/2018 17:47
+    // Fecha                    : 29/06/2018 21:17
     // Sistema                  : Mrln
     // Programa                 : Tablas Generales
     //----------------------------------------------------------------------------
@@ -155,6 +155,8 @@ namespace Mrln.Tg
                 case "ESTD"          : {new Estados().Show(); return;}
                 // **
                 case "MINF"          : {new MotivosInfracciones().Show(); return;}
+                // **
+                case "DEST"          : {new DestinatariosMails().Show(); return;}
 
                 // *************************************************
                 // ** Menu: Controles y Reparaciones

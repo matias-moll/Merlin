@@ -130,6 +130,112 @@ namespace Mrln.Bel
     }
     #endregion
 
+    #region Entidad: DestinatariosMail
+    /// <summary>
+    /// Clase que representa la Entidad: DestinatariosMail
+    ///   - Elementos no producidos por el Generador
+    /// </summary>
+    public sealed partial class EDestinatariosMail : Entidad
+    {
+        #region Metodos publicos de la clase
+        //---------------------------------------------------------------
+        // Metodos públicos de la clase
+        //---------------------------------------------------------------
+
+        #endregion
+
+        #region Metodos privados de la clase
+        //---------------------------------------------------------------
+        // Metodos privados de la clase
+        //---------------------------------------------------------------
+
+        /// <summary>
+        /// Permite agregar datos al XML de la entidad
+        /// </summary>
+        private void fAddXMLData(ref XmlDocument p_xdocData,
+                                 ref XmlNode p_xndEntidad)
+        {
+        }
+
+        /// <summary>
+        /// Permite agregar datos a una entidad generada desde un XML
+        /// </summary>
+        private void fNewFromXML(ref DataRow p_drTemp,
+                                 XmlNode p_xndData)
+        {
+        }
+
+        #endregion
+
+        #region Propiedades de la clase
+        //---------------------------------------------------------------
+        // Propiedades de la clase
+        //---------------------------------------------------------------
+
+        #endregion
+    }
+    #endregion
+
+    #region Lista-Entidad: DestinatariosMails
+    /// <summary>
+    /// Clase que representa la Lista-Entidad: DestinatariosMails
+    ///   - Elementos no producidos por el Generador
+    /// </summary>
+    public sealed partial class LEDestinatariosMails : ListaEntidades
+    {
+        #region Metodos publicos de la clase
+        //---------------------------------------------------------------
+        // Metodos publicos
+        //---------------------------------------------------------------
+
+        #endregion
+
+        #region Metodos privados de la clase
+        //---------------------------------------------------------------
+        // Metodos privados
+        //---------------------------------------------------------------
+
+        #endregion
+
+        #region Propiedades de la clase
+        //---------------------------------------------------------------
+        // Propiedades de la clase
+        //---------------------------------------------------------------
+
+        #endregion
+    }
+    #endregion
+
+    #region Lista-Entidad-Tipada: DestinatariosMails
+    /// <summary>
+    /// Clase que representa la Lista-Entidad-Tipada: DestinatariosMails
+    ///   - Elementos no producidos por el Generador
+    /// </summary>
+    public sealed partial class LETDestinatariosMails : LET<EDestinatariosMail>
+    {
+        #region Metodos publicos de la clase
+        //---------------------------------------------------------------
+        // Metodos publicos
+        //---------------------------------------------------------------
+
+        #endregion
+
+        #region Metodos privados de la clase
+        //---------------------------------------------------------------
+        // Metodos privados
+        //---------------------------------------------------------------
+
+        #endregion
+
+        #region Propiedades de la clase
+        //---------------------------------------------------------------
+        // Propiedades de la clase
+        //---------------------------------------------------------------
+
+        #endregion
+    }
+    #endregion
+
     #region Entidad: Equipamento
     /// <summary>
     /// Clase que representa la Entidad: Equipamento

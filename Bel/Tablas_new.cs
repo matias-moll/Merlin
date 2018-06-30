@@ -13,7 +13,7 @@ namespace Mrln.Bel
     //----------------------------------------------------------------------------
     //                         TNG Software BEL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 26/06/2018 00:37
+    // Fecha                    : 29/06/2018 20:46
     // Sistema                  : Mrln
     // Clase para Administrar   : Tablas Generales
     //----------------------------------------------------------------------------
@@ -130,12 +130,12 @@ namespace Mrln.Bel
     }
     #endregion
 
-    #region Entidad: Encargado
+    #region Entidad: DestinatariosMail
     /// <summary>
-    /// Clase que representa la Entidad: Encargado
+    /// Clase que representa la Entidad: DestinatariosMail
     ///   - Elementos no producidos por el Generador
     /// </summary>
-    public sealed partial class EEncargado : Entidad
+    public sealed partial class EDestinatariosMail : Entidad
     {
         #region Metodos publicos de la clase
         //---------------------------------------------------------------
@@ -176,12 +176,12 @@ namespace Mrln.Bel
     }
     #endregion
 
-    #region Lista-Entidad: Encargados
+    #region Lista-Entidad: DestinatariosMails
     /// <summary>
-    /// Clase que representa la Lista-Entidad: Encargados
+    /// Clase que representa la Lista-Entidad: DestinatariosMails
     ///   - Elementos no producidos por el Generador
     /// </summary>
-    public sealed partial class LEEncargados : ListaEntidades
+    public sealed partial class LEDestinatariosMails : ListaEntidades
     {
         #region Metodos publicos de la clase
         //---------------------------------------------------------------
@@ -206,12 +206,12 @@ namespace Mrln.Bel
     }
     #endregion
 
-    #region Lista-Entidad-Tipada: Encargados
+    #region Lista-Entidad-Tipada: DestinatariosMails
     /// <summary>
-    /// Clase que representa la Lista-Entidad-Tipada: Encargados
+    /// Clase que representa la Lista-Entidad-Tipada: DestinatariosMails
     ///   - Elementos no producidos por el Generador
     /// </summary>
-    public sealed partial class LETEncargados : LET<EEncargado>
+    public sealed partial class LETDestinatariosMails : LET<EDestinatariosMail>
     {
         #region Metodos publicos de la clase
         //---------------------------------------------------------------

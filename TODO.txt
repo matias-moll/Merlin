@@ -19,3 +19,8 @@ Va la de cierre, pensar como hacer el ordenamiento porque las que no tengan fech
 
 Una vez que tenga todo esto hay que ver los reportes.
 Y documentar el constructor de consultas.
+
+
+Agregar CLL al proyecto, aunque sea vacia.
+
+Ver la interfaz con CEDI, reportes y tabla.
