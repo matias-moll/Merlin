@@ -128,7 +128,17 @@ namespace Mrln.Mv
 
         private void grabarConfigAlerta(int kilometros, string codReparacion, string codControl)
         {
-            // TODO: Documentar y traer el talonario de config alerta. Grabar con ese valor mas los tres parametros.
+            ETalonario taloConfigAlerta = App.TaloGet("ConfAlerta", ref m_smResult);
+            MsgRuts.AnalizeError(this, m_smResult);
+
+            Bel.EMovilAlerta alertaNueva = Bel.EMovilAlerta.NewEmpty();
+            alertaNueva.Patente = cdcMoviles.SelectedStrCode;
+            alertaNueva.Nroconfigalerta = taloConfigAlerta.Valor;
+            alertaNueva.Kilometros = kilometros;
+            alertaNueva.Codreparacion = codReparacion;
+            alertaNueva.Codcontrol = codControl;
+            Bll.Moviles.MvalSave(alertaNueva, ref m_smResult);
+            MsgRuts.AnalizeError(this, m_smResult);
         }
 
         #endregion
