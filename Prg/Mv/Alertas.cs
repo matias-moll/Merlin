@@ -23,6 +23,8 @@ namespace Mrln.Mv
         private StatMsg m_smResult;
         private Bel.LEDestinatariosMails m_leGruposDestinatarios;
         private Bel.LEMoviles m_leMoviles;
+        private Bel.LEControles m_leControles;
+        private Bel.LEReparaciones m_leReparaciones;
 
         //constructor principal
         public Alertas()
@@ -30,6 +32,9 @@ namespace Mrln.Mv
             InitializeComponent();
            
             m_smResult = new StatMsg();
+
+            // Dockeamos el formulario
+            ((MainFrame)App.GetMainWindow()).AddContent(this);
         }
 
         private void Alertas_Load(object sender, EventArgs e)
@@ -42,22 +47,30 @@ namespace Mrln.Mv
             m_leGruposDestinatarios = Bll.Tablas.DemUpFull(true, ref m_smResult);
             MsgRuts.AnalizeError(this, m_smResult);
 
+            m_leControles = Bll.Controles.UpFull(true, ref m_smResult);
+            MsgRuts.AnalizeError(this, m_smResult);
+
+            m_leReparaciones = Bll.Tablas.RepUpFull(true, ref m_smResult);
+            MsgRuts.AnalizeError(this, m_smResult);
+
+            cdcControlesEspecifico.FillFromStrLEntidad(m_leControles, Bel.EControl.CodCmp, Bel.EControl.DesCmp, "deleted");
+            cdcControlesPeriodicos.FillFromStrLEntidad(m_leControles, Bel.EControl.CodCmp, Bel.EControl.DesCmp, "deleted");
+            cdcControlesPostReparacion.FillFromStrLEntidad(m_leControles, Bel.EControl.CodCmp, Bel.EControl.DesCmp, "deleted");
+
+            cdcReparacionesPostReparacion.FillFromStrLEntidad(m_leReparaciones, Bel.EReparacion.CodCmp, Bel.EReparacion.DesCmp, "deleted");
+
             cdcGruposDestinatarios.FillFromStrLEntidad(m_leGruposDestinatarios, Bel.EDestinatariosMail.CodigoCmp, Bel.EDestinatariosMail.DescripcionCmp, "deleted");
         }
 
-        #region Metodos privados de la UIL
-
-
-        #endregion
-
         #region Eventos de los controles
 
-        #endregion
 
         private void cdcGruposDestinatarios_SelectedIndexChanged(object sender, EventArgs e)
         {
+            cdListaDestinatarios.Clear();
+
             string[] destinatarios = m_leGruposDestinatarios[cdcGruposDestinatarios.SelectedStrCode].Destinatarios.Split(new char[] { ',' });
-            foreach(string destinatario in destinatarios)
+            foreach (string destinatario in destinatarios)
                 if (destinatario.Trim() != "")
                     cdListaDestinatarios.AddStrCD(destinatario, destinatario, 0);
         }
@@ -74,7 +87,7 @@ namespace Mrln.Mv
             int kmsInicial = neDesdeKmsPeriodicos.Numero;
 
             // Creamos N alertas hasta alcanzar el kilometraje especificado cada X kilometros.
-            for(int kmsActual = kmsInicial; kmsActual <= neHastaKmsPeriodicos.Numero; kmsActual += neCadaKmsPeriodicos.Numero)
+            for (int kmsActual = kmsInicial; kmsActual <= neHastaKmsPeriodicos.Numero; kmsActual += neCadaKmsPeriodicos.Numero)
             {
                 grabarConfigAlerta(kmsActual, "", cdcControlesPeriodicos.SelectedStrCode);
             }
@@ -92,13 +105,20 @@ namespace Mrln.Mv
 
         private void cdcMoviles_SelectedIndexChanged(object sender, EventArgs e)
         {
-            fgConfigAlertas.FillFromLEntidad(m_leMoviles[cdcMoviles.SelectedStrCode].MovilesAlertas);
+            ListaEntidades alertasMoviles = m_leMoviles[cdcMoviles.SelectedStrCode].MovilesAlertas;
+
+            if (alertasMoviles != null)
+                fgConfigAlertas.FillFromLEntidad(alertasMoviles);
         }
 
         private void gbBorrarSeleccionados_Click(object sender, EventArgs e)
         {
 
         }
+
+        #endregion
+
+        #region Metodos privados de la UIL
 
         private void limpiarDestinatarios()
         {
@@ -110,5 +130,8 @@ namespace Mrln.Mv
         {
             // TODO: Documentar y traer el talonario de config alerta. Grabar con ese valor mas los tres parametros.
         }
+
+        #endregion
+
     }
 }

@@ -171,7 +171,7 @@
             this.cdcGruposDestinatarios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cdcGruposDestinatarios.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.cdcGruposDestinatarios.FormattingEnabled = true;
-            this.cdcGruposDestinatarios.Location = new System.Drawing.Point(4, 78);
+            this.cdcGruposDestinatarios.Location = new System.Drawing.Point(4, 75);
             this.cdcGruposDestinatarios.Name = "cdcGruposDestinatarios";
             this.cdcGruposDestinatarios.Size = new System.Drawing.Size(203, 23);
             this.cdcGruposDestinatarios.Sorted = true;
@@ -280,7 +280,7 @@
             this.fullLabel8.BackColor = System.Drawing.Color.Transparent;
             this.fullLabel8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.fullLabel8.ForeColor = System.Drawing.Color.Black;
-            this.fullLabel8.Location = new System.Drawing.Point(425, 45);
+            this.fullLabel8.Location = new System.Drawing.Point(427, 45);
             this.fullLabel8.Name = "fullLabel8";
             this.fullLabel8.Size = new System.Drawing.Size(62, 18);
             this.fullLabel8.TabIndex = 16;
@@ -420,7 +420,7 @@
             this.lblControl.BackColor = System.Drawing.Color.Transparent;
             this.lblControl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblControl.ForeColor = System.Drawing.Color.Black;
-            this.lblControl.Location = new System.Drawing.Point(427, 46);
+            this.lblControl.Location = new System.Drawing.Point(429, 46);
             this.lblControl.Name = "lblControl";
             this.lblControl.Size = new System.Drawing.Size(59, 18);
             this.lblControl.TabIndex = 16;
@@ -468,9 +468,9 @@
             this.cdcReparacionesPostReparacion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cdcReparacionesPostReparacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cdcReparacionesPostReparacion.FormattingEnabled = true;
-            this.cdcReparacionesPostReparacion.Location = new System.Drawing.Point(240, 42);
+            this.cdcReparacionesPostReparacion.Location = new System.Drawing.Point(223, 42);
             this.cdcReparacionesPostReparacion.Name = "cdcReparacionesPostReparacion";
-            this.cdcReparacionesPostReparacion.Size = new System.Drawing.Size(166, 23);
+            this.cdcReparacionesPostReparacion.Size = new System.Drawing.Size(196, 23);
             this.cdcReparacionesPostReparacion.Sorted = true;
             this.cdcReparacionesPostReparacion.TabIndex = 32;
             // 
@@ -479,7 +479,7 @@
             this.fullLabel5.BackColor = System.Drawing.Color.Transparent;
             this.fullLabel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.fullLabel5.ForeColor = System.Drawing.Color.Black;
-            this.fullLabel5.Location = new System.Drawing.Point(107, 45);
+            this.fullLabel5.Location = new System.Drawing.Point(90, 45);
             this.fullLabel5.Name = "fullLabel5";
             this.fullLabel5.Size = new System.Drawing.Size(140, 18);
             this.fullLabel5.TabIndex = 31;
@@ -507,7 +507,7 @@
             // neEnkmPostReparacion
             // 
             this.neEnkmPostReparacion.BackColor = System.Drawing.SystemColors.Window;
-            this.neEnkmPostReparacion.Location = new System.Drawing.Point(49, 42);
+            this.neEnkmPostReparacion.Location = new System.Drawing.Point(35, 42);
             this.neEnkmPostReparacion.Name = "neEnkmPostReparacion";
             this.neEnkmPostReparacion.Size = new System.Drawing.Size(51, 23);
             this.neEnkmPostReparacion.TabIndex = 22;
@@ -518,7 +518,7 @@
             this.fullLabel9.BackColor = System.Drawing.Color.Transparent;
             this.fullLabel9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.fullLabel9.ForeColor = System.Drawing.Color.Black;
-            this.fullLabel9.Location = new System.Drawing.Point(16, 45);
+            this.fullLabel9.Location = new System.Drawing.Point(9, 45);
             this.fullLabel9.Name = "fullLabel9";
             this.fullLabel9.Size = new System.Drawing.Size(30, 18);
             this.fullLabel9.TabIndex = 14;
@@ -541,7 +541,7 @@
             this.fullLabel10.BackColor = System.Drawing.Color.Transparent;
             this.fullLabel10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.fullLabel10.ForeColor = System.Drawing.Color.Black;
-            this.fullLabel10.Location = new System.Drawing.Point(425, 45);
+            this.fullLabel10.Location = new System.Drawing.Point(427, 45);
             this.fullLabel10.Name = "fullLabel10";
             this.fullLabel10.Size = new System.Drawing.Size(59, 18);
             this.fullLabel10.TabIndex = 16;
