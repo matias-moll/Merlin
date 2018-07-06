@@ -25,6 +25,7 @@ namespace Mrln.Mv
         private Bel.LEMoviles m_leMoviles;
         private Bel.LEControles m_leControles;
         private Bel.LEReparaciones m_leReparaciones;
+        private Bel.LEMovilesAlertas m_leMovilesAlertas;
 
         //constructor principal
         public Alertas()
@@ -60,6 +61,10 @@ namespace Mrln.Mv
             cdcReparacionesPostReparacion.FillFromStrLEntidad(m_leReparaciones, Bel.EReparacion.CodCmp, Bel.EReparacion.DesCmp, "deleted");
 
             cdcGruposDestinatarios.FillFromStrLEntidad(m_leGruposDestinatarios, Bel.EDestinatariosMail.CodigoCmp, Bel.EDestinatariosMail.DescripcionCmp, "deleted");
+            cdcGruposDestinatarios.AddStrCD("", "", 0);
+
+            if (m_leGruposDestinatarios.Count == 1)
+                cdcGruposDestinatarios.SelectedStrCode = m_leGruposDestinatarios[0].Codigo;
         }
 
         #region Eventos de los controles
@@ -68,6 +73,9 @@ namespace Mrln.Mv
         private void cdcGruposDestinatarios_SelectedIndexChanged(object sender, EventArgs e)
         {
             cdListaDestinatarios.Clear();
+
+            if (cdcGruposDestinatarios.SelectedStrCode.Trim() == "")
+                return;
 
             string[] destinatarios = m_leGruposDestinatarios[cdcGruposDestinatarios.SelectedStrCode].Destinatarios.Split(new char[] { ',' });
             foreach (string destinatario in destinatarios)
@@ -105,10 +113,19 @@ namespace Mrln.Mv
 
         private void cdcMoviles_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ListaEntidades alertasMoviles = m_leMoviles[cdcMoviles.SelectedStrCode].MovilesAlertas;
+            cargarGrillaAlertas();
+        }
 
-            if (alertasMoviles != null)
-                fgConfigAlertas.FillFromLEntidad(alertasMoviles);
+        private void cargarGrillaAlertas()
+        {
+            m_leMovilesAlertas = Bll.Moviles.MvalFGet(m_leMoviles[cdcMoviles.SelectedStrCode].Patente.Trim(), true, ref m_smResult);
+            MsgRuts.AnalizeError(this, m_smResult);
+
+            if (m_leMovilesAlertas != null)
+            {
+                m_leMovilesAlertas.ChangeCaption("deleted", "");
+                fgConfigAlertas.FillFromLEntidad(m_leMovilesAlertas);
+            }
         }
 
         private void gbBorrarSeleccionados_Click(object sender, EventArgs e)
@@ -137,8 +154,11 @@ namespace Mrln.Mv
             alertaNueva.Kilometros = kilometros;
             alertaNueva.Codreparacion = codReparacion;
             alertaNueva.Codcontrol = codControl;
+            alertaNueva.Coddestinatarios = cdcGruposDestinatarios.SelectedStrCode;
             Bll.Moviles.MvalSave(alertaNueva, ref m_smResult);
             MsgRuts.AnalizeError(this, m_smResult);
+
+            cargarGrillaAlertas();
         }
 
         #endregion

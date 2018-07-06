@@ -16,7 +16,7 @@ namespace Mrln.Bll
     //----------------------------------------------------------------------------
     //                         TNG Software BLL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 28/06/2018 17:10
+    // Fecha                    : 06/07/2018 16:18
     // Sistema                  : Mrln
     // Clase para Administrar   : Moviles y Tablas Hijas
     //----------------------------------------------------------------------------
@@ -1278,6 +1278,19 @@ namespace Mrln.Bll
                 }
             }
 
+            if (p_entMovilAlerta.Coddestinatarios.Trim() != "") {
+                Tablas.DemVKey(p_dbcAccess,
+                               p_entMovilAlerta.Coddestinatarios,
+                               ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                if (p_smResult.ICodeEs(BllCodes.KeyDsntFound)) {
+                    // El campo [Destinatarios] debe existir en la tabla [Tablas.Dem]
+                    p_smResult.BllWarning("El dato [Destinatarios] debe existir en la tabla [Tablas.Dem]","");
+                    return;
+                }
+            }
+
             // Verificamos la clave foranea
             Moviles.VKey(p_dbcAccess,
                          p_entMovilAlerta.Patente,
@@ -1618,6 +1631,7 @@ namespace Mrln.Bll
                                       p_entMovilAlerta.Kilometros,
                                       p_entMovilAlerta.Codreparacion,
                                       p_entMovilAlerta.Codcontrol,
+                                      p_entMovilAlerta.Coddestinatarios,
                                       ref p_smResult);
             }
             catch (Exception l_expData) {
@@ -1648,6 +1662,7 @@ namespace Mrln.Bll
                                       p_entMovilAlerta.Kilometros,
                                       p_entMovilAlerta.Codreparacion,
                                       p_entMovilAlerta.Codcontrol,
+                                      p_entMovilAlerta.Coddestinatarios,
                                       ref p_smResult);
             }
             catch (Exception l_expData) {

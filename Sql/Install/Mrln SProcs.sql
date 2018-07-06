@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 29/06/2018 17:57
+// Fecha       : 06/07/2018 16:30
 // Sistema     : Mrln
 // Tabla       : Alertas
 //----------------------------------------------------------------------------
@@ -591,7 +591,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 29/06/2018 17:57
+// Fecha       : 06/07/2018 16:30
 // Sistema     : Mrln
 // Tabla       : Categorias
 //----------------------------------------------------------------------------
@@ -1128,7 +1128,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 29/06/2018 17:57
+// Fecha       : 06/07/2018 16:30
 // Sistema     : Mrln
 // Tabla       : Controles
 //----------------------------------------------------------------------------
@@ -1673,7 +1673,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 29/06/2018 17:57
+// Fecha       : 06/07/2018 16:31
 // Sistema     : Mrln
 // Tabla       : ControlesReparations
 //----------------------------------------------------------------------------
@@ -2492,7 +2492,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 29/06/2018 17:57
+// Fecha       : 06/07/2018 16:31
 // Sistema     : Mrln
 // Tabla       : DestinatariosMails
 //----------------------------------------------------------------------------
@@ -3529,7 +3529,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 29/06/2018 17:57
+// Fecha       : 06/07/2018 16:31
 // Sistema     : Mrln
 // Tabla       : Equipamiento
 //----------------------------------------------------------------------------
@@ -4074,7 +4074,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 29/06/2018 17:57
+// Fecha       : 06/07/2018 16:31
 // Sistema     : Mrln
 // Tabla       : Estaciones
 //----------------------------------------------------------------------------
@@ -4639,7 +4639,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 29/06/2018 17:57
+// Fecha       : 06/07/2018 16:31
 // Sistema     : Mrln
 // Tabla       : Estados
 //----------------------------------------------------------------------------
@@ -5194,7 +5194,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 29/06/2018 17:57
+// Fecha       : 06/07/2018 16:31
 // Sistema     : Mrln
 // Tabla       : Marcas
 //----------------------------------------------------------------------------
@@ -5729,7 +5729,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 29/06/2018 17:57
+// Fecha       : 06/07/2018 16:31
 // Sistema     : Mrln
 // Tabla       : Modelos
 //----------------------------------------------------------------------------
@@ -6274,7 +6274,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 29/06/2018 17:57
+// Fecha       : 06/07/2018 16:31
 // Sistema     : Mrln
 // Tabla       : MotivosInfracciones
 //----------------------------------------------------------------------------
@@ -6766,7 +6766,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 29/06/2018 17:57
+// Fecha       : 06/07/2018 16:31
 // Sistema     : Mrln
 // Tabla       : Moviles
 //----------------------------------------------------------------------------
@@ -7475,7 +7475,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 29/06/2018 17:57
+// Fecha       : 06/07/2018 16:31
 // Sistema     : Mrln
 // Tabla       : MvlAccidentes
 //----------------------------------------------------------------------------
@@ -8324,7 +8324,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 29/06/2018 17:57
+// Fecha       : 06/07/2018 16:31
 // Sistema     : Mrln
 // Tabla       : MvlAlertas
 //----------------------------------------------------------------------------
@@ -8382,14 +8382,18 @@ begin
                 rep_xde_des as mal_reparacion,
                 mal_cod_codcontrol,
                 ctl_des_des as mal_control,
+                mal_cod_coddestinatarios,
+                dem_des_descripcion as mal_destinats,
                 TNGS_Mrln..MvlAlertas.instante,
                 TNGS_Mrln..MvlAlertas.deleted,
                 TNGS_Mrln..MvlAlertas.usuario,
                 TNGS_Mrln..MvlAlertas.version
            from TNGS_Mrln..MvlAlertas
-                join TNGS_Mrln..Controles
+                left outer join TNGS_Mrln..Controles
                   on mal_cod_codcontrol = ctl_cod_cod
-                join TNGS_Mrln..Reparaciones
+                left outer join TNGS_Mrln..DestinatariosMails
+                  on mal_cod_coddestinatarios = dem_cod_codigo
+                left outer join TNGS_Mrln..Reparaciones
                   on mal_cd6_codreparacion = rep_cd6_cod
           where TNGS_Mrln..MvlAlertas.deleted = 0
           order by mal_ecd_patente,
@@ -8404,14 +8408,18 @@ begin
                 rep_xde_des as mal_reparacion,
                 mal_cod_codcontrol,
                 ctl_des_des as mal_control,
+                mal_cod_coddestinatarios,
+                dem_des_descripcion as mal_destinats,
                 TNGS_Mrln..MvlAlertas.instante,
                 TNGS_Mrln..MvlAlertas.deleted,
                 TNGS_Mrln..MvlAlertas.usuario,
                 TNGS_Mrln..MvlAlertas.version
            from TNGS_Mrln..MvlAlertas
-                join TNGS_Mrln..Controles
+                left outer join TNGS_Mrln..Controles
                   on mal_cod_codcontrol = ctl_cod_cod
-                join TNGS_Mrln..Reparaciones
+                left outer join TNGS_Mrln..DestinatariosMails
+                  on mal_cod_coddestinatarios = dem_cod_codigo
+                left outer join TNGS_Mrln..Reparaciones
                   on mal_cd6_codreparacion = rep_cd6_cod
           order by mal_ecd_patente,
                 mal_nro_nroconfigalerta
@@ -8520,14 +8528,18 @@ begin
                 rep_xde_des as mal_reparacion,
                 mal_cod_codcontrol,
                 ctl_des_des as mal_control,
+                mal_cod_coddestinatarios,
+                dem_des_descripcion as mal_destinats,
                 TNGS_Mrln..MvlAlertas.instante,
                 TNGS_Mrln..MvlAlertas.deleted,
                 TNGS_Mrln..MvlAlertas.usuario,
                 TNGS_Mrln..MvlAlertas.version
            from TNGS_Mrln..MvlAlertas
-                join TNGS_Mrln..Controles
+                left outer join TNGS_Mrln..Controles
                   on mal_cod_codcontrol = ctl_cod_cod
-                join TNGS_Mrln..Reparaciones
+                left outer join TNGS_Mrln..DestinatariosMails
+                  on mal_cod_coddestinatarios = dem_cod_codigo
+                left outer join TNGS_Mrln..Reparaciones
                   on mal_cd6_codreparacion = rep_cd6_cod
           where mal_ecd_patente = @mal_ecd_patente
             and mal_nro_nroconfigalerta = @mal_nro_nroconfigalerta
@@ -8542,14 +8554,18 @@ begin
                 rep_xde_des as mal_reparacion,
                 mal_cod_codcontrol,
                 ctl_des_des as mal_control,
+                mal_cod_coddestinatarios,
+                dem_des_descripcion as mal_destinats,
                 TNGS_Mrln..MvlAlertas.instante,
                 TNGS_Mrln..MvlAlertas.deleted,
                 TNGS_Mrln..MvlAlertas.usuario,
                 TNGS_Mrln..MvlAlertas.version
            from TNGS_Mrln..MvlAlertas
-                join TNGS_Mrln..Controles
+                left outer join TNGS_Mrln..Controles
                   on mal_cod_codcontrol = ctl_cod_cod
-                join TNGS_Mrln..Reparaciones
+                left outer join TNGS_Mrln..DestinatariosMails
+                  on mal_cod_coddestinatarios = dem_cod_codigo
+                left outer join TNGS_Mrln..Reparaciones
                   on mal_cd6_codreparacion = rep_cd6_cod
           where mal_ecd_patente = @mal_ecd_patente
             and mal_nro_nroconfigalerta = @mal_nro_nroconfigalerta
@@ -8606,14 +8622,18 @@ begin
                 rep_xde_des as mal_reparacion,
                 mal_cod_codcontrol,
                 ctl_des_des as mal_control,
+                mal_cod_coddestinatarios,
+                dem_des_descripcion as mal_destinats,
                 TNGS_Mrln..MvlAlertas.instante,
                 TNGS_Mrln..MvlAlertas.deleted,
                 TNGS_Mrln..MvlAlertas.usuario,
                 TNGS_Mrln..MvlAlertas.version
            from TNGS_Mrln..MvlAlertas
-                join TNGS_Mrln..Controles
+                left outer join TNGS_Mrln..Controles
                   on mal_cod_codcontrol = ctl_cod_cod
-                join TNGS_Mrln..Reparaciones
+                left outer join TNGS_Mrln..DestinatariosMails
+                  on mal_cod_coddestinatarios = dem_cod_codigo
+                left outer join TNGS_Mrln..Reparaciones
                   on mal_cd6_codreparacion = rep_cd6_cod
           where mal_ecd_patente = @mal_ecd_patente
             and TNGS_Mrln..MvlAlertas.deleted = 0
@@ -8628,14 +8648,18 @@ begin
                 rep_xde_des as mal_reparacion,
                 mal_cod_codcontrol,
                 ctl_des_des as mal_control,
+                mal_cod_coddestinatarios,
+                dem_des_descripcion as mal_destinats,
                 TNGS_Mrln..MvlAlertas.instante,
                 TNGS_Mrln..MvlAlertas.deleted,
                 TNGS_Mrln..MvlAlertas.usuario,
                 TNGS_Mrln..MvlAlertas.version
            from TNGS_Mrln..MvlAlertas
-                join TNGS_Mrln..Controles
+                left outer join TNGS_Mrln..Controles
                   on mal_cod_codcontrol = ctl_cod_cod
-                join TNGS_Mrln..Reparaciones
+                left outer join TNGS_Mrln..DestinatariosMails
+                  on mal_cod_coddestinatarios = dem_cod_codigo
+                left outer join TNGS_Mrln..Reparaciones
                   on mal_cd6_codreparacion = rep_cd6_cod
           where mal_ecd_patente = @mal_ecd_patente
           order by mal_nro_nroconfigalerta
@@ -8663,6 +8687,7 @@ go
 --- <param name="@mal_nro_kilometros">Kilometros</param>
 --- <param name="@mal_cd6_codreparacion">Reparacion</param>
 --- <param name="@mal_cod_codcontrol">Control</param>
+--- <param name="@mal_cod_coddestinatarios">Destinatarios</param>
 --- <param name="@usuario">Usuario que genera el insert</param>
 ---
 ---////////////////////////////////////////////////////////
@@ -8686,6 +8711,7 @@ create procedure dbo.MVLALERTAS_INSERT
 @mal_nro_kilometros tngs_numero,
 @mal_cd6_codreparacion tngs_codigo_6,
 @mal_cod_codcontrol tngs_codigo,
+@mal_cod_coddestinatarios tngs_codigo,
 @usuario tngs_nombre
 )
 as
@@ -8698,6 +8724,7 @@ begin
            @mal_nro_kilometros,
            @mal_cd6_codreparacion,
            @mal_cod_codcontrol,
+           @mal_cod_coddestinatarios,
            getdate(), 0, @usuario, 1
           )
 
@@ -8723,6 +8750,7 @@ go
 --- <param name="@mal_nro_kilometros">Kilometros</param>
 --- <param name="@mal_cd6_codreparacion">Reparacion</param>
 --- <param name="@mal_cod_codcontrol">Control</param>
+--- <param name="@mal_cod_coddestinatarios">Destinatarios</param>
 --- <param name="@usuario">Usuario que genera el update</param>
 ---
 ---////////////////////////////////////////////////////////
@@ -8746,6 +8774,7 @@ create procedure dbo.MVLALERTAS_UPDATE
 @mal_nro_kilometros tngs_numero,
 @mal_cd6_codreparacion tngs_codigo_6,
 @mal_cod_codcontrol tngs_codigo,
+@mal_cod_coddestinatarios tngs_codigo,
 @usuario tngs_nombre
 )
 as
@@ -8755,6 +8784,7 @@ begin
       set mal_nro_kilometros= @mal_nro_kilometros,
           mal_cd6_codreparacion= @mal_cd6_codreparacion,
           mal_cod_codcontrol= @mal_cod_codcontrol,
+          mal_cod_coddestinatarios= @mal_cod_coddestinatarios,
           version = ((version+1) % 32767),
           instante= getdate(),
           usuario = @usuario
@@ -9185,7 +9215,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 29/06/2018 17:57
+// Fecha       : 06/07/2018 16:31
 // Sistema     : Mrln
 // Tabla       : MvlCombustible
 //----------------------------------------------------------------------------
@@ -10063,7 +10093,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 29/06/2018 17:57
+// Fecha       : 06/07/2018 16:31
 // Sistema     : Mrln
 // Tabla       : MvlEquipamiento
 //----------------------------------------------------------------------------
@@ -10977,7 +11007,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 29/06/2018 17:57
+// Fecha       : 06/07/2018 16:31
 // Sistema     : Mrln
 // Tabla       : MvlEstados
 //----------------------------------------------------------------------------
@@ -11842,7 +11872,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 29/06/2018 17:57
+// Fecha       : 06/07/2018 16:31
 // Sistema     : Mrln
 // Tabla       : MvlInfracciones
 //----------------------------------------------------------------------------
@@ -12721,7 +12751,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 29/06/2018 17:57
+// Fecha       : 06/07/2018 16:31
 // Sistema     : Mrln
 // Tabla       : MvlKilometros
 //----------------------------------------------------------------------------
@@ -13611,7 +13641,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 29/06/2018 17:57
+// Fecha       : 06/07/2018 16:31
 // Sistema     : Mrln
 // Tabla       : OrdenesTrabajo
 //----------------------------------------------------------------------------
@@ -14282,7 +14312,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 29/06/2018 17:57
+// Fecha       : 06/07/2018 16:31
 // Sistema     : Mrln
 // Tabla       : OtItems
 //----------------------------------------------------------------------------
@@ -15268,7 +15298,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 29/06/2018 17:57
+// Fecha       : 06/07/2018 16:31
 // Sistema     : Mrln
 // Tabla       : Parametros
 //----------------------------------------------------------------------------
@@ -15800,7 +15830,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 29/06/2018 17:57
+// Fecha       : 06/07/2018 16:31
 // Sistema     : Mrln
 // Tabla       : Reparaciones
 //----------------------------------------------------------------------------
@@ -16370,7 +16400,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 29/06/2018 17:57
+// Fecha       : 06/07/2018 16:31
 // Sistema     : Mrln
 // Tabla       : Taller
 //----------------------------------------------------------------------------
@@ -16935,7 +16965,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 29/06/2018 17:57
+// Fecha       : 06/07/2018 16:31
 // Sistema     : Mrln
 // Tabla       : TallerCategoria
 //----------------------------------------------------------------------------
@@ -17772,7 +17802,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 29/06/2018 17:57
+// Fecha       : 06/07/2018 16:31
 // Sistema     : Mrln
 // Tabla       : Talonarios
 //----------------------------------------------------------------------------

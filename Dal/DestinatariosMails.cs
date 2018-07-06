@@ -10,7 +10,7 @@ namespace Mrln.Dal
     //----------------------------------------------------------------------------
     //                         TNG Software DAL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 29/06/2018 17:57
+    // Fecha                    : 06/07/2018 16:18
     // Sistema                  : Mrln
     // Clase para Administrar   : Destinatarios Mails
     // Basada en la Tabla       : DestinatariosMails

@@ -10,7 +10,7 @@ namespace Mrln.Dal
     //----------------------------------------------------------------------------
     //                         TNG Software DAL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 28/06/2018 17:06
+    // Fecha                    : 06/07/2018 16:18
     // Sistema                  : Mrln
     // Clase para Administrar   : Alertas de los Moviles
     // Basada en la Tabla       : MvlAlertas
@@ -183,6 +183,7 @@ namespace Mrln.Dal
         /// <param name="p_iKilometros">Kilometros</param>
         /// <param name="p_strCodreparacion">Reparacion</param>
         /// <param name="p_strCodcontrol">Control</param>
+        /// <param name="p_strCoddestinatarios">Destinatarios</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static int Insert(DBConn p_dbcAccess,
                                  string p_strPatente,
@@ -190,6 +191,7 @@ namespace Mrln.Dal
                                  int p_iKilometros,
                                  string p_strCodreparacion,
                                  string p_strCodcontrol,
+                                 string p_strCoddestinatarios,
                                  ref StatMsg p_smResult)
         {
             try {
@@ -202,6 +204,7 @@ namespace Mrln.Dal
                                        p_dbcAccess.MakeParam("@mal_nro_kilometros", p_iKilometros),
                                        p_dbcAccess.MakeParam("@mal_cd6_codreparacion", p_strCodreparacion),
                                        p_dbcAccess.MakeParam("@mal_cod_codcontrol", p_strCodcontrol),
+                                       p_dbcAccess.MakeParam("@mal_cod_coddestinatarios", p_strCoddestinatarios),
                                        p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
                                    }
                                   );
@@ -222,6 +225,7 @@ namespace Mrln.Dal
         /// <param name="p_iKilometros">Kilometros</param>
         /// <param name="p_strCodreparacion">Reparacion</param>
         /// <param name="p_strCodcontrol">Control</param>
+        /// <param name="p_strCoddestinatarios">Destinatarios</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static int Update(DBConn p_dbcAccess,
                                  string p_strPatente,
@@ -229,6 +233,7 @@ namespace Mrln.Dal
                                  int p_iKilometros,
                                  string p_strCodreparacion,
                                  string p_strCodcontrol,
+                                 string p_strCoddestinatarios,
                                  ref StatMsg p_smResult)
         {
             try {
@@ -241,6 +246,7 @@ namespace Mrln.Dal
                                        p_dbcAccess.MakeParam("@mal_nro_kilometros", p_iKilometros),
                                        p_dbcAccess.MakeParam("@mal_cd6_codreparacion", p_strCodreparacion),
                                        p_dbcAccess.MakeParam("@mal_cod_codcontrol", p_strCodcontrol),
+                                       p_dbcAccess.MakeParam("@mal_cod_coddestinatarios", p_strCoddestinatarios),
                                        p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
                                    }
                                   );
@@ -500,6 +506,7 @@ namespace Mrln.Dal
 
                 // Fijamos los nuevos captions de la grilla
                 p_dtResult.Columns["mal_control"].Caption= "V1ControlCN1";
+                p_dtResult.Columns["mal_destinats"].Caption= "V1DestinatariosCN1";
                 p_dtResult.Columns["mal_reparacion"].Caption= "V1ReparacionCN1";
                 p_dtResult.Columns["mal_nro_kilometros"].Caption= "V1KilometrosNN1";
                 p_dtResult.Columns["mal_nro_nroconfigalerta"].Caption= "V1Nro Config AlertaNN1";

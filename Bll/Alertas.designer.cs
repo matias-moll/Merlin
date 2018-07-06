@@ -16,7 +16,7 @@ namespace Mrln.Bll
     //----------------------------------------------------------------------------
     //                         TNG Software BLL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 28/06/2018 17:06
+    // Fecha                    : 06/07/2018 16:18
     // Sistema                  : Mrln
     // Clase para Administrar   : Alertas
     //----------------------------------------------------------------------------
@@ -54,7 +54,7 @@ namespace Mrln.Bll
         /// <param name="p_bOnlyActive">Indica si solo se analizan los registros activos</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         /// <returns>Lista-entidad: LEAlertas</returns>
-        public static LEAlertas ALEUpFull(bool p_bOnlyActive,
+        public static LEAlertas AleUpFull(bool p_bOnlyActive,
                                           ref StatMsg p_smResult)
         {
             // No hay errores aun
@@ -65,7 +65,7 @@ namespace Mrln.Bll
                 l_dbcAccess= DBRuts.GetConection(Connections.Dat);
 
                 // Pedimos los registros de la tabla
-                return ALEUpfl(l_dbcAccess, p_bOnlyActive, ref p_smResult);
+                return AleUpfl(l_dbcAccess, p_bOnlyActive, ref p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion UpFull
@@ -86,7 +86,7 @@ namespace Mrln.Bll
         /// <param name="p_bOnlyActive">Indica si solo se analizan los registros activos</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         /// <returns>Entidad: EAlerta</returns>
-        public static EAlerta ALEGet(int p_iNroconfig,
+        public static EAlerta AleGet(int p_iNroconfig,
                                      int p_iNroalerta,
                                      bool p_bOnlyActive,
                                      ref StatMsg p_smResult)
@@ -99,7 +99,7 @@ namespace Mrln.Bll
                 l_dbcAccess= DBRuts.GetConection(Connections.Dat);
 
                 // Pedimos la entidad: EAlerta
-                return ALESrch(l_dbcAccess,
+                return AleSrch(l_dbcAccess,
                                p_iNroconfig,
                                p_iNroalerta,
                                p_bOnlyActive,
@@ -124,7 +124,7 @@ namespace Mrln.Bll
         /// </summary>
         /// <param name="p_entAlerta">Entidad con los datos a procesar</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
-        public static void ALESave(EAlerta p_entAlerta,
+        public static void AleSave(EAlerta p_entAlerta,
                                    ref StatMsg p_smResult)
         {
             // No hay errores aun
@@ -136,7 +136,7 @@ namespace Mrln.Bll
                 l_dbcAccess.BeginTransaction();
 
                 // Grabamos la entidad: EAlerta
-                ALESSav(l_dbcAccess, p_entAlerta, ref p_smResult);
+                AleSSav(l_dbcAccess, p_entAlerta, ref p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Save
@@ -159,7 +159,7 @@ namespace Mrln.Bll
         /// <param name="p_iNroconfig">Nro Config Alerta</param>
         /// <param name="p_iNroalerta">Nro Alerta</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
-        public static void ALEEnabled(bool p_bEnable,
+        public static void AleEnabled(bool p_bEnable,
                                       int p_iNroconfig,
                                       int p_iNroalerta,
                                       int p_iFxdVersion,
@@ -174,7 +174,7 @@ namespace Mrln.Bll
                 l_dbcAccess.BeginTransaction();
 
                 // Procesamos codigo fijo
-                ALEEnabled_f(l_dbcAccess,
+                AleEnabled_f(l_dbcAccess,
                              p_bEnable,
                              p_iNroconfig,
                              p_iNroalerta,
@@ -183,7 +183,7 @@ namespace Mrln.Bll
                 if (p_smResult.NOk) return;
 
                 // Verificamos la clave a modificar
-                ALEVKey(l_dbcAccess,
+                AleVKey(l_dbcAccess,
                         p_iNroconfig,
                         p_iNroalerta,
                         ref p_smResult);
@@ -197,7 +197,7 @@ namespace Mrln.Bll
                 }
 
                 // Debe coincidir el número de version
-                ALEVVer(l_dbcAccess, 
+                AleVVer(l_dbcAccess, 
                         p_iNroconfig,
                         p_iNroalerta,
                         p_iFxdVersion,
@@ -241,7 +241,7 @@ namespace Mrln.Bll
         /// <param name="p_iNroalerta">Nro Alerta</param>
         /// <param name="p_iFxdVersion">Versión del registro a borrar</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
-        public static void ALERemove(int p_iNroconfig,
+        public static void AleRemove(int p_iNroconfig,
                                      int p_iNroalerta,
                                      int p_iFxdVersion,
                                      ref StatMsg p_smResult)
@@ -255,7 +255,7 @@ namespace Mrln.Bll
                 l_dbcAccess.BeginTransaction();
 
                 // Procesamos codigo fijo
-                ALERemove_f(l_dbcAccess,
+                AleRemove_f(l_dbcAccess,
                             p_iNroconfig,
                             p_iNroalerta,
                             p_iFxdVersion,
@@ -263,7 +263,7 @@ namespace Mrln.Bll
                 if (p_smResult.NOk) return;
 
                 // Borramos el registro solicitado
-                ALEDrop(l_dbcAccess,
+                AleDrop(l_dbcAccess,
                         p_iNroconfig,
                         p_iNroalerta,
                         p_iFxdVersion,
@@ -287,7 +287,7 @@ namespace Mrln.Bll
         /// Compacta una tabla borrando los registros deshabilitados
         /// </summary>
         /// <param name="p_smResult">Estado final de la operacion</param>
-        public static void ALEPurge(ref StatMsg p_smResult)
+        public static void AlePurge(ref StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -297,7 +297,7 @@ namespace Mrln.Bll
                 l_dbcAccess.BeginTransaction();
 
                 // Realizamos el borrado
-                ALEPack(l_dbcAccess,
+                AlePack(l_dbcAccess,
                         ref p_smResult);
             }
             catch (Exception l_expData) {
@@ -330,7 +330,7 @@ namespace Mrln.Bll
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
         /// <param name="p_entAlerta">Entidad con los datos a validar</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
-        internal static void ALETInt(DBConn p_dbcAccess,
+        internal static void AleTInt(DBConn p_dbcAccess,
                                      EAlerta p_entAlerta,
                                      ref StatMsg p_smResult)
         {
@@ -349,7 +349,7 @@ namespace Mrln.Bll
             // ********
 
             // Llamamos a la funcion fija del usuario
-            ALETInt_f(p_dbcAccess, p_entAlerta, ref p_smResult);
+            AleTInt_f(p_dbcAccess, p_entAlerta, ref p_smResult);
             if (p_smResult.NOk) return;
         }
 
@@ -363,7 +363,7 @@ namespace Mrln.Bll
         /// <param name="p_iNroconfig">Nro Config Alerta</param>
         /// <param name="p_iNroalerta">Nro Alerta</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
-        internal static void ALEVKey(DBConn p_dbcAccess,
+        internal static void AleVKey(DBConn p_dbcAccess,
                                      int p_iNroconfig,
                                      int p_iNroalerta,
                                      ref StatMsg p_smResult)
@@ -406,7 +406,7 @@ namespace Mrln.Bll
         /// <param name="p_iNroalerta">Nro Alerta</param>
         /// <param name="p_iFxdVersion">Número de version</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
-        internal static void ALEVVer(DBConn p_dbcAccess,
+        internal static void AleVVer(DBConn p_dbcAccess,
                                      int p_iNroconfig,
                                      int p_iNroalerta,
                                      int p_iFxdVersion,
@@ -476,7 +476,7 @@ namespace Mrln.Bll
         /// <param name="p_bOnlyActive">Indica si solo se analizan los registros activos</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         /// <returns>Lista-entidad: LEAlertas</returns>
-        internal static LEAlertas ALEUpfl(DBConn p_dbcAccess,
+        internal static LEAlertas AleUpfl(DBConn p_dbcAccess,
                                            bool p_bOnlyActive,
                                            ref StatMsg p_smResult)
         {
@@ -514,7 +514,7 @@ namespace Mrln.Bll
         /// <param name="p_bOnlyActive">Indica si solo se analizan los registros activos</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         /// <returns>Entidad: EAlerta</returns>
-        internal static EAlerta ALESrch(DBConn p_dbcAccess,
+        internal static EAlerta AleSrch(DBConn p_dbcAccess,
                                         int p_iNroconfig,
                                         int p_iNroalerta,
                                         bool p_bOnlyActive,
@@ -557,17 +557,17 @@ namespace Mrln.Bll
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
         /// <param name="p_entAlerta">Entidad con los datos a procesar</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
-        internal static void ALESSav(DBConn p_dbcAccess,
+        internal static void AleSSav(DBConn p_dbcAccess,
                                      EAlerta p_entAlerta,
                                      ref StatMsg p_smResult)
         {
             try {
                 // Procesamos codigo fijo
-                ALESave_f(p_dbcAccess, ref p_entAlerta, ref p_smResult);
+                AleSave_f(p_dbcAccess, ref p_entAlerta, ref p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Verificamos la clave a grabar
-                ALEVKey(p_dbcAccess, 
+                AleVKey(p_dbcAccess, 
                         p_entAlerta.Nroconfig,
                         p_entAlerta.Nroalerta,
                         ref p_smResult);
@@ -583,7 +583,7 @@ namespace Mrln.Bll
                     }
 
                     // Agregamos el registro
-                    ALEInsr(p_dbcAccess, p_entAlerta, ref p_smResult);
+                    AleInsr(p_dbcAccess, p_entAlerta, ref p_smResult);
                     return;
                 }
 
@@ -595,7 +595,7 @@ namespace Mrln.Bll
                 }
 
                 // Debe coincidir el número de version
-                ALEVVer(p_dbcAccess, 
+                AleVVer(p_dbcAccess, 
                         p_entAlerta.Nroconfig,
                         p_entAlerta.Nroalerta,
                         p_entAlerta.FxdVersion,
@@ -603,7 +603,7 @@ namespace Mrln.Bll
                 if (p_smResult.NOk) return;
 
                 // Actualizamos el registro
-                ALEUpdt(p_dbcAccess, p_entAlerta, ref p_smResult);
+                AleUpdt(p_dbcAccess, p_entAlerta, ref p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion SSav
@@ -617,13 +617,13 @@ namespace Mrln.Bll
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
         /// <param name="p_entAlerta">Entidad con los datos a procesar</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
-        internal static void ALEInsr(DBConn p_dbcAccess,
+        internal static void AleInsr(DBConn p_dbcAccess,
                                      EAlerta p_entAlerta,
                                      ref StatMsg p_smResult)
         {
             try {
                 // Validamos la integridad de la entidad
-                ALETInt(p_dbcAccess, p_entAlerta, ref p_smResult);
+                AleTInt(p_dbcAccess, p_entAlerta, ref p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Creamos un nuevo registro de la tabla: Alertas
@@ -652,13 +652,13 @@ namespace Mrln.Bll
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
         /// <param name="p_entAlerta">Entidad con los datos a procesar</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
-        internal static void ALEUpdt(DBConn p_dbcAccess,
+        internal static void AleUpdt(DBConn p_dbcAccess,
                                      EAlerta p_entAlerta,
                                      ref StatMsg p_smResult)
         {
             try {
                 // Validamos la integridad de la entidad
-                ALETInt(p_dbcAccess, p_entAlerta, ref p_smResult);
+                AleTInt(p_dbcAccess, p_entAlerta, ref p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Actualizamos un registro de la tabla: Alertas
@@ -689,7 +689,7 @@ namespace Mrln.Bll
         /// <param name="p_iNroalerta">Nro Alerta</param>
         /// <param name="p_iFxdVersion">Versión del registro a borrar</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
-        internal static void ALEDrop(DBConn p_dbcAccess,
+        internal static void AleDrop(DBConn p_dbcAccess,
                                      int p_iNroconfig,
                                      int p_iNroalerta,
                                      int p_iFxdVersion,
@@ -697,7 +697,7 @@ namespace Mrln.Bll
         {
             try {
                 // Verificamos la clave a borrar
-                ALEVKey(p_dbcAccess,
+                AleVKey(p_dbcAccess,
                         p_iNroconfig,
                         p_iNroalerta,
                         ref p_smResult);
@@ -711,7 +711,7 @@ namespace Mrln.Bll
                 }
 
                 // Debe coincidir el número de version
-                ALEVVer(p_dbcAccess, 
+                AleVVer(p_dbcAccess, 
                         p_iNroconfig,
                         p_iNroalerta,
                         p_iFxdVersion,
@@ -735,7 +735,7 @@ namespace Mrln.Bll
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
-        internal static void ALEPack(DBConn p_dbcAccess,
+        internal static void AlePack(DBConn p_dbcAccess,
                                      ref StatMsg p_smResult)
         {
             try {

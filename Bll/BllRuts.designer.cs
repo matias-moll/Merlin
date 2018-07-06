@@ -16,7 +16,7 @@ namespace Mrln.Bll
     //----------------------------------------------------------------------------
     //                         TNG Software BLL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 27/06/2018 19:49
+    // Fecha                    : 06/07/2018 16:07
     // Sistema                  : Mrln
     // Clase para Administrar   : 
     //----------------------------------------------------------------------------
@@ -118,6 +118,19 @@ namespace Mrln.Bll
             // Devolvemos el caption según el campo
             switch (p_strColumn) {
                 // ****************************************
+                // Tabla: Alertas             
+                case "alr_nro_nroconfig"               : {return "V1Nro Config AlertaNN3";}
+                case "alr_nro_nroalerta"               : {return "V1Nro AlertaNN3";}
+                case "alr_des_descripcion"             : {return "V1DescripciónCN1";}
+                case "alr_xde_detalle"                 : {return "V1DetalleCN1";}
+                case "alr_cd1_importancia"             : {return "V1ImportanciaCN2";}
+                case "alr_fyh_fechadisparada"          : {return "V1Fecha DisparadaDN2";}
+                case "alr_fyh_fechavista"              : {return "V1Fecha VistaDN2";}
+                case "alr_nom_usuariovista"            : {return "V1Usuario VistaCN1";}
+                case "alr_nro_repetirendias"           : {return "V1Repetir en DiasNN3";}
+                case "alr_cd1_finalizada"              : {return "V1FinalizadaCN2";}
+
+                // ****************************************
                 // Tabla: Categorias          
                 case "cat_rcd_cod"                     : {return "V1Cod CategoriaCN1";}
                 case "cat_des_des"                     : {return "V1CategoriaCN1";}
@@ -134,6 +147,12 @@ namespace Mrln.Bll
                 case "ctr_nro_nroitem"                 : {return "V1ItemNN3";}
                 case "ctr_cd6_codrep"                  : {return "V1Codigo de ReparacionCN1";}
                 case "ctr_des_descRep"                 : {return "V1ReparacionCN1";}
+
+                // ****************************************
+                // Tabla: DestinatariosMails  
+                case "dem_cod_codigo"                  : {return "V1CódigoCN1";}
+                case "dem_des_descripcion"             : {return "V1DescripciónCN1";}
+                case "dem_txt_destinatarios"           : {return "V1DestinatariosCN1";}
 
                 // ****************************************
                 // Tabla: Equipamiento        
@@ -194,6 +213,17 @@ namespace Mrln.Bll
                 case "mva_ede_motivo"                  : {return "V1MotivoCN1";}
                 case "mva_txt_detalle"                 : {return "V1DetalleCN1";}
                 case "mva_xde_dotacion"                : {return "V1DotaciónCN1";}
+
+                // ****************************************
+                // Tabla: MvlAlertas          
+                case "mal_ecd_patente"                 : {return "V1PatenteCN1";}
+                case "mal_nro_nroconfigalerta"         : {return "V1Nro Config AlertaNN3";}
+                case "mal_nro_kilometros"              : {return "V1KilometrosNN3";}
+                case "mal_cd6_codreparacion"           : {return "V1ReparacionCN1";}
+                case "mal_cod_codcontrol"              : {return "V1ControlCN1";}
+                case "mal_cod_coddestinatarios"        : {return "V1DestinatariosCN1";}
+                case "mal_control"                     : {return "V1ControlCN1";}
+                case "mal_reparacion"                  : {return "V1ReparacionCN1";}
 
                 // ****************************************
                 // Tabla: MvlCombustible      

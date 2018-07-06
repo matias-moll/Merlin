@@ -14,7 +14,7 @@ namespace Mrln.Bel
     //----------------------------------------------------------------------------
     //                         TNG Software BEL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 28/06/2018 17:10
+    // Fecha                    : 06/07/2018 16:18
     // Sistema                  : Mrln
     // Clase para Administrar   : Moviles y Tablas Hijas
     //----------------------------------------------------------------------------
@@ -743,7 +743,9 @@ namespace Mrln.Bel
             l_drTemp["mal_nro_kilometros"]= XMLRuts.ExtractXAttr(l_xndData, "mal_nro_kilometros", 0);
             l_drTemp["mal_cd6_codreparacion"]= XMLRuts.ExtractXAttr(l_xndData, "mal_cd6_codreparacion");
             l_drTemp["mal_cod_codcontrol"]= XMLRuts.ExtractXAttr(l_xndData, "mal_cod_codcontrol");
+            l_drTemp["mal_cod_coddestinatarios"]= XMLRuts.ExtractXAttr(l_xndData, "mal_cod_coddestinatarios");
             l_drTemp["mal_control"]= XMLRuts.ExtractXAttr(l_xndData, "mal_control");
+            l_drTemp["mal_destinats"]= XMLRuts.ExtractXAttr(l_xndData, "mal_destinats");
             l_drTemp["mal_reparacion"]= XMLRuts.ExtractXAttr(l_xndData, "mal_reparacion");
 
             // Llenamos los campos fijos
@@ -793,7 +795,9 @@ namespace Mrln.Bel
             l_drTemp["mal_nro_kilometros"]= 0;
             l_drTemp["mal_cd6_codreparacion"]= "";
             l_drTemp["mal_cod_codcontrol"]= "";
+            l_drTemp["mal_cod_coddestinatarios"]= "";
             l_drTemp["mal_control"]= "";
+            l_drTemp["mal_destinats"]= "";
             l_drTemp["mal_reparacion"]= "";
 
             // Agregamos la Row creada a la tabla creada y creamos
@@ -812,12 +816,14 @@ namespace Mrln.Bel
         /// <param name="p_iKilometros">Kilometros</param>
         /// <param name="p_strCodreparacion">Reparacion</param>
         /// <param name="p_strCodcontrol">Control</param>
+        /// <param name="p_strCoddestinatarios">Destinatarios</param>
         /// <returns>Entidad: MovilAlerta</returns>
         public static EMovilAlerta NewFilled(string p_strPatente,
                                              int p_iNroconfigalerta,
                                              int p_iKilometros,
                                              string p_strCodreparacion,
-                                             string p_strCodcontrol)
+                                             string p_strCodcontrol,
+                                             string p_strCoddestinatarios)
         {
             // Creamos una tabla compatible con la entidad
             DataTable l_dtTemp= new DataTable();
@@ -832,7 +838,9 @@ namespace Mrln.Bel
             l_drTemp["mal_nro_kilometros"]= p_iKilometros;
             l_drTemp["mal_cd6_codreparacion"]= p_strCodreparacion;
             l_drTemp["mal_cod_codcontrol"]= p_strCodcontrol;
+            l_drTemp["mal_cod_coddestinatarios"]= p_strCoddestinatarios;
             l_drTemp["mal_control"]= "";
+            l_drTemp["mal_destinats"]= "";
             l_drTemp["mal_reparacion"]= "";
 
             // Agregamos la Row creada a la tabla creada y creamos
@@ -874,7 +882,7 @@ namespace Mrln.Bel
         {
             get {
                 // Creamos el vector de DataColumns y lo llenamos
-                DataColumn[] l_dcStruct= new DataColumn[11];
+                DataColumn[] l_dcStruct= new DataColumn[13];
 
                 l_dcStruct[0]= new DataColumn("mal_ecd_patente", typeof(string));
                 l_dcStruct[1]= new DataColumn("mal_nro_nroconfigalerta", typeof(int));
@@ -883,7 +891,9 @@ namespace Mrln.Bel
                 l_dcStruct[4]= new DataColumn("mal_reparacion", typeof(string));
                 l_dcStruct[5]= new DataColumn("mal_cod_codcontrol", typeof(string));
                 l_dcStruct[6]= new DataColumn("mal_control", typeof(string));
-                EMovilAlerta.FillFixedFields(ref l_dcStruct, 7);
+                l_dcStruct[7]= new DataColumn("mal_cod_coddestinatarios", typeof(string));
+                l_dcStruct[8]= new DataColumn("mal_destinats", typeof(string));
+                EMovilAlerta.FillFixedFields(ref l_dcStruct, 9);
 
                 // Devolvemos el vector creado
                 return l_dcStruct;
@@ -979,12 +989,38 @@ namespace Mrln.Bel
         }
 
         /// <summary>
+        /// Destinatarios
+        /// </summary>
+        public static string CoddestinatariosCmp
+        {
+           get {return "mal_cod_coddestinatarios";}
+        }
+
+        /// <summary>
+        /// Destinatarios
+        /// </summary>
+        public string Coddestinatarios
+        {
+            get {return (string) InternalData["mal_cod_coddestinatarios"];}
+            set {InternalData["mal_cod_coddestinatarios"]= value;}
+        }
+
+        /// <summary>
         /// Control
         /// </summary>
         public string Mal_control
         {
             get {return (string) InternalData["mal_control"];}
             set {InternalData["mal_control"]= value;}
+        }
+
+        /// <summary>
+        /// Destinatarios
+        /// </summary>
+        public string Mal_destinats
+        {
+            get {return (string) InternalData["mal_destinats"];}
+            set {InternalData["mal_destinats"]= value;}
         }
 
         /// <summary>
@@ -1020,7 +1056,9 @@ namespace Mrln.Bel
                 l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "mal_nro_kilometros", Kilometros));
                 l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "mal_cd6_codreparacion", Codreparacion));
                 l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "mal_cod_codcontrol", Codcontrol));
+                l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "mal_cod_coddestinatarios", Coddestinatarios));
                 l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "mal_control", Mal_control));
+                l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "mal_destinats", Mal_destinats));
                 l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "mal_reparacion", Mal_reparacion));
 
                 // Asignamos los campos fijos
