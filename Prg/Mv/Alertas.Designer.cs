@@ -90,6 +90,7 @@
             // 
             // gbBorrarSeleccionados
             // 
+            this.gbBorrarSeleccionados.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.gbBorrarSeleccionados.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("gbBorrarSeleccionados.BackgroundImage")));
             this.gbBorrarSeleccionados.BlackBorder = true;
             this.gbBorrarSeleccionados.ButtonMode = TNGS.NetControls.GlassButton.GBMode.Flat;
@@ -563,6 +564,8 @@
             // 
             // fgConfigAlertas
             // 
+            this.fgConfigAlertas.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.fgConfigAlertas.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
             this.fgConfigAlertas.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.fgConfigAlertas.CaptionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(163)))), ((int)(((byte)(226)))));
@@ -572,9 +575,9 @@
             this.fgConfigAlertas.ExcelTitle = "";
             this.fgConfigAlertas.GridOrder = "";
             this.fgConfigAlertas.HeaderForeColor = System.Drawing.SystemColors.ControlText;
-            this.fgConfigAlertas.Location = new System.Drawing.Point(12, 428);
+            this.fgConfigAlertas.Location = new System.Drawing.Point(12, 416);
             this.fgConfigAlertas.Name = "fgConfigAlertas";
-            this.fgConfigAlertas.Size = new System.Drawing.Size(853, 211);
+            this.fgConfigAlertas.Size = new System.Drawing.Size(853, 227);
             this.fgConfigAlertas.SkinFixed = true;
             this.fgConfigAlertas.TabIndex = 32;
             this.fgConfigAlertas.WithCheckBoxes = true;

@@ -196,7 +196,7 @@ namespace Mrln.Mv
             Bll.Moviles.Remove(m_entMovil.Patente,m_entMovil.FxdVersion, ref m_smResult);
             m_entMovil = null;
             SwitchTo(ModoForm.Inicio, OpGrid.Igual);
-            MsgRuts.AnalizeError(this, m_smResult);
+            if (MsgRuts.AnalizeError(this, m_smResult)) return;
         }
 
         // Agrega un nuevo Movil y engancha el evento al metodo movilChanged

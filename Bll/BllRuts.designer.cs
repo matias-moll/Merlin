@@ -16,7 +16,7 @@ namespace Mrln.Bll
     //----------------------------------------------------------------------------
     //                         TNG Software BLL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 06/07/2018 16:07
+    // Fecha                    : 07/07/2018 21:11
     // Sistema                  : Mrln
     // Clase para Administrar   : 
     //----------------------------------------------------------------------------
@@ -223,6 +223,7 @@ namespace Mrln.Bll
                 case "mal_cod_codcontrol"              : {return "V1ControlCN1";}
                 case "mal_cod_coddestinatarios"        : {return "V1DestinatariosCN1";}
                 case "mal_control"                     : {return "V1ControlCN1";}
+                case "mal_destinats"                   : {return "V1DestinatariosCN1";}
                 case "mal_reparacion"                  : {return "V1ReparacionCN1";}
 
                 // ****************************************

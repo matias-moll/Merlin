@@ -46,7 +46,7 @@ namespace Mrln.Mv
         private void CargarEstaciones()
         {
             m_LEEstEstaciones = Bll.Tablas.EstUpFull(true, ref m_smResult);
-            MsgRuts.AnalizeError(this, m_smResult);
+            if (MsgRuts.AnalizeError(this, m_smResult)) return;
         }
         #endregion
 

@@ -10,7 +10,7 @@ namespace Mrln.Dal
     //----------------------------------------------------------------------------
     //                         TNG Software DAL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 06/07/2018 16:18
+    // Fecha                    : 07/07/2018 21:11
     // Sistema                  : Mrln
     // Clase para Administrar   : Motivos Infracciones
     // Basada en la Tabla       : MotivosInfracciones
