@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 07/07/2018 21:30
+// Fecha       : 18/07/2018 08:15
 // Sistema     : Mrln
 // Tabla       : OtItems
 //----------------------------------------------------------------------------
@@ -64,6 +64,8 @@ begin
                 oti_d20_estado,
                 oti_imp_importecierre,
                 oti_ede_comentariocierre,
+                oti_cd6_codreparacion,
+                odt_nro_kmsactuales as oti_kilometraje,
                 TNGS_Mrln..OtItems.instante,
                 TNGS_Mrln..OtItems.deleted,
                 TNGS_Mrln..OtItems.usuario,
@@ -71,6 +73,8 @@ begin
            from TNGS_Mrln..OtItems
                 join TNGS_Mrln..Categorias
                   on oti_rcd_codCategoria = cat_rcd_cod
+                join TNGS_Mrln..OrdenesTrabajo
+                  on oti_nro_nroOt = odt_nro_nro
           where TNGS_Mrln..OtItems.deleted = 0
           order by oti_nro_nroot,
                 oti_nro_nroagrupador,
@@ -90,6 +94,8 @@ begin
                 oti_d20_estado,
                 oti_imp_importecierre,
                 oti_ede_comentariocierre,
+                oti_cd6_codreparacion,
+                odt_nro_kmsactuales as oti_kilometraje,
                 TNGS_Mrln..OtItems.instante,
                 TNGS_Mrln..OtItems.deleted,
                 TNGS_Mrln..OtItems.usuario,
@@ -97,6 +103,8 @@ begin
            from TNGS_Mrln..OtItems
                 join TNGS_Mrln..Categorias
                   on oti_rcd_codCategoria = cat_rcd_cod
+                join TNGS_Mrln..OrdenesTrabajo
+                  on oti_nro_nroOt = odt_nro_nro
           order by oti_nro_nroot,
                 oti_nro_nroagrupador,
                 oti_nro_nroitem
@@ -215,6 +223,8 @@ begin
                 oti_d20_estado,
                 oti_imp_importecierre,
                 oti_ede_comentariocierre,
+                oti_cd6_codreparacion,
+                odt_nro_kmsactuales as oti_kilometraje,
                 TNGS_Mrln..OtItems.instante,
                 TNGS_Mrln..OtItems.deleted,
                 TNGS_Mrln..OtItems.usuario,
@@ -222,6 +232,8 @@ begin
            from TNGS_Mrln..OtItems
                 join TNGS_Mrln..Categorias
                   on oti_rcd_codCategoria = cat_rcd_cod
+                join TNGS_Mrln..OrdenesTrabajo
+                  on oti_nro_nroOt = odt_nro_nro
           where oti_nro_nroot = @oti_nro_nroot
             and oti_nro_nroagrupador = @oti_nro_nroagrupador
             and oti_nro_nroitem = @oti_nro_nroitem
@@ -241,6 +253,8 @@ begin
                 oti_d20_estado,
                 oti_imp_importecierre,
                 oti_ede_comentariocierre,
+                oti_cd6_codreparacion,
+                odt_nro_kmsactuales as oti_kilometraje,
                 TNGS_Mrln..OtItems.instante,
                 TNGS_Mrln..OtItems.deleted,
                 TNGS_Mrln..OtItems.usuario,
@@ -248,6 +262,8 @@ begin
            from TNGS_Mrln..OtItems
                 join TNGS_Mrln..Categorias
                   on oti_rcd_codCategoria = cat_rcd_cod
+                join TNGS_Mrln..OrdenesTrabajo
+                  on oti_nro_nroOt = odt_nro_nro
           where oti_nro_nroot = @oti_nro_nroot
             and oti_nro_nroagrupador = @oti_nro_nroagrupador
             and oti_nro_nroitem = @oti_nro_nroitem
@@ -309,6 +325,8 @@ begin
                 oti_d20_estado,
                 oti_imp_importecierre,
                 oti_ede_comentariocierre,
+                oti_cd6_codreparacion,
+                odt_nro_kmsactuales as oti_kilometraje,
                 TNGS_Mrln..OtItems.instante,
                 TNGS_Mrln..OtItems.deleted,
                 TNGS_Mrln..OtItems.usuario,
@@ -316,6 +334,8 @@ begin
            from TNGS_Mrln..OtItems
                 join TNGS_Mrln..Categorias
                   on oti_rcd_codCategoria = cat_rcd_cod
+                join TNGS_Mrln..OrdenesTrabajo
+                  on oti_nro_nroOt = odt_nro_nro
           where oti_nro_nroot = @oti_nro_nroot
             and TNGS_Mrln..OtItems.deleted = 0
           order by oti_nro_nroagrupador,
@@ -335,6 +355,8 @@ begin
                 oti_d20_estado,
                 oti_imp_importecierre,
                 oti_ede_comentariocierre,
+                oti_cd6_codreparacion,
+                odt_nro_kmsactuales as oti_kilometraje,
                 TNGS_Mrln..OtItems.instante,
                 TNGS_Mrln..OtItems.deleted,
                 TNGS_Mrln..OtItems.usuario,
@@ -342,6 +364,8 @@ begin
            from TNGS_Mrln..OtItems
                 join TNGS_Mrln..Categorias
                   on oti_rcd_codCategoria = cat_rcd_cod
+                join TNGS_Mrln..OrdenesTrabajo
+                  on oti_nro_nroOt = odt_nro_nro
           where oti_nro_nroot = @oti_nro_nroot
           order by oti_nro_nroagrupador,
                 oti_nro_nroitem
@@ -375,6 +399,7 @@ go
 --- <param name="@oti_d20_estado">Estado</param>
 --- <param name="@oti_imp_importecierre">Importe Cierre</param>
 --- <param name="@oti_ede_comentariocierre">Comentario Cierre</param>
+--- <param name="@oti_cd6_codreparacion">Codigo Reparacion</param>
 --- <param name="@usuario">Usuario que genera el insert</param>
 ---
 ---////////////////////////////////////////////////////////
@@ -404,6 +429,7 @@ create procedure dbo.OTITEMS_INSERT
 @oti_d20_estado tngs_descripcion_20,
 @oti_imp_importecierre tngs_importe,
 @oti_ede_comentariocierre tngs_descripcion_e,
+@oti_cd6_codreparacion tngs_codigo_6,
 @usuario tngs_nombre
 )
 as
@@ -422,6 +448,7 @@ begin
            @oti_d20_estado,
            @oti_imp_importecierre,
            @oti_ede_comentariocierre,
+           @oti_cd6_codreparacion,
            getdate(), 0, @usuario, 1
           )
 
@@ -453,6 +480,7 @@ go
 --- <param name="@oti_d20_estado">Estado</param>
 --- <param name="@oti_imp_importecierre">Importe Cierre</param>
 --- <param name="@oti_ede_comentariocierre">Comentario Cierre</param>
+--- <param name="@oti_cd6_codreparacion">Codigo Reparacion</param>
 --- <param name="@usuario">Usuario que genera el update</param>
 ---
 ---////////////////////////////////////////////////////////
@@ -482,6 +510,7 @@ create procedure dbo.OTITEMS_UPDATE
 @oti_d20_estado tngs_descripcion_20,
 @oti_imp_importecierre tngs_importe,
 @oti_ede_comentariocierre tngs_descripcion_e,
+@oti_cd6_codreparacion tngs_codigo_6,
 @usuario tngs_nombre
 )
 as
@@ -496,6 +525,7 @@ begin
           oti_d20_estado= @oti_d20_estado,
           oti_imp_importecierre= @oti_imp_importecierre,
           oti_ede_comentariocierre= @oti_ede_comentariocierre,
+          oti_cd6_codreparacion= @oti_cd6_codreparacion,
           version = ((version+1) % 32767),
           instante= getdate(),
           usuario = @usuario
@@ -926,6 +956,73 @@ go
 print '       - Asignando permisos al nuevo SP'
 
 grant execute on dbo.OTITEMS_FPACK to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Método Fijo: GetRealizadosMvl
+--- </summary>
+--- <param name="@patente">Patente</param>
+--- <param name="@usuario">Usuario que ejecuta el SP</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.OTITEMS_GETREALIZADOSMVL'
+
+if exists (select * from sysobjects where id = object_id('dbo.OTITEMS_GETREALIZADOSMVL'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.OTITEMS_GETREALIZADOSMVL
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.OTITEMS_GETREALIZADOSMVL
+(
+@patente tngs_codigo_e,
+@usuario tngs_nombre
+)
+as
+begin
+
+   Select oti_nro_nroot,
+          oti_nro_nroagrupador,
+          oti_nro_nroitem,
+          oti_des_desoperacion,
+          oti_des_destarea,
+          oti_rcd_codcategoria,
+          cat_des_des as oti_categoria,
+          oti_imp_importe,
+          oti_ede_comentario,
+          oti_d20_estado,
+          oti_imp_importecierre,
+          oti_ede_comentariocierre,
+          oti_cd6_codreparacion,
+          odt_nro_kmsactuales as oti_kilometraje,
+          TNGS_Mrln..OtItems.instante,
+          TNGS_Mrln..OtItems.deleted,
+          TNGS_Mrln..OtItems.usuario,
+          TNGS_Mrln..OtItems.version
+     from TNGS_Mrln..OtItems 
+          join TNGS_Mrln..Categorias
+            on oti_rcd_codCategoria = cat_rcd_cod
+          join TNGS_Mrln..OrdenesTrabajo
+            on oti_nro_nroOt = odt_nro_nro
+     where odt_ecd_patente = @patente and year(odt_fyh_feccierre) <> 1900 
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.OTITEMS_GETREALIZADOSMVL to tngsmodulos
 
 print ' '
 go

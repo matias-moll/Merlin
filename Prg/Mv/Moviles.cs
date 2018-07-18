@@ -253,10 +253,14 @@ namespace Mrln.Mv
             NuevoKm l_frmNuevoKm = new NuevoKm();
             l_frmNuevoKm.ShowDialog();
             if (l_frmNuevoKm.DialogResult == System.Windows.Forms.DialogResult.Cancel)
+                return;
+            
+            if (l_frmNuevoKm.Kilometros < DameUltimoKms())
             {
+                MsgRuts.ShowMsg(this, "El kilometraje que intenta ingresar es menor al ultimo kilometraje ingresado");
                 return;
             }
-            if (l_frmNuevoKm.Kilometros < DameUltimoKms()) {MsgRuts.ShowMsg(this, "El kilometraje que intenta ingresar es menor al ultimo kilometraje ingresado"); return;}
+
             EMovilKms l_EMKmMovilKm = Bel.EMovilKms.NewEmpty();
             l_EMKmMovilKm.Fecha = DateTime.Now;
             l_EMKmMovilKm.Km = l_frmNuevoKm.Kilometros;
@@ -265,8 +269,19 @@ namespace Mrln.Mv
             SwitchTo(ModoForm.Edicion, OpGrid.Km);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
+            CheckForAlerts();
+        }
 
+        private void CheckForAlerts()
+        {
+            Bll.Alertas.fCheckCreacionAlertas(m_entMovil, ref m_smResult);
+            if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
+            LEAlertas alertasAMostrar = Bll.Alertas.AleGetPendientesFromMov(m_entMovil.Patente, ref m_smResult);
+            if (MsgRuts.AnalizeError(this, m_smResult)) return;
+
+            // TODO: Dispara la ventana para mostrar todas las alertas.
+           
         }
 
         // Cambia el estado del form y llena las grillas

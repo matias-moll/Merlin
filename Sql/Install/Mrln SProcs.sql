@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 07/07/2018 21:30
+// Fecha       : 18/07/2018 08:15
 // Sistema     : Mrln
 // Tabla       : Alertas
 //----------------------------------------------------------------------------
@@ -585,13 +585,75 @@ grant execute on dbo.ALERTAS_PACK to tngsmodulos
 print ' '
 go
 
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Método Fijo: GetPendientesFromMov
+--- </summary>
+--- <param name="@patente">Patente</param>
+--- <param name="@usuario">Usuario que ejecuta el SP</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.ALERTAS_GETPENDIENTESFROMMOV'
+
+if exists (select * from sysobjects where id = object_id('dbo.ALERTAS_GETPENDIENTESFROMMOV'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.ALERTAS_GETPENDIENTESFROMMOV
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.ALERTAS_GETPENDIENTESFROMMOV
+(
+@patente tngs_codigo_e,
+@usuario tngs_nombre
+)
+as
+begin
+
+   Select alr_nro_nroconfig,
+          alr_nro_nroalerta,
+          alr_des_descripcion,
+          alr_xde_detalle,
+          alr_cd1_importancia,
+          alr_fyh_fechadisparada,
+          alr_fyh_fechavista,
+          alr_nom_usuariovista,
+          alr_nro_repetirendias,
+          alr_cd1_finalizada,
+          TNGS_Mrln..Alertas.instante,
+          TNGS_Mrln..Alertas.deleted,
+          TNGS_Mrln..Alertas.usuario,
+          TNGS_Mrln..Alertas.version
+     from TNGS_Mrln..Alertas 
+   join MvlAlertas 
+   on alr_nro_nroconfig = mal_nro_nroconfigalerta 
+   where mal_ecd_patente = @patente 
+   and alr_cd1_finalizada <> 'S' 
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.ALERTAS_GETPENDIENTESFROMMOV to tngsmodulos
+
+print ' '
+go
+
 /*--------------------------------------------------------------------------
 // Fin del script de creacion de los SP de la tabla: Alertas
 //--------------------------------------------------------------------------*/
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 07/07/2018 21:30
+// Fecha       : 18/07/2018 08:15
 // Sistema     : Mrln
 // Tabla       : Categorias
 //----------------------------------------------------------------------------
@@ -1128,7 +1190,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 07/07/2018 21:30
+// Fecha       : 18/07/2018 08:15
 // Sistema     : Mrln
 // Tabla       : Controles
 //----------------------------------------------------------------------------
@@ -1673,7 +1735,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 07/07/2018 21:30
+// Fecha       : 18/07/2018 08:15
 // Sistema     : Mrln
 // Tabla       : ControlesReparations
 //----------------------------------------------------------------------------
@@ -2492,7 +2554,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 07/07/2018 21:30
+// Fecha       : 18/07/2018 08:15
 // Sistema     : Mrln
 // Tabla       : DestinatariosMails
 //----------------------------------------------------------------------------
@@ -3529,7 +3591,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 07/07/2018 21:30
+// Fecha       : 18/07/2018 08:15
 // Sistema     : Mrln
 // Tabla       : Equipamiento
 //----------------------------------------------------------------------------
@@ -4074,7 +4136,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 07/07/2018 21:30
+// Fecha       : 18/07/2018 08:15
 // Sistema     : Mrln
 // Tabla       : Estaciones
 //----------------------------------------------------------------------------
@@ -4639,7 +4701,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 07/07/2018 21:30
+// Fecha       : 18/07/2018 08:15
 // Sistema     : Mrln
 // Tabla       : Estados
 //----------------------------------------------------------------------------
@@ -5194,7 +5256,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 07/07/2018 21:30
+// Fecha       : 18/07/2018 08:15
 // Sistema     : Mrln
 // Tabla       : Marcas
 //----------------------------------------------------------------------------
@@ -5729,7 +5791,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 07/07/2018 21:30
+// Fecha       : 18/07/2018 08:15
 // Sistema     : Mrln
 // Tabla       : Modelos
 //----------------------------------------------------------------------------
@@ -6274,7 +6336,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 07/07/2018 21:30
+// Fecha       : 18/07/2018 08:15
 // Sistema     : Mrln
 // Tabla       : MotivosInfracciones
 //----------------------------------------------------------------------------
@@ -6766,7 +6828,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 07/07/2018 21:30
+// Fecha       : 18/07/2018 08:15
 // Sistema     : Mrln
 // Tabla       : Moviles
 //----------------------------------------------------------------------------
@@ -7475,7 +7537,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 07/07/2018 21:30
+// Fecha       : 18/07/2018 08:15
 // Sistema     : Mrln
 // Tabla       : MvlAccidentes
 //----------------------------------------------------------------------------
@@ -8324,7 +8386,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 07/07/2018 21:30
+// Fecha       : 18/07/2018 08:15
 // Sistema     : Mrln
 // Tabla       : MvlAlertas
 //----------------------------------------------------------------------------
@@ -9215,7 +9277,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 07/07/2018 21:30
+// Fecha       : 18/07/2018 08:15
 // Sistema     : Mrln
 // Tabla       : MvlCombustible
 //----------------------------------------------------------------------------
@@ -10093,7 +10155,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 07/07/2018 21:30
+// Fecha       : 18/07/2018 08:15
 // Sistema     : Mrln
 // Tabla       : MvlEquipamiento
 //----------------------------------------------------------------------------
@@ -11007,7 +11069,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 07/07/2018 21:30
+// Fecha       : 18/07/2018 08:15
 // Sistema     : Mrln
 // Tabla       : MvlEstados
 //----------------------------------------------------------------------------
@@ -11872,7 +11934,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 07/07/2018 21:30
+// Fecha       : 18/07/2018 08:15
 // Sistema     : Mrln
 // Tabla       : MvlInfracciones
 //----------------------------------------------------------------------------
@@ -12751,7 +12813,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 07/07/2018 21:30
+// Fecha       : 18/07/2018 08:15
 // Sistema     : Mrln
 // Tabla       : MvlKilometros
 //----------------------------------------------------------------------------
@@ -13549,47 +13611,6 @@ go
 ---////////////////////////////////////////////////////////
 ---
 --- <summary>
---- Método Fijo: RemoveAllPatente
---- </summary>
---- <param name="@usuario">Usuario que ejecuta el SP</param>
----
----////////////////////////////////////////////////////////
-
-print 'Store Procedure: dbo.MVLKILOMETROS_REMOVEALLPATENTE'
-
-if exists (select * from sysobjects where id = object_id('dbo.MVLKILOMETROS_REMOVEALLPATENTE'))
-begin
-   print '       - Borrando el viejo SP'
-   drop procedure dbo.MVLKILOMETROS_REMOVEALLPATENTE
-end
-go
-
-print '       - Creando el nuevo SP'
-go
-
-create procedure dbo.MVLKILOMETROS_REMOVEALLPATENTE
-(
-@usuario tngs_nombre
-)
-as
-begin
-
-
-fin:
-
-end
-go
-
-print '       - Asignando permisos al nuevo SP'
-
-grant execute on dbo.MVLKILOMETROS_REMOVEALLPATENTE to tngsmodulos
-
-print ' '
-go
-
----////////////////////////////////////////////////////////
----
---- <summary>
 --- Método Fijo: getLastFiveMvlKm
 --- </summary>
 --- <param name="@patente">patente de un movil</param>
@@ -13641,7 +13662,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 07/07/2018 21:30
+// Fecha       : 18/07/2018 08:15
 // Sistema     : Mrln
 // Tabla       : OrdenesTrabajo
 //----------------------------------------------------------------------------
@@ -13700,6 +13721,7 @@ begin
                 odt_cod_codtaller,
                 isnull(tll_ede_descripcion, '') as ot_taller,
                 odt_d20_estado,
+                odt_nro_kmsactuales,
                 TNGS_Mrln..OrdenesTrabajo.instante,
                 TNGS_Mrln..OrdenesTrabajo.deleted,
                 TNGS_Mrln..OrdenesTrabajo.usuario,
@@ -13720,6 +13742,7 @@ begin
                 odt_cod_codtaller,
                 isnull(tll_ede_descripcion, '') as ot_taller,
                 odt_d20_estado,
+                odt_nro_kmsactuales,
                 TNGS_Mrln..OrdenesTrabajo.instante,
                 TNGS_Mrln..OrdenesTrabajo.deleted,
                 TNGS_Mrln..OrdenesTrabajo.usuario,
@@ -13829,6 +13852,7 @@ begin
                 odt_cod_codtaller,
                 isnull(tll_ede_descripcion, '') as ot_taller,
                 odt_d20_estado,
+                odt_nro_kmsactuales,
                 TNGS_Mrln..OrdenesTrabajo.instante,
                 TNGS_Mrln..OrdenesTrabajo.deleted,
                 TNGS_Mrln..OrdenesTrabajo.usuario,
@@ -13849,6 +13873,7 @@ begin
                 odt_cod_codtaller,
                 isnull(tll_ede_descripcion, '') as ot_taller,
                 odt_d20_estado,
+                odt_nro_kmsactuales,
                 TNGS_Mrln..OrdenesTrabajo.instante,
                 TNGS_Mrln..OrdenesTrabajo.deleted,
                 TNGS_Mrln..OrdenesTrabajo.usuario,
@@ -13883,6 +13908,7 @@ go
 --- <param name="@odt_fyh_feccierre">Fecha de cierre</param>
 --- <param name="@odt_cod_codtaller">Taller</param>
 --- <param name="@odt_d20_estado">Estado</param>
+--- <param name="@odt_nro_kmsactuales">Kms Movil</param>
 --- <param name="@usuario">Usuario que genera el insert</param>
 ---
 ---////////////////////////////////////////////////////////
@@ -13908,6 +13934,7 @@ create procedure dbo.ORDENESTRABAJO_INSERT
 @odt_fyh_feccierre tngs_fecyhor,
 @odt_cod_codtaller tngs_codigo,
 @odt_d20_estado tngs_descripcion_20,
+@odt_nro_kmsactuales tngs_numero,
 @usuario tngs_nombre
 )
 as
@@ -13922,6 +13949,7 @@ begin
            @odt_fyh_feccierre,
            @odt_cod_codtaller,
            @odt_d20_estado,
+           @odt_nro_kmsactuales,
            getdate(), 0, @usuario, 1
           )
 
@@ -13949,6 +13977,7 @@ go
 --- <param name="@odt_fyh_feccierre">Fecha de cierre</param>
 --- <param name="@odt_cod_codtaller">Taller</param>
 --- <param name="@odt_d20_estado">Estado</param>
+--- <param name="@odt_nro_kmsactuales">Kms Movil</param>
 --- <param name="@usuario">Usuario que genera el update</param>
 ---
 ---////////////////////////////////////////////////////////
@@ -13974,6 +14003,7 @@ create procedure dbo.ORDENESTRABAJO_UPDATE
 @odt_fyh_feccierre tngs_fecyhor,
 @odt_cod_codtaller tngs_codigo,
 @odt_d20_estado tngs_descripcion_20,
+@odt_nro_kmsactuales tngs_numero,
 @usuario tngs_nombre
 )
 as
@@ -13986,6 +14016,7 @@ begin
           odt_fyh_feccierre= @odt_fyh_feccierre,
           odt_cod_codtaller= @odt_cod_codtaller,
           odt_d20_estado= @odt_d20_estado,
+          odt_nro_kmsactuales= @odt_nro_kmsactuales,
           version = ((version+1) % 32767),
           instante= getdate(),
           usuario = @usuario
@@ -14227,6 +14258,7 @@ begin
           odt_cod_codtaller,
           isnull(tll_ede_descripcion, '') as ot_taller,
           odt_d20_estado,
+          odt_nro_kmsactuales,
           TNGS_Mrln..OrdenesTrabajo.instante,
           TNGS_Mrln..OrdenesTrabajo.deleted,
           TNGS_Mrln..OrdenesTrabajo.usuario,
@@ -14285,6 +14317,7 @@ begin
           odt_cod_codtaller,
           isnull(tll_ede_descripcion, '') as ot_taller,
           odt_d20_estado,
+          odt_nro_kmsactuales,
           TNGS_Mrln..OrdenesTrabajo.instante,
           TNGS_Mrln..OrdenesTrabajo.deleted,
           TNGS_Mrln..OrdenesTrabajo.usuario,
@@ -14312,7 +14345,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 07/07/2018 21:30
+// Fecha       : 18/07/2018 08:15
 // Sistema     : Mrln
 // Tabla       : OtItems
 //----------------------------------------------------------------------------
@@ -14375,6 +14408,8 @@ begin
                 oti_d20_estado,
                 oti_imp_importecierre,
                 oti_ede_comentariocierre,
+                oti_cd6_codreparacion,
+                odt_nro_kmsactuales as oti_kilometraje,
                 TNGS_Mrln..OtItems.instante,
                 TNGS_Mrln..OtItems.deleted,
                 TNGS_Mrln..OtItems.usuario,
@@ -14382,6 +14417,8 @@ begin
            from TNGS_Mrln..OtItems
                 join TNGS_Mrln..Categorias
                   on oti_rcd_codCategoria = cat_rcd_cod
+                join TNGS_Mrln..OrdenesTrabajo
+                  on oti_nro_nroOt = odt_nro_nro
           where TNGS_Mrln..OtItems.deleted = 0
           order by oti_nro_nroot,
                 oti_nro_nroagrupador,
@@ -14401,6 +14438,8 @@ begin
                 oti_d20_estado,
                 oti_imp_importecierre,
                 oti_ede_comentariocierre,
+                oti_cd6_codreparacion,
+                odt_nro_kmsactuales as oti_kilometraje,
                 TNGS_Mrln..OtItems.instante,
                 TNGS_Mrln..OtItems.deleted,
                 TNGS_Mrln..OtItems.usuario,
@@ -14408,6 +14447,8 @@ begin
            from TNGS_Mrln..OtItems
                 join TNGS_Mrln..Categorias
                   on oti_rcd_codCategoria = cat_rcd_cod
+                join TNGS_Mrln..OrdenesTrabajo
+                  on oti_nro_nroOt = odt_nro_nro
           order by oti_nro_nroot,
                 oti_nro_nroagrupador,
                 oti_nro_nroitem
@@ -14526,6 +14567,8 @@ begin
                 oti_d20_estado,
                 oti_imp_importecierre,
                 oti_ede_comentariocierre,
+                oti_cd6_codreparacion,
+                odt_nro_kmsactuales as oti_kilometraje,
                 TNGS_Mrln..OtItems.instante,
                 TNGS_Mrln..OtItems.deleted,
                 TNGS_Mrln..OtItems.usuario,
@@ -14533,6 +14576,8 @@ begin
            from TNGS_Mrln..OtItems
                 join TNGS_Mrln..Categorias
                   on oti_rcd_codCategoria = cat_rcd_cod
+                join TNGS_Mrln..OrdenesTrabajo
+                  on oti_nro_nroOt = odt_nro_nro
           where oti_nro_nroot = @oti_nro_nroot
             and oti_nro_nroagrupador = @oti_nro_nroagrupador
             and oti_nro_nroitem = @oti_nro_nroitem
@@ -14552,6 +14597,8 @@ begin
                 oti_d20_estado,
                 oti_imp_importecierre,
                 oti_ede_comentariocierre,
+                oti_cd6_codreparacion,
+                odt_nro_kmsactuales as oti_kilometraje,
                 TNGS_Mrln..OtItems.instante,
                 TNGS_Mrln..OtItems.deleted,
                 TNGS_Mrln..OtItems.usuario,
@@ -14559,6 +14606,8 @@ begin
            from TNGS_Mrln..OtItems
                 join TNGS_Mrln..Categorias
                   on oti_rcd_codCategoria = cat_rcd_cod
+                join TNGS_Mrln..OrdenesTrabajo
+                  on oti_nro_nroOt = odt_nro_nro
           where oti_nro_nroot = @oti_nro_nroot
             and oti_nro_nroagrupador = @oti_nro_nroagrupador
             and oti_nro_nroitem = @oti_nro_nroitem
@@ -14620,6 +14669,8 @@ begin
                 oti_d20_estado,
                 oti_imp_importecierre,
                 oti_ede_comentariocierre,
+                oti_cd6_codreparacion,
+                odt_nro_kmsactuales as oti_kilometraje,
                 TNGS_Mrln..OtItems.instante,
                 TNGS_Mrln..OtItems.deleted,
                 TNGS_Mrln..OtItems.usuario,
@@ -14627,6 +14678,8 @@ begin
            from TNGS_Mrln..OtItems
                 join TNGS_Mrln..Categorias
                   on oti_rcd_codCategoria = cat_rcd_cod
+                join TNGS_Mrln..OrdenesTrabajo
+                  on oti_nro_nroOt = odt_nro_nro
           where oti_nro_nroot = @oti_nro_nroot
             and TNGS_Mrln..OtItems.deleted = 0
           order by oti_nro_nroagrupador,
@@ -14646,6 +14699,8 @@ begin
                 oti_d20_estado,
                 oti_imp_importecierre,
                 oti_ede_comentariocierre,
+                oti_cd6_codreparacion,
+                odt_nro_kmsactuales as oti_kilometraje,
                 TNGS_Mrln..OtItems.instante,
                 TNGS_Mrln..OtItems.deleted,
                 TNGS_Mrln..OtItems.usuario,
@@ -14653,6 +14708,8 @@ begin
            from TNGS_Mrln..OtItems
                 join TNGS_Mrln..Categorias
                   on oti_rcd_codCategoria = cat_rcd_cod
+                join TNGS_Mrln..OrdenesTrabajo
+                  on oti_nro_nroOt = odt_nro_nro
           where oti_nro_nroot = @oti_nro_nroot
           order by oti_nro_nroagrupador,
                 oti_nro_nroitem
@@ -14686,6 +14743,7 @@ go
 --- <param name="@oti_d20_estado">Estado</param>
 --- <param name="@oti_imp_importecierre">Importe Cierre</param>
 --- <param name="@oti_ede_comentariocierre">Comentario Cierre</param>
+--- <param name="@oti_cd6_codreparacion">Codigo Reparacion</param>
 --- <param name="@usuario">Usuario que genera el insert</param>
 ---
 ---////////////////////////////////////////////////////////
@@ -14715,6 +14773,7 @@ create procedure dbo.OTITEMS_INSERT
 @oti_d20_estado tngs_descripcion_20,
 @oti_imp_importecierre tngs_importe,
 @oti_ede_comentariocierre tngs_descripcion_e,
+@oti_cd6_codreparacion tngs_codigo_6,
 @usuario tngs_nombre
 )
 as
@@ -14733,6 +14792,7 @@ begin
            @oti_d20_estado,
            @oti_imp_importecierre,
            @oti_ede_comentariocierre,
+           @oti_cd6_codreparacion,
            getdate(), 0, @usuario, 1
           )
 
@@ -14764,6 +14824,7 @@ go
 --- <param name="@oti_d20_estado">Estado</param>
 --- <param name="@oti_imp_importecierre">Importe Cierre</param>
 --- <param name="@oti_ede_comentariocierre">Comentario Cierre</param>
+--- <param name="@oti_cd6_codreparacion">Codigo Reparacion</param>
 --- <param name="@usuario">Usuario que genera el update</param>
 ---
 ---////////////////////////////////////////////////////////
@@ -14793,6 +14854,7 @@ create procedure dbo.OTITEMS_UPDATE
 @oti_d20_estado tngs_descripcion_20,
 @oti_imp_importecierre tngs_importe,
 @oti_ede_comentariocierre tngs_descripcion_e,
+@oti_cd6_codreparacion tngs_codigo_6,
 @usuario tngs_nombre
 )
 as
@@ -14807,6 +14869,7 @@ begin
           oti_d20_estado= @oti_d20_estado,
           oti_imp_importecierre= @oti_imp_importecierre,
           oti_ede_comentariocierre= @oti_ede_comentariocierre,
+          oti_cd6_codreparacion= @oti_cd6_codreparacion,
           version = ((version+1) % 32767),
           instante= getdate(),
           usuario = @usuario
@@ -15244,6 +15307,73 @@ go
 ---////////////////////////////////////////////////////////
 ---
 --- <summary>
+--- Método Fijo: GetRealizadosMvl
+--- </summary>
+--- <param name="@patente">Patente</param>
+--- <param name="@usuario">Usuario que ejecuta el SP</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.OTITEMS_GETREALIZADOSMVL'
+
+if exists (select * from sysobjects where id = object_id('dbo.OTITEMS_GETREALIZADOSMVL'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.OTITEMS_GETREALIZADOSMVL
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.OTITEMS_GETREALIZADOSMVL
+(
+@patente tngs_codigo_e,
+@usuario tngs_nombre
+)
+as
+begin
+
+   Select oti_nro_nroot,
+          oti_nro_nroagrupador,
+          oti_nro_nroitem,
+          oti_des_desoperacion,
+          oti_des_destarea,
+          oti_rcd_codcategoria,
+          cat_des_des as oti_categoria,
+          oti_imp_importe,
+          oti_ede_comentario,
+          oti_d20_estado,
+          oti_imp_importecierre,
+          oti_ede_comentariocierre,
+          oti_cd6_codreparacion,
+          odt_nro_kmsactuales as oti_kilometraje,
+          TNGS_Mrln..OtItems.instante,
+          TNGS_Mrln..OtItems.deleted,
+          TNGS_Mrln..OtItems.usuario,
+          TNGS_Mrln..OtItems.version
+     from TNGS_Mrln..OtItems 
+          join TNGS_Mrln..Categorias
+            on oti_rcd_codCategoria = cat_rcd_cod
+          join TNGS_Mrln..OrdenesTrabajo
+            on oti_nro_nroOt = odt_nro_nro
+     where odt_ecd_patente = @patente and year(odt_fyh_feccierre) <> 1900 
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.OTITEMS_GETREALIZADOSMVL to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
 --- Método Fijo: ZPendientes
 --- </summary>
 --- <param name="@inipatente">Inicio Patentes</param>
@@ -15298,7 +15428,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 07/07/2018 21:30
+// Fecha       : 18/07/2018 08:15
 // Sistema     : Mrln
 // Tabla       : Parametros
 //----------------------------------------------------------------------------
@@ -15830,7 +15960,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 07/07/2018 21:30
+// Fecha       : 18/07/2018 08:15
 // Sistema     : Mrln
 // Tabla       : Reparaciones
 //----------------------------------------------------------------------------
@@ -16400,7 +16530,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 07/07/2018 21:30
+// Fecha       : 18/07/2018 08:15
 // Sistema     : Mrln
 // Tabla       : Taller
 //----------------------------------------------------------------------------
@@ -16965,7 +17095,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 07/07/2018 21:30
+// Fecha       : 18/07/2018 08:15
 // Sistema     : Mrln
 // Tabla       : TallerCategoria
 //----------------------------------------------------------------------------
@@ -17802,7 +17932,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 07/07/2018 21:30
+// Fecha       : 18/07/2018 08:15
 // Sistema     : Mrln
 // Tabla       : Talonarios
 //----------------------------------------------------------------------------

@@ -10,7 +10,7 @@ namespace Mrln.Dal
     //----------------------------------------------------------------------------
     //                         TNG Software DAL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 07/07/2018 21:11
+    // Fecha                    : 18/07/2018 08:16
     // Sistema                  : Mrln
     // Clase para Administrar   : Ordenes De Trabajo
     // Basada en la Tabla       : OrdenesTrabajo
@@ -146,6 +146,7 @@ namespace Mrln.Dal
         /// <param name="p_dtFeccierre">Fecha de cierre</param>
         /// <param name="p_strCodtaller">Taller</param>
         /// <param name="p_strEstado">Estado</param>
+        /// <param name="p_iKmsactuales">Kms Movil</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static int Insert(DBConn p_dbcAccess,
                                  int p_iNro,
@@ -155,6 +156,7 @@ namespace Mrln.Dal
                                  DateTime p_dtFeccierre,
                                  string p_strCodtaller,
                                  string p_strEstado,
+                                 int p_iKmsactuales,
                                  ref StatMsg p_smResult)
         {
             try {
@@ -169,6 +171,7 @@ namespace Mrln.Dal
                                        p_dbcAccess.MakeParam("@odt_fyh_feccierre", p_dtFeccierre),
                                        p_dbcAccess.MakeParam("@odt_cod_codtaller", p_strCodtaller),
                                        p_dbcAccess.MakeParam("@odt_d20_estado", p_strEstado),
+                                       p_dbcAccess.MakeParam("@odt_nro_kmsactuales", p_iKmsactuales),
                                        p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
                                    }
                                   );
@@ -191,6 +194,7 @@ namespace Mrln.Dal
         /// <param name="p_dtFeccierre">Fecha de cierre</param>
         /// <param name="p_strCodtaller">Taller</param>
         /// <param name="p_strEstado">Estado</param>
+        /// <param name="p_iKmsactuales">Kms Movil</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static int Update(DBConn p_dbcAccess,
                                  int p_iNro,
@@ -200,6 +204,7 @@ namespace Mrln.Dal
                                  DateTime p_dtFeccierre,
                                  string p_strCodtaller,
                                  string p_strEstado,
+                                 int p_iKmsactuales,
                                  ref StatMsg p_smResult)
         {
             try {
@@ -214,6 +219,7 @@ namespace Mrln.Dal
                                        p_dbcAccess.MakeParam("@odt_fyh_feccierre", p_dtFeccierre),
                                        p_dbcAccess.MakeParam("@odt_cod_codtaller", p_strCodtaller),
                                        p_dbcAccess.MakeParam("@odt_d20_estado", p_strEstado),
+                                       p_dbcAccess.MakeParam("@odt_nro_kmsactuales", p_iKmsactuales),
                                        p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
                                    }
                                   );

@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 07/07/2018 21:30
+// Fecha       : 18/07/2018 08:15
 // Sistema     : Mrln
 // Tabla       : OrdenesTrabajo
 //----------------------------------------------------------------------------
@@ -60,6 +60,7 @@ begin
                 odt_cod_codtaller,
                 isnull(tll_ede_descripcion, '') as ot_taller,
                 odt_d20_estado,
+                odt_nro_kmsactuales,
                 TNGS_Mrln..OrdenesTrabajo.instante,
                 TNGS_Mrln..OrdenesTrabajo.deleted,
                 TNGS_Mrln..OrdenesTrabajo.usuario,
@@ -80,6 +81,7 @@ begin
                 odt_cod_codtaller,
                 isnull(tll_ede_descripcion, '') as ot_taller,
                 odt_d20_estado,
+                odt_nro_kmsactuales,
                 TNGS_Mrln..OrdenesTrabajo.instante,
                 TNGS_Mrln..OrdenesTrabajo.deleted,
                 TNGS_Mrln..OrdenesTrabajo.usuario,
@@ -189,6 +191,7 @@ begin
                 odt_cod_codtaller,
                 isnull(tll_ede_descripcion, '') as ot_taller,
                 odt_d20_estado,
+                odt_nro_kmsactuales,
                 TNGS_Mrln..OrdenesTrabajo.instante,
                 TNGS_Mrln..OrdenesTrabajo.deleted,
                 TNGS_Mrln..OrdenesTrabajo.usuario,
@@ -209,6 +212,7 @@ begin
                 odt_cod_codtaller,
                 isnull(tll_ede_descripcion, '') as ot_taller,
                 odt_d20_estado,
+                odt_nro_kmsactuales,
                 TNGS_Mrln..OrdenesTrabajo.instante,
                 TNGS_Mrln..OrdenesTrabajo.deleted,
                 TNGS_Mrln..OrdenesTrabajo.usuario,
@@ -243,6 +247,7 @@ go
 --- <param name="@odt_fyh_feccierre">Fecha de cierre</param>
 --- <param name="@odt_cod_codtaller">Taller</param>
 --- <param name="@odt_d20_estado">Estado</param>
+--- <param name="@odt_nro_kmsactuales">Kms Movil</param>
 --- <param name="@usuario">Usuario que genera el insert</param>
 ---
 ---////////////////////////////////////////////////////////
@@ -268,6 +273,7 @@ create procedure dbo.ORDENESTRABAJO_INSERT
 @odt_fyh_feccierre tngs_fecyhor,
 @odt_cod_codtaller tngs_codigo,
 @odt_d20_estado tngs_descripcion_20,
+@odt_nro_kmsactuales tngs_numero,
 @usuario tngs_nombre
 )
 as
@@ -282,6 +288,7 @@ begin
            @odt_fyh_feccierre,
            @odt_cod_codtaller,
            @odt_d20_estado,
+           @odt_nro_kmsactuales,
            getdate(), 0, @usuario, 1
           )
 
@@ -309,6 +316,7 @@ go
 --- <param name="@odt_fyh_feccierre">Fecha de cierre</param>
 --- <param name="@odt_cod_codtaller">Taller</param>
 --- <param name="@odt_d20_estado">Estado</param>
+--- <param name="@odt_nro_kmsactuales">Kms Movil</param>
 --- <param name="@usuario">Usuario que genera el update</param>
 ---
 ---////////////////////////////////////////////////////////
@@ -334,6 +342,7 @@ create procedure dbo.ORDENESTRABAJO_UPDATE
 @odt_fyh_feccierre tngs_fecyhor,
 @odt_cod_codtaller tngs_codigo,
 @odt_d20_estado tngs_descripcion_20,
+@odt_nro_kmsactuales tngs_numero,
 @usuario tngs_nombre
 )
 as
@@ -346,6 +355,7 @@ begin
           odt_fyh_feccierre= @odt_fyh_feccierre,
           odt_cod_codtaller= @odt_cod_codtaller,
           odt_d20_estado= @odt_d20_estado,
+          odt_nro_kmsactuales= @odt_nro_kmsactuales,
           version = ((version+1) % 32767),
           instante= getdate(),
           usuario = @usuario
@@ -587,6 +597,7 @@ begin
           odt_cod_codtaller,
           isnull(tll_ede_descripcion, '') as ot_taller,
           odt_d20_estado,
+          odt_nro_kmsactuales,
           TNGS_Mrln..OrdenesTrabajo.instante,
           TNGS_Mrln..OrdenesTrabajo.deleted,
           TNGS_Mrln..OrdenesTrabajo.usuario,
@@ -645,6 +656,7 @@ begin
           odt_cod_codtaller,
           isnull(tll_ede_descripcion, '') as ot_taller,
           odt_d20_estado,
+          odt_nro_kmsactuales,
           TNGS_Mrln..OrdenesTrabajo.instante,
           TNGS_Mrln..OrdenesTrabajo.deleted,
           TNGS_Mrln..OrdenesTrabajo.usuario,

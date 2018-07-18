@@ -16,7 +16,7 @@ namespace Mrln.Bll
     //----------------------------------------------------------------------------
     //                         TNG Software BLL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 07/07/2018 21:11
+    // Fecha                    : 18/07/2018 08:16
     // Sistema                  : Mrln
     // Clase para Administrar   : 
     //----------------------------------------------------------------------------
@@ -275,6 +275,7 @@ namespace Mrln.Bll
                 case "odt_fyh_feccierre"               : {return "V1Fecha de cierreDN2";}
                 case "odt_cod_codtaller"               : {return "V1TallerCN1";}
                 case "odt_d20_estado"                  : {return "V1EstadoCN1";}
+                case "odt_nro_kmsactuales"             : {return "V1Kms MovilNN3";}
                 case "ot_taller"                       : {return "V1TallerCN1";}
 
                 // ****************************************
@@ -290,7 +291,9 @@ namespace Mrln.Bll
                 case "oti_d20_estado"                  : {return "V1EstadoCN1";}
                 case "oti_imp_importecierre"           : {return "V1Importe Cierre2N3";}
                 case "oti_ede_comentariocierre"        : {return "V1Comentario CierreCN1";}
+                case "oti_cd6_codreparacion"           : {return "V1Codigo ReparacionCN1";}
                 case "oti_categoria"                   : {return "V1CategoriaCN1";}
+                case "oti_kilometraje"                 : {return "V1KilometrajeNN1";}
 
                 // ****************************************
                 // Tabla: Parametros          

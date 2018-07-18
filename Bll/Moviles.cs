@@ -37,6 +37,71 @@ namespace Mrln.Bll
         #region Metodos publicos de la clase
 
         /// <summary>
+        /// Retorna la fecha y hora del momento (pero sacada del server).
+        /// </summary>
+        /// <param name="p_smResult">Resultado de las operaciones</param>
+        /// <returns></returns>
+        public static DateTime fGetDate(ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            DBConn l_dbcAccess = null;
+
+            try
+            {
+                // Obtenemos una conexion
+                l_dbcAccess = DBRuts.GetConection(Connections.Dat);
+
+                // Conseguimos la fecha de hoy
+                DateTime l_dtToday = BllRuts.GetDBNow(l_dbcAccess, false, ref p_smResult);
+
+                //Corroboramos que no hayan ocurrido errores.
+                if (p_smResult.NOk)
+                    return DateTimeRuts.Empty;
+                else
+                    return l_dtToday;
+            }
+            catch (Exception a)
+            {
+                p_smResult.BllError(a.ToString());
+                return DateTimeRuts.Empty;
+            }
+            finally
+            {
+                // Si pude abrir la conexion -> la cierro
+                if (l_dbcAccess != null)
+                    l_dbcAccess.Close();
+            }
+        }
+
+        public static int fGetKilometrajeActual(string p_strPatente, ref StatMsg p_smResult)
+        {
+            DBConn l_dbcAccess = null;
+
+            try
+            {
+                // Obtenemos una conexion
+                l_dbcAccess = DBRuts.GetConection(Connections.Dat);
+
+                // Pedimos los registros de la tabla
+                ListaEntidades ultimosCincoKilometrajes = Moviles.MvkmgetLastFiveMvlKm(l_dbcAccess, p_strPatente, ref p_smResult);
+                return Convert.ToInt32(ultimosCincoKilometrajes.InternalData[0][Bel.EMovilKms.KmCmp]);
+            }
+            catch (Exception l_expData)
+            {
+                // Error en la operacion
+                p_smResult.BllError(l_expData.ToString());
+                return 0;
+            }
+            finally
+            {
+                // Si pude abrir la conexion -> la cierro
+                if (l_dbcAccess != null) l_dbcAccess.Close();
+            }
+
+        }
+
+
+        /// <summary>
         /// Me devuelve un Array con las listas entidades de los ultimos 5 combustibles, estados, kms y eq
         /// </summary>
         /// <param name="p_strPatente">Patente</param>
@@ -57,10 +122,22 @@ namespace Mrln.Bll
                 l_dbcAccess = DBRuts.GetConection(Connections.Dat);
 
                 // Pedimos los registros de la tabla
-                l_lstLEListaListaEntidades.Add(Bll.Moviles.MvcogetLastFiveMvlCombus(l_dbcAccess, p_strPatente, ref p_smResult));
-                l_lstLEListaListaEntidades.Add(Bll.Moviles.MvkmgetLastFiveMvlKm(l_dbcAccess, p_strPatente, ref p_smResult));
-                l_lstLEListaListaEntidades.Add(Bll.Moviles.MvesgetLastFiveMvlEstads(l_dbcAccess, p_strPatente, ref p_smResult));
-                l_lstLEListaListaEntidades.Add(Bll.Moviles.MveqFGet(p_strPatente, true, ref p_smResult));
+                ListaEntidades ultimosCincoCombustibles = Moviles.MvcogetLastFiveMvlCombus(l_dbcAccess, p_strPatente, ref p_smResult);
+                if (p_smResult.NOk) return null;
+
+                ListaEntidades ultimosCincoKilometrajes = Moviles.MvkmgetLastFiveMvlKm(l_dbcAccess, p_strPatente, ref p_smResult);
+                if (p_smResult.NOk) return null;
+
+                ListaEntidades ultimosCincoEstados = Moviles.MvesgetLastFiveMvlEstads(l_dbcAccess, p_strPatente, ref p_smResult);
+                if (p_smResult.NOk) return null;
+
+                ListaEntidades equipamientos = Moviles.MveqFSch(l_dbcAccess, p_strPatente, true, ref p_smResult);
+                if (p_smResult.NOk) return null;
+
+                l_lstLEListaListaEntidades.Add(ultimosCincoCombustibles);
+                l_lstLEListaListaEntidades.Add(ultimosCincoKilometrajes);
+                l_lstLEListaListaEntidades.Add(ultimosCincoEstados);
+                l_lstLEListaListaEntidades.Add(equipamientos);
             }
             catch (Exception l_expData)
             {
@@ -75,9 +152,6 @@ namespace Mrln.Bll
             }
 
             return l_lstLEListaListaEntidades;
-
-
-
         }
 
         /// <summary>

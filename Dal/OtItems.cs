@@ -10,7 +10,7 @@ namespace Mrln.Dal
     //----------------------------------------------------------------------------
     //                         TNG Software DAL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 07/07/2018 21:11
+    // Fecha                    : 18/07/2018 08:16
     // Sistema                  : Mrln
     // Clase para Administrar   : OrdenTrabajo Items
     // Basada en la Tabla       : OtItems
@@ -195,6 +195,7 @@ namespace Mrln.Dal
         /// <param name="p_strEstado">Estado</param>
         /// <param name="p_dcImportecierre">Importe Cierre</param>
         /// <param name="p_strComentariocierre">Comentario Cierre</param>
+        /// <param name="p_strCodreparacion">Codigo Reparacion</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static int Insert(DBConn p_dbcAccess,
                                  int p_iNroot,
@@ -208,6 +209,7 @@ namespace Mrln.Dal
                                  string p_strEstado,
                                  decimal p_dcImportecierre,
                                  string p_strComentariocierre,
+                                 string p_strCodreparacion,
                                  ref StatMsg p_smResult)
         {
             try {
@@ -226,6 +228,7 @@ namespace Mrln.Dal
                                        p_dbcAccess.MakeParam("@oti_d20_estado", p_strEstado),
                                        p_dbcAccess.MakeParam("@oti_imp_importecierre", p_dcImportecierre),
                                        p_dbcAccess.MakeParam("@oti_ede_comentariocierre", p_strComentariocierre),
+                                       p_dbcAccess.MakeParam("@oti_cd6_codreparacion", p_strCodreparacion),
                                        p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
                                    }
                                   );
@@ -252,6 +255,7 @@ namespace Mrln.Dal
         /// <param name="p_strEstado">Estado</param>
         /// <param name="p_dcImportecierre">Importe Cierre</param>
         /// <param name="p_strComentariocierre">Comentario Cierre</param>
+        /// <param name="p_strCodreparacion">Codigo Reparacion</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static int Update(DBConn p_dbcAccess,
                                  int p_iNroot,
@@ -265,6 +269,7 @@ namespace Mrln.Dal
                                  string p_strEstado,
                                  decimal p_dcImportecierre,
                                  string p_strComentariocierre,
+                                 string p_strCodreparacion,
                                  ref StatMsg p_smResult)
         {
             try {
@@ -283,6 +288,7 @@ namespace Mrln.Dal
                                        p_dbcAccess.MakeParam("@oti_d20_estado", p_strEstado),
                                        p_dbcAccess.MakeParam("@oti_imp_importecierre", p_dcImportecierre),
                                        p_dbcAccess.MakeParam("@oti_ede_comentariocierre", p_strComentariocierre),
+                                       p_dbcAccess.MakeParam("@oti_cd6_codreparacion", p_strCodreparacion),
                                        p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
                                    }
                                   );
@@ -535,6 +541,36 @@ namespace Mrln.Dal
         #region Metodos del Usuario
 
         /// <summary>
+        /// Método Fijo: GetRealizadosMvl
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name= "p_strPatente">Patente</param>
+        /// <param name="p_dsResult">DataSet donde devolver el registro</param>
+        /// <param name="p_strTabla">Nombre de la tabla a llenar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        public static int GetRealizadosMvl(DBConn p_dbcAccess,
+                                           string p_strPatente,
+                                           ref DataSet p_dsResult,
+                                           string p_strTabla,
+                                           ref StatMsg p_smResult)
+        {
+            try {
+                return DBRuts.Exec_DS(p_dbcAccess,
+                                      "TNGS_Mrln..OTITEMS_GETREALIZADOSMVL",
+                                      new DbParameter[] {
+                                          p_dbcAccess.MakeParam("@patente", p_strPatente),
+                                          p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
+                                      },
+                                      ref p_dsResult, p_strTabla);
+            }
+            catch (Exception l_expData) {
+                // Error en el método fijo
+                p_smResult.DalError(l_expData);
+                return -1;
+            }
+        }
+
+        /// <summary>
         /// Método Fijo: ZPendientes
         /// </summary>
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
@@ -584,6 +620,7 @@ namespace Mrln.Dal
 
                 // Fijamos los nuevos captions de la grilla
                 p_dtResult.Columns["oti_categoria"].Caption= "V1CategoriaCN1";
+                p_dtResult.Columns["oti_kilometraje"].Caption= "V1KilometrajeNN1";
                 p_dtResult.Columns["oti_rcd_codcategoria"].Caption= "V1CategoríaCN1";
                 p_dtResult.Columns["oti_ede_comentario"].Caption= "V1ComentarioCN1";
                 p_dtResult.Columns["oti_des_desoperacion"].Caption= "V1Descripción de la operaciónCN1";

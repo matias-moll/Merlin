@@ -36,6 +36,61 @@ namespace Mrln.Bll
         //---------------------------------------------------------------
 
         #region Metodos publicos de la clase
+
+
+        public static void fCheckCreacionAlertas(EMovil p_entMovil, ref StatMsg p_smResult)
+        {
+            DBConn l_dbcAccess = null;
+
+            try{
+                // Obtenemos una conexion
+                l_dbcAccess = DBRuts.GetConection(Connections.Dat);
+
+                Bel.LEMovilesAlertas configAlertas = Moviles.MvalFSch(l_dbcAccess, p_entMovil.Patente, true, ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                if (configAlertas.Count == 0)
+                    return;
+
+                p_entMovil.MovilesKms = Moviles.MvkmFSch(l_dbcAccess, p_entMovil.Patente, true, ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                LEAlertas alertasDelMovil = Alertas.AleGetPendientesFromMov(p_entMovil.Patente, ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                LEOTItems reparacionesDelMovil = OrdenesTrabajo.OtitGetRealizadosMvl(p_entMovil.Patente, ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                DateTime fechaActual = BllRuts.GetDBNow(l_dbcAccess, ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // Iteramos por todas las config alertas y si alguna cumple condicion creamos la nueva alerta.
+                foreach (EMovilAlerta configAlerta in configAlertas)
+                {
+                    if(configAlerta.CumpleCondicion(p_entMovil, alertasDelMovil,  reparacionesDelMovil))
+                    {
+                        ETalonario nroAlerta = AppRuts.TaloGet(l_dbcAccess, "ConfAlerta", ref p_smResult);
+                        if (p_smResult.NOk) return;
+
+                        Bel.EAlerta nuevaAlerta = configAlerta.crearAlerta(nroAlerta.Valor, fechaActual);
+                        Alertas.AleSave(nuevaAlerta, ref p_smResult);
+                        if (p_smResult.NOk) return;
+                    }
+                }
+
+            }
+            catch (Exception l_expData){
+                // Error en la operacion
+                p_smResult.BllError(l_expData.ToString());
+            }
+            finally{
+                // Si pude abrir la conexion -> la cierro
+                if (l_dbcAccess != null) l_dbcAccess.Close();
+            }
+
+            
+        }
+
         #endregion
 
         //---------------------------------------------------------------
@@ -116,6 +171,8 @@ namespace Mrln.Bll
             // Agregar acá las validaciones adicionales
             // *********
         }
+
+
 
         #endregion
 

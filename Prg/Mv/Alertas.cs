@@ -138,7 +138,6 @@ namespace Mrln.Mv
                     alertasABorrar.AddEntity(m_leMovilesAlertas[index]);
                 
                     
-                
             if(alertasABorrar.Count == 0)
             {
                 MsgRuts.ShowMsg(this, "No hay ninguna configuracion de alerta seleccionada para borrar.");

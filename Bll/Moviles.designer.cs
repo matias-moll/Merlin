@@ -16,7 +16,7 @@ namespace Mrln.Bll
     //----------------------------------------------------------------------------
     //                         TNG Software BLL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 07/07/2018 21:11
+    // Fecha                    : 18/07/2018 08:16
     // Sistema                  : Mrln
     // Clase para Administrar   : Moviles y Tablas Hijas
     //----------------------------------------------------------------------------
@@ -6343,43 +6343,6 @@ namespace Mrln.Bll
         #endregion
 
         #region Metodos para métodos DAL definidos por el usuario
-
-        /// <summary>
-        /// Ejecuta el SP definido por el usuario: RemoveAllPatente
-        /// </summary>
-        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_smResult">Estado final de la operacion</param>
-        /// <returns>ListaEntidad con los datos solicitados</returns>
-        internal static ListaEntidades MvkmRemoveAllPatente(DBConn p_dbcAccess,
-                                                            ref StatMsg p_smResult)
-        {
-            try {
-                // Llamamos al metodo definido por el usuario
-                DataSet l_dsTemp= new DataSet();
-
-                Dal.MvlKilometros.RemoveAllPatente(p_dbcAccess,
-                                                   ref l_dsTemp,
-                                                   "Temporal",
-                                                   ref p_smResult);
-                if (p_smResult.NOk) return null;
-
-                // Creamos la LE y Captionamos
-                ListaEntidades l_lentRet= new ListaEntidades(l_dsTemp.Tables["Temporal"]);
-                BllRuts.FillStdCaptions(ref l_lentRet);
-
-                // Devolvemos la LE
-                l_dsTemp.Dispose();
-                return l_lentRet;
-            }
-            catch (Exception l_expData) {
-                // Error en la operacion
-                p_smResult.BllError(l_expData);
-                return null;
-            }
-            finally {
-                // Terminamos
-            }
-        }
 
         /// <summary>
         /// Ejecuta el SP definido por el usuario: getLastFiveMvlKm

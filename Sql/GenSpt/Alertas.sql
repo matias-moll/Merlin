@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 07/07/2018 21:30
+// Fecha       : 18/07/2018 08:15
 // Sistema     : Mrln
 // Tabla       : Alertas
 //----------------------------------------------------------------------------
@@ -581,6 +581,68 @@ go
 print '       - Asignando permisos al nuevo SP'
 
 grant execute on dbo.ALERTAS_PACK to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Método Fijo: GetPendientesFromMov
+--- </summary>
+--- <param name="@patente">Patente</param>
+--- <param name="@usuario">Usuario que ejecuta el SP</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.ALERTAS_GETPENDIENTESFROMMOV'
+
+if exists (select * from sysobjects where id = object_id('dbo.ALERTAS_GETPENDIENTESFROMMOV'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.ALERTAS_GETPENDIENTESFROMMOV
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.ALERTAS_GETPENDIENTESFROMMOV
+(
+@patente tngs_codigo_e,
+@usuario tngs_nombre
+)
+as
+begin
+
+   Select alr_nro_nroconfig,
+          alr_nro_nroalerta,
+          alr_des_descripcion,
+          alr_xde_detalle,
+          alr_cd1_importancia,
+          alr_fyh_fechadisparada,
+          alr_fyh_fechavista,
+          alr_nom_usuariovista,
+          alr_nro_repetirendias,
+          alr_cd1_finalizada,
+          TNGS_Mrln..Alertas.instante,
+          TNGS_Mrln..Alertas.deleted,
+          TNGS_Mrln..Alertas.usuario,
+          TNGS_Mrln..Alertas.version
+     from TNGS_Mrln..Alertas 
+   join MvlAlertas 
+   on alr_nro_nroconfig = mal_nro_nroconfigalerta 
+   where mal_ecd_patente = @patente 
+   and alr_cd1_finalizada <> 'S' 
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.ALERTAS_GETPENDIENTESFROMMOV to tngsmodulos
 
 print ' '
 go

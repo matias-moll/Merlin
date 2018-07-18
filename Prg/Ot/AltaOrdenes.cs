@@ -188,6 +188,7 @@ namespace Mrln.Ot
             l_entOTitem.Comentario = teComentario.Text;
             l_entOTitem.Importe = deImporte.Decimal;
             l_entOTitem.Importecierre = l_entOTitem.Importe;
+            l_entOTitem.Codreparacion = p_eReparacion.Cod;
 
             return l_entOTitem;
         }

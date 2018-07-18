@@ -14,7 +14,7 @@ namespace Mrln.Bel
     //----------------------------------------------------------------------------
     //                         TNG Software BEL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 07/07/2018 21:11
+    // Fecha                    : 18/07/2018 08:16
     // Sistema                  : Mrln
     // Clase para Administrar   : Ordenes de Trabajo y sus Items
     //----------------------------------------------------------------------------
@@ -89,7 +89,9 @@ namespace Mrln.Bel
             l_drTemp["oti_d20_estado"]= XMLRuts.ExtractXAttr(l_xndData, "oti_d20_estado");
             l_drTemp["oti_imp_importecierre"]= XMLRuts.ExtractXAttr(l_xndData, "oti_imp_importecierre", (decimal) 0);
             l_drTemp["oti_ede_comentariocierre"]= XMLRuts.ExtractXAttr(l_xndData, "oti_ede_comentariocierre");
+            l_drTemp["oti_cd6_codreparacion"]= XMLRuts.ExtractXAttr(l_xndData, "oti_cd6_codreparacion");
             l_drTemp["oti_categoria"]= XMLRuts.ExtractXAttr(l_xndData, "oti_categoria");
+            l_drTemp["oti_kilometraje"]= XMLRuts.ExtractXAttr(l_xndData, "oti_kilometraje", 0);
 
             // Llenamos los campos fijos
             XML2FixedFields(ref l_drTemp, l_xndData);
@@ -144,7 +146,9 @@ namespace Mrln.Bel
             l_drTemp["oti_d20_estado"]= "";
             l_drTemp["oti_imp_importecierre"]= 0;
             l_drTemp["oti_ede_comentariocierre"]= "";
+            l_drTemp["oti_cd6_codreparacion"]= "";
             l_drTemp["oti_categoria"]= "";
+            l_drTemp["oti_kilometraje"]= 0;
 
             // Agregamos la Row creada a la tabla creada y creamos
             // una entidad a partir de la DataTable de 1 registro
@@ -168,6 +172,7 @@ namespace Mrln.Bel
         /// <param name="p_strEstado">Estado</param>
         /// <param name="p_dcImportecierre">Importe Cierre</param>
         /// <param name="p_strComentariocierre">Comentario Cierre</param>
+        /// <param name="p_strCodreparacion">Codigo Reparacion</param>
         /// <returns>Entidad: OTItem</returns>
         public static EOTItem NewFilled(int p_iNroot,
                                         int p_iNroagrupador,
@@ -179,7 +184,8 @@ namespace Mrln.Bel
                                         string p_strComentario,
                                         string p_strEstado,
                                         decimal p_dcImportecierre,
-                                        string p_strComentariocierre)
+                                        string p_strComentariocierre,
+                                        string p_strCodreparacion)
         {
             // Creamos una tabla compatible con la entidad
             DataTable l_dtTemp= new DataTable();
@@ -200,7 +206,9 @@ namespace Mrln.Bel
             l_drTemp["oti_d20_estado"]= p_strEstado;
             l_drTemp["oti_imp_importecierre"]= p_dcImportecierre;
             l_drTemp["oti_ede_comentariocierre"]= p_strComentariocierre;
+            l_drTemp["oti_cd6_codreparacion"]= p_strCodreparacion;
             l_drTemp["oti_categoria"]= "";
+            l_drTemp["oti_kilometraje"]= 0;
 
             // Agregamos la Row creada a la tabla creada y creamos
             // una entidad a partir de la DataTable de 1 registro
@@ -226,7 +234,7 @@ namespace Mrln.Bel
         {
             get {
                 // Creamos el vector de DataColumns y lo llenamos
-                DataColumn[] l_dcStruct= new DataColumn[16];
+                DataColumn[] l_dcStruct= new DataColumn[18];
 
                 l_dcStruct[0]= new DataColumn("oti_nro_nroot", typeof(int));
                 l_dcStruct[1]= new DataColumn("oti_nro_nroagrupador", typeof(int));
@@ -240,7 +248,9 @@ namespace Mrln.Bel
                 l_dcStruct[9]= new DataColumn("oti_d20_estado", typeof(string));
                 l_dcStruct[10]= new DataColumn("oti_imp_importecierre", typeof(decimal));
                 l_dcStruct[11]= new DataColumn("oti_ede_comentariocierre", typeof(string));
-                EOTItem.FillFixedFields(ref l_dcStruct, 12);
+                l_dcStruct[12]= new DataColumn("oti_cd6_codreparacion", typeof(string));
+                l_dcStruct[13]= new DataColumn("oti_kilometraje", typeof(int));
+                EOTItem.FillFixedFields(ref l_dcStruct, 14);
 
                 // Devolvemos el vector creado
                 return l_dcStruct;
@@ -450,12 +460,38 @@ namespace Mrln.Bel
         }
 
         /// <summary>
+        /// Codigo Reparacion
+        /// </summary>
+        public static string CodreparacionCmp
+        {
+           get {return "oti_cd6_codreparacion";}
+        }
+
+        /// <summary>
+        /// Codigo Reparacion
+        /// </summary>
+        public string Codreparacion
+        {
+            get {return (string) InternalData["oti_cd6_codreparacion"];}
+            set {InternalData["oti_cd6_codreparacion"]= value;}
+        }
+
+        /// <summary>
         /// Categoria
         /// </summary>
         public string Oti_categoria
         {
             get {return (string) InternalData["oti_categoria"];}
             set {InternalData["oti_categoria"]= value;}
+        }
+
+        /// <summary>
+        /// Kilometraje
+        /// </summary>
+        public int Oti_kilometraje
+        {
+            get {return (int) InternalData["oti_kilometraje"];}
+            set {InternalData["oti_kilometraje"]= value;}
         }
 
         /// <summary>
@@ -488,7 +524,9 @@ namespace Mrln.Bel
                 l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "oti_d20_estado", Estado));
                 l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "oti_imp_importecierre", Importecierre));
                 l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "oti_ede_comentariocierre", Comentariocierre));
+                l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "oti_cd6_codreparacion", Codreparacion));
                 l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "oti_categoria", Oti_categoria));
+                l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "oti_kilometraje", Oti_kilometraje));
 
                 // Asignamos los campos fijos
                 FixedFields2XML(l_xdocData, ref l_xndEntidad);
@@ -870,6 +908,7 @@ namespace Mrln.Bel
             l_drTemp["odt_fyh_feccierre"]= XMLRuts.ExtractXAttr(l_xndData, "odt_fyh_feccierre", true);
             l_drTemp["odt_cod_codtaller"]= XMLRuts.ExtractXAttr(l_xndData, "odt_cod_codtaller");
             l_drTemp["odt_d20_estado"]= XMLRuts.ExtractXAttr(l_xndData, "odt_d20_estado");
+            l_drTemp["odt_nro_kmsactuales"]= XMLRuts.ExtractXAttr(l_xndData, "odt_nro_kmsactuales", 0);
             l_drTemp["ot_taller"]= XMLRuts.ExtractXAttr(l_xndData, "ot_taller");
 
             // Llenamos los campos fijos
@@ -928,6 +967,7 @@ namespace Mrln.Bel
             l_drTemp["odt_fyh_feccierre"]= DateTimeRuts.Empty;
             l_drTemp["odt_cod_codtaller"]= "";
             l_drTemp["odt_d20_estado"]= "";
+            l_drTemp["odt_nro_kmsactuales"]= 0;
             l_drTemp["ot_taller"]= "";
 
             // Agregamos la Row creada a la tabla creada y creamos
@@ -948,6 +988,7 @@ namespace Mrln.Bel
         /// <param name="p_dtFeccierre">Fecha de cierre</param>
         /// <param name="p_strCodtaller">Taller</param>
         /// <param name="p_strEstado">Estado</param>
+        /// <param name="p_iKmsactuales">Kms Movil</param>
         /// <returns>Entidad: OrdenTrabajo</returns>
         public static EOrdenTrabajo NewFilled(int p_iNro,
                                               string p_strPatente,
@@ -955,7 +996,8 @@ namespace Mrln.Bel
                                               string p_strOperador,
                                               DateTime p_dtFeccierre,
                                               string p_strCodtaller,
-                                              string p_strEstado)
+                                              string p_strEstado,
+                                              int p_iKmsactuales)
         {
             // Creamos una tabla compatible con la entidad
             DataTable l_dtTemp= new DataTable();
@@ -972,6 +1014,7 @@ namespace Mrln.Bel
             l_drTemp["odt_fyh_feccierre"]= p_dtFeccierre;
             l_drTemp["odt_cod_codtaller"]= p_strCodtaller;
             l_drTemp["odt_d20_estado"]= p_strEstado;
+            l_drTemp["odt_nro_kmsactuales"]= p_iKmsactuales;
             l_drTemp["ot_taller"]= "";
 
             // Agregamos la Row creada a la tabla creada y creamos
@@ -1013,7 +1056,7 @@ namespace Mrln.Bel
         {
             get {
                 // Creamos el vector de DataColumns y lo llenamos
-                DataColumn[] l_dcStruct= new DataColumn[12];
+                DataColumn[] l_dcStruct= new DataColumn[13];
 
                 l_dcStruct[0]= new DataColumn("odt_nro_nro", typeof(int));
                 l_dcStruct[1]= new DataColumn("odt_ecd_patente", typeof(string));
@@ -1023,7 +1066,8 @@ namespace Mrln.Bel
                 l_dcStruct[5]= new DataColumn("odt_cod_codtaller", typeof(string));
                 l_dcStruct[6]= new DataColumn("ot_taller", typeof(string));
                 l_dcStruct[7]= new DataColumn("odt_d20_estado", typeof(string));
-                EOrdenTrabajo.FillFixedFields(ref l_dcStruct, 8);
+                l_dcStruct[8]= new DataColumn("odt_nro_kmsactuales", typeof(int));
+                EOrdenTrabajo.FillFixedFields(ref l_dcStruct, 9);
 
                 // Devolvemos el vector creado
                 return l_dcStruct;
@@ -1159,6 +1203,23 @@ namespace Mrln.Bel
         }
 
         /// <summary>
+        /// Kms Movil
+        /// </summary>
+        public static string KmsactualesCmp
+        {
+           get {return "odt_nro_kmsactuales";}
+        }
+
+        /// <summary>
+        /// Kms Movil
+        /// </summary>
+        public int Kmsactuales
+        {
+            get {return (int) InternalData["odt_nro_kmsactuales"];}
+            set {InternalData["odt_nro_kmsactuales"]= value;}
+        }
+
+        /// <summary>
         /// OrdenTrabajo Items
         /// </summary>
         public LEOTItems OTItems
@@ -1202,6 +1263,7 @@ namespace Mrln.Bel
                 l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "odt_fyh_feccierre", Feccierre));
                 l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "odt_cod_codtaller", Codtaller));
                 l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "odt_d20_estado", Estado));
+                l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "odt_nro_kmsactuales", Kmsactuales));
                 l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "ot_taller", Ot_taller));
 
                 // Asignamos los campos fijos

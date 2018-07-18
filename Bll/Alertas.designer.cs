@@ -16,7 +16,7 @@ namespace Mrln.Bll
     //----------------------------------------------------------------------------
     //                         TNG Software BLL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 07/07/2018 21:11
+    // Fecha                    : 18/07/2018 08:16
     // Sistema                  : Mrln
     // Clase para Administrar   : Alertas
     //----------------------------------------------------------------------------
@@ -316,6 +316,38 @@ namespace Mrln.Bll
         #endregion
 
         #region Metodos para métodos DAL definidos por el usuario
+
+        /// <summary>
+        /// Ejecuta el SP definido por el usuario: GetPendientesFromMov
+        /// </summary>
+        /// <param name= p_strPatente>Patente</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        /// <returns>ListaEntidad con los datos solicitados</returns>
+        public static LEAlertas AleGetPendientesFromMov(string p_strPatente,
+                                                        ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            DBConn l_dbcAccess= null;
+
+            try {
+                // Abrimos una conexion
+                l_dbcAccess= DBRuts.GetConection(Connections.Dat);
+
+                // Llamamos al metodo interno
+                return AleGetPendientesFromMov(l_dbcAccess,
+                                               p_strPatente,
+                                               ref p_smResult);
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion
+                p_smResult.BllError(l_expData);
+                return null;
+            }
+            finally {
+                // Si abrimos una conexion -> la cerramos
+                if (l_dbcAccess != null) l_dbcAccess.Close();
+            }
+        }
         #endregion
 
         //---------------------------------------------------------------
@@ -751,6 +783,47 @@ namespace Mrln.Bll
         #endregion
 
         #region Metodos para métodos DAL definidos por el usuario
+
+        /// <summary>
+        /// Ejecuta el SP definido por el usuario: GetPendientesFromMov
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name= p_strPatente>Patente</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        /// <returns>ListaEntidad con los datos solicitados</returns>
+        internal static LEAlertas AleGetPendientesFromMov(DBConn p_dbcAccess,
+                                                          string p_strPatente,
+                                                          ref StatMsg p_smResult)
+        {
+            try {
+                // Llamamos al metodo definido por el usuario
+                DataSet l_dsTemp= new DataSet();
+
+                Dal.Alertas.GetPendientesFromMov(p_dbcAccess,
+                                                 p_strPatente,
+                                                 ref l_dsTemp,
+                                                 "Temporal",
+                                                 ref p_smResult);
+                if (p_smResult.NOk) return null;
+
+                // Captionamos el resultado
+                Dal.Alertas.MakeGridCaptions(ref l_dsTemp, "Temporal", ref p_smResult);
+                if (p_smResult.NOk) return null;
+
+                // Creamos la ListaEntidad y la devolvemos
+                LEAlertas l_lentRet= new LEAlertas(l_dsTemp.Tables["Temporal"]);
+                l_dsTemp.Dispose();
+                return l_lentRet;
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion
+                p_smResult.BllError(l_expData);
+                return null;
+            }
+            finally {
+                // Terminamos
+            }
+        }
         #endregion
 
     }

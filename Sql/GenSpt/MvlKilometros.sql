@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 07/07/2018 21:30
+// Fecha       : 18/07/2018 08:15
 // Sistema     : Mrln
 // Tabla       : MvlKilometros
 //----------------------------------------------------------------------------
@@ -792,47 +792,6 @@ go
 print '       - Asignando permisos al nuevo SP'
 
 grant execute on dbo.MVLKILOMETROS_FPACK to tngsmodulos
-
-print ' '
-go
-
----////////////////////////////////////////////////////////
----
---- <summary>
---- Método Fijo: RemoveAllPatente
---- </summary>
---- <param name="@usuario">Usuario que ejecuta el SP</param>
----
----////////////////////////////////////////////////////////
-
-print 'Store Procedure: dbo.MVLKILOMETROS_REMOVEALLPATENTE'
-
-if exists (select * from sysobjects where id = object_id('dbo.MVLKILOMETROS_REMOVEALLPATENTE'))
-begin
-   print '       - Borrando el viejo SP'
-   drop procedure dbo.MVLKILOMETROS_REMOVEALLPATENTE
-end
-go
-
-print '       - Creando el nuevo SP'
-go
-
-create procedure dbo.MVLKILOMETROS_REMOVEALLPATENTE
-(
-@usuario tngs_nombre
-)
-as
-begin
-
-
-fin:
-
-end
-go
-
-print '       - Asignando permisos al nuevo SP'
-
-grant execute on dbo.MVLKILOMETROS_REMOVEALLPATENTE to tngsmodulos
 
 print ' '
 go
