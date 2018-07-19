@@ -75,6 +75,7 @@ namespace Mrln.Bll
                         Bel.EAlerta nuevaAlerta = configAlerta.crearAlerta(nroAlerta.Valor, fechaActual);
                         Alertas.AleSave(nuevaAlerta, ref p_smResult);
                         if (p_smResult.NOk) return;
+
                     }
                 }
 

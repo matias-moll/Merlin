@@ -120,6 +120,12 @@
     <Compile Include="HistorialUnificado.Designer.cs">
       <DependentUpon>HistorialUnificado.cs</DependentUpon>
     </Compile>
+    <Compile Include="ShowAlertas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShowAlerta.Designer.cs">
+      <DependentUpon>ShowAlertas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Moviles.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -186,6 +192,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="HistorialUnificado.resx">
       <DependentUpon>HistorialUnificado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShowAlerta.resx">
+      <DependentUpon>ShowAlertas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Moviles.resx">
       <DependentUpon>Moviles.cs</DependentUpon>

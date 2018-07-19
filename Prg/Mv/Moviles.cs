@@ -280,8 +280,11 @@ namespace Mrln.Mv
             LEAlertas alertasAMostrar = Bll.Alertas.AleGetPendientesFromMov(m_entMovil.Patente, ref m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
-            // TODO: Dispara la ventana para mostrar todas las alertas.
-           
+            if (alertasAMostrar.Count == 0)
+                return;
+
+            ShowAlertas ventanaAlertas = new ShowAlertas(alertasAMostrar);
+            ventanaAlertas.ShowDialog(this);
         }
 
         // Cambia el estado del form y llena las grillas
