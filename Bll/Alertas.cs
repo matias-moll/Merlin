@@ -55,7 +55,7 @@ namespace Mrln.Bll
                 p_entMovil.MovilesKms = Moviles.MvkmFSch(l_dbcAccess, p_entMovil.Patente, true, ref p_smResult);
                 if (p_smResult.NOk) return;
 
-                LEAlertas alertasDelMovil = Alertas.AleGetPendientesFromMov(p_entMovil.Patente, ref p_smResult);
+                LEAlertas alertasDelMovil = Alertas.AleGetAlertasFromMovil(p_entMovil.Patente, ref p_smResult);
                 if (p_smResult.NOk) return;
 
                 LEOTItems reparacionesDelMovil = OrdenesTrabajo.OtitGetRealizadosMvl(p_entMovil.Patente, ref p_smResult);

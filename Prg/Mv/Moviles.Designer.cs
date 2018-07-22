@@ -63,6 +63,8 @@ namespace Mrln.Mv
             this.fgCombustibles = new TNGS.NetControls.FullGrid();
             this.fgEquipamiento = new TNGS.NetControls.FullGrid();
             this.fgKm = new TNGS.NetControls.FullGrid();
+            this.fullLabel5 = new TNGS.NetControls.FullLabel();
+            this.teTipoMovil = new TNGS.NetControls.TextEdit();
             this.xpnlPanelAtras.SuspendLayout();
             this.tgrpMoviles.SuspendLayout();
             this.tsContainer1.SuspendLayout();
@@ -94,7 +96,7 @@ namespace Mrln.Mv
             this.xpnlPanelAtras.Dock = System.Windows.Forms.DockStyle.Fill;
             this.xpnlPanelAtras.Location = new System.Drawing.Point(0, 0);
             this.xpnlPanelAtras.Name = "xpnlPanelAtras";
-            this.xpnlPanelAtras.Size = new System.Drawing.Size(1008, 651);
+            this.xpnlPanelAtras.Size = new System.Drawing.Size(1008, 673);
             this.xpnlPanelAtras.SkinFixed = true;
             this.xpnlPanelAtras.TabIndex = 0;
             // 
@@ -106,6 +108,8 @@ namespace Mrln.Mv
             this.tgrpMoviles.BlackBorder = true;
             this.tgrpMoviles.BorderColor = System.Drawing.Color.WhiteSmoke;
             this.tgrpMoviles.BorderThickness = 1F;
+            this.tgrpMoviles.Controls.Add(this.teTipoMovil);
+            this.tgrpMoviles.Controls.Add(this.fullLabel5);
             this.tgrpMoviles.Controls.Add(this.teEstado);
             this.tgrpMoviles.Controls.Add(this.ftrMoviles);
             this.tgrpMoviles.Controls.Add(this.teModelo);
@@ -125,7 +129,7 @@ namespace Mrln.Mv
             this.tgrpMoviles.ShadowColor = System.Drawing.Color.DarkGray;
             this.tgrpMoviles.ShadowControl = false;
             this.tgrpMoviles.ShadowThickness = 3;
-            this.tgrpMoviles.Size = new System.Drawing.Size(225, 518);
+            this.tgrpMoviles.Size = new System.Drawing.Size(225, 550);
             this.tgrpMoviles.TabIndex = 38;
             this.tgrpMoviles.Title = "Móviles";
             this.tgrpMoviles.TitleAlignment = TNGS.NetControls.TitledGroup.TitleAlign.Center;
@@ -138,7 +142,7 @@ namespace Mrln.Mv
             // 
             this.teEstado.BackColor = System.Drawing.SystemColors.Window;
             this.teEstado.Enabled = false;
-            this.teEstado.Location = new System.Drawing.Point(76, 489);
+            this.teEstado.Location = new System.Drawing.Point(76, 518);
             this.teEstado.Name = "teEstado";
             this.teEstado.Size = new System.Drawing.Size(138, 23);
             this.teEstado.TabIndex = 25;
@@ -158,7 +162,7 @@ namespace Mrln.Mv
             // 
             this.teModelo.BackColor = System.Drawing.SystemColors.Window;
             this.teModelo.Enabled = false;
-            this.teModelo.Location = new System.Drawing.Point(76, 463);
+            this.teModelo.Location = new System.Drawing.Point(76, 491);
             this.teModelo.Name = "teModelo";
             this.teModelo.Size = new System.Drawing.Size(138, 23);
             this.teModelo.TabIndex = 24;
@@ -180,7 +184,7 @@ namespace Mrln.Mv
             this.lblEstado.BackColor = System.Drawing.Color.Transparent;
             this.lblEstado.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEstado.ForeColor = System.Drawing.Color.Black;
-            this.lblEstado.Location = new System.Drawing.Point(12, 489);
+            this.lblEstado.Location = new System.Drawing.Point(12, 518);
             this.lblEstado.Name = "lblEstado";
             this.lblEstado.Size = new System.Drawing.Size(55, 18);
             this.lblEstado.TabIndex = 23;
@@ -201,7 +205,7 @@ namespace Mrln.Mv
             this.lblModelo.BackColor = System.Drawing.Color.Transparent;
             this.lblModelo.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblModelo.ForeColor = System.Drawing.Color.Black;
-            this.lblModelo.Location = new System.Drawing.Point(12, 464);
+            this.lblModelo.Location = new System.Drawing.Point(12, 492);
             this.lblModelo.Name = "lblModelo";
             this.lblModelo.Size = new System.Drawing.Size(55, 18);
             this.lblModelo.TabIndex = 20;
@@ -611,11 +615,32 @@ namespace Mrln.Mv
             this.fgKm.SkinFixed = true;
             this.fgKm.TabIndex = 0;
             // 
+            // fullLabel5
+            // 
+            this.fullLabel5.BackColor = System.Drawing.Color.Transparent;
+            this.fullLabel5.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fullLabel5.ForeColor = System.Drawing.Color.Black;
+            this.fullLabel5.Location = new System.Drawing.Point(12, 464);
+            this.fullLabel5.Name = "fullLabel5";
+            this.fullLabel5.Size = new System.Drawing.Size(55, 18);
+            this.fullLabel5.TabIndex = 26;
+            this.fullLabel5.Text = "Tipo:";
+            // 
+            // teTipoMovil
+            // 
+            this.teTipoMovil.BackColor = System.Drawing.SystemColors.Window;
+            this.teTipoMovil.Enabled = false;
+            this.teTipoMovil.Location = new System.Drawing.Point(76, 464);
+            this.teTipoMovil.Name = "teTipoMovil";
+            this.teTipoMovil.Size = new System.Drawing.Size(138, 23);
+            this.teTipoMovil.TabIndex = 27;
+            this.teTipoMovil.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // Moviles
             // 
             this.AllowEndUserDocking = false;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
-            this.ClientSize = new System.Drawing.Size(1008, 651);
+            this.ClientSize = new System.Drawing.Size(1008, 673);
             this.CloseButton = false;
             this.CloseButtonVisible = false;
             this.Controls.Add(this.xpnlPanelAtras);
@@ -677,5 +702,7 @@ namespace Mrln.Mv
         private TNGS.NetControls.GlassButton gbHistorialCompleto;
         private TNGS.NetControls.GlassButton gbInfracciones;
         private TNGS.NetControls.GlassButton gbAccidentes;
+        private TNGS.NetControls.TextEdit teTipoMovil;
+        private TNGS.NetControls.FullLabel fullLabel5;
     }
 }

@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 18/07/2018 08:15
+// Fecha       : 22/07/2018 07:17
 // Sistema     : Mrln
 // Tabla       : Alertas
 //----------------------------------------------------------------------------
@@ -55,7 +55,7 @@ begin
          Select alr_nro_nroconfig,
                 alr_nro_nroalerta,
                 alr_des_descripcion,
-                alr_xde_detalle,
+                alr_d2x_detalle,
                 alr_cd1_importancia,
                 alr_fyh_fechadisparada,
                 alr_fyh_fechavista,
@@ -76,7 +76,7 @@ begin
          Select alr_nro_nroconfig,
                 alr_nro_nroalerta,
                 alr_des_descripcion,
-                alr_xde_detalle,
+                alr_d2x_detalle,
                 alr_cd1_importancia,
                 alr_fyh_fechadisparada,
                 alr_fyh_fechavista,
@@ -191,7 +191,7 @@ begin
          Select alr_nro_nroconfig,
                 alr_nro_nroalerta,
                 alr_des_descripcion,
-                alr_xde_detalle,
+                alr_d2x_detalle,
                 alr_cd1_importancia,
                 alr_fyh_fechadisparada,
                 alr_fyh_fechavista,
@@ -212,7 +212,7 @@ begin
          Select alr_nro_nroconfig,
                 alr_nro_nroalerta,
                 alr_des_descripcion,
-                alr_xde_detalle,
+                alr_d2x_detalle,
                 alr_cd1_importancia,
                 alr_fyh_fechadisparada,
                 alr_fyh_fechavista,
@@ -248,7 +248,7 @@ go
 --- <param name="@alr_nro_nroconfig">Nro Config Alerta</param>
 --- <param name="@alr_nro_nroalerta">Nro Alerta</param>
 --- <param name="@alr_des_descripcion">Descripción</param>
---- <param name="@alr_xde_detalle">Detalle</param>
+--- <param name="@alr_d2x_detalle">Detalle</param>
 --- <param name="@alr_cd1_importancia">Importancia</param>
 --- <param name="@alr_fyh_fechadisparada">Fecha Disparada</param>
 --- <param name="@alr_fyh_fechavista">Fecha Vista</param>
@@ -276,7 +276,7 @@ create procedure dbo.ALERTAS_INSERT
 @alr_nro_nroconfig tngs_numero,
 @alr_nro_nroalerta tngs_numero,
 @alr_des_descripcion tngs_descripcion,
-@alr_xde_detalle tngs_descripcion_x,
+@alr_d2x_detalle tngs_descripcion_200,
 @alr_cd1_importancia tngs_codigo_1,
 @alr_fyh_fechadisparada tngs_fecyhor,
 @alr_fyh_fechavista tngs_fecyhor,
@@ -293,7 +293,7 @@ begin
            @alr_nro_nroconfig,
            @alr_nro_nroalerta,
            @alr_des_descripcion,
-           @alr_xde_detalle,
+           @alr_d2x_detalle,
            @alr_cd1_importancia,
            @alr_fyh_fechadisparada,
            @alr_fyh_fechavista,
@@ -323,7 +323,7 @@ go
 --- <param name="@alr_nro_nroconfig">Nro Config Alerta</param>
 --- <param name="@alr_nro_nroalerta">Nro Alerta</param>
 --- <param name="@alr_des_descripcion">Descripción</param>
---- <param name="@alr_xde_detalle">Detalle</param>
+--- <param name="@alr_d2x_detalle">Detalle</param>
 --- <param name="@alr_cd1_importancia">Importancia</param>
 --- <param name="@alr_fyh_fechadisparada">Fecha Disparada</param>
 --- <param name="@alr_fyh_fechavista">Fecha Vista</param>
@@ -351,7 +351,7 @@ create procedure dbo.ALERTAS_UPDATE
 @alr_nro_nroconfig tngs_numero,
 @alr_nro_nroalerta tngs_numero,
 @alr_des_descripcion tngs_descripcion,
-@alr_xde_detalle tngs_descripcion_x,
+@alr_d2x_detalle tngs_descripcion_200,
 @alr_cd1_importancia tngs_codigo_1,
 @alr_fyh_fechadisparada tngs_fecyhor,
 @alr_fyh_fechavista tngs_fecyhor,
@@ -365,7 +365,7 @@ begin
 
    Update TNGS_Mrln..Alertas
       set alr_des_descripcion= @alr_des_descripcion,
-          alr_xde_detalle= @alr_xde_detalle,
+          alr_d2x_detalle= @alr_d2x_detalle,
           alr_cd1_importancia= @alr_cd1_importancia,
           alr_fyh_fechadisparada= @alr_fyh_fechadisparada,
           alr_fyh_fechavista= @alr_fyh_fechavista,
@@ -588,6 +588,67 @@ go
 ---////////////////////////////////////////////////////////
 ---
 --- <summary>
+--- Método Fijo: GetAlertasFromMovil
+--- </summary>
+--- <param name="@patente">Patente</param>
+--- <param name="@usuario">Usuario que ejecuta el SP</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.ALERTAS_GETALERTASFROMMOVIL'
+
+if exists (select * from sysobjects where id = object_id('dbo.ALERTAS_GETALERTASFROMMOVIL'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.ALERTAS_GETALERTASFROMMOVIL
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.ALERTAS_GETALERTASFROMMOVIL
+(
+@patente tngs_codigo_e,
+@usuario tngs_nombre
+)
+as
+begin
+
+   Select alr_nro_nroconfig,
+          alr_nro_nroalerta,
+          alr_des_descripcion,
+          alr_d2x_detalle,
+          alr_cd1_importancia,
+          alr_fyh_fechadisparada,
+          alr_fyh_fechavista,
+          alr_nom_usuariovista,
+          alr_nro_repetirendias,
+          alr_cd1_finalizada,
+          TNGS_Mrln..Alertas.instante,
+          TNGS_Mrln..Alertas.deleted,
+          TNGS_Mrln..Alertas.usuario,
+          TNGS_Mrln..Alertas.version
+     from TNGS_Mrln..Alertas 
+   join MvlAlertas 
+   on alr_nro_nroconfig = mal_nro_nroconfigalerta 
+   where mal_ecd_patente = @patente 
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.ALERTAS_GETALERTASFROMMOVIL to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
 --- Método Fijo: GetPendientesFromMov
 --- </summary>
 --- <param name="@patente">Patente</param>
@@ -618,7 +679,7 @@ begin
    Select alr_nro_nroconfig,
           alr_nro_nroalerta,
           alr_des_descripcion,
-          alr_xde_detalle,
+          alr_d2x_detalle,
           alr_cd1_importancia,
           alr_fyh_fechadisparada,
           alr_fyh_fechavista,

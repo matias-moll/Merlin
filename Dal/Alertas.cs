@@ -10,7 +10,7 @@ namespace Mrln.Dal
     //----------------------------------------------------------------------------
     //                         TNG Software DAL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 18/07/2018 08:16
+    // Fecha                    : 22/07/2018 07:18
     // Sistema                  : Mrln
     // Clase para Administrar   : Alertas
     // Basada en la Tabla       : Alertas
@@ -177,7 +177,7 @@ namespace Mrln.Dal
                                        p_dbcAccess.MakeParam("@alr_nro_nroconfig", p_iNroconfig),
                                        p_dbcAccess.MakeParam("@alr_nro_nroalerta", p_iNroalerta),
                                        p_dbcAccess.MakeParam("@alr_des_descripcion", p_strDescripcion),
-                                       p_dbcAccess.MakeParam("@alr_xde_detalle", p_strDetalle),
+                                       p_dbcAccess.MakeParam("@alr_d2x_detalle", p_strDetalle),
                                        p_dbcAccess.MakeParam("@alr_cd1_importancia", p_strImportancia),
                                        p_dbcAccess.MakeParam("@alr_fyh_fechadisparada", p_dtFechadisparada),
                                        p_dbcAccess.MakeParam("@alr_fyh_fechavista", p_dtFechavista),
@@ -231,7 +231,7 @@ namespace Mrln.Dal
                                        p_dbcAccess.MakeParam("@alr_nro_nroconfig", p_iNroconfig),
                                        p_dbcAccess.MakeParam("@alr_nro_nroalerta", p_iNroalerta),
                                        p_dbcAccess.MakeParam("@alr_des_descripcion", p_strDescripcion),
-                                       p_dbcAccess.MakeParam("@alr_xde_detalle", p_strDetalle),
+                                       p_dbcAccess.MakeParam("@alr_d2x_detalle", p_strDetalle),
                                        p_dbcAccess.MakeParam("@alr_cd1_importancia", p_strImportancia),
                                        p_dbcAccess.MakeParam("@alr_fyh_fechadisparada", p_dtFechadisparada),
                                        p_dbcAccess.MakeParam("@alr_fyh_fechavista", p_dtFechavista),
@@ -365,6 +365,36 @@ namespace Mrln.Dal
         #endregion
 
         #region Metodos del Usuario
+
+        /// <summary>
+        /// Método Fijo: GetAlertasFromMovil
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name= "p_strPatente">Patente</param>
+        /// <param name="p_dsResult">DataSet donde devolver el registro</param>
+        /// <param name="p_strTabla">Nombre de la tabla a llenar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        public static int GetAlertasFromMovil(DBConn p_dbcAccess,
+                                              string p_strPatente,
+                                              ref DataSet p_dsResult,
+                                              string p_strTabla,
+                                              ref StatMsg p_smResult)
+        {
+            try {
+                return DBRuts.Exec_DS(p_dbcAccess,
+                                      "TNGS_Mrln..ALERTAS_GETALERTASFROMMOVIL",
+                                      new DbParameter[] {
+                                          p_dbcAccess.MakeParam("@patente", p_strPatente),
+                                          p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
+                                      },
+                                      ref p_dsResult, p_strTabla);
+            }
+            catch (Exception l_expData) {
+                // Error en el método fijo
+                p_smResult.DalError(l_expData);
+                return -1;
+            }
+        }
 
         /// <summary>
         /// Método Fijo: GetPendientesFromMov

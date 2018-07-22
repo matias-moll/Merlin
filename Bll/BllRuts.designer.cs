@@ -16,7 +16,7 @@ namespace Mrln.Bll
     //----------------------------------------------------------------------------
     //                         TNG Software BLL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 18/07/2018 08:16
+    // Fecha                    : 22/07/2018 07:18
     // Sistema                  : Mrln
     // Clase para Administrar   : 
     //----------------------------------------------------------------------------
@@ -122,7 +122,7 @@ namespace Mrln.Bll
                 case "alr_nro_nroconfig"               : {return "V1Nro Config AlertaNN3";}
                 case "alr_nro_nroalerta"               : {return "V1Nro AlertaNN3";}
                 case "alr_des_descripcion"             : {return "V1DescripciónCN1";}
-                case "alr_xde_detalle"                 : {return "V1DetalleCN1";}
+                case "alr_d2x_detalle"                 : {return "V1DetalleCN1";}
                 case "alr_cd1_importancia"             : {return "V1ImportanciaCN2";}
                 case "alr_fyh_fechadisparada"          : {return "V1Fecha DisparadaDN2";}
                 case "alr_fyh_fechavista"              : {return "V1Fecha VistaDN2";}

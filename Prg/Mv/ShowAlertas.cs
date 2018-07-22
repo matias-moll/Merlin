@@ -18,15 +18,15 @@ namespace Mrln.Mv
 {
     public partial class ShowAlertas : Form
     {
-        Bel.LEAlertas m_leAlertas = null;
+        List<EAlerta> m_lsAlertas = null;
         private StatMsg m_smResult = null;
         Bel.EAlerta m_eAlertaEnPantalla = null;
 
-        public ShowAlertas(Bel.LEAlertas alertasAMostrar)
+        public ShowAlertas(List<EAlerta> alertasAMostrar)
         {
             InitializeComponent();
             m_smResult = new StatMsg();
-            m_leAlertas = alertasAMostrar;
+            m_lsAlertas = alertasAMostrar;
         }
 
         private void ShowAlertas_Load(object sender, EventArgs e)
@@ -89,8 +89,8 @@ namespace Mrln.Mv
         {
             neRepetirEn.Numero = 0;
 
-            m_eAlertaEnPantalla = m_leAlertas[0];
-            lblTotalAlertas.Text = m_leAlertas.Count.ToString();
+            m_eAlertaEnPantalla = m_lsAlertas[0];
+            lblTotalAlertas.Text = m_lsAlertas.Count.ToString();
 
             lblNroAlerta.Text = m_eAlertaEnPantalla.Nroalerta.ToString();
             lblDescripcion.Text = m_eAlertaEnPantalla.Descripcion;
@@ -100,7 +100,7 @@ namespace Mrln.Mv
         private void marcarAlertaEnPantallaVista()
         {
             // Si el alerta ya fue vista no hay que hacer nada
-            if (m_eAlertaEnPantalla.Usuariovista.Trim() == "")
+            if (m_eAlertaEnPantalla.Usuariovista.Trim() != "")
                 return;
 
             DateTime fechaActual = Bll.Moviles.fGetDate(ref m_smResult);
@@ -108,14 +108,16 @@ namespace Mrln.Mv
 
             m_eAlertaEnPantalla.Fechavista = fechaActual;
             m_eAlertaEnPantalla.Usuariovista = App.Usuario.Usuario;
+            // El default es resetear este campo, si el usuario clickeo el repetir con un valor valido se va a llenar luego.
+            m_eAlertaEnPantalla.Repetirendias = 0; 
         }
 
         private void removerAlertaActualYMostrarSiguiente()
         {
-            m_leAlertas.RemoveEntity(m_eAlertaEnPantalla.Nroconfig, m_eAlertaEnPantalla.Nroalerta);
+            m_lsAlertas.Remove(m_eAlertaEnPantalla);
 
             // Si no quedan mas alertas cerramos el formulario, sino mostramos la siguiente en pantalla
-            if (m_leAlertas.Count == 0)
+            if (m_lsAlertas.Count == 0)
                 gbAceptar_Click(this, null);
             else
                 mostrarAlertaEnPantalla();

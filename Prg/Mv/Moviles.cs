@@ -87,6 +87,7 @@ namespace Mrln.Mv
         private void LlenarDatos()
         {
             tePatente.Text = m_entMovil.Patente;
+            teTipoMovil.Text = m_entMovil.Tipodemovil;
             teModelo.Text = GetModelo(m_entMovil.Modelo);
             // ordenamos por fecha descendentemente para que quede primero el ultimo estado (actual).
             m_entMovil.MovilesEstado.Sort(String.Format("{0} desc", Bel.EMovilEstado.FechaCmp));
@@ -283,8 +284,20 @@ namespace Mrln.Mv
             if (alertasAMostrar.Count == 0)
                 return;
 
-            ShowAlertas ventanaAlertas = new ShowAlertas(alertasAMostrar);
+            List<EAlerta> listaAlertas = alertasAMostrar.ToList().Where(alerta => alerta.Repetirendias == 0 || seCumplioRepetirEnDias(alerta)).ToList();
+            if (MsgRuts.AnalizeError(this, m_smResult)) return;
+
+            ShowAlertas ventanaAlertas = new ShowAlertas(listaAlertas);
             ventanaAlertas.ShowDialog(this);
+        }
+
+        private bool seCumplioRepetirEnDias(EAlerta alerta)
+        {
+            DateTime fechaActual = Bll.Moviles.fGetDate(ref m_smResult);
+            if (MsgRuts.AnalizeError(this, m_smResult)) return false;
+
+            return (fechaActual > alerta.Fechavista.AddDays(alerta.Repetirendias));
+
         }
 
         // Cambia el estado del form y llena las grillas

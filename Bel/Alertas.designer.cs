@@ -14,7 +14,7 @@ namespace Mrln.Bel
     //----------------------------------------------------------------------------
     //                         TNG Software BEL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 18/07/2018 08:16
+    // Fecha                    : 22/07/2018 07:18
     // Sistema                  : Mrln
     // Clase para Administrar   : Alertas
     //----------------------------------------------------------------------------
@@ -81,7 +81,7 @@ namespace Mrln.Bel
             l_drTemp["alr_nro_nroconfig"]= XMLRuts.ExtractXAttr(l_xndData, "alr_nro_nroconfig", 0);
             l_drTemp["alr_nro_nroalerta"]= XMLRuts.ExtractXAttr(l_xndData, "alr_nro_nroalerta", 0);
             l_drTemp["alr_des_descripcion"]= XMLRuts.ExtractXAttr(l_xndData, "alr_des_descripcion");
-            l_drTemp["alr_xde_detalle"]= XMLRuts.ExtractXAttr(l_xndData, "alr_xde_detalle");
+            l_drTemp["alr_d2x_detalle"]= XMLRuts.ExtractXAttr(l_xndData, "alr_d2x_detalle");
             l_drTemp["alr_cd1_importancia"]= XMLRuts.ExtractXAttr(l_xndData, "alr_cd1_importancia");
             l_drTemp["alr_fyh_fechadisparada"]= XMLRuts.ExtractXAttr(l_xndData, "alr_fyh_fechadisparada", true);
             l_drTemp["alr_fyh_fechavista"]= XMLRuts.ExtractXAttr(l_xndData, "alr_fyh_fechavista", true);
@@ -134,7 +134,7 @@ namespace Mrln.Bel
             l_drTemp["alr_nro_nroconfig"]= 0;
             l_drTemp["alr_nro_nroalerta"]= 0;
             l_drTemp["alr_des_descripcion"]= "";
-            l_drTemp["alr_xde_detalle"]= "";
+            l_drTemp["alr_d2x_detalle"]= "";
             l_drTemp["alr_cd1_importancia"]= "";
             l_drTemp["alr_fyh_fechadisparada"]= DateTimeRuts.Empty;
             l_drTemp["alr_fyh_fechavista"]= DateTimeRuts.Empty;
@@ -186,7 +186,7 @@ namespace Mrln.Bel
             l_drTemp["alr_nro_nroconfig"]= p_iNroconfig;
             l_drTemp["alr_nro_nroalerta"]= p_iNroalerta;
             l_drTemp["alr_des_descripcion"]= p_strDescripcion;
-            l_drTemp["alr_xde_detalle"]= p_strDetalle;
+            l_drTemp["alr_d2x_detalle"]= p_strDetalle;
             l_drTemp["alr_cd1_importancia"]= p_strImportancia;
             l_drTemp["alr_fyh_fechadisparada"]= p_dtFechadisparada;
             l_drTemp["alr_fyh_fechavista"]= p_dtFechavista;
@@ -223,7 +223,7 @@ namespace Mrln.Bel
                 l_dcStruct[0]= new DataColumn("alr_nro_nroconfig", typeof(int));
                 l_dcStruct[1]= new DataColumn("alr_nro_nroalerta", typeof(int));
                 l_dcStruct[2]= new DataColumn("alr_des_descripcion", typeof(string));
-                l_dcStruct[3]= new DataColumn("alr_xde_detalle", typeof(string));
+                l_dcStruct[3]= new DataColumn("alr_d2x_detalle", typeof(string));
                 l_dcStruct[4]= new DataColumn("alr_cd1_importancia", typeof(string));
                 l_dcStruct[5]= new DataColumn("alr_fyh_fechadisparada", typeof(DateTime));
                 l_dcStruct[6]= new DataColumn("alr_fyh_fechavista", typeof(DateTime));
@@ -296,7 +296,7 @@ namespace Mrln.Bel
         /// </summary>
         public static string DetalleCmp
         {
-           get {return "alr_xde_detalle";}
+           get {return "alr_d2x_detalle";}
         }
 
         /// <summary>
@@ -304,10 +304,10 @@ namespace Mrln.Bel
         /// </summary>
         public string Detalle
         {
-            get {return ((string) InternalData["alr_xde_detalle"]).Trim();}
+            get {return ((string) InternalData["alr_d2x_detalle"]).Trim();}
             set {
-                if (value.Trim().Length > 120) value= value.Trim().Substring(0,120);
-                InternalData["alr_xde_detalle"]= value.Trim();
+                if (value.Trim().Length > 200) value= value.Trim().Substring(0,200);
+                InternalData["alr_d2x_detalle"]= value.Trim();
             }
         }
 
@@ -444,7 +444,7 @@ namespace Mrln.Bel
                 l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "alr_nro_nroconfig", Nroconfig));
                 l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "alr_nro_nroalerta", Nroalerta));
                 l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "alr_des_descripcion", Descripcion));
-                l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "alr_xde_detalle", Detalle));
+                l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "alr_d2x_detalle", Detalle));
                 l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "alr_cd1_importancia", Importancia));
                 l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "alr_fyh_fechadisparada", Fechadisparada));
                 l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "alr_fyh_fechavista", Fechavista));
