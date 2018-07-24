@@ -145,11 +145,14 @@ namespace Mrln.Mv
 
         private void llenarComboTipoMovil()
         {
-            //TODO : Traer los tipos de movil del CEDI usando el parametro.
-            EParametro conexionCEDI = App.ParaGet("connCEDI", true, ref m_stResult);
-            if (MsgRuts.AnalizeError(this, m_stResult)) return;
+            ListaEntidades tiposMoviles = EnCll.Moviles.GetListaTipoMoviles;
 
-            cdcTipoMovil.AddStrCD("AAAA", "UTIM", 0);
+            if(tiposMoviles == null)
+                tiposMoviles = Bll.Moviles.fGetTiposMovilesCEDI();
+            
+
+            cdcTipoMovil.FillFromStrLEntidad(tiposMoviles, "codigo", "descripcion", "deleted");
+
         }
 
         // chequea que todos los campos tengan datos validos.

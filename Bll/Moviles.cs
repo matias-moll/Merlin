@@ -154,6 +154,31 @@ namespace Mrln.Bll
             return l_lstLEListaListaEntidades;
         }
 
+        public static ListaEntidades fGetTiposMovilesCEDI()
+        {
+            // TODO agregar try catchs, usar appRuts en vez de app. 
+
+            /*
+            EParametro conexionCEDI = App.ParaGet("connCEDI", true, ref m_stResult);
+            if (MsgRuts.AnalizeError(this, m_stResult)) return;
+
+  
+            // Crear metodo en la Bll 
+            DBConn.AltDatConn = conexionCEDI.VStr;
+
+            DbConn conexion = DBRuts.GetConection(Connections.AltDat, "tngsqbe", CriptoRuts.DESHide("qbe"));
+
+            
+
+            */
+            DBConn conexion = null;
+            DataSet l_dsResult = null;
+            DBRuts.Exec_DS(conexion, "select * from TNGS_Cedi..MerlinTiposMovilesV1", ref l_dsResult, "TiposMoviles");
+            return new ListaEntidades(l_dsResult.Tables["TiposMoviles"]);
+            // Crear una base de datos de Cedi, vacia, con una tabla de moviles y una vista que se llame asi y me devuelva codigo y descripcion como la espero.
+
+        }
+
         /// <summary>
         /// Me devuelve una listaEntidad con los 5 ultimos Combustibles de un movil
         /// </summary>

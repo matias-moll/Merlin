@@ -1,11 +1,66 @@
 TODO:
 
-Discutir y diseñar la idea de MovilesAlertas.
-Controles desde los 10k km cada 10k km hasta los 100k km
-Controles especificos a tal kilometraje
-Controles despues de X km de haber realizado tal reparacion.
+
+Interface con CEDI:
+
+Parte 1, tipo de moviles:
+
+Impactar SPs y modificar tabla de moviles porque cambio el cod tipo de movil por descripcion.
+
+Modificar el metodo de alta para que toem la descripcion de la combo en vez del codigo.
+
+Terminar el codigo de Bll (cll) tiene TODOs.
 
 
+Parte 2, Moviles Activos:
+Tengo que crear una vista que se llame CediMovilesActivosV1 y que devuelva las patentes de todos los moviles que tengan un estado
+operativo = S.
+Esta vista va en un script en la carpeta FijVis (a mano, no se documenta)
+Revisar si el unificar del generador me unifica la vista con todo lo demas o no.
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+Crear un constructor de consultas.
+
+Modulos del Qbe:
+Alertas
+Moviles
+MovilesCombustibles
+MovilesInfracciones
+OrdenesDeTrabajo
+OTItems
+
+
+
+Para poder usar un campo de una tabla hija en reportes de constructod e consultas de la tabla padre
+hay que documentar funciones que hagan el 1-N.
+En el caso de moviles voy a necesitar funciones para por ejemplo:
+Sumar el total gastado en MovilesCombustibles.
+Traer el max de MovilesKms
+Si veo que se me ocurre otro, tambien sumarlo.
+Estas funciones se documentan en la Dal.
+
+Crear una funcion para devolver el count de:
+Accidentes
+Alertas
+Infracciones
+
+
+
+Una vez documentado todo esto en Qbe, hay que documentar una entrada de menu para cada Modulo documentado.
+
+Crear un menu Reportes y otro Estadisticas.
+Y despues al costado van los menues de reportes creados a mano.
+
+
+Copiar del ruby como se documentan estas entradas de menu para llamar al form Dqbe
+estandar que llevan dos parametros.
+
+Q = Query
+S = Statistics
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------
 
 Pregunta:
 Tipo de nafta no les interesara saber? Para cuando cargan el MvlCombustibles.

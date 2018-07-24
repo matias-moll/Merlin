@@ -32,6 +32,8 @@ namespace Mrln.Mv
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Moviles));
             this.xpnlPanelAtras = new TNGS.NetControls.XPanel();
             this.tgrpMoviles = new TNGS.NetControls.TitledGroup();
+            this.teTipoMovil = new TNGS.NetControls.TextEdit();
+            this.fullLabel5 = new TNGS.NetControls.FullLabel();
             this.teEstado = new TNGS.NetControls.TextEdit();
             this.ftrMoviles = new TNGS.NetControls.FullTreeView();
             this.teModelo = new TNGS.NetControls.TextEdit();
@@ -63,8 +65,6 @@ namespace Mrln.Mv
             this.fgCombustibles = new TNGS.NetControls.FullGrid();
             this.fgEquipamiento = new TNGS.NetControls.FullGrid();
             this.fgKm = new TNGS.NetControls.FullGrid();
-            this.fullLabel5 = new TNGS.NetControls.FullLabel();
-            this.teTipoMovil = new TNGS.NetControls.TextEdit();
             this.xpnlPanelAtras.SuspendLayout();
             this.tgrpMoviles.SuspendLayout();
             this.tsContainer1.SuspendLayout();
@@ -137,6 +137,27 @@ namespace Mrln.Mv
             this.tgrpMoviles.TitleBackgroundDefault = TNGS.NetControls.ColorRuts.ColoresDefault.None;
             this.tgrpMoviles.TitleFont = new System.Drawing.Font("Segoe UI", 10F);
             this.tgrpMoviles.TitleFontColor = System.Drawing.Color.White;
+            // 
+            // teTipoMovil
+            // 
+            this.teTipoMovil.BackColor = System.Drawing.SystemColors.Window;
+            this.teTipoMovil.Enabled = false;
+            this.teTipoMovil.Location = new System.Drawing.Point(76, 464);
+            this.teTipoMovil.Name = "teTipoMovil";
+            this.teTipoMovil.Size = new System.Drawing.Size(138, 23);
+            this.teTipoMovil.TabIndex = 27;
+            this.teTipoMovil.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // fullLabel5
+            // 
+            this.fullLabel5.BackColor = System.Drawing.Color.Transparent;
+            this.fullLabel5.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fullLabel5.ForeColor = System.Drawing.Color.Black;
+            this.fullLabel5.Location = new System.Drawing.Point(12, 464);
+            this.fullLabel5.Name = "fullLabel5";
+            this.fullLabel5.Size = new System.Drawing.Size(55, 18);
+            this.fullLabel5.TabIndex = 26;
+            this.fullLabel5.Text = "Tipo:";
             // 
             // teEstado
             // 
@@ -614,27 +635,6 @@ namespace Mrln.Mv
             this.fgKm.Size = new System.Drawing.Size(325, 211);
             this.fgKm.SkinFixed = true;
             this.fgKm.TabIndex = 0;
-            // 
-            // fullLabel5
-            // 
-            this.fullLabel5.BackColor = System.Drawing.Color.Transparent;
-            this.fullLabel5.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fullLabel5.ForeColor = System.Drawing.Color.Black;
-            this.fullLabel5.Location = new System.Drawing.Point(12, 464);
-            this.fullLabel5.Name = "fullLabel5";
-            this.fullLabel5.Size = new System.Drawing.Size(55, 18);
-            this.fullLabel5.TabIndex = 26;
-            this.fullLabel5.Text = "Tipo:";
-            // 
-            // teTipoMovil
-            // 
-            this.teTipoMovil.BackColor = System.Drawing.SystemColors.Window;
-            this.teTipoMovil.Enabled = false;
-            this.teTipoMovil.Location = new System.Drawing.Point(76, 464);
-            this.teTipoMovil.Name = "teTipoMovil";
-            this.teTipoMovil.Size = new System.Drawing.Size(138, 23);
-            this.teTipoMovil.TabIndex = 27;
-            this.teTipoMovil.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // Moviles
             // 

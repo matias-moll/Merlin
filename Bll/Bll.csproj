@@ -59,6 +59,8 @@
     <Compile Include="BllRuts.designer.cs">
       <DependentUpon>BllRuts.cs</DependentUpon>
     </Compile>
+    <Compile Include="Cll\EnCll.cs" />
+    <Compile Include="Cll\Moviles.cs" />
     <Compile Include="Controles.cs" />
     <Compile Include="Controles.designer.cs">
       <DependentUpon>Controles.cs</DependentUpon>
