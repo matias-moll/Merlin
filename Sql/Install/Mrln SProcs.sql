@@ -1,3 +1,818 @@
+/*----------------------------------------------------------------------------
+//                         TNG Software Fcts Generator
+//----------------------------------------------------------------------------
+// Fecha       : 27/07/2018 07:12
+// Sistema     : Mrln
+// Tabla       : Moviles
+//----------------------------------------------------------------------------
+// © 1999-2018 by TNG Software                                      Gndr 5.20
+//---------------------------------------------------------------------------*/
+
+/* ***************************************************************************
+/  Atencion!!!
+/     Este archivo fue generado por un programa en forma automática. Cualquier
+/     modificación que se realize sobre él se perderá en la próxima
+/     regeneración.
+/  **************************************************************************/
+
+/*--------------------------------------------------*/
+/* Selecciono la base en la que se crearan las Fcts */
+/*--------------------------------------------------*/
+
+use TNGS_Mrln
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Función : getModelo
+--- </summary>
+--- <param name="@patente">Patente</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Function: MOVILES_GETMODELO'
+
+if exists (select * from sysobjects where id = object_id('MOVILES_GETMODELO'))
+begin
+   print '       - Borrando la vieja Función'
+   drop function MOVILES_GETMODELO
+end
+go
+
+print '       - Creando la nueva Función'
+go
+
+create function MOVILES_GETMODELO
+(
+@patente tngs_codigo_e
+)
+returns char(30)
+as
+begin
+
+   DECLARE @retval char(30) 
+    
+   select @retval = mds_des_des 
+   from Modelos 
+   join Moviles 
+   on mds_rcd_cod = mov_rcd_modelo 
+   where mov_ecd_patente = @patente 
+    
+   return @retval 
+
+end
+go
+
+print '       - Asignando permisos a la Función'
+
+grant execute on MOVILES_GETMODELO to tngsmodulos
+grant execute on MOVILES_GETMODELO to tngsqbe
+
+print ' '
+go
+
+/*--------------------------------------------------------------------------
+// Fin del script de creacion de las Funciones de la tabla: Moviles
+//--------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------
+//                         TNG Software Fcts Generator
+//----------------------------------------------------------------------------
+// Fecha       : 27/07/2018 07:12
+// Sistema     : Mrln
+// Tabla       : MvlAccidentes
+//----------------------------------------------------------------------------
+// © 1999-2018 by TNG Software                                      Gndr 5.20
+//---------------------------------------------------------------------------*/
+
+/* ***************************************************************************
+/  Atencion!!!
+/     Este archivo fue generado por un programa en forma automática. Cualquier
+/     modificación que se realize sobre él se perderá en la próxima
+/     regeneración.
+/  **************************************************************************/
+
+/*--------------------------------------------------*/
+/* Selecciono la base en la que se crearan las Fcts */
+/*--------------------------------------------------*/
+
+use TNGS_Mrln
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Función : getCountFromMovil
+--- </summary>
+--- <param name="@patente">Patente</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Function: MVLACCIDENTES_GETCOUNTFROMMOVIL'
+
+if exists (select * from sysobjects where id = object_id('MVLACCIDENTES_GETCOUNTFROMMOVIL'))
+begin
+   print '       - Borrando la vieja Función'
+   drop function MVLACCIDENTES_GETCOUNTFROMMOVIL
+end
+go
+
+print '       - Creando la nueva Función'
+go
+
+create function MVLACCIDENTES_GETCOUNTFROMMOVIL
+(
+@patente tngs_codigo_e
+)
+returns int
+as
+begin
+
+   DECLARE @retval int 
+    
+   SELECT @retval = count(*) 
+   FROM MvlAccidentes 
+   WHERE mva_ecd_patente = @patente 
+    
+   return @retval 
+
+end
+go
+
+print '       - Asignando permisos a la Función'
+
+grant execute on MVLACCIDENTES_GETCOUNTFROMMOVIL to tngsmodulos
+grant execute on MVLACCIDENTES_GETCOUNTFROMMOVIL to tngsqbe
+
+print ' '
+go
+
+/*--------------------------------------------------------------------------
+// Fin del script de creacion de las Funciones de la tabla: MvlAccidentes
+//--------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------
+//                         TNG Software Fcts Generator
+//----------------------------------------------------------------------------
+// Fecha       : 27/07/2018 07:12
+// Sistema     : Mrln
+// Tabla       : MvlAlertas
+//----------------------------------------------------------------------------
+// © 1999-2018 by TNG Software                                      Gndr 5.20
+//---------------------------------------------------------------------------*/
+
+/* ***************************************************************************
+/  Atencion!!!
+/     Este archivo fue generado por un programa en forma automática. Cualquier
+/     modificación que se realize sobre él se perderá en la próxima
+/     regeneración.
+/  **************************************************************************/
+
+/*--------------------------------------------------*/
+/* Selecciono la base en la que se crearan las Fcts */
+/*--------------------------------------------------*/
+
+use TNGS_Mrln
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Función : getCountFromMovil
+--- </summary>
+--- <param name="@patente">Patente</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Function: MVLALERTAS_GETCOUNTFROMMOVIL'
+
+if exists (select * from sysobjects where id = object_id('MVLALERTAS_GETCOUNTFROMMOVIL'))
+begin
+   print '       - Borrando la vieja Función'
+   drop function MVLALERTAS_GETCOUNTFROMMOVIL
+end
+go
+
+print '       - Creando la nueva Función'
+go
+
+create function MVLALERTAS_GETCOUNTFROMMOVIL
+(
+@patente tngs_codigo_e
+)
+returns int
+as
+begin
+
+   DECLARE @retval int 
+    
+   SELECT @retval = count(*) 
+   FROM MvlAlertas 
+   WHERE mal_ecd_patente = @patente 
+    
+   return @retval 
+
+end
+go
+
+print '       - Asignando permisos a la Función'
+
+grant execute on MVLALERTAS_GETCOUNTFROMMOVIL to tngsmodulos
+grant execute on MVLALERTAS_GETCOUNTFROMMOVIL to tngsqbe
+
+print ' '
+go
+
+/*--------------------------------------------------------------------------
+// Fin del script de creacion de las Funciones de la tabla: MvlAlertas
+//--------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------
+//                         TNG Software Fcts Generator
+//----------------------------------------------------------------------------
+// Fecha       : 27/07/2018 07:12
+// Sistema     : Mrln
+// Tabla       : MvlCombustible
+//----------------------------------------------------------------------------
+// © 1999-2018 by TNG Software                                      Gndr 5.20
+//---------------------------------------------------------------------------*/
+
+/* ***************************************************************************
+/  Atencion!!!
+/     Este archivo fue generado por un programa en forma automática. Cualquier
+/     modificación que se realize sobre él se perderá en la próxima
+/     regeneración.
+/  **************************************************************************/
+
+/*--------------------------------------------------*/
+/* Selecciono la base en la que se crearan las Fcts */
+/*--------------------------------------------------*/
+
+use TNGS_Mrln
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Función : getEstacion
+--- </summary>
+--- <param name="@patente">Patente</param>
+--- <param name="@fecha">Fecha y Hora</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Function: MVLCOMBUSTIBLE_GETESTACION'
+
+if exists (select * from sysobjects where id = object_id('MVLCOMBUSTIBLE_GETESTACION'))
+begin
+   print '       - Borrando la vieja Función'
+   drop function MVLCOMBUSTIBLE_GETESTACION
+end
+go
+
+print '       - Creando la nueva Función'
+go
+
+create function MVLCOMBUSTIBLE_GETESTACION
+(
+@patente tngs_codigo_e,
+@fecha tngs_fecyhor
+)
+returns char(30)
+as
+begin
+
+   DECLARE @retval char(30) 
+    
+   select @retval = ets_des_des 
+   from Estaciones 
+   join MvlCombustible 
+   on mco_rcd_codestacion = ets_rcd_cod 
+   where mco_ecd_patente = @patente and mco_fyh_fecha = @fecha 
+    
+   return @retval 
+
+end
+go
+
+print '       - Asignando permisos a la Función'
+
+grant execute on MVLCOMBUSTIBLE_GETESTACION to tngsmodulos
+grant execute on MVLCOMBUSTIBLE_GETESTACION to tngsqbe
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Función : getTotal1AnioMovil
+--- </summary>
+--- <param name="@patente">Patente</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Function: MVLCOMBUSTIBLE_GETTOTAL1ANIOMOVIL'
+
+if exists (select * from sysobjects where id = object_id('MVLCOMBUSTIBLE_GETTOTAL1ANIOMOVIL'))
+begin
+   print '       - Borrando la vieja Función'
+   drop function MVLCOMBUSTIBLE_GETTOTAL1ANIOMOVIL
+end
+go
+
+print '       - Creando la nueva Función'
+go
+
+create function MVLCOMBUSTIBLE_GETTOTAL1ANIOMOVIL
+(
+@patente tngs_codigo_e
+)
+returns decimal
+as
+begin
+
+   DECLARE @retval decimal 
+    
+   SELECT @retval = Sum(mco_imp_importe) 
+   FROM MvlCombustible 
+   WHERE mco_ecd_patente = @patente 
+   and mco_fyh_fecha between DATEADD(MONTH, -12, GETDATE()) and GETDATE() 
+    
+   return @retval 
+
+end
+go
+
+print '       - Asignando permisos a la Función'
+
+grant execute on MVLCOMBUSTIBLE_GETTOTAL1ANIOMOVIL to tngsmodulos
+grant execute on MVLCOMBUSTIBLE_GETTOTAL1ANIOMOVIL to tngsqbe
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Función : getTotal1MesMovil
+--- </summary>
+--- <param name="@patente">Patente</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Function: MVLCOMBUSTIBLE_GETTOTAL1MESMOVIL'
+
+if exists (select * from sysobjects where id = object_id('MVLCOMBUSTIBLE_GETTOTAL1MESMOVIL'))
+begin
+   print '       - Borrando la vieja Función'
+   drop function MVLCOMBUSTIBLE_GETTOTAL1MESMOVIL
+end
+go
+
+print '       - Creando la nueva Función'
+go
+
+create function MVLCOMBUSTIBLE_GETTOTAL1MESMOVIL
+(
+@patente tngs_codigo_e
+)
+returns decimal
+as
+begin
+
+   DECLARE @retval decimal 
+    
+   SELECT @retval = Sum(mco_imp_importe) 
+   FROM MvlCombustible 
+   WHERE mco_ecd_patente = @patente 
+   and mco_fyh_fecha between DATEADD(MONTH, -1, GETDATE()) and GETDATE() 
+    
+   return @retval 
+
+end
+go
+
+print '       - Asignando permisos a la Función'
+
+grant execute on MVLCOMBUSTIBLE_GETTOTAL1MESMOVIL to tngsmodulos
+grant execute on MVLCOMBUSTIBLE_GETTOTAL1MESMOVIL to tngsqbe
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Función : getTotal6MesesMovil
+--- </summary>
+--- <param name="@patente">Patente</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Function: MVLCOMBUSTIBLE_GETTOTAL6MESESMOVIL'
+
+if exists (select * from sysobjects where id = object_id('MVLCOMBUSTIBLE_GETTOTAL6MESESMOVIL'))
+begin
+   print '       - Borrando la vieja Función'
+   drop function MVLCOMBUSTIBLE_GETTOTAL6MESESMOVIL
+end
+go
+
+print '       - Creando la nueva Función'
+go
+
+create function MVLCOMBUSTIBLE_GETTOTAL6MESESMOVIL
+(
+@patente tngs_codigo_e
+)
+returns decimal
+as
+begin
+
+   DECLARE @retval decimal 
+    
+   SELECT @retval = Sum(mco_imp_importe) 
+   FROM MvlCombustible 
+   WHERE mco_ecd_patente = @patente 
+   and mco_fyh_fecha between DATEADD(MONTH, -6, GETDATE()) and GETDATE() 
+    
+   return @retval 
+
+end
+go
+
+print '       - Asignando permisos a la Función'
+
+grant execute on MVLCOMBUSTIBLE_GETTOTAL6MESESMOVIL to tngsmodulos
+grant execute on MVLCOMBUSTIBLE_GETTOTAL6MESESMOVIL to tngsqbe
+
+print ' '
+go
+
+/*--------------------------------------------------------------------------
+// Fin del script de creacion de las Funciones de la tabla: MvlCombustible
+//--------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------
+//                         TNG Software Fcts Generator
+//----------------------------------------------------------------------------
+// Fecha       : 27/07/2018 07:12
+// Sistema     : Mrln
+// Tabla       : MvlEstados
+//----------------------------------------------------------------------------
+// © 1999-2018 by TNG Software                                      Gndr 5.20
+//---------------------------------------------------------------------------*/
+
+/* ***************************************************************************
+/  Atencion!!!
+/     Este archivo fue generado por un programa en forma automática. Cualquier
+/     modificación que se realize sobre él se perderá en la próxima
+/     regeneración.
+/  **************************************************************************/
+
+/*--------------------------------------------------*/
+/* Selecciono la base en la que se crearan las Fcts */
+/*--------------------------------------------------*/
+
+use TNGS_Mrln
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Función : getEstadoActual
+--- </summary>
+--- <param name="@patente">Patente</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Function: MVLESTADOS_GETESTADOACTUAL'
+
+if exists (select * from sysobjects where id = object_id('MVLESTADOS_GETESTADOACTUAL'))
+begin
+   print '       - Borrando la vieja Función'
+   drop function MVLESTADOS_GETESTADOACTUAL
+end
+go
+
+print '       - Creando la nueva Función'
+go
+
+create function MVLESTADOS_GETESTADOACTUAL
+(
+@patente tngs_codigo_e
+)
+returns char(30)
+as
+begin
+
+   DECLARE @retval char(30) 
+    
+   select @retval = est_des_des 
+   from Moviles mv 
+   join MvlEstados mve1 
+   on mov_ecd_patente = mve_ecd_patente 
+   -- Joineamos con la misma tabla para filtrar que traiga solo el ultimo estado (fecha sea maxima) 
+   inner join ( 
+   	select mve2.mve_ecd_patente, max(mve2.mve_fyh_fecha) as maxfecha from MvlEstados mve2 group by mve2.mve_ecd_patente 
+   ) b on mve1.mve_ecd_patente = b.mve_ecd_patente and mve1.mve_fyh_fecha = b.maxfecha 
+   join Estados 
+   on est_rcd_cod = mve1.mve_rcd_codestado 
+   where mve1.mve_ecd_patente = @patente 
+   group by est_des_des 
+    
+    
+   return @retval 
+
+end
+go
+
+print '       - Asignando permisos a la Función'
+
+grant execute on MVLESTADOS_GETESTADOACTUAL to tngsmodulos
+grant execute on MVLESTADOS_GETESTADOACTUAL to tngsqbe
+
+print ' '
+go
+
+/*--------------------------------------------------------------------------
+// Fin del script de creacion de las Funciones de la tabla: MvlEstados
+//--------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------
+//                         TNG Software Fcts Generator
+//----------------------------------------------------------------------------
+// Fecha       : 27/07/2018 07:12
+// Sistema     : Mrln
+// Tabla       : MvlInfracciones
+//----------------------------------------------------------------------------
+// © 1999-2018 by TNG Software                                      Gndr 5.20
+//---------------------------------------------------------------------------*/
+
+/* ***************************************************************************
+/  Atencion!!!
+/     Este archivo fue generado por un programa en forma automática. Cualquier
+/     modificación que se realize sobre él se perderá en la próxima
+/     regeneración.
+/  **************************************************************************/
+
+/*--------------------------------------------------*/
+/* Selecciono la base en la que se crearan las Fcts */
+/*--------------------------------------------------*/
+
+use TNGS_Mrln
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Función : getCountFromMovil
+--- </summary>
+--- <param name="@patente">Patente</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Function: MVLINFRACCIONES_GETCOUNTFROMMOVIL'
+
+if exists (select * from sysobjects where id = object_id('MVLINFRACCIONES_GETCOUNTFROMMOVIL'))
+begin
+   print '       - Borrando la vieja Función'
+   drop function MVLINFRACCIONES_GETCOUNTFROMMOVIL
+end
+go
+
+print '       - Creando la nueva Función'
+go
+
+create function MVLINFRACCIONES_GETCOUNTFROMMOVIL
+(
+@patente tngs_codigo_e
+)
+returns int
+as
+begin
+
+   DECLARE @retval int 
+    
+   SELECT @retval = count(*) 
+   FROM MvlInfracciones 
+   WHERE mvi_ecd_patente = @patente 
+    
+   return @retval 
+
+end
+go
+
+print '       - Asignando permisos a la Función'
+
+grant execute on MVLINFRACCIONES_GETCOUNTFROMMOVIL to tngsmodulos
+grant execute on MVLINFRACCIONES_GETCOUNTFROMMOVIL to tngsqbe
+
+print ' '
+go
+
+/*--------------------------------------------------------------------------
+// Fin del script de creacion de las Funciones de la tabla: MvlInfracciones
+//--------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------
+//                         TNG Software Fcts Generator
+//----------------------------------------------------------------------------
+// Fecha       : 27/07/2018 07:12
+// Sistema     : Mrln
+// Tabla       : MvlKilometros
+//----------------------------------------------------------------------------
+// © 1999-2018 by TNG Software                                      Gndr 5.20
+//---------------------------------------------------------------------------*/
+
+/* ***************************************************************************
+/  Atencion!!!
+/     Este archivo fue generado por un programa en forma automática. Cualquier
+/     modificación que se realize sobre él se perderá en la próxima
+/     regeneración.
+/  **************************************************************************/
+
+/*--------------------------------------------------*/
+/* Selecciono la base en la que se crearan las Fcts */
+/*--------------------------------------------------*/
+
+use TNGS_Mrln
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Función : getKmActualMovil
+--- </summary>
+--- <param name="@patente">Patente</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Function: MVLKILOMETROS_GETKMACTUALMOVIL'
+
+if exists (select * from sysobjects where id = object_id('MVLKILOMETROS_GETKMACTUALMOVIL'))
+begin
+   print '       - Borrando la vieja Función'
+   drop function MVLKILOMETROS_GETKMACTUALMOVIL
+end
+go
+
+print '       - Creando la nueva Función'
+go
+
+create function MVLKILOMETROS_GETKMACTUALMOVIL
+(
+@patente tngs_codigo_e
+)
+returns int
+as
+begin
+
+   DECLARE @retval int 
+    
+   SELECT @retval = max(mkm_nro_km) 
+   FROM MvlKilometros 
+   WHERE mkm_ecd_patente = @patente 
+    
+   return @retval 
+
+end
+go
+
+print '       - Asignando permisos a la Función'
+
+grant execute on MVLKILOMETROS_GETKMACTUALMOVIL to tngsmodulos
+grant execute on MVLKILOMETROS_GETKMACTUALMOVIL to tngsqbe
+
+print ' '
+go
+
+/*--------------------------------------------------------------------------
+// Fin del script de creacion de las Funciones de la tabla: MvlKilometros
+//--------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------
+//                         TNG Software Fcts Generator
+//----------------------------------------------------------------------------
+// Fecha       : 27/07/2018 07:12
+// Sistema     : Mrln
+// Tabla       : OrdenesTrabajo
+//----------------------------------------------------------------------------
+// © 1999-2018 by TNG Software                                      Gndr 5.20
+//---------------------------------------------------------------------------*/
+
+/* ***************************************************************************
+/  Atencion!!!
+/     Este archivo fue generado por un programa en forma automática. Cualquier
+/     modificación que se realize sobre él se perderá en la próxima
+/     regeneración.
+/  **************************************************************************/
+
+/*--------------------------------------------------*/
+/* Selecciono la base en la que se crearan las Fcts */
+/*--------------------------------------------------*/
+
+use TNGS_Mrln
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Función : getImporteCierreItms
+--- </summary>
+--- <param name="@nroorden">Numero de Orden</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Function: ORDENESTRABAJO_GETIMPORTECIERREITMS'
+
+if exists (select * from sysobjects where id = object_id('ORDENESTRABAJO_GETIMPORTECIERREITMS'))
+begin
+   print '       - Borrando la vieja Función'
+   drop function ORDENESTRABAJO_GETIMPORTECIERREITMS
+end
+go
+
+print '       - Creando la nueva Función'
+go
+
+create function ORDENESTRABAJO_GETIMPORTECIERREITMS
+(
+@nroorden tngs_numero
+)
+returns decimal
+as
+begin
+
+   DECLARE @retval decimal 
+    
+   select @retval = sum(oti_imp_importecierre) 
+   from OrdenesTrabajo 
+   join OtItems 
+   on oti_nro_nroot = odt_nro_nro 
+   where odt_nro_nro = @nroorden 
+    
+   return @retval 
+
+end
+go
+
+print '       - Asignando permisos a la Función'
+
+grant execute on ORDENESTRABAJO_GETIMPORTECIERREITMS to tngsmodulos
+grant execute on ORDENESTRABAJO_GETIMPORTECIERREITMS to tngsqbe
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Función : getImporteItems
+--- </summary>
+--- <param name="@nroorden">Numero de Orden</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Function: ORDENESTRABAJO_GETIMPORTEITEMS'
+
+if exists (select * from sysobjects where id = object_id('ORDENESTRABAJO_GETIMPORTEITEMS'))
+begin
+   print '       - Borrando la vieja Función'
+   drop function ORDENESTRABAJO_GETIMPORTEITEMS
+end
+go
+
+print '       - Creando la nueva Función'
+go
+
+create function ORDENESTRABAJO_GETIMPORTEITEMS
+(
+@nroorden tngs_numero
+)
+returns decimal
+as
+begin
+
+   DECLARE @retval decimal 
+    
+   select @retval = sum(oti_imp_importe) 
+   from OrdenesTrabajo 
+   join OtItems 
+   on oti_nro_nroot = odt_nro_nro 
+   where odt_nro_nro = @nroorden 
+    
+   return @retval 
+
+end
+go
+
+print '       - Asignando permisos a la Función'
+
+grant execute on ORDENESTRABAJO_GETIMPORTEITEMS to tngsmodulos
+grant execute on ORDENESTRABAJO_GETIMPORTEITEMS to tngsqbe
+
+print ' '
+go
+
+/*--------------------------------------------------------------------------
+// Fin del script de creacion de las Funciones de la tabla: OrdenesTrabajo
+//--------------------------------------------------------------------------*/
 -- View para retornar los moviles activos para el CEDI. Solo devuelve la patente.
 
 use TNGS_Mrln
@@ -35,10 +850,13 @@ grant select on dbo.CediMovilesActivosV1 to tngsmodulos
 
 go
 
+print ' '
+go
+
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/07/2018 04:50
+// Fecha       : 27/07/2018 05:38
 // Sistema     : Mrln
 // Tabla       : Alertas
 //----------------------------------------------------------------------------
@@ -751,7 +1569,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/07/2018 04:50
+// Fecha       : 27/07/2018 05:38
 // Sistema     : Mrln
 // Tabla       : Categorias
 //----------------------------------------------------------------------------
@@ -1288,7 +2106,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/07/2018 04:50
+// Fecha       : 27/07/2018 05:38
 // Sistema     : Mrln
 // Tabla       : Controles
 //----------------------------------------------------------------------------
@@ -1833,7 +2651,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/07/2018 04:50
+// Fecha       : 27/07/2018 05:38
 // Sistema     : Mrln
 // Tabla       : ControlesReparations
 //----------------------------------------------------------------------------
@@ -2652,7 +3470,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/07/2018 04:50
+// Fecha       : 27/07/2018 05:38
 // Sistema     : Mrln
 // Tabla       : DestinatariosMails
 //----------------------------------------------------------------------------
@@ -3689,7 +4507,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/07/2018 04:50
+// Fecha       : 27/07/2018 05:38
 // Sistema     : Mrln
 // Tabla       : Equipamiento
 //----------------------------------------------------------------------------
@@ -4234,7 +5052,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/07/2018 04:50
+// Fecha       : 27/07/2018 05:38
 // Sistema     : Mrln
 // Tabla       : Estaciones
 //----------------------------------------------------------------------------
@@ -4799,7 +5617,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/07/2018 04:50
+// Fecha       : 27/07/2018 05:38
 // Sistema     : Mrln
 // Tabla       : Estados
 //----------------------------------------------------------------------------
@@ -5354,7 +6172,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/07/2018 04:50
+// Fecha       : 27/07/2018 05:38
 // Sistema     : Mrln
 // Tabla       : Marcas
 //----------------------------------------------------------------------------
@@ -5889,7 +6707,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/07/2018 04:50
+// Fecha       : 27/07/2018 05:38
 // Sistema     : Mrln
 // Tabla       : Modelos
 //----------------------------------------------------------------------------
@@ -6434,7 +7252,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/07/2018 04:50
+// Fecha       : 27/07/2018 05:38
 // Sistema     : Mrln
 // Tabla       : MotivosInfracciones
 //----------------------------------------------------------------------------
@@ -6926,7 +7744,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/07/2018 04:50
+// Fecha       : 27/07/2018 05:38
 // Sistema     : Mrln
 // Tabla       : Moviles
 //----------------------------------------------------------------------------
@@ -7635,7 +8453,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/07/2018 04:50
+// Fecha       : 27/07/2018 05:38
 // Sistema     : Mrln
 // Tabla       : MvlAccidentes
 //----------------------------------------------------------------------------
@@ -8484,7 +9302,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/07/2018 04:50
+// Fecha       : 27/07/2018 05:38
 // Sistema     : Mrln
 // Tabla       : MvlAlertas
 //----------------------------------------------------------------------------
@@ -9375,7 +10193,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/07/2018 04:50
+// Fecha       : 27/07/2018 05:38
 // Sistema     : Mrln
 // Tabla       : MvlCombustible
 //----------------------------------------------------------------------------
@@ -10253,7 +11071,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/07/2018 04:50
+// Fecha       : 27/07/2018 05:38
 // Sistema     : Mrln
 // Tabla       : MvlEquipamiento
 //----------------------------------------------------------------------------
@@ -11167,7 +11985,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/07/2018 04:50
+// Fecha       : 27/07/2018 05:38
 // Sistema     : Mrln
 // Tabla       : MvlEstados
 //----------------------------------------------------------------------------
@@ -12032,7 +12850,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/07/2018 04:50
+// Fecha       : 27/07/2018 05:38
 // Sistema     : Mrln
 // Tabla       : MvlInfracciones
 //----------------------------------------------------------------------------
@@ -12911,7 +13729,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/07/2018 04:50
+// Fecha       : 27/07/2018 05:38
 // Sistema     : Mrln
 // Tabla       : MvlKilometros
 //----------------------------------------------------------------------------
@@ -13760,7 +14578,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/07/2018 04:50
+// Fecha       : 27/07/2018 05:38
 // Sistema     : Mrln
 // Tabla       : OrdenesTrabajo
 //----------------------------------------------------------------------------
@@ -14443,7 +15261,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/07/2018 04:50
+// Fecha       : 27/07/2018 05:38
 // Sistema     : Mrln
 // Tabla       : OtItems
 //----------------------------------------------------------------------------
@@ -15526,7 +16344,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/07/2018 04:50
+// Fecha       : 27/07/2018 05:38
 // Sistema     : Mrln
 // Tabla       : Parametros
 //----------------------------------------------------------------------------
@@ -16058,7 +16876,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/07/2018 04:50
+// Fecha       : 27/07/2018 05:38
 // Sistema     : Mrln
 // Tabla       : Reparaciones
 //----------------------------------------------------------------------------
@@ -16628,7 +17446,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/07/2018 04:50
+// Fecha       : 27/07/2018 05:38
 // Sistema     : Mrln
 // Tabla       : Taller
 //----------------------------------------------------------------------------
@@ -17193,7 +18011,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/07/2018 04:50
+// Fecha       : 27/07/2018 05:38
 // Sistema     : Mrln
 // Tabla       : TallerCategoria
 //----------------------------------------------------------------------------
@@ -18030,7 +18848,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/07/2018 04:50
+// Fecha       : 27/07/2018 05:38
 // Sistema     : Mrln
 // Tabla       : Talonarios
 //----------------------------------------------------------------------------

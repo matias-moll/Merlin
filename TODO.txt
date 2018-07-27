@@ -1,65 +1,20 @@
 TODO:
 
-Ver error del panel de control, explota y no me reconoce el merlin para impactar acfs.
-
-----------------------------------------------------------------------------------------------------------------------------------------
-
-Crear un constructor de consultas.
-
-Modulos del Qbe:
-Alertas
-Moviles
-MovilesCombustibles
-MovilesInfracciones
-OrdenesDeTrabajo
-OTItems
+     
+Ver los reportes especificos, solo tenemos 1 de items pendientes hasta ahora.
 
 
-
-Para poder usar un campo de una tabla hija en reportes de constructod e consultas de la tabla padre
-hay que documentar funciones que hagan el 1-N.
-En el caso de moviles voy a necesitar funciones para por ejemplo:
-Sumar el total gastado en MovilesCombustibles.
-Traer el max de MovilesKms
-Si veo que se me ocurre otro, tambien sumarlo.
-Estas funciones se documentan en la Dal.
-
-Crear una funcion para devolver el count de:
-Accidentes
-Alertas
-Infracciones
+Hacer las pantallitas de sistema para el login y esas bldeces, usar modelo estilo sima minimalista.
 
 
-
-Una vez documentado todo esto en Qbe, hay que documentar una entrada de menu para cada Modulo documentado.
-
-Crear un menu Reportes y otro Estadisticas.
-Y despues al costado van los menues de reportes creados a mano.
-
-
-Copiar del ruby como se documentan estas entradas de menu para llamar al form Dqbe
-estandar que llevan dos parametros.
-
-Q = Query
-S = Statistics
-
+Armar juego de datos limpio desde cero para poder hacer una buena demo.
 
 --------------------------------------------------------------------------------------------------------------------------------------------------
 
-Pregunta:
+Preguntas:
 Tipo de nafta no les interesara saber? Para cuando cargan el MvlCombustibles.
-
-En el select union complejo, para las OT, la fecha debe ser la de apertura o la de cierre?
-Va la de cierre, pensar como hacer el ordenamiento porque las que no tengan fecha de cierre van a decir 1-1-1900 y las va a poner arriba de todo.
-
 
 -------------------------------------------------------------------------------------------------------------------------------------------
 
 
-Una vez que tenga todo esto hay que ver los reportes.
-Y documentar el constructor de consultas.
 
-
-Agregar CLL al proyecto, aunque sea vacia.
-
-Ver la interfaz con CEDI, reportes y tabla.

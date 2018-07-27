@@ -11,6 +11,7 @@ using TNGS.NetRoutines;
 using TNGS.NetApp;
 using Mrln;
 using Mrln.Shr;
+using TNGS.NetAppSupport;
 #endregion
 
 namespace Mrln.Rp
@@ -18,7 +19,7 @@ namespace Mrln.Rp
     //----------------------------------------------------------------------------
     //                         TNG Software PRG Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 27/06/2018 00:26
+    // Fecha                    : 27/07/2018 07:13
     // Sistema                  : Mrln
     // Programa                 : Reportes
     //----------------------------------------------------------------------------
@@ -145,6 +146,21 @@ namespace Mrln.Rp
                 // ** Menu: Ordenes de Trabajo
                 // **
                 case "ITPND"         : {new ItemsPendientes().Show(); return;}
+
+                // *************************************************
+                // ** Menu: Reportes Usuario
+                // **
+                case "ALER"          : {new DQbe("Alertas", "Q").Show(); return;}
+                // **
+                case "MOVI"          : {new DQbe("Moviles", "Q").Show(); return;}
+                // **
+                case "MCOMB"         : {new DQbe("MvlCombus", "Q").Show(); return;}
+                // **
+                case "MINFR"         : {new DQbe("MvlInfracc", "Q").Show(); return;}
+                // **
+                case "ORDT"          : {new DQbe("OrdTrabajo", "Q").Show(); return;}
+                // **
+                case "OTITM"         : {new DQbe("OTItems ", "Q").Show(); return;}
 
                 // *************************************************
                 // ** Ejecución automática al final del programa
