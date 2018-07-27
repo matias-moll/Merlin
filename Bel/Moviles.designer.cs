@@ -14,7 +14,7 @@ namespace Mrln.Bel
     //----------------------------------------------------------------------------
     //                         TNG Software BEL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 22/07/2018 07:18
+    // Fecha                    : 27/07/2018 02:50
     // Sistema                  : Mrln
     // Clase para Administrar   : Moviles y Tablas Hijas
     //----------------------------------------------------------------------------
@@ -4478,7 +4478,7 @@ namespace Mrln.Bel
             l_drTemp["mov_nro_aniofabric"]= XMLRuts.ExtractXAttr(l_xndData, "mov_nro_aniofabric", 1);
             l_drTemp["mov_cd1_propio"]= XMLRuts.ExtractXAttr(l_xndData, "mov_cd1_propio");
             l_drTemp["mov_ecd_nroploteado"]= XMLRuts.ExtractXAttr(l_xndData, "mov_ecd_nroploteado");
-            l_drTemp["mov_cod_tipodemovil"]= XMLRuts.ExtractXAttr(l_xndData, "mov_cod_tipodemovil");
+            l_drTemp["mov_des_tipodemovil"]= XMLRuts.ExtractXAttr(l_xndData, "mov_des_tipodemovil");
 
             // Llenamos los campos fijos
             XML2FixedFields(ref l_drTemp, l_xndData);
@@ -4550,7 +4550,7 @@ namespace Mrln.Bel
             l_drTemp["mov_nro_aniofabric"]= 1;
             l_drTemp["mov_cd1_propio"]= "";
             l_drTemp["mov_ecd_nroploteado"]= "";
-            l_drTemp["mov_cod_tipodemovil"]= "";
+            l_drTemp["mov_des_tipodemovil"]= "";
 
             // Agregamos la Row creada a la tabla creada y creamos
             // una entidad a partir de la DataTable de 1 registro
@@ -4572,7 +4572,7 @@ namespace Mrln.Bel
         /// <param name="p_iAniofabric">Año de fabricación</param>
         /// <param name="p_strPropio">Propio o no</param>
         /// <param name="p_strNroploteado">Numero Ploteado</param>
-        /// <param name="p_strTipodemovil">Código Tipo de Móvil</param>
+        /// <param name="p_strTipodemovil">Tipo de Móvil</param>
         /// <returns>Entidad: Movil</returns>
         public static EMovil NewFilled(string p_strPatente,
                                        string p_strDes,
@@ -4602,7 +4602,7 @@ namespace Mrln.Bel
             l_drTemp["mov_nro_aniofabric"]= p_iAniofabric;
             l_drTemp["mov_cd1_propio"]= p_strPropio;
             l_drTemp["mov_ecd_nroploteado"]= p_strNroploteado;
-            l_drTemp["mov_cod_tipodemovil"]= p_strTipodemovil;
+            l_drTemp["mov_des_tipodemovil"]= p_strTipodemovil;
 
             // Agregamos la Row creada a la tabla creada y creamos
             // una entidad a partir de la DataTable de 1 registro
@@ -4654,7 +4654,7 @@ namespace Mrln.Bel
                 l_dcStruct[6]= new DataColumn("mov_nro_aniofabric", typeof(int));
                 l_dcStruct[7]= new DataColumn("mov_cd1_propio", typeof(string));
                 l_dcStruct[8]= new DataColumn("mov_ecd_nroploteado", typeof(string));
-                l_dcStruct[9]= new DataColumn("mov_cod_tipodemovil", typeof(string));
+                l_dcStruct[9]= new DataColumn("mov_des_tipodemovil", typeof(string));
                 EMovil.FillFixedFields(ref l_dcStruct, 10);
 
                 // Devolvemos el vector creado
@@ -4831,22 +4831,22 @@ namespace Mrln.Bel
         }
 
         /// <summary>
-        /// Código Tipo de Móvil
+        /// Tipo de Móvil
         /// </summary>
         public static string TipodemovilCmp
         {
-           get {return "mov_cod_tipodemovil";}
+           get {return "mov_des_tipodemovil";}
         }
 
         /// <summary>
-        /// Código Tipo de Móvil
+        /// Tipo de Móvil
         /// </summary>
         public string Tipodemovil
         {
-            get {return ((string) InternalData["mov_cod_tipodemovil"]).Trim();}
+            get {return ((string) InternalData["mov_des_tipodemovil"]).Trim();}
             set {
-                if (value.Trim().Length > 4) value= value.Trim().Substring(0,4);
-                InternalData["mov_cod_tipodemovil"]= value.Trim();
+                if (value.Trim().Length > 30) value= value.Trim().Substring(0,30);
+                InternalData["mov_des_tipodemovil"]= value.Trim();
             }
         }
 
@@ -4941,7 +4941,7 @@ namespace Mrln.Bel
                 l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "mov_nro_aniofabric", Aniofabric));
                 l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "mov_cd1_propio", Propio));
                 l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "mov_ecd_nroploteado", Nroploteado));
-                l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "mov_cod_tipodemovil", Tipodemovil));
+                l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "mov_des_tipodemovil", Tipodemovil));
 
                 // Asignamos los campos fijos
                 FixedFields2XML(l_xdocData, ref l_xndEntidad);

@@ -16,7 +16,7 @@ namespace Mrln.Bll
     //----------------------------------------------------------------------------
     //                         TNG Software BLL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 22/07/2018 07:18
+    // Fecha                    : 27/07/2018 02:50
     // Sistema                  : Mrln
     // Clase para Administrar   : Moviles y Tablas Hijas
     //----------------------------------------------------------------------------
@@ -6798,8 +6798,8 @@ namespace Mrln.Bll
             }
 
             if (p_entMovil.Tipodemovil.Trim() == "") {
-                // El campo [Código Tipo de Móvil] no puede ser vacío
-                p_smResult.BllWarning("El dato [Código Tipo de Móvil] no puede ser vacío","");
+                // El campo [Tipo de Móvil] no puede ser vacío
+                p_smResult.BllWarning("El dato [Tipo de Móvil] no puede ser vacío","");
                 return;
             }
 

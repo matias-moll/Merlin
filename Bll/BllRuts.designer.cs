@@ -16,7 +16,7 @@ namespace Mrln.Bll
     //----------------------------------------------------------------------------
     //                         TNG Software BLL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 22/07/2018 07:18
+    // Fecha                    : 27/07/2018 02:50
     // Sistema                  : Mrln
     // Clase para Administrar   : 
     //----------------------------------------------------------------------------
@@ -202,7 +202,7 @@ namespace Mrln.Bll
                 case "mov_nro_aniofabric"              : {return "V1Año de fabricaciónNN3";}
                 case "mov_cd1_propio"                  : {return "V1Propio o noCN2";}
                 case "mov_ecd_nroploteado"             : {return "V1Numero PloteadoCN1";}
-                case "mov_cod_tipodemovil"             : {return "V1Código Tipo de MóvilCN1";}
+                case "mov_des_tipodemovil"             : {return "V1Tipo de MóvilCN1";}
 
                 // ****************************************
                 // Tabla: MvlAccidentes       

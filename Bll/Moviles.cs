@@ -154,28 +154,35 @@ namespace Mrln.Bll
             return l_lstLEListaListaEntidades;
         }
 
-        public static ListaEntidades fGetTiposMovilesCEDI()
+        public static ListaEntidades fGetTiposMovilesCEDI(ref StatMsg p_smResult)
         {
-            // TODO agregar try catchs, usar appRuts en vez de app. 
+            DBConn l_dbcAccess = null;
 
-            /*
-            EParametro conexionCEDI = App.ParaGet("connCEDI", true, ref m_stResult);
-            if (MsgRuts.AnalizeError(this, m_stResult)) return;
+            try
+            {
+                // Obtenemos conexion a CEDI.
+                EParametro conexionCEDI = AppRuts.ParaGet("connCEDI", true, ref p_smResult);
+                if (p_smResult.NOk) return null;
 
-  
-            // Crear metodo en la Bll 
-            DBConn.AltDatConn = conexionCEDI.VStr;
+                 
+                DBConn.AltDatConn = conexionCEDI.VStr;
+                l_dbcAccess = DBRuts.GetConection(Connections.AltDat, "tngsqbe", CriptoRuts.DESHide("qbe"));
 
-            DbConn conexion = DBRuts.GetConection(Connections.AltDat, "tngsqbe", CriptoRuts.DESHide("qbe"));
-
-            
-
-            */
-            DBConn conexion = null;
-            DataSet l_dsResult = null;
-            DBRuts.Exec_DS(conexion, "select * from TNGS_Cedi..MerlinTiposMovilesV1", ref l_dsResult, "TiposMoviles");
-            return new ListaEntidades(l_dsResult.Tables["TiposMoviles"]);
-            // Crear una base de datos de Cedi, vacia, con una tabla de moviles y una vista que se llame asi y me devuelva codigo y descripcion como la espero.
+                DataSet l_dsResult = new DataSet();
+                DBRuts.Exec_DS(l_dbcAccess, "select * from TNGS_Cedi..MerlinTiposMovilesV1", ref l_dsResult, "TiposMoviles");
+                return new ListaEntidades(l_dsResult.Tables["TiposMoviles"]);
+            }
+            catch (Exception l_expData)
+            {
+                // Error en la operacion
+                p_smResult.BllError(l_expData.ToString());
+                return null;
+            }
+            finally
+            {
+                // Si pude abrir la conexion -> la cierro
+                if (l_dbcAccess != null) l_dbcAccess.Close();
+            }
 
         }
 

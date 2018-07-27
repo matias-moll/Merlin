@@ -1,22 +1,6 @@
 TODO:
 
-
-Interface con CEDI:
-
-Parte 1, tipo de moviles:
-
-Impactar SPs y modificar tabla de moviles porque cambio el cod tipo de movil por descripcion.
-
-Modificar el metodo de alta para que toem la descripcion de la combo en vez del codigo.
-
-Terminar el codigo de Bll (cll) tiene TODOs.
-
-
-Parte 2, Moviles Activos:
-Tengo que crear una vista que se llame CediMovilesActivosV1 y que devuelva las patentes de todos los moviles que tengan un estado
-operativo = S.
-Esta vista va en un script en la carpeta FijVis (a mano, no se documenta)
-Revisar si el unificar del generador me unifica la vista con todo lo demas o no.
+Ver error del panel de control, explota y no me reconoce el merlin para impactar acfs.
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 

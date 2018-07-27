@@ -255,6 +255,7 @@
             this.tePatente.BackColor = System.Drawing.SystemColors.Window;
             this.tePatente.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.tePatente.Location = new System.Drawing.Point(274, 44);
+            this.tePatente.MaxLength = 8;
             this.tePatente.Name = "tePatente";
             this.tePatente.Size = new System.Drawing.Size(136, 23);
             this.tePatente.TabIndex = 0;

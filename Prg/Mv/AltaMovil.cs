@@ -20,7 +20,7 @@ namespace Mrln.Mv
     {
 
         //miembros
-        private StatMsg m_stResult;
+        private StatMsg m_smResult;
         private bool m_EstadoAlta;
         private Bel.EMovil m_entMovil;
         public delegate void ChangedMovilEventHandler(object sender, EventArgs e);
@@ -31,7 +31,7 @@ namespace Mrln.Mv
         {
             InitializeComponent();
            
-            m_stResult = new StatMsg();
+            m_smResult = new StatMsg();
 
             //creamos la nueva entidad VACIA
             m_entMovil = Bel.EMovil.NewEmpty();
@@ -103,9 +103,9 @@ namespace Mrln.Mv
         // llena un CheckListBox con los equipamientos de la tabla Equipamientos.
         private void llenarCheckListEquipamiento()
         {
-            clEquipamientos.FillFromStrLEntidad(Tablas.EqiUpFull(true, ref m_stResult), "eqi_cod_cod", "eqi_des_des", "deleted");
+            clEquipamientos.FillFromStrLEntidad(Tablas.EqiUpFull(true, ref m_smResult), "eqi_cod_cod", "eqi_des_des", "deleted");
 
-            MsgRuts.AnalizeError(this, m_stResult);
+            MsgRuts.AnalizeError(this, m_smResult);
         }
 
         // pone en blanco todos los campos de DatosBasicos Movil
@@ -128,8 +128,8 @@ namespace Mrln.Mv
         private void llenarComboModelos()
         {
             //llenamos la combo
-            cdcModelo.FillFromStrLEntidad(Bll.Tablas.ModUpFull(true, ref m_stResult), "mds_rcd_cod", "mds_des_des", "deleted");
-            if(MsgRuts.AnalizeError(this, m_stResult)) return;
+            cdcModelo.FillFromStrLEntidad(Bll.Tablas.ModUpFull(true, ref m_smResult), "mds_rcd_cod", "mds_des_des", "deleted");
+            if(MsgRuts.AnalizeError(this, m_smResult)) return;
 
             //seteamos en el valor vacio a la combo para que se vea fancy
             cdcModelo.SelectedIndex = -1;
@@ -147,9 +147,11 @@ namespace Mrln.Mv
         {
             ListaEntidades tiposMoviles = EnCll.Moviles.GetListaTipoMoviles;
 
-            if(tiposMoviles == null)
-                tiposMoviles = Bll.Moviles.fGetTiposMovilesCEDI();
-            
+            if (tiposMoviles == null)
+            {
+                tiposMoviles = Bll.Moviles.fGetTiposMovilesCEDI(ref m_smResult);
+                if (MsgRuts.AnalizeError(this, m_smResult)) return;
+            }
 
             cdcTipoMovil.FillFromStrLEntidad(tiposMoviles, "codigo", "descripcion", "deleted");
 
@@ -238,7 +240,7 @@ namespace Mrln.Mv
             p_entMovil.Modelo = cdcModelo.SelectedStrCode; 
             p_entMovil.Aniofabric = neAnioFabric.Numero;
             p_entMovil.Propio = cdcMovilPropio.SelectedStrCode;
-            p_entMovil.Tipodemovil = cdcTipoMovil.SelectedStrCode;
+            p_entMovil.Tipodemovil = cdcTipoMovil.Text;
     
         }
 
@@ -250,8 +252,8 @@ namespace Mrln.Mv
 
             
             //instanciamos el parametro que viene de afuera del sistemas ESTADO DEFAULT
-            EParametro l_ptroEstadoDefault = App.ParaGet("estadoDef", false, ref m_stResult);
-            if (MsgRuts.AnalizeError(this, m_stResult))
+            EParametro l_ptroEstadoDefault = App.ParaGet("estadoDef", false, ref m_smResult);
+            if (MsgRuts.AnalizeError(this, m_smResult))
             {
                 l_leMvlEstado.Patente = "";
                 return l_leMvlEstado;
@@ -340,16 +342,16 @@ namespace Mrln.Mv
                 m_entMovil.MovilesEstado.AddEntity(l_eMvlEstado);
                 //si es estado de alta grabamos una entidad nueva.
                 m_entMovil.MovilesEquip = ObtenerLEntidadSeleccionadosCheckedList();
-                Bll.Moviles.Save(m_entMovil, ref m_stResult);
-                if (MsgRuts.AnalizeError(this, m_stResult)) return;
+                Bll.Moviles.Save(m_entMovil, ref m_smResult);
+                if (MsgRuts.AnalizeError(this, m_smResult)) return;
                 MsgRuts.ShowMsg(this, "El nuevo Movil ha sido agregado satisfactoriamente");
                 this.Close();
             }
             else
             {
                 // si es estado de Update se llama al metodo que elimina todos los equipamientos, carga los nuevos y graba la entidad.
-                Bll.Moviles.CambiarEquipamientoYGrabarMovil(m_entMovil, ObtenerLEntidadSeleccionadosCheckedList(), ref m_stResult);
-                if (MsgRuts.AnalizeError(this, m_stResult)) return;
+                Bll.Moviles.CambiarEquipamientoYGrabarMovil(m_entMovil, ObtenerLEntidadSeleccionadosCheckedList(), ref m_smResult);
+                if (MsgRuts.AnalizeError(this, m_smResult)) return;
                 MsgRuts.ShowMsg(this, "El Movil ha sido modificado satisfactoriamente");
                 this.Close();
             }
