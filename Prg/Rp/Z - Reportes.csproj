@@ -160,6 +160,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Reportes.ico" />
+    <None Include="Resources\Splash Reportes y Estadisticas.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Moviles\" />
