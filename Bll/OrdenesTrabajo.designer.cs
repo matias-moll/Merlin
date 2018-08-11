@@ -16,7 +16,7 @@ namespace Mrln.Bll
     //----------------------------------------------------------------------------
     //                         TNG Software BLL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 27/07/2018 07:13
+    // Fecha                    : 10/08/2018 19:51
     // Sistema                  : Mrln
     // Clase para Administrar   : Ordenes de Trabajo y sus Items
     //----------------------------------------------------------------------------
@@ -1421,6 +1421,47 @@ namespace Mrln.Bll
         #region Metodos para métodos DAL definidos por el usuario
 
         /// <summary>
+        /// Ejecuta el SP definido por el usuario: ZFinalizadas
+        /// </summary>
+        /// <param name= p_dtFechaini>Fecha inicio</param>
+        /// <param name= p_dtFechafin>Fecha Fin</param>
+        /// <param name= p_strPatenteini>Patente Inicio</param>
+        /// <param name= p_strPatentefin>Patente Fin</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        /// <returns>ListaEntidad con los datos solicitados</returns>
+        public static ListaEntidades ZFinalizadas(DateTime p_dtFechaini,
+                                                  DateTime p_dtFechafin,
+                                                  string p_strPatenteini,
+                                                  string p_strPatentefin,
+                                                  ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            DBConn l_dbcAccess= null;
+
+            try {
+                // Abrimos una conexion
+                l_dbcAccess= DBRuts.GetConection(Connections.Dat);
+
+                // Llamamos al metodo interno
+                return ZFinalizadas(l_dbcAccess,
+                                    p_dtFechaini,
+                                    p_dtFechafin,
+                                    p_strPatenteini,
+                                    p_strPatentefin,
+                                    ref p_smResult);
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion
+                p_smResult.BllError(l_expData);
+                return null;
+            }
+            finally {
+                // Si abrimos una conexion -> la cerramos
+                if (l_dbcAccess != null) l_dbcAccess.Close();
+            }
+        }
+
+        /// <summary>
         /// Ejecuta el SP definido por el usuario: getPendientes
         /// </summary>
         /// <param name="p_smResult">Estado final de la operacion</param>
@@ -1904,6 +1945,55 @@ namespace Mrln.Bll
         #endregion
 
         #region Metodos para métodos DAL definidos por el usuario
+
+        /// <summary>
+        /// Ejecuta el SP definido por el usuario: ZFinalizadas
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name= p_dtFechaini>Fecha inicio</param>
+        /// <param name= p_dtFechafin>Fecha Fin</param>
+        /// <param name= p_strPatenteini>Patente Inicio</param>
+        /// <param name= p_strPatentefin>Patente Fin</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        /// <returns>ListaEntidad con los datos solicitados</returns>
+        internal static ListaEntidades ZFinalizadas(DBConn p_dbcAccess,
+                                                    DateTime p_dtFechaini,
+                                                    DateTime p_dtFechafin,
+                                                    string p_strPatenteini,
+                                                    string p_strPatentefin,
+                                                    ref StatMsg p_smResult)
+        {
+            try {
+                // Llamamos al metodo definido por el usuario
+                DataSet l_dsTemp= new DataSet();
+
+                Dal.OrdenesTrabajo.ZFinalizadas(p_dbcAccess,
+                                                p_dtFechaini,
+                                                p_dtFechafin,
+                                                p_strPatenteini,
+                                                p_strPatentefin,
+                                                ref l_dsTemp,
+                                                "Temporal",
+                                                ref p_smResult);
+                if (p_smResult.NOk) return null;
+
+                // Creamos la LE y Captionamos
+                ListaEntidades l_lentRet= new ListaEntidades(l_dsTemp.Tables["Temporal"]);
+                BllRuts.FillStdCaptions(ref l_lentRet);
+
+                // Devolvemos la LE
+                l_dsTemp.Dispose();
+                return l_lentRet;
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion
+                p_smResult.BllError(l_expData);
+                return null;
+            }
+            finally {
+                // Terminamos
+            }
+        }
 
         /// <summary>
         /// Ejecuta el SP definido por el usuario: getPendByPatente

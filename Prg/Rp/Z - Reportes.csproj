@@ -104,6 +104,18 @@
     <Compile Include="Arranque.designer.cs">
       <DependentUpon>Arranque.cs</DependentUpon>
     </Compile>
+    <Compile Include="Moviles\EstadoMoviles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Moviles\EstadoMoviles.Designer.cs">
+      <DependentUpon>EstadoMoviles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ordenes de Trabajo\OrdenesFinalizadas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ordenes de Trabajo\OrdenesFinalizadas.Designer.cs">
+      <DependentUpon>OrdenesFinalizadas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Ordenes de Trabajo\ItemsPendientes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -131,6 +143,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Arranque.resx">
       <DependentUpon>Arranque.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Moviles\EstadoMoviles.resx">
+      <DependentUpon>EstadoMoviles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ordenes de Trabajo\OrdenesFinalizadas.resx">
+      <DependentUpon>OrdenesFinalizadas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Ordenes de Trabajo\ItemsPendientes.resx">
       <DependentUpon>ItemsPendientes.cs</DependentUpon>
@@ -162,9 +180,7 @@
     <Content Include="Reportes.ico" />
     <None Include="Resources\Splash Reportes y Estadisticas.jpg" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Moviles\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\..\Bel\BEL.csproj">
       <Project>{7969c80f-3e89-4e03-a01b-776686783353}</Project>

@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------
 //                 TNG Software Script Generator (Tablas)                     
 //----------------------------------------------------------------------------
-// Fecha              : 28/06/2018 17:05
+// Fecha              : 31/07/2018 21:45
 // Base de Datos      : TNGS_Mrln
 // Tabla              : MvlAlertas
 //----------------------------------------------------------------------------
@@ -44,6 +44,7 @@ create table MvlAlertas
       mal_nro_kilometros tngs_numero,
       mal_cd6_codreparacion tngs_codigo_6,
       mal_cod_codcontrol tngs_codigo,
+      mal_cod_coddestinatarios tngs_codigo,
       instante tngs_fecyhor,
       deleted tngs_borrado,
       usuario tngs_nombre,

@@ -1,6 +1,6 @@
 ﻿namespace Mrln.Rp
 {
-    partial class ItemsPendientes
+    partial class OrdenesFinalizadas
     {
         /// <summary>
         /// Required designer variable.
@@ -79,7 +79,7 @@
             this.gbBuscarLlamadas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.gbBuscarLlamadas.W8Color = System.Drawing.Color.RoyalBlue;
             // 
-            // Items Pendientes
+            // OrdenesFinalizadas
             // 
             this.AllowEndUserDocking = false;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -88,9 +88,9 @@
             this.Controls.Add(this.xPanel1);
             this.DockAreas = WeifenLuo.WinFormsUI.Docking.DockAreas.DockLeft;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "ItemsPendientes";
-            this.TabText = "Items Pendientes";
-            this.Text = "Items Pendientes";
+            this.Name = "OrdenesFinalizadas";
+            this.TabText = "Ordenes Finalizadas";
+            this.Text = "Ordenes Finalizadas";
             this.Controls.SetChildIndex(this.xPanel1, 0);
             this.Controls.SetChildIndex(this.xpPanelBase, 0);
             this.xpPanelBase.ResumeLayout(false);

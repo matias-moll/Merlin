@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------
 //                 TNG Software Script Generator (Tablas)                     
 //----------------------------------------------------------------------------
-// Fecha              : 20/04/2018 19:32
+// Fecha              : 31/07/2018 21:45
 // Base de Datos      : TNGS_Mrln
 // Tabla              : OtItems
 //----------------------------------------------------------------------------
@@ -44,9 +44,13 @@ create table OtItems
       oti_nro_nroitem tngs_numero,
       oti_des_desoperacion tngs_descripcion,
       oti_des_destarea tngs_descripcion,
-      oti_des_descategoria tngs_descripcion,
+      oti_rcd_codcategoria tngs_codigo_r,
       oti_imp_importe tngs_importe,
       oti_ede_comentario tngs_descripcion_e,
+      oti_d20_estado tngs_descripcion_20,
+      oti_imp_importecierre tngs_importe,
+      oti_ede_comentariocierre tngs_descripcion_e,
+      oti_cd6_codreparacion tngs_codigo_6,
       instante tngs_fecyhor,
       deleted tngs_borrado,
       usuario tngs_nombre,

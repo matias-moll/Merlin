@@ -10,7 +10,7 @@ namespace Mrln.Dal
     //----------------------------------------------------------------------------
     //                         TNG Software DAL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 27/07/2018 07:13
+    // Fecha                    : 10/08/2018 19:51
     // Sistema                  : Mrln
     // Clase para Administrar   : Moviles del Sistema
     // Basada en la Tabla       : Moviles
@@ -370,6 +370,39 @@ namespace Mrln.Dal
                                       "TNGS_Mrln..MOVILES_GETHISTORIALFULL",
                                       new DbParameter[] {
                                           p_dbcAccess.MakeParam("@patente", p_strPatente),
+                                          p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
+                                      },
+                                      ref p_dsResult, p_strTabla);
+            }
+            catch (Exception l_expData) {
+                // Error en el método fijo
+                p_smResult.DalError(l_expData);
+                return -1;
+            }
+        }
+
+        /// <summary>
+        /// Método Fijo: ZMovilesPorEstado
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name= "p_strEstadoini">Estado Inicial</param>
+        /// <param name= "p_strEstadofin">Estado Final</param>
+        /// <param name="p_dsResult">DataSet donde devolver el registro</param>
+        /// <param name="p_strTabla">Nombre de la tabla a llenar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        public static int ZMovilesPorEstado(DBConn p_dbcAccess,
+                                            string p_strEstadoini,
+                                            string p_strEstadofin,
+                                            ref DataSet p_dsResult,
+                                            string p_strTabla,
+                                            ref StatMsg p_smResult)
+        {
+            try {
+                return DBRuts.Exec_DS(p_dbcAccess,
+                                      "TNGS_Mrln..MOVILES_ZMOVILESPORESTADO",
+                                      new DbParameter[] {
+                                          p_dbcAccess.MakeParam("@estadoini", p_strEstadoini),
+                                          p_dbcAccess.MakeParam("@estadofin", p_strEstadofin),
                                           p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
                                       },
                                       ref p_dsResult, p_strTabla);

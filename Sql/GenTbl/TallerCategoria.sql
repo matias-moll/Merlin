@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------
 //                 TNG Software Script Generator (Tablas)                     
 //----------------------------------------------------------------------------
-// Fecha              : 06/06/2018 01:17
+// Fecha              : 31/07/2018 21:45
 // Base de Datos      : TNGS_Mrln
 // Tabla              : TallerCategoria
 //----------------------------------------------------------------------------
@@ -41,6 +41,7 @@ create table TallerCategoria
    (
       tct_cod_codigotaller tngs_codigo,
       tct_rcd_codigocategoria tngs_codigo_r,
+      tct_cod_dummy tngs_codigo,
       instante tngs_fecyhor,
       deleted tngs_borrado,
       usuario tngs_nombre,

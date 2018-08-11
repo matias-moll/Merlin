@@ -19,7 +19,7 @@ namespace Mrln.Rp
     //----------------------------------------------------------------------------
     //                         TNG Software PRG Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 27/07/2018 07:13
+    // Fecha                    : 10/08/2018 19:52
     // Sistema                  : Mrln
     // Programa                 : Reportes
     //----------------------------------------------------------------------------
@@ -143,9 +143,16 @@ namespace Mrln.Rp
                 case "$$AUTOEXEC$$"  : {SysRuts.AutoExecIni(App.Programa.Codigo); PrgRuts.AutoExec(); SysRuts.AutoExecEnd(App.Programa.Codigo); return;}
 
                 // *************************************************
+                // ** Menu: Moviles
+                // **
+                case "ESTM"          : {new EstadoMoviles().Show(); return;}
+
+                // *************************************************
                 // ** Menu: Ordenes de Trabajo
                 // **
                 case "ITPND"         : {new ItemsPendientes().Show(); return;}
+                // **
+                case "ORDF"          : {new OrdenesFinalizadas().Show(); return;}
 
                 // *************************************************
                 // ** Menu: Reportes Usuario
@@ -161,6 +168,15 @@ namespace Mrln.Rp
                 case "ORDT"          : {new DQbe("OrdTrabajo", "Q").Show(); return;}
                 // **
                 case "OTITM"         : {new DQbe("OTItems ", "Q").Show(); return;}
+
+                // *************************************************
+                // ** Menu: Estadísticas Usuario
+                // **
+                case "EALER"         : {new DQbe("Alertas", "S").Show(); return;}
+                // **
+                case "EMOVI"         : {new DQbe("Moviles", "S").Show(); return;}
+                // **
+                case "EORDT"         : {new DQbe("OrdTrabajo", "S").Show(); return;}
 
                 // *************************************************
                 // ** Ejecución automática al final del programa

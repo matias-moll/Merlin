@@ -10,7 +10,7 @@ namespace Mrln.Dal
     //----------------------------------------------------------------------------
     //                         TNG Software DAL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 27/07/2018 07:13
+    // Fecha                    : 10/08/2018 19:51
     // Sistema                  : Mrln
     // Clase para Administrar   : Ordenes De Trabajo
     // Basada en la Tabla       : OrdenesTrabajo
@@ -338,6 +338,45 @@ namespace Mrln.Dal
         #endregion
 
         #region Metodos del Usuario
+
+        /// <summary>
+        /// Método Fijo: ZFinalizadas
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name= "p_dtFechaini">Fecha inicio</param>
+        /// <param name= "p_dtFechafin">Fecha Fin</param>
+        /// <param name= "p_strPatenteini">Patente Inicio</param>
+        /// <param name= "p_strPatentefin">Patente Fin</param>
+        /// <param name="p_dsResult">DataSet donde devolver el registro</param>
+        /// <param name="p_strTabla">Nombre de la tabla a llenar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        public static int ZFinalizadas(DBConn p_dbcAccess,
+                                       DateTime p_dtFechaini,
+                                       DateTime p_dtFechafin,
+                                       string p_strPatenteini,
+                                       string p_strPatentefin,
+                                       ref DataSet p_dsResult,
+                                       string p_strTabla,
+                                       ref StatMsg p_smResult)
+        {
+            try {
+                return DBRuts.Exec_DS(p_dbcAccess,
+                                      "TNGS_Mrln..ORDENESTRABAJO_ZFINALIZADAS",
+                                      new DbParameter[] {
+                                          p_dbcAccess.MakeParamF("@fechaini", p_dtFechaini),
+                                          p_dbcAccess.MakeParamF("@fechafin", p_dtFechafin),
+                                          p_dbcAccess.MakeParam("@patenteini", p_strPatenteini),
+                                          p_dbcAccess.MakeParam("@patentefin", p_strPatentefin),
+                                          p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
+                                      },
+                                      ref p_dsResult, p_strTabla);
+            }
+            catch (Exception l_expData) {
+                // Error en el método fijo
+                p_smResult.DalError(l_expData);
+                return -1;
+            }
+        }
 
         /// <summary>
         /// Método Fijo: getPendByPatente

@@ -1,20 +1,35 @@
 TODO:
 
-     
-Ver los reportes especificos, solo tenemos 1 de items pendientes hasta ahora.
+
+Crear 1 o 2 reportes de moviles 
 
 
-Hacer las pantallitas de sistema para el login y esas bldeces, usar modelo estilo sima minimalista.
+Crear programa de XF (Xfill)
+Metadata, Programas
+Xf
+no tiene splash
+Tiene que tener login con S
+no es mdi
+Sal en N
+
+Ejemplo de este programa en el publico Matias.
+
+
+
+- Corregir en la documentacion de qbe, todos los lugares donde hay fecha y hora de apertura y cierre
+usar una funcione que si es 1-1-1900 devuelva vacio y ademas solo me devuelva año, mes y dia.
 
 
 Armar juego de datos limpio desde cero para poder hacer una buena demo.
 
+Con esto tengo todo para la demo.
+
 --------------------------------------------------------------------------------------------------------------------------------------------------
 
 Preguntas:
-Tipo de nafta no les interesara saber? Para cuando cargan el MvlCombustibles.
 
 -------------------------------------------------------------------------------------------------------------------------------------------
-
+Pendientes:
+Hacer el modulo de envio de mails.
 
 

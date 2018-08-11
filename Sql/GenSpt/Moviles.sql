@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/07/2018 05:38
+// Fecha       : 10/08/2018 19:48
 // Sistema     : Mrln
 // Tabla       : Moviles
 //----------------------------------------------------------------------------
@@ -652,6 +652,65 @@ go
 print '       - Asignando permisos al nuevo SP'
 
 grant execute on dbo.MOVILES_GETHISTORIALFULL to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Método Fijo: ZMovilesPorEstado
+--- </summary>
+--- <param name="@estadoini">Estado Inicial</param>
+--- <param name="@estadofin">Estado Final</param>
+--- <param name="@usuario">Usuario que ejecuta el SP</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.MOVILES_ZMOVILESPORESTADO'
+
+if exists (select * from sysobjects where id = object_id('dbo.MOVILES_ZMOVILESPORESTADO'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.MOVILES_ZMOVILESPORESTADO
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.MOVILES_ZMOVILESPORESTADO
+(
+@estadoini tngs_descripcion,
+@estadofin tngs_descripcion,
+@usuario tngs_nombre
+)
+as
+begin
+
+   select	mov_ecd_patente, 
+   		max(mov_des_des) as mov_des_des, 
+   		TNGS_Mrln.dbo.MVLESTADOS_GETESTADOACTUAL(mov_ecd_patente) as est_des_des, 
+   		max(mov_des_tipodemovil) as mov_des_tipodemovil, 
+   		TNGS_Mrln.dbo.MVLKILOMETROS_GETKMACTUALMOVIL(mov_ecd_patente) as kmActual, 
+   		max(mov_des_nrochasis) as mov_des_nrochasis, 
+   		max(mov_des_nromotor) as mov_des_nromotor, 
+   		max(mov_ecd_nroploteado) as mov_ecd_nroploteado 
+   from Moviles 
+   join	MvlEstados on mov_ecd_patente = mve_ecd_patente 
+   join	Estados on est_rcd_cod = mve_rcd_codestado 
+   where TNGS_Mrln.dbo.MVLESTADOS_GETESTADOACTUAL(mov_ecd_patente) between @estadoini and @estadofin 
+   group by mov_ecd_patente 
+   order by estado 
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.MOVILES_ZMOVILESPORESTADO to tngsmodulos
 
 print ' '
 go

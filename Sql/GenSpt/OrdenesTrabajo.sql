@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/07/2018 05:38
+// Fecha       : 10/08/2018 19:48
 // Sistema     : Mrln
 // Tabla       : OrdenesTrabajo
 //----------------------------------------------------------------------------
@@ -555,6 +555,71 @@ go
 print '       - Asignando permisos al nuevo SP'
 
 grant execute on dbo.ORDENESTRABAJO_PACK to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Método Fijo: ZFinalizadas
+--- </summary>
+--- <param name="@fechaini">Fecha inicio</param>
+--- <param name="@fechafin">Fecha Fin</param>
+--- <param name="@patenteini">Patente Inicio</param>
+--- <param name="@patentefin">Patente Fin</param>
+--- <param name="@usuario">Usuario que ejecuta el SP</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.ORDENESTRABAJO_ZFINALIZADAS'
+
+if exists (select * from sysobjects where id = object_id('dbo.ORDENESTRABAJO_ZFINALIZADAS'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.ORDENESTRABAJO_ZFINALIZADAS
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.ORDENESTRABAJO_ZFINALIZADAS
+(
+@fechaini tngs_fecha,
+@fechafin tngs_fecha,
+@patenteini tngs_codigo_e,
+@patentefin tngs_codigo_e,
+@usuario tngs_nombre
+)
+as
+begin
+
+   select  odt_nro_nro, 
+   		odt_ecd_patente, 
+   		max(mov_des_des) as movil, 
+   		max(odt_fyh_fecapertura) as fapertura, 
+   		max(odt_fyh_feccierre) as fcierre, 
+   		max(tll_ede_descripcion) as taller, 
+   		sum(oti_imp_importecierre) as total 
+   from OrdenesTrabajo 
+   join OtItems on odt_nro_nro = oti_nro_nroot 
+   join Taller on tll_cod_codigo = odt_cod_codtaller 
+   join Moviles on mov_ecd_patente = odt_ecd_patente 
+   where odt_d20_estado = 'Finalizada' 
+   and odt_fyh_feccierre between @fechaini and @fechafin 
+   and odt_ecd_patente between @patenteini and @patentefin 
+   group by odt_ecd_patente, odt_nro_nro 
+   order by odt_ecd_patente, odt_nro_nro 
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.ORDENESTRABAJO_ZFINALIZADAS to tngsmodulos
 
 print ' '
 go

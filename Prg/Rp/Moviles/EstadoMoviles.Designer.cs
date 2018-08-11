@@ -1,6 +1,6 @@
 ﻿namespace Mrln.Rp
 {
-    partial class ItemsPendientes
+    partial class EstadoMoviles
     {
         /// <summary>
         /// Required designer variable.

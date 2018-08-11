@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------
 //                 TNG Software Script Generator (Tablas)                     
 //----------------------------------------------------------------------------
-// Fecha              : 20/04/2018 19:32
+// Fecha              : 31/07/2018 21:45
 // Base de Datos      : TNGS_Mrln
 // Tabla              : Moviles
 //----------------------------------------------------------------------------
@@ -47,6 +47,8 @@ create table Moviles
       mov_rcd_modelo tngs_codigo_r,
       mov_nro_aniofabric tngs_numero,
       mov_cd1_propio tngs_codigo_1,
+      mov_ecd_nroploteado tngs_codigo_e,
+      mov_des_tipodemovil tngs_descripcion,
       instante tngs_fecyhor,
       deleted tngs_borrado,
       usuario tngs_nombre,

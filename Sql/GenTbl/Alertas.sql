@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------
 //                 TNG Software Script Generator (Tablas)                     
 //----------------------------------------------------------------------------
-// Fecha              : 28/06/2018 17:05
+// Fecha              : 31/07/2018 21:45
 // Base de Datos      : TNGS_Mrln
 // Tabla              : Alertas
 //----------------------------------------------------------------------------
@@ -42,7 +42,7 @@ create table Alertas
       alr_nro_nroconfig tngs_numero,
       alr_nro_nroalerta tngs_numero,
       alr_des_descripcion tngs_descripcion,
-      alr_xde_detalle tngs_descripcion_x,
+      alr_d2x_detalle tngs_descripcion_200,
       alr_cd1_importancia tngs_codigo_1,
       alr_fyh_fechadisparada tngs_fecyhor,
       alr_fyh_fechavista tngs_fecyhor,

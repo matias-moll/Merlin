@@ -1,7 +1,7 @@
 /*---------------------------------------------------------------------------
 //                   TNG Software (Scripts iniciales de la Base)
 //---------------------------------------------------------------------------
-// Fecha              : 29/06/2018 17:57
+// Fecha              : 31/07/2018 21:45
 // Base de Datos      : TNGS_Mrln
 // Objetivo           : Creación de los usuarios de la base
 //----------------------------------------------------------------------------
@@ -46,7 +46,7 @@ go
 /*---------------------------------------------------------------------------
 //                   TNG Software (Scripts iniciales de la Base)
 //---------------------------------------------------------------------------
-// Fecha              : 29/06/2018 17:57
+// Fecha              : 31/07/2018 21:45
 // Base de Datos      : TNGS_Mrln
 // Objetivo           : Creación de los tipos de datos
 //----------------------------------------------------------------------------
@@ -313,7 +313,7 @@ go
 /*---------------------------------------------------------------------------
 //                   TNG Software (Scripts iniciales de la Base)
 //---------------------------------------------------------------------------
-// Fecha              : 29/06/2018 17:57
+// Fecha              : 31/07/2018 21:45
 // Base de Datos      : TNGS_Mrln
 // Objetivo           : Creación de las funciones básicas
 //----------------------------------------------------------------------------
@@ -727,7 +727,80 @@ go
 /*----------------------------------------------------------------------------
 //                 TNG Software Script Generator (Tablas)                     
 //----------------------------------------------------------------------------
-// Fecha              : 20/04/2018 19:32
+// Fecha              : 31/07/2018 21:45
+// Base de Datos      : TNGS_Mrln
+// Tabla              : Alertas
+//----------------------------------------------------------------------------
+// © 1999-2018 by TNG Software                                      Gndr 5.20
+//---------------------------------------------------------------------------*/
+
+/* ***************************************************************************
+/  Atencion!!!
+/     Este archivo fue generado por un programa en forma automática. Cualquier
+/     modificación que se realize sobre él se perderá en la próxima
+/     regeneración.
+/  **************************************************************************/
+
+/*-------------------------------------------------*/
+/* Selecciono la base en la que se creara la tabla */
+/*-------------------------------------------------*/
+
+use TNGS_Mrln
+go
+
+/*-----------------------------------*/
+/* Crea la tabla en la base indicada */
+/*-----------------------------------*/
+
+print 'Tabla: Alertas'
+
+if exists (select * from sysobjects where id = object_id('dbo.Alertas'))
+begin
+   print '   - Borrando la vieja tabla'
+   drop table dbo.Alertas
+end
+go
+
+print '   - Creando la nueva tabla'
+
+create table Alertas
+   (
+      alr_nro_nroconfig tngs_numero,
+      alr_nro_nroalerta tngs_numero,
+      alr_des_descripcion tngs_descripcion,
+      alr_d2x_detalle tngs_descripcion_200,
+      alr_cd1_importancia tngs_codigo_1,
+      alr_fyh_fechadisparada tngs_fecyhor,
+      alr_fyh_fechavista tngs_fecyhor,
+      alr_nom_usuariovista tngs_nombre,
+      alr_nro_repetirendias tngs_numero,
+      alr_cd1_finalizada tngs_codigo_1,
+      instante tngs_fecyhor,
+      deleted tngs_borrado,
+      usuario tngs_nombre,
+      version tngs_numero,
+      constraint Alertas_pk primary key clustered
+      (
+         alr_nro_nroconfig,
+         alr_nro_nroalerta
+      )
+   )
+go
+
+print '   - Asignando permisos a la nueva tabla'
+
+grant select on Alertas to tngsqbe
+
+print ' '
+go
+
+/*--------------------------------------------------------------------------
+// Fin del script de creacion de la tabla: Alertas
+//--------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------
+//                 TNG Software Script Generator (Tablas)                     
+//----------------------------------------------------------------------------
+// Fecha              : 31/07/2018 21:45
 // Base de Datos      : TNGS_Mrln
 // Tabla              : Categorias
 //----------------------------------------------------------------------------
@@ -791,7 +864,7 @@ go
 /*----------------------------------------------------------------------------
 //                 TNG Software Script Generator (Tablas)                     
 //----------------------------------------------------------------------------
-// Fecha              : 20/04/2018 19:32
+// Fecha              : 31/07/2018 21:45
 // Base de Datos      : TNGS_Mrln
 // Tabla              : Controles
 //----------------------------------------------------------------------------
@@ -856,7 +929,7 @@ go
 /*----------------------------------------------------------------------------
 //                 TNG Software Script Generator (Tablas)                     
 //----------------------------------------------------------------------------
-// Fecha              : 20/04/2018 19:32
+// Fecha              : 31/07/2018 21:45
 // Base de Datos      : TNGS_Mrln
 // Tabla              : ControlesReparations
 //----------------------------------------------------------------------------
@@ -918,6 +991,71 @@ go
 
 /*--------------------------------------------------------------------------
 // Fin del script de creacion de la tabla: ControlesReparations
+//--------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------
+//                 TNG Software Script Generator (Tablas)                     
+//----------------------------------------------------------------------------
+// Fecha              : 31/07/2018 21:45
+// Base de Datos      : TNGS_Mrln
+// Tabla              : DestinatariosMails
+//----------------------------------------------------------------------------
+// © 1999-2018 by TNG Software                                      Gndr 5.20
+//---------------------------------------------------------------------------*/
+
+/* ***************************************************************************
+/  Atencion!!!
+/     Este archivo fue generado por un programa en forma automática. Cualquier
+/     modificación que se realize sobre él se perderá en la próxima
+/     regeneración.
+/  **************************************************************************/
+
+/*-------------------------------------------------*/
+/* Selecciono la base en la que se creara la tabla */
+/*-------------------------------------------------*/
+
+use TNGS_Mrln
+go
+
+/*-----------------------------------*/
+/* Crea la tabla en la base indicada */
+/*-----------------------------------*/
+
+print 'Tabla: DestinatariosMails'
+
+if exists (select * from sysobjects where id = object_id('dbo.DestinatariosMails'))
+begin
+   print '   - Borrando la vieja tabla'
+   drop table dbo.DestinatariosMails
+end
+go
+
+print '   - Creando la nueva tabla'
+
+create table DestinatariosMails
+   (
+      dem_cod_codigo tngs_codigo,
+      dem_des_descripcion tngs_descripcion,
+      dem_txt_destinatarios tngs_texto,
+      instante tngs_fecyhor,
+      deleted tngs_borrado,
+      usuario tngs_nombre,
+      version tngs_numero,
+      constraint DestinatariosMails_pk primary key clustered
+      (
+         dem_cod_codigo
+      )
+   )
+go
+
+print '   - Asignando permisos a la nueva tabla'
+
+grant select on DestinatariosMails to tngsqbe
+
+print ' '
+go
+
+/*--------------------------------------------------------------------------
+// Fin del script de creacion de la tabla: DestinatariosMails
 //--------------------------------------------------------------------------*/
 /*----------------------------------------------------------------------------
 //                 TNG Software Script Generator (Tablas)                     
@@ -986,7 +1124,7 @@ go
 /*----------------------------------------------------------------------------
 //                 TNG Software Script Generator (Tablas)                     
 //----------------------------------------------------------------------------
-// Fecha              : 20/04/2018 19:32
+// Fecha              : 31/07/2018 21:45
 // Base de Datos      : TNGS_Mrln
 // Tabla              : Equipamiento
 //----------------------------------------------------------------------------
@@ -1051,7 +1189,7 @@ go
 /*----------------------------------------------------------------------------
 //                 TNG Software Script Generator (Tablas)                     
 //----------------------------------------------------------------------------
-// Fecha              : 20/04/2018 19:32
+// Fecha              : 31/07/2018 21:45
 // Base de Datos      : TNGS_Mrln
 // Tabla              : Estaciones
 //----------------------------------------------------------------------------
@@ -1118,7 +1256,7 @@ go
 /*----------------------------------------------------------------------------
 //                 TNG Software Script Generator (Tablas)                     
 //----------------------------------------------------------------------------
-// Fecha              : 20/04/2018 19:32
+// Fecha              : 31/07/2018 21:45
 // Base de Datos      : TNGS_Mrln
 // Tabla              : Estados
 //----------------------------------------------------------------------------
@@ -1184,7 +1322,7 @@ go
 /*----------------------------------------------------------------------------
 //                 TNG Software Script Generator (Tablas)                     
 //----------------------------------------------------------------------------
-// Fecha              : 20/04/2018 19:32
+// Fecha              : 31/07/2018 21:45
 // Base de Datos      : TNGS_Mrln
 // Tabla              : Marcas
 //----------------------------------------------------------------------------
@@ -1248,7 +1386,7 @@ go
 /*----------------------------------------------------------------------------
 //                 TNG Software Script Generator (Tablas)                     
 //----------------------------------------------------------------------------
-// Fecha              : 20/04/2018 19:32
+// Fecha              : 31/07/2018 21:45
 // Base de Datos      : TNGS_Mrln
 // Tabla              : Modelos
 //----------------------------------------------------------------------------
@@ -1313,7 +1451,71 @@ go
 /*----------------------------------------------------------------------------
 //                 TNG Software Script Generator (Tablas)                     
 //----------------------------------------------------------------------------
-// Fecha              : 20/04/2018 19:32
+// Fecha              : 31/07/2018 21:45
+// Base de Datos      : TNGS_Mrln
+// Tabla              : MotivosInfracciones
+//----------------------------------------------------------------------------
+// © 1999-2018 by TNG Software                                      Gndr 5.20
+//---------------------------------------------------------------------------*/
+
+/* ***************************************************************************
+/  Atencion!!!
+/     Este archivo fue generado por un programa en forma automática. Cualquier
+/     modificación que se realize sobre él se perderá en la próxima
+/     regeneración.
+/  **************************************************************************/
+
+/*-------------------------------------------------*/
+/* Selecciono la base en la que se creara la tabla */
+/*-------------------------------------------------*/
+
+use TNGS_Mrln
+go
+
+/*-----------------------------------*/
+/* Crea la tabla en la base indicada */
+/*-----------------------------------*/
+
+print 'Tabla: MotivosInfracciones'
+
+if exists (select * from sysobjects where id = object_id('dbo.MotivosInfracciones'))
+begin
+   print '   - Borrando la vieja tabla'
+   drop table dbo.MotivosInfracciones
+end
+go
+
+print '   - Creando la nueva tabla'
+
+create table MotivosInfracciones
+   (
+      mti_cod_codigo tngs_codigo,
+      mti_ede_descripcion tngs_descripcion_e,
+      instante tngs_fecyhor,
+      deleted tngs_borrado,
+      usuario tngs_nombre,
+      version tngs_numero,
+      constraint MotivosInfracciones_pk primary key clustered
+      (
+         mti_cod_codigo
+      )
+   )
+go
+
+print '   - Asignando permisos a la nueva tabla'
+
+grant select on MotivosInfracciones to tngsqbe
+
+print ' '
+go
+
+/*--------------------------------------------------------------------------
+// Fin del script de creacion de la tabla: MotivosInfracciones
+//--------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------
+//                 TNG Software Script Generator (Tablas)                     
+//----------------------------------------------------------------------------
+// Fecha              : 31/07/2018 21:45
 // Base de Datos      : TNGS_Mrln
 // Tabla              : Moviles
 //----------------------------------------------------------------------------
@@ -1359,6 +1561,8 @@ create table Moviles
       mov_rcd_modelo tngs_codigo_r,
       mov_nro_aniofabric tngs_numero,
       mov_cd1_propio tngs_codigo_1,
+      mov_ecd_nroploteado tngs_codigo_e,
+      mov_des_tipodemovil tngs_descripcion,
       instante tngs_fecyhor,
       deleted tngs_borrado,
       usuario tngs_nombre,
@@ -1383,7 +1587,146 @@ go
 /*----------------------------------------------------------------------------
 //                 TNG Software Script Generator (Tablas)                     
 //----------------------------------------------------------------------------
-// Fecha              : 20/04/2018 19:32
+// Fecha              : 31/07/2018 21:45
+// Base de Datos      : TNGS_Mrln
+// Tabla              : MvlAccidentes
+//----------------------------------------------------------------------------
+// © 1999-2018 by TNG Software                                      Gndr 5.20
+//---------------------------------------------------------------------------*/
+
+/* ***************************************************************************
+/  Atencion!!!
+/     Este archivo fue generado por un programa en forma automática. Cualquier
+/     modificación que se realize sobre él se perderá en la próxima
+/     regeneración.
+/  **************************************************************************/
+
+/*-------------------------------------------------*/
+/* Selecciono la base en la que se creara la tabla */
+/*-------------------------------------------------*/
+
+use TNGS_Mrln
+go
+
+/*-----------------------------------*/
+/* Crea la tabla en la base indicada */
+/*-----------------------------------*/
+
+print 'Tabla: MvlAccidentes'
+
+if exists (select * from sysobjects where id = object_id('dbo.MvlAccidentes'))
+begin
+   print '   - Borrando la vieja tabla'
+   drop table dbo.MvlAccidentes
+end
+go
+
+print '   - Creando la nueva tabla'
+
+create table MvlAccidentes
+   (
+      mva_ecd_patente tngs_codigo_e,
+      mva_fyh_fecha tngs_fecyhor,
+      mva_ede_localidad tngs_descripcion_e,
+      mva_xde_direccion tngs_descripcion_x,
+      mva_ede_motivo tngs_descripcion_e,
+      mva_txt_detalle tngs_texto,
+      mva_xde_dotacion tngs_descripcion_x,
+      instante tngs_fecyhor,
+      deleted tngs_borrado,
+      usuario tngs_nombre,
+      version tngs_numero,
+      constraint MvlAccidentes_pk primary key clustered
+      (
+         mva_ecd_patente,
+         mva_fyh_fecha
+      )
+   )
+go
+
+print '   - Asignando permisos a la nueva tabla'
+
+grant select on MvlAccidentes to tngsqbe
+
+print ' '
+go
+
+/*--------------------------------------------------------------------------
+// Fin del script de creacion de la tabla: MvlAccidentes
+//--------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------
+//                 TNG Software Script Generator (Tablas)                     
+//----------------------------------------------------------------------------
+// Fecha              : 31/07/2018 21:45
+// Base de Datos      : TNGS_Mrln
+// Tabla              : MvlAlertas
+//----------------------------------------------------------------------------
+// © 1999-2018 by TNG Software                                      Gndr 5.20
+//---------------------------------------------------------------------------*/
+
+/* ***************************************************************************
+/  Atencion!!!
+/     Este archivo fue generado por un programa en forma automática. Cualquier
+/     modificación que se realize sobre él se perderá en la próxima
+/     regeneración.
+/  **************************************************************************/
+
+/*-------------------------------------------------*/
+/* Selecciono la base en la que se creara la tabla */
+/*-------------------------------------------------*/
+
+use TNGS_Mrln
+go
+
+/*-----------------------------------*/
+/* Crea la tabla en la base indicada */
+/*-----------------------------------*/
+
+print 'Tabla: MvlAlertas'
+
+if exists (select * from sysobjects where id = object_id('dbo.MvlAlertas'))
+begin
+   print '   - Borrando la vieja tabla'
+   drop table dbo.MvlAlertas
+end
+go
+
+print '   - Creando la nueva tabla'
+
+create table MvlAlertas
+   (
+      mal_ecd_patente tngs_codigo_e,
+      mal_nro_nroconfigalerta tngs_numero,
+      mal_nro_kilometros tngs_numero,
+      mal_cd6_codreparacion tngs_codigo_6,
+      mal_cod_codcontrol tngs_codigo,
+      mal_cod_coddestinatarios tngs_codigo,
+      instante tngs_fecyhor,
+      deleted tngs_borrado,
+      usuario tngs_nombre,
+      version tngs_numero,
+      constraint MvlAlertas_pk primary key clustered
+      (
+         mal_ecd_patente,
+         mal_nro_nroconfigalerta
+      )
+   )
+go
+
+print '   - Asignando permisos a la nueva tabla'
+
+grant select on MvlAlertas to tngsqbe
+
+print ' '
+go
+
+/*--------------------------------------------------------------------------
+// Fin del script de creacion de la tabla: MvlAlertas
+//--------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------
+//                 TNG Software Script Generator (Tablas)                     
+//----------------------------------------------------------------------------
+// Fecha              : 31/07/2018 21:45
 // Base de Datos      : TNGS_Mrln
 // Tabla              : MvlCombustible
 //----------------------------------------------------------------------------
@@ -1451,7 +1794,7 @@ go
 /*----------------------------------------------------------------------------
 //                 TNG Software Script Generator (Tablas)                     
 //----------------------------------------------------------------------------
-// Fecha              : 20/04/2018 19:32
+// Fecha              : 31/07/2018 21:45
 // Base de Datos      : TNGS_Mrln
 // Tabla              : MvlEquipamiento
 //----------------------------------------------------------------------------
@@ -1517,7 +1860,7 @@ go
 /*----------------------------------------------------------------------------
 //                 TNG Software Script Generator (Tablas)                     
 //----------------------------------------------------------------------------
-// Fecha              : 20/04/2018 19:32
+// Fecha              : 31/07/2018 21:45
 // Base de Datos      : TNGS_Mrln
 // Tabla              : MvlEstados
 //----------------------------------------------------------------------------
@@ -1584,7 +1927,78 @@ go
 /*----------------------------------------------------------------------------
 //                 TNG Software Script Generator (Tablas)                     
 //----------------------------------------------------------------------------
-// Fecha              : 20/04/2018 19:32
+// Fecha              : 31/07/2018 21:45
+// Base de Datos      : TNGS_Mrln
+// Tabla              : MvlInfracciones
+//----------------------------------------------------------------------------
+// © 1999-2018 by TNG Software                                      Gndr 5.20
+//---------------------------------------------------------------------------*/
+
+/* ***************************************************************************
+/  Atencion!!!
+/     Este archivo fue generado por un programa en forma automática. Cualquier
+/     modificación que se realize sobre él se perderá en la próxima
+/     regeneración.
+/  **************************************************************************/
+
+/*-------------------------------------------------*/
+/* Selecciono la base en la que se creara la tabla */
+/*-------------------------------------------------*/
+
+use TNGS_Mrln
+go
+
+/*-----------------------------------*/
+/* Crea la tabla en la base indicada */
+/*-----------------------------------*/
+
+print 'Tabla: MvlInfracciones'
+
+if exists (select * from sysobjects where id = object_id('dbo.MvlInfracciones'))
+begin
+   print '   - Borrando la vieja tabla'
+   drop table dbo.MvlInfracciones
+end
+go
+
+print '   - Creando la nueva tabla'
+
+create table MvlInfracciones
+   (
+      mvi_ecd_patente tngs_codigo_e,
+      mvi_fyh_fecha tngs_fecyhor,
+      mvi_cod_codmotivo tngs_codigo,
+      mvi_ede_lugar tngs_descripcion_e,
+      mvi_cd1_pagada tngs_codigo_1,
+      mvi_imp_importe tngs_importe,
+      mvi_txt_comentario tngs_texto,
+      mvi_cd1_anulada tngs_codigo_1,
+      instante tngs_fecyhor,
+      deleted tngs_borrado,
+      usuario tngs_nombre,
+      version tngs_numero,
+      constraint MvlInfracciones_pk primary key clustered
+      (
+         mvi_ecd_patente,
+         mvi_fyh_fecha
+      )
+   )
+go
+
+print '   - Asignando permisos a la nueva tabla'
+
+grant select on MvlInfracciones to tngsqbe
+
+print ' '
+go
+
+/*--------------------------------------------------------------------------
+// Fin del script de creacion de la tabla: MvlInfracciones
+//--------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------
+//                 TNG Software Script Generator (Tablas)                     
+//----------------------------------------------------------------------------
+// Fecha              : 31/07/2018 21:45
 // Base de Datos      : TNGS_Mrln
 // Tabla              : MvlKilometros
 //----------------------------------------------------------------------------
@@ -1650,7 +2064,7 @@ go
 /*----------------------------------------------------------------------------
 //                 TNG Software Script Generator (Tablas)                     
 //----------------------------------------------------------------------------
-// Fecha              : 20/04/2018 19:32
+// Fecha              : 31/07/2018 21:45
 // Base de Datos      : TNGS_Mrln
 // Tabla              : OrdenesTrabajo
 //----------------------------------------------------------------------------
@@ -1693,7 +2107,9 @@ create table OrdenesTrabajo
       odt_fyh_fecapertura tngs_fecyhor,
       odt_nom_operador tngs_nombre,
       odt_fyh_feccierre tngs_fecyhor,
-      odt_cod_encargado tngs_codigo,
+      odt_cod_codtaller tngs_codigo,
+      odt_d20_estado tngs_descripcion_20,
+      odt_nro_kmsactuales tngs_numero,
       instante tngs_fecyhor,
       deleted tngs_borrado,
       usuario tngs_nombre,
@@ -1718,7 +2134,7 @@ go
 /*----------------------------------------------------------------------------
 //                 TNG Software Script Generator (Tablas)                     
 //----------------------------------------------------------------------------
-// Fecha              : 20/04/2018 19:32
+// Fecha              : 31/07/2018 21:45
 // Base de Datos      : TNGS_Mrln
 // Tabla              : OtItems
 //----------------------------------------------------------------------------
@@ -1761,9 +2177,13 @@ create table OtItems
       oti_nro_nroitem tngs_numero,
       oti_des_desoperacion tngs_descripcion,
       oti_des_destarea tngs_descripcion,
-      oti_des_descategoria tngs_descripcion,
+      oti_rcd_codcategoria tngs_codigo_r,
       oti_imp_importe tngs_importe,
       oti_ede_comentario tngs_descripcion_e,
+      oti_d20_estado tngs_descripcion_20,
+      oti_imp_importecierre tngs_importe,
+      oti_ede_comentariocierre tngs_descripcion_e,
+      oti_cd6_codreparacion tngs_codigo_6,
       instante tngs_fecyhor,
       deleted tngs_borrado,
       usuario tngs_nombre,
@@ -1790,7 +2210,7 @@ go
 /*----------------------------------------------------------------------------
 //                 TNG Software Script Generator (Tablas)                     
 //----------------------------------------------------------------------------
-// Fecha              : 20/04/2018 19:32
+// Fecha              : 31/07/2018 21:45
 // Base de Datos      : TNGS_Mrln
 // Tabla              : Parametros
 //----------------------------------------------------------------------------
@@ -1858,7 +2278,7 @@ go
 /*----------------------------------------------------------------------------
 //                 TNG Software Script Generator (Tablas)                     
 //----------------------------------------------------------------------------
-// Fecha              : 20/04/2018 19:32
+// Fecha              : 31/07/2018 21:45
 // Base de Datos      : TNGS_Mrln
 // Tabla              : Reparaciones
 //----------------------------------------------------------------------------
@@ -1924,7 +2344,7 @@ go
 /*----------------------------------------------------------------------------
 //                 TNG Software Script Generator (Tablas)                     
 //----------------------------------------------------------------------------
-// Fecha              : 06/06/2018 01:17
+// Fecha              : 31/07/2018 21:45
 // Base de Datos      : TNGS_Mrln
 // Tabla              : Taller
 //----------------------------------------------------------------------------
@@ -1991,7 +2411,7 @@ go
 /*----------------------------------------------------------------------------
 //                 TNG Software Script Generator (Tablas)                     
 //----------------------------------------------------------------------------
-// Fecha              : 06/06/2018 01:17
+// Fecha              : 31/07/2018 21:45
 // Base de Datos      : TNGS_Mrln
 // Tabla              : TallerCategoria
 //----------------------------------------------------------------------------
@@ -2031,6 +2451,7 @@ create table TallerCategoria
    (
       tct_cod_codigotaller tngs_codigo,
       tct_rcd_codigocategoria tngs_codigo_r,
+      tct_cod_dummy tngs_codigo,
       instante tngs_fecyhor,
       deleted tngs_borrado,
       usuario tngs_nombre,
@@ -2056,7 +2477,7 @@ go
 /*----------------------------------------------------------------------------
 //                 TNG Software Script Generator (Tablas)                     
 //----------------------------------------------------------------------------
-// Fecha              : 20/04/2018 19:32
+// Fecha              : 31/07/2018 21:45
 // Base de Datos      : TNGS_Mrln
 // Tabla              : Talonarios
 //----------------------------------------------------------------------------
@@ -2124,7 +2545,51 @@ go
 /*----------------------------------------------------------------------------
 //                 TNG Software Script Generator (Indices)                    
 //----------------------------------------------------------------------------
-// Fecha              : 20/04/2018 19:32
+// Fecha              : 31/07/2018 21:45
+// Base de Datos      : TNGS_Mrln
+// Tabla              : OrdenesTrabajo
+//----------------------------------------------------------------------------
+// © 1999-2018 by TNG Software                                      Gndr 5.20
+//---------------------------------------------------------------------------*/
+
+/* ***************************************************************************
+/  Atencion!!!
+/     Este archivo fue generado por un programa en forma automática. Cualquier
+/     modificación que se realize sobre él se perderá en la próxima
+/     regeneración.
+/  **************************************************************************/
+
+/*-----------------------------------------------------*/
+/* Selecciono la base en la que se crearan los indices */
+/*-----------------------------------------------------*/
+
+use TNGS_Mrln
+go
+
+/*-----------------------------------------------
+// Crea el indice: is1
+//-----------------------------------------------*/
+
+print 'Indice: OrdenesTrabajo_is1'
+
+print '    - Creando el nuevo indice'
+
+create index OrdenesTrabajo_is1 on OrdenesTrabajo
+   (
+       odt_d20_estado
+   )
+go
+
+print '  '
+go
+
+/*--------------------------------------------------------------------------
+// Fin del script de creacion de los indices de la tabla: OrdenesTrabajo
+//--------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------
+//                 TNG Software Script Generator (Indices)                    
+//----------------------------------------------------------------------------
+// Fecha              : 31/07/2018 21:45
 // Base de Datos      : TNGS_Mrln
 // Tabla              : Reparaciones
 //----------------------------------------------------------------------------
@@ -2168,7 +2633,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software Fcts Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/07/2018 07:12
+// Fecha       : 10/08/2018 20:30
 // Sistema     : Mrln
 // Tabla       : Moviles
 //----------------------------------------------------------------------------
@@ -2245,7 +2710,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software Fcts Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/07/2018 07:12
+// Fecha       : 10/08/2018 20:30
 // Sistema     : Mrln
 // Tabla       : MvlAccidentes
 //----------------------------------------------------------------------------
@@ -2320,7 +2785,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software Fcts Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/07/2018 07:12
+// Fecha       : 10/08/2018 20:30
 // Sistema     : Mrln
 // Tabla       : MvlAlertas
 //----------------------------------------------------------------------------
@@ -2395,7 +2860,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software Fcts Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/07/2018 07:12
+// Fecha       : 10/08/2018 20:30
 // Sistema     : Mrln
 // Tabla       : MvlCombustible
 //----------------------------------------------------------------------------
@@ -2621,7 +3086,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software Fcts Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/07/2018 07:12
+// Fecha       : 10/08/2018 20:30
 // Sistema     : Mrln
 // Tabla       : MvlEstados
 //----------------------------------------------------------------------------
@@ -2706,7 +3171,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software Fcts Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/07/2018 07:12
+// Fecha       : 10/08/2018 20:30
 // Sistema     : Mrln
 // Tabla       : MvlInfracciones
 //----------------------------------------------------------------------------
@@ -2781,7 +3246,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software Fcts Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/07/2018 07:12
+// Fecha       : 10/08/2018 20:30
 // Sistema     : Mrln
 // Tabla       : MvlKilometros
 //----------------------------------------------------------------------------
@@ -2856,7 +3321,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software Fcts Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/07/2018 07:12
+// Fecha       : 10/08/2018 20:30
 // Sistema     : Mrln
 // Tabla       : OrdenesTrabajo
 //----------------------------------------------------------------------------
@@ -3023,7 +3488,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/07/2018 05:38
+// Fecha       : 10/08/2018 19:48
 // Sistema     : Mrln
 // Tabla       : Alertas
 //----------------------------------------------------------------------------
@@ -3736,7 +4201,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/07/2018 05:38
+// Fecha       : 10/08/2018 19:48
 // Sistema     : Mrln
 // Tabla       : Categorias
 //----------------------------------------------------------------------------
@@ -4273,7 +4738,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/07/2018 05:38
+// Fecha       : 10/08/2018 19:48
 // Sistema     : Mrln
 // Tabla       : Controles
 //----------------------------------------------------------------------------
@@ -4818,7 +5283,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/07/2018 05:38
+// Fecha       : 10/08/2018 19:48
 // Sistema     : Mrln
 // Tabla       : ControlesReparations
 //----------------------------------------------------------------------------
@@ -5637,7 +6102,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/07/2018 05:38
+// Fecha       : 10/08/2018 19:48
 // Sistema     : Mrln
 // Tabla       : DestinatariosMails
 //----------------------------------------------------------------------------
@@ -6674,7 +7139,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/07/2018 05:38
+// Fecha       : 10/08/2018 19:48
 // Sistema     : Mrln
 // Tabla       : Equipamiento
 //----------------------------------------------------------------------------
@@ -7219,7 +7684,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/07/2018 05:38
+// Fecha       : 10/08/2018 19:48
 // Sistema     : Mrln
 // Tabla       : Estaciones
 //----------------------------------------------------------------------------
@@ -7784,7 +8249,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/07/2018 05:38
+// Fecha       : 10/08/2018 19:48
 // Sistema     : Mrln
 // Tabla       : Estados
 //----------------------------------------------------------------------------
@@ -8339,7 +8804,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/07/2018 05:38
+// Fecha       : 10/08/2018 19:48
 // Sistema     : Mrln
 // Tabla       : Marcas
 //----------------------------------------------------------------------------
@@ -8874,7 +9339,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/07/2018 05:38
+// Fecha       : 10/08/2018 19:48
 // Sistema     : Mrln
 // Tabla       : Modelos
 //----------------------------------------------------------------------------
@@ -9419,7 +9884,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/07/2018 05:38
+// Fecha       : 10/08/2018 19:48
 // Sistema     : Mrln
 // Tabla       : MotivosInfracciones
 //----------------------------------------------------------------------------
@@ -9911,7 +10376,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/07/2018 05:38
+// Fecha       : 10/08/2018 19:48
 // Sistema     : Mrln
 // Tabla       : Moviles
 //----------------------------------------------------------------------------
@@ -10569,6 +11034,65 @@ go
 ---////////////////////////////////////////////////////////
 ---
 --- <summary>
+--- Método Fijo: ZMovilesPorEstado
+--- </summary>
+--- <param name="@estadoini">Estado Inicial</param>
+--- <param name="@estadofin">Estado Final</param>
+--- <param name="@usuario">Usuario que ejecuta el SP</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.MOVILES_ZMOVILESPORESTADO'
+
+if exists (select * from sysobjects where id = object_id('dbo.MOVILES_ZMOVILESPORESTADO'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.MOVILES_ZMOVILESPORESTADO
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.MOVILES_ZMOVILESPORESTADO
+(
+@estadoini tngs_descripcion,
+@estadofin tngs_descripcion,
+@usuario tngs_nombre
+)
+as
+begin
+
+   select	mov_ecd_patente, 
+   		max(mov_des_des) as mov_des_des, 
+   		TNGS_Mrln.dbo.MVLESTADOS_GETESTADOACTUAL(mov_ecd_patente) as est_des_des, 
+   		max(mov_des_tipodemovil) as mov_des_tipodemovil, 
+   		TNGS_Mrln.dbo.MVLKILOMETROS_GETKMACTUALMOVIL(mov_ecd_patente) as kmActual, 
+   		max(mov_des_nrochasis) as mov_des_nrochasis, 
+   		max(mov_des_nromotor) as mov_des_nromotor, 
+   		max(mov_ecd_nroploteado) as mov_ecd_nroploteado 
+   from Moviles 
+   join	MvlEstados on mov_ecd_patente = mve_ecd_patente 
+   join	Estados on est_rcd_cod = mve_rcd_codestado 
+   where TNGS_Mrln.dbo.MVLESTADOS_GETESTADOACTUAL(mov_ecd_patente) between @estadoini and @estadofin 
+   group by mov_ecd_patente 
+   order by estado 
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.MOVILES_ZMOVILESPORESTADO to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
 --- Método Fijo: getMovilesTree
 --- </summary>
 --- <param name="@usuario">Usuario que ejecuta el SP</param>
@@ -10620,7 +11144,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/07/2018 05:38
+// Fecha       : 10/08/2018 19:48
 // Sistema     : Mrln
 // Tabla       : MvlAccidentes
 //----------------------------------------------------------------------------
@@ -11469,7 +11993,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/07/2018 05:38
+// Fecha       : 10/08/2018 19:48
 // Sistema     : Mrln
 // Tabla       : MvlAlertas
 //----------------------------------------------------------------------------
@@ -12360,7 +12884,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/07/2018 05:38
+// Fecha       : 10/08/2018 19:48
 // Sistema     : Mrln
 // Tabla       : MvlCombustible
 //----------------------------------------------------------------------------
@@ -13238,7 +13762,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/07/2018 05:38
+// Fecha       : 10/08/2018 19:48
 // Sistema     : Mrln
 // Tabla       : MvlEquipamiento
 //----------------------------------------------------------------------------
@@ -14152,7 +14676,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/07/2018 05:38
+// Fecha       : 10/08/2018 19:48
 // Sistema     : Mrln
 // Tabla       : MvlEstados
 //----------------------------------------------------------------------------
@@ -15017,7 +15541,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/07/2018 05:38
+// Fecha       : 10/08/2018 19:48
 // Sistema     : Mrln
 // Tabla       : MvlInfracciones
 //----------------------------------------------------------------------------
@@ -15896,7 +16420,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/07/2018 05:38
+// Fecha       : 10/08/2018 19:48
 // Sistema     : Mrln
 // Tabla       : MvlKilometros
 //----------------------------------------------------------------------------
@@ -16745,7 +17269,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/07/2018 05:38
+// Fecha       : 10/08/2018 19:48
 // Sistema     : Mrln
 // Tabla       : OrdenesTrabajo
 //----------------------------------------------------------------------------
@@ -17306,6 +17830,71 @@ go
 ---////////////////////////////////////////////////////////
 ---
 --- <summary>
+--- Método Fijo: ZFinalizadas
+--- </summary>
+--- <param name="@fechaini">Fecha inicio</param>
+--- <param name="@fechafin">Fecha Fin</param>
+--- <param name="@patenteini">Patente Inicio</param>
+--- <param name="@patentefin">Patente Fin</param>
+--- <param name="@usuario">Usuario que ejecuta el SP</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.ORDENESTRABAJO_ZFINALIZADAS'
+
+if exists (select * from sysobjects where id = object_id('dbo.ORDENESTRABAJO_ZFINALIZADAS'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.ORDENESTRABAJO_ZFINALIZADAS
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.ORDENESTRABAJO_ZFINALIZADAS
+(
+@fechaini tngs_fecha,
+@fechafin tngs_fecha,
+@patenteini tngs_codigo_e,
+@patentefin tngs_codigo_e,
+@usuario tngs_nombre
+)
+as
+begin
+
+   select  odt_nro_nro, 
+   		odt_ecd_patente, 
+   		max(mov_des_des) as movil, 
+   		max(odt_fyh_fecapertura) as fapertura, 
+   		max(odt_fyh_feccierre) as fcierre, 
+   		max(tll_ede_descripcion) as taller, 
+   		sum(oti_imp_importecierre) as total 
+   from OrdenesTrabajo 
+   join OtItems on odt_nro_nro = oti_nro_nroot 
+   join Taller on tll_cod_codigo = odt_cod_codtaller 
+   join Moviles on mov_ecd_patente = odt_ecd_patente 
+   where odt_d20_estado = 'Finalizada' 
+   and odt_fyh_feccierre between @fechaini and @fechafin 
+   and odt_ecd_patente between @patenteini and @patentefin 
+   group by odt_ecd_patente, odt_nro_nro 
+   order by odt_ecd_patente, odt_nro_nro 
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.ORDENESTRABAJO_ZFINALIZADAS to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
 --- Método Fijo: getPendByPatente
 --- </summary>
 --- <param name="@patente">patente de un movil</param>
@@ -17428,7 +18017,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/07/2018 05:38
+// Fecha       : 10/08/2018 19:48
 // Sistema     : Mrln
 // Tabla       : OtItems
 //----------------------------------------------------------------------------
@@ -18511,7 +19100,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/07/2018 05:38
+// Fecha       : 10/08/2018 19:48
 // Sistema     : Mrln
 // Tabla       : Parametros
 //----------------------------------------------------------------------------
@@ -19043,7 +19632,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/07/2018 05:38
+// Fecha       : 10/08/2018 19:48
 // Sistema     : Mrln
 // Tabla       : Reparaciones
 //----------------------------------------------------------------------------
@@ -19613,7 +20202,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/07/2018 05:38
+// Fecha       : 10/08/2018 19:48
 // Sistema     : Mrln
 // Tabla       : Taller
 //----------------------------------------------------------------------------
@@ -20178,7 +20767,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/07/2018 05:38
+// Fecha       : 10/08/2018 19:48
 // Sistema     : Mrln
 // Tabla       : TallerCategoria
 //----------------------------------------------------------------------------
@@ -21015,7 +21604,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 27/07/2018 05:38
+// Fecha       : 10/08/2018 19:48
 // Sistema     : Mrln
 // Tabla       : Talonarios
 //----------------------------------------------------------------------------
