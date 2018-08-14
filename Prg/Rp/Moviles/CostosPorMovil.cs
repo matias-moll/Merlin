@@ -9,7 +9,7 @@ using Mrln.Bel;
 
 namespace Mrln.Rp
 {
-    public partial class OrdenesFinalizadas : ReporteBase
+    public partial class CostosPorMovil : ReporteBase
     {
         // Miembros
         CDCombo cdcMoviles = new CDCombo();
@@ -17,7 +17,7 @@ namespace Mrln.Rp
         DateEdit deFechaFin = new DateEdit();
 
         // Constructor
-        public OrdenesFinalizadas() : base("OrdenesFinalizadas")
+        public CostosPorMovil() : base("CostosPorMovil")
         {
             InitializeComponent();
         }
@@ -26,6 +26,7 @@ namespace Mrln.Rp
         {
             Bel.LEMoviles moviles = Bll.Moviles.UpFull(true, ref m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
+
             cdcMoviles.FillFromStrLEntidad(moviles, Bel.EMovil.PatenteCmp, Bel.EMovil.DesCmp, "deleted");
             cdcMoviles.AddStrCD("", "--TODOS--", 0);
 
@@ -40,7 +41,7 @@ namespace Mrln.Rp
                                                         ref string p_strDetalleReporte, ref int p_intCorteDeControl)
         {
             // Cargamos los valores de referencia para el llenado del report.
-            p_strNombreReporte = "Ordenes de Trabajo Finalizadas";
+            p_strNombreReporte = "Costos Por Móvil";
 
             if (deFechaFin.Fecha == DateTimeRuts.Empty || deFechaInicio.Fecha == DateTimeRuts.Empty)
             {
@@ -60,17 +61,18 @@ namespace Mrln.Rp
             else
                 l_strPatenteIni = l_strPatenteFin = cdcMoviles.SelectedStrCode;
 
-            ListaEntidades l_leOrdenesFinalizadas = Bll.OrdenesTrabajo.ZFinalizadas(deFechaInicio.Fecha, deFechaFin.Fecha,
-                                                                                    l_strPatenteIni, l_strPatenteFin, ref m_smResult);
+            ListaEntidades l_leCostos = Bll.Moviles.ZCostosPorMovil(deFechaInicio.Fecha, deFechaFin.Fecha, l_strPatenteIni, l_strPatenteFin, ref m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return null;
 
-            l_leOrdenesFinalizadas.ChangeCaption("movil", "V1MóvilCN1");
-            l_leOrdenesFinalizadas.ChangeCaption("fapertura", "V1F. AperturaFN1");
-            l_leOrdenesFinalizadas.ChangeCaption("fcierre", "V1F. CierreFN1");
-            l_leOrdenesFinalizadas.ChangeCaption("taller", "V1TallerCN1");
-            l_leOrdenesFinalizadas.ChangeCaption("total", "V1Total2S1");
+            l_leCostos.ChangeCaption("patente", "V1PatenteCN1");
+            l_leCostos.ChangeCaption("movil", "V1MóvilCN1");
+            l_leCostos.ChangeCaption("fecha", "V1FechaFN1");
+            l_leCostos.ChangeCaption("tipo", "V1TipoCN1");
+            l_leCostos.ChangeCaption("descripcion", "V1DescripciónCN1");
+            l_leCostos.ChangeCaption("importe", "V1Importe2S1");
 
-            return l_leOrdenesFinalizadas;
+            return l_leCostos;
         }
+
     }
 }

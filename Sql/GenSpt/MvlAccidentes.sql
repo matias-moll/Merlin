@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 10/08/2018 19:48
+// Fecha       : 14/08/2018 17:33
 // Sistema     : Mrln
 // Tabla       : MvlAccidentes
 //----------------------------------------------------------------------------
@@ -840,6 +840,68 @@ go
 print '       - Asignando permisos al nuevo SP'
 
 grant execute on dbo.MVLACCIDENTES_FPACK to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Método Fijo: ZAccidentesPorMovil
+--- </summary>
+--- <param name="@fechaini">Fecha Inicial</param>
+--- <param name="@fechafin">Fecha Final</param>
+--- <param name="@patenteini">Patente Inicial</param>
+--- <param name="@patentefin">Patente Final</param>
+--- <param name="@usuario">Usuario que ejecuta el SP</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.MVLACCIDENTES_ZACCIDENTESPORMOVIL'
+
+if exists (select * from sysobjects where id = object_id('dbo.MVLACCIDENTES_ZACCIDENTESPORMOVIL'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.MVLACCIDENTES_ZACCIDENTESPORMOVIL
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.MVLACCIDENTES_ZACCIDENTESPORMOVIL
+(
+@fechaini tngs_fecha,
+@fechafin tngs_fecha,
+@patenteini tngs_codigo_e,
+@patentefin tngs_codigo_e,
+@usuario tngs_nombre
+)
+as
+begin
+
+   select	mva_ecd_patente, 
+   		mov_des_des, 
+   		mov_des_tipodemovil, 
+   		mva_fyh_fecha, 
+   		mva_ede_localidad, 
+   		mva_xde_direccion, 
+   		mva_ede_motivo, 
+   		mva_xde_dotacion, 
+   		substring(mva_txt_detalle, 1, 250) as detalle 
+    from MvlAccidentes 
+    join Moviles on mov_ecd_patente = mva_ecd_patente 
+   where	mva_fyh_fecha between @fechaini and @fechafin 
+   and		mva_ecd_patente between @patenteini and @patentefin 
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.MVLACCIDENTES_ZACCIDENTESPORMOVIL to tngsmodulos
 
 print ' '
 go

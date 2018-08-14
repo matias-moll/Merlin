@@ -1,9 +1,5 @@
 TODO:
 
-
-Crear 1 o 2 reportes de moviles 
-
-
 Crear programa de XF (Xfill)
 Metadata, Programas
 Xf
@@ -13,7 +9,6 @@ no es mdi
 Sal en N
 
 Ejemplo de este programa en el publico Matias.
-
 
 
 - Corregir en la documentacion de qbe, todos los lugares donde hay fecha y hora de apertura y cierre

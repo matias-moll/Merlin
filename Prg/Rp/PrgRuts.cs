@@ -10,6 +10,8 @@ using TNGS.NetRoutines;
 using TNGS.NetApp;
 using Mrln;
 using Mrln.Shr;
+using TNGS.NetControls;
+using TNGS.NetAppSupport;
 #endregion
 
 namespace Mrln.Rp

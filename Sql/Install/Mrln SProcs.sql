@@ -856,7 +856,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 10/08/2018 19:48
+// Fecha       : 14/08/2018 17:33
 // Sistema     : Mrln
 // Tabla       : Alertas
 //----------------------------------------------------------------------------
@@ -1569,7 +1569,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 10/08/2018 19:48
+// Fecha       : 14/08/2018 17:33
 // Sistema     : Mrln
 // Tabla       : Categorias
 //----------------------------------------------------------------------------
@@ -2106,7 +2106,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 10/08/2018 19:48
+// Fecha       : 14/08/2018 17:33
 // Sistema     : Mrln
 // Tabla       : Controles
 //----------------------------------------------------------------------------
@@ -2651,7 +2651,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 10/08/2018 19:48
+// Fecha       : 14/08/2018 17:33
 // Sistema     : Mrln
 // Tabla       : ControlesReparations
 //----------------------------------------------------------------------------
@@ -3470,7 +3470,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 10/08/2018 19:48
+// Fecha       : 14/08/2018 17:33
 // Sistema     : Mrln
 // Tabla       : DestinatariosMails
 //----------------------------------------------------------------------------
@@ -4507,7 +4507,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 10/08/2018 19:48
+// Fecha       : 14/08/2018 17:33
 // Sistema     : Mrln
 // Tabla       : Equipamiento
 //----------------------------------------------------------------------------
@@ -5052,7 +5052,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 10/08/2018 19:48
+// Fecha       : 14/08/2018 17:11
 // Sistema     : Mrln
 // Tabla       : Estaciones
 //----------------------------------------------------------------------------
@@ -5617,7 +5617,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 10/08/2018 19:48
+// Fecha       : 14/08/2018 17:33
 // Sistema     : Mrln
 // Tabla       : Estados
 //----------------------------------------------------------------------------
@@ -6172,7 +6172,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 10/08/2018 19:48
+// Fecha       : 14/08/2018 17:33
 // Sistema     : Mrln
 // Tabla       : Marcas
 //----------------------------------------------------------------------------
@@ -6707,7 +6707,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 10/08/2018 19:48
+// Fecha       : 14/08/2018 17:33
 // Sistema     : Mrln
 // Tabla       : Modelos
 //----------------------------------------------------------------------------
@@ -7252,7 +7252,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 10/08/2018 19:48
+// Fecha       : 14/08/2018 17:33
 // Sistema     : Mrln
 // Tabla       : MotivosInfracciones
 //----------------------------------------------------------------------------
@@ -7744,7 +7744,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 10/08/2018 19:48
+// Fecha       : 14/08/2018 17:33
 // Sistema     : Mrln
 // Tabla       : Moviles
 //----------------------------------------------------------------------------
@@ -8402,6 +8402,95 @@ go
 ---////////////////////////////////////////////////////////
 ---
 --- <summary>
+--- Método Fijo: ZCostosPorMovil
+--- </summary>
+--- <param name="@fechaini">Fecha Inicial</param>
+--- <param name="@fechafin">Fecha Final</param>
+--- <param name="@patenteini">Patente Ini</param>
+--- <param name="@patentefin">Patente Fin</param>
+--- <param name="@usuario">Usuario que ejecuta el SP</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.MOVILES_ZCOSTOSPORMOVIL'
+
+if exists (select * from sysobjects where id = object_id('dbo.MOVILES_ZCOSTOSPORMOVIL'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.MOVILES_ZCOSTOSPORMOVIL
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.MOVILES_ZCOSTOSPORMOVIL
+(
+@fechaini tngs_fecha,
+@fechafin tngs_fecha,
+@patenteini tngs_codigo_e,
+@patentefin tngs_codigo_e,
+@usuario tngs_nombre
+)
+as
+begin
+
+   select * from ( 
+    
+   select	mco_ecd_patente as patente, 
+   		Moviles.mov_des_des as movil, 
+   		mco_fyh_fecha as fecha, 
+   		'Combustible' as tipo, 
+   		rtrim(ets_des_des) + ' : ' + CONVERT(varchar(4), mco_val_litros)  + 'litros' as descripcion, 
+   		mco_imp_importe as importe 
+   from MvlCombustible 
+   join Moviles on mov_ecd_patente = mco_ecd_patente 
+   join Estaciones on mco_rcd_codestacion = ets_rcd_cod 
+    
+   union 
+    
+   select	mvi_ecd_patente as patente, 
+   		Moviles.mov_des_des as movil, 
+   		mvi_fyh_fecha as fecha, 
+   		'Infracción' as tipo, 
+   		mti_ede_descripcion as descripcion, 
+   		mvi_imp_importe as importe 
+   from MvlInfracciones 
+   join Moviles on mov_ecd_patente = mvi_ecd_patente 
+   join MotivosInfracciones on mvi_cod_codmotivo = mti_cod_codigo 
+    
+   union 
+    
+   select	odt_ecd_patente as patente, 
+   		Moviles.mov_des_des as movil, 
+   		odt_fyh_feccierre as fecha, 
+   		'Control/Reparación' as tipo, 
+   		OtItems.oti_des_destarea as descripcion, 
+   		oti_imp_importecierre as importe 
+   from OrdenesTrabajo 
+   join OTItems on odt_nro_nro = oti_nro_nroot 
+   join Moviles on mov_ecd_patente = odt_ecd_patente 
+    
+   ) as result 
+   where	fecha between @fechaini and @fechafin 
+   and		patente between @patenteini and @patentefin 
+   order by patente, fecha, tipo 
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.MOVILES_ZCOSTOSPORMOVIL to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
 --- Método Fijo: ZMovilesPorEstado
 --- </summary>
 --- <param name="@estadoini">Estado Inicial</param>
@@ -8444,7 +8533,7 @@ begin
    join	Estados on est_rcd_cod = mve_rcd_codestado 
    where TNGS_Mrln.dbo.MVLESTADOS_GETESTADOACTUAL(mov_ecd_patente) between @estadoini and @estadofin 
    group by mov_ecd_patente 
-   order by estado 
+   order by est_des_des 
 
 fin:
 
@@ -8512,7 +8601,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 10/08/2018 19:48
+// Fecha       : 14/08/2018 17:33
 // Sistema     : Mrln
 // Tabla       : MvlAccidentes
 //----------------------------------------------------------------------------
@@ -9355,13 +9444,75 @@ grant execute on dbo.MVLACCIDENTES_FPACK to tngsmodulos
 print ' '
 go
 
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Método Fijo: ZAccidentesPorMovil
+--- </summary>
+--- <param name="@fechaini">Fecha Inicial</param>
+--- <param name="@fechafin">Fecha Final</param>
+--- <param name="@patenteini">Patente Inicial</param>
+--- <param name="@patentefin">Patente Final</param>
+--- <param name="@usuario">Usuario que ejecuta el SP</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.MVLACCIDENTES_ZACCIDENTESPORMOVIL'
+
+if exists (select * from sysobjects where id = object_id('dbo.MVLACCIDENTES_ZACCIDENTESPORMOVIL'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.MVLACCIDENTES_ZACCIDENTESPORMOVIL
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.MVLACCIDENTES_ZACCIDENTESPORMOVIL
+(
+@fechaini tngs_fecha,
+@fechafin tngs_fecha,
+@patenteini tngs_codigo_e,
+@patentefin tngs_codigo_e,
+@usuario tngs_nombre
+)
+as
+begin
+
+   select	mva_ecd_patente, 
+   		mov_des_des, 
+   		mov_des_tipodemovil, 
+   		mva_fyh_fecha, 
+   		mva_ede_localidad, 
+   		mva_xde_direccion, 
+   		mva_ede_motivo, 
+   		mva_xde_dotacion, 
+   		substring(mva_txt_detalle, 1, 250) as detalle 
+    from MvlAccidentes 
+    join Moviles on mov_ecd_patente = mva_ecd_patente 
+   where	mva_fyh_fecha between @fechaini and @fechafin 
+   and		mva_ecd_patente between @patenteini and @patentefin 
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.MVLACCIDENTES_ZACCIDENTESPORMOVIL to tngsmodulos
+
+print ' '
+go
+
 /*--------------------------------------------------------------------------
 // Fin del script de creacion de los SP de la tabla: MvlAccidentes
 //--------------------------------------------------------------------------*/
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 10/08/2018 19:48
+// Fecha       : 14/08/2018 17:11
 // Sistema     : Mrln
 // Tabla       : MvlAlertas
 //----------------------------------------------------------------------------
@@ -10252,7 +10403,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 10/08/2018 19:48
+// Fecha       : 14/08/2018 17:33
 // Sistema     : Mrln
 // Tabla       : MvlCombustible
 //----------------------------------------------------------------------------
@@ -11130,7 +11281,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 10/08/2018 19:48
+// Fecha       : 14/08/2018 17:33
 // Sistema     : Mrln
 // Tabla       : MvlEquipamiento
 //----------------------------------------------------------------------------
@@ -12044,7 +12195,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 10/08/2018 19:48
+// Fecha       : 14/08/2018 17:33
 // Sistema     : Mrln
 // Tabla       : MvlEstados
 //----------------------------------------------------------------------------
@@ -12909,7 +13060,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 10/08/2018 19:48
+// Fecha       : 14/08/2018 17:33
 // Sistema     : Mrln
 // Tabla       : MvlInfracciones
 //----------------------------------------------------------------------------
@@ -13788,7 +13939,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 10/08/2018 19:48
+// Fecha       : 14/08/2018 17:33
 // Sistema     : Mrln
 // Tabla       : MvlKilometros
 //----------------------------------------------------------------------------
@@ -14637,7 +14788,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 10/08/2018 19:48
+// Fecha       : 14/08/2018 17:33
 // Sistema     : Mrln
 // Tabla       : OrdenesTrabajo
 //----------------------------------------------------------------------------
@@ -15385,7 +15536,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 10/08/2018 19:48
+// Fecha       : 14/08/2018 17:33
 // Sistema     : Mrln
 // Tabla       : OtItems
 //----------------------------------------------------------------------------
@@ -16468,7 +16619,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 10/08/2018 19:48
+// Fecha       : 14/08/2018 17:11
 // Sistema     : Mrln
 // Tabla       : Parametros
 //----------------------------------------------------------------------------
@@ -17000,7 +17151,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 10/08/2018 19:48
+// Fecha       : 14/08/2018 17:33
 // Sistema     : Mrln
 // Tabla       : Reparaciones
 //----------------------------------------------------------------------------
@@ -17570,7 +17721,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 10/08/2018 19:48
+// Fecha       : 14/08/2018 17:11
 // Sistema     : Mrln
 // Tabla       : Taller
 //----------------------------------------------------------------------------
@@ -18135,7 +18286,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 10/08/2018 19:48
+// Fecha       : 14/08/2018 17:33
 // Sistema     : Mrln
 // Tabla       : TallerCategoria
 //----------------------------------------------------------------------------
@@ -18972,7 +19123,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 10/08/2018 19:48
+// Fecha       : 14/08/2018 17:33
 // Sistema     : Mrln
 // Tabla       : Talonarios
 //----------------------------------------------------------------------------

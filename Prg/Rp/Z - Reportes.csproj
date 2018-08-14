@@ -104,6 +104,18 @@
     <Compile Include="Arranque.designer.cs">
       <DependentUpon>Arranque.cs</DependentUpon>
     </Compile>
+    <Compile Include="Moviles\AccidentesPorMovil.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Moviles\AccidentesPorMovil.Designer.cs">
+      <DependentUpon>AccidentesPorMovil.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Moviles\CostosPorMovil.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Moviles\CostosPorMovil.Designer.cs">
+      <DependentUpon>CostosPorMovil.cs</DependentUpon>
+    </Compile>
     <Compile Include="Moviles\EstadoMoviles.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -143,6 +155,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Arranque.resx">
       <DependentUpon>Arranque.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Moviles\AccidentesPorMovil.resx">
+      <DependentUpon>AccidentesPorMovil.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Moviles\CostosPorMovil.resx">
+      <DependentUpon>CostosPorMovil.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Moviles\EstadoMoviles.resx">
       <DependentUpon>EstadoMoviles.cs</DependentUpon>

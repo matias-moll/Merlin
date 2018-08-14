@@ -19,7 +19,7 @@ namespace Mrln.Rp
     //----------------------------------------------------------------------------
     //                         TNG Software PRG Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 10/08/2018 19:52
+    // Fecha                    : 14/08/2018 18:49
     // Sistema                  : Mrln
     // Programa                 : Reportes
     //----------------------------------------------------------------------------
@@ -146,6 +146,10 @@ namespace Mrln.Rp
                 // ** Menu: Moviles
                 // **
                 case "ESTM"          : {new EstadoMoviles().Show(); return;}
+                // **
+                case "GAST"          : {new CostosPorMovil().Show(); return;}
+                // **
+                case "ACCN"          : {new AccidentesPorMovil().Show(); return;}
 
                 // *************************************************
                 // ** Menu: Ordenes de Trabajo
