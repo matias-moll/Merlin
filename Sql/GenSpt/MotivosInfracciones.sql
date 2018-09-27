@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 14/08/2018 17:33
+// Fecha       : 26/09/2018 21:04
 // Sistema     : Mrln
 // Tabla       : MotivosInfracciones
 //----------------------------------------------------------------------------
@@ -195,6 +195,49 @@ go
 print '       - Asignando permisos al nuevo SP'
 
 grant execute on dbo.MOTIVOSINFRACCIONES_SEARCH to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Busca la clave máxima de la tabla
+--- </summary>
+--- <param name="@reservado">Reservado para futuras expansiones</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.MOTIVOSINFRACCIONES_GETMAXKEY'
+
+if exists (select * from sysobjects where id = object_id('dbo.MOTIVOSINFRACCIONES_GETMAXKEY'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.MOTIVOSINFRACCIONES_GETMAXKEY
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.MOTIVOSINFRACCIONES_GETMAXKEY
+(
+@dummy tngs_codigo_1
+)
+as
+begin
+
+   Select isnull(max(mti_cod_codigo), '0') as mti_cod_codigo
+     from TNGS_Mrln..MotivosInfracciones
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.MOTIVOSINFRACCIONES_GETMAXKEY to tngsmodulos
 
 print ' '
 go

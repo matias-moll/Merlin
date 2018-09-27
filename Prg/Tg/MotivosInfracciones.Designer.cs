@@ -174,6 +174,7 @@ namespace Mrln.Tg
             this.cmdHab.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
             this.cmdHab.FlatFontSize = 9;
             this.cmdHab.FlatTextColor = System.Drawing.Color.Black;
+            this.cmdHab.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.cmdHab.Location = new System.Drawing.Point(151, 7);
             this.cmdHab.Name = "cmdHab";
             this.cmdHab.RoundCorners = 2;
@@ -193,6 +194,7 @@ namespace Mrln.Tg
             this.cmdCancelar.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
             this.cmdCancelar.FlatFontSize = 9;
             this.cmdCancelar.FlatTextColor = System.Drawing.Color.Black;
+            this.cmdCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.cmdCancelar.ImageOnTop = true;
             this.cmdCancelar.Location = new System.Drawing.Point(72, 4);
             this.cmdCancelar.Name = "cmdCancelar";
@@ -212,6 +214,7 @@ namespace Mrln.Tg
             this.cmdGrabar.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
             this.cmdGrabar.FlatFontSize = 9;
             this.cmdGrabar.FlatTextColor = System.Drawing.Color.Black;
+            this.cmdGrabar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.cmdGrabar.ImageOnTop = true;
             this.cmdGrabar.Location = new System.Drawing.Point(8, 4);
             this.cmdGrabar.Name = "cmdGrabar";
@@ -231,6 +234,7 @@ namespace Mrln.Tg
             this.cmdDesHab.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
             this.cmdDesHab.FlatFontSize = 9;
             this.cmdDesHab.FlatTextColor = System.Drawing.Color.Black;
+            this.cmdDesHab.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.cmdDesHab.Location = new System.Drawing.Point(151, 35);
             this.cmdDesHab.Name = "cmdDesHab";
             this.cmdDesHab.RoundCorners = 2;
@@ -265,6 +269,7 @@ namespace Mrln.Tg
             this.cmdSalir.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
             this.cmdSalir.FlatFontSize = 9;
             this.cmdSalir.FlatTextColor = System.Drawing.Color.Black;
+            this.cmdSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.cmdSalir.Location = new System.Drawing.Point(151, 7);
             this.cmdSalir.Name = "cmdSalir";
             this.cmdSalir.RoundCorners = 2;
@@ -284,6 +289,7 @@ namespace Mrln.Tg
             this.cmdPurgar.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
             this.cmdPurgar.FlatFontSize = 9;
             this.cmdPurgar.FlatTextColor = System.Drawing.Color.Black;
+            this.cmdPurgar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.cmdPurgar.Location = new System.Drawing.Point(151, 35);
             this.cmdPurgar.Name = "cmdPurgar";
             this.cmdPurgar.RoundCorners = 2;
@@ -303,6 +309,7 @@ namespace Mrln.Tg
             this.cmdModificar.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
             this.cmdModificar.FlatFontSize = 9;
             this.cmdModificar.FlatTextColor = System.Drawing.Color.Black;
+            this.cmdModificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.cmdModificar.ImageOnTop = true;
             this.cmdModificar.Location = new System.Drawing.Point(72, 4);
             this.cmdModificar.Name = "cmdModificar";
@@ -322,6 +329,7 @@ namespace Mrln.Tg
             this.cmdNuevo.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
             this.cmdNuevo.FlatFontSize = 9;
             this.cmdNuevo.FlatTextColor = System.Drawing.Color.Black;
+            this.cmdNuevo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.cmdNuevo.ImageOnTop = true;
             this.cmdNuevo.Location = new System.Drawing.Point(8, 4);
             this.cmdNuevo.Name = "cmdNuevo";
@@ -385,7 +393,7 @@ namespace Mrln.Tg
             this.grdDatos.HeaderForeColor = System.Drawing.SystemColors.ControlText;
             this.grdDatos.Location = new System.Drawing.Point(4, 142);
             this.grdDatos.Name = "grdDatos";
-            this.grdDatos.Size = new System.Drawing.Size(742, 148);
+            this.grdDatos.Size = new System.Drawing.Size(742, 179);
             this.grdDatos.TabIndex = 0;
             this.grdDatos.Advance += new TNGS.NetRoutines.AdvanceEventHandler(this.grdDatos_Advance);
             this.grdDatos.DataDClick += new TNGS.NetRoutines.DataDClickEventHandler(this.grdDatos_DataDClick);
@@ -401,6 +409,7 @@ namespace Mrln.Tg
             this.cmdPrint.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
             this.cmdPrint.FlatFontSize = 9;
             this.cmdPrint.FlatTextColor = System.Drawing.Color.Black;
+            this.cmdPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.cmdPrint.Location = new System.Drawing.Point(720, 118);
             this.cmdPrint.Name = "cmdPrint";
             this.cmdPrint.PCode = "TNGS.PRINT";
@@ -420,6 +429,7 @@ namespace Mrln.Tg
             this.cmdExcel.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
             this.cmdExcel.FlatFontSize = 9;
             this.cmdExcel.FlatTextColor = System.Drawing.Color.Black;
+            this.cmdExcel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.cmdExcel.Location = new System.Drawing.Point(695, 118);
             this.cmdExcel.Name = "cmdExcel";
             this.cmdExcel.PCode = "TNGS.EXCEL";
@@ -446,7 +456,7 @@ namespace Mrln.Tg
             this.frmEdicion.FontTitle = new System.Drawing.Font("Arial", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.frmEdicion.GroupImage = null;
             this.frmEdicion.GroupTitle = " Motivo Infracción ";
-            this.frmEdicion.Location = new System.Drawing.Point(4, 296);
+            this.frmEdicion.Location = new System.Drawing.Point(4, 327);
             this.frmEdicion.Name = "frmEdicion";
             this.frmEdicion.Padding = new System.Windows.Forms.Padding(20);
             this.frmEdicion.PaintGroupBox = false;
@@ -454,13 +464,13 @@ namespace Mrln.Tg
             this.frmEdicion.ShadowColor = System.Drawing.Color.DarkGray;
             this.frmEdicion.ShadowControl = false;
             this.frmEdicion.ShadowThickness = 3;
-            this.frmEdicion.Size = new System.Drawing.Size(742, 150);
+            this.frmEdicion.Size = new System.Drawing.Size(742, 119);
             this.frmEdicion.TabIndex = 21;
             // 
             // lblCodigo
             // 
             this.lblCodigo.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCodigo.Location = new System.Drawing.Point(62, 48);
+            this.lblCodigo.Location = new System.Drawing.Point(86, 40);
             this.lblCodigo.Name = "lblCodigo";
             this.lblCodigo.Size = new System.Drawing.Size(104, 22);
             this.lblCodigo.TabIndex = 106;
@@ -474,7 +484,7 @@ namespace Mrln.Tg
             this.txtCodigo.EmptyValid = false;
             this.txtCodigo.Enabled = false;
             this.txtCodigo.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCodigo.Location = new System.Drawing.Point(172, 48);
+            this.txtCodigo.Location = new System.Drawing.Point(196, 40);
             this.txtCodigo.MaxLength = 4;
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(96, 22);
@@ -483,7 +493,7 @@ namespace Mrln.Tg
             // lblDescripcion
             // 
             this.lblDescripcion.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDescripcion.Location = new System.Drawing.Point(62, 85);
+            this.lblDescripcion.Location = new System.Drawing.Point(86, 77);
             this.lblDescripcion.Name = "lblDescripcion";
             this.lblDescripcion.Size = new System.Drawing.Size(104, 22);
             this.lblDescripcion.TabIndex = 107;
@@ -493,9 +503,10 @@ namespace Mrln.Tg
             // txtDescripcion
             // 
             this.txtDescripcion.BackColor = System.Drawing.SystemColors.Window;
+            this.txtDescripcion.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtDescripcion.Enabled = false;
             this.txtDescripcion.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDescripcion.Location = new System.Drawing.Point(172, 85);
+            this.txtDescripcion.Location = new System.Drawing.Point(196, 77);
             this.txtDescripcion.MaxLength = 60;
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(411, 22);

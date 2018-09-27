@@ -526,12 +526,12 @@ namespace Mrln.Tg
             this.txtDes.MaxLength = 120;
             this.txtDes.Name = "txtDes";
             this.txtDes.Size = new System.Drawing.Size(492, 22);
-            this.txtDes.TabIndex = 3;
+            this.txtDes.TabIndex = 1;
             // 
             // lblCodcat
             // 
             this.lblCodcat.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCodcat.Location = new System.Drawing.Point(370, 28);
+            this.lblCodcat.Location = new System.Drawing.Point(294, 27);
             this.lblCodcat.Name = "lblCodcat";
             this.lblCodcat.Size = new System.Drawing.Size(71, 22);
             this.lblCodcat.TabIndex = 108;
@@ -545,11 +545,11 @@ namespace Mrln.Tg
             this.cmbCodcat.Enabled = false;
             this.cmbCodcat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmbCodcat.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbCodcat.Location = new System.Drawing.Point(447, 28);
+            this.cmbCodcat.Location = new System.Drawing.Point(371, 27);
             this.cmbCodcat.Name = "cmbCodcat";
-            this.cmbCodcat.Size = new System.Drawing.Size(135, 24);
+            this.cmbCodcat.Size = new System.Drawing.Size(297, 24);
             this.cmbCodcat.Sorted = true;
-            this.cmbCodcat.TabIndex = 1;
+            this.cmbCodcat.TabIndex = 2;
             // 
             // lblSolicitadetalle
             // 
@@ -572,7 +572,7 @@ namespace Mrln.Tg
             this.cmbSolicitadetalle.Name = "cmbSolicitadetalle";
             this.cmbSolicitadetalle.Size = new System.Drawing.Size(68, 24);
             this.cmbSolicitadetalle.Sorted = true;
-            this.cmbSolicitadetalle.TabIndex = 2;
+            this.cmbSolicitadetalle.TabIndex = 3;
             // 
             // Reparaciones
             // 

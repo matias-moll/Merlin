@@ -478,7 +478,7 @@ namespace Mrln.Tg
             // lblCod
             // 
             this.lblCod.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCod.Location = new System.Drawing.Point(92, 35);
+            this.lblCod.Location = new System.Drawing.Point(82, 37);
             this.lblCod.Name = "lblCod";
             this.lblCod.Size = new System.Drawing.Size(62, 22);
             this.lblCod.TabIndex = 106;
@@ -492,17 +492,17 @@ namespace Mrln.Tg
             this.txtCod.EmptyValid = false;
             this.txtCod.Enabled = false;
             this.txtCod.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCod.Location = new System.Drawing.Point(156, 35);
+            this.txtCod.Location = new System.Drawing.Point(146, 37);
             this.txtCod.MaxLength = 2;
             this.txtCod.Name = "txtCod";
             this.txtCod.OnlyDigits = true;
-            this.txtCod.Size = new System.Drawing.Size(144, 22);
+            this.txtCod.Size = new System.Drawing.Size(92, 22);
             this.txtCod.TabIndex = 6;
             // 
             // lblDes
             // 
             this.lblDes.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDes.Location = new System.Drawing.Point(346, 35);
+            this.lblDes.Location = new System.Drawing.Point(274, 37);
             this.lblDes.Name = "lblDes";
             this.lblDes.Size = new System.Drawing.Size(56, 22);
             this.lblDes.TabIndex = 107;
@@ -516,18 +516,18 @@ namespace Mrln.Tg
             this.txtDes.EmptyValid = false;
             this.txtDes.Enabled = false;
             this.txtDes.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDes.Location = new System.Drawing.Point(408, 35);
+            this.txtDes.Location = new System.Drawing.Point(336, 37);
             this.txtDes.MaxLength = 30;
             this.txtDes.Name = "txtDes";
-            this.txtDes.Size = new System.Drawing.Size(175, 22);
+            this.txtDes.Size = new System.Drawing.Size(232, 22);
             this.txtDes.TabIndex = 7;
             // 
             // lblCodmarca
             // 
             this.lblCodmarca.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCodmarca.Location = new System.Drawing.Point(589, 35);
+            this.lblCodmarca.Location = new System.Drawing.Point(582, 36);
             this.lblCodmarca.Name = "lblCodmarca";
-            this.lblCodmarca.Size = new System.Drawing.Size(113, 22);
+            this.lblCodmarca.Size = new System.Drawing.Size(56, 22);
             this.lblCodmarca.TabIndex = 108;
             this.lblCodmarca.Text = "Marca";
             this.lblCodmarca.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -539,9 +539,9 @@ namespace Mrln.Tg
             this.cmbCodmarca.Enabled = false;
             this.cmbCodmarca.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmbCodmarca.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbCodmarca.Location = new System.Drawing.Point(708, 34);
+            this.cmbCodmarca.Location = new System.Drawing.Point(644, 35);
             this.cmbCodmarca.Name = "cmbCodmarca";
-            this.cmbCodmarca.Size = new System.Drawing.Size(166, 24);
+            this.cmbCodmarca.Size = new System.Drawing.Size(277, 24);
             this.cmbCodmarca.Sorted = true;
             this.cmbCodmarca.TabIndex = 8;
             // 

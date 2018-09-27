@@ -472,7 +472,7 @@ namespace Mrln.Tg
             // lblCodigo
             // 
             this.lblCodigo.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCodigo.Location = new System.Drawing.Point(188, 27);
+            this.lblCodigo.Location = new System.Drawing.Point(122, 27);
             this.lblCodigo.Name = "lblCodigo";
             this.lblCodigo.Size = new System.Drawing.Size(57, 22);
             this.lblCodigo.TabIndex = 106;
@@ -486,17 +486,17 @@ namespace Mrln.Tg
             this.txtCodigo.EmptyValid = false;
             this.txtCodigo.Enabled = false;
             this.txtCodigo.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCodigo.Location = new System.Drawing.Point(251, 27);
+            this.txtCodigo.Location = new System.Drawing.Point(185, 27);
             this.txtCodigo.MaxLength = 2;
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.OnlyDigits = true;
-            this.txtCodigo.Size = new System.Drawing.Size(171, 22);
+            this.txtCodigo.Size = new System.Drawing.Size(128, 22);
             this.txtCodigo.TabIndex = 6;
             // 
             // lblDescripcion
             // 
             this.lblDescripcion.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDescripcion.Location = new System.Drawing.Point(492, 27);
+            this.lblDescripcion.Location = new System.Drawing.Point(403, 27);
             this.lblDescripcion.Name = "lblDescripcion";
             this.lblDescripcion.Size = new System.Drawing.Size(57, 22);
             this.lblDescripcion.TabIndex = 107;
@@ -510,10 +510,10 @@ namespace Mrln.Tg
             this.txtDescripcion.EmptyValid = false;
             this.txtDescripcion.Enabled = false;
             this.txtDescripcion.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDescripcion.Location = new System.Drawing.Point(554, 27);
+            this.txtDescripcion.Location = new System.Drawing.Point(465, 27);
             this.txtDescripcion.MaxLength = 30;
             this.txtDescripcion.Name = "txtDescripcion";
-            this.txtDescripcion.Size = new System.Drawing.Size(286, 22);
+            this.txtDescripcion.Size = new System.Drawing.Size(405, 22);
             this.txtDescripcion.TabIndex = 7;
             // 
             // Marcas

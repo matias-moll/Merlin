@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 14/08/2018 17:33
+// Fecha       : 26/09/2018 21:04
 // Sistema     : Mrln
 // Tabla       : Categorias
 //----------------------------------------------------------------------------
@@ -195,6 +195,49 @@ go
 print '       - Asignando permisos al nuevo SP'
 
 grant execute on dbo.CATEGORIAS_SEARCH to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Busca la clave máxima de la tabla
+--- </summary>
+--- <param name="@reservado">Reservado para futuras expansiones</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.CATEGORIAS_GETMAXKEY'
+
+if exists (select * from sysobjects where id = object_id('dbo.CATEGORIAS_GETMAXKEY'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.CATEGORIAS_GETMAXKEY
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.CATEGORIAS_GETMAXKEY
+(
+@dummy tngs_codigo_1
+)
+as
+begin
+
+   Select isnull(max(cat_rcd_cod), '0') as cat_rcd_cod
+     from TNGS_Mrln..Categorias
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.CATEGORIAS_GETMAXKEY to tngsmodulos
 
 print ' '
 go

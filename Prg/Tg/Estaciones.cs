@@ -191,8 +191,10 @@ namespace Mrln.Tg
             // Creamos una nueva entidad, pasamos a modo de edicion y
             // damos foco al primer campo
             m_entEstacion= Bel.EEstacion.NewEmpty();
+            m_entEstacion.Cod = Bll.Tablas.EstNextKey(ref m_smResult);
+            m_smResult.Reset();
             SwitchTo(FormModes.Edit, GridOps.DontFill);
-            txtCod.Focus();
+            txtDes.Focus();
         }
 
         /// <summary>
@@ -416,8 +418,8 @@ namespace Mrln.Tg
             txtTelefono.Text= m_entEstacion.Telefono;
 
             // Habilitamos el frame
-            txtCod.NormalDisable= false;
-            txtCod.Enabled= m_entEstacion.EsNueva;
+            txtCod.NormalDisable= true;
+            txtCod.Enabled= false;
             txtDes.NormalDisable= false;
             txtDes.Enabled= m_entEstacion.EsNueva;
             txtDomicilio.NormalDisable= false;

@@ -196,8 +196,10 @@ namespace Mrln.Tg
             // Creamos una nueva entidad, pasamos a modo de edicion y
             // damos foco al primer campo
             m_entModelo= Bel.EModelo.NewEmpty();
+            m_entModelo.Cod = Bll.Tablas.ModNextKey(ref m_smResult);
+            m_smResult.Reset();
             SwitchTo(FormModes.Edit, GridOps.DontFill);
-            txtCod.Focus();
+            txtDes.Focus();
         }
 
         /// <summary>
@@ -412,7 +414,7 @@ namespace Mrln.Tg
 
             // Habilitamos el frame
             txtCod.NormalDisable= false;
-            txtCod.Enabled= m_entModelo.EsNueva;
+            txtCod.Enabled= false;
             txtDes.NormalDisable= false;
             txtDes.Enabled= m_entModelo.EsNueva;
             cmbCodmarca.NormalDisable= false;

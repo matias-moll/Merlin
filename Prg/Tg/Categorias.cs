@@ -190,9 +190,11 @@ namespace Mrln.Tg
         {
             // Creamos una nueva entidad, pasamos a modo de edicion y
             // damos foco al primer campo
-            m_entCategoria= Bel.ECategoria.NewEmpty();
+            m_entCategoria = Bel.ECategoria.NewEmpty();
+            m_entCategoria.Cod = Bll.Tablas.CatNextKey(ref m_smResult);
+            m_smResult.Reset();
             SwitchTo(FormModes.Edit, GridOps.DontFill);
-            txtCod.Focus();
+            txtDes.Focus();
         }
 
         /// <summary>
@@ -401,7 +403,7 @@ namespace Mrln.Tg
 
             // Habilitamos el frame
             txtCod.NormalDisable= false;
-            txtCod.Enabled= m_entCategoria.EsNueva;
+            txtCod.Enabled= false;
             txtDes.NormalDisable= false;
             txtDes.Enabled= m_entCategoria.EsNueva;
             cmdCancelar.Enabled= true;

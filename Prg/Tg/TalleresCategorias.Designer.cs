@@ -125,7 +125,7 @@ namespace Mrln.Tg
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(150, 16);
             this.lblTitle.TabIndex = 20;
-            this.lblTitle.Text = "TalleresCategorias:";
+            this.lblTitle.Text = "Talleres Categorias:";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // tsContainer1
@@ -423,7 +423,7 @@ namespace Mrln.Tg
             this.grdDatos.HeaderForeColor = System.Drawing.SystemColors.ControlText;
             this.grdDatos.Location = new System.Drawing.Point(4, 141);
             this.grdDatos.Name = "grdDatos";
-            this.grdDatos.Size = new System.Drawing.Size(1027, 209);
+            this.grdDatos.Size = new System.Drawing.Size(1027, 291);
             this.grdDatos.TabIndex = 0;
             this.grdDatos.Advance += new TNGS.NetRoutines.AdvanceEventHandler(this.grdDatos_Advance);
             this.grdDatos.DataDClick += new TNGS.NetRoutines.DataDClickEventHandler(this.grdDatos_DataDClick);
@@ -482,8 +482,8 @@ namespace Mrln.Tg
             this.frmEdicion.CustomGroupBoxColor = System.Drawing.Color.White;
             this.frmEdicion.FontTitle = new System.Drawing.Font("Arial", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.frmEdicion.GroupImage = null;
-            this.frmEdicion.GroupTitle = " TallerCategoria ";
-            this.frmEdicion.Location = new System.Drawing.Point(4, 356);
+            this.frmEdicion.GroupTitle = " Taller Categoria ";
+            this.frmEdicion.Location = new System.Drawing.Point(4, 438);
             this.frmEdicion.Name = "frmEdicion";
             this.frmEdicion.Padding = new System.Windows.Forms.Padding(20);
             this.frmEdicion.PaintGroupBox = false;
@@ -491,13 +491,13 @@ namespace Mrln.Tg
             this.frmEdicion.ShadowColor = System.Drawing.Color.DarkGray;
             this.frmEdicion.ShadowControl = false;
             this.frmEdicion.ShadowThickness = 3;
-            this.frmEdicion.Size = new System.Drawing.Size(1027, 184);
+            this.frmEdicion.Size = new System.Drawing.Size(1027, 102);
             this.frmEdicion.TabIndex = 21;
             // 
             // lblCodigocategoria
             // 
             this.lblCodigocategoria.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCodigocategoria.Location = new System.Drawing.Point(102, 64);
+            this.lblCodigocategoria.Location = new System.Drawing.Point(172, 39);
             this.lblCodigocategoria.Name = "lblCodigocategoria";
             this.lblCodigocategoria.Size = new System.Drawing.Size(136, 22);
             this.lblCodigocategoria.TabIndex = 106;
@@ -511,9 +511,9 @@ namespace Mrln.Tg
             this.cmbCodigocategoria.Enabled = false;
             this.cmbCodigocategoria.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmbCodigocategoria.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbCodigocategoria.Location = new System.Drawing.Point(248, 64);
+            this.cmbCodigocategoria.Location = new System.Drawing.Point(318, 39);
             this.cmbCodigocategoria.Name = "cmbCodigocategoria";
-            this.cmbCodigocategoria.Size = new System.Drawing.Size(273, 24);
+            this.cmbCodigocategoria.Size = new System.Drawing.Size(388, 24);
             this.cmbCodigocategoria.Sorted = true;
             this.cmbCodigocategoria.TabIndex = 6;
             // 

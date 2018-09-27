@@ -499,7 +499,7 @@ namespace Mrln.Tg
             // lblDes
             // 
             this.lblDes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDes.Location = new System.Drawing.Point(215, 34);
+            this.lblDes.Location = new System.Drawing.Point(229, 34);
             this.lblDes.Name = "lblDes";
             this.lblDes.Size = new System.Drawing.Size(83, 22);
             this.lblDes.TabIndex = 107;
@@ -513,7 +513,7 @@ namespace Mrln.Tg
             this.txtDes.EmptyValid = false;
             this.txtDes.Enabled = false;
             this.txtDes.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDes.Location = new System.Drawing.Point(300, 34);
+            this.txtDes.Location = new System.Drawing.Point(314, 34);
             this.txtDes.MaxLength = 30;
             this.txtDes.Name = "txtDes";
             this.txtDes.Size = new System.Drawing.Size(446, 22);
@@ -522,7 +522,7 @@ namespace Mrln.Tg
             // lblValor
             // 
             this.lblValor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblValor.Location = new System.Drawing.Point(754, 34);
+            this.lblValor.Location = new System.Drawing.Point(766, 34);
             this.lblValor.Name = "lblValor";
             this.lblValor.Size = new System.Drawing.Size(46, 22);
             this.lblValor.TabIndex = 108;
@@ -534,7 +534,7 @@ namespace Mrln.Tg
             this.txtValor.BackColor = System.Drawing.SystemColors.Window;
             this.txtValor.Enabled = false;
             this.txtValor.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtValor.Location = new System.Drawing.Point(801, 34);
+            this.txtValor.Location = new System.Drawing.Point(813, 34);
             this.txtValor.MaxLength = 10;
             this.txtValor.Name = "txtValor";
             this.txtValor.Size = new System.Drawing.Size(138, 22);

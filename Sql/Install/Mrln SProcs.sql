@@ -856,7 +856,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 14/08/2018 17:33
+// Fecha       : 26/09/2018 21:04
 // Sistema     : Mrln
 // Tabla       : Alertas
 //----------------------------------------------------------------------------
@@ -1569,7 +1569,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 14/08/2018 17:33
+// Fecha       : 26/09/2018 21:04
 // Sistema     : Mrln
 // Tabla       : Categorias
 //----------------------------------------------------------------------------
@@ -1763,6 +1763,49 @@ go
 print '       - Asignando permisos al nuevo SP'
 
 grant execute on dbo.CATEGORIAS_SEARCH to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Busca la clave máxima de la tabla
+--- </summary>
+--- <param name="@reservado">Reservado para futuras expansiones</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.CATEGORIAS_GETMAXKEY'
+
+if exists (select * from sysobjects where id = object_id('dbo.CATEGORIAS_GETMAXKEY'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.CATEGORIAS_GETMAXKEY
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.CATEGORIAS_GETMAXKEY
+(
+@dummy tngs_codigo_1
+)
+as
+begin
+
+   Select isnull(max(cat_rcd_cod), '0') as cat_rcd_cod
+     from TNGS_Mrln..Categorias
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.CATEGORIAS_GETMAXKEY to tngsmodulos
 
 print ' '
 go
@@ -2106,7 +2149,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 14/08/2018 17:33
+// Fecha       : 26/09/2018 21:04
 // Sistema     : Mrln
 // Tabla       : Controles
 //----------------------------------------------------------------------------
@@ -2651,7 +2694,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 14/08/2018 17:33
+// Fecha       : 26/09/2018 21:04
 // Sistema     : Mrln
 // Tabla       : ControlesReparations
 //----------------------------------------------------------------------------
@@ -3470,7 +3513,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 14/08/2018 17:33
+// Fecha       : 26/09/2018 21:04
 // Sistema     : Mrln
 // Tabla       : DestinatariosMails
 //----------------------------------------------------------------------------
@@ -3668,6 +3711,49 @@ go
 print '       - Asignando permisos al nuevo SP'
 
 grant execute on dbo.DESTINATARIOSMAILS_SEARCH to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Busca la clave máxima de la tabla
+--- </summary>
+--- <param name="@reservado">Reservado para futuras expansiones</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.DESTINATARIOSMAILS_GETMAXKEY'
+
+if exists (select * from sysobjects where id = object_id('dbo.DESTINATARIOSMAILS_GETMAXKEY'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.DESTINATARIOSMAILS_GETMAXKEY
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.DESTINATARIOSMAILS_GETMAXKEY
+(
+@dummy tngs_codigo_1
+)
+as
+begin
+
+   Select isnull(max(dem_cod_codigo), '0') as dem_cod_codigo
+     from TNGS_Mrln..DestinatariosMails
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.DESTINATARIOSMAILS_GETMAXKEY to tngsmodulos
 
 print ' '
 go
@@ -4507,7 +4593,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 14/08/2018 17:33
+// Fecha       : 26/09/2018 21:04
 // Sistema     : Mrln
 // Tabla       : Equipamiento
 //----------------------------------------------------------------------------
@@ -5052,7 +5138,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 14/08/2018 17:11
+// Fecha       : 26/09/2018 21:04
 // Sistema     : Mrln
 // Tabla       : Estaciones
 //----------------------------------------------------------------------------
@@ -5617,7 +5703,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 14/08/2018 17:33
+// Fecha       : 26/09/2018 21:04
 // Sistema     : Mrln
 // Tabla       : Estados
 //----------------------------------------------------------------------------
@@ -6172,7 +6258,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 14/08/2018 17:33
+// Fecha       : 26/09/2018 21:04
 // Sistema     : Mrln
 // Tabla       : Marcas
 //----------------------------------------------------------------------------
@@ -6707,7 +6793,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 14/08/2018 17:33
+// Fecha       : 26/09/2018 21:04
 // Sistema     : Mrln
 // Tabla       : Modelos
 //----------------------------------------------------------------------------
@@ -7252,7 +7338,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 14/08/2018 17:33
+// Fecha       : 26/09/2018 21:04
 // Sistema     : Mrln
 // Tabla       : MotivosInfracciones
 //----------------------------------------------------------------------------
@@ -7446,6 +7532,49 @@ go
 print '       - Asignando permisos al nuevo SP'
 
 grant execute on dbo.MOTIVOSINFRACCIONES_SEARCH to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Busca la clave máxima de la tabla
+--- </summary>
+--- <param name="@reservado">Reservado para futuras expansiones</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.MOTIVOSINFRACCIONES_GETMAXKEY'
+
+if exists (select * from sysobjects where id = object_id('dbo.MOTIVOSINFRACCIONES_GETMAXKEY'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.MOTIVOSINFRACCIONES_GETMAXKEY
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.MOTIVOSINFRACCIONES_GETMAXKEY
+(
+@dummy tngs_codigo_1
+)
+as
+begin
+
+   Select isnull(max(mti_cod_codigo), '0') as mti_cod_codigo
+     from TNGS_Mrln..MotivosInfracciones
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.MOTIVOSINFRACCIONES_GETMAXKEY to tngsmodulos
 
 print ' '
 go
@@ -7744,7 +7873,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 14/08/2018 17:33
+// Fecha       : 26/09/2018 21:04
 // Sistema     : Mrln
 // Tabla       : Moviles
 //----------------------------------------------------------------------------
@@ -8601,7 +8730,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 14/08/2018 17:33
+// Fecha       : 26/09/2018 21:04
 // Sistema     : Mrln
 // Tabla       : MvlAccidentes
 //----------------------------------------------------------------------------
@@ -9512,7 +9641,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 14/08/2018 17:11
+// Fecha       : 26/09/2018 21:04
 // Sistema     : Mrln
 // Tabla       : MvlAlertas
 //----------------------------------------------------------------------------
@@ -10403,7 +10532,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 14/08/2018 17:33
+// Fecha       : 26/09/2018 21:04
 // Sistema     : Mrln
 // Tabla       : MvlCombustible
 //----------------------------------------------------------------------------
@@ -11281,7 +11410,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 14/08/2018 17:33
+// Fecha       : 26/09/2018 21:04
 // Sistema     : Mrln
 // Tabla       : MvlEquipamiento
 //----------------------------------------------------------------------------
@@ -12195,7 +12324,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 14/08/2018 17:33
+// Fecha       : 26/09/2018 21:04
 // Sistema     : Mrln
 // Tabla       : MvlEstados
 //----------------------------------------------------------------------------
@@ -13060,7 +13189,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 14/08/2018 17:33
+// Fecha       : 26/09/2018 21:04
 // Sistema     : Mrln
 // Tabla       : MvlInfracciones
 //----------------------------------------------------------------------------
@@ -13939,7 +14068,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 14/08/2018 17:33
+// Fecha       : 26/09/2018 21:04
 // Sistema     : Mrln
 // Tabla       : MvlKilometros
 //----------------------------------------------------------------------------
@@ -14788,7 +14917,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 14/08/2018 17:33
+// Fecha       : 26/09/2018 21:04
 // Sistema     : Mrln
 // Tabla       : OrdenesTrabajo
 //----------------------------------------------------------------------------
@@ -15536,7 +15665,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 14/08/2018 17:33
+// Fecha       : 26/09/2018 21:04
 // Sistema     : Mrln
 // Tabla       : OtItems
 //----------------------------------------------------------------------------
@@ -16619,7 +16748,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 14/08/2018 17:11
+// Fecha       : 26/09/2018 21:04
 // Sistema     : Mrln
 // Tabla       : Parametros
 //----------------------------------------------------------------------------
@@ -17151,7 +17280,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 14/08/2018 17:33
+// Fecha       : 26/09/2018 21:04
 // Sistema     : Mrln
 // Tabla       : Reparaciones
 //----------------------------------------------------------------------------
@@ -17365,6 +17494,49 @@ go
 print '       - Asignando permisos al nuevo SP'
 
 grant execute on dbo.REPARACIONES_SEARCH to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Busca la clave máxima de la tabla
+--- </summary>
+--- <param name="@reservado">Reservado para futuras expansiones</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.REPARACIONES_GETMAXKEY'
+
+if exists (select * from sysobjects where id = object_id('dbo.REPARACIONES_GETMAXKEY'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.REPARACIONES_GETMAXKEY
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.REPARACIONES_GETMAXKEY
+(
+@dummy tngs_codigo_1
+)
+as
+begin
+
+   Select isnull(max(rep_cd6_cod), '0') as rep_cd6_cod
+     from TNGS_Mrln..Reparaciones
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.REPARACIONES_GETMAXKEY to tngsmodulos
 
 print ' '
 go
@@ -17721,7 +17893,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 14/08/2018 17:11
+// Fecha       : 26/09/2018 21:04
 // Sistema     : Mrln
 // Tabla       : Taller
 //----------------------------------------------------------------------------
@@ -18286,7 +18458,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 14/08/2018 17:33
+// Fecha       : 26/09/2018 21:04
 // Sistema     : Mrln
 // Tabla       : TallerCategoria
 //----------------------------------------------------------------------------
@@ -19123,7 +19295,7 @@ go
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 14/08/2018 17:33
+// Fecha       : 26/09/2018 21:04
 // Sistema     : Mrln
 // Tabla       : Talonarios
 //----------------------------------------------------------------------------

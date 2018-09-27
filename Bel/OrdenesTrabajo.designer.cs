@@ -14,7 +14,7 @@ namespace Mrln.Bel
     //----------------------------------------------------------------------------
     //                         TNG Software BEL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 14/08/2018 18:04
+    // Fecha                    : 26/09/2018 22:31
     // Sistema                  : Mrln
     // Clase para Administrar   : Ordenes de Trabajo y sus Items
     //----------------------------------------------------------------------------
@@ -220,6 +220,32 @@ namespace Mrln.Bel
         #endregion
 
         #region Formateadores
+
+        //---------------------------------------------------------------
+        // Metodos estáticos (Formateo de codigos alineados a derecha)
+        //---------------------------------------------------------------
+
+        /// <summary>
+        /// Formatea una string: Categoría
+        /// </summary>
+        public static string FrmtCodcategoria(string p_strCodcategoria)
+        {
+            if (p_strCodcategoria.Trim().Length > 2)
+                p_strCodcategoria= p_strCodcategoria.Trim().Substring(0,2);
+
+            return p_strCodcategoria.Trim().PadLeft(2).ToUpper();
+        }
+
+        /// <summary>
+        /// Formatea una string: Codigo Reparacion
+        /// </summary>
+        public static string FrmtCodreparacion(string p_strCodreparacion)
+        {
+            if (p_strCodreparacion.Trim().Length > 6)
+                p_strCodreparacion= p_strCodreparacion.Trim().Substring(0,6);
+
+            return p_strCodreparacion.Trim().PadLeft(6).ToUpper();
+        }
         #endregion
 
         #region Propiedades de la clase
@@ -362,7 +388,7 @@ namespace Mrln.Bel
         public string Codcategoria
         {
             get {return (string) InternalData["oti_rcd_codcategoria"];}
-            set {InternalData["oti_rcd_codcategoria"]= value;}
+            set {InternalData["oti_rcd_codcategoria"]= EOTItem.FrmtCodcategoria(value);}
         }
 
         /// <summary>
@@ -473,7 +499,7 @@ namespace Mrln.Bel
         public string Codreparacion
         {
             get {return (string) InternalData["oti_cd6_codreparacion"];}
-            set {InternalData["oti_cd6_codreparacion"]= value;}
+            set {InternalData["oti_cd6_codreparacion"]= EOTItem.FrmtCodreparacion(value);}
         }
 
         /// <summary>

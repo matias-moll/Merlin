@@ -573,7 +573,7 @@ namespace Mrln.Tg
             this.txtTelefono.Location = new System.Drawing.Point(128, 68);
             this.txtTelefono.MaxLength = 30;
             this.txtTelefono.Name = "txtTelefono";
-            this.txtTelefono.Size = new System.Drawing.Size(180, 22);
+            this.txtTelefono.Size = new System.Drawing.Size(239, 22);
             this.txtTelefono.TabIndex = 9;
             // 
             // lblContacto
@@ -594,7 +594,7 @@ namespace Mrln.Tg
             this.txtContacto.Location = new System.Drawing.Point(128, 100);
             this.txtContacto.MaxLength = 60;
             this.txtContacto.Name = "txtContacto";
-            this.txtContacto.Size = new System.Drawing.Size(180, 22);
+            this.txtContacto.Size = new System.Drawing.Size(239, 22);
             this.txtContacto.TabIndex = 10;
             // 
             // Talleres

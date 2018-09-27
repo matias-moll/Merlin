@@ -14,7 +14,7 @@ namespace Mrln.Bel
     //----------------------------------------------------------------------------
     //                         TNG Software BEL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 14/08/2018 18:04
+    // Fecha                    : 26/09/2018 22:31
     // Sistema                  : Mrln
     // Clase para Administrar   : Tablas Generales
     //----------------------------------------------------------------------------
@@ -164,6 +164,21 @@ namespace Mrln.Bel
         #endregion
 
         #region Formateadores
+
+        //---------------------------------------------------------------
+        // Metodos estáticos (Formateo de codigos alineados a derecha)
+        //---------------------------------------------------------------
+
+        /// <summary>
+        /// Formatea una string: Cod Categoria
+        /// </summary>
+        public static string FrmtCod(string p_strCod)
+        {
+            if (p_strCod.Trim().Length > 2)
+                p_strCod= p_strCod.Trim().Substring(0,2);
+
+            return p_strCod.Trim().PadLeft(2).ToUpper();
+        }
         #endregion
 
         #region Propiedades de la clase
@@ -203,10 +218,7 @@ namespace Mrln.Bel
         public string Cod
         {
             get {return (string) InternalData["cat_rcd_cod"];}
-            set {
-                if (value.Trim().Length > 2) value= value.Trim().Substring(0,2);
-                InternalData["cat_rcd_cod"]= value.Trim().ToUpper();
-            }
+            set {InternalData["cat_rcd_cod"]= ECategoria.FrmtCod(value);}
         }
 
         /// <summary>
@@ -345,7 +357,7 @@ namespace Mrln.Bel
             int l_iRet= 0;
 
             m_dtDatos.DefaultView.RowFilter= 
-                "cat_rcd_cod = " + Ruts.Co(p_strCod);
+                "cat_rcd_cod = " + Ruts.Co(ECategoria.FrmtCod(p_strCod));
 
             if (m_dtDatos.DefaultView.Count == 1) {
                 // La borramos
@@ -455,7 +467,7 @@ namespace Mrln.Bel
                 DataRow l_drData= null;
 
                 m_dtDatos.DefaultView.RowFilter= 
-                    "cat_rcd_cod = " + Ruts.Co(p_strCod);
+                    "cat_rcd_cod = " + Ruts.Co(ECategoria.FrmtCod(p_strCod));
 
                 if (m_dtDatos.DefaultView.Count == 1)
                     l_drData= m_dtDatos.DefaultView[0].Row;
@@ -539,7 +551,7 @@ namespace Mrln.Bel
                 // Buscamos la entidad
                 foreach (ECategoria l_entItem in this) {
                     // Si existe -> la devolvemos
-                    if (l_entItem.Cod == p_strCod)
+                    if (l_entItem.Cod == ECategoria.FrmtCod(p_strCod))
                         return l_entItem;
                 }
 
@@ -692,6 +704,21 @@ namespace Mrln.Bel
         #endregion
 
         #region Formateadores
+
+        //---------------------------------------------------------------
+        // Metodos estáticos (Formateo de codigos alineados a derecha)
+        //---------------------------------------------------------------
+
+        /// <summary>
+        /// Formatea una string: Código
+        /// </summary>
+        public static string FrmtCodigo(string p_strCodigo)
+        {
+            if (p_strCodigo.Trim().Length > 4)
+                p_strCodigo= p_strCodigo.Trim().Substring(0,4);
+
+            return p_strCodigo.Trim().PadLeft(4).ToUpper();
+        }
         #endregion
 
         #region Propiedades de la clase
@@ -732,10 +759,7 @@ namespace Mrln.Bel
         public string Codigo
         {
             get {return (string) InternalData["dem_cod_codigo"];}
-            set {
-                if (value.Trim().Length > 4) value= value.Trim().Substring(0,4);
-                InternalData["dem_cod_codigo"]= value.Trim().ToUpper();
-            }
+            set {InternalData["dem_cod_codigo"]= EDestinatariosMail.FrmtCodigo(value);}
         }
 
         /// <summary>
@@ -892,7 +916,7 @@ namespace Mrln.Bel
             int l_iRet= 0;
 
             m_dtDatos.DefaultView.RowFilter= 
-                "dem_cod_codigo = " + Ruts.Co(p_strCodigo);
+                "dem_cod_codigo = " + Ruts.Co(EDestinatariosMail.FrmtCodigo(p_strCodigo));
 
             if (m_dtDatos.DefaultView.Count == 1) {
                 // La borramos
@@ -1002,7 +1026,7 @@ namespace Mrln.Bel
                 DataRow l_drData= null;
 
                 m_dtDatos.DefaultView.RowFilter= 
-                    "dem_cod_codigo = " + Ruts.Co(p_strCodigo);
+                    "dem_cod_codigo = " + Ruts.Co(EDestinatariosMail.FrmtCodigo(p_strCodigo));
 
                 if (m_dtDatos.DefaultView.Count == 1)
                     l_drData= m_dtDatos.DefaultView[0].Row;
@@ -1086,7 +1110,7 @@ namespace Mrln.Bel
                 // Buscamos la entidad
                 foreach (EDestinatariosMail l_entItem in this) {
                     // Si existe -> la devolvemos
-                    if (l_entItem.Codigo == p_strCodigo)
+                    if (l_entItem.Codigo == EDestinatariosMail.FrmtCodigo(p_strCodigo))
                         return l_entItem;
                 }
 
@@ -1924,7 +1948,7 @@ namespace Mrln.Bel
             get {return ((string) InternalData["ets_des_contacto"]).Trim();}
             set {
                 if (value.Trim().Length > 30) value= value.Trim().Substring(0,30);
-                InternalData["ets_des_contacto"]= value.Trim();
+                InternalData["ets_des_contacto"]= value.Trim().ToUpper();
             }
         }
 
@@ -4097,6 +4121,21 @@ namespace Mrln.Bel
         #endregion
 
         #region Formateadores
+
+        //---------------------------------------------------------------
+        // Metodos estáticos (Formateo de codigos alineados a derecha)
+        //---------------------------------------------------------------
+
+        /// <summary>
+        /// Formatea una string: Código
+        /// </summary>
+        public static string FrmtCodigo(string p_strCodigo)
+        {
+            if (p_strCodigo.Trim().Length > 4)
+                p_strCodigo= p_strCodigo.Trim().Substring(0,4);
+
+            return p_strCodigo.Trim().PadLeft(4).ToUpper();
+        }
         #endregion
 
         #region Propiedades de la clase
@@ -4136,10 +4175,7 @@ namespace Mrln.Bel
         public string Codigo
         {
             get {return (string) InternalData["mti_cod_codigo"];}
-            set {
-                if (value.Trim().Length > 4) value= value.Trim().Substring(0,4);
-                InternalData["mti_cod_codigo"]= value.Trim().ToUpper();
-            }
+            set {InternalData["mti_cod_codigo"]= EMotivoInfraccion.FrmtCodigo(value);}
         }
 
         /// <summary>
@@ -4158,7 +4194,7 @@ namespace Mrln.Bel
             get {return ((string) InternalData["mti_ede_descripcion"]).Trim();}
             set {
                 if (value.Trim().Length > 60) value= value.Trim().Substring(0,60);
-                InternalData["mti_ede_descripcion"]= value.Trim();
+                InternalData["mti_ede_descripcion"]= value.Trim().ToUpper();
             }
         }
 
@@ -4278,7 +4314,7 @@ namespace Mrln.Bel
             int l_iRet= 0;
 
             m_dtDatos.DefaultView.RowFilter= 
-                "mti_cod_codigo = " + Ruts.Co(p_strCodigo);
+                "mti_cod_codigo = " + Ruts.Co(EMotivoInfraccion.FrmtCodigo(p_strCodigo));
 
             if (m_dtDatos.DefaultView.Count == 1) {
                 // La borramos
@@ -4388,7 +4424,7 @@ namespace Mrln.Bel
                 DataRow l_drData= null;
 
                 m_dtDatos.DefaultView.RowFilter= 
-                    "mti_cod_codigo = " + Ruts.Co(p_strCodigo);
+                    "mti_cod_codigo = " + Ruts.Co(EMotivoInfraccion.FrmtCodigo(p_strCodigo));
 
                 if (m_dtDatos.DefaultView.Count == 1)
                     l_drData= m_dtDatos.DefaultView[0].Row;
@@ -4472,7 +4508,7 @@ namespace Mrln.Bel
                 // Buscamos la entidad
                 foreach (EMotivoInfraccion l_entItem in this) {
                     // Si existe -> la devolvemos
-                    if (l_entItem.Codigo == p_strCodigo)
+                    if (l_entItem.Codigo == EMotivoInfraccion.FrmtCodigo(p_strCodigo))
                         return l_entItem;
                 }
 
@@ -4633,6 +4669,32 @@ namespace Mrln.Bel
         #endregion
 
         #region Formateadores
+
+        //---------------------------------------------------------------
+        // Metodos estáticos (Formateo de codigos alineados a derecha)
+        //---------------------------------------------------------------
+
+        /// <summary>
+        /// Formatea una string: Codigo Reparacion
+        /// </summary>
+        public static string FrmtCod(string p_strCod)
+        {
+            if (p_strCod.Trim().Length > 6)
+                p_strCod= p_strCod.Trim().Substring(0,6);
+
+            return p_strCod.Trim().PadLeft(6).ToUpper();
+        }
+
+        /// <summary>
+        /// Formatea una string: Categoria
+        /// </summary>
+        public static string FrmtCodcat(string p_strCodcat)
+        {
+            if (p_strCodcat.Trim().Length > 2)
+                p_strCodcat= p_strCodcat.Trim().Substring(0,2);
+
+            return p_strCodcat.Trim().PadLeft(2).ToUpper();
+        }
         #endregion
 
         #region Propiedades de la clase
@@ -4675,10 +4737,7 @@ namespace Mrln.Bel
         public string Cod
         {
             get {return (string) InternalData["rep_cd6_cod"];}
-            set {
-                if (value.Trim().Length > 6) value= value.Trim().Substring(0,6);
-                InternalData["rep_cd6_cod"]= value.Trim().ToUpper();
-            }
+            set {InternalData["rep_cd6_cod"]= EReparacion.FrmtCod(value);}
         }
 
         /// <summary>
@@ -4715,7 +4774,7 @@ namespace Mrln.Bel
         public string Codcat
         {
             get {return (string) InternalData["rep_rcd_codcat"];}
-            set {InternalData["rep_rcd_codcat"]= value;}
+            set {InternalData["rep_rcd_codcat"]= EReparacion.FrmtCodcat(value);}
         }
 
         /// <summary>
@@ -4863,7 +4922,7 @@ namespace Mrln.Bel
             int l_iRet= 0;
 
             m_dtDatos.DefaultView.RowFilter= 
-                "rep_cd6_cod = " + Ruts.Co(p_strCod);
+                "rep_cd6_cod = " + Ruts.Co(EReparacion.FrmtCod(p_strCod));
 
             if (m_dtDatos.DefaultView.Count == 1) {
                 // La borramos
@@ -4973,7 +5032,7 @@ namespace Mrln.Bel
                 DataRow l_drData= null;
 
                 m_dtDatos.DefaultView.RowFilter= 
-                    "rep_cd6_cod = " + Ruts.Co(p_strCod);
+                    "rep_cd6_cod = " + Ruts.Co(EReparacion.FrmtCod(p_strCod));
 
                 if (m_dtDatos.DefaultView.Count == 1)
                     l_drData= m_dtDatos.DefaultView[0].Row;
@@ -5057,7 +5116,7 @@ namespace Mrln.Bel
                 // Buscamos la entidad
                 foreach (EReparacion l_entItem in this) {
                     // Si existe -> la devolvemos
-                    if (l_entItem.Cod == p_strCod)
+                    if (l_entItem.Cod == EReparacion.FrmtCod(p_strCod))
                         return l_entItem;
                 }
 

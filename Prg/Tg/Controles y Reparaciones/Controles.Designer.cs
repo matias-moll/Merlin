@@ -496,13 +496,13 @@ namespace Mrln.Tg
             this.txtCod.MaxLength = 4;
             this.txtCod.Name = "txtCod";
             this.txtCod.OnlyDigits = true;
-            this.txtCod.Size = new System.Drawing.Size(135, 22);
+            this.txtCod.Size = new System.Drawing.Size(86, 22);
             this.txtCod.TabIndex = 6;
             // 
             // lblDes
             // 
             this.lblDes.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDes.Location = new System.Drawing.Point(228, 34);
+            this.lblDes.Location = new System.Drawing.Point(203, 34);
             this.lblDes.Name = "lblDes";
             this.lblDes.Size = new System.Drawing.Size(80, 22);
             this.lblDes.TabIndex = 107;
@@ -517,7 +517,7 @@ namespace Mrln.Tg
             this.txtDes.EmptyValid = false;
             this.txtDes.Enabled = false;
             this.txtDes.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDes.Location = new System.Drawing.Point(308, 34);
+            this.txtDes.Location = new System.Drawing.Point(283, 34);
             this.txtDes.MaxLength = 30;
             this.txtDes.Name = "txtDes";
             this.txtDes.Size = new System.Drawing.Size(426, 22);

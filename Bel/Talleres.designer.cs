@@ -14,7 +14,7 @@ namespace Mrln.Bel
     //----------------------------------------------------------------------------
     //                         TNG Software BEL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 14/08/2018 18:04
+    // Fecha                    : 26/09/2018 22:31
     // Sistema                  : Mrln
     // Clase para Administrar   : Talleres y sus categorias
     //----------------------------------------------------------------------------
@@ -190,6 +190,17 @@ namespace Mrln.Bel
 
             return p_strCodigotaller.Trim().PadLeft(4).ToUpper();
         }
+
+        /// <summary>
+        /// Formatea una string: Codigo Categoria
+        /// </summary>
+        public static string FrmtCodigocategoria(string p_strCodigocategoria)
+        {
+            if (p_strCodigocategoria.Trim().Length > 2)
+                p_strCodigocategoria= p_strCodigocategoria.Trim().Substring(0,2);
+
+            return p_strCodigocategoria.Trim().PadLeft(2).ToUpper();
+        }
         #endregion
 
         #region Propiedades de la clase
@@ -249,7 +260,7 @@ namespace Mrln.Bel
         public string Codigocategoria
         {
             get {return (string) InternalData["tct_rcd_codigocategoria"];}
-            set {InternalData["tct_rcd_codigocategoria"]= value;}
+            set {InternalData["tct_rcd_codigocategoria"]= ETallerCategoria.FrmtCodigocategoria(value);}
         }
 
         /// <summary>

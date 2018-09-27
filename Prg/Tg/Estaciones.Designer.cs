@@ -405,7 +405,7 @@ namespace Mrln.Tg
             this.grdDatos.HeaderForeColor = System.Drawing.SystemColors.ControlText;
             this.grdDatos.Location = new System.Drawing.Point(4, 142);
             this.grdDatos.Name = "grdDatos";
-            this.grdDatos.Size = new System.Drawing.Size(976, 208);
+            this.grdDatos.Size = new System.Drawing.Size(976, 179);
             this.grdDatos.TabIndex = 0;
             this.grdDatos.Advance += new TNGS.NetRoutines.AdvanceEventHandler(this.grdDatos_Advance);
             this.grdDatos.DataDClick += new TNGS.NetRoutines.DataDClickEventHandler(this.grdDatos_DataDClick);
@@ -475,8 +475,8 @@ namespace Mrln.Tg
             this.frmEdicion.CustomGroupBoxColor = System.Drawing.Color.White;
             this.frmEdicion.FontTitle = new System.Drawing.Font("Arial", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.frmEdicion.GroupImage = null;
-            this.frmEdicion.GroupTitle = " Estacion ";
-            this.frmEdicion.Location = new System.Drawing.Point(4, 356);
+            this.frmEdicion.GroupTitle = " Estación ";
+            this.frmEdicion.Location = new System.Drawing.Point(4, 327);
             this.frmEdicion.Name = "frmEdicion";
             this.frmEdicion.Padding = new System.Windows.Forms.Padding(20);
             this.frmEdicion.PaintGroupBox = false;
@@ -484,17 +484,17 @@ namespace Mrln.Tg
             this.frmEdicion.ShadowColor = System.Drawing.Color.DarkGray;
             this.frmEdicion.ShadowControl = false;
             this.frmEdicion.ShadowThickness = 3;
-            this.frmEdicion.Size = new System.Drawing.Size(976, 101);
+            this.frmEdicion.Size = new System.Drawing.Size(976, 130);
             this.frmEdicion.TabIndex = 21;
             // 
             // lblCod
             // 
             this.lblCod.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCod.Location = new System.Drawing.Point(23, 34);
+            this.lblCod.Location = new System.Drawing.Point(63, 29);
             this.lblCod.Name = "lblCod";
             this.lblCod.Size = new System.Drawing.Size(109, 22);
             this.lblCod.TabIndex = 106;
-            this.lblCod.Text = "Codigo Estacion:";
+            this.lblCod.Text = "Código:";
             this.lblCod.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // txtCod
@@ -504,7 +504,7 @@ namespace Mrln.Tg
             this.txtCod.EmptyValid = false;
             this.txtCod.Enabled = false;
             this.txtCod.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCod.Location = new System.Drawing.Point(132, 34);
+            this.txtCod.Location = new System.Drawing.Point(172, 29);
             this.txtCod.MaxLength = 2;
             this.txtCod.Name = "txtCod";
             this.txtCod.OnlyDigits = true;
@@ -514,7 +514,7 @@ namespace Mrln.Tg
             // lblDes
             // 
             this.lblDes.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDes.Location = new System.Drawing.Point(277, 34);
+            this.lblDes.Location = new System.Drawing.Point(317, 29);
             this.lblDes.Name = "lblDes";
             this.lblDes.Size = new System.Drawing.Size(80, 22);
             this.lblDes.TabIndex = 107;
@@ -528,16 +528,16 @@ namespace Mrln.Tg
             this.txtDes.EmptyValid = false;
             this.txtDes.Enabled = false;
             this.txtDes.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDes.Location = new System.Drawing.Point(358, 34);
+            this.txtDes.Location = new System.Drawing.Point(398, 29);
             this.txtDes.MaxLength = 30;
             this.txtDes.Name = "txtDes";
-            this.txtDes.Size = new System.Drawing.Size(356, 22);
+            this.txtDes.Size = new System.Drawing.Size(456, 22);
             this.txtDes.TabIndex = 1;
             // 
             // lblDomicilio
             // 
             this.lblDomicilio.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDomicilio.Location = new System.Drawing.Point(286, 62);
+            this.lblDomicilio.Location = new System.Drawing.Point(100, 59);
             this.lblDomicilio.Name = "lblDomicilio";
             this.lblDomicilio.Size = new System.Drawing.Size(68, 22);
             this.lblDomicilio.TabIndex = 108;
@@ -550,16 +550,16 @@ namespace Mrln.Tg
             this.txtDomicilio.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtDomicilio.Enabled = false;
             this.txtDomicilio.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDomicilio.Location = new System.Drawing.Point(358, 65);
+            this.txtDomicilio.Location = new System.Drawing.Point(172, 62);
             this.txtDomicilio.MaxLength = 60;
             this.txtDomicilio.Name = "txtDomicilio";
-            this.txtDomicilio.Size = new System.Drawing.Size(356, 22);
-            this.txtDomicilio.TabIndex = 4;
+            this.txtDomicilio.Size = new System.Drawing.Size(682, 22);
+            this.txtDomicilio.TabIndex = 2;
             // 
             // lblContacto
             // 
             this.lblContacto.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblContacto.Location = new System.Drawing.Point(66, 62);
+            this.lblContacto.Location = new System.Drawing.Point(106, 90);
             this.lblContacto.Name = "lblContacto";
             this.lblContacto.Size = new System.Drawing.Size(65, 22);
             this.lblContacto.TabIndex = 109;
@@ -569,18 +569,19 @@ namespace Mrln.Tg
             // txtContacto
             // 
             this.txtContacto.BackColor = System.Drawing.SystemColors.Window;
+            this.txtContacto.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtContacto.Enabled = false;
             this.txtContacto.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtContacto.Location = new System.Drawing.Point(132, 65);
+            this.txtContacto.Location = new System.Drawing.Point(172, 93);
             this.txtContacto.MaxLength = 30;
             this.txtContacto.Name = "txtContacto";
-            this.txtContacto.Size = new System.Drawing.Size(108, 22);
+            this.txtContacto.Size = new System.Drawing.Size(288, 22);
             this.txtContacto.TabIndex = 3;
             // 
             // lblTelefono
             // 
             this.lblTelefono.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTelefono.Location = new System.Drawing.Point(740, 34);
+            this.lblTelefono.Location = new System.Drawing.Point(485, 93);
             this.lblTelefono.Name = "lblTelefono";
             this.lblTelefono.Size = new System.Drawing.Size(62, 22);
             this.lblTelefono.TabIndex = 110;
@@ -593,11 +594,11 @@ namespace Mrln.Tg
             this.txtTelefono.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtTelefono.Enabled = false;
             this.txtTelefono.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTelefono.Location = new System.Drawing.Point(803, 34);
+            this.txtTelefono.Location = new System.Drawing.Point(548, 93);
             this.txtTelefono.MaxLength = 60;
             this.txtTelefono.Name = "txtTelefono";
-            this.txtTelefono.Size = new System.Drawing.Size(137, 22);
-            this.txtTelefono.TabIndex = 2;
+            this.txtTelefono.Size = new System.Drawing.Size(306, 22);
+            this.txtTelefono.TabIndex = 4;
             // 
             // Estaciones
             // 

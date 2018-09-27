@@ -16,7 +16,7 @@ namespace Mrln.Bll
     //----------------------------------------------------------------------------
     //                         TNG Software BLL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 14/08/2018 18:04
+    // Fecha                    : 26/09/2018 22:31
     // Sistema                  : Mrln
     // Clase para Administrar   : Tablas Generales
     //----------------------------------------------------------------------------
@@ -92,6 +92,9 @@ namespace Mrln.Bll
             // No hay errores aun
             DBConn l_dbcAccess= null;
 
+            // Ajustamos codigos alineados a derecha
+            p_strCod= ECategoria.FrmtCod(p_strCod);
+
             try {
                 // Obtenemos una conexion
                 l_dbcAccess= DBRuts.GetConection(Connections.Dat);
@@ -106,6 +109,35 @@ namespace Mrln.Bll
                 // Error en la operacion Get
                 p_smResult.BllError(l_expData);
                 return null;
+            }
+            finally {
+                // Si pude abrir la conexion -> la cierro
+                if (l_dbcAccess != null) l_dbcAccess.Close();
+            }
+        }
+
+        /// <summary>
+        /// Devuelve la próxima clave de la entidad
+        /// </summary>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        /// <returns>Próxima clave</returns>
+        public static string CatNextKey(ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            DBConn l_dbcAccess= null;
+
+            try {
+                // Obtenemos una conexion
+                l_dbcAccess= DBRuts.GetConection(Connections.Dat);
+
+                // Pedimos la clave máxima
+                return CatGetNK(l_dbcAccess,
+                                ref p_smResult);
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion NextKey
+                p_smResult.BllError(l_expData);
+                return "";
             }
             finally {
                 // Si pude abrir la conexion -> la cierro
@@ -162,6 +194,9 @@ namespace Mrln.Bll
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
+
+            // Ajustamos codigos alineados a derecha
+            p_strCod= ECategoria.FrmtCod(p_strCod);
 
             try {
                 // Obtenemos una conexion
@@ -236,6 +271,9 @@ namespace Mrln.Bll
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
+
+            // Ajustamos codigos alineados a derecha
+            p_strCod= ECategoria.FrmtCod(p_strCod);
 
             try {
                 // Obtenemos una conexion
@@ -562,6 +600,44 @@ namespace Mrln.Bll
                 return null;
             }
         }
+
+        /// <summary>
+        /// Devuelve la próxima clave de la entidad
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        /// <returns>Próxima clave</returns>
+        internal static string CatGetNK(DBConn p_dbcAccess,
+                                        ref StatMsg p_smResult)
+        {
+            try {
+                // Pedimos la clave máxima
+                DataSet l_dsTemp= new DataSet();
+
+                Dal.Categorias.GetMaxKey(p_dbcAccess,
+                                         ref l_dsTemp,
+                                         "Temporal",
+                                         ref p_smResult);
+                if (p_smResult.NOk) return "";
+
+                // Si no vino nada
+                if (l_dsTemp.Tables["Temporal"].Rows.Count == 0) {
+                    // Primera clave de la tabla
+                    return "1";
+                }
+
+                // Convertimos la clave a numerica y le sumamos uno
+                int l_iValue= Convert.ToInt32((string) l_dsTemp.Tables["Temporal"].Rows[0][0]) + 1;
+
+                // Devolvemos la nueva clave
+                return l_iValue.ToString("0");
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion NextKey
+                p_smResult.BllError(l_expData);
+                return "";
+            }
+        }
         #endregion
 
         #region Metodos internos de modificacion
@@ -842,6 +918,9 @@ namespace Mrln.Bll
             // No hay errores aun
             DBConn l_dbcAccess= null;
 
+            // Ajustamos codigos alineados a derecha
+            p_strCodigo= EDestinatariosMail.FrmtCodigo(p_strCodigo);
+
             try {
                 // Obtenemos una conexion
                 l_dbcAccess= DBRuts.GetConection(Connections.Dat);
@@ -856,6 +935,35 @@ namespace Mrln.Bll
                 // Error en la operacion Get
                 p_smResult.BllError(l_expData);
                 return null;
+            }
+            finally {
+                // Si pude abrir la conexion -> la cierro
+                if (l_dbcAccess != null) l_dbcAccess.Close();
+            }
+        }
+
+        /// <summary>
+        /// Devuelve la próxima clave de la entidad
+        /// </summary>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        /// <returns>Próxima clave</returns>
+        public static string DemNextKey(ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            DBConn l_dbcAccess= null;
+
+            try {
+                // Obtenemos una conexion
+                l_dbcAccess= DBRuts.GetConection(Connections.Dat);
+
+                // Pedimos la clave máxima
+                return DemGetNK(l_dbcAccess,
+                                ref p_smResult);
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion NextKey
+                p_smResult.BllError(l_expData);
+                return "";
             }
             finally {
                 // Si pude abrir la conexion -> la cierro
@@ -912,6 +1020,9 @@ namespace Mrln.Bll
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
+
+            // Ajustamos codigos alineados a derecha
+            p_strCodigo= EDestinatariosMail.FrmtCodigo(p_strCodigo);
 
             try {
                 // Obtenemos una conexion
@@ -986,6 +1097,9 @@ namespace Mrln.Bll
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
+
+            // Ajustamos codigos alineados a derecha
+            p_strCodigo= EDestinatariosMail.FrmtCodigo(p_strCodigo);
 
             try {
                 // Obtenemos una conexion
@@ -1278,6 +1392,44 @@ namespace Mrln.Bll
                 // Error en la operacion Srch
                 p_smResult.BllError(l_expData);
                 return null;
+            }
+        }
+
+        /// <summary>
+        /// Devuelve la próxima clave de la entidad
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        /// <returns>Próxima clave</returns>
+        internal static string DemGetNK(DBConn p_dbcAccess,
+                                        ref StatMsg p_smResult)
+        {
+            try {
+                // Pedimos la clave máxima
+                DataSet l_dsTemp= new DataSet();
+
+                Dal.DestinatariosMails.GetMaxKey(p_dbcAccess,
+                                                 ref l_dsTemp,
+                                                 "Temporal",
+                                                 ref p_smResult);
+                if (p_smResult.NOk) return "";
+
+                // Si no vino nada
+                if (l_dsTemp.Tables["Temporal"].Rows.Count == 0) {
+                    // Primera clave de la tabla
+                    return "1";
+                }
+
+                // Convertimos la clave a numerica y le sumamos uno
+                int l_iValue= Convert.ToInt32((string) l_dsTemp.Tables["Temporal"].Rows[0][0]) + 1;
+
+                // Devolvemos la nueva clave
+                return l_iValue.ToString("0");
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion NextKey
+                p_smResult.BllError(l_expData);
+                return "";
             }
         }
         #endregion
@@ -5334,6 +5486,9 @@ namespace Mrln.Bll
             // No hay errores aun
             DBConn l_dbcAccess= null;
 
+            // Ajustamos codigos alineados a derecha
+            p_strCodigo= EMotivoInfraccion.FrmtCodigo(p_strCodigo);
+
             try {
                 // Obtenemos una conexion
                 l_dbcAccess= DBRuts.GetConection(Connections.Dat);
@@ -5348,6 +5503,35 @@ namespace Mrln.Bll
                 // Error en la operacion Get
                 p_smResult.BllError(l_expData);
                 return null;
+            }
+            finally {
+                // Si pude abrir la conexion -> la cierro
+                if (l_dbcAccess != null) l_dbcAccess.Close();
+            }
+        }
+
+        /// <summary>
+        /// Devuelve la próxima clave de la entidad
+        /// </summary>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        /// <returns>Próxima clave</returns>
+        public static string MtiNextKey(ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            DBConn l_dbcAccess= null;
+
+            try {
+                // Obtenemos una conexion
+                l_dbcAccess= DBRuts.GetConection(Connections.Dat);
+
+                // Pedimos la clave máxima
+                return MtiGetNK(l_dbcAccess,
+                                ref p_smResult);
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion NextKey
+                p_smResult.BllError(l_expData);
+                return "";
             }
             finally {
                 // Si pude abrir la conexion -> la cierro
@@ -5404,6 +5588,9 @@ namespace Mrln.Bll
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
+
+            // Ajustamos codigos alineados a derecha
+            p_strCodigo= EMotivoInfraccion.FrmtCodigo(p_strCodigo);
 
             try {
                 // Obtenemos una conexion
@@ -5478,6 +5665,9 @@ namespace Mrln.Bll
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
+
+            // Ajustamos codigos alineados a derecha
+            p_strCodigo= EMotivoInfraccion.FrmtCodigo(p_strCodigo);
 
             try {
                 // Obtenemos una conexion
@@ -5569,6 +5759,12 @@ namespace Mrln.Bll
             if (p_entMotivoInfraccion.Codigo.Trim() == "") {
                 // El campo [Código] no puede ser vacío
                 p_smResult.BllWarning("El dato [Código] no puede ser vacío","");
+                return;
+            }
+
+            if (p_entMotivoInfraccion.Descripcion.Trim() == "") {
+                // El campo [Descripción] no puede ser vacío
+                p_smResult.BllWarning("El dato [Descripción] no puede ser vacío","");
                 return;
             }
 
@@ -5764,6 +5960,44 @@ namespace Mrln.Bll
                 // Error en la operacion Srch
                 p_smResult.BllError(l_expData);
                 return null;
+            }
+        }
+
+        /// <summary>
+        /// Devuelve la próxima clave de la entidad
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        /// <returns>Próxima clave</returns>
+        internal static string MtiGetNK(DBConn p_dbcAccess,
+                                        ref StatMsg p_smResult)
+        {
+            try {
+                // Pedimos la clave máxima
+                DataSet l_dsTemp= new DataSet();
+
+                Dal.MotivosInfracciones.GetMaxKey(p_dbcAccess,
+                                                  ref l_dsTemp,
+                                                  "Temporal",
+                                                  ref p_smResult);
+                if (p_smResult.NOk) return "";
+
+                // Si no vino nada
+                if (l_dsTemp.Tables["Temporal"].Rows.Count == 0) {
+                    // Primera clave de la tabla
+                    return "1";
+                }
+
+                // Convertimos la clave a numerica y le sumamos uno
+                int l_iValue= Convert.ToInt32((string) l_dsTemp.Tables["Temporal"].Rows[0][0]) + 1;
+
+                // Devolvemos la nueva clave
+                return l_iValue.ToString("0");
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion NextKey
+                p_smResult.BllError(l_expData);
+                return "";
             }
         }
         #endregion
@@ -6006,6 +6240,9 @@ namespace Mrln.Bll
             // No hay errores aun
             DBConn l_dbcAccess= null;
 
+            // Ajustamos codigos alineados a derecha
+            p_strCod= EReparacion.FrmtCod(p_strCod);
+
             try {
                 // Obtenemos una conexion
                 l_dbcAccess= DBRuts.GetConection(Connections.Dat);
@@ -6020,6 +6257,35 @@ namespace Mrln.Bll
                 // Error en la operacion Get
                 p_smResult.BllError(l_expData);
                 return null;
+            }
+            finally {
+                // Si pude abrir la conexion -> la cierro
+                if (l_dbcAccess != null) l_dbcAccess.Close();
+            }
+        }
+
+        /// <summary>
+        /// Devuelve la próxima clave de la entidad
+        /// </summary>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        /// <returns>Próxima clave</returns>
+        public static string RepNextKey(ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            DBConn l_dbcAccess= null;
+
+            try {
+                // Obtenemos una conexion
+                l_dbcAccess= DBRuts.GetConection(Connections.Dat);
+
+                // Pedimos la clave máxima
+                return RepGetNK(l_dbcAccess,
+                                ref p_smResult);
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion NextKey
+                p_smResult.BllError(l_expData);
+                return "";
             }
             finally {
                 // Si pude abrir la conexion -> la cierro
@@ -6076,6 +6342,9 @@ namespace Mrln.Bll
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
+
+            // Ajustamos codigos alineados a derecha
+            p_strCod= EReparacion.FrmtCod(p_strCod);
 
             try {
                 // Obtenemos una conexion
@@ -6150,6 +6419,9 @@ namespace Mrln.Bll
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
+
+            // Ajustamos codigos alineados a derecha
+            p_strCod= EReparacion.FrmtCod(p_strCod);
 
             try {
                 // Obtenemos una conexion
@@ -6464,6 +6736,44 @@ namespace Mrln.Bll
                 // Error en la operacion Srch
                 p_smResult.BllError(l_expData);
                 return null;
+            }
+        }
+
+        /// <summary>
+        /// Devuelve la próxima clave de la entidad
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        /// <returns>Próxima clave</returns>
+        internal static string RepGetNK(DBConn p_dbcAccess,
+                                        ref StatMsg p_smResult)
+        {
+            try {
+                // Pedimos la clave máxima
+                DataSet l_dsTemp= new DataSet();
+
+                Dal.Reparaciones.GetMaxKey(p_dbcAccess,
+                                           ref l_dsTemp,
+                                           "Temporal",
+                                           ref p_smResult);
+                if (p_smResult.NOk) return "";
+
+                // Si no vino nada
+                if (l_dsTemp.Tables["Temporal"].Rows.Count == 0) {
+                    // Primera clave de la tabla
+                    return "1";
+                }
+
+                // Convertimos la clave a numerica y le sumamos uno
+                int l_iValue= Convert.ToInt32((string) l_dsTemp.Tables["Temporal"].Rows[0][0]) + 1;
+
+                // Devolvemos la nueva clave
+                return l_iValue.ToString("0");
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion NextKey
+                p_smResult.BllError(l_expData);
+                return "";
             }
         }
         #endregion

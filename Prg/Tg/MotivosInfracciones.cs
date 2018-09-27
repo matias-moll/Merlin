@@ -191,8 +191,10 @@ namespace Mrln.Tg
             // Creamos una nueva entidad, pasamos a modo de edicion y
             // damos foco al primer campo
             m_entMotivoInfraccion= Bel.EMotivoInfraccion.NewEmpty();
+            m_entMotivoInfraccion.Codigo = Bll.Tablas.MtiNextKey(ref m_smResult);
+            m_smResult.Reset();
             SwitchTo(FormModes.Edit, GridOps.DontFill);
-            txtCodigo.Focus();
+            txtDescripcion.Focus();
         }
 
         /// <summary>
@@ -401,7 +403,7 @@ namespace Mrln.Tg
 
             // Habilitamos el frame
             txtCodigo.NormalDisable= false;
-            txtCodigo.Enabled= m_entMotivoInfraccion.EsNueva;
+            txtCodigo.Enabled= false;
             txtDescripcion.NormalDisable= false;
             txtDescripcion.Enabled= m_entMotivoInfraccion.EsNueva;
             cmdCancelar.Enabled= true;

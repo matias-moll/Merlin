@@ -14,7 +14,7 @@ namespace Mrln.Bel
     //----------------------------------------------------------------------------
     //                         TNG Software BEL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 14/08/2018 18:04
+    // Fecha                    : 26/09/2018 22:31
     // Sistema                  : Mrln
     // Clase para Administrar   : Controles con sus Reparaciones
     //----------------------------------------------------------------------------
@@ -187,6 +187,17 @@ namespace Mrln.Bel
 
             return p_strCodctl.Trim().PadLeft(4).ToUpper();
         }
+
+        /// <summary>
+        /// Formatea una string: Codigo de Reparacion
+        /// </summary>
+        public static string FrmtCodrep(string p_strCodrep)
+        {
+            if (p_strCodrep.Trim().Length > 6)
+                p_strCodrep= p_strCodrep.Trim().Substring(0,6);
+
+            return p_strCodrep.Trim().PadLeft(6).ToUpper();
+        }
         #endregion
 
         #region Propiedades de la clase
@@ -262,7 +273,7 @@ namespace Mrln.Bel
         public string Codrep
         {
             get {return (string) InternalData["ctr_cd6_codrep"];}
-            set {InternalData["ctr_cd6_codrep"]= value;}
+            set {InternalData["ctr_cd6_codrep"]= EControlRepa.FrmtCodrep(value);}
         }
 
         /// <summary>

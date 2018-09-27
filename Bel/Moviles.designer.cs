@@ -14,7 +14,7 @@ namespace Mrln.Bel
     //----------------------------------------------------------------------------
     //                         TNG Software BEL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 14/08/2018 18:04
+    // Fecha                    : 26/09/2018 22:31
     // Sistema                  : Mrln
     // Clase para Administrar   : Moviles y Tablas Hijas
     //----------------------------------------------------------------------------
@@ -859,6 +859,17 @@ namespace Mrln.Bel
         //---------------------------------------------------------------
 
         /// <summary>
+        /// Formatea una string: Reparacion
+        /// </summary>
+        public static string FrmtCodreparacion(string p_strCodreparacion)
+        {
+            if (p_strCodreparacion.Trim().Length > 6)
+                p_strCodreparacion= p_strCodreparacion.Trim().Substring(0,6);
+
+            return p_strCodreparacion.Trim().PadLeft(6).ToUpper();
+        }
+
+        /// <summary>
         /// Formatea una string: Control
         /// </summary>
         public static string FrmtCodcontrol(string p_strCodcontrol)
@@ -867,6 +878,17 @@ namespace Mrln.Bel
                 p_strCodcontrol= p_strCodcontrol.Trim().Substring(0,4);
 
             return p_strCodcontrol.Trim().PadLeft(4).ToUpper();
+        }
+
+        /// <summary>
+        /// Formatea una string: Destinatarios
+        /// </summary>
+        public static string FrmtCoddestinatarios(string p_strCoddestinatarios)
+        {
+            if (p_strCoddestinatarios.Trim().Length > 4)
+                p_strCoddestinatarios= p_strCoddestinatarios.Trim().Substring(0,4);
+
+            return p_strCoddestinatarios.Trim().PadLeft(4).ToUpper();
         }
         #endregion
 
@@ -968,7 +990,7 @@ namespace Mrln.Bel
         public string Codreparacion
         {
             get {return (string) InternalData["mal_cd6_codreparacion"];}
-            set {InternalData["mal_cd6_codreparacion"]= value;}
+            set {InternalData["mal_cd6_codreparacion"]= EMovilAlerta.FrmtCodreparacion(value);}
         }
 
         /// <summary>
@@ -1002,7 +1024,7 @@ namespace Mrln.Bel
         public string Coddestinatarios
         {
             get {return (string) InternalData["mal_cod_coddestinatarios"];}
-            set {InternalData["mal_cod_coddestinatarios"]= value;}
+            set {InternalData["mal_cod_coddestinatarios"]= EMovilAlerta.FrmtCoddestinatarios(value);}
         }
 
         /// <summary>
@@ -3325,6 +3347,21 @@ namespace Mrln.Bel
         #endregion
 
         #region Formateadores
+
+        //---------------------------------------------------------------
+        // Metodos estáticos (Formateo de codigos alineados a derecha)
+        //---------------------------------------------------------------
+
+        /// <summary>
+        /// Formatea una string: Motivo
+        /// </summary>
+        public static string FrmtCodmotivo(string p_strCodmotivo)
+        {
+            if (p_strCodmotivo.Trim().Length > 4)
+                p_strCodmotivo= p_strCodmotivo.Trim().Substring(0,4);
+
+            return p_strCodmotivo.Trim().PadLeft(4).ToUpper();
+        }
         #endregion
 
         #region Propiedades de la clase
@@ -3408,7 +3445,7 @@ namespace Mrln.Bel
         public string Codmotivo
         {
             get {return (string) InternalData["mvi_cod_codmotivo"];}
-            set {InternalData["mvi_cod_codmotivo"]= value;}
+            set {InternalData["mvi_cod_codmotivo"]= EMovilInfraccion.FrmtCodmotivo(value);}
         }
 
         /// <summary>

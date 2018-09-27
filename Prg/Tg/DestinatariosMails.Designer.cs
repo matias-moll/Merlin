@@ -491,11 +491,11 @@ namespace Mrln.Tg
             this.gbRemoveSelected.FlatFontSize = 9;
             this.gbRemoveSelected.FlatTextColor = System.Drawing.Color.Black;
             this.gbRemoveSelected.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.gbRemoveSelected.Location = new System.Drawing.Point(662, 67);
+            this.gbRemoveSelected.Location = new System.Drawing.Point(662, 77);
             this.gbRemoveSelected.Name = "gbRemoveSelected";
             this.gbRemoveSelected.RoundCorners = 2;
             this.gbRemoveSelected.Size = new System.Drawing.Size(26, 24);
-            this.gbRemoveSelected.TabIndex = 111;
+            this.gbRemoveSelected.TabIndex = 4;
             this.gbRemoveSelected.W8Color = System.Drawing.Color.RoyalBlue;
             this.gbRemoveSelected.Click += new System.EventHandler(this.gbRemoveSelected_Click);
             // 
@@ -511,11 +511,11 @@ namespace Mrln.Tg
             this.gbAdd.FlatFontSize = 9;
             this.gbAdd.FlatTextColor = System.Drawing.Color.Black;
             this.gbAdd.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.gbAdd.Location = new System.Drawing.Point(425, 67);
+            this.gbAdd.Location = new System.Drawing.Point(425, 77);
             this.gbAdd.Name = "gbAdd";
             this.gbAdd.RoundCorners = 2;
             this.gbAdd.Size = new System.Drawing.Size(26, 24);
-            this.gbAdd.TabIndex = 110;
+            this.gbAdd.TabIndex = 3;
             this.gbAdd.W8Color = System.Drawing.Color.RoyalBlue;
             this.gbAdd.Click += new System.EventHandler(this.gbAdd_Click);
             // 
@@ -527,14 +527,14 @@ namespace Mrln.Tg
             this.cdListaDestinatarios.Name = "cdListaDestinatarios";
             this.cdListaDestinatarios.Size = new System.Drawing.Size(274, 124);
             this.cdListaDestinatarios.Sorted = true;
-            this.cdListaDestinatarios.TabIndex = 109;
+            this.cdListaDestinatarios.TabIndex = 5;
             // 
             // lblCodigo
             // 
             this.lblCodigo.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCodigo.Location = new System.Drawing.Point(16, 39);
+            this.lblCodigo.Location = new System.Drawing.Point(23, 41);
             this.lblCodigo.Name = "lblCodigo";
-            this.lblCodigo.Size = new System.Drawing.Size(104, 22);
+            this.lblCodigo.Size = new System.Drawing.Size(77, 22);
             this.lblCodigo.TabIndex = 106;
             this.lblCodigo.Text = "Código:";
             this.lblCodigo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -546,18 +546,18 @@ namespace Mrln.Tg
             this.txtCodigo.EmptyValid = false;
             this.txtCodigo.Enabled = false;
             this.txtCodigo.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCodigo.Location = new System.Drawing.Point(135, 41);
+            this.txtCodigo.Location = new System.Drawing.Point(106, 41);
             this.txtCodigo.MaxLength = 4;
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(83, 22);
-            this.txtCodigo.TabIndex = 6;
+            this.txtCodigo.TabIndex = 0;
             // 
             // lblDescripcion
             // 
             this.lblDescripcion.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDescripcion.Location = new System.Drawing.Point(16, 94);
+            this.lblDescripcion.Location = new System.Drawing.Point(14, 79);
             this.lblDescripcion.Name = "lblDescripcion";
-            this.lblDescripcion.Size = new System.Drawing.Size(104, 22);
+            this.lblDescripcion.Size = new System.Drawing.Size(86, 22);
             this.lblDescripcion.TabIndex = 107;
             this.lblDescripcion.Text = "Descripción:";
             this.lblDescripcion.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -569,11 +569,11 @@ namespace Mrln.Tg
             this.txtDescripcion.EmptyValid = false;
             this.txtDescripcion.Enabled = false;
             this.txtDescripcion.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDescripcion.Location = new System.Drawing.Point(135, 96);
+            this.txtDescripcion.Location = new System.Drawing.Point(106, 79);
             this.txtDescripcion.MaxLength = 30;
             this.txtDescripcion.Name = "txtDescripcion";
-            this.txtDescripcion.Size = new System.Drawing.Size(262, 22);
-            this.txtDescripcion.TabIndex = 7;
+            this.txtDescripcion.Size = new System.Drawing.Size(287, 22);
+            this.txtDescripcion.TabIndex = 1;
             // 
             // lblDestinatarios
             // 
@@ -595,7 +595,7 @@ namespace Mrln.Tg
             this.teDestinatario.Multiline = true;
             this.teDestinatario.Name = "teDestinatario";
             this.teDestinatario.Size = new System.Drawing.Size(263, 20);
-            this.teDestinatario.TabIndex = 8;
+            this.teDestinatario.TabIndex = 2;
             // 
             // DestinatariosMails
             // 

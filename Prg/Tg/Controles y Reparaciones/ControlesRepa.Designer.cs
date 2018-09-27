@@ -526,16 +526,16 @@ namespace Mrln.Tg
             this.cdcCodRep.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cdcCodRep.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cdcCodRep.FormattingEnabled = true;
-            this.cdcCodRep.Location = new System.Drawing.Point(578, 29);
+            this.cdcCodRep.Location = new System.Drawing.Point(462, 30);
             this.cdcCodRep.Name = "cdcCodRep";
-            this.cdcCodRep.Size = new System.Drawing.Size(205, 23);
+            this.cdcCodRep.Size = new System.Drawing.Size(360, 23);
             this.cdcCodRep.Sorted = true;
             this.cdcCodRep.TabIndex = 108;
             // 
             // lblNroitem
             // 
             this.lblNroitem.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNroitem.Location = new System.Drawing.Point(122, 29);
+            this.lblNroitem.Location = new System.Drawing.Point(114, 29);
             this.lblNroitem.Name = "lblNroitem";
             this.lblNroitem.Size = new System.Drawing.Size(104, 22);
             this.lblNroitem.TabIndex = 106;
@@ -547,11 +547,11 @@ namespace Mrln.Tg
             this.txtNroitem.BackColor = System.Drawing.SystemColors.Window;
             this.txtNroitem.Enabled = false;
             this.txtNroitem.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNroitem.Location = new System.Drawing.Point(232, 29);
+            this.txtNroitem.Location = new System.Drawing.Point(224, 29);
             this.txtNroitem.MaxLength = 5;
             this.txtNroitem.Name = "txtNroitem";
             this.txtNroitem.NegativeValid = false;
-            this.txtNroitem.Size = new System.Drawing.Size(159, 22);
+            this.txtNroitem.Size = new System.Drawing.Size(110, 22);
             this.txtNroitem.TabIndex = 6;
             this.txtNroitem.Text = "0";
             this.txtNroitem.ZeroValid = false;
@@ -559,7 +559,7 @@ namespace Mrln.Tg
             // lblCodrep
             // 
             this.lblCodrep.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCodrep.Location = new System.Drawing.Point(485, 29);
+            this.lblCodrep.Location = new System.Drawing.Point(369, 30);
             this.lblCodrep.Name = "lblCodrep";
             this.lblCodrep.Size = new System.Drawing.Size(86, 22);
             this.lblCodrep.TabIndex = 107;
