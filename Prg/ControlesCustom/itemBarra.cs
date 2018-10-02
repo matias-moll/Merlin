@@ -22,23 +22,25 @@ namespace ControlesCustom
         bool estoySeleccionado = false;
 
         // enumerado de tipos de estado
-        public enum Estados { Verde, Rojo }
+        public enum Estados { Verde, Rojo, Amarillo}
 
          public itemBarra(){
            
             InitializeComponent();
             // Empieza siendo visible el estado VERDE
             pbRojo.Visible = false;
+            pbAmarillo.Visible = false;
             // le asignamos la fecha inicial al lbl
             lblFecha.Text = inicialDate.Day.ToString() + "/" + inicialDate.Month.ToString() + "/" + inicialDate.Year.ToString();
         }
 
-        public itemBarra(int nro, string titulo, DateTime fecha, string taller): this()
+        public itemBarra(int nro, string titulo, DateTime fecha, string taller, string estadoOrden) : this()
         {
             this.Numero = nro;
             this.Titulo = titulo;
             this.Fecha = fecha;
             this.Taller = taller;
+            this.EstadoOrden = estadoOrden;
         }
 
         #endregion
@@ -53,8 +55,10 @@ namespace ControlesCustom
             {
                 if (pbRojo.Visible)
                     return Estados.Rojo;
-                else
+                else if (pbVerde.Visible)
                     return Estados.Verde;
+                else
+                    return Estados.Amarillo;
             }
         }
 
@@ -87,12 +91,16 @@ namespace ControlesCustom
             {
                 if (value.Trim() == "")
                     this.CambiarFoto(Estados.Rojo);
+                else if (EstadoOrden == "EnRealizacion")
+                    this.CambiarFoto(Estados.Amarillo);
                 else
                     this.CambiarFoto(Estados.Verde);
 
                 fllDescripcion.Text = value;
             }
         }
+
+        public string EstadoOrden { get; private set; }
         #endregion
 
         #region Metodos Privados del control
@@ -105,11 +113,19 @@ namespace ControlesCustom
             {
                 pbVerde.Visible = true;
                 pbRojo.Visible = false;
+                pbAmarillo.Visible = false;
+            }
+            else if (estado == Estados.Rojo)
+            {
+                pbVerde.Visible = false;
+                pbRojo.Visible = true;
+                pbAmarillo.Visible = false;
             }
             else
             {
                 pbVerde.Visible = false;
-                pbRojo.Visible = true;
+                pbRojo.Visible = false;
+                pbAmarillo.Visible = true;
             }
         }
         #endregion

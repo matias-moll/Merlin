@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 26/09/2018 21:04
+// Fecha       : 02/10/2018 00:55
 // Sistema     : Mrln
 // Tabla       : MvlKilometros
 //----------------------------------------------------------------------------
@@ -792,6 +792,50 @@ go
 print '       - Asignando permisos al nuevo SP'
 
 grant execute on dbo.MVLKILOMETROS_FPACK to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
+--- Método Fijo: getKmsActualesMvl
+--- </summary>
+--- <param name="@patente">Patente</param>
+--- <param name="@usuario">Usuario que ejecuta el SP</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.MVLKILOMETROS_GETKMSACTUALESMVL'
+
+if exists (select * from sysobjects where id = object_id('dbo.MVLKILOMETROS_GETKMSACTUALESMVL'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.MVLKILOMETROS_GETKMSACTUALESMVL
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.MVLKILOMETROS_GETKMSACTUALESMVL
+(
+@patente tngs_codigo_e,
+@usuario tngs_nombre
+)
+as
+begin
+
+   select kmsActuales = dbo.MVLKILOMETROS_GETKMACTUALMOVIL(@patente) 
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.MVLKILOMETROS_GETKMSACTUALESMVL to tngsmodulos
 
 print ' '
 go

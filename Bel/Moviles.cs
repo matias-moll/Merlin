@@ -528,6 +528,10 @@ namespace Mrln.Bel
     /// </summary>
     public sealed partial class EMovilEstado : Entidad
     {
+        public static string EstadoEnMantenimiento {  get { return " 3"; } }
+
+        public bool EstaEnEstadoMantenimiento {  get { return this.Codestado == EstadoEnMantenimiento; } }
+
         #region Metodos publicos de la clase
         //---------------------------------------------------------------
         // Metodos públicos de la clase

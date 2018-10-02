@@ -165,7 +165,7 @@
         XTesb3QPLh88M+QwdP6m681Lt7xuXbu94vbgcOjwnZHokdE77DtTd1PuvriXeW/h/sYH6AdFD6UeVjxS
         fNTws+7PbaOWo6fHXMf6Hwc/vj/OGn/2S8Yv7ycKnpCfVEyqTDZPmU2dmnafvvF05dOJZ+nPFmYKf5X+
         tfa5zvMffnP8rX82YnbiBf/Fp99LXsq/PPRq2aueuYC5R69TXy/MF72Rf3P4LeNt37vwd5MLWe+x7ys/
-        6H7o/ujz8cGn1E+f/gUDmPP8usTo0wAAAAlwSFlzAAALEgAACxIB0t1+/AAAAQdJREFUOE+d0LFqg1AU
+        6H7o/ujz8cGn1E+f/gUDmPP8usTo0wAAAAlwSFlzAAALEwAACxMBAJqcGAAAAQdJREFUOE+d0LFqg1AU
         BmBxyAMEsgYEHyDgWshal0yFQMDJKQ8Q6BM4dwr0SYK4BEsHA4JZLLRDIJDVIS4Wg8l/bu69NEat5ocP
         9Oj55ao8mBE8XS+75xnO3JgGfXj/xxIGMAMdViALhvymzgmmYPP7H6CSF2BhBaZpbtM0/SrLsmyH52JZ
         mIMMK7Asa3OuSBiGH/T8j1egY8vUFkRRVF5ewATeQKayoLzsuu6aH+cX6KfK3BXEcfxJM8HzvDXNkyTZ
@@ -176,7 +176,7 @@
   <data name="gbAccidentes.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1
-        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxIAAAsSAdLdfvwAAAE5SURBVDhPfZO/R0ZRGIAPERFN
+        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxMAAAsTAQCanBgAAAE5SURBVDhPfZO/R0ZRGIAPERFN
         TU0RERFNTREREa0RTdEUTf0B39oaTRFNEU3R1BQRERERTU1NTU31PO/9zvfdX999eK77Hve+55z3vCe1
         MInHeI9f+I5veImr2IkfPOMhLjrQZwrX8RrP0EkaHOEtzkRUsIf7uBJRwTY+4lxEfTbwDsciGvKNf9iL
         aMgSmmTcwIfLLs+c+UQTWJM6jrnVtInuq40XNMFBRFWsg6tIJ7jlSwsPaILdiJpYs3SF8760YF1MMGoC
@@ -188,7 +188,7 @@
   <data name="gbHistorialCompleto.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1
-        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxIAAAsSAdLdfvwAAAEHSURBVDhPldLPZ8JxHMfxL2PX
+        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxMAAAsTAQCanBgAAAEHSURBVDhPldLPZ8JxHMfxL2PX
         GGPXXSMidtp1/0HXERFd+wNixP6AncaunUbETmOM/oCIiIhOERGjU2zPV7w+PtbnE714kPeP+n77fIoT
         ecQndvjFHC+4wcncQotaStmiiWSusERq8b8nHGUAD2zQgB/5HkO4v0cVIWXEzTuk8gHP9VVw2nDjXYVM
         avDcSgXnGW50VcjkEp6TkA5cfFUhE52S53QiIQ9w4wcaTOUNntP/EXKBGdycogJHj96D+1JHiO7AGPGA
@@ -346,7 +346,7 @@
   <data name="gbModificarMovil.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1
-        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxIAAAsSAdLdfvwAAAD0SURBVDhPjdNB5kJBAMfxOUOr
+        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxMAAAsTAQCanBgAAAD0SURBVDhPjdNB5kJBAMfxOUOr
         VtEqogNEB4ho1QEi4n+JiOgMrTpAq4gO0AEiWkVEq7Z/IuL1/dVkpjEz3o/PM2/0fq83854pisJ4qeII
         Taas4OIV1HCGJg4YR5ywg4staOCqU2uDWHRxtOCmoSdXoH/Xfp8ptkCHPRbWCLGoQL99oKsJv2CuQSZa
         YP8xVdIrW+AvsO+vTEEdF/gXinaFUb4g3B15YohPMgW6c7g7eu4BXDIFE+it+8f34j5+kynQfnewxB3a
@@ -439,7 +439,7 @@
   <data name="gbNuevoMovil.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1
-        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxIAAAsSAdLdfvwAAACmSURBVDhPY0ACukD8HIj/48HT
+        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxMAAAsTAQCanBgAAACmSURBVDhPY0ACukD8HIj/48HT
         gBgrMAPit0AMUnQYiI2x4O1AjNUAeyD+DMQwW7YAMTawFIixGvANiGGayTIApKkLiNOg2AOIsYFkII6C
         MFEByAAbCJM8QIwBQkA8E4oxXEiMAXJADFIHwhUgAWQweA0ARSdMEz4MJmhiACi0YWkD5GyYhnVQMRjG
         aQAyIBgGoFSGLQOBMCcQEzQAHwZlcxwGMDAAALKGW8kkEgnIAAAAAElFTkSuQmCC
@@ -448,7 +448,7 @@
   <data name="gbBorrarMovil.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1
-        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxIAAAsSAdLdfvwAAADDSURBVDhPldDBBgJRGMXxS6ve
+        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxMAAAsTAQCanBgAAADDSURBVDhPldDBBgJRGMXxS6ve
         IKIHiHmk6AFaRUS0atu2B2gV0apVq2jVKiIioveI+n9jzhjTNzPdw28xM/cc14Q/MsUe7fQpMnN8MidE
         jcygshzx14hdu1yWxpEJvGLRAe7IGF7B8zMyhHewzg5pBujjAu9glRXCKHu4IWZkjRbCOXthNHItvPPk
         ZUsHd+ijletGNsjLShcP6JBG7EaNZaU8Yv8igUa2qCwrNvJEccRuskRjWSmPLBCdHl7QiOcdQki+6ZSC

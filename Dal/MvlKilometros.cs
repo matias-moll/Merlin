@@ -10,7 +10,7 @@ namespace Mrln.Dal
     //----------------------------------------------------------------------------
     //                         TNG Software DAL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 26/09/2018 20:26
+    // Fecha                    : 02/10/2018 00:55
     // Sistema                  : Mrln
     // Clase para Administrar   : Kilometros de los moviles
     // Basada en la Tabla       : MvlKilometros
@@ -470,6 +470,36 @@ namespace Mrln.Dal
         #endregion
 
         #region Metodos del Usuario
+
+        /// <summary>
+        /// Método Fijo: getKmsActualesMvl
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name= "p_strPatente">Patente</param>
+        /// <param name="p_dsResult">DataSet donde devolver el registro</param>
+        /// <param name="p_strTabla">Nombre de la tabla a llenar</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        public static int getKmsActualesMvl(DBConn p_dbcAccess,
+                                            string p_strPatente,
+                                            ref DataSet p_dsResult,
+                                            string p_strTabla,
+                                            ref StatMsg p_smResult)
+        {
+            try {
+                return DBRuts.Exec_DS(p_dbcAccess,
+                                      "TNGS_Mrln..MVLKILOMETROS_GETKMSACTUALESMVL",
+                                      new DbParameter[] {
+                                          p_dbcAccess.MakeParam("@patente", p_strPatente),
+                                          p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
+                                      },
+                                      ref p_dsResult, p_strTabla);
+            }
+            catch (Exception l_expData) {
+                // Error en el método fijo
+                p_smResult.DalError(l_expData);
+                return -1;
+            }
+        }
 
         /// <summary>
         /// Método Fijo: getLastFiveMvlKm

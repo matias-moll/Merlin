@@ -16,7 +16,7 @@ namespace Mrln.Bll
     //----------------------------------------------------------------------------
     //                         TNG Software BLL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 26/09/2018 22:31
+    // Fecha                    : 02/10/2018 00:56
     // Sistema                  : Mrln
     // Clase para Administrar   : Moviles y Tablas Hijas
     //----------------------------------------------------------------------------
@@ -4081,6 +4081,38 @@ namespace Mrln.Bll
         #endregion
 
         #region Metodos para métodos DAL definidos por el usuario
+
+        /// <summary>
+        /// Ejecuta el SP definido por el usuario: getMovilEstadoActual
+        /// </summary>
+        /// <param name= p_strPatente>Patente</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        /// <returns>ListaEntidad con los datos solicitados</returns>
+        public static LEMovilesEstado MvesgetMovilEstadoActual(string p_strPatente,
+                                                               ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            DBConn l_dbcAccess= null;
+
+            try {
+                // Abrimos una conexion
+                l_dbcAccess= DBRuts.GetConection(Connections.Dat);
+
+                // Llamamos al metodo interno
+                return MvesgetMovilEstadoActual(l_dbcAccess,
+                                                p_strPatente,
+                                                ref p_smResult);
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion
+                p_smResult.BllError(l_expData);
+                return null;
+            }
+            finally {
+                // Si abrimos una conexion -> la cerramos
+                if (l_dbcAccess != null) l_dbcAccess.Close();
+            }
+        }
         #endregion
 
         //---------------------------------------------------------------
@@ -4671,6 +4703,47 @@ namespace Mrln.Bll
                 BllRuts.FillStdCaptions(ref l_lentRet);
 
                 // Devolvemos la LE
+                l_dsTemp.Dispose();
+                return l_lentRet;
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion
+                p_smResult.BllError(l_expData);
+                return null;
+            }
+            finally {
+                // Terminamos
+            }
+        }
+
+        /// <summary>
+        /// Ejecuta el SP definido por el usuario: getMovilEstadoActual
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name= p_strPatente>Patente</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        /// <returns>ListaEntidad con los datos solicitados</returns>
+        internal static LEMovilesEstado MvesgetMovilEstadoActual(DBConn p_dbcAccess,
+                                                                 string p_strPatente,
+                                                                 ref StatMsg p_smResult)
+        {
+            try {
+                // Llamamos al metodo definido por el usuario
+                DataSet l_dsTemp= new DataSet();
+
+                Dal.MvlEstados.getMovilEstadoActual(p_dbcAccess,
+                                                    p_strPatente,
+                                                    ref l_dsTemp,
+                                                    "Temporal",
+                                                    ref p_smResult);
+                if (p_smResult.NOk) return null;
+
+                // Captionamos el resultado
+                Dal.MvlEstados.MakeGridCaptions(ref l_dsTemp, "Temporal", ref p_smResult);
+                if (p_smResult.NOk) return null;
+
+                // Creamos la ListaEntidad y la devolvemos
+                LEMovilesEstado l_lentRet= new LEMovilesEstado(l_dsTemp.Tables["Temporal"]);
                 l_dsTemp.Dispose();
                 return l_lentRet;
             }
@@ -5886,6 +5959,38 @@ namespace Mrln.Bll
         #endregion
 
         #region Metodos para métodos DAL definidos por el usuario
+
+        /// <summary>
+        /// Ejecuta el SP definido por el usuario: getKmsActualesMvl
+        /// </summary>
+        /// <param name= p_strPatente>Patente</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        /// <returns>ListaEntidad con los datos solicitados</returns>
+        public static ListaEntidades MvkmgetKmsActualesMvl(string p_strPatente,
+                                                           ref StatMsg p_smResult)
+        {
+            // No hay errores aun
+            DBConn l_dbcAccess= null;
+
+            try {
+                // Abrimos una conexion
+                l_dbcAccess= DBRuts.GetConection(Connections.Dat);
+
+                // Llamamos al metodo interno
+                return MvkmgetKmsActualesMvl(l_dbcAccess,
+                                             p_strPatente,
+                                             ref p_smResult);
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion
+                p_smResult.BllError(l_expData);
+                return null;
+            }
+            finally {
+                // Si abrimos una conexion -> la cerramos
+                if (l_dbcAccess != null) l_dbcAccess.Close();
+            }
+        }
         #endregion
 
         //---------------------------------------------------------------
@@ -6433,6 +6538,46 @@ namespace Mrln.Bll
         #endregion
 
         #region Metodos para métodos DAL definidos por el usuario
+
+        /// <summary>
+        /// Ejecuta el SP definido por el usuario: getKmsActualesMvl
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name= p_strPatente>Patente</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        /// <returns>ListaEntidad con los datos solicitados</returns>
+        internal static ListaEntidades MvkmgetKmsActualesMvl(DBConn p_dbcAccess,
+                                                             string p_strPatente,
+                                                             ref StatMsg p_smResult)
+        {
+            try {
+                // Llamamos al metodo definido por el usuario
+                DataSet l_dsTemp= new DataSet();
+
+                Dal.MvlKilometros.getKmsActualesMvl(p_dbcAccess,
+                                                    p_strPatente,
+                                                    ref l_dsTemp,
+                                                    "Temporal",
+                                                    ref p_smResult);
+                if (p_smResult.NOk) return null;
+
+                // Creamos la LE y Captionamos
+                ListaEntidades l_lentRet= new ListaEntidades(l_dsTemp.Tables["Temporal"]);
+                BllRuts.FillStdCaptions(ref l_lentRet);
+
+                // Devolvemos la LE
+                l_dsTemp.Dispose();
+                return l_lentRet;
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion
+                p_smResult.BllError(l_expData);
+                return null;
+            }
+            finally {
+                // Terminamos
+            }
+        }
 
         /// <summary>
         /// Ejecuta el SP definido por el usuario: getLastFiveMvlKm

@@ -310,6 +310,88 @@ namespace Mrln.Bll
 
         }
 
+        /// <summary>
+        /// Ejecuta el SP definido por el usuario: getMovilEstadoActual
+        /// </summary>
+        /// <param name= p_strPatente>Patente</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        /// <returns>ListaEntidad con los datos solicitados</returns>
+        public static LEMovilesEstado fGetMovilEstadoActual(DBConn conexion,
+                                                            string p_strPatente,
+                                                            ref StatMsg p_smResult)
+        {
+            try
+            {
+                // Llamamos al metodo interno
+                return MvesgetMovilEstadoActual(conexion,
+                                                p_strPatente,
+                                                ref p_smResult);
+            }
+            catch (Exception l_expData)
+            {
+                // Error en la operacion
+                p_smResult.BllError(l_expData);
+                return null;
+            }
+        }
+
+        public static void fOrdenRealizandose(int numeroOrden, ref StatMsg p_smResult)
+        {
+            DBConn l_dbcAccess = null;
+
+            try
+            {
+                // Obtenemos una conexion
+                l_dbcAccess = DBRuts.GetConection(Connections.Dat);
+
+                Bel.EOrdenTrabajo orden = Bll.OrdenesTrabajo.Srch(l_dbcAccess, numeroOrden, true, ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                orden.Estado = Bel.EOrdenTrabajo.Estados.EnProgreso.ToString();
+
+                Bll.OrdenesTrabajo.SSav(l_dbcAccess, orden, ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // Pedimos los registros de la tabla
+                LEMovilesEstado estadoActual = Bll.Moviles.fGetMovilEstadoActual(l_dbcAccess, orden.Patente, ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // Si el estado actual no es en mantenimiento debemos pasarlo a dicho estado.
+                if (!estadoActual[0].EstaEnEstadoMantenimiento)
+                {
+                    EMovilEstado l_EMEstMovilEstado;
+                    //creamos la entidad y la llenamos con sus datos y la guardamos
+                    l_EMEstMovilEstado = Bel.EMovilEstado.NewEmpty();
+                    l_EMEstMovilEstado.Codestado = EMovilEstado.EstadoEnMantenimiento;
+                    l_EMEstMovilEstado.Fecha = DateTime.Now;
+                    l_EMEstMovilEstado.Patente = orden.Patente;
+
+                    ListaEntidades kmsActuales = Moviles.MvkmgetKmsActualesMvl(orden.Patente, ref p_smResult);
+                    if (p_smResult.NOk) return;
+
+                    if (kmsActuales.Count > 0)
+                        l_EMEstMovilEstado.Km = (int)kmsActuales.InternalData[0][0];
+                    else
+                        l_EMEstMovilEstado.Km = 0;
+
+                    Bll.Moviles.MvesSave(l_EMEstMovilEstado, ref p_smResult);
+                    if (p_smResult.NOk) return;
+                }
+            }
+            catch (Exception l_expData)
+            {
+                // Error en la operacion
+                p_smResult.BllError(l_expData.ToString());
+            }
+            finally
+            {
+                // Si pude abrir la conexion -> la cierro
+                if (l_dbcAccess != null) l_dbcAccess.Close();
+            }
+
+
+        }
+
 
         /// <summary>
         /// Agrega un ROOT a un tree

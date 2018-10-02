@@ -37,16 +37,19 @@
             this.lblNumero = new TNGS.NetControls.FullLabel();
             this.xPanel2 = new TNGS.NetControls.XPanel();
             this.lblTitulo = new TNGS.NetControls.FullLabel();
+            this.pbAmarillo = new System.Windows.Forms.PictureBox();
             this.xPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbRojo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbVerde)).BeginInit();
             this.xPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbAmarillo)).BeginInit();
             this.SuspendLayout();
             // 
             // xPanel1
             // 
             this.xPanel1.BackColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.xPanel1.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
+            this.xPanel1.Controls.Add(this.pbAmarillo);
             this.xPanel1.Controls.Add(this.fllDescripcion);
             this.xPanel1.Controls.Add(this.pbRojo);
             this.xPanel1.Controls.Add(this.pbVerde);
@@ -152,6 +155,18 @@
             this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblTitulo.Click += new System.EventHandler(this.itemBarra_Click);
             // 
+            // pbAmarillo
+            // 
+            this.pbAmarillo.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.pbAmarillo.BackColor = System.Drawing.Color.Transparent;
+            this.pbAmarillo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbAmarillo.BackgroundImage")));
+            this.pbAmarillo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pbAmarillo.Location = new System.Drawing.Point(53, 95);
+            this.pbAmarillo.Name = "pbAmarillo";
+            this.pbAmarillo.Size = new System.Drawing.Size(20, 20);
+            this.pbAmarillo.TabIndex = 7;
+            this.pbAmarillo.TabStop = false;
+            // 
             // itemBarra
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -166,6 +181,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbRojo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbVerde)).EndInit();
             this.xPanel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbAmarillo)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -180,5 +196,6 @@
         private TNGS.NetControls.XPanel xPanel2;
         private TNGS.NetControls.FullLabel lblTitulo;
         private TNGS.NetControls.FullLabel fllDescripcion;
+        private System.Windows.Forms.PictureBox pbAmarillo;
     }
 }

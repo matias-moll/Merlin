@@ -174,7 +174,7 @@ namespace Mrln.Bel
     /// </summary>
     public sealed partial class EOrdenTrabajo : Entidad
     {
-        public enum Estados { Pendiente, Finalizada, Cancelada };
+        public enum Estados { Pendiente, Finalizada, Cancelada, EnProgreso };
 
         #region Metodos publicos de la clase
         //---------------------------------------------------------------

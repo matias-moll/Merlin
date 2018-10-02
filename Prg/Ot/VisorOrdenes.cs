@@ -227,7 +227,7 @@ namespace Mrln.Ot
 
         private itemBarra newItemFromOrden(EOrdenTrabajo orden)
         {
-            return new itemBarra(orden.Nro, orden.Patente, orden.Fecapertura, orden.Ot_taller);
+            return new itemBarra(orden.Nro, orden.Patente, orden.Fecapertura, orden.Ot_taller, orden.Estado.Trim());
         }
 
         private void agregarOrdenPendiente(EOrdenTrabajo orden)
@@ -316,5 +316,15 @@ namespace Mrln.Ot
             reporteOrdenesPendientes.Dispose();
         }
 
+        private void gbRealizando_Click(object sender, EventArgs e)
+        {
+            if (noHayItemSeleccionado())
+                return;
+
+            Bll.Moviles.fOrdenRealizandose(m_ibItemSeleccionado.Numero, ref m_smResult);
+            if (MsgRuts.AnalizeError(this, m_smResult)) return;
+
+
+        }
     }
 }
