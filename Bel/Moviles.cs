@@ -530,6 +530,8 @@ namespace Mrln.Bel
     {
         public static string EstadoEnMantenimiento {  get { return " 3"; } }
 
+        public static string EstadoDisponible { get { return " 1"; } }
+
         public bool EstaEnEstadoMantenimiento {  get { return this.Codestado == EstadoEnMantenimiento; } }
 
         #region Metodos publicos de la clase

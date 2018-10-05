@@ -82,9 +82,7 @@ namespace Mrln.Bll
                 // Obtenemos una conexion
                 l_dbcAccess = DBRuts.GetConection(Connections.Dat);
 
-                // Pedimos los registros de la tabla
-                ListaEntidades ultimosCincoKilometrajes = Moviles.MvkmgetLastFiveMvlKm(l_dbcAccess, p_strPatente, ref p_smResult);
-                return Convert.ToInt32(ultimosCincoKilometrajes.InternalData[0][Bel.EMovilKms.KmCmp]);
+                return fGetKilometrajeActualWithConn(l_dbcAccess, p_strPatente, ref p_smResult);
             }
             catch (Exception l_expData)
             {
@@ -100,6 +98,22 @@ namespace Mrln.Bll
 
         }
 
+        private static int fGetKilometrajeActualWithConn(DBConn dbAccess, string p_strPatente, ref StatMsg p_smResult)
+        {
+
+            try
+            {
+                // Pedimos los registros de la tabla
+                ListaEntidades ultimosCincoKilometrajes = Moviles.MvkmgetLastFiveMvlKm(dbAccess, p_strPatente, ref p_smResult);
+                return Convert.ToInt32(ultimosCincoKilometrajes.InternalData[0][Bel.EMovilKms.KmCmp]);
+            }
+            catch (Exception l_expData)
+            {
+                // Error en la operacion
+                p_smResult.BllError(l_expData.ToString());
+                return 0;
+            }
+        }
 
         /// <summary>
         /// Me devuelve un Array con las listas entidades de los ultimos 5 combustibles, estados, kms y eq
@@ -343,8 +357,9 @@ namespace Mrln.Bll
             {
                 // Obtenemos una conexion
                 l_dbcAccess = DBRuts.GetConection(Connections.Dat);
+                l_dbcAccess.BeginTransaction();
 
-                Bel.EOrdenTrabajo orden = Bll.OrdenesTrabajo.Srch(l_dbcAccess, numeroOrden, true, ref p_smResult);
+                Bel.EOrdenTrabajo orden = Bll.OrdenesTrabajo.Get(numeroOrden, true, ref p_smResult);
                 if (p_smResult.NOk) return;
 
                 orden.Estado = Bel.EOrdenTrabajo.Estados.EnProgreso.ToString();
@@ -359,22 +374,88 @@ namespace Mrln.Bll
                 // Si el estado actual no es en mantenimiento debemos pasarlo a dicho estado.
                 if (!estadoActual[0].EstaEnEstadoMantenimiento)
                 {
-                    EMovilEstado l_EMEstMovilEstado;
-                    //creamos la entidad y la llenamos con sus datos y la guardamos
-                    l_EMEstMovilEstado = Bel.EMovilEstado.NewEmpty();
-                    l_EMEstMovilEstado.Codestado = EMovilEstado.EstadoEnMantenimiento;
-                    l_EMEstMovilEstado.Fecha = DateTime.Now;
-                    l_EMEstMovilEstado.Patente = orden.Patente;
-
-                    ListaEntidades kmsActuales = Moviles.MvkmgetKmsActualesMvl(orden.Patente, ref p_smResult);
+                    fGrabarEstadoMovil(l_dbcAccess, orden.Patente, EMovilEstado.EstadoEnMantenimiento, ref p_smResult);
                     if (p_smResult.NOk) return;
+                }
+                    
+            }
+            catch (Exception l_expData)
+            {
+                // Error en la operacion
+                p_smResult.BllError(l_expData.ToString());
+            }
+            finally
+            {
+                // Si pude abrir la conexion -> la cierro
+                if (l_dbcAccess != null)
+                {
+                    l_dbcAccess.EndTransaction(p_smResult);
+                    l_dbcAccess.Close();
+                }
+            }
 
-                    if (kmsActuales.Count > 0)
-                        l_EMEstMovilEstado.Km = (int)kmsActuales.InternalData[0][0];
-                    else
-                        l_EMEstMovilEstado.Km = 0;
 
-                    Bll.Moviles.MvesSave(l_EMEstMovilEstado, ref p_smResult);
+        }
+
+        private static void fGrabarEstadoMovil(DBConn conexion, string patente, string nuevoEstado, ref StatMsg p_smResult)
+        {
+            EMovilEstado l_EMEstMovilEstado;
+            //creamos la entidad y la llenamos con sus datos y la guardamos
+            l_EMEstMovilEstado = Bel.EMovilEstado.NewEmpty();
+            l_EMEstMovilEstado.Codestado = EMovilEstado.EstadoEnMantenimiento;
+            l_EMEstMovilEstado.Fecha = DateTime.Now;
+            l_EMEstMovilEstado.Patente = patente;
+
+            ListaEntidades kmsActuales = Moviles.MvkmgetKmsActualesMvl(patente, ref p_smResult);
+            if (p_smResult.NOk) return;
+
+            if (kmsActuales.Count > 0)
+                l_EMEstMovilEstado.Km = (int)kmsActuales.InternalData[0][0];
+            else
+                l_EMEstMovilEstado.Km = 0;
+
+            Bll.Moviles.MvesSSav(conexion, l_EMEstMovilEstado, ref p_smResult);
+            if (p_smResult.NOk) return;
+        }
+
+
+        public static void fCerrarOrden(EOrdenTrabajo p_eOrdenACerrar, ref StatMsg p_smResult)
+        {
+            DBConn l_dbcAccess = null;
+
+            try
+            {
+                // Obtenemos una conexion
+                l_dbcAccess = DBRuts.GetConection(Connections.Dat);
+                l_dbcAccess.BeginTransaction();
+
+                int kilometrajeActualMovil = Bll.Moviles.fGetKilometrajeActualWithConn(l_dbcAccess, p_eOrdenACerrar.Patente, ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                // Conseguimos la fecha de hoy
+                DateTime l_dtToday = BllRuts.GetDBNow(l_dbcAccess, false, ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                p_eOrdenACerrar.Kmsactuales = kilometrajeActualMovil;
+                p_eOrdenACerrar.Feccierre = l_dtToday;
+                p_eOrdenACerrar.Finalizada();
+
+                Bll.OrdenesTrabajo.SSav(l_dbcAccess, p_eOrdenACerrar, ref p_smResult);
+                if (p_smResult.NOk) return;
+
+
+                // Pedimos los registros de la tabla
+                LEMovilesEstado estadoActual = Bll.Moviles.fGetMovilEstadoActual(l_dbcAccess, p_eOrdenACerrar.Patente, ref p_smResult);
+                if (p_smResult.NOk) return;
+
+                LEOrdenesTrabajo ordenesPendientes = OrdenesTrabajo.getPendByPatente(l_dbcAccess, p_eOrdenACerrar.Patente, ref p_smResult);
+                if (p_smResult.NOk) return;
+
+
+                // Si el movil esta en mantenimiento y acabamos de cerrar la ultima orden en progreso, pasamos el movil a disponible.
+                if (estadoActual[0].EstaEnEstadoMantenimiento && !ordenesPendientes.ToList().Exists(ordenPend => ordenPend.EstaEnProgreso))
+                {
+                    fGrabarEstadoMovil(l_dbcAccess, p_eOrdenACerrar.Patente, EMovilEstado.EstadoDisponible, ref p_smResult);
                     if (p_smResult.NOk) return;
                 }
             }
@@ -386,9 +467,12 @@ namespace Mrln.Bll
             finally
             {
                 // Si pude abrir la conexion -> la cierro
-                if (l_dbcAccess != null) l_dbcAccess.Close();
+                if (l_dbcAccess != null)
+                {
+                    l_dbcAccess.EndTransaction(p_smResult);
+                    l_dbcAccess.Close();
+                }
             }
-
 
         }
 

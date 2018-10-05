@@ -97,18 +97,7 @@ namespace Mrln.Ot
                 return;
             }
 
-            int kilometrajeActualMovil = Bll.Moviles.fGetKilometrajeActual(m_eOrdenACerrar.Patente, ref m_smResult);
-            if (MsgRuts.AnalizeError(this, m_smResult)) return;
-
-            DateTime fechaActual = Bll.Moviles.fGetDate(ref m_smResult);
-            if (MsgRuts.AnalizeError(this, m_smResult)) return;
-
-            m_eOrdenACerrar.Kmsactuales = kilometrajeActualMovil;
-            m_eOrdenACerrar.Feccierre = fechaActual;
-            m_eOrdenACerrar.Finalizada();
-
-            Bll.OrdenesTrabajo.Save(m_eOrdenACerrar, ref m_smResult);
-            if (MsgRuts.AnalizeError(this, m_smResult)) return;
+            Bll.Moviles.fCerrarOrden(m_eOrdenACerrar, ref m_smResult);
 
             MsgRuts.ShowMsg(this, "La orden de trabajo fue cerrada exitosamente");
 

@@ -236,6 +236,11 @@ namespace Mrln.Bel
             get { return this.Patente; }
         }
 
+        public bool EstaEnProgreso
+        {
+            get { return this.Estado == Estados.EnProgreso.ToString(); }
+        }
+
         #endregion
     }
     #endregion

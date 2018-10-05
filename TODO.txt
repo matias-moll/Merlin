@@ -11,6 +11,8 @@ Sal en N
 Ejemplo de este programa en el publico Matias.
 
 
+preguntar si hay alguna manera de hacer un top 1 usando el retorno G de grilla en el generador.
+
 
 - Corregir en la documentacion de qbe, todos los lugares donde hay fecha y hora de apertura y cierre
 usar una funcione que si es 1-1-1900 devuelva vacio y ademas solo me devuelva año, mes y dia.
@@ -19,13 +21,7 @@ usar una funcione que si es 1-1-1900 devuelva vacio y ademas solo me devuelva añ
 Ver el tema de Operativo full y operativo limitado (estados) antes de la charla (grabacion tmb) para explicarlo y que tenga sentido.
 
 
-Agregar un boton en el visor de ordenes de trabajo para marcar que la orden se esta haciendo. Esto debe pasar el movil
-a un estado no operativo de manera automatica. (confirmar antes que en el cargado de ordenes y visor de ordenes no se este
-filtrando los moviles inoperativos de ante mano).
-EL estado no operativo debe ser hardcoded el 1 o algo asi.
-Y cuando cierro la orden revisar, si no hay otra orden en estado en realizacion le pregunto al usuario si quiere volver a estado operativo full (1)
-Si me dice que si pasa a estado operativo full, si me dice que no, lo paso a otro estado hardcoded que es retenido. Porque no esta en 
-taller realizando nada, pero tampoco lo quieren operativo.
+Testear la funcionalidad de ordenes en estado en progreso y los cambios de estados de movil a raiz de estas ordenes.
 
 --------------------------------------------------------------------------------------------------------------------------------------------------
 

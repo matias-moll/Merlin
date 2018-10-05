@@ -52,6 +52,7 @@
             this.tsContainer1 = new TNGS.NetControls.TSContainer();
             this.tabStripPage1 = new RibbonStyle.TabStripPage();
             this.tsPanel1 = new TNGS.NetControls.TSPanel();
+            this.gbRealizando = new TNGS.NetControls.GlassButton();
             this.gbImprimirSeleccionado = new TNGS.NetControls.GlassButton();
             this.gbEditarOT = new TNGS.NetControls.GlassButton();
             this.gbVerItems = new TNGS.NetControls.GlassButton();
@@ -65,7 +66,6 @@
             this.cdcMoviles = new TNGS.NetControls.CDCombo();
             this.tsBase1 = new TNGS.NetControls.TSBase();
             this.tab1 = new RibbonStyle.Tab();
-            this.gbRealizando = new TNGS.NetControls.GlassButton();
             this.xpnlPanel1.SuspendLayout();
             this.xpPanelOrdenes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fgGrillaItemsOT)).BeginInit();
@@ -340,6 +340,27 @@
             this.tsPanel1.Speed = 1;
             this.tsPanel1.TabIndex = 1;
             // 
+            // gbRealizando
+            // 
+            this.gbRealizando.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("gbRealizando.BackgroundImage")));
+            this.gbRealizando.BlackBorder = true;
+            this.gbRealizando.ButtonMode = TNGS.NetControls.GlassButton.GBMode.Flat;
+            this.gbRealizando.CircleButton = false;
+            this.gbRealizando.FixedFlatImage = TNGS.NetControls.FixedFlatImageButtons.Car;
+            this.gbRealizando.FlatColor = System.Drawing.Color.RoyalBlue;
+            this.gbRealizando.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
+            this.gbRealizando.FlatFontSize = 9;
+            this.gbRealizando.FlatTextColor = System.Drawing.Color.Black;
+            this.gbRealizando.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.gbRealizando.Location = new System.Drawing.Point(193, 7);
+            this.gbRealizando.Name = "gbRealizando";
+            this.gbRealizando.RoundCorners = 2;
+            this.gbRealizando.Size = new System.Drawing.Size(110, 53);
+            this.gbRealizando.TabIndex = 7;
+            this.gbRealizando.Text = "Realizando Orden";
+            this.gbRealizando.W8Color = System.Drawing.Color.RoyalBlue;
+            this.gbRealizando.Click += new System.EventHandler(this.gbRealizando_Click);
+            // 
             // gbImprimirSeleccionado
             // 
             this.gbImprimirSeleccionado.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("gbImprimirSeleccionado.BackgroundImage")));
@@ -357,6 +378,7 @@
             this.gbImprimirSeleccionado.RoundCorners = 2;
             this.gbImprimirSeleccionado.Size = new System.Drawing.Size(28, 28);
             this.gbImprimirSeleccionado.TabIndex = 6;
+            this.gbImprimirSeleccionado.Text = "Imprimir";
             this.gbImprimirSeleccionado.W8Color = System.Drawing.Color.Gray;
             this.gbImprimirSeleccionado.Click += new System.EventHandler(this.gbImprimirSeleccionado_Click);
             // 
@@ -377,6 +399,7 @@
             this.gbEditarOT.RoundCorners = 2;
             this.gbEditarOT.Size = new System.Drawing.Size(28, 28);
             this.gbEditarOT.TabIndex = 3;
+            this.gbEditarOT.Text = "Editar";
             this.gbEditarOT.W8Color = System.Drawing.Color.Gold;
             this.gbEditarOT.Click += new System.EventHandler(this.gbEditarOT_Click);
             // 
@@ -439,6 +462,7 @@
             this.gbCancelar.RoundCorners = 2;
             this.gbCancelar.Size = new System.Drawing.Size(28, 28);
             this.gbCancelar.TabIndex = 0;
+            this.gbCancelar.Text = "Eliminar";
             this.gbCancelar.W8Color = System.Drawing.Color.Red;
             this.gbCancelar.Click += new System.EventHandler(this.gbCancelar_Click);
             // 
@@ -571,27 +595,6 @@
             this.tab1.Size = new System.Drawing.Size(139, 23);
             this.tab1.TabStripPage = null;
             this.tab1.Text = "Ordenes De Trabajo";
-            // 
-            // gbRealizando
-            // 
-            this.gbRealizando.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("gbRealizando.BackgroundImage")));
-            this.gbRealizando.BlackBorder = true;
-            this.gbRealizando.ButtonMode = TNGS.NetControls.GlassButton.GBMode.Flat;
-            this.gbRealizando.CircleButton = false;
-            this.gbRealizando.FixedFlatImage = TNGS.NetControls.FixedFlatImageButtons.Car;
-            this.gbRealizando.FlatColor = System.Drawing.Color.RoyalBlue;
-            this.gbRealizando.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
-            this.gbRealizando.FlatFontSize = 9;
-            this.gbRealizando.FlatTextColor = System.Drawing.Color.Black;
-            this.gbRealizando.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.gbRealizando.Location = new System.Drawing.Point(193, 7);
-            this.gbRealizando.Name = "gbRealizando";
-            this.gbRealizando.RoundCorners = 2;
-            this.gbRealizando.Size = new System.Drawing.Size(110, 53);
-            this.gbRealizando.TabIndex = 7;
-            this.gbRealizando.Text = "Realizando Orden";
-            this.gbRealizando.W8Color = System.Drawing.Color.RoyalBlue;
-            this.gbRealizando.Click += new System.EventHandler(this.gbRealizando_Click);
             // 
             // VisorOrdenes
             // 
