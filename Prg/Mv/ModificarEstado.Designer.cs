@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.xpnlPanel = new TNGS.NetControls.XPanel();
+            this.teContingencia = new TNGS.NetControls.TextEdit();
+            this.fullLabel1 = new TNGS.NetControls.FullLabel();
             this.gbAceptar = new TNGS.NetControls.GlassButton();
             this.gbCancelar = new TNGS.NetControls.GlassButton();
             this.lblEstados = new TNGS.NetControls.FullLabel();
@@ -42,6 +44,8 @@
             this.xpnlPanel.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
             this.xpnlPanel.BorderColor = System.Drawing.Color.Black;
             this.xpnlPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.xpnlPanel.Controls.Add(this.teContingencia);
+            this.xpnlPanel.Controls.Add(this.fullLabel1);
             this.xpnlPanel.Controls.Add(this.gbAceptar);
             this.xpnlPanel.Controls.Add(this.gbCancelar);
             this.xpnlPanel.Controls.Add(this.lblEstados);
@@ -49,9 +53,29 @@
             this.xpnlPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.xpnlPanel.Location = new System.Drawing.Point(0, 0);
             this.xpnlPanel.Name = "xpnlPanel";
-            this.xpnlPanel.Size = new System.Drawing.Size(299, 115);
+            this.xpnlPanel.Size = new System.Drawing.Size(371, 263);
             this.xpnlPanel.SkinFixed = true;
             this.xpnlPanel.TabIndex = 0;
+            // 
+            // teContingencia
+            // 
+            this.teContingencia.BackColor = System.Drawing.SystemColors.Window;
+            this.teContingencia.Location = new System.Drawing.Point(14, 97);
+            this.teContingencia.Multiline = true;
+            this.teContingencia.Name = "teContingencia";
+            this.teContingencia.ReadOnly = true;
+            this.teContingencia.Size = new System.Drawing.Size(344, 107);
+            this.teContingencia.TabIndex = 10;
+            // 
+            // fullLabel1
+            // 
+            this.fullLabel1.BackColor = System.Drawing.Color.Transparent;
+            this.fullLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fullLabel1.Location = new System.Drawing.Point(11, 71);
+            this.fullLabel1.Name = "fullLabel1";
+            this.fullLabel1.Size = new System.Drawing.Size(110, 23);
+            this.fullLabel1.TabIndex = 8;
+            this.fullLabel1.Text = "Contingencia:";
             // 
             // gbAceptar
             // 
@@ -64,7 +88,7 @@
             this.gbAceptar.FlatFontSize = 9;
             this.gbAceptar.FlatTextColor = System.Drawing.Color.White;
             this.gbAceptar.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.gbAceptar.Location = new System.Drawing.Point(204, 75);
+            this.gbAceptar.Location = new System.Drawing.Point(276, 223);
             this.gbAceptar.Name = "gbAceptar";
             this.gbAceptar.Size = new System.Drawing.Size(82, 27);
             this.gbAceptar.TabIndex = 6;
@@ -83,7 +107,7 @@
             this.gbCancelar.FlatFontSize = 9;
             this.gbCancelar.FlatTextColor = System.Drawing.Color.White;
             this.gbCancelar.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.gbCancelar.Location = new System.Drawing.Point(116, 75);
+            this.gbCancelar.Location = new System.Drawing.Point(188, 223);
             this.gbCancelar.Name = "gbCancelar";
             this.gbCancelar.Size = new System.Drawing.Size(82, 27);
             this.gbCancelar.TabIndex = 7;
@@ -95,9 +119,9 @@
             // 
             this.lblEstados.BackColor = System.Drawing.Color.Transparent;
             this.lblEstados.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEstados.Location = new System.Drawing.Point(21, 25);
+            this.lblEstados.Location = new System.Drawing.Point(62, 26);
             this.lblEstados.Name = "lblEstados";
-            this.lblEstados.Size = new System.Drawing.Size(75, 23);
+            this.lblEstados.Size = new System.Drawing.Size(59, 23);
             this.lblEstados.TabIndex = 5;
             this.lblEstados.Text = "Estado:";
             // 
@@ -107,17 +131,18 @@
             this.cdcEstados.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cdcEstados.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cdcEstados.FormattingEnabled = true;
-            this.cdcEstados.Location = new System.Drawing.Point(86, 26);
+            this.cdcEstados.Location = new System.Drawing.Point(127, 27);
             this.cdcEstados.Name = "cdcEstados";
             this.cdcEstados.Size = new System.Drawing.Size(184, 21);
             this.cdcEstados.Sorted = true;
             this.cdcEstados.TabIndex = 4;
+            this.cdcEstados.SelectedIndexChanged += new System.EventHandler(this.cdcEstados_SelectedIndexChanged);
             // 
             // ModificarEstado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(299, 115);
+            this.ClientSize = new System.Drawing.Size(371, 263);
             this.ControlBox = false;
             this.Controls.Add(this.xpnlPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -125,6 +150,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "MovilCombustible";
             this.xpnlPanel.ResumeLayout(false);
+            this.xpnlPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -136,5 +162,7 @@
         private TNGS.NetControls.CDCombo cdcEstados;
         private TNGS.NetControls.GlassButton gbAceptar;
         private TNGS.NetControls.GlassButton gbCancelar;
+        private TNGS.NetControls.FullLabel fullLabel1;
+        private TNGS.NetControls.TextEdit teContingencia;
     }
 }

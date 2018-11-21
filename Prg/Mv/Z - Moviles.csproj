@@ -120,6 +120,7 @@
     <Compile Include="HistorialUnificado.Designer.cs">
       <DependentUpon>HistorialUnificado.cs</DependentUpon>
     </Compile>
+    <Compile Include="MailSender.cs" />
     <Compile Include="ShowAlertas.cs">
       <SubType>Form</SubType>
     </Compile>

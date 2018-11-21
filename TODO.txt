@@ -30,5 +30,6 @@ Preguntas:
 -------------------------------------------------------------------------------------------------------------------------------------------
 Pendientes:
 Hacer el modulo de envio de mails.
+Esta pasado el mail sender con todos los params. Falta usarlo.
 
 

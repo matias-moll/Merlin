@@ -77,7 +77,9 @@ namespace Mrln.Mv
             if (cdcGruposDestinatarios.SelectedStrCode.Trim() == "")
                 return;
 
-            string[] destinatarios = m_leGruposDestinatarios[cdcGruposDestinatarios.SelectedStrCode].Destinatarios.Split(new char[] { ',' });
+            Bel.EDestinatariosMail grupo = m_leGruposDestinatarios.Where(grupoDest => grupoDest.Codigo == cdcGruposDestinatarios.SelectedStrCode).First();
+
+            string[] destinatarios = grupo.Destinatarios.Split(new char[] { ',' });
             foreach (string destinatario in destinatarios)
                 if (destinatario.Trim() != "")
                     cdListaDestinatarios.AddStrCD(destinatario, destinatario, 0);

@@ -48,5 +48,17 @@ namespace Mrln.Mv
 
         }
 
+        private void cdcEstados_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                teContingencia.Text = m_LEEstados[cdcEstados.SelectedStrCode].Txtcontingencia;
+            }
+            catch(Exception exc)
+            {
+                // No se muestra contingencia nomas.
+                MsgRuts.ShowMsg(this, exc.Message);
+            }
+        }
     }
 }
