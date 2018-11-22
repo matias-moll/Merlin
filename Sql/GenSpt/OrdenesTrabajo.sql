@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 05/10/2018 18:14
+// Fecha       : 21/11/2018 20:16
 // Sistema     : Mrln
 // Tabla       : OrdenesTrabajo
 //----------------------------------------------------------------------------
@@ -729,7 +729,7 @@ begin
      from TNGS_Mrln..OrdenesTrabajo 
           left outer join TNGS_Mrln..Taller
             on odt_cod_codtaller = tll_cod_codigo
-     where year(odt_fyh_feccierre) = 1900 and odt_d20_estado = 'Pendiente' 
+     where year(odt_fyh_feccierre) = 1900 and (odt_d20_estado = 'Pendiente' or odt_d20_estado = 'EnProgreso') 
 
 fin:
 

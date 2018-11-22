@@ -41,14 +41,16 @@ namespace Mrln.Ot
 
             // Dockeamos el formulario
             ((MainFrame)App.GetMainWindow()).AddContent(this);
-
-            
         }
 
         private void VisorOrdenes_Load(object sender, EventArgs e)
         {
             LlenarComboMoviles();
+            actualizarOrdenesEnPantalla();
+        }
 
+        private void actualizarOrdenesEnPantalla()
+        {
             LEOrdenesTrabajo ordenesPendientes = Bll.OrdenesTrabajo.getPendientes(ref m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
             CargarOrdenes(ordenesPendientes);
@@ -76,9 +78,8 @@ namespace Mrln.Ot
             }
             else
             {
-                LEOrdenesTrabajo ordenesPendientes = Bll.OrdenesTrabajo.getPendientes(ref m_smResult);
-                if (MsgRuts.AnalizeError(this, m_smResult)) return;
-                CargarOrdenes(ordenesPendientes);
+                actualizarOrdenesEnPantalla();
+
                 gbFiltrar.Checked = false;
                 gbFiltrar.Text = "Filtrar";
                 cdcMoviles.Enabled = true;
@@ -143,9 +144,7 @@ namespace Mrln.Ot
             MsgRuts.ShowMsg(this, String.Format("La orden de trabajo numero {0} fue cancelada.", m_ibItemSeleccionado.Numero));
 
             // Actualizamos la lista de ordenes.
-            LEOrdenesTrabajo ordenesPendientes = Bll.OrdenesTrabajo.getPendientes(ref m_smResult);
-            if (MsgRuts.AnalizeError(this, m_smResult)) return;
-            CargarOrdenes(ordenesPendientes);
+            actualizarOrdenesEnPantalla();
         }
 
         private void gbCerrarOT_Click(object sender, EventArgs e)
@@ -153,9 +152,9 @@ namespace Mrln.Ot
             if (noHayItemSeleccionado())
                 return;
 
-            if (m_ibItemSeleccionado.EsEditable)
+            if (m_ibItemSeleccionado.EstadoOrden != "EnProgreso")
             {
-                MsgRuts.ShowMsg(this, "Una orden sin taller no puede ser cerrada.");
+                MsgRuts.ShowMsg(this, "Una orden que no está en progreso no puede ser cerrada.");
                 return;
             }
 
@@ -163,12 +162,7 @@ namespace Mrln.Ot
             l_frmCierre.ShowDialog(this);
 
             if (l_frmCierre.DialogResult == DialogResult.OK)
-            {
-                // Actualizamos la lista de ordenes.
-                LEOrdenesTrabajo ordenesPendientes = Bll.OrdenesTrabajo.getPendientes(ref m_smResult);
-                if (MsgRuts.AnalizeError(this, m_smResult)) return;
-                CargarOrdenes(ordenesPendientes);
-            }
+                actualizarOrdenesEnPantalla();
         }
 
         private void gbImprimirSeleccionado_Click(object sender, EventArgs e)
@@ -321,10 +315,24 @@ namespace Mrln.Ot
             if (noHayItemSeleccionado())
                 return;
 
+            EOrdenTrabajo ordenSeleccionada = Bll.OrdenesTrabajo.Get(m_ibItemSeleccionado.Numero, true, ref m_smResult);
+            if (MsgRuts.AnalizeError(this, m_smResult)) return;
+
+            if(ordenSeleccionada.Codtaller.Trim() == "")
+            {
+                MsgRuts.ShowMsg(this, "No se puede pasar a orden en progreso sin tener un taller asignado.");
+                return;
+            }
+
             Bll.Moviles.fOrdenRealizandose(m_ibItemSeleccionado.Numero, ref m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
+            actualizarOrdenesEnPantalla();
+        }
 
+        private void gbInfo_Click(object sender, EventArgs e)
+        {
+            // TODO: Armar mini popup que explique el control de orden y todos sus estadios. 
         }
     }
 }

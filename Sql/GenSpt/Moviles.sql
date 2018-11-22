@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 05/10/2018 18:14
+// Fecha       : 21/11/2018 20:16
 // Sistema     : Mrln
 // Tabla       : Moviles
 //----------------------------------------------------------------------------
@@ -659,6 +659,54 @@ go
 ---////////////////////////////////////////////////////////
 ---
 --- <summary>
+--- Método Fijo: GetMovilesTree
+--- </summary>
+--- <param name="@usuario">Usuario que ejecuta el SP</param>
+---
+---////////////////////////////////////////////////////////
+
+print 'Store Procedure: dbo.MOVILES_GETMOVILESTREE'
+
+if exists (select * from sysobjects where id = object_id('dbo.MOVILES_GETMOVILESTREE'))
+begin
+   print '       - Borrando el viejo SP'
+   drop procedure dbo.MOVILES_GETMOVILESTREE
+end
+go
+
+print '       - Creando el nuevo SP'
+go
+
+create procedure dbo.MOVILES_GETMOVILESTREE
+(
+@usuario tngs_nombre
+)
+as
+begin
+
+   select mov_ecd_patente, 
+   		mov_des_des, 
+   		2 as Nivel, 
+   		2 as Orden , 
+   		1 as Imagen, 
+   		2 as Niveles 
+     		from TNGS_Mrln..Moviles 
+
+fin:
+
+end
+go
+
+print '       - Asignando permisos al nuevo SP'
+
+grant execute on dbo.MOVILES_GETMOVILESTREE to tngsmodulos
+
+print ' '
+go
+
+---////////////////////////////////////////////////////////
+---
+--- <summary>
 --- Método Fijo: ZCostosPorMovil
 --- </summary>
 --- <param name="@fechaini">Fecha Inicial</param>
@@ -800,54 +848,6 @@ go
 print '       - Asignando permisos al nuevo SP'
 
 grant execute on dbo.MOVILES_ZMOVILESPORESTADO to tngsmodulos
-
-print ' '
-go
-
----////////////////////////////////////////////////////////
----
---- <summary>
---- Método Fijo: getMovilesTree
---- </summary>
---- <param name="@usuario">Usuario que ejecuta el SP</param>
----
----////////////////////////////////////////////////////////
-
-print 'Store Procedure: dbo.MOVILES_GETMOVILESTREE'
-
-if exists (select * from sysobjects where id = object_id('dbo.MOVILES_GETMOVILESTREE'))
-begin
-   print '       - Borrando el viejo SP'
-   drop procedure dbo.MOVILES_GETMOVILESTREE
-end
-go
-
-print '       - Creando el nuevo SP'
-go
-
-create procedure dbo.MOVILES_GETMOVILESTREE
-(
-@usuario tngs_nombre
-)
-as
-begin
-
-   select mov_ecd_patente, 
-   		mov_des_des, 
-   		2 as Nivel, 
-   		2 as Orden , 
-   		1 as Imagen, 
-   		2 as Niveles 
-     		from TNGS_Mrln..Moviles 
-
-fin:
-
-end
-go
-
-print '       - Asignando permisos al nuevo SP'
-
-grant execute on dbo.MOVILES_GETMOVILESTREE to tngsmodulos
 
 print ' '
 go

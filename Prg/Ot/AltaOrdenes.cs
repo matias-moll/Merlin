@@ -211,7 +211,7 @@ namespace Mrln.Ot
         }
 
         // Crea la nueva entidad OrdenTrabajo que tendra asociados a todos los items
-        private Bel.EOrdenTrabajo CrearOrdenDeTrabajo(Bel.LEOTItems p_leOTItems)
+        private Bel.EOrdenTrabajo CrearOrdenDeTrabajo(Bel.LEOTItems p_leOTItems, ref StatMsg p_smResult)
         {
             Bel.EOrdenTrabajo l_eOrdenNueva = Bel.EOrdenTrabajo.NewEmpty();
             l_eOrdenNueva.Nro = neOrdenTrabajo.Numero;
@@ -222,6 +222,9 @@ namespace Mrln.Ot
             l_eOrdenNueva.Feccierre = new DateTime(1900, 1, 1);
             // Le asignamos el operador que realizo la orden
             l_eOrdenNueva.Operador = App.Usuario.Usuario;
+
+            l_eOrdenNueva.Kmsactuales = Bll.Moviles.fGetKilometrajeActual(l_eOrdenNueva.Patente, ref p_smResult);
+            if (MsgRuts.AnalizeError(this, p_smResult)) return null;
 
             // Le asignamos los items que nos vienen por parametro
             l_eOrdenNueva.OTItems = p_leOTItems;
@@ -246,6 +249,14 @@ namespace Mrln.Ot
             p_leOTItems.ChangeCaption(EOTItem.NroitemCmp, "");
             p_leOTItems.ChangeCaption(EOTItem.ImportecierreCmp, "");
             p_leOTItems.ChangeCaption(EOTItem.EstadoCmp, "");
+            p_leOTItems.ChangeCaption(EOTItem.CodcategoriaCmp, "");
+            p_leOTItems.ChangeCaption("Oti_kilometraje", "");
+            p_leOTItems.ChangeCaption("Oti_categoria", "");
+            p_leOTItems.ChangeCaption(EOTItem.ComentariocierreCmp, "");
+            p_leOTItems.ChangeCaption(EOTItem.CodreparacionCmp, "");
+            p_leOTItems.ChangeCaption(EOTItem.ComentarioCmp, "V1ComentarioCN1");
+
+
             p_fullGrid.FillFromLEntidad(p_leOTItems);
             p_fullGrid.ColWitdhs = "64;280;280;80;110;";
         }
@@ -445,7 +456,9 @@ namespace Mrln.Ot
             if (!m_estadoMofidicar)
             {
                 // Graba OrdenNueva con sus items
-                m_eOrdenNuevaCreada = CrearOrdenDeTrabajo(m_leOTItems);
+                m_eOrdenNuevaCreada = CrearOrdenDeTrabajo(m_leOTItems, ref m_smResult);
+                if (MsgRuts.AnalizeError(this, m_smResult)) return;
+
                 Bll.OrdenesTrabajo.Save(m_eOrdenNuevaCreada, ref m_smResult);
                 if (MsgRuts.AnalizeError(this, m_smResult)) return;
                 MsgRuts.ShowMsg(this, "La nueva orden fue agregada exitosamente");

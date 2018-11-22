@@ -330,16 +330,20 @@ namespace Mrln.Bll
         /// <param name= p_strPatente>Patente</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         /// <returns>ListaEntidad con los datos solicitados</returns>
-        public static LEMovilesEstado fGetMovilEstadoActual(DBConn conexion,
+        public static EMovilEstado fGetMovilEstadoActual(DBConn conexion,
                                                             string p_strPatente,
                                                             ref StatMsg p_smResult)
         {
             try
             {
-                // Llamamos al metodo interno
-                return MvesgetMovilEstadoActual(conexion,
-                                                p_strPatente,
-                                                ref p_smResult);
+                // Pedimos los registros de la tabla
+                ListaEntidades ultimos5Estados = Bll.Moviles.MvesgetLastFiveMvlEstads(conexion, p_strPatente, ref p_smResult);
+                if (p_smResult.NOk) return null;
+
+                EMovilEstado estadoActual = Bll.Moviles.MvesSrch(conexion, p_strPatente, Convert.ToDateTime(ultimos5Estados.InternalData[0][Bel.EMovilEstado.FechaCmp]), true, ref p_smResult);
+                if (p_smResult.NOk) return null;
+
+                return estadoActual;
             }
             catch (Exception l_expData)
             {
@@ -367,12 +371,10 @@ namespace Mrln.Bll
                 Bll.OrdenesTrabajo.SSav(l_dbcAccess, orden, ref p_smResult);
                 if (p_smResult.NOk) return;
 
-                // Pedimos los registros de la tabla
-                LEMovilesEstado estadoActual = Bll.Moviles.fGetMovilEstadoActual(l_dbcAccess, orden.Patente, ref p_smResult);
-                if (p_smResult.NOk) return;
+                EMovilEstado estadoActual = fGetMovilEstadoActual(l_dbcAccess, orden.Patente, ref p_smResult);
 
                 // Si el estado actual no es en mantenimiento debemos pasarlo a dicho estado.
-                if (!estadoActual[0].EstaEnEstadoMantenimiento)
+                if (!estadoActual.EstaEnEstadoMantenimiento)
                 {
                     fGrabarEstadoMovil(l_dbcAccess, orden.Patente, EMovilEstado.EstadoEnMantenimiento, ref p_smResult);
                     if (p_smResult.NOk) return;
@@ -445,7 +447,7 @@ namespace Mrln.Bll
 
 
                 // Pedimos los registros de la tabla
-                LEMovilesEstado estadoActual = Bll.Moviles.fGetMovilEstadoActual(l_dbcAccess, p_eOrdenACerrar.Patente, ref p_smResult);
+                EMovilEstado estadoActual = Bll.Moviles.fGetMovilEstadoActual(l_dbcAccess, p_eOrdenACerrar.Patente, ref p_smResult);
                 if (p_smResult.NOk) return;
 
                 LEOrdenesTrabajo ordenesPendientes = OrdenesTrabajo.getPendByPatente(l_dbcAccess, p_eOrdenACerrar.Patente, ref p_smResult);
@@ -453,7 +455,7 @@ namespace Mrln.Bll
 
 
                 // Si el movil esta en mantenimiento y acabamos de cerrar la ultima orden en progreso, pasamos el movil a disponible.
-                if (estadoActual[0].EstaEnEstadoMantenimiento && !ordenesPendientes.ToList().Exists(ordenPend => ordenPend.EstaEnProgreso))
+                if (estadoActual.EstaEnEstadoMantenimiento && !ordenesPendientes.ToList().Exists(ordenPend => ordenPend.EstaEnProgreso))
                 {
                     fGrabarEstadoMovil(l_dbcAccess, p_eOrdenACerrar.Patente, EMovilEstado.EstadoDisponible, ref p_smResult);
                     if (p_smResult.NOk) return;

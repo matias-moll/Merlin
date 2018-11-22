@@ -27,9 +27,7 @@ namespace ControlesCustom
          public itemBarra(){
            
             InitializeComponent();
-            // Empieza siendo visible el estado VERDE
-            pbRojo.Visible = false;
-            pbAmarillo.Visible = false;
+
             // le asignamos la fecha inicial al lbl
             lblFecha.Text = inicialDate.Day.ToString() + "/" + inicialDate.Month.ToString() + "/" + inicialDate.Year.ToString();
         }
@@ -39,8 +37,11 @@ namespace ControlesCustom
             this.Numero = nro;
             this.Titulo = titulo;
             this.Fecha = fecha;
-            this.Taller = taller;
             this.EstadoOrden = estadoOrden;
+
+
+
+            this.Taller = taller;
         }
 
         #endregion
@@ -89,10 +90,11 @@ namespace ControlesCustom
             get { return fllDescripcion.Text; }
             set
             {
-                if (value.Trim() == "")
-                    this.CambiarFoto(Estados.Rojo);
-                else if (EstadoOrden == "EnRealizacion")
+                // Si esta en realizacion es amarillo, sino miramos si tiene taller o no.
+                if (EstadoOrden == "EnProgreso")
                     this.CambiarFoto(Estados.Amarillo);
+                else if (value.Trim() == "")
+                    this.CambiarFoto(Estados.Rojo);
                 else
                     this.CambiarFoto(Estados.Verde);
 
@@ -147,8 +149,8 @@ namespace ControlesCustom
 
         public bool EsEditable
         {
-            // Si se muestra el boton rojo es porque no tiene taller aun y por lo tanto es editable.
-            get { return pbRojo.Visible; }
+            // Si se muestra cualquier boton que no sea el verde es porque la orden no esta lista para ser cerrada.
+            get { return !pbVerde.Visible; }
         }
 
         private void itemBarra_Click(object sender, EventArgs e)

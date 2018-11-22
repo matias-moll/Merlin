@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 05/10/2018 18:14
+// Fecha       : 21/11/2018 20:16
 // Sistema     : Mrln
 // Tabla       : MvlEstados
 //----------------------------------------------------------------------------
@@ -856,53 +856,6 @@ go
 print '       - Asignando permisos al nuevo SP'
 
 grant execute on dbo.MVLESTADOS_GETLASTFIVEMVLESTADS to tngsmodulos
-
-print ' '
-go
-
----////////////////////////////////////////////////////////
----
---- <summary>
---- Método Fijo: getMovilEstadoActual
---- </summary>
---- <param name="@patente">Patente</param>
---- <param name="@usuario">Usuario que ejecuta el SP</param>
----
----////////////////////////////////////////////////////////
-
-print 'Store Procedure: dbo.MVLESTADOS_GETMOVILESTADOACTUAL'
-
-if exists (select * from sysobjects where id = object_id('dbo.MVLESTADOS_GETMOVILESTADOACTUAL'))
-begin
-   print '       - Borrando el viejo SP'
-   drop procedure dbo.MVLESTADOS_GETMOVILESTADOACTUAL
-end
-go
-
-print '       - Creando el nuevo SP'
-go
-
-create procedure dbo.MVLESTADOS_GETMOVILESTADOACTUAL
-(
-@patente tngs_codigo_e,
-@usuario tngs_nombre
-)
-as
-begin
-
-   Select top 1 <S> 
-     from TNGS_Mrln..MvlEstados 
-   where mve_ecd_patente = @patente 
-   ORDER BY mve_fyh_fecha DESC 
-
-fin:
-
-end
-go
-
-print '       - Asignando permisos al nuevo SP'
-
-grant execute on dbo.MVLESTADOS_GETMOVILESTADOACTUAL to tngsmodulos
 
 print ' '
 go
