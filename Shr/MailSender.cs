@@ -9,7 +9,7 @@ using System.Text;
 using TNGS.NetApp;
 using TNGS.NetRoutines;
 
-namespace Mrln.Mv
+namespace Mrln.Shr
 {
     static class MailSender
     {

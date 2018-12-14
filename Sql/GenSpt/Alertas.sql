@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 21/11/2018 20:16
+// Fecha       : 14/12/2018 04:11
 // Sistema     : Mrln
 // Tabla       : Alertas
 //----------------------------------------------------------------------------
@@ -62,6 +62,7 @@ begin
                 alr_nom_usuariovista,
                 alr_nro_repetirendias,
                 alr_cd1_finalizada,
+                alr_cd1_mailsenviados,
                 TNGS_Mrln..Alertas.instante,
                 TNGS_Mrln..Alertas.deleted,
                 TNGS_Mrln..Alertas.usuario,
@@ -83,6 +84,7 @@ begin
                 alr_nom_usuariovista,
                 alr_nro_repetirendias,
                 alr_cd1_finalizada,
+                alr_cd1_mailsenviados,
                 TNGS_Mrln..Alertas.instante,
                 TNGS_Mrln..Alertas.deleted,
                 TNGS_Mrln..Alertas.usuario,
@@ -198,6 +200,7 @@ begin
                 alr_nom_usuariovista,
                 alr_nro_repetirendias,
                 alr_cd1_finalizada,
+                alr_cd1_mailsenviados,
                 TNGS_Mrln..Alertas.instante,
                 TNGS_Mrln..Alertas.deleted,
                 TNGS_Mrln..Alertas.usuario,
@@ -219,6 +222,7 @@ begin
                 alr_nom_usuariovista,
                 alr_nro_repetirendias,
                 alr_cd1_finalizada,
+                alr_cd1_mailsenviados,
                 TNGS_Mrln..Alertas.instante,
                 TNGS_Mrln..Alertas.deleted,
                 TNGS_Mrln..Alertas.usuario,
@@ -255,6 +259,7 @@ go
 --- <param name="@alr_nom_usuariovista">Usuario Vista</param>
 --- <param name="@alr_nro_repetirendias">Repetir en Dias</param>
 --- <param name="@alr_cd1_finalizada">Finalizada</param>
+--- <param name="@alr_cd1_mailsenviados">Mails Enviados</param>
 --- <param name="@usuario">Usuario que genera el insert</param>
 ---
 ---////////////////////////////////////////////////////////
@@ -283,6 +288,7 @@ create procedure dbo.ALERTAS_INSERT
 @alr_nom_usuariovista tngs_nombre,
 @alr_nro_repetirendias tngs_numero,
 @alr_cd1_finalizada tngs_codigo_1,
+@alr_cd1_mailsenviados tngs_codigo_1,
 @usuario tngs_nombre
 )
 as
@@ -300,6 +306,7 @@ begin
            @alr_nom_usuariovista,
            @alr_nro_repetirendias,
            @alr_cd1_finalizada,
+           @alr_cd1_mailsenviados,
            getdate(), 0, @usuario, 1
           )
 
@@ -330,6 +337,7 @@ go
 --- <param name="@alr_nom_usuariovista">Usuario Vista</param>
 --- <param name="@alr_nro_repetirendias">Repetir en Dias</param>
 --- <param name="@alr_cd1_finalizada">Finalizada</param>
+--- <param name="@alr_cd1_mailsenviados">Mails Enviados</param>
 --- <param name="@usuario">Usuario que genera el update</param>
 ---
 ---////////////////////////////////////////////////////////
@@ -358,6 +366,7 @@ create procedure dbo.ALERTAS_UPDATE
 @alr_nom_usuariovista tngs_nombre,
 @alr_nro_repetirendias tngs_numero,
 @alr_cd1_finalizada tngs_codigo_1,
+@alr_cd1_mailsenviados tngs_codigo_1,
 @usuario tngs_nombre
 )
 as
@@ -372,6 +381,7 @@ begin
           alr_nom_usuariovista= @alr_nom_usuariovista,
           alr_nro_repetirendias= @alr_nro_repetirendias,
           alr_cd1_finalizada= @alr_cd1_finalizada,
+          alr_cd1_mailsenviados= @alr_cd1_mailsenviados,
           version = ((version+1) % 32767),
           instante= getdate(),
           usuario = @usuario
@@ -625,6 +635,7 @@ begin
           alr_nom_usuariovista,
           alr_nro_repetirendias,
           alr_cd1_finalizada,
+          alr_cd1_mailsenviados,
           TNGS_Mrln..Alertas.instante,
           TNGS_Mrln..Alertas.deleted,
           TNGS_Mrln..Alertas.usuario,
@@ -686,6 +697,7 @@ begin
           alr_nom_usuariovista,
           alr_nro_repetirendias,
           alr_cd1_finalizada,
+          alr_cd1_mailsenviados,
           TNGS_Mrln..Alertas.instante,
           TNGS_Mrln..Alertas.deleted,
           TNGS_Mrln..Alertas.usuario,

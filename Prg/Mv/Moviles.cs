@@ -270,35 +270,11 @@ namespace Mrln.Mv
             SwitchTo(ModoForm.Edicion, OpGrid.Km);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
-            CheckForAlerts();
+
+            Shr.AlertHelper.CheckForAlertsAndProcess(m_entMovil, ref m_smResult);
+            if (MsgRuts.AnalizeError(this, m_smResult)) return;
         }
 
-        private void CheckForAlerts()
-        {
-            Bll.Alertas.fCheckCreacionAlertas(m_entMovil, ref m_smResult);
-            if (MsgRuts.AnalizeError(this, m_smResult)) return;
-
-            LEAlertas alertasAMostrar = Bll.Alertas.AleGetPendientesFromMov(m_entMovil.Patente, ref m_smResult);
-            if (MsgRuts.AnalizeError(this, m_smResult)) return;
-
-            if (alertasAMostrar.Count == 0)
-                return;
-
-            List<EAlerta> listaAlertas = alertasAMostrar.ToList().Where(alerta => alerta.Repetirendias == 0 || seCumplioRepetirEnDias(alerta)).ToList();
-            if (MsgRuts.AnalizeError(this, m_smResult)) return;
-
-            ShowAlertas ventanaAlertas = new ShowAlertas(listaAlertas);
-            ventanaAlertas.ShowDialog(this);
-        }
-
-        private bool seCumplioRepetirEnDias(EAlerta alerta)
-        {
-            DateTime fechaActual = Bll.Moviles.fGetDate(ref m_smResult);
-            if (MsgRuts.AnalizeError(this, m_smResult)) return false;
-
-            return (fechaActual > alerta.Fechavista.AddDays(alerta.Repetirendias));
-
-        }
 
         // Cambia el estado del form y llena las grillas
         private void ftrMoviles_DoubleClick(object sender, EventArgs e)

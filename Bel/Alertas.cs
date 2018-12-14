@@ -31,6 +31,8 @@ namespace Mrln.Bel
     /// </summary>
     public sealed partial class EAlerta : Entidad
     {
+        public bool MailsEnviados {  get { return this.Mailsenviados == "S";  } }
+
         #region Metodos publicos de la clase
         //---------------------------------------------------------------
         // Metodos públicos de la clase

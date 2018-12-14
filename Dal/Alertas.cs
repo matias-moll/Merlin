@@ -10,7 +10,7 @@ namespace Mrln.Dal
     //----------------------------------------------------------------------------
     //                         TNG Software DAL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 21/11/2018 18:57
+    // Fecha                    : 14/12/2018 04:11
     // Sistema                  : Mrln
     // Clase para Administrar   : Alertas
     // Basada en la Tabla       : Alertas
@@ -155,6 +155,7 @@ namespace Mrln.Dal
         /// <param name="p_strUsuariovista">Usuario Vista</param>
         /// <param name="p_iRepetirendias">Repetir en Dias</param>
         /// <param name="p_strFinalizada">Finalizada</param>
+        /// <param name="p_strMailsenviados">Mails Enviados</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static int Insert(DBConn p_dbcAccess,
                                  int p_iNroconfig,
@@ -167,6 +168,7 @@ namespace Mrln.Dal
                                  string p_strUsuariovista,
                                  int p_iRepetirendias,
                                  string p_strFinalizada,
+                                 string p_strMailsenviados,
                                  ref StatMsg p_smResult)
         {
             try {
@@ -184,6 +186,7 @@ namespace Mrln.Dal
                                        p_dbcAccess.MakeParam("@alr_nom_usuariovista", p_strUsuariovista),
                                        p_dbcAccess.MakeParam("@alr_nro_repetirendias", p_iRepetirendias),
                                        p_dbcAccess.MakeParam("@alr_cd1_finalizada", p_strFinalizada),
+                                       p_dbcAccess.MakeParam("@alr_cd1_mailsenviados", p_strMailsenviados),
                                        p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
                                    }
                                   );
@@ -209,6 +212,7 @@ namespace Mrln.Dal
         /// <param name="p_strUsuariovista">Usuario Vista</param>
         /// <param name="p_iRepetirendias">Repetir en Dias</param>
         /// <param name="p_strFinalizada">Finalizada</param>
+        /// <param name="p_strMailsenviados">Mails Enviados</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static int Update(DBConn p_dbcAccess,
                                  int p_iNroconfig,
@@ -221,6 +225,7 @@ namespace Mrln.Dal
                                  string p_strUsuariovista,
                                  int p_iRepetirendias,
                                  string p_strFinalizada,
+                                 string p_strMailsenviados,
                                  ref StatMsg p_smResult)
         {
             try {
@@ -238,6 +243,7 @@ namespace Mrln.Dal
                                        p_dbcAccess.MakeParam("@alr_nom_usuariovista", p_strUsuariovista),
                                        p_dbcAccess.MakeParam("@alr_nro_repetirendias", p_iRepetirendias),
                                        p_dbcAccess.MakeParam("@alr_cd1_finalizada", p_strFinalizada),
+                                       p_dbcAccess.MakeParam("@alr_cd1_mailsenviados", p_strMailsenviados),
                                        p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
                                    }
                                   );

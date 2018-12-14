@@ -1,4 +1,4 @@
-﻿namespace Mrln.Mv
+﻿namespace Mrln.Shr
 {
     partial class ShowAlertas
     {

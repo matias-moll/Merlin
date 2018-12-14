@@ -14,7 +14,7 @@ namespace Mrln.Bel
     //----------------------------------------------------------------------------
     //                         TNG Software BEL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 21/11/2018 18:57
+    // Fecha                    : 14/12/2018 04:11
     // Sistema                  : Mrln
     // Clase para Administrar   : Alertas
     //----------------------------------------------------------------------------
@@ -88,6 +88,7 @@ namespace Mrln.Bel
             l_drTemp["alr_nom_usuariovista"]= XMLRuts.ExtractXAttr(l_xndData, "alr_nom_usuariovista");
             l_drTemp["alr_nro_repetirendias"]= XMLRuts.ExtractXAttr(l_xndData, "alr_nro_repetirendias", 0);
             l_drTemp["alr_cd1_finalizada"]= XMLRuts.ExtractXAttr(l_xndData, "alr_cd1_finalizada");
+            l_drTemp["alr_cd1_mailsenviados"]= XMLRuts.ExtractXAttr(l_xndData, "alr_cd1_mailsenviados");
 
             // Llenamos los campos fijos
             XML2FixedFields(ref l_drTemp, l_xndData);
@@ -141,6 +142,7 @@ namespace Mrln.Bel
             l_drTemp["alr_nom_usuariovista"]= "";
             l_drTemp["alr_nro_repetirendias"]= 0;
             l_drTemp["alr_cd1_finalizada"]= "";
+            l_drTemp["alr_cd1_mailsenviados"]= "";
 
             // Agregamos la Row creada a la tabla creada y creamos
             // una entidad a partir de la DataTable de 1 registro
@@ -163,6 +165,7 @@ namespace Mrln.Bel
         /// <param name="p_strUsuariovista">Usuario Vista</param>
         /// <param name="p_iRepetirendias">Repetir en Dias</param>
         /// <param name="p_strFinalizada">Finalizada</param>
+        /// <param name="p_strMailsenviados">Mails Enviados</param>
         /// <returns>Entidad: Alerta</returns>
         public static EAlerta NewFilled(int p_iNroconfig,
                                         int p_iNroalerta,
@@ -173,7 +176,8 @@ namespace Mrln.Bel
                                         DateTime p_dtFechavista,
                                         string p_strUsuariovista,
                                         int p_iRepetirendias,
-                                        string p_strFinalizada)
+                                        string p_strFinalizada,
+                                        string p_strMailsenviados)
         {
             // Creamos una tabla compatible con la entidad
             DataTable l_dtTemp= new DataTable();
@@ -193,6 +197,7 @@ namespace Mrln.Bel
             l_drTemp["alr_nom_usuariovista"]= p_strUsuariovista;
             l_drTemp["alr_nro_repetirendias"]= p_iRepetirendias;
             l_drTemp["alr_cd1_finalizada"]= p_strFinalizada;
+            l_drTemp["alr_cd1_mailsenviados"]= p_strMailsenviados;
 
             // Agregamos la Row creada a la tabla creada y creamos
             // una entidad a partir de la DataTable de 1 registro
@@ -218,7 +223,7 @@ namespace Mrln.Bel
         {
             get {
                 // Creamos el vector de DataColumns y lo llenamos
-                DataColumn[] l_dcStruct= new DataColumn[14];
+                DataColumn[] l_dcStruct= new DataColumn[15];
 
                 l_dcStruct[0]= new DataColumn("alr_nro_nroconfig", typeof(int));
                 l_dcStruct[1]= new DataColumn("alr_nro_nroalerta", typeof(int));
@@ -230,7 +235,8 @@ namespace Mrln.Bel
                 l_dcStruct[7]= new DataColumn("alr_nom_usuariovista", typeof(string));
                 l_dcStruct[8]= new DataColumn("alr_nro_repetirendias", typeof(int));
                 l_dcStruct[9]= new DataColumn("alr_cd1_finalizada", typeof(string));
-                EAlerta.FillFixedFields(ref l_dcStruct, 10);
+                l_dcStruct[10]= new DataColumn("alr_cd1_mailsenviados", typeof(string));
+                EAlerta.FillFixedFields(ref l_dcStruct, 11);
 
                 // Devolvemos el vector creado
                 return l_dcStruct;
@@ -423,6 +429,26 @@ namespace Mrln.Bel
         }
 
         /// <summary>
+        /// Mails Enviados
+        /// </summary>
+        public static string MailsenviadosCmp
+        {
+           get {return "alr_cd1_mailsenviados";}
+        }
+
+        /// <summary>
+        /// Mails Enviados
+        /// </summary>
+        public string Mailsenviados
+        {
+            get {return ((string) InternalData["alr_cd1_mailsenviados"]).Trim();}
+            set {
+                if (value.Trim().Length > 1) value= value.Trim().Substring(0,1);
+                InternalData["alr_cd1_mailsenviados"]= value.Trim();
+            }
+        }
+
+        /// <summary>
         /// Devuelve la entidad [EAlerta] como XMLDocument en formato string
         /// </summary>
         public string XMLData
@@ -451,6 +477,7 @@ namespace Mrln.Bel
                 l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "alr_nom_usuariovista", Usuariovista));
                 l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "alr_nro_repetirendias", Repetirendias));
                 l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "alr_cd1_finalizada", Finalizada));
+                l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "alr_cd1_mailsenviados", Mailsenviados));
 
                 // Asignamos los campos fijos
                 FixedFields2XML(l_xdocData, ref l_xndEntidad);

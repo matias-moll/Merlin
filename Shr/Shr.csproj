@@ -31,9 +31,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\packages\CrystalDecisions.CrystalReports.Engine.1.0.0\lib\CrystalDecisions.CrystalReports.Engine.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\packages\CrystalDecisions.ReportSource.1.0.0\lib\CrystalDecisions.ReportSource.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\packages\CrystalDecisions.Shared.1.0.0\lib\CrystalDecisions.Shared.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -58,6 +64,9 @@
     <Reference Include="netchartdir">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Ambiente0520\DNet0520\Release_Shr\netchartdir.dll</HintPath>
+    </Reference>
+    <Reference Include="TNGS.NetApp.520">
+      <HintPath>..\..\Ambiente0520\DNet0520\Release_Uil\TNGS.NetApp.520.dll</HintPath>
     </Reference>
     <Reference Include="TNGS.NetAppBll.520">
       <SpecificVersion>False</SpecificVersion>
@@ -89,15 +98,23 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Alertas\AlertHelper.cs" />
     <Compile Include="AsigarOT.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="AsigarOT.Designer.cs">
       <DependentUpon>AsigarOT.cs</DependentUpon>
     </Compile>
+    <Compile Include="MailSender.cs" />
     <Compile Include="Properties\ShrAssemblyInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Export.cs" />
+    <Compile Include="Alertas\ShowAlerta.Designer.cs">
+      <DependentUpon>ShowAlertas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Alertas\ShowAlertas.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="SysRuts.cs" />
     <Compile Include="SysRuts.designer.cs">
       <DependentUpon>SysRuts.cs</DependentUpon>
@@ -117,9 +134,15 @@
     <EmbeddedResource Include="AsigarOT.resx">
       <DependentUpon>AsigarOT.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Alertas\ShowAlerta.resx">
+      <DependentUpon>ShowAlertas.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

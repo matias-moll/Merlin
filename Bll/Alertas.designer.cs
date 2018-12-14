@@ -16,7 +16,7 @@ namespace Mrln.Bll
     //----------------------------------------------------------------------------
     //                         TNG Software BLL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 21/11/2018 18:57
+    // Fecha                    : 14/12/2018 04:11
     // Sistema                  : Mrln
     // Clase para Administrar   : Alertas
     //----------------------------------------------------------------------------
@@ -702,6 +702,7 @@ namespace Mrln.Bll
                                    p_entAlerta.Usuariovista,
                                    p_entAlerta.Repetirendias,
                                    p_entAlerta.Finalizada,
+                                   p_entAlerta.Mailsenviados,
                                    ref p_smResult);
             }
             catch (Exception l_expData) {
@@ -737,6 +738,7 @@ namespace Mrln.Bll
                                    p_entAlerta.Usuariovista,
                                    p_entAlerta.Repetirendias,
                                    p_entAlerta.Finalizada,
+                                   p_entAlerta.Mailsenviados,
                                    ref p_smResult);
             }
             catch (Exception l_expData) {
