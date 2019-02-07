@@ -475,6 +475,7 @@ namespace Mrln.Tg
             this.frmEdicion.BackgroundColor = System.Drawing.SystemColors.Control;
             this.frmEdicion.BackgroundGradientColor = System.Drawing.SystemColors.Control;
             this.frmEdicion.BackgroundGradientMode = TNGS.NetControls.ImgGroup.GroupBoxGradientMode.ForwardDiagonal;
+            this.frmEdicion.BlackBorder = true;
             this.frmEdicion.BorderColor = System.Drawing.Color.Black;
             this.frmEdicion.BorderThickness = 1F;
             this.frmEdicion.Controls.Add(this.lblCodigocategoria);
@@ -493,6 +494,9 @@ namespace Mrln.Tg
             this.frmEdicion.ShadowThickness = 3;
             this.frmEdicion.Size = new System.Drawing.Size(1027, 102);
             this.frmEdicion.TabIndex = 21;
+            this.frmEdicion.TitleBackground = System.Drawing.Color.DodgerBlue;
+            this.frmEdicion.TitleBackgroundDefault = TNGS.NetControls.ColorRuts.ColoresDefault.None;
+            this.frmEdicion.TitleFontColor = System.Drawing.Color.White;
             // 
             // lblCodigocategoria
             // 
@@ -522,6 +526,7 @@ namespace Mrln.Tg
             this.frmOper.BackgroundColor = System.Drawing.Color.White;
             this.frmOper.BackgroundGradientColor = System.Drawing.Color.White;
             this.frmOper.BackgroundGradientMode = TNGS.NetControls.ImgGroup.GroupBoxGradientMode.None;
+            this.frmOper.BlackBorder = true;
             this.frmOper.BorderColor = System.Drawing.Color.Black;
             this.frmOper.BorderThickness = 1F;
             this.frmOper.CustomGroupBoxColor = System.Drawing.Color.White;
@@ -538,12 +543,16 @@ namespace Mrln.Tg
             this.frmOper.ShadowThickness = 3;
             this.frmOper.Size = new System.Drawing.Size(368, 288);
             this.frmOper.TabIndex = 0;
+            this.frmOper.TitleBackground = System.Drawing.Color.DodgerBlue;
+            this.frmOper.TitleBackgroundDefault = TNGS.NetControls.ColorRuts.ColoresDefault.None;
+            this.frmOper.TitleFontColor = System.Drawing.Color.White;
             // 
             // frmData
             // 
             this.frmData.BackgroundColor = System.Drawing.Color.White;
             this.frmData.BackgroundGradientColor = System.Drawing.Color.White;
             this.frmData.BackgroundGradientMode = TNGS.NetControls.ImgGroup.GroupBoxGradientMode.None;
+            this.frmData.BlackBorder = true;
             this.frmData.BorderColor = System.Drawing.Color.Black;
             this.frmData.BorderThickness = 1F;
             this.frmData.CustomGroupBoxColor = System.Drawing.Color.White;
@@ -560,6 +569,9 @@ namespace Mrln.Tg
             this.frmData.ShadowThickness = 3;
             this.frmData.Size = new System.Drawing.Size(368, 288);
             this.frmData.TabIndex = 0;
+            this.frmData.TitleBackground = System.Drawing.Color.DodgerBlue;
+            this.frmData.TitleBackgroundDefault = TNGS.NetControls.ColorRuts.ColoresDefault.None;
+            this.frmData.TitleFontColor = System.Drawing.Color.White;
             // 
             // TalleresCategorias
             // 

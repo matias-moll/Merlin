@@ -450,6 +450,7 @@ namespace Mrln.Tg
             this.frmEdicion.BackgroundColor = System.Drawing.SystemColors.Control;
             this.frmEdicion.BackgroundGradientColor = System.Drawing.SystemColors.Control;
             this.frmEdicion.BackgroundGradientMode = TNGS.NetControls.ImgGroup.GroupBoxGradientMode.ForwardDiagonal;
+            this.frmEdicion.BlackBorder = true;
             this.frmEdicion.BorderColor = System.Drawing.Color.Black;
             this.frmEdicion.BorderThickness = 1F;
             this.frmEdicion.Controls.Add(this.lblCod);
@@ -472,6 +473,9 @@ namespace Mrln.Tg
             this.frmEdicion.ShadowThickness = 3;
             this.frmEdicion.Size = new System.Drawing.Size(974, 79);
             this.frmEdicion.TabIndex = 21;
+            this.frmEdicion.TitleBackground = System.Drawing.Color.DodgerBlue;
+            this.frmEdicion.TitleBackgroundDefault = TNGS.NetControls.ColorRuts.ColoresDefault.None;
+            this.frmEdicion.TitleFontColor = System.Drawing.Color.White;
             // 
             // lblCod
             // 
@@ -539,7 +543,7 @@ namespace Mrln.Tg
             this.txtValor.Name = "txtValor";
             this.txtValor.Size = new System.Drawing.Size(138, 22);
             this.txtValor.TabIndex = 8;
-            this.txtValor.Text = "0,00";
+            this.txtValor.Text = "0.00";
             // 
             // Equipamientos
             // 
