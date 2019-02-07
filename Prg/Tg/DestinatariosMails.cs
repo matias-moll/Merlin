@@ -165,7 +165,7 @@ namespace Mrln.Tg
         {
             App.ShowMsg("Generando planilla...");
             App.InitAdvance("Excel:");
-            grdDatos.ExportToExcel(false, false, "", "DestinatariosMails", ref m_smResult);
+            grdDatos.ExportToExcel(false, false, "", "DestinatariosMails", m_smResult);
             App.EndAdvance();
             App.HideMsg();
         }
@@ -177,7 +177,7 @@ namespace Mrln.Tg
         {
             App.ShowMsg("Imprimiendo datos...");
             App.InitAdvance("Imprimiendo:");
-            grdDatos.Print(App.ROParams["EMPRESA"].VStr, App.Programa.Nombre,
+            grdDatos.Print(Shr.ROParam.Empresa.VStr, App.Programa.Nombre,
                            "Lista de DestinatariosMails", "");
             App.EndAdvance();
             App.HideMsg();
@@ -191,7 +191,7 @@ namespace Mrln.Tg
             // Creamos una nueva entidad, pasamos a modo de edicion y
             // damos foco al primer campo
             m_entDestinatariosMail= Bel.EDestinatariosMail.NewEmpty();
-            m_entDestinatariosMail.Codigo = Bll.Tablas.DemNextKey(ref m_smResult);
+            m_entDestinatariosMail.Codigo = Bll.Tablas.DemNextKey(m_smResult);
             m_smResult.Reset();
             SwitchTo(FormModes.Edit, GridOps.DontFill);
             txtDescripcion.Focus();
@@ -209,7 +209,7 @@ namespace Mrln.Tg
             // Obtenemos la entidad del item seleccionado en la grilla
             App.ShowMsg("Recuperando Datos...");
             m_entDestinatariosMail= Bll.Tablas.DemGet((string) grdDatos.GetMatrixValueObj(l_iRow, 1),
-                                                      false, ref m_smResult);
+                                                      false, m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
             // Tenemos la entidad. Pasamos a modo de edicion y damos foco
@@ -238,7 +238,7 @@ namespace Mrln.Tg
 
             // Purgamos la tabla
             App.ShowMsg("Compactando la tabla...");
-            Bll.Tablas.DemPurge(ref m_smResult);
+            Bll.Tablas.DemPurge(m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
             // Terminamos
@@ -275,7 +275,7 @@ namespace Mrln.Tg
             Bll.Tablas.DemEnabled(m_entDestinatariosMail.EstaBorrada,
                                   m_entDestinatariosMail.Codigo,
                                   m_entDestinatariosMail.FxdVersion,
-                                  ref m_smResult);
+                                  m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
             // Pasamos a modo Operaciones, rellenamos la grilla y 
@@ -297,7 +297,7 @@ namespace Mrln.Tg
 
             // Tratamos de grabar la entidad
             App.ShowMsg("Grabando...");
-            Bll.Tablas.DemSave(m_entDestinatariosMail, ref m_smResult);
+            Bll.Tablas.DemSave(m_entDestinatariosMail, m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
             // Pasamos a modo Operaciones, rellenamos la grilla y 
@@ -331,7 +331,7 @@ namespace Mrln.Tg
         {
             // Recuperamos los datos para la grilla
             App.ShowMsg("Recuperando datos...");
-            Bel.LEDestinatariosMails l_lentDestinatariosMails= Bll.Tablas.DemUpFull(false, ref m_smResult);
+            Bel.LEDestinatariosMails l_lentDestinatariosMails= Bll.Tablas.DemUpFull(false, m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
             // Asignamos a la grilla

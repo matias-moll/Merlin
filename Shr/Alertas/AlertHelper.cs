@@ -13,12 +13,12 @@ namespace Mrln.Shr
 
 
 
-        public static void CheckForAlertsAndProcess(EMovil p_entMovil, ref StatMsg p_smResult, bool esProcesoBackgroundSinVentana = false)
+        public static void CheckForAlertsAndProcess(EMovil p_entMovil, StatMsg p_smResult, bool esProcesoBackgroundSinVentana = false)
         {
-            Bll.Alertas.fCheckCreacionAlertas(p_entMovil, ref p_smResult);
+            Bll.Alertas.fCheckCreacionAlertas(p_entMovil, p_smResult);
             if (MsgRuts.AnalizeError(App.GetMainWindow(), p_smResult)) return;
 
-            LEAlertas alertasAMostrar = Bll.Alertas.AleGetPendientesFromMov(p_entMovil.Patente, ref p_smResult);
+            LEAlertas alertasAMostrar = Bll.Alertas.AleGetPendientesFromMov(p_entMovil.Patente, p_smResult);
             if (MsgRuts.AnalizeError(App.GetMainWindow(), p_smResult)) return;
 
             if (alertasAMostrar.Count == 0)
@@ -53,7 +53,7 @@ namespace Mrln.Shr
         {
             // No puedo pasarle el statmsg por usarse en una lambda, si falla tiramos exception.
             StatMsg l_smResult = new StatMsg();
-            DateTime fechaActual = Bll.Moviles.fGetDate(ref l_smResult);
+            DateTime fechaActual = Bll.Moviles.fGetDate(l_smResult);
             if (MsgRuts.AnalizeError(App.GetMainWindow(), l_smResult)) throw new Exception(l_smResult.Msg);
 
             return (fechaActual > alerta.Fechavista.AddDays(alerta.Repetirendias));

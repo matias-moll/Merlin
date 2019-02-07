@@ -38,7 +38,7 @@ namespace Mrln.Bll
         #region Metodos publicos de la clase
 
 
-        public static void fCheckCreacionAlertas(EMovil p_entMovil, ref StatMsg p_smResult)
+        public static void fCheckCreacionAlertas(EMovil p_entMovil, StatMsg p_smResult)
         {
             DBConn l_dbcAccess = null;
 
@@ -46,22 +46,22 @@ namespace Mrln.Bll
                 // Obtenemos una conexion
                 l_dbcAccess = DBRuts.GetConection(Connections.Dat);
 
-                Bel.LEMovilesAlertas configAlertas = Moviles.MvalFSch(l_dbcAccess, p_entMovil.Patente, true, ref p_smResult);
+                Bel.LEMovilesAlertas configAlertas = Moviles.MvalFSch(l_dbcAccess, p_entMovil.Patente, true, p_smResult);
                 if (p_smResult.NOk) return;
 
                 if (configAlertas.Count == 0)
                     return;
 
-                p_entMovil.MovilesKms = Moviles.MvkmFSch(l_dbcAccess, p_entMovil.Patente, true, ref p_smResult);
+                p_entMovil.MovilesKms = Moviles.MvkmFSch(l_dbcAccess, p_entMovil.Patente, true, p_smResult);
                 if (p_smResult.NOk) return;
 
-                LEAlertas alertasDelMovil = Alertas.AleGetAlertasFromMovil(p_entMovil.Patente, ref p_smResult);
+                LEAlertas alertasDelMovil = Alertas.AleGetAlertasFromMovil(p_entMovil.Patente, p_smResult);
                 if (p_smResult.NOk) return;
 
-                LEOTItems reparacionesDelMovil = OrdenesTrabajo.OtitGetRealizadosMvl(p_entMovil.Patente, ref p_smResult);
+                LEOTItems reparacionesDelMovil = OrdenesTrabajo.OtitGetRealizadosMvl(p_entMovil.Patente, p_smResult);
                 if (p_smResult.NOk) return;
 
-                DateTime fechaActual = BllRuts.GetDBNow(l_dbcAccess, ref p_smResult);
+                DateTime fechaActual = BllRuts.GetDBNow(l_dbcAccess, p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Iteramos por todas las config alertas y si alguna cumple condicion creamos la nueva alerta.
@@ -69,11 +69,11 @@ namespace Mrln.Bll
                 {
                     if(configAlerta.CumpleCondicion(p_entMovil, alertasDelMovil,  reparacionesDelMovil))
                     {
-                        ETalonario nroAlerta = AppRuts.TaloGet(l_dbcAccess, "ConfAlerta", ref p_smResult);
+                        ETalonario nroAlerta = AppRuts.TaloGet(l_dbcAccess, "ConfAlerta", p_smResult);
                         if (p_smResult.NOk) return;
 
                         Bel.EAlerta nuevaAlerta = configAlerta.crearAlerta(nroAlerta.Valor, fechaActual);
-                        Alertas.AleSave(nuevaAlerta, ref p_smResult);
+                        Alertas.AleSave(nuevaAlerta, p_smResult);
                         if (p_smResult.NOk) return;
 
                     }
@@ -108,7 +108,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void AleSave_f(DBConn p_dbcAccess,
                                        ref EAlerta p_entAlerta,
-                                       ref StatMsg p_smResult)
+                                       StatMsg p_smResult)
         {
             // *********
             // Agregar acá los procesos adicionales
@@ -130,7 +130,7 @@ namespace Mrln.Bll
                                           int p_iNroconfig,
                                           int p_iNroalerta,
                                           ref int p_iFxdVersion,
-                                          ref StatMsg p_smResult)
+                                          StatMsg p_smResult)
         {
             // *********
             // Agregar acá los procesos adicionales
@@ -150,7 +150,7 @@ namespace Mrln.Bll
                                          int p_iNroconfig,
                                          int p_iNroalerta,
                                          int p_iFxdVersion,
-                                         ref StatMsg p_smResult)
+                                         StatMsg p_smResult)
         {
             // *********
             // Agregar acá los procesos adicionales
@@ -166,7 +166,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void AleTInt_f(DBConn p_dbcAccess,
                                        EAlerta p_entAlerta,
-                                       ref StatMsg p_smResult)
+                                       StatMsg p_smResult)
         {
             // *********
             // Agregar acá las validaciones adicionales

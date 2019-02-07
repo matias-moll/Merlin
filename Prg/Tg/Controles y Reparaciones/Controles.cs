@@ -168,7 +168,7 @@ namespace Mrln.Tg
         {
             App.ShowMsg("Generando planilla...");
             App.InitAdvance("Excel:");
-            grdDatos.ExportToExcel(false, false, "", "Controles", ref m_smResult);
+            grdDatos.ExportToExcel(false, false, "", "Controles", m_smResult);
             App.EndAdvance();
             App.HideMsg();
         }
@@ -180,7 +180,7 @@ namespace Mrln.Tg
         {
             App.ShowMsg("Imprimiendo datos...");
             App.InitAdvance("Imprimiendo:");
-            grdDatos.Print(App.ROParams["EMPRESA"].VStr, App.Programa.Nombre,
+            grdDatos.Print(Shr.ROParam.Empresa.VStr, App.Programa.Nombre,
                            "Lista de Controles", "");
             App.EndAdvance();
             App.HideMsg();
@@ -194,7 +194,7 @@ namespace Mrln.Tg
             // Creamos una nueva entidad, pasamos a modo de edicion y
             // damos foco al primer campo
             m_entControl= Bel.EControl.NewEmpty();
-            m_entControl.Cod = Bll.Controles.NextKey(ref m_smResult);
+            m_entControl.Cod = Bll.Controles.NextKey(m_smResult);
             m_smResult.Reset();
             SwitchTo(FormModes.Edit, GridOps.DontFill);
             txtDes.Focus();
@@ -212,7 +212,7 @@ namespace Mrln.Tg
             // Obtenemos la entidad del item seleccionado en la grilla
             App.ShowMsg("Recuperando Datos...");
             m_entControl= Bll.Controles.Get((string) grdDatos.GetMatrixValueObj(l_iRow, 1),
-                                            false, ref m_smResult);
+                                            false, m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
             // Tenemos la entidad. Pasamos a modo de edicion y damos foco
@@ -241,7 +241,7 @@ namespace Mrln.Tg
 
             // Purgamos la tabla
             App.ShowMsg("Compactando la tabla...");
-            Bll.Controles.Purge(ref m_smResult);
+            Bll.Controles.Purge(m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
             // Terminamos
@@ -278,7 +278,7 @@ namespace Mrln.Tg
             Bll.Controles.Enabled(m_entControl.EstaBorrada,
                                   m_entControl.Cod,
                                   m_entControl.FxdVersion,
-                                  ref m_smResult);
+                                  m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
             // Pasamos a modo Operaciones, rellenamos la grilla y 
@@ -300,7 +300,7 @@ namespace Mrln.Tg
 
             // Tratamos de grabar la entidad
             App.ShowMsg("Grabando...");
-            Bll.Controles.Save(m_entControl, ref m_smResult);
+            Bll.Controles.Save(m_entControl, m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
             // Pasamos a modo Operaciones, rellenamos la grilla y 
@@ -321,7 +321,7 @@ namespace Mrln.Tg
         {
             // Recuperamos los datos para la grilla
             App.ShowMsg("Recuperando datos...");
-            Bel.LEControles l_lentControles= Bll.Controles.UpFull(false, ref m_smResult);
+            Bel.LEControles l_lentControles= Bll.Controles.UpFull(false, m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
             // Asignamos a la grilla

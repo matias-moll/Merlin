@@ -54,7 +54,7 @@ namespace Mrln.Ot
             neOrdenTrabajo.Numero = p_iNumeroOrdenTrabajo;
 
             // Traemos la orden con su lista de items asociada
-            m_eOrdenAModificar = Bll.OrdenesTrabajo.Get(p_iNumeroOrdenTrabajo, true, ref m_smResult);
+            m_eOrdenAModificar = Bll.OrdenesTrabajo.Get(p_iNumeroOrdenTrabajo, true, m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
             // Asignamos los items actuales que tiene la orden a nuestra lista 
@@ -110,7 +110,7 @@ namespace Mrln.Ot
             LLenarComboTalleres();
 
             // seteamos el numero de OT
-            neOrdenTrabajo.Numero = App.TaloGet("TaloOT", ref m_smResult).Valor;
+            neOrdenTrabajo.Numero = App.TaloGet("TaloOT", m_smResult).Valor;
 
             // Seteamos como nueva la lista entidad OTItems
             m_leOTItems = Bel.LEOTItems.NewEmpty();
@@ -125,10 +125,10 @@ namespace Mrln.Ot
         private void CargarListasEntidadesMiembros()
         {
             // Nos traemos todas las reparaciones de la grilla a memoria 
-            m_leReparaciones = Bll.Tablas.RepUpFull(true, ref m_smResult);
+            m_leReparaciones = Bll.Tablas.RepUpFull(true, m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
-            Bel.LETalleresCategorias talleresCategorias = Bll.Talleres.TalCUpFull(true, ref m_smResult);
+            Bel.LETalleresCategorias talleresCategorias = Bll.Talleres.TalCUpFull(true, m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
             m_leTalleresConTodasLasCategoriasNecesarias = m_leTalleresCategoriasFull = talleresCategorias.ToList();
@@ -138,7 +138,7 @@ namespace Mrln.Ot
         private void LLenarComboPatentesMoviles()
         {
             // llenamos la combo con los moviles
-            cdcPatente.FillFromStrLEntidad(Bll.Moviles.UpFull(true, ref m_smResult), EMovil.PatenteCmp, EMovil.PatenteCmp, "deleted");
+            cdcPatente.FillFromStrLEntidad(Bll.Moviles.UpFull(true, m_smResult), EMovil.PatenteCmp, EMovil.PatenteCmp, "deleted");
             // chequeamos que haya salido todo bien
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
@@ -150,7 +150,7 @@ namespace Mrln.Ot
         private void LLenarComboTalleres()
         {
             // llenamos la combo con los moviles
-            cdcTalleres.FillFromStrLEntidad(Bll.Talleres.UpFull(true, ref m_smResult), ETaller.CodigoCmp, ETaller.DescripcionCmp, "deleted");
+            cdcTalleres.FillFromStrLEntidad(Bll.Talleres.UpFull(true, m_smResult), ETaller.CodigoCmp, ETaller.DescripcionCmp, "deleted");
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
             //seteamos en el null para que se vea fancy
@@ -211,7 +211,7 @@ namespace Mrln.Ot
         }
 
         // Crea la nueva entidad OrdenTrabajo que tendra asociados a todos los items
-        private Bel.EOrdenTrabajo CrearOrdenDeTrabajo(Bel.LEOTItems p_leOTItems, ref StatMsg p_smResult)
+        private Bel.EOrdenTrabajo CrearOrdenDeTrabajo(Bel.LEOTItems p_leOTItems, StatMsg p_smResult)
         {
             Bel.EOrdenTrabajo l_eOrdenNueva = Bel.EOrdenTrabajo.NewEmpty();
             l_eOrdenNueva.Nro = neOrdenTrabajo.Numero;
@@ -223,7 +223,7 @@ namespace Mrln.Ot
             // Le asignamos el operador que realizo la orden
             l_eOrdenNueva.Operador = App.Usuario.Usuario;
 
-            l_eOrdenNueva.Kmsactuales = Bll.Moviles.fGetKilometrajeActual(l_eOrdenNueva.Patente, ref p_smResult);
+            l_eOrdenNueva.Kmsactuales = Bll.Moviles.fGetKilometrajeActual(l_eOrdenNueva.Patente, p_smResult);
             if (MsgRuts.AnalizeError(this, p_smResult)) return null;
 
             // Le asignamos los items que nos vienen por parametro
@@ -302,10 +302,10 @@ namespace Mrln.Ot
                 return;
             }
             //cambiamos el nombre del ImgGroup y activamos las opciones
-            tgrpControlesYRep.Title = "Controles";
+            tgrpControlesYRep.GroupTitle = "Controles";
             tgrpOpciones.Enabled = true;
             //llenamos la lista con los controles de la tabla
-            lstControlesReparaciones.FillFromStrLEntidad(Bll.Controles.UpFull(true, ref m_smResult), EControl.CodCmp, EControl.DesCmp, "deleted");
+            lstControlesReparaciones.FillFromStrLEntidad(Bll.Controles.UpFull(true, m_smResult), EControl.CodCmp, EControl.DesCmp, "deleted");
             // chequeamos que haya salido todo bien
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
@@ -327,11 +327,11 @@ namespace Mrln.Ot
             }
 
             //cambiamos el nombre del ImgGroup y activamos las opciones
-            tgrpControlesYRep.Title = "Reparaciones";
+            tgrpControlesYRep.GroupTitle = "Reparaciones";
             tgrpOpciones.Enabled = true;
 
             // Llenamos la lista con las reparaciones disponibles dada la categoria del taller.
-            Bel.LEReparaciones reparaciones = Bll.Tablas.RepUpFull(true, ref m_smResult);
+            Bel.LEReparaciones reparaciones = Bll.Tablas.RepUpFull(true, m_smResult);
             lstControlesReparaciones.FillFromStrLEntidad(reparaciones, Bel.EReparacion.CodCmp, EReparacion.DesCmp, "deleted");
 
             // chequeamos que haya salido todo bien
@@ -368,10 +368,10 @@ namespace Mrln.Ot
             if (rbControles.Checked)
             {
                 // Obtenemos todas las reparaciones de el control seleccionado y el Control selecionado
-                Bel.LEControlesRepa l_leControlReparaciones = Bll.Controles.CrepFGet(lstControlesReparaciones.SelectedStrCode, true, ref m_smResult);
+                Bel.LEControlesRepa l_leControlReparaciones = Bll.Controles.CrepFGet(lstControlesReparaciones.SelectedStrCode, true, m_smResult);
                 if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
-                Bel.EControl l_entControlSeleccionado = Bll.Controles.Get(lstControlesReparaciones.SelectedStrCode, true , ref m_smResult);
+                Bel.EControl l_entControlSeleccionado = Bll.Controles.Get(lstControlesReparaciones.SelectedStrCode, true , m_smResult);
                 if (MsgRuts.AnalizeError(this, m_smResult)) return;
                 
                 // Declaramos un contador para que numero en el agrupador
@@ -456,10 +456,10 @@ namespace Mrln.Ot
             if (!m_estadoMofidicar)
             {
                 // Graba OrdenNueva con sus items
-                m_eOrdenNuevaCreada = CrearOrdenDeTrabajo(m_leOTItems, ref m_smResult);
+                m_eOrdenNuevaCreada = CrearOrdenDeTrabajo(m_leOTItems, m_smResult);
                 if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
-                Bll.OrdenesTrabajo.Save(m_eOrdenNuevaCreada, ref m_smResult);
+                Bll.OrdenesTrabajo.Save(m_eOrdenNuevaCreada, m_smResult);
                 if (MsgRuts.AnalizeError(this, m_smResult)) return;
                 MsgRuts.ShowMsg(this, "La nueva orden fue agregada exitosamente");
             }
@@ -474,7 +474,7 @@ namespace Mrln.Ot
                     m_eOrdenAModificar.Codtaller = cdcTalleres.SelectedStrCode;
                     m_eOrdenAModificar.Ot_taller = cdcTalleres.SelectedItem.ToString();
                 }
-                Bll.OrdenesTrabajo.Save(m_eOrdenAModificar, ref m_smResult);
+                Bll.OrdenesTrabajo.Save(m_eOrdenAModificar, m_smResult);
                 if (MsgRuts.AnalizeError(this, m_smResult)) return;
                 MsgRuts.ShowMsg(this, "La orden fue modificada exitosamente");
             }

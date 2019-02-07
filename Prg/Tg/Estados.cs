@@ -169,7 +169,7 @@ namespace Mrln.Tg
         {
             App.ShowMsg("Generando planilla...");
             App.InitAdvance("Excel:");
-            grdDatos.ExportToExcel(false, false, "", "Estados", ref m_smResult);
+            grdDatos.ExportToExcel(false, false, "", "Estados", m_smResult);
             App.EndAdvance();
             App.HideMsg();
         }
@@ -181,7 +181,7 @@ namespace Mrln.Tg
         {
             App.ShowMsg("Imprimiendo datos...");
             App.InitAdvance("Imprimiendo:");
-            grdDatos.Print(App.ROParams["EMPRESA"].VStr, App.Programa.Nombre,
+            grdDatos.Print(Shr.ROParam.Empresa.VStr, App.Programa.Nombre,
                            "Lista de Estados", "");
             App.EndAdvance();
             App.HideMsg();
@@ -195,7 +195,7 @@ namespace Mrln.Tg
             // Creamos una nueva entidad, pasamos a modo de edicion y
             // damos foco al primer campo
             m_entEstado= Bel.EEstado.NewEmpty();
-            m_entEstado.Cod = Bll.Tablas.EdsNextKey(ref m_smResult);
+            m_entEstado.Cod = Bll.Tablas.EdsNextKey(m_smResult);
             m_smResult.Reset();
             SwitchTo(FormModes.Edit, GridOps.DontFill);
             txtDes.Focus();
@@ -213,7 +213,7 @@ namespace Mrln.Tg
             // Obtenemos la entidad del item seleccionado en la grilla
             App.ShowMsg("Recuperando Datos...");
             m_entEstado= Bll.Tablas.EdsGet((string) grdDatos.GetMatrixValueObj(l_iRow, 1),
-                                           false, ref m_smResult);
+                                           false, m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
             // Tenemos la entidad. Pasamos a modo de edicion y damos foco
@@ -242,7 +242,7 @@ namespace Mrln.Tg
 
             // Purgamos la tabla
             App.ShowMsg("Compactando la tabla...");
-            Bll.Tablas.EdsPurge(ref m_smResult);
+            Bll.Tablas.EdsPurge(m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
             // Terminamos
@@ -279,7 +279,7 @@ namespace Mrln.Tg
             Bll.Tablas.EdsEnabled(m_entEstado.EstaBorrada,
                                   m_entEstado.Cod,
                                   m_entEstado.FxdVersion,
-                                  ref m_smResult);
+                                  m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
             // Pasamos a modo Operaciones, rellenamos la grilla y 
@@ -302,7 +302,7 @@ namespace Mrln.Tg
 
             // Tratamos de grabar la entidad
             App.ShowMsg("Grabando...");
-            Bll.Tablas.EdsSave(m_entEstado, ref m_smResult);
+            Bll.Tablas.EdsSave(m_entEstado, m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
             // Pasamos a modo Operaciones, rellenamos la grilla y 
@@ -323,7 +323,7 @@ namespace Mrln.Tg
         {
             // Recuperamos los datos para la grilla
             App.ShowMsg("Recuperando datos...");
-            Bel.LEEstados l_lentEstados= Bll.Tablas.EdsUpFull(false, ref m_smResult);
+            Bel.LEEstados l_lentEstados= Bll.Tablas.EdsUpFull(false, m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
             // Asignamos a la grilla

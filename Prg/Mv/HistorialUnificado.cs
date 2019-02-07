@@ -27,10 +27,10 @@ namespace Mrln.Mv
             InitializeComponent();
             m_smResult = new StatMsg();
 
-            ListaEntidades historial = Bll.Moviles.GetHistorialFull(p_strPatente, ref m_smResult);
+            ListaEntidades historial = Bll.Moviles.GetHistorialFull(p_strPatente, m_smResult);
 
             Bel.LERowsHistorial historialTIpado = new Bel.LERowsHistorial(historial.InternalData.Table);
-            mrHistorialUnificado.LoadData(historialTIpado,"Historial Unificado", "", "Moviles", "Historial Unificado", "Historial Unificado", "", ref m_smResult);
+            mrHistorialUnificado.LoadData(historialTIpado,"Historial Unificado", "", "Moviles", "Historial Unificado", "Historial Unificado", "", m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
             lblPatenteValue.Text = p_strPatente;

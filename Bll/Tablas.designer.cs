@@ -16,11 +16,11 @@ namespace Mrln.Bll
     //----------------------------------------------------------------------------
     //                         TNG Software BLL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 21/11/2018 18:57
+    // Fecha                    : 07/02/2019 03:30
     // Sistema                  : Mrln
     // Clase para Administrar   : Tablas Generales
     //----------------------------------------------------------------------------
-    // © 1996-2018 by TNG Software                                      Gndr 5.20
+    // © 1996-2019 by TNG Software                                      Gndr 5.20
     //----------------------------------------------------------------------------
 
     //****************************************************************************
@@ -55,7 +55,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         /// <returns>Lista-entidad: LECategorias</returns>
         public static LECategorias CatUpFull(bool p_bOnlyActive,
-                                             ref StatMsg p_smResult)
+                                             StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -65,7 +65,7 @@ namespace Mrln.Bll
                 l_dbcAccess= DBRuts.GetConection(Connections.Dat);
 
                 // Pedimos los registros de la tabla
-                return CatUpfl(l_dbcAccess, p_bOnlyActive, ref p_smResult);
+                return CatUpfl(l_dbcAccess, p_bOnlyActive, p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion UpFull
@@ -87,7 +87,7 @@ namespace Mrln.Bll
         /// <returns>Entidad: ECategoria</returns>
         public static ECategoria CatGet(string p_strCod,
                                         bool p_bOnlyActive,
-                                        ref StatMsg p_smResult)
+                                        StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -103,7 +103,7 @@ namespace Mrln.Bll
                 return CatSrch(l_dbcAccess,
                                p_strCod,
                                p_bOnlyActive,
-                               ref p_smResult);
+                               p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Get
@@ -121,7 +121,7 @@ namespace Mrln.Bll
         /// </summary>
         /// <param name="p_smResult">Estado final de la operacion</param>
         /// <returns>Próxima clave</returns>
-        public static string CatNextKey(ref StatMsg p_smResult)
+        public static string CatNextKey(StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -132,7 +132,7 @@ namespace Mrln.Bll
 
                 // Pedimos la clave máxima
                 return CatGetNK(l_dbcAccess,
-                                ref p_smResult);
+                                p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion NextKey
@@ -154,7 +154,7 @@ namespace Mrln.Bll
         /// <param name="p_entCategoria">Entidad con los datos a procesar</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static void CatSave(ECategoria p_entCategoria,
-                                   ref StatMsg p_smResult)
+                                   StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -165,7 +165,7 @@ namespace Mrln.Bll
                 l_dbcAccess.BeginTransaction();
 
                 // Grabamos la entidad: ECategoria
-                CatSSav(l_dbcAccess, p_entCategoria, ref p_smResult);
+                CatSSav(l_dbcAccess, p_entCategoria, p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Save
@@ -190,7 +190,7 @@ namespace Mrln.Bll
         public static void CatEnabled(bool p_bEnable,
                                       string p_strCod,
                                       int p_iFxdVersion,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -208,13 +208,13 @@ namespace Mrln.Bll
                              p_bEnable,
                              p_strCod,
                              ref p_iFxdVersion,
-                             ref p_smResult);
+                             p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Verificamos la clave a modificar
                 CatVKey(l_dbcAccess,
                         p_strCod,
-                        ref p_smResult);
+                        p_smResult);
                 if (p_smResult.NOk) return;
 
                 // El registro tiene que existir
@@ -228,7 +228,7 @@ namespace Mrln.Bll
                 CatVVer(l_dbcAccess, 
                         p_strCod,
                         p_iFxdVersion,
-                        ref p_smResult);
+                        p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Segun el modo
@@ -236,13 +236,13 @@ namespace Mrln.Bll
                     // Hay que habilitar el registro
                     Dal.Categorias.Recall(l_dbcAccess,
                                           p_strCod,
-                                          ref p_smResult);
+                                          p_smResult);
                 }
                 else {
                     // Hay que deshabilitar el registro
                     Dal.Categorias.Delete(l_dbcAccess,
                                           p_strCod,
-                                          ref p_smResult);
+                                          p_smResult);
                 }
             }
             catch (Exception l_expData) {
@@ -267,7 +267,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static void CatRemove(string p_strCod,
                                      int p_iFxdVersion,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -284,14 +284,14 @@ namespace Mrln.Bll
                 CatRemove_f(l_dbcAccess,
                             p_strCod,
                             p_iFxdVersion,
-                            ref p_smResult);
+                            p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Borramos el registro solicitado
                 CatDrop(l_dbcAccess,
                         p_strCod,
                         p_iFxdVersion,
-                        ref p_smResult);
+                        p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Remove
@@ -311,7 +311,7 @@ namespace Mrln.Bll
         /// Compacta una tabla borrando los registros deshabilitados
         /// </summary>
         /// <param name="p_smResult">Estado final de la operacion</param>
-        public static void CatPurge(ref StatMsg p_smResult)
+        public static void CatPurge(StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -322,7 +322,7 @@ namespace Mrln.Bll
 
                 // Realizamos el borrado
                 CatPack(l_dbcAccess,
-                        ref p_smResult);
+                        p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Enabled
@@ -348,7 +348,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         /// <returns>ListaEntidad con los datos solicitados</returns>
         public static ListaEntidades CatgetByDesc(string p_strDesc,
-                                                  ref StatMsg p_smResult)
+                                                  StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -360,7 +360,7 @@ namespace Mrln.Bll
                 // Llamamos al metodo interno
                 return CatgetByDesc(l_dbcAccess,
                                     p_strDesc,
-                                    ref p_smResult);
+                                    p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion
@@ -388,7 +388,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void CatTInt(DBConn p_dbcAccess,
                                      ECategoria p_entCategoria,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             // ********
             // Validaciones de los campos sin conexion
@@ -411,7 +411,7 @@ namespace Mrln.Bll
             // ********
 
             // Llamamos a la funcion fija del usuario
-            CatTInt_f(p_dbcAccess, p_entCategoria, ref p_smResult);
+            CatTInt_f(p_dbcAccess, p_entCategoria, p_smResult);
             if (p_smResult.NOk) return;
         }
 
@@ -426,7 +426,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void CatVKey(DBConn p_dbcAccess,
                                      string p_strCod,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             // No hay errores aun
             DataSet l_dsTemp= new DataSet();
@@ -436,7 +436,7 @@ namespace Mrln.Bll
                                   false,
                                   ref l_dsTemp,
                                   "Temporal",
-                                  ref p_smResult);
+                                  p_smResult);
             if (p_smResult.NOk) return;
 
             try {
@@ -467,7 +467,7 @@ namespace Mrln.Bll
         internal static void CatVVer(DBConn p_dbcAccess,
                                      string p_strCod,
                                      int p_iFxdVersion,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             // No hay errores aun
             DataSet l_dsTemp= new DataSet();
@@ -478,7 +478,7 @@ namespace Mrln.Bll
                                       p_iFxdVersion,
                                       ref l_dsTemp,
                                       "Temporal",
-                                      ref p_smResult);
+                                      p_smResult);
             if (p_smResult.NOk) return;
 
             // Verificamos el resultado que vino
@@ -534,7 +534,7 @@ namespace Mrln.Bll
         /// <returns>Lista-entidad: LECategorias</returns>
         internal static LECategorias CatUpfl(DBConn p_dbcAccess,
                                               bool p_bOnlyActive,
-                                              ref StatMsg p_smResult)
+                                              StatMsg p_smResult)
         {
             try {
                 // Pedimos los registros de la tabla: Categorias
@@ -543,11 +543,11 @@ namespace Mrln.Bll
                 Dal.Categorias.Up(p_dbcAccess, 
                                   p_bOnlyActive,
                                   ref l_dsTemp, "Temporal",
-                                  ref p_smResult);
+                                  p_smResult);
                 if (p_smResult.NOk) return null;
 
                 // Fijamos los captions de la grilla
-                Dal.Categorias.MakeGridCaptions(ref l_dsTemp, "Temporal", ref p_smResult);
+                Dal.Categorias.MakeGridCaptions(ref l_dsTemp, "Temporal", p_smResult);
 
                 // Contruimos la lista-entidad y la devolvemos (si vino algun registro)
                 LECategorias l_lentRet= new LECategorias(l_dsTemp.Tables["Temporal"]);
@@ -572,7 +572,7 @@ namespace Mrln.Bll
         internal static ECategoria CatSrch(DBConn p_dbcAccess,
                                            string p_strCod,
                                            bool p_bOnlyActive,
-                                           ref StatMsg p_smResult)
+                                           StatMsg p_smResult)
         {
             try {
                 // Pedimos el registro de la tabla: Categorias
@@ -582,7 +582,7 @@ namespace Mrln.Bll
                                       p_strCod,
                                       p_bOnlyActive,
                                       ref l_dsTemp, "Temporal",
-                                      ref p_smResult);
+                                      p_smResult);
                 if (p_smResult.NOk) return null;
 
                 // Constuimos la entidad y la devolvemos (si vino un registro)
@@ -608,7 +608,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         /// <returns>Próxima clave</returns>
         internal static string CatGetNK(DBConn p_dbcAccess,
-                                        ref StatMsg p_smResult)
+                                        StatMsg p_smResult)
         {
             try {
                 // Pedimos la clave máxima
@@ -617,7 +617,7 @@ namespace Mrln.Bll
                 Dal.Categorias.GetMaxKey(p_dbcAccess,
                                          ref l_dsTemp,
                                          "Temporal",
-                                         ref p_smResult);
+                                         p_smResult);
                 if (p_smResult.NOk) return "";
 
                 // Si no vino nada
@@ -650,17 +650,17 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void CatSSav(DBConn p_dbcAccess,
                                      ECategoria p_entCategoria,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             try {
                 // Procesamos codigo fijo
-                CatSave_f(p_dbcAccess, ref p_entCategoria, ref p_smResult);
+                CatSave_f(p_dbcAccess, ref p_entCategoria, p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Verificamos la clave a grabar
                 CatVKey(p_dbcAccess, 
                         p_entCategoria.Cod,
-                        ref p_smResult);
+                        p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Si es una entidad nueva
@@ -673,7 +673,7 @@ namespace Mrln.Bll
                     }
 
                     // Agregamos el registro
-                    CatInsr(p_dbcAccess, p_entCategoria, ref p_smResult);
+                    CatInsr(p_dbcAccess, p_entCategoria, p_smResult);
                     return;
                 }
 
@@ -688,11 +688,11 @@ namespace Mrln.Bll
                 CatVVer(p_dbcAccess, 
                         p_entCategoria.Cod,
                         p_entCategoria.FxdVersion,
-                        ref p_smResult);
+                        p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Actualizamos el registro
-                CatUpdt(p_dbcAccess, p_entCategoria, ref p_smResult);
+                CatUpdt(p_dbcAccess, p_entCategoria, p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion SSav
@@ -708,18 +708,18 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void CatInsr(DBConn p_dbcAccess,
                                      ECategoria p_entCategoria,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             try {
                 // Validamos la integridad de la entidad
-                CatTInt(p_dbcAccess, p_entCategoria, ref p_smResult);
+                CatTInt(p_dbcAccess, p_entCategoria, p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Creamos un nuevo registro de la tabla: Categorias
                 Dal.Categorias.Insert(p_dbcAccess,
                                       p_entCategoria.Cod,
                                       p_entCategoria.Des,
-                                      ref p_smResult);
+                                      p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Insr
@@ -735,18 +735,18 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void CatUpdt(DBConn p_dbcAccess,
                                      ECategoria p_entCategoria,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             try {
                 // Validamos la integridad de la entidad
-                CatTInt(p_dbcAccess, p_entCategoria, ref p_smResult);
+                CatTInt(p_dbcAccess, p_entCategoria, p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Actualizamos un registro de la tabla: Categorias
                 Dal.Categorias.Update(p_dbcAccess,
                                       p_entCategoria.Cod,
                                       p_entCategoria.Des,
-                                      ref p_smResult);
+                                      p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Updt
@@ -764,13 +764,13 @@ namespace Mrln.Bll
         internal static void CatDrop(DBConn p_dbcAccess,
                                      string p_strCod,
                                      int p_iFxdVersion,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             try {
                 // Verificamos la clave a borrar
                 CatVKey(p_dbcAccess,
                         p_strCod,
-                        ref p_smResult);
+                        p_smResult);
                 if (p_smResult.NOk) return;
 
                 // El registro tiene que existir
@@ -784,13 +784,13 @@ namespace Mrln.Bll
                 CatVVer(p_dbcAccess, 
                         p_strCod,
                         p_iFxdVersion,
-                        ref p_smResult);
+                        p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Borramos físicamente el registro
                 Dal.Categorias.Drop(p_dbcAccess,
                                     p_strCod,
-                                    ref p_smResult);
+                                    p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Remove
@@ -804,12 +804,12 @@ namespace Mrln.Bll
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void CatPack(DBConn p_dbcAccess,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             try {
                 // Borramos los borrados lógicamente
                 Dal.Categorias.Pack(p_dbcAccess,
-                                    ref p_smResult);
+                                    p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Updt
@@ -829,7 +829,7 @@ namespace Mrln.Bll
         /// <returns>ListaEntidad con los datos solicitados</returns>
         internal static ListaEntidades CatgetByDesc(DBConn p_dbcAccess,
                                                     string p_strDesc,
-                                                    ref StatMsg p_smResult)
+                                                    StatMsg p_smResult)
         {
             try {
                 // Llamamos al metodo definido por el usuario
@@ -839,7 +839,7 @@ namespace Mrln.Bll
                                          p_strDesc,
                                          ref l_dsTemp,
                                          "Temporal",
-                                         ref p_smResult);
+                                         p_smResult);
                 if (p_smResult.NOk) return null;
 
                 // Creamos la LE y Captionamos
@@ -881,7 +881,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         /// <returns>Lista-entidad: LEDestinatariosMails</returns>
         public static LEDestinatariosMails DemUpFull(bool p_bOnlyActive,
-                                                     ref StatMsg p_smResult)
+                                                     StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -891,7 +891,7 @@ namespace Mrln.Bll
                 l_dbcAccess= DBRuts.GetConection(Connections.Dat);
 
                 // Pedimos los registros de la tabla
-                return DemUpfl(l_dbcAccess, p_bOnlyActive, ref p_smResult);
+                return DemUpfl(l_dbcAccess, p_bOnlyActive, p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion UpFull
@@ -913,7 +913,7 @@ namespace Mrln.Bll
         /// <returns>Entidad: EDestinatariosMail</returns>
         public static EDestinatariosMail DemGet(string p_strCodigo,
                                                 bool p_bOnlyActive,
-                                                ref StatMsg p_smResult)
+                                                StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -929,7 +929,7 @@ namespace Mrln.Bll
                 return DemSrch(l_dbcAccess,
                                p_strCodigo,
                                p_bOnlyActive,
-                               ref p_smResult);
+                               p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Get
@@ -947,7 +947,7 @@ namespace Mrln.Bll
         /// </summary>
         /// <param name="p_smResult">Estado final de la operacion</param>
         /// <returns>Próxima clave</returns>
-        public static string DemNextKey(ref StatMsg p_smResult)
+        public static string DemNextKey(StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -958,7 +958,7 @@ namespace Mrln.Bll
 
                 // Pedimos la clave máxima
                 return DemGetNK(l_dbcAccess,
-                                ref p_smResult);
+                                p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion NextKey
@@ -980,7 +980,7 @@ namespace Mrln.Bll
         /// <param name="p_entDestinatariosMail">Entidad con los datos a procesar</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static void DemSave(EDestinatariosMail p_entDestinatariosMail,
-                                   ref StatMsg p_smResult)
+                                   StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -991,7 +991,7 @@ namespace Mrln.Bll
                 l_dbcAccess.BeginTransaction();
 
                 // Grabamos la entidad: EDestinatariosMail
-                DemSSav(l_dbcAccess, p_entDestinatariosMail, ref p_smResult);
+                DemSSav(l_dbcAccess, p_entDestinatariosMail, p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Save
@@ -1016,7 +1016,7 @@ namespace Mrln.Bll
         public static void DemEnabled(bool p_bEnable,
                                       string p_strCodigo,
                                       int p_iFxdVersion,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -1034,13 +1034,13 @@ namespace Mrln.Bll
                              p_bEnable,
                              p_strCodigo,
                              ref p_iFxdVersion,
-                             ref p_smResult);
+                             p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Verificamos la clave a modificar
                 DemVKey(l_dbcAccess,
                         p_strCodigo,
-                        ref p_smResult);
+                        p_smResult);
                 if (p_smResult.NOk) return;
 
                 // El registro tiene que existir
@@ -1054,7 +1054,7 @@ namespace Mrln.Bll
                 DemVVer(l_dbcAccess, 
                         p_strCodigo,
                         p_iFxdVersion,
-                        ref p_smResult);
+                        p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Segun el modo
@@ -1062,13 +1062,13 @@ namespace Mrln.Bll
                     // Hay que habilitar el registro
                     Dal.DestinatariosMails.Recall(l_dbcAccess,
                                                   p_strCodigo,
-                                                  ref p_smResult);
+                                                  p_smResult);
                 }
                 else {
                     // Hay que deshabilitar el registro
                     Dal.DestinatariosMails.Delete(l_dbcAccess,
                                                   p_strCodigo,
-                                                  ref p_smResult);
+                                                  p_smResult);
                 }
             }
             catch (Exception l_expData) {
@@ -1093,7 +1093,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static void DemRemove(string p_strCodigo,
                                      int p_iFxdVersion,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -1110,14 +1110,14 @@ namespace Mrln.Bll
                 DemRemove_f(l_dbcAccess,
                             p_strCodigo,
                             p_iFxdVersion,
-                            ref p_smResult);
+                            p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Borramos el registro solicitado
                 DemDrop(l_dbcAccess,
                         p_strCodigo,
                         p_iFxdVersion,
-                        ref p_smResult);
+                        p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Remove
@@ -1137,7 +1137,7 @@ namespace Mrln.Bll
         /// Compacta una tabla borrando los registros deshabilitados
         /// </summary>
         /// <param name="p_smResult">Estado final de la operacion</param>
-        public static void DemPurge(ref StatMsg p_smResult)
+        public static void DemPurge(StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -1148,7 +1148,7 @@ namespace Mrln.Bll
 
                 // Realizamos el borrado
                 DemPack(l_dbcAccess,
-                        ref p_smResult);
+                        p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Enabled
@@ -1182,7 +1182,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void DemTInt(DBConn p_dbcAccess,
                                      EDestinatariosMail p_entDestinatariosMail,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             // ********
             // Validaciones de los campos sin conexion
@@ -1205,7 +1205,7 @@ namespace Mrln.Bll
             // ********
 
             // Llamamos a la funcion fija del usuario
-            DemTInt_f(p_dbcAccess, p_entDestinatariosMail, ref p_smResult);
+            DemTInt_f(p_dbcAccess, p_entDestinatariosMail, p_smResult);
             if (p_smResult.NOk) return;
         }
 
@@ -1220,7 +1220,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void DemVKey(DBConn p_dbcAccess,
                                      string p_strCodigo,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             // No hay errores aun
             DataSet l_dsTemp= new DataSet();
@@ -1230,7 +1230,7 @@ namespace Mrln.Bll
                                           false,
                                           ref l_dsTemp,
                                           "Temporal",
-                                          ref p_smResult);
+                                          p_smResult);
             if (p_smResult.NOk) return;
 
             try {
@@ -1261,7 +1261,7 @@ namespace Mrln.Bll
         internal static void DemVVer(DBConn p_dbcAccess,
                                      string p_strCodigo,
                                      int p_iFxdVersion,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             // No hay errores aun
             DataSet l_dsTemp= new DataSet();
@@ -1272,7 +1272,7 @@ namespace Mrln.Bll
                                               p_iFxdVersion,
                                               ref l_dsTemp,
                                               "Temporal",
-                                              ref p_smResult);
+                                              p_smResult);
             if (p_smResult.NOk) return;
 
             // Verificamos el resultado que vino
@@ -1328,7 +1328,7 @@ namespace Mrln.Bll
         /// <returns>Lista-entidad: LEDestinatariosMails</returns>
         internal static LEDestinatariosMails DemUpfl(DBConn p_dbcAccess,
                                                       bool p_bOnlyActive,
-                                                      ref StatMsg p_smResult)
+                                                      StatMsg p_smResult)
         {
             try {
                 // Pedimos los registros de la tabla: DestinatariosMails
@@ -1337,11 +1337,11 @@ namespace Mrln.Bll
                 Dal.DestinatariosMails.Up(p_dbcAccess, 
                                           p_bOnlyActive,
                                           ref l_dsTemp, "Temporal",
-                                          ref p_smResult);
+                                          p_smResult);
                 if (p_smResult.NOk) return null;
 
                 // Fijamos los captions de la grilla
-                Dal.DestinatariosMails.MakeGridCaptions(ref l_dsTemp, "Temporal", ref p_smResult);
+                Dal.DestinatariosMails.MakeGridCaptions(ref l_dsTemp, "Temporal", p_smResult);
 
                 // Contruimos la lista-entidad y la devolvemos (si vino algun registro)
                 LEDestinatariosMails l_lentRet= new LEDestinatariosMails(l_dsTemp.Tables["Temporal"]);
@@ -1366,7 +1366,7 @@ namespace Mrln.Bll
         internal static EDestinatariosMail DemSrch(DBConn p_dbcAccess,
                                                    string p_strCodigo,
                                                    bool p_bOnlyActive,
-                                                   ref StatMsg p_smResult)
+                                                   StatMsg p_smResult)
         {
             try {
                 // Pedimos el registro de la tabla: DestinatariosMails
@@ -1376,7 +1376,7 @@ namespace Mrln.Bll
                                               p_strCodigo,
                                               p_bOnlyActive,
                                               ref l_dsTemp, "Temporal",
-                                              ref p_smResult);
+                                              p_smResult);
                 if (p_smResult.NOk) return null;
 
                 // Constuimos la entidad y la devolvemos (si vino un registro)
@@ -1402,7 +1402,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         /// <returns>Próxima clave</returns>
         internal static string DemGetNK(DBConn p_dbcAccess,
-                                        ref StatMsg p_smResult)
+                                        StatMsg p_smResult)
         {
             try {
                 // Pedimos la clave máxima
@@ -1411,7 +1411,7 @@ namespace Mrln.Bll
                 Dal.DestinatariosMails.GetMaxKey(p_dbcAccess,
                                                  ref l_dsTemp,
                                                  "Temporal",
-                                                 ref p_smResult);
+                                                 p_smResult);
                 if (p_smResult.NOk) return "";
 
                 // Si no vino nada
@@ -1444,17 +1444,17 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void DemSSav(DBConn p_dbcAccess,
                                      EDestinatariosMail p_entDestinatariosMail,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             try {
                 // Procesamos codigo fijo
-                DemSave_f(p_dbcAccess, ref p_entDestinatariosMail, ref p_smResult);
+                DemSave_f(p_dbcAccess, ref p_entDestinatariosMail, p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Verificamos la clave a grabar
                 DemVKey(p_dbcAccess, 
                         p_entDestinatariosMail.Codigo,
-                        ref p_smResult);
+                        p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Si es una entidad nueva
@@ -1467,7 +1467,7 @@ namespace Mrln.Bll
                     }
 
                     // Agregamos el registro
-                    DemInsr(p_dbcAccess, p_entDestinatariosMail, ref p_smResult);
+                    DemInsr(p_dbcAccess, p_entDestinatariosMail, p_smResult);
                     return;
                 }
 
@@ -1482,11 +1482,11 @@ namespace Mrln.Bll
                 DemVVer(p_dbcAccess, 
                         p_entDestinatariosMail.Codigo,
                         p_entDestinatariosMail.FxdVersion,
-                        ref p_smResult);
+                        p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Actualizamos el registro
-                DemUpdt(p_dbcAccess, p_entDestinatariosMail, ref p_smResult);
+                DemUpdt(p_dbcAccess, p_entDestinatariosMail, p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion SSav
@@ -1502,11 +1502,11 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void DemInsr(DBConn p_dbcAccess,
                                      EDestinatariosMail p_entDestinatariosMail,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             try {
                 // Validamos la integridad de la entidad
-                DemTInt(p_dbcAccess, p_entDestinatariosMail, ref p_smResult);
+                DemTInt(p_dbcAccess, p_entDestinatariosMail, p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Creamos un nuevo registro de la tabla: DestinatariosMails
@@ -1514,7 +1514,7 @@ namespace Mrln.Bll
                                               p_entDestinatariosMail.Codigo,
                                               p_entDestinatariosMail.Descripcion,
                                               p_entDestinatariosMail.Destinatarios,
-                                              ref p_smResult);
+                                              p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Insr
@@ -1530,11 +1530,11 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void DemUpdt(DBConn p_dbcAccess,
                                      EDestinatariosMail p_entDestinatariosMail,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             try {
                 // Validamos la integridad de la entidad
-                DemTInt(p_dbcAccess, p_entDestinatariosMail, ref p_smResult);
+                DemTInt(p_dbcAccess, p_entDestinatariosMail, p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Actualizamos un registro de la tabla: DestinatariosMails
@@ -1542,7 +1542,7 @@ namespace Mrln.Bll
                                               p_entDestinatariosMail.Codigo,
                                               p_entDestinatariosMail.Descripcion,
                                               p_entDestinatariosMail.Destinatarios,
-                                              ref p_smResult);
+                                              p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Updt
@@ -1560,13 +1560,13 @@ namespace Mrln.Bll
         internal static void DemDrop(DBConn p_dbcAccess,
                                      string p_strCodigo,
                                      int p_iFxdVersion,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             try {
                 // Verificamos la clave a borrar
                 DemVKey(p_dbcAccess,
                         p_strCodigo,
-                        ref p_smResult);
+                        p_smResult);
                 if (p_smResult.NOk) return;
 
                 // El registro tiene que existir
@@ -1580,13 +1580,13 @@ namespace Mrln.Bll
                 DemVVer(p_dbcAccess, 
                         p_strCodigo,
                         p_iFxdVersion,
-                        ref p_smResult);
+                        p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Borramos físicamente el registro
                 Dal.DestinatariosMails.Drop(p_dbcAccess,
                                             p_strCodigo,
-                                            ref p_smResult);
+                                            p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Remove
@@ -1600,12 +1600,12 @@ namespace Mrln.Bll
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void DemPack(DBConn p_dbcAccess,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             try {
                 // Borramos los borrados lógicamente
                 Dal.DestinatariosMails.Pack(p_dbcAccess,
-                                            ref p_smResult);
+                                            p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Updt
@@ -1637,7 +1637,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         /// <returns>Lista-entidad: LEEquipamientos</returns>
         public static LEEquipamientos EqiUpFull(bool p_bOnlyActive,
-                                                ref StatMsg p_smResult)
+                                                StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -1647,7 +1647,7 @@ namespace Mrln.Bll
                 l_dbcAccess= DBRuts.GetConection(Connections.Dat);
 
                 // Pedimos los registros de la tabla
-                return EqiUpfl(l_dbcAccess, p_bOnlyActive, ref p_smResult);
+                return EqiUpfl(l_dbcAccess, p_bOnlyActive, p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion UpFull
@@ -1669,7 +1669,7 @@ namespace Mrln.Bll
         /// <returns>Entidad: EEquipamento</returns>
         public static EEquipamento EqiGet(string p_strCod,
                                           bool p_bOnlyActive,
-                                          ref StatMsg p_smResult)
+                                          StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -1685,7 +1685,7 @@ namespace Mrln.Bll
                 return EqiSrch(l_dbcAccess,
                                p_strCod,
                                p_bOnlyActive,
-                               ref p_smResult);
+                               p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Get
@@ -1703,7 +1703,7 @@ namespace Mrln.Bll
         /// </summary>
         /// <param name="p_smResult">Estado final de la operacion</param>
         /// <returns>Próxima clave</returns>
-        public static string EqiNextKey(ref StatMsg p_smResult)
+        public static string EqiNextKey(StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -1714,7 +1714,7 @@ namespace Mrln.Bll
 
                 // Pedimos la clave máxima
                 return EqiGetNK(l_dbcAccess,
-                                ref p_smResult);
+                                p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion NextKey
@@ -1736,7 +1736,7 @@ namespace Mrln.Bll
         /// <param name="p_entEquipamento">Entidad con los datos a procesar</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static void EqiSave(EEquipamento p_entEquipamento,
-                                   ref StatMsg p_smResult)
+                                   StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -1747,7 +1747,7 @@ namespace Mrln.Bll
                 l_dbcAccess.BeginTransaction();
 
                 // Grabamos la entidad: EEquipamento
-                EqiSSav(l_dbcAccess, p_entEquipamento, ref p_smResult);
+                EqiSSav(l_dbcAccess, p_entEquipamento, p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Save
@@ -1772,7 +1772,7 @@ namespace Mrln.Bll
         public static void EqiEnabled(bool p_bEnable,
                                       string p_strCod,
                                       int p_iFxdVersion,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -1790,13 +1790,13 @@ namespace Mrln.Bll
                              p_bEnable,
                              p_strCod,
                              ref p_iFxdVersion,
-                             ref p_smResult);
+                             p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Verificamos la clave a modificar
                 EqiVKey(l_dbcAccess,
                         p_strCod,
-                        ref p_smResult);
+                        p_smResult);
                 if (p_smResult.NOk) return;
 
                 // El registro tiene que existir
@@ -1810,7 +1810,7 @@ namespace Mrln.Bll
                 EqiVVer(l_dbcAccess, 
                         p_strCod,
                         p_iFxdVersion,
-                        ref p_smResult);
+                        p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Segun el modo
@@ -1818,13 +1818,13 @@ namespace Mrln.Bll
                     // Hay que habilitar el registro
                     Dal.Equipamiento.Recall(l_dbcAccess,
                                             p_strCod,
-                                            ref p_smResult);
+                                            p_smResult);
                 }
                 else {
                     // Hay que deshabilitar el registro
                     Dal.Equipamiento.Delete(l_dbcAccess,
                                             p_strCod,
-                                            ref p_smResult);
+                                            p_smResult);
                 }
             }
             catch (Exception l_expData) {
@@ -1849,7 +1849,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static void EqiRemove(string p_strCod,
                                      int p_iFxdVersion,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -1866,14 +1866,14 @@ namespace Mrln.Bll
                 EqiRemove_f(l_dbcAccess,
                             p_strCod,
                             p_iFxdVersion,
-                            ref p_smResult);
+                            p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Borramos el registro solicitado
                 EqiDrop(l_dbcAccess,
                         p_strCod,
                         p_iFxdVersion,
-                        ref p_smResult);
+                        p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Remove
@@ -1893,7 +1893,7 @@ namespace Mrln.Bll
         /// Compacta una tabla borrando los registros deshabilitados
         /// </summary>
         /// <param name="p_smResult">Estado final de la operacion</param>
-        public static void EqiPurge(ref StatMsg p_smResult)
+        public static void EqiPurge(StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -1904,7 +1904,7 @@ namespace Mrln.Bll
 
                 // Realizamos el borrado
                 EqiPack(l_dbcAccess,
-                        ref p_smResult);
+                        p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Enabled
@@ -1938,7 +1938,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void EqiTInt(DBConn p_dbcAccess,
                                      EEquipamento p_entEquipamento,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             // ********
             // Validaciones de los campos sin conexion
@@ -1961,7 +1961,7 @@ namespace Mrln.Bll
             // ********
 
             // Llamamos a la funcion fija del usuario
-            EqiTInt_f(p_dbcAccess, p_entEquipamento, ref p_smResult);
+            EqiTInt_f(p_dbcAccess, p_entEquipamento, p_smResult);
             if (p_smResult.NOk) return;
         }
 
@@ -1976,7 +1976,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void EqiVKey(DBConn p_dbcAccess,
                                      string p_strCod,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             // No hay errores aun
             DataSet l_dsTemp= new DataSet();
@@ -1986,7 +1986,7 @@ namespace Mrln.Bll
                                     false,
                                     ref l_dsTemp,
                                     "Temporal",
-                                    ref p_smResult);
+                                    p_smResult);
             if (p_smResult.NOk) return;
 
             try {
@@ -2017,7 +2017,7 @@ namespace Mrln.Bll
         internal static void EqiVVer(DBConn p_dbcAccess,
                                      string p_strCod,
                                      int p_iFxdVersion,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             // No hay errores aun
             DataSet l_dsTemp= new DataSet();
@@ -2028,7 +2028,7 @@ namespace Mrln.Bll
                                         p_iFxdVersion,
                                         ref l_dsTemp,
                                         "Temporal",
-                                        ref p_smResult);
+                                        p_smResult);
             if (p_smResult.NOk) return;
 
             // Verificamos el resultado que vino
@@ -2084,7 +2084,7 @@ namespace Mrln.Bll
         /// <returns>Lista-entidad: LEEquipamientos</returns>
         internal static LEEquipamientos EqiUpfl(DBConn p_dbcAccess,
                                                  bool p_bOnlyActive,
-                                                 ref StatMsg p_smResult)
+                                                 StatMsg p_smResult)
         {
             try {
                 // Pedimos los registros de la tabla: Equipamiento
@@ -2093,11 +2093,11 @@ namespace Mrln.Bll
                 Dal.Equipamiento.Up(p_dbcAccess, 
                                     p_bOnlyActive,
                                     ref l_dsTemp, "Temporal",
-                                    ref p_smResult);
+                                    p_smResult);
                 if (p_smResult.NOk) return null;
 
                 // Fijamos los captions de la grilla
-                Dal.Equipamiento.MakeGridCaptions(ref l_dsTemp, "Temporal", ref p_smResult);
+                Dal.Equipamiento.MakeGridCaptions(ref l_dsTemp, "Temporal", p_smResult);
 
                 // Contruimos la lista-entidad y la devolvemos (si vino algun registro)
                 LEEquipamientos l_lentRet= new LEEquipamientos(l_dsTemp.Tables["Temporal"]);
@@ -2122,7 +2122,7 @@ namespace Mrln.Bll
         internal static EEquipamento EqiSrch(DBConn p_dbcAccess,
                                              string p_strCod,
                                              bool p_bOnlyActive,
-                                             ref StatMsg p_smResult)
+                                             StatMsg p_smResult)
         {
             try {
                 // Pedimos el registro de la tabla: Equipamiento
@@ -2132,7 +2132,7 @@ namespace Mrln.Bll
                                         p_strCod,
                                         p_bOnlyActive,
                                         ref l_dsTemp, "Temporal",
-                                        ref p_smResult);
+                                        p_smResult);
                 if (p_smResult.NOk) return null;
 
                 // Constuimos la entidad y la devolvemos (si vino un registro)
@@ -2158,7 +2158,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         /// <returns>Próxima clave</returns>
         internal static string EqiGetNK(DBConn p_dbcAccess,
-                                        ref StatMsg p_smResult)
+                                        StatMsg p_smResult)
         {
             try {
                 // Pedimos la clave máxima
@@ -2167,7 +2167,7 @@ namespace Mrln.Bll
                 Dal.Equipamiento.GetMaxKey(p_dbcAccess,
                                            ref l_dsTemp,
                                            "Temporal",
-                                           ref p_smResult);
+                                           p_smResult);
                 if (p_smResult.NOk) return "";
 
                 // Si no vino nada
@@ -2200,17 +2200,17 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void EqiSSav(DBConn p_dbcAccess,
                                      EEquipamento p_entEquipamento,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             try {
                 // Procesamos codigo fijo
-                EqiSave_f(p_dbcAccess, ref p_entEquipamento, ref p_smResult);
+                EqiSave_f(p_dbcAccess, ref p_entEquipamento, p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Verificamos la clave a grabar
                 EqiVKey(p_dbcAccess, 
                         p_entEquipamento.Cod,
-                        ref p_smResult);
+                        p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Si es una entidad nueva
@@ -2223,7 +2223,7 @@ namespace Mrln.Bll
                     }
 
                     // Agregamos el registro
-                    EqiInsr(p_dbcAccess, p_entEquipamento, ref p_smResult);
+                    EqiInsr(p_dbcAccess, p_entEquipamento, p_smResult);
                     return;
                 }
 
@@ -2238,11 +2238,11 @@ namespace Mrln.Bll
                 EqiVVer(p_dbcAccess, 
                         p_entEquipamento.Cod,
                         p_entEquipamento.FxdVersion,
-                        ref p_smResult);
+                        p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Actualizamos el registro
-                EqiUpdt(p_dbcAccess, p_entEquipamento, ref p_smResult);
+                EqiUpdt(p_dbcAccess, p_entEquipamento, p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion SSav
@@ -2258,11 +2258,11 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void EqiInsr(DBConn p_dbcAccess,
                                      EEquipamento p_entEquipamento,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             try {
                 // Validamos la integridad de la entidad
-                EqiTInt(p_dbcAccess, p_entEquipamento, ref p_smResult);
+                EqiTInt(p_dbcAccess, p_entEquipamento, p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Creamos un nuevo registro de la tabla: Equipamiento
@@ -2270,7 +2270,7 @@ namespace Mrln.Bll
                                         p_entEquipamento.Cod,
                                         p_entEquipamento.Des,
                                         p_entEquipamento.Valor,
-                                        ref p_smResult);
+                                        p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Insr
@@ -2286,11 +2286,11 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void EqiUpdt(DBConn p_dbcAccess,
                                      EEquipamento p_entEquipamento,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             try {
                 // Validamos la integridad de la entidad
-                EqiTInt(p_dbcAccess, p_entEquipamento, ref p_smResult);
+                EqiTInt(p_dbcAccess, p_entEquipamento, p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Actualizamos un registro de la tabla: Equipamiento
@@ -2298,7 +2298,7 @@ namespace Mrln.Bll
                                         p_entEquipamento.Cod,
                                         p_entEquipamento.Des,
                                         p_entEquipamento.Valor,
-                                        ref p_smResult);
+                                        p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Updt
@@ -2316,13 +2316,13 @@ namespace Mrln.Bll
         internal static void EqiDrop(DBConn p_dbcAccess,
                                      string p_strCod,
                                      int p_iFxdVersion,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             try {
                 // Verificamos la clave a borrar
                 EqiVKey(p_dbcAccess,
                         p_strCod,
-                        ref p_smResult);
+                        p_smResult);
                 if (p_smResult.NOk) return;
 
                 // El registro tiene que existir
@@ -2336,13 +2336,13 @@ namespace Mrln.Bll
                 EqiVVer(p_dbcAccess, 
                         p_strCod,
                         p_iFxdVersion,
-                        ref p_smResult);
+                        p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Borramos físicamente el registro
                 Dal.Equipamiento.Drop(p_dbcAccess,
                                       p_strCod,
-                                      ref p_smResult);
+                                      p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Remove
@@ -2356,12 +2356,12 @@ namespace Mrln.Bll
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void EqiPack(DBConn p_dbcAccess,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             try {
                 // Borramos los borrados lógicamente
                 Dal.Equipamiento.Pack(p_dbcAccess,
-                                      ref p_smResult);
+                                      p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Updt
@@ -2393,7 +2393,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         /// <returns>Lista-entidad: LEEstaciones</returns>
         public static LEEstaciones EstUpFull(bool p_bOnlyActive,
-                                             ref StatMsg p_smResult)
+                                             StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -2403,7 +2403,7 @@ namespace Mrln.Bll
                 l_dbcAccess= DBRuts.GetConection(Connections.Dat);
 
                 // Pedimos los registros de la tabla
-                return EstUpfl(l_dbcAccess, p_bOnlyActive, ref p_smResult);
+                return EstUpfl(l_dbcAccess, p_bOnlyActive, p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion UpFull
@@ -2425,7 +2425,7 @@ namespace Mrln.Bll
         /// <returns>Entidad: EEstacion</returns>
         public static EEstacion EstGet(string p_strCod,
                                        bool p_bOnlyActive,
-                                       ref StatMsg p_smResult)
+                                       StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -2441,7 +2441,7 @@ namespace Mrln.Bll
                 return EstSrch(l_dbcAccess,
                                p_strCod,
                                p_bOnlyActive,
-                               ref p_smResult);
+                               p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Get
@@ -2459,7 +2459,7 @@ namespace Mrln.Bll
         /// </summary>
         /// <param name="p_smResult">Estado final de la operacion</param>
         /// <returns>Próxima clave</returns>
-        public static string EstNextKey(ref StatMsg p_smResult)
+        public static string EstNextKey(StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -2470,7 +2470,7 @@ namespace Mrln.Bll
 
                 // Pedimos la clave máxima
                 return EstGetNK(l_dbcAccess,
-                                ref p_smResult);
+                                p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion NextKey
@@ -2492,7 +2492,7 @@ namespace Mrln.Bll
         /// <param name="p_entEstacion">Entidad con los datos a procesar</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static void EstSave(EEstacion p_entEstacion,
-                                   ref StatMsg p_smResult)
+                                   StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -2503,7 +2503,7 @@ namespace Mrln.Bll
                 l_dbcAccess.BeginTransaction();
 
                 // Grabamos la entidad: EEstacion
-                EstSSav(l_dbcAccess, p_entEstacion, ref p_smResult);
+                EstSSav(l_dbcAccess, p_entEstacion, p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Save
@@ -2528,7 +2528,7 @@ namespace Mrln.Bll
         public static void EstEnabled(bool p_bEnable,
                                       string p_strCod,
                                       int p_iFxdVersion,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -2546,13 +2546,13 @@ namespace Mrln.Bll
                              p_bEnable,
                              p_strCod,
                              ref p_iFxdVersion,
-                             ref p_smResult);
+                             p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Verificamos la clave a modificar
                 EstVKey(l_dbcAccess,
                         p_strCod,
-                        ref p_smResult);
+                        p_smResult);
                 if (p_smResult.NOk) return;
 
                 // El registro tiene que existir
@@ -2566,7 +2566,7 @@ namespace Mrln.Bll
                 EstVVer(l_dbcAccess, 
                         p_strCod,
                         p_iFxdVersion,
-                        ref p_smResult);
+                        p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Segun el modo
@@ -2574,13 +2574,13 @@ namespace Mrln.Bll
                     // Hay que habilitar el registro
                     Dal.Estaciones.Recall(l_dbcAccess,
                                           p_strCod,
-                                          ref p_smResult);
+                                          p_smResult);
                 }
                 else {
                     // Hay que deshabilitar el registro
                     Dal.Estaciones.Delete(l_dbcAccess,
                                           p_strCod,
-                                          ref p_smResult);
+                                          p_smResult);
                 }
             }
             catch (Exception l_expData) {
@@ -2605,7 +2605,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static void EstRemove(string p_strCod,
                                      int p_iFxdVersion,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -2622,14 +2622,14 @@ namespace Mrln.Bll
                 EstRemove_f(l_dbcAccess,
                             p_strCod,
                             p_iFxdVersion,
-                            ref p_smResult);
+                            p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Borramos el registro solicitado
                 EstDrop(l_dbcAccess,
                         p_strCod,
                         p_iFxdVersion,
-                        ref p_smResult);
+                        p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Remove
@@ -2649,7 +2649,7 @@ namespace Mrln.Bll
         /// Compacta una tabla borrando los registros deshabilitados
         /// </summary>
         /// <param name="p_smResult">Estado final de la operacion</param>
-        public static void EstPurge(ref StatMsg p_smResult)
+        public static void EstPurge(StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -2660,7 +2660,7 @@ namespace Mrln.Bll
 
                 // Realizamos el borrado
                 EstPack(l_dbcAccess,
-                        ref p_smResult);
+                        p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Enabled
@@ -2694,7 +2694,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void EstTInt(DBConn p_dbcAccess,
                                      EEstacion p_entEstacion,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             // ********
             // Validaciones de los campos sin conexion
@@ -2723,7 +2723,7 @@ namespace Mrln.Bll
             // ********
 
             // Llamamos a la funcion fija del usuario
-            EstTInt_f(p_dbcAccess, p_entEstacion, ref p_smResult);
+            EstTInt_f(p_dbcAccess, p_entEstacion, p_smResult);
             if (p_smResult.NOk) return;
         }
 
@@ -2738,7 +2738,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void EstVKey(DBConn p_dbcAccess,
                                      string p_strCod,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             // No hay errores aun
             DataSet l_dsTemp= new DataSet();
@@ -2748,7 +2748,7 @@ namespace Mrln.Bll
                                   false,
                                   ref l_dsTemp,
                                   "Temporal",
-                                  ref p_smResult);
+                                  p_smResult);
             if (p_smResult.NOk) return;
 
             try {
@@ -2779,7 +2779,7 @@ namespace Mrln.Bll
         internal static void EstVVer(DBConn p_dbcAccess,
                                      string p_strCod,
                                      int p_iFxdVersion,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             // No hay errores aun
             DataSet l_dsTemp= new DataSet();
@@ -2790,7 +2790,7 @@ namespace Mrln.Bll
                                       p_iFxdVersion,
                                       ref l_dsTemp,
                                       "Temporal",
-                                      ref p_smResult);
+                                      p_smResult);
             if (p_smResult.NOk) return;
 
             // Verificamos el resultado que vino
@@ -2846,7 +2846,7 @@ namespace Mrln.Bll
         /// <returns>Lista-entidad: LEEstaciones</returns>
         internal static LEEstaciones EstUpfl(DBConn p_dbcAccess,
                                               bool p_bOnlyActive,
-                                              ref StatMsg p_smResult)
+                                              StatMsg p_smResult)
         {
             try {
                 // Pedimos los registros de la tabla: Estaciones
@@ -2855,11 +2855,11 @@ namespace Mrln.Bll
                 Dal.Estaciones.Up(p_dbcAccess, 
                                   p_bOnlyActive,
                                   ref l_dsTemp, "Temporal",
-                                  ref p_smResult);
+                                  p_smResult);
                 if (p_smResult.NOk) return null;
 
                 // Fijamos los captions de la grilla
-                Dal.Estaciones.MakeGridCaptions(ref l_dsTemp, "Temporal", ref p_smResult);
+                Dal.Estaciones.MakeGridCaptions(ref l_dsTemp, "Temporal", p_smResult);
 
                 // Contruimos la lista-entidad y la devolvemos (si vino algun registro)
                 LEEstaciones l_lentRet= new LEEstaciones(l_dsTemp.Tables["Temporal"]);
@@ -2884,7 +2884,7 @@ namespace Mrln.Bll
         internal static EEstacion EstSrch(DBConn p_dbcAccess,
                                           string p_strCod,
                                           bool p_bOnlyActive,
-                                          ref StatMsg p_smResult)
+                                          StatMsg p_smResult)
         {
             try {
                 // Pedimos el registro de la tabla: Estaciones
@@ -2894,7 +2894,7 @@ namespace Mrln.Bll
                                       p_strCod,
                                       p_bOnlyActive,
                                       ref l_dsTemp, "Temporal",
-                                      ref p_smResult);
+                                      p_smResult);
                 if (p_smResult.NOk) return null;
 
                 // Constuimos la entidad y la devolvemos (si vino un registro)
@@ -2920,7 +2920,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         /// <returns>Próxima clave</returns>
         internal static string EstGetNK(DBConn p_dbcAccess,
-                                        ref StatMsg p_smResult)
+                                        StatMsg p_smResult)
         {
             try {
                 // Pedimos la clave máxima
@@ -2929,7 +2929,7 @@ namespace Mrln.Bll
                 Dal.Estaciones.GetMaxKey(p_dbcAccess,
                                          ref l_dsTemp,
                                          "Temporal",
-                                         ref p_smResult);
+                                         p_smResult);
                 if (p_smResult.NOk) return "";
 
                 // Si no vino nada
@@ -2962,17 +2962,17 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void EstSSav(DBConn p_dbcAccess,
                                      EEstacion p_entEstacion,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             try {
                 // Procesamos codigo fijo
-                EstSave_f(p_dbcAccess, ref p_entEstacion, ref p_smResult);
+                EstSave_f(p_dbcAccess, ref p_entEstacion, p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Verificamos la clave a grabar
                 EstVKey(p_dbcAccess, 
                         p_entEstacion.Cod,
-                        ref p_smResult);
+                        p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Si es una entidad nueva
@@ -2985,7 +2985,7 @@ namespace Mrln.Bll
                     }
 
                     // Agregamos el registro
-                    EstInsr(p_dbcAccess, p_entEstacion, ref p_smResult);
+                    EstInsr(p_dbcAccess, p_entEstacion, p_smResult);
                     return;
                 }
 
@@ -3000,11 +3000,11 @@ namespace Mrln.Bll
                 EstVVer(p_dbcAccess, 
                         p_entEstacion.Cod,
                         p_entEstacion.FxdVersion,
-                        ref p_smResult);
+                        p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Actualizamos el registro
-                EstUpdt(p_dbcAccess, p_entEstacion, ref p_smResult);
+                EstUpdt(p_dbcAccess, p_entEstacion, p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion SSav
@@ -3020,11 +3020,11 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void EstInsr(DBConn p_dbcAccess,
                                      EEstacion p_entEstacion,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             try {
                 // Validamos la integridad de la entidad
-                EstTInt(p_dbcAccess, p_entEstacion, ref p_smResult);
+                EstTInt(p_dbcAccess, p_entEstacion, p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Creamos un nuevo registro de la tabla: Estaciones
@@ -3034,7 +3034,7 @@ namespace Mrln.Bll
                                       p_entEstacion.Domicilio,
                                       p_entEstacion.Contacto,
                                       p_entEstacion.Telefono,
-                                      ref p_smResult);
+                                      p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Insr
@@ -3050,11 +3050,11 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void EstUpdt(DBConn p_dbcAccess,
                                      EEstacion p_entEstacion,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             try {
                 // Validamos la integridad de la entidad
-                EstTInt(p_dbcAccess, p_entEstacion, ref p_smResult);
+                EstTInt(p_dbcAccess, p_entEstacion, p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Actualizamos un registro de la tabla: Estaciones
@@ -3064,7 +3064,7 @@ namespace Mrln.Bll
                                       p_entEstacion.Domicilio,
                                       p_entEstacion.Contacto,
                                       p_entEstacion.Telefono,
-                                      ref p_smResult);
+                                      p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Updt
@@ -3082,13 +3082,13 @@ namespace Mrln.Bll
         internal static void EstDrop(DBConn p_dbcAccess,
                                      string p_strCod,
                                      int p_iFxdVersion,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             try {
                 // Verificamos la clave a borrar
                 EstVKey(p_dbcAccess,
                         p_strCod,
-                        ref p_smResult);
+                        p_smResult);
                 if (p_smResult.NOk) return;
 
                 // El registro tiene que existir
@@ -3102,13 +3102,13 @@ namespace Mrln.Bll
                 EstVVer(p_dbcAccess, 
                         p_strCod,
                         p_iFxdVersion,
-                        ref p_smResult);
+                        p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Borramos físicamente el registro
                 Dal.Estaciones.Drop(p_dbcAccess,
                                     p_strCod,
-                                    ref p_smResult);
+                                    p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Remove
@@ -3122,12 +3122,12 @@ namespace Mrln.Bll
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void EstPack(DBConn p_dbcAccess,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             try {
                 // Borramos los borrados lógicamente
                 Dal.Estaciones.Pack(p_dbcAccess,
-                                    ref p_smResult);
+                                    p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Updt
@@ -3159,7 +3159,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         /// <returns>Lista-entidad: LEEstados</returns>
         public static LEEstados EdsUpFull(bool p_bOnlyActive,
-                                          ref StatMsg p_smResult)
+                                          StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -3169,7 +3169,7 @@ namespace Mrln.Bll
                 l_dbcAccess= DBRuts.GetConection(Connections.Dat);
 
                 // Pedimos los registros de la tabla
-                return EdsUpfl(l_dbcAccess, p_bOnlyActive, ref p_smResult);
+                return EdsUpfl(l_dbcAccess, p_bOnlyActive, p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion UpFull
@@ -3191,7 +3191,7 @@ namespace Mrln.Bll
         /// <returns>Entidad: EEstado</returns>
         public static EEstado EdsGet(string p_strCod,
                                      bool p_bOnlyActive,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -3207,7 +3207,7 @@ namespace Mrln.Bll
                 return EdsSrch(l_dbcAccess,
                                p_strCod,
                                p_bOnlyActive,
-                               ref p_smResult);
+                               p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Get
@@ -3225,7 +3225,7 @@ namespace Mrln.Bll
         /// </summary>
         /// <param name="p_smResult">Estado final de la operacion</param>
         /// <returns>Próxima clave</returns>
-        public static string EdsNextKey(ref StatMsg p_smResult)
+        public static string EdsNextKey(StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -3236,7 +3236,7 @@ namespace Mrln.Bll
 
                 // Pedimos la clave máxima
                 return EdsGetNK(l_dbcAccess,
-                                ref p_smResult);
+                                p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion NextKey
@@ -3258,7 +3258,7 @@ namespace Mrln.Bll
         /// <param name="p_entEstado">Entidad con los datos a procesar</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static void EdsSave(EEstado p_entEstado,
-                                   ref StatMsg p_smResult)
+                                   StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -3269,7 +3269,7 @@ namespace Mrln.Bll
                 l_dbcAccess.BeginTransaction();
 
                 // Grabamos la entidad: EEstado
-                EdsSSav(l_dbcAccess, p_entEstado, ref p_smResult);
+                EdsSSav(l_dbcAccess, p_entEstado, p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Save
@@ -3294,7 +3294,7 @@ namespace Mrln.Bll
         public static void EdsEnabled(bool p_bEnable,
                                       string p_strCod,
                                       int p_iFxdVersion,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -3312,13 +3312,13 @@ namespace Mrln.Bll
                              p_bEnable,
                              p_strCod,
                              ref p_iFxdVersion,
-                             ref p_smResult);
+                             p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Verificamos la clave a modificar
                 EdsVKey(l_dbcAccess,
                         p_strCod,
-                        ref p_smResult);
+                        p_smResult);
                 if (p_smResult.NOk) return;
 
                 // El registro tiene que existir
@@ -3332,7 +3332,7 @@ namespace Mrln.Bll
                 EdsVVer(l_dbcAccess, 
                         p_strCod,
                         p_iFxdVersion,
-                        ref p_smResult);
+                        p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Segun el modo
@@ -3340,13 +3340,13 @@ namespace Mrln.Bll
                     // Hay que habilitar el registro
                     Dal.Estados.Recall(l_dbcAccess,
                                        p_strCod,
-                                       ref p_smResult);
+                                       p_smResult);
                 }
                 else {
                     // Hay que deshabilitar el registro
                     Dal.Estados.Delete(l_dbcAccess,
                                        p_strCod,
-                                       ref p_smResult);
+                                       p_smResult);
                 }
             }
             catch (Exception l_expData) {
@@ -3371,7 +3371,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static void EdsRemove(string p_strCod,
                                      int p_iFxdVersion,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -3388,14 +3388,14 @@ namespace Mrln.Bll
                 EdsRemove_f(l_dbcAccess,
                             p_strCod,
                             p_iFxdVersion,
-                            ref p_smResult);
+                            p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Borramos el registro solicitado
                 EdsDrop(l_dbcAccess,
                         p_strCod,
                         p_iFxdVersion,
-                        ref p_smResult);
+                        p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Remove
@@ -3415,7 +3415,7 @@ namespace Mrln.Bll
         /// Compacta una tabla borrando los registros deshabilitados
         /// </summary>
         /// <param name="p_smResult">Estado final de la operacion</param>
-        public static void EdsPurge(ref StatMsg p_smResult)
+        public static void EdsPurge(StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -3426,7 +3426,7 @@ namespace Mrln.Bll
 
                 // Realizamos el borrado
                 EdsPack(l_dbcAccess,
-                        ref p_smResult);
+                        p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Enabled
@@ -3460,7 +3460,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void EdsTInt(DBConn p_dbcAccess,
                                      EEstado p_entEstado,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             // ********
             // Validaciones de los campos sin conexion
@@ -3492,7 +3492,7 @@ namespace Mrln.Bll
             // ********
 
             // Llamamos a la funcion fija del usuario
-            EdsTInt_f(p_dbcAccess, p_entEstado, ref p_smResult);
+            EdsTInt_f(p_dbcAccess, p_entEstado, p_smResult);
             if (p_smResult.NOk) return;
         }
 
@@ -3507,7 +3507,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void EdsVKey(DBConn p_dbcAccess,
                                      string p_strCod,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             // No hay errores aun
             DataSet l_dsTemp= new DataSet();
@@ -3517,7 +3517,7 @@ namespace Mrln.Bll
                                false,
                                ref l_dsTemp,
                                "Temporal",
-                               ref p_smResult);
+                               p_smResult);
             if (p_smResult.NOk) return;
 
             try {
@@ -3548,7 +3548,7 @@ namespace Mrln.Bll
         internal static void EdsVVer(DBConn p_dbcAccess,
                                      string p_strCod,
                                      int p_iFxdVersion,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             // No hay errores aun
             DataSet l_dsTemp= new DataSet();
@@ -3559,7 +3559,7 @@ namespace Mrln.Bll
                                    p_iFxdVersion,
                                    ref l_dsTemp,
                                    "Temporal",
-                                   ref p_smResult);
+                                   p_smResult);
             if (p_smResult.NOk) return;
 
             // Verificamos el resultado que vino
@@ -3615,7 +3615,7 @@ namespace Mrln.Bll
         /// <returns>Lista-entidad: LEEstados</returns>
         internal static LEEstados EdsUpfl(DBConn p_dbcAccess,
                                            bool p_bOnlyActive,
-                                           ref StatMsg p_smResult)
+                                           StatMsg p_smResult)
         {
             try {
                 // Pedimos los registros de la tabla: Estados
@@ -3624,11 +3624,11 @@ namespace Mrln.Bll
                 Dal.Estados.Up(p_dbcAccess, 
                                p_bOnlyActive,
                                ref l_dsTemp, "Temporal",
-                               ref p_smResult);
+                               p_smResult);
                 if (p_smResult.NOk) return null;
 
                 // Fijamos los captions de la grilla
-                Dal.Estados.MakeGridCaptions(ref l_dsTemp, "Temporal", ref p_smResult);
+                Dal.Estados.MakeGridCaptions(ref l_dsTemp, "Temporal", p_smResult);
 
                 // Contruimos la lista-entidad y la devolvemos (si vino algun registro)
                 LEEstados l_lentRet= new LEEstados(l_dsTemp.Tables["Temporal"]);
@@ -3653,7 +3653,7 @@ namespace Mrln.Bll
         internal static EEstado EdsSrch(DBConn p_dbcAccess,
                                         string p_strCod,
                                         bool p_bOnlyActive,
-                                        ref StatMsg p_smResult)
+                                        StatMsg p_smResult)
         {
             try {
                 // Pedimos el registro de la tabla: Estados
@@ -3663,7 +3663,7 @@ namespace Mrln.Bll
                                    p_strCod,
                                    p_bOnlyActive,
                                    ref l_dsTemp, "Temporal",
-                                   ref p_smResult);
+                                   p_smResult);
                 if (p_smResult.NOk) return null;
 
                 // Constuimos la entidad y la devolvemos (si vino un registro)
@@ -3689,7 +3689,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         /// <returns>Próxima clave</returns>
         internal static string EdsGetNK(DBConn p_dbcAccess,
-                                        ref StatMsg p_smResult)
+                                        StatMsg p_smResult)
         {
             try {
                 // Pedimos la clave máxima
@@ -3698,7 +3698,7 @@ namespace Mrln.Bll
                 Dal.Estados.GetMaxKey(p_dbcAccess,
                                       ref l_dsTemp,
                                       "Temporal",
-                                      ref p_smResult);
+                                      p_smResult);
                 if (p_smResult.NOk) return "";
 
                 // Si no vino nada
@@ -3731,17 +3731,17 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void EdsSSav(DBConn p_dbcAccess,
                                      EEstado p_entEstado,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             try {
                 // Procesamos codigo fijo
-                EdsSave_f(p_dbcAccess, ref p_entEstado, ref p_smResult);
+                EdsSave_f(p_dbcAccess, ref p_entEstado, p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Verificamos la clave a grabar
                 EdsVKey(p_dbcAccess, 
                         p_entEstado.Cod,
-                        ref p_smResult);
+                        p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Si es una entidad nueva
@@ -3754,7 +3754,7 @@ namespace Mrln.Bll
                     }
 
                     // Agregamos el registro
-                    EdsInsr(p_dbcAccess, p_entEstado, ref p_smResult);
+                    EdsInsr(p_dbcAccess, p_entEstado, p_smResult);
                     return;
                 }
 
@@ -3769,11 +3769,11 @@ namespace Mrln.Bll
                 EdsVVer(p_dbcAccess, 
                         p_entEstado.Cod,
                         p_entEstado.FxdVersion,
-                        ref p_smResult);
+                        p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Actualizamos el registro
-                EdsUpdt(p_dbcAccess, p_entEstado, ref p_smResult);
+                EdsUpdt(p_dbcAccess, p_entEstado, p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion SSav
@@ -3789,11 +3789,11 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void EdsInsr(DBConn p_dbcAccess,
                                      EEstado p_entEstado,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             try {
                 // Validamos la integridad de la entidad
-                EdsTInt(p_dbcAccess, p_entEstado, ref p_smResult);
+                EdsTInt(p_dbcAccess, p_entEstado, p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Creamos un nuevo registro de la tabla: Estados
@@ -3802,7 +3802,7 @@ namespace Mrln.Bll
                                    p_entEstado.Des,
                                    p_entEstado.Txtcontingencia,
                                    p_entEstado.Operativo,
-                                   ref p_smResult);
+                                   p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Insr
@@ -3818,11 +3818,11 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void EdsUpdt(DBConn p_dbcAccess,
                                      EEstado p_entEstado,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             try {
                 // Validamos la integridad de la entidad
-                EdsTInt(p_dbcAccess, p_entEstado, ref p_smResult);
+                EdsTInt(p_dbcAccess, p_entEstado, p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Actualizamos un registro de la tabla: Estados
@@ -3831,7 +3831,7 @@ namespace Mrln.Bll
                                    p_entEstado.Des,
                                    p_entEstado.Txtcontingencia,
                                    p_entEstado.Operativo,
-                                   ref p_smResult);
+                                   p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Updt
@@ -3849,13 +3849,13 @@ namespace Mrln.Bll
         internal static void EdsDrop(DBConn p_dbcAccess,
                                      string p_strCod,
                                      int p_iFxdVersion,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             try {
                 // Verificamos la clave a borrar
                 EdsVKey(p_dbcAccess,
                         p_strCod,
-                        ref p_smResult);
+                        p_smResult);
                 if (p_smResult.NOk) return;
 
                 // El registro tiene que existir
@@ -3869,13 +3869,13 @@ namespace Mrln.Bll
                 EdsVVer(p_dbcAccess, 
                         p_strCod,
                         p_iFxdVersion,
-                        ref p_smResult);
+                        p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Borramos físicamente el registro
                 Dal.Estados.Drop(p_dbcAccess,
                                  p_strCod,
-                                 ref p_smResult);
+                                 p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Remove
@@ -3889,12 +3889,12 @@ namespace Mrln.Bll
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void EdsPack(DBConn p_dbcAccess,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             try {
                 // Borramos los borrados lógicamente
                 Dal.Estados.Pack(p_dbcAccess,
-                                 ref p_smResult);
+                                 p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Updt
@@ -3926,7 +3926,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         /// <returns>Lista-entidad: LEMarcas</returns>
         public static LEMarcas MrcUpFull(bool p_bOnlyActive,
-                                         ref StatMsg p_smResult)
+                                         StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -3936,7 +3936,7 @@ namespace Mrln.Bll
                 l_dbcAccess= DBRuts.GetConection(Connections.Dat);
 
                 // Pedimos los registros de la tabla
-                return MrcUpfl(l_dbcAccess, p_bOnlyActive, ref p_smResult);
+                return MrcUpfl(l_dbcAccess, p_bOnlyActive, p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion UpFull
@@ -3958,7 +3958,7 @@ namespace Mrln.Bll
         /// <returns>Entidad: EMarca</returns>
         public static EMarca MrcGet(string p_strCodigo,
                                     bool p_bOnlyActive,
-                                    ref StatMsg p_smResult)
+                                    StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -3974,7 +3974,7 @@ namespace Mrln.Bll
                 return MrcSrch(l_dbcAccess,
                                p_strCodigo,
                                p_bOnlyActive,
-                               ref p_smResult);
+                               p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Get
@@ -3992,7 +3992,7 @@ namespace Mrln.Bll
         /// </summary>
         /// <param name="p_smResult">Estado final de la operacion</param>
         /// <returns>Próxima clave</returns>
-        public static string MrcNextKey(ref StatMsg p_smResult)
+        public static string MrcNextKey(StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -4003,7 +4003,7 @@ namespace Mrln.Bll
 
                 // Pedimos la clave máxima
                 return MrcGetNK(l_dbcAccess,
-                                ref p_smResult);
+                                p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion NextKey
@@ -4025,7 +4025,7 @@ namespace Mrln.Bll
         /// <param name="p_entMarca">Entidad con los datos a procesar</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static void MrcSave(EMarca p_entMarca,
-                                   ref StatMsg p_smResult)
+                                   StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -4036,7 +4036,7 @@ namespace Mrln.Bll
                 l_dbcAccess.BeginTransaction();
 
                 // Grabamos la entidad: EMarca
-                MrcSSav(l_dbcAccess, p_entMarca, ref p_smResult);
+                MrcSSav(l_dbcAccess, p_entMarca, p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Save
@@ -4061,7 +4061,7 @@ namespace Mrln.Bll
         public static void MrcEnabled(bool p_bEnable,
                                       string p_strCodigo,
                                       int p_iFxdVersion,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -4079,13 +4079,13 @@ namespace Mrln.Bll
                              p_bEnable,
                              p_strCodigo,
                              ref p_iFxdVersion,
-                             ref p_smResult);
+                             p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Verificamos la clave a modificar
                 MrcVKey(l_dbcAccess,
                         p_strCodigo,
-                        ref p_smResult);
+                        p_smResult);
                 if (p_smResult.NOk) return;
 
                 // El registro tiene que existir
@@ -4099,7 +4099,7 @@ namespace Mrln.Bll
                 MrcVVer(l_dbcAccess, 
                         p_strCodigo,
                         p_iFxdVersion,
-                        ref p_smResult);
+                        p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Segun el modo
@@ -4107,13 +4107,13 @@ namespace Mrln.Bll
                     // Hay que habilitar el registro
                     Dal.Marcas.Recall(l_dbcAccess,
                                       p_strCodigo,
-                                      ref p_smResult);
+                                      p_smResult);
                 }
                 else {
                     // Hay que deshabilitar el registro
                     Dal.Marcas.Delete(l_dbcAccess,
                                       p_strCodigo,
-                                      ref p_smResult);
+                                      p_smResult);
                 }
             }
             catch (Exception l_expData) {
@@ -4138,7 +4138,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static void MrcRemove(string p_strCodigo,
                                      int p_iFxdVersion,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -4155,14 +4155,14 @@ namespace Mrln.Bll
                 MrcRemove_f(l_dbcAccess,
                             p_strCodigo,
                             p_iFxdVersion,
-                            ref p_smResult);
+                            p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Borramos el registro solicitado
                 MrcDrop(l_dbcAccess,
                         p_strCodigo,
                         p_iFxdVersion,
-                        ref p_smResult);
+                        p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Remove
@@ -4182,7 +4182,7 @@ namespace Mrln.Bll
         /// Compacta una tabla borrando los registros deshabilitados
         /// </summary>
         /// <param name="p_smResult">Estado final de la operacion</param>
-        public static void MrcPurge(ref StatMsg p_smResult)
+        public static void MrcPurge(StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -4193,7 +4193,7 @@ namespace Mrln.Bll
 
                 // Realizamos el borrado
                 MrcPack(l_dbcAccess,
-                        ref p_smResult);
+                        p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Enabled
@@ -4227,7 +4227,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void MrcTInt(DBConn p_dbcAccess,
                                      EMarca p_entMarca,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             // ********
             // Validaciones de los campos sin conexion
@@ -4250,7 +4250,7 @@ namespace Mrln.Bll
             // ********
 
             // Llamamos a la funcion fija del usuario
-            MrcTInt_f(p_dbcAccess, p_entMarca, ref p_smResult);
+            MrcTInt_f(p_dbcAccess, p_entMarca, p_smResult);
             if (p_smResult.NOk) return;
         }
 
@@ -4265,7 +4265,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void MrcVKey(DBConn p_dbcAccess,
                                      string p_strCodigo,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             // No hay errores aun
             DataSet l_dsTemp= new DataSet();
@@ -4275,7 +4275,7 @@ namespace Mrln.Bll
                               false,
                               ref l_dsTemp,
                               "Temporal",
-                              ref p_smResult);
+                              p_smResult);
             if (p_smResult.NOk) return;
 
             try {
@@ -4306,7 +4306,7 @@ namespace Mrln.Bll
         internal static void MrcVVer(DBConn p_dbcAccess,
                                      string p_strCodigo,
                                      int p_iFxdVersion,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             // No hay errores aun
             DataSet l_dsTemp= new DataSet();
@@ -4317,7 +4317,7 @@ namespace Mrln.Bll
                                   p_iFxdVersion,
                                   ref l_dsTemp,
                                   "Temporal",
-                                  ref p_smResult);
+                                  p_smResult);
             if (p_smResult.NOk) return;
 
             // Verificamos el resultado que vino
@@ -4373,7 +4373,7 @@ namespace Mrln.Bll
         /// <returns>Lista-entidad: LEMarcas</returns>
         internal static LEMarcas MrcUpfl(DBConn p_dbcAccess,
                                           bool p_bOnlyActive,
-                                          ref StatMsg p_smResult)
+                                          StatMsg p_smResult)
         {
             try {
                 // Pedimos los registros de la tabla: Marcas
@@ -4382,11 +4382,11 @@ namespace Mrln.Bll
                 Dal.Marcas.Up(p_dbcAccess, 
                               p_bOnlyActive,
                               ref l_dsTemp, "Temporal",
-                              ref p_smResult);
+                              p_smResult);
                 if (p_smResult.NOk) return null;
 
                 // Fijamos los captions de la grilla
-                Dal.Marcas.MakeGridCaptions(ref l_dsTemp, "Temporal", ref p_smResult);
+                Dal.Marcas.MakeGridCaptions(ref l_dsTemp, "Temporal", p_smResult);
 
                 // Contruimos la lista-entidad y la devolvemos (si vino algun registro)
                 LEMarcas l_lentRet= new LEMarcas(l_dsTemp.Tables["Temporal"]);
@@ -4411,7 +4411,7 @@ namespace Mrln.Bll
         internal static EMarca MrcSrch(DBConn p_dbcAccess,
                                        string p_strCodigo,
                                        bool p_bOnlyActive,
-                                       ref StatMsg p_smResult)
+                                       StatMsg p_smResult)
         {
             try {
                 // Pedimos el registro de la tabla: Marcas
@@ -4421,7 +4421,7 @@ namespace Mrln.Bll
                                   p_strCodigo,
                                   p_bOnlyActive,
                                   ref l_dsTemp, "Temporal",
-                                  ref p_smResult);
+                                  p_smResult);
                 if (p_smResult.NOk) return null;
 
                 // Constuimos la entidad y la devolvemos (si vino un registro)
@@ -4447,7 +4447,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         /// <returns>Próxima clave</returns>
         internal static string MrcGetNK(DBConn p_dbcAccess,
-                                        ref StatMsg p_smResult)
+                                        StatMsg p_smResult)
         {
             try {
                 // Pedimos la clave máxima
@@ -4456,7 +4456,7 @@ namespace Mrln.Bll
                 Dal.Marcas.GetMaxKey(p_dbcAccess,
                                      ref l_dsTemp,
                                      "Temporal",
-                                     ref p_smResult);
+                                     p_smResult);
                 if (p_smResult.NOk) return "";
 
                 // Si no vino nada
@@ -4489,17 +4489,17 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void MrcSSav(DBConn p_dbcAccess,
                                      EMarca p_entMarca,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             try {
                 // Procesamos codigo fijo
-                MrcSave_f(p_dbcAccess, ref p_entMarca, ref p_smResult);
+                MrcSave_f(p_dbcAccess, ref p_entMarca, p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Verificamos la clave a grabar
                 MrcVKey(p_dbcAccess, 
                         p_entMarca.Codigo,
-                        ref p_smResult);
+                        p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Si es una entidad nueva
@@ -4512,7 +4512,7 @@ namespace Mrln.Bll
                     }
 
                     // Agregamos el registro
-                    MrcInsr(p_dbcAccess, p_entMarca, ref p_smResult);
+                    MrcInsr(p_dbcAccess, p_entMarca, p_smResult);
                     return;
                 }
 
@@ -4527,11 +4527,11 @@ namespace Mrln.Bll
                 MrcVVer(p_dbcAccess, 
                         p_entMarca.Codigo,
                         p_entMarca.FxdVersion,
-                        ref p_smResult);
+                        p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Actualizamos el registro
-                MrcUpdt(p_dbcAccess, p_entMarca, ref p_smResult);
+                MrcUpdt(p_dbcAccess, p_entMarca, p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion SSav
@@ -4547,18 +4547,18 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void MrcInsr(DBConn p_dbcAccess,
                                      EMarca p_entMarca,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             try {
                 // Validamos la integridad de la entidad
-                MrcTInt(p_dbcAccess, p_entMarca, ref p_smResult);
+                MrcTInt(p_dbcAccess, p_entMarca, p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Creamos un nuevo registro de la tabla: Marcas
                 Dal.Marcas.Insert(p_dbcAccess,
                                   p_entMarca.Codigo,
                                   p_entMarca.Descripcion,
-                                  ref p_smResult);
+                                  p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Insr
@@ -4574,18 +4574,18 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void MrcUpdt(DBConn p_dbcAccess,
                                      EMarca p_entMarca,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             try {
                 // Validamos la integridad de la entidad
-                MrcTInt(p_dbcAccess, p_entMarca, ref p_smResult);
+                MrcTInt(p_dbcAccess, p_entMarca, p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Actualizamos un registro de la tabla: Marcas
                 Dal.Marcas.Update(p_dbcAccess,
                                   p_entMarca.Codigo,
                                   p_entMarca.Descripcion,
-                                  ref p_smResult);
+                                  p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Updt
@@ -4603,13 +4603,13 @@ namespace Mrln.Bll
         internal static void MrcDrop(DBConn p_dbcAccess,
                                      string p_strCodigo,
                                      int p_iFxdVersion,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             try {
                 // Verificamos la clave a borrar
                 MrcVKey(p_dbcAccess,
                         p_strCodigo,
-                        ref p_smResult);
+                        p_smResult);
                 if (p_smResult.NOk) return;
 
                 // El registro tiene que existir
@@ -4623,13 +4623,13 @@ namespace Mrln.Bll
                 MrcVVer(p_dbcAccess, 
                         p_strCodigo,
                         p_iFxdVersion,
-                        ref p_smResult);
+                        p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Borramos físicamente el registro
                 Dal.Marcas.Drop(p_dbcAccess,
                                 p_strCodigo,
-                                ref p_smResult);
+                                p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Remove
@@ -4643,12 +4643,12 @@ namespace Mrln.Bll
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void MrcPack(DBConn p_dbcAccess,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             try {
                 // Borramos los borrados lógicamente
                 Dal.Marcas.Pack(p_dbcAccess,
-                                ref p_smResult);
+                                p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Updt
@@ -4680,7 +4680,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         /// <returns>Lista-entidad: LEModelos</returns>
         public static LEModelos ModUpFull(bool p_bOnlyActive,
-                                          ref StatMsg p_smResult)
+                                          StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -4690,7 +4690,7 @@ namespace Mrln.Bll
                 l_dbcAccess= DBRuts.GetConection(Connections.Dat);
 
                 // Pedimos los registros de la tabla
-                return ModUpfl(l_dbcAccess, p_bOnlyActive, ref p_smResult);
+                return ModUpfl(l_dbcAccess, p_bOnlyActive, p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion UpFull
@@ -4712,7 +4712,7 @@ namespace Mrln.Bll
         /// <returns>Entidad: EModelo</returns>
         public static EModelo ModGet(string p_strCod,
                                      bool p_bOnlyActive,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -4728,7 +4728,7 @@ namespace Mrln.Bll
                 return ModSrch(l_dbcAccess,
                                p_strCod,
                                p_bOnlyActive,
-                               ref p_smResult);
+                               p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Get
@@ -4746,7 +4746,7 @@ namespace Mrln.Bll
         /// </summary>
         /// <param name="p_smResult">Estado final de la operacion</param>
         /// <returns>Próxima clave</returns>
-        public static string ModNextKey(ref StatMsg p_smResult)
+        public static string ModNextKey(StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -4757,7 +4757,7 @@ namespace Mrln.Bll
 
                 // Pedimos la clave máxima
                 return ModGetNK(l_dbcAccess,
-                                ref p_smResult);
+                                p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion NextKey
@@ -4779,7 +4779,7 @@ namespace Mrln.Bll
         /// <param name="p_entModelo">Entidad con los datos a procesar</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static void ModSave(EModelo p_entModelo,
-                                   ref StatMsg p_smResult)
+                                   StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -4790,7 +4790,7 @@ namespace Mrln.Bll
                 l_dbcAccess.BeginTransaction();
 
                 // Grabamos la entidad: EModelo
-                ModSSav(l_dbcAccess, p_entModelo, ref p_smResult);
+                ModSSav(l_dbcAccess, p_entModelo, p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Save
@@ -4815,7 +4815,7 @@ namespace Mrln.Bll
         public static void ModEnabled(bool p_bEnable,
                                       string p_strCod,
                                       int p_iFxdVersion,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -4833,13 +4833,13 @@ namespace Mrln.Bll
                              p_bEnable,
                              p_strCod,
                              ref p_iFxdVersion,
-                             ref p_smResult);
+                             p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Verificamos la clave a modificar
                 ModVKey(l_dbcAccess,
                         p_strCod,
-                        ref p_smResult);
+                        p_smResult);
                 if (p_smResult.NOk) return;
 
                 // El registro tiene que existir
@@ -4853,7 +4853,7 @@ namespace Mrln.Bll
                 ModVVer(l_dbcAccess, 
                         p_strCod,
                         p_iFxdVersion,
-                        ref p_smResult);
+                        p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Segun el modo
@@ -4861,13 +4861,13 @@ namespace Mrln.Bll
                     // Hay que habilitar el registro
                     Dal.Modelos.Recall(l_dbcAccess,
                                        p_strCod,
-                                       ref p_smResult);
+                                       p_smResult);
                 }
                 else {
                     // Hay que deshabilitar el registro
                     Dal.Modelos.Delete(l_dbcAccess,
                                        p_strCod,
-                                       ref p_smResult);
+                                       p_smResult);
                 }
             }
             catch (Exception l_expData) {
@@ -4892,7 +4892,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static void ModRemove(string p_strCod,
                                      int p_iFxdVersion,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -4909,14 +4909,14 @@ namespace Mrln.Bll
                 ModRemove_f(l_dbcAccess,
                             p_strCod,
                             p_iFxdVersion,
-                            ref p_smResult);
+                            p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Borramos el registro solicitado
                 ModDrop(l_dbcAccess,
                         p_strCod,
                         p_iFxdVersion,
-                        ref p_smResult);
+                        p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Remove
@@ -4936,7 +4936,7 @@ namespace Mrln.Bll
         /// Compacta una tabla borrando los registros deshabilitados
         /// </summary>
         /// <param name="p_smResult">Estado final de la operacion</param>
-        public static void ModPurge(ref StatMsg p_smResult)
+        public static void ModPurge(StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -4947,7 +4947,7 @@ namespace Mrln.Bll
 
                 // Realizamos el borrado
                 ModPack(l_dbcAccess,
-                        ref p_smResult);
+                        p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Enabled
@@ -4981,7 +4981,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void ModTInt(DBConn p_dbcAccess,
                                      EModelo p_entModelo,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             // ********
             // Validaciones de los campos sin conexion
@@ -5005,7 +5005,7 @@ namespace Mrln.Bll
 
             Tablas.MrcVKey(p_dbcAccess,
                            p_entModelo.Codmarca,
-                           ref p_smResult);
+                           p_smResult);
             if (p_smResult.NOk) return;
 
             if (p_smResult.ICodeEs(BllCodes.KeyDsntFound)) {
@@ -5017,7 +5017,7 @@ namespace Mrln.Bll
             // Todas las validaciones fueron correctas
 
             // Llamamos a la funcion fija del usuario
-            ModTInt_f(p_dbcAccess, p_entModelo, ref p_smResult);
+            ModTInt_f(p_dbcAccess, p_entModelo, p_smResult);
             if (p_smResult.NOk) return;
         }
 
@@ -5032,7 +5032,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void ModVKey(DBConn p_dbcAccess,
                                      string p_strCod,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             // No hay errores aun
             DataSet l_dsTemp= new DataSet();
@@ -5042,7 +5042,7 @@ namespace Mrln.Bll
                                false,
                                ref l_dsTemp,
                                "Temporal",
-                               ref p_smResult);
+                               p_smResult);
             if (p_smResult.NOk) return;
 
             try {
@@ -5073,7 +5073,7 @@ namespace Mrln.Bll
         internal static void ModVVer(DBConn p_dbcAccess,
                                      string p_strCod,
                                      int p_iFxdVersion,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             // No hay errores aun
             DataSet l_dsTemp= new DataSet();
@@ -5084,7 +5084,7 @@ namespace Mrln.Bll
                                    p_iFxdVersion,
                                    ref l_dsTemp,
                                    "Temporal",
-                                   ref p_smResult);
+                                   p_smResult);
             if (p_smResult.NOk) return;
 
             // Verificamos el resultado que vino
@@ -5140,7 +5140,7 @@ namespace Mrln.Bll
         /// <returns>Lista-entidad: LEModelos</returns>
         internal static LEModelos ModUpfl(DBConn p_dbcAccess,
                                            bool p_bOnlyActive,
-                                           ref StatMsg p_smResult)
+                                           StatMsg p_smResult)
         {
             try {
                 // Pedimos los registros de la tabla: Modelos
@@ -5149,11 +5149,11 @@ namespace Mrln.Bll
                 Dal.Modelos.Up(p_dbcAccess, 
                                p_bOnlyActive,
                                ref l_dsTemp, "Temporal",
-                               ref p_smResult);
+                               p_smResult);
                 if (p_smResult.NOk) return null;
 
                 // Fijamos los captions de la grilla
-                Dal.Modelos.MakeGridCaptions(ref l_dsTemp, "Temporal", ref p_smResult);
+                Dal.Modelos.MakeGridCaptions(ref l_dsTemp, "Temporal", p_smResult);
 
                 // Contruimos la lista-entidad y la devolvemos (si vino algun registro)
                 LEModelos l_lentRet= new LEModelos(l_dsTemp.Tables["Temporal"]);
@@ -5178,7 +5178,7 @@ namespace Mrln.Bll
         internal static EModelo ModSrch(DBConn p_dbcAccess,
                                         string p_strCod,
                                         bool p_bOnlyActive,
-                                        ref StatMsg p_smResult)
+                                        StatMsg p_smResult)
         {
             try {
                 // Pedimos el registro de la tabla: Modelos
@@ -5188,7 +5188,7 @@ namespace Mrln.Bll
                                    p_strCod,
                                    p_bOnlyActive,
                                    ref l_dsTemp, "Temporal",
-                                   ref p_smResult);
+                                   p_smResult);
                 if (p_smResult.NOk) return null;
 
                 // Constuimos la entidad y la devolvemos (si vino un registro)
@@ -5214,7 +5214,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         /// <returns>Próxima clave</returns>
         internal static string ModGetNK(DBConn p_dbcAccess,
-                                        ref StatMsg p_smResult)
+                                        StatMsg p_smResult)
         {
             try {
                 // Pedimos la clave máxima
@@ -5223,7 +5223,7 @@ namespace Mrln.Bll
                 Dal.Modelos.GetMaxKey(p_dbcAccess,
                                       ref l_dsTemp,
                                       "Temporal",
-                                      ref p_smResult);
+                                      p_smResult);
                 if (p_smResult.NOk) return "";
 
                 // Si no vino nada
@@ -5256,17 +5256,17 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void ModSSav(DBConn p_dbcAccess,
                                      EModelo p_entModelo,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             try {
                 // Procesamos codigo fijo
-                ModSave_f(p_dbcAccess, ref p_entModelo, ref p_smResult);
+                ModSave_f(p_dbcAccess, ref p_entModelo, p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Verificamos la clave a grabar
                 ModVKey(p_dbcAccess, 
                         p_entModelo.Cod,
-                        ref p_smResult);
+                        p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Si es una entidad nueva
@@ -5279,7 +5279,7 @@ namespace Mrln.Bll
                     }
 
                     // Agregamos el registro
-                    ModInsr(p_dbcAccess, p_entModelo, ref p_smResult);
+                    ModInsr(p_dbcAccess, p_entModelo, p_smResult);
                     return;
                 }
 
@@ -5294,11 +5294,11 @@ namespace Mrln.Bll
                 ModVVer(p_dbcAccess, 
                         p_entModelo.Cod,
                         p_entModelo.FxdVersion,
-                        ref p_smResult);
+                        p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Actualizamos el registro
-                ModUpdt(p_dbcAccess, p_entModelo, ref p_smResult);
+                ModUpdt(p_dbcAccess, p_entModelo, p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion SSav
@@ -5314,11 +5314,11 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void ModInsr(DBConn p_dbcAccess,
                                      EModelo p_entModelo,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             try {
                 // Validamos la integridad de la entidad
-                ModTInt(p_dbcAccess, p_entModelo, ref p_smResult);
+                ModTInt(p_dbcAccess, p_entModelo, p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Creamos un nuevo registro de la tabla: Modelos
@@ -5326,7 +5326,7 @@ namespace Mrln.Bll
                                    p_entModelo.Cod,
                                    p_entModelo.Des,
                                    p_entModelo.Codmarca,
-                                   ref p_smResult);
+                                   p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Insr
@@ -5342,11 +5342,11 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void ModUpdt(DBConn p_dbcAccess,
                                      EModelo p_entModelo,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             try {
                 // Validamos la integridad de la entidad
-                ModTInt(p_dbcAccess, p_entModelo, ref p_smResult);
+                ModTInt(p_dbcAccess, p_entModelo, p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Actualizamos un registro de la tabla: Modelos
@@ -5354,7 +5354,7 @@ namespace Mrln.Bll
                                    p_entModelo.Cod,
                                    p_entModelo.Des,
                                    p_entModelo.Codmarca,
-                                   ref p_smResult);
+                                   p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Updt
@@ -5372,13 +5372,13 @@ namespace Mrln.Bll
         internal static void ModDrop(DBConn p_dbcAccess,
                                      string p_strCod,
                                      int p_iFxdVersion,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             try {
                 // Verificamos la clave a borrar
                 ModVKey(p_dbcAccess,
                         p_strCod,
-                        ref p_smResult);
+                        p_smResult);
                 if (p_smResult.NOk) return;
 
                 // El registro tiene que existir
@@ -5392,13 +5392,13 @@ namespace Mrln.Bll
                 ModVVer(p_dbcAccess, 
                         p_strCod,
                         p_iFxdVersion,
-                        ref p_smResult);
+                        p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Borramos físicamente el registro
                 Dal.Modelos.Drop(p_dbcAccess,
                                  p_strCod,
-                                 ref p_smResult);
+                                 p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Remove
@@ -5412,12 +5412,12 @@ namespace Mrln.Bll
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void ModPack(DBConn p_dbcAccess,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             try {
                 // Borramos los borrados lógicamente
                 Dal.Modelos.Pack(p_dbcAccess,
-                                 ref p_smResult);
+                                 p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Updt
@@ -5449,7 +5449,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         /// <returns>Lista-entidad: LEMotivosInfracciones</returns>
         public static LEMotivosInfracciones MtiUpFull(bool p_bOnlyActive,
-                                                      ref StatMsg p_smResult)
+                                                      StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -5459,7 +5459,7 @@ namespace Mrln.Bll
                 l_dbcAccess= DBRuts.GetConection(Connections.Dat);
 
                 // Pedimos los registros de la tabla
-                return MtiUpfl(l_dbcAccess, p_bOnlyActive, ref p_smResult);
+                return MtiUpfl(l_dbcAccess, p_bOnlyActive, p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion UpFull
@@ -5481,7 +5481,7 @@ namespace Mrln.Bll
         /// <returns>Entidad: EMotivoInfraccion</returns>
         public static EMotivoInfraccion MtiGet(string p_strCodigo,
                                                bool p_bOnlyActive,
-                                               ref StatMsg p_smResult)
+                                               StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -5497,7 +5497,7 @@ namespace Mrln.Bll
                 return MtiSrch(l_dbcAccess,
                                p_strCodigo,
                                p_bOnlyActive,
-                               ref p_smResult);
+                               p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Get
@@ -5515,7 +5515,7 @@ namespace Mrln.Bll
         /// </summary>
         /// <param name="p_smResult">Estado final de la operacion</param>
         /// <returns>Próxima clave</returns>
-        public static string MtiNextKey(ref StatMsg p_smResult)
+        public static string MtiNextKey(StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -5526,7 +5526,7 @@ namespace Mrln.Bll
 
                 // Pedimos la clave máxima
                 return MtiGetNK(l_dbcAccess,
-                                ref p_smResult);
+                                p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion NextKey
@@ -5548,7 +5548,7 @@ namespace Mrln.Bll
         /// <param name="p_entMotivoInfraccion">Entidad con los datos a procesar</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static void MtiSave(EMotivoInfraccion p_entMotivoInfraccion,
-                                   ref StatMsg p_smResult)
+                                   StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -5559,7 +5559,7 @@ namespace Mrln.Bll
                 l_dbcAccess.BeginTransaction();
 
                 // Grabamos la entidad: EMotivoInfraccion
-                MtiSSav(l_dbcAccess, p_entMotivoInfraccion, ref p_smResult);
+                MtiSSav(l_dbcAccess, p_entMotivoInfraccion, p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Save
@@ -5584,7 +5584,7 @@ namespace Mrln.Bll
         public static void MtiEnabled(bool p_bEnable,
                                       string p_strCodigo,
                                       int p_iFxdVersion,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -5602,13 +5602,13 @@ namespace Mrln.Bll
                              p_bEnable,
                              p_strCodigo,
                              ref p_iFxdVersion,
-                             ref p_smResult);
+                             p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Verificamos la clave a modificar
                 MtiVKey(l_dbcAccess,
                         p_strCodigo,
-                        ref p_smResult);
+                        p_smResult);
                 if (p_smResult.NOk) return;
 
                 // El registro tiene que existir
@@ -5622,7 +5622,7 @@ namespace Mrln.Bll
                 MtiVVer(l_dbcAccess, 
                         p_strCodigo,
                         p_iFxdVersion,
-                        ref p_smResult);
+                        p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Segun el modo
@@ -5630,13 +5630,13 @@ namespace Mrln.Bll
                     // Hay que habilitar el registro
                     Dal.MotivosInfracciones.Recall(l_dbcAccess,
                                                    p_strCodigo,
-                                                   ref p_smResult);
+                                                   p_smResult);
                 }
                 else {
                     // Hay que deshabilitar el registro
                     Dal.MotivosInfracciones.Delete(l_dbcAccess,
                                                    p_strCodigo,
-                                                   ref p_smResult);
+                                                   p_smResult);
                 }
             }
             catch (Exception l_expData) {
@@ -5661,7 +5661,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static void MtiRemove(string p_strCodigo,
                                      int p_iFxdVersion,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -5678,14 +5678,14 @@ namespace Mrln.Bll
                 MtiRemove_f(l_dbcAccess,
                             p_strCodigo,
                             p_iFxdVersion,
-                            ref p_smResult);
+                            p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Borramos el registro solicitado
                 MtiDrop(l_dbcAccess,
                         p_strCodigo,
                         p_iFxdVersion,
-                        ref p_smResult);
+                        p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Remove
@@ -5705,7 +5705,7 @@ namespace Mrln.Bll
         /// Compacta una tabla borrando los registros deshabilitados
         /// </summary>
         /// <param name="p_smResult">Estado final de la operacion</param>
-        public static void MtiPurge(ref StatMsg p_smResult)
+        public static void MtiPurge(StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -5716,7 +5716,7 @@ namespace Mrln.Bll
 
                 // Realizamos el borrado
                 MtiPack(l_dbcAccess,
-                        ref p_smResult);
+                        p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Enabled
@@ -5750,7 +5750,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void MtiTInt(DBConn p_dbcAccess,
                                      EMotivoInfraccion p_entMotivoInfraccion,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             // ********
             // Validaciones de los campos sin conexion
@@ -5773,7 +5773,7 @@ namespace Mrln.Bll
             // ********
 
             // Llamamos a la funcion fija del usuario
-            MtiTInt_f(p_dbcAccess, p_entMotivoInfraccion, ref p_smResult);
+            MtiTInt_f(p_dbcAccess, p_entMotivoInfraccion, p_smResult);
             if (p_smResult.NOk) return;
         }
 
@@ -5788,7 +5788,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void MtiVKey(DBConn p_dbcAccess,
                                      string p_strCodigo,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             // No hay errores aun
             DataSet l_dsTemp= new DataSet();
@@ -5798,7 +5798,7 @@ namespace Mrln.Bll
                                            false,
                                            ref l_dsTemp,
                                            "Temporal",
-                                           ref p_smResult);
+                                           p_smResult);
             if (p_smResult.NOk) return;
 
             try {
@@ -5829,7 +5829,7 @@ namespace Mrln.Bll
         internal static void MtiVVer(DBConn p_dbcAccess,
                                      string p_strCodigo,
                                      int p_iFxdVersion,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             // No hay errores aun
             DataSet l_dsTemp= new DataSet();
@@ -5840,7 +5840,7 @@ namespace Mrln.Bll
                                                p_iFxdVersion,
                                                ref l_dsTemp,
                                                "Temporal",
-                                               ref p_smResult);
+                                               p_smResult);
             if (p_smResult.NOk) return;
 
             // Verificamos el resultado que vino
@@ -5896,7 +5896,7 @@ namespace Mrln.Bll
         /// <returns>Lista-entidad: LEMotivosInfracciones</returns>
         internal static LEMotivosInfracciones MtiUpfl(DBConn p_dbcAccess,
                                                        bool p_bOnlyActive,
-                                                       ref StatMsg p_smResult)
+                                                       StatMsg p_smResult)
         {
             try {
                 // Pedimos los registros de la tabla: MotivosInfracciones
@@ -5905,11 +5905,11 @@ namespace Mrln.Bll
                 Dal.MotivosInfracciones.Up(p_dbcAccess, 
                                            p_bOnlyActive,
                                            ref l_dsTemp, "Temporal",
-                                           ref p_smResult);
+                                           p_smResult);
                 if (p_smResult.NOk) return null;
 
                 // Fijamos los captions de la grilla
-                Dal.MotivosInfracciones.MakeGridCaptions(ref l_dsTemp, "Temporal", ref p_smResult);
+                Dal.MotivosInfracciones.MakeGridCaptions(ref l_dsTemp, "Temporal", p_smResult);
 
                 // Contruimos la lista-entidad y la devolvemos (si vino algun registro)
                 LEMotivosInfracciones l_lentRet= new LEMotivosInfracciones(l_dsTemp.Tables["Temporal"]);
@@ -5934,7 +5934,7 @@ namespace Mrln.Bll
         internal static EMotivoInfraccion MtiSrch(DBConn p_dbcAccess,
                                                   string p_strCodigo,
                                                   bool p_bOnlyActive,
-                                                  ref StatMsg p_smResult)
+                                                  StatMsg p_smResult)
         {
             try {
                 // Pedimos el registro de la tabla: MotivosInfracciones
@@ -5944,7 +5944,7 @@ namespace Mrln.Bll
                                                p_strCodigo,
                                                p_bOnlyActive,
                                                ref l_dsTemp, "Temporal",
-                                               ref p_smResult);
+                                               p_smResult);
                 if (p_smResult.NOk) return null;
 
                 // Constuimos la entidad y la devolvemos (si vino un registro)
@@ -5970,7 +5970,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         /// <returns>Próxima clave</returns>
         internal static string MtiGetNK(DBConn p_dbcAccess,
-                                        ref StatMsg p_smResult)
+                                        StatMsg p_smResult)
         {
             try {
                 // Pedimos la clave máxima
@@ -5979,7 +5979,7 @@ namespace Mrln.Bll
                 Dal.MotivosInfracciones.GetMaxKey(p_dbcAccess,
                                                   ref l_dsTemp,
                                                   "Temporal",
-                                                  ref p_smResult);
+                                                  p_smResult);
                 if (p_smResult.NOk) return "";
 
                 // Si no vino nada
@@ -6012,17 +6012,17 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void MtiSSav(DBConn p_dbcAccess,
                                      EMotivoInfraccion p_entMotivoInfraccion,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             try {
                 // Procesamos codigo fijo
-                MtiSave_f(p_dbcAccess, ref p_entMotivoInfraccion, ref p_smResult);
+                MtiSave_f(p_dbcAccess, ref p_entMotivoInfraccion, p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Verificamos la clave a grabar
                 MtiVKey(p_dbcAccess, 
                         p_entMotivoInfraccion.Codigo,
-                        ref p_smResult);
+                        p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Si es una entidad nueva
@@ -6035,7 +6035,7 @@ namespace Mrln.Bll
                     }
 
                     // Agregamos el registro
-                    MtiInsr(p_dbcAccess, p_entMotivoInfraccion, ref p_smResult);
+                    MtiInsr(p_dbcAccess, p_entMotivoInfraccion, p_smResult);
                     return;
                 }
 
@@ -6050,11 +6050,11 @@ namespace Mrln.Bll
                 MtiVVer(p_dbcAccess, 
                         p_entMotivoInfraccion.Codigo,
                         p_entMotivoInfraccion.FxdVersion,
-                        ref p_smResult);
+                        p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Actualizamos el registro
-                MtiUpdt(p_dbcAccess, p_entMotivoInfraccion, ref p_smResult);
+                MtiUpdt(p_dbcAccess, p_entMotivoInfraccion, p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion SSav
@@ -6070,18 +6070,18 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void MtiInsr(DBConn p_dbcAccess,
                                      EMotivoInfraccion p_entMotivoInfraccion,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             try {
                 // Validamos la integridad de la entidad
-                MtiTInt(p_dbcAccess, p_entMotivoInfraccion, ref p_smResult);
+                MtiTInt(p_dbcAccess, p_entMotivoInfraccion, p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Creamos un nuevo registro de la tabla: MotivosInfracciones
                 Dal.MotivosInfracciones.Insert(p_dbcAccess,
                                                p_entMotivoInfraccion.Codigo,
                                                p_entMotivoInfraccion.Descripcion,
-                                               ref p_smResult);
+                                               p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Insr
@@ -6097,18 +6097,18 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void MtiUpdt(DBConn p_dbcAccess,
                                      EMotivoInfraccion p_entMotivoInfraccion,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             try {
                 // Validamos la integridad de la entidad
-                MtiTInt(p_dbcAccess, p_entMotivoInfraccion, ref p_smResult);
+                MtiTInt(p_dbcAccess, p_entMotivoInfraccion, p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Actualizamos un registro de la tabla: MotivosInfracciones
                 Dal.MotivosInfracciones.Update(p_dbcAccess,
                                                p_entMotivoInfraccion.Codigo,
                                                p_entMotivoInfraccion.Descripcion,
-                                               ref p_smResult);
+                                               p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Updt
@@ -6126,13 +6126,13 @@ namespace Mrln.Bll
         internal static void MtiDrop(DBConn p_dbcAccess,
                                      string p_strCodigo,
                                      int p_iFxdVersion,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             try {
                 // Verificamos la clave a borrar
                 MtiVKey(p_dbcAccess,
                         p_strCodigo,
-                        ref p_smResult);
+                        p_smResult);
                 if (p_smResult.NOk) return;
 
                 // El registro tiene que existir
@@ -6146,13 +6146,13 @@ namespace Mrln.Bll
                 MtiVVer(p_dbcAccess, 
                         p_strCodigo,
                         p_iFxdVersion,
-                        ref p_smResult);
+                        p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Borramos físicamente el registro
                 Dal.MotivosInfracciones.Drop(p_dbcAccess,
                                              p_strCodigo,
-                                             ref p_smResult);
+                                             p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Remove
@@ -6166,12 +6166,12 @@ namespace Mrln.Bll
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void MtiPack(DBConn p_dbcAccess,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             try {
                 // Borramos los borrados lógicamente
                 Dal.MotivosInfracciones.Pack(p_dbcAccess,
-                                             ref p_smResult);
+                                             p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Updt
@@ -6203,7 +6203,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         /// <returns>Lista-entidad: LEReparaciones</returns>
         public static LEReparaciones RepUpFull(bool p_bOnlyActive,
-                                               ref StatMsg p_smResult)
+                                               StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -6213,7 +6213,7 @@ namespace Mrln.Bll
                 l_dbcAccess= DBRuts.GetConection(Connections.Dat);
 
                 // Pedimos los registros de la tabla
-                return RepUpfl(l_dbcAccess, p_bOnlyActive, ref p_smResult);
+                return RepUpfl(l_dbcAccess, p_bOnlyActive, p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion UpFull
@@ -6235,7 +6235,7 @@ namespace Mrln.Bll
         /// <returns>Entidad: EReparacion</returns>
         public static EReparacion RepGet(string p_strCod,
                                          bool p_bOnlyActive,
-                                         ref StatMsg p_smResult)
+                                         StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -6251,7 +6251,7 @@ namespace Mrln.Bll
                 return RepSrch(l_dbcAccess,
                                p_strCod,
                                p_bOnlyActive,
-                               ref p_smResult);
+                               p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Get
@@ -6269,7 +6269,7 @@ namespace Mrln.Bll
         /// </summary>
         /// <param name="p_smResult">Estado final de la operacion</param>
         /// <returns>Próxima clave</returns>
-        public static string RepNextKey(ref StatMsg p_smResult)
+        public static string RepNextKey(StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -6280,7 +6280,7 @@ namespace Mrln.Bll
 
                 // Pedimos la clave máxima
                 return RepGetNK(l_dbcAccess,
-                                ref p_smResult);
+                                p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion NextKey
@@ -6302,7 +6302,7 @@ namespace Mrln.Bll
         /// <param name="p_entReparacion">Entidad con los datos a procesar</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static void RepSave(EReparacion p_entReparacion,
-                                   ref StatMsg p_smResult)
+                                   StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -6313,7 +6313,7 @@ namespace Mrln.Bll
                 l_dbcAccess.BeginTransaction();
 
                 // Grabamos la entidad: EReparacion
-                RepSSav(l_dbcAccess, p_entReparacion, ref p_smResult);
+                RepSSav(l_dbcAccess, p_entReparacion, p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Save
@@ -6338,7 +6338,7 @@ namespace Mrln.Bll
         public static void RepEnabled(bool p_bEnable,
                                       string p_strCod,
                                       int p_iFxdVersion,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -6356,13 +6356,13 @@ namespace Mrln.Bll
                              p_bEnable,
                              p_strCod,
                              ref p_iFxdVersion,
-                             ref p_smResult);
+                             p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Verificamos la clave a modificar
                 RepVKey(l_dbcAccess,
                         p_strCod,
-                        ref p_smResult);
+                        p_smResult);
                 if (p_smResult.NOk) return;
 
                 // El registro tiene que existir
@@ -6376,7 +6376,7 @@ namespace Mrln.Bll
                 RepVVer(l_dbcAccess, 
                         p_strCod,
                         p_iFxdVersion,
-                        ref p_smResult);
+                        p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Segun el modo
@@ -6384,13 +6384,13 @@ namespace Mrln.Bll
                     // Hay que habilitar el registro
                     Dal.Reparaciones.Recall(l_dbcAccess,
                                             p_strCod,
-                                            ref p_smResult);
+                                            p_smResult);
                 }
                 else {
                     // Hay que deshabilitar el registro
                     Dal.Reparaciones.Delete(l_dbcAccess,
                                             p_strCod,
-                                            ref p_smResult);
+                                            p_smResult);
                 }
             }
             catch (Exception l_expData) {
@@ -6415,7 +6415,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static void RepRemove(string p_strCod,
                                      int p_iFxdVersion,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -6432,14 +6432,14 @@ namespace Mrln.Bll
                 RepRemove_f(l_dbcAccess,
                             p_strCod,
                             p_iFxdVersion,
-                            ref p_smResult);
+                            p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Borramos el registro solicitado
                 RepDrop(l_dbcAccess,
                         p_strCod,
                         p_iFxdVersion,
-                        ref p_smResult);
+                        p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Remove
@@ -6459,7 +6459,7 @@ namespace Mrln.Bll
         /// Compacta una tabla borrando los registros deshabilitados
         /// </summary>
         /// <param name="p_smResult">Estado final de la operacion</param>
-        public static void RepPurge(ref StatMsg p_smResult)
+        public static void RepPurge(StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -6470,7 +6470,7 @@ namespace Mrln.Bll
 
                 // Realizamos el borrado
                 RepPack(l_dbcAccess,
-                        ref p_smResult);
+                        p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Enabled
@@ -6504,7 +6504,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void RepTInt(DBConn p_dbcAccess,
                                      EReparacion p_entReparacion,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             // ********
             // Validaciones de los campos sin conexion
@@ -6537,7 +6537,7 @@ namespace Mrln.Bll
 
             Tablas.CatVKey(p_dbcAccess,
                            p_entReparacion.Codcat,
-                           ref p_smResult);
+                           p_smResult);
             if (p_smResult.NOk) return;
 
             if (p_smResult.ICodeEs(BllCodes.KeyDsntFound)) {
@@ -6549,7 +6549,7 @@ namespace Mrln.Bll
             // Todas las validaciones fueron correctas
 
             // Llamamos a la funcion fija del usuario
-            RepTInt_f(p_dbcAccess, p_entReparacion, ref p_smResult);
+            RepTInt_f(p_dbcAccess, p_entReparacion, p_smResult);
             if (p_smResult.NOk) return;
         }
 
@@ -6564,7 +6564,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void RepVKey(DBConn p_dbcAccess,
                                      string p_strCod,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             // No hay errores aun
             DataSet l_dsTemp= new DataSet();
@@ -6574,7 +6574,7 @@ namespace Mrln.Bll
                                     false,
                                     ref l_dsTemp,
                                     "Temporal",
-                                    ref p_smResult);
+                                    p_smResult);
             if (p_smResult.NOk) return;
 
             try {
@@ -6605,7 +6605,7 @@ namespace Mrln.Bll
         internal static void RepVVer(DBConn p_dbcAccess,
                                      string p_strCod,
                                      int p_iFxdVersion,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             // No hay errores aun
             DataSet l_dsTemp= new DataSet();
@@ -6616,7 +6616,7 @@ namespace Mrln.Bll
                                         p_iFxdVersion,
                                         ref l_dsTemp,
                                         "Temporal",
-                                        ref p_smResult);
+                                        p_smResult);
             if (p_smResult.NOk) return;
 
             // Verificamos el resultado que vino
@@ -6672,7 +6672,7 @@ namespace Mrln.Bll
         /// <returns>Lista-entidad: LEReparaciones</returns>
         internal static LEReparaciones RepUpfl(DBConn p_dbcAccess,
                                                 bool p_bOnlyActive,
-                                                ref StatMsg p_smResult)
+                                                StatMsg p_smResult)
         {
             try {
                 // Pedimos los registros de la tabla: Reparaciones
@@ -6681,11 +6681,11 @@ namespace Mrln.Bll
                 Dal.Reparaciones.Up(p_dbcAccess, 
                                     p_bOnlyActive,
                                     ref l_dsTemp, "Temporal",
-                                    ref p_smResult);
+                                    p_smResult);
                 if (p_smResult.NOk) return null;
 
                 // Fijamos los captions de la grilla
-                Dal.Reparaciones.MakeGridCaptions(ref l_dsTemp, "Temporal", ref p_smResult);
+                Dal.Reparaciones.MakeGridCaptions(ref l_dsTemp, "Temporal", p_smResult);
 
                 // Contruimos la lista-entidad y la devolvemos (si vino algun registro)
                 LEReparaciones l_lentRet= new LEReparaciones(l_dsTemp.Tables["Temporal"]);
@@ -6710,7 +6710,7 @@ namespace Mrln.Bll
         internal static EReparacion RepSrch(DBConn p_dbcAccess,
                                             string p_strCod,
                                             bool p_bOnlyActive,
-                                            ref StatMsg p_smResult)
+                                            StatMsg p_smResult)
         {
             try {
                 // Pedimos el registro de la tabla: Reparaciones
@@ -6720,7 +6720,7 @@ namespace Mrln.Bll
                                         p_strCod,
                                         p_bOnlyActive,
                                         ref l_dsTemp, "Temporal",
-                                        ref p_smResult);
+                                        p_smResult);
                 if (p_smResult.NOk) return null;
 
                 // Constuimos la entidad y la devolvemos (si vino un registro)
@@ -6746,7 +6746,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         /// <returns>Próxima clave</returns>
         internal static string RepGetNK(DBConn p_dbcAccess,
-                                        ref StatMsg p_smResult)
+                                        StatMsg p_smResult)
         {
             try {
                 // Pedimos la clave máxima
@@ -6755,7 +6755,7 @@ namespace Mrln.Bll
                 Dal.Reparaciones.GetMaxKey(p_dbcAccess,
                                            ref l_dsTemp,
                                            "Temporal",
-                                           ref p_smResult);
+                                           p_smResult);
                 if (p_smResult.NOk) return "";
 
                 // Si no vino nada
@@ -6788,17 +6788,17 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void RepSSav(DBConn p_dbcAccess,
                                      EReparacion p_entReparacion,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             try {
                 // Procesamos codigo fijo
-                RepSave_f(p_dbcAccess, ref p_entReparacion, ref p_smResult);
+                RepSave_f(p_dbcAccess, ref p_entReparacion, p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Verificamos la clave a grabar
                 RepVKey(p_dbcAccess, 
                         p_entReparacion.Cod,
-                        ref p_smResult);
+                        p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Si es una entidad nueva
@@ -6811,7 +6811,7 @@ namespace Mrln.Bll
                     }
 
                     // Agregamos el registro
-                    RepInsr(p_dbcAccess, p_entReparacion, ref p_smResult);
+                    RepInsr(p_dbcAccess, p_entReparacion, p_smResult);
                     return;
                 }
 
@@ -6826,11 +6826,11 @@ namespace Mrln.Bll
                 RepVVer(p_dbcAccess, 
                         p_entReparacion.Cod,
                         p_entReparacion.FxdVersion,
-                        ref p_smResult);
+                        p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Actualizamos el registro
-                RepUpdt(p_dbcAccess, p_entReparacion, ref p_smResult);
+                RepUpdt(p_dbcAccess, p_entReparacion, p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion SSav
@@ -6846,11 +6846,11 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void RepInsr(DBConn p_dbcAccess,
                                      EReparacion p_entReparacion,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             try {
                 // Validamos la integridad de la entidad
-                RepTInt(p_dbcAccess, p_entReparacion, ref p_smResult);
+                RepTInt(p_dbcAccess, p_entReparacion, p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Creamos un nuevo registro de la tabla: Reparaciones
@@ -6859,7 +6859,7 @@ namespace Mrln.Bll
                                         p_entReparacion.Des,
                                         p_entReparacion.Codcat,
                                         p_entReparacion.Solicitadetalle,
-                                        ref p_smResult);
+                                        p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Insr
@@ -6875,11 +6875,11 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void RepUpdt(DBConn p_dbcAccess,
                                      EReparacion p_entReparacion,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             try {
                 // Validamos la integridad de la entidad
-                RepTInt(p_dbcAccess, p_entReparacion, ref p_smResult);
+                RepTInt(p_dbcAccess, p_entReparacion, p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Actualizamos un registro de la tabla: Reparaciones
@@ -6888,7 +6888,7 @@ namespace Mrln.Bll
                                         p_entReparacion.Des,
                                         p_entReparacion.Codcat,
                                         p_entReparacion.Solicitadetalle,
-                                        ref p_smResult);
+                                        p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Updt
@@ -6906,13 +6906,13 @@ namespace Mrln.Bll
         internal static void RepDrop(DBConn p_dbcAccess,
                                      string p_strCod,
                                      int p_iFxdVersion,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             try {
                 // Verificamos la clave a borrar
                 RepVKey(p_dbcAccess,
                         p_strCod,
-                        ref p_smResult);
+                        p_smResult);
                 if (p_smResult.NOk) return;
 
                 // El registro tiene que existir
@@ -6926,13 +6926,13 @@ namespace Mrln.Bll
                 RepVVer(p_dbcAccess, 
                         p_strCod,
                         p_iFxdVersion,
-                        ref p_smResult);
+                        p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Borramos físicamente el registro
                 Dal.Reparaciones.Drop(p_dbcAccess,
                                       p_strCod,
-                                      ref p_smResult);
+                                      p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Remove
@@ -6946,12 +6946,12 @@ namespace Mrln.Bll
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void RepPack(DBConn p_dbcAccess,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             try {
                 // Borramos los borrados lógicamente
                 Dal.Reparaciones.Pack(p_dbcAccess,
-                                      ref p_smResult);
+                                      p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Updt
@@ -6971,7 +6971,7 @@ namespace Mrln.Bll
         /// <returns>ListaEntidad con los datos solicitados</returns>
         internal static ListaEntidades RepGetbydesc(DBConn p_dbcAccess,
                                                     string p_strDes,
-                                                    ref StatMsg p_smResult)
+                                                    StatMsg p_smResult)
         {
             try {
                 // Llamamos al metodo definido por el usuario
@@ -6981,7 +6981,7 @@ namespace Mrln.Bll
                                            p_strDes,
                                            ref l_dsTemp,
                                            "Temporal",
-                                           ref p_smResult);
+                                           p_smResult);
                 if (p_smResult.NOk) return null;
 
                 // Creamos la LE y Captionamos

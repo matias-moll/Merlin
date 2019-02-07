@@ -16,11 +16,11 @@ namespace Mrln.Bll
     //----------------------------------------------------------------------------
     //                         TNG Software BLL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 21/11/2018 18:57
+    // Fecha                    : 07/02/2019 03:30
     // Sistema                  : Mrln
     // Clase para Administrar   : Moviles y Tablas Hijas
     //----------------------------------------------------------------------------
-    // © 1996-2018 by TNG Software                                      Gndr 5.20
+    // © 1996-2019 by TNG Software                                      Gndr 5.20
     //----------------------------------------------------------------------------
 
     //****************************************************************************
@@ -55,7 +55,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         /// <returns>Lista-entidad: LEMovilesAccidentes</returns>
         public static LEMovilesAccidentes MvacUpFull(bool p_bOnlyActive,
-                                                     ref StatMsg p_smResult)
+                                                     StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -65,7 +65,7 @@ namespace Mrln.Bll
                 l_dbcAccess= DBRuts.GetConection(Connections.Dat);
 
                 // Pedimos los registros de la tabla
-                return MvacUpfl(l_dbcAccess, p_bOnlyActive, ref p_smResult);
+                return MvacUpfl(l_dbcAccess, p_bOnlyActive, p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion UpFull
@@ -89,7 +89,7 @@ namespace Mrln.Bll
         public static EMovilAccidente MvacGet(string p_strPatente,
                                               DateTime p_dtFecha,
                                               bool p_bOnlyActive,
-                                              ref StatMsg p_smResult)
+                                              StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -103,7 +103,7 @@ namespace Mrln.Bll
                                 p_strPatente,
                                 p_dtFecha,
                                 p_bOnlyActive,
-                                ref p_smResult);
+                                p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Get
@@ -126,7 +126,7 @@ namespace Mrln.Bll
         /// <returns>Lista-Entidad: LEMovilesAccidentes</returns>
         public static LEMovilesAccidentes MvacFGet(string p_strPatente,
                                                    bool p_bOnlyActive,
-                                                   ref StatMsg p_smResult)
+                                                   StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -139,7 +139,7 @@ namespace Mrln.Bll
                 return MvacFSch(l_dbcAccess,
                                 p_strPatente,
                                 p_bOnlyActive,
-                                ref p_smResult);
+                                p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion FGet
@@ -161,7 +161,7 @@ namespace Mrln.Bll
         /// <param name="p_entMovilAccidente">Entidad con los datos a procesar</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static void MvacSave(EMovilAccidente p_entMovilAccidente,
-                                    ref StatMsg p_smResult)
+                                    StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -172,7 +172,7 @@ namespace Mrln.Bll
                 l_dbcAccess.BeginTransaction();
 
                 // Grabamos la entidad: EMovilAccidente
-                MvacSSav(l_dbcAccess, p_entMovilAccidente, ref p_smResult);
+                MvacSSav(l_dbcAccess, p_entMovilAccidente, p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Save
@@ -199,7 +199,7 @@ namespace Mrln.Bll
                                        string p_strPatente,
                                        DateTime p_dtFecha,
                                        int p_iFxdVersion,
-                                       ref StatMsg p_smResult)
+                                       StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -215,14 +215,14 @@ namespace Mrln.Bll
                               p_strPatente,
                               p_dtFecha,
                               ref p_iFxdVersion,
-                              ref p_smResult);
+                              p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Verificamos la clave a modificar
                 MvacVKey(l_dbcAccess,
                          p_strPatente,
                          p_dtFecha,
-                         ref p_smResult);
+                         p_smResult);
                 if (p_smResult.NOk) return;
 
                 // El registro tiene que existir
@@ -237,7 +237,7 @@ namespace Mrln.Bll
                          p_strPatente,
                          p_dtFecha,
                          p_iFxdVersion,
-                         ref p_smResult);
+                         p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Segun el modo
@@ -246,14 +246,14 @@ namespace Mrln.Bll
                     Dal.MvlAccidentes.Recall(l_dbcAccess,
                                              p_strPatente,
                                              p_dtFecha,
-                                             ref p_smResult);
+                                             p_smResult);
                 }
                 else {
                     // Hay que deshabilitar el registro
                     Dal.MvlAccidentes.Delete(l_dbcAccess,
                                              p_strPatente,
                                              p_dtFecha,
-                                             ref p_smResult);
+                                             p_smResult);
                 }
             }
             catch (Exception l_expData) {
@@ -280,7 +280,7 @@ namespace Mrln.Bll
         public static void MvacRemove(string p_strPatente,
                                       DateTime p_dtFecha,
                                       int p_iFxdVersion,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -295,7 +295,7 @@ namespace Mrln.Bll
                              p_strPatente,
                              p_dtFecha,
                              p_iFxdVersion,
-                             ref p_smResult);
+                             p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Borramos el registro solicitado
@@ -303,7 +303,7 @@ namespace Mrln.Bll
                          p_strPatente,
                          p_dtFecha,
                          p_iFxdVersion,
-                         ref p_smResult);
+                         p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Remove
@@ -323,7 +323,7 @@ namespace Mrln.Bll
         /// Compacta una tabla borrando los registros deshabilitados
         /// </summary>
         /// <param name="p_smResult">Estado final de la operacion</param>
-        public static void MvacPurge(ref StatMsg p_smResult)
+        public static void MvacPurge(StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -334,7 +334,7 @@ namespace Mrln.Bll
 
                 // Realizamos el borrado
                 MvacPack(l_dbcAccess,
-                         ref p_smResult);
+                         p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Enabled
@@ -366,7 +366,7 @@ namespace Mrln.Bll
                                                              DateTime p_dtFechafin,
                                                              string p_strPatenteini,
                                                              string p_strPatentefin,
-                                                             ref StatMsg p_smResult)
+                                                             StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -381,7 +381,7 @@ namespace Mrln.Bll
                                                p_dtFechafin,
                                                p_strPatenteini,
                                                p_strPatentefin,
-                                               ref p_smResult);
+                                               p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion
@@ -409,7 +409,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void MvacTInt(DBConn p_dbcAccess,
                                       EMovilAccidente p_entMovilAccidente,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             // ********
             // Validaciones de los campos sin conexion
@@ -440,7 +440,7 @@ namespace Mrln.Bll
             // Verificamos la clave foranea
             Moviles.VKey(p_dbcAccess,
                          p_entMovilAccidente.Patente,
-                         ref p_smResult);
+                         p_smResult);
             if (p_smResult.NOk) return;
 
             // El registro tiene que existir
@@ -451,7 +451,7 @@ namespace Mrln.Bll
             }
 
             // Llamamos a la funcion fija del usuario
-            MvacTInt_f(p_dbcAccess, p_entMovilAccidente, ref p_smResult);
+            MvacTInt_f(p_dbcAccess, p_entMovilAccidente, p_smResult);
             if (p_smResult.NOk) return;
         }
 
@@ -467,7 +467,7 @@ namespace Mrln.Bll
                                       string p_strPatente,
                                       DateTime p_dtFecha,
                                       int p_iFxdVersion,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             // No hay errores aun
             DataSet l_dsTemp= new DataSet();
@@ -479,7 +479,7 @@ namespace Mrln.Bll
                                          p_iFxdVersion,
                                          ref l_dsTemp,
                                          "Temporal",
-                                         ref p_smResult);
+                                         p_smResult);
             if (p_smResult.NOk) return;
 
             // Verificamos el resultado que vino
@@ -536,7 +536,7 @@ namespace Mrln.Bll
         internal static void MvacVKey(DBConn p_dbcAccess,
                                       string p_strPatente,
                                       DateTime p_dtFecha,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             // No hay errores aun
             DataSet l_dsTemp= new DataSet();
@@ -547,7 +547,7 @@ namespace Mrln.Bll
                                      false,
                                      ref l_dsTemp,
                                      "Temporal",
-                                     ref p_smResult);
+                                     p_smResult);
             if (p_smResult.NOk) return;
 
             try {
@@ -580,7 +580,7 @@ namespace Mrln.Bll
         /// <returns>Lista-entidad: LEMovilesAccidentes</returns>
         internal static LEMovilesAccidentes MvacUpfl(DBConn p_dbcAccess,
                                                      bool p_bOnlyActive,
-                                                     ref StatMsg p_smResult)
+                                                     StatMsg p_smResult)
         {
             try {
                 // Pedimos los registros de la tabla: MvlAccidentes
@@ -589,11 +589,11 @@ namespace Mrln.Bll
                 Dal.MvlAccidentes.Up(p_dbcAccess, 
                                      p_bOnlyActive,
                                      ref l_dsTemp, "Temporal",
-                                     ref p_smResult);
+                                     p_smResult);
                 if (p_smResult.NOk) return null;
 
                 // Fijamos los captions de la grilla
-                Dal.MvlAccidentes.MakeGridCaptions(ref l_dsTemp, "Temporal", ref p_smResult);
+                Dal.MvlAccidentes.MakeGridCaptions(ref l_dsTemp, "Temporal", p_smResult);
 
                 // Contruimos la lista-entidad y la devolvemos (si vino algun registro)
                 LEMovilesAccidentes l_lentRet= new LEMovilesAccidentes(l_dsTemp.Tables["Temporal"]);
@@ -620,7 +620,7 @@ namespace Mrln.Bll
                                                  string p_strPatente,
                                                  DateTime p_dtFecha,
                                                  bool p_bOnlyActive,
-                                                 ref StatMsg p_smResult)
+                                                 StatMsg p_smResult)
         {
             try {
                 // Pedimos el registro de la tabla: MvlAccidentes
@@ -631,7 +631,7 @@ namespace Mrln.Bll
                                          p_dtFecha,
                                          p_bOnlyActive,
                                          ref l_dsTemp, "Temporal",
-                                         ref p_smResult);
+                                         p_smResult);
                 if (p_smResult.NOk) return null;
 
                 // Constuimos la entidad y la devolvemos (si vino un registro)
@@ -661,7 +661,7 @@ namespace Mrln.Bll
         internal static LEMovilesAccidentes MvacFSch(DBConn p_dbcAccess,
                                                      string p_strPatente,
                                                      bool p_bOnlyActive,
-                                                     ref StatMsg p_smResult)
+                                                     StatMsg p_smResult)
         {
             // No hay errores aun
             DataSet l_dsTemp= new DataSet();
@@ -672,11 +672,11 @@ namespace Mrln.Bll
                                           p_strPatente,
                                           p_bOnlyActive,
                                           ref l_dsTemp, "Temporal",
-                                          ref p_smResult);
+                                          p_smResult);
                 if (p_smResult.NOk) return null;
 
                 // Fijamos los captions de la grilla
-                Dal.MvlAccidentes.MakeGridCaptions(ref l_dsTemp, "Temporal", ref p_smResult);
+                Dal.MvlAccidentes.MakeGridCaptions(ref l_dsTemp, "Temporal", p_smResult);
 
                 // Contruimos la lista-entidad y la devolvemos
                 LEMovilesAccidentes l_entRet= new LEMovilesAccidentes(l_dsTemp.Tables["Temporal"]);
@@ -701,18 +701,18 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void MvacSSav(DBConn p_dbcAccess,
                                       EMovilAccidente p_entMovilAccidente,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             try {
                 // Procesamos codigo fijo
-                MvacSave_f(p_dbcAccess, ref p_entMovilAccidente, ref p_smResult);
+                MvacSave_f(p_dbcAccess, ref p_entMovilAccidente, p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Verificamos la clave a grabar
                 MvacVKey(p_dbcAccess, 
                          p_entMovilAccidente.Patente,
                          p_entMovilAccidente.Fecha,
-                         ref p_smResult);
+                         p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Si es una entidad nueva
@@ -725,7 +725,7 @@ namespace Mrln.Bll
                     }
 
                     // Agregamos el registro
-                    MvacInsr(p_dbcAccess, p_entMovilAccidente, ref p_smResult);
+                    MvacInsr(p_dbcAccess, p_entMovilAccidente, p_smResult);
                     return;
                 }
 
@@ -741,11 +741,11 @@ namespace Mrln.Bll
                          p_entMovilAccidente.Patente,
                          p_entMovilAccidente.Fecha,
                          p_entMovilAccidente.FxdVersion,
-                         ref p_smResult);
+                         p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Actualizamos el registro
-                MvacUpdt(p_dbcAccess, p_entMovilAccidente, ref p_smResult);
+                MvacUpdt(p_dbcAccess, p_entMovilAccidente, p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion SSav
@@ -761,11 +761,11 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void MvacInsr(DBConn p_dbcAccess,
                                       EMovilAccidente p_entMovilAccidente,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             try {
                 // Validamos la integridad de la entidad
-                MvacTInt(p_dbcAccess, p_entMovilAccidente, ref p_smResult);
+                MvacTInt(p_dbcAccess, p_entMovilAccidente, p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Creamos un nuevo registro de la tabla: MvlAccidentes
@@ -777,7 +777,7 @@ namespace Mrln.Bll
                                          p_entMovilAccidente.Motivo,
                                          p_entMovilAccidente.Detalle,
                                          p_entMovilAccidente.Dotacion,
-                                         ref p_smResult);
+                                         p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Insr
@@ -793,11 +793,11 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void MvacUpdt(DBConn p_dbcAccess,
                                       EMovilAccidente p_entMovilAccidente,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             try {
                 // Validamos la integridad de la entidad
-                MvacTInt(p_dbcAccess, p_entMovilAccidente, ref p_smResult);
+                MvacTInt(p_dbcAccess, p_entMovilAccidente, p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Actualizamos un registro de la tabla: MvlAccidentes
@@ -809,7 +809,7 @@ namespace Mrln.Bll
                                          p_entMovilAccidente.Motivo,
                                          p_entMovilAccidente.Detalle,
                                          p_entMovilAccidente.Dotacion,
-                                         ref p_smResult);
+                                         p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Updt
@@ -829,14 +829,14 @@ namespace Mrln.Bll
                                       string p_strPatente,
                                       DateTime p_dtFecha,
                                       int p_iFxdVersion,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             try {
                 // Verificamos la clave a borrar
                 MvacVKey(p_dbcAccess,
                          p_strPatente,
                          p_dtFecha,
-                         ref p_smResult);
+                         p_smResult);
                 if (p_smResult.NOk) return;
 
                 // El registro tiene que existir
@@ -851,14 +851,14 @@ namespace Mrln.Bll
                          p_strPatente,
                          p_dtFecha,
                          p_iFxdVersion,
-                         ref p_smResult);
+                         p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Borramos físicamente el registro
                 Dal.MvlAccidentes.Drop(p_dbcAccess,
                                        p_strPatente,
                                        p_dtFecha,
-                                       ref p_smResult);
+                                       p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Remove
@@ -872,12 +872,12 @@ namespace Mrln.Bll
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void MvacPack(DBConn p_dbcAccess,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             try {
                 // Borramos los borrados lógicamente
                 Dal.MvlAccidentes.Pack(p_dbcAccess,
-                                       ref p_smResult);
+                                       p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Updt
@@ -896,13 +896,13 @@ namespace Mrln.Bll
         internal static void MvacSSav(DBConn p_dbcAccess,
                                       string p_strPatente,
                                       LEMovilesAccidentes p_lentMovilesAccidentes,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             try {
                 // Deshabilitamos todas las entidades existentes
                 Dal.MvlAccidentes.FDrop(p_dbcAccess,
                                         p_strPatente,
-                                        ref p_smResult);
+                                        p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Recorremos la lista de entidades
@@ -914,13 +914,13 @@ namespace Mrln.Bll
                     MvacVKey(p_dbcAccess,
                              l_entMovilAccidente.Patente,
                              l_entMovilAccidente.Fecha,
-                             ref p_smResult);
+                             p_smResult);
                     if (p_smResult.NOk) return;
 
                     // Si no existe
                     if (p_smResult.ICodeEs(BllCodes.KeyDsntFound)) {
                         // Hay que darla de alta
-                        MvacInsr(p_dbcAccess, l_entMovilAccidente, ref p_smResult);
+                        MvacInsr(p_dbcAccess, l_entMovilAccidente, p_smResult);
                         if (p_smResult.NOk) return;
                         continue;
                     }
@@ -930,12 +930,12 @@ namespace Mrln.Bll
                              l_entMovilAccidente.Patente,
                              l_entMovilAccidente.Fecha,
                              l_entMovilAccidente.FxdVersion,
-                             ref p_smResult);
+                             p_smResult);
                     if (p_smResult.NOk) return;
 
                     // El número coincide. La Actualizamos si no está borrada
                     if (!l_entMovilAccidente.EstaBorrada) {
-                        MvacUpdt(p_dbcAccess, l_entMovilAccidente, ref p_smResult);
+                        MvacUpdt(p_dbcAccess, l_entMovilAccidente, p_smResult);
                         if (p_smResult.NOk) return;
                     }
                 }
@@ -964,7 +964,7 @@ namespace Mrln.Bll
                                                                DateTime p_dtFechafin,
                                                                string p_strPatenteini,
                                                                string p_strPatentefin,
-                                                               ref StatMsg p_smResult)
+                                                               StatMsg p_smResult)
         {
             try {
                 // Llamamos al metodo definido por el usuario
@@ -977,7 +977,7 @@ namespace Mrln.Bll
                                                       p_strPatentefin,
                                                       ref l_dsTemp,
                                                       "Temporal",
-                                                      ref p_smResult);
+                                                      p_smResult);
                 if (p_smResult.NOk) return null;
 
                 // Creamos la LE y Captionamos
@@ -1019,7 +1019,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         /// <returns>Lista-entidad: LEMovilesAlertas</returns>
         public static LEMovilesAlertas MvalUpFull(bool p_bOnlyActive,
-                                                  ref StatMsg p_smResult)
+                                                  StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -1029,7 +1029,7 @@ namespace Mrln.Bll
                 l_dbcAccess= DBRuts.GetConection(Connections.Dat);
 
                 // Pedimos los registros de la tabla
-                return MvalUpfl(l_dbcAccess, p_bOnlyActive, ref p_smResult);
+                return MvalUpfl(l_dbcAccess, p_bOnlyActive, p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion UpFull
@@ -1053,7 +1053,7 @@ namespace Mrln.Bll
         public static EMovilAlerta MvalGet(string p_strPatente,
                                            int p_iNroconfigalerta,
                                            bool p_bOnlyActive,
-                                           ref StatMsg p_smResult)
+                                           StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -1067,7 +1067,7 @@ namespace Mrln.Bll
                                 p_strPatente,
                                 p_iNroconfigalerta,
                                 p_bOnlyActive,
-                                ref p_smResult);
+                                p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Get
@@ -1090,7 +1090,7 @@ namespace Mrln.Bll
         /// <returns>Lista-Entidad: LEMovilesAlertas</returns>
         public static LEMovilesAlertas MvalFGet(string p_strPatente,
                                                 bool p_bOnlyActive,
-                                                ref StatMsg p_smResult)
+                                                StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -1103,7 +1103,7 @@ namespace Mrln.Bll
                 return MvalFSch(l_dbcAccess,
                                 p_strPatente,
                                 p_bOnlyActive,
-                                ref p_smResult);
+                                p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion FGet
@@ -1125,7 +1125,7 @@ namespace Mrln.Bll
         /// <param name="p_entMovilAlerta">Entidad con los datos a procesar</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static void MvalSave(EMovilAlerta p_entMovilAlerta,
-                                    ref StatMsg p_smResult)
+                                    StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -1136,7 +1136,7 @@ namespace Mrln.Bll
                 l_dbcAccess.BeginTransaction();
 
                 // Grabamos la entidad: EMovilAlerta
-                MvalSSav(l_dbcAccess, p_entMovilAlerta, ref p_smResult);
+                MvalSSav(l_dbcAccess, p_entMovilAlerta, p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Save
@@ -1163,7 +1163,7 @@ namespace Mrln.Bll
                                        string p_strPatente,
                                        int p_iNroconfigalerta,
                                        int p_iFxdVersion,
-                                       ref StatMsg p_smResult)
+                                       StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -1179,14 +1179,14 @@ namespace Mrln.Bll
                               p_strPatente,
                               p_iNroconfigalerta,
                               ref p_iFxdVersion,
-                              ref p_smResult);
+                              p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Verificamos la clave a modificar
                 MvalVKey(l_dbcAccess,
                          p_strPatente,
                          p_iNroconfigalerta,
-                         ref p_smResult);
+                         p_smResult);
                 if (p_smResult.NOk) return;
 
                 // El registro tiene que existir
@@ -1201,7 +1201,7 @@ namespace Mrln.Bll
                          p_strPatente,
                          p_iNroconfigalerta,
                          p_iFxdVersion,
-                         ref p_smResult);
+                         p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Segun el modo
@@ -1210,14 +1210,14 @@ namespace Mrln.Bll
                     Dal.MvlAlertas.Recall(l_dbcAccess,
                                           p_strPatente,
                                           p_iNroconfigalerta,
-                                          ref p_smResult);
+                                          p_smResult);
                 }
                 else {
                     // Hay que deshabilitar el registro
                     Dal.MvlAlertas.Delete(l_dbcAccess,
                                           p_strPatente,
                                           p_iNroconfigalerta,
-                                          ref p_smResult);
+                                          p_smResult);
                 }
             }
             catch (Exception l_expData) {
@@ -1244,7 +1244,7 @@ namespace Mrln.Bll
         public static void MvalRemove(string p_strPatente,
                                       int p_iNroconfigalerta,
                                       int p_iFxdVersion,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -1259,7 +1259,7 @@ namespace Mrln.Bll
                              p_strPatente,
                              p_iNroconfigalerta,
                              p_iFxdVersion,
-                             ref p_smResult);
+                             p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Borramos el registro solicitado
@@ -1267,7 +1267,7 @@ namespace Mrln.Bll
                          p_strPatente,
                          p_iNroconfigalerta,
                          p_iFxdVersion,
-                         ref p_smResult);
+                         p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Remove
@@ -1287,7 +1287,7 @@ namespace Mrln.Bll
         /// Compacta una tabla borrando los registros deshabilitados
         /// </summary>
         /// <param name="p_smResult">Estado final de la operacion</param>
-        public static void MvalPurge(ref StatMsg p_smResult)
+        public static void MvalPurge(StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -1298,7 +1298,7 @@ namespace Mrln.Bll
 
                 // Realizamos el borrado
                 MvalPack(l_dbcAccess,
-                         ref p_smResult);
+                         p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Enabled
@@ -1332,7 +1332,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void MvalTInt(DBConn p_dbcAccess,
                                       EMovilAlerta p_entMovilAlerta,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             // ********
             // Validaciones de los campos sin conexion
@@ -1345,7 +1345,7 @@ namespace Mrln.Bll
             if (p_entMovilAlerta.Codreparacion.Trim() != "") {
                 Tablas.RepVKey(p_dbcAccess,
                                p_entMovilAlerta.Codreparacion,
-                               ref p_smResult);
+                               p_smResult);
                 if (p_smResult.NOk) return;
 
                 if (p_smResult.ICodeEs(BllCodes.KeyDsntFound)) {
@@ -1358,7 +1358,7 @@ namespace Mrln.Bll
             if (p_entMovilAlerta.Codcontrol.Trim() != "") {
                 Controles.VKey(p_dbcAccess,
                                p_entMovilAlerta.Codcontrol,
-                               ref p_smResult);
+                               p_smResult);
                 if (p_smResult.NOk) return;
 
                 if (p_smResult.ICodeEs(BllCodes.KeyDsntFound)) {
@@ -1371,7 +1371,7 @@ namespace Mrln.Bll
             if (p_entMovilAlerta.Coddestinatarios.Trim() != "") {
                 Tablas.DemVKey(p_dbcAccess,
                                p_entMovilAlerta.Coddestinatarios,
-                               ref p_smResult);
+                               p_smResult);
                 if (p_smResult.NOk) return;
 
                 if (p_smResult.ICodeEs(BllCodes.KeyDsntFound)) {
@@ -1384,7 +1384,7 @@ namespace Mrln.Bll
             // Verificamos la clave foranea
             Moviles.VKey(p_dbcAccess,
                          p_entMovilAlerta.Patente,
-                         ref p_smResult);
+                         p_smResult);
             if (p_smResult.NOk) return;
 
             // El registro tiene que existir
@@ -1397,7 +1397,7 @@ namespace Mrln.Bll
             // Todas las validaciones fueron correctas
 
             // Llamamos a la funcion fija del usuario
-            MvalTInt_f(p_dbcAccess, p_entMovilAlerta, ref p_smResult);
+            MvalTInt_f(p_dbcAccess, p_entMovilAlerta, p_smResult);
             if (p_smResult.NOk) return;
         }
 
@@ -1413,7 +1413,7 @@ namespace Mrln.Bll
                                       string p_strPatente,
                                       int p_iNroconfigalerta,
                                       int p_iFxdVersion,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             // No hay errores aun
             DataSet l_dsTemp= new DataSet();
@@ -1425,7 +1425,7 @@ namespace Mrln.Bll
                                       p_iFxdVersion,
                                       ref l_dsTemp,
                                       "Temporal",
-                                      ref p_smResult);
+                                      p_smResult);
             if (p_smResult.NOk) return;
 
             // Verificamos el resultado que vino
@@ -1482,7 +1482,7 @@ namespace Mrln.Bll
         internal static void MvalVKey(DBConn p_dbcAccess,
                                       string p_strPatente,
                                       int p_iNroconfigalerta,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             // No hay errores aun
             DataSet l_dsTemp= new DataSet();
@@ -1493,7 +1493,7 @@ namespace Mrln.Bll
                                   false,
                                   ref l_dsTemp,
                                   "Temporal",
-                                  ref p_smResult);
+                                  p_smResult);
             if (p_smResult.NOk) return;
 
             try {
@@ -1526,7 +1526,7 @@ namespace Mrln.Bll
         /// <returns>Lista-entidad: LEMovilesAlertas</returns>
         internal static LEMovilesAlertas MvalUpfl(DBConn p_dbcAccess,
                                                   bool p_bOnlyActive,
-                                                  ref StatMsg p_smResult)
+                                                  StatMsg p_smResult)
         {
             try {
                 // Pedimos los registros de la tabla: MvlAlertas
@@ -1535,11 +1535,11 @@ namespace Mrln.Bll
                 Dal.MvlAlertas.Up(p_dbcAccess, 
                                   p_bOnlyActive,
                                   ref l_dsTemp, "Temporal",
-                                  ref p_smResult);
+                                  p_smResult);
                 if (p_smResult.NOk) return null;
 
                 // Fijamos los captions de la grilla
-                Dal.MvlAlertas.MakeGridCaptions(ref l_dsTemp, "Temporal", ref p_smResult);
+                Dal.MvlAlertas.MakeGridCaptions(ref l_dsTemp, "Temporal", p_smResult);
 
                 // Contruimos la lista-entidad y la devolvemos (si vino algun registro)
                 LEMovilesAlertas l_lentRet= new LEMovilesAlertas(l_dsTemp.Tables["Temporal"]);
@@ -1566,7 +1566,7 @@ namespace Mrln.Bll
                                               string p_strPatente,
                                               int p_iNroconfigalerta,
                                               bool p_bOnlyActive,
-                                              ref StatMsg p_smResult)
+                                              StatMsg p_smResult)
         {
             try {
                 // Pedimos el registro de la tabla: MvlAlertas
@@ -1577,7 +1577,7 @@ namespace Mrln.Bll
                                       p_iNroconfigalerta,
                                       p_bOnlyActive,
                                       ref l_dsTemp, "Temporal",
-                                      ref p_smResult);
+                                      p_smResult);
                 if (p_smResult.NOk) return null;
 
                 // Constuimos la entidad y la devolvemos (si vino un registro)
@@ -1607,7 +1607,7 @@ namespace Mrln.Bll
         internal static LEMovilesAlertas MvalFSch(DBConn p_dbcAccess,
                                                   string p_strPatente,
                                                   bool p_bOnlyActive,
-                                                  ref StatMsg p_smResult)
+                                                  StatMsg p_smResult)
         {
             // No hay errores aun
             DataSet l_dsTemp= new DataSet();
@@ -1618,11 +1618,11 @@ namespace Mrln.Bll
                                        p_strPatente,
                                        p_bOnlyActive,
                                        ref l_dsTemp, "Temporal",
-                                       ref p_smResult);
+                                       p_smResult);
                 if (p_smResult.NOk) return null;
 
                 // Fijamos los captions de la grilla
-                Dal.MvlAlertas.MakeGridCaptions(ref l_dsTemp, "Temporal", ref p_smResult);
+                Dal.MvlAlertas.MakeGridCaptions(ref l_dsTemp, "Temporal", p_smResult);
 
                 // Contruimos la lista-entidad y la devolvemos
                 LEMovilesAlertas l_entRet= new LEMovilesAlertas(l_dsTemp.Tables["Temporal"]);
@@ -1647,18 +1647,18 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void MvalSSav(DBConn p_dbcAccess,
                                       EMovilAlerta p_entMovilAlerta,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             try {
                 // Procesamos codigo fijo
-                MvalSave_f(p_dbcAccess, ref p_entMovilAlerta, ref p_smResult);
+                MvalSave_f(p_dbcAccess, ref p_entMovilAlerta, p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Verificamos la clave a grabar
                 MvalVKey(p_dbcAccess, 
                          p_entMovilAlerta.Patente,
                          p_entMovilAlerta.Nroconfigalerta,
-                         ref p_smResult);
+                         p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Si es una entidad nueva
@@ -1671,7 +1671,7 @@ namespace Mrln.Bll
                     }
 
                     // Agregamos el registro
-                    MvalInsr(p_dbcAccess, p_entMovilAlerta, ref p_smResult);
+                    MvalInsr(p_dbcAccess, p_entMovilAlerta, p_smResult);
                     return;
                 }
 
@@ -1687,11 +1687,11 @@ namespace Mrln.Bll
                          p_entMovilAlerta.Patente,
                          p_entMovilAlerta.Nroconfigalerta,
                          p_entMovilAlerta.FxdVersion,
-                         ref p_smResult);
+                         p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Actualizamos el registro
-                MvalUpdt(p_dbcAccess, p_entMovilAlerta, ref p_smResult);
+                MvalUpdt(p_dbcAccess, p_entMovilAlerta, p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion SSav
@@ -1707,11 +1707,11 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void MvalInsr(DBConn p_dbcAccess,
                                       EMovilAlerta p_entMovilAlerta,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             try {
                 // Validamos la integridad de la entidad
-                MvalTInt(p_dbcAccess, p_entMovilAlerta, ref p_smResult);
+                MvalTInt(p_dbcAccess, p_entMovilAlerta, p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Creamos un nuevo registro de la tabla: MvlAlertas
@@ -1722,7 +1722,7 @@ namespace Mrln.Bll
                                       p_entMovilAlerta.Codreparacion,
                                       p_entMovilAlerta.Codcontrol,
                                       p_entMovilAlerta.Coddestinatarios,
-                                      ref p_smResult);
+                                      p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Insr
@@ -1738,11 +1738,11 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void MvalUpdt(DBConn p_dbcAccess,
                                       EMovilAlerta p_entMovilAlerta,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             try {
                 // Validamos la integridad de la entidad
-                MvalTInt(p_dbcAccess, p_entMovilAlerta, ref p_smResult);
+                MvalTInt(p_dbcAccess, p_entMovilAlerta, p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Actualizamos un registro de la tabla: MvlAlertas
@@ -1753,7 +1753,7 @@ namespace Mrln.Bll
                                       p_entMovilAlerta.Codreparacion,
                                       p_entMovilAlerta.Codcontrol,
                                       p_entMovilAlerta.Coddestinatarios,
-                                      ref p_smResult);
+                                      p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Updt
@@ -1773,14 +1773,14 @@ namespace Mrln.Bll
                                       string p_strPatente,
                                       int p_iNroconfigalerta,
                                       int p_iFxdVersion,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             try {
                 // Verificamos la clave a borrar
                 MvalVKey(p_dbcAccess,
                          p_strPatente,
                          p_iNroconfigalerta,
-                         ref p_smResult);
+                         p_smResult);
                 if (p_smResult.NOk) return;
 
                 // El registro tiene que existir
@@ -1795,14 +1795,14 @@ namespace Mrln.Bll
                          p_strPatente,
                          p_iNroconfigalerta,
                          p_iFxdVersion,
-                         ref p_smResult);
+                         p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Borramos físicamente el registro
                 Dal.MvlAlertas.Drop(p_dbcAccess,
                                     p_strPatente,
                                     p_iNroconfigalerta,
-                                    ref p_smResult);
+                                    p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Remove
@@ -1816,12 +1816,12 @@ namespace Mrln.Bll
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void MvalPack(DBConn p_dbcAccess,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             try {
                 // Borramos los borrados lógicamente
                 Dal.MvlAlertas.Pack(p_dbcAccess,
-                                    ref p_smResult);
+                                    p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Updt
@@ -1840,13 +1840,13 @@ namespace Mrln.Bll
         internal static void MvalSSav(DBConn p_dbcAccess,
                                       string p_strPatente,
                                       LEMovilesAlertas p_lentMovilesAlertas,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             try {
                 // Deshabilitamos todas las entidades existentes
                 Dal.MvlAlertas.FDrop(p_dbcAccess,
                                      p_strPatente,
-                                     ref p_smResult);
+                                     p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Recorremos la lista de entidades
@@ -1858,13 +1858,13 @@ namespace Mrln.Bll
                     MvalVKey(p_dbcAccess,
                              l_entMovilAlerta.Patente,
                              l_entMovilAlerta.Nroconfigalerta,
-                             ref p_smResult);
+                             p_smResult);
                     if (p_smResult.NOk) return;
 
                     // Si no existe
                     if (p_smResult.ICodeEs(BllCodes.KeyDsntFound)) {
                         // Hay que darla de alta
-                        MvalInsr(p_dbcAccess, l_entMovilAlerta, ref p_smResult);
+                        MvalInsr(p_dbcAccess, l_entMovilAlerta, p_smResult);
                         if (p_smResult.NOk) return;
                         continue;
                     }
@@ -1874,12 +1874,12 @@ namespace Mrln.Bll
                              l_entMovilAlerta.Patente,
                              l_entMovilAlerta.Nroconfigalerta,
                              l_entMovilAlerta.FxdVersion,
-                             ref p_smResult);
+                             p_smResult);
                     if (p_smResult.NOk) return;
 
                     // El número coincide. La Actualizamos si no está borrada
                     if (!l_entMovilAlerta.EstaBorrada) {
-                        MvalUpdt(p_dbcAccess, l_entMovilAlerta, ref p_smResult);
+                        MvalUpdt(p_dbcAccess, l_entMovilAlerta, p_smResult);
                         if (p_smResult.NOk) return;
                     }
                 }
@@ -1914,7 +1914,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         /// <returns>Lista-entidad: LEMovilesCombus</returns>
         public static LEMovilesCombus MvcoUpFull(bool p_bOnlyActive,
-                                                 ref StatMsg p_smResult)
+                                                 StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -1924,7 +1924,7 @@ namespace Mrln.Bll
                 l_dbcAccess= DBRuts.GetConection(Connections.Dat);
 
                 // Pedimos los registros de la tabla
-                return MvcoUpfl(l_dbcAccess, p_bOnlyActive, ref p_smResult);
+                return MvcoUpfl(l_dbcAccess, p_bOnlyActive, p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion UpFull
@@ -1948,7 +1948,7 @@ namespace Mrln.Bll
         public static EMovilCombus MvcoGet(string p_strPatente,
                                            DateTime p_dtFecha,
                                            bool p_bOnlyActive,
-                                           ref StatMsg p_smResult)
+                                           StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -1962,7 +1962,7 @@ namespace Mrln.Bll
                                 p_strPatente,
                                 p_dtFecha,
                                 p_bOnlyActive,
-                                ref p_smResult);
+                                p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Get
@@ -1985,7 +1985,7 @@ namespace Mrln.Bll
         /// <returns>Lista-Entidad: LEMovilesCombus</returns>
         public static LEMovilesCombus MvcoFGet(string p_strPatente,
                                                bool p_bOnlyActive,
-                                               ref StatMsg p_smResult)
+                                               StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -1998,7 +1998,7 @@ namespace Mrln.Bll
                 return MvcoFSch(l_dbcAccess,
                                 p_strPatente,
                                 p_bOnlyActive,
-                                ref p_smResult);
+                                p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion FGet
@@ -2020,7 +2020,7 @@ namespace Mrln.Bll
         /// <param name="p_entMovilCombus">Entidad con los datos a procesar</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static void MvcoSave(EMovilCombus p_entMovilCombus,
-                                    ref StatMsg p_smResult)
+                                    StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -2031,7 +2031,7 @@ namespace Mrln.Bll
                 l_dbcAccess.BeginTransaction();
 
                 // Grabamos la entidad: EMovilCombus
-                MvcoSSav(l_dbcAccess, p_entMovilCombus, ref p_smResult);
+                MvcoSSav(l_dbcAccess, p_entMovilCombus, p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Save
@@ -2058,7 +2058,7 @@ namespace Mrln.Bll
                                        string p_strPatente,
                                        DateTime p_dtFecha,
                                        int p_iFxdVersion,
-                                       ref StatMsg p_smResult)
+                                       StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -2074,14 +2074,14 @@ namespace Mrln.Bll
                               p_strPatente,
                               p_dtFecha,
                               ref p_iFxdVersion,
-                              ref p_smResult);
+                              p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Verificamos la clave a modificar
                 MvcoVKey(l_dbcAccess,
                          p_strPatente,
                          p_dtFecha,
-                         ref p_smResult);
+                         p_smResult);
                 if (p_smResult.NOk) return;
 
                 // El registro tiene que existir
@@ -2096,7 +2096,7 @@ namespace Mrln.Bll
                          p_strPatente,
                          p_dtFecha,
                          p_iFxdVersion,
-                         ref p_smResult);
+                         p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Segun el modo
@@ -2105,14 +2105,14 @@ namespace Mrln.Bll
                     Dal.MvlCombustible.Recall(l_dbcAccess,
                                               p_strPatente,
                                               p_dtFecha,
-                                              ref p_smResult);
+                                              p_smResult);
                 }
                 else {
                     // Hay que deshabilitar el registro
                     Dal.MvlCombustible.Delete(l_dbcAccess,
                                               p_strPatente,
                                               p_dtFecha,
-                                              ref p_smResult);
+                                              p_smResult);
                 }
             }
             catch (Exception l_expData) {
@@ -2139,7 +2139,7 @@ namespace Mrln.Bll
         public static void MvcoRemove(string p_strPatente,
                                       DateTime p_dtFecha,
                                       int p_iFxdVersion,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -2154,7 +2154,7 @@ namespace Mrln.Bll
                              p_strPatente,
                              p_dtFecha,
                              p_iFxdVersion,
-                             ref p_smResult);
+                             p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Borramos el registro solicitado
@@ -2162,7 +2162,7 @@ namespace Mrln.Bll
                          p_strPatente,
                          p_dtFecha,
                          p_iFxdVersion,
-                         ref p_smResult);
+                         p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Remove
@@ -2182,7 +2182,7 @@ namespace Mrln.Bll
         /// Compacta una tabla borrando los registros deshabilitados
         /// </summary>
         /// <param name="p_smResult">Estado final de la operacion</param>
-        public static void MvcoPurge(ref StatMsg p_smResult)
+        public static void MvcoPurge(StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -2193,7 +2193,7 @@ namespace Mrln.Bll
 
                 // Realizamos el borrado
                 MvcoPack(l_dbcAccess,
-                         ref p_smResult);
+                         p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Enabled
@@ -2227,7 +2227,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void MvcoTInt(DBConn p_dbcAccess,
                                       EMovilCombus p_entMovilCombus,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             // ********
             // Validaciones de los campos sin conexion
@@ -2263,7 +2263,7 @@ namespace Mrln.Bll
 
             Tablas.EstVKey(p_dbcAccess,
                            p_entMovilCombus.Codestacion,
-                           ref p_smResult);
+                           p_smResult);
             if (p_smResult.NOk) return;
 
             if (!p_smResult.ICodeEs(BllCodes.KeyExists)) {
@@ -2275,7 +2275,7 @@ namespace Mrln.Bll
             // Verificamos la clave foranea
             Moviles.VKey(p_dbcAccess,
                          p_entMovilCombus.Patente,
-                         ref p_smResult);
+                         p_smResult);
             if (p_smResult.NOk) return;
 
             // El registro tiene que existir
@@ -2288,7 +2288,7 @@ namespace Mrln.Bll
             // Todas las validaciones fueron correctas
 
             // Llamamos a la funcion fija del usuario
-            MvcoTInt_f(p_dbcAccess, p_entMovilCombus, ref p_smResult);
+            MvcoTInt_f(p_dbcAccess, p_entMovilCombus, p_smResult);
             if (p_smResult.NOk) return;
         }
 
@@ -2304,7 +2304,7 @@ namespace Mrln.Bll
                                       string p_strPatente,
                                       DateTime p_dtFecha,
                                       int p_iFxdVersion,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             // No hay errores aun
             DataSet l_dsTemp= new DataSet();
@@ -2316,7 +2316,7 @@ namespace Mrln.Bll
                                           p_iFxdVersion,
                                           ref l_dsTemp,
                                           "Temporal",
-                                          ref p_smResult);
+                                          p_smResult);
             if (p_smResult.NOk) return;
 
             // Verificamos el resultado que vino
@@ -2373,7 +2373,7 @@ namespace Mrln.Bll
         internal static void MvcoVKey(DBConn p_dbcAccess,
                                       string p_strPatente,
                                       DateTime p_dtFecha,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             // No hay errores aun
             DataSet l_dsTemp= new DataSet();
@@ -2384,7 +2384,7 @@ namespace Mrln.Bll
                                       false,
                                       ref l_dsTemp,
                                       "Temporal",
-                                      ref p_smResult);
+                                      p_smResult);
             if (p_smResult.NOk) return;
 
             try {
@@ -2417,7 +2417,7 @@ namespace Mrln.Bll
         /// <returns>Lista-entidad: LEMovilesCombus</returns>
         internal static LEMovilesCombus MvcoUpfl(DBConn p_dbcAccess,
                                                  bool p_bOnlyActive,
-                                                 ref StatMsg p_smResult)
+                                                 StatMsg p_smResult)
         {
             try {
                 // Pedimos los registros de la tabla: MvlCombustible
@@ -2426,11 +2426,11 @@ namespace Mrln.Bll
                 Dal.MvlCombustible.Up(p_dbcAccess, 
                                       p_bOnlyActive,
                                       ref l_dsTemp, "Temporal",
-                                      ref p_smResult);
+                                      p_smResult);
                 if (p_smResult.NOk) return null;
 
                 // Fijamos los captions de la grilla
-                Dal.MvlCombustible.MakeGridCaptions(ref l_dsTemp, "Temporal", ref p_smResult);
+                Dal.MvlCombustible.MakeGridCaptions(ref l_dsTemp, "Temporal", p_smResult);
 
                 // Contruimos la lista-entidad y la devolvemos (si vino algun registro)
                 LEMovilesCombus l_lentRet= new LEMovilesCombus(l_dsTemp.Tables["Temporal"]);
@@ -2457,7 +2457,7 @@ namespace Mrln.Bll
                                               string p_strPatente,
                                               DateTime p_dtFecha,
                                               bool p_bOnlyActive,
-                                              ref StatMsg p_smResult)
+                                              StatMsg p_smResult)
         {
             try {
                 // Pedimos el registro de la tabla: MvlCombustible
@@ -2468,7 +2468,7 @@ namespace Mrln.Bll
                                           p_dtFecha,
                                           p_bOnlyActive,
                                           ref l_dsTemp, "Temporal",
-                                          ref p_smResult);
+                                          p_smResult);
                 if (p_smResult.NOk) return null;
 
                 // Constuimos la entidad y la devolvemos (si vino un registro)
@@ -2498,7 +2498,7 @@ namespace Mrln.Bll
         internal static LEMovilesCombus MvcoFSch(DBConn p_dbcAccess,
                                                  string p_strPatente,
                                                  bool p_bOnlyActive,
-                                                 ref StatMsg p_smResult)
+                                                 StatMsg p_smResult)
         {
             // No hay errores aun
             DataSet l_dsTemp= new DataSet();
@@ -2509,11 +2509,11 @@ namespace Mrln.Bll
                                            p_strPatente,
                                            p_bOnlyActive,
                                            ref l_dsTemp, "Temporal",
-                                           ref p_smResult);
+                                           p_smResult);
                 if (p_smResult.NOk) return null;
 
                 // Fijamos los captions de la grilla
-                Dal.MvlCombustible.MakeGridCaptions(ref l_dsTemp, "Temporal", ref p_smResult);
+                Dal.MvlCombustible.MakeGridCaptions(ref l_dsTemp, "Temporal", p_smResult);
 
                 // Contruimos la lista-entidad y la devolvemos
                 LEMovilesCombus l_entRet= new LEMovilesCombus(l_dsTemp.Tables["Temporal"]);
@@ -2538,18 +2538,18 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void MvcoSSav(DBConn p_dbcAccess,
                                       EMovilCombus p_entMovilCombus,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             try {
                 // Procesamos codigo fijo
-                MvcoSave_f(p_dbcAccess, ref p_entMovilCombus, ref p_smResult);
+                MvcoSave_f(p_dbcAccess, ref p_entMovilCombus, p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Verificamos la clave a grabar
                 MvcoVKey(p_dbcAccess, 
                          p_entMovilCombus.Patente,
                          p_entMovilCombus.Fecha,
-                         ref p_smResult);
+                         p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Si es una entidad nueva
@@ -2562,7 +2562,7 @@ namespace Mrln.Bll
                     }
 
                     // Agregamos el registro
-                    MvcoInsr(p_dbcAccess, p_entMovilCombus, ref p_smResult);
+                    MvcoInsr(p_dbcAccess, p_entMovilCombus, p_smResult);
                     return;
                 }
 
@@ -2578,11 +2578,11 @@ namespace Mrln.Bll
                          p_entMovilCombus.Patente,
                          p_entMovilCombus.Fecha,
                          p_entMovilCombus.FxdVersion,
-                         ref p_smResult);
+                         p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Actualizamos el registro
-                MvcoUpdt(p_dbcAccess, p_entMovilCombus, ref p_smResult);
+                MvcoUpdt(p_dbcAccess, p_entMovilCombus, p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion SSav
@@ -2598,11 +2598,11 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void MvcoInsr(DBConn p_dbcAccess,
                                       EMovilCombus p_entMovilCombus,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             try {
                 // Validamos la integridad de la entidad
-                MvcoTInt(p_dbcAccess, p_entMovilCombus, ref p_smResult);
+                MvcoTInt(p_dbcAccess, p_entMovilCombus, p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Creamos un nuevo registro de la tabla: MvlCombustible
@@ -2612,7 +2612,7 @@ namespace Mrln.Bll
                                           p_entMovilCombus.Litros,
                                           p_entMovilCombus.Importe,
                                           p_entMovilCombus.Codestacion,
-                                          ref p_smResult);
+                                          p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Insr
@@ -2628,11 +2628,11 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void MvcoUpdt(DBConn p_dbcAccess,
                                       EMovilCombus p_entMovilCombus,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             try {
                 // Validamos la integridad de la entidad
-                MvcoTInt(p_dbcAccess, p_entMovilCombus, ref p_smResult);
+                MvcoTInt(p_dbcAccess, p_entMovilCombus, p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Actualizamos un registro de la tabla: MvlCombustible
@@ -2642,7 +2642,7 @@ namespace Mrln.Bll
                                           p_entMovilCombus.Litros,
                                           p_entMovilCombus.Importe,
                                           p_entMovilCombus.Codestacion,
-                                          ref p_smResult);
+                                          p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Updt
@@ -2662,14 +2662,14 @@ namespace Mrln.Bll
                                       string p_strPatente,
                                       DateTime p_dtFecha,
                                       int p_iFxdVersion,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             try {
                 // Verificamos la clave a borrar
                 MvcoVKey(p_dbcAccess,
                          p_strPatente,
                          p_dtFecha,
-                         ref p_smResult);
+                         p_smResult);
                 if (p_smResult.NOk) return;
 
                 // El registro tiene que existir
@@ -2684,14 +2684,14 @@ namespace Mrln.Bll
                          p_strPatente,
                          p_dtFecha,
                          p_iFxdVersion,
-                         ref p_smResult);
+                         p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Borramos físicamente el registro
                 Dal.MvlCombustible.Drop(p_dbcAccess,
                                         p_strPatente,
                                         p_dtFecha,
-                                        ref p_smResult);
+                                        p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Remove
@@ -2705,12 +2705,12 @@ namespace Mrln.Bll
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void MvcoPack(DBConn p_dbcAccess,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             try {
                 // Borramos los borrados lógicamente
                 Dal.MvlCombustible.Pack(p_dbcAccess,
-                                        ref p_smResult);
+                                        p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Updt
@@ -2729,13 +2729,13 @@ namespace Mrln.Bll
         internal static void MvcoSSav(DBConn p_dbcAccess,
                                       string p_strPatente,
                                       LEMovilesCombus p_lentMovilesCombus,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             try {
                 // Deshabilitamos todas las entidades existentes
                 Dal.MvlCombustible.FDrop(p_dbcAccess,
                                          p_strPatente,
-                                         ref p_smResult);
+                                         p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Recorremos la lista de entidades
@@ -2747,13 +2747,13 @@ namespace Mrln.Bll
                     MvcoVKey(p_dbcAccess,
                              l_entMovilCombus.Patente,
                              l_entMovilCombus.Fecha,
-                             ref p_smResult);
+                             p_smResult);
                     if (p_smResult.NOk) return;
 
                     // Si no existe
                     if (p_smResult.ICodeEs(BllCodes.KeyDsntFound)) {
                         // Hay que darla de alta
-                        MvcoInsr(p_dbcAccess, l_entMovilCombus, ref p_smResult);
+                        MvcoInsr(p_dbcAccess, l_entMovilCombus, p_smResult);
                         if (p_smResult.NOk) return;
                         continue;
                     }
@@ -2763,12 +2763,12 @@ namespace Mrln.Bll
                              l_entMovilCombus.Patente,
                              l_entMovilCombus.Fecha,
                              l_entMovilCombus.FxdVersion,
-                             ref p_smResult);
+                             p_smResult);
                     if (p_smResult.NOk) return;
 
                     // El número coincide. La Actualizamos si no está borrada
                     if (!l_entMovilCombus.EstaBorrada) {
-                        MvcoUpdt(p_dbcAccess, l_entMovilCombus, ref p_smResult);
+                        MvcoUpdt(p_dbcAccess, l_entMovilCombus, p_smResult);
                         if (p_smResult.NOk) return;
                     }
                 }
@@ -2791,7 +2791,7 @@ namespace Mrln.Bll
         /// <returns>ListaEntidad con los datos solicitados</returns>
         internal static ListaEntidades MvcogetLastFiveMvlCombus(DBConn p_dbcAccess,
                                                                 string p_strPatente,
-                                                                ref StatMsg p_smResult)
+                                                                StatMsg p_smResult)
         {
             try {
                 // Llamamos al metodo definido por el usuario
@@ -2801,7 +2801,7 @@ namespace Mrln.Bll
                                                         p_strPatente,
                                                         ref l_dsTemp,
                                                         "Temporal",
-                                                        ref p_smResult);
+                                                        p_smResult);
                 if (p_smResult.NOk) return null;
 
                 // Creamos la LE y Captionamos
@@ -2843,7 +2843,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         /// <returns>Lista-entidad: LEMovilesEquip</returns>
         public static LEMovilesEquip MveqUpFull(bool p_bOnlyActive,
-                                                ref StatMsg p_smResult)
+                                                StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -2853,7 +2853,7 @@ namespace Mrln.Bll
                 l_dbcAccess= DBRuts.GetConection(Connections.Dat);
 
                 // Pedimos los registros de la tabla
-                return MveqUpfl(l_dbcAccess, p_bOnlyActive, ref p_smResult);
+                return MveqUpfl(l_dbcAccess, p_bOnlyActive, p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion UpFull
@@ -2877,7 +2877,7 @@ namespace Mrln.Bll
         public static EMovilEquip MveqGet(string p_strPatente,
                                           string p_strCodequip,
                                           bool p_bOnlyActive,
-                                          ref StatMsg p_smResult)
+                                          StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -2891,7 +2891,7 @@ namespace Mrln.Bll
                                 p_strPatente,
                                 p_strCodequip,
                                 p_bOnlyActive,
-                                ref p_smResult);
+                                p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Get
@@ -2914,7 +2914,7 @@ namespace Mrln.Bll
         /// <returns>Lista-Entidad: LEMovilesEquip</returns>
         public static LEMovilesEquip MveqFGet(string p_strPatente,
                                               bool p_bOnlyActive,
-                                              ref StatMsg p_smResult)
+                                              StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -2927,7 +2927,7 @@ namespace Mrln.Bll
                 return MveqFSch(l_dbcAccess,
                                 p_strPatente,
                                 p_bOnlyActive,
-                                ref p_smResult);
+                                p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion FGet
@@ -2949,7 +2949,7 @@ namespace Mrln.Bll
         /// <param name="p_entMovilEquip">Entidad con los datos a procesar</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static void MveqSave(EMovilEquip p_entMovilEquip,
-                                    ref StatMsg p_smResult)
+                                    StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -2960,7 +2960,7 @@ namespace Mrln.Bll
                 l_dbcAccess.BeginTransaction();
 
                 // Grabamos la entidad: EMovilEquip
-                MveqSSav(l_dbcAccess, p_entMovilEquip, ref p_smResult);
+                MveqSSav(l_dbcAccess, p_entMovilEquip, p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Save
@@ -2987,7 +2987,7 @@ namespace Mrln.Bll
                                        string p_strPatente,
                                        string p_strCodequip,
                                        int p_iFxdVersion,
-                                       ref StatMsg p_smResult)
+                                       StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -3003,14 +3003,14 @@ namespace Mrln.Bll
                               p_strPatente,
                               p_strCodequip,
                               ref p_iFxdVersion,
-                              ref p_smResult);
+                              p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Verificamos la clave a modificar
                 MveqVKey(l_dbcAccess,
                          p_strPatente,
                          p_strCodequip,
-                         ref p_smResult);
+                         p_smResult);
                 if (p_smResult.NOk) return;
 
                 // El registro tiene que existir
@@ -3025,7 +3025,7 @@ namespace Mrln.Bll
                          p_strPatente,
                          p_strCodequip,
                          p_iFxdVersion,
-                         ref p_smResult);
+                         p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Segun el modo
@@ -3034,14 +3034,14 @@ namespace Mrln.Bll
                     Dal.MvlEquipamiento.Recall(l_dbcAccess,
                                                p_strPatente,
                                                p_strCodequip,
-                                               ref p_smResult);
+                                               p_smResult);
                 }
                 else {
                     // Hay que deshabilitar el registro
                     Dal.MvlEquipamiento.Delete(l_dbcAccess,
                                                p_strPatente,
                                                p_strCodequip,
-                                               ref p_smResult);
+                                               p_smResult);
                 }
             }
             catch (Exception l_expData) {
@@ -3068,7 +3068,7 @@ namespace Mrln.Bll
         public static void MveqRemove(string p_strPatente,
                                       string p_strCodequip,
                                       int p_iFxdVersion,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -3083,7 +3083,7 @@ namespace Mrln.Bll
                              p_strPatente,
                              p_strCodequip,
                              p_iFxdVersion,
-                             ref p_smResult);
+                             p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Borramos el registro solicitado
@@ -3091,7 +3091,7 @@ namespace Mrln.Bll
                          p_strPatente,
                          p_strCodequip,
                          p_iFxdVersion,
-                         ref p_smResult);
+                         p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Remove
@@ -3111,7 +3111,7 @@ namespace Mrln.Bll
         /// Compacta una tabla borrando los registros deshabilitados
         /// </summary>
         /// <param name="p_smResult">Estado final de la operacion</param>
-        public static void MveqPurge(ref StatMsg p_smResult)
+        public static void MveqPurge(StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -3122,7 +3122,7 @@ namespace Mrln.Bll
 
                 // Realizamos el borrado
                 MveqPack(l_dbcAccess,
-                         ref p_smResult);
+                         p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Enabled
@@ -3156,7 +3156,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void MveqTInt(DBConn p_dbcAccess,
                                       EMovilEquip p_entMovilEquip,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             // ********
             // Validaciones de los campos sin conexion
@@ -3183,7 +3183,7 @@ namespace Mrln.Bll
 
             Tablas.EqiVKey(p_dbcAccess,
                            p_entMovilEquip.Codequip,
-                           ref p_smResult);
+                           p_smResult);
             if (p_smResult.NOk) return;
 
             if (p_smResult.ICodeEs(BllCodes.KeyDsntFound)) {
@@ -3195,7 +3195,7 @@ namespace Mrln.Bll
             // Verificamos la clave foranea
             Moviles.VKey(p_dbcAccess,
                          p_entMovilEquip.Patente,
-                         ref p_smResult);
+                         p_smResult);
             if (p_smResult.NOk) return;
 
             // El registro tiene que existir
@@ -3208,7 +3208,7 @@ namespace Mrln.Bll
             // Todas las validaciones fueron correctas
 
             // Llamamos a la funcion fija del usuario
-            MveqTInt_f(p_dbcAccess, p_entMovilEquip, ref p_smResult);
+            MveqTInt_f(p_dbcAccess, p_entMovilEquip, p_smResult);
             if (p_smResult.NOk) return;
         }
 
@@ -3224,7 +3224,7 @@ namespace Mrln.Bll
                                       string p_strPatente,
                                       string p_strCodequip,
                                       int p_iFxdVersion,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             // No hay errores aun
             DataSet l_dsTemp= new DataSet();
@@ -3236,7 +3236,7 @@ namespace Mrln.Bll
                                            p_iFxdVersion,
                                            ref l_dsTemp,
                                            "Temporal",
-                                           ref p_smResult);
+                                           p_smResult);
             if (p_smResult.NOk) return;
 
             // Verificamos el resultado que vino
@@ -3293,7 +3293,7 @@ namespace Mrln.Bll
         internal static void MveqVKey(DBConn p_dbcAccess,
                                       string p_strPatente,
                                       string p_strCodequip,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             // No hay errores aun
             DataSet l_dsTemp= new DataSet();
@@ -3304,7 +3304,7 @@ namespace Mrln.Bll
                                        false,
                                        ref l_dsTemp,
                                        "Temporal",
-                                       ref p_smResult);
+                                       p_smResult);
             if (p_smResult.NOk) return;
 
             try {
@@ -3337,7 +3337,7 @@ namespace Mrln.Bll
         /// <returns>Lista-entidad: LEMovilesEquip</returns>
         internal static LEMovilesEquip MveqUpfl(DBConn p_dbcAccess,
                                                 bool p_bOnlyActive,
-                                                ref StatMsg p_smResult)
+                                                StatMsg p_smResult)
         {
             try {
                 // Pedimos los registros de la tabla: MvlEquipamiento
@@ -3346,11 +3346,11 @@ namespace Mrln.Bll
                 Dal.MvlEquipamiento.Up(p_dbcAccess, 
                                        p_bOnlyActive,
                                        ref l_dsTemp, "Temporal",
-                                       ref p_smResult);
+                                       p_smResult);
                 if (p_smResult.NOk) return null;
 
                 // Fijamos los captions de la grilla
-                Dal.MvlEquipamiento.MakeGridCaptions(ref l_dsTemp, "Temporal", ref p_smResult);
+                Dal.MvlEquipamiento.MakeGridCaptions(ref l_dsTemp, "Temporal", p_smResult);
 
                 // Contruimos la lista-entidad y la devolvemos (si vino algun registro)
                 LEMovilesEquip l_lentRet= new LEMovilesEquip(l_dsTemp.Tables["Temporal"]);
@@ -3377,7 +3377,7 @@ namespace Mrln.Bll
                                              string p_strPatente,
                                              string p_strCodequip,
                                              bool p_bOnlyActive,
-                                             ref StatMsg p_smResult)
+                                             StatMsg p_smResult)
         {
             try {
                 // Pedimos el registro de la tabla: MvlEquipamiento
@@ -3388,7 +3388,7 @@ namespace Mrln.Bll
                                            p_strCodequip,
                                            p_bOnlyActive,
                                            ref l_dsTemp, "Temporal",
-                                           ref p_smResult);
+                                           p_smResult);
                 if (p_smResult.NOk) return null;
 
                 // Constuimos la entidad y la devolvemos (si vino un registro)
@@ -3418,7 +3418,7 @@ namespace Mrln.Bll
         internal static LEMovilesEquip MveqFSch(DBConn p_dbcAccess,
                                                 string p_strPatente,
                                                 bool p_bOnlyActive,
-                                                ref StatMsg p_smResult)
+                                                StatMsg p_smResult)
         {
             // No hay errores aun
             DataSet l_dsTemp= new DataSet();
@@ -3429,11 +3429,11 @@ namespace Mrln.Bll
                                             p_strPatente,
                                             p_bOnlyActive,
                                             ref l_dsTemp, "Temporal",
-                                            ref p_smResult);
+                                            p_smResult);
                 if (p_smResult.NOk) return null;
 
                 // Fijamos los captions de la grilla
-                Dal.MvlEquipamiento.MakeGridCaptions(ref l_dsTemp, "Temporal", ref p_smResult);
+                Dal.MvlEquipamiento.MakeGridCaptions(ref l_dsTemp, "Temporal", p_smResult);
 
                 // Contruimos la lista-entidad y la devolvemos
                 LEMovilesEquip l_entRet= new LEMovilesEquip(l_dsTemp.Tables["Temporal"]);
@@ -3458,18 +3458,18 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void MveqSSav(DBConn p_dbcAccess,
                                       EMovilEquip p_entMovilEquip,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             try {
                 // Procesamos codigo fijo
-                MveqSave_f(p_dbcAccess, ref p_entMovilEquip, ref p_smResult);
+                MveqSave_f(p_dbcAccess, ref p_entMovilEquip, p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Verificamos la clave a grabar
                 MveqVKey(p_dbcAccess, 
                          p_entMovilEquip.Patente,
                          p_entMovilEquip.Codequip,
-                         ref p_smResult);
+                         p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Si es una entidad nueva
@@ -3482,7 +3482,7 @@ namespace Mrln.Bll
                     }
 
                     // Agregamos el registro
-                    MveqInsr(p_dbcAccess, p_entMovilEquip, ref p_smResult);
+                    MveqInsr(p_dbcAccess, p_entMovilEquip, p_smResult);
                     return;
                 }
 
@@ -3498,11 +3498,11 @@ namespace Mrln.Bll
                          p_entMovilEquip.Patente,
                          p_entMovilEquip.Codequip,
                          p_entMovilEquip.FxdVersion,
-                         ref p_smResult);
+                         p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Actualizamos el registro
-                MveqUpdt(p_dbcAccess, p_entMovilEquip, ref p_smResult);
+                MveqUpdt(p_dbcAccess, p_entMovilEquip, p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion SSav
@@ -3518,11 +3518,11 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void MveqInsr(DBConn p_dbcAccess,
                                       EMovilEquip p_entMovilEquip,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             try {
                 // Validamos la integridad de la entidad
-                MveqTInt(p_dbcAccess, p_entMovilEquip, ref p_smResult);
+                MveqTInt(p_dbcAccess, p_entMovilEquip, p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Creamos un nuevo registro de la tabla: MvlEquipamiento
@@ -3530,7 +3530,7 @@ namespace Mrln.Bll
                                            p_entMovilEquip.Patente,
                                            p_entMovilEquip.Codequip,
                                            p_entMovilEquip.Esfijo,
-                                           ref p_smResult);
+                                           p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Insr
@@ -3546,11 +3546,11 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void MveqUpdt(DBConn p_dbcAccess,
                                       EMovilEquip p_entMovilEquip,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             try {
                 // Validamos la integridad de la entidad
-                MveqTInt(p_dbcAccess, p_entMovilEquip, ref p_smResult);
+                MveqTInt(p_dbcAccess, p_entMovilEquip, p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Actualizamos un registro de la tabla: MvlEquipamiento
@@ -3558,7 +3558,7 @@ namespace Mrln.Bll
                                            p_entMovilEquip.Patente,
                                            p_entMovilEquip.Codequip,
                                            p_entMovilEquip.Esfijo,
-                                           ref p_smResult);
+                                           p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Updt
@@ -3578,14 +3578,14 @@ namespace Mrln.Bll
                                       string p_strPatente,
                                       string p_strCodequip,
                                       int p_iFxdVersion,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             try {
                 // Verificamos la clave a borrar
                 MveqVKey(p_dbcAccess,
                          p_strPatente,
                          p_strCodequip,
-                         ref p_smResult);
+                         p_smResult);
                 if (p_smResult.NOk) return;
 
                 // El registro tiene que existir
@@ -3600,14 +3600,14 @@ namespace Mrln.Bll
                          p_strPatente,
                          p_strCodequip,
                          p_iFxdVersion,
-                         ref p_smResult);
+                         p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Borramos físicamente el registro
                 Dal.MvlEquipamiento.Drop(p_dbcAccess,
                                          p_strPatente,
                                          p_strCodequip,
-                                         ref p_smResult);
+                                         p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Remove
@@ -3621,12 +3621,12 @@ namespace Mrln.Bll
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void MveqPack(DBConn p_dbcAccess,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             try {
                 // Borramos los borrados lógicamente
                 Dal.MvlEquipamiento.Pack(p_dbcAccess,
-                                         ref p_smResult);
+                                         p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Updt
@@ -3645,13 +3645,13 @@ namespace Mrln.Bll
         internal static void MveqSSav(DBConn p_dbcAccess,
                                       string p_strPatente,
                                       LEMovilesEquip p_lentMovilesEquip,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             try {
                 // Deshabilitamos todas las entidades existentes
                 Dal.MvlEquipamiento.FDrop(p_dbcAccess,
                                           p_strPatente,
-                                          ref p_smResult);
+                                          p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Recorremos la lista de entidades
@@ -3663,13 +3663,13 @@ namespace Mrln.Bll
                     MveqVKey(p_dbcAccess,
                              l_entMovilEquip.Patente,
                              l_entMovilEquip.Codequip,
-                             ref p_smResult);
+                             p_smResult);
                     if (p_smResult.NOk) return;
 
                     // Si no existe
                     if (p_smResult.ICodeEs(BllCodes.KeyDsntFound)) {
                         // Hay que darla de alta
-                        MveqInsr(p_dbcAccess, l_entMovilEquip, ref p_smResult);
+                        MveqInsr(p_dbcAccess, l_entMovilEquip, p_smResult);
                         if (p_smResult.NOk) return;
                         continue;
                     }
@@ -3679,12 +3679,12 @@ namespace Mrln.Bll
                              l_entMovilEquip.Patente,
                              l_entMovilEquip.Codequip,
                              l_entMovilEquip.FxdVersion,
-                             ref p_smResult);
+                             p_smResult);
                     if (p_smResult.NOk) return;
 
                     // El número coincide. La Actualizamos si no está borrada
                     if (!l_entMovilEquip.EstaBorrada) {
-                        MveqUpdt(p_dbcAccess, l_entMovilEquip, ref p_smResult);
+                        MveqUpdt(p_dbcAccess, l_entMovilEquip, p_smResult);
                         if (p_smResult.NOk) return;
                     }
                 }
@@ -3706,13 +3706,13 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void MveqEliminarEquipamiento(DBConn p_dbcAccess,
                                                       string p_strPatente,
-                                                      ref StatMsg p_smResult)
+                                                      StatMsg p_smResult)
         {
             try {
                 // Llamamos al metodo definido por el usuario
                 Dal.MvlEquipamiento.EliminarEquipamiento(p_dbcAccess,
                                                          p_strPatente,
-                                                         ref p_smResult);
+                                                         p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion
@@ -3732,7 +3732,7 @@ namespace Mrln.Bll
         /// <returns>ListaEntidad con los datos solicitados</returns>
         internal static ListaEntidades MveqgetEquipamientos(DBConn p_dbcAccess,
                                                             string p_strPatente,
-                                                            ref StatMsg p_smResult)
+                                                            StatMsg p_smResult)
         {
             try {
                 // Llamamos al metodo definido por el usuario
@@ -3742,7 +3742,7 @@ namespace Mrln.Bll
                                                      p_strPatente,
                                                      ref l_dsTemp,
                                                      "Temporal",
-                                                     ref p_smResult);
+                                                     p_smResult);
                 if (p_smResult.NOk) return null;
 
                 // Creamos la LE y Captionamos
@@ -3784,7 +3784,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         /// <returns>Lista-entidad: LEMovilesEstado</returns>
         public static LEMovilesEstado MvesUpFull(bool p_bOnlyActive,
-                                                 ref StatMsg p_smResult)
+                                                 StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -3794,7 +3794,7 @@ namespace Mrln.Bll
                 l_dbcAccess= DBRuts.GetConection(Connections.Dat);
 
                 // Pedimos los registros de la tabla
-                return MvesUpfl(l_dbcAccess, p_bOnlyActive, ref p_smResult);
+                return MvesUpfl(l_dbcAccess, p_bOnlyActive, p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion UpFull
@@ -3818,7 +3818,7 @@ namespace Mrln.Bll
         public static EMovilEstado MvesGet(string p_strPatente,
                                            DateTime p_dtFecha,
                                            bool p_bOnlyActive,
-                                           ref StatMsg p_smResult)
+                                           StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -3832,7 +3832,7 @@ namespace Mrln.Bll
                                 p_strPatente,
                                 p_dtFecha,
                                 p_bOnlyActive,
-                                ref p_smResult);
+                                p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Get
@@ -3855,7 +3855,7 @@ namespace Mrln.Bll
         /// <returns>Lista-Entidad: LEMovilesEstado</returns>
         public static LEMovilesEstado MvesFGet(string p_strPatente,
                                                bool p_bOnlyActive,
-                                               ref StatMsg p_smResult)
+                                               StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -3868,7 +3868,7 @@ namespace Mrln.Bll
                 return MvesFSch(l_dbcAccess,
                                 p_strPatente,
                                 p_bOnlyActive,
-                                ref p_smResult);
+                                p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion FGet
@@ -3890,7 +3890,7 @@ namespace Mrln.Bll
         /// <param name="p_entMovilEstado">Entidad con los datos a procesar</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static void MvesSave(EMovilEstado p_entMovilEstado,
-                                    ref StatMsg p_smResult)
+                                    StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -3901,7 +3901,7 @@ namespace Mrln.Bll
                 l_dbcAccess.BeginTransaction();
 
                 // Grabamos la entidad: EMovilEstado
-                MvesSSav(l_dbcAccess, p_entMovilEstado, ref p_smResult);
+                MvesSSav(l_dbcAccess, p_entMovilEstado, p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Save
@@ -3928,7 +3928,7 @@ namespace Mrln.Bll
                                        string p_strPatente,
                                        DateTime p_dtFecha,
                                        int p_iFxdVersion,
-                                       ref StatMsg p_smResult)
+                                       StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -3944,14 +3944,14 @@ namespace Mrln.Bll
                               p_strPatente,
                               p_dtFecha,
                               ref p_iFxdVersion,
-                              ref p_smResult);
+                              p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Verificamos la clave a modificar
                 MvesVKey(l_dbcAccess,
                          p_strPatente,
                          p_dtFecha,
-                         ref p_smResult);
+                         p_smResult);
                 if (p_smResult.NOk) return;
 
                 // El registro tiene que existir
@@ -3966,7 +3966,7 @@ namespace Mrln.Bll
                          p_strPatente,
                          p_dtFecha,
                          p_iFxdVersion,
-                         ref p_smResult);
+                         p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Segun el modo
@@ -3975,14 +3975,14 @@ namespace Mrln.Bll
                     Dal.MvlEstados.Recall(l_dbcAccess,
                                           p_strPatente,
                                           p_dtFecha,
-                                          ref p_smResult);
+                                          p_smResult);
                 }
                 else {
                     // Hay que deshabilitar el registro
                     Dal.MvlEstados.Delete(l_dbcAccess,
                                           p_strPatente,
                                           p_dtFecha,
-                                          ref p_smResult);
+                                          p_smResult);
                 }
             }
             catch (Exception l_expData) {
@@ -4009,7 +4009,7 @@ namespace Mrln.Bll
         public static void MvesRemove(string p_strPatente,
                                       DateTime p_dtFecha,
                                       int p_iFxdVersion,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -4024,7 +4024,7 @@ namespace Mrln.Bll
                              p_strPatente,
                              p_dtFecha,
                              p_iFxdVersion,
-                             ref p_smResult);
+                             p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Borramos el registro solicitado
@@ -4032,7 +4032,7 @@ namespace Mrln.Bll
                          p_strPatente,
                          p_dtFecha,
                          p_iFxdVersion,
-                         ref p_smResult);
+                         p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Remove
@@ -4052,7 +4052,7 @@ namespace Mrln.Bll
         /// Compacta una tabla borrando los registros deshabilitados
         /// </summary>
         /// <param name="p_smResult">Estado final de la operacion</param>
-        public static void MvesPurge(ref StatMsg p_smResult)
+        public static void MvesPurge(StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -4063,7 +4063,7 @@ namespace Mrln.Bll
 
                 // Realizamos el borrado
                 MvesPack(l_dbcAccess,
-                         ref p_smResult);
+                         p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Enabled
@@ -4081,38 +4081,6 @@ namespace Mrln.Bll
         #endregion
 
         #region Metodos para métodos DAL definidos por el usuario
-
-        /// <summary>
-        /// Ejecuta el SP definido por el usuario: getMovilEstadoActual
-        /// </summary>
-        /// <param name= p_strPatente>Patente</param>
-        /// <param name="p_smResult">Estado final de la operacion</param>
-        /// <returns>ListaEntidad con los datos solicitados</returns>
-        public static LEMovilesEstado MvesgetMovilEstadoActual(string p_strPatente,
-                                                               ref StatMsg p_smResult)
-        {
-            // No hay errores aun
-            DBConn l_dbcAccess= null;
-
-            try {
-                // Abrimos una conexion
-                l_dbcAccess= DBRuts.GetConection(Connections.Dat);
-
-                // Llamamos al metodo interno
-                return MvesgetMovilEstadoActual(l_dbcAccess,
-                                                p_strPatente,
-                                                ref p_smResult);
-            }
-            catch (Exception l_expData) {
-                // Error en la operacion
-                p_smResult.BllError(l_expData);
-                return null;
-            }
-            finally {
-                // Si abrimos una conexion -> la cerramos
-                if (l_dbcAccess != null) l_dbcAccess.Close();
-            }
-        }
         #endregion
 
         //---------------------------------------------------------------
@@ -4129,7 +4097,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void MvesTInt(DBConn p_dbcAccess,
                                       EMovilEstado p_entMovilEstado,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             // ********
             // Validaciones de los campos sin conexion
@@ -4159,7 +4127,7 @@ namespace Mrln.Bll
 
             Tablas.EdsVKey(p_dbcAccess,
                            p_entMovilEstado.Codestado,
-                           ref p_smResult);
+                           p_smResult);
             if (p_smResult.NOk) return;
 
             if (!p_smResult.ICodeEs(BllCodes.KeyExists)) {
@@ -4171,7 +4139,7 @@ namespace Mrln.Bll
             // Verificamos la clave foranea
             Moviles.VKey(p_dbcAccess,
                          p_entMovilEstado.Patente,
-                         ref p_smResult);
+                         p_smResult);
             if (p_smResult.NOk) return;
 
             // El registro tiene que existir
@@ -4184,7 +4152,7 @@ namespace Mrln.Bll
             // Todas las validaciones fueron correctas
 
             // Llamamos a la funcion fija del usuario
-            MvesTInt_f(p_dbcAccess, p_entMovilEstado, ref p_smResult);
+            MvesTInt_f(p_dbcAccess, p_entMovilEstado, p_smResult);
             if (p_smResult.NOk) return;
         }
 
@@ -4200,7 +4168,7 @@ namespace Mrln.Bll
                                       string p_strPatente,
                                       DateTime p_dtFecha,
                                       int p_iFxdVersion,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             // No hay errores aun
             DataSet l_dsTemp= new DataSet();
@@ -4212,7 +4180,7 @@ namespace Mrln.Bll
                                       p_iFxdVersion,
                                       ref l_dsTemp,
                                       "Temporal",
-                                      ref p_smResult);
+                                      p_smResult);
             if (p_smResult.NOk) return;
 
             // Verificamos el resultado que vino
@@ -4269,7 +4237,7 @@ namespace Mrln.Bll
         internal static void MvesVKey(DBConn p_dbcAccess,
                                       string p_strPatente,
                                       DateTime p_dtFecha,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             // No hay errores aun
             DataSet l_dsTemp= new DataSet();
@@ -4280,7 +4248,7 @@ namespace Mrln.Bll
                                   false,
                                   ref l_dsTemp,
                                   "Temporal",
-                                  ref p_smResult);
+                                  p_smResult);
             if (p_smResult.NOk) return;
 
             try {
@@ -4313,7 +4281,7 @@ namespace Mrln.Bll
         /// <returns>Lista-entidad: LEMovilesEstado</returns>
         internal static LEMovilesEstado MvesUpfl(DBConn p_dbcAccess,
                                                  bool p_bOnlyActive,
-                                                 ref StatMsg p_smResult)
+                                                 StatMsg p_smResult)
         {
             try {
                 // Pedimos los registros de la tabla: MvlEstados
@@ -4322,11 +4290,11 @@ namespace Mrln.Bll
                 Dal.MvlEstados.Up(p_dbcAccess, 
                                   p_bOnlyActive,
                                   ref l_dsTemp, "Temporal",
-                                  ref p_smResult);
+                                  p_smResult);
                 if (p_smResult.NOk) return null;
 
                 // Fijamos los captions de la grilla
-                Dal.MvlEstados.MakeGridCaptions(ref l_dsTemp, "Temporal", ref p_smResult);
+                Dal.MvlEstados.MakeGridCaptions(ref l_dsTemp, "Temporal", p_smResult);
 
                 // Contruimos la lista-entidad y la devolvemos (si vino algun registro)
                 LEMovilesEstado l_lentRet= new LEMovilesEstado(l_dsTemp.Tables["Temporal"]);
@@ -4353,7 +4321,7 @@ namespace Mrln.Bll
                                               string p_strPatente,
                                               DateTime p_dtFecha,
                                               bool p_bOnlyActive,
-                                              ref StatMsg p_smResult)
+                                              StatMsg p_smResult)
         {
             try {
                 // Pedimos el registro de la tabla: MvlEstados
@@ -4364,7 +4332,7 @@ namespace Mrln.Bll
                                       p_dtFecha,
                                       p_bOnlyActive,
                                       ref l_dsTemp, "Temporal",
-                                      ref p_smResult);
+                                      p_smResult);
                 if (p_smResult.NOk) return null;
 
                 // Constuimos la entidad y la devolvemos (si vino un registro)
@@ -4394,7 +4362,7 @@ namespace Mrln.Bll
         internal static LEMovilesEstado MvesFSch(DBConn p_dbcAccess,
                                                  string p_strPatente,
                                                  bool p_bOnlyActive,
-                                                 ref StatMsg p_smResult)
+                                                 StatMsg p_smResult)
         {
             // No hay errores aun
             DataSet l_dsTemp= new DataSet();
@@ -4405,11 +4373,11 @@ namespace Mrln.Bll
                                        p_strPatente,
                                        p_bOnlyActive,
                                        ref l_dsTemp, "Temporal",
-                                       ref p_smResult);
+                                       p_smResult);
                 if (p_smResult.NOk) return null;
 
                 // Fijamos los captions de la grilla
-                Dal.MvlEstados.MakeGridCaptions(ref l_dsTemp, "Temporal", ref p_smResult);
+                Dal.MvlEstados.MakeGridCaptions(ref l_dsTemp, "Temporal", p_smResult);
 
                 // Contruimos la lista-entidad y la devolvemos
                 LEMovilesEstado l_entRet= new LEMovilesEstado(l_dsTemp.Tables["Temporal"]);
@@ -4434,18 +4402,18 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void MvesSSav(DBConn p_dbcAccess,
                                       EMovilEstado p_entMovilEstado,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             try {
                 // Procesamos codigo fijo
-                MvesSave_f(p_dbcAccess, ref p_entMovilEstado, ref p_smResult);
+                MvesSave_f(p_dbcAccess, ref p_entMovilEstado, p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Verificamos la clave a grabar
                 MvesVKey(p_dbcAccess, 
                          p_entMovilEstado.Patente,
                          p_entMovilEstado.Fecha,
-                         ref p_smResult);
+                         p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Si es una entidad nueva
@@ -4458,7 +4426,7 @@ namespace Mrln.Bll
                     }
 
                     // Agregamos el registro
-                    MvesInsr(p_dbcAccess, p_entMovilEstado, ref p_smResult);
+                    MvesInsr(p_dbcAccess, p_entMovilEstado, p_smResult);
                     return;
                 }
 
@@ -4474,11 +4442,11 @@ namespace Mrln.Bll
                          p_entMovilEstado.Patente,
                          p_entMovilEstado.Fecha,
                          p_entMovilEstado.FxdVersion,
-                         ref p_smResult);
+                         p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Actualizamos el registro
-                MvesUpdt(p_dbcAccess, p_entMovilEstado, ref p_smResult);
+                MvesUpdt(p_dbcAccess, p_entMovilEstado, p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion SSav
@@ -4494,11 +4462,11 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void MvesInsr(DBConn p_dbcAccess,
                                       EMovilEstado p_entMovilEstado,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             try {
                 // Validamos la integridad de la entidad
-                MvesTInt(p_dbcAccess, p_entMovilEstado, ref p_smResult);
+                MvesTInt(p_dbcAccess, p_entMovilEstado, p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Creamos un nuevo registro de la tabla: MvlEstados
@@ -4507,7 +4475,7 @@ namespace Mrln.Bll
                                       p_entMovilEstado.Fecha,
                                       p_entMovilEstado.Codestado,
                                       p_entMovilEstado.Km,
-                                      ref p_smResult);
+                                      p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Insr
@@ -4523,11 +4491,11 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void MvesUpdt(DBConn p_dbcAccess,
                                       EMovilEstado p_entMovilEstado,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             try {
                 // Validamos la integridad de la entidad
-                MvesTInt(p_dbcAccess, p_entMovilEstado, ref p_smResult);
+                MvesTInt(p_dbcAccess, p_entMovilEstado, p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Actualizamos un registro de la tabla: MvlEstados
@@ -4536,7 +4504,7 @@ namespace Mrln.Bll
                                       p_entMovilEstado.Fecha,
                                       p_entMovilEstado.Codestado,
                                       p_entMovilEstado.Km,
-                                      ref p_smResult);
+                                      p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Updt
@@ -4556,14 +4524,14 @@ namespace Mrln.Bll
                                       string p_strPatente,
                                       DateTime p_dtFecha,
                                       int p_iFxdVersion,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             try {
                 // Verificamos la clave a borrar
                 MvesVKey(p_dbcAccess,
                          p_strPatente,
                          p_dtFecha,
-                         ref p_smResult);
+                         p_smResult);
                 if (p_smResult.NOk) return;
 
                 // El registro tiene que existir
@@ -4578,14 +4546,14 @@ namespace Mrln.Bll
                          p_strPatente,
                          p_dtFecha,
                          p_iFxdVersion,
-                         ref p_smResult);
+                         p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Borramos físicamente el registro
                 Dal.MvlEstados.Drop(p_dbcAccess,
                                     p_strPatente,
                                     p_dtFecha,
-                                    ref p_smResult);
+                                    p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Remove
@@ -4599,12 +4567,12 @@ namespace Mrln.Bll
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void MvesPack(DBConn p_dbcAccess,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             try {
                 // Borramos los borrados lógicamente
                 Dal.MvlEstados.Pack(p_dbcAccess,
-                                    ref p_smResult);
+                                    p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Updt
@@ -4623,13 +4591,13 @@ namespace Mrln.Bll
         internal static void MvesSSav(DBConn p_dbcAccess,
                                       string p_strPatente,
                                       LEMovilesEstado p_lentMovilesEstado,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             try {
                 // Deshabilitamos todas las entidades existentes
                 Dal.MvlEstados.FDrop(p_dbcAccess,
                                      p_strPatente,
-                                     ref p_smResult);
+                                     p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Recorremos la lista de entidades
@@ -4641,13 +4609,13 @@ namespace Mrln.Bll
                     MvesVKey(p_dbcAccess,
                              l_entMovilEstado.Patente,
                              l_entMovilEstado.Fecha,
-                             ref p_smResult);
+                             p_smResult);
                     if (p_smResult.NOk) return;
 
                     // Si no existe
                     if (p_smResult.ICodeEs(BllCodes.KeyDsntFound)) {
                         // Hay que darla de alta
-                        MvesInsr(p_dbcAccess, l_entMovilEstado, ref p_smResult);
+                        MvesInsr(p_dbcAccess, l_entMovilEstado, p_smResult);
                         if (p_smResult.NOk) return;
                         continue;
                     }
@@ -4657,12 +4625,12 @@ namespace Mrln.Bll
                              l_entMovilEstado.Patente,
                              l_entMovilEstado.Fecha,
                              l_entMovilEstado.FxdVersion,
-                             ref p_smResult);
+                             p_smResult);
                     if (p_smResult.NOk) return;
 
                     // El número coincide. La Actualizamos si no está borrada
                     if (!l_entMovilEstado.EstaBorrada) {
-                        MvesUpdt(p_dbcAccess, l_entMovilEstado, ref p_smResult);
+                        MvesUpdt(p_dbcAccess, l_entMovilEstado, p_smResult);
                         if (p_smResult.NOk) return;
                     }
                 }
@@ -4685,7 +4653,7 @@ namespace Mrln.Bll
         /// <returns>ListaEntidad con los datos solicitados</returns>
         internal static ListaEntidades MvesgetLastFiveMvlEstads(DBConn p_dbcAccess,
                                                                 string p_strPatente,
-                                                                ref StatMsg p_smResult)
+                                                                StatMsg p_smResult)
         {
             try {
                 // Llamamos al metodo definido por el usuario
@@ -4695,7 +4663,7 @@ namespace Mrln.Bll
                                                     p_strPatente,
                                                     ref l_dsTemp,
                                                     "Temporal",
-                                                    ref p_smResult);
+                                                    p_smResult);
                 if (p_smResult.NOk) return null;
 
                 // Creamos la LE y Captionamos
@@ -4703,47 +4671,6 @@ namespace Mrln.Bll
                 BllRuts.FillStdCaptions(ref l_lentRet);
 
                 // Devolvemos la LE
-                l_dsTemp.Dispose();
-                return l_lentRet;
-            }
-            catch (Exception l_expData) {
-                // Error en la operacion
-                p_smResult.BllError(l_expData);
-                return null;
-            }
-            finally {
-                // Terminamos
-            }
-        }
-
-        /// <summary>
-        /// Ejecuta el SP definido por el usuario: getMovilEstadoActual
-        /// </summary>
-        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name= p_strPatente>Patente</param>
-        /// <param name="p_smResult">Estado final de la operacion</param>
-        /// <returns>ListaEntidad con los datos solicitados</returns>
-        internal static LEMovilesEstado MvesgetMovilEstadoActual(DBConn p_dbcAccess,
-                                                                 string p_strPatente,
-                                                                 ref StatMsg p_smResult)
-        {
-            try {
-                // Llamamos al metodo definido por el usuario
-                DataSet l_dsTemp= new DataSet();
-
-                Dal.MvlEstados.getMovilEstadoActual(p_dbcAccess,
-                                                    p_strPatente,
-                                                    ref l_dsTemp,
-                                                    "Temporal",
-                                                    ref p_smResult);
-                if (p_smResult.NOk) return null;
-
-                // Captionamos el resultado
-                Dal.MvlEstados.MakeGridCaptions(ref l_dsTemp, "Temporal", ref p_smResult);
-                if (p_smResult.NOk) return null;
-
-                // Creamos la ListaEntidad y la devolvemos
-                LEMovilesEstado l_lentRet= new LEMovilesEstado(l_dsTemp.Tables["Temporal"]);
                 l_dsTemp.Dispose();
                 return l_lentRet;
             }
@@ -4778,7 +4705,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         /// <returns>Lista-entidad: LEMovilesInfracciones</returns>
         public static LEMovilesInfracciones MvifUpFull(bool p_bOnlyActive,
-                                                       ref StatMsg p_smResult)
+                                                       StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -4788,7 +4715,7 @@ namespace Mrln.Bll
                 l_dbcAccess= DBRuts.GetConection(Connections.Dat);
 
                 // Pedimos los registros de la tabla
-                return MvifUpfl(l_dbcAccess, p_bOnlyActive, ref p_smResult);
+                return MvifUpfl(l_dbcAccess, p_bOnlyActive, p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion UpFull
@@ -4812,7 +4739,7 @@ namespace Mrln.Bll
         public static EMovilInfraccion MvifGet(string p_strPatente,
                                                DateTime p_dtFecha,
                                                bool p_bOnlyActive,
-                                               ref StatMsg p_smResult)
+                                               StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -4826,7 +4753,7 @@ namespace Mrln.Bll
                                 p_strPatente,
                                 p_dtFecha,
                                 p_bOnlyActive,
-                                ref p_smResult);
+                                p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Get
@@ -4849,7 +4776,7 @@ namespace Mrln.Bll
         /// <returns>Lista-Entidad: LEMovilesInfracciones</returns>
         public static LEMovilesInfracciones MvifFGet(string p_strPatente,
                                                      bool p_bOnlyActive,
-                                                     ref StatMsg p_smResult)
+                                                     StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -4862,7 +4789,7 @@ namespace Mrln.Bll
                 return MvifFSch(l_dbcAccess,
                                 p_strPatente,
                                 p_bOnlyActive,
-                                ref p_smResult);
+                                p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion FGet
@@ -4884,7 +4811,7 @@ namespace Mrln.Bll
         /// <param name="p_entMovilInfraccion">Entidad con los datos a procesar</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static void MvifSave(EMovilInfraccion p_entMovilInfraccion,
-                                    ref StatMsg p_smResult)
+                                    StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -4895,7 +4822,7 @@ namespace Mrln.Bll
                 l_dbcAccess.BeginTransaction();
 
                 // Grabamos la entidad: EMovilInfraccion
-                MvifSSav(l_dbcAccess, p_entMovilInfraccion, ref p_smResult);
+                MvifSSav(l_dbcAccess, p_entMovilInfraccion, p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Save
@@ -4922,7 +4849,7 @@ namespace Mrln.Bll
                                        string p_strPatente,
                                        DateTime p_dtFecha,
                                        int p_iFxdVersion,
-                                       ref StatMsg p_smResult)
+                                       StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -4938,14 +4865,14 @@ namespace Mrln.Bll
                               p_strPatente,
                               p_dtFecha,
                               ref p_iFxdVersion,
-                              ref p_smResult);
+                              p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Verificamos la clave a modificar
                 MvifVKey(l_dbcAccess,
                          p_strPatente,
                          p_dtFecha,
-                         ref p_smResult);
+                         p_smResult);
                 if (p_smResult.NOk) return;
 
                 // El registro tiene que existir
@@ -4960,7 +4887,7 @@ namespace Mrln.Bll
                          p_strPatente,
                          p_dtFecha,
                          p_iFxdVersion,
-                         ref p_smResult);
+                         p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Segun el modo
@@ -4969,14 +4896,14 @@ namespace Mrln.Bll
                     Dal.MvlInfracciones.Recall(l_dbcAccess,
                                                p_strPatente,
                                                p_dtFecha,
-                                               ref p_smResult);
+                                               p_smResult);
                 }
                 else {
                     // Hay que deshabilitar el registro
                     Dal.MvlInfracciones.Delete(l_dbcAccess,
                                                p_strPatente,
                                                p_dtFecha,
-                                               ref p_smResult);
+                                               p_smResult);
                 }
             }
             catch (Exception l_expData) {
@@ -5003,7 +4930,7 @@ namespace Mrln.Bll
         public static void MvifRemove(string p_strPatente,
                                       DateTime p_dtFecha,
                                       int p_iFxdVersion,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -5018,7 +4945,7 @@ namespace Mrln.Bll
                              p_strPatente,
                              p_dtFecha,
                              p_iFxdVersion,
-                             ref p_smResult);
+                             p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Borramos el registro solicitado
@@ -5026,7 +4953,7 @@ namespace Mrln.Bll
                          p_strPatente,
                          p_dtFecha,
                          p_iFxdVersion,
-                         ref p_smResult);
+                         p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Remove
@@ -5046,7 +4973,7 @@ namespace Mrln.Bll
         /// Compacta una tabla borrando los registros deshabilitados
         /// </summary>
         /// <param name="p_smResult">Estado final de la operacion</param>
-        public static void MvifPurge(ref StatMsg p_smResult)
+        public static void MvifPurge(StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -5057,7 +4984,7 @@ namespace Mrln.Bll
 
                 // Realizamos el borrado
                 MvifPack(l_dbcAccess,
-                         ref p_smResult);
+                         p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Enabled
@@ -5091,7 +5018,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void MvifTInt(DBConn p_dbcAccess,
                                       EMovilInfraccion p_entMovilInfraccion,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             // ********
             // Validaciones de los campos sin conexion
@@ -5116,7 +5043,7 @@ namespace Mrln.Bll
 
             Tablas.MtiVKey(p_dbcAccess,
                            p_entMovilInfraccion.Codmotivo,
-                           ref p_smResult);
+                           p_smResult);
             if (p_smResult.NOk) return;
 
             if (p_smResult.ICodeEs(BllCodes.KeyDsntFound)) {
@@ -5128,7 +5055,7 @@ namespace Mrln.Bll
             // Verificamos la clave foranea
             Moviles.VKey(p_dbcAccess,
                          p_entMovilInfraccion.Patente,
-                         ref p_smResult);
+                         p_smResult);
             if (p_smResult.NOk) return;
 
             // El registro tiene que existir
@@ -5141,7 +5068,7 @@ namespace Mrln.Bll
             // Todas las validaciones fueron correctas
 
             // Llamamos a la funcion fija del usuario
-            MvifTInt_f(p_dbcAccess, p_entMovilInfraccion, ref p_smResult);
+            MvifTInt_f(p_dbcAccess, p_entMovilInfraccion, p_smResult);
             if (p_smResult.NOk) return;
         }
 
@@ -5157,7 +5084,7 @@ namespace Mrln.Bll
                                       string p_strPatente,
                                       DateTime p_dtFecha,
                                       int p_iFxdVersion,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             // No hay errores aun
             DataSet l_dsTemp= new DataSet();
@@ -5169,7 +5096,7 @@ namespace Mrln.Bll
                                            p_iFxdVersion,
                                            ref l_dsTemp,
                                            "Temporal",
-                                           ref p_smResult);
+                                           p_smResult);
             if (p_smResult.NOk) return;
 
             // Verificamos el resultado que vino
@@ -5226,7 +5153,7 @@ namespace Mrln.Bll
         internal static void MvifVKey(DBConn p_dbcAccess,
                                       string p_strPatente,
                                       DateTime p_dtFecha,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             // No hay errores aun
             DataSet l_dsTemp= new DataSet();
@@ -5237,7 +5164,7 @@ namespace Mrln.Bll
                                        false,
                                        ref l_dsTemp,
                                        "Temporal",
-                                       ref p_smResult);
+                                       p_smResult);
             if (p_smResult.NOk) return;
 
             try {
@@ -5270,7 +5197,7 @@ namespace Mrln.Bll
         /// <returns>Lista-entidad: LEMovilesInfracciones</returns>
         internal static LEMovilesInfracciones MvifUpfl(DBConn p_dbcAccess,
                                                        bool p_bOnlyActive,
-                                                       ref StatMsg p_smResult)
+                                                       StatMsg p_smResult)
         {
             try {
                 // Pedimos los registros de la tabla: MvlInfracciones
@@ -5279,11 +5206,11 @@ namespace Mrln.Bll
                 Dal.MvlInfracciones.Up(p_dbcAccess, 
                                        p_bOnlyActive,
                                        ref l_dsTemp, "Temporal",
-                                       ref p_smResult);
+                                       p_smResult);
                 if (p_smResult.NOk) return null;
 
                 // Fijamos los captions de la grilla
-                Dal.MvlInfracciones.MakeGridCaptions(ref l_dsTemp, "Temporal", ref p_smResult);
+                Dal.MvlInfracciones.MakeGridCaptions(ref l_dsTemp, "Temporal", p_smResult);
 
                 // Contruimos la lista-entidad y la devolvemos (si vino algun registro)
                 LEMovilesInfracciones l_lentRet= new LEMovilesInfracciones(l_dsTemp.Tables["Temporal"]);
@@ -5310,7 +5237,7 @@ namespace Mrln.Bll
                                                   string p_strPatente,
                                                   DateTime p_dtFecha,
                                                   bool p_bOnlyActive,
-                                                  ref StatMsg p_smResult)
+                                                  StatMsg p_smResult)
         {
             try {
                 // Pedimos el registro de la tabla: MvlInfracciones
@@ -5321,7 +5248,7 @@ namespace Mrln.Bll
                                            p_dtFecha,
                                            p_bOnlyActive,
                                            ref l_dsTemp, "Temporal",
-                                           ref p_smResult);
+                                           p_smResult);
                 if (p_smResult.NOk) return null;
 
                 // Constuimos la entidad y la devolvemos (si vino un registro)
@@ -5351,7 +5278,7 @@ namespace Mrln.Bll
         internal static LEMovilesInfracciones MvifFSch(DBConn p_dbcAccess,
                                                        string p_strPatente,
                                                        bool p_bOnlyActive,
-                                                       ref StatMsg p_smResult)
+                                                       StatMsg p_smResult)
         {
             // No hay errores aun
             DataSet l_dsTemp= new DataSet();
@@ -5362,11 +5289,11 @@ namespace Mrln.Bll
                                             p_strPatente,
                                             p_bOnlyActive,
                                             ref l_dsTemp, "Temporal",
-                                            ref p_smResult);
+                                            p_smResult);
                 if (p_smResult.NOk) return null;
 
                 // Fijamos los captions de la grilla
-                Dal.MvlInfracciones.MakeGridCaptions(ref l_dsTemp, "Temporal", ref p_smResult);
+                Dal.MvlInfracciones.MakeGridCaptions(ref l_dsTemp, "Temporal", p_smResult);
 
                 // Contruimos la lista-entidad y la devolvemos
                 LEMovilesInfracciones l_entRet= new LEMovilesInfracciones(l_dsTemp.Tables["Temporal"]);
@@ -5391,18 +5318,18 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void MvifSSav(DBConn p_dbcAccess,
                                       EMovilInfraccion p_entMovilInfraccion,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             try {
                 // Procesamos codigo fijo
-                MvifSave_f(p_dbcAccess, ref p_entMovilInfraccion, ref p_smResult);
+                MvifSave_f(p_dbcAccess, ref p_entMovilInfraccion, p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Verificamos la clave a grabar
                 MvifVKey(p_dbcAccess, 
                          p_entMovilInfraccion.Patente,
                          p_entMovilInfraccion.Fecha,
-                         ref p_smResult);
+                         p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Si es una entidad nueva
@@ -5415,7 +5342,7 @@ namespace Mrln.Bll
                     }
 
                     // Agregamos el registro
-                    MvifInsr(p_dbcAccess, p_entMovilInfraccion, ref p_smResult);
+                    MvifInsr(p_dbcAccess, p_entMovilInfraccion, p_smResult);
                     return;
                 }
 
@@ -5431,11 +5358,11 @@ namespace Mrln.Bll
                          p_entMovilInfraccion.Patente,
                          p_entMovilInfraccion.Fecha,
                          p_entMovilInfraccion.FxdVersion,
-                         ref p_smResult);
+                         p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Actualizamos el registro
-                MvifUpdt(p_dbcAccess, p_entMovilInfraccion, ref p_smResult);
+                MvifUpdt(p_dbcAccess, p_entMovilInfraccion, p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion SSav
@@ -5451,11 +5378,11 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void MvifInsr(DBConn p_dbcAccess,
                                       EMovilInfraccion p_entMovilInfraccion,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             try {
                 // Validamos la integridad de la entidad
-                MvifTInt(p_dbcAccess, p_entMovilInfraccion, ref p_smResult);
+                MvifTInt(p_dbcAccess, p_entMovilInfraccion, p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Creamos un nuevo registro de la tabla: MvlInfracciones
@@ -5468,7 +5395,7 @@ namespace Mrln.Bll
                                            p_entMovilInfraccion.Importe,
                                            p_entMovilInfraccion.Comentario,
                                            p_entMovilInfraccion.Anulada,
-                                           ref p_smResult);
+                                           p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Insr
@@ -5484,11 +5411,11 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void MvifUpdt(DBConn p_dbcAccess,
                                       EMovilInfraccion p_entMovilInfraccion,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             try {
                 // Validamos la integridad de la entidad
-                MvifTInt(p_dbcAccess, p_entMovilInfraccion, ref p_smResult);
+                MvifTInt(p_dbcAccess, p_entMovilInfraccion, p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Actualizamos un registro de la tabla: MvlInfracciones
@@ -5501,7 +5428,7 @@ namespace Mrln.Bll
                                            p_entMovilInfraccion.Importe,
                                            p_entMovilInfraccion.Comentario,
                                            p_entMovilInfraccion.Anulada,
-                                           ref p_smResult);
+                                           p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Updt
@@ -5521,14 +5448,14 @@ namespace Mrln.Bll
                                       string p_strPatente,
                                       DateTime p_dtFecha,
                                       int p_iFxdVersion,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             try {
                 // Verificamos la clave a borrar
                 MvifVKey(p_dbcAccess,
                          p_strPatente,
                          p_dtFecha,
-                         ref p_smResult);
+                         p_smResult);
                 if (p_smResult.NOk) return;
 
                 // El registro tiene que existir
@@ -5543,14 +5470,14 @@ namespace Mrln.Bll
                          p_strPatente,
                          p_dtFecha,
                          p_iFxdVersion,
-                         ref p_smResult);
+                         p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Borramos físicamente el registro
                 Dal.MvlInfracciones.Drop(p_dbcAccess,
                                          p_strPatente,
                                          p_dtFecha,
-                                         ref p_smResult);
+                                         p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Remove
@@ -5564,12 +5491,12 @@ namespace Mrln.Bll
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void MvifPack(DBConn p_dbcAccess,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             try {
                 // Borramos los borrados lógicamente
                 Dal.MvlInfracciones.Pack(p_dbcAccess,
-                                         ref p_smResult);
+                                         p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Updt
@@ -5588,13 +5515,13 @@ namespace Mrln.Bll
         internal static void MvifSSav(DBConn p_dbcAccess,
                                       string p_strPatente,
                                       LEMovilesInfracciones p_lentMovilesInfracciones,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             try {
                 // Deshabilitamos todas las entidades existentes
                 Dal.MvlInfracciones.FDrop(p_dbcAccess,
                                           p_strPatente,
-                                          ref p_smResult);
+                                          p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Recorremos la lista de entidades
@@ -5606,13 +5533,13 @@ namespace Mrln.Bll
                     MvifVKey(p_dbcAccess,
                              l_entMovilInfraccion.Patente,
                              l_entMovilInfraccion.Fecha,
-                             ref p_smResult);
+                             p_smResult);
                     if (p_smResult.NOk) return;
 
                     // Si no existe
                     if (p_smResult.ICodeEs(BllCodes.KeyDsntFound)) {
                         // Hay que darla de alta
-                        MvifInsr(p_dbcAccess, l_entMovilInfraccion, ref p_smResult);
+                        MvifInsr(p_dbcAccess, l_entMovilInfraccion, p_smResult);
                         if (p_smResult.NOk) return;
                         continue;
                     }
@@ -5622,12 +5549,12 @@ namespace Mrln.Bll
                              l_entMovilInfraccion.Patente,
                              l_entMovilInfraccion.Fecha,
                              l_entMovilInfraccion.FxdVersion,
-                             ref p_smResult);
+                             p_smResult);
                     if (p_smResult.NOk) return;
 
                     // El número coincide. La Actualizamos si no está borrada
                     if (!l_entMovilInfraccion.EstaBorrada) {
-                        MvifUpdt(p_dbcAccess, l_entMovilInfraccion, ref p_smResult);
+                        MvifUpdt(p_dbcAccess, l_entMovilInfraccion, p_smResult);
                         if (p_smResult.NOk) return;
                     }
                 }
@@ -5662,7 +5589,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         /// <returns>Lista-entidad: LEMovilesKms</returns>
         public static LEMovilesKms MvkmUpFull(bool p_bOnlyActive,
-                                              ref StatMsg p_smResult)
+                                              StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -5672,7 +5599,7 @@ namespace Mrln.Bll
                 l_dbcAccess= DBRuts.GetConection(Connections.Dat);
 
                 // Pedimos los registros de la tabla
-                return MvkmUpfl(l_dbcAccess, p_bOnlyActive, ref p_smResult);
+                return MvkmUpfl(l_dbcAccess, p_bOnlyActive, p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion UpFull
@@ -5696,7 +5623,7 @@ namespace Mrln.Bll
         public static EMovilKms MvkmGet(string p_strPatente,
                                         DateTime p_dtFecha,
                                         bool p_bOnlyActive,
-                                        ref StatMsg p_smResult)
+                                        StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -5710,7 +5637,7 @@ namespace Mrln.Bll
                                 p_strPatente,
                                 p_dtFecha,
                                 p_bOnlyActive,
-                                ref p_smResult);
+                                p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Get
@@ -5733,7 +5660,7 @@ namespace Mrln.Bll
         /// <returns>Lista-Entidad: LEMovilesKms</returns>
         public static LEMovilesKms MvkmFGet(string p_strPatente,
                                             bool p_bOnlyActive,
-                                            ref StatMsg p_smResult)
+                                            StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -5746,7 +5673,7 @@ namespace Mrln.Bll
                 return MvkmFSch(l_dbcAccess,
                                 p_strPatente,
                                 p_bOnlyActive,
-                                ref p_smResult);
+                                p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion FGet
@@ -5768,7 +5695,7 @@ namespace Mrln.Bll
         /// <param name="p_entMovilKms">Entidad con los datos a procesar</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static void MvkmSave(EMovilKms p_entMovilKms,
-                                    ref StatMsg p_smResult)
+                                    StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -5779,7 +5706,7 @@ namespace Mrln.Bll
                 l_dbcAccess.BeginTransaction();
 
                 // Grabamos la entidad: EMovilKms
-                MvkmSSav(l_dbcAccess, p_entMovilKms, ref p_smResult);
+                MvkmSSav(l_dbcAccess, p_entMovilKms, p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Save
@@ -5806,7 +5733,7 @@ namespace Mrln.Bll
                                        string p_strPatente,
                                        DateTime p_dtFecha,
                                        int p_iFxdVersion,
-                                       ref StatMsg p_smResult)
+                                       StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -5822,14 +5749,14 @@ namespace Mrln.Bll
                               p_strPatente,
                               p_dtFecha,
                               ref p_iFxdVersion,
-                              ref p_smResult);
+                              p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Verificamos la clave a modificar
                 MvkmVKey(l_dbcAccess,
                          p_strPatente,
                          p_dtFecha,
-                         ref p_smResult);
+                         p_smResult);
                 if (p_smResult.NOk) return;
 
                 // El registro tiene que existir
@@ -5844,7 +5771,7 @@ namespace Mrln.Bll
                          p_strPatente,
                          p_dtFecha,
                          p_iFxdVersion,
-                         ref p_smResult);
+                         p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Segun el modo
@@ -5853,14 +5780,14 @@ namespace Mrln.Bll
                     Dal.MvlKilometros.Recall(l_dbcAccess,
                                              p_strPatente,
                                              p_dtFecha,
-                                             ref p_smResult);
+                                             p_smResult);
                 }
                 else {
                     // Hay que deshabilitar el registro
                     Dal.MvlKilometros.Delete(l_dbcAccess,
                                              p_strPatente,
                                              p_dtFecha,
-                                             ref p_smResult);
+                                             p_smResult);
                 }
             }
             catch (Exception l_expData) {
@@ -5887,7 +5814,7 @@ namespace Mrln.Bll
         public static void MvkmRemove(string p_strPatente,
                                       DateTime p_dtFecha,
                                       int p_iFxdVersion,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -5902,7 +5829,7 @@ namespace Mrln.Bll
                              p_strPatente,
                              p_dtFecha,
                              p_iFxdVersion,
-                             ref p_smResult);
+                             p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Borramos el registro solicitado
@@ -5910,7 +5837,7 @@ namespace Mrln.Bll
                          p_strPatente,
                          p_dtFecha,
                          p_iFxdVersion,
-                         ref p_smResult);
+                         p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Remove
@@ -5930,7 +5857,7 @@ namespace Mrln.Bll
         /// Compacta una tabla borrando los registros deshabilitados
         /// </summary>
         /// <param name="p_smResult">Estado final de la operacion</param>
-        public static void MvkmPurge(ref StatMsg p_smResult)
+        public static void MvkmPurge(StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -5941,7 +5868,7 @@ namespace Mrln.Bll
 
                 // Realizamos el borrado
                 MvkmPack(l_dbcAccess,
-                         ref p_smResult);
+                         p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Enabled
@@ -5967,7 +5894,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         /// <returns>ListaEntidad con los datos solicitados</returns>
         public static ListaEntidades MvkmgetKmsActualesMvl(string p_strPatente,
-                                                           ref StatMsg p_smResult)
+                                                           StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -5979,7 +5906,7 @@ namespace Mrln.Bll
                 // Llamamos al metodo interno
                 return MvkmgetKmsActualesMvl(l_dbcAccess,
                                              p_strPatente,
-                                             ref p_smResult);
+                                             p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion
@@ -6007,7 +5934,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void MvkmTInt(DBConn p_dbcAccess,
                                       EMovilKms p_entMovilKms,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             // ********
             // Validaciones de los campos sin conexion
@@ -6038,7 +5965,7 @@ namespace Mrln.Bll
             // Verificamos la clave foranea
             Moviles.VKey(p_dbcAccess,
                          p_entMovilKms.Patente,
-                         ref p_smResult);
+                         p_smResult);
             if (p_smResult.NOk) return;
 
             // El registro tiene que existir
@@ -6049,7 +5976,7 @@ namespace Mrln.Bll
             }
 
             // Llamamos a la funcion fija del usuario
-            MvkmTInt_f(p_dbcAccess, p_entMovilKms, ref p_smResult);
+            MvkmTInt_f(p_dbcAccess, p_entMovilKms, p_smResult);
             if (p_smResult.NOk) return;
         }
 
@@ -6065,7 +5992,7 @@ namespace Mrln.Bll
                                       string p_strPatente,
                                       DateTime p_dtFecha,
                                       int p_iFxdVersion,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             // No hay errores aun
             DataSet l_dsTemp= new DataSet();
@@ -6077,7 +6004,7 @@ namespace Mrln.Bll
                                          p_iFxdVersion,
                                          ref l_dsTemp,
                                          "Temporal",
-                                         ref p_smResult);
+                                         p_smResult);
             if (p_smResult.NOk) return;
 
             // Verificamos el resultado que vino
@@ -6134,7 +6061,7 @@ namespace Mrln.Bll
         internal static void MvkmVKey(DBConn p_dbcAccess,
                                       string p_strPatente,
                                       DateTime p_dtFecha,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             // No hay errores aun
             DataSet l_dsTemp= new DataSet();
@@ -6145,7 +6072,7 @@ namespace Mrln.Bll
                                      false,
                                      ref l_dsTemp,
                                      "Temporal",
-                                     ref p_smResult);
+                                     p_smResult);
             if (p_smResult.NOk) return;
 
             try {
@@ -6178,7 +6105,7 @@ namespace Mrln.Bll
         /// <returns>Lista-entidad: LEMovilesKms</returns>
         internal static LEMovilesKms MvkmUpfl(DBConn p_dbcAccess,
                                               bool p_bOnlyActive,
-                                              ref StatMsg p_smResult)
+                                              StatMsg p_smResult)
         {
             try {
                 // Pedimos los registros de la tabla: MvlKilometros
@@ -6187,11 +6114,11 @@ namespace Mrln.Bll
                 Dal.MvlKilometros.Up(p_dbcAccess, 
                                      p_bOnlyActive,
                                      ref l_dsTemp, "Temporal",
-                                     ref p_smResult);
+                                     p_smResult);
                 if (p_smResult.NOk) return null;
 
                 // Fijamos los captions de la grilla
-                Dal.MvlKilometros.MakeGridCaptions(ref l_dsTemp, "Temporal", ref p_smResult);
+                Dal.MvlKilometros.MakeGridCaptions(ref l_dsTemp, "Temporal", p_smResult);
 
                 // Contruimos la lista-entidad y la devolvemos (si vino algun registro)
                 LEMovilesKms l_lentRet= new LEMovilesKms(l_dsTemp.Tables["Temporal"]);
@@ -6218,7 +6145,7 @@ namespace Mrln.Bll
                                            string p_strPatente,
                                            DateTime p_dtFecha,
                                            bool p_bOnlyActive,
-                                           ref StatMsg p_smResult)
+                                           StatMsg p_smResult)
         {
             try {
                 // Pedimos el registro de la tabla: MvlKilometros
@@ -6229,7 +6156,7 @@ namespace Mrln.Bll
                                          p_dtFecha,
                                          p_bOnlyActive,
                                          ref l_dsTemp, "Temporal",
-                                         ref p_smResult);
+                                         p_smResult);
                 if (p_smResult.NOk) return null;
 
                 // Constuimos la entidad y la devolvemos (si vino un registro)
@@ -6259,7 +6186,7 @@ namespace Mrln.Bll
         internal static LEMovilesKms MvkmFSch(DBConn p_dbcAccess,
                                               string p_strPatente,
                                               bool p_bOnlyActive,
-                                              ref StatMsg p_smResult)
+                                              StatMsg p_smResult)
         {
             // No hay errores aun
             DataSet l_dsTemp= new DataSet();
@@ -6270,11 +6197,11 @@ namespace Mrln.Bll
                                           p_strPatente,
                                           p_bOnlyActive,
                                           ref l_dsTemp, "Temporal",
-                                          ref p_smResult);
+                                          p_smResult);
                 if (p_smResult.NOk) return null;
 
                 // Fijamos los captions de la grilla
-                Dal.MvlKilometros.MakeGridCaptions(ref l_dsTemp, "Temporal", ref p_smResult);
+                Dal.MvlKilometros.MakeGridCaptions(ref l_dsTemp, "Temporal", p_smResult);
 
                 // Contruimos la lista-entidad y la devolvemos
                 LEMovilesKms l_entRet= new LEMovilesKms(l_dsTemp.Tables["Temporal"]);
@@ -6299,18 +6226,18 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void MvkmSSav(DBConn p_dbcAccess,
                                       EMovilKms p_entMovilKms,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             try {
                 // Procesamos codigo fijo
-                MvkmSave_f(p_dbcAccess, ref p_entMovilKms, ref p_smResult);
+                MvkmSave_f(p_dbcAccess, ref p_entMovilKms, p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Verificamos la clave a grabar
                 MvkmVKey(p_dbcAccess, 
                          p_entMovilKms.Patente,
                          p_entMovilKms.Fecha,
-                         ref p_smResult);
+                         p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Si es una entidad nueva
@@ -6323,7 +6250,7 @@ namespace Mrln.Bll
                     }
 
                     // Agregamos el registro
-                    MvkmInsr(p_dbcAccess, p_entMovilKms, ref p_smResult);
+                    MvkmInsr(p_dbcAccess, p_entMovilKms, p_smResult);
                     return;
                 }
 
@@ -6339,11 +6266,11 @@ namespace Mrln.Bll
                          p_entMovilKms.Patente,
                          p_entMovilKms.Fecha,
                          p_entMovilKms.FxdVersion,
-                         ref p_smResult);
+                         p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Actualizamos el registro
-                MvkmUpdt(p_dbcAccess, p_entMovilKms, ref p_smResult);
+                MvkmUpdt(p_dbcAccess, p_entMovilKms, p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion SSav
@@ -6359,11 +6286,11 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void MvkmInsr(DBConn p_dbcAccess,
                                       EMovilKms p_entMovilKms,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             try {
                 // Validamos la integridad de la entidad
-                MvkmTInt(p_dbcAccess, p_entMovilKms, ref p_smResult);
+                MvkmTInt(p_dbcAccess, p_entMovilKms, p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Creamos un nuevo registro de la tabla: MvlKilometros
@@ -6371,7 +6298,7 @@ namespace Mrln.Bll
                                          p_entMovilKms.Patente,
                                          p_entMovilKms.Fecha,
                                          p_entMovilKms.Km,
-                                         ref p_smResult);
+                                         p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Insr
@@ -6387,11 +6314,11 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void MvkmUpdt(DBConn p_dbcAccess,
                                       EMovilKms p_entMovilKms,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             try {
                 // Validamos la integridad de la entidad
-                MvkmTInt(p_dbcAccess, p_entMovilKms, ref p_smResult);
+                MvkmTInt(p_dbcAccess, p_entMovilKms, p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Actualizamos un registro de la tabla: MvlKilometros
@@ -6399,7 +6326,7 @@ namespace Mrln.Bll
                                          p_entMovilKms.Patente,
                                          p_entMovilKms.Fecha,
                                          p_entMovilKms.Km,
-                                         ref p_smResult);
+                                         p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Updt
@@ -6419,14 +6346,14 @@ namespace Mrln.Bll
                                       string p_strPatente,
                                       DateTime p_dtFecha,
                                       int p_iFxdVersion,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             try {
                 // Verificamos la clave a borrar
                 MvkmVKey(p_dbcAccess,
                          p_strPatente,
                          p_dtFecha,
-                         ref p_smResult);
+                         p_smResult);
                 if (p_smResult.NOk) return;
 
                 // El registro tiene que existir
@@ -6441,14 +6368,14 @@ namespace Mrln.Bll
                          p_strPatente,
                          p_dtFecha,
                          p_iFxdVersion,
-                         ref p_smResult);
+                         p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Borramos físicamente el registro
                 Dal.MvlKilometros.Drop(p_dbcAccess,
                                        p_strPatente,
                                        p_dtFecha,
-                                       ref p_smResult);
+                                       p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Remove
@@ -6462,12 +6389,12 @@ namespace Mrln.Bll
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void MvkmPack(DBConn p_dbcAccess,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             try {
                 // Borramos los borrados lógicamente
                 Dal.MvlKilometros.Pack(p_dbcAccess,
-                                       ref p_smResult);
+                                       p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Updt
@@ -6486,13 +6413,13 @@ namespace Mrln.Bll
         internal static void MvkmSSav(DBConn p_dbcAccess,
                                       string p_strPatente,
                                       LEMovilesKms p_lentMovilesKms,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             try {
                 // Deshabilitamos todas las entidades existentes
                 Dal.MvlKilometros.FDrop(p_dbcAccess,
                                         p_strPatente,
-                                        ref p_smResult);
+                                        p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Recorremos la lista de entidades
@@ -6504,13 +6431,13 @@ namespace Mrln.Bll
                     MvkmVKey(p_dbcAccess,
                              l_entMovilKms.Patente,
                              l_entMovilKms.Fecha,
-                             ref p_smResult);
+                             p_smResult);
                     if (p_smResult.NOk) return;
 
                     // Si no existe
                     if (p_smResult.ICodeEs(BllCodes.KeyDsntFound)) {
                         // Hay que darla de alta
-                        MvkmInsr(p_dbcAccess, l_entMovilKms, ref p_smResult);
+                        MvkmInsr(p_dbcAccess, l_entMovilKms, p_smResult);
                         if (p_smResult.NOk) return;
                         continue;
                     }
@@ -6520,12 +6447,12 @@ namespace Mrln.Bll
                              l_entMovilKms.Patente,
                              l_entMovilKms.Fecha,
                              l_entMovilKms.FxdVersion,
-                             ref p_smResult);
+                             p_smResult);
                     if (p_smResult.NOk) return;
 
                     // El número coincide. La Actualizamos si no está borrada
                     if (!l_entMovilKms.EstaBorrada) {
-                        MvkmUpdt(p_dbcAccess, l_entMovilKms, ref p_smResult);
+                        MvkmUpdt(p_dbcAccess, l_entMovilKms, p_smResult);
                         if (p_smResult.NOk) return;
                     }
                 }
@@ -6548,7 +6475,7 @@ namespace Mrln.Bll
         /// <returns>ListaEntidad con los datos solicitados</returns>
         internal static ListaEntidades MvkmgetKmsActualesMvl(DBConn p_dbcAccess,
                                                              string p_strPatente,
-                                                             ref StatMsg p_smResult)
+                                                             StatMsg p_smResult)
         {
             try {
                 // Llamamos al metodo definido por el usuario
@@ -6558,7 +6485,7 @@ namespace Mrln.Bll
                                                     p_strPatente,
                                                     ref l_dsTemp,
                                                     "Temporal",
-                                                    ref p_smResult);
+                                                    p_smResult);
                 if (p_smResult.NOk) return null;
 
                 // Creamos la LE y Captionamos
@@ -6588,7 +6515,7 @@ namespace Mrln.Bll
         /// <returns>ListaEntidad con los datos solicitados</returns>
         internal static ListaEntidades MvkmgetLastFiveMvlKm(DBConn p_dbcAccess,
                                                             string p_strPatente,
-                                                            ref StatMsg p_smResult)
+                                                            StatMsg p_smResult)
         {
             try {
                 // Llamamos al metodo definido por el usuario
@@ -6598,7 +6525,7 @@ namespace Mrln.Bll
                                                    p_strPatente,
                                                    ref l_dsTemp,
                                                    "Temporal",
-                                                   ref p_smResult);
+                                                   p_smResult);
                 if (p_smResult.NOk) return null;
 
                 // Creamos la LE y Captionamos
@@ -6640,7 +6567,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         /// <returns>Lista-entidad: LEMoviles</returns>
         public static LEMoviles UpFull(bool p_bOnlyActive,
-                                       ref StatMsg p_smResult)
+                                       StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -6650,7 +6577,7 @@ namespace Mrln.Bll
                 l_dbcAccess= DBRuts.GetConection(Connections.Dat);
 
                 // Pedimos los registros de la tabla
-                return Upfl(l_dbcAccess, p_bOnlyActive, ref p_smResult);
+                return Upfl(l_dbcAccess, p_bOnlyActive, p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion UpFull
@@ -6672,7 +6599,7 @@ namespace Mrln.Bll
         /// <returns>Entidad: EMovil</returns>
         public static EMovil Get(string p_strPatente,
                                  bool p_bOnlyActive,
-                                 ref StatMsg p_smResult)
+                                 StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -6685,7 +6612,7 @@ namespace Mrln.Bll
                 EMovil l_entMovil = Srch(l_dbcAccess,
                                          p_strPatente,
                                          p_bOnlyActive,
-                                         ref p_smResult);
+                                         p_smResult);
                 if (p_smResult.NOk) return null;
                 if (l_entMovil == null) return null;
 
@@ -6693,49 +6620,49 @@ namespace Mrln.Bll
                 l_entMovil.MovilesAccidentes= MvacFSch(l_dbcAccess,
                                                        p_strPatente,
                                                        p_bOnlyActive,
-                                                       ref p_smResult);
+                                                       p_smResult);
                 if (p_smResult.NOk) return null;
 
                 // Completamos la lista-entidad: LEMovilesAlertas
                 l_entMovil.MovilesAlertas= MvalFSch(l_dbcAccess,
                                                     p_strPatente,
                                                     p_bOnlyActive,
-                                                    ref p_smResult);
+                                                    p_smResult);
                 if (p_smResult.NOk) return null;
 
                 // Completamos la lista-entidad: LEMovilesCombus
                 l_entMovil.MovilesCombus= MvcoFSch(l_dbcAccess,
                                                    p_strPatente,
                                                    p_bOnlyActive,
-                                                   ref p_smResult);
+                                                   p_smResult);
                 if (p_smResult.NOk) return null;
 
                 // Completamos la lista-entidad: LEMovilesEquip
                 l_entMovil.MovilesEquip= MveqFSch(l_dbcAccess,
                                                   p_strPatente,
                                                   p_bOnlyActive,
-                                                  ref p_smResult);
+                                                  p_smResult);
                 if (p_smResult.NOk) return null;
 
                 // Completamos la lista-entidad: LEMovilesEstado
                 l_entMovil.MovilesEstado= MvesFSch(l_dbcAccess,
                                                    p_strPatente,
                                                    p_bOnlyActive,
-                                                   ref p_smResult);
+                                                   p_smResult);
                 if (p_smResult.NOk) return null;
 
                 // Completamos la lista-entidad: LEMovilesInfracciones
                 l_entMovil.MovilesInfracciones= MvifFSch(l_dbcAccess,
                                                          p_strPatente,
                                                          p_bOnlyActive,
-                                                         ref p_smResult);
+                                                         p_smResult);
                 if (p_smResult.NOk) return null;
 
                 // Completamos la lista-entidad: LEMovilesKms
                 l_entMovil.MovilesKms= MvkmFSch(l_dbcAccess,
                                                 p_strPatente,
                                                 p_bOnlyActive,
-                                                ref p_smResult);
+                                                p_smResult);
                 if (p_smResult.NOk) return null;
 
                 // Devolvemos la entidad completa
@@ -6761,7 +6688,7 @@ namespace Mrln.Bll
         /// <param name="p_entMovil">Entidad con los datos a procesar</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static void Save(EMovil p_entMovil,
-                                ref StatMsg p_smResult)
+                                StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -6772,7 +6699,7 @@ namespace Mrln.Bll
                 l_dbcAccess.BeginTransaction();
 
                 // Grabamos la entidad: EMovil
-                SSav(l_dbcAccess, p_entMovil, ref p_smResult);
+                SSav(l_dbcAccess, p_entMovil, p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Save
@@ -6797,7 +6724,7 @@ namespace Mrln.Bll
         public static void Enabled(bool p_bEnable,
                                    string p_strPatente,
                                    int p_iFxdVersion,
-                                   ref StatMsg p_smResult)
+                                   StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -6812,13 +6739,13 @@ namespace Mrln.Bll
                           p_bEnable,
                           p_strPatente,
                           ref p_iFxdVersion,
-                          ref p_smResult);
+                          p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Verificamos la clave a modificar
                 VKey(l_dbcAccess,
                      p_strPatente,
-                     ref p_smResult);
+                     p_smResult);
                 if (p_smResult.NOk) return;
 
                 // El registro tiene que existir
@@ -6832,7 +6759,7 @@ namespace Mrln.Bll
                 VVer(l_dbcAccess, 
                      p_strPatente,
                      p_iFxdVersion,
-                     ref p_smResult);
+                     p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Segun el modo
@@ -6840,13 +6767,13 @@ namespace Mrln.Bll
                     // Hay que habilitar el registro
                     Dal.Moviles.Recall(l_dbcAccess,
                                        p_strPatente,
-                                       ref p_smResult);
+                                       p_smResult);
                 }
                 else {
                     // Hay que deshabilitar el registro
                     Dal.Moviles.Delete(l_dbcAccess,
                                        p_strPatente,
-                                       ref p_smResult);
+                                       p_smResult);
                 }
             }
             catch (Exception l_expData) {
@@ -6871,7 +6798,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static void Remove(string p_strPatente,
                                   int p_iFxdVersion,
-                                  ref StatMsg p_smResult)
+                                  StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -6885,14 +6812,14 @@ namespace Mrln.Bll
                 Remove_f(l_dbcAccess,
                          p_strPatente,
                          p_iFxdVersion,
-                         ref p_smResult);
+                         p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Borramos el registro solicitado
                 Drop(l_dbcAccess,
                      p_strPatente,
                      p_iFxdVersion,
-                     ref p_smResult);
+                     p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Remove
@@ -6912,7 +6839,7 @@ namespace Mrln.Bll
         /// Compacta una tabla borrando los registros deshabilitados
         /// </summary>
         /// <param name="p_smResult">Estado final de la operacion</param>
-        public static void Purge(ref StatMsg p_smResult)
+        public static void Purge(StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -6923,7 +6850,7 @@ namespace Mrln.Bll
 
                 // Realizamos el borrado
                 Pack(l_dbcAccess,
-                     ref p_smResult);
+                     p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Enabled
@@ -6949,7 +6876,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         /// <returns>ListaEntidad con los datos solicitados</returns>
         public static ListaEntidades GetHistorialFull(string p_strPatente,
-                                                      ref StatMsg p_smResult)
+                                                      StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -6961,7 +6888,7 @@ namespace Mrln.Bll
                 // Llamamos al metodo interno
                 return GetHistorialFull(l_dbcAccess,
                                         p_strPatente,
-                                        ref p_smResult);
+                                        p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion
@@ -6987,7 +6914,7 @@ namespace Mrln.Bll
                                                      DateTime p_dtFechafin,
                                                      string p_strPatenteini,
                                                      string p_strPatentefin,
-                                                     ref StatMsg p_smResult)
+                                                     StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -7002,7 +6929,7 @@ namespace Mrln.Bll
                                        p_dtFechafin,
                                        p_strPatenteini,
                                        p_strPatentefin,
-                                       ref p_smResult);
+                                       p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion
@@ -7024,7 +6951,7 @@ namespace Mrln.Bll
         /// <returns>ListaEntidad con los datos solicitados</returns>
         public static ListaEntidades ZMovilesPorEstado(string p_strEstadoini,
                                                        string p_strEstadofin,
-                                                       ref StatMsg p_smResult)
+                                                       StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -7037,7 +6964,7 @@ namespace Mrln.Bll
                 return ZMovilesPorEstado(l_dbcAccess,
                                          p_strEstadoini,
                                          p_strEstadofin,
-                                         ref p_smResult);
+                                         p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion
@@ -7065,7 +6992,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void TInt(DBConn p_dbcAccess,
                                   EMovil p_entMovil,
-                                  ref StatMsg p_smResult)
+                                  StatMsg p_smResult)
         {
             // ********
             // Validaciones de los campos sin conexion
@@ -7120,7 +7047,7 @@ namespace Mrln.Bll
 
             Tablas.ModVKey(p_dbcAccess,
                            p_entMovil.Modelo,
-                           ref p_smResult);
+                           p_smResult);
             if (p_smResult.NOk) return;
 
             if (p_smResult.ICodeEs(BllCodes.KeyDsntFound)) {
@@ -7132,7 +7059,7 @@ namespace Mrln.Bll
             // Todas las validaciones fueron correctas
 
             // Llamamos a la funcion fija del usuario
-            TInt_f(p_dbcAccess, p_entMovil, ref p_smResult);
+            TInt_f(p_dbcAccess, p_entMovil, p_smResult);
             if (p_smResult.NOk) return;
         }
 
@@ -7146,7 +7073,7 @@ namespace Mrln.Bll
         internal static void VVer(DBConn p_dbcAccess,
                                   string p_strPatente,
                                   int p_iFxdVersion,
-                                  ref StatMsg p_smResult)
+                                  StatMsg p_smResult)
         {
             // No hay errores aun
             DataSet l_dsTemp= new DataSet();
@@ -7157,7 +7084,7 @@ namespace Mrln.Bll
                                    p_iFxdVersion,
                                    ref l_dsTemp,
                                    "Temporal",
-                                   ref p_smResult);
+                                   p_smResult);
             if (p_smResult.NOk) return;
 
             // Verificamos el resultado que vino
@@ -7212,7 +7139,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void VKey(DBConn p_dbcAccess,
                                   string p_strPatente,
-                                  ref StatMsg p_smResult)
+                                  StatMsg p_smResult)
         {
             // No hay errores aun
             DataSet l_dsTemp= new DataSet();
@@ -7222,7 +7149,7 @@ namespace Mrln.Bll
                                false,
                                ref l_dsTemp,
                                "Temporal",
-                               ref p_smResult);
+                               p_smResult);
             if (p_smResult.NOk) return;
 
             try {
@@ -7255,7 +7182,7 @@ namespace Mrln.Bll
         /// <returns>Lista-entidad: LEMoviles</returns>
         internal static LEMoviles Upfl(DBConn p_dbcAccess,
                                            bool p_bOnlyActive,
-                                           ref StatMsg p_smResult)
+                                           StatMsg p_smResult)
         {
             try {
                 // Pedimos los registros de la tabla: Moviles
@@ -7264,11 +7191,11 @@ namespace Mrln.Bll
                 Dal.Moviles.Up(p_dbcAccess, 
                                p_bOnlyActive,
                                ref l_dsTemp, "Temporal",
-                               ref p_smResult);
+                               p_smResult);
                 if (p_smResult.NOk) return null;
 
                 // Fijamos los captions de la grilla
-                Dal.Moviles.MakeGridCaptions(ref l_dsTemp, "Temporal", ref p_smResult);
+                Dal.Moviles.MakeGridCaptions(ref l_dsTemp, "Temporal", p_smResult);
 
                 // Contruimos la lista-entidad y la devolvemos (si vino algun registro)
                 LEMoviles l_lentRet= new LEMoviles(l_dsTemp.Tables["Temporal"]);
@@ -7293,7 +7220,7 @@ namespace Mrln.Bll
         internal static EMovil Srch(DBConn p_dbcAccess,
                                     string p_strPatente,
                                     bool p_bOnlyActive,
-                                    ref StatMsg p_smResult)
+                                    StatMsg p_smResult)
         {
             try {
                 // Pedimos el registro de la tabla: Moviles
@@ -7303,7 +7230,7 @@ namespace Mrln.Bll
                                    p_strPatente,
                                    p_bOnlyActive,
                                    ref l_dsTemp, "Temporal",
-                                   ref p_smResult);
+                                   p_smResult);
                 if (p_smResult.NOk) return null;
 
                 // Constuimos la entidad y la devolvemos (si vino un registro)
@@ -7333,11 +7260,11 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void Insr(DBConn p_dbcAccess,
                                   EMovil p_entMovil,
-                                  ref StatMsg p_smResult)
+                                  StatMsg p_smResult)
         {
             try {
                 // Validamos la integridad de la entidad
-                TInt(p_dbcAccess, p_entMovil, ref p_smResult);
+                TInt(p_dbcAccess, p_entMovil, p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Creamos un nuevo registro de la tabla: Moviles
@@ -7352,7 +7279,7 @@ namespace Mrln.Bll
                                    p_entMovil.Propio,
                                    p_entMovil.Nroploteado,
                                    p_entMovil.Tipodemovil,
-                                   ref p_smResult);
+                                   p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Insr
@@ -7368,11 +7295,11 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void Updt(DBConn p_dbcAccess,
                                   EMovil p_entMovil,
-                                  ref StatMsg p_smResult)
+                                  StatMsg p_smResult)
         {
             try {
                 // Validamos la integridad de la entidad
-                TInt(p_dbcAccess, p_entMovil, ref p_smResult);
+                TInt(p_dbcAccess, p_entMovil, p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Actualizamos un registro de la tabla: Moviles
@@ -7387,7 +7314,7 @@ namespace Mrln.Bll
                                    p_entMovil.Propio,
                                    p_entMovil.Nroploteado,
                                    p_entMovil.Tipodemovil,
-                                   ref p_smResult);
+                                   p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Updt
@@ -7405,13 +7332,13 @@ namespace Mrln.Bll
         internal static void Drop(DBConn p_dbcAccess,
                                   string p_strPatente,
                                   int p_iFxdVersion,
-                                  ref StatMsg p_smResult)
+                                  StatMsg p_smResult)
         {
             try {
                 // Verificamos la clave a borrar
                 VKey(p_dbcAccess,
                      p_strPatente,
-                     ref p_smResult);
+                     p_smResult);
                 if (p_smResult.NOk) return;
 
                 // El registro tiene que existir
@@ -7425,13 +7352,13 @@ namespace Mrln.Bll
                 VVer(p_dbcAccess, 
                      p_strPatente,
                      p_iFxdVersion,
-                     ref p_smResult);
+                     p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Borramos físicamente el registro
                 Dal.Moviles.Drop(p_dbcAccess,
                                  p_strPatente,
-                                 ref p_smResult);
+                                 p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Remove
@@ -7445,12 +7372,12 @@ namespace Mrln.Bll
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void Pack(DBConn p_dbcAccess,
-                                  ref StatMsg p_smResult)
+                                  StatMsg p_smResult)
         {
             try {
                 // Borramos los borrados lógicamente
                 Dal.Moviles.Pack(p_dbcAccess,
-                                 ref p_smResult);
+                                 p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Updt
@@ -7466,17 +7393,17 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void SSav(DBConn p_dbcAccess,
                                   EMovil p_entMovil,
-                                  ref StatMsg p_smResult)
+                                  StatMsg p_smResult)
         {
             try {
                 // Procesamos codigo fijo
-                Save_f(p_dbcAccess, ref p_entMovil, ref p_smResult);
+                Save_f(p_dbcAccess, ref p_entMovil, p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Verificamos la clave a grabar
                 VKey(p_dbcAccess, 
                      p_entMovil.Patente,
-                     ref p_smResult);
+                     p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Si es una entidad nueva
@@ -7489,7 +7416,7 @@ namespace Mrln.Bll
                     }
 
                     // Agregamos el registro
-                    Insr(p_dbcAccess, p_entMovil, ref p_smResult);
+                    Insr(p_dbcAccess, p_entMovil, p_smResult);
                 }
                 else {
                     // Es un update. La clave debe existir y estar habilitada
@@ -7503,11 +7430,11 @@ namespace Mrln.Bll
                     VVer(p_dbcAccess, 
                          p_entMovil.Patente,
                          p_entMovil.FxdVersion,
-                         ref p_smResult);
+                         p_smResult);
                     if (p_smResult.NOk) return;
 
                     // Actualizamos el registro
-                    Updt(p_dbcAccess, p_entMovil, ref p_smResult);
+                    Updt(p_dbcAccess, p_entMovil, p_smResult);
                 }
                 if (p_smResult.NOk) return;
 
@@ -7515,49 +7442,49 @@ namespace Mrln.Bll
                 MvacSSav(p_dbcAccess,
                          p_entMovil.Patente,
                          p_entMovil.MovilesAccidentes,
-                         ref p_smResult);
+                         p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Grabamos la lista-entidad: LEMovilesAlertas
                 MvalSSav(p_dbcAccess,
                          p_entMovil.Patente,
                          p_entMovil.MovilesAlertas,
-                         ref p_smResult);
+                         p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Grabamos la lista-entidad: LEMovilesCombus
                 MvcoSSav(p_dbcAccess,
                          p_entMovil.Patente,
                          p_entMovil.MovilesCombus,
-                         ref p_smResult);
+                         p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Grabamos la lista-entidad: LEMovilesEquip
                 MveqSSav(p_dbcAccess,
                          p_entMovil.Patente,
                          p_entMovil.MovilesEquip,
-                         ref p_smResult);
+                         p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Grabamos la lista-entidad: LEMovilesEstado
                 MvesSSav(p_dbcAccess,
                          p_entMovil.Patente,
                          p_entMovil.MovilesEstado,
-                         ref p_smResult);
+                         p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Grabamos la lista-entidad: LEMovilesInfracciones
                 MvifSSav(p_dbcAccess,
                          p_entMovil.Patente,
                          p_entMovil.MovilesInfracciones,
-                         ref p_smResult);
+                         p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Grabamos la lista-entidad: LEMovilesKms
                 MvkmSSav(p_dbcAccess,
                          p_entMovil.Patente,
                          p_entMovil.MovilesKms,
-                         ref p_smResult);
+                         p_smResult);
                 if (p_smResult.NOk) return;
             }
             catch (Exception l_expData) {
@@ -7578,7 +7505,7 @@ namespace Mrln.Bll
         /// <returns>ListaEntidad con los datos solicitados</returns>
         internal static ListaEntidades GetHistorialFull(DBConn p_dbcAccess,
                                                         string p_strPatente,
-                                                        ref StatMsg p_smResult)
+                                                        StatMsg p_smResult)
         {
             try {
                 // Llamamos al metodo definido por el usuario
@@ -7588,7 +7515,44 @@ namespace Mrln.Bll
                                              p_strPatente,
                                              ref l_dsTemp,
                                              "Temporal",
-                                             ref p_smResult);
+                                             p_smResult);
+                if (p_smResult.NOk) return null;
+
+                // Creamos la LE y Captionamos
+                ListaEntidades l_lentRet= new ListaEntidades(l_dsTemp.Tables["Temporal"]);
+                BllRuts.FillStdCaptions(ref l_lentRet);
+
+                // Devolvemos la LE
+                l_dsTemp.Dispose();
+                return l_lentRet;
+            }
+            catch (Exception l_expData) {
+                // Error en la operacion
+                p_smResult.BllError(l_expData);
+                return null;
+            }
+            finally {
+                // Terminamos
+            }
+        }
+
+        /// <summary>
+        /// Ejecuta el SP definido por el usuario: GetMovilesTree
+        /// </summary>
+        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
+        /// <param name="p_smResult">Estado final de la operacion</param>
+        /// <returns>ListaEntidad con los datos solicitados</returns>
+        internal static ListaEntidades GetMovilesTree(DBConn p_dbcAccess,
+                                                      StatMsg p_smResult)
+        {
+            try {
+                // Llamamos al metodo definido por el usuario
+                DataSet l_dsTemp= new DataSet();
+
+                Dal.Moviles.getMovilesTree(p_dbcAccess,
+                                           ref l_dsTemp,
+                                           "Temporal",
+                                           p_smResult);
                 if (p_smResult.NOk) return null;
 
                 // Creamos la LE y Captionamos
@@ -7624,7 +7588,7 @@ namespace Mrln.Bll
                                                        DateTime p_dtFechafin,
                                                        string p_strPatenteini,
                                                        string p_strPatentefin,
-                                                       ref StatMsg p_smResult)
+                                                       StatMsg p_smResult)
         {
             try {
                 // Llamamos al metodo definido por el usuario
@@ -7637,7 +7601,7 @@ namespace Mrln.Bll
                                             p_strPatentefin,
                                             ref l_dsTemp,
                                             "Temporal",
-                                            ref p_smResult);
+                                            p_smResult);
                 if (p_smResult.NOk) return null;
 
                 // Creamos la LE y Captionamos
@@ -7669,7 +7633,7 @@ namespace Mrln.Bll
         internal static ListaEntidades ZMovilesPorEstado(DBConn p_dbcAccess,
                                                          string p_strEstadoini,
                                                          string p_strEstadofin,
-                                                         ref StatMsg p_smResult)
+                                                         StatMsg p_smResult)
         {
             try {
                 // Llamamos al metodo definido por el usuario
@@ -7680,44 +7644,7 @@ namespace Mrln.Bll
                                               p_strEstadofin,
                                               ref l_dsTemp,
                                               "Temporal",
-                                              ref p_smResult);
-                if (p_smResult.NOk) return null;
-
-                // Creamos la LE y Captionamos
-                ListaEntidades l_lentRet= new ListaEntidades(l_dsTemp.Tables["Temporal"]);
-                BllRuts.FillStdCaptions(ref l_lentRet);
-
-                // Devolvemos la LE
-                l_dsTemp.Dispose();
-                return l_lentRet;
-            }
-            catch (Exception l_expData) {
-                // Error en la operacion
-                p_smResult.BllError(l_expData);
-                return null;
-            }
-            finally {
-                // Terminamos
-            }
-        }
-
-        /// <summary>
-        /// Ejecuta el SP definido por el usuario: getMovilesTree
-        /// </summary>
-        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name="p_smResult">Estado final de la operacion</param>
-        /// <returns>ListaEntidad con los datos solicitados</returns>
-        internal static ListaEntidades getMovilesTree(DBConn p_dbcAccess,
-                                                      ref StatMsg p_smResult)
-        {
-            try {
-                // Llamamos al metodo definido por el usuario
-                DataSet l_dsTemp= new DataSet();
-
-                Dal.Moviles.getMovilesTree(p_dbcAccess,
-                                           ref l_dsTemp,
-                                           "Temporal",
-                                           ref p_smResult);
+                                              p_smResult);
                 if (p_smResult.NOk) return null;
 
                 // Creamos la LE y Captionamos

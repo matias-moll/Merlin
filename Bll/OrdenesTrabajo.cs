@@ -44,7 +44,7 @@ namespace Mrln.Bll
         /// <param name="p_strPatente"></param>
         /// <param name="p_smResult"></param>
         /// <returns>ListaEOrdenes De Trabajo</returns>
-        public static LEOrdenesTrabajo ObtenerOTsPorPatente(string p_strPatente, ref StatMsg p_smResult)
+        public static LEOrdenesTrabajo ObtenerOTsPorPatente(string p_strPatente, StatMsg p_smResult)
         {           
             DBConn l_dbcAccess = null;
             LEOrdenesTrabajo l_LEOrdenesTrabajo = LEOrdenesTrabajo.NewEmpty();
@@ -55,7 +55,7 @@ namespace Mrln.Bll
                 l_dbcAccess.BeginTransaction();
 
                 // Por cada equipamiento de la lista lo grabamos, con la misma coneccion todos
-                 l_LEOrdenesTrabajo = Bll.OrdenesTrabajo.getPendByPatente(l_dbcAccess, p_strPatente, ref p_smResult);
+                 l_LEOrdenesTrabajo = Bll.OrdenesTrabajo.getPendByPatente(l_dbcAccess, p_strPatente, p_smResult);
 
             }
             catch (Exception l_expData)
@@ -81,8 +81,8 @@ namespace Mrln.Bll
         /// Graba todos los OTItems que se encuentran en una lista entidad.
         /// </summary>
         /// <param name="p_lentOTItems"> Lista Entidad con los items a grabar </param>
-        /// <param name="p_smResult">ref StatMsg</param>
-        public static void GrabarOTItems(LEOTItems p_lentOTItems, ref StatMsg p_smResult)
+        /// <param name="p_smResult">StatMsg</param>
+        public static void GrabarOTItems(LEOTItems p_lentOTItems, StatMsg p_smResult)
         {
             DBConn l_dbcAccess = null;
 
@@ -96,7 +96,7 @@ namespace Mrln.Bll
                 foreach (Bel.EOTItem item in p_lentOTItems)
                 {
                     // insertamos todas las entidades
-                    OtitInsr(l_dbcAccess, item, ref p_smResult);
+                    OtitInsr(l_dbcAccess, item, p_smResult);
                     if (p_smResult.NOk) return;
                 }
 
@@ -133,7 +133,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void Save_f(DBConn p_dbcAccess,
                                     ref EOrdenTrabajo p_entOrdenTrabajo,
-                                    ref StatMsg p_smResult)
+                                    StatMsg p_smResult)
         {
             // *********
             // Agregar acá los procesos adicionales
@@ -153,7 +153,7 @@ namespace Mrln.Bll
                                        bool p_bEnable,
                                        int p_iNro,
                                        ref int p_iFxdVersion,
-                                       ref StatMsg p_smResult)
+                                       StatMsg p_smResult)
         {
             // *********
             // Agregar acá los procesos adicionales
@@ -171,7 +171,7 @@ namespace Mrln.Bll
         internal static void Remove_f(DBConn p_dbcAccess,
                                       int p_iNro,
                                       int p_iFxdVersion,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             // *********
             // Agregar acá los procesos adicionales
@@ -187,7 +187,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void TInt_f(DBConn p_dbcAccess,
                                     EOrdenTrabajo p_entOrdenTrabajo,
-                                    ref StatMsg p_smResult)
+                                    StatMsg p_smResult)
         {
             // *********
             // Agregar acá las validaciones adicionales
@@ -203,7 +203,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void OtitSave_f(DBConn p_dbcAccess,
                                         ref EOTItem p_entOTItem,
-                                        ref StatMsg p_smResult)
+                                        StatMsg p_smResult)
         {
             // *********
             // Agregar acá los procesos adicionales
@@ -227,7 +227,7 @@ namespace Mrln.Bll
                                            int p_iNroagrupador,
                                            int p_iNroitem,
                                            ref int p_iFxdVersion,
-                                           ref StatMsg p_smResult)
+                                           StatMsg p_smResult)
         {
             // *********
             // Agregar acá los procesos adicionales
@@ -249,7 +249,7 @@ namespace Mrln.Bll
                                           int p_iNroagrupador,
                                           int p_iNroitem,
                                           int p_iFxdVersion,
-                                          ref StatMsg p_smResult)
+                                          StatMsg p_smResult)
         {
             // *********
             // Agregar acá los procesos adicionales
@@ -265,7 +265,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void OtitTInt_f(DBConn p_dbcAccess,
                                         EOTItem p_entOTItem,
-                                        ref StatMsg p_smResult)
+                                        StatMsg p_smResult)
         {
             // *********
             // Agregar acá las validaciones adicionales

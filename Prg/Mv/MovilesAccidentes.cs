@@ -156,7 +156,7 @@ namespace Mrln.Mv
         {
             App.ShowMsg("Generando planilla...");
             App.InitAdvance("Excel:");
-            grdDatos.ExportToExcel(false, false, "", "MovilesAccidentes", ref m_smResult);
+            grdDatos.ExportToExcel(false, false, "", "MovilesAccidentes", m_smResult);
             App.EndAdvance();
             App.HideMsg();
         }
@@ -168,7 +168,7 @@ namespace Mrln.Mv
         {
             App.ShowMsg("Imprimiendo datos...");
             App.InitAdvance("Imprimiendo:");
-            grdDatos.Print(App.ROParams["EMPRESA"].VStr, App.Programa.Nombre,
+            grdDatos.Print(Shr.ROParam.Empresa.VStr, App.Programa.Nombre,
                            "Lista de MovilesAccidentes", "");
             App.EndAdvance();
             App.HideMsg();
@@ -200,7 +200,7 @@ namespace Mrln.Mv
             App.ShowMsg("Recuperando Datos...");
             m_entMvlAccidente= Bll.Moviles.MvacGet((string) grdDatos.GetMatrixValueObj(l_iRow, 1),
                                                    (DateTime) grdDatos.GetMatrixValueObj(l_iRow, 2),
-                                                   false, ref m_smResult);
+                                                   false, m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
             // Tenemos la entidad. Pasamos a modo de edicion y damos foco
@@ -229,7 +229,7 @@ namespace Mrln.Mv
 
             // Purgamos la tabla
             App.ShowMsg("Compactando la tabla...");
-            Bll.Moviles.MvacPurge(ref m_smResult);
+            Bll.Moviles.MvacPurge(m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
             // Terminamos
@@ -267,7 +267,7 @@ namespace Mrln.Mv
                                     m_entMvlAccidente.Patente,
                                     m_entMvlAccidente.Fecha,
                                     m_entMvlAccidente.FxdVersion,
-                                    ref m_smResult);
+                                    m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
             // Pasamos a modo Operaciones, rellenamos la grilla y 
@@ -293,7 +293,7 @@ namespace Mrln.Mv
 
             // Tratamos de grabar la entidad
             App.ShowMsg("Grabando...");
-            Bll.Moviles.MvacSave(m_entMvlAccidente, ref m_smResult);
+            Bll.Moviles.MvacSave(m_entMvlAccidente, m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
             // Pasamos a modo Operaciones, rellenamos la grilla y 
@@ -314,7 +314,7 @@ namespace Mrln.Mv
         {
             // Recuperamos los datos para la grilla
             App.ShowMsg("Recuperando datos...");
-            Bel.LEMovilesAccidentes l_lentMovilesAccidentes= Bll.Moviles.MvacFGet(m_strPatenteMovilElegido, false, ref m_smResult);
+            Bel.LEMovilesAccidentes l_lentMovilesAccidentes= Bll.Moviles.MvacFGet(m_strPatenteMovilElegido, false, m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
             // Asignamos a la grilla

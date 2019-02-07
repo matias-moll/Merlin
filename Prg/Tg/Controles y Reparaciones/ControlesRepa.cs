@@ -80,10 +80,10 @@ namespace Mrln.Tg
             // Inicializamos el form
             App.ShowMsg("Inicializando el formulario...");
 
-            Bel.LEControles l_lentControles= Bll.Controles.UpFull(true, ref m_smResult);
+            Bel.LEControles l_lentControles= Bll.Controles.UpFull(true, m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
             cmbControl.FillFromStrLEntidad(l_lentControles, "ctl_cod_cod", "ctl_des_des", "deleted");
-            Bel.LEReparaciones l_lentReparaciones = Bll.Tablas.RepUpFull(true, ref m_smResult);
+            Bel.LEReparaciones l_lentReparaciones = Bll.Tablas.RepUpFull(true, m_smResult);
             cdcCodRep.FillFromStrLEntidad(l_lentReparaciones, "rep_cd6_cod", "rep_xde_des", "deleted");
 
             // Pasamos a modo Operaciones, llenamos la grilla y 
@@ -203,7 +203,7 @@ namespace Mrln.Tg
             // Recargamos la combo
             App.ShowMsg("Recargando los datos...");
 
-            Bel.LEControles l_lentControles= Bll.Controles.UpFull(true, ref m_smResult);
+            Bel.LEControles l_lentControles= Bll.Controles.UpFull(true, m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
             cmbControl.FillFromStrLEntidad(l_lentControles, "ctl_cod_cod", "ctl_des_des", "deleted");
             cmbControl.Focus();
@@ -217,7 +217,7 @@ namespace Mrln.Tg
         {
             App.ShowMsg("Generando planilla...");
             App.InitAdvance("Excel:");
-            grdDatos.ExportToExcel(false, false, "", "ControlesRepa", ref m_smResult);
+            grdDatos.ExportToExcel(false, false, "", "ControlesRepa", m_smResult);
             App.EndAdvance();
             App.HideMsg();
         }
@@ -229,7 +229,7 @@ namespace Mrln.Tg
         {
             App.ShowMsg("Imprimiendo datos...");
             App.InitAdvance("Imprimiendo:");
-            grdDatos.Print(App.ROParams["EMPRESA"].VStr, App.Programa.Nombre,
+            grdDatos.Print(Shr.ROParam.Empresa.VStr, App.Programa.Nombre,
                            "Lista de ControlesRepa", "");
             App.EndAdvance();
             App.HideMsg();
@@ -264,7 +264,7 @@ namespace Mrln.Tg
             App.ShowMsg("Recuperando Datos...");
             m_entControlRepa= Bll.Controles.CrepGet(cmbControl.SelectedStrCode,
                                                     (int) grdDatos.GetMatrixValueObj(l_iRow, 2),
-                                                    false, ref m_smResult);
+                                                    false, m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
             // Tenemos la entidad. Pasamos a modo de edicion y damos foco
@@ -292,7 +292,7 @@ namespace Mrln.Tg
 
             // Purgamos la tabla
             App.ShowMsg("Compactando la tabla...");
-            Bll.Controles.CrepPurge(ref m_smResult);
+            Bll.Controles.CrepPurge(m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
             // Terminamos
@@ -330,7 +330,7 @@ namespace Mrln.Tg
                                       m_entControlRepa.Codctl,
                                       m_entControlRepa.Nroitem,
                                       m_entControlRepa.FxdVersion,
-                                      ref m_smResult);
+                                      m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
             // Pasamos a modo Operaciones, rellenamos la grilla y 
@@ -352,7 +352,7 @@ namespace Mrln.Tg
 
             // Tratamos de grabar la entidad
             App.ShowMsg("Grabando...");
-            Bll.Controles.CrepSave(m_entControlRepa, ref m_smResult);
+            Bll.Controles.CrepSave(m_entControlRepa, m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
             // Pasamos a modo Operaciones, rellenamos la grilla y 
@@ -374,7 +374,7 @@ namespace Mrln.Tg
             // Recuperamos los datos para la grilla
             App.ShowMsg("Recuperando datos...");
             Bel.LEControlesRepa l_lentControlesRepa= Bll.Controles.CrepFGet(cmbControl.SelectedStrCode,
-                                                                            false, ref m_smResult);
+                                                                            false, m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
             // Asignamos a la grilla

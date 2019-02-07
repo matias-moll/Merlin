@@ -49,7 +49,7 @@ namespace Mrln.Dal
                              bool p_bOnlyActive,
                              ref DataSet p_dsResult,
                              string p_strTabla,
-                             ref StatMsg p_smResult)
+                             StatMsg p_smResult)
         {
             try {
                 // Recuperamos todos los registros
@@ -81,7 +81,7 @@ namespace Mrln.Dal
                                       int p_iFxdVersion,
                                       ref DataSet p_dsResult,
                                       string p_strTabla,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             try {
                 // Verificamos el número de versión
@@ -113,7 +113,7 @@ namespace Mrln.Dal
                                  bool p_bOnlyActive,
                                  ref DataSet p_dsResult,
                                  string p_strTabla,
-                                 ref StatMsg p_smResult)
+                                 StatMsg p_smResult)
         {
             try {
                 // Recuperamos el registro de la clave
@@ -142,7 +142,7 @@ namespace Mrln.Dal
         public static void GetMaxKey(DBConn p_dbcAccess,
                                      ref DataSet p_dsResult,
                                      string p_strTabla,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             // No hay errores aun
             try {
@@ -179,7 +179,7 @@ namespace Mrln.Dal
                                  string p_strDireccion,
                                  string p_strTelefono,
                                  string p_strContacto,
-                                 ref StatMsg p_smResult)
+                                 StatMsg p_smResult)
         {
             try {
                 // Insertamos el registro
@@ -218,7 +218,7 @@ namespace Mrln.Dal
                                  string p_strDireccion,
                                  string p_strTelefono,
                                  string p_strContacto,
-                                 ref StatMsg p_smResult)
+                                 StatMsg p_smResult)
         {
             try {
                 // Modificamos el registro
@@ -249,7 +249,7 @@ namespace Mrln.Dal
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static int Delete(DBConn p_dbcAccess,
                                  string p_strCodigo,
-                                 ref StatMsg p_smResult)
+                                 StatMsg p_smResult)
         {
             try {
                 // Borramos el registro
@@ -276,7 +276,7 @@ namespace Mrln.Dal
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static int Recall(DBConn p_dbcAccess,
                                  string p_strCodigo,
-                                 ref StatMsg p_smResult)
+                                 StatMsg p_smResult)
         {
             try {
                 // Borramos el registro
@@ -303,7 +303,7 @@ namespace Mrln.Dal
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static int Drop(DBConn p_dbcAccess,
                                string p_strCodigo,
-                               ref StatMsg p_smResult)
+                               StatMsg p_smResult)
         {
             try {
                 // Borramos el registro
@@ -328,7 +328,7 @@ namespace Mrln.Dal
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static int Pack(DBConn p_dbcAccess,
-                               ref StatMsg p_smResult)
+                               StatMsg p_smResult)
         {
             try {
                 // Borramos el registro
@@ -358,7 +358,7 @@ namespace Mrln.Dal
         /// <param name="p_dtResult">Tabla donde completar los captions</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static void MakeGridCaptions(ref DataTable p_dtResult,
-                                            ref StatMsg p_smResult)
+                                            StatMsg p_smResult)
         {
             try {
                 // Quitamos los captions existentes
@@ -386,11 +386,11 @@ namespace Mrln.Dal
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static void MakeGridCaptions(ref DataSet p_dsResult,
                                             string p_strTabla,
-                                            ref StatMsg p_smResult)
+                                            StatMsg p_smResult)
         {
             // Llamamos al método base
             DataTable l_dtTemp= p_dsResult.Tables[p_strTabla];
-            MakeGridCaptions(ref l_dtTemp, ref p_smResult);
+            MakeGridCaptions(ref l_dtTemp, p_smResult);
         }
 
         /// <summary>
@@ -399,11 +399,11 @@ namespace Mrln.Dal
         /// <param name="p_lentResult">ListaEntidades donde completar los captions</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static void MakeGridCaptions(ref ListaEntidades p_lentResult,
-                                            ref StatMsg p_smResult)
+                                            StatMsg p_smResult)
         {
             // Llamamos al método base
             DataTable l_dtTemp= p_lentResult.InternalData.Table;
-            MakeGridCaptions(ref l_dtTemp, ref p_smResult);
+            MakeGridCaptions(ref l_dtTemp, p_smResult);
         }
         #endregion
     }

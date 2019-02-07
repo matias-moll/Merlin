@@ -16,11 +16,11 @@ namespace Mrln.Bll
     //----------------------------------------------------------------------------
     //                         TNG Software BLL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 21/11/2018 18:57
+    // Fecha                    : 07/02/2019 03:30
     // Sistema                  : Mrln
     // Clase para Administrar   : Talleres y sus categorias
     //----------------------------------------------------------------------------
-    // © 1996-2018 by TNG Software                                      Gndr 5.20
+    // © 1996-2019 by TNG Software                                      Gndr 5.20
     //----------------------------------------------------------------------------
 
     //****************************************************************************
@@ -55,7 +55,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         /// <returns>Lista-entidad: LETalleresCategorias</returns>
         public static LETalleresCategorias TalCUpFull(bool p_bOnlyActive,
-                                                      ref StatMsg p_smResult)
+                                                      StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -65,7 +65,7 @@ namespace Mrln.Bll
                 l_dbcAccess= DBRuts.GetConection(Connections.Dat);
 
                 // Pedimos los registros de la tabla
-                return TalCUpfl(l_dbcAccess, p_bOnlyActive, ref p_smResult);
+                return TalCUpfl(l_dbcAccess, p_bOnlyActive, p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion UpFull
@@ -89,7 +89,7 @@ namespace Mrln.Bll
         public static ETallerCategoria TalCGet(string p_strCodigotaller,
                                                string p_strCodigocategoria,
                                                bool p_bOnlyActive,
-                                               ref StatMsg p_smResult)
+                                               StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -103,7 +103,7 @@ namespace Mrln.Bll
                                 p_strCodigotaller,
                                 p_strCodigocategoria,
                                 p_bOnlyActive,
-                                ref p_smResult);
+                                p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Get
@@ -126,7 +126,7 @@ namespace Mrln.Bll
         /// <returns>Lista-Entidad: LETalleresCategorias</returns>
         public static LETalleresCategorias TalCFGet(string p_strCodigotaller,
                                                     bool p_bOnlyActive,
-                                                    ref StatMsg p_smResult)
+                                                    StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -139,7 +139,7 @@ namespace Mrln.Bll
                 return TalCFSch(l_dbcAccess,
                                 p_strCodigotaller,
                                 p_bOnlyActive,
-                                ref p_smResult);
+                                p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion FGet
@@ -161,7 +161,7 @@ namespace Mrln.Bll
         /// <param name="p_entTallerCategoria">Entidad con los datos a procesar</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static void TalCSave(ETallerCategoria p_entTallerCategoria,
-                                    ref StatMsg p_smResult)
+                                    StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -172,7 +172,7 @@ namespace Mrln.Bll
                 l_dbcAccess.BeginTransaction();
 
                 // Grabamos la entidad: ETallerCategoria
-                TalCSSav(l_dbcAccess, p_entTallerCategoria, ref p_smResult);
+                TalCSSav(l_dbcAccess, p_entTallerCategoria, p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Save
@@ -199,7 +199,7 @@ namespace Mrln.Bll
                                        string p_strCodigotaller,
                                        string p_strCodigocategoria,
                                        int p_iFxdVersion,
-                                       ref StatMsg p_smResult)
+                                       StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -215,14 +215,14 @@ namespace Mrln.Bll
                               p_strCodigotaller,
                               p_strCodigocategoria,
                               ref p_iFxdVersion,
-                              ref p_smResult);
+                              p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Verificamos la clave a modificar
                 TalCVKey(l_dbcAccess,
                          p_strCodigotaller,
                          p_strCodigocategoria,
-                         ref p_smResult);
+                         p_smResult);
                 if (p_smResult.NOk) return;
 
                 // El registro tiene que existir
@@ -237,7 +237,7 @@ namespace Mrln.Bll
                          p_strCodigotaller,
                          p_strCodigocategoria,
                          p_iFxdVersion,
-                         ref p_smResult);
+                         p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Segun el modo
@@ -246,14 +246,14 @@ namespace Mrln.Bll
                     Dal.TallerCategoria.Recall(l_dbcAccess,
                                                p_strCodigotaller,
                                                p_strCodigocategoria,
-                                               ref p_smResult);
+                                               p_smResult);
                 }
                 else {
                     // Hay que deshabilitar el registro
                     Dal.TallerCategoria.Delete(l_dbcAccess,
                                                p_strCodigotaller,
                                                p_strCodigocategoria,
-                                               ref p_smResult);
+                                               p_smResult);
                 }
             }
             catch (Exception l_expData) {
@@ -280,7 +280,7 @@ namespace Mrln.Bll
         public static void TalCRemove(string p_strCodigotaller,
                                       string p_strCodigocategoria,
                                       int p_iFxdVersion,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -295,7 +295,7 @@ namespace Mrln.Bll
                              p_strCodigotaller,
                              p_strCodigocategoria,
                              p_iFxdVersion,
-                             ref p_smResult);
+                             p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Borramos el registro solicitado
@@ -303,7 +303,7 @@ namespace Mrln.Bll
                          p_strCodigotaller,
                          p_strCodigocategoria,
                          p_iFxdVersion,
-                         ref p_smResult);
+                         p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Remove
@@ -323,7 +323,7 @@ namespace Mrln.Bll
         /// Compacta una tabla borrando los registros deshabilitados
         /// </summary>
         /// <param name="p_smResult">Estado final de la operacion</param>
-        public static void TalCPurge(ref StatMsg p_smResult)
+        public static void TalCPurge(StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -334,7 +334,7 @@ namespace Mrln.Bll
 
                 // Realizamos el borrado
                 TalCPack(l_dbcAccess,
-                         ref p_smResult);
+                         p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Enabled
@@ -368,7 +368,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void TalCTInt(DBConn p_dbcAccess,
                                       ETallerCategoria p_entTallerCategoria,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             // ********
             // Validaciones de los campos sin conexion
@@ -380,7 +380,7 @@ namespace Mrln.Bll
 
             Talleres.VKey(p_dbcAccess,
                           p_entTallerCategoria.Codigotaller,
-                          ref p_smResult);
+                          p_smResult);
             if (p_smResult.NOk) return;
 
             if (p_smResult.ICodeEs(BllCodes.KeyDsntFound)) {
@@ -391,7 +391,7 @@ namespace Mrln.Bll
 
             Tablas.CatVKey(p_dbcAccess,
                            p_entTallerCategoria.Codigocategoria,
-                           ref p_smResult);
+                           p_smResult);
             if (p_smResult.NOk) return;
 
             if (p_smResult.ICodeEs(BllCodes.KeyDsntFound)) {
@@ -403,7 +403,7 @@ namespace Mrln.Bll
             // Verificamos la clave foranea
             Talleres.VKey(p_dbcAccess,
                           p_entTallerCategoria.Codigotaller,
-                          ref p_smResult);
+                          p_smResult);
             if (p_smResult.NOk) return;
 
             // El registro tiene que existir
@@ -416,7 +416,7 @@ namespace Mrln.Bll
             // Todas las validaciones fueron correctas
 
             // Llamamos a la funcion fija del usuario
-            TalCTInt_f(p_dbcAccess, p_entTallerCategoria, ref p_smResult);
+            TalCTInt_f(p_dbcAccess, p_entTallerCategoria, p_smResult);
             if (p_smResult.NOk) return;
         }
 
@@ -432,7 +432,7 @@ namespace Mrln.Bll
                                       string p_strCodigotaller,
                                       string p_strCodigocategoria,
                                       int p_iFxdVersion,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             // No hay errores aun
             DataSet l_dsTemp= new DataSet();
@@ -444,7 +444,7 @@ namespace Mrln.Bll
                                            p_iFxdVersion,
                                            ref l_dsTemp,
                                            "Temporal",
-                                           ref p_smResult);
+                                           p_smResult);
             if (p_smResult.NOk) return;
 
             // Verificamos el resultado que vino
@@ -501,7 +501,7 @@ namespace Mrln.Bll
         internal static void TalCVKey(DBConn p_dbcAccess,
                                       string p_strCodigotaller,
                                       string p_strCodigocategoria,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             // No hay errores aun
             DataSet l_dsTemp= new DataSet();
@@ -512,7 +512,7 @@ namespace Mrln.Bll
                                        false,
                                        ref l_dsTemp,
                                        "Temporal",
-                                       ref p_smResult);
+                                       p_smResult);
             if (p_smResult.NOk) return;
 
             try {
@@ -545,7 +545,7 @@ namespace Mrln.Bll
         /// <returns>Lista-entidad: LETalleresCategorias</returns>
         internal static LETalleresCategorias TalCUpfl(DBConn p_dbcAccess,
                                                       bool p_bOnlyActive,
-                                                      ref StatMsg p_smResult)
+                                                      StatMsg p_smResult)
         {
             try {
                 // Pedimos los registros de la tabla: TallerCategoria
@@ -554,11 +554,11 @@ namespace Mrln.Bll
                 Dal.TallerCategoria.Up(p_dbcAccess, 
                                        p_bOnlyActive,
                                        ref l_dsTemp, "Temporal",
-                                       ref p_smResult);
+                                       p_smResult);
                 if (p_smResult.NOk) return null;
 
                 // Fijamos los captions de la grilla
-                Dal.TallerCategoria.MakeGridCaptions(ref l_dsTemp, "Temporal", ref p_smResult);
+                Dal.TallerCategoria.MakeGridCaptions(ref l_dsTemp, "Temporal", p_smResult);
 
                 // Contruimos la lista-entidad y la devolvemos (si vino algun registro)
                 LETalleresCategorias l_lentRet= new LETalleresCategorias(l_dsTemp.Tables["Temporal"]);
@@ -585,7 +585,7 @@ namespace Mrln.Bll
                                                   string p_strCodigotaller,
                                                   string p_strCodigocategoria,
                                                   bool p_bOnlyActive,
-                                                  ref StatMsg p_smResult)
+                                                  StatMsg p_smResult)
         {
             try {
                 // Pedimos el registro de la tabla: TallerCategoria
@@ -596,7 +596,7 @@ namespace Mrln.Bll
                                            p_strCodigocategoria,
                                            p_bOnlyActive,
                                            ref l_dsTemp, "Temporal",
-                                           ref p_smResult);
+                                           p_smResult);
                 if (p_smResult.NOk) return null;
 
                 // Constuimos la entidad y la devolvemos (si vino un registro)
@@ -626,7 +626,7 @@ namespace Mrln.Bll
         internal static LETalleresCategorias TalCFSch(DBConn p_dbcAccess,
                                                       string p_strCodigotaller,
                                                       bool p_bOnlyActive,
-                                                      ref StatMsg p_smResult)
+                                                      StatMsg p_smResult)
         {
             // No hay errores aun
             DataSet l_dsTemp= new DataSet();
@@ -637,11 +637,11 @@ namespace Mrln.Bll
                                             p_strCodigotaller,
                                             p_bOnlyActive,
                                             ref l_dsTemp, "Temporal",
-                                            ref p_smResult);
+                                            p_smResult);
                 if (p_smResult.NOk) return null;
 
                 // Fijamos los captions de la grilla
-                Dal.TallerCategoria.MakeGridCaptions(ref l_dsTemp, "Temporal", ref p_smResult);
+                Dal.TallerCategoria.MakeGridCaptions(ref l_dsTemp, "Temporal", p_smResult);
 
                 // Contruimos la lista-entidad y la devolvemos
                 LETalleresCategorias l_entRet= new LETalleresCategorias(l_dsTemp.Tables["Temporal"]);
@@ -666,18 +666,18 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void TalCSSav(DBConn p_dbcAccess,
                                       ETallerCategoria p_entTallerCategoria,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             try {
                 // Procesamos codigo fijo
-                TalCSave_f(p_dbcAccess, ref p_entTallerCategoria, ref p_smResult);
+                TalCSave_f(p_dbcAccess, ref p_entTallerCategoria, p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Verificamos la clave a grabar
                 TalCVKey(p_dbcAccess, 
                          p_entTallerCategoria.Codigotaller,
                          p_entTallerCategoria.Codigocategoria,
-                         ref p_smResult);
+                         p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Si es una entidad nueva
@@ -690,7 +690,7 @@ namespace Mrln.Bll
                     }
 
                     // Agregamos el registro
-                    TalCInsr(p_dbcAccess, p_entTallerCategoria, ref p_smResult);
+                    TalCInsr(p_dbcAccess, p_entTallerCategoria, p_smResult);
                     return;
                 }
 
@@ -706,11 +706,11 @@ namespace Mrln.Bll
                          p_entTallerCategoria.Codigotaller,
                          p_entTallerCategoria.Codigocategoria,
                          p_entTallerCategoria.FxdVersion,
-                         ref p_smResult);
+                         p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Actualizamos el registro
-                TalCUpdt(p_dbcAccess, p_entTallerCategoria, ref p_smResult);
+                TalCUpdt(p_dbcAccess, p_entTallerCategoria, p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion SSav
@@ -726,11 +726,11 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void TalCInsr(DBConn p_dbcAccess,
                                       ETallerCategoria p_entTallerCategoria,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             try {
                 // Validamos la integridad de la entidad
-                TalCTInt(p_dbcAccess, p_entTallerCategoria, ref p_smResult);
+                TalCTInt(p_dbcAccess, p_entTallerCategoria, p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Creamos un nuevo registro de la tabla: TallerCategoria
@@ -738,7 +738,7 @@ namespace Mrln.Bll
                                            p_entTallerCategoria.Codigotaller,
                                            p_entTallerCategoria.Codigocategoria,
                                            p_entTallerCategoria.Dummy,
-                                           ref p_smResult);
+                                           p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Insr
@@ -754,11 +754,11 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void TalCUpdt(DBConn p_dbcAccess,
                                       ETallerCategoria p_entTallerCategoria,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             try {
                 // Validamos la integridad de la entidad
-                TalCTInt(p_dbcAccess, p_entTallerCategoria, ref p_smResult);
+                TalCTInt(p_dbcAccess, p_entTallerCategoria, p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Actualizamos un registro de la tabla: TallerCategoria
@@ -766,7 +766,7 @@ namespace Mrln.Bll
                                            p_entTallerCategoria.Codigotaller,
                                            p_entTallerCategoria.Codigocategoria,
                                            p_entTallerCategoria.Dummy,
-                                           ref p_smResult);
+                                           p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Updt
@@ -786,14 +786,14 @@ namespace Mrln.Bll
                                       string p_strCodigotaller,
                                       string p_strCodigocategoria,
                                       int p_iFxdVersion,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             try {
                 // Verificamos la clave a borrar
                 TalCVKey(p_dbcAccess,
                          p_strCodigotaller,
                          p_strCodigocategoria,
-                         ref p_smResult);
+                         p_smResult);
                 if (p_smResult.NOk) return;
 
                 // El registro tiene que existir
@@ -808,14 +808,14 @@ namespace Mrln.Bll
                          p_strCodigotaller,
                          p_strCodigocategoria,
                          p_iFxdVersion,
-                         ref p_smResult);
+                         p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Borramos físicamente el registro
                 Dal.TallerCategoria.Drop(p_dbcAccess,
                                          p_strCodigotaller,
                                          p_strCodigocategoria,
-                                         ref p_smResult);
+                                         p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Remove
@@ -829,12 +829,12 @@ namespace Mrln.Bll
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void TalCPack(DBConn p_dbcAccess,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             try {
                 // Borramos los borrados lógicamente
                 Dal.TallerCategoria.Pack(p_dbcAccess,
-                                         ref p_smResult);
+                                         p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Updt
@@ -853,13 +853,13 @@ namespace Mrln.Bll
         internal static void TalCSSav(DBConn p_dbcAccess,
                                       string p_strCodigotaller,
                                       LETalleresCategorias p_lentTalleresCategorias,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             try {
                 // Deshabilitamos todas las entidades existentes
                 Dal.TallerCategoria.FDrop(p_dbcAccess,
                                           p_strCodigotaller,
-                                          ref p_smResult);
+                                          p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Recorremos la lista de entidades
@@ -871,13 +871,13 @@ namespace Mrln.Bll
                     TalCVKey(p_dbcAccess,
                              l_entTallerCategoria.Codigotaller,
                              l_entTallerCategoria.Codigocategoria,
-                             ref p_smResult);
+                             p_smResult);
                     if (p_smResult.NOk) return;
 
                     // Si no existe
                     if (p_smResult.ICodeEs(BllCodes.KeyDsntFound)) {
                         // Hay que darla de alta
-                        TalCInsr(p_dbcAccess, l_entTallerCategoria, ref p_smResult);
+                        TalCInsr(p_dbcAccess, l_entTallerCategoria, p_smResult);
                         if (p_smResult.NOk) return;
                         continue;
                     }
@@ -887,12 +887,12 @@ namespace Mrln.Bll
                              l_entTallerCategoria.Codigotaller,
                              l_entTallerCategoria.Codigocategoria,
                              l_entTallerCategoria.FxdVersion,
-                             ref p_smResult);
+                             p_smResult);
                     if (p_smResult.NOk) return;
 
                     // El número coincide. La Actualizamos si no está borrada
                     if (!l_entTallerCategoria.EstaBorrada) {
-                        TalCUpdt(p_dbcAccess, l_entTallerCategoria, ref p_smResult);
+                        TalCUpdt(p_dbcAccess, l_entTallerCategoria, p_smResult);
                         if (p_smResult.NOk) return;
                     }
                 }
@@ -927,7 +927,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         /// <returns>Lista-entidad: LETalleres</returns>
         public static LETalleres UpFull(bool p_bOnlyActive,
-                                        ref StatMsg p_smResult)
+                                        StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -937,7 +937,7 @@ namespace Mrln.Bll
                 l_dbcAccess= DBRuts.GetConection(Connections.Dat);
 
                 // Pedimos los registros de la tabla
-                return Upfl(l_dbcAccess, p_bOnlyActive, ref p_smResult);
+                return Upfl(l_dbcAccess, p_bOnlyActive, p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion UpFull
@@ -959,7 +959,7 @@ namespace Mrln.Bll
         /// <returns>Entidad: ETaller</returns>
         public static ETaller Get(string p_strCodigo,
                                   bool p_bOnlyActive,
-                                  ref StatMsg p_smResult)
+                                  StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -975,7 +975,7 @@ namespace Mrln.Bll
                 ETaller l_entTaller = Srch(l_dbcAccess,
                                            p_strCodigo,
                                            p_bOnlyActive,
-                                           ref p_smResult);
+                                           p_smResult);
                 if (p_smResult.NOk) return null;
                 if (l_entTaller == null) return null;
 
@@ -983,7 +983,7 @@ namespace Mrln.Bll
                 l_entTaller.TalleresCategorias= TalCFSch(l_dbcAccess,
                                                          p_strCodigo,
                                                          p_bOnlyActive,
-                                                         ref p_smResult);
+                                                         p_smResult);
                 if (p_smResult.NOk) return null;
 
                 // Devolvemos la entidad completa
@@ -1005,7 +1005,7 @@ namespace Mrln.Bll
         /// </summary>
         /// <param name="p_smResult">Estado final de la operacion</param>
         /// <returns>Próxima clave</returns>
-        public static string NextKey(ref StatMsg p_smResult)
+        public static string NextKey(StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -1016,7 +1016,7 @@ namespace Mrln.Bll
 
                 // Pedimos la clave máxima
                 return GetNK(l_dbcAccess,
-                             ref p_smResult);
+                             p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion NextKey
@@ -1038,7 +1038,7 @@ namespace Mrln.Bll
         /// <param name="p_entTaller">Entidad con los datos a procesar</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static void Save(ETaller p_entTaller,
-                                ref StatMsg p_smResult)
+                                StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -1049,7 +1049,7 @@ namespace Mrln.Bll
                 l_dbcAccess.BeginTransaction();
 
                 // Grabamos la entidad: ETaller
-                SSav(l_dbcAccess, p_entTaller, ref p_smResult);
+                SSav(l_dbcAccess, p_entTaller, p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Save
@@ -1074,7 +1074,7 @@ namespace Mrln.Bll
         public static void Enabled(bool p_bEnable,
                                    string p_strCodigo,
                                    int p_iFxdVersion,
-                                   ref StatMsg p_smResult)
+                                   StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -1092,13 +1092,13 @@ namespace Mrln.Bll
                           p_bEnable,
                           p_strCodigo,
                           ref p_iFxdVersion,
-                          ref p_smResult);
+                          p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Verificamos la clave a modificar
                 VKey(l_dbcAccess,
                      p_strCodigo,
-                     ref p_smResult);
+                     p_smResult);
                 if (p_smResult.NOk) return;
 
                 // El registro tiene que existir
@@ -1112,7 +1112,7 @@ namespace Mrln.Bll
                 VVer(l_dbcAccess, 
                      p_strCodigo,
                      p_iFxdVersion,
-                     ref p_smResult);
+                     p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Segun el modo
@@ -1120,13 +1120,13 @@ namespace Mrln.Bll
                     // Hay que habilitar el registro
                     Dal.Taller.Recall(l_dbcAccess,
                                       p_strCodigo,
-                                      ref p_smResult);
+                                      p_smResult);
                 }
                 else {
                     // Hay que deshabilitar el registro
                     Dal.Taller.Delete(l_dbcAccess,
                                       p_strCodigo,
-                                      ref p_smResult);
+                                      p_smResult);
                 }
             }
             catch (Exception l_expData) {
@@ -1151,7 +1151,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static void Remove(string p_strCodigo,
                                   int p_iFxdVersion,
-                                  ref StatMsg p_smResult)
+                                  StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -1168,14 +1168,14 @@ namespace Mrln.Bll
                 Remove_f(l_dbcAccess,
                          p_strCodigo,
                          p_iFxdVersion,
-                         ref p_smResult);
+                         p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Borramos el registro solicitado
                 Drop(l_dbcAccess,
                      p_strCodigo,
                      p_iFxdVersion,
-                     ref p_smResult);
+                     p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Remove
@@ -1195,7 +1195,7 @@ namespace Mrln.Bll
         /// Compacta una tabla borrando los registros deshabilitados
         /// </summary>
         /// <param name="p_smResult">Estado final de la operacion</param>
-        public static void Purge(ref StatMsg p_smResult)
+        public static void Purge(StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -1206,7 +1206,7 @@ namespace Mrln.Bll
 
                 // Realizamos el borrado
                 Pack(l_dbcAccess,
-                     ref p_smResult);
+                     p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Enabled
@@ -1240,7 +1240,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void TInt(DBConn p_dbcAccess,
                                   ETaller p_entTaller,
-                                  ref StatMsg p_smResult)
+                                  StatMsg p_smResult)
         {
             // ********
             // Validaciones de los campos sin conexion
@@ -1269,7 +1269,7 @@ namespace Mrln.Bll
             // ********
 
             // Llamamos a la funcion fija del usuario
-            TInt_f(p_dbcAccess, p_entTaller, ref p_smResult);
+            TInt_f(p_dbcAccess, p_entTaller, p_smResult);
             if (p_smResult.NOk) return;
         }
 
@@ -1283,7 +1283,7 @@ namespace Mrln.Bll
         internal static void VVer(DBConn p_dbcAccess,
                                   string p_strCodigo,
                                   int p_iFxdVersion,
-                                  ref StatMsg p_smResult)
+                                  StatMsg p_smResult)
         {
             // No hay errores aun
             DataSet l_dsTemp= new DataSet();
@@ -1294,7 +1294,7 @@ namespace Mrln.Bll
                                   p_iFxdVersion,
                                   ref l_dsTemp,
                                   "Temporal",
-                                  ref p_smResult);
+                                  p_smResult);
             if (p_smResult.NOk) return;
 
             // Verificamos el resultado que vino
@@ -1349,7 +1349,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void VKey(DBConn p_dbcAccess,
                                   string p_strCodigo,
-                                  ref StatMsg p_smResult)
+                                  StatMsg p_smResult)
         {
             // No hay errores aun
             DataSet l_dsTemp= new DataSet();
@@ -1359,7 +1359,7 @@ namespace Mrln.Bll
                               false,
                               ref l_dsTemp,
                               "Temporal",
-                              ref p_smResult);
+                              p_smResult);
             if (p_smResult.NOk) return;
 
             try {
@@ -1392,7 +1392,7 @@ namespace Mrln.Bll
         /// <returns>Lista-entidad: LETalleres</returns>
         internal static LETalleres Upfl(DBConn p_dbcAccess,
                                             bool p_bOnlyActive,
-                                            ref StatMsg p_smResult)
+                                            StatMsg p_smResult)
         {
             try {
                 // Pedimos los registros de la tabla: Taller
@@ -1401,11 +1401,11 @@ namespace Mrln.Bll
                 Dal.Taller.Up(p_dbcAccess, 
                               p_bOnlyActive,
                               ref l_dsTemp, "Temporal",
-                              ref p_smResult);
+                              p_smResult);
                 if (p_smResult.NOk) return null;
 
                 // Fijamos los captions de la grilla
-                Dal.Taller.MakeGridCaptions(ref l_dsTemp, "Temporal", ref p_smResult);
+                Dal.Taller.MakeGridCaptions(ref l_dsTemp, "Temporal", p_smResult);
 
                 // Contruimos la lista-entidad y la devolvemos (si vino algun registro)
                 LETalleres l_lentRet= new LETalleres(l_dsTemp.Tables["Temporal"]);
@@ -1430,7 +1430,7 @@ namespace Mrln.Bll
         internal static ETaller Srch(DBConn p_dbcAccess,
                                      string p_strCodigo,
                                      bool p_bOnlyActive,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             try {
                 // Pedimos el registro de la tabla: Taller
@@ -1440,7 +1440,7 @@ namespace Mrln.Bll
                                   p_strCodigo,
                                   p_bOnlyActive,
                                   ref l_dsTemp, "Temporal",
-                                  ref p_smResult);
+                                  p_smResult);
                 if (p_smResult.NOk) return null;
 
                 // Constuimos la entidad y la devolvemos (si vino un registro)
@@ -1466,7 +1466,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         /// <returns>Próxima clave</returns>
         internal static string GetNK(DBConn p_dbcAccess,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             try {
                 // Pedimos la clave máxima
@@ -1475,7 +1475,7 @@ namespace Mrln.Bll
                 Dal.Taller.GetMaxKey(p_dbcAccess,
                                      ref l_dsTemp,
                                      "Temporal",
-                                     ref p_smResult);
+                                     p_smResult);
                 if (p_smResult.NOk) return "";
 
                 // Si no vino nada
@@ -1508,11 +1508,11 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void Insr(DBConn p_dbcAccess,
                                   ETaller p_entTaller,
-                                  ref StatMsg p_smResult)
+                                  StatMsg p_smResult)
         {
             try {
                 // Validamos la integridad de la entidad
-                TInt(p_dbcAccess, p_entTaller, ref p_smResult);
+                TInt(p_dbcAccess, p_entTaller, p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Creamos un nuevo registro de la tabla: Taller
@@ -1522,7 +1522,7 @@ namespace Mrln.Bll
                                   p_entTaller.Direccion,
                                   p_entTaller.Telefono,
                                   p_entTaller.Contacto,
-                                  ref p_smResult);
+                                  p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Insr
@@ -1538,11 +1538,11 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void Updt(DBConn p_dbcAccess,
                                   ETaller p_entTaller,
-                                  ref StatMsg p_smResult)
+                                  StatMsg p_smResult)
         {
             try {
                 // Validamos la integridad de la entidad
-                TInt(p_dbcAccess, p_entTaller, ref p_smResult);
+                TInt(p_dbcAccess, p_entTaller, p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Actualizamos un registro de la tabla: Taller
@@ -1552,7 +1552,7 @@ namespace Mrln.Bll
                                   p_entTaller.Direccion,
                                   p_entTaller.Telefono,
                                   p_entTaller.Contacto,
-                                  ref p_smResult);
+                                  p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Updt
@@ -1570,13 +1570,13 @@ namespace Mrln.Bll
         internal static void Drop(DBConn p_dbcAccess,
                                   string p_strCodigo,
                                   int p_iFxdVersion,
-                                  ref StatMsg p_smResult)
+                                  StatMsg p_smResult)
         {
             try {
                 // Verificamos la clave a borrar
                 VKey(p_dbcAccess,
                      p_strCodigo,
-                     ref p_smResult);
+                     p_smResult);
                 if (p_smResult.NOk) return;
 
                 // El registro tiene que existir
@@ -1590,13 +1590,13 @@ namespace Mrln.Bll
                 VVer(p_dbcAccess, 
                      p_strCodigo,
                      p_iFxdVersion,
-                     ref p_smResult);
+                     p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Borramos físicamente el registro
                 Dal.Taller.Drop(p_dbcAccess,
                                 p_strCodigo,
-                                ref p_smResult);
+                                p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Remove
@@ -1610,12 +1610,12 @@ namespace Mrln.Bll
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void Pack(DBConn p_dbcAccess,
-                                  ref StatMsg p_smResult)
+                                  StatMsg p_smResult)
         {
             try {
                 // Borramos los borrados lógicamente
                 Dal.Taller.Pack(p_dbcAccess,
-                                ref p_smResult);
+                                p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Updt
@@ -1631,17 +1631,17 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void SSav(DBConn p_dbcAccess,
                                   ETaller p_entTaller,
-                                  ref StatMsg p_smResult)
+                                  StatMsg p_smResult)
         {
             try {
                 // Procesamos codigo fijo
-                Save_f(p_dbcAccess, ref p_entTaller, ref p_smResult);
+                Save_f(p_dbcAccess, ref p_entTaller, p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Verificamos la clave a grabar
                 VKey(p_dbcAccess, 
                      p_entTaller.Codigo,
-                     ref p_smResult);
+                     p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Si es una entidad nueva
@@ -1654,7 +1654,7 @@ namespace Mrln.Bll
                     }
 
                     // Agregamos el registro
-                    Insr(p_dbcAccess, p_entTaller, ref p_smResult);
+                    Insr(p_dbcAccess, p_entTaller, p_smResult);
                 }
                 else {
                     // Es un update. La clave debe existir y estar habilitada
@@ -1668,11 +1668,11 @@ namespace Mrln.Bll
                     VVer(p_dbcAccess, 
                          p_entTaller.Codigo,
                          p_entTaller.FxdVersion,
-                         ref p_smResult);
+                         p_smResult);
                     if (p_smResult.NOk) return;
 
                     // Actualizamos el registro
-                    Updt(p_dbcAccess, p_entTaller, ref p_smResult);
+                    Updt(p_dbcAccess, p_entTaller, p_smResult);
                 }
                 if (p_smResult.NOk) return;
 
@@ -1680,7 +1680,7 @@ namespace Mrln.Bll
                 TalCSSav(p_dbcAccess,
                          p_entTaller.Codigo,
                          p_entTaller.TalleresCategorias,
-                         ref p_smResult);
+                         p_smResult);
                 if (p_smResult.NOk) return;
             }
             catch (Exception l_expData) {

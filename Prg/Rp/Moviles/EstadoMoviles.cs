@@ -22,7 +22,7 @@ namespace Mrln.Rp
         
         public override void buildPanel()
         {
-            Bel.LEEstados estados = Bll.Tablas.EdsUpFull(true, ref m_smResult);
+            Bel.LEEstados estados = Bll.Tablas.EdsUpFull(true, m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
             cdcEstados.FillFromStrLEntidad(estados, Bel.EEstado.DesCmp, Bel.EEstado.DesCmp, "deleted");
             cdcEstados.AddStrCD("", "--TODOS--", 0);
@@ -32,12 +32,13 @@ namespace Mrln.Rp
 
         }
 
-        override public ListaEntidades realizarBusqueda(ref string p_strNombreEmpresa, ref string p_strNombreReporte,
+        override public ListaEntidades realizarBusqueda(ref string p_strNombreEmpresa, ref string p_strPrograma, ref string p_strNombreReporte,
                                                         ref string p_strDetalleReporte, ref int p_intCorteDeControl)
         {
             // Cargamos los valores de referencia para el llenado del report.
             p_strNombreReporte = "Estado Moviles";
-
+            p_strNombreEmpresa = Shr.ROParam.Empresa.VStr;
+            p_strPrograma = "Reportes";
 
             // Declaramos y definimos las 2 variables para los limites de la busqueda
             string l_strEstadoIni = "", l_strEstadoFin = "";
@@ -52,7 +53,7 @@ namespace Mrln.Rp
             else
                 l_strEstadoIni = l_strEstadoFin = cdcEstados.SelectedStrCode;
 
-            ListaEntidades l_leMoviles = Bll.Moviles.ZMovilesPorEstado(l_strEstadoIni, l_strEstadoFin, ref m_smResult);
+            ListaEntidades l_leMoviles = Bll.Moviles.ZMovilesPorEstado(l_strEstadoIni, l_strEstadoFin, m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return null;
 
             return l_leMoviles;

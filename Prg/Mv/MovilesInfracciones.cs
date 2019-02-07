@@ -85,7 +85,7 @@ namespace Mrln.Mv
             cdcAnulada.AddStrCD(" N", "NO", 0);
 
             // Llenamos las Combos (por Tablas)
-            Bel.LEMotivosInfracciones l_lentMotivosInfracciones= Bll.Tablas.MtiUpFull(false, ref m_smResult);
+            Bel.LEMotivosInfracciones l_lentMotivosInfracciones= Bll.Tablas.MtiUpFull(false, m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
             cmbCodmotivo.FillFromStrLEntidad(l_lentMotivosInfracciones, Bel.EMotivoInfraccion.CodigoCmp, Bel.EMotivoInfraccion.DescripcionCmp, "deleted");
 
@@ -174,7 +174,7 @@ namespace Mrln.Mv
         {
             App.ShowMsg("Generando planilla...");
             App.InitAdvance("Excel:");
-            grdDatos.ExportToExcel(false, false, "", "MovilesInfracciones", ref m_smResult);
+            grdDatos.ExportToExcel(false, false, "", "MovilesInfracciones", m_smResult);
             App.EndAdvance();
             App.HideMsg();
         }
@@ -186,7 +186,7 @@ namespace Mrln.Mv
         {
             App.ShowMsg("Imprimiendo datos...");
             App.InitAdvance("Imprimiendo:");
-            grdDatos.Print(App.ROParams["EMPRESA"].VStr, App.Programa.Nombre,
+            grdDatos.Print(Shr.ROParam.Empresa.VStr, App.Programa.Nombre,
                            "Lista de MovilesInfracciones", "");
             App.EndAdvance();
             App.HideMsg();
@@ -218,7 +218,7 @@ namespace Mrln.Mv
             App.ShowMsg("Recuperando Datos...");
             m_entMvlInfraccion= Bll.Moviles.MvifGet((string) grdDatos.GetMatrixValueObj(l_iRow, 1),
                                                     (DateTime) grdDatos.GetMatrixValueObj(l_iRow, 2),
-                                                    false, ref m_smResult);
+                                                    false, m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
             // Tenemos la entidad. Pasamos a modo de edicion y damos foco
@@ -247,7 +247,7 @@ namespace Mrln.Mv
 
             // Purgamos la tabla
             App.ShowMsg("Compactando la tabla...");
-            Bll.Moviles.MvifPurge(ref m_smResult);
+            Bll.Moviles.MvifPurge(m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
             // Terminamos
@@ -285,7 +285,7 @@ namespace Mrln.Mv
                                     m_entMvlInfraccion.Patente,
                                     m_entMvlInfraccion.Fecha,
                                     m_entMvlInfraccion.FxdVersion,
-                                    ref m_smResult);
+                                    m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
             // Pasamos a modo Operaciones, rellenamos la grilla y 
@@ -312,7 +312,7 @@ namespace Mrln.Mv
 
             // Tratamos de grabar la entidad
             App.ShowMsg("Grabando...");
-            Bll.Moviles.MvifSave(m_entMvlInfraccion, ref m_smResult);
+            Bll.Moviles.MvifSave(m_entMvlInfraccion, m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
             // Pasamos a modo Operaciones, rellenamos la grilla y 
@@ -333,7 +333,7 @@ namespace Mrln.Mv
         {
             // Recuperamos los datos para la grilla
             App.ShowMsg("Recuperando datos...");
-            Bel.LEMovilesInfracciones l_lentMovilesInfracciones= Bll.Moviles.MvifFGet(m_strPatenteMovilSeleccionado, false, ref m_smResult);
+            Bel.LEMovilesInfracciones l_lentMovilesInfracciones= Bll.Moviles.MvifFGet(m_strPatenteMovilSeleccionado, false, m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
             // Asignamos a la grilla

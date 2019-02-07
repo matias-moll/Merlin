@@ -80,7 +80,7 @@ namespace Mrln.Xf
                          ValidOptions.Validate,
                          ConStrOptions.Read,
                          true,
-                         ref l_smResult);
+                         l_smResult);
             }
             catch (Exception l_expData) {
                 // Se produjo un error no capturado
@@ -108,7 +108,7 @@ namespace Mrln.Xf
                 App.Run(LoginModes.FullSup,
                         IMenuOptions.None,
                         ExitModes.Confirm,
-                        ref l_smResult);
+                        l_smResult);
             }
             catch (Exception l_expData) {
                 // Se produjo un error no capturado

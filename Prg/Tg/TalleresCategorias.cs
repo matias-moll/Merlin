@@ -79,11 +79,11 @@ namespace Mrln.Tg
             // Inicializamos el form
             App.ShowMsg("Inicializando el formulario...");
 
-            Bel.LETalleres l_lentTalleres= Bll.Talleres.UpFull(true, ref m_smResult);
+            Bel.LETalleres l_lentTalleres= Bll.Talleres.UpFull(true, m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
             cmbTalleres.FillFromStrLEntidad(l_lentTalleres, "tll_cod_codigo", "tll_ede_descripcion", "deleted");
 
-            Bel.LECategorias l_lentCategorias= Bll.Tablas.CatUpFull(false, ref m_smResult);
+            Bel.LECategorias l_lentCategorias= Bll.Tablas.CatUpFull(false, m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
             cmbCodigocategoria.FillFromStrLEntidad(l_lentCategorias, "cat_rcd_cod", "cat_des_des", "deleted");
 
@@ -204,7 +204,7 @@ namespace Mrln.Tg
             // Recargamos la combo
             App.ShowMsg("Recargando los datos...");
 
-            Bel.LETalleres l_lentTalleres= Bll.Talleres.UpFull(true, ref m_smResult);
+            Bel.LETalleres l_lentTalleres= Bll.Talleres.UpFull(true, m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
             cmbTalleres.FillFromStrLEntidad(l_lentTalleres, "tll_cod_codigo", "tll_ede_descripcion", "deleted");
             cmbTalleres.Focus();
@@ -218,7 +218,7 @@ namespace Mrln.Tg
         {
             App.ShowMsg("Generando planilla...");
             App.InitAdvance("Excel:");
-            grdDatos.ExportToExcel(false, false, "", "TalleresCategorias", ref m_smResult);
+            grdDatos.ExportToExcel(false, false, "", "TalleresCategorias", m_smResult);
             App.EndAdvance();
             App.HideMsg();
         }
@@ -230,7 +230,7 @@ namespace Mrln.Tg
         {
             App.ShowMsg("Imprimiendo datos...");
             App.InitAdvance("Imprimiendo:");
-            grdDatos.Print(App.ROParams["EMPRESA"].VStr, App.Programa.Nombre,
+            grdDatos.Print(Shr.ROParam.Empresa.VStr, App.Programa.Nombre,
                            "Lista de TalleresCategorias", "");
             App.EndAdvance();
             App.HideMsg();
@@ -266,7 +266,7 @@ namespace Mrln.Tg
             App.ShowMsg("Recuperando Datos...");
             m_entTallerCategoria= Bll.Talleres.TalCGet(cmbTalleres.SelectedStrCode,
                                                        (string) grdDatos.GetMatrixValueObj(l_iRow, 2),
-                                                       false, ref m_smResult);
+                                                       false, m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
             // Tenemos la entidad. Pasamos a modo de edicion y damos foco
@@ -295,7 +295,7 @@ namespace Mrln.Tg
 
             // Purgamos la tabla
             App.ShowMsg("Compactando la tabla...");
-            Bll.Talleres.TalCPurge(ref m_smResult);
+            Bll.Talleres.TalCPurge(m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
             // Terminamos
@@ -333,7 +333,7 @@ namespace Mrln.Tg
                                      m_entTallerCategoria.Codigotaller,
                                      m_entTallerCategoria.Codigocategoria,
                                      m_entTallerCategoria.FxdVersion,
-                                     ref m_smResult);
+                                     m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
             // Pasamos a modo Operaciones, rellenamos la grilla y 
@@ -354,7 +354,7 @@ namespace Mrln.Tg
 
             // Tratamos de grabar la entidad
             App.ShowMsg("Grabando...");
-            Bll.Talleres.TalCSave(m_entTallerCategoria, ref m_smResult);
+            Bll.Talleres.TalCSave(m_entTallerCategoria, m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
             // Pasamos a modo Operaciones, rellenamos la grilla y 
@@ -376,7 +376,7 @@ namespace Mrln.Tg
             // Recuperamos los datos para la grilla
             App.ShowMsg("Recuperando datos...");
             Bel.LETalleresCategorias l_lentTalleresCategorias= Bll.Talleres.TalCFGet(cmbTalleres.SelectedStrCode,
-                                                                                     false, ref m_smResult);
+                                                                                     false, m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
             // Asignamos a la grilla

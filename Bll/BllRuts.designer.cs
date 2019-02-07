@@ -16,11 +16,11 @@ namespace Mrln.Bll
     //----------------------------------------------------------------------------
     //                         TNG Software BLL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 21/11/2018 18:57
+    // Fecha                    : 07/02/2019 03:30
     // Sistema                  : Mrln
     // Clase para Administrar   : 
     //----------------------------------------------------------------------------
-    // © 1996-2018 by TNG Software                                      Gndr 5.20
+    // © 1996-2019 by TNG Software                                      Gndr 5.20
     //----------------------------------------------------------------------------
 
     //****************************************************************************
@@ -47,10 +47,10 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         /// <returns>Fecha del server</returns>
         public static DateTime GetDBNow(DBConn p_dbcAccess,
-                                        ref StatMsg p_smResult)
+                                        StatMsg p_smResult)
         {
             // Llamamos al metodo basico
-            DateTime l_dtRet= GetDBNow(p_dbcAccess, false, ref p_smResult);
+            DateTime l_dtRet= GetDBNow(p_dbcAccess, false, p_smResult);
             if (p_smResult.NOk) return DateTimeRuts.Empty;
 
             // Terminamos
@@ -66,11 +66,11 @@ namespace Mrln.Bll
         /// <returns>Fecha del server</returns>
         public static DateTime GetDBNow(DBConn p_dbcAccess,
                                         bool p_bOnlyDate,
-                                        ref StatMsg p_smResult)
+                                        StatMsg p_smResult)
         {
             try {
                 // Recuperamos la fecha del server
-                return AppRuts.GetDBNow(p_dbcAccess, p_bOnlyDate, ref p_smResult);
+                return AppRuts.GetDBNow(p_dbcAccess, p_bOnlyDate, p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion
@@ -129,6 +129,7 @@ namespace Mrln.Bll
                 case "alr_nom_usuariovista"            : {return "V1Usuario VistaCN1";}
                 case "alr_nro_repetirendias"           : {return "V1Repetir en DiasNN3";}
                 case "alr_cd1_finalizada"              : {return "V1FinalizadaCN2";}
+                case "alr_cd1_mailsenviados"           : {return "V1Mails EnviadosCN2";}
 
                 // ****************************************
                 // Tabla: Categorias          

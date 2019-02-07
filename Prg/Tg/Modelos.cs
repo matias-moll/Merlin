@@ -81,7 +81,7 @@ namespace Mrln.Tg
             App.ShowMsg("Inicializando el formulario...");
 
             // Llenamos las Combos (por Tablas)
-            Bel.LEMarcas l_lentMarcas= Bll.Tablas.MrcUpFull(false, ref m_smResult);
+            Bel.LEMarcas l_lentMarcas= Bll.Tablas.MrcUpFull(false, m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
             cmbCodmarca.FillFromStrLEntidad(l_lentMarcas, "mrc_rcd_codigo", "mrc_des_descripcion", "deleted");
 
@@ -170,7 +170,7 @@ namespace Mrln.Tg
         {
             App.ShowMsg("Generando planilla...");
             App.InitAdvance("Excel:");
-            grdDatos.ExportToExcel(false, false, "", "Modelos", ref m_smResult);
+            grdDatos.ExportToExcel(false, false, "", "Modelos", m_smResult);
             App.EndAdvance();
             App.HideMsg();
         }
@@ -182,7 +182,7 @@ namespace Mrln.Tg
         {
             App.ShowMsg("Imprimiendo datos...");
             App.InitAdvance("Imprimiendo:");
-            grdDatos.Print(App.ROParams["EMPRESA"].VStr, App.Programa.Nombre,
+            grdDatos.Print(Shr.ROParam.Empresa.VStr, App.Programa.Nombre,
                            "Lista de Modelos", "");
             App.EndAdvance();
             App.HideMsg();
@@ -196,7 +196,7 @@ namespace Mrln.Tg
             // Creamos una nueva entidad, pasamos a modo de edicion y
             // damos foco al primer campo
             m_entModelo= Bel.EModelo.NewEmpty();
-            m_entModelo.Cod = Bll.Tablas.ModNextKey(ref m_smResult);
+            m_entModelo.Cod = Bll.Tablas.ModNextKey(m_smResult);
             m_smResult.Reset();
             SwitchTo(FormModes.Edit, GridOps.DontFill);
             txtDes.Focus();
@@ -214,7 +214,7 @@ namespace Mrln.Tg
             // Obtenemos la entidad del item seleccionado en la grilla
             App.ShowMsg("Recuperando Datos...");
             m_entModelo= Bll.Tablas.ModGet((string) grdDatos.GetMatrixValueObj(l_iRow, 1),
-                                           false, ref m_smResult);
+                                           false, m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
             // Tenemos la entidad. Pasamos a modo de edicion y damos foco
@@ -243,7 +243,7 @@ namespace Mrln.Tg
 
             // Purgamos la tabla
             App.ShowMsg("Compactando la tabla...");
-            Bll.Tablas.ModPurge(ref m_smResult);
+            Bll.Tablas.ModPurge(m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
             // Terminamos
@@ -280,7 +280,7 @@ namespace Mrln.Tg
             Bll.Tablas.ModEnabled(m_entModelo.EstaBorrada,
                                   m_entModelo.Cod,
                                   m_entModelo.FxdVersion,
-                                  ref m_smResult);
+                                  m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
             // Pasamos a modo Operaciones, rellenamos la grilla y 
@@ -302,7 +302,7 @@ namespace Mrln.Tg
 
             // Tratamos de grabar la entidad
             App.ShowMsg("Grabando...");
-            Bll.Tablas.ModSave(m_entModelo, ref m_smResult);
+            Bll.Tablas.ModSave(m_entModelo, m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
             // Pasamos a modo Operaciones, rellenamos la grilla y 
@@ -323,7 +323,7 @@ namespace Mrln.Tg
         {
             // Recuperamos los datos para la grilla
             App.ShowMsg("Recuperando datos...");
-            Bel.LEModelos l_lentModelos= Bll.Tablas.ModUpFull(false, ref m_smResult);
+            Bel.LEModelos l_lentModelos= Bll.Tablas.ModUpFull(false, m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
             // Asignamos a la grilla

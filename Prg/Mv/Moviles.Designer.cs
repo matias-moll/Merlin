@@ -31,7 +31,6 @@ namespace Mrln.Mv
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Moviles));
             this.xpnlPanelAtras = new TNGS.NetControls.XPanel();
-            this.tgrpMoviles = new TNGS.NetControls.TitledGroup();
             this.teTipoMovil = new TNGS.NetControls.TextEdit();
             this.fullLabel5 = new TNGS.NetControls.FullLabel();
             this.teEstado = new TNGS.NetControls.TextEdit();
@@ -65,8 +64,8 @@ namespace Mrln.Mv
             this.fgCombustibles = new TNGS.NetControls.FullGrid();
             this.fgEquipamiento = new TNGS.NetControls.FullGrid();
             this.fgKm = new TNGS.NetControls.FullGrid();
+            this.tgrpMoviles = new TNGS.NetControls.ImgGroup();
             this.xpnlPanelAtras.SuspendLayout();
-            this.tgrpMoviles.SuspendLayout();
             this.tsContainer1.SuspendLayout();
             this.tabPageSwitcher1.SuspendLayout();
             this.tabStripPage1.SuspendLayout();
@@ -77,6 +76,7 @@ namespace Mrln.Mv
             ((System.ComponentModel.ISupportInitialize)(this.fgCombustibles)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fgEquipamiento)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fgKm)).BeginInit();
+            this.tgrpMoviles.SuspendLayout();
             this.SuspendLayout();
             // 
             // xpnlPanelAtras
@@ -100,51 +100,13 @@ namespace Mrln.Mv
             this.xpnlPanelAtras.SkinFixed = true;
             this.xpnlPanelAtras.TabIndex = 0;
             // 
-            // tgrpMoviles
-            // 
-            this.tgrpMoviles.BackgroundColor = System.Drawing.Color.WhiteSmoke;
-            this.tgrpMoviles.BackgroundGradientColor = System.Drawing.Color.White;
-            this.tgrpMoviles.BackgroundGradientMode = TNGS.NetControls.TitledGroup.GroupBoxGradientMode.None;
-            this.tgrpMoviles.BlackBorder = true;
-            this.tgrpMoviles.BorderColor = System.Drawing.Color.WhiteSmoke;
-            this.tgrpMoviles.BorderThickness = 1F;
-            this.tgrpMoviles.Controls.Add(this.teTipoMovil);
-            this.tgrpMoviles.Controls.Add(this.fullLabel5);
-            this.tgrpMoviles.Controls.Add(this.teEstado);
-            this.tgrpMoviles.Controls.Add(this.ftrMoviles);
-            this.tgrpMoviles.Controls.Add(this.teModelo);
-            this.tgrpMoviles.Controls.Add(this.lblPatente);
-            this.tgrpMoviles.Controls.Add(this.lblEstado);
-            this.tgrpMoviles.Controls.Add(this.tePatente);
-            this.tgrpMoviles.Controls.Add(this.lblModelo);
-            this.tgrpMoviles.CustomGroupBoxColor = System.Drawing.Color.White;
-            this.tgrpMoviles.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.tgrpMoviles.ForeColor = System.Drawing.Color.Black;
-            this.tgrpMoviles.ImageGroup = null;
-            this.tgrpMoviles.Location = new System.Drawing.Point(12, 120);
-            this.tgrpMoviles.Name = "tgrpMoviles";
-            this.tgrpMoviles.Padding = new System.Windows.Forms.Padding(20);
-            this.tgrpMoviles.PaintGroupBox = false;
-            this.tgrpMoviles.RoundCorners = 4;
-            this.tgrpMoviles.ShadowColor = System.Drawing.Color.DarkGray;
-            this.tgrpMoviles.ShadowControl = false;
-            this.tgrpMoviles.ShadowThickness = 3;
-            this.tgrpMoviles.Size = new System.Drawing.Size(225, 550);
-            this.tgrpMoviles.TabIndex = 38;
-            this.tgrpMoviles.Title = "Móviles";
-            this.tgrpMoviles.TitleAlignment = TNGS.NetControls.TitledGroup.TitleAlign.Center;
-            this.tgrpMoviles.TitleBackground = System.Drawing.SystemColors.HotTrack;
-            this.tgrpMoviles.TitleBackgroundDefault = TNGS.NetControls.ColorRuts.ColoresDefault.None;
-            this.tgrpMoviles.TitleFont = new System.Drawing.Font("Segoe UI", 10F);
-            this.tgrpMoviles.TitleFontColor = System.Drawing.Color.White;
-            // 
             // teTipoMovil
             // 
             this.teTipoMovil.BackColor = System.Drawing.SystemColors.Window;
             this.teTipoMovil.Enabled = false;
-            this.teTipoMovil.Location = new System.Drawing.Point(76, 464);
+            this.teTipoMovil.Location = new System.Drawing.Point(80, 457);
             this.teTipoMovil.Name = "teTipoMovil";
-            this.teTipoMovil.Size = new System.Drawing.Size(138, 23);
+            this.teTipoMovil.Size = new System.Drawing.Size(138, 20);
             this.teTipoMovil.TabIndex = 27;
             this.teTipoMovil.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -153,7 +115,7 @@ namespace Mrln.Mv
             this.fullLabel5.BackColor = System.Drawing.Color.Transparent;
             this.fullLabel5.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.fullLabel5.ForeColor = System.Drawing.Color.Black;
-            this.fullLabel5.Location = new System.Drawing.Point(12, 464);
+            this.fullLabel5.Location = new System.Drawing.Point(16, 457);
             this.fullLabel5.Name = "fullLabel5";
             this.fullLabel5.Size = new System.Drawing.Size(55, 18);
             this.fullLabel5.TabIndex = 26;
@@ -163,16 +125,16 @@ namespace Mrln.Mv
             // 
             this.teEstado.BackColor = System.Drawing.SystemColors.Window;
             this.teEstado.Enabled = false;
-            this.teEstado.Location = new System.Drawing.Point(76, 518);
+            this.teEstado.Location = new System.Drawing.Point(80, 511);
             this.teEstado.Name = "teEstado";
-            this.teEstado.Size = new System.Drawing.Size(138, 23);
+            this.teEstado.Size = new System.Drawing.Size(138, 20);
             this.teEstado.TabIndex = 25;
             this.teEstado.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // ftrMoviles
             // 
             this.ftrMoviles.IgnoreLevelInFill = false;
-            this.ftrMoviles.Location = new System.Drawing.Point(8, 39);
+            this.ftrMoviles.Location = new System.Drawing.Point(12, 32);
             this.ftrMoviles.Name = "ftrMoviles";
             this.ftrMoviles.Size = new System.Drawing.Size(206, 392);
             this.ftrMoviles.TabIndex = 0;
@@ -183,9 +145,9 @@ namespace Mrln.Mv
             // 
             this.teModelo.BackColor = System.Drawing.SystemColors.Window;
             this.teModelo.Enabled = false;
-            this.teModelo.Location = new System.Drawing.Point(76, 491);
+            this.teModelo.Location = new System.Drawing.Point(80, 484);
             this.teModelo.Name = "teModelo";
-            this.teModelo.Size = new System.Drawing.Size(138, 23);
+            this.teModelo.Size = new System.Drawing.Size(138, 20);
             this.teModelo.TabIndex = 24;
             this.teModelo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -194,7 +156,7 @@ namespace Mrln.Mv
             this.lblPatente.BackColor = System.Drawing.Color.Transparent;
             this.lblPatente.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPatente.ForeColor = System.Drawing.Color.Black;
-            this.lblPatente.Location = new System.Drawing.Point(12, 439);
+            this.lblPatente.Location = new System.Drawing.Point(16, 432);
             this.lblPatente.Name = "lblPatente";
             this.lblPatente.Size = new System.Drawing.Size(58, 18);
             this.lblPatente.TabIndex = 8;
@@ -205,7 +167,7 @@ namespace Mrln.Mv
             this.lblEstado.BackColor = System.Drawing.Color.Transparent;
             this.lblEstado.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEstado.ForeColor = System.Drawing.Color.Black;
-            this.lblEstado.Location = new System.Drawing.Point(12, 518);
+            this.lblEstado.Location = new System.Drawing.Point(16, 511);
             this.lblEstado.Name = "lblEstado";
             this.lblEstado.Size = new System.Drawing.Size(55, 18);
             this.lblEstado.TabIndex = 23;
@@ -215,9 +177,9 @@ namespace Mrln.Mv
             // 
             this.tePatente.BackColor = System.Drawing.SystemColors.Window;
             this.tePatente.Enabled = false;
-            this.tePatente.Location = new System.Drawing.Point(76, 437);
+            this.tePatente.Location = new System.Drawing.Point(80, 430);
             this.tePatente.Name = "tePatente";
-            this.tePatente.Size = new System.Drawing.Size(138, 23);
+            this.tePatente.Size = new System.Drawing.Size(138, 20);
             this.tePatente.TabIndex = 7;
             this.tePatente.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -226,7 +188,7 @@ namespace Mrln.Mv
             this.lblModelo.BackColor = System.Drawing.Color.Transparent;
             this.lblModelo.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblModelo.ForeColor = System.Drawing.Color.Black;
-            this.lblModelo.Location = new System.Drawing.Point(12, 492);
+            this.lblModelo.Location = new System.Drawing.Point(16, 485);
             this.lblModelo.Name = "lblModelo";
             this.lblModelo.Size = new System.Drawing.Size(55, 18);
             this.lblModelo.TabIndex = 20;
@@ -236,7 +198,7 @@ namespace Mrln.Mv
             // 
             this.fullLabel4.BackColor = System.Drawing.Color.Transparent;
             this.fullLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fullLabel4.Location = new System.Drawing.Point(752, 403);
+            this.fullLabel4.Location = new System.Drawing.Point(752, 410);
             this.fullLabel4.Name = "fullLabel4";
             this.fullLabel4.Size = new System.Drawing.Size(100, 15);
             this.fullLabel4.TabIndex = 37;
@@ -258,7 +220,7 @@ namespace Mrln.Mv
             // 
             this.fullLabel2.BackColor = System.Drawing.Color.Transparent;
             this.fullLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fullLabel2.Location = new System.Drawing.Point(370, 403);
+            this.fullLabel2.Location = new System.Drawing.Point(370, 410);
             this.fullLabel2.Name = "fullLabel2";
             this.fullLabel2.Size = new System.Drawing.Size(100, 15);
             this.fullLabel2.TabIndex = 35;
@@ -337,8 +299,8 @@ namespace Mrln.Mv
             this.gbInfracciones.ButtonMode = TNGS.NetControls.GlassButton.GBMode.Flat;
             this.gbInfracciones.CircleButton = false;
             this.gbInfracciones.FixedFlatImage = TNGS.NetControls.FixedFlatImageButtons.Note;
-            this.gbInfracciones.FlatColor = System.Drawing.Color.RoyalBlue;
-            this.gbInfracciones.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
+            this.gbInfracciones.FlatColor = System.Drawing.Color.DodgerBlue;
+            this.gbInfracciones.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.LightBlue;
             this.gbInfracciones.FlatFontSize = 9;
             this.gbInfracciones.FlatTextColor = System.Drawing.Color.Black;
             this.gbInfracciones.Font = new System.Drawing.Font("Segoe UI", 9.75F);
@@ -350,7 +312,7 @@ namespace Mrln.Mv
             this.gbInfracciones.TabIndex = 33;
             this.gbInfracciones.Text = "Infracciónes";
             this.gbInfracciones.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.gbInfracciones.W8Color = System.Drawing.Color.RoyalBlue;
+            this.gbInfracciones.W8Color = System.Drawing.Color.DodgerBlue;
             this.gbInfracciones.Click += new System.EventHandler(this.gbInfracciones_Click);
             // 
             // gbAccidentes
@@ -360,8 +322,8 @@ namespace Mrln.Mv
             this.gbAccidentes.ButtonMode = TNGS.NetControls.GlassButton.GBMode.Flat;
             this.gbAccidentes.CircleButton = false;
             this.gbAccidentes.FixedFlatImage = TNGS.NetControls.FixedFlatImageButtons.Warning;
-            this.gbAccidentes.FlatColor = System.Drawing.Color.RoyalBlue;
-            this.gbAccidentes.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
+            this.gbAccidentes.FlatColor = System.Drawing.Color.DodgerBlue;
+            this.gbAccidentes.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.LightBlue;
             this.gbAccidentes.FlatFontSize = 9;
             this.gbAccidentes.FlatTextColor = System.Drawing.Color.Black;
             this.gbAccidentes.Font = new System.Drawing.Font("Segoe UI", 9.75F);
@@ -373,7 +335,7 @@ namespace Mrln.Mv
             this.gbAccidentes.TabIndex = 32;
             this.gbAccidentes.Text = "Accidentes";
             this.gbAccidentes.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.gbAccidentes.W8Color = System.Drawing.Color.RoyalBlue;
+            this.gbAccidentes.W8Color = System.Drawing.Color.DodgerBlue;
             this.gbAccidentes.Click += new System.EventHandler(this.gbAccidentes_Click);
             // 
             // gbHistorialCompleto
@@ -383,8 +345,8 @@ namespace Mrln.Mv
             this.gbHistorialCompleto.ButtonMode = TNGS.NetControls.GlassButton.GBMode.Flat;
             this.gbHistorialCompleto.CircleButton = false;
             this.gbHistorialCompleto.FixedFlatImage = TNGS.NetControls.FixedFlatImageButtons.Search;
-            this.gbHistorialCompleto.FlatColor = System.Drawing.Color.RoyalBlue;
-            this.gbHistorialCompleto.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
+            this.gbHistorialCompleto.FlatColor = System.Drawing.Color.DodgerBlue;
+            this.gbHistorialCompleto.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.LightBlue;
             this.gbHistorialCompleto.FlatFontSize = 9;
             this.gbHistorialCompleto.FlatTextColor = System.Drawing.Color.Black;
             this.gbHistorialCompleto.Font = new System.Drawing.Font("Segoe UI", 9.75F);
@@ -394,7 +356,8 @@ namespace Mrln.Mv
             this.gbHistorialCompleto.Size = new System.Drawing.Size(101, 60);
             this.gbHistorialCompleto.TabIndex = 31;
             this.gbHistorialCompleto.Text = "Historial Unificado";
-            this.gbHistorialCompleto.W8Color = System.Drawing.Color.RoyalBlue;
+            this.gbHistorialCompleto.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.gbHistorialCompleto.W8Color = System.Drawing.Color.DodgerBlue;
             this.gbHistorialCompleto.Click += new System.EventHandler(this.gbHistorialCompleto_Click);
             // 
             // gbCargarNafta
@@ -403,8 +366,8 @@ namespace Mrln.Mv
             this.gbCargarNafta.BlackBorder = true;
             this.gbCargarNafta.ButtonMode = TNGS.NetControls.GlassButton.GBMode.Flat;
             this.gbCargarNafta.CircleButton = false;
-            this.gbCargarNafta.FlatColor = System.Drawing.Color.RoyalBlue;
-            this.gbCargarNafta.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
+            this.gbCargarNafta.FlatColor = System.Drawing.Color.DodgerBlue;
+            this.gbCargarNafta.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.LightBlue;
             this.gbCargarNafta.FlatFontSize = 9;
             this.gbCargarNafta.FlatTextColor = System.Drawing.Color.Black;
             this.gbCargarNafta.Font = new System.Drawing.Font("Segoe UI", 9.75F);
@@ -416,7 +379,7 @@ namespace Mrln.Mv
             this.gbCargarNafta.TabIndex = 2;
             this.gbCargarNafta.Text = "Cargar Nafta";
             this.gbCargarNafta.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.gbCargarNafta.W8Color = System.Drawing.Color.RoyalBlue;
+            this.gbCargarNafta.W8Color = System.Drawing.Color.DodgerBlue;
             this.gbCargarNafta.Click += new System.EventHandler(this.gbAgregarCombustible_Click);
             // 
             // gbAgregarKMs
@@ -425,8 +388,8 @@ namespace Mrln.Mv
             this.gbAgregarKMs.BlackBorder = true;
             this.gbAgregarKMs.ButtonMode = TNGS.NetControls.GlassButton.GBMode.Flat;
             this.gbAgregarKMs.CircleButton = false;
-            this.gbAgregarKMs.FlatColor = System.Drawing.Color.RoyalBlue;
-            this.gbAgregarKMs.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
+            this.gbAgregarKMs.FlatColor = System.Drawing.Color.DodgerBlue;
+            this.gbAgregarKMs.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.LightBlue;
             this.gbAgregarKMs.FlatFontSize = 9;
             this.gbAgregarKMs.FlatTextColor = System.Drawing.Color.Black;
             this.gbAgregarKMs.Font = new System.Drawing.Font("Segoe UI", 9.75F);
@@ -438,7 +401,7 @@ namespace Mrln.Mv
             this.gbAgregarKMs.TabIndex = 1;
             this.gbAgregarKMs.Text = "Agregar Kms";
             this.gbAgregarKMs.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.gbAgregarKMs.W8Color = System.Drawing.Color.RoyalBlue;
+            this.gbAgregarKMs.W8Color = System.Drawing.Color.DodgerBlue;
             this.gbAgregarKMs.Click += new System.EventHandler(this.gbNuevoKM_Click);
             // 
             // gbModificarMovil
@@ -448,8 +411,8 @@ namespace Mrln.Mv
             this.gbModificarMovil.ButtonMode = TNGS.NetControls.GlassButton.GBMode.Flat;
             this.gbModificarMovil.CircleButton = false;
             this.gbModificarMovil.FixedFlatImage = TNGS.NetControls.FixedFlatImageButtons.Edit;
-            this.gbModificarMovil.FlatColor = System.Drawing.Color.RoyalBlue;
-            this.gbModificarMovil.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
+            this.gbModificarMovil.FlatColor = System.Drawing.Color.DodgerBlue;
+            this.gbModificarMovil.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.LightBlue;
             this.gbModificarMovil.FlatFontSize = 9;
             this.gbModificarMovil.FlatTextColor = System.Drawing.Color.Black;
             this.gbModificarMovil.Font = new System.Drawing.Font("Segoe UI", 9.75F);
@@ -459,7 +422,8 @@ namespace Mrln.Mv
             this.gbModificarMovil.Size = new System.Drawing.Size(101, 60);
             this.gbModificarMovil.TabIndex = 30;
             this.gbModificarMovil.Text = "Modificar";
-            this.gbModificarMovil.W8Color = System.Drawing.Color.RoyalBlue;
+            this.gbModificarMovil.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.gbModificarMovil.W8Color = System.Drawing.Color.DodgerBlue;
             this.gbModificarMovil.Click += new System.EventHandler(this.gbModificarMovil_Click);
             // 
             // gbCambiarEstado
@@ -468,8 +432,8 @@ namespace Mrln.Mv
             this.gbCambiarEstado.BlackBorder = true;
             this.gbCambiarEstado.ButtonMode = TNGS.NetControls.GlassButton.GBMode.Flat;
             this.gbCambiarEstado.CircleButton = false;
-            this.gbCambiarEstado.FlatColor = System.Drawing.Color.RoyalBlue;
-            this.gbCambiarEstado.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
+            this.gbCambiarEstado.FlatColor = System.Drawing.Color.DodgerBlue;
+            this.gbCambiarEstado.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.LightBlue;
             this.gbCambiarEstado.FlatFontSize = 9;
             this.gbCambiarEstado.FlatTextColor = System.Drawing.Color.Black;
             this.gbCambiarEstado.Font = new System.Drawing.Font("Segoe UI", 9.75F);
@@ -481,7 +445,7 @@ namespace Mrln.Mv
             this.gbCambiarEstado.TabIndex = 0;
             this.gbCambiarEstado.Text = "Cambiar Estado";
             this.gbCambiarEstado.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.gbCambiarEstado.W8Color = System.Drawing.Color.RoyalBlue;
+            this.gbCambiarEstado.W8Color = System.Drawing.Color.DodgerBlue;
             this.gbCambiarEstado.Click += new System.EventHandler(this.gbModificarEstado_Click);
             // 
             // pnlOpcionesGenerales
@@ -504,18 +468,19 @@ namespace Mrln.Mv
             this.gbNuevoMovil.ButtonMode = TNGS.NetControls.GlassButton.GBMode.Flat;
             this.gbNuevoMovil.CircleButton = false;
             this.gbNuevoMovil.FixedFlatImage = TNGS.NetControls.FixedFlatImageButtons.New;
-            this.gbNuevoMovil.FlatColor = System.Drawing.Color.RoyalBlue;
-            this.gbNuevoMovil.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
+            this.gbNuevoMovil.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.gbNuevoMovil.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.Aceptar;
             this.gbNuevoMovil.FlatFontSize = 9;
             this.gbNuevoMovil.FlatTextColor = System.Drawing.Color.Black;
             this.gbNuevoMovil.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.gbNuevoMovil.Location = new System.Drawing.Point(13, 5);
+            this.gbNuevoMovil.Location = new System.Drawing.Point(19, 12);
             this.gbNuevoMovil.Name = "gbNuevoMovil";
             this.gbNuevoMovil.RoundCorners = 2;
-            this.gbNuevoMovil.Size = new System.Drawing.Size(96, 55);
+            this.gbNuevoMovil.Size = new System.Drawing.Size(80, 41);
             this.gbNuevoMovil.TabIndex = 27;
             this.gbNuevoMovil.Text = "Nuevo";
-            this.gbNuevoMovil.W8Color = System.Drawing.Color.RoyalBlue;
+            this.gbNuevoMovil.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.gbNuevoMovil.W8Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.gbNuevoMovil.Click += new System.EventHandler(this.gbNuevoMovil_Click);
             // 
             // gbBorrarMovil
@@ -524,19 +489,20 @@ namespace Mrln.Mv
             this.gbBorrarMovil.BlackBorder = true;
             this.gbBorrarMovil.ButtonMode = TNGS.NetControls.GlassButton.GBMode.Flat;
             this.gbBorrarMovil.CircleButton = false;
-            this.gbBorrarMovil.FixedFlatImage = TNGS.NetControls.FixedFlatImageButtons.Erase;
-            this.gbBorrarMovil.FlatColor = System.Drawing.Color.RoyalBlue;
-            this.gbBorrarMovil.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
+            this.gbBorrarMovil.FixedFlatImage = TNGS.NetControls.FixedFlatImageButtons.Delete;
+            this.gbBorrarMovil.FlatColor = System.Drawing.Color.Red;
+            this.gbBorrarMovil.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.Cancelar;
             this.gbBorrarMovil.FlatFontSize = 9;
             this.gbBorrarMovil.FlatTextColor = System.Drawing.Color.Black;
             this.gbBorrarMovil.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.gbBorrarMovil.Location = new System.Drawing.Point(127, 5);
+            this.gbBorrarMovil.Location = new System.Drawing.Point(127, 12);
             this.gbBorrarMovil.Name = "gbBorrarMovil";
             this.gbBorrarMovil.RoundCorners = 2;
-            this.gbBorrarMovil.Size = new System.Drawing.Size(95, 55);
+            this.gbBorrarMovil.Size = new System.Drawing.Size(80, 41);
             this.gbBorrarMovil.TabIndex = 28;
             this.gbBorrarMovil.Text = "Borrar";
-            this.gbBorrarMovil.W8Color = System.Drawing.Color.RoyalBlue;
+            this.gbBorrarMovil.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.gbBorrarMovil.W8Color = System.Drawing.Color.Red;
             this.gbBorrarMovil.Click += new System.EventHandler(this.gbBorrarMovil_Click);
             // 
             // tsBase1
@@ -579,9 +545,9 @@ namespace Mrln.Mv
             this.fgMovilEstados.ExcelTitle = "";
             this.fgMovilEstados.GridOrder = "";
             this.fgMovilEstados.HeaderForeColor = System.Drawing.SystemColors.ControlText;
-            this.fgMovilEstados.Location = new System.Drawing.Point(604, 421);
+            this.fgMovilEstados.Location = new System.Drawing.Point(604, 428);
             this.fgMovilEstados.Name = "fgMovilEstados";
-            this.fgMovilEstados.Size = new System.Drawing.Size(392, 211);
+            this.fgMovilEstados.Size = new System.Drawing.Size(392, 226);
             this.fgMovilEstados.SkinFixed = true;
             this.fgMovilEstados.TabIndex = 0;
             // 
@@ -598,7 +564,7 @@ namespace Mrln.Mv
             this.fgCombustibles.HeaderForeColor = System.Drawing.SystemColors.ControlText;
             this.fgCombustibles.Location = new System.Drawing.Point(605, 159);
             this.fgCombustibles.Name = "fgCombustibles";
-            this.fgCombustibles.Size = new System.Drawing.Size(391, 211);
+            this.fgCombustibles.Size = new System.Drawing.Size(391, 221);
             this.fgCombustibles.SkinFixed = true;
             this.fgCombustibles.TabIndex = 0;
             // 
@@ -613,9 +579,9 @@ namespace Mrln.Mv
             this.fgEquipamiento.ExcelTitle = "";
             this.fgEquipamiento.GridOrder = "";
             this.fgEquipamiento.HeaderForeColor = System.Drawing.SystemColors.ControlText;
-            this.fgEquipamiento.Location = new System.Drawing.Point(260, 421);
+            this.fgEquipamiento.Location = new System.Drawing.Point(260, 428);
             this.fgEquipamiento.Name = "fgEquipamiento";
-            this.fgEquipamiento.Size = new System.Drawing.Size(326, 211);
+            this.fgEquipamiento.Size = new System.Drawing.Size(326, 226);
             this.fgEquipamiento.SkinFixed = true;
             this.fgEquipamiento.TabIndex = 0;
             // 
@@ -632,9 +598,46 @@ namespace Mrln.Mv
             this.fgKm.HeaderForeColor = System.Drawing.SystemColors.ControlText;
             this.fgKm.Location = new System.Drawing.Point(261, 159);
             this.fgKm.Name = "fgKm";
-            this.fgKm.Size = new System.Drawing.Size(325, 211);
+            this.fgKm.Size = new System.Drawing.Size(325, 221);
             this.fgKm.SkinFixed = true;
             this.fgKm.TabIndex = 0;
+            // 
+            // tgrpMoviles
+            // 
+            this.tgrpMoviles.BackgroundColor = System.Drawing.Color.WhiteSmoke;
+            this.tgrpMoviles.BackgroundGradientColor = System.Drawing.Color.White;
+            this.tgrpMoviles.BackgroundGradientMode = TNGS.NetControls.ImgGroup.GroupBoxGradientMode.None;
+            this.tgrpMoviles.BlackBorder = true;
+            this.tgrpMoviles.BorderColor = System.Drawing.Color.Black;
+            this.tgrpMoviles.BorderThickness = 1F;
+            this.tgrpMoviles.Controls.Add(this.teTipoMovil);
+            this.tgrpMoviles.Controls.Add(this.ftrMoviles);
+            this.tgrpMoviles.Controls.Add(this.fullLabel5);
+            this.tgrpMoviles.Controls.Add(this.lblModelo);
+            this.tgrpMoviles.Controls.Add(this.teEstado);
+            this.tgrpMoviles.Controls.Add(this.tePatente);
+            this.tgrpMoviles.Controls.Add(this.lblEstado);
+            this.tgrpMoviles.Controls.Add(this.teModelo);
+            this.tgrpMoviles.Controls.Add(this.lblPatente);
+            this.tgrpMoviles.CustomGroupBoxColor = System.Drawing.Color.White;
+            this.tgrpMoviles.FlatMode = true;
+            this.tgrpMoviles.FontTitle = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tgrpMoviles.ForeColor = System.Drawing.Color.Black;
+            this.tgrpMoviles.GroupImage = null;
+            this.tgrpMoviles.GroupTitle = "Móviles";
+            this.tgrpMoviles.Location = new System.Drawing.Point(4, 118);
+            this.tgrpMoviles.Name = "tgrpMoviles";
+            this.tgrpMoviles.Padding = new System.Windows.Forms.Padding(20);
+            this.tgrpMoviles.PaintGroupBox = false;
+            this.tgrpMoviles.RoundCorners = 4;
+            this.tgrpMoviles.ShadowColor = System.Drawing.Color.DarkGray;
+            this.tgrpMoviles.ShadowControl = false;
+            this.tgrpMoviles.ShadowThickness = 3;
+            this.tgrpMoviles.Size = new System.Drawing.Size(233, 543);
+            this.tgrpMoviles.TabIndex = 39;
+            this.tgrpMoviles.TitleBackground = System.Drawing.Color.DodgerBlue;
+            this.tgrpMoviles.TitleBackgroundDefault = TNGS.NetControls.ColorRuts.ColoresDefault.None;
+            this.tgrpMoviles.TitleFontColor = System.Drawing.Color.White;
             // 
             // Moviles
             // 
@@ -650,8 +653,6 @@ namespace Mrln.Mv
             this.Name = "Moviles";
             this.Text = "Moviles";
             this.xpnlPanelAtras.ResumeLayout(false);
-            this.tgrpMoviles.ResumeLayout(false);
-            this.tgrpMoviles.PerformLayout();
             this.tsContainer1.ResumeLayout(false);
             this.tabPageSwitcher1.ResumeLayout(false);
             this.tabStripPage1.ResumeLayout(false);
@@ -663,6 +664,8 @@ namespace Mrln.Mv
             ((System.ComponentModel.ISupportInitialize)(this.fgCombustibles)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fgEquipamiento)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fgKm)).EndInit();
+            this.tgrpMoviles.ResumeLayout(false);
+            this.tgrpMoviles.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -698,11 +701,11 @@ namespace Mrln.Mv
         private TNGS.NetControls.FullLabel fullLabel3;
         private TNGS.NetControls.FullLabel fullLabel2;
         private TNGS.NetControls.FullLabel fullLabel1;
-        private TNGS.NetControls.TitledGroup tgrpMoviles;
         private TNGS.NetControls.GlassButton gbHistorialCompleto;
         private TNGS.NetControls.GlassButton gbInfracciones;
         private TNGS.NetControls.GlassButton gbAccidentes;
         private TNGS.NetControls.TextEdit teTipoMovil;
         private TNGS.NetControls.FullLabel fullLabel5;
+        private TNGS.NetControls.ImgGroup tgrpMoviles;
     }
 }

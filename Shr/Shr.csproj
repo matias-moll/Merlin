@@ -115,6 +115,10 @@
     <Compile Include="Alertas\ShowAlertas.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="ROParam.cs" />
+    <Compile Include="ROParam.designer.cs">
+      <DependentUpon>ROParam.cs</DependentUpon>
+    </Compile>
     <Compile Include="SysRuts.cs" />
     <Compile Include="SysRuts.designer.cs">
       <DependentUpon>SysRuts.cs</DependentUpon>

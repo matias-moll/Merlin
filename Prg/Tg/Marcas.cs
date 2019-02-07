@@ -165,7 +165,7 @@ namespace Mrln.Tg
         {
             App.ShowMsg("Generando planilla...");
             App.InitAdvance("Excel:");
-            grdDatos.ExportToExcel(false, false, "", "Marcas", ref m_smResult);
+            grdDatos.ExportToExcel(false, false, "", "Marcas", m_smResult);
             App.EndAdvance();
             App.HideMsg();
         }
@@ -177,7 +177,7 @@ namespace Mrln.Tg
         {
             App.ShowMsg("Imprimiendo datos...");
             App.InitAdvance("Imprimiendo:");
-            grdDatos.Print(App.ROParams["EMPRESA"].VStr, App.Programa.Nombre,
+            grdDatos.Print(Shr.ROParam.Empresa.VStr, App.Programa.Nombre,
                            "Lista de Marcas", "");
             App.EndAdvance();
             App.HideMsg();
@@ -191,7 +191,7 @@ namespace Mrln.Tg
             // Creamos una nueva entidad, pasamos a modo de edicion y
             // damos foco al primer campo
             m_entMarca= Bel.EMarca.NewEmpty();
-            m_entMarca.Codigo = Bll.Tablas.MrcNextKey(ref m_smResult);
+            m_entMarca.Codigo = Bll.Tablas.MrcNextKey(m_smResult);
             m_smResult.Reset();
             SwitchTo(FormModes.Edit, GridOps.DontFill);
             txtDescripcion.Focus();
@@ -209,7 +209,7 @@ namespace Mrln.Tg
             // Obtenemos la entidad del item seleccionado en la grilla
             App.ShowMsg("Recuperando Datos...");
             m_entMarca= Bll.Tablas.MrcGet((string) grdDatos.GetMatrixValueObj(l_iRow, 1),
-                                          false, ref m_smResult);
+                                          false, m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
             // Tenemos la entidad. Pasamos a modo de edicion y damos foco
@@ -237,7 +237,7 @@ namespace Mrln.Tg
 
             // Purgamos la tabla
             App.ShowMsg("Compactando la tabla...");
-            Bll.Tablas.MrcPurge(ref m_smResult);
+            Bll.Tablas.MrcPurge(m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
             // Terminamos
@@ -274,7 +274,7 @@ namespace Mrln.Tg
             Bll.Tablas.MrcEnabled(m_entMarca.EstaBorrada,
                                   m_entMarca.Codigo,
                                   m_entMarca.FxdVersion,
-                                  ref m_smResult);
+                                  m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
             // Pasamos a modo Operaciones, rellenamos la grilla y 
@@ -295,7 +295,7 @@ namespace Mrln.Tg
 
             // Tratamos de grabar la entidad
             App.ShowMsg("Grabando...");
-            Bll.Tablas.MrcSave(m_entMarca, ref m_smResult);
+            Bll.Tablas.MrcSave(m_entMarca, m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
             // Pasamos a modo Operaciones, rellenamos la grilla y 
@@ -316,7 +316,7 @@ namespace Mrln.Tg
         {
             // Recuperamos los datos para la grilla
             App.ShowMsg("Recuperando datos...");
-            Bel.LEMarcas l_lentMarcas= Bll.Tablas.MrcUpFull(false, ref m_smResult);
+            Bel.LEMarcas l_lentMarcas= Bll.Tablas.MrcUpFull(false, m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
             // Asignamos a la grilla

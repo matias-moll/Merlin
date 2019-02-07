@@ -51,7 +51,7 @@ namespace Mrln.Ot
 
         private void actualizarOrdenesEnPantalla()
         {
-            LEOrdenesTrabajo ordenesPendientes = Bll.OrdenesTrabajo.getPendientes(ref m_smResult);
+            LEOrdenesTrabajo ordenesPendientes = Bll.OrdenesTrabajo.getPendientes(m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
             CargarOrdenes(ordenesPendientes);
         }
@@ -62,7 +62,7 @@ namespace Mrln.Ot
         {
             if (!gbFiltrar.Checked)
             {
-                LEOrdenesTrabajo ordenesPorMovil = Bll.OrdenesTrabajo.ObtenerOTsPorPatente(cdcMoviles.SelectedStrCode, ref m_smResult);
+                LEOrdenesTrabajo ordenesPorMovil = Bll.OrdenesTrabajo.ObtenerOTsPorPatente(cdcMoviles.SelectedStrCode, m_smResult);
                 if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
                 if (ordenesPorMovil.Count == 0)
@@ -117,7 +117,7 @@ namespace Mrln.Ot
             if (noHayItemSeleccionado())
                 return;
 
-            LEOTItems itemsOrdenSeleccionada = OrdenesTrabajo.OtitFGet(m_ibItemSeleccionado.Numero, true, ref m_smResult);
+            LEOTItems itemsOrdenSeleccionada = OrdenesTrabajo.OtitFGet(m_ibItemSeleccionado.Numero, true, m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
             itemsOrdenSeleccionada.ChangeCaption(EOTItem.NroagrupadorCmp, "");
@@ -133,12 +133,12 @@ namespace Mrln.Ot
                 return;
 
             // Pasamos la orden seleccionada a estado cancelada y la grabamos.
-            EOrdenTrabajo ordenSeleccionada = OrdenesTrabajo.Get(m_ibItemSeleccionado.Numero, true, ref m_smResult);
+            EOrdenTrabajo ordenSeleccionada = OrdenesTrabajo.Get(m_ibItemSeleccionado.Numero, true, m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
             ordenSeleccionada.Cancelada();
 
-            OrdenesTrabajo.Save(ordenSeleccionada, ref m_smResult);
+            OrdenesTrabajo.Save(ordenSeleccionada, m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
             MsgRuts.ShowMsg(this, String.Format("La orden de trabajo numero {0} fue cancelada.", m_ibItemSeleccionado.Numero));
@@ -170,7 +170,7 @@ namespace Mrln.Ot
             if (noHayItemSeleccionado())
                 return;
 
-            EOrdenTrabajo ordenAImprimir = Bll.OrdenesTrabajo.Get(m_ibItemSeleccionado.Numero, true, ref m_smResult);
+            EOrdenTrabajo ordenAImprimir = Bll.OrdenesTrabajo.Get(m_ibItemSeleccionado.Numero, true, m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
             imprimirConCrystalReport(ordenAImprimir);
@@ -181,12 +181,12 @@ namespace Mrln.Ot
 
             if (cdcMoviles.SelectedStrCode.Trim() != "")
             {
-                ordenesPendientes = Bll.OrdenesTrabajo.ObtenerOTsPorPatente(cdcMoviles.SelectedStrCode, ref m_smResult);
+                ordenesPendientes = Bll.OrdenesTrabajo.ObtenerOTsPorPatente(cdcMoviles.SelectedStrCode, m_smResult);
                 if (MsgRuts.AnalizeError(this, m_smResult)) return;
             }
             else
             {
-                ordenesPendientes = Bll.OrdenesTrabajo.getPendientes(ref m_smResult);
+                ordenesPendientes = Bll.OrdenesTrabajo.getPendientes(m_smResult);
                 if (MsgRuts.AnalizeError(this, m_smResult)) return;
             }
 
@@ -248,7 +248,7 @@ namespace Mrln.Ot
 
         private void LlenarComboMoviles()
         {
-            m_LEMoviles = Bll.Moviles.UpFull(true, ref m_smResult);
+            m_LEMoviles = Bll.Moviles.UpFull(true, m_smResult);
             cdcMoviles.FillFromStrLEntidad(m_LEMoviles, "mov_ecd_patente", "mov_des_des", "deleted");
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
@@ -315,7 +315,7 @@ namespace Mrln.Ot
             if (noHayItemSeleccionado())
                 return;
 
-            EOrdenTrabajo ordenSeleccionada = Bll.OrdenesTrabajo.Get(m_ibItemSeleccionado.Numero, true, ref m_smResult);
+            EOrdenTrabajo ordenSeleccionada = Bll.OrdenesTrabajo.Get(m_ibItemSeleccionado.Numero, true, m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
             if(ordenSeleccionada.Codtaller.Trim() == "")
@@ -324,7 +324,7 @@ namespace Mrln.Ot
                 return;
             }
 
-            Bll.Moviles.fOrdenRealizandose(m_ibItemSeleccionado.Numero, ref m_smResult);
+            Bll.Moviles.fOrdenRealizandose(m_ibItemSeleccionado.Numero, m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
             actualizarOrdenesEnPantalla();

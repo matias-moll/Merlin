@@ -49,7 +49,7 @@ namespace Mrln.Dal
                              bool p_bOnlyActive,
                              ref DataSet p_dsResult,
                              string p_strTabla,
-                             ref StatMsg p_smResult)
+                             StatMsg p_smResult)
         {
             try {
                 // Recuperamos todos los registros
@@ -85,7 +85,7 @@ namespace Mrln.Dal
                                       int p_iFxdVersion,
                                       ref DataSet p_dsResult,
                                       string p_strTabla,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             try {
                 // Verificamos el número de versión
@@ -123,7 +123,7 @@ namespace Mrln.Dal
                                  bool p_bOnlyActive,
                                  ref DataSet p_dsResult,
                                  string p_strTabla,
-                                 ref StatMsg p_smResult)
+                                 StatMsg p_smResult)
         {
             try {
                 // Recuperamos el registro de la clave
@@ -158,7 +158,7 @@ namespace Mrln.Dal
                                   bool p_bOnlyActive,
                                   ref DataSet p_dsResult,
                                   string p_strTabla,
-                                  ref StatMsg p_smResult)
+                                  StatMsg p_smResult)
         {
             try {
                 // Recuperamos los registro de la clave foranea
@@ -210,7 +210,7 @@ namespace Mrln.Dal
                                  decimal p_dcImportecierre,
                                  string p_strComentariocierre,
                                  string p_strCodreparacion,
-                                 ref StatMsg p_smResult)
+                                 StatMsg p_smResult)
         {
             try {
                 // Insertamos el registro
@@ -270,7 +270,7 @@ namespace Mrln.Dal
                                  decimal p_dcImportecierre,
                                  string p_strComentariocierre,
                                  string p_strCodreparacion,
-                                 ref StatMsg p_smResult)
+                                 StatMsg p_smResult)
         {
             try {
                 // Modificamos el registro
@@ -312,7 +312,7 @@ namespace Mrln.Dal
                                  int p_iNroot,
                                  int p_iNroagrupador,
                                  int p_iNroitem,
-                                 ref StatMsg p_smResult)
+                                 StatMsg p_smResult)
         {
             try {
                 // Borramos el registro
@@ -343,7 +343,7 @@ namespace Mrln.Dal
         public static int FDelete(DBConn p_dbcAccess,
                                   int p_iNroot,
                                   DateTime p_dtInstante,
-                                  ref StatMsg p_smResult)
+                                  StatMsg p_smResult)
         {
             try {
                 // Borramos los registro de la clave foranea
@@ -375,7 +375,7 @@ namespace Mrln.Dal
                                  int p_iNroot,
                                  int p_iNroagrupador,
                                  int p_iNroitem,
-                                 ref StatMsg p_smResult)
+                                 StatMsg p_smResult)
         {
             try {
                 // Borramos el registro
@@ -406,7 +406,7 @@ namespace Mrln.Dal
         public static int FRecall(DBConn p_dbcAccess,
                                   int p_iNroot,
                                   DateTime p_dtInstante,
-                                  ref StatMsg p_smResult)
+                                  StatMsg p_smResult)
         {
             try {
                 // Borramos los registro de la clave foranea
@@ -438,7 +438,7 @@ namespace Mrln.Dal
                                int p_iNroot,
                                int p_iNroagrupador,
                                int p_iNroitem,
-                               ref StatMsg p_smResult)
+                               StatMsg p_smResult)
         {
             try {
                 // Borramos el registro
@@ -467,7 +467,7 @@ namespace Mrln.Dal
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static int FDrop(DBConn p_dbcAccess,
                                 int p_iNroot,
-                                ref StatMsg p_smResult)
+                                StatMsg p_smResult)
         {
             try {
                 // Borramos los registro de la clave foranea
@@ -492,7 +492,7 @@ namespace Mrln.Dal
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static int Pack(DBConn p_dbcAccess,
-                               ref StatMsg p_smResult)
+                               StatMsg p_smResult)
         {
             try {
                 // Borramos el registro
@@ -518,7 +518,7 @@ namespace Mrln.Dal
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static int FPack(DBConn p_dbcAccess,
                                 int p_iNroot,
-                                ref StatMsg p_smResult)
+                                StatMsg p_smResult)
         {
             try {
                 // Borramos los registro de la clave foranea
@@ -552,7 +552,7 @@ namespace Mrln.Dal
                                            string p_strPatente,
                                            ref DataSet p_dsResult,
                                            string p_strTabla,
-                                           ref StatMsg p_smResult)
+                                           StatMsg p_smResult)
         {
             try {
                 return DBRuts.Exec_DS(p_dbcAccess,
@@ -584,7 +584,7 @@ namespace Mrln.Dal
                                       string p_strFinpatente,
                                       ref DataSet p_dsResult,
                                       string p_strTabla,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             try {
                 return DBRuts.Exec_DS(p_dbcAccess,
@@ -612,7 +612,7 @@ namespace Mrln.Dal
         /// <param name="p_dtResult">Tabla donde completar los captions</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static void MakeGridCaptions(ref DataTable p_dtResult,
-                                            ref StatMsg p_smResult)
+                                            StatMsg p_smResult)
         {
             try {
                 // Quitamos los captions existentes
@@ -646,11 +646,11 @@ namespace Mrln.Dal
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static void MakeGridCaptions(ref DataSet p_dsResult,
                                             string p_strTabla,
-                                            ref StatMsg p_smResult)
+                                            StatMsg p_smResult)
         {
             // Llamamos al método base
             DataTable l_dtTemp= p_dsResult.Tables[p_strTabla];
-            MakeGridCaptions(ref l_dtTemp, ref p_smResult);
+            MakeGridCaptions(ref l_dtTemp, p_smResult);
         }
 
         /// <summary>
@@ -659,11 +659,11 @@ namespace Mrln.Dal
         /// <param name="p_lentResult">ListaEntidades donde completar los captions</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static void MakeGridCaptions(ref ListaEntidades p_lentResult,
-                                            ref StatMsg p_smResult)
+                                            StatMsg p_smResult)
         {
             // Llamamos al método base
             DataTable l_dtTemp= p_lentResult.InternalData.Table;
-            MakeGridCaptions(ref l_dtTemp, ref p_smResult);
+            MakeGridCaptions(ref l_dtTemp, p_smResult);
         }
         #endregion
     }

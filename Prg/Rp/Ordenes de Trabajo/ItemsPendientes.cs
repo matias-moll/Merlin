@@ -22,7 +22,7 @@ namespace Mrln.Rp
         
         public override void buildPanel()
         {
-            Bel.LEMoviles moviles = Bll.Moviles.UpFull(true, ref m_smResult);
+            Bel.LEMoviles moviles = Bll.Moviles.UpFull(true, m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
             cdcMoviles.FillFromStrLEntidad(moviles, Bel.EMovil.PatenteCmp, Bel.EMovil.DesCmp, "deleted");
             cdcMoviles.AddStrCD("", "--TODOS--", 0);
@@ -32,12 +32,13 @@ namespace Mrln.Rp
 
         }
 
-        override public ListaEntidades realizarBusqueda(ref string p_strNombreEmpresa, ref string p_strNombreReporte,
+        override public ListaEntidades realizarBusqueda(ref string p_strNombreEmpresa, ref string p_strPrograma, ref string p_strNombreReporte,
                                                         ref string p_strDetalleReporte, ref int p_intCorteDeControl)
         {
             // Cargamos los valores de referencia para el llenado del report.
             p_strNombreReporte = "Items de Ordenes de Trabajo Pendientes";
-
+            p_strNombreEmpresa = Shr.ROParam.Empresa.VStr;
+            p_strPrograma = "Reportes";
 
             // Declaramos y definimos las 2 variables para los limites de la busqueda
             string l_strPatenteIni = "", l_strPatenteFin = "";
@@ -51,7 +52,7 @@ namespace Mrln.Rp
             else
                 l_strPatenteIni = l_strPatenteFin = cdcMoviles.SelectedStrCode;
 
-            ListaEntidades l_leItemsPendientes = Bll.OrdenesTrabajo.OtitZPendientes(l_strPatenteIni, l_strPatenteFin, ref m_smResult);
+            ListaEntidades l_leItemsPendientes = Bll.OrdenesTrabajo.OtitZPendientes(l_strPatenteIni, l_strPatenteFin, m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return null;
 
             return l_leItemsPendientes;

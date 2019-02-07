@@ -282,7 +282,7 @@
             this.gbCerrarOT.BlackBorder = true;
             this.gbCerrarOT.ButtonMode = TNGS.NetControls.GlassButton.GBMode.Flat;
             this.gbCerrarOT.CircleButton = false;
-            this.gbCerrarOT.FixedFlatImage = TNGS.NetControls.FixedFlatImageButtons.Ok;
+            this.gbCerrarOT.FixedFlatImage = TNGS.NetControls.FixedFlatImageButtons.Accept;
             this.gbCerrarOT.FlatColor = System.Drawing.Color.RoyalBlue;
             this.gbCerrarOT.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
             this.gbCerrarOT.FlatFontSize = 9;

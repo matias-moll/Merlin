@@ -51,7 +51,7 @@ namespace Mrln.Mv
             TraerInfoBase();
             TraerInfoEstados();
             SwitchTo(ModoForm.Inicio);
-            m_AMAsocMoviles = new AsociadosMovil(ref m_smResult);
+            m_AMAsocMoviles = new AsociadosMovil(m_smResult);
 
         }
 
@@ -60,14 +60,14 @@ namespace Mrln.Mv
         // Hace Upfull de todos los moviles con sus tablas hijo
         private void TraerInfoBase()
         {
-            m_LEMoviles = Bll.Moviles.UpFull(true, ref m_smResult);
+            m_LEMoviles = Bll.Moviles.UpFull(true, m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
         }
 
         // Hace traer la infomracion de los estados disponibles
         private void TraerInfoEstados()
         {
-            m_LEEdsEstados = Bll.Tablas.EdsUpFull(true, ref m_smResult);
+            m_LEEdsEstados = Bll.Tablas.EdsUpFull(true, m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
         }
@@ -75,7 +75,7 @@ namespace Mrln.Mv
         // Llena la tree con todos los moviles activos
         private void LlenarTreeMoviles()
         {
-            ListaEntidades l_LEMovilesTree = Bll.Moviles.fArmarTree(true, ref m_smResult);
+            ListaEntidades l_LEMovilesTree = Bll.Moviles.fArmarTree(true, m_smResult);
             ftrMoviles.FillFromStrLEntidad(l_LEMovilesTree, "mov_ecd_patente", "mov_des_des", 2, "Nivel","Imagen", "Imagen");
             ftrMoviles.ExpandAll();
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
@@ -97,7 +97,7 @@ namespace Mrln.Mv
 
         private string GetEstado(EMovilEstado eMovilEstado)
         {
-            EEstado l_eEstado = Bll.Tablas.EdsGet(eMovilEstado.Codestado, true, ref m_smResult);
+            EEstado l_eEstado = Bll.Tablas.EdsGet(eMovilEstado.Codestado, true, m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return null;
             string l_strEstado = l_eEstado.Des;
 
@@ -129,7 +129,7 @@ namespace Mrln.Mv
         // Se llena la grid de kilometros con el historial del kilometraje
         private void LlenarGridKm()
         {
-            //m_entMovil.MovilesKms = Bll.Moviles.MvkmFGet(m_entMovil.Patente, true, ref m_smResult);
+            //m_entMovil.MovilesKms = Bll.Moviles.MvkmFGet(m_entMovil.Patente, true, m_smResult);
             if (m_AMAsocMoviles.Kms.Count != 0)
             {
 
@@ -167,7 +167,7 @@ namespace Mrln.Mv
             string l_strCodigo = ftrMoviles.SelectedNodeAsCDI.StrCode;
             if (l_strCodigo == "0") return;
             m_entMovil = m_LEMoviles[ftrMoviles.SelectedNodeAsCDI.StrCode];
-            m_entMovil.MovilesEstado = Bll.Moviles.MvesFGet(m_entMovil.Patente, true, ref m_smResult);
+            m_entMovil.MovilesEstado = Bll.Moviles.MvesFGet(m_entMovil.Patente, true, m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
             SwitchTo(ModoForm.EdicionBase, OpGrid.Igual);
         }
@@ -194,7 +194,7 @@ namespace Mrln.Mv
         private void gbBorrarMovil_Click(object sender, EventArgs e)
         {
             if (!BorradoSeguro()) return;
-            Bll.Moviles.Remove(m_entMovil.Patente,m_entMovil.FxdVersion, ref m_smResult);
+            Bll.Moviles.Remove(m_entMovil.Patente,m_entMovil.FxdVersion, m_smResult);
             m_entMovil = null;
             SwitchTo(ModoForm.Inicio, OpGrid.Igual);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
@@ -241,7 +241,7 @@ namespace Mrln.Mv
             l_EMComMovilCombustible.Litros = l_frmMovilCombustible.Litros;
             l_EMComMovilCombustible.Patente = m_entMovil.Patente;
             l_EMComMovilCombustible.Importe = l_frmMovilCombustible.Importe;
-            Bll.Moviles.MvcoSave(l_EMComMovilCombustible, ref m_smResult);
+            Bll.Moviles.MvcoSave(l_EMComMovilCombustible, m_smResult);
             SwitchTo(ModoForm.Edicion, OpGrid.Combus);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
@@ -266,12 +266,12 @@ namespace Mrln.Mv
             l_EMKmMovilKm.Fecha = DateTime.Now;
             l_EMKmMovilKm.Km = l_frmNuevoKm.Kilometros;
             l_EMKmMovilKm.Patente = tePatente.Text;
-            Bll.Moviles.MvkmSave(l_EMKmMovilKm, ref m_smResult);
+            Bll.Moviles.MvkmSave(l_EMKmMovilKm, m_smResult);
             SwitchTo(ModoForm.Edicion, OpGrid.Km);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
 
-            Shr.AlertHelper.CheckForAlertsAndProcess(m_entMovil, ref m_smResult);
+            Shr.AlertHelper.CheckForAlertsAndProcess(m_entMovil, m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
         }
 
@@ -302,7 +302,7 @@ namespace Mrln.Mv
             l_EMEstMovilEstado.Patente = m_entMovil.Patente;
             l_EMEstMovilEstado.Km = DameUltimoKms();
 
-            Bll.Moviles.MvesSave(l_EMEstMovilEstado, ref m_smResult);
+            Bll.Moviles.MvesSave(l_EMEstMovilEstado, m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
             SwitchTo(ModoForm.Edicion, OpGrid.Estados);
@@ -512,7 +512,7 @@ namespace Mrln.Mv
         /// <returns>Devuelve la descripción del modelo</returns>
         private string GetModelo(string p_strCodModelo)
         {
-            EModelo l_EmodModelo =  Bll.Tablas.ModGet(p_strCodModelo, true, ref m_smResult);
+            EModelo l_EmodModelo =  Bll.Tablas.ModGet(p_strCodModelo, true, m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return null;
             string l_strModelo = l_EmodModelo.Des;
            

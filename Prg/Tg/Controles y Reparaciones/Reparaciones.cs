@@ -85,7 +85,7 @@ namespace Mrln.Tg
             cmbSolicitadetalle.AddStrCD(" N", "NO", 0);
 
             // Llenamos las Combos (por Tablas)
-            Bel.LECategorias l_lentCategorias= Bll.Tablas.CatUpFull(false, ref m_smResult);
+            Bel.LECategorias l_lentCategorias= Bll.Tablas.CatUpFull(false, m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
             cmbCodcat.FillFromStrLEntidad(l_lentCategorias, "cat_rcd_cod", "cat_des_des", "deleted");
 
@@ -174,7 +174,7 @@ namespace Mrln.Tg
         {
             App.ShowMsg("Generando planilla...");
             App.InitAdvance("Excel:");
-            grdDatos.ExportToExcel(false, false, "", "Reparaciones", ref m_smResult);
+            grdDatos.ExportToExcel(false, false, "", "Reparaciones", m_smResult);
             App.EndAdvance();
             App.HideMsg();
         }
@@ -186,7 +186,7 @@ namespace Mrln.Tg
         {
             App.ShowMsg("Imprimiendo datos...");
             App.InitAdvance("Imprimiendo:");
-            grdDatos.Print(App.ROParams["EMPRESA"].VStr, App.Programa.Nombre,
+            grdDatos.Print(Shr.ROParam.Empresa.VStr, App.Programa.Nombre,
                            "Lista de Reparaciones", "");
             App.EndAdvance();
             App.HideMsg();
@@ -200,7 +200,7 @@ namespace Mrln.Tg
             // Creamos una nueva entidad, pasamos a modo de edicion y
             // damos foco al primer campo
             m_entReparacion= Bel.EReparacion.NewEmpty();
-            m_entReparacion.Cod = Bll.Tablas.RepNextKey(ref m_smResult);
+            m_entReparacion.Cod = Bll.Tablas.RepNextKey(m_smResult);
             m_smResult.Reset();
             SwitchTo(FormModes.Edit, GridOps.DontFill);
             txtDes.Focus();
@@ -218,7 +218,7 @@ namespace Mrln.Tg
             // Obtenemos la entidad del item seleccionado en la grilla
             App.ShowMsg("Recuperando Datos...");
             m_entReparacion= Bll.Tablas.RepGet((string) grdDatos.GetMatrixValueObj(l_iRow, 1),
-                                               false, ref m_smResult);
+                                               false, m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
             // Tenemos la entidad. Pasamos a modo de edicion y damos foco
@@ -247,7 +247,7 @@ namespace Mrln.Tg
 
             // Purgamos la tabla
             App.ShowMsg("Compactando la tabla...");
-            Bll.Tablas.RepPurge(ref m_smResult);
+            Bll.Tablas.RepPurge(m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
             // Terminamos
@@ -284,7 +284,7 @@ namespace Mrln.Tg
             Bll.Tablas.RepEnabled(m_entReparacion.EstaBorrada,
                                   m_entReparacion.Cod,
                                   m_entReparacion.FxdVersion,
-                                  ref m_smResult);
+                                  m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
             // Pasamos a modo Operaciones, rellenamos la grilla y 
@@ -307,7 +307,7 @@ namespace Mrln.Tg
 
             // Tratamos de grabar la entidad
             App.ShowMsg("Grabando...");
-            Bll.Tablas.RepSave(m_entReparacion, ref m_smResult);
+            Bll.Tablas.RepSave(m_entReparacion, m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
             // Pasamos a modo Operaciones, rellenamos la grilla y 
@@ -328,7 +328,7 @@ namespace Mrln.Tg
         {
             // Recuperamos los datos para la grilla
             App.ShowMsg("Recuperando datos...");
-            Bel.LEReparaciones l_lentReparaciones= Bll.Tablas.RepUpFull(false, ref m_smResult);
+            Bel.LEReparaciones l_lentReparaciones= Bll.Tablas.RepUpFull(false, m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
             // Asignamos a la grilla

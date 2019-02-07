@@ -24,7 +24,7 @@ namespace Mrln.Rp
         
         public override void buildPanel()
         {
-            Bel.LEMoviles moviles = Bll.Moviles.UpFull(true, ref m_smResult);
+            Bel.LEMoviles moviles = Bll.Moviles.UpFull(true, m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
             cdcMoviles.FillFromStrLEntidad(moviles, Bel.EMovil.PatenteCmp, Bel.EMovil.DesCmp, "deleted");
@@ -37,11 +37,14 @@ namespace Mrln.Rp
 
         }
 
-        override public ListaEntidades realizarBusqueda(ref string p_strNombreEmpresa, ref string p_strNombreReporte,
+
+        override public ListaEntidades realizarBusqueda(ref string p_strNombreEmpresa, ref string p_strPrograma, ref string p_strNombreReporte,
                                                         ref string p_strDetalleReporte, ref int p_intCorteDeControl)
         {
             // Cargamos los valores de referencia para el llenado del report.
             p_strNombreReporte = "Accidentes Por Móvil";
+            p_strNombreEmpresa = Shr.ROParam.Empresa.VStr;
+            p_strPrograma = "Reportes";
 
             if (deFechaFin.Fecha == DateTimeRuts.Empty || deFechaInicio.Fecha == DateTimeRuts.Empty)
             {
@@ -61,7 +64,7 @@ namespace Mrln.Rp
             else
                 l_strPatenteIni = l_strPatenteFin = cdcMoviles.SelectedStrCode;
 
-            ListaEntidades l_leCostos = Bll.Moviles.MvacZAccidentesPorMovil(deFechaInicio.Fecha, deFechaFin.Fecha, l_strPatenteIni, l_strPatenteFin, ref m_smResult);
+            ListaEntidades l_leCostos = Bll.Moviles.MvacZAccidentesPorMovil(deFechaInicio.Fecha, deFechaFin.Fecha, l_strPatenteIni, l_strPatenteFin, m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return null;
 
             l_leCostos.ChangeCaption("detalle", "V1DetalleCN1");

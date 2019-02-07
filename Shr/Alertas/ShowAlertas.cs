@@ -33,7 +33,7 @@ namespace Mrln.Shr
         {
             marcarAlertaEnPantallaVista();
 
-            Bll.Alertas.AleSave(m_eAlertaEnPantalla, ref m_smResult);
+            Bll.Alertas.AleSave(m_eAlertaEnPantalla, m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
             removerAlertaActualYMostrarSiguiente();
@@ -44,7 +44,7 @@ namespace Mrln.Shr
             marcarAlertaEnPantallaVista();
             m_eAlertaEnPantalla.Finalizada = "S";
 
-            Bll.Alertas.AleSave(m_eAlertaEnPantalla, ref m_smResult);
+            Bll.Alertas.AleSave(m_eAlertaEnPantalla, m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
             removerAlertaActualYMostrarSiguiente();
@@ -61,7 +61,7 @@ namespace Mrln.Shr
             marcarAlertaEnPantallaVista();
             m_eAlertaEnPantalla.Repetirendias = neRepetirEn.Numero;
 
-            Bll.Alertas.AleSave(m_eAlertaEnPantalla, ref m_smResult);
+            Bll.Alertas.AleSave(m_eAlertaEnPantalla, m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
             removerAlertaActualYMostrarSiguiente();
@@ -96,7 +96,7 @@ namespace Mrln.Shr
             if (m_eAlertaEnPantalla.Usuariovista.Trim() != "")
                 return;
 
-            DateTime fechaActual = Bll.Moviles.fGetDate(ref m_smResult);
+            DateTime fechaActual = Bll.Moviles.fGetDate(m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
             m_eAlertaEnPantalla.Fechavista = fechaActual;

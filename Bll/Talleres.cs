@@ -52,7 +52,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void Save_f(DBConn p_dbcAccess,
                                     ref ETaller p_entTaller,
-                                    ref StatMsg p_smResult)
+                                    StatMsg p_smResult)
         {
             // *********
             // Agregar acá los procesos adicionales
@@ -72,7 +72,7 @@ namespace Mrln.Bll
                                        bool p_bEnable,
                                        string p_strCodigo,
                                        ref int p_iFxdVersion,
-                                       ref StatMsg p_smResult)
+                                       StatMsg p_smResult)
         {
             // *********
             // Agregar acá los procesos adicionales
@@ -90,7 +90,7 @@ namespace Mrln.Bll
         internal static void Remove_f(DBConn p_dbcAccess,
                                       string p_strCodigo,
                                       int p_iFxdVersion,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             // *********
             // Agregar acá los procesos adicionales
@@ -106,7 +106,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void TInt_f(DBConn p_dbcAccess,
                                     ETaller p_entTaller,
-                                    ref StatMsg p_smResult)
+                                    StatMsg p_smResult)
         {
             // *********
             // Agregar acá las validaciones adicionales
@@ -122,7 +122,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void TalCSave_f(DBConn p_dbcAccess,
                                         ref ETallerCategoria p_entTallerCategoria,
-                                        ref StatMsg p_smResult)
+                                        StatMsg p_smResult)
         {
             // *********
             // Agregar acá los procesos adicionales
@@ -144,7 +144,7 @@ namespace Mrln.Bll
                                            string p_strCodigotaller,
                                            string p_strCodigocategoria,
                                            ref int p_iFxdVersion,
-                                           ref StatMsg p_smResult)
+                                           StatMsg p_smResult)
         {
             // *********
             // Agregar acá los procesos adicionales
@@ -164,7 +164,7 @@ namespace Mrln.Bll
                                           string p_strCodigotaller,
                                           string p_strCodigocategoria,
                                           int p_iFxdVersion,
-                                          ref StatMsg p_smResult)
+                                          StatMsg p_smResult)
         {
             // *********
             // Agregar acá los procesos adicionales
@@ -180,7 +180,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void TalCTInt_f(DBConn p_dbcAccess,
                                         ETallerCategoria p_entTallerCategoria,
-                                        ref StatMsg p_smResult)
+                                        StatMsg p_smResult)
         {
             // *********
             // Agregar acá las validaciones adicionales

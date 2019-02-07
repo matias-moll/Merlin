@@ -27,7 +27,7 @@ namespace Mrln.Ot
         {
             InitializeComponent();
 
-            m_eOrdenACerrar = Bll.OrdenesTrabajo.Get(p_iNumeroOrdenTrabajo, true, ref m_smResult);
+            m_eOrdenACerrar = Bll.OrdenesTrabajo.Get(p_iNumeroOrdenTrabajo, true, m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
         }
 
@@ -97,7 +97,7 @@ namespace Mrln.Ot
                 return;
             }
 
-            Bll.Moviles.fCerrarOrden(m_eOrdenACerrar, ref m_smResult);
+            Bll.Moviles.fCerrarOrden(m_eOrdenACerrar, m_smResult);
 
             MsgRuts.ShowMsg(this, "La orden de trabajo fue cerrada exitosamente");
 

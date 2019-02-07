@@ -160,7 +160,7 @@
             this.gbConfirmarRecordarEn.BlackBorder = true;
             this.gbConfirmarRecordarEn.ButtonMode = TNGS.NetControls.GlassButton.GBMode.Flat;
             this.gbConfirmarRecordarEn.CircleButton = false;
-            this.gbConfirmarRecordarEn.FixedFlatImage = TNGS.NetControls.FixedFlatImageButtons.fOk;
+            this.gbConfirmarRecordarEn.FixedFlatImage = TNGS.NetControls.FixedFlatImageButtons.fAccept;
             this.gbConfirmarRecordarEn.FlatColor = System.Drawing.Color.RoyalBlue;
             this.gbConfirmarRecordarEn.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
             this.gbConfirmarRecordarEn.FlatFontSize = 9;

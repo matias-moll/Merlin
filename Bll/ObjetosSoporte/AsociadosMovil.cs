@@ -17,14 +17,14 @@ namespace Mrln.Bll.ObjetosSoporte
         StatMsg m_smResult = null;
         #endregion
 
-        public AsociadosMovil(ref StatMsg p_smResult)
+        public AsociadosMovil(StatMsg p_smResult)
         {
             m_smResult = p_smResult;
         }
         #region Metodos
         public void CargarDatos(string p_strPatente)
         {
-            m_lstLEListaEntidades = Bll.Moviles.fGetLastFiveTodos(p_strPatente,true,ref m_smResult);
+            m_lstLEListaEntidades = Bll.Moviles.fGetLastFiveTodos(p_strPatente,true,m_smResult);
             llenarCaptions();
         }
 

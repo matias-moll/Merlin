@@ -16,11 +16,11 @@ namespace Mrln.Bll
     //----------------------------------------------------------------------------
     //                         TNG Software BLL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 14/12/2018 04:11
+    // Fecha                    : 07/02/2019 03:30
     // Sistema                  : Mrln
     // Clase para Administrar   : Alertas
     //----------------------------------------------------------------------------
-    // © 1996-2018 by TNG Software                                      Gndr 5.20
+    // © 1996-2019 by TNG Software                                      Gndr 5.20
     //----------------------------------------------------------------------------
 
     //****************************************************************************
@@ -55,7 +55,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         /// <returns>Lista-entidad: LEAlertas</returns>
         public static LEAlertas AleUpFull(bool p_bOnlyActive,
-                                          ref StatMsg p_smResult)
+                                          StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -65,7 +65,7 @@ namespace Mrln.Bll
                 l_dbcAccess= DBRuts.GetConection(Connections.Dat);
 
                 // Pedimos los registros de la tabla
-                return AleUpfl(l_dbcAccess, p_bOnlyActive, ref p_smResult);
+                return AleUpfl(l_dbcAccess, p_bOnlyActive, p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion UpFull
@@ -89,7 +89,7 @@ namespace Mrln.Bll
         public static EAlerta AleGet(int p_iNroconfig,
                                      int p_iNroalerta,
                                      bool p_bOnlyActive,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -103,7 +103,7 @@ namespace Mrln.Bll
                                p_iNroconfig,
                                p_iNroalerta,
                                p_bOnlyActive,
-                               ref p_smResult);
+                               p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Get
@@ -125,7 +125,7 @@ namespace Mrln.Bll
         /// <param name="p_entAlerta">Entidad con los datos a procesar</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static void AleSave(EAlerta p_entAlerta,
-                                   ref StatMsg p_smResult)
+                                   StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -136,7 +136,7 @@ namespace Mrln.Bll
                 l_dbcAccess.BeginTransaction();
 
                 // Grabamos la entidad: EAlerta
-                AleSSav(l_dbcAccess, p_entAlerta, ref p_smResult);
+                AleSSav(l_dbcAccess, p_entAlerta, p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Save
@@ -163,7 +163,7 @@ namespace Mrln.Bll
                                       int p_iNroconfig,
                                       int p_iNroalerta,
                                       int p_iFxdVersion,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -179,14 +179,14 @@ namespace Mrln.Bll
                              p_iNroconfig,
                              p_iNroalerta,
                              ref p_iFxdVersion,
-                             ref p_smResult);
+                             p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Verificamos la clave a modificar
                 AleVKey(l_dbcAccess,
                         p_iNroconfig,
                         p_iNroalerta,
-                        ref p_smResult);
+                        p_smResult);
                 if (p_smResult.NOk) return;
 
                 // El registro tiene que existir
@@ -201,7 +201,7 @@ namespace Mrln.Bll
                         p_iNroconfig,
                         p_iNroalerta,
                         p_iFxdVersion,
-                        ref p_smResult);
+                        p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Segun el modo
@@ -210,14 +210,14 @@ namespace Mrln.Bll
                     Dal.Alertas.Recall(l_dbcAccess,
                                        p_iNroconfig,
                                        p_iNroalerta,
-                                       ref p_smResult);
+                                       p_smResult);
                 }
                 else {
                     // Hay que deshabilitar el registro
                     Dal.Alertas.Delete(l_dbcAccess,
                                        p_iNroconfig,
                                        p_iNroalerta,
-                                       ref p_smResult);
+                                       p_smResult);
                 }
             }
             catch (Exception l_expData) {
@@ -244,7 +244,7 @@ namespace Mrln.Bll
         public static void AleRemove(int p_iNroconfig,
                                      int p_iNroalerta,
                                      int p_iFxdVersion,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -259,7 +259,7 @@ namespace Mrln.Bll
                             p_iNroconfig,
                             p_iNroalerta,
                             p_iFxdVersion,
-                            ref p_smResult);
+                            p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Borramos el registro solicitado
@@ -267,7 +267,7 @@ namespace Mrln.Bll
                         p_iNroconfig,
                         p_iNroalerta,
                         p_iFxdVersion,
-                        ref p_smResult);
+                        p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Remove
@@ -287,7 +287,7 @@ namespace Mrln.Bll
         /// Compacta una tabla borrando los registros deshabilitados
         /// </summary>
         /// <param name="p_smResult">Estado final de la operacion</param>
-        public static void AlePurge(ref StatMsg p_smResult)
+        public static void AlePurge(StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -298,7 +298,7 @@ namespace Mrln.Bll
 
                 // Realizamos el borrado
                 AlePack(l_dbcAccess,
-                        ref p_smResult);
+                        p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Enabled
@@ -324,7 +324,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         /// <returns>ListaEntidad con los datos solicitados</returns>
         public static LEAlertas AleGetAlertasFromMovil(string p_strPatente,
-                                                       ref StatMsg p_smResult)
+                                                       StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -336,7 +336,7 @@ namespace Mrln.Bll
                 // Llamamos al metodo interno
                 return AleGetAlertasFromMovil(l_dbcAccess,
                                               p_strPatente,
-                                              ref p_smResult);
+                                              p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion
@@ -356,7 +356,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         /// <returns>ListaEntidad con los datos solicitados</returns>
         public static LEAlertas AleGetPendientesFromMov(string p_strPatente,
-                                                        ref StatMsg p_smResult)
+                                                        StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess= null;
@@ -368,7 +368,7 @@ namespace Mrln.Bll
                 // Llamamos al metodo interno
                 return AleGetPendientesFromMov(l_dbcAccess,
                                                p_strPatente,
-                                               ref p_smResult);
+                                               p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion
@@ -396,7 +396,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void AleTInt(DBConn p_dbcAccess,
                                      EAlerta p_entAlerta,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             // ********
             // Validaciones de los campos sin conexion
@@ -413,7 +413,7 @@ namespace Mrln.Bll
             // ********
 
             // Llamamos a la funcion fija del usuario
-            AleTInt_f(p_dbcAccess, p_entAlerta, ref p_smResult);
+            AleTInt_f(p_dbcAccess, p_entAlerta, p_smResult);
             if (p_smResult.NOk) return;
         }
 
@@ -430,7 +430,7 @@ namespace Mrln.Bll
         internal static void AleVKey(DBConn p_dbcAccess,
                                      int p_iNroconfig,
                                      int p_iNroalerta,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             // No hay errores aun
             DataSet l_dsTemp= new DataSet();
@@ -441,7 +441,7 @@ namespace Mrln.Bll
                                false,
                                ref l_dsTemp,
                                "Temporal",
-                               ref p_smResult);
+                               p_smResult);
             if (p_smResult.NOk) return;
 
             try {
@@ -474,7 +474,7 @@ namespace Mrln.Bll
                                      int p_iNroconfig,
                                      int p_iNroalerta,
                                      int p_iFxdVersion,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             // No hay errores aun
             DataSet l_dsTemp= new DataSet();
@@ -486,7 +486,7 @@ namespace Mrln.Bll
                                    p_iFxdVersion,
                                    ref l_dsTemp,
                                    "Temporal",
-                                   ref p_smResult);
+                                   p_smResult);
             if (p_smResult.NOk) return;
 
             // Verificamos el resultado que vino
@@ -542,7 +542,7 @@ namespace Mrln.Bll
         /// <returns>Lista-entidad: LEAlertas</returns>
         internal static LEAlertas AleUpfl(DBConn p_dbcAccess,
                                            bool p_bOnlyActive,
-                                           ref StatMsg p_smResult)
+                                           StatMsg p_smResult)
         {
             try {
                 // Pedimos los registros de la tabla: Alertas
@@ -551,11 +551,11 @@ namespace Mrln.Bll
                 Dal.Alertas.Up(p_dbcAccess, 
                                p_bOnlyActive,
                                ref l_dsTemp, "Temporal",
-                               ref p_smResult);
+                               p_smResult);
                 if (p_smResult.NOk) return null;
 
                 // Fijamos los captions de la grilla
-                Dal.Alertas.MakeGridCaptions(ref l_dsTemp, "Temporal", ref p_smResult);
+                Dal.Alertas.MakeGridCaptions(ref l_dsTemp, "Temporal", p_smResult);
 
                 // Contruimos la lista-entidad y la devolvemos (si vino algun registro)
                 LEAlertas l_lentRet= new LEAlertas(l_dsTemp.Tables["Temporal"]);
@@ -582,7 +582,7 @@ namespace Mrln.Bll
                                         int p_iNroconfig,
                                         int p_iNroalerta,
                                         bool p_bOnlyActive,
-                                        ref StatMsg p_smResult)
+                                        StatMsg p_smResult)
         {
             try {
                 // Pedimos el registro de la tabla: Alertas
@@ -593,7 +593,7 @@ namespace Mrln.Bll
                                    p_iNroalerta,
                                    p_bOnlyActive,
                                    ref l_dsTemp, "Temporal",
-                                   ref p_smResult);
+                                   p_smResult);
                 if (p_smResult.NOk) return null;
 
                 // Constuimos la entidad y la devolvemos (si vino un registro)
@@ -623,18 +623,18 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void AleSSav(DBConn p_dbcAccess,
                                      EAlerta p_entAlerta,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             try {
                 // Procesamos codigo fijo
-                AleSave_f(p_dbcAccess, ref p_entAlerta, ref p_smResult);
+                AleSave_f(p_dbcAccess, ref p_entAlerta, p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Verificamos la clave a grabar
                 AleVKey(p_dbcAccess, 
                         p_entAlerta.Nroconfig,
                         p_entAlerta.Nroalerta,
-                        ref p_smResult);
+                        p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Si es una entidad nueva
@@ -647,7 +647,7 @@ namespace Mrln.Bll
                     }
 
                     // Agregamos el registro
-                    AleInsr(p_dbcAccess, p_entAlerta, ref p_smResult);
+                    AleInsr(p_dbcAccess, p_entAlerta, p_smResult);
                     return;
                 }
 
@@ -663,11 +663,11 @@ namespace Mrln.Bll
                         p_entAlerta.Nroconfig,
                         p_entAlerta.Nroalerta,
                         p_entAlerta.FxdVersion,
-                        ref p_smResult);
+                        p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Actualizamos el registro
-                AleUpdt(p_dbcAccess, p_entAlerta, ref p_smResult);
+                AleUpdt(p_dbcAccess, p_entAlerta, p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion SSav
@@ -683,11 +683,11 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void AleInsr(DBConn p_dbcAccess,
                                      EAlerta p_entAlerta,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             try {
                 // Validamos la integridad de la entidad
-                AleTInt(p_dbcAccess, p_entAlerta, ref p_smResult);
+                AleTInt(p_dbcAccess, p_entAlerta, p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Creamos un nuevo registro de la tabla: Alertas
@@ -703,7 +703,7 @@ namespace Mrln.Bll
                                    p_entAlerta.Repetirendias,
                                    p_entAlerta.Finalizada,
                                    p_entAlerta.Mailsenviados,
-                                   ref p_smResult);
+                                   p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Insr
@@ -719,11 +719,11 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void AleUpdt(DBConn p_dbcAccess,
                                      EAlerta p_entAlerta,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             try {
                 // Validamos la integridad de la entidad
-                AleTInt(p_dbcAccess, p_entAlerta, ref p_smResult);
+                AleTInt(p_dbcAccess, p_entAlerta, p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Actualizamos un registro de la tabla: Alertas
@@ -739,7 +739,7 @@ namespace Mrln.Bll
                                    p_entAlerta.Repetirendias,
                                    p_entAlerta.Finalizada,
                                    p_entAlerta.Mailsenviados,
-                                   ref p_smResult);
+                                   p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Updt
@@ -759,14 +759,14 @@ namespace Mrln.Bll
                                      int p_iNroconfig,
                                      int p_iNroalerta,
                                      int p_iFxdVersion,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             try {
                 // Verificamos la clave a borrar
                 AleVKey(p_dbcAccess,
                         p_iNroconfig,
                         p_iNroalerta,
-                        ref p_smResult);
+                        p_smResult);
                 if (p_smResult.NOk) return;
 
                 // El registro tiene que existir
@@ -781,14 +781,14 @@ namespace Mrln.Bll
                         p_iNroconfig,
                         p_iNroalerta,
                         p_iFxdVersion,
-                        ref p_smResult);
+                        p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Borramos físicamente el registro
                 Dal.Alertas.Drop(p_dbcAccess,
                                  p_iNroconfig,
                                  p_iNroalerta,
-                                 ref p_smResult);
+                                 p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Remove
@@ -802,12 +802,12 @@ namespace Mrln.Bll
         /// <param name="p_dbcAccess">Conexion a la base de datos</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void AlePack(DBConn p_dbcAccess,
-                                     ref StatMsg p_smResult)
+                                     StatMsg p_smResult)
         {
             try {
                 // Borramos los borrados lógicamente
                 Dal.Alertas.Pack(p_dbcAccess,
-                                 ref p_smResult);
+                                 p_smResult);
             }
             catch (Exception l_expData) {
                 // Error en la operacion Updt
@@ -827,7 +827,7 @@ namespace Mrln.Bll
         /// <returns>ListaEntidad con los datos solicitados</returns>
         internal static LEAlertas AleGetAlertasFromMovil(DBConn p_dbcAccess,
                                                          string p_strPatente,
-                                                         ref StatMsg p_smResult)
+                                                         StatMsg p_smResult)
         {
             try {
                 // Llamamos al metodo definido por el usuario
@@ -837,11 +837,11 @@ namespace Mrln.Bll
                                                 p_strPatente,
                                                 ref l_dsTemp,
                                                 "Temporal",
-                                                ref p_smResult);
+                                                p_smResult);
                 if (p_smResult.NOk) return null;
 
                 // Captionamos el resultado
-                Dal.Alertas.MakeGridCaptions(ref l_dsTemp, "Temporal", ref p_smResult);
+                Dal.Alertas.MakeGridCaptions(ref l_dsTemp, "Temporal", p_smResult);
                 if (p_smResult.NOk) return null;
 
                 // Creamos la ListaEntidad y la devolvemos
@@ -868,7 +868,7 @@ namespace Mrln.Bll
         /// <returns>ListaEntidad con los datos solicitados</returns>
         internal static LEAlertas AleGetPendientesFromMov(DBConn p_dbcAccess,
                                                           string p_strPatente,
-                                                          ref StatMsg p_smResult)
+                                                          StatMsg p_smResult)
         {
             try {
                 // Llamamos al metodo definido por el usuario
@@ -878,11 +878,11 @@ namespace Mrln.Bll
                                                  p_strPatente,
                                                  ref l_dsTemp,
                                                  "Temporal",
-                                                 ref p_smResult);
+                                                 p_smResult);
                 if (p_smResult.NOk) return null;
 
                 // Captionamos el resultado
-                Dal.Alertas.MakeGridCaptions(ref l_dsTemp, "Temporal", ref p_smResult);
+                Dal.Alertas.MakeGridCaptions(ref l_dsTemp, "Temporal", p_smResult);
                 if (p_smResult.NOk) return null;
 
                 // Creamos la ListaEntidad y la devolvemos

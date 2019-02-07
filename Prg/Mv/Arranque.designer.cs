@@ -82,7 +82,7 @@ namespace Mrln.Mv
                          ValidOptions.Validate,
                          ConStrOptions.Read,
                          true,
-                         ref l_smResult);
+                         l_smResult);
             }
             catch (Exception l_expData) {
                 // Se produjo un error no capturado
@@ -113,7 +113,7 @@ namespace Mrln.Mv
                 App.Run(LoginModes.Full,
                         IMenuOptions.None,
                         ExitModes.Confirm,
-                        ref l_smResult);
+                        l_smResult);
             }
             catch (Exception l_expData) {
                 // Se produjo un error no capturado

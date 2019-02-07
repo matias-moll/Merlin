@@ -52,7 +52,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void CatSave_f(DBConn p_dbcAccess,
                                        ref ECategoria p_entCategoria,
-                                       ref StatMsg p_smResult)
+                                       StatMsg p_smResult)
         {
             // *********
             // Agregar acá los procesos adicionales
@@ -72,7 +72,7 @@ namespace Mrln.Bll
                                           bool p_bEnable,
                                           string p_strCod,
                                           ref int p_iFxdVersion,
-                                          ref StatMsg p_smResult)
+                                          StatMsg p_smResult)
         {
             // *********
             // Agregar acá los procesos adicionales
@@ -90,7 +90,7 @@ namespace Mrln.Bll
         internal static void CatRemove_f(DBConn p_dbcAccess,
                                          string p_strCod,
                                          int p_iFxdVersion,
-                                         ref StatMsg p_smResult)
+                                         StatMsg p_smResult)
         {
             // *********
             // Agregar acá los procesos adicionales
@@ -106,7 +106,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void CatTInt_f(DBConn p_dbcAccess,
                                        ECategoria p_entCategoria,
-                                       ref StatMsg p_smResult)
+                                       StatMsg p_smResult)
         {
             // *********
             // Agregar acá las validaciones adicionales
@@ -122,7 +122,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void DemSave_f(DBConn p_dbcAccess,
                                        ref EDestinatariosMail p_entDestinatariosMail,
-                                       ref StatMsg p_smResult)
+                                       StatMsg p_smResult)
         {
             // *********
             // Agregar acá los procesos adicionales
@@ -142,7 +142,7 @@ namespace Mrln.Bll
                                           bool p_bEnable,
                                           string p_strCodigo,
                                           ref int p_iFxdVersion,
-                                          ref StatMsg p_smResult)
+                                          StatMsg p_smResult)
         {
             // *********
             // Agregar acá los procesos adicionales
@@ -160,7 +160,7 @@ namespace Mrln.Bll
         internal static void DemRemove_f(DBConn p_dbcAccess,
                                          string p_strCodigo,
                                          int p_iFxdVersion,
-                                         ref StatMsg p_smResult)
+                                         StatMsg p_smResult)
         {
             // *********
             // Agregar acá los procesos adicionales
@@ -176,7 +176,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void DemTInt_f(DBConn p_dbcAccess,
                                        EDestinatariosMail p_entDestinatariosMail,
-                                       ref StatMsg p_smResult)
+                                       StatMsg p_smResult)
         {
             // *********
             // Agregar acá las validaciones adicionales
@@ -192,7 +192,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void EqiSave_f(DBConn p_dbcAccess,
                                        ref EEquipamento p_entEquipamento,
-                                       ref StatMsg p_smResult)
+                                       StatMsg p_smResult)
         {
             // *********
             // Agregar acá los procesos adicionales
@@ -212,7 +212,7 @@ namespace Mrln.Bll
                                           bool p_bEnable,
                                           string p_strCod,
                                           ref int p_iFxdVersion,
-                                          ref StatMsg p_smResult)
+                                          StatMsg p_smResult)
         {
             // *********
             // Agregar acá los procesos adicionales
@@ -230,7 +230,7 @@ namespace Mrln.Bll
         internal static void EqiRemove_f(DBConn p_dbcAccess,
                                          string p_strCod,
                                          int p_iFxdVersion,
-                                         ref StatMsg p_smResult)
+                                         StatMsg p_smResult)
         {
             // *********
             // Agregar acá los procesos adicionales
@@ -246,7 +246,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void EqiTInt_f(DBConn p_dbcAccess,
                                        EEquipamento p_entEquipamento,
-                                       ref StatMsg p_smResult)
+                                       StatMsg p_smResult)
         {
             // *********
             // Agregar acá las validaciones adicionales
@@ -262,7 +262,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void EstSave_f(DBConn p_dbcAccess,
                                        ref EEstacion p_entEstacion,
-                                       ref StatMsg p_smResult)
+                                       StatMsg p_smResult)
         {
             // *********
             // Agregar acá los procesos adicionales
@@ -282,7 +282,7 @@ namespace Mrln.Bll
                                           bool p_bEnable,
                                           string p_strCod,
                                           ref int p_iFxdVersion,
-                                          ref StatMsg p_smResult)
+                                          StatMsg p_smResult)
         {
             // *********
             // Agregar acá los procesos adicionales
@@ -300,7 +300,7 @@ namespace Mrln.Bll
         internal static void EstRemove_f(DBConn p_dbcAccess,
                                          string p_strCod,
                                          int p_iFxdVersion,
-                                         ref StatMsg p_smResult)
+                                         StatMsg p_smResult)
         {
             // *********
             // Agregar acá los procesos adicionales
@@ -316,7 +316,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void EstTInt_f(DBConn p_dbcAccess,
                                        EEstacion p_entEstacion,
-                                       ref StatMsg p_smResult)
+                                       StatMsg p_smResult)
         {
             // *********
             // Agregar acá las validaciones adicionales
@@ -332,7 +332,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void EdsSave_f(DBConn p_dbcAccess,
                                        ref EEstado p_entEstado,
-                                       ref StatMsg p_smResult)
+                                       StatMsg p_smResult)
         {
             // *********
             // Agregar acá los procesos adicionales
@@ -352,7 +352,7 @@ namespace Mrln.Bll
                                           bool p_bEnable,
                                           string p_strCod,
                                           ref int p_iFxdVersion,
-                                          ref StatMsg p_smResult)
+                                          StatMsg p_smResult)
         {
             // *********
             // Agregar acá los procesos adicionales
@@ -370,7 +370,7 @@ namespace Mrln.Bll
         internal static void EdsRemove_f(DBConn p_dbcAccess,
                                          string p_strCod,
                                          int p_iFxdVersion,
-                                         ref StatMsg p_smResult)
+                                         StatMsg p_smResult)
         {
             // *********
             // Agregar acá los procesos adicionales
@@ -386,7 +386,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void EdsTInt_f(DBConn p_dbcAccess,
                                        EEstado p_entEstado,
-                                       ref StatMsg p_smResult)
+                                       StatMsg p_smResult)
         {
             // *********
             // Agregar acá las validaciones adicionales
@@ -402,7 +402,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void MrcSave_f(DBConn p_dbcAccess,
                                        ref EMarca p_entMarca,
-                                       ref StatMsg p_smResult)
+                                       StatMsg p_smResult)
         {
             // *********
             // Agregar acá los procesos adicionales
@@ -422,7 +422,7 @@ namespace Mrln.Bll
                                           bool p_bEnable,
                                           string p_strCodigo,
                                           ref int p_iFxdVersion,
-                                          ref StatMsg p_smResult)
+                                          StatMsg p_smResult)
         {
             // *********
             // Agregar acá los procesos adicionales
@@ -440,7 +440,7 @@ namespace Mrln.Bll
         internal static void MrcRemove_f(DBConn p_dbcAccess,
                                          string p_strCodigo,
                                          int p_iFxdVersion,
-                                         ref StatMsg p_smResult)
+                                         StatMsg p_smResult)
         {
             // *********
             // Agregar acá los procesos adicionales
@@ -456,7 +456,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void MrcTInt_f(DBConn p_dbcAccess,
                                        EMarca p_entMarca,
-                                       ref StatMsg p_smResult)
+                                       StatMsg p_smResult)
         {
             // *********
             // Agregar acá las validaciones adicionales
@@ -472,7 +472,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void ModSave_f(DBConn p_dbcAccess,
                                        ref EModelo p_entModelo,
-                                       ref StatMsg p_smResult)
+                                       StatMsg p_smResult)
         {
             // *********
             // Agregar acá los procesos adicionales
@@ -492,7 +492,7 @@ namespace Mrln.Bll
                                           bool p_bEnable,
                                           string p_strCod,
                                           ref int p_iFxdVersion,
-                                          ref StatMsg p_smResult)
+                                          StatMsg p_smResult)
         {
             // *********
             // Agregar acá los procesos adicionales
@@ -510,7 +510,7 @@ namespace Mrln.Bll
         internal static void ModRemove_f(DBConn p_dbcAccess,
                                          string p_strCod,
                                          int p_iFxdVersion,
-                                         ref StatMsg p_smResult)
+                                         StatMsg p_smResult)
         {
             // *********
             // Agregar acá los procesos adicionales
@@ -526,7 +526,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void ModTInt_f(DBConn p_dbcAccess,
                                        EModelo p_entModelo,
-                                       ref StatMsg p_smResult)
+                                       StatMsg p_smResult)
         {
             // *********
             // Agregar acá las validaciones adicionales
@@ -543,7 +543,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void MtiSave_f(DBConn p_dbcAccess,
                                        ref EMotivoInfraccion p_entMotivoInfraccion,
-                                       ref StatMsg p_smResult)
+                                       StatMsg p_smResult)
         {
             // *********
             // Agregar acá los procesos adicionales
@@ -563,7 +563,7 @@ namespace Mrln.Bll
                                           bool p_bEnable,
                                           string p_strCodigo,
                                           ref int p_iFxdVersion,
-                                          ref StatMsg p_smResult)
+                                          StatMsg p_smResult)
         {
             // *********
             // Agregar acá los procesos adicionales
@@ -581,7 +581,7 @@ namespace Mrln.Bll
         internal static void MtiRemove_f(DBConn p_dbcAccess,
                                          string p_strCodigo,
                                          int p_iFxdVersion,
-                                         ref StatMsg p_smResult)
+                                         StatMsg p_smResult)
         {
             // *********
             // Agregar acá los procesos adicionales
@@ -597,7 +597,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void MtiTInt_f(DBConn p_dbcAccess,
                                        EMotivoInfraccion p_entMotivoInfraccion,
-                                       ref StatMsg p_smResult)
+                                       StatMsg p_smResult)
         {
             // *********
             // Agregar acá las validaciones adicionales
@@ -613,7 +613,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void RepSave_f(DBConn p_dbcAccess,
                                        ref EReparacion p_entReparacion,
-                                       ref StatMsg p_smResult)
+                                       StatMsg p_smResult)
         {
             // *********
             // Agregar acá los procesos adicionales
@@ -633,7 +633,7 @@ namespace Mrln.Bll
                                           bool p_bEnable,
                                           string p_strCod,
                                           ref int p_iFxdVersion,
-                                          ref StatMsg p_smResult)
+                                          StatMsg p_smResult)
         {
             // *********
             // Agregar acá los procesos adicionales
@@ -651,7 +651,7 @@ namespace Mrln.Bll
         internal static void RepRemove_f(DBConn p_dbcAccess,
                                          string p_strCod,
                                          int p_iFxdVersion,
-                                         ref StatMsg p_smResult)
+                                         StatMsg p_smResult)
         {
             // *********
             // Agregar acá los procesos adicionales
@@ -667,7 +667,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void RepTInt_f(DBConn p_dbcAccess,
                                        EReparacion p_entReparacion,
-                                       ref StatMsg p_smResult)
+                                       StatMsg p_smResult)
         {
             // *********
             // Agregar acá las validaciones adicionales

@@ -41,7 +41,7 @@ namespace Mrln.Bll
         /// </summary>
         /// <param name="p_smResult">Resultado de las operaciones</param>
         /// <returns></returns>
-        public static DateTime fGetDate(ref StatMsg p_smResult)
+        public static DateTime fGetDate(StatMsg p_smResult)
         {
             // No hay errores aun
             DBConn l_dbcAccess = null;
@@ -52,7 +52,7 @@ namespace Mrln.Bll
                 l_dbcAccess = DBRuts.GetConection(Connections.Dat);
 
                 // Conseguimos la fecha de hoy
-                DateTime l_dtToday = BllRuts.GetDBNow(l_dbcAccess, false, ref p_smResult);
+                DateTime l_dtToday = BllRuts.GetDBNow(l_dbcAccess, false, p_smResult);
 
                 //Corroboramos que no hayan ocurrido errores.
                 if (p_smResult.NOk)
@@ -73,7 +73,7 @@ namespace Mrln.Bll
             }
         }
 
-        public static int fGetKilometrajeActual(string p_strPatente, ref StatMsg p_smResult)
+        public static int fGetKilometrajeActual(string p_strPatente, StatMsg p_smResult)
         {
             DBConn l_dbcAccess = null;
 
@@ -82,7 +82,7 @@ namespace Mrln.Bll
                 // Obtenemos una conexion
                 l_dbcAccess = DBRuts.GetConection(Connections.Dat);
 
-                return fGetKilometrajeActualWithConn(l_dbcAccess, p_strPatente, ref p_smResult);
+                return fGetKilometrajeActualWithConn(l_dbcAccess, p_strPatente, p_smResult);
             }
             catch (Exception l_expData)
             {
@@ -98,13 +98,13 @@ namespace Mrln.Bll
 
         }
 
-        private static int fGetKilometrajeActualWithConn(DBConn dbAccess, string p_strPatente, ref StatMsg p_smResult)
+        private static int fGetKilometrajeActualWithConn(DBConn dbAccess, string p_strPatente, StatMsg p_smResult)
         {
 
             try
             {
                 // Pedimos los registros de la tabla
-                ListaEntidades ultimosCincoKilometrajes = Moviles.MvkmgetLastFiveMvlKm(dbAccess, p_strPatente, ref p_smResult);
+                ListaEntidades ultimosCincoKilometrajes = Moviles.MvkmgetLastFiveMvlKm(dbAccess, p_strPatente, p_smResult);
                 return Convert.ToInt32(ultimosCincoKilometrajes.InternalData[0][Bel.EMovilKms.KmCmp]);
             }
             catch (Exception l_expData)
@@ -124,7 +124,7 @@ namespace Mrln.Bll
         /// <returns></returns>
         public static List<ListaEntidades> fGetLastFiveTodos(string p_strPatente,
                                                 bool p_bOnlyActive,
-                                                ref StatMsg p_smResult)
+                                                StatMsg p_smResult)
         {
             // No hay errores aun
             List<ListaEntidades> l_lstLEListaListaEntidades = new List<ListaEntidades>();
@@ -136,16 +136,16 @@ namespace Mrln.Bll
                 l_dbcAccess = DBRuts.GetConection(Connections.Dat);
 
                 // Pedimos los registros de la tabla
-                ListaEntidades ultimosCincoCombustibles = Moviles.MvcogetLastFiveMvlCombus(l_dbcAccess, p_strPatente, ref p_smResult);
+                ListaEntidades ultimosCincoCombustibles = Moviles.MvcogetLastFiveMvlCombus(l_dbcAccess, p_strPatente, p_smResult);
                 if (p_smResult.NOk) return null;
 
-                ListaEntidades ultimosCincoKilometrajes = Moviles.MvkmgetLastFiveMvlKm(l_dbcAccess, p_strPatente, ref p_smResult);
+                ListaEntidades ultimosCincoKilometrajes = Moviles.MvkmgetLastFiveMvlKm(l_dbcAccess, p_strPatente, p_smResult);
                 if (p_smResult.NOk) return null;
 
-                ListaEntidades ultimosCincoEstados = Moviles.MvesgetLastFiveMvlEstads(l_dbcAccess, p_strPatente, ref p_smResult);
+                ListaEntidades ultimosCincoEstados = Moviles.MvesgetLastFiveMvlEstads(l_dbcAccess, p_strPatente, p_smResult);
                 if (p_smResult.NOk) return null;
 
-                ListaEntidades equipamientos = Moviles.MveqFSch(l_dbcAccess, p_strPatente, true, ref p_smResult);
+                ListaEntidades equipamientos = Moviles.MveqFSch(l_dbcAccess, p_strPatente, true, p_smResult);
                 if (p_smResult.NOk) return null;
 
                 l_lstLEListaListaEntidades.Add(ultimosCincoCombustibles);
@@ -168,14 +168,14 @@ namespace Mrln.Bll
             return l_lstLEListaListaEntidades;
         }
 
-        public static ListaEntidades fGetTiposMovilesCEDI(ref StatMsg p_smResult)
+        public static ListaEntidades fGetTiposMovilesCEDI(StatMsg p_smResult)
         {
             DBConn l_dbcAccess = null;
 
             try
             {
                 // Obtenemos conexion a CEDI.
-                EParametro conexionCEDI = AppRuts.ParaGet("connCEDI", true, ref p_smResult);
+                EParametro conexionCEDI = AppRuts.ParaGet("connCEDI", true, p_smResult);
                 if (p_smResult.NOk) return null;
 
                  
@@ -209,7 +209,7 @@ namespace Mrln.Bll
         /// <returns></returns>
         public static ListaEntidades fGetLastFiveMvlCombus(string p_strPatente,
                                                 bool p_bOnlyActive,
-                                                ref StatMsg p_smResult)
+                                                StatMsg p_smResult)
         {
             // No hay errores aun
             ListaEntidades l_lentData;
@@ -221,7 +221,7 @@ namespace Mrln.Bll
                 l_dbcAccess = DBRuts.GetConection(Connections.Dat);
 
                 // Pedimos los registros de la tabla
-                l_lentData = Bll.Moviles.MvcogetLastFiveMvlCombus(l_dbcAccess,p_strPatente, ref p_smResult);
+                l_lentData = Bll.Moviles.MvcogetLastFiveMvlCombus(l_dbcAccess,p_strPatente, p_smResult);
             }
             catch (Exception l_expData)
             {
@@ -250,7 +250,7 @@ namespace Mrln.Bll
         /// <returns></returns>
         public static ListaEntidades fGetLastFiveMvlKms(string p_strPatente,
                                   bool p_bOnlyActive,
-                                  ref StatMsg p_smResult)
+                                  StatMsg p_smResult)
         {
             // No hay errores aun
             ListaEntidades l_lentData;
@@ -262,7 +262,7 @@ namespace Mrln.Bll
                 l_dbcAccess = DBRuts.GetConection(Connections.Dat);
 
                 // Pedimos los registros de la tabla
-                l_lentData = Bll.Moviles.MvkmgetLastFiveMvlKm(l_dbcAccess, p_strPatente, ref p_smResult);
+                l_lentData = Bll.Moviles.MvkmgetLastFiveMvlKm(l_dbcAccess, p_strPatente, p_smResult);
             }
             catch (Exception l_expData)
             {
@@ -292,7 +292,7 @@ namespace Mrln.Bll
         /// <returns></returns>
         public static ListaEntidades fGetLastFiveMvlEstados(string p_strPatente,
                                           bool p_bOnlyActive,
-                                          ref StatMsg p_smResult)
+                                          StatMsg p_smResult)
         {
             // No hay errores aun
             ListaEntidades l_lentData;
@@ -304,7 +304,7 @@ namespace Mrln.Bll
                 l_dbcAccess = DBRuts.GetConection(Connections.Dat);
 
                 // Pedimos los registros de la tabla
-                l_lentData = Bll.Moviles.MvesgetLastFiveMvlEstads(l_dbcAccess, p_strPatente, ref p_smResult);
+                l_lentData = Bll.Moviles.MvesgetLastFiveMvlEstads(l_dbcAccess, p_strPatente, p_smResult);
             }
             catch (Exception l_expData)
             {
@@ -332,15 +332,15 @@ namespace Mrln.Bll
         /// <returns>ListaEntidad con los datos solicitados</returns>
         public static EMovilEstado fGetMovilEstadoActual(DBConn conexion,
                                                             string p_strPatente,
-                                                            ref StatMsg p_smResult)
+                                                            StatMsg p_smResult)
         {
             try
             {
                 // Pedimos los registros de la tabla
-                ListaEntidades ultimos5Estados = Bll.Moviles.MvesgetLastFiveMvlEstads(conexion, p_strPatente, ref p_smResult);
+                ListaEntidades ultimos5Estados = Bll.Moviles.MvesgetLastFiveMvlEstads(conexion, p_strPatente, p_smResult);
                 if (p_smResult.NOk) return null;
 
-                EMovilEstado estadoActual = Bll.Moviles.MvesSrch(conexion, p_strPatente, Convert.ToDateTime(ultimos5Estados.InternalData[0][Bel.EMovilEstado.FechaCmp]), true, ref p_smResult);
+                EMovilEstado estadoActual = Bll.Moviles.MvesSrch(conexion, p_strPatente, Convert.ToDateTime(ultimos5Estados.InternalData[0][Bel.EMovilEstado.FechaCmp]), true, p_smResult);
                 if (p_smResult.NOk) return null;
 
                 return estadoActual;
@@ -353,7 +353,7 @@ namespace Mrln.Bll
             }
         }
 
-        public static void fOrdenRealizandose(int numeroOrden, ref StatMsg p_smResult)
+        public static void fOrdenRealizandose(int numeroOrden, StatMsg p_smResult)
         {
             DBConn l_dbcAccess = null;
 
@@ -363,20 +363,20 @@ namespace Mrln.Bll
                 l_dbcAccess = DBRuts.GetConection(Connections.Dat);
                 l_dbcAccess.BeginTransaction();
 
-                Bel.EOrdenTrabajo orden = Bll.OrdenesTrabajo.Get(numeroOrden, true, ref p_smResult);
+                Bel.EOrdenTrabajo orden = Bll.OrdenesTrabajo.Get(numeroOrden, true, p_smResult);
                 if (p_smResult.NOk) return;
 
                 orden.Estado = Bel.EOrdenTrabajo.Estados.EnProgreso.ToString();
 
-                Bll.OrdenesTrabajo.SSav(l_dbcAccess, orden, ref p_smResult);
+                Bll.OrdenesTrabajo.SSav(l_dbcAccess, orden, p_smResult);
                 if (p_smResult.NOk) return;
 
-                EMovilEstado estadoActual = fGetMovilEstadoActual(l_dbcAccess, orden.Patente, ref p_smResult);
+                EMovilEstado estadoActual = fGetMovilEstadoActual(l_dbcAccess, orden.Patente, p_smResult);
 
                 // Si el estado actual no es en mantenimiento debemos pasarlo a dicho estado.
                 if (!estadoActual.EstaEnEstadoMantenimiento)
                 {
-                    fGrabarEstadoMovil(l_dbcAccess, orden.Patente, EMovilEstado.EstadoEnMantenimiento, ref p_smResult);
+                    fGrabarEstadoMovil(l_dbcAccess, orden.Patente, EMovilEstado.EstadoEnMantenimiento, p_smResult);
                     if (p_smResult.NOk) return;
                 }
                     
@@ -399,7 +399,7 @@ namespace Mrln.Bll
 
         }
 
-        private static void fGrabarEstadoMovil(DBConn conexion, string patente, string nuevoEstado, ref StatMsg p_smResult)
+        private static void fGrabarEstadoMovil(DBConn conexion, string patente, string nuevoEstado, StatMsg p_smResult)
         {
             EMovilEstado l_EMEstMovilEstado;
             //creamos la entidad y la llenamos con sus datos y la guardamos
@@ -408,7 +408,7 @@ namespace Mrln.Bll
             l_EMEstMovilEstado.Fecha = DateTime.Now;
             l_EMEstMovilEstado.Patente = patente;
 
-            ListaEntidades kmsActuales = Moviles.MvkmgetKmsActualesMvl(patente, ref p_smResult);
+            ListaEntidades kmsActuales = Moviles.MvkmgetKmsActualesMvl(patente, p_smResult);
             if (p_smResult.NOk) return;
 
             if (kmsActuales.Count > 0)
@@ -416,12 +416,12 @@ namespace Mrln.Bll
             else
                 l_EMEstMovilEstado.Km = 0;
 
-            Bll.Moviles.MvesSSav(conexion, l_EMEstMovilEstado, ref p_smResult);
+            Bll.Moviles.MvesSSav(conexion, l_EMEstMovilEstado, p_smResult);
             if (p_smResult.NOk) return;
         }
 
 
-        public static void fCerrarOrden(EOrdenTrabajo p_eOrdenACerrar, ref StatMsg p_smResult)
+        public static void fCerrarOrden(EOrdenTrabajo p_eOrdenACerrar, StatMsg p_smResult)
         {
             DBConn l_dbcAccess = null;
 
@@ -431,33 +431,33 @@ namespace Mrln.Bll
                 l_dbcAccess = DBRuts.GetConection(Connections.Dat);
                 l_dbcAccess.BeginTransaction();
 
-                int kilometrajeActualMovil = Bll.Moviles.fGetKilometrajeActualWithConn(l_dbcAccess, p_eOrdenACerrar.Patente, ref p_smResult);
+                int kilometrajeActualMovil = Bll.Moviles.fGetKilometrajeActualWithConn(l_dbcAccess, p_eOrdenACerrar.Patente, p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Conseguimos la fecha de hoy
-                DateTime l_dtToday = BllRuts.GetDBNow(l_dbcAccess, false, ref p_smResult);
+                DateTime l_dtToday = BllRuts.GetDBNow(l_dbcAccess, false, p_smResult);
                 if (p_smResult.NOk) return;
 
                 p_eOrdenACerrar.Kmsactuales = kilometrajeActualMovil;
                 p_eOrdenACerrar.Feccierre = l_dtToday;
                 p_eOrdenACerrar.Finalizada();
 
-                Bll.OrdenesTrabajo.SSav(l_dbcAccess, p_eOrdenACerrar, ref p_smResult);
+                Bll.OrdenesTrabajo.SSav(l_dbcAccess, p_eOrdenACerrar, p_smResult);
                 if (p_smResult.NOk) return;
 
 
                 // Pedimos los registros de la tabla
-                EMovilEstado estadoActual = Bll.Moviles.fGetMovilEstadoActual(l_dbcAccess, p_eOrdenACerrar.Patente, ref p_smResult);
+                EMovilEstado estadoActual = Bll.Moviles.fGetMovilEstadoActual(l_dbcAccess, p_eOrdenACerrar.Patente, p_smResult);
                 if (p_smResult.NOk) return;
 
-                LEOrdenesTrabajo ordenesPendientes = OrdenesTrabajo.getPendByPatente(l_dbcAccess, p_eOrdenACerrar.Patente, ref p_smResult);
+                LEOrdenesTrabajo ordenesPendientes = OrdenesTrabajo.getPendByPatente(l_dbcAccess, p_eOrdenACerrar.Patente, p_smResult);
                 if (p_smResult.NOk) return;
 
 
                 // Si el movil esta en mantenimiento y acabamos de cerrar la ultima orden en progreso, pasamos el movil a disponible.
                 if (estadoActual.EstaEnEstadoMantenimiento && !ordenesPendientes.ToList().Exists(ordenPend => ordenPend.EstaEnProgreso))
                 {
-                    fGrabarEstadoMovil(l_dbcAccess, p_eOrdenACerrar.Patente, EMovilEstado.EstadoDisponible, ref p_smResult);
+                    fGrabarEstadoMovil(l_dbcAccess, p_eOrdenACerrar.Patente, EMovilEstado.EstadoDisponible, p_smResult);
                     if (p_smResult.NOk) return;
                 }
             }
@@ -509,7 +509,7 @@ namespace Mrln.Bll
         /// <param name="p_strDescripcion">Descripcion del Root</param>
         /// <param name="p_iNroImagen">Indice de la imagen</param>
         public static ListaEntidades fArmarTree( bool p_bOnlyActive,
-                                                ref StatMsg p_smResult)
+                                                StatMsg p_smResult)
         {
             // No hay errores aun
             ListaEntidades l_lentData;
@@ -521,7 +521,7 @@ namespace Mrln.Bll
                 l_dbcAccess = DBRuts.GetConection(Connections.Dat);
 
                 // Pedimos los registros de la tabla
-                l_lentData =  Bll.Moviles.getMovilesTree(l_dbcAccess, ref p_smResult);
+                l_lentData =  Bll.Moviles.GetMovilesTree(l_dbcAccess, p_smResult);
             }
             catch (Exception l_expData)
             {
@@ -547,10 +547,10 @@ namespace Mrln.Bll
         /// </summary>
         /// <param name="p_entMovil">Movil poseedor de los equipamientos</param>
         /// <param name="p_leNuevosEquipamientos">Nuevos equipamientos que se quieren agregar o modificar</param>
-        /// <param name="p_smResult">ref StatMsg</param>
+        /// <param name="p_smResult">StatMsg</param>
         public static void CambiarEquipamientoYGrabarMovil(EMovil p_entMovil,
                                                            LEMovilesEquip p_leNuevosEquipamientos,
-                                                           ref StatMsg p_smResult)
+                                                           StatMsg p_smResult)
         {
             DBConn l_dbcAccess = null;
 
@@ -561,7 +561,7 @@ namespace Mrln.Bll
                 l_dbcAccess.BeginTransaction();
 
                 // Borramos todo el equimamiento que tiene el movil
-                MveqEliminarEquipamiento(l_dbcAccess, p_entMovil.Patente, ref p_smResult);
+                MveqEliminarEquipamiento(l_dbcAccess, p_entMovil.Patente, p_smResult);
                 if (p_smResult.NOk) return;
 
                 // Le asignamos al movil los nuevo equipamientos
@@ -569,12 +569,12 @@ namespace Mrln.Bll
 
                 // Y grabamos los equipamientos
                 foreach(Bel.EMovilEquip item in p_leNuevosEquipamientos){
-                    Moviles.MveqInsr(l_dbcAccess, item, ref p_smResult);
+                    Moviles.MveqInsr(l_dbcAccess, item, p_smResult);
                     if (p_smResult.NOk) return;
                 }
 
                 //grabamos el movil con sus modificaciones
-                Moviles.Updt(l_dbcAccess, p_entMovil, ref p_smResult);
+                Moviles.Updt(l_dbcAccess, p_entMovil, p_smResult);
                 if (p_smResult.NOk) return;
 
             }
@@ -612,7 +612,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void Save_f(DBConn p_dbcAccess,
                                     ref EMovil p_entMovil,
-                                    ref StatMsg p_smResult)
+                                    StatMsg p_smResult)
         {
             // *********
             // Agregar acá los procesos adicionales
@@ -632,7 +632,7 @@ namespace Mrln.Bll
                                        bool p_bEnable,
                                        string p_strPatente,
                                        ref int p_iFxdVersion,
-                                       ref StatMsg p_smResult)
+                                       StatMsg p_smResult)
         {
             // *********
             // Agregar acá los procesos adicionales
@@ -650,7 +650,7 @@ namespace Mrln.Bll
         internal static void Remove_f(DBConn p_dbcAccess,
                                       string p_strPatente,
                                       int p_iFxdVersion,
-                                      ref StatMsg p_smResult)
+                                      StatMsg p_smResult)
         {
             // *********
             // Agregar acá los procesos adicionales
@@ -666,7 +666,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void TInt_f(DBConn p_dbcAccess,
                                     EMovil p_entMovil,
-                                    ref StatMsg p_smResult)
+                                    StatMsg p_smResult)
         {
             // *********
             // Agregar acá las validaciones adicionales
@@ -682,7 +682,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void MvacSave_f(DBConn p_dbcAccess,
                                         ref EMovilAccidente p_entMvlAccidente,
-                                        ref StatMsg p_smResult)
+                                        StatMsg p_smResult)
         {
             // *********
             // Agregar acá los procesos adicionales
@@ -704,7 +704,7 @@ namespace Mrln.Bll
                                            string p_strPatente,
                                            DateTime p_dtFecha,
                                            ref int p_iFxdVersion,
-                                           ref StatMsg p_smResult)
+                                           StatMsg p_smResult)
         {
             // *********
             // Agregar acá los procesos adicionales
@@ -724,7 +724,7 @@ namespace Mrln.Bll
                                           string p_strPatente,
                                           DateTime p_dtFecha,
                                           int p_iFxdVersion,
-                                          ref StatMsg p_smResult)
+                                          StatMsg p_smResult)
         {
             // *********
             // Agregar acá los procesos adicionales
@@ -740,7 +740,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void MvacTInt_f(DBConn p_dbcAccess,
                                         EMovilAccidente p_entMvlAccidente,
-                                        ref StatMsg p_smResult)
+                                        StatMsg p_smResult)
         {
             // *********
             // Agregar acá las validaciones adicionales
@@ -755,7 +755,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void MvalSave_f(DBConn p_dbcAccess,
                                         ref EMovilAlerta p_entMovilAlerta,
-                                        ref StatMsg p_smResult)
+                                        StatMsg p_smResult)
         {
             // *********
             // Agregar acá los procesos adicionales
@@ -777,7 +777,7 @@ namespace Mrln.Bll
                                            string p_strPatente,
                                            int p_iNroconfigalerta,
                                            ref int p_iFxdVersion,
-                                           ref StatMsg p_smResult)
+                                           StatMsg p_smResult)
         {
             // *********
             // Agregar acá los procesos adicionales
@@ -797,7 +797,7 @@ namespace Mrln.Bll
                                           string p_strPatente,
                                           int p_iNroconfigalerta,
                                           int p_iFxdVersion,
-                                          ref StatMsg p_smResult)
+                                          StatMsg p_smResult)
         {
             // *********
             // Agregar acá los procesos adicionales
@@ -813,7 +813,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void MvalTInt_f(DBConn p_dbcAccess,
                                         EMovilAlerta p_entMovilAlerta,
-                                        ref StatMsg p_smResult)
+                                        StatMsg p_smResult)
         {
             // *********
             // Agregar acá las validaciones adicionales
@@ -829,7 +829,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void MvcoSave_f(DBConn p_dbcAccess,
                                         ref EMovilCombus p_entMovilCombus,
-                                        ref StatMsg p_smResult)
+                                        StatMsg p_smResult)
         {
             // *********
             // Agregar acá los procesos adicionales
@@ -851,7 +851,7 @@ namespace Mrln.Bll
                                            string p_strPatente,
                                            DateTime p_dtFecha,
                                            ref int p_iFxdVersion,
-                                           ref StatMsg p_smResult)
+                                           StatMsg p_smResult)
         {
             // *********
             // Agregar acá los procesos adicionales
@@ -871,7 +871,7 @@ namespace Mrln.Bll
                                           string p_strPatente,
                                           DateTime p_dtFecha,
                                           int p_iFxdVersion,
-                                          ref StatMsg p_smResult)
+                                          StatMsg p_smResult)
         {
             // *********
             // Agregar acá los procesos adicionales
@@ -887,7 +887,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void MvcoTInt_f(DBConn p_dbcAccess,
                                         EMovilCombus p_entMovilCombus,
-                                        ref StatMsg p_smResult)
+                                        StatMsg p_smResult)
         {
             // *********
             // Agregar acá las validaciones adicionales
@@ -903,7 +903,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void MveqSave_f(DBConn p_dbcAccess,
                                         ref EMovilEquip p_entMovilEquip,
-                                        ref StatMsg p_smResult)
+                                        StatMsg p_smResult)
         {
             // *********
             // Agregar acá los procesos adicionales
@@ -925,7 +925,7 @@ namespace Mrln.Bll
                                            string p_strPatente,
                                            string p_strCodequip,
                                            ref int p_iFxdVersion,
-                                           ref StatMsg p_smResult)
+                                           StatMsg p_smResult)
         {
             // *********
             // Agregar acá los procesos adicionales
@@ -945,7 +945,7 @@ namespace Mrln.Bll
                                           string p_strPatente,
                                           string p_strCodequip,
                                           int p_iFxdVersion,
-                                          ref StatMsg p_smResult)
+                                          StatMsg p_smResult)
         {
             // *********
             // Agregar acá los procesos adicionales
@@ -961,7 +961,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void MveqTInt_f(DBConn p_dbcAccess,
                                         EMovilEquip p_entMovilEquip,
-                                        ref StatMsg p_smResult)
+                                        StatMsg p_smResult)
         {
             // *********
             // Agregar acá las validaciones adicionales
@@ -977,7 +977,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void MvesSave_f(DBConn p_dbcAccess,
                                         ref EMovilEstado p_entMovilEstado,
-                                        ref StatMsg p_smResult)
+                                        StatMsg p_smResult)
         {
             // *********
             // Agregar acá los procesos adicionales
@@ -999,7 +999,7 @@ namespace Mrln.Bll
                                            string p_strPatente,
                                            DateTime p_dtFecha,
                                            ref int p_iFxdVersion,
-                                           ref StatMsg p_smResult)
+                                           StatMsg p_smResult)
         {
             // *********
             // Agregar acá los procesos adicionales
@@ -1019,7 +1019,7 @@ namespace Mrln.Bll
                                           string p_strPatente,
                                           DateTime p_dtFecha,
                                           int p_iFxdVersion,
-                                          ref StatMsg p_smResult)
+                                          StatMsg p_smResult)
         {
             // *********
             // Agregar acá los procesos adicionales
@@ -1035,7 +1035,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void MvesTInt_f(DBConn p_dbcAccess,
                                         EMovilEstado p_entMovilEstado,
-                                        ref StatMsg p_smResult)
+                                        StatMsg p_smResult)
         {
             // *********
             // Agregar acá las validaciones adicionales
@@ -1052,7 +1052,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void MvifSave_f(DBConn p_dbcAccess,
                                         ref EMovilInfraccion p_entMvlInfraccion,
-                                        ref StatMsg p_smResult)
+                                        StatMsg p_smResult)
         {
             // *********
             // Agregar acá los procesos adicionales
@@ -1074,7 +1074,7 @@ namespace Mrln.Bll
                                            string p_strPatente,
                                            DateTime p_dtFecha,
                                            ref int p_iFxdVersion,
-                                           ref StatMsg p_smResult)
+                                           StatMsg p_smResult)
         {
             // *********
             // Agregar acá los procesos adicionales
@@ -1094,7 +1094,7 @@ namespace Mrln.Bll
                                           string p_strPatente,
                                           DateTime p_dtFecha,
                                           int p_iFxdVersion,
-                                          ref StatMsg p_smResult)
+                                          StatMsg p_smResult)
         {
             // *********
             // Agregar acá los procesos adicionales
@@ -1110,7 +1110,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void MvifTInt_f(DBConn p_dbcAccess,
                                         EMovilInfraccion p_entMvlInfraccion,
-                                        ref StatMsg p_smResult)
+                                        StatMsg p_smResult)
         {
             // *********
             // Agregar acá las validaciones adicionales
@@ -1126,7 +1126,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void MvkmSave_f(DBConn p_dbcAccess,
                                         ref EMovilKms p_entMovilKms,
-                                        ref StatMsg p_smResult)
+                                        StatMsg p_smResult)
         {
             // *********
             // Agregar acá los procesos adicionales
@@ -1148,7 +1148,7 @@ namespace Mrln.Bll
                                            string p_strPatente,
                                            DateTime p_dtFecha,
                                            ref int p_iFxdVersion,
-                                           ref StatMsg p_smResult)
+                                           StatMsg p_smResult)
         {
             // *********
             // Agregar acá los procesos adicionales
@@ -1168,7 +1168,7 @@ namespace Mrln.Bll
                                           string p_strPatente,
                                           DateTime p_dtFecha,
                                           int p_iFxdVersion,
-                                          ref StatMsg p_smResult)
+                                          StatMsg p_smResult)
         {
             // *********
             // Agregar acá los procesos adicionales
@@ -1184,7 +1184,7 @@ namespace Mrln.Bll
         /// <param name="p_smResult">Estado final de la operacion</param>
         internal static void MvkmTInt_f(DBConn p_dbcAccess,
                                         EMovilKms p_entMovilKms,
-                                        ref StatMsg p_smResult)
+                                        StatMsg p_smResult)
         {
             // *********
             // Agregar acá las validaciones adicionales

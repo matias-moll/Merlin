@@ -17,11 +17,11 @@ namespace Mrln.Shr
         static int puertoSMTP;
 
         public static void enviarMail(List<string> destinatarios, string titulo, string textoMail, int nroCliente, 
-                                      string nombreArchivoAdjunto, decimal precio, ref StatMsg p_smResult)
+                                      string nombreArchivoAdjunto, decimal precio, StatMsg p_smResult)
         {
             try
             {
-                cargarParametros(ref p_smResult);
+                cargarParametros(p_smResult);
 
                 // Creamos el objeto mensaje de mail.
                 MailMessage msg = new MailMessage();
@@ -72,29 +72,29 @@ namespace Mrln.Shr
             }
         }
 
-        private static void cargarParametros(ref StatMsg p_smResult)
+        private static void cargarParametros(StatMsg p_smResult)
         {
-            EParametro paramMailRemit = App.ParaGet("mailRemit", true, ref p_smResult);
+            EParametro paramMailRemit = App.ParaGet("mailRemit", true, p_smResult);
             if (MsgRuts.AnalizeError(App.GetMainWindow(), p_smResult)) return;
             mailRemitente = paramMailRemit.VStr;
 
-            EParametro paramDireccionSMTP = App.ParaGet("direccionSMTP", true, ref p_smResult);
+            EParametro paramDireccionSMTP = App.ParaGet("direccionSMTP", true, p_smResult);
             if (MsgRuts.AnalizeError(App.GetMainWindow(), p_smResult)) return;
             direccionSMTP = paramDireccionSMTP.VStr;
 
-            EParametro paramMailCredential = App.ParaGet("mailCredential", true, ref p_smResult);
+            EParametro paramMailCredential = App.ParaGet("mailCredential", true, p_smResult);
             if (MsgRuts.AnalizeError(App.GetMainWindow(), p_smResult)) return;
             mailCredential = paramMailCredential.VStr;
 
-            EParametro paramPassCredential = App.ParaGet("passCredential", true, ref p_smResult);
+            EParametro paramPassCredential = App.ParaGet("passCredential", true, p_smResult);
             if (MsgRuts.AnalizeError(App.GetMainWindow(), p_smResult)) return;
             passCredential = paramPassCredential.VStr;
 
-            EParametro paramSafeMail = App.ParaGet("safeMail", true, ref p_smResult);
+            EParametro paramSafeMail = App.ParaGet("safeMail", true, p_smResult);
             if (MsgRuts.AnalizeError(App.GetMainWindow(), p_smResult)) return;
             safeMail = paramSafeMail.VStr;
 
-            EParametro paramPuertoSMTP = App.ParaGet("puertoSMTP", true, ref p_smResult);
+            EParametro paramPuertoSMTP = App.ParaGet("puertoSMTP", true, p_smResult);
             if (MsgRuts.AnalizeError(App.GetMainWindow(), p_smResult)) return;
             puertoSMTP = paramPuertoSMTP.VInt;
         }

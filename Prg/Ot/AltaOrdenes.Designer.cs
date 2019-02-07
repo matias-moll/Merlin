@@ -33,14 +33,12 @@
             this.xPanel1 = new TNGS.NetControls.XPanel();
             this.cdcTalleres = new TNGS.NetControls.CDCombo();
             this.fullLabel6 = new TNGS.NetControls.FullLabel();
-            this.tgrpOpciones = new TNGS.NetControls.TitledGroup();
             this.neSeleccionado = new TNGS.NetControls.NumberEdit();
             this.gbQuitarSeleccionado = new TNGS.NetControls.GlassButton();
             this.gbQuitarTodos = new TNGS.NetControls.GlassButton();
             this.gbAgregar = new TNGS.NetControls.GlassButton();
             this.gbQuitarUltimo = new TNGS.NetControls.GlassButton();
             this.fullLabel5 = new TNGS.NetControls.FullLabel();
-            this.tgrpControlesYRep = new TNGS.NetControls.TitledGroup();
             this.deImporte = new TNGS.NetControls.DecimalEdit();
             this.lstControlesReparaciones = new TNGS.NetControls.CDList();
             this.fullLabel4 = new TNGS.NetControls.FullLabel();
@@ -56,21 +54,25 @@
             this.gbCancel = new TNGS.NetControls.GlassButton();
             this.fullLabel2 = new TNGS.NetControls.FullLabel();
             this.fullLabel1 = new TNGS.NetControls.FullLabel();
+            this.tgrpControlesYRep = new TNGS.NetControls.ImgGroup();
+            this.tgrpOpciones = new TNGS.NetControls.ImgGroup();
             this.xPanel1.SuspendLayout();
-            this.tgrpOpciones.SuspendLayout();
-            this.tgrpControlesYRep.SuspendLayout();
             this.pnlOpciones.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fgControlRepaSeleccionados)).BeginInit();
+            this.tgrpControlesYRep.SuspendLayout();
+            this.tgrpOpciones.SuspendLayout();
             this.SuspendLayout();
             // 
             // xPanel1
             // 
             this.xPanel1.BackColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.xPanel1.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
-            this.xPanel1.Controls.Add(this.cdcTalleres);
-            this.xPanel1.Controls.Add(this.fullLabel6);
+            this.xPanel1.BorderColor = System.Drawing.Color.Black;
+            this.xPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.xPanel1.Controls.Add(this.tgrpOpciones);
             this.xPanel1.Controls.Add(this.tgrpControlesYRep);
+            this.xPanel1.Controls.Add(this.cdcTalleres);
+            this.xPanel1.Controls.Add(this.fullLabel6);
             this.xPanel1.Controls.Add(this.neOrdenTrabajo);
             this.xPanel1.Controls.Add(this.pnlOpciones);
             this.xPanel1.Controls.Add(this.cdcPatente);
@@ -83,7 +85,7 @@
             this.xPanel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xPanel1.Location = new System.Drawing.Point(0, 0);
             this.xPanel1.Name = "xPanel1";
-            this.xPanel1.Size = new System.Drawing.Size(860, 511);
+            this.xPanel1.Size = new System.Drawing.Size(860, 495);
             this.xPanel1.SkinFixed = true;
             this.xPanel1.TabIndex = 0;
             // 
@@ -94,7 +96,7 @@
             this.cdcTalleres.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cdcTalleres.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.cdcTalleres.FormattingEnabled = true;
-            this.cdcTalleres.Location = new System.Drawing.Point(311, 40);
+            this.cdcTalleres.Location = new System.Drawing.Point(311, 43);
             this.cdcTalleres.Name = "cdcTalleres";
             this.cdcTalleres.Size = new System.Drawing.Size(242, 23);
             this.cdcTalleres.Sorted = true;
@@ -104,54 +106,19 @@
             // 
             this.fullLabel6.BackColor = System.Drawing.Color.Transparent;
             this.fullLabel6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fullLabel6.Location = new System.Drawing.Point(259, 43);
+            this.fullLabel6.Location = new System.Drawing.Point(259, 46);
             this.fullLabel6.Name = "fullLabel6";
             this.fullLabel6.Size = new System.Drawing.Size(52, 23);
             this.fullLabel6.TabIndex = 19;
             this.fullLabel6.Text = "Taller:";
             // 
-            // tgrpOpciones
-            // 
-            this.tgrpOpciones.BackgroundColor = System.Drawing.Color.WhiteSmoke;
-            this.tgrpOpciones.BackgroundGradientColor = System.Drawing.Color.White;
-            this.tgrpOpciones.BackgroundGradientMode = TNGS.NetControls.TitledGroup.GroupBoxGradientMode.None;
-            this.tgrpOpciones.BlackBorder = true;
-            this.tgrpOpciones.BorderColor = System.Drawing.Color.WhiteSmoke;
-            this.tgrpOpciones.BorderThickness = 1F;
-            this.tgrpOpciones.Controls.Add(this.neSeleccionado);
-            this.tgrpOpciones.Controls.Add(this.gbQuitarSeleccionado);
-            this.tgrpOpciones.Controls.Add(this.gbQuitarTodos);
-            this.tgrpOpciones.Controls.Add(this.gbAgregar);
-            this.tgrpOpciones.Controls.Add(this.gbQuitarUltimo);
-            this.tgrpOpciones.Controls.Add(this.fullLabel5);
-            this.tgrpOpciones.CustomGroupBoxColor = System.Drawing.Color.White;
-            this.tgrpOpciones.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.tgrpOpciones.ForeColor = System.Drawing.Color.Black;
-            this.tgrpOpciones.ImageGroup = null;
-            this.tgrpOpciones.Location = new System.Drawing.Point(559, 69);
-            this.tgrpOpciones.Name = "tgrpOpciones";
-            this.tgrpOpciones.Padding = new System.Windows.Forms.Padding(20);
-            this.tgrpOpciones.PaintGroupBox = false;
-            this.tgrpOpciones.RoundCorners = 4;
-            this.tgrpOpciones.ShadowColor = System.Drawing.Color.DarkGray;
-            this.tgrpOpciones.ShadowControl = false;
-            this.tgrpOpciones.ShadowThickness = 3;
-            this.tgrpOpciones.Size = new System.Drawing.Size(291, 203);
-            this.tgrpOpciones.TabIndex = 17;
-            this.tgrpOpciones.Title = "Opciones";
-            this.tgrpOpciones.TitleAlignment = TNGS.NetControls.TitledGroup.TitleAlign.Center;
-            this.tgrpOpciones.TitleBackground = System.Drawing.SystemColors.HotTrack;
-            this.tgrpOpciones.TitleBackgroundDefault = TNGS.NetControls.ColorRuts.ColoresDefault.None;
-            this.tgrpOpciones.TitleFont = new System.Drawing.Font("Segoe UI", 10F);
-            this.tgrpOpciones.TitleFontColor = System.Drawing.Color.White;
-            // 
             // neSeleccionado
             // 
             this.neSeleccionado.BackColor = System.Drawing.SystemColors.Window;
             this.neSeleccionado.Enabled = false;
-            this.neSeleccionado.Location = new System.Drawing.Point(154, 38);
+            this.neSeleccionado.Location = new System.Drawing.Point(153, 38);
             this.neSeleccionado.Name = "neSeleccionado";
-            this.neSeleccionado.Size = new System.Drawing.Size(115, 23);
+            this.neSeleccionado.Size = new System.Drawing.Size(115, 21);
             this.neSeleccionado.TabIndex = 18;
             this.neSeleccionado.Text = "0";
             // 
@@ -161,19 +128,19 @@
             this.gbQuitarSeleccionado.BlackBorder = true;
             this.gbQuitarSeleccionado.ButtonMode = TNGS.NetControls.GlassButton.GBMode.Flat;
             this.gbQuitarSeleccionado.CircleButton = false;
-            this.gbQuitarSeleccionado.FixedFlatImage = TNGS.NetControls.FixedFlatImageButtons.Erase;
-            this.gbQuitarSeleccionado.FlatColor = System.Drawing.Color.RoyalBlue;
-            this.gbQuitarSeleccionado.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
+            this.gbQuitarSeleccionado.FixedFlatImage = TNGS.NetControls.FixedFlatImageButtons.Delete;
+            this.gbQuitarSeleccionado.FlatColor = System.Drawing.Color.DodgerBlue;
+            this.gbQuitarSeleccionado.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.LightBlue;
             this.gbQuitarSeleccionado.FlatFontSize = 9;
             this.gbQuitarSeleccionado.FlatTextColor = System.Drawing.Color.Black;
             this.gbQuitarSeleccionado.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.gbQuitarSeleccionado.Location = new System.Drawing.Point(154, 75);
+            this.gbQuitarSeleccionado.Location = new System.Drawing.Point(153, 75);
             this.gbQuitarSeleccionado.Name = "gbQuitarSeleccionado";
             this.gbQuitarSeleccionado.RoundCorners = 2;
             this.gbQuitarSeleccionado.Size = new System.Drawing.Size(125, 45);
             this.gbQuitarSeleccionado.TabIndex = 1;
             this.gbQuitarSeleccionado.Text = "Quitar Seleccionado";
-            this.gbQuitarSeleccionado.W8Color = System.Drawing.Color.RoyalBlue;
+            this.gbQuitarSeleccionado.W8Color = System.Drawing.Color.DodgerBlue;
             this.gbQuitarSeleccionado.Click += new System.EventHandler(this.gbQuitarSeleccionado_Click);
             // 
             // gbQuitarTodos
@@ -183,18 +150,18 @@
             this.gbQuitarTodos.ButtonMode = TNGS.NetControls.GlassButton.GBMode.Flat;
             this.gbQuitarTodos.CircleButton = false;
             this.gbQuitarTodos.FixedFlatImage = TNGS.NetControls.FixedFlatImageButtons.Trash;
-            this.gbQuitarTodos.FlatColor = System.Drawing.Color.RoyalBlue;
-            this.gbQuitarTodos.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
+            this.gbQuitarTodos.FlatColor = System.Drawing.Color.DodgerBlue;
+            this.gbQuitarTodos.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.LightBlue;
             this.gbQuitarTodos.FlatFontSize = 9;
             this.gbQuitarTodos.FlatTextColor = System.Drawing.Color.Black;
             this.gbQuitarTodos.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.gbQuitarTodos.Location = new System.Drawing.Point(154, 136);
+            this.gbQuitarTodos.Location = new System.Drawing.Point(153, 136);
             this.gbQuitarTodos.Name = "gbQuitarTodos";
             this.gbQuitarTodos.RoundCorners = 2;
             this.gbQuitarTodos.Size = new System.Drawing.Size(125, 44);
             this.gbQuitarTodos.TabIndex = 3;
             this.gbQuitarTodos.Text = "Quitar Todos";
-            this.gbQuitarTodos.W8Color = System.Drawing.Color.RoyalBlue;
+            this.gbQuitarTodos.W8Color = System.Drawing.Color.DodgerBlue;
             this.gbQuitarTodos.Click += new System.EventHandler(this.gbQuitarTodos_Click);
             // 
             // gbAgregar
@@ -206,18 +173,18 @@
             this.gbAgregar.CircleButton = false;
             this.gbAgregar.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.gbAgregar.FixedFlatImage = TNGS.NetControls.FixedFlatImageButtons.Add;
-            this.gbAgregar.FlatColor = System.Drawing.Color.RoyalBlue;
-            this.gbAgregar.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.Default;
+            this.gbAgregar.FlatColor = System.Drawing.Color.DodgerBlue;
+            this.gbAgregar.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.LightBlue;
             this.gbAgregar.FlatFontSize = 9;
             this.gbAgregar.FlatTextColor = System.Drawing.Color.Black;
             this.gbAgregar.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.gbAgregar.Location = new System.Drawing.Point(20, 75);
+            this.gbAgregar.Location = new System.Drawing.Point(19, 75);
             this.gbAgregar.Name = "gbAgregar";
             this.gbAgregar.RoundCorners = 2;
             this.gbAgregar.Size = new System.Drawing.Size(118, 45);
             this.gbAgregar.TabIndex = 0;
             this.gbAgregar.Text = "Agregar";
-            this.gbAgregar.W8Color = System.Drawing.Color.RoyalBlue;
+            this.gbAgregar.W8Color = System.Drawing.Color.DodgerBlue;
             this.gbAgregar.Click += new System.EventHandler(this.gbAgregar_Click);
             // 
             // gbQuitarUltimo
@@ -227,79 +194,45 @@
             this.gbQuitarUltimo.ButtonMode = TNGS.NetControls.GlassButton.GBMode.Flat;
             this.gbQuitarUltimo.CircleButton = false;
             this.gbQuitarUltimo.FixedFlatImage = TNGS.NetControls.FixedFlatImageButtons.Delete;
-            this.gbQuitarUltimo.FlatColor = System.Drawing.Color.RoyalBlue;
-            this.gbQuitarUltimo.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.Default;
+            this.gbQuitarUltimo.FlatColor = System.Drawing.Color.DodgerBlue;
+            this.gbQuitarUltimo.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.LightBlue;
             this.gbQuitarUltimo.FlatFontSize = 9;
             this.gbQuitarUltimo.FlatTextColor = System.Drawing.Color.Black;
             this.gbQuitarUltimo.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.gbQuitarUltimo.Location = new System.Drawing.Point(21, 136);
+            this.gbQuitarUltimo.Location = new System.Drawing.Point(20, 136);
             this.gbQuitarUltimo.Name = "gbQuitarUltimo";
             this.gbQuitarUltimo.RoundCorners = 2;
-            this.gbQuitarUltimo.Size = new System.Drawing.Size(118, 44);
+            this.gbQuitarUltimo.Size = new System.Drawing.Size(117, 44);
             this.gbQuitarUltimo.TabIndex = 2;
             this.gbQuitarUltimo.Text = "Quitar Último";
-            this.gbQuitarUltimo.W8Color = System.Drawing.Color.RoyalBlue;
+            this.gbQuitarUltimo.W8Color = System.Drawing.Color.DodgerBlue;
             this.gbQuitarUltimo.Click += new System.EventHandler(this.gbQuitarUltimo_Click);
             // 
             // fullLabel5
             // 
             this.fullLabel5.BackColor = System.Drawing.Color.Transparent;
             this.fullLabel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fullLabel5.Location = new System.Drawing.Point(17, 38);
+            this.fullLabel5.Location = new System.Drawing.Point(16, 38);
             this.fullLabel5.Name = "fullLabel5";
             this.fullLabel5.Size = new System.Drawing.Size(130, 17);
             this.fullLabel5.TabIndex = 17;
             this.fullLabel5.Text = "Item Seleccionado:";
             // 
-            // tgrpControlesYRep
-            // 
-            this.tgrpControlesYRep.BackgroundColor = System.Drawing.Color.WhiteSmoke;
-            this.tgrpControlesYRep.BackgroundGradientColor = System.Drawing.Color.White;
-            this.tgrpControlesYRep.BackgroundGradientMode = TNGS.NetControls.TitledGroup.GroupBoxGradientMode.None;
-            this.tgrpControlesYRep.BlackBorder = true;
-            this.tgrpControlesYRep.BorderColor = System.Drawing.Color.WhiteSmoke;
-            this.tgrpControlesYRep.BorderThickness = 1F;
-            this.tgrpControlesYRep.Controls.Add(this.deImporte);
-            this.tgrpControlesYRep.Controls.Add(this.lstControlesReparaciones);
-            this.tgrpControlesYRep.Controls.Add(this.fullLabel4);
-            this.tgrpControlesYRep.Controls.Add(this.teComentario);
-            this.tgrpControlesYRep.Controls.Add(this.fullLabel3);
-            this.tgrpControlesYRep.CustomGroupBoxColor = System.Drawing.Color.White;
-            this.tgrpControlesYRep.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.tgrpControlesYRep.ForeColor = System.Drawing.Color.Black;
-            this.tgrpControlesYRep.ImageGroup = null;
-            this.tgrpControlesYRep.Location = new System.Drawing.Point(18, 69);
-            this.tgrpControlesYRep.Name = "tgrpControlesYRep";
-            this.tgrpControlesYRep.Padding = new System.Windows.Forms.Padding(20);
-            this.tgrpControlesYRep.PaintGroupBox = false;
-            this.tgrpControlesYRep.RoundCorners = 4;
-            this.tgrpControlesYRep.ShadowColor = System.Drawing.Color.DarkGray;
-            this.tgrpControlesYRep.ShadowControl = false;
-            this.tgrpControlesYRep.ShadowThickness = 3;
-            this.tgrpControlesYRep.Size = new System.Drawing.Size(535, 203);
-            this.tgrpControlesYRep.TabIndex = 16;
-            this.tgrpControlesYRep.Title = "Controles y Reparaciones";
-            this.tgrpControlesYRep.TitleAlignment = TNGS.NetControls.TitledGroup.TitleAlign.Center;
-            this.tgrpControlesYRep.TitleBackground = System.Drawing.SystemColors.HotTrack;
-            this.tgrpControlesYRep.TitleBackgroundDefault = TNGS.NetControls.ColorRuts.ColoresDefault.None;
-            this.tgrpControlesYRep.TitleFont = new System.Drawing.Font("Segoe UI", 10F);
-            this.tgrpControlesYRep.TitleFontColor = System.Drawing.Color.White;
-            // 
             // deImporte
             // 
             this.deImporte.BackColor = System.Drawing.SystemColors.Window;
-            this.deImporte.Location = new System.Drawing.Point(410, 35);
+            this.deImporte.Location = new System.Drawing.Point(411, 33);
             this.deImporte.MaxLength = 13;
             this.deImporte.Name = "deImporte";
-            this.deImporte.Size = new System.Drawing.Size(113, 23);
+            this.deImporte.Size = new System.Drawing.Size(113, 21);
             this.deImporte.TabIndex = 3;
-            this.deImporte.Text = "0,00";
+            this.deImporte.Text = "0.00";
             // 
             // lstControlesReparaciones
             // 
             this.lstControlesReparaciones.FormattingEnabled = true;
             this.lstControlesReparaciones.ItemHeight = 15;
-            this.lstControlesReparaciones.Location = new System.Drawing.Point(12, 36);
+            this.lstControlesReparaciones.Location = new System.Drawing.Point(13, 34);
             this.lstControlesReparaciones.Name = "lstControlesReparaciones";
             this.lstControlesReparaciones.Size = new System.Drawing.Size(270, 154);
             this.lstControlesReparaciones.Sorted = true;
@@ -308,7 +241,7 @@
             // fullLabel4
             // 
             this.fullLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fullLabel4.Location = new System.Drawing.Point(290, 38);
+            this.fullLabel4.Location = new System.Drawing.Point(291, 36);
             this.fullLabel4.Name = "fullLabel4";
             this.fullLabel4.Size = new System.Drawing.Size(79, 21);
             this.fullLabel4.TabIndex = 14;
@@ -317,7 +250,7 @@
             // teComentario
             // 
             this.teComentario.BackColor = System.Drawing.SystemColors.Window;
-            this.teComentario.Location = new System.Drawing.Point(290, 88);
+            this.teComentario.Location = new System.Drawing.Point(291, 86);
             this.teComentario.Multiline = true;
             this.teComentario.Name = "teComentario";
             this.teComentario.Size = new System.Drawing.Size(233, 101);
@@ -326,7 +259,7 @@
             // fullLabel3
             // 
             this.fullLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fullLabel3.Location = new System.Drawing.Point(288, 67);
+            this.fullLabel3.Location = new System.Drawing.Point(289, 65);
             this.fullLabel3.Name = "fullLabel3";
             this.fullLabel3.Size = new System.Drawing.Size(100, 18);
             this.fullLabel3.TabIndex = 13;
@@ -336,7 +269,7 @@
             // 
             this.neOrdenTrabajo.BackColor = System.Drawing.SystemColors.Window;
             this.neOrdenTrabajo.Enabled = false;
-            this.neOrdenTrabajo.Location = new System.Drawing.Point(764, 8);
+            this.neOrdenTrabajo.Location = new System.Drawing.Point(764, 10);
             this.neOrdenTrabajo.Name = "neOrdenTrabajo";
             this.neOrdenTrabajo.Size = new System.Drawing.Size(79, 21);
             this.neOrdenTrabajo.TabIndex = 13;
@@ -347,7 +280,7 @@
             this.pnlOpciones.BackColor = System.Drawing.Color.Transparent;
             this.pnlOpciones.Controls.Add(this.rbReparaciones);
             this.pnlOpciones.Controls.Add(this.rbControles);
-            this.pnlOpciones.Location = new System.Drawing.Point(33, 38);
+            this.pnlOpciones.Location = new System.Drawing.Point(33, 41);
             this.pnlOpciones.Name = "pnlOpciones";
             this.pnlOpciones.Size = new System.Drawing.Size(198, 25);
             this.pnlOpciones.TabIndex = 12;
@@ -385,7 +318,7 @@
             this.cdcPatente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cdcPatente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.cdcPatente.FormattingEnabled = true;
-            this.cdcPatente.Location = new System.Drawing.Point(127, 6);
+            this.cdcPatente.Location = new System.Drawing.Point(127, 8);
             this.cdcPatente.Name = "cdcPatente";
             this.cdcPatente.Size = new System.Drawing.Size(119, 23);
             this.cdcPatente.Sorted = true;
@@ -398,19 +331,20 @@
             this.gbAccept.BlackBorder = true;
             this.gbAccept.ButtonMode = TNGS.NetControls.GlassButton.GBMode.Flat;
             this.gbAccept.CircleButton = false;
-            this.gbAccept.FixedFlatImage = TNGS.NetControls.FixedFlatImageButtons.Ok;
-            this.gbAccept.FlatColor = System.Drawing.Color.RoyalBlue;
-            this.gbAccept.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
+            this.gbAccept.FixedFlatImage = TNGS.NetControls.FixedFlatImageButtons.Accept;
+            this.gbAccept.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.gbAccept.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.Aceptar;
             this.gbAccept.FlatFontSize = 9;
             this.gbAccept.FlatTextColor = System.Drawing.Color.Black;
             this.gbAccept.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.gbAccept.Location = new System.Drawing.Point(755, 468);
+            this.gbAccept.Location = new System.Drawing.Point(766, 460);
             this.gbAccept.Name = "gbAccept";
             this.gbAccept.RoundCorners = 2;
-            this.gbAccept.Size = new System.Drawing.Size(93, 31);
+            this.gbAccept.Size = new System.Drawing.Size(82, 25);
             this.gbAccept.TabIndex = 4;
             this.gbAccept.Text = "Aceptar";
-            this.gbAccept.W8Color = System.Drawing.Color.RoyalBlue;
+            this.gbAccept.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.gbAccept.W8Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.gbAccept.Click += new System.EventHandler(this.gbAccept_Click);
             // 
             // fgControlRepaSeleccionados
@@ -438,26 +372,27 @@
             this.gbCancel.BlackBorder = true;
             this.gbCancel.ButtonMode = TNGS.NetControls.GlassButton.GBMode.Flat;
             this.gbCancel.CircleButton = false;
-            this.gbCancel.FixedFlatImage = TNGS.NetControls.FixedFlatImageButtons.Delete;
-            this.gbCancel.FlatColor = System.Drawing.Color.RoyalBlue;
-            this.gbCancel.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
+            this.gbCancel.FixedFlatImage = TNGS.NetControls.FixedFlatImageButtons.Cancel;
+            this.gbCancel.FlatColor = System.Drawing.Color.Red;
+            this.gbCancel.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.Cancelar;
             this.gbCancel.FlatFontSize = 9;
             this.gbCancel.FlatTextColor = System.Drawing.Color.Black;
             this.gbCancel.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.gbCancel.Location = new System.Drawing.Point(646, 468);
+            this.gbCancel.Location = new System.Drawing.Point(657, 460);
             this.gbCancel.Name = "gbCancel";
             this.gbCancel.RoundCorners = 2;
-            this.gbCancel.Size = new System.Drawing.Size(103, 31);
+            this.gbCancel.Size = new System.Drawing.Size(88, 25);
             this.gbCancel.TabIndex = 3;
             this.gbCancel.Text = "Cancelar";
-            this.gbCancel.W8Color = System.Drawing.Color.RoyalBlue;
+            this.gbCancel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.gbCancel.W8Color = System.Drawing.Color.Red;
             this.gbCancel.Click += new System.EventHandler(this.gbCancel_Click);
             // 
             // fullLabel2
             // 
             this.fullLabel2.BackColor = System.Drawing.Color.Transparent;
             this.fullLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fullLabel2.Location = new System.Drawing.Point(591, 9);
+            this.fullLabel2.Location = new System.Drawing.Point(591, 11);
             this.fullLabel2.Name = "fullLabel2";
             this.fullLabel2.Size = new System.Drawing.Size(180, 21);
             this.fullLabel2.TabIndex = 5;
@@ -467,19 +402,89 @@
             // 
             this.fullLabel1.BackColor = System.Drawing.Color.Transparent;
             this.fullLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fullLabel1.Location = new System.Drawing.Point(30, 8);
+            this.fullLabel1.Location = new System.Drawing.Point(30, 10);
             this.fullLabel1.Name = "fullLabel1";
             this.fullLabel1.Size = new System.Drawing.Size(98, 23);
             this.fullLabel1.TabIndex = 1;
             this.fullLabel1.Text = "Movil Patente:";
             // 
+            // tgrpControlesYRep
+            // 
+            this.tgrpControlesYRep.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.tgrpControlesYRep.BackgroundGradientColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
+            this.tgrpControlesYRep.BackgroundGradientMode = TNGS.NetControls.ImgGroup.GroupBoxGradientMode.ForwardDiagonal;
+            this.tgrpControlesYRep.BlackBorder = true;
+            this.tgrpControlesYRep.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.tgrpControlesYRep.BorderThickness = 1F;
+            this.tgrpControlesYRep.Controls.Add(this.deImporte);
+            this.tgrpControlesYRep.Controls.Add(this.lstControlesReparaciones);
+            this.tgrpControlesYRep.Controls.Add(this.fullLabel3);
+            this.tgrpControlesYRep.Controls.Add(this.fullLabel4);
+            this.tgrpControlesYRep.Controls.Add(this.teComentario);
+            this.tgrpControlesYRep.CustomGroupBoxColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
+            this.tgrpControlesYRep.FlatMode = true;
+            this.tgrpControlesYRep.FontTitle = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tgrpControlesYRep.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.tgrpControlesYRep.GroupImage = null;
+            this.tgrpControlesYRep.GroupTitle = "Controles y Reparaciones";
+            this.tgrpControlesYRep.Location = new System.Drawing.Point(18, 72);
+            this.tgrpControlesYRep.Name = "tgrpControlesYRep";
+            this.tgrpControlesYRep.Padding = new System.Windows.Forms.Padding(20);
+            this.tgrpControlesYRep.PaintGroupBox = false;
+            this.tgrpControlesYRep.RoundCorners = 4;
+            this.tgrpControlesYRep.ShadowColor = System.Drawing.Color.DarkGray;
+            this.tgrpControlesYRep.ShadowControl = false;
+            this.tgrpControlesYRep.ShadowThickness = 3;
+            this.tgrpControlesYRep.Size = new System.Drawing.Size(535, 203);
+            this.tgrpControlesYRep.SkinFixed = true;
+            this.tgrpControlesYRep.TabIndex = 20;
+            this.tgrpControlesYRep.TitleBackground = System.Drawing.Color.DodgerBlue;
+            this.tgrpControlesYRep.TitleBackgroundDefault = TNGS.NetControls.ColorRuts.ColoresDefault.None;
+            this.tgrpControlesYRep.TitleFontColor = System.Drawing.Color.White;
+            // 
+            // tgrpOpciones
+            // 
+            this.tgrpOpciones.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.tgrpOpciones.BackgroundGradientColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
+            this.tgrpOpciones.BackgroundGradientMode = TNGS.NetControls.ImgGroup.GroupBoxGradientMode.ForwardDiagonal;
+            this.tgrpOpciones.BlackBorder = true;
+            this.tgrpOpciones.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.tgrpOpciones.BorderThickness = 1F;
+            this.tgrpOpciones.Controls.Add(this.neSeleccionado);
+            this.tgrpOpciones.Controls.Add(this.gbQuitarSeleccionado);
+            this.tgrpOpciones.Controls.Add(this.fullLabel5);
+            this.tgrpOpciones.Controls.Add(this.gbQuitarTodos);
+            this.tgrpOpciones.Controls.Add(this.gbQuitarUltimo);
+            this.tgrpOpciones.Controls.Add(this.gbAgregar);
+            this.tgrpOpciones.CustomGroupBoxColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
+            this.tgrpOpciones.FlatMode = true;
+            this.tgrpOpciones.FontTitle = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tgrpOpciones.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.tgrpOpciones.GroupImage = null;
+            this.tgrpOpciones.GroupTitle = "Opciones";
+            this.tgrpOpciones.Location = new System.Drawing.Point(559, 72);
+            this.tgrpOpciones.Name = "tgrpOpciones";
+            this.tgrpOpciones.Padding = new System.Windows.Forms.Padding(20);
+            this.tgrpOpciones.PaintGroupBox = false;
+            this.tgrpOpciones.RoundCorners = 4;
+            this.tgrpOpciones.ShadowColor = System.Drawing.Color.DarkGray;
+            this.tgrpOpciones.ShadowControl = false;
+            this.tgrpOpciones.ShadowThickness = 3;
+            this.tgrpOpciones.Size = new System.Drawing.Size(291, 203);
+            this.tgrpOpciones.SkinFixed = true;
+            this.tgrpOpciones.TabIndex = 21;
+            this.tgrpOpciones.TitleBackground = System.Drawing.Color.DodgerBlue;
+            this.tgrpOpciones.TitleBackgroundDefault = TNGS.NetControls.ColorRuts.ColoresDefault.None;
+            this.tgrpOpciones.TitleFontColor = System.Drawing.Color.White;
+            // 
             // AltaOrdenes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(860, 511);
+            this.ClientSize = new System.Drawing.Size(860, 495);
             this.Controls.Add(this.xPanel1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AltaOrdenes";
             this.ShowIcon = false;
@@ -487,13 +492,13 @@
             this.Text = "Nueva Orden de Trabajo";
             this.xPanel1.ResumeLayout(false);
             this.xPanel1.PerformLayout();
-            this.tgrpOpciones.ResumeLayout(false);
-            this.tgrpOpciones.PerformLayout();
-            this.tgrpControlesYRep.ResumeLayout(false);
-            this.tgrpControlesYRep.PerformLayout();
             this.pnlOpciones.ResumeLayout(false);
             this.pnlOpciones.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fgControlRepaSeleccionados)).EndInit();
+            this.tgrpControlesYRep.ResumeLayout(false);
+            this.tgrpControlesYRep.PerformLayout();
+            this.tgrpOpciones.ResumeLayout(false);
+            this.tgrpOpciones.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -522,9 +527,9 @@
         private TNGS.NetControls.FullLabel fullLabel5;
         private TNGS.NetControls.NumberEdit neSeleccionado;
         private TNGS.NetControls.NumberEdit neOrdenTrabajo;
-        private TNGS.NetControls.TitledGroup tgrpOpciones;
-        private TNGS.NetControls.TitledGroup tgrpControlesYRep;
         private TNGS.NetControls.CDCombo cdcTalleres;
         private TNGS.NetControls.FullLabel fullLabel6;
+        private TNGS.NetControls.ImgGroup tgrpOpciones;
+        private TNGS.NetControls.ImgGroup tgrpControlesYRep;
     }
 }
