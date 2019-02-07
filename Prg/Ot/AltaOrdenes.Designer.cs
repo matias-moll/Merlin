@@ -85,7 +85,7 @@
             this.xPanel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xPanel1.Location = new System.Drawing.Point(0, 0);
             this.xPanel1.Name = "xPanel1";
-            this.xPanel1.Size = new System.Drawing.Size(860, 495);
+            this.xPanel1.Size = new System.Drawing.Size(1003, 571);
             this.xPanel1.SkinFixed = true;
             this.xPanel1.TabIndex = 0;
             // 
@@ -96,9 +96,9 @@
             this.cdcTalleres.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cdcTalleres.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.cdcTalleres.FormattingEnabled = true;
-            this.cdcTalleres.Location = new System.Drawing.Point(311, 43);
+            this.cdcTalleres.Location = new System.Drawing.Point(363, 50);
             this.cdcTalleres.Name = "cdcTalleres";
-            this.cdcTalleres.Size = new System.Drawing.Size(242, 23);
+            this.cdcTalleres.Size = new System.Drawing.Size(282, 23);
             this.cdcTalleres.Sorted = true;
             this.cdcTalleres.TabIndex = 18;
             // 
@@ -106,9 +106,9 @@
             // 
             this.fullLabel6.BackColor = System.Drawing.Color.Transparent;
             this.fullLabel6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fullLabel6.Location = new System.Drawing.Point(259, 46);
+            this.fullLabel6.Location = new System.Drawing.Point(302, 53);
             this.fullLabel6.Name = "fullLabel6";
-            this.fullLabel6.Size = new System.Drawing.Size(52, 23);
+            this.fullLabel6.Size = new System.Drawing.Size(61, 27);
             this.fullLabel6.TabIndex = 19;
             this.fullLabel6.Text = "Taller:";
             // 
@@ -116,9 +116,9 @@
             // 
             this.neSeleccionado.BackColor = System.Drawing.SystemColors.Window;
             this.neSeleccionado.Enabled = false;
-            this.neSeleccionado.Location = new System.Drawing.Point(153, 38);
+            this.neSeleccionado.Location = new System.Drawing.Point(178, 44);
             this.neSeleccionado.Name = "neSeleccionado";
-            this.neSeleccionado.Size = new System.Drawing.Size(115, 21);
+            this.neSeleccionado.Size = new System.Drawing.Size(133, 21);
             this.neSeleccionado.TabIndex = 18;
             this.neSeleccionado.Text = "0";
             // 
@@ -134,10 +134,10 @@
             this.gbQuitarSeleccionado.FlatFontSize = 9;
             this.gbQuitarSeleccionado.FlatTextColor = System.Drawing.Color.Black;
             this.gbQuitarSeleccionado.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.gbQuitarSeleccionado.Location = new System.Drawing.Point(153, 75);
+            this.gbQuitarSeleccionado.Location = new System.Drawing.Point(178, 87);
             this.gbQuitarSeleccionado.Name = "gbQuitarSeleccionado";
             this.gbQuitarSeleccionado.RoundCorners = 2;
-            this.gbQuitarSeleccionado.Size = new System.Drawing.Size(125, 45);
+            this.gbQuitarSeleccionado.Size = new System.Drawing.Size(146, 52);
             this.gbQuitarSeleccionado.TabIndex = 1;
             this.gbQuitarSeleccionado.Text = "Quitar Seleccionado";
             this.gbQuitarSeleccionado.W8Color = System.Drawing.Color.DodgerBlue;
@@ -155,10 +155,10 @@
             this.gbQuitarTodos.FlatFontSize = 9;
             this.gbQuitarTodos.FlatTextColor = System.Drawing.Color.Black;
             this.gbQuitarTodos.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.gbQuitarTodos.Location = new System.Drawing.Point(153, 136);
+            this.gbQuitarTodos.Location = new System.Drawing.Point(178, 157);
             this.gbQuitarTodos.Name = "gbQuitarTodos";
             this.gbQuitarTodos.RoundCorners = 2;
-            this.gbQuitarTodos.Size = new System.Drawing.Size(125, 44);
+            this.gbQuitarTodos.Size = new System.Drawing.Size(146, 51);
             this.gbQuitarTodos.TabIndex = 3;
             this.gbQuitarTodos.Text = "Quitar Todos";
             this.gbQuitarTodos.W8Color = System.Drawing.Color.DodgerBlue;
@@ -178,10 +178,10 @@
             this.gbAgregar.FlatFontSize = 9;
             this.gbAgregar.FlatTextColor = System.Drawing.Color.Black;
             this.gbAgregar.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.gbAgregar.Location = new System.Drawing.Point(19, 75);
+            this.gbAgregar.Location = new System.Drawing.Point(22, 87);
             this.gbAgregar.Name = "gbAgregar";
             this.gbAgregar.RoundCorners = 2;
-            this.gbAgregar.Size = new System.Drawing.Size(118, 45);
+            this.gbAgregar.Size = new System.Drawing.Size(138, 52);
             this.gbAgregar.TabIndex = 0;
             this.gbAgregar.Text = "Agregar";
             this.gbAgregar.W8Color = System.Drawing.Color.DodgerBlue;
@@ -199,10 +199,10 @@
             this.gbQuitarUltimo.FlatFontSize = 9;
             this.gbQuitarUltimo.FlatTextColor = System.Drawing.Color.Black;
             this.gbQuitarUltimo.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.gbQuitarUltimo.Location = new System.Drawing.Point(20, 136);
+            this.gbQuitarUltimo.Location = new System.Drawing.Point(23, 157);
             this.gbQuitarUltimo.Name = "gbQuitarUltimo";
             this.gbQuitarUltimo.RoundCorners = 2;
-            this.gbQuitarUltimo.Size = new System.Drawing.Size(117, 44);
+            this.gbQuitarUltimo.Size = new System.Drawing.Size(136, 51);
             this.gbQuitarUltimo.TabIndex = 2;
             this.gbQuitarUltimo.Text = "Quitar Último";
             this.gbQuitarUltimo.W8Color = System.Drawing.Color.DodgerBlue;
@@ -212,19 +212,19 @@
             // 
             this.fullLabel5.BackColor = System.Drawing.Color.Transparent;
             this.fullLabel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fullLabel5.Location = new System.Drawing.Point(16, 38);
+            this.fullLabel5.Location = new System.Drawing.Point(19, 44);
             this.fullLabel5.Name = "fullLabel5";
-            this.fullLabel5.Size = new System.Drawing.Size(130, 17);
+            this.fullLabel5.Size = new System.Drawing.Size(152, 20);
             this.fullLabel5.TabIndex = 17;
             this.fullLabel5.Text = "Item Seleccionado:";
             // 
             // deImporte
             // 
             this.deImporte.BackColor = System.Drawing.SystemColors.Window;
-            this.deImporte.Location = new System.Drawing.Point(411, 33);
+            this.deImporte.Location = new System.Drawing.Point(479, 38);
             this.deImporte.MaxLength = 13;
             this.deImporte.Name = "deImporte";
-            this.deImporte.Size = new System.Drawing.Size(113, 21);
+            this.deImporte.Size = new System.Drawing.Size(131, 21);
             this.deImporte.TabIndex = 3;
             this.deImporte.Text = "0.00";
             // 
@@ -232,36 +232,36 @@
             // 
             this.lstControlesReparaciones.FormattingEnabled = true;
             this.lstControlesReparaciones.ItemHeight = 15;
-            this.lstControlesReparaciones.Location = new System.Drawing.Point(13, 34);
+            this.lstControlesReparaciones.Location = new System.Drawing.Point(15, 39);
             this.lstControlesReparaciones.Name = "lstControlesReparaciones";
-            this.lstControlesReparaciones.Size = new System.Drawing.Size(270, 154);
+            this.lstControlesReparaciones.Size = new System.Drawing.Size(314, 169);
             this.lstControlesReparaciones.Sorted = true;
             this.lstControlesReparaciones.TabIndex = 2;
             // 
             // fullLabel4
             // 
             this.fullLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fullLabel4.Location = new System.Drawing.Point(291, 36);
+            this.fullLabel4.Location = new System.Drawing.Point(339, 42);
             this.fullLabel4.Name = "fullLabel4";
-            this.fullLabel4.Size = new System.Drawing.Size(79, 21);
+            this.fullLabel4.Size = new System.Drawing.Size(92, 24);
             this.fullLabel4.TabIndex = 14;
             this.fullLabel4.Text = "Importe:";
             // 
             // teComentario
             // 
             this.teComentario.BackColor = System.Drawing.SystemColors.Window;
-            this.teComentario.Location = new System.Drawing.Point(291, 86);
+            this.teComentario.Location = new System.Drawing.Point(339, 99);
             this.teComentario.Multiline = true;
             this.teComentario.Name = "teComentario";
-            this.teComentario.Size = new System.Drawing.Size(233, 101);
+            this.teComentario.Size = new System.Drawing.Size(271, 116);
             this.teComentario.TabIndex = 4;
             // 
             // fullLabel3
             // 
             this.fullLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fullLabel3.Location = new System.Drawing.Point(289, 65);
+            this.fullLabel3.Location = new System.Drawing.Point(337, 75);
             this.fullLabel3.Name = "fullLabel3";
-            this.fullLabel3.Size = new System.Drawing.Size(100, 18);
+            this.fullLabel3.Size = new System.Drawing.Size(117, 21);
             this.fullLabel3.TabIndex = 13;
             this.fullLabel3.Text = "Comentario:";
             // 
@@ -269,9 +269,9 @@
             // 
             this.neOrdenTrabajo.BackColor = System.Drawing.SystemColors.Window;
             this.neOrdenTrabajo.Enabled = false;
-            this.neOrdenTrabajo.Location = new System.Drawing.Point(764, 10);
+            this.neOrdenTrabajo.Location = new System.Drawing.Point(891, 12);
             this.neOrdenTrabajo.Name = "neOrdenTrabajo";
-            this.neOrdenTrabajo.Size = new System.Drawing.Size(79, 21);
+            this.neOrdenTrabajo.Size = new System.Drawing.Size(91, 21);
             this.neOrdenTrabajo.TabIndex = 13;
             this.neOrdenTrabajo.Text = "0";
             // 
@@ -280,17 +280,17 @@
             this.pnlOpciones.BackColor = System.Drawing.Color.Transparent;
             this.pnlOpciones.Controls.Add(this.rbReparaciones);
             this.pnlOpciones.Controls.Add(this.rbControles);
-            this.pnlOpciones.Location = new System.Drawing.Point(33, 41);
+            this.pnlOpciones.Location = new System.Drawing.Point(38, 47);
             this.pnlOpciones.Name = "pnlOpciones";
-            this.pnlOpciones.Size = new System.Drawing.Size(198, 25);
+            this.pnlOpciones.Size = new System.Drawing.Size(231, 29);
             this.pnlOpciones.TabIndex = 12;
             // 
             // rbReparaciones
             // 
             this.rbReparaciones.AutoSize = true;
-            this.rbReparaciones.Location = new System.Drawing.Point(93, 3);
+            this.rbReparaciones.Location = new System.Drawing.Point(108, 3);
             this.rbReparaciones.Name = "rbReparaciones";
-            this.rbReparaciones.Size = new System.Drawing.Size(102, 19);
+            this.rbReparaciones.Size = new System.Drawing.Size(119, 22);
             this.rbReparaciones.TabIndex = 1;
             this.rbReparaciones.TabStop = true;
             this.rbReparaciones.Text = "Reparaciones";
@@ -304,7 +304,7 @@
             this.rbControles.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbControles.Location = new System.Drawing.Point(3, 3);
             this.rbControles.Name = "rbControles";
-            this.rbControles.Size = new System.Drawing.Size(77, 19);
+            this.rbControles.Size = new System.Drawing.Size(90, 22);
             this.rbControles.TabIndex = 0;
             this.rbControles.TabStop = true;
             this.rbControles.Text = "Controles";
@@ -318,9 +318,9 @@
             this.cdcPatente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cdcPatente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.cdcPatente.FormattingEnabled = true;
-            this.cdcPatente.Location = new System.Drawing.Point(127, 8);
+            this.cdcPatente.Location = new System.Drawing.Point(148, 9);
             this.cdcPatente.Name = "cdcPatente";
-            this.cdcPatente.Size = new System.Drawing.Size(119, 23);
+            this.cdcPatente.Size = new System.Drawing.Size(138, 23);
             this.cdcPatente.Sorted = true;
             this.cdcPatente.TabIndex = 0;
             this.cdcPatente.SelectedIndexChanged += new System.EventHandler(this.cdcPatente_SelectedIndexChanged);
@@ -337,10 +337,10 @@
             this.gbAccept.FlatFontSize = 9;
             this.gbAccept.FlatTextColor = System.Drawing.Color.Black;
             this.gbAccept.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.gbAccept.Location = new System.Drawing.Point(766, 460);
+            this.gbAccept.Location = new System.Drawing.Point(894, 531);
             this.gbAccept.Name = "gbAccept";
             this.gbAccept.RoundCorners = 2;
-            this.gbAccept.Size = new System.Drawing.Size(82, 25);
+            this.gbAccept.Size = new System.Drawing.Size(96, 29);
             this.gbAccept.TabIndex = 4;
             this.gbAccept.Text = "Aceptar";
             this.gbAccept.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -359,9 +359,9 @@
             this.fgControlRepaSeleccionados.ExcelTitle = "";
             this.fgControlRepaSeleccionados.GridOrder = "";
             this.fgControlRepaSeleccionados.HeaderForeColor = System.Drawing.SystemColors.ControlText;
-            this.fgControlRepaSeleccionados.Location = new System.Drawing.Point(18, 283);
+            this.fgControlRepaSeleccionados.Location = new System.Drawing.Point(21, 327);
             this.fgControlRepaSeleccionados.Name = "fgControlRepaSeleccionados";
-            this.fgControlRepaSeleccionados.Size = new System.Drawing.Size(832, 169);
+            this.fgControlRepaSeleccionados.Size = new System.Drawing.Size(971, 195);
             this.fgControlRepaSeleccionados.SkinFixed = true;
             this.fgControlRepaSeleccionados.TabIndex = 0;
             this.fgControlRepaSeleccionados.CurrentCellChanged += new System.EventHandler(this.fgControlRepaSeleccionados_CurrentCellChanged);
@@ -378,10 +378,10 @@
             this.gbCancel.FlatFontSize = 9;
             this.gbCancel.FlatTextColor = System.Drawing.Color.Black;
             this.gbCancel.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.gbCancel.Location = new System.Drawing.Point(657, 460);
+            this.gbCancel.Location = new System.Drawing.Point(766, 531);
             this.gbCancel.Name = "gbCancel";
             this.gbCancel.RoundCorners = 2;
-            this.gbCancel.Size = new System.Drawing.Size(88, 25);
+            this.gbCancel.Size = new System.Drawing.Size(103, 29);
             this.gbCancel.TabIndex = 3;
             this.gbCancel.Text = "Cancelar";
             this.gbCancel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -392,9 +392,9 @@
             // 
             this.fullLabel2.BackColor = System.Drawing.Color.Transparent;
             this.fullLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fullLabel2.Location = new System.Drawing.Point(591, 11);
+            this.fullLabel2.Location = new System.Drawing.Point(689, 13);
             this.fullLabel2.Name = "fullLabel2";
-            this.fullLabel2.Size = new System.Drawing.Size(180, 21);
+            this.fullLabel2.Size = new System.Drawing.Size(210, 24);
             this.fullLabel2.TabIndex = 5;
             this.fullLabel2.Text = "Orden de Trabajo Numero:";
             // 
@@ -402,9 +402,9 @@
             // 
             this.fullLabel1.BackColor = System.Drawing.Color.Transparent;
             this.fullLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fullLabel1.Location = new System.Drawing.Point(30, 10);
+            this.fullLabel1.Location = new System.Drawing.Point(35, 12);
             this.fullLabel1.Name = "fullLabel1";
-            this.fullLabel1.Size = new System.Drawing.Size(98, 23);
+            this.fullLabel1.Size = new System.Drawing.Size(114, 27);
             this.fullLabel1.TabIndex = 1;
             this.fullLabel1.Text = "Movil Patente:";
             // 
@@ -427,15 +427,15 @@
             this.tgrpControlesYRep.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.tgrpControlesYRep.GroupImage = null;
             this.tgrpControlesYRep.GroupTitle = "Controles y Reparaciones";
-            this.tgrpControlesYRep.Location = new System.Drawing.Point(18, 72);
+            this.tgrpControlesYRep.Location = new System.Drawing.Point(21, 83);
             this.tgrpControlesYRep.Name = "tgrpControlesYRep";
-            this.tgrpControlesYRep.Padding = new System.Windows.Forms.Padding(20);
+            this.tgrpControlesYRep.Padding = new System.Windows.Forms.Padding(23, 23, 23, 23);
             this.tgrpControlesYRep.PaintGroupBox = false;
             this.tgrpControlesYRep.RoundCorners = 4;
             this.tgrpControlesYRep.ShadowColor = System.Drawing.Color.DarkGray;
             this.tgrpControlesYRep.ShadowControl = false;
             this.tgrpControlesYRep.ShadowThickness = 3;
-            this.tgrpControlesYRep.Size = new System.Drawing.Size(535, 203);
+            this.tgrpControlesYRep.Size = new System.Drawing.Size(624, 234);
             this.tgrpControlesYRep.SkinFixed = true;
             this.tgrpControlesYRep.TabIndex = 20;
             this.tgrpControlesYRep.TitleBackground = System.Drawing.Color.DodgerBlue;
@@ -462,15 +462,15 @@
             this.tgrpOpciones.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.tgrpOpciones.GroupImage = null;
             this.tgrpOpciones.GroupTitle = "Opciones";
-            this.tgrpOpciones.Location = new System.Drawing.Point(559, 72);
+            this.tgrpOpciones.Location = new System.Drawing.Point(652, 83);
             this.tgrpOpciones.Name = "tgrpOpciones";
-            this.tgrpOpciones.Padding = new System.Windows.Forms.Padding(20);
+            this.tgrpOpciones.Padding = new System.Windows.Forms.Padding(23, 23, 23, 23);
             this.tgrpOpciones.PaintGroupBox = false;
             this.tgrpOpciones.RoundCorners = 4;
             this.tgrpOpciones.ShadowColor = System.Drawing.Color.DarkGray;
             this.tgrpOpciones.ShadowControl = false;
             this.tgrpOpciones.ShadowThickness = 3;
-            this.tgrpOpciones.Size = new System.Drawing.Size(291, 203);
+            this.tgrpOpciones.Size = new System.Drawing.Size(339, 234);
             this.tgrpOpciones.SkinFixed = true;
             this.tgrpOpciones.TabIndex = 21;
             this.tgrpOpciones.TitleBackground = System.Drawing.Color.DodgerBlue;
@@ -479,11 +479,11 @@
             // 
             // AltaOrdenes
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(860, 495);
+            this.ClientSize = new System.Drawing.Size(1003, 571);
             this.Controls.Add(this.xPanel1);
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Arial", 9F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AltaOrdenes";

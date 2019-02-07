@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.xpnlPanel = new TNGS.NetControls.XPanel();
-            this.lblEstados = new TNGS.NetControls.FullLabel();
-            this.cdcEstados = new TNGS.NetControls.CDCombo();
             this.gbAceptar = new TNGS.NetControls.GlassButton();
             this.gbCancelar = new TNGS.NetControls.GlassButton();
+            this.lblEstados = new TNGS.NetControls.FullLabel();
+            this.cdcEstados = new TNGS.NetControls.CDCombo();
             this.xpnlPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -48,31 +48,9 @@
             this.xpnlPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.xpnlPanel.Location = new System.Drawing.Point(0, 0);
             this.xpnlPanel.Name = "xpnlPanel";
-            this.xpnlPanel.Size = new System.Drawing.Size(304, 117);
+            this.xpnlPanel.Size = new System.Drawing.Size(355, 135);
             this.xpnlPanel.SkinFixed = true;
             this.xpnlPanel.TabIndex = 0;
-            // 
-            // lblEstados
-            // 
-            this.lblEstados.BackColor = System.Drawing.Color.Transparent;
-            this.lblEstados.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEstados.Location = new System.Drawing.Point(15, 20);
-            this.lblEstados.Name = "lblEstados";
-            this.lblEstados.Size = new System.Drawing.Size(85, 23);
-            this.lblEstados.TabIndex = 5;
-            this.lblEstados.Text = "Encargado:";
-            // 
-            // cdcEstados
-            // 
-            this.cdcEstados.BackColor = System.Drawing.SystemColors.Window;
-            this.cdcEstados.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cdcEstados.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cdcEstados.FormattingEnabled = true;
-            this.cdcEstados.Location = new System.Drawing.Point(106, 21);
-            this.cdcEstados.Name = "cdcEstados";
-            this.cdcEstados.Size = new System.Drawing.Size(184, 21);
-            this.cdcEstados.Sorted = true;
-            this.cdcEstados.TabIndex = 4;
             // 
             // gbAceptar
             // 
@@ -85,9 +63,9 @@
             this.gbAceptar.FlatFontSize = 9;
             this.gbAceptar.FlatTextColor = System.Drawing.Color.White;
             this.gbAceptar.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.gbAceptar.Location = new System.Drawing.Point(209, 77);
+            this.gbAceptar.Location = new System.Drawing.Point(245, 89);
             this.gbAceptar.Name = "gbAceptar";
-            this.gbAceptar.Size = new System.Drawing.Size(82, 27);
+            this.gbAceptar.Size = new System.Drawing.Size(96, 31);
             this.gbAceptar.TabIndex = 8;
             this.gbAceptar.Text = "Aceptar";
             this.gbAceptar.W8Color = System.Drawing.Color.LimeGreen;
@@ -104,21 +82,44 @@
             this.gbCancelar.FlatFontSize = 9;
             this.gbCancelar.FlatTextColor = System.Drawing.Color.White;
             this.gbCancelar.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.gbCancelar.Location = new System.Drawing.Point(121, 77);
+            this.gbCancelar.Location = new System.Drawing.Point(142, 89);
             this.gbCancelar.Name = "gbCancelar";
-            this.gbCancelar.Size = new System.Drawing.Size(82, 27);
+            this.gbCancelar.Size = new System.Drawing.Size(96, 31);
             this.gbCancelar.TabIndex = 9;
             this.gbCancelar.Text = "Cancelar";
             this.gbCancelar.W8Color = System.Drawing.Color.Red;
             this.gbCancelar.Click += new System.EventHandler(this.gbCancelar_Click);
             // 
+            // lblEstados
+            // 
+            this.lblEstados.BackColor = System.Drawing.Color.Transparent;
+            this.lblEstados.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEstados.Location = new System.Drawing.Point(17, 23);
+            this.lblEstados.Name = "lblEstados";
+            this.lblEstados.Size = new System.Drawing.Size(99, 27);
+            this.lblEstados.TabIndex = 5;
+            this.lblEstados.Text = "Encargado:";
+            // 
+            // cdcEstados
+            // 
+            this.cdcEstados.BackColor = System.Drawing.SystemColors.Window;
+            this.cdcEstados.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cdcEstados.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cdcEstados.FormattingEnabled = true;
+            this.cdcEstados.Location = new System.Drawing.Point(124, 24);
+            this.cdcEstados.Name = "cdcEstados";
+            this.cdcEstados.Size = new System.Drawing.Size(214, 23);
+            this.cdcEstados.Sorted = true;
+            this.cdcEstados.TabIndex = 4;
+            // 
             // AsigarOT
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(304, 117);
+            this.ClientSize = new System.Drawing.Size(355, 135);
             this.ControlBox = false;
             this.Controls.Add(this.xpnlPanel);
+            this.Font = new System.Drawing.Font("Arial", 9F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AsigarOT";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.xpnlPanel = new TNGS.NetControls.XPanel();
+            this.mrHistorialUnificado = new TNGS.NetControls.MiniReport();
             this.lblPatenteValue = new TNGS.NetControls.FullLabel();
             this.lblPatente = new TNGS.NetControls.FullLabel();
             this.gbAceptar = new TNGS.NetControls.GlassButton();
-            this.mrHistorialUnificado = new TNGS.NetControls.MiniReport();
             this.xpnlPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -46,11 +46,23 @@
             this.xpnlPanel.Controls.Add(this.lblPatente);
             this.xpnlPanel.Controls.Add(this.gbAceptar);
             this.xpnlPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.xpnlPanel.Font = new System.Drawing.Font("Arial", 9F);
             this.xpnlPanel.Location = new System.Drawing.Point(0, 0);
             this.xpnlPanel.Name = "xpnlPanel";
             this.xpnlPanel.Size = new System.Drawing.Size(717, 561);
             this.xpnlPanel.SkinFixed = true;
             this.xpnlPanel.TabIndex = 0;
+            // 
+            // mrHistorialUnificado
+            // 
+            this.mrHistorialUnificado.Font = new System.Drawing.Font("Arial", 9F);
+            this.mrHistorialUnificado.Location = new System.Drawing.Point(11, 44);
+            this.mrHistorialUnificado.Name = "mrHistorialUnificado";
+            this.mrHistorialUnificado.ShowPrtOne = false;
+            this.mrHistorialUnificado.ShowZoom = false;
+            this.mrHistorialUnificado.Size = new System.Drawing.Size(693, 461);
+            this.mrHistorialUnificado.SkinFixed = true;
+            this.mrHistorialUnificado.TabIndex = 13;
             // 
             // lblPatenteValue
             // 
@@ -92,16 +104,6 @@
             this.gbAceptar.Text = "Aceptar";
             this.gbAceptar.W8Color = System.Drawing.Color.LimeGreen;
             this.gbAceptar.Click += new System.EventHandler(this.gbAceptar_Click);
-            // 
-            // mrHistorialUnificado
-            // 
-            this.mrHistorialUnificado.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mrHistorialUnificado.Location = new System.Drawing.Point(11, 44);
-            this.mrHistorialUnificado.Name = "mrHistorialUnificado";
-            this.mrHistorialUnificado.ShowPrtOne = false;
-            this.mrHistorialUnificado.ShowZoom = false;
-            this.mrHistorialUnificado.Size = new System.Drawing.Size(693, 461);
-            this.mrHistorialUnificado.TabIndex = 13;
             // 
             // HistorialUnificado
             // 

@@ -82,6 +82,7 @@
             this.xPanel1.Controls.Add(this.fgConfigAlertas);
             this.xPanel1.Controls.Add(this.fullLabel4);
             this.xPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.xPanel1.Font = new System.Drawing.Font("Arial", 9F);
             this.xPanel1.Location = new System.Drawing.Point(0, 0);
             this.xPanel1.Name = "xPanel1";
             this.xPanel1.Size = new System.Drawing.Size(1008, 651);
@@ -113,9 +114,10 @@
             // cdListaDestinatarios
             // 
             this.cdListaDestinatarios.FormattingEnabled = true;
+            this.cdListaDestinatarios.ItemHeight = 15;
             this.cdListaDestinatarios.Location = new System.Drawing.Point(13, 89);
             this.cdListaDestinatarios.Name = "cdListaDestinatarios";
-            this.cdListaDestinatarios.Size = new System.Drawing.Size(207, 212);
+            this.cdListaDestinatarios.Size = new System.Drawing.Size(207, 199);
             this.cdListaDestinatarios.Sorted = true;
             this.cdListaDestinatarios.TabIndex = 110;
             // 
@@ -178,7 +180,7 @@
             this.neEnkmEspecifico.BackColor = System.Drawing.SystemColors.Window;
             this.neEnkmEspecifico.Location = new System.Drawing.Point(195, 43);
             this.neEnkmEspecifico.Name = "neEnkmEspecifico";
-            this.neEnkmEspecifico.Size = new System.Drawing.Size(51, 20);
+            this.neEnkmEspecifico.Size = new System.Drawing.Size(51, 21);
             this.neEnkmEspecifico.TabIndex = 22;
             this.neEnkmEspecifico.Text = "0";
             // 
@@ -201,7 +203,7 @@
             this.cdcControlesEspecifico.FormattingEnabled = true;
             this.cdcControlesEspecifico.Location = new System.Drawing.Point(485, 43);
             this.cdcControlesEspecifico.Name = "cdcControlesEspecifico";
-            this.cdcControlesEspecifico.Size = new System.Drawing.Size(176, 21);
+            this.cdcControlesEspecifico.Size = new System.Drawing.Size(176, 23);
             this.cdcControlesEspecifico.Sorted = true;
             this.cdcControlesEspecifico.TabIndex = 6;
             // 
@@ -221,7 +223,7 @@
             this.neHastaKmsPeriodicos.BackColor = System.Drawing.SystemColors.Window;
             this.neHastaKmsPeriodicos.Location = new System.Drawing.Point(317, 40);
             this.neHastaKmsPeriodicos.Name = "neHastaKmsPeriodicos";
-            this.neHastaKmsPeriodicos.Size = new System.Drawing.Size(51, 20);
+            this.neHastaKmsPeriodicos.Size = new System.Drawing.Size(51, 21);
             this.neHastaKmsPeriodicos.TabIndex = 34;
             this.neHastaKmsPeriodicos.Text = "0";
             // 
@@ -241,7 +243,7 @@
             this.neCadaKmsPeriodicos.BackColor = System.Drawing.SystemColors.Window;
             this.neCadaKmsPeriodicos.Location = new System.Drawing.Point(205, 40);
             this.neCadaKmsPeriodicos.Name = "neCadaKmsPeriodicos";
-            this.neCadaKmsPeriodicos.Size = new System.Drawing.Size(51, 20);
+            this.neCadaKmsPeriodicos.Size = new System.Drawing.Size(51, 21);
             this.neCadaKmsPeriodicos.TabIndex = 32;
             this.neCadaKmsPeriodicos.Text = "0";
             // 
@@ -280,7 +282,7 @@
             this.neDesdeKmsPeriodicos.BackColor = System.Drawing.SystemColors.Window;
             this.neDesdeKmsPeriodicos.Location = new System.Drawing.Point(98, 40);
             this.neDesdeKmsPeriodicos.Name = "neDesdeKmsPeriodicos";
-            this.neDesdeKmsPeriodicos.Size = new System.Drawing.Size(51, 20);
+            this.neDesdeKmsPeriodicos.Size = new System.Drawing.Size(51, 21);
             this.neDesdeKmsPeriodicos.TabIndex = 22;
             this.neDesdeKmsPeriodicos.Text = "0";
             // 
@@ -303,7 +305,7 @@
             this.cdcControlesPeriodicos.FormattingEnabled = true;
             this.cdcControlesPeriodicos.Location = new System.Drawing.Point(488, 42);
             this.cdcControlesPeriodicos.Name = "cdcControlesPeriodicos";
-            this.cdcControlesPeriodicos.Size = new System.Drawing.Size(176, 21);
+            this.cdcControlesPeriodicos.Size = new System.Drawing.Size(176, 23);
             this.cdcControlesPeriodicos.Sorted = true;
             this.cdcControlesPeriodicos.TabIndex = 6;
             // 
@@ -326,7 +328,7 @@
             this.cdcReparacionesPostReparacion.FormattingEnabled = true;
             this.cdcReparacionesPostReparacion.Location = new System.Drawing.Point(223, 41);
             this.cdcReparacionesPostReparacion.Name = "cdcReparacionesPostReparacion";
-            this.cdcReparacionesPostReparacion.Size = new System.Drawing.Size(196, 21);
+            this.cdcReparacionesPostReparacion.Size = new System.Drawing.Size(196, 23);
             this.cdcReparacionesPostReparacion.Sorted = true;
             this.cdcReparacionesPostReparacion.TabIndex = 32;
             // 
@@ -365,7 +367,7 @@
             this.neEnkmPostReparacion.BackColor = System.Drawing.SystemColors.Window;
             this.neEnkmPostReparacion.Location = new System.Drawing.Point(35, 41);
             this.neEnkmPostReparacion.Name = "neEnkmPostReparacion";
-            this.neEnkmPostReparacion.Size = new System.Drawing.Size(51, 20);
+            this.neEnkmPostReparacion.Size = new System.Drawing.Size(51, 21);
             this.neEnkmPostReparacion.TabIndex = 22;
             this.neEnkmPostReparacion.Text = "0";
             // 
@@ -388,7 +390,7 @@
             this.cdcControlesPostReparacion.FormattingEnabled = true;
             this.cdcControlesPostReparacion.Location = new System.Drawing.Point(488, 41);
             this.cdcControlesPostReparacion.Name = "cdcControlesPostReparacion";
-            this.cdcControlesPostReparacion.Size = new System.Drawing.Size(176, 21);
+            this.cdcControlesPostReparacion.Size = new System.Drawing.Size(176, 23);
             this.cdcControlesPostReparacion.Sorted = true;
             this.cdcControlesPostReparacion.TabIndex = 6;
             // 
@@ -463,7 +465,8 @@
             this.tgrpAñadirAlarmas.Controls.Add(this.cdcGruposDestinatarios);
             this.tgrpAñadirAlarmas.CustomGroupBoxColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
             this.tgrpAñadirAlarmas.FlatMode = true;
-            this.tgrpAñadirAlarmas.FontTitle = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tgrpAñadirAlarmas.Font = new System.Drawing.Font("Arial", 9F);
+            this.tgrpAñadirAlarmas.FontTitle = new System.Drawing.Font("Arial", 9F);
             this.tgrpAñadirAlarmas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.tgrpAñadirAlarmas.GroupImage = null;
             this.tgrpAñadirAlarmas.GroupTitle = "Añadir Alarmas";
@@ -498,7 +501,8 @@
             this.tgrpEspecifico.Controls.Add(this.fullLabel7);
             this.tgrpEspecifico.CustomGroupBoxColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
             this.tgrpEspecifico.FlatMode = true;
-            this.tgrpEspecifico.FontTitle = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tgrpEspecifico.Font = new System.Drawing.Font("Arial", 9F);
+            this.tgrpEspecifico.FontTitle = new System.Drawing.Font("Arial", 9F);
             this.tgrpEspecifico.ForeColor = System.Drawing.Color.Black;
             this.tgrpEspecifico.GroupImage = null;
             this.tgrpEspecifico.GroupTitle = "Específico";
@@ -536,7 +540,8 @@
             this.tgrpPeriódicos.Controls.Add(this.neDesdeKmsPeriodicos);
             this.tgrpPeriódicos.CustomGroupBoxColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
             this.tgrpPeriódicos.FlatMode = true;
-            this.tgrpPeriódicos.FontTitle = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tgrpPeriódicos.Font = new System.Drawing.Font("Arial", 9F);
+            this.tgrpPeriódicos.FontTitle = new System.Drawing.Font("Arial", 9F);
             this.tgrpPeriódicos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.tgrpPeriódicos.GroupImage = null;
             this.tgrpPeriódicos.GroupTitle = "Periódicos";
@@ -572,7 +577,8 @@
             this.tgrpPostReparacion.Controls.Add(this.fullLabel9);
             this.tgrpPostReparacion.CustomGroupBoxColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
             this.tgrpPostReparacion.FlatMode = true;
-            this.tgrpPostReparacion.FontTitle = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tgrpPostReparacion.Font = new System.Drawing.Font("Arial", 9F);
+            this.tgrpPostReparacion.FontTitle = new System.Drawing.Font("Arial", 9F);
             this.tgrpPostReparacion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.tgrpPostReparacion.GroupImage = null;
             this.tgrpPostReparacion.GroupTitle = "The Grouper";
@@ -599,7 +605,7 @@
             this.CloseButtonVisible = false;
             this.Controls.Add(this.xPanel1);
             this.DockAreas = WeifenLuo.WinFormsUI.Docking.DockAreas.Document;
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Arial", 9F);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Alertas";
             this.ShowIcon = false;

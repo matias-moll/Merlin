@@ -53,27 +53,27 @@
             this.xpnlPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.xpnlPanel.Location = new System.Drawing.Point(0, 0);
             this.xpnlPanel.Name = "xpnlPanel";
-            this.xpnlPanel.Size = new System.Drawing.Size(371, 263);
+            this.xpnlPanel.Size = new System.Drawing.Size(433, 303);
             this.xpnlPanel.SkinFixed = true;
             this.xpnlPanel.TabIndex = 0;
             // 
             // teContingencia
             // 
             this.teContingencia.BackColor = System.Drawing.SystemColors.Window;
-            this.teContingencia.Location = new System.Drawing.Point(14, 97);
+            this.teContingencia.Location = new System.Drawing.Point(16, 112);
             this.teContingencia.Multiline = true;
             this.teContingencia.Name = "teContingencia";
             this.teContingencia.ReadOnly = true;
-            this.teContingencia.Size = new System.Drawing.Size(344, 107);
+            this.teContingencia.Size = new System.Drawing.Size(401, 123);
             this.teContingencia.TabIndex = 10;
             // 
             // fullLabel1
             // 
             this.fullLabel1.BackColor = System.Drawing.Color.Transparent;
             this.fullLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fullLabel1.Location = new System.Drawing.Point(11, 71);
+            this.fullLabel1.Location = new System.Drawing.Point(13, 82);
             this.fullLabel1.Name = "fullLabel1";
-            this.fullLabel1.Size = new System.Drawing.Size(110, 23);
+            this.fullLabel1.Size = new System.Drawing.Size(128, 27);
             this.fullLabel1.TabIndex = 8;
             this.fullLabel1.Text = "Contingencia:";
             // 
@@ -88,9 +88,9 @@
             this.gbAceptar.FlatFontSize = 9;
             this.gbAceptar.FlatTextColor = System.Drawing.Color.White;
             this.gbAceptar.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.gbAceptar.Location = new System.Drawing.Point(276, 223);
+            this.gbAceptar.Location = new System.Drawing.Point(323, 257);
             this.gbAceptar.Name = "gbAceptar";
-            this.gbAceptar.Size = new System.Drawing.Size(82, 27);
+            this.gbAceptar.Size = new System.Drawing.Size(96, 31);
             this.gbAceptar.TabIndex = 6;
             this.gbAceptar.Text = "Aceptar";
             this.gbAceptar.W8Color = System.Drawing.Color.LimeGreen;
@@ -107,9 +107,9 @@
             this.gbCancelar.FlatFontSize = 9;
             this.gbCancelar.FlatTextColor = System.Drawing.Color.White;
             this.gbCancelar.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.gbCancelar.Location = new System.Drawing.Point(188, 223);
+            this.gbCancelar.Location = new System.Drawing.Point(220, 257);
             this.gbCancelar.Name = "gbCancelar";
-            this.gbCancelar.Size = new System.Drawing.Size(82, 27);
+            this.gbCancelar.Size = new System.Drawing.Size(96, 31);
             this.gbCancelar.TabIndex = 7;
             this.gbCancelar.Text = "Cancelar";
             this.gbCancelar.W8Color = System.Drawing.Color.Red;
@@ -119,9 +119,9 @@
             // 
             this.lblEstados.BackColor = System.Drawing.Color.Transparent;
             this.lblEstados.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEstados.Location = new System.Drawing.Point(62, 26);
+            this.lblEstados.Location = new System.Drawing.Point(72, 30);
             this.lblEstados.Name = "lblEstados";
-            this.lblEstados.Size = new System.Drawing.Size(59, 23);
+            this.lblEstados.Size = new System.Drawing.Size(69, 27);
             this.lblEstados.TabIndex = 5;
             this.lblEstados.Text = "Estado:";
             // 
@@ -131,20 +131,21 @@
             this.cdcEstados.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cdcEstados.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cdcEstados.FormattingEnabled = true;
-            this.cdcEstados.Location = new System.Drawing.Point(127, 27);
+            this.cdcEstados.Location = new System.Drawing.Point(148, 31);
             this.cdcEstados.Name = "cdcEstados";
-            this.cdcEstados.Size = new System.Drawing.Size(184, 21);
+            this.cdcEstados.Size = new System.Drawing.Size(214, 23);
             this.cdcEstados.Sorted = true;
             this.cdcEstados.TabIndex = 4;
             this.cdcEstados.SelectedIndexChanged += new System.EventHandler(this.cdcEstados_SelectedIndexChanged);
             // 
             // ModificarEstado
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(371, 263);
+            this.ClientSize = new System.Drawing.Size(433, 303);
             this.ControlBox = false;
             this.Controls.Add(this.xpnlPanel);
+            this.Font = new System.Drawing.Font("Arial", 9F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ModificarEstado";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

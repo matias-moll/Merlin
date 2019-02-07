@@ -99,7 +99,7 @@
             this.cdcTipoMovil.FormattingEnabled = true;
             this.cdcTipoMovil.Location = new System.Drawing.Point(447, 273);
             this.cdcTipoMovil.Name = "cdcTipoMovil";
-            this.cdcTipoMovil.Size = new System.Drawing.Size(175, 21);
+            this.cdcTipoMovil.Size = new System.Drawing.Size(175, 23);
             this.cdcTipoMovil.Sorted = true;
             this.cdcTipoMovil.TabIndex = 23;
             // 
@@ -121,7 +121,7 @@
             this.teNroPloteado.Location = new System.Drawing.Point(158, 273);
             this.teNroPloteado.MaxLength = 8;
             this.teNroPloteado.Name = "teNroPloteado";
-            this.teNroPloteado.Size = new System.Drawing.Size(136, 20);
+            this.teNroPloteado.Size = new System.Drawing.Size(136, 21);
             this.teNroPloteado.TabIndex = 8;
             this.teNroPloteado.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -141,7 +141,7 @@
             this.neKilometros.BackColor = System.Drawing.SystemColors.Window;
             this.neKilometros.Location = new System.Drawing.Point(447, 229);
             this.neKilometros.Name = "neKilometros";
-            this.neKilometros.Size = new System.Drawing.Size(123, 20);
+            this.neKilometros.Size = new System.Drawing.Size(123, 21);
             this.neKilometros.TabIndex = 7;
             this.neKilometros.Text = "0";
             // 
@@ -151,7 +151,7 @@
             this.teDescripcionMovil.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.teDescripcionMovil.Location = new System.Drawing.Point(157, 86);
             this.teDescripcionMovil.Name = "teDescripcionMovil";
-            this.teDescripcionMovil.Size = new System.Drawing.Size(465, 20);
+            this.teDescripcionMovil.Size = new System.Drawing.Size(465, 21);
             this.teDescripcionMovil.TabIndex = 1;
             // 
             // fullLabel1
@@ -184,7 +184,7 @@
             this.cdcModelo.FormattingEnabled = true;
             this.cdcModelo.Location = new System.Drawing.Point(157, 229);
             this.cdcModelo.Name = "cdcModelo";
-            this.cdcModelo.Size = new System.Drawing.Size(137, 21);
+            this.cdcModelo.Size = new System.Drawing.Size(137, 23);
             this.cdcModelo.Sorted = true;
             this.cdcModelo.TabIndex = 6;
             // 
@@ -206,7 +206,7 @@
             this.tePatente.Location = new System.Drawing.Point(275, 42);
             this.tePatente.MaxLength = 8;
             this.tePatente.Name = "tePatente";
-            this.tePatente.Size = new System.Drawing.Size(136, 20);
+            this.tePatente.Size = new System.Drawing.Size(136, 21);
             this.tePatente.TabIndex = 0;
             this.tePatente.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -216,7 +216,7 @@
             this.teNroChasis.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.teNroChasis.Location = new System.Drawing.Point(158, 135);
             this.teNroChasis.Name = "teNroChasis";
-            this.teNroChasis.Size = new System.Drawing.Size(136, 20);
+            this.teNroChasis.Size = new System.Drawing.Size(136, 21);
             this.teNroChasis.TabIndex = 2;
             this.teNroChasis.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -303,7 +303,7 @@
             this.cdcMovilPropio.FormattingEnabled = true;
             this.cdcMovilPropio.Location = new System.Drawing.Point(448, 133);
             this.cdcMovilPropio.Name = "cdcMovilPropio";
-            this.cdcMovilPropio.Size = new System.Drawing.Size(174, 21);
+            this.cdcMovilPropio.Size = new System.Drawing.Size(174, 23);
             this.cdcMovilPropio.Sorted = true;
             this.cdcMovilPropio.TabIndex = 3;
             // 
@@ -312,7 +312,7 @@
             this.neAnioFabric.BackColor = System.Drawing.SystemColors.Window;
             this.neAnioFabric.Location = new System.Drawing.Point(447, 182);
             this.neAnioFabric.Name = "neAnioFabric";
-            this.neAnioFabric.Size = new System.Drawing.Size(123, 20);
+            this.neAnioFabric.Size = new System.Drawing.Size(123, 21);
             this.neAnioFabric.TabIndex = 5;
             this.neAnioFabric.Text = "0";
             // 
@@ -322,7 +322,7 @@
             this.teNroMotor.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.teNroMotor.Location = new System.Drawing.Point(157, 184);
             this.teNroMotor.Name = "teNroMotor";
-            this.teNroMotor.Size = new System.Drawing.Size(136, 20);
+            this.teNroMotor.Size = new System.Drawing.Size(136, 21);
             this.teNroMotor.TabIndex = 4;
             this.teNroMotor.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -353,7 +353,7 @@
             this.clEquipamientos.FormattingEnabled = true;
             this.clEquipamientos.Location = new System.Drawing.Point(14, 82);
             this.clEquipamientos.Name = "clEquipamientos";
-            this.clEquipamientos.Size = new System.Drawing.Size(286, 379);
+            this.clEquipamientos.Size = new System.Drawing.Size(286, 372);
             this.clEquipamientos.Sorted = true;
             this.clEquipamientos.TabIndex = 2;
             // 
@@ -554,7 +554,8 @@
             this.tgrpDatosBasicos.Controls.Add(this.teNroChasis);
             this.tgrpDatosBasicos.CustomGroupBoxColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
             this.tgrpDatosBasicos.FlatMode = true;
-            this.tgrpDatosBasicos.FontTitle = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tgrpDatosBasicos.Font = new System.Drawing.Font("Arial", 9F);
+            this.tgrpDatosBasicos.FontTitle = new System.Drawing.Font("Arial", 9F);
             this.tgrpDatosBasicos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.tgrpDatosBasicos.GroupImage = null;
             this.tgrpDatosBasicos.GroupTitle = "Datos Básicos";
@@ -586,7 +587,8 @@
             this.tgrpEquipamiento.Controls.Add(this.btnTildaTodos);
             this.tgrpEquipamiento.CustomGroupBoxColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
             this.tgrpEquipamiento.FlatMode = true;
-            this.tgrpEquipamiento.FontTitle = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tgrpEquipamiento.Font = new System.Drawing.Font("Arial", 9F);
+            this.tgrpEquipamiento.FontTitle = new System.Drawing.Font("Arial", 9F);
             this.tgrpEquipamiento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.tgrpEquipamiento.GroupImage = null;
             this.tgrpEquipamiento.GroupTitle = "Equipamiento";
@@ -615,7 +617,7 @@
             this.CloseButtonVisible = false;
             this.Controls.Add(this.xPanel1);
             this.DockAreas = WeifenLuo.WinFormsUI.Docking.DockAreas.Document;
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Arial", 9F);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AltaMovil";
             this.ShowIcon = false;

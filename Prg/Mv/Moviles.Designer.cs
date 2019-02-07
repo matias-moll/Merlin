@@ -106,7 +106,7 @@ namespace Mrln.Mv
             this.teTipoMovil.Enabled = false;
             this.teTipoMovil.Location = new System.Drawing.Point(80, 457);
             this.teTipoMovil.Name = "teTipoMovil";
-            this.teTipoMovil.Size = new System.Drawing.Size(138, 20);
+            this.teTipoMovil.Size = new System.Drawing.Size(138, 21);
             this.teTipoMovil.TabIndex = 27;
             this.teTipoMovil.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -127,7 +127,7 @@ namespace Mrln.Mv
             this.teEstado.Enabled = false;
             this.teEstado.Location = new System.Drawing.Point(80, 511);
             this.teEstado.Name = "teEstado";
-            this.teEstado.Size = new System.Drawing.Size(138, 20);
+            this.teEstado.Size = new System.Drawing.Size(138, 21);
             this.teEstado.TabIndex = 25;
             this.teEstado.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -147,7 +147,7 @@ namespace Mrln.Mv
             this.teModelo.Enabled = false;
             this.teModelo.Location = new System.Drawing.Point(80, 484);
             this.teModelo.Name = "teModelo";
-            this.teModelo.Size = new System.Drawing.Size(138, 20);
+            this.teModelo.Size = new System.Drawing.Size(138, 21);
             this.teModelo.TabIndex = 24;
             this.teModelo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -179,7 +179,7 @@ namespace Mrln.Mv
             this.tePatente.Enabled = false;
             this.tePatente.Location = new System.Drawing.Point(80, 430);
             this.tePatente.Name = "tePatente";
-            this.tePatente.Size = new System.Drawing.Size(138, 20);
+            this.tePatente.Size = new System.Drawing.Size(138, 21);
             this.tePatente.TabIndex = 7;
             this.tePatente.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -621,7 +621,7 @@ namespace Mrln.Mv
             this.tgrpMoviles.Controls.Add(this.lblPatente);
             this.tgrpMoviles.CustomGroupBoxColor = System.Drawing.Color.White;
             this.tgrpMoviles.FlatMode = true;
-            this.tgrpMoviles.FontTitle = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tgrpMoviles.FontTitle = new System.Drawing.Font("Arial", 9F);
             this.tgrpMoviles.ForeColor = System.Drawing.Color.Black;
             this.tgrpMoviles.GroupImage = null;
             this.tgrpMoviles.GroupTitle = "Móviles";
@@ -648,7 +648,7 @@ namespace Mrln.Mv
             this.CloseButtonVisible = false;
             this.Controls.Add(this.xpnlPanelAtras);
             this.DockAreas = WeifenLuo.WinFormsUI.Docking.DockAreas.Document;
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Arial", 9F);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Moviles";
             this.Text = "Moviles";

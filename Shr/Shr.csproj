@@ -135,11 +135,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Alertas\ShowAlertas.resx">
+      <DependentUpon>ShowAlertas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AsigarOT.resx">
       <DependentUpon>AsigarOT.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Alertas\ShowAlerta.resx">
-      <DependentUpon>ShowAlertas.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
