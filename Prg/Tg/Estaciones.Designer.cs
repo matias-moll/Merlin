@@ -15,13 +15,9 @@ namespace Mrln.Tg
         /// </summary>
         private System.ComponentModel.Container components = null;
         private TNGS.NetControls.XPanel xpnlBase;
-        private TNGS.NetControls.GlassButton cmdSalir;
         private System.Windows.Forms.Label lblTitle;
         private TNGS.NetControls.GlassButton cmdExcel;
         private TNGS.NetControls.GlassButton cmdPrint;
-        private TNGS.NetControls.GlassButton cmdNuevo;
-        private TNGS.NetControls.GlassButton cmdModificar;
-        private TNGS.NetControls.GlassButton cmdPurgar;
         private TNGS.NetControls.ImgGroup frmEdicion;
         private System.Windows.Forms.Label lblCod;
         private TNGS.NetControls.TextEdit txtCod;
@@ -33,10 +29,6 @@ namespace Mrln.Tg
         private TNGS.NetControls.TextEdit txtContacto;
         private System.Windows.Forms.Label lblTelefono;
         private TNGS.NetControls.TextEdit txtTelefono;
-        private TNGS.NetControls.GlassButton cmdDesHab;
-        private TNGS.NetControls.GlassButton cmdHab;
-        private TNGS.NetControls.GlassButton cmdGrabar;
-        private TNGS.NetControls.GlassButton cmdCancelar;
         private TNGS.NetControls.FullGrid grdDatos;
         private TNGS.NetControls.TSContainer tsContainer1;
         private RibbonStyle.TabPageSwitcher tabPageSwitcher1;
@@ -73,15 +65,15 @@ namespace Mrln.Tg
             this.tabPageSwitcher1 = new RibbonStyle.TabPageSwitcher();
             this.tabStripPage1 = new RibbonStyle.TabStripPage();
             this.tsPanel2 = new TNGS.NetControls.TSPanel();
-            this.cmdHab = new TNGS.NetControls.GlassButton();
+            this.gbHabilitar = new TNGS.NetControls.GlassButton();
+            this.gbDeshabilitar = new TNGS.NetControls.GlassButton();
             this.cmdCancelar = new TNGS.NetControls.GlassButton();
             this.cmdGrabar = new TNGS.NetControls.GlassButton();
-            this.cmdDesHab = new TNGS.NetControls.GlassButton();
             this.tsPanel1 = new TNGS.NetControls.TSPanel();
-            this.cmdSalir = new TNGS.NetControls.GlassButton();
-            this.cmdPurgar = new TNGS.NetControls.GlassButton();
-            this.cmdModificar = new TNGS.NetControls.GlassButton();
+            this.gbCompactar = new TNGS.NetControls.GlassButton();
             this.cmdNuevo = new TNGS.NetControls.GlassButton();
+            this.cmdModificar = new TNGS.NetControls.GlassButton();
+            this.gbSalir = new TNGS.NetControls.GlassButton();
             this.tsBase1 = new TNGS.NetControls.TSBase();
             this.tab1 = new RibbonStyle.Tab();
             this.lblTitle = new System.Windows.Forms.Label();
@@ -112,8 +104,8 @@ namespace Mrln.Tg
             // 
             // xpnlBase
             // 
-            this.xpnlBase.BackColor1 = System.Drawing.SystemColors.Control;
-            this.xpnlBase.BackColor2 = System.Drawing.SystemColors.Control;
+            this.xpnlBase.BackColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.xpnlBase.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
             this.xpnlBase.Controls.Add(this.tsContainer1);
             this.xpnlBase.Controls.Add(this.lblTitle);
             this.xpnlBase.Controls.Add(this.grdDatos);
@@ -123,7 +115,8 @@ namespace Mrln.Tg
             this.xpnlBase.Dock = System.Windows.Forms.DockStyle.Fill;
             this.xpnlBase.Location = new System.Drawing.Point(0, 0);
             this.xpnlBase.Name = "xpnlBase";
-            this.xpnlBase.Size = new System.Drawing.Size(984, 461);
+            this.xpnlBase.Size = new System.Drawing.Size(984, 494);
+            this.xpnlBase.SkinFixed = true;
             this.xpnlBase.TabIndex = 0;
             // 
             // tsContainer1
@@ -165,192 +158,212 @@ namespace Mrln.Tg
             // tsPanel2
             // 
             this.tsPanel2.Caption = "Edición";
-            this.tsPanel2.Controls.Add(this.cmdHab);
+            this.tsPanel2.Controls.Add(this.gbHabilitar);
+            this.tsPanel2.Controls.Add(this.gbDeshabilitar);
             this.tsPanel2.Controls.Add(this.cmdCancelar);
             this.tsPanel2.Controls.Add(this.cmdGrabar);
-            this.tsPanel2.Controls.Add(this.cmdDesHab);
             this.tsPanel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.tsPanel2.Location = new System.Drawing.Point(280, 3);
+            this.tsPanel2.Location = new System.Drawing.Point(315, 3);
             this.tsPanel2.Name = "tsPanel2";
             this.tsPanel2.Opacity = 255;
-            this.tsPanel2.Size = new System.Drawing.Size(280, 85);
+            this.tsPanel2.Size = new System.Drawing.Size(307, 85);
             this.tsPanel2.Speed = 1;
             this.tsPanel2.TabIndex = 1;
             // 
-            // cmdHab
+            // gbHabilitar
             // 
-            this.cmdHab.BlackBorder = true;
-            this.cmdHab.CircleButton = false;
-            this.cmdHab.FixedImage = TNGS.NetControls.FixedGlassButtons.Enable;
-            this.cmdHab.FlatColor = System.Drawing.Color.RoyalBlue;
-            this.cmdHab.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
-            this.cmdHab.FlatFontSize = 9;
-            this.cmdHab.FlatTextColor = System.Drawing.Color.Black;
-            this.cmdHab.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.cmdHab.Location = new System.Drawing.Point(157, 7);
-            this.cmdHab.Name = "cmdHab";
-            this.cmdHab.RoundCorners = 2;
-            this.cmdHab.Size = new System.Drawing.Size(113, 26);
-            this.cmdHab.TabIndex = 11;
-            this.cmdHab.Text = "Habilitar";
-            this.cmdHab.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.cmdHab.W8Color = System.Drawing.Color.RoyalBlue;
-            this.cmdHab.Click += new System.EventHandler(this.cmdDesHab_Click);
+            this.gbHabilitar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("gbHabilitar.BackgroundImage")));
+            this.gbHabilitar.BlackBorder = true;
+            this.gbHabilitar.ButtonMode = TNGS.NetControls.GlassButton.GBMode.Flat;
+            this.gbHabilitar.CircleButton = false;
+            this.gbHabilitar.FixedFlatImage = TNGS.NetControls.FixedFlatImageButtons.Check;
+            this.gbHabilitar.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.gbHabilitar.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.Aceptar;
+            this.gbHabilitar.FlatFontSize = 9;
+            this.gbHabilitar.FlatTextColor = System.Drawing.Color.Black;
+            this.gbHabilitar.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.gbHabilitar.Location = new System.Drawing.Point(180, 7);
+            this.gbHabilitar.Name = "gbHabilitar";
+            this.gbHabilitar.RoundCorners = 2;
+            this.gbHabilitar.Size = new System.Drawing.Size(113, 25);
+            this.gbHabilitar.TabIndex = 21;
+            this.gbHabilitar.Text = "Habilitar";
+            this.gbHabilitar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.gbHabilitar.W8Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.gbHabilitar.Click += new System.EventHandler(this.gbChangeHabilitado_Click);
+            // 
+            // gbDeshabilitar
+            // 
+            this.gbDeshabilitar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("gbDeshabilitar.BackgroundImage")));
+            this.gbDeshabilitar.BlackBorder = true;
+            this.gbDeshabilitar.ButtonMode = TNGS.NetControls.GlassButton.GBMode.Flat;
+            this.gbDeshabilitar.CircleButton = false;
+            this.gbDeshabilitar.FixedFlatImage = TNGS.NetControls.FixedFlatImageButtons.Block;
+            this.gbDeshabilitar.FlatColor = System.Drawing.Color.Red;
+            this.gbDeshabilitar.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.Cancelar;
+            this.gbDeshabilitar.FlatFontSize = 9;
+            this.gbDeshabilitar.FlatTextColor = System.Drawing.Color.Black;
+            this.gbDeshabilitar.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.gbDeshabilitar.Location = new System.Drawing.Point(180, 35);
+            this.gbDeshabilitar.Name = "gbDeshabilitar";
+            this.gbDeshabilitar.RoundCorners = 2;
+            this.gbDeshabilitar.Size = new System.Drawing.Size(113, 25);
+            this.gbDeshabilitar.TabIndex = 22;
+            this.gbDeshabilitar.Text = "Deshabilitar";
+            this.gbDeshabilitar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.gbDeshabilitar.W8Color = System.Drawing.Color.Red;
+            this.gbDeshabilitar.Click += new System.EventHandler(this.gbChangeHabilitado_Click);
             // 
             // cmdCancelar
             // 
+            this.cmdCancelar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("cmdCancelar.BackgroundImage")));
             this.cmdCancelar.BlackBorder = true;
+            this.cmdCancelar.ButtonMode = TNGS.NetControls.GlassButton.GBMode.Flat;
             this.cmdCancelar.CircleButton = false;
-            this.cmdCancelar.FixedImage = TNGS.NetControls.FixedGlassButtons.tCancel;
-            this.cmdCancelar.FlatColor = System.Drawing.Color.RoyalBlue;
-            this.cmdCancelar.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
+            this.cmdCancelar.FixedFlatImage = TNGS.NetControls.FixedFlatImageButtons.Cancel;
+            this.cmdCancelar.FlatColor = System.Drawing.Color.Red;
+            this.cmdCancelar.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.Cancelar;
             this.cmdCancelar.FlatFontSize = 9;
             this.cmdCancelar.FlatTextColor = System.Drawing.Color.Black;
-            this.cmdCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.cmdCancelar.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.cmdCancelar.ImageOnTop = true;
-            this.cmdCancelar.Location = new System.Drawing.Point(78, 4);
+            this.cmdCancelar.Location = new System.Drawing.Point(93, 3);
             this.cmdCancelar.Name = "cmdCancelar";
             this.cmdCancelar.RoundCorners = 2;
-            this.cmdCancelar.Size = new System.Drawing.Size(73, 62);
-            this.cmdCancelar.TabIndex = 12;
+            this.cmdCancelar.Size = new System.Drawing.Size(70, 60);
+            this.cmdCancelar.TabIndex = 20;
             this.cmdCancelar.Text = "Cancelar";
-            this.cmdCancelar.W8Color = System.Drawing.Color.RoyalBlue;
-            this.cmdCancelar.Click += new System.EventHandler(this.cmdCancelar_Click);
+            this.cmdCancelar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.cmdCancelar.W8Color = System.Drawing.Color.Red;
+            this.cmdCancelar.Click += new System.EventHandler(this.gbCancelar_Click);
             // 
             // cmdGrabar
             // 
+            this.cmdGrabar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("cmdGrabar.BackgroundImage")));
             this.cmdGrabar.BlackBorder = true;
+            this.cmdGrabar.ButtonMode = TNGS.NetControls.GlassButton.GBMode.Flat;
             this.cmdGrabar.CircleButton = false;
-            this.cmdGrabar.FixedImage = TNGS.NetControls.FixedGlassButtons.tSave;
-            this.cmdGrabar.FlatColor = System.Drawing.Color.RoyalBlue;
-            this.cmdGrabar.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
+            this.cmdGrabar.FixedFlatImage = TNGS.NetControls.FixedFlatImageButtons.Save;
+            this.cmdGrabar.FlatColor = System.Drawing.Color.DodgerBlue;
+            this.cmdGrabar.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.LightBlue;
             this.cmdGrabar.FlatFontSize = 9;
             this.cmdGrabar.FlatTextColor = System.Drawing.Color.Black;
-            this.cmdGrabar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.cmdGrabar.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.cmdGrabar.ImageOnTop = true;
-            this.cmdGrabar.Location = new System.Drawing.Point(3, 4);
+            this.cmdGrabar.Location = new System.Drawing.Point(18, 3);
             this.cmdGrabar.Name = "cmdGrabar";
             this.cmdGrabar.RoundCorners = 2;
-            this.cmdGrabar.Size = new System.Drawing.Size(73, 62);
-            this.cmdGrabar.TabIndex = 10;
+            this.cmdGrabar.Size = new System.Drawing.Size(70, 60);
+            this.cmdGrabar.TabIndex = 19;
             this.cmdGrabar.Text = "Grabar";
-            this.cmdGrabar.W8Color = System.Drawing.Color.RoyalBlue;
-            this.cmdGrabar.Click += new System.EventHandler(this.cmdGrabar_Click);
-            // 
-            // cmdDesHab
-            // 
-            this.cmdDesHab.BlackBorder = true;
-            this.cmdDesHab.CircleButton = false;
-            this.cmdDesHab.FixedImage = TNGS.NetControls.FixedGlassButtons.Disable;
-            this.cmdDesHab.FlatColor = System.Drawing.Color.RoyalBlue;
-            this.cmdDesHab.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
-            this.cmdDesHab.FlatFontSize = 9;
-            this.cmdDesHab.FlatTextColor = System.Drawing.Color.Black;
-            this.cmdDesHab.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.cmdDesHab.Location = new System.Drawing.Point(157, 35);
-            this.cmdDesHab.Name = "cmdDesHab";
-            this.cmdDesHab.RoundCorners = 2;
-            this.cmdDesHab.Size = new System.Drawing.Size(113, 26);
-            this.cmdDesHab.TabIndex = 11;
-            this.cmdDesHab.Text = "Deshabilitar";
-            this.cmdDesHab.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.cmdDesHab.W8Color = System.Drawing.Color.RoyalBlue;
-            this.cmdDesHab.Click += new System.EventHandler(this.cmdDesHab_Click);
+            this.cmdGrabar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.cmdGrabar.W8Color = System.Drawing.Color.DodgerBlue;
+            this.cmdGrabar.Click += new System.EventHandler(this.gbGrabar_Click);
             // 
             // tsPanel1
             // 
             this.tsPanel1.Caption = "Operaciones";
-            this.tsPanel1.Controls.Add(this.cmdSalir);
-            this.tsPanel1.Controls.Add(this.cmdPurgar);
-            this.tsPanel1.Controls.Add(this.cmdModificar);
+            this.tsPanel1.Controls.Add(this.gbCompactar);
             this.tsPanel1.Controls.Add(this.cmdNuevo);
+            this.tsPanel1.Controls.Add(this.cmdModificar);
+            this.tsPanel1.Controls.Add(this.gbSalir);
             this.tsPanel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.tsPanel1.Location = new System.Drawing.Point(0, 3);
             this.tsPanel1.Name = "tsPanel1";
             this.tsPanel1.Opacity = 255;
-            this.tsPanel1.Size = new System.Drawing.Size(280, 85);
+            this.tsPanel1.Size = new System.Drawing.Size(315, 85);
             this.tsPanel1.Speed = 1;
             this.tsPanel1.TabIndex = 0;
             // 
-            // cmdSalir
+            // gbCompactar
             // 
-            this.cmdSalir.BlackBorder = true;
-            this.cmdSalir.CircleButton = false;
-            this.cmdSalir.FixedImage = TNGS.NetControls.FixedGlassButtons.Quit;
-            this.cmdSalir.FlatColor = System.Drawing.Color.RoyalBlue;
-            this.cmdSalir.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
-            this.cmdSalir.FlatFontSize = 9;
-            this.cmdSalir.FlatTextColor = System.Drawing.Color.Black;
-            this.cmdSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.cmdSalir.Location = new System.Drawing.Point(161, 7);
-            this.cmdSalir.Name = "cmdSalir";
-            this.cmdSalir.RoundCorners = 2;
-            this.cmdSalir.Size = new System.Drawing.Size(104, 26);
-            this.cmdSalir.TabIndex = 6;
-            this.cmdSalir.Text = "Salir";
-            this.cmdSalir.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.cmdSalir.W8Color = System.Drawing.Color.RoyalBlue;
-            this.cmdSalir.Click += new System.EventHandler(this.cmdSalir_Click);
-            // 
-            // cmdPurgar
-            // 
-            this.cmdPurgar.BlackBorder = true;
-            this.cmdPurgar.CircleButton = false;
-            this.cmdPurgar.FixedImage = TNGS.NetControls.FixedGlassButtons.Agrupa;
-            this.cmdPurgar.FlatColor = System.Drawing.Color.RoyalBlue;
-            this.cmdPurgar.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
-            this.cmdPurgar.FlatFontSize = 9;
-            this.cmdPurgar.FlatTextColor = System.Drawing.Color.Black;
-            this.cmdPurgar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.cmdPurgar.Location = new System.Drawing.Point(161, 35);
-            this.cmdPurgar.Name = "cmdPurgar";
-            this.cmdPurgar.RoundCorners = 2;
-            this.cmdPurgar.Size = new System.Drawing.Size(104, 26);
-            this.cmdPurgar.TabIndex = 5;
-            this.cmdPurgar.Text = "Compactar";
-            this.cmdPurgar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.cmdPurgar.W8Color = System.Drawing.Color.RoyalBlue;
-            this.cmdPurgar.Click += new System.EventHandler(this.cmdPurgar_Click);
-            // 
-            // cmdModificar
-            // 
-            this.cmdModificar.BlackBorder = true;
-            this.cmdModificar.CircleButton = false;
-            this.cmdModificar.FixedImage = TNGS.NetControls.FixedGlassButtons.tModify;
-            this.cmdModificar.FlatColor = System.Drawing.Color.RoyalBlue;
-            this.cmdModificar.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
-            this.cmdModificar.FlatFontSize = 9;
-            this.cmdModificar.FlatTextColor = System.Drawing.Color.Black;
-            this.cmdModificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.cmdModificar.ImageOnTop = true;
-            this.cmdModificar.Location = new System.Drawing.Point(82, 3);
-            this.cmdModificar.Name = "cmdModificar";
-            this.cmdModificar.RoundCorners = 2;
-            this.cmdModificar.Size = new System.Drawing.Size(73, 62);
-            this.cmdModificar.TabIndex = 4;
-            this.cmdModificar.Text = "Editar";
-            this.cmdModificar.W8Color = System.Drawing.Color.RoyalBlue;
-            this.cmdModificar.Click += new System.EventHandler(this.cmdModificar_Click);
+            this.gbCompactar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("gbCompactar.BackgroundImage")));
+            this.gbCompactar.BlackBorder = true;
+            this.gbCompactar.ButtonMode = TNGS.NetControls.GlassButton.GBMode.Flat;
+            this.gbCompactar.CircleButton = false;
+            this.gbCompactar.FixedFlatImage = TNGS.NetControls.FixedFlatImageButtons.Folder;
+            this.gbCompactar.FlatColor = System.Drawing.Color.Gray;
+            this.gbCompactar.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.Imprimir;
+            this.gbCompactar.FlatFontSize = 9;
+            this.gbCompactar.FlatTextColor = System.Drawing.Color.Black;
+            this.gbCompactar.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.gbCompactar.Location = new System.Drawing.Point(188, 36);
+            this.gbCompactar.Name = "gbCompactar";
+            this.gbCompactar.RoundCorners = 2;
+            this.gbCompactar.Size = new System.Drawing.Size(104, 25);
+            this.gbCompactar.TabIndex = 18;
+            this.gbCompactar.Text = "Compactar";
+            this.gbCompactar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.gbCompactar.W8Color = System.Drawing.Color.Gray;
+            this.gbCompactar.Click += new System.EventHandler(this.gbCompactar_Click);
             // 
             // cmdNuevo
             // 
+            this.cmdNuevo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("cmdNuevo.BackgroundImage")));
             this.cmdNuevo.BlackBorder = true;
+            this.cmdNuevo.ButtonMode = TNGS.NetControls.GlassButton.GBMode.Flat;
             this.cmdNuevo.CircleButton = false;
-            this.cmdNuevo.FixedImage = TNGS.NetControls.FixedGlassButtons.tNew;
-            this.cmdNuevo.FlatColor = System.Drawing.Color.RoyalBlue;
-            this.cmdNuevo.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
+            this.cmdNuevo.FixedFlatImage = TNGS.NetControls.FixedFlatImageButtons.New;
+            this.cmdNuevo.FlatColor = System.Drawing.Color.DodgerBlue;
+            this.cmdNuevo.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.LightBlue;
             this.cmdNuevo.FlatFontSize = 9;
             this.cmdNuevo.FlatTextColor = System.Drawing.Color.Black;
-            this.cmdNuevo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.cmdNuevo.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.cmdNuevo.ImageOnTop = true;
-            this.cmdNuevo.Location = new System.Drawing.Point(8, 4);
+            this.cmdNuevo.Location = new System.Drawing.Point(22, 4);
             this.cmdNuevo.Name = "cmdNuevo";
             this.cmdNuevo.RoundCorners = 2;
-            this.cmdNuevo.Size = new System.Drawing.Size(73, 62);
-            this.cmdNuevo.TabIndex = 3;
+            this.cmdNuevo.Size = new System.Drawing.Size(70, 60);
+            this.cmdNuevo.TabIndex = 15;
             this.cmdNuevo.Text = "Nuevo";
-            this.cmdNuevo.W8Color = System.Drawing.Color.RoyalBlue;
-            this.cmdNuevo.Click += new System.EventHandler(this.cmdNuevo_Click);
+            this.cmdNuevo.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.cmdNuevo.W8Color = System.Drawing.Color.DodgerBlue;
+            this.cmdNuevo.Click += new System.EventHandler(this.gbNuevo_Click);
+            // 
+            // cmdModificar
+            // 
+            this.cmdModificar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("cmdModificar.BackgroundImage")));
+            this.cmdModificar.BlackBorder = true;
+            this.cmdModificar.ButtonMode = TNGS.NetControls.GlassButton.GBMode.Flat;
+            this.cmdModificar.CircleButton = false;
+            this.cmdModificar.FixedFlatImage = TNGS.NetControls.FixedFlatImageButtons.Edit;
+            this.cmdModificar.FlatColor = System.Drawing.Color.DodgerBlue;
+            this.cmdModificar.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.LightBlue;
+            this.cmdModificar.FlatFontSize = 9;
+            this.cmdModificar.FlatTextColor = System.Drawing.Color.Black;
+            this.cmdModificar.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.cmdModificar.ImageOnTop = true;
+            this.cmdModificar.Location = new System.Drawing.Point(99, 4);
+            this.cmdModificar.Name = "cmdModificar";
+            this.cmdModificar.RoundCorners = 2;
+            this.cmdModificar.Size = new System.Drawing.Size(75, 60);
+            this.cmdModificar.TabIndex = 16;
+            this.cmdModificar.Text = "Modificar";
+            this.cmdModificar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.cmdModificar.W8Color = System.Drawing.Color.DodgerBlue;
+            this.cmdModificar.Click += new System.EventHandler(this.gbModificar_Click);
+            // 
+            // gbSalir
+            // 
+            this.gbSalir.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("gbSalir.BackgroundImage")));
+            this.gbSalir.BlackBorder = true;
+            this.gbSalir.ButtonMode = TNGS.NetControls.GlassButton.GBMode.Flat;
+            this.gbSalir.CircleButton = false;
+            this.gbSalir.FixedFlatImage = TNGS.NetControls.FixedFlatImageButtons.Undo;
+            this.gbSalir.FlatColor = System.Drawing.Color.Red;
+            this.gbSalir.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.Cancelar;
+            this.gbSalir.FlatFontSize = 9;
+            this.gbSalir.FlatTextColor = System.Drawing.Color.Black;
+            this.gbSalir.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.gbSalir.Location = new System.Drawing.Point(188, 7);
+            this.gbSalir.Name = "gbSalir";
+            this.gbSalir.RoundCorners = 2;
+            this.gbSalir.Size = new System.Drawing.Size(104, 25);
+            this.gbSalir.TabIndex = 17;
+            this.gbSalir.Text = "Salir";
+            this.gbSalir.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.gbSalir.W8Color = System.Drawing.Color.Red;
+            this.gbSalir.Click += new System.EventHandler(this.gbSalir_Click);
             // 
             // tsBase1
             // 
@@ -396,16 +409,20 @@ namespace Mrln.Tg
             this.grdDatos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.grdDatos.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
             this.grdDatos.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.grdDatos.CaptionFilterColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(206)))), ((int)(((byte)(72)))));
+            this.grdDatos.CaptionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(163)))), ((int)(((byte)(226)))));
+            this.grdDatos.CaptionFilterColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(119)))), ((int)(((byte)(7)))));
             this.grdDatos.CaptionVisible = false;
             this.grdDatos.DataMember = "";
+            this.grdDatos.ExcelName = "Datos Exportados";
             this.grdDatos.ExcelTitle = "";
             this.grdDatos.GridOrder = "";
             this.grdDatos.HeaderForeColor = System.Drawing.SystemColors.ControlText;
             this.grdDatos.Location = new System.Drawing.Point(4, 142);
             this.grdDatos.Name = "grdDatos";
-            this.grdDatos.Size = new System.Drawing.Size(976, 179);
+            this.grdDatos.Size = new System.Drawing.Size(976, 199);
+            this.grdDatos.SkinFixed = true;
             this.grdDatos.TabIndex = 0;
             this.grdDatos.Advance += new TNGS.NetRoutines.AdvanceEventHandler(this.grdDatos_Advance);
             this.grdDatos.DataDClick += new TNGS.NetRoutines.DataDClickEventHandler(this.grdDatos_DataDClick);
@@ -414,54 +431,58 @@ namespace Mrln.Tg
             // cmdPrint
             // 
             this.cmdPrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmdPrint.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("cmdPrint.BackgroundImage")));
             this.cmdPrint.BlackBorder = true;
+            this.cmdPrint.ButtonMode = TNGS.NetControls.GlassButton.GBMode.Flat;
             this.cmdPrint.CircleButton = false;
-            this.cmdPrint.FixedImage = TNGS.NetControls.FixedGlassButtons.bPrint;
-            this.cmdPrint.FlatColor = System.Drawing.Color.RoyalBlue;
-            this.cmdPrint.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
+            this.cmdPrint.FixedFlatImage = TNGS.NetControls.FixedFlatImageButtons.fPrint;
+            this.cmdPrint.FlatColor = System.Drawing.Color.Gray;
+            this.cmdPrint.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.Imprimir;
             this.cmdPrint.FlatFontSize = 9;
             this.cmdPrint.FlatTextColor = System.Drawing.Color.Black;
-            this.cmdPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.cmdPrint.Location = new System.Drawing.Point(954, 118);
+            this.cmdPrint.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.cmdPrint.Location = new System.Drawing.Point(952, 118);
             this.cmdPrint.Name = "cmdPrint";
             this.cmdPrint.PCode = "TNGS.PRINT";
             this.cmdPrint.RoundCorners = 2;
             this.cmdPrint.Size = new System.Drawing.Size(26, 24);
             this.cmdPrint.TabIndex = 2;
             this.cmdPrint.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.cmdPrint.W8Color = System.Drawing.Color.RoyalBlue;
-            this.cmdPrint.Click += new System.EventHandler(this.cmdPrint_Click);
+            this.cmdPrint.W8Color = System.Drawing.Color.Gray;
+            this.cmdPrint.Click += new System.EventHandler(this.gbPrint_Click);
             // 
             // cmdExcel
             // 
             this.cmdExcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmdExcel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("cmdExcel.BackgroundImage")));
             this.cmdExcel.BlackBorder = true;
+            this.cmdExcel.ButtonMode = TNGS.NetControls.GlassButton.GBMode.Flat;
             this.cmdExcel.CircleButton = false;
-            this.cmdExcel.FixedImage = TNGS.NetControls.FixedGlassButtons.bExcel;
-            this.cmdExcel.FlatColor = System.Drawing.Color.RoyalBlue;
-            this.cmdExcel.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
+            this.cmdExcel.FixedFlatImage = TNGS.NetControls.FixedFlatImageButtons.fExcel;
+            this.cmdExcel.FlatColor = System.Drawing.Color.LimeGreen;
+            this.cmdExcel.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.Excel;
             this.cmdExcel.FlatFontSize = 9;
             this.cmdExcel.FlatTextColor = System.Drawing.Color.Black;
-            this.cmdExcel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.cmdExcel.Location = new System.Drawing.Point(929, 118);
+            this.cmdExcel.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.cmdExcel.Location = new System.Drawing.Point(921, 118);
             this.cmdExcel.Name = "cmdExcel";
             this.cmdExcel.PCode = "TNGS.EXCEL";
             this.cmdExcel.RoundCorners = 2;
             this.cmdExcel.Size = new System.Drawing.Size(26, 24);
             this.cmdExcel.TabIndex = 1;
             this.cmdExcel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.cmdExcel.W8Color = System.Drawing.Color.RoyalBlue;
-            this.cmdExcel.Click += new System.EventHandler(this.cmdExcel_Click);
+            this.cmdExcel.W8Color = System.Drawing.Color.LimeGreen;
+            this.cmdExcel.Click += new System.EventHandler(this.gbExcel_Click);
             // 
             // frmEdicion
             // 
             this.frmEdicion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.frmEdicion.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.frmEdicion.BackgroundGradientColor = System.Drawing.SystemColors.Control;
+            this.frmEdicion.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.frmEdicion.BackgroundGradientColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
             this.frmEdicion.BackgroundGradientMode = TNGS.NetControls.ImgGroup.GroupBoxGradientMode.ForwardDiagonal;
             this.frmEdicion.BlackBorder = true;
-            this.frmEdicion.BorderColor = System.Drawing.Color.Black;
+            this.frmEdicion.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.frmEdicion.BorderThickness = 1F;
             this.frmEdicion.Controls.Add(this.lblCod);
             this.frmEdicion.Controls.Add(this.txtCod);
@@ -473,19 +494,22 @@ namespace Mrln.Tg
             this.frmEdicion.Controls.Add(this.txtContacto);
             this.frmEdicion.Controls.Add(this.lblTelefono);
             this.frmEdicion.Controls.Add(this.txtTelefono);
-            this.frmEdicion.CustomGroupBoxColor = System.Drawing.Color.White;
+            this.frmEdicion.CustomGroupBoxColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
+            this.frmEdicion.FlatMode = true;
             this.frmEdicion.FontTitle = new System.Drawing.Font("Arial", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.frmEdicion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.frmEdicion.GroupImage = null;
             this.frmEdicion.GroupTitle = " Estación ";
-            this.frmEdicion.Location = new System.Drawing.Point(4, 327);
+            this.frmEdicion.Location = new System.Drawing.Point(4, 347);
             this.frmEdicion.Name = "frmEdicion";
             this.frmEdicion.Padding = new System.Windows.Forms.Padding(20);
             this.frmEdicion.PaintGroupBox = false;
-            this.frmEdicion.RoundCorners = 10;
+            this.frmEdicion.RoundCorners = 4;
             this.frmEdicion.ShadowColor = System.Drawing.Color.DarkGray;
             this.frmEdicion.ShadowControl = false;
             this.frmEdicion.ShadowThickness = 3;
-            this.frmEdicion.Size = new System.Drawing.Size(976, 130);
+            this.frmEdicion.Size = new System.Drawing.Size(976, 143);
+            this.frmEdicion.SkinFixed = true;
             this.frmEdicion.TabIndex = 21;
             this.frmEdicion.TitleBackground = System.Drawing.Color.DodgerBlue;
             this.frmEdicion.TitleBackgroundDefault = TNGS.NetControls.ColorRuts.ColoresDefault.None;
@@ -494,7 +518,7 @@ namespace Mrln.Tg
             // lblCod
             // 
             this.lblCod.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCod.Location = new System.Drawing.Point(63, 29);
+            this.lblCod.Location = new System.Drawing.Point(63, 42);
             this.lblCod.Name = "lblCod";
             this.lblCod.Size = new System.Drawing.Size(109, 22);
             this.lblCod.TabIndex = 106;
@@ -508,7 +532,7 @@ namespace Mrln.Tg
             this.txtCod.EmptyValid = false;
             this.txtCod.Enabled = false;
             this.txtCod.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCod.Location = new System.Drawing.Point(172, 29);
+            this.txtCod.Location = new System.Drawing.Point(172, 42);
             this.txtCod.MaxLength = 2;
             this.txtCod.Name = "txtCod";
             this.txtCod.OnlyDigits = true;
@@ -518,7 +542,7 @@ namespace Mrln.Tg
             // lblDes
             // 
             this.lblDes.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDes.Location = new System.Drawing.Point(317, 29);
+            this.lblDes.Location = new System.Drawing.Point(317, 42);
             this.lblDes.Name = "lblDes";
             this.lblDes.Size = new System.Drawing.Size(80, 22);
             this.lblDes.TabIndex = 107;
@@ -532,7 +556,7 @@ namespace Mrln.Tg
             this.txtDes.EmptyValid = false;
             this.txtDes.Enabled = false;
             this.txtDes.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDes.Location = new System.Drawing.Point(398, 29);
+            this.txtDes.Location = new System.Drawing.Point(398, 42);
             this.txtDes.MaxLength = 30;
             this.txtDes.Name = "txtDes";
             this.txtDes.Size = new System.Drawing.Size(456, 22);
@@ -541,7 +565,7 @@ namespace Mrln.Tg
             // lblDomicilio
             // 
             this.lblDomicilio.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDomicilio.Location = new System.Drawing.Point(100, 59);
+            this.lblDomicilio.Location = new System.Drawing.Point(100, 72);
             this.lblDomicilio.Name = "lblDomicilio";
             this.lblDomicilio.Size = new System.Drawing.Size(68, 22);
             this.lblDomicilio.TabIndex = 108;
@@ -554,7 +578,7 @@ namespace Mrln.Tg
             this.txtDomicilio.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtDomicilio.Enabled = false;
             this.txtDomicilio.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDomicilio.Location = new System.Drawing.Point(172, 62);
+            this.txtDomicilio.Location = new System.Drawing.Point(172, 75);
             this.txtDomicilio.MaxLength = 60;
             this.txtDomicilio.Name = "txtDomicilio";
             this.txtDomicilio.Size = new System.Drawing.Size(682, 22);
@@ -563,7 +587,7 @@ namespace Mrln.Tg
             // lblContacto
             // 
             this.lblContacto.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblContacto.Location = new System.Drawing.Point(106, 90);
+            this.lblContacto.Location = new System.Drawing.Point(106, 103);
             this.lblContacto.Name = "lblContacto";
             this.lblContacto.Size = new System.Drawing.Size(65, 22);
             this.lblContacto.TabIndex = 109;
@@ -576,7 +600,7 @@ namespace Mrln.Tg
             this.txtContacto.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtContacto.Enabled = false;
             this.txtContacto.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtContacto.Location = new System.Drawing.Point(172, 93);
+            this.txtContacto.Location = new System.Drawing.Point(172, 106);
             this.txtContacto.MaxLength = 30;
             this.txtContacto.Name = "txtContacto";
             this.txtContacto.Size = new System.Drawing.Size(288, 22);
@@ -585,7 +609,7 @@ namespace Mrln.Tg
             // lblTelefono
             // 
             this.lblTelefono.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTelefono.Location = new System.Drawing.Point(485, 93);
+            this.lblTelefono.Location = new System.Drawing.Point(485, 106);
             this.lblTelefono.Name = "lblTelefono";
             this.lblTelefono.Size = new System.Drawing.Size(62, 22);
             this.lblTelefono.TabIndex = 110;
@@ -598,7 +622,7 @@ namespace Mrln.Tg
             this.txtTelefono.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtTelefono.Enabled = false;
             this.txtTelefono.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTelefono.Location = new System.Drawing.Point(548, 93);
+            this.txtTelefono.Location = new System.Drawing.Point(548, 106);
             this.txtTelefono.MaxLength = 60;
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(306, 22);
@@ -608,7 +632,7 @@ namespace Mrln.Tg
             // 
             this.AllowEndUserDocking = false;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(984, 461);
+            this.ClientSize = new System.Drawing.Size(984, 494);
             this.Controls.Add(this.xpnlBase);
             this.DockAreas = WeifenLuo.WinFormsUI.Docking.DockAreas.Document;
             this.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -636,5 +660,14 @@ namespace Mrln.Tg
 
         }
         #endregion
+
+        private TNGS.NetControls.GlassButton gbHabilitar;
+        private TNGS.NetControls.GlassButton gbDeshabilitar;
+        private TNGS.NetControls.GlassButton cmdCancelar;
+        private TNGS.NetControls.GlassButton cmdGrabar;
+        private TNGS.NetControls.GlassButton gbCompactar;
+        private TNGS.NetControls.GlassButton cmdNuevo;
+        private TNGS.NetControls.GlassButton cmdModificar;
+        private TNGS.NetControls.GlassButton gbSalir;
     }
 }

@@ -31,31 +31,33 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AltaMovil));
             this.xPanel1 = new TNGS.NetControls.XPanel();
-            this.cdcTipoMovil = new TNGS.NetControls.CDCombo();
-            this.fullLabel3 = new TNGS.NetControls.FullLabel();
-            this.teNroPloteado = new TNGS.NetControls.TextEdit();
-            this.fullLabel2 = new TNGS.NetControls.FullLabel();
-            this.neKilometros = new TNGS.NetControls.NumberEdit();
-            this.teDescripcionMovil = new TNGS.NetControls.TextEdit();
-            this.fullLabel1 = new TNGS.NetControls.FullLabel();
-            this.lblNroChasis = new TNGS.NetControls.FullLabel();
-            this.cdcModelo = new TNGS.NetControls.CDCombo();
-            this.lblNroMotor = new TNGS.NetControls.FullLabel();
-            this.tePatente = new TNGS.NetControls.TextEdit();
-            this.teNroChasis = new TNGS.NetControls.TextEdit();
-            this.lblAnotaciones = new TNGS.NetControls.FullLabel();
-            this.lblModelo = new TNGS.NetControls.FullLabel();
-            this.lblAnioFabricacion = new TNGS.NetControls.FullLabel();
-            this.lblDescripcionMovil = new TNGS.NetControls.FullLabel();
-            this.teAnotaciones = new TNGS.NetControls.TextEdit();
-            this.lblPatente = new TNGS.NetControls.FullLabel();
-            this.lblMovilPropio = new TNGS.NetControls.FullLabel();
-            this.cdcMovilPropio = new TNGS.NetControls.CDCombo();
-            this.neAnioFabric = new TNGS.NetControls.NumberEdit();
-            this.teNroMotor = new TNGS.NetControls.TextEdit();
+            this.tgrpEquipamiento = new TNGS.NetControls.ImgGroup();
             this.btnDestildarTodoEqi = new TNGS.NetControls.GlassButton();
             this.clEquipamientos = new TNGS.NetControls.CDCheckedList();
             this.btnTildaTodos = new TNGS.NetControls.GlassButton();
+            this.tgrpDatosBasicos = new TNGS.NetControls.ImgGroup();
+            this.cdcTipoMovil = new TNGS.NetControls.CDCombo();
+            this.tePatente = new TNGS.NetControls.TextEdit();
+            this.fullLabel3 = new TNGS.NetControls.FullLabel();
+            this.teNroMotor = new TNGS.NetControls.TextEdit();
+            this.teNroPloteado = new TNGS.NetControls.TextEdit();
+            this.neAnioFabric = new TNGS.NetControls.NumberEdit();
+            this.fullLabel2 = new TNGS.NetControls.FullLabel();
+            this.cdcMovilPropio = new TNGS.NetControls.CDCombo();
+            this.neKilometros = new TNGS.NetControls.NumberEdit();
+            this.lblMovilPropio = new TNGS.NetControls.FullLabel();
+            this.teDescripcionMovil = new TNGS.NetControls.TextEdit();
+            this.lblPatente = new TNGS.NetControls.FullLabel();
+            this.fullLabel1 = new TNGS.NetControls.FullLabel();
+            this.teAnotaciones = new TNGS.NetControls.TextEdit();
+            this.lblNroChasis = new TNGS.NetControls.FullLabel();
+            this.lblDescripcionMovil = new TNGS.NetControls.FullLabel();
+            this.cdcModelo = new TNGS.NetControls.CDCombo();
+            this.lblAnioFabricacion = new TNGS.NetControls.FullLabel();
+            this.lblNroMotor = new TNGS.NetControls.FullLabel();
+            this.lblModelo = new TNGS.NetControls.FullLabel();
+            this.lblAnotaciones = new TNGS.NetControls.FullLabel();
+            this.teNroChasis = new TNGS.NetControls.TextEdit();
             this.tsContainer1 = new TNGS.NetControls.TSContainer();
             this.tabPageSwitcher1 = new RibbonStyle.TabPageSwitcher();
             this.tabStripPage1 = new RibbonStyle.TabStripPage();
@@ -65,16 +67,14 @@
             this.gbGrabar = new TNGS.NetControls.GlassButton();
             this.tsBase1 = new TNGS.NetControls.TSBase();
             this.tab1 = new RibbonStyle.Tab();
-            this.tgrpDatosBasicos = new TNGS.NetControls.ImgGroup();
-            this.tgrpEquipamiento = new TNGS.NetControls.ImgGroup();
             this.xPanel1.SuspendLayout();
+            this.tgrpEquipamiento.SuspendLayout();
+            this.tgrpDatosBasicos.SuspendLayout();
             this.tsContainer1.SuspendLayout();
             this.tabPageSwitcher1.SuspendLayout();
             this.tabStripPage1.SuspendLayout();
             this.tsPanel2.SuspendLayout();
             this.tsBase1.SuspendLayout();
-            this.tgrpDatosBasicos.SuspendLayout();
-            this.tgrpEquipamiento.SuspendLayout();
             this.SuspendLayout();
             // 
             // xPanel1
@@ -91,240 +91,38 @@
             this.xPanel1.SkinFixed = true;
             this.xPanel1.TabIndex = 0;
             // 
-            // cdcTipoMovil
+            // tgrpEquipamiento
             // 
-            this.cdcTipoMovil.BackColor = System.Drawing.SystemColors.Window;
-            this.cdcTipoMovil.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cdcTipoMovil.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cdcTipoMovil.FormattingEnabled = true;
-            this.cdcTipoMovil.Location = new System.Drawing.Point(447, 273);
-            this.cdcTipoMovil.Name = "cdcTipoMovil";
-            this.cdcTipoMovil.Size = new System.Drawing.Size(175, 23);
-            this.cdcTipoMovil.Sorted = true;
-            this.cdcTipoMovil.TabIndex = 23;
-            // 
-            // fullLabel3
-            // 
-            this.fullLabel3.BackColor = System.Drawing.Color.Transparent;
-            this.fullLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fullLabel3.ForeColor = System.Drawing.Color.Black;
-            this.fullLabel3.Location = new System.Drawing.Point(337, 275);
-            this.fullLabel3.Name = "fullLabel3";
-            this.fullLabel3.Size = new System.Drawing.Size(96, 18);
-            this.fullLabel3.TabIndex = 24;
-            this.fullLabel3.Text = "Tipo de Móvil:";
-            // 
-            // teNroPloteado
-            // 
-            this.teNroPloteado.BackColor = System.Drawing.SystemColors.Window;
-            this.teNroPloteado.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.teNroPloteado.Location = new System.Drawing.Point(158, 273);
-            this.teNroPloteado.MaxLength = 8;
-            this.teNroPloteado.Name = "teNroPloteado";
-            this.teNroPloteado.Size = new System.Drawing.Size(136, 21);
-            this.teNroPloteado.TabIndex = 8;
-            this.teNroPloteado.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // fullLabel2
-            // 
-            this.fullLabel2.BackColor = System.Drawing.Color.Transparent;
-            this.fullLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fullLabel2.ForeColor = System.Drawing.Color.Black;
-            this.fullLabel2.Location = new System.Drawing.Point(47, 275);
-            this.fullLabel2.Name = "fullLabel2";
-            this.fullLabel2.Size = new System.Drawing.Size(99, 18);
-            this.fullLabel2.TabIndex = 22;
-            this.fullLabel2.Text = "Nro. Ploteado: ";
-            // 
-            // neKilometros
-            // 
-            this.neKilometros.BackColor = System.Drawing.SystemColors.Window;
-            this.neKilometros.Location = new System.Drawing.Point(447, 229);
-            this.neKilometros.Name = "neKilometros";
-            this.neKilometros.Size = new System.Drawing.Size(123, 21);
-            this.neKilometros.TabIndex = 7;
-            this.neKilometros.Text = "0";
-            // 
-            // teDescripcionMovil
-            // 
-            this.teDescripcionMovil.BackColor = System.Drawing.SystemColors.Window;
-            this.teDescripcionMovil.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.teDescripcionMovil.Location = new System.Drawing.Point(157, 86);
-            this.teDescripcionMovil.Name = "teDescripcionMovil";
-            this.teDescripcionMovil.Size = new System.Drawing.Size(465, 21);
-            this.teDescripcionMovil.TabIndex = 1;
-            // 
-            // fullLabel1
-            // 
-            this.fullLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.fullLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fullLabel1.ForeColor = System.Drawing.Color.Black;
-            this.fullLabel1.Location = new System.Drawing.Point(321, 229);
-            this.fullLabel1.Name = "fullLabel1";
-            this.fullLabel1.Size = new System.Drawing.Size(116, 18);
-            this.fullLabel1.TabIndex = 20;
-            this.fullLabel1.Text = "Kms Adquisición: ";
-            // 
-            // lblNroChasis
-            // 
-            this.lblNroChasis.BackColor = System.Drawing.Color.Transparent;
-            this.lblNroChasis.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNroChasis.ForeColor = System.Drawing.Color.Black;
-            this.lblNroChasis.Location = new System.Drawing.Point(39, 135);
-            this.lblNroChasis.Name = "lblNroChasis";
-            this.lblNroChasis.Size = new System.Drawing.Size(107, 18);
-            this.lblNroChasis.TabIndex = 14;
-            this.lblNroChasis.Text = "Numero Chasis:";
-            // 
-            // cdcModelo
-            // 
-            this.cdcModelo.BackColor = System.Drawing.SystemColors.Window;
-            this.cdcModelo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cdcModelo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cdcModelo.FormattingEnabled = true;
-            this.cdcModelo.Location = new System.Drawing.Point(157, 229);
-            this.cdcModelo.Name = "cdcModelo";
-            this.cdcModelo.Size = new System.Drawing.Size(137, 23);
-            this.cdcModelo.Sorted = true;
-            this.cdcModelo.TabIndex = 6;
-            // 
-            // lblNroMotor
-            // 
-            this.lblNroMotor.BackColor = System.Drawing.Color.Transparent;
-            this.lblNroMotor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNroMotor.ForeColor = System.Drawing.Color.Black;
-            this.lblNroMotor.Location = new System.Drawing.Point(47, 184);
-            this.lblNroMotor.Name = "lblNroMotor";
-            this.lblNroMotor.Size = new System.Drawing.Size(99, 18);
-            this.lblNroMotor.TabIndex = 15;
-            this.lblNroMotor.Text = "Numero Motor:";
-            // 
-            // tePatente
-            // 
-            this.tePatente.BackColor = System.Drawing.SystemColors.Window;
-            this.tePatente.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.tePatente.Location = new System.Drawing.Point(275, 42);
-            this.tePatente.MaxLength = 8;
-            this.tePatente.Name = "tePatente";
-            this.tePatente.Size = new System.Drawing.Size(136, 21);
-            this.tePatente.TabIndex = 0;
-            this.tePatente.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // teNroChasis
-            // 
-            this.teNroChasis.BackColor = System.Drawing.SystemColors.Window;
-            this.teNroChasis.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.teNroChasis.Location = new System.Drawing.Point(158, 135);
-            this.teNroChasis.Name = "teNroChasis";
-            this.teNroChasis.Size = new System.Drawing.Size(136, 21);
-            this.teNroChasis.TabIndex = 2;
-            this.teNroChasis.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // lblAnotaciones
-            // 
-            this.lblAnotaciones.BackColor = System.Drawing.Color.Transparent;
-            this.lblAnotaciones.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAnotaciones.ForeColor = System.Drawing.Color.Black;
-            this.lblAnotaciones.Location = new System.Drawing.Point(49, 319);
-            this.lblAnotaciones.Name = "lblAnotaciones";
-            this.lblAnotaciones.Size = new System.Drawing.Size(117, 18);
-            this.lblAnotaciones.TabIndex = 13;
-            this.lblAnotaciones.Text = "Anotaciones:";
-            // 
-            // lblModelo
-            // 
-            this.lblModelo.BackColor = System.Drawing.Color.Transparent;
-            this.lblModelo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblModelo.ForeColor = System.Drawing.Color.Black;
-            this.lblModelo.Location = new System.Drawing.Point(83, 231);
-            this.lblModelo.Name = "lblModelo";
-            this.lblModelo.Size = new System.Drawing.Size(63, 18);
-            this.lblModelo.TabIndex = 16;
-            this.lblModelo.Text = "Modelo:";
-            // 
-            // lblAnioFabricacion
-            // 
-            this.lblAnioFabricacion.BackColor = System.Drawing.Color.Transparent;
-            this.lblAnioFabricacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAnioFabricacion.ForeColor = System.Drawing.Color.Black;
-            this.lblAnioFabricacion.Location = new System.Drawing.Point(324, 184);
-            this.lblAnioFabricacion.Name = "lblAnioFabricacion";
-            this.lblAnioFabricacion.Size = new System.Drawing.Size(113, 18);
-            this.lblAnioFabricacion.TabIndex = 17;
-            this.lblAnioFabricacion.Text = "Año Fabricacion:";
-            // 
-            // lblDescripcionMovil
-            // 
-            this.lblDescripcionMovil.BackColor = System.Drawing.Color.Transparent;
-            this.lblDescripcionMovil.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDescripcionMovil.ForeColor = System.Drawing.Color.Black;
-            this.lblDescripcionMovil.Location = new System.Drawing.Point(60, 86);
-            this.lblDescripcionMovil.Name = "lblDescripcionMovil";
-            this.lblDescripcionMovil.Size = new System.Drawing.Size(86, 19);
-            this.lblDescripcionMovil.TabIndex = 10;
-            this.lblDescripcionMovil.Text = "Descripcion:";
-            // 
-            // teAnotaciones
-            // 
-            this.teAnotaciones.BackColor = System.Drawing.SystemColors.Window;
-            this.teAnotaciones.Location = new System.Drawing.Point(42, 340);
-            this.teAnotaciones.Multiline = true;
-            this.teAnotaciones.Name = "teAnotaciones";
-            this.teAnotaciones.Size = new System.Drawing.Size(580, 129);
-            this.teAnotaciones.TabIndex = 9;
-            // 
-            // lblPatente
-            // 
-            this.lblPatente.BackColor = System.Drawing.Color.Transparent;
-            this.lblPatente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPatente.ForeColor = System.Drawing.Color.Black;
-            this.lblPatente.Location = new System.Drawing.Point(194, 44);
-            this.lblPatente.Name = "lblPatente";
-            this.lblPatente.Size = new System.Drawing.Size(75, 18);
-            this.lblPatente.TabIndex = 6;
-            this.lblPatente.Text = "Patente:";
-            // 
-            // lblMovilPropio
-            // 
-            this.lblMovilPropio.BackColor = System.Drawing.Color.Transparent;
-            this.lblMovilPropio.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMovilPropio.ForeColor = System.Drawing.Color.Black;
-            this.lblMovilPropio.Location = new System.Drawing.Point(345, 134);
-            this.lblMovilPropio.Name = "lblMovilPropio";
-            this.lblMovilPropio.Size = new System.Drawing.Size(92, 18);
-            this.lblMovilPropio.TabIndex = 18;
-            this.lblMovilPropio.Text = "Movil Propio:";
-            // 
-            // cdcMovilPropio
-            // 
-            this.cdcMovilPropio.BackColor = System.Drawing.SystemColors.Window;
-            this.cdcMovilPropio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cdcMovilPropio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cdcMovilPropio.FormattingEnabled = true;
-            this.cdcMovilPropio.Location = new System.Drawing.Point(448, 133);
-            this.cdcMovilPropio.Name = "cdcMovilPropio";
-            this.cdcMovilPropio.Size = new System.Drawing.Size(174, 23);
-            this.cdcMovilPropio.Sorted = true;
-            this.cdcMovilPropio.TabIndex = 3;
-            // 
-            // neAnioFabric
-            // 
-            this.neAnioFabric.BackColor = System.Drawing.SystemColors.Window;
-            this.neAnioFabric.Location = new System.Drawing.Point(447, 182);
-            this.neAnioFabric.Name = "neAnioFabric";
-            this.neAnioFabric.Size = new System.Drawing.Size(123, 21);
-            this.neAnioFabric.TabIndex = 5;
-            this.neAnioFabric.Text = "0";
-            // 
-            // teNroMotor
-            // 
-            this.teNroMotor.BackColor = System.Drawing.SystemColors.Window;
-            this.teNroMotor.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.teNroMotor.Location = new System.Drawing.Point(157, 184);
-            this.teNroMotor.Name = "teNroMotor";
-            this.teNroMotor.Size = new System.Drawing.Size(136, 21);
-            this.teNroMotor.TabIndex = 4;
-            this.teNroMotor.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tgrpEquipamiento.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.tgrpEquipamiento.BackgroundGradientColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
+            this.tgrpEquipamiento.BackgroundGradientMode = TNGS.NetControls.ImgGroup.GroupBoxGradientMode.ForwardDiagonal;
+            this.tgrpEquipamiento.BlackBorder = true;
+            this.tgrpEquipamiento.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.tgrpEquipamiento.BorderThickness = 1F;
+            this.tgrpEquipamiento.Controls.Add(this.btnDestildarTodoEqi);
+            this.tgrpEquipamiento.Controls.Add(this.clEquipamientos);
+            this.tgrpEquipamiento.Controls.Add(this.btnTildaTodos);
+            this.tgrpEquipamiento.CustomGroupBoxColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
+            this.tgrpEquipamiento.FlatMode = true;
+            this.tgrpEquipamiento.Font = new System.Drawing.Font("Arial", 9F);
+            this.tgrpEquipamiento.FontTitle = new System.Drawing.Font("Arial", 9F);
+            this.tgrpEquipamiento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.tgrpEquipamiento.GroupImage = null;
+            this.tgrpEquipamiento.GroupTitle = "Equipamiento";
+            this.tgrpEquipamiento.Location = new System.Drawing.Point(688, 137);
+            this.tgrpEquipamiento.Name = "tgrpEquipamiento";
+            this.tgrpEquipamiento.Padding = new System.Windows.Forms.Padding(20);
+            this.tgrpEquipamiento.PaintGroupBox = false;
+            this.tgrpEquipamiento.RoundCorners = 4;
+            this.tgrpEquipamiento.ShadowColor = System.Drawing.Color.DarkGray;
+            this.tgrpEquipamiento.ShadowControl = false;
+            this.tgrpEquipamiento.ShadowThickness = 3;
+            this.tgrpEquipamiento.Size = new System.Drawing.Size(312, 490);
+            this.tgrpEquipamiento.SkinFixed = true;
+            this.tgrpEquipamiento.TabIndex = 29;
+            this.tgrpEquipamiento.TitleBackground = System.Drawing.Color.DodgerBlue;
+            this.tgrpEquipamiento.TitleBackgroundDefault = TNGS.NetControls.ColorRuts.ColoresDefault.None;
+            this.tgrpEquipamiento.TitleFontColor = System.Drawing.Color.White;
             // 
             // btnDestildarTodoEqi
             // 
@@ -344,6 +142,7 @@
             this.btnDestildarTodoEqi.Size = new System.Drawing.Size(139, 25);
             this.btnDestildarTodoEqi.TabIndex = 1;
             this.btnDestildarTodoEqi.Text = "Destildar Todos";
+            this.btnDestildarTodoEqi.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnDestildarTodoEqi.W8Color = System.Drawing.Color.DodgerBlue;
             this.btnDestildarTodoEqi.Click += new System.EventHandler(this.btnDestildarTodoEqi_Click);
             // 
@@ -375,8 +174,296 @@
             this.btnTildaTodos.Size = new System.Drawing.Size(123, 25);
             this.btnTildaTodos.TabIndex = 0;
             this.btnTildaTodos.Text = "Tildar Todos";
+            this.btnTildaTodos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnTildaTodos.W8Color = System.Drawing.Color.DodgerBlue;
             this.btnTildaTodos.Click += new System.EventHandler(this.tildarTodo_Click);
+            // 
+            // tgrpDatosBasicos
+            // 
+            this.tgrpDatosBasicos.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.tgrpDatosBasicos.BackgroundGradientColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
+            this.tgrpDatosBasicos.BackgroundGradientMode = TNGS.NetControls.ImgGroup.GroupBoxGradientMode.ForwardDiagonal;
+            this.tgrpDatosBasicos.BlackBorder = true;
+            this.tgrpDatosBasicos.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.tgrpDatosBasicos.BorderThickness = 1F;
+            this.tgrpDatosBasicos.Controls.Add(this.cdcTipoMovil);
+            this.tgrpDatosBasicos.Controls.Add(this.tePatente);
+            this.tgrpDatosBasicos.Controls.Add(this.fullLabel3);
+            this.tgrpDatosBasicos.Controls.Add(this.teNroMotor);
+            this.tgrpDatosBasicos.Controls.Add(this.teNroPloteado);
+            this.tgrpDatosBasicos.Controls.Add(this.neAnioFabric);
+            this.tgrpDatosBasicos.Controls.Add(this.fullLabel2);
+            this.tgrpDatosBasicos.Controls.Add(this.cdcMovilPropio);
+            this.tgrpDatosBasicos.Controls.Add(this.neKilometros);
+            this.tgrpDatosBasicos.Controls.Add(this.lblMovilPropio);
+            this.tgrpDatosBasicos.Controls.Add(this.teDescripcionMovil);
+            this.tgrpDatosBasicos.Controls.Add(this.lblPatente);
+            this.tgrpDatosBasicos.Controls.Add(this.fullLabel1);
+            this.tgrpDatosBasicos.Controls.Add(this.teAnotaciones);
+            this.tgrpDatosBasicos.Controls.Add(this.lblNroChasis);
+            this.tgrpDatosBasicos.Controls.Add(this.lblDescripcionMovil);
+            this.tgrpDatosBasicos.Controls.Add(this.cdcModelo);
+            this.tgrpDatosBasicos.Controls.Add(this.lblAnioFabricacion);
+            this.tgrpDatosBasicos.Controls.Add(this.lblNroMotor);
+            this.tgrpDatosBasicos.Controls.Add(this.lblModelo);
+            this.tgrpDatosBasicos.Controls.Add(this.lblAnotaciones);
+            this.tgrpDatosBasicos.Controls.Add(this.teNroChasis);
+            this.tgrpDatosBasicos.CustomGroupBoxColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
+            this.tgrpDatosBasicos.FlatMode = true;
+            this.tgrpDatosBasicos.Font = new System.Drawing.Font("Arial", 9F);
+            this.tgrpDatosBasicos.FontTitle = new System.Drawing.Font("Arial", 9F);
+            this.tgrpDatosBasicos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.tgrpDatosBasicos.GroupImage = null;
+            this.tgrpDatosBasicos.GroupTitle = "Datos Básicos";
+            this.tgrpDatosBasicos.Location = new System.Drawing.Point(15, 137);
+            this.tgrpDatosBasicos.Name = "tgrpDatosBasicos";
+            this.tgrpDatosBasicos.Padding = new System.Windows.Forms.Padding(20);
+            this.tgrpDatosBasicos.PaintGroupBox = false;
+            this.tgrpDatosBasicos.RoundCorners = 4;
+            this.tgrpDatosBasicos.ShadowColor = System.Drawing.Color.DarkGray;
+            this.tgrpDatosBasicos.ShadowControl = false;
+            this.tgrpDatosBasicos.ShadowThickness = 3;
+            this.tgrpDatosBasicos.Size = new System.Drawing.Size(663, 490);
+            this.tgrpDatosBasicos.SkinFixed = true;
+            this.tgrpDatosBasicos.TabIndex = 28;
+            this.tgrpDatosBasicos.TitleBackground = System.Drawing.Color.DodgerBlue;
+            this.tgrpDatosBasicos.TitleBackgroundDefault = TNGS.NetControls.ColorRuts.ColoresDefault.None;
+            this.tgrpDatosBasicos.TitleFontColor = System.Drawing.Color.White;
+            // 
+            // cdcTipoMovil
+            // 
+            this.cdcTipoMovil.BackColor = System.Drawing.SystemColors.Window;
+            this.cdcTipoMovil.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cdcTipoMovil.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cdcTipoMovil.FormattingEnabled = true;
+            this.cdcTipoMovil.Location = new System.Drawing.Point(447, 273);
+            this.cdcTipoMovil.Name = "cdcTipoMovil";
+            this.cdcTipoMovil.Size = new System.Drawing.Size(175, 23);
+            this.cdcTipoMovil.Sorted = true;
+            this.cdcTipoMovil.TabIndex = 23;
+            // 
+            // tePatente
+            // 
+            this.tePatente.BackColor = System.Drawing.SystemColors.Window;
+            this.tePatente.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.tePatente.Location = new System.Drawing.Point(275, 42);
+            this.tePatente.MaxLength = 8;
+            this.tePatente.Name = "tePatente";
+            this.tePatente.Size = new System.Drawing.Size(136, 21);
+            this.tePatente.TabIndex = 0;
+            this.tePatente.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // fullLabel3
+            // 
+            this.fullLabel3.BackColor = System.Drawing.Color.Transparent;
+            this.fullLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fullLabel3.ForeColor = System.Drawing.Color.Black;
+            this.fullLabel3.Location = new System.Drawing.Point(337, 275);
+            this.fullLabel3.Name = "fullLabel3";
+            this.fullLabel3.Size = new System.Drawing.Size(96, 18);
+            this.fullLabel3.TabIndex = 24;
+            this.fullLabel3.Text = "Tipo de Móvil:";
+            // 
+            // teNroMotor
+            // 
+            this.teNroMotor.BackColor = System.Drawing.SystemColors.Window;
+            this.teNroMotor.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.teNroMotor.Location = new System.Drawing.Point(157, 184);
+            this.teNroMotor.Name = "teNroMotor";
+            this.teNroMotor.Size = new System.Drawing.Size(136, 21);
+            this.teNroMotor.TabIndex = 4;
+            this.teNroMotor.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // teNroPloteado
+            // 
+            this.teNroPloteado.BackColor = System.Drawing.SystemColors.Window;
+            this.teNroPloteado.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.teNroPloteado.Location = new System.Drawing.Point(158, 273);
+            this.teNroPloteado.MaxLength = 8;
+            this.teNroPloteado.Name = "teNroPloteado";
+            this.teNroPloteado.Size = new System.Drawing.Size(136, 21);
+            this.teNroPloteado.TabIndex = 8;
+            this.teNroPloteado.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // neAnioFabric
+            // 
+            this.neAnioFabric.BackColor = System.Drawing.SystemColors.Window;
+            this.neAnioFabric.Location = new System.Drawing.Point(447, 182);
+            this.neAnioFabric.Name = "neAnioFabric";
+            this.neAnioFabric.Size = new System.Drawing.Size(123, 21);
+            this.neAnioFabric.TabIndex = 5;
+            this.neAnioFabric.Text = "0";
+            // 
+            // fullLabel2
+            // 
+            this.fullLabel2.BackColor = System.Drawing.Color.Transparent;
+            this.fullLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fullLabel2.ForeColor = System.Drawing.Color.Black;
+            this.fullLabel2.Location = new System.Drawing.Point(47, 275);
+            this.fullLabel2.Name = "fullLabel2";
+            this.fullLabel2.Size = new System.Drawing.Size(99, 18);
+            this.fullLabel2.TabIndex = 22;
+            this.fullLabel2.Text = "Nro. Ploteado: ";
+            // 
+            // cdcMovilPropio
+            // 
+            this.cdcMovilPropio.BackColor = System.Drawing.SystemColors.Window;
+            this.cdcMovilPropio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cdcMovilPropio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cdcMovilPropio.FormattingEnabled = true;
+            this.cdcMovilPropio.Location = new System.Drawing.Point(448, 133);
+            this.cdcMovilPropio.Name = "cdcMovilPropio";
+            this.cdcMovilPropio.Size = new System.Drawing.Size(174, 23);
+            this.cdcMovilPropio.Sorted = true;
+            this.cdcMovilPropio.TabIndex = 3;
+            // 
+            // neKilometros
+            // 
+            this.neKilometros.BackColor = System.Drawing.SystemColors.Window;
+            this.neKilometros.Location = new System.Drawing.Point(447, 229);
+            this.neKilometros.Name = "neKilometros";
+            this.neKilometros.Size = new System.Drawing.Size(123, 21);
+            this.neKilometros.TabIndex = 7;
+            this.neKilometros.Text = "0";
+            // 
+            // lblMovilPropio
+            // 
+            this.lblMovilPropio.BackColor = System.Drawing.Color.Transparent;
+            this.lblMovilPropio.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMovilPropio.ForeColor = System.Drawing.Color.Black;
+            this.lblMovilPropio.Location = new System.Drawing.Point(345, 134);
+            this.lblMovilPropio.Name = "lblMovilPropio";
+            this.lblMovilPropio.Size = new System.Drawing.Size(92, 18);
+            this.lblMovilPropio.TabIndex = 18;
+            this.lblMovilPropio.Text = "Movil Propio:";
+            // 
+            // teDescripcionMovil
+            // 
+            this.teDescripcionMovil.BackColor = System.Drawing.SystemColors.Window;
+            this.teDescripcionMovil.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.teDescripcionMovil.Location = new System.Drawing.Point(157, 86);
+            this.teDescripcionMovil.Name = "teDescripcionMovil";
+            this.teDescripcionMovil.Size = new System.Drawing.Size(465, 21);
+            this.teDescripcionMovil.TabIndex = 1;
+            // 
+            // lblPatente
+            // 
+            this.lblPatente.BackColor = System.Drawing.Color.Transparent;
+            this.lblPatente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPatente.ForeColor = System.Drawing.Color.Black;
+            this.lblPatente.Location = new System.Drawing.Point(194, 44);
+            this.lblPatente.Name = "lblPatente";
+            this.lblPatente.Size = new System.Drawing.Size(75, 18);
+            this.lblPatente.TabIndex = 6;
+            this.lblPatente.Text = "Patente:";
+            // 
+            // fullLabel1
+            // 
+            this.fullLabel1.BackColor = System.Drawing.Color.Transparent;
+            this.fullLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fullLabel1.ForeColor = System.Drawing.Color.Black;
+            this.fullLabel1.Location = new System.Drawing.Point(321, 229);
+            this.fullLabel1.Name = "fullLabel1";
+            this.fullLabel1.Size = new System.Drawing.Size(116, 18);
+            this.fullLabel1.TabIndex = 20;
+            this.fullLabel1.Text = "Kms Adquisición: ";
+            // 
+            // teAnotaciones
+            // 
+            this.teAnotaciones.BackColor = System.Drawing.SystemColors.Window;
+            this.teAnotaciones.Location = new System.Drawing.Point(42, 340);
+            this.teAnotaciones.Multiline = true;
+            this.teAnotaciones.Name = "teAnotaciones";
+            this.teAnotaciones.Size = new System.Drawing.Size(580, 129);
+            this.teAnotaciones.TabIndex = 9;
+            // 
+            // lblNroChasis
+            // 
+            this.lblNroChasis.BackColor = System.Drawing.Color.Transparent;
+            this.lblNroChasis.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNroChasis.ForeColor = System.Drawing.Color.Black;
+            this.lblNroChasis.Location = new System.Drawing.Point(39, 135);
+            this.lblNroChasis.Name = "lblNroChasis";
+            this.lblNroChasis.Size = new System.Drawing.Size(107, 18);
+            this.lblNroChasis.TabIndex = 14;
+            this.lblNroChasis.Text = "Numero Chasis:";
+            // 
+            // lblDescripcionMovil
+            // 
+            this.lblDescripcionMovil.BackColor = System.Drawing.Color.Transparent;
+            this.lblDescripcionMovil.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDescripcionMovil.ForeColor = System.Drawing.Color.Black;
+            this.lblDescripcionMovil.Location = new System.Drawing.Point(60, 86);
+            this.lblDescripcionMovil.Name = "lblDescripcionMovil";
+            this.lblDescripcionMovil.Size = new System.Drawing.Size(86, 19);
+            this.lblDescripcionMovil.TabIndex = 10;
+            this.lblDescripcionMovil.Text = "Descripcion:";
+            // 
+            // cdcModelo
+            // 
+            this.cdcModelo.BackColor = System.Drawing.SystemColors.Window;
+            this.cdcModelo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cdcModelo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cdcModelo.FormattingEnabled = true;
+            this.cdcModelo.Location = new System.Drawing.Point(157, 229);
+            this.cdcModelo.Name = "cdcModelo";
+            this.cdcModelo.Size = new System.Drawing.Size(137, 23);
+            this.cdcModelo.Sorted = true;
+            this.cdcModelo.TabIndex = 6;
+            // 
+            // lblAnioFabricacion
+            // 
+            this.lblAnioFabricacion.BackColor = System.Drawing.Color.Transparent;
+            this.lblAnioFabricacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAnioFabricacion.ForeColor = System.Drawing.Color.Black;
+            this.lblAnioFabricacion.Location = new System.Drawing.Point(324, 184);
+            this.lblAnioFabricacion.Name = "lblAnioFabricacion";
+            this.lblAnioFabricacion.Size = new System.Drawing.Size(113, 18);
+            this.lblAnioFabricacion.TabIndex = 17;
+            this.lblAnioFabricacion.Text = "Año Fabricacion:";
+            // 
+            // lblNroMotor
+            // 
+            this.lblNroMotor.BackColor = System.Drawing.Color.Transparent;
+            this.lblNroMotor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNroMotor.ForeColor = System.Drawing.Color.Black;
+            this.lblNroMotor.Location = new System.Drawing.Point(47, 184);
+            this.lblNroMotor.Name = "lblNroMotor";
+            this.lblNroMotor.Size = new System.Drawing.Size(99, 18);
+            this.lblNroMotor.TabIndex = 15;
+            this.lblNroMotor.Text = "Numero Motor:";
+            // 
+            // lblModelo
+            // 
+            this.lblModelo.BackColor = System.Drawing.Color.Transparent;
+            this.lblModelo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblModelo.ForeColor = System.Drawing.Color.Black;
+            this.lblModelo.Location = new System.Drawing.Point(83, 231);
+            this.lblModelo.Name = "lblModelo";
+            this.lblModelo.Size = new System.Drawing.Size(63, 18);
+            this.lblModelo.TabIndex = 16;
+            this.lblModelo.Text = "Modelo:";
+            // 
+            // lblAnotaciones
+            // 
+            this.lblAnotaciones.BackColor = System.Drawing.Color.Transparent;
+            this.lblAnotaciones.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAnotaciones.ForeColor = System.Drawing.Color.Black;
+            this.lblAnotaciones.Location = new System.Drawing.Point(49, 319);
+            this.lblAnotaciones.Name = "lblAnotaciones";
+            this.lblAnotaciones.Size = new System.Drawing.Size(117, 18);
+            this.lblAnotaciones.TabIndex = 13;
+            this.lblAnotaciones.Text = "Anotaciones:";
+            // 
+            // teNroChasis
+            // 
+            this.teNroChasis.BackColor = System.Drawing.SystemColors.Window;
+            this.teNroChasis.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.teNroChasis.Location = new System.Drawing.Point(158, 135);
+            this.teNroChasis.Name = "teNroChasis";
+            this.teNroChasis.Size = new System.Drawing.Size(136, 21);
+            this.teNroChasis.TabIndex = 2;
+            this.teNroChasis.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // tsContainer1
             // 
@@ -447,6 +534,7 @@
             this.gbLimpiarTodo.Size = new System.Drawing.Size(99, 55);
             this.gbLimpiarTodo.TabIndex = 2;
             this.gbLimpiarTodo.Text = "Limpiar Campos";
+            this.gbLimpiarTodo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.gbLimpiarTodo.W8Color = System.Drawing.Color.DodgerBlue;
             this.gbLimpiarTodo.Click += new System.EventHandler(this.btnLimpiarTodo_Click);
             // 
@@ -469,6 +557,7 @@
             this.gbCancel.Size = new System.Drawing.Size(100, 55);
             this.gbCancel.TabIndex = 1;
             this.gbCancel.Text = "Cancelar";
+            this.gbCancel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.gbCancel.W8Color = System.Drawing.Color.Red;
             this.gbCancel.Click += new System.EventHandler(this.gbCancel_Click);
             // 
@@ -490,6 +579,7 @@
             this.gbGrabar.Size = new System.Drawing.Size(100, 55);
             this.gbGrabar.TabIndex = 0;
             this.gbGrabar.Text = "Guardar";
+            this.gbGrabar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.gbGrabar.W8Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.gbGrabar.Click += new System.EventHandler(this.btnGrabar_Click);
             // 
@@ -522,91 +612,6 @@
             this.tab1.TabStripPage = this.tabStripPage1;
             this.tab1.Text = "Opciones Nuevo Movil";
             // 
-            // tgrpDatosBasicos
-            // 
-            this.tgrpDatosBasicos.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.tgrpDatosBasicos.BackgroundGradientColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
-            this.tgrpDatosBasicos.BackgroundGradientMode = TNGS.NetControls.ImgGroup.GroupBoxGradientMode.ForwardDiagonal;
-            this.tgrpDatosBasicos.BlackBorder = true;
-            this.tgrpDatosBasicos.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.tgrpDatosBasicos.BorderThickness = 1F;
-            this.tgrpDatosBasicos.Controls.Add(this.cdcTipoMovil);
-            this.tgrpDatosBasicos.Controls.Add(this.tePatente);
-            this.tgrpDatosBasicos.Controls.Add(this.fullLabel3);
-            this.tgrpDatosBasicos.Controls.Add(this.teNroMotor);
-            this.tgrpDatosBasicos.Controls.Add(this.teNroPloteado);
-            this.tgrpDatosBasicos.Controls.Add(this.neAnioFabric);
-            this.tgrpDatosBasicos.Controls.Add(this.fullLabel2);
-            this.tgrpDatosBasicos.Controls.Add(this.cdcMovilPropio);
-            this.tgrpDatosBasicos.Controls.Add(this.neKilometros);
-            this.tgrpDatosBasicos.Controls.Add(this.lblMovilPropio);
-            this.tgrpDatosBasicos.Controls.Add(this.teDescripcionMovil);
-            this.tgrpDatosBasicos.Controls.Add(this.lblPatente);
-            this.tgrpDatosBasicos.Controls.Add(this.fullLabel1);
-            this.tgrpDatosBasicos.Controls.Add(this.teAnotaciones);
-            this.tgrpDatosBasicos.Controls.Add(this.lblNroChasis);
-            this.tgrpDatosBasicos.Controls.Add(this.lblDescripcionMovil);
-            this.tgrpDatosBasicos.Controls.Add(this.cdcModelo);
-            this.tgrpDatosBasicos.Controls.Add(this.lblAnioFabricacion);
-            this.tgrpDatosBasicos.Controls.Add(this.lblNroMotor);
-            this.tgrpDatosBasicos.Controls.Add(this.lblModelo);
-            this.tgrpDatosBasicos.Controls.Add(this.lblAnotaciones);
-            this.tgrpDatosBasicos.Controls.Add(this.teNroChasis);
-            this.tgrpDatosBasicos.CustomGroupBoxColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
-            this.tgrpDatosBasicos.FlatMode = true;
-            this.tgrpDatosBasicos.Font = new System.Drawing.Font("Arial", 9F);
-            this.tgrpDatosBasicos.FontTitle = new System.Drawing.Font("Arial", 9F);
-            this.tgrpDatosBasicos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.tgrpDatosBasicos.GroupImage = null;
-            this.tgrpDatosBasicos.GroupTitle = "Datos Básicos";
-            this.tgrpDatosBasicos.Location = new System.Drawing.Point(15, 137);
-            this.tgrpDatosBasicos.Name = "tgrpDatosBasicos";
-            this.tgrpDatosBasicos.Padding = new System.Windows.Forms.Padding(20);
-            this.tgrpDatosBasicos.PaintGroupBox = false;
-            this.tgrpDatosBasicos.RoundCorners = 4;
-            this.tgrpDatosBasicos.ShadowColor = System.Drawing.Color.DarkGray;
-            this.tgrpDatosBasicos.ShadowControl = false;
-            this.tgrpDatosBasicos.ShadowThickness = 3;
-            this.tgrpDatosBasicos.Size = new System.Drawing.Size(663, 490);
-            this.tgrpDatosBasicos.SkinFixed = true;
-            this.tgrpDatosBasicos.TabIndex = 28;
-            this.tgrpDatosBasicos.TitleBackground = System.Drawing.Color.DodgerBlue;
-            this.tgrpDatosBasicos.TitleBackgroundDefault = TNGS.NetControls.ColorRuts.ColoresDefault.None;
-            this.tgrpDatosBasicos.TitleFontColor = System.Drawing.Color.White;
-            // 
-            // tgrpEquipamiento
-            // 
-            this.tgrpEquipamiento.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.tgrpEquipamiento.BackgroundGradientColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
-            this.tgrpEquipamiento.BackgroundGradientMode = TNGS.NetControls.ImgGroup.GroupBoxGradientMode.ForwardDiagonal;
-            this.tgrpEquipamiento.BlackBorder = true;
-            this.tgrpEquipamiento.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.tgrpEquipamiento.BorderThickness = 1F;
-            this.tgrpEquipamiento.Controls.Add(this.btnDestildarTodoEqi);
-            this.tgrpEquipamiento.Controls.Add(this.clEquipamientos);
-            this.tgrpEquipamiento.Controls.Add(this.btnTildaTodos);
-            this.tgrpEquipamiento.CustomGroupBoxColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
-            this.tgrpEquipamiento.FlatMode = true;
-            this.tgrpEquipamiento.Font = new System.Drawing.Font("Arial", 9F);
-            this.tgrpEquipamiento.FontTitle = new System.Drawing.Font("Arial", 9F);
-            this.tgrpEquipamiento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.tgrpEquipamiento.GroupImage = null;
-            this.tgrpEquipamiento.GroupTitle = "Equipamiento";
-            this.tgrpEquipamiento.Location = new System.Drawing.Point(688, 137);
-            this.tgrpEquipamiento.Name = "tgrpEquipamiento";
-            this.tgrpEquipamiento.Padding = new System.Windows.Forms.Padding(20);
-            this.tgrpEquipamiento.PaintGroupBox = false;
-            this.tgrpEquipamiento.RoundCorners = 4;
-            this.tgrpEquipamiento.ShadowColor = System.Drawing.Color.DarkGray;
-            this.tgrpEquipamiento.ShadowControl = false;
-            this.tgrpEquipamiento.ShadowThickness = 3;
-            this.tgrpEquipamiento.Size = new System.Drawing.Size(312, 490);
-            this.tgrpEquipamiento.SkinFixed = true;
-            this.tgrpEquipamiento.TabIndex = 29;
-            this.tgrpEquipamiento.TitleBackground = System.Drawing.Color.DodgerBlue;
-            this.tgrpEquipamiento.TitleBackgroundDefault = TNGS.NetControls.ColorRuts.ColoresDefault.None;
-            this.tgrpEquipamiento.TitleFontColor = System.Drawing.Color.White;
-            // 
             // AltaMovil
             // 
             this.AcceptButton = this.gbGrabar;
@@ -624,15 +629,15 @@
             this.Text = "Nuevo Movil";
             this.Load += new System.EventHandler(this.AltaMovil_Load);
             this.xPanel1.ResumeLayout(false);
+            this.tgrpEquipamiento.ResumeLayout(false);
+            this.tgrpDatosBasicos.ResumeLayout(false);
+            this.tgrpDatosBasicos.PerformLayout();
             this.tsContainer1.ResumeLayout(false);
             this.tabPageSwitcher1.ResumeLayout(false);
             this.tabStripPage1.ResumeLayout(false);
             this.tsPanel2.ResumeLayout(false);
             this.tsBase1.ResumeLayout(false);
             this.tsBase1.PerformLayout();
-            this.tgrpDatosBasicos.ResumeLayout(false);
-            this.tgrpDatosBasicos.PerformLayout();
-            this.tgrpEquipamiento.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

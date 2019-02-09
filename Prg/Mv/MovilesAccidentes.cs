@@ -104,7 +104,7 @@ namespace Mrln.Mv
         private void grdDatos_DataDClick(object sender, DataDClicEventArgs e)
         {
             // Simulamos modificar
-            cmdModificar_Click(this, EventArgs.Empty);
+            gbModificar_Click(this, EventArgs.Empty);
         }
 
         /// <summary>
@@ -152,7 +152,7 @@ namespace Mrln.Mv
         /// <summary>
         /// Exporta la grilla en Excel
         /// </summary>
-        private void cmdExcel_Click(object sender, System.EventArgs e)
+        private void gbExcel_Click(object sender, System.EventArgs e)
         {
             App.ShowMsg("Generando planilla...");
             App.InitAdvance("Excel:");
@@ -164,7 +164,7 @@ namespace Mrln.Mv
         /// <summary>
         /// Imprime la grilla
         /// </summary>
-        private void cmdPrint_Click(object sender, System.EventArgs e)
+        private void gbPrint_Click(object sender, System.EventArgs e)
         {
             App.ShowMsg("Imprimiendo datos...");
             App.InitAdvance("Imprimiendo:");
@@ -177,7 +177,7 @@ namespace Mrln.Mv
         /// <summary>
         /// Genera un Nuevo registro en la tabla
         /// </summary>
-        private void cmdNuevo_Click(object sender, System.EventArgs e)
+        private void gbNuevo_Click(object sender, System.EventArgs e)
         {
             // Creamos una nueva entidad, pasamos a modo de edicion y
             // damos foco al primer campo
@@ -190,7 +190,7 @@ namespace Mrln.Mv
         /// <summary>
         /// Modifica el registro seleccionado de la grilla
         /// </summary>
-        private void cmdModificar_Click(object sender, System.EventArgs e)
+        private void gbModificar_Click(object sender, System.EventArgs e)
         {
             // Si no hay item seleccionado -> salimos
             int l_iRow= grdDatos.CurrentRowIndex;
@@ -218,7 +218,7 @@ namespace Mrln.Mv
         /// <summary>
         /// Purga los registros deshabilitados
         /// </summary>
-        private void cmdPurgar_Click(object sender, EventArgs e)
+        private void gbCompactar_Click(object sender, EventArgs e)
         {
             // Pedimos una confirmacion
             if (MsgRuts.AskUser(this, "Atención!!!!\r\n" +
@@ -241,7 +241,7 @@ namespace Mrln.Mv
         /// <summary>
         /// Finaliza el formulario
         /// </summary>
-        private void cmdSalir_Click(object sender, System.EventArgs e)
+        private void gbSalir_Click(object sender, System.EventArgs e)
         {
             Close();
         }
@@ -249,7 +249,7 @@ namespace Mrln.Mv
         /// <summary>
         /// Cancela la edicion
         /// </summary>
-        private void cmdCancelar_Click(object sender, System.EventArgs e)
+        private void gbCancelar_Click(object sender, System.EventArgs e)
         {
             // Pasamos a modo Operaciones y damos foco a la grilla
             SwitchTo(FormModes.Operations, GridOps.DontFill);
@@ -259,7 +259,7 @@ namespace Mrln.Mv
         /// <summary>
         /// Habilita/Deshabilita el registro
         /// </summary>
-        private void cmdDesHab_Click(object sender, System.EventArgs e)
+        private void gbChangeHabilitado_Click(object sender, System.EventArgs e)
         {
             // Realizamos la operacion
             App.ShowMsg("Procesando...");
@@ -280,7 +280,7 @@ namespace Mrln.Mv
         /// <summary>
         /// Graba el registro en edicion
         /// </summary>
-        private void cmdGrabar_Click(object sender, System.EventArgs e)
+        private void gbGrabar_Click(object sender, System.EventArgs e)
         {
             // Pasamos los datos a la Entidad
             m_entMvlAccidente.Patente= txtPatente.Text;
@@ -375,8 +375,8 @@ namespace Mrln.Mv
             txtDotacion.Enabled= false;
             cmdCancelar.Enabled= false;
             cmdGrabar.Enabled= false;
-            cmdDesHab.Enabled= false;
-            cmdHab.Enabled= false;
+            gbDeshabilitar.Enabled= false;
+            gbHabilitar.Enabled= false;
 
             // Blanqueamos los campos
             txtPatente.Text= "";
@@ -390,8 +390,8 @@ namespace Mrln.Mv
             // Habilitamos la grilla y los controles operativos
             cmdNuevo.Enabled= true;
             cmdModificar.Enabled= true;
-            cmdPurgar.Enabled= true;
-            cmdSalir.Enabled= true;
+            gbCompactar.Enabled= true;
+            gbSalir.Enabled= true;
             cmdPrint.Enabled= true;
             cmdExcel.Enabled= true;
             grdDatos.Enabled= true;
@@ -428,14 +428,14 @@ namespace Mrln.Mv
             txtDotacion.Enabled= !m_entMvlAccidente.EstaBorrada;
             cmdCancelar.Enabled= true;
             cmdGrabar.Enabled= !m_entMvlAccidente.EstaBorrada;
-            cmdDesHab.Enabled= ((!m_entMvlAccidente.EsNueva) &&(!m_entMvlAccidente.EstaBorrada));
-            cmdHab.Enabled= !cmdDesHab.Enabled;
+            gbDeshabilitar.Enabled= ((!m_entMvlAccidente.EsNueva) &&(!m_entMvlAccidente.EstaBorrada));
+            gbHabilitar.Enabled= !gbDeshabilitar.Enabled;
 
             // Dehabilitamos la grilla y los controles operativos
             cmdNuevo.Enabled= false;
             cmdModificar.Enabled= false;
-            cmdPurgar.Enabled= false;
-            cmdSalir.Enabled= false;
+            gbCompactar.Enabled= false;
+            gbSalir.Enabled= false;
             cmdPrint.Enabled= false;
             cmdExcel.Enabled= false;
             grdDatos.Enabled= false;

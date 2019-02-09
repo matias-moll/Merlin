@@ -70,7 +70,7 @@
             this.gbAceptar.FlatColor = System.Drawing.Color.LimeGreen;
             this.gbAceptar.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
             this.gbAceptar.FlatFontSize = 9;
-            this.gbAceptar.FlatTextColor = System.Drawing.Color.White;
+            this.gbAceptar.FlatTextColor = System.Drawing.Color.Black;
             this.gbAceptar.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.gbAceptar.Location = new System.Drawing.Point(282, 159);
             this.gbAceptar.Name = "gbAceptar";
@@ -89,7 +89,7 @@
             this.gbCancelar.FlatColor = System.Drawing.Color.Red;
             this.gbCancelar.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
             this.gbCancelar.FlatFontSize = 9;
-            this.gbCancelar.FlatTextColor = System.Drawing.Color.White;
+            this.gbCancelar.FlatTextColor = System.Drawing.Color.Black;
             this.gbCancelar.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.gbCancelar.Location = new System.Drawing.Point(180, 159);
             this.gbCancelar.Name = "gbCancelar";
