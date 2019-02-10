@@ -501,7 +501,7 @@ namespace Mrln.Tg
             this.gbDeshabilitar.FlatFontSize = 9;
             this.gbDeshabilitar.FlatTextColor = System.Drawing.Color.Black;
             this.gbDeshabilitar.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.gbDeshabilitar.Location = new System.Drawing.Point(188, 34);
+            this.gbDeshabilitar.Location = new System.Drawing.Point(188, 35);
             this.gbDeshabilitar.Name = "gbDeshabilitar";
             this.gbDeshabilitar.RoundCorners = 2;
             this.gbDeshabilitar.Size = new System.Drawing.Size(113, 25);
