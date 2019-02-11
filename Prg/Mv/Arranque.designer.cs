@@ -9,6 +9,7 @@ using System.IO;
 using System.Threading;
 using TNGS.NetRoutines;
 using TNGS.NetApp;
+using TNGS.NetAppSupport;
 using Mrln;
 using Mrln.Shr;
 #endregion
@@ -18,11 +19,11 @@ namespace Mrln.Mv
     //----------------------------------------------------------------------------
     //                         TNG Software PRG Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 14/08/2018 18:27
+    // Fecha                    : 10/02/2019 19:14
     // Sistema                  : Mrln
     // Programa                 : Moviles
     //----------------------------------------------------------------------------
-    // © 1996-2018 by TNG Software                                      Gndr 5.20
+    // © 1996-2019 by TNG Software                                      Gndr 5.20
     //----------------------------------------------------------------------------
 
     //****************************************************************************
@@ -99,8 +100,11 @@ namespace Mrln.Mv
             }
 
             try {
-                // Creamos la ventana MDI de la aplicacion
-                MainFrame l_frmMain= new MainFrame(MFSizes.MF1024x768, 0, false, true);
+                // Ejecutamos la funcion que construye la pantalla principal
+                PrgRuts.MakeMainFrame();
+
+                // Fijamos la imagen de Login/Pasword
+                App.FdoLoginPassw= App.Imagen("AppLogPassw");
 
                 // Llamamos al PreRun del Shr y del Programa
                 if (!SysRuts.PreRun()) return;

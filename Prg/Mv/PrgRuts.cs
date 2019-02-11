@@ -37,6 +37,10 @@ namespace Mrln.Mv
         /// </summary>
         public static void AutoExec()
         {
+            // Liberamos el menu
+            App.LockMenu(false);
+            App.HideMsg();
+            /*
             // Creamos el DockManager
             ((MainFrame) App.GetMainWindow()).CreateDockManager();
 
@@ -47,6 +51,7 @@ namespace Mrln.Mv
             // Liberamos el menu
             App.LockMenu(false);
             App.HideMsg();
+            */
         }
 
         /// <summary>
@@ -68,6 +73,12 @@ namespace Mrln.Mv
             // Fijamos la información del About
             App.AboutInfo= SysRuts.MakeAboutInfo("<TODO>:Descripcion del programa",
                                                  (Bitmap) App.Imagen("AppEEgg"));
+        }
+
+        internal static void MakeMainFrame()
+        {
+            Home home = new Home();
+            App.SetMainWindow(home, (MenuStrip)null, null, null, null, null, null, null);
         }
 
         #endregion

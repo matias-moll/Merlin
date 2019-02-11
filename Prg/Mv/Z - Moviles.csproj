@@ -36,6 +36,18 @@
     <ApplicationIcon>Moviles.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Bunifu_UI_v1.52">
+      <HintPath>..\..\ExternalLibraries\Bunifu_UI_v1.52.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>T:\Mrln0200\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework.Design, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>T:\Mrln0200\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework.Fonts, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>T:\Mrln0200\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Fonts.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -68,6 +80,9 @@
     <Reference Include="TNGS.NetApp.520">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\Ambiente0520\DNet0520\Release_Uil\TNGS.NetApp.520.dll</HintPath>
+    </Reference>
+    <Reference Include="TNGS.NetAppSupport.520">
+      <HintPath>..\..\..\Ambiente0520\DNet0520\Release_Uil\TNGS.NetAppSupport.520.dll</HintPath>
     </Reference>
     <Reference Include="TNGS.NetControls.520">
       <SpecificVersion>False</SpecificVersion>
@@ -119,6 +134,12 @@
     </Compile>
     <Compile Include="HistorialUnificado.Designer.cs">
       <DependentUpon>HistorialUnificado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Home.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Home.Designer.cs">
+      <DependentUpon>Home.cs</DependentUpon>
     </Compile>
     <Compile Include="Moviles.cs">
       <SubType>Form</SubType>
@@ -187,6 +208,9 @@
     <EmbeddedResource Include="HistorialUnificado.resx">
       <DependentUpon>HistorialUnificado.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Home.resx">
+      <DependentUpon>Home.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Moviles.resx">
       <DependentUpon>Moviles.cs</DependentUpon>
     </EmbeddedResource>
@@ -215,6 +239,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -233,6 +258,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Moviles.ico" />
+    <None Include="Resources\AppLogPassw.bmp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Mrln0200\Bel\BEL.csproj">
