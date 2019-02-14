@@ -52,14 +52,6 @@ namespace Mrln.Mv
 
             // Iniciamos los objetos de la clase
             m_smResult= new StatMsg();
-
-            // Fijamos el modo Skin
-            xpnlBase.SkinFixed= App.WithSkin;
-            frmEdicion.SkinFixed= App.WithSkin;
-            grdDatos.SkinFixed= App.WithSkin;
-
-            // Fijamos la imagen del Frm de edicion
-            frmEdicion.GroupImage= Icon.ToBitmap();
         }
 
         //--------------------------------------------------------------
