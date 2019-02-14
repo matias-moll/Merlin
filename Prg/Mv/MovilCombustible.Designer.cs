@@ -44,8 +44,8 @@
             // xpnlPanel
             // 
             this.xpnlPanel.BackColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.xpnlPanel.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
-            this.xpnlPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.xpnlPanel.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.xpnlPanel.BorderColor = System.Drawing.Color.Black;
             this.xpnlPanel.Controls.Add(this.gbAceptar);
             this.xpnlPanel.Controls.Add(this.gbCancelar);
             this.xpnlPanel.Controls.Add(this.deImporte);
@@ -72,7 +72,7 @@
             this.gbAceptar.FlatFontSize = 9;
             this.gbAceptar.FlatTextColor = System.Drawing.Color.Black;
             this.gbAceptar.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.gbAceptar.Location = new System.Drawing.Point(282, 159);
+            this.gbAceptar.Location = new System.Drawing.Point(284, 161);
             this.gbAceptar.Name = "gbAceptar";
             this.gbAceptar.Size = new System.Drawing.Size(96, 31);
             this.gbAceptar.TabIndex = 8;
@@ -91,7 +91,7 @@
             this.gbCancelar.FlatFontSize = 9;
             this.gbCancelar.FlatTextColor = System.Drawing.Color.Black;
             this.gbCancelar.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.gbCancelar.Location = new System.Drawing.Point(180, 159);
+            this.gbCancelar.Location = new System.Drawing.Point(182, 161);
             this.gbCancelar.Name = "gbCancelar";
             this.gbCancelar.Size = new System.Drawing.Size(96, 31);
             this.gbCancelar.TabIndex = 9;

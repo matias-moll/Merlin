@@ -159,6 +159,7 @@ namespace Mrln.Tg
             this.tsPanel2.Controls.Add(this.cmdCancelar);
             this.tsPanel2.Controls.Add(this.cmdGrabar);
             this.tsPanel2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.tsPanel2.FlatColor = System.Drawing.Color.RoyalBlue;
             this.tsPanel2.Location = new System.Drawing.Point(316, 3);
             this.tsPanel2.Name = "tsPanel2";
             this.tsPanel2.Opacity = 255;
@@ -264,6 +265,7 @@ namespace Mrln.Tg
             this.tsPanel1.Controls.Add(this.cmdModificar);
             this.tsPanel1.Controls.Add(this.gbSalir);
             this.tsPanel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.tsPanel1.FlatColor = System.Drawing.Color.RoyalBlue;
             this.tsPanel1.Location = new System.Drawing.Point(0, 3);
             this.tsPanel1.Name = "tsPanel1";
             this.tsPanel1.Opacity = 255;
@@ -365,6 +367,8 @@ namespace Mrln.Tg
             // tsBase1
             // 
             this.tsBase1.AutoSize = false;
+            this.tsBase1.FlatLigth = false;
+            this.tsBase1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(90)))), ((int)(((byte)(154)))));
             this.tsBase1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.tsBase1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tab1});

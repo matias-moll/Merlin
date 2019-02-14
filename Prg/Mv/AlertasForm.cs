@@ -1,24 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using Mrln.Bll;
-using TNGS;
-using TNGS.NetApp;
 using TNGS.NetRoutines;
-using TNGS.NetControls;
-using WeifenLuo.WinFormsUI.Docking;
-
+using TNGS.NetApp;
 
 namespace Mrln.Mv
 {
-    public partial class Alertas : DockContent
+    public partial class AlertasForm : UserControl
     {
-
         //miembros
         private StatMsg m_smResult;
         private Bel.LEDestinatariosMails m_leGruposDestinatarios;
@@ -28,31 +22,28 @@ namespace Mrln.Mv
         private Bel.LEMovilesAlertas m_leMovilesAlertas;
 
         //constructor principal
-        public Alertas()
+        public AlertasForm()
         {
             InitializeComponent();
-           
-            m_smResult = new StatMsg();
 
-            // Dockeamos el formulario
-            ((MainFrame)App.GetMainWindow()).AddContent(this);
+            m_smResult = new StatMsg();
         }
 
         private void Alertas_Load(object sender, EventArgs e)
         {
             m_leMoviles = Bll.Moviles.UpFull(true, m_smResult);
-            if (MsgRuts.AnalizeError(this, m_smResult)) return;
+            if (MsgRuts.AnalizeError(App.GetMainWindow(), m_smResult)) return;
 
             cdcMoviles.FillFromStrLEntidad(m_leMoviles, Bel.EMovil.PatenteCmp, Bel.EMovil.DesCmp, "deleted");
 
             m_leGruposDestinatarios = Bll.Tablas.DemUpFull(true, m_smResult);
-            if (MsgRuts.AnalizeError(this, m_smResult)) return;
+            if (MsgRuts.AnalizeError(App.GetMainWindow(), m_smResult)) return;
 
             m_leControles = Bll.Controles.UpFull(true, m_smResult);
-            if (MsgRuts.AnalizeError(this, m_smResult)) return;
+            if (MsgRuts.AnalizeError(App.GetMainWindow(), m_smResult)) return;
 
             m_leReparaciones = Bll.Tablas.RepUpFull(true, m_smResult);
-            if (MsgRuts.AnalizeError(this, m_smResult)) return;
+            if (MsgRuts.AnalizeError(App.GetMainWindow(), m_smResult)) return;
 
             cdcControlesEspecifico.FillFromStrLEntidad(m_leControles, Bel.EControl.CodCmp, Bel.EControl.DesCmp, "deleted");
             cdcControlesPeriodicos.FillFromStrLEntidad(m_leControles, Bel.EControl.CodCmp, Bel.EControl.DesCmp, "deleted");
@@ -68,7 +59,6 @@ namespace Mrln.Mv
         }
 
         #region Eventos de los controles
-
 
         private void cdcGruposDestinatarios_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -121,7 +111,7 @@ namespace Mrln.Mv
         private void cargarGrillaAlertas()
         {
             m_leMovilesAlertas = Bll.Moviles.MvalFGet(m_leMoviles[cdcMoviles.SelectedStrCode].Patente.Trim(), true, m_smResult);
-            if (MsgRuts.AnalizeError(this, m_smResult)) return;
+            if (MsgRuts.AnalizeError(App.GetMainWindow(), m_smResult)) return;
 
             if (m_leMovilesAlertas != null)
             {
@@ -138,11 +128,11 @@ namespace Mrln.Mv
             for (int index = 0; index < fgConfigAlertas.Count; index++)
                 if (fgConfigAlertas.GetCheckState(index))
                     alertasABorrar.AddEntity(m_leMovilesAlertas[index]);
-                
-                    
-            if(alertasABorrar.Count == 0)
+
+
+            if (alertasABorrar.Count == 0)
             {
-                MsgRuts.ShowMsg(this, "No hay ninguna configuracion de alerta seleccionada para borrar.");
+                MsgRuts.ShowMsg(App.GetMainWindow(), "No hay ninguna configuracion de alerta seleccionada para borrar.");
                 return;
             }
 
@@ -150,13 +140,11 @@ namespace Mrln.Mv
             foreach (Bel.EMovilAlerta alertaBorrar in alertasABorrar)
             {
                 Bll.Moviles.MvalRemove(alertaBorrar.Patente, alertaBorrar.Nroconfigalerta, alertaBorrar.FxdVersion, m_smResult);
-                if (MsgRuts.AnalizeError(this, m_smResult)) return;
+                if (MsgRuts.AnalizeError(App.GetMainWindow(), m_smResult)) return;
             }
 
             cargarGrillaAlertas();
         }
-
-
 
         #endregion
 
@@ -171,7 +159,7 @@ namespace Mrln.Mv
         private void grabarConfigAlerta(int kilometros, string codReparacion, string codControl)
         {
             ETalonario taloConfigAlerta = App.TaloGet("ConfAlerta", m_smResult);
-            if (MsgRuts.AnalizeError(this, m_smResult)) return;
+            if (MsgRuts.AnalizeError(App.GetMainWindow(), m_smResult)) return;
 
             Bel.EMovilAlerta alertaNueva = Bel.EMovilAlerta.NewEmpty();
             alertaNueva.Patente = cdcMoviles.SelectedStrCode;
@@ -181,12 +169,11 @@ namespace Mrln.Mv
             alertaNueva.Codcontrol = codControl;
             alertaNueva.Coddestinatarios = cdcGruposDestinatarios.SelectedStrCode;
             Bll.Moviles.MvalSave(alertaNueva, m_smResult);
-            if (MsgRuts.AnalizeError(this, m_smResult)) return;
+            if (MsgRuts.AnalizeError(App.GetMainWindow(), m_smResult)) return;
 
             cargarGrillaAlertas();
         }
 
         #endregion
-
     }
 }

@@ -53,10 +53,6 @@ namespace Mrln.Mv
 
             m_strPatenteMovilElegido = p_strPatenteMovil;
 
-            // Fijamos el modo Skin
-            xpnlBase.SkinFixed= App.WithSkin;
-            frmEdicion.SkinFixed= App.WithSkin;
-            grdDatos.SkinFixed= App.WithSkin;
         }
 
         //--------------------------------------------------------------
@@ -68,35 +64,13 @@ namespace Mrln.Mv
         /// </summary>
         private void MovilesAccidentes_Load(object sender, System.EventArgs e)
         {
-            // Inicializamos el form
-            App.ShowMsg("Inicializando el formulario...");
-
             // Pasamos a modo Operaciones, llenamos la grilla y 
             // damos foco al primer campo
             SwitchTo(FormModes.Operations, GridOps.Fill);
             grdDatos.Focus();
 
-            // Todo listo
-            App.HideMsg();
         }
 
-        /// <summary>
-        /// Cierre del formulario
-        /// </summary>
-        private void MovilesAccidentes_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            // Liberamos el menu
-            App.LockMenu(false);
-        }
-
-        /// <summary>
-        /// Reporte del estado de avance de la grilla
-        /// </summary>
-        private void grdDatos_Advance(object sender, TNGS.NetRoutines.AdvanceEventArgs e)
-        {
-            // Marcamos el estado de avance de la operacion en la grilla
-            App.Advance(e.Percent);
-        }
 
         /// <summary>
         /// Dobleclick en la grilla
@@ -105,44 +79,6 @@ namespace Mrln.Mv
         {
             // Simulamos modificar
             gbModificar_Click(this, EventArgs.Empty);
-        }
-
-        /// <summary>
-        /// Dieron click en el header de la grilla
-        /// </summary>
-        private void grdDatos_HeaderClick(object sender, MouseEventArgs e)
-        {
-            // Si es boton izquierdo
-            if (e.Button == MouseButtons.Left) {
-                // Si cambio el sort simple
-                if (m_strSort != grdDatos.GridOrder) {
-                    // Grabamos el nuevo sort
-                    m_strSort= grdDatos.GridOrder;
-                    App.SetStrURegistry(false, "GridFormat", "MovilesAccidentesGrdSort", m_strSort);
-                    return;
-                }
-            }
-
-            // Si es boton derecho
-            if (e.Button == MouseButtons.Right) {
-                // Si cambio el sort simple
-                if (m_strSort != "") {
-                    // Quitamos el orden, grabamos y recargamos
-                    m_strSort= "";
-                    App.SetStrURegistry(false, "GridFormat", "MovilesAccidentesGrdSort", m_strSort);
-                    FillGrid();
-                    return;
-                }
-            }
-        }
-
-        /// <summary>
-        /// Cambio el ancho de la columnas
-        /// </summary>
-        private void GrdColumn_WidthChanged(object sender, EventArgs e)
-        {
-            // Guardamos el ancho de las columnas
-            App.SetStrURegistry(false, "GridFormat", "MovilesAccidentesGrdWidths", grdDatos.ColWitdhs);
         }
 
         //--------------------------------------------------------------
@@ -154,11 +90,7 @@ namespace Mrln.Mv
         /// </summary>
         private void gbExcel_Click(object sender, System.EventArgs e)
         {
-            App.ShowMsg("Generando planilla...");
-            App.InitAdvance("Excel:");
             grdDatos.ExportToExcel(false, false, "", "MovilesAccidentes", m_smResult);
-            App.EndAdvance();
-            App.HideMsg();
         }
 
         /// <summary>
@@ -166,12 +98,8 @@ namespace Mrln.Mv
         /// </summary>
         private void gbPrint_Click(object sender, System.EventArgs e)
         {
-            App.ShowMsg("Imprimiendo datos...");
-            App.InitAdvance("Imprimiendo:");
             grdDatos.Print(Shr.ROParam.Empresa.VStr, App.Programa.Nombre,
                            "Lista de MovilesAccidentes", "");
-            App.EndAdvance();
-            App.HideMsg();
         }
 
         /// <summary>
@@ -197,7 +125,6 @@ namespace Mrln.Mv
             if (l_iRow == -1) return;
 
             // Obtenemos la entidad del item seleccionado en la grilla
-            App.ShowMsg("Recuperando Datos...");
             m_entMvlAccidente= Bll.Moviles.MvacGet((string) grdDatos.GetMatrixValueObj(l_iRow, 1),
                                                    (DateTime) grdDatos.GetMatrixValueObj(l_iRow, 2),
                                                    false, m_smResult);
@@ -212,7 +139,6 @@ namespace Mrln.Mv
             else {
                 txtDireccion.Focus();
             }
-            App.HideMsg();
         }
 
         /// <summary>
@@ -262,7 +188,6 @@ namespace Mrln.Mv
         private void gbChangeHabilitado_Click(object sender, System.EventArgs e)
         {
             // Realizamos la operacion
-            App.ShowMsg("Procesando...");
             Bll.Moviles.MvacEnabled(m_entMvlAccidente.EstaBorrada,
                                     m_entMvlAccidente.Patente,
                                     m_entMvlAccidente.Fecha,
@@ -274,7 +199,6 @@ namespace Mrln.Mv
             // le damos foco
             SwitchTo(FormModes.Operations, GridOps.Fill);
             grdDatos.Focus();
-            App.HideMsg();
         }
 
         /// <summary>
@@ -292,7 +216,6 @@ namespace Mrln.Mv
             m_entMvlAccidente.Dotacion= txtDotacion.Text;
 
             // Tratamos de grabar la entidad
-            App.ShowMsg("Grabando...");
             Bll.Moviles.MvacSave(m_entMvlAccidente, m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
@@ -300,7 +223,6 @@ namespace Mrln.Mv
             // le damos foco
             SwitchTo(FormModes.Operations, GridOps.Fill);
             grdDatos.Focus();
-            App.HideMsg();
         }
 
         //--------------------------------------------------------------
@@ -313,25 +235,14 @@ namespace Mrln.Mv
         private void FillGrid()
         {
             // Recuperamos los datos para la grilla
-            App.ShowMsg("Recuperando datos...");
             Bel.LEMovilesAccidentes l_lentMovilesAccidentes= Bll.Moviles.MvacFGet(m_strPatenteMovilElegido, false, m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
             // Asignamos a la grilla
-            App.InitAdvance("Cargando:");
             grdDatos.Focus();
             grdDatos.FillFromLEntidad(l_lentMovilesAccidentes, "deleted");
             grdDatos.ColWitdhs= App.GetStrURegistry(false, "GridFormat", "MovilesAccidentesGrdWidths", "");
             grdDatos.GridOrder= App.GetStrURegistry(false, "GridFormat", "MovilesAccidentesGrdSort", "");
-            App.EndAdvance();
-
-            // Fijamos el evento de cambio de ancho de la grilla
-            if (l_lentMovilesAccidentes.Count > 0)
-                foreach (DataGridColumnStyle l_dcsItem in grdDatos.TableStyles[0].GridColumnStyles)
-                    l_dcsItem.WidthChanged += new EventHandler(GrdColumn_WidthChanged);
-
-            // Ya la llenamos
-            App.HideMsg();
         }
 
         /// <summary>
@@ -391,7 +302,7 @@ namespace Mrln.Mv
             cmdNuevo.Enabled= true;
             cmdModificar.Enabled= true;
             gbCompactar.Enabled= true;
-            gbSalir.Enabled= true;
+            btnExit.Enabled= true;
             cmdPrint.Enabled= true;
             cmdExcel.Enabled= true;
             grdDatos.Enabled= true;
@@ -435,10 +346,15 @@ namespace Mrln.Mv
             cmdNuevo.Enabled= false;
             cmdModificar.Enabled= false;
             gbCompactar.Enabled= false;
-            gbSalir.Enabled= false;
+            btnExit.Enabled= true;
             cmdPrint.Enabled= false;
             cmdExcel.Enabled= false;
             grdDatos.Enabled= false;
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

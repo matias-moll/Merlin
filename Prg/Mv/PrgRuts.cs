@@ -21,8 +21,6 @@ namespace Mrln.Mv
     public partial class PrgRuts
     {
         #region Miembros estaticos de la clase
-        private static Moviles m_dcEstados;
-        private static Alertas m_dcAlertas;
 
         #endregion
 
@@ -40,18 +38,6 @@ namespace Mrln.Mv
             // Liberamos el menu
             App.LockMenu(false);
             App.HideMsg();
-            /*
-            // Creamos el DockManager
-            ((MainFrame) App.GetMainWindow()).CreateDockManager();
-
-            //Intanciamos el Dockeable principal.
-            m_dcEstados = new Moviles();
-            m_dcAlertas = new Alertas();
-
-            // Liberamos el menu
-            App.LockMenu(false);
-            App.HideMsg();
-            */
         }
 
         /// <summary>
@@ -78,7 +64,6 @@ namespace Mrln.Mv
         internal static void MakeMainFrame()
         {
             Home home = new Home();
-            App.SetMainWindow(home, (MenuStrip)null, null, null, null, null, null, null);
         }
 
         #endregion

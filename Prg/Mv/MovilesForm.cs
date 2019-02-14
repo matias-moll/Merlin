@@ -1,58 +1,47 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using Mrln.Bll;
-using Mrln.Bll.ObjetosSoporte;
-using Mrln.Bel;
-using TNGS;
 using TNGS.NetApp;
 using TNGS.NetRoutines;
-using TNGS.NetControls;
-using WeifenLuo.WinFormsUI.Docking;
-
+using Mrln.Bll.ObjetosSoporte;
+using Mrln.Bel;
 
 namespace Mrln.Mv
 {
-    public partial class Moviles : DockContent
+    public partial class MovilesForm : UserControl
     {
-
+		
         #region Miembros de la Clase
-        public enum ModoForm { Inicio, EdicionBase,Edicion };
-        public enum OpGrid { Igual,Todas, Km, Combus, Equip, Estados };
+        public enum ModoForm { Inicio, EdicionBase, Edicion };
+        public enum OpGrid { Igual, Todas, Km, Combus, Equip, Estados };
         private Bel.LEMoviles m_LEMoviles = null;
         private Bel.EMovil m_entMovil = null;
         private Bel.LEEstados m_LEEdsEstados = null;
         //Los de abajo podrian no estar hay que ver
         private AsociadosMovil m_AMAsocMoviles = null;
         private StatMsg m_smResult = null;
-        private ACLInfo m_aclInfo = null;
         #endregion
 
-        public Moviles()
+        public MovilesForm()
         {
             InitializeComponent();
-            // Obtenemos los permisos ACL
-            m_aclInfo = App.ACLInfo;
-
-            // Aplicamos los nieves de seguridad
-            App.ApplySecurity(this);
 
             // Iniciamos los objetos de la clase
             m_smResult = new StatMsg();
 
-            // Dockeamos el formulario
-            ((MainFrame)App.GetMainWindow()).AddContent(this);
-
-            TraerInfoBase();
-            TraerInfoEstados();
-            SwitchTo(ModoForm.Inicio);
             m_AMAsocMoviles = new AsociadosMovil(m_smResult);
 
+            if (LicenseManager.UsageMode != LicenseUsageMode.Designtime)
+            {
+                TraerInfoBase();
+                TraerInfoEstados();
+                SwitchTo(ModoForm.Inicio);
+            }
         }
 
         #region Relleno De Datos
@@ -61,14 +50,14 @@ namespace Mrln.Mv
         private void TraerInfoBase()
         {
             m_LEMoviles = Bll.Moviles.UpFull(true, m_smResult);
-            if (MsgRuts.AnalizeError(this, m_smResult)) return;
+            if (MsgRuts.AnalizeError(App.GetMainWindow(), m_smResult)) return;
         }
 
         // Hace traer la infomracion de los estados disponibles
         private void TraerInfoEstados()
         {
             m_LEEdsEstados = Bll.Tablas.EdsUpFull(true, m_smResult);
-            if (MsgRuts.AnalizeError(this, m_smResult)) return;
+            if (MsgRuts.AnalizeError(App.GetMainWindow(), m_smResult)) return;
 
         }
 
@@ -76,9 +65,9 @@ namespace Mrln.Mv
         private void LlenarTreeMoviles()
         {
             ListaEntidades l_LEMovilesTree = Bll.Moviles.fArmarTree(true, m_smResult);
-            ftrMoviles.FillFromStrLEntidad(l_LEMovilesTree, "mov_ecd_patente", "mov_des_des", 2, "Nivel","Imagen", "Imagen");
+            ftrMoviles.FillFromStrLEntidad(l_LEMovilesTree, "mov_ecd_patente", "mov_des_des", 2, "Nivel", "Imagen", "Imagen");
             ftrMoviles.ExpandAll();
-            if (MsgRuts.AnalizeError(this, m_smResult)) return;
+            if (MsgRuts.AnalizeError(App.GetMainWindow(), m_smResult)) return;
 
 
         }
@@ -92,13 +81,13 @@ namespace Mrln.Mv
             // ordenamos por fecha descendentemente para que quede primero el ultimo estado (actual).
             m_entMovil.MovilesEstado.Sort(String.Format("{0} desc", Bel.EMovilEstado.FechaCmp));
             teEstado.Text = GetEstado(m_entMovil.MovilesEstado[0]);
-      
+
         }
 
         private string GetEstado(EMovilEstado eMovilEstado)
         {
             EEstado l_eEstado = Bll.Tablas.EdsGet(eMovilEstado.Codestado, true, m_smResult);
-            if (MsgRuts.AnalizeError(this, m_smResult)) return null;
+            if (MsgRuts.AnalizeError(App.GetMainWindow(), m_smResult)) return null;
             string l_strEstado = l_eEstado.Des;
 
             return l_strEstado;
@@ -143,9 +132,9 @@ namespace Mrln.Mv
         {
             if (m_AMAsocMoviles.Equipamiento.Count != 0)
             {
-                  //Propiedad .Colwitdhs (para el ancho de las columnas) colwitdhs
+                //Propiedad .Colwitdhs (para el ancho de las columnas) colwitdhs
                 fgEquipamiento.FillFromLEntidad(m_AMAsocMoviles.Equipamiento);
-                fgEquipamiento.ColWitdhs = "0;"+(fgEquipamiento.Size.Width -4).ToString()+";";
+                fgEquipamiento.ColWitdhs = "0;" + (fgEquipamiento.Size.Width - 4).ToString() + ";";
             }
         }
 
@@ -168,7 +157,7 @@ namespace Mrln.Mv
             if (l_strCodigo == "0") return;
             m_entMovil = m_LEMoviles[ftrMoviles.SelectedNodeAsCDI.StrCode];
             m_entMovil.MovilesEstado = Bll.Moviles.MvesFGet(m_entMovil.Patente, true, m_smResult);
-            if (MsgRuts.AnalizeError(this, m_smResult)) return;
+            if (MsgRuts.AnalizeError(App.GetMainWindow(), m_smResult)) return;
             SwitchTo(ModoForm.EdicionBase, OpGrid.Igual);
         }
 
@@ -177,37 +166,26 @@ namespace Mrln.Mv
         {
             m_entMovil.MovilesEquip = m_AMAsocMoviles.EquipamientoTip;
             AltaMovil l_formAltaMovil = new AltaMovil(m_entMovil, true);
-            ((MainFrame)App.GetMainWindow()).AddContent(l_formAltaMovil);
+            l_formAltaMovil.ShowDialog(App.GetMainWindow());
             l_formAltaMovil.m_evChangedMovil += new AltaMovil.ChangedMovilEventHandler(movilChanged);
-        }
-
-        // Abre ventana de AltaMoviles modificada para cambiar los equipamientos que tiene disponible el movil
-        private void gbModificarEq_Click(object sender, EventArgs e)
-        {
-            m_entMovil.MovilesEquip = m_AMAsocMoviles.EquipamientoTip;
-            AltaMovil l_formAltaMovil = new AltaMovil(m_entMovil, false);
-            ((MainFrame)App.GetMainWindow()).AddContent(l_formAltaMovil);
-            l_formAltaMovil.m_evChangedMovil += new AltaMovil.ChangedMovilEventHandler(equipChanged);
         }
 
         // Borrado de un Movil
         private void gbBorrarMovil_Click(object sender, EventArgs e)
         {
             if (!BorradoSeguro()) return;
-            Bll.Moviles.Remove(m_entMovil.Patente,m_entMovil.FxdVersion, m_smResult);
+            Bll.Moviles.Remove(m_entMovil.Patente, m_entMovil.FxdVersion, m_smResult);
             m_entMovil = null;
             SwitchTo(ModoForm.Inicio, OpGrid.Igual);
-            if (MsgRuts.AnalizeError(this, m_smResult)) return;
+            if (MsgRuts.AnalizeError(App.GetMainWindow(), m_smResult)) return;
         }
 
         // Agrega un nuevo Movil y engancha el evento al metodo movilChanged
         private void gbNuevoMovil_Click(object sender, EventArgs e)
         {
             AltaMovil l_formAltaMovil = new AltaMovil();
-            ((MainFrame)App.GetMainWindow()).AddContent(l_formAltaMovil);
+            l_formAltaMovil.ShowDialog(App.GetMainWindow());
             l_formAltaMovil.m_evChangedMovil += new AltaMovil.ChangedMovilEventHandler(movilChanged);
-            
-            
         }
 
         // Manejo de evento para la modificacion o alta de un movil
@@ -217,14 +195,6 @@ namespace Mrln.Mv
 
 
         }
-
-        // Metodo de manejo de evento del formulario de AltaMovil al modificar un equipamiento
-        private void equipChanged(object sender, EventArgs s)
-        {
-            SwitchTo(ModoForm.Edicion, OpGrid.Equip);
-
-
-        }  
 
         // Lanza el formulario de carga de combustible y luego graba en la base el resultado
         private void gbAgregarCombustible_Click(object sender, EventArgs e)
@@ -243,7 +213,7 @@ namespace Mrln.Mv
             l_EMComMovilCombustible.Importe = l_frmMovilCombustible.Importe;
             Bll.Moviles.MvcoSave(l_EMComMovilCombustible, m_smResult);
             SwitchTo(ModoForm.Edicion, OpGrid.Combus);
-            if (MsgRuts.AnalizeError(this, m_smResult)) return;
+            if (MsgRuts.AnalizeError(App.GetMainWindow(), m_smResult)) return;
 
 
         }
@@ -255,10 +225,10 @@ namespace Mrln.Mv
             l_frmNuevoKm.ShowDialog();
             if (l_frmNuevoKm.DialogResult == System.Windows.Forms.DialogResult.Cancel)
                 return;
-            
+
             if (l_frmNuevoKm.Kilometros < DameUltimoKms())
             {
-                MsgRuts.ShowMsg(this, "El kilometraje que intenta ingresar es menor al ultimo kilometraje ingresado");
+                MsgRuts.ShowMsg(App.GetMainWindow(), "El kilometraje que intenta ingresar es menor al ultimo kilometraje ingresado");
                 return;
             }
 
@@ -268,13 +238,12 @@ namespace Mrln.Mv
             l_EMKmMovilKm.Patente = tePatente.Text;
             Bll.Moviles.MvkmSave(l_EMKmMovilKm, m_smResult);
             SwitchTo(ModoForm.Edicion, OpGrid.Km);
-            if (MsgRuts.AnalizeError(this, m_smResult)) return;
+            if (MsgRuts.AnalizeError(App.GetMainWindow(), m_smResult)) return;
 
 
             Shr.AlertHelper.CheckForAlertsAndProcess(m_entMovil, m_smResult);
-            if (MsgRuts.AnalizeError(this, m_smResult)) return;
+            if (MsgRuts.AnalizeError(App.GetMainWindow(), m_smResult)) return;
         }
-
 
         // Cambia el estado del form y llena las grillas
         private void ftrMoviles_DoubleClick(object sender, EventArgs e)
@@ -292,7 +261,7 @@ namespace Mrln.Mv
                 return;
             }
 
-            if (l_frmModificarEstado.Estado == DameUltimoEstado()) { MsgRuts.ShowMsg(this,"El estado al cual esta modificando es igual al estado actual"); return; };
+            if (l_frmModificarEstado.Estado == DameUltimoEstado()) { MsgRuts.ShowMsg(App.GetMainWindow(), "El estado al cual esta modificando es igual al estado actual"); return; };
 
             EMovilEstado l_EMEstMovilEstado;
             //creamos la entidad y la llenamos con sus datos y la guardamos
@@ -303,7 +272,7 @@ namespace Mrln.Mv
             l_EMEstMovilEstado.Km = DameUltimoKms();
 
             Bll.Moviles.MvesSave(l_EMEstMovilEstado, m_smResult);
-            if (MsgRuts.AnalizeError(this, m_smResult)) return;
+            if (MsgRuts.AnalizeError(App.GetMainWindow(), m_smResult)) return;
 
             SwitchTo(ModoForm.Edicion, OpGrid.Estados);
         }
@@ -340,7 +309,7 @@ namespace Mrln.Mv
                 case ModoForm.Inicio: { ModoInicio(); break; }
                 case ModoForm.Edicion: { ModoEdicion(); break; }
                 case ModoForm.EdicionBase: { ModoEdicionBase(); break; }
-                default: { MsgRuts.ShowMsg(this, "Invalid mode"); break; }
+                default: { MsgRuts.ShowMsg(App.GetMainWindow(), "Invalid mode"); break; }
             }
 
             // Fijamos el nuevo estado de la grilla
@@ -351,7 +320,7 @@ namespace Mrln.Mv
                 case OpGrid.Estados: { TraerInfoBase(); LlenarGridEstados(); break; }
                 case OpGrid.Km: { TraerInfoBase(); LlenarGridKm(); break; }
                 case OpGrid.Todas: { TraerInfoBase(); LlenarGrids(); break; }
-                case OpGrid.Igual: {break;}
+                case OpGrid.Igual: { break; }
                 default: { break; }
             }
         }
@@ -370,8 +339,8 @@ namespace Mrln.Mv
             gbModificarMovil.Enabled = false;
             gbNuevoMovil.Enabled = true;
             gbBorrarMovil.Enabled = false;
-            pnlOpcionesEspecificas.Enabled = false;
-            pnlOpcionesGenerales.Enabled = true;
+            panelMovilSeleccionado.Enabled = false;
+            panelMoviles.Enabled = true;
         }
 
         /// <summary>
@@ -387,8 +356,8 @@ namespace Mrln.Mv
             fgMovilEstados.Clear();
             gbBorrarMovil.Enabled = true;
             gbModificarMovil.Enabled = true;
-            pnlOpcionesEspecificas.Enabled = false;
-            pnlOpcionesGenerales.Enabled = true;
+            panelMovilSeleccionado.Enabled = false;
+            panelMoviles.Enabled = true;
         }
 
         /// <summary>
@@ -403,8 +372,8 @@ namespace Mrln.Mv
             gbBorrarMovil.Enabled = true;
             gbModificarMovil.Enabled = true;
             tgrpMoviles.Enabled = true;
-            pnlOpcionesEspecificas.Enabled = true;
-            pnlOpcionesGenerales.Enabled = false;
+            panelMovilSeleccionado.Enabled = true;
+            panelMoviles.Enabled = true;
 
 
         }
@@ -439,9 +408,9 @@ namespace Mrln.Mv
         /// <returns></returns>
         private LEMovilesEstado Dame5PrimerosEstados(LEMovilesEstado p_LEMEEstadosDeMovil)
         {
-           LEMovilesEstado l_LEMEPrimerosCincoMovilesEstados = LEMovilesEstado.NewEmpty();
-           long l_lngMaximo = Math.Min(p_LEMEEstadosDeMovil.Count - 1, 4);
-           for (long i = 0; i <= l_lngMaximo; i++)
+            LEMovilesEstado l_LEMEPrimerosCincoMovilesEstados = LEMovilesEstado.NewEmpty();
+            long l_lngMaximo = Math.Min(p_LEMEEstadosDeMovil.Count - 1, 4);
+            for (long i = 0; i <= l_lngMaximo; i++)
             {
                 l_LEMEPrimerosCincoMovilesEstados.AddEntity(p_LEMEEstadosDeMovil[i]);
             }
@@ -512,12 +481,12 @@ namespace Mrln.Mv
         /// <returns>Devuelve la descripción del modelo</returns>
         private string GetModelo(string p_strCodModelo)
         {
-            EModelo l_EmodModelo =  Bll.Tablas.ModGet(p_strCodModelo, true, m_smResult);
-            if (MsgRuts.AnalizeError(this, m_smResult)) return null;
+            EModelo l_EmodModelo = Bll.Tablas.ModGet(p_strCodModelo, true, m_smResult);
+            if (MsgRuts.AnalizeError(App.GetMainWindow(), m_smResult)) return null;
             string l_strModelo = l_EmodModelo.Des;
-           
+
             return l_strModelo;
-            
+
         }
 
         /// <summary>
@@ -539,8 +508,6 @@ namespace Mrln.Mv
         {
             return (int)m_AMAsocMoviles.Kms.InternalData.Table.Rows[0]["mkm_nro_km"];
         }
-
-
 
 
 

@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using TNGS.NetApp;
 
 namespace Mrln.Mv
 {
@@ -16,6 +17,9 @@ namespace Mrln.Mv
             InitializeComponent();
 
             ftContainer.SelectedTab = tpMoviles;
+			
+			App.SetMainWindow(this, null, (ToolStrip)null, null, null, null, null, null);
+
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -26,7 +30,6 @@ namespace Mrln.Mv
 
         private void button1_Click(object sender, EventArgs e)
         {
-           
             Application.Exit();
         }
 

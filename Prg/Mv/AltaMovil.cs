@@ -16,7 +16,7 @@ using WeifenLuo.WinFormsUI.Docking;
 
 namespace Mrln.Mv
 {
-    public partial class AltaMovil : DockContent
+    public partial class AltaMovil : Form
     {
 
         //miembros
@@ -60,7 +60,7 @@ namespace Mrln.Mv
             teNroChasis.Enabled = false;
             teNroMotor.Enabled = false;
             teNroPloteado.Enabled = false;
-            gbCancel.Enabled = true;
+            btnExit.Enabled = true;
             tgrpDatosBasicos.Enabled = p_bImgHabilitado;
 
         }
@@ -73,11 +73,6 @@ namespace Mrln.Mv
             gbLimpiarTodo.Enabled = false;
             btnDestildarTodoEqi.Enabled = false;
             btnTildaTodos.Enabled = false;
-
-            gbCancel.FixedImage = TNGS.NetControls.FixedGlassButtons.tQuit;
-            gbCancel.Width = 78;
-            gbCancel.Height = 60;
-            gbCancel.Text = "Salir";
         }
 
 
@@ -345,7 +340,6 @@ namespace Mrln.Mv
                 Bll.Moviles.Save(m_entMovil, m_smResult);
                 if (MsgRuts.AnalizeError(this, m_smResult)) return;
                 MsgRuts.ShowMsg(this, "El nuevo Movil ha sido agregado satisfactoriamente");
-                this.Close();
             }
             else
             {
@@ -353,19 +347,10 @@ namespace Mrln.Mv
                 Bll.Moviles.CambiarEquipamientoYGrabarMovil(m_entMovil, ObtenerLEntidadSeleccionadosCheckedList(), m_smResult);
                 if (MsgRuts.AnalizeError(this, m_smResult)) return;
                 MsgRuts.ShowMsg(this, "El Movil ha sido modificado satisfactoriamente");
-                this.Close();
             }
-            OnChangedMovil(EventArgs.Empty);
-        }
 
-        private void gbCancel_Click(object sender, EventArgs e)
-        {
-            if (MessageBox.Show("Si cierra esta ventana puede perder datos que no hayan sido grabados",
-                "Cuidado",
-                MessageBoxButtons.OKCancel,
-                MessageBoxIcon.Warning) == DialogResult.Cancel)
-                                                                    return;
             this.Close();
+            OnChangedMovil(EventArgs.Empty);
         }
         
         private void AltaMovil_Load(object sender, EventArgs e)
@@ -396,5 +381,9 @@ namespace Mrln.Mv
 
         #endregion
 
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

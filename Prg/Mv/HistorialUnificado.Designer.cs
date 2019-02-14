@@ -39,8 +39,8 @@
             // xpnlPanel
             // 
             this.xpnlPanel.BackColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.xpnlPanel.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
-            this.xpnlPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.xpnlPanel.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.xpnlPanel.BorderColor = System.Drawing.Color.Black;
             this.xpnlPanel.Controls.Add(this.mrHistorialUnificado);
             this.xpnlPanel.Controls.Add(this.lblPatenteValue);
             this.xpnlPanel.Controls.Add(this.lblPatente);
@@ -62,7 +62,7 @@
             this.mrHistorialUnificado.ShowZoom = false;
             this.mrHistorialUnificado.Size = new System.Drawing.Size(693, 461);
             this.mrHistorialUnificado.SkinFixed = true;
-            this.mrHistorialUnificado.TabIndex = 13;
+            this.mrHistorialUnificado.TabIndex = 0;
             // 
             // lblPatenteValue
             // 
@@ -95,12 +95,12 @@
             this.gbAceptar.FlatColor = System.Drawing.Color.LimeGreen;
             this.gbAceptar.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
             this.gbAceptar.FlatFontSize = 9;
-            this.gbAceptar.FlatTextColor = System.Drawing.Color.White;
+            this.gbAceptar.FlatTextColor = System.Drawing.Color.Black;
             this.gbAceptar.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.gbAceptar.Location = new System.Drawing.Point(622, 521);
+            this.gbAceptar.Location = new System.Drawing.Point(624, 523);
             this.gbAceptar.Name = "gbAceptar";
             this.gbAceptar.Size = new System.Drawing.Size(82, 27);
-            this.gbAceptar.TabIndex = 8;
+            this.gbAceptar.TabIndex = 1;
             this.gbAceptar.Text = "Aceptar";
             this.gbAceptar.W8Color = System.Drawing.Color.LimeGreen;
             this.gbAceptar.Click += new System.EventHandler(this.gbAceptar_Click);
