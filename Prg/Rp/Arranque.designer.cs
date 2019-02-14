@@ -9,9 +9,9 @@ using System.IO;
 using System.Threading;
 using TNGS.NetRoutines;
 using TNGS.NetApp;
+using TNGS.NetAppSupport;
 using Mrln;
 using Mrln.Shr;
-using TNGS.NetAppSupport;
 #endregion
 
 namespace Mrln.Rp
@@ -19,11 +19,11 @@ namespace Mrln.Rp
     //----------------------------------------------------------------------------
     //                         TNG Software PRG Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 14/08/2018 18:49
+    // Fecha                    : 14/02/2019 03:14
     // Sistema                  : Mrln
     // Programa                 : Reportes
     //----------------------------------------------------------------------------
-    // © 1996-2018 by TNG Software                                      Gndr 5.20
+    // © 1996-2019 by TNG Software                                      Gndr 5.20
     //----------------------------------------------------------------------------
 
     //****************************************************************************
@@ -102,6 +102,9 @@ namespace Mrln.Rp
             try {
                 // Creamos la ventana MDI de la aplicacion
                 MainFrame l_frmMain= new MainFrame(MFSizes.FREESIZE, 0, false, true);
+
+                // Fijamos la imagen de Login/Pasword
+                App.FdoLoginPassw= App.Imagen("AppLogPassw");
 
                 // Ejecutamos la funcion que arma la info de About
                 PrgRuts.MakeAboutInfo();

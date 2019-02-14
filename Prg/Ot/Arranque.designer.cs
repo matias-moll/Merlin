@@ -9,6 +9,7 @@ using System.IO;
 using System.Threading;
 using TNGS.NetRoutines;
 using TNGS.NetApp;
+using TNGS.NetAppSupport;
 using Mrln;
 using Mrln.Shr;
 #endregion
@@ -18,11 +19,11 @@ namespace Mrln.Ot
     //----------------------------------------------------------------------------
     //                         TNG Software PRG Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 14/08/2018 18:28
+    // Fecha                    : 14/02/2019 03:14
     // Sistema                  : Mrln
     // Programa                 : Ordenes de Trabajo
     //----------------------------------------------------------------------------
-    // © 1996-2018 by TNG Software                                      Gndr 5.20
+    // © 1996-2019 by TNG Software                                      Gndr 5.20
     //----------------------------------------------------------------------------
 
     //****************************************************************************
@@ -102,8 +103,8 @@ namespace Mrln.Ot
                 // Creamos la ventana MDI de la aplicacion
                 MainFrame l_frmMain= new MainFrame(MFSizes.MF1024x768, 0, false, true);
 
-                // Ejecutamos la funcion que arma la info de About
-                PrgRuts.MakeAboutInfo();
+                // Fijamos la imagen de Login/Pasword
+                App.FdoLoginPassw= App.Imagen("AppLogPassw");
 
                 // Llamamos al PreRun del Shr y del Programa
                 if (!SysRuts.PreRun()) return;
@@ -114,7 +115,7 @@ namespace Mrln.Ot
                 App.MnuCommands += new MnuCommandsEventHandler(Arranque_MnuCommandsMF);
 
                 App.Run(LoginModes.Full,
-                        IMenuOptions.MAll,
+                        IMenuOptions.None,
                         ExitModes.Confirm,
                         l_smResult);
             }

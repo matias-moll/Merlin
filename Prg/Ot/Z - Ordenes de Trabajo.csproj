@@ -80,6 +80,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\Ambiente0520\DNet0520\Release_Uil\TNGS.NetApp.520.dll</HintPath>
     </Reference>
+    <Reference Include="TNGS.NetAppSupport.520">
+      <HintPath>C:\DiscoT\Ambiente0520\DNet0520\Release_Uil\TNGS.NetAppSupport.520.dll</HintPath>
+    </Reference>
     <Reference Include="TNGS.NetControls.520">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\Ambiente0520\DNet0520\Release_Uil\TNGS.NetControls.520.dll</HintPath>
