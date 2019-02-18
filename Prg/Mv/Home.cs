@@ -22,7 +22,7 @@ namespace Mrln.Mv
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnMinimize_Click(object sender, EventArgs e)
         {
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.WindowState = FormWindowState.Minimized;

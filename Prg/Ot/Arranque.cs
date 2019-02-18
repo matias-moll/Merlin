@@ -19,6 +19,8 @@ namespace Mrln.Ot
         /// <returns>T- Todo OK / F- Cancelar el programa</returns>
         public static bool PreInit()
         {
+            App.TitleWithBuild = false;
+
             // Todo ok
             return true;
         }
