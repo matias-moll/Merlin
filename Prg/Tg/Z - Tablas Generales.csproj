@@ -66,6 +66,9 @@
     <Reference Include="TNGS.NetApp.520">
       <HintPath>..\..\..\Ambiente0520\DNet0520\Release_Uil\TNGS.NetApp.520.dll</HintPath>
     </Reference>
+    <Reference Include="TNGS.NetAppSupport.520">
+      <HintPath>..\..\..\Ambiente0520\DNet0520\Release_Uil\TNGS.NetAppSupport.520.dll</HintPath>
+    </Reference>
     <Reference Include="TNGS.NetControls.520">
       <HintPath>..\..\..\Ambiente0520\DNet0520\Release_Uil\TNGS.NetControls.520.dll</HintPath>
     </Reference>
@@ -237,13 +240,13 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Bel\BEL.csproj">
-      <Project>{7969C80F-3E89-4E03-A01B-776686783353}</Project>
-      <Name>BEL</Name>
+    <ProjectReference Include="..\..\Bel\Bel.csproj">
+      <Project>{7969c80f-3e89-4e03-a01b-776686783353}</Project>
+      <Name>Bel</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Bll\BLL.csproj">
-      <Project>{58EC503E-05DD-4F0F-B55A-318733142682}</Project>
-      <Name>BLL</Name>
+    <ProjectReference Include="..\..\Bll\Bll.csproj">
+      <Project>{58ec503e-05dd-4f0f-b55a-318733142682}</Project>
+      <Name>Bll</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Shr\Shr.csproj">
       <Project>{4EE82BA9-6046-419B-87AF-014443954416}</Project>

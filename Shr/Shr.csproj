@@ -125,16 +125,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Bel\BEL.csproj">
-      <Project>{7969C80F-3E89-4E03-A01B-776686783353}</Project>
-      <Name>BEL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Bll\BLL.csproj">
-      <Project>{58EC503E-05DD-4F0F-B55A-318733142682}</Project>
-      <Name>BLL</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Alertas\ShowAlertas.resx">
       <DependentUpon>ShowAlertas.cs</DependentUpon>
     </EmbeddedResource>
@@ -147,6 +137,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Bel\Bel.csproj">
+      <Project>{7969c80f-3e89-4e03-a01b-776686783353}</Project>
+      <Name>Bel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bll\Bll.csproj">
+      <Project>{58ec503e-05dd-4f0f-b55a-318733142682}</Project>
+      <Name>Bll</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

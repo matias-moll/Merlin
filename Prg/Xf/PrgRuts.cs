@@ -48,6 +48,11 @@ namespace Mrln.Xf
         {
         }
 
+        internal static void MakeMainFrame()
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
 
         //--------------------------------------------------------------------

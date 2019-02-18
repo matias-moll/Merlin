@@ -200,13 +200,13 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="..\..\Bel\BEL.csproj">
+    <ProjectReference Include="..\..\Bel\Bel.csproj">
       <Project>{7969c80f-3e89-4e03-a01b-776686783353}</Project>
-      <Name>BEL</Name>
+      <Name>Bel</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Bll\BLL.csproj">
+    <ProjectReference Include="..\..\Bll\Bll.csproj">
       <Project>{58ec503e-05dd-4f0f-b55a-318733142682}</Project>
-      <Name>BLL</Name>
+      <Name>Bll</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Shr\Shr.csproj">
       <Project>{4ee82ba9-6046-419b-87af-014443954416}</Project>

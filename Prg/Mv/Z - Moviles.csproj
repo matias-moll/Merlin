@@ -261,14 +261,6 @@
     <None Include="Resources\AppLogPassw.bmp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Mrln0200\Bel\BEL.csproj">
-      <Project>{7969c80f-3e89-4e03-a01b-776686783353}</Project>
-      <Name>BEL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\Mrln0200\Bll\BLL.csproj">
-      <Project>{58ec503e-05dd-4f0f-b55a-318733142682}</Project>
-      <Name>BLL</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\..\Mrln0200\Prg\ControlesCustom\Z - ControlesCustom.csproj">
       <Project>{f0c6c8aa-f128-4f5a-bd1b-2332bfea1de4}</Project>
       <Name>Z - ControlesCustom</Name>
@@ -276,6 +268,14 @@
     <ProjectReference Include="..\..\..\Mrln0200\Shr\Shr.csproj">
       <Project>{4ee82ba9-6046-419b-87af-014443954416}</Project>
       <Name>Shr</Name>
+    </ProjectReference>
+    <ProjectReference Include="T:\Mrln0200\Bel\Bel.csproj">
+      <Project>{7969c80f-3e89-4e03-a01b-776686783353}</Project>
+      <Name>Bel</Name>
+    </ProjectReference>
+    <ProjectReference Include="T:\Mrln0200\Bll\Bll.csproj">
+      <Project>{58ec503e-05dd-4f0f-b55a-318733142682}</Project>
+      <Name>Bll</Name>
     </ProjectReference>
     <ProjectReference Include="T:\Mrln0200\Cll\MasVida\%40MasVida.csproj">
       <Project>{d549c8a7-a18b-4b16-a1ec-160139192724}</Project>
