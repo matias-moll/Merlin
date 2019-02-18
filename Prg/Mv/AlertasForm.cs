@@ -27,9 +27,12 @@ namespace Mrln.Mv
             InitializeComponent();
 
             m_smResult = new StatMsg();
+
+            if (LicenseManager.UsageMode != LicenseUsageMode.Designtime)
+                loadEstadoInicial();
         }
 
-        private void Alertas_Load(object sender, EventArgs e)
+        private void loadEstadoInicial()
         {
             m_leMoviles = Bll.Moviles.UpFull(true, m_smResult);
             if (MsgRuts.AnalizeError(App.GetMainWindow(), m_smResult)) return;

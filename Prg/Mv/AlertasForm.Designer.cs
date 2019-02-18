@@ -594,7 +594,6 @@
             this.Controls.Add(this.tgrpAñadirAlertas);
             this.Name = "AlertasForm";
             this.Size = new System.Drawing.Size(998, 614);
-            this.Load += new System.EventHandler(this.Alertas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.fgConfigAlertas)).EndInit();
             this.tgrpAñadirAlertas.ResumeLayout(false);
             this.tgrpPostReparacion.ResumeLayout(false);

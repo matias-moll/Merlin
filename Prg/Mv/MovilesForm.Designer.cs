@@ -31,8 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MovilesForm));
             this.panelMoviles = new System.Windows.Forms.Panel();
-            this.panelMovilSeleccionado = new System.Windows.Forms.Panel();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.tgrpMoviles = new TNGS.NetControls.ImgGroup();
             this.teTipoMovil = new TNGS.NetControls.TextEdit();
             this.ftrMoviles = new TNGS.NetControls.FullTreeView();
@@ -45,6 +43,7 @@
             this.lblPatente = new TNGS.NetControls.FullLabel();
             this.gbNuevoMovil = new TNGS.NetControls.GlassButton();
             this.gbBorrarMovil = new TNGS.NetControls.GlassButton();
+            this.panelMovilSeleccionado = new System.Windows.Forms.Panel();
             this.gbHistorialCompleto = new TNGS.NetControls.GlassButton();
             this.fgKm = new TNGS.NetControls.FullGrid();
             this.gbCambiarEstado = new TNGS.NetControls.GlassButton();
@@ -60,9 +59,10 @@
             this.gbCargarNafta = new TNGS.NetControls.GlassButton();
             this.gbAccidentes = new TNGS.NetControls.GlassButton();
             this.fullLabel2 = new TNGS.NetControls.FullLabel();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panelMoviles.SuspendLayout();
-            this.panelMovilSeleccionado.SuspendLayout();
             this.tgrpMoviles.SuspendLayout();
+            this.panelMovilSeleccionado.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fgKm)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fgEquipamiento)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fgCombustibles)).BeginInit();
@@ -71,7 +71,8 @@
             // 
             // panelMoviles
             // 
-            this.panelMoviles.BackColor = System.Drawing.SystemColors.Control;
+            this.panelMoviles.BackColor = System.Drawing.Color.Transparent;
+            this.panelMoviles.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelMoviles.Controls.Add(this.tgrpMoviles);
             this.panelMoviles.Controls.Add(this.gbNuevoMovil);
             this.panelMoviles.Controls.Add(this.gbBorrarMovil);
@@ -80,30 +81,6 @@
             this.panelMoviles.Name = "panelMoviles";
             this.panelMoviles.Size = new System.Drawing.Size(258, 614);
             this.panelMoviles.TabIndex = 0;
-            // 
-            // panelMovilSeleccionado
-            // 
-            this.panelMovilSeleccionado.BackColor = System.Drawing.Color.Transparent;
-            this.panelMovilSeleccionado.Controls.Add(this.gbHistorialCompleto);
-            this.panelMovilSeleccionado.Controls.Add(this.fgKm);
-            this.panelMovilSeleccionado.Controls.Add(this.gbCambiarEstado);
-            this.panelMovilSeleccionado.Controls.Add(this.fgEquipamiento);
-            this.panelMovilSeleccionado.Controls.Add(this.gbModificarMovil);
-            this.panelMovilSeleccionado.Controls.Add(this.fgCombustibles);
-            this.panelMovilSeleccionado.Controls.Add(this.fullLabel4);
-            this.panelMovilSeleccionado.Controls.Add(this.fgMovilEstados);
-            this.panelMovilSeleccionado.Controls.Add(this.gbAgregarKMs);
-            this.panelMovilSeleccionado.Controls.Add(this.gbInfracciones);
-            this.panelMovilSeleccionado.Controls.Add(this.fullLabel3);
-            this.panelMovilSeleccionado.Controls.Add(this.fullLabel1);
-            this.panelMovilSeleccionado.Controls.Add(this.gbCargarNafta);
-            this.panelMovilSeleccionado.Controls.Add(this.gbAccidentes);
-            this.panelMovilSeleccionado.Controls.Add(this.fullLabel2);
-            this.panelMovilSeleccionado.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelMovilSeleccionado.Location = new System.Drawing.Point(258, 0);
-            this.panelMovilSeleccionado.Name = "panelMovilSeleccionado";
-            this.panelMovilSeleccionado.Size = new System.Drawing.Size(740, 614);
-            this.panelMovilSeleccionado.TabIndex = 64;
             // 
             // tgrpMoviles
             // 
@@ -128,7 +105,7 @@
             this.tgrpMoviles.ForeColor = System.Drawing.Color.Black;
             this.tgrpMoviles.GroupImage = null;
             this.tgrpMoviles.GroupTitle = "Móviles";
-            this.tgrpMoviles.Location = new System.Drawing.Point(9, 70);
+            this.tgrpMoviles.Location = new System.Drawing.Point(6, 70);
             this.tgrpMoviles.Name = "tgrpMoviles";
             this.tgrpMoviles.Padding = new System.Windows.Forms.Padding(20);
             this.tgrpMoviles.PaintGroupBox = false;
@@ -280,6 +257,30 @@
             this.gbBorrarMovil.W8Color = System.Drawing.Color.Red;
             this.gbBorrarMovil.Click += new System.EventHandler(this.gbBorrarMovil_Click);
             // 
+            // panelMovilSeleccionado
+            // 
+            this.panelMovilSeleccionado.BackColor = System.Drawing.Color.Transparent;
+            this.panelMovilSeleccionado.Controls.Add(this.gbHistorialCompleto);
+            this.panelMovilSeleccionado.Controls.Add(this.fgKm);
+            this.panelMovilSeleccionado.Controls.Add(this.gbCambiarEstado);
+            this.panelMovilSeleccionado.Controls.Add(this.fgEquipamiento);
+            this.panelMovilSeleccionado.Controls.Add(this.gbModificarMovil);
+            this.panelMovilSeleccionado.Controls.Add(this.fgCombustibles);
+            this.panelMovilSeleccionado.Controls.Add(this.fullLabel4);
+            this.panelMovilSeleccionado.Controls.Add(this.fgMovilEstados);
+            this.panelMovilSeleccionado.Controls.Add(this.gbAgregarKMs);
+            this.panelMovilSeleccionado.Controls.Add(this.gbInfracciones);
+            this.panelMovilSeleccionado.Controls.Add(this.fullLabel3);
+            this.panelMovilSeleccionado.Controls.Add(this.fullLabel1);
+            this.panelMovilSeleccionado.Controls.Add(this.gbCargarNafta);
+            this.panelMovilSeleccionado.Controls.Add(this.gbAccidentes);
+            this.panelMovilSeleccionado.Controls.Add(this.fullLabel2);
+            this.panelMovilSeleccionado.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panelMovilSeleccionado.Location = new System.Drawing.Point(258, 0);
+            this.panelMovilSeleccionado.Name = "panelMovilSeleccionado";
+            this.panelMovilSeleccionado.Size = new System.Drawing.Size(740, 614);
+            this.panelMovilSeleccionado.TabIndex = 64;
+            // 
             // gbHistorialCompleto
             // 
             this.gbHistorialCompleto.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("gbHistorialCompleto.BackgroundImage")));
@@ -292,7 +293,7 @@
             this.gbHistorialCompleto.FlatFontSize = 9;
             this.gbHistorialCompleto.FlatTextColor = System.Drawing.Color.Black;
             this.gbHistorialCompleto.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.gbHistorialCompleto.Location = new System.Drawing.Point(3, 11);
+            this.gbHistorialCompleto.Location = new System.Drawing.Point(3, 5);
             this.gbHistorialCompleto.Name = "gbHistorialCompleto";
             this.gbHistorialCompleto.RoundCorners = 2;
             this.gbHistorialCompleto.Size = new System.Drawing.Size(101, 60);
@@ -334,7 +335,7 @@
             this.gbCambiarEstado.FlatTextColor = System.Drawing.Color.Black;
             this.gbCambiarEstado.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.gbCambiarEstado.ImageOnTop = true;
-            this.gbCambiarEstado.Location = new System.Drawing.Point(222, 11);
+            this.gbCambiarEstado.Location = new System.Drawing.Point(225, 5);
             this.gbCambiarEstado.Name = "gbCambiarEstado";
             this.gbCambiarEstado.RoundCorners = 2;
             this.gbCambiarEstado.Size = new System.Drawing.Size(109, 60);
@@ -375,7 +376,7 @@
             this.gbModificarMovil.FlatFontSize = 9;
             this.gbModificarMovil.FlatTextColor = System.Drawing.Color.Black;
             this.gbModificarMovil.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.gbModificarMovil.Location = new System.Drawing.Point(107, 11);
+            this.gbModificarMovil.Location = new System.Drawing.Point(107, 5);
             this.gbModificarMovil.Name = "gbModificarMovil";
             this.gbModificarMovil.RoundCorners = 2;
             this.gbModificarMovil.Size = new System.Drawing.Size(101, 60);
@@ -398,9 +399,9 @@
             this.fgCombustibles.ExcelTitle = "";
             this.fgCombustibles.GridOrder = "";
             this.fgCombustibles.HeaderForeColor = System.Drawing.SystemColors.ControlText;
-            this.fgCombustibles.Location = new System.Drawing.Point(350, 132);
+            this.fgCombustibles.Location = new System.Drawing.Point(338, 132);
             this.fgCombustibles.Name = "fgCombustibles";
-            this.fgCombustibles.Size = new System.Drawing.Size(376, 202);
+            this.fgCombustibles.Size = new System.Drawing.Size(396, 202);
             this.fgCombustibles.SkinFixed = true;
             this.fgCombustibles.TabIndex = 1;
             // 
@@ -408,7 +409,7 @@
             // 
             this.fullLabel4.BackColor = System.Drawing.Color.Transparent;
             this.fullLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fullLabel4.Location = new System.Drawing.Point(485, 373);
+            this.fullLabel4.Location = new System.Drawing.Point(488, 373);
             this.fullLabel4.Name = "fullLabel4";
             this.fullLabel4.Size = new System.Drawing.Size(100, 15);
             this.fullLabel4.TabIndex = 63;
@@ -428,9 +429,9 @@
             this.fgMovilEstados.ExcelTitle = "";
             this.fgMovilEstados.GridOrder = "";
             this.fgMovilEstados.HeaderForeColor = System.Drawing.SystemColors.ControlText;
-            this.fgMovilEstados.Location = new System.Drawing.Point(349, 391);
+            this.fgMovilEstados.Location = new System.Drawing.Point(337, 391);
             this.fgMovilEstados.Name = "fgMovilEstados";
-            this.fgMovilEstados.Size = new System.Drawing.Size(377, 220);
+            this.fgMovilEstados.Size = new System.Drawing.Size(397, 220);
             this.fgMovilEstados.SkinFixed = true;
             this.fgMovilEstados.TabIndex = 3;
             // 
@@ -446,7 +447,7 @@
             this.gbAgregarKMs.FlatTextColor = System.Drawing.Color.Black;
             this.gbAgregarKMs.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.gbAgregarKMs.ImageOnTop = true;
-            this.gbAgregarKMs.Location = new System.Drawing.Point(334, 11);
+            this.gbAgregarKMs.Location = new System.Drawing.Point(337, 5);
             this.gbAgregarKMs.Name = "gbAgregarKMs";
             this.gbAgregarKMs.RoundCorners = 2;
             this.gbAgregarKMs.Size = new System.Drawing.Size(109, 60);
@@ -469,7 +470,7 @@
             this.gbInfracciones.FlatTextColor = System.Drawing.Color.Black;
             this.gbInfracciones.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.gbInfracciones.ImageOnTop = true;
-            this.gbInfracciones.Location = new System.Drawing.Point(638, 11);
+            this.gbInfracciones.Location = new System.Drawing.Point(641, 5);
             this.gbInfracciones.Name = "gbInfracciones";
             this.gbInfracciones.RoundCorners = 2;
             this.gbInfracciones.Size = new System.Drawing.Size(93, 60);
@@ -514,7 +515,7 @@
             this.gbCargarNafta.FlatTextColor = System.Drawing.Color.Black;
             this.gbCargarNafta.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.gbCargarNafta.ImageOnTop = true;
-            this.gbCargarNafta.Location = new System.Drawing.Point(446, 11);
+            this.gbCargarNafta.Location = new System.Drawing.Point(449, 5);
             this.gbCargarNafta.Name = "gbCargarNafta";
             this.gbCargarNafta.RoundCorners = 2;
             this.gbCargarNafta.Size = new System.Drawing.Size(93, 60);
@@ -537,7 +538,7 @@
             this.gbAccidentes.FlatTextColor = System.Drawing.Color.Black;
             this.gbAccidentes.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.gbAccidentes.ImageOnTop = true;
-            this.gbAccidentes.Location = new System.Drawing.Point(542, 11);
+            this.gbAccidentes.Location = new System.Drawing.Point(545, 5);
             this.gbAccidentes.Name = "gbAccidentes";
             this.gbAccidentes.RoundCorners = 2;
             this.gbAccidentes.Size = new System.Drawing.Size(93, 60);
@@ -566,9 +567,9 @@
             this.Name = "MovilesForm";
             this.Size = new System.Drawing.Size(998, 614);
             this.panelMoviles.ResumeLayout(false);
-            this.panelMovilSeleccionado.ResumeLayout(false);
             this.tgrpMoviles.ResumeLayout(false);
             this.tgrpMoviles.PerformLayout();
+            this.panelMovilSeleccionado.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.fgKm)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fgEquipamiento)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fgCombustibles)).EndInit();

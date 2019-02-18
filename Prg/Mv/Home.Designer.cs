@@ -112,15 +112,17 @@
             // 
             this.ftContainer.Controls.Add(this.tpMoviles);
             this.ftContainer.Controls.Add(this.tpAlertas);
+            this.ftContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ftContainer.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
             this.ftContainer.FlatColor = System.Drawing.Color.Firebrick;
             this.ftContainer.FlatMode = true;
             this.ftContainer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ftContainer.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.ftContainer.Location = new System.Drawing.Point(3, 46);
+            this.ftContainer.ForeColor = System.Drawing.Color.Black;
+            this.ftContainer.Location = new System.Drawing.Point(0, 40);
             this.ftContainer.Name = "ftContainer";
             this.ftContainer.SelectedIndex = 0;
-            this.ftContainer.Size = new System.Drawing.Size(1017, 654);
+            this.ftContainer.Size = new System.Drawing.Size(1024, 653);
+            this.ftContainer.SkinFixed = true;
             this.ftContainer.TabIndex = 2;
             // 
             // tpMoviles
@@ -129,16 +131,17 @@
             this.tpMoviles.Location = new System.Drawing.Point(4, 25);
             this.tpMoviles.Name = "tpMoviles";
             this.tpMoviles.Padding = new System.Windows.Forms.Padding(3);
-            this.tpMoviles.Size = new System.Drawing.Size(1009, 625);
+            this.tpMoviles.Size = new System.Drawing.Size(1016, 624);
             this.tpMoviles.TabIndex = 0;
             this.tpMoviles.Text = "Móviles";
             this.tpMoviles.UseVisualStyleBackColor = true;
             // 
             // movilesForm1
             // 
+            this.movilesForm1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.movilesForm1.Location = new System.Drawing.Point(3, 3);
             this.movilesForm1.Name = "movilesForm1";
-            this.movilesForm1.Size = new System.Drawing.Size(998, 614);
+            this.movilesForm1.Size = new System.Drawing.Size(1010, 618);
             this.movilesForm1.TabIndex = 0;
             // 
             // tpAlertas
@@ -147,23 +150,24 @@
             this.tpAlertas.Location = new System.Drawing.Point(4, 25);
             this.tpAlertas.Name = "tpAlertas";
             this.tpAlertas.Padding = new System.Windows.Forms.Padding(3);
-            this.tpAlertas.Size = new System.Drawing.Size(1009, 625);
+            this.tpAlertas.Size = new System.Drawing.Size(1016, 624);
             this.tpAlertas.TabIndex = 1;
             this.tpAlertas.Text = "Alertas";
             this.tpAlertas.UseVisualStyleBackColor = true;
             // 
             // alertasForm1
             // 
-            this.alertasForm1.Location = new System.Drawing.Point(6, 5);
+            this.alertasForm1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.alertasForm1.Location = new System.Drawing.Point(3, 3);
             this.alertasForm1.Name = "alertasForm1";
-            this.alertasForm1.Size = new System.Drawing.Size(998, 614);
+            this.alertasForm1.Size = new System.Drawing.Size(1010, 618);
             this.alertasForm1.TabIndex = 0;
             // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1024, 712);
+            this.ClientSize = new System.Drawing.Size(1024, 693);
             this.Controls.Add(this.ftContainer);
             this.Controls.Add(this.topPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

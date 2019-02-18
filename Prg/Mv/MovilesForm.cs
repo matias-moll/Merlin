@@ -100,7 +100,7 @@ namespace Mrln.Mv
             {
                 //m_entMovil.MovilesEstado.Sort("mve_fyh_fecha desc");
                 fgMovilEstados.FillFromLEntidad(m_AMAsocMoviles.Estados);
-                fgMovilEstados.ColWitdhs = "177;105;105;0;";
+                fgMovilEstados.ColWitdhs = "183;105;105;0;";
             }
 
         }
@@ -111,7 +111,7 @@ namespace Mrln.Mv
             if (m_AMAsocMoviles.Combustibles.Count != 0)
             {
                 fgCombustibles.FillFromLEntidad(m_AMAsocMoviles.Combustibles);
-                fgCombustibles.ColWitdhs = "57;57;100;173;";
+                fgCombustibles.ColWitdhs = "57;60;100;175;";
             }
         }
 
