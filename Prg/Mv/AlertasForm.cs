@@ -49,7 +49,7 @@ namespace Mrln.Mv
             if (MsgRuts.AnalizeError(App.GetMainWindow(), m_smResult)) return;
 
             cdcControlesEspecifico.FillFromStrLEntidad(m_leControles, Bel.EControl.CodCmp, Bel.EControl.DesCmp, "deleted");
-            cdcControlesPeriodicos.FillFromStrLEntidad(m_leControles, Bel.EControl.CodCmp, Bel.EControl.DesCmp, "deleted");
+            cdcControlesPeriodicosKms.FillFromStrLEntidad(m_leControles, Bel.EControl.CodCmp, Bel.EControl.DesCmp, "deleted");
             cdcControlesPostReparacion.FillFromStrLEntidad(m_leControles, Bel.EControl.CodCmp, Bel.EControl.DesCmp, "deleted");
 
             cdcReparacionesPostReparacion.FillFromStrLEntidad(m_leReparaciones, Bel.EReparacion.CodCmp, Bel.EReparacion.DesCmp, "deleted");
@@ -92,9 +92,27 @@ namespace Mrln.Mv
             // Creamos N alertas hasta alcanzar el kilometraje especificado cada X kilometros.
             for (int kmsActual = kmsInicial; kmsActual <= neHastaKmsPeriodicos.Numero; kmsActual += neCadaKmsPeriodicos.Numero)
             {
-                grabarConfigAlerta(kmsActual, "", cdcControlesPeriodicos.SelectedStrCode);
+                grabarConfigAlerta(kmsActual, "", cdcControlesPeriodicosKms.SelectedStrCode);
+                if (MsgRuts.AnalizeError(App.GetMainWindow(), m_smResult)) return;
             }
 
+
+            limpiarDestinatarios();
+        }
+
+        private void gbAgregarPeriodicosFecha_Click(object sender, EventArgs e)
+        {
+            int kmsInicial = neDesdeKmsPeriodicos.Numero;
+            DateTime fechaDondeDebeControlarse = deDesdeFechaPeriodicoPorFecha.Fecha.AddMonths(-neCadaMesesPeriodicosFecha.Numero);
+
+            // Creamos 10 alertas desde la fecha inicial cada N meses
+            for (int index = 0; index < 10; index++)
+            {
+                fechaDondeDebeControlarse = fechaDondeDebeControlarse.AddMonths(neCadaMesesPeriodicosFecha.Numero);
+
+                grabarConfigAlerta(0, "", cdcControlesPeriodicosFecha.SelectedStrCode, fechaDondeDebeControlarse);
+                if (MsgRuts.AnalizeError(App.GetMainWindow(), m_smResult)) return;
+            }
 
             limpiarDestinatarios();
         }
@@ -159,8 +177,11 @@ namespace Mrln.Mv
             cdcGruposDestinatarios.SelectedStrCode = "";
         }
 
-        private void grabarConfigAlerta(int kilometros, string codReparacion, string codControl)
+        private void grabarConfigAlerta(int kilometros, string codReparacion, string codControl, DateTime? fecha = null)
         {
+            if (fecha == null)
+                fecha = new DateTime(1, 1, 1900);
+
             ETalonario taloConfigAlerta = App.TaloGet("ConfAlerta", m_smResult);
             if (MsgRuts.AnalizeError(App.GetMainWindow(), m_smResult)) return;
 
@@ -178,5 +199,10 @@ namespace Mrln.Mv
         }
 
         #endregion
+
+        private void gbHelp_Click(object sender, EventArgs e)
+        {
+            MsgRuts.ShowMsg(App.GetMainWindow(), "Se crearan 10 alertas desde la fecha elegida cada N meses ingresados. Si necesita mas de 10 alertas de este tipo una vez generadas mira cual es la ultima fecha generada y genere otras 10 apartir de esa fecha.");
+        }
     }
 }

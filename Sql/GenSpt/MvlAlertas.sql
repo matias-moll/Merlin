@@ -1,11 +1,11 @@
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 14/12/2018 04:11
+// Fecha       : 15/03/2019 22:45
 // Sistema     : Mrln
 // Tabla       : MvlAlertas
 //----------------------------------------------------------------------------
-// © 1999-2018 by TNG Software                                      Gndr 5.20
+// © 1999-2019 by TNG Software                                      Gndr 5.20
 //---------------------------------------------------------------------------*/
 
 /* ***************************************************************************
@@ -61,6 +61,7 @@ begin
                 isnull(ctl_des_des, '') as mal_control,
                 mal_cod_coddestinatarios,
                 isnull(dem_des_descripcion, '') as mal_destinats,
+                mal_fec_fecha,
                 TNGS_Mrln..MvlAlertas.instante,
                 TNGS_Mrln..MvlAlertas.deleted,
                 TNGS_Mrln..MvlAlertas.usuario,
@@ -87,6 +88,7 @@ begin
                 isnull(ctl_des_des, '') as mal_control,
                 mal_cod_coddestinatarios,
                 isnull(dem_des_descripcion, '') as mal_destinats,
+                mal_fec_fecha,
                 TNGS_Mrln..MvlAlertas.instante,
                 TNGS_Mrln..MvlAlertas.deleted,
                 TNGS_Mrln..MvlAlertas.usuario,
@@ -207,6 +209,7 @@ begin
                 isnull(ctl_des_des, '') as mal_control,
                 mal_cod_coddestinatarios,
                 isnull(dem_des_descripcion, '') as mal_destinats,
+                mal_fec_fecha,
                 TNGS_Mrln..MvlAlertas.instante,
                 TNGS_Mrln..MvlAlertas.deleted,
                 TNGS_Mrln..MvlAlertas.usuario,
@@ -233,6 +236,7 @@ begin
                 isnull(ctl_des_des, '') as mal_control,
                 mal_cod_coddestinatarios,
                 isnull(dem_des_descripcion, '') as mal_destinats,
+                mal_fec_fecha,
                 TNGS_Mrln..MvlAlertas.instante,
                 TNGS_Mrln..MvlAlertas.deleted,
                 TNGS_Mrln..MvlAlertas.usuario,
@@ -301,6 +305,7 @@ begin
                 isnull(ctl_des_des, '') as mal_control,
                 mal_cod_coddestinatarios,
                 isnull(dem_des_descripcion, '') as mal_destinats,
+                mal_fec_fecha,
                 TNGS_Mrln..MvlAlertas.instante,
                 TNGS_Mrln..MvlAlertas.deleted,
                 TNGS_Mrln..MvlAlertas.usuario,
@@ -327,6 +332,7 @@ begin
                 isnull(ctl_des_des, '') as mal_control,
                 mal_cod_coddestinatarios,
                 isnull(dem_des_descripcion, '') as mal_destinats,
+                mal_fec_fecha,
                 TNGS_Mrln..MvlAlertas.instante,
                 TNGS_Mrln..MvlAlertas.deleted,
                 TNGS_Mrln..MvlAlertas.usuario,
@@ -365,6 +371,7 @@ go
 --- <param name="@mal_cd6_codreparacion">Reparacion</param>
 --- <param name="@mal_cod_codcontrol">Control</param>
 --- <param name="@mal_cod_coddestinatarios">Destinatarios</param>
+--- <param name="@mal_fec_fecha">Fecha</param>
 --- <param name="@usuario">Usuario que genera el insert</param>
 ---
 ---////////////////////////////////////////////////////////
@@ -389,6 +396,7 @@ create procedure dbo.MVLALERTAS_INSERT
 @mal_cd6_codreparacion tngs_codigo_6,
 @mal_cod_codcontrol tngs_codigo,
 @mal_cod_coddestinatarios tngs_codigo,
+@mal_fec_fecha tngs_fecha,
 @usuario tngs_nombre
 )
 as
@@ -402,6 +410,7 @@ begin
            @mal_cd6_codreparacion,
            @mal_cod_codcontrol,
            @mal_cod_coddestinatarios,
+           @mal_fec_fecha,
            getdate(), 0, @usuario, 1
           )
 
@@ -428,6 +437,7 @@ go
 --- <param name="@mal_cd6_codreparacion">Reparacion</param>
 --- <param name="@mal_cod_codcontrol">Control</param>
 --- <param name="@mal_cod_coddestinatarios">Destinatarios</param>
+--- <param name="@mal_fec_fecha">Fecha</param>
 --- <param name="@usuario">Usuario que genera el update</param>
 ---
 ---////////////////////////////////////////////////////////
@@ -452,6 +462,7 @@ create procedure dbo.MVLALERTAS_UPDATE
 @mal_cd6_codreparacion tngs_codigo_6,
 @mal_cod_codcontrol tngs_codigo,
 @mal_cod_coddestinatarios tngs_codigo,
+@mal_fec_fecha tngs_fecha,
 @usuario tngs_nombre
 )
 as
@@ -462,6 +473,7 @@ begin
           mal_cd6_codreparacion= @mal_cd6_codreparacion,
           mal_cod_codcontrol= @mal_cod_codcontrol,
           mal_cod_coddestinatarios= @mal_cod_coddestinatarios,
+          mal_fec_fecha= @mal_fec_fecha,
           version = ((version+1) % 32767),
           instante= getdate(),
           usuario = @usuario

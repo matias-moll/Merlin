@@ -14,7 +14,7 @@ namespace Mrln.Bel
     //----------------------------------------------------------------------------
     //                         TNG Software BEL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 07/02/2019 03:30
+    // Fecha                    : 15/03/2019 22:44
     // Sistema                  : Mrln
     // Clase para Administrar   : Moviles y Tablas Hijas
     //----------------------------------------------------------------------------
@@ -744,6 +744,7 @@ namespace Mrln.Bel
             l_drTemp["mal_cd6_codreparacion"]= XMLRuts.ExtractXAttr(l_xndData, "mal_cd6_codreparacion");
             l_drTemp["mal_cod_codcontrol"]= XMLRuts.ExtractXAttr(l_xndData, "mal_cod_codcontrol");
             l_drTemp["mal_cod_coddestinatarios"]= XMLRuts.ExtractXAttr(l_xndData, "mal_cod_coddestinatarios");
+            l_drTemp["mal_fec_fecha"]= XMLRuts.ExtractXAttr(l_xndData, "mal_fec_fecha", true);
             l_drTemp["mal_control"]= XMLRuts.ExtractXAttr(l_xndData, "mal_control");
             l_drTemp["mal_destinats"]= XMLRuts.ExtractXAttr(l_xndData, "mal_destinats");
             l_drTemp["mal_reparacion"]= XMLRuts.ExtractXAttr(l_xndData, "mal_reparacion");
@@ -796,6 +797,7 @@ namespace Mrln.Bel
             l_drTemp["mal_cd6_codreparacion"]= "";
             l_drTemp["mal_cod_codcontrol"]= "";
             l_drTemp["mal_cod_coddestinatarios"]= "";
+            l_drTemp["mal_fec_fecha"]= DateTimeRuts.Empty;
             l_drTemp["mal_control"]= "";
             l_drTemp["mal_destinats"]= "";
             l_drTemp["mal_reparacion"]= "";
@@ -817,13 +819,15 @@ namespace Mrln.Bel
         /// <param name="p_strCodreparacion">Reparacion</param>
         /// <param name="p_strCodcontrol">Control</param>
         /// <param name="p_strCoddestinatarios">Destinatarios</param>
+        /// <param name="p_dtFecha">Fecha</param>
         /// <returns>Entidad: MovilAlerta</returns>
         public static EMovilAlerta NewFilled(string p_strPatente,
                                              int p_iNroconfigalerta,
                                              int p_iKilometros,
                                              string p_strCodreparacion,
                                              string p_strCodcontrol,
-                                             string p_strCoddestinatarios)
+                                             string p_strCoddestinatarios,
+                                             DateTime p_dtFecha)
         {
             // Creamos una tabla compatible con la entidad
             DataTable l_dtTemp= new DataTable();
@@ -839,6 +843,7 @@ namespace Mrln.Bel
             l_drTemp["mal_cd6_codreparacion"]= p_strCodreparacion;
             l_drTemp["mal_cod_codcontrol"]= p_strCodcontrol;
             l_drTemp["mal_cod_coddestinatarios"]= p_strCoddestinatarios;
+            l_drTemp["mal_fec_fecha"]= p_dtFecha;
             l_drTemp["mal_control"]= "";
             l_drTemp["mal_destinats"]= "";
             l_drTemp["mal_reparacion"]= "";
@@ -904,7 +909,7 @@ namespace Mrln.Bel
         {
             get {
                 // Creamos el vector de DataColumns y lo llenamos
-                DataColumn[] l_dcStruct= new DataColumn[13];
+                DataColumn[] l_dcStruct= new DataColumn[14];
 
                 l_dcStruct[0]= new DataColumn("mal_ecd_patente", typeof(string));
                 l_dcStruct[1]= new DataColumn("mal_nro_nroconfigalerta", typeof(int));
@@ -915,7 +920,8 @@ namespace Mrln.Bel
                 l_dcStruct[6]= new DataColumn("mal_control", typeof(string));
                 l_dcStruct[7]= new DataColumn("mal_cod_coddestinatarios", typeof(string));
                 l_dcStruct[8]= new DataColumn("mal_destinats", typeof(string));
-                EMovilAlerta.FillFixedFields(ref l_dcStruct, 9);
+                l_dcStruct[9]= new DataColumn("mal_fec_fecha", typeof(DateTime));
+                EMovilAlerta.FillFixedFields(ref l_dcStruct, 10);
 
                 // Devolvemos el vector creado
                 return l_dcStruct;
@@ -1028,6 +1034,23 @@ namespace Mrln.Bel
         }
 
         /// <summary>
+        /// Fecha
+        /// </summary>
+        public static string FechaCmp
+        {
+           get {return "mal_fec_fecha";}
+        }
+
+        /// <summary>
+        /// Fecha
+        /// </summary>
+        public DateTime Fecha
+        {
+            get {return (DateTime) InternalData["mal_fec_fecha"];}
+            set {InternalData["mal_fec_fecha"]= value;}
+        }
+
+        /// <summary>
         /// Control
         /// </summary>
         public string Mal_control
@@ -1079,6 +1102,7 @@ namespace Mrln.Bel
                 l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "mal_cd6_codreparacion", Codreparacion));
                 l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "mal_cod_codcontrol", Codcontrol));
                 l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "mal_cod_coddestinatarios", Coddestinatarios));
+                l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "mal_fec_fecha", Fecha));
                 l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "mal_control", Mal_control));
                 l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "mal_destinats", Mal_destinats));
                 l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "mal_reparacion", Mal_reparacion));

@@ -16,7 +16,7 @@ namespace Mrln.Bll
     //----------------------------------------------------------------------------
     //                         TNG Software BLL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 07/02/2019 03:30
+    // Fecha                    : 15/03/2019 22:44
     // Sistema                  : Mrln
     // Clase para Administrar   : Moviles y Tablas Hijas
     //----------------------------------------------------------------------------
@@ -1722,6 +1722,7 @@ namespace Mrln.Bll
                                       p_entMovilAlerta.Codreparacion,
                                       p_entMovilAlerta.Codcontrol,
                                       p_entMovilAlerta.Coddestinatarios,
+                                      p_entMovilAlerta.Fecha,
                                       p_smResult);
             }
             catch (Exception l_expData) {
@@ -1753,6 +1754,7 @@ namespace Mrln.Bll
                                       p_entMovilAlerta.Codreparacion,
                                       p_entMovilAlerta.Codcontrol,
                                       p_entMovilAlerta.Coddestinatarios,
+                                      p_entMovilAlerta.Fecha,
                                       p_smResult);
             }
             catch (Exception l_expData) {
@@ -7549,7 +7551,7 @@ namespace Mrln.Bll
                 // Llamamos al metodo definido por el usuario
                 DataSet l_dsTemp= new DataSet();
 
-                Dal.Moviles.getMovilesTree(p_dbcAccess,
+                Dal.Moviles.GetMovilesTree(p_dbcAccess,
                                            ref l_dsTemp,
                                            "Temporal",
                                            p_smResult);

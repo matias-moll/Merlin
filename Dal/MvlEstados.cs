@@ -10,12 +10,12 @@ namespace Mrln.Dal
     //----------------------------------------------------------------------------
     //                         TNG Software DAL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 21/11/2018 18:57
+    // Fecha                    : 15/03/2019 22:44
     // Sistema                  : Mrln
     // Clase para Administrar   : Movil Estado
     // Basada en la Tabla       : MvlEstados
     //----------------------------------------------------------------------------
-    // © 1996-2018 by TNG Software                                      Gndr 5.20
+    // © 1996-2019 by TNG Software                                      Gndr 5.20
     //----------------------------------------------------------------------------
 
     //****************************************************************************
@@ -494,36 +494,6 @@ namespace Mrln.Dal
             try {
                 return DBRuts.Exec_DS(p_dbcAccess,
                                       "TNGS_Mrln..MVLESTADOS_GETLASTFIVEMVLESTADS",
-                                      new DbParameter[] {
-                                          p_dbcAccess.MakeParam("@patente", p_strPatente),
-                                          p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
-                                      },
-                                      ref p_dsResult, p_strTabla);
-            }
-            catch (Exception l_expData) {
-                // Error en el método fijo
-                p_smResult.DalError(l_expData);
-                return -1;
-            }
-        }
-
-        /// <summary>
-        /// Método Fijo: getMovilEstadoActual
-        /// </summary>
-        /// <param name="p_dbcAccess">Conexion a la base de datos</param>
-        /// <param name= "p_strPatente">Patente</param>
-        /// <param name="p_dsResult">DataSet donde devolver el registro</param>
-        /// <param name="p_strTabla">Nombre de la tabla a llenar</param>
-        /// <param name="p_smResult">Estado final de la operacion</param>
-        public static int getMovilEstadoActual(DBConn p_dbcAccess,
-                                               string p_strPatente,
-                                               ref DataSet p_dsResult,
-                                               string p_strTabla,
-                                               StatMsg p_smResult)
-        {
-            try {
-                return DBRuts.Exec_DS(p_dbcAccess,
-                                      "TNGS_Mrln..MVLESTADOS_GETMOVILESTADOACTUAL",
                                       new DbParameter[] {
                                           p_dbcAccess.MakeParam("@patente", p_strPatente),
                                           p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)

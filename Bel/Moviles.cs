@@ -146,16 +146,27 @@ namespace Mrln.Bel
 
 
 
-        public bool CumpleCondicion(EMovil p_entMovil, LEAlertas alertasDelMovil, LEOTItems reparacionesDelMovil)
+        public bool CumpleCondicion(EMovil p_entMovil, LEAlertas alertasDelMovil, LEOTItems reparacionesDelMovil, DateTime fechaActual)
         {
+            // TODO ASAP : Revisar esta logica de alertas del movil, aca las trato como todas las alertas
+            // del movil dado pero en los cumple condicion las uso como alertas de esta config en particular. puede haber error de logica.
+
             // Filtramos las alertas para que sean del movil pero adeams solo de esta configuracion de alerta.
             alertasDelMovil.Filter(String.Format("{0} = {1}", EAlerta.NroconfigCmp, this.Nroconfigalerta));
 
             // Si es alerta de tipo periodica post reparacion.
             if (this.esDeReparacion)
                 return this.CumpleCondicionReparacionPeriodica(p_entMovil, alertasDelMovil, reparacionesDelMovil);
-            else
+            else if (this.esDeFecha)
+                return this.CumpleCondicionFecha(fechaActual, alertasDelMovil);
+            else 
                 return this.CumpleCondicionKilometros(p_entMovil, alertasDelMovil);
+        }
+
+        private bool CumpleCondicionFecha(DateTime fechaActual, LEAlertas alertasDeEstaConfiguracion)
+        {
+            // Si se paso la fecha de configuracion y aun no se creo alerta de esta config -> cumple la condicion de creacion de alerta.
+            return this.Fecha <= fechaActual && (alertasDeEstaConfiguracion.Count == 0));
         }
 
         private bool CumpleCondicionKilometros(EMovil p_entMovil, LEAlertas alertasDeEstaConfiguracion)
@@ -243,7 +254,9 @@ namespace Mrln.Bel
         // Modificar si algun dia hay otro tipo de config alerta.
         public bool esDeReparacion { get { return this.Codreparacion.Trim() != ""; } }
 
-        public bool esDeKilometraje { get { return this.Codreparacion.Trim() == ""; } }
+        public bool esDeKilometraje { get { return !this.esDeReparacion && !this.esDeFecha} }
+
+        public bool esDeFecha {  get { return this.Fecha.Year != 1900; } }
 
         #endregion
     }

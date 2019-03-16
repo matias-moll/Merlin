@@ -67,7 +67,7 @@ namespace Mrln.Bll
                 // Iteramos por todas las config alertas y si alguna cumple condicion creamos la nueva alerta.
                 foreach (EMovilAlerta configAlerta in configAlertas)
                 {
-                    if(configAlerta.CumpleCondicion(p_entMovil, alertasDelMovil,  reparacionesDelMovil))
+                    if(configAlerta.CumpleCondicion(p_entMovil, alertasDelMovil,  reparacionesDelMovil, fechaActual))
                     {
                         ETalonario nroAlerta = AppRuts.TaloGet(l_dbcAccess, "ConfAlerta", p_smResult);
                         if (p_smResult.NOk) return;

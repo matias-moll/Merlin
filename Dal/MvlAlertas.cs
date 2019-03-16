@@ -10,12 +10,12 @@ namespace Mrln.Dal
     //----------------------------------------------------------------------------
     //                         TNG Software DAL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 21/11/2018 18:57
+    // Fecha                    : 15/03/2019 22:44
     // Sistema                  : Mrln
     // Clase para Administrar   : Alertas de los Moviles
     // Basada en la Tabla       : MvlAlertas
     //----------------------------------------------------------------------------
-    // © 1996-2018 by TNG Software                                      Gndr 5.20
+    // © 1996-2019 by TNG Software                                      Gndr 5.20
     //----------------------------------------------------------------------------
 
     //****************************************************************************
@@ -184,6 +184,7 @@ namespace Mrln.Dal
         /// <param name="p_strCodreparacion">Reparacion</param>
         /// <param name="p_strCodcontrol">Control</param>
         /// <param name="p_strCoddestinatarios">Destinatarios</param>
+        /// <param name="p_dtFecha">Fecha</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static int Insert(DBConn p_dbcAccess,
                                  string p_strPatente,
@@ -192,6 +193,7 @@ namespace Mrln.Dal
                                  string p_strCodreparacion,
                                  string p_strCodcontrol,
                                  string p_strCoddestinatarios,
+                                 DateTime p_dtFecha,
                                  StatMsg p_smResult)
         {
             try {
@@ -205,6 +207,7 @@ namespace Mrln.Dal
                                        p_dbcAccess.MakeParam("@mal_cd6_codreparacion", p_strCodreparacion),
                                        p_dbcAccess.MakeParam("@mal_cod_codcontrol", p_strCodcontrol),
                                        p_dbcAccess.MakeParam("@mal_cod_coddestinatarios", p_strCoddestinatarios),
+                                       p_dbcAccess.MakeParamF("@mal_fec_fecha", p_dtFecha),
                                        p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
                                    }
                                   );
@@ -226,6 +229,7 @@ namespace Mrln.Dal
         /// <param name="p_strCodreparacion">Reparacion</param>
         /// <param name="p_strCodcontrol">Control</param>
         /// <param name="p_strCoddestinatarios">Destinatarios</param>
+        /// <param name="p_dtFecha">Fecha</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static int Update(DBConn p_dbcAccess,
                                  string p_strPatente,
@@ -234,6 +238,7 @@ namespace Mrln.Dal
                                  string p_strCodreparacion,
                                  string p_strCodcontrol,
                                  string p_strCoddestinatarios,
+                                 DateTime p_dtFecha,
                                  StatMsg p_smResult)
         {
             try {
@@ -247,6 +252,7 @@ namespace Mrln.Dal
                                        p_dbcAccess.MakeParam("@mal_cd6_codreparacion", p_strCodreparacion),
                                        p_dbcAccess.MakeParam("@mal_cod_codcontrol", p_strCodcontrol),
                                        p_dbcAccess.MakeParam("@mal_cod_coddestinatarios", p_strCoddestinatarios),
+                                       p_dbcAccess.MakeParamF("@mal_fec_fecha", p_dtFecha),
                                        p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
                                    }
                                   );
