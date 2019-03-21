@@ -166,7 +166,7 @@ namespace Mrln.Bel
         private bool CumpleCondicionFecha(DateTime fechaActual, LEAlertas alertasDeEstaConfiguracion)
         {
             // Si se paso la fecha de configuracion y aun no se creo alerta de esta config -> cumple la condicion de creacion de alerta.
-            return this.Fecha <= fechaActual && (alertasDeEstaConfiguracion.Count == 0));
+            return this.Fecha <= fechaActual && (alertasDeEstaConfiguracion.Count == 0);
         }
 
         private bool CumpleCondicionKilometros(EMovil p_entMovil, LEAlertas alertasDeEstaConfiguracion)
@@ -254,7 +254,7 @@ namespace Mrln.Bel
         // Modificar si algun dia hay otro tipo de config alerta.
         public bool esDeReparacion { get { return this.Codreparacion.Trim() != ""; } }
 
-        public bool esDeKilometraje { get { return !this.esDeReparacion && !this.esDeFecha} }
+        public bool esDeKilometraje { get { return !this.esDeReparacion && !this.esDeFecha; } }
 
         public bool esDeFecha {  get { return this.Fecha.Year != 1900; } }
 
