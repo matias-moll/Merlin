@@ -167,7 +167,7 @@ namespace Mrln.Mv
             m_entMovil.MovilesEquip = m_AMAsocMoviles.EquipamientoTip;
             AltaMovil l_formAltaMovil = new AltaMovil(m_entMovil, true);
             l_formAltaMovil.ShowDialog(App.GetMainWindow());
-            l_formAltaMovil.m_evChangedMovil += new AltaMovil.ChangedMovilEventHandler(movilChanged);
+            SwitchTo(ModoForm.Inicio);
         }
 
         // Borrado de un Movil
@@ -185,15 +185,8 @@ namespace Mrln.Mv
         {
             AltaMovil l_formAltaMovil = new AltaMovil();
             l_formAltaMovil.ShowDialog(App.GetMainWindow());
-            l_formAltaMovil.m_evChangedMovil += new AltaMovil.ChangedMovilEventHandler(movilChanged);
-        }
-
-        // Manejo de evento para la modificacion o alta de un movil
-        private void movilChanged(object sender, EventArgs s)
-        {
             SwitchTo(ModoForm.Inicio);
-
-
+            //l_formAltaMovil.m_evChangedMovil += new AltaMovil.ChangedMovilEventHandler(movilChanged);
         }
 
         // Lanza el formulario de carga de combustible y luego graba en la base el resultado

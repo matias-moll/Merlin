@@ -349,8 +349,8 @@ namespace Mrln.Mv
                 MsgRuts.ShowMsg(this, "El Movil ha sido modificado satisfactoriamente");
             }
 
-            this.Close();
             OnChangedMovil(EventArgs.Empty);
+            this.Close();
         }
         
         private void AltaMovil_Load(object sender, EventArgs e)
