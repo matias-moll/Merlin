@@ -10,7 +10,7 @@ namespace Mrln.Dal
     //----------------------------------------------------------------------------
     //                         TNG Software DAL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 15/03/2019 22:44
+    // Fecha                    : 28/03/2019 19:21
     // Sistema                  : Mrln
     // Clase para Administrar   : Combustible en moviles
     // Basada en la Tabla       : MvlCombustible
@@ -183,6 +183,7 @@ namespace Mrln.Dal
         /// <param name="p_dLitros">Litros Cargados</param>
         /// <param name="p_dcImporte">Importe</param>
         /// <param name="p_strCodestacion">Codigo estacion</param>
+        /// <param name="p_iKilometros">Kilometros</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static int Insert(DBConn p_dbcAccess,
                                  string p_strPatente,
@@ -190,6 +191,7 @@ namespace Mrln.Dal
                                  double p_dLitros,
                                  decimal p_dcImporte,
                                  string p_strCodestacion,
+                                 int p_iKilometros,
                                  StatMsg p_smResult)
         {
             try {
@@ -202,6 +204,7 @@ namespace Mrln.Dal
                                        p_dbcAccess.MakeParam("@mco_val_litros", p_dLitros),
                                        p_dbcAccess.MakeParam("@mco_imp_importe", p_dcImporte),
                                        p_dbcAccess.MakeParam("@mco_rcd_codestacion", p_strCodestacion),
+                                       p_dbcAccess.MakeParam("@mco_nro_kilometros", p_iKilometros),
                                        p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
                                    }
                                   );
@@ -222,6 +225,7 @@ namespace Mrln.Dal
         /// <param name="p_dLitros">Litros Cargados</param>
         /// <param name="p_dcImporte">Importe</param>
         /// <param name="p_strCodestacion">Codigo estacion</param>
+        /// <param name="p_iKilometros">Kilometros</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static int Update(DBConn p_dbcAccess,
                                  string p_strPatente,
@@ -229,6 +233,7 @@ namespace Mrln.Dal
                                  double p_dLitros,
                                  decimal p_dcImporte,
                                  string p_strCodestacion,
+                                 int p_iKilometros,
                                  StatMsg p_smResult)
         {
             try {
@@ -241,6 +246,7 @@ namespace Mrln.Dal
                                        p_dbcAccess.MakeParam("@mco_val_litros", p_dLitros),
                                        p_dbcAccess.MakeParam("@mco_imp_importe", p_dcImporte),
                                        p_dbcAccess.MakeParam("@mco_rcd_codestacion", p_strCodestacion),
+                                       p_dbcAccess.MakeParam("@mco_nro_kilometros", p_iKilometros),
                                        p_dbcAccess.MakeParam("@usuario", DBConn.Usuario)
                                    }
                                   );

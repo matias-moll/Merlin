@@ -38,6 +38,9 @@
             this.neLitros = new TNGS.NetControls.NumberEdit();
             this.lblLitros = new TNGS.NetControls.FullLabel();
             this.lblImporte = new TNGS.NetControls.FullLabel();
+            this.neKms = new TNGS.NetControls.NumberEdit();
+            this.lblKilometros = new TNGS.NetControls.FullLabel();
+            this.cbGrabarKMs = new System.Windows.Forms.CheckBox();
             this.xpnlPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -46,6 +49,9 @@
             this.xpnlPanel.BackColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.xpnlPanel.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.xpnlPanel.BorderColor = System.Drawing.Color.Black;
+            this.xpnlPanel.Controls.Add(this.cbGrabarKMs);
+            this.xpnlPanel.Controls.Add(this.neKms);
+            this.xpnlPanel.Controls.Add(this.lblKilometros);
             this.xpnlPanel.Controls.Add(this.gbAceptar);
             this.xpnlPanel.Controls.Add(this.gbCancelar);
             this.xpnlPanel.Controls.Add(this.deImporte);
@@ -57,7 +63,7 @@
             this.xpnlPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.xpnlPanel.Location = new System.Drawing.Point(0, 0);
             this.xpnlPanel.Name = "xpnlPanel";
-            this.xpnlPanel.Size = new System.Drawing.Size(393, 205);
+            this.xpnlPanel.Size = new System.Drawing.Size(408, 236);
             this.xpnlPanel.SkinFixed = true;
             this.xpnlPanel.TabIndex = 0;
             // 
@@ -72,7 +78,7 @@
             this.gbAceptar.FlatFontSize = 9;
             this.gbAceptar.FlatTextColor = System.Drawing.Color.Black;
             this.gbAceptar.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.gbAceptar.Location = new System.Drawing.Point(284, 161);
+            this.gbAceptar.Location = new System.Drawing.Point(299, 192);
             this.gbAceptar.Name = "gbAceptar";
             this.gbAceptar.Size = new System.Drawing.Size(96, 31);
             this.gbAceptar.TabIndex = 8;
@@ -91,7 +97,7 @@
             this.gbCancelar.FlatFontSize = 9;
             this.gbCancelar.FlatTextColor = System.Drawing.Color.Black;
             this.gbCancelar.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.gbCancelar.Location = new System.Drawing.Point(182, 161);
+            this.gbCancelar.Location = new System.Drawing.Point(197, 192);
             this.gbCancelar.Name = "gbCancelar";
             this.gbCancelar.Size = new System.Drawing.Size(96, 31);
             this.gbCancelar.TabIndex = 9;
@@ -102,12 +108,12 @@
             // deImporte
             // 
             this.deImporte.BackColor = System.Drawing.SystemColors.Window;
-            this.deImporte.Location = new System.Drawing.Point(180, 104);
+            this.deImporte.Location = new System.Drawing.Point(171, 104);
             this.deImporte.MaxLength = 13;
             this.deImporte.Name = "deImporte";
-            this.deImporte.Size = new System.Drawing.Size(178, 21);
+            this.deImporte.Size = new System.Drawing.Size(112, 21);
             this.deImporte.TabIndex = 6;
-            this.deImporte.Text = "0.00";
+            this.deImporte.Text = "0,00";
             // 
             // lblEstacion
             // 
@@ -125,19 +131,19 @@
             this.cdcEstacion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cdcEstacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cdcEstacion.FormattingEnabled = true;
-            this.cdcEstacion.Location = new System.Drawing.Point(180, 63);
+            this.cdcEstacion.Location = new System.Drawing.Point(171, 63);
             this.cdcEstacion.Name = "cdcEstacion";
-            this.cdcEstacion.Size = new System.Drawing.Size(178, 23);
+            this.cdcEstacion.Size = new System.Drawing.Size(223, 23);
             this.cdcEstacion.Sorted = true;
             this.cdcEstacion.TabIndex = 4;
             // 
             // neLitros
             // 
             this.neLitros.BackColor = System.Drawing.SystemColors.Window;
-            this.neLitros.Location = new System.Drawing.Point(180, 29);
+            this.neLitros.Location = new System.Drawing.Point(171, 29);
             this.neLitros.MaxLength = 3;
             this.neLitros.Name = "neLitros";
-            this.neLitros.Size = new System.Drawing.Size(84, 21);
+            this.neLitros.Size = new System.Drawing.Size(112, 21);
             this.neLitros.TabIndex = 2;
             this.neLitros.Text = "0";
             // 
@@ -147,7 +153,7 @@
             this.lblLitros.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblLitros.Location = new System.Drawing.Point(16, 28);
             this.lblLitros.Name = "lblLitros";
-            this.lblLitros.Size = new System.Drawing.Size(170, 27);
+            this.lblLitros.Size = new System.Drawing.Size(136, 27);
             this.lblLitros.TabIndex = 0;
             this.lblLitros.Text = "Cantidad de Litros:";
             // 
@@ -161,11 +167,44 @@
             this.lblImporte.TabIndex = 1;
             this.lblImporte.Text = "Importe:";
             // 
+            // neKms
+            // 
+            this.neKms.BackColor = System.Drawing.SystemColors.Window;
+            this.neKms.Location = new System.Drawing.Point(171, 142);
+            this.neKms.MaxLength = 7;
+            this.neKms.Name = "neKms";
+            this.neKms.NegativeValid = false;
+            this.neKms.Size = new System.Drawing.Size(112, 21);
+            this.neKms.TabIndex = 11;
+            this.neKms.Text = "0";
+            this.neKms.ZeroValid = false;
+            // 
+            // lblKilometros
+            // 
+            this.lblKilometros.BackColor = System.Drawing.Color.Transparent;
+            this.lblKilometros.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblKilometros.Location = new System.Drawing.Point(16, 142);
+            this.lblKilometros.Name = "lblKilometros";
+            this.lblKilometros.Size = new System.Drawing.Size(105, 27);
+            this.lblKilometros.TabIndex = 10;
+            this.lblKilometros.Text = "Kilómetros:";
+            // 
+            // cbGrabarKMs
+            // 
+            this.cbGrabarKMs.AutoSize = true;
+            this.cbGrabarKMs.BackColor = System.Drawing.Color.Transparent;
+            this.cbGrabarKMs.Location = new System.Drawing.Point(303, 144);
+            this.cbGrabarKMs.Name = "cbGrabarKMs";
+            this.cbGrabarKMs.Size = new System.Drawing.Size(91, 19);
+            this.cbGrabarKMs.TabIndex = 12;
+            this.cbGrabarKMs.Text = "Grabar KMs";
+            this.cbGrabarKMs.UseVisualStyleBackColor = false;
+            // 
             // MovilCombustible
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(393, 205);
+            this.ClientSize = new System.Drawing.Size(408, 236);
             this.ControlBox = false;
             this.Controls.Add(this.xpnlPanel);
             this.Font = new System.Drawing.Font("Arial", 9F);
@@ -190,5 +229,8 @@
         private TNGS.NetControls.DecimalEdit deImporte;
         private TNGS.NetControls.GlassButton gbAceptar;
         private TNGS.NetControls.GlassButton gbCancelar;
+        private TNGS.NetControls.NumberEdit neKms;
+        private TNGS.NetControls.FullLabel lblKilometros;
+        private System.Windows.Forms.CheckBox cbGrabarKMs;
     }
 }

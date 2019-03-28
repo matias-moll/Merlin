@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 15/03/2019 22:45
+// Fecha       : 28/03/2019 19:05
 // Sistema     : Mrln
 // Tabla       : MvlCombustible
 //----------------------------------------------------------------------------
@@ -57,6 +57,7 @@ begin
                 mco_val_litros,
                 mco_imp_importe,
                 mco_rcd_codestacion,
+                mco_nro_kilometros,
                 TNGS_Mrln..MvlCombustible.instante,
                 TNGS_Mrln..MvlCombustible.deleted,
                 TNGS_Mrln..MvlCombustible.usuario,
@@ -73,6 +74,7 @@ begin
                 mco_val_litros,
                 mco_imp_importe,
                 mco_rcd_codestacion,
+                mco_nro_kilometros,
                 TNGS_Mrln..MvlCombustible.instante,
                 TNGS_Mrln..MvlCombustible.deleted,
                 TNGS_Mrln..MvlCombustible.usuario,
@@ -183,6 +185,7 @@ begin
                 mco_val_litros,
                 mco_imp_importe,
                 mco_rcd_codestacion,
+                mco_nro_kilometros,
                 TNGS_Mrln..MvlCombustible.instante,
                 TNGS_Mrln..MvlCombustible.deleted,
                 TNGS_Mrln..MvlCombustible.usuario,
@@ -199,6 +202,7 @@ begin
                 mco_val_litros,
                 mco_imp_importe,
                 mco_rcd_codestacion,
+                mco_nro_kilometros,
                 TNGS_Mrln..MvlCombustible.instante,
                 TNGS_Mrln..MvlCombustible.deleted,
                 TNGS_Mrln..MvlCombustible.usuario,
@@ -257,6 +261,7 @@ begin
                 mco_val_litros,
                 mco_imp_importe,
                 mco_rcd_codestacion,
+                mco_nro_kilometros,
                 TNGS_Mrln..MvlCombustible.instante,
                 TNGS_Mrln..MvlCombustible.deleted,
                 TNGS_Mrln..MvlCombustible.usuario,
@@ -273,6 +278,7 @@ begin
                 mco_val_litros,
                 mco_imp_importe,
                 mco_rcd_codestacion,
+                mco_nro_kilometros,
                 TNGS_Mrln..MvlCombustible.instante,
                 TNGS_Mrln..MvlCombustible.deleted,
                 TNGS_Mrln..MvlCombustible.usuario,
@@ -304,6 +310,7 @@ go
 --- <param name="@mco_val_litros">Litros Cargados</param>
 --- <param name="@mco_imp_importe">Importe</param>
 --- <param name="@mco_rcd_codestacion">Codigo estacion</param>
+--- <param name="@mco_nro_kilometros">Kilometros</param>
 --- <param name="@usuario">Usuario que genera el insert</param>
 ---
 ---////////////////////////////////////////////////////////
@@ -327,6 +334,7 @@ create procedure dbo.MVLCOMBUSTIBLE_INSERT
 @mco_val_litros tngs_valor,
 @mco_imp_importe tngs_importe,
 @mco_rcd_codestacion tngs_codigo_r,
+@mco_nro_kilometros tngs_numero,
 @usuario tngs_nombre
 )
 as
@@ -339,6 +347,7 @@ begin
            @mco_val_litros,
            @mco_imp_importe,
            @mco_rcd_codestacion,
+           @mco_nro_kilometros,
            getdate(), 0, @usuario, 1
           )
 
@@ -364,6 +373,7 @@ go
 --- <param name="@mco_val_litros">Litros Cargados</param>
 --- <param name="@mco_imp_importe">Importe</param>
 --- <param name="@mco_rcd_codestacion">Codigo estacion</param>
+--- <param name="@mco_nro_kilometros">Kilometros</param>
 --- <param name="@usuario">Usuario que genera el update</param>
 ---
 ---////////////////////////////////////////////////////////
@@ -387,6 +397,7 @@ create procedure dbo.MVLCOMBUSTIBLE_UPDATE
 @mco_val_litros tngs_valor,
 @mco_imp_importe tngs_importe,
 @mco_rcd_codestacion tngs_codigo_r,
+@mco_nro_kilometros tngs_numero,
 @usuario tngs_nombre
 )
 as
@@ -396,6 +407,7 @@ begin
       set mco_val_litros= @mco_val_litros,
           mco_imp_importe= @mco_imp_importe,
           mco_rcd_codestacion= @mco_rcd_codestacion,
+          mco_nro_kilometros= @mco_nro_kilometros,
           version = ((version+1) % 32767),
           instante= getdate(),
           usuario = @usuario
