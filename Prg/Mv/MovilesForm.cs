@@ -197,20 +197,29 @@ namespace Mrln.Mv
             MovilCombustible l_frmMovilCombustible = new MovilCombustible();
             l_frmMovilCombustible.ShowDialog();
             if (l_frmMovilCombustible.DialogResult == System.Windows.Forms.DialogResult.Cancel)
-            {
                 return;
-            }
+
             EMovilCombus l_EMComMovilCombustible = EMovilCombus.NewEmpty();
             l_EMComMovilCombustible.Codestacion = l_frmMovilCombustible.Estacion;
             l_EMComMovilCombustible.Fecha = DateTime.Now;
             l_EMComMovilCombustible.Litros = l_frmMovilCombustible.Litros;
             l_EMComMovilCombustible.Patente = m_entMovil.Patente;
             l_EMComMovilCombustible.Importe = l_frmMovilCombustible.Importe;
+            l_EMComMovilCombustible.Kilometros = l_frmMovilCombustible.Kilometros;
             Bll.Moviles.MvcoSave(l_EMComMovilCombustible, m_smResult);
-            SwitchTo(ModoForm.Edicion, OpGrid.Combus);
             if (MsgRuts.AnalizeError(App.GetMainWindow(), m_smResult)) return;
 
+            if (l_frmMovilCombustible.GrabarKMs)
+            {
+                EMovilKms nuevosKilometros = EMovilKms.NewEmpty();
+                nuevosKilometros.Patente = m_entMovil.Patente;
+                nuevosKilometros.Km = l_frmMovilCombustible.Kilometros;
+                nuevosKilometros.Fecha = DateTime.Now;
+                Bll.Moviles.MvkmSave(nuevosKilometros, m_smResult);
+                if (MsgRuts.AnalizeError(App.GetMainWindow(), m_smResult)) return;
+            }
 
+            SwitchTo(ModoForm.Edicion, OpGrid.Combus);
         }
 
         // Ingresar un nuevo kilometraje

@@ -16,7 +16,7 @@ namespace Mrln.Bll
     //----------------------------------------------------------------------------
     //                         TNG Software BLL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 15/03/2019 22:44
+    // Fecha                    : 28/03/2019 19:21
     // Sistema                  : Mrln
     // Clase para Administrar   : Moviles y Tablas Hijas
     //----------------------------------------------------------------------------
@@ -2614,6 +2614,7 @@ namespace Mrln.Bll
                                           p_entMovilCombus.Litros,
                                           p_entMovilCombus.Importe,
                                           p_entMovilCombus.Codestacion,
+                                          p_entMovilCombus.Kilometros,
                                           p_smResult);
             }
             catch (Exception l_expData) {
@@ -2644,6 +2645,7 @@ namespace Mrln.Bll
                                           p_entMovilCombus.Litros,
                                           p_entMovilCombus.Importe,
                                           p_entMovilCombus.Codestacion,
+                                          p_entMovilCombus.Kilometros,
                                           p_smResult);
             }
             catch (Exception l_expData) {

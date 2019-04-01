@@ -14,7 +14,7 @@ namespace Mrln.Bel
     //----------------------------------------------------------------------------
     //                         TNG Software BEL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 15/03/2019 22:44
+    // Fecha                    : 28/03/2019 19:21
     // Sistema                  : Mrln
     // Clase para Administrar   : Moviles y Tablas Hijas
     //----------------------------------------------------------------------------
@@ -1470,6 +1470,7 @@ namespace Mrln.Bel
             l_drTemp["mco_val_litros"]= XMLRuts.ExtractXAttr(l_xndData, "mco_val_litros", (double) 0);
             l_drTemp["mco_imp_importe"]= XMLRuts.ExtractXAttr(l_xndData, "mco_imp_importe", (decimal) 0);
             l_drTemp["mco_rcd_codestacion"]= XMLRuts.ExtractXAttr(l_xndData, "mco_rcd_codestacion");
+            l_drTemp["mco_nro_kilometros"]= XMLRuts.ExtractXAttr(l_xndData, "mco_nro_kilometros", 0);
 
             // Llenamos los campos fijos
             XML2FixedFields(ref l_drTemp, l_xndData);
@@ -1518,6 +1519,7 @@ namespace Mrln.Bel
             l_drTemp["mco_val_litros"]= 0;
             l_drTemp["mco_imp_importe"]= 0;
             l_drTemp["mco_rcd_codestacion"]= "";
+            l_drTemp["mco_nro_kilometros"]= 0;
 
             // Agregamos la Row creada a la tabla creada y creamos
             // una entidad a partir de la DataTable de 1 registro
@@ -1535,12 +1537,14 @@ namespace Mrln.Bel
         /// <param name="p_dLitros">Litros Cargados</param>
         /// <param name="p_dcImporte">Importe</param>
         /// <param name="p_strCodestacion">Codigo estacion</param>
+        /// <param name="p_iKilometros">Kilometros</param>
         /// <returns>Entidad: MovilCombus</returns>
         public static EMovilCombus NewFilled(string p_strPatente,
                                              DateTime p_dtFecha,
                                              double p_dLitros,
                                              decimal p_dcImporte,
-                                             string p_strCodestacion)
+                                             string p_strCodestacion,
+                                             int p_iKilometros)
         {
             // Creamos una tabla compatible con la entidad
             DataTable l_dtTemp= new DataTable();
@@ -1555,6 +1559,7 @@ namespace Mrln.Bel
             l_drTemp["mco_val_litros"]= p_dLitros;
             l_drTemp["mco_imp_importe"]= p_dcImporte;
             l_drTemp["mco_rcd_codestacion"]= p_strCodestacion;
+            l_drTemp["mco_nro_kilometros"]= p_iKilometros;
 
             // Agregamos la Row creada a la tabla creada y creamos
             // una entidad a partir de la DataTable de 1 registro
@@ -1595,14 +1600,15 @@ namespace Mrln.Bel
         {
             get {
                 // Creamos el vector de DataColumns y lo llenamos
-                DataColumn[] l_dcStruct= new DataColumn[9];
+                DataColumn[] l_dcStruct= new DataColumn[10];
 
                 l_dcStruct[0]= new DataColumn("mco_ecd_patente", typeof(string));
                 l_dcStruct[1]= new DataColumn("mco_fyh_fecha", typeof(DateTime));
                 l_dcStruct[2]= new DataColumn("mco_val_litros", typeof(double));
                 l_dcStruct[3]= new DataColumn("mco_imp_importe", typeof(decimal));
                 l_dcStruct[4]= new DataColumn("mco_rcd_codestacion", typeof(string));
-                EMovilCombus.FillFixedFields(ref l_dcStruct, 5);
+                l_dcStruct[5]= new DataColumn("mco_nro_kilometros", typeof(int));
+                EMovilCombus.FillFixedFields(ref l_dcStruct, 6);
 
                 // Devolvemos el vector creado
                 return l_dcStruct;
@@ -1698,6 +1704,23 @@ namespace Mrln.Bel
         }
 
         /// <summary>
+        /// Kilometros
+        /// </summary>
+        public static string KilometrosCmp
+        {
+           get {return "mco_nro_kilometros";}
+        }
+
+        /// <summary>
+        /// Kilometros
+        /// </summary>
+        public int Kilometros
+        {
+            get {return (int) InternalData["mco_nro_kilometros"];}
+            set {InternalData["mco_nro_kilometros"]= value;}
+        }
+
+        /// <summary>
         /// Devuelve la entidad [EMovilCombus] como XMLDocument en formato string
         /// </summary>
         public string XMLData
@@ -1721,6 +1744,7 @@ namespace Mrln.Bel
                 l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "mco_val_litros", Litros));
                 l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "mco_imp_importe", Importe));
                 l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "mco_rcd_codestacion", Codestacion));
+                l_xndEntidad.Attributes.Append(XMLRuts.CreateXAttr(l_xdocData, "mco_nro_kilometros", Kilometros));
 
                 // Asignamos los campos fijos
                 FixedFields2XML(l_xdocData, ref l_xndEntidad);

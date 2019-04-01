@@ -87,8 +87,18 @@ namespace Mrln.Mv
         public String Estacion
         {
             get { return cdcEstacion.SelectedStrCode; }
-            set {}
         }
+
+        public int Kilometros
+        {
+            get { return neKms.Numero; }
+        }
+
+        public bool GrabarKMs
+        {
+            get { return cbGrabarKMs.Checked; }
+        }
+
         #endregion
 
     }
