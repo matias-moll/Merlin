@@ -76,6 +76,7 @@
             this.panelMoviles.Controls.Add(this.tgrpMoviles);
             this.panelMoviles.Controls.Add(this.gbNuevoMovil);
             this.panelMoviles.Controls.Add(this.gbBorrarMovil);
+            this.panelMoviles.Controls.Add(this.gbModificarMovil);
             this.panelMoviles.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelMoviles.Location = new System.Drawing.Point(0, 0);
             this.panelMoviles.Name = "panelMoviles";
@@ -225,10 +226,10 @@
             this.gbNuevoMovil.FlatFontSize = 9;
             this.gbNuevoMovil.FlatTextColor = System.Drawing.Color.Black;
             this.gbNuevoMovil.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.gbNuevoMovil.Location = new System.Drawing.Point(21, 15);
+            this.gbNuevoMovil.Location = new System.Drawing.Point(4, 15);
             this.gbNuevoMovil.Name = "gbNuevoMovil";
             this.gbNuevoMovil.RoundCorners = 2;
-            this.gbNuevoMovil.Size = new System.Drawing.Size(80, 41);
+            this.gbNuevoMovil.Size = new System.Drawing.Size(74, 41);
             this.gbNuevoMovil.TabIndex = 1;
             this.gbNuevoMovil.Text = "Nuevo";
             this.gbNuevoMovil.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -247,10 +248,10 @@
             this.gbBorrarMovil.FlatFontSize = 9;
             this.gbBorrarMovil.FlatTextColor = System.Drawing.Color.Black;
             this.gbBorrarMovil.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.gbBorrarMovil.Location = new System.Drawing.Point(147, 15);
+            this.gbBorrarMovil.Location = new System.Drawing.Point(180, 14);
             this.gbBorrarMovil.Name = "gbBorrarMovil";
             this.gbBorrarMovil.RoundCorners = 2;
-            this.gbBorrarMovil.Size = new System.Drawing.Size(80, 41);
+            this.gbBorrarMovil.Size = new System.Drawing.Size(71, 41);
             this.gbBorrarMovil.TabIndex = 2;
             this.gbBorrarMovil.Text = "Borrar";
             this.gbBorrarMovil.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -264,7 +265,6 @@
             this.panelMovilSeleccionado.Controls.Add(this.fgKm);
             this.panelMovilSeleccionado.Controls.Add(this.gbCambiarEstado);
             this.panelMovilSeleccionado.Controls.Add(this.fgEquipamiento);
-            this.panelMovilSeleccionado.Controls.Add(this.gbModificarMovil);
             this.panelMovilSeleccionado.Controls.Add(this.fgCombustibles);
             this.panelMovilSeleccionado.Controls.Add(this.fullLabel4);
             this.panelMovilSeleccionado.Controls.Add(this.fgMovilEstados);
@@ -293,7 +293,7 @@
             this.gbHistorialCompleto.FlatFontSize = 9;
             this.gbHistorialCompleto.FlatTextColor = System.Drawing.Color.Black;
             this.gbHistorialCompleto.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.gbHistorialCompleto.Location = new System.Drawing.Point(3, 5);
+            this.gbHistorialCompleto.Location = new System.Drawing.Point(22, 5);
             this.gbHistorialCompleto.Name = "gbHistorialCompleto";
             this.gbHistorialCompleto.RoundCorners = 2;
             this.gbHistorialCompleto.Size = new System.Drawing.Size(101, 60);
@@ -335,7 +335,7 @@
             this.gbCambiarEstado.FlatTextColor = System.Drawing.Color.Black;
             this.gbCambiarEstado.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.gbCambiarEstado.ImageOnTop = true;
-            this.gbCambiarEstado.Location = new System.Drawing.Point(225, 5);
+            this.gbCambiarEstado.Location = new System.Drawing.Point(178, 5);
             this.gbCambiarEstado.Name = "gbCambiarEstado";
             this.gbCambiarEstado.RoundCorners = 2;
             this.gbCambiarEstado.Size = new System.Drawing.Size(109, 60);
@@ -376,10 +376,10 @@
             this.gbModificarMovil.FlatFontSize = 9;
             this.gbModificarMovil.FlatTextColor = System.Drawing.Color.Black;
             this.gbModificarMovil.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.gbModificarMovil.Location = new System.Drawing.Point(107, 5);
+            this.gbModificarMovil.Location = new System.Drawing.Point(84, 14);
             this.gbModificarMovil.Name = "gbModificarMovil";
             this.gbModificarMovil.RoundCorners = 2;
-            this.gbModificarMovil.Size = new System.Drawing.Size(101, 60);
+            this.gbModificarMovil.Size = new System.Drawing.Size(91, 41);
             this.gbModificarMovil.TabIndex = 5;
             this.gbModificarMovil.Text = "Modificar";
             this.gbModificarMovil.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -447,7 +447,7 @@
             this.gbAgregarKMs.FlatTextColor = System.Drawing.Color.Black;
             this.gbAgregarKMs.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.gbAgregarKMs.ImageOnTop = true;
-            this.gbAgregarKMs.Location = new System.Drawing.Point(337, 5);
+            this.gbAgregarKMs.Location = new System.Drawing.Point(304, 5);
             this.gbAgregarKMs.Name = "gbAgregarKMs";
             this.gbAgregarKMs.RoundCorners = 2;
             this.gbAgregarKMs.Size = new System.Drawing.Size(109, 60);
@@ -470,7 +470,7 @@
             this.gbInfracciones.FlatTextColor = System.Drawing.Color.Black;
             this.gbInfracciones.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.gbInfracciones.ImageOnTop = true;
-            this.gbInfracciones.Location = new System.Drawing.Point(641, 5);
+            this.gbInfracciones.Location = new System.Drawing.Point(637, 5);
             this.gbInfracciones.Name = "gbInfracciones";
             this.gbInfracciones.RoundCorners = 2;
             this.gbInfracciones.Size = new System.Drawing.Size(93, 60);
@@ -515,7 +515,7 @@
             this.gbCargarNafta.FlatTextColor = System.Drawing.Color.Black;
             this.gbCargarNafta.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.gbCargarNafta.ImageOnTop = true;
-            this.gbCargarNafta.Location = new System.Drawing.Point(449, 5);
+            this.gbCargarNafta.Location = new System.Drawing.Point(429, 5);
             this.gbCargarNafta.Name = "gbCargarNafta";
             this.gbCargarNafta.RoundCorners = 2;
             this.gbCargarNafta.Size = new System.Drawing.Size(93, 60);
@@ -538,7 +538,7 @@
             this.gbAccidentes.FlatTextColor = System.Drawing.Color.Black;
             this.gbAccidentes.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.gbAccidentes.ImageOnTop = true;
-            this.gbAccidentes.Location = new System.Drawing.Point(545, 5);
+            this.gbAccidentes.Location = new System.Drawing.Point(533, 5);
             this.gbAccidentes.Name = "gbAccidentes";
             this.gbAccidentes.RoundCorners = 2;
             this.gbAccidentes.Size = new System.Drawing.Size(93, 60);

@@ -137,6 +137,17 @@
         nwweYV0AAAAASUVORK5CYII=
 </value>
   </data>
+  <data name="gbModificarMovil.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1
+        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxMAAAsTAQCanBgAAAD0SURBVDhPjdNB5kJBAMfxOUOr
+        VtEqogNEB4ho1QEi4n+JiOgMrTpAq4gO0AEiWkVEq7Z/IuL1/dVkpjEz3o/PM2/0fq83854pisJ4qeII
+        Taas4OIV1HCGJg4YR5ywg4staOCqU2uDWHRxtOCmoSdXoH/Xfp8ptkCHPRbWCLGoQL99oKsJv2CuQSZa
+        YP8xVdIrW+AvsO+vTEEdF/gXinaFUb4g3B15YohPMgW6c7g7eu4BXDIFE+it+8f34j5+kynQfnewxB3a
+        tgpmcEkUtKA5fRdTNKGsEX0TwwLdSWsQJvkq67BF+PGEkh+TFkiDMvQYNsa8AHXumC8XJdAsAAAAAElF
+        TkSuQmCC
+</value>
+  </data>
   <data name="gbHistorialCompleto.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1
@@ -156,17 +167,6 @@
         DDcVTLDBMcceU9TxkRm2GKCTo49VIpMWbmjY0ffUcEHPjpIsoOWHZgit1qaJO8YYlXCFXstE0Hb+Ygnz
         gFagXT7D1+hSj3o1T8wT6ftXoYYT3pe8hurqUXScmmsfvn8KYX/ALRwwL6CL5s7JDEKOUkfozrF3QJuy
         Q1eFgrSRXvfI+4GU4S2Gi80LkcQkQty6ibkAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="gbModificarMovil.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1
-        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxMAAAsTAQCanBgAAAD0SURBVDhPjdNB5kJBAMfxOUOr
-        VtEqogNEB4ho1QEi4n+JiOgMrTpAq4gO0AEiWkVEq7Z/IuL1/dVkpjEz3o/PM2/0fq83854pisJ4qeII
-        Taas4OIV1HCGJg4YR5ywg4staOCqU2uDWHRxtOCmoSdXoH/Xfp8ptkCHPRbWCLGoQL99oKsJv2CuQSZa
-        YP8xVdIrW+AvsO+vTEEdF/gXinaFUb4g3B15YohPMgW6c7g7eu4BXDIFE+it+8f34j5+kynQfnewxB3a
-        tgpmcEkUtKA5fRdTNKGsEX0TwwLdSWsQJvkq67BF+PGEkh+TFkiDMvQYNsa8AHXumC8XJdAsAAAAAElF
-        TkSuQmCC
 </value>
   </data>
   <data name="gbAgregarKMs.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

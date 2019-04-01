@@ -164,7 +164,9 @@ namespace Mrln.Mv
         // Permite modificar un Movil y setea el evento ante la modificacion
         private void gbModificarMovil_Click(object sender, EventArgs e)
         {
-            m_entMovil.MovilesEquip = m_AMAsocMoviles.EquipamientoTip;
+            m_entMovil.MovilesEquip = Bll.Moviles.MveqFGet(m_entMovil.Patente, true, m_smResult);
+            if (MsgRuts.AnalizeError(App.GetMainWindow(), m_smResult)) return;
+
             AltaMovil l_formAltaMovil = new AltaMovil(m_entMovil, true);
             l_formAltaMovil.ShowDialog(App.GetMainWindow());
             SwitchTo(ModoForm.Inicio);
@@ -334,6 +336,10 @@ namespace Mrln.Mv
             gbBorrarMovil.Enabled = false;
             panelMovilSeleccionado.Enabled = false;
             panelMoviles.Enabled = true;
+            fgCombustibles.Clear();
+            fgEquipamiento.Clear();
+            fgKm.Clear();
+            fgMovilEstados.Clear();
         }
 
         /// <summary>
@@ -367,8 +373,6 @@ namespace Mrln.Mv
             tgrpMoviles.Enabled = true;
             panelMovilSeleccionado.Enabled = true;
             panelMoviles.Enabled = true;
-
-
         }
 
 

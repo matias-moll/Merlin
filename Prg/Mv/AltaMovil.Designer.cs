@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AltaMovil));
             this.xPanel1 = new TNGS.NetControls.XPanel();
+            this.btnExit = new System.Windows.Forms.Button();
             this.gbLimpiarTodo = new TNGS.NetControls.GlassButton();
             this.tgrpEquipamiento = new TNGS.NetControls.ImgGroup();
             this.btnDestildarTodoEqi = new TNGS.NetControls.GlassButton();
@@ -60,7 +61,6 @@
             this.lblAnotaciones = new TNGS.NetControls.FullLabel();
             this.teNroChasis = new TNGS.NetControls.TextEdit();
             this.gbGrabar = new TNGS.NetControls.GlassButton();
-            this.btnExit = new System.Windows.Forms.Button();
             this.xPanel1.SuspendLayout();
             this.tgrpEquipamiento.SuspendLayout();
             this.tgrpDatosBasicos.SuspendLayout();
@@ -82,6 +82,22 @@
             this.xPanel1.Size = new System.Drawing.Size(1008, 587);
             this.xPanel1.SkinFixed = true;
             this.xPanel1.TabIndex = 0;
+            // 
+            // btnExit
+            // 
+            this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExit.FlatAppearance.BorderSize = 0;
+            this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExit.Font = new System.Drawing.Font("Georgia", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExit.ForeColor = System.Drawing.Color.Black;
+            this.btnExit.Location = new System.Drawing.Point(942, 3);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(58, 40);
+            this.btnExit.TabIndex = 4;
+            this.btnExit.TabStop = false;
+            this.btnExit.Text = "X";
+            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // gbLimpiarTodo
             // 
@@ -168,7 +184,7 @@
             this.clEquipamientos.Name = "clEquipamientos";
             this.clEquipamientos.Size = new System.Drawing.Size(286, 388);
             this.clEquipamientos.Sorted = true;
-            this.clEquipamientos.TabIndex = 2;
+            this.clEquipamientos.TabIndex = 0;
             // 
             // btnTildaTodos
             // 
@@ -254,7 +270,7 @@
             this.cdcTipoMovil.Name = "cdcTipoMovil";
             this.cdcTipoMovil.Size = new System.Drawing.Size(175, 23);
             this.cdcTipoMovil.Sorted = true;
-            this.cdcTipoMovil.TabIndex = 23;
+            this.cdcTipoMovil.TabIndex = 9;
             // 
             // tePatente
             // 
@@ -389,7 +405,7 @@
             this.teAnotaciones.Multiline = true;
             this.teAnotaciones.Name = "teAnotaciones";
             this.teAnotaciones.Size = new System.Drawing.Size(580, 129);
-            this.teAnotaciones.TabIndex = 9;
+            this.teAnotaciones.TabIndex = 10;
             // 
             // lblNroChasis
             // 
@@ -495,27 +511,11 @@
             this.gbGrabar.Name = "gbGrabar";
             this.gbGrabar.RoundCorners = 2;
             this.gbGrabar.Size = new System.Drawing.Size(100, 55);
-            this.gbGrabar.TabIndex = 2;
+            this.gbGrabar.TabIndex = 0;
             this.gbGrabar.Text = "Guardar";
             this.gbGrabar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.gbGrabar.W8Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.gbGrabar.Click += new System.EventHandler(this.btnGrabar_Click);
-            // 
-            // btnExit
-            // 
-            this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExit.FlatAppearance.BorderSize = 0;
-            this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExit.Font = new System.Drawing.Font("Georgia", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.ForeColor = System.Drawing.Color.Black;
-            this.btnExit.Location = new System.Drawing.Point(942, 3);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(58, 40);
-            this.btnExit.TabIndex = 4;
-            this.btnExit.TabStop = false;
-            this.btnExit.Text = "X";
-            this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // AltaMovil
             // 

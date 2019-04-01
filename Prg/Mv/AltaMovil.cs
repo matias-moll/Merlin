@@ -235,7 +235,7 @@ namespace Mrln.Mv
             p_entMovil.Modelo = cdcModelo.SelectedStrCode; 
             p_entMovil.Aniofabric = neAnioFabric.Numero;
             p_entMovil.Propio = cdcMovilPropio.SelectedStrCode;
-            p_entMovil.Tipodemovil = cdcTipoMovil.Text;
+            p_entMovil.Tipodemovil = cdcTipoMovil.SelectedStrCode;
     
         }
 
