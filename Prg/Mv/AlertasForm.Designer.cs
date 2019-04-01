@@ -35,6 +35,16 @@
             this.fullLabel6 = new TNGS.NetControls.FullLabel();
             this.gbBorrarSeleccionados = new TNGS.NetControls.GlassButton();
             this.tgrpAñadirAlertas = new TNGS.NetControls.ImgGroup();
+            this.imgGroup1 = new TNGS.NetControls.ImgGroup();
+            this.gbHelp = new TNGS.NetControls.GlassButton();
+            this.fullLabel1 = new TNGS.NetControls.FullLabel();
+            this.deDesdeFechaPeriodicoPorFecha = new TNGS.NetControls.DateEdit();
+            this.gbAgregarPeriodicosFecha = new TNGS.NetControls.GlassButton();
+            this.fullLabel2 = new TNGS.NetControls.FullLabel();
+            this.neCadaMesesPeriodicosFecha = new TNGS.NetControls.NumberEdit();
+            this.cdcControlesPeriodicosFecha = new TNGS.NetControls.CDCombo();
+            this.fullLabel3 = new TNGS.NetControls.FullLabel();
+            this.fullLabel4 = new TNGS.NetControls.FullLabel();
             this.tgrpPostReparacion = new TNGS.NetControls.ImgGroup();
             this.cdcReparacionesPostReparacion = new TNGS.NetControls.CDCombo();
             this.gbAgregarPostReparacion = new TNGS.NetControls.GlassButton();
@@ -63,22 +73,12 @@
             this.cdListaDestinatarios = new TNGS.NetControls.CDList();
             this.fullLabel15 = new TNGS.NetControls.FullLabel();
             this.cdcGruposDestinatarios = new TNGS.NetControls.CDCombo();
-            this.imgGroup1 = new TNGS.NetControls.ImgGroup();
-            this.gbAgregarPeriodicosFecha = new TNGS.NetControls.GlassButton();
-            this.fullLabel2 = new TNGS.NetControls.FullLabel();
-            this.neCadaMesesPeriodicosFecha = new TNGS.NetControls.NumberEdit();
-            this.cdcControlesPeriodicosFecha = new TNGS.NetControls.CDCombo();
-            this.fullLabel3 = new TNGS.NetControls.FullLabel();
-            this.fullLabel4 = new TNGS.NetControls.FullLabel();
-            this.deDesdeFechaPeriodicoPorFecha = new TNGS.NetControls.DateEdit();
-            this.fullLabel1 = new TNGS.NetControls.FullLabel();
-            this.gbHelp = new TNGS.NetControls.GlassButton();
             ((System.ComponentModel.ISupportInitialize)(this.fgConfigAlertas)).BeginInit();
             this.tgrpAñadirAlertas.SuspendLayout();
+            this.imgGroup1.SuspendLayout();
             this.tgrpPostReparacion.SuspendLayout();
             this.tgrpPeriódicos.SuspendLayout();
             this.tgrpEspecifico.SuspendLayout();
-            this.imgGroup1.SuspendLayout();
             this.SuspendLayout();
             // 
             // fgConfigAlertas
@@ -187,6 +187,160 @@
             this.tgrpAñadirAlertas.TitleBackgroundDefault = TNGS.NetControls.ColorRuts.ColoresDefault.None;
             this.tgrpAñadirAlertas.TitleFontColor = System.Drawing.Color.White;
             // 
+            // imgGroup1
+            // 
+            this.imgGroup1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.imgGroup1.BackgroundGradientColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.imgGroup1.BackgroundGradientMode = TNGS.NetControls.ImgGroup.GroupBoxGradientMode.ForwardDiagonal;
+            this.imgGroup1.BlackBorder = true;
+            this.imgGroup1.BorderColor = System.Drawing.Color.DodgerBlue;
+            this.imgGroup1.BorderThickness = 1F;
+            this.imgGroup1.Controls.Add(this.gbHelp);
+            this.imgGroup1.Controls.Add(this.fullLabel1);
+            this.imgGroup1.Controls.Add(this.deDesdeFechaPeriodicoPorFecha);
+            this.imgGroup1.Controls.Add(this.gbAgregarPeriodicosFecha);
+            this.imgGroup1.Controls.Add(this.fullLabel2);
+            this.imgGroup1.Controls.Add(this.neCadaMesesPeriodicosFecha);
+            this.imgGroup1.Controls.Add(this.cdcControlesPeriodicosFecha);
+            this.imgGroup1.Controls.Add(this.fullLabel3);
+            this.imgGroup1.Controls.Add(this.fullLabel4);
+            this.imgGroup1.CustomGroupBoxColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.imgGroup1.FlatMode = true;
+            this.imgGroup1.Font = new System.Drawing.Font("Arial", 9F);
+            this.imgGroup1.FontTitle = new System.Drawing.Font("Arial", 9F);
+            this.imgGroup1.ForeColor = System.Drawing.Color.Black;
+            this.imgGroup1.GroupImage = null;
+            this.imgGroup1.GroupTitle = "Periódicos por Fecha";
+            this.imgGroup1.Location = new System.Drawing.Point(210, 179);
+            this.imgGroup1.Name = "imgGroup1";
+            this.imgGroup1.Padding = new System.Windows.Forms.Padding(20);
+            this.imgGroup1.PaintGroupBox = false;
+            this.imgGroup1.RoundCorners = 4;
+            this.imgGroup1.ShadowColor = System.Drawing.Color.DarkGray;
+            this.imgGroup1.ShadowControl = false;
+            this.imgGroup1.ShadowThickness = 3;
+            this.imgGroup1.Size = new System.Drawing.Size(767, 66);
+            this.imgGroup1.SkinFixed = true;
+            this.imgGroup1.TabIndex = 114;
+            this.imgGroup1.TitleAlignment = TNGS.NetControls.ImgGroup.TitleAlign.Left;
+            this.imgGroup1.TitleBackground = System.Drawing.Color.IndianRed;
+            this.imgGroup1.TitleBackgroundDefault = TNGS.NetControls.ColorRuts.ColoresDefault.None;
+            this.imgGroup1.TitleFontColor = System.Drawing.Color.White;
+            // 
+            // gbHelp
+            // 
+            this.gbHelp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbHelp.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("gbHelp.BackgroundImage")));
+            this.gbHelp.BlackBorder = true;
+            this.gbHelp.ButtonMode = TNGS.NetControls.GlassButton.GBMode.Flat;
+            this.gbHelp.CircleButton = false;
+            this.gbHelp.FixedFlatImage = TNGS.NetControls.FixedFlatImageButtons.fQuestion;
+            this.gbHelp.FlatColor = System.Drawing.Color.DodgerBlue;
+            this.gbHelp.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.LightBlue;
+            this.gbHelp.FlatFontSize = 9;
+            this.gbHelp.FlatTextColor = System.Drawing.Color.Black;
+            this.gbHelp.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.gbHelp.Location = new System.Drawing.Point(332, 31);
+            this.gbHelp.Name = "gbHelp";
+            this.gbHelp.Size = new System.Drawing.Size(26, 24);
+            this.gbHelp.TabIndex = 37;
+            this.gbHelp.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.gbHelp.W8Color = System.Drawing.Color.DodgerBlue;
+            this.gbHelp.Click += new System.EventHandler(this.gbHelp_Click);
+            // 
+            // fullLabel1
+            // 
+            this.fullLabel1.BackColor = System.Drawing.Color.Transparent;
+            this.fullLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fullLabel1.ForeColor = System.Drawing.Color.Black;
+            this.fullLabel1.Location = new System.Drawing.Point(280, 36);
+            this.fullLabel1.Name = "fullLabel1";
+            this.fullLabel1.Size = new System.Drawing.Size(57, 18);
+            this.fullLabel1.TabIndex = 36;
+            this.fullLabel1.Text = "meses";
+            // 
+            // deDesdeFechaPeriodicoPorFecha
+            // 
+            this.deDesdeFechaPeriodicoPorFecha.BackColor = System.Drawing.SystemColors.Window;
+            this.deDesdeFechaPeriodicoPorFecha.Location = new System.Drawing.Point(89, 34);
+            this.deDesdeFechaPeriodicoPorFecha.Name = "deDesdeFechaPeriodicoPorFecha";
+            this.deDesdeFechaPeriodicoPorFecha.Size = new System.Drawing.Size(84, 21);
+            this.deDesdeFechaPeriodicoPorFecha.TabIndex = 0;
+            this.deDesdeFechaPeriodicoPorFecha.Text = "01/01/1900";
+            // 
+            // gbAgregarPeriodicosFecha
+            // 
+            this.gbAgregarPeriodicosFecha.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbAgregarPeriodicosFecha.BlackBorder = true;
+            this.gbAgregarPeriodicosFecha.ButtonMode = TNGS.NetControls.GlassButton.GBMode.Flat;
+            this.gbAgregarPeriodicosFecha.CircleButton = false;
+            this.gbAgregarPeriodicosFecha.FlatColor = System.Drawing.Color.LimeGreen;
+            this.gbAgregarPeriodicosFecha.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
+            this.gbAgregarPeriodicosFecha.FlatFontSize = 9;
+            this.gbAgregarPeriodicosFecha.FlatTextColor = System.Drawing.Color.Black;
+            this.gbAgregarPeriodicosFecha.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.gbAgregarPeriodicosFecha.Location = new System.Drawing.Point(685, 29);
+            this.gbAgregarPeriodicosFecha.Name = "gbAgregarPeriodicosFecha";
+            this.gbAgregarPeriodicosFecha.Size = new System.Drawing.Size(68, 27);
+            this.gbAgregarPeriodicosFecha.TabIndex = 3;
+            this.gbAgregarPeriodicosFecha.Text = "Agregar";
+            this.gbAgregarPeriodicosFecha.W8Color = System.Drawing.Color.LimeGreen;
+            this.gbAgregarPeriodicosFecha.Click += new System.EventHandler(this.gbAgregarPeriodicosFecha_Click);
+            // 
+            // fullLabel2
+            // 
+            this.fullLabel2.BackColor = System.Drawing.Color.Transparent;
+            this.fullLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fullLabel2.ForeColor = System.Drawing.Color.Black;
+            this.fullLabel2.Location = new System.Drawing.Point(429, 34);
+            this.fullLabel2.Name = "fullLabel2";
+            this.fullLabel2.Size = new System.Drawing.Size(59, 18);
+            this.fullLabel2.TabIndex = 16;
+            this.fullLabel2.Text = "Control:";
+            // 
+            // neCadaMesesPeriodicosFecha
+            // 
+            this.neCadaMesesPeriodicosFecha.BackColor = System.Drawing.SystemColors.Window;
+            this.neCadaMesesPeriodicosFecha.Location = new System.Drawing.Point(223, 34);
+            this.neCadaMesesPeriodicosFecha.Name = "neCadaMesesPeriodicosFecha";
+            this.neCadaMesesPeriodicosFecha.Size = new System.Drawing.Size(51, 21);
+            this.neCadaMesesPeriodicosFecha.TabIndex = 1;
+            this.neCadaMesesPeriodicosFecha.Text = "0";
+            // 
+            // cdcControlesPeriodicosFecha
+            // 
+            this.cdcControlesPeriodicosFecha.BackColor = System.Drawing.SystemColors.Window;
+            this.cdcControlesPeriodicosFecha.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cdcControlesPeriodicosFecha.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cdcControlesPeriodicosFecha.FormattingEnabled = true;
+            this.cdcControlesPeriodicosFecha.Location = new System.Drawing.Point(488, 32);
+            this.cdcControlesPeriodicosFecha.Name = "cdcControlesPeriodicosFecha";
+            this.cdcControlesPeriodicosFecha.Size = new System.Drawing.Size(176, 23);
+            this.cdcControlesPeriodicosFecha.Sorted = true;
+            this.cdcControlesPeriodicosFecha.TabIndex = 2;
+            // 
+            // fullLabel3
+            // 
+            this.fullLabel3.BackColor = System.Drawing.Color.Transparent;
+            this.fullLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fullLabel3.ForeColor = System.Drawing.Color.Black;
+            this.fullLabel3.Location = new System.Drawing.Point(172, 38);
+            this.fullLabel3.Name = "fullLabel3";
+            this.fullLabel3.Size = new System.Drawing.Size(57, 18);
+            this.fullLabel3.TabIndex = 31;
+            this.fullLabel3.Text = ",   cada";
+            // 
+            // fullLabel4
+            // 
+            this.fullLabel4.BackColor = System.Drawing.Color.Transparent;
+            this.fullLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fullLabel4.ForeColor = System.Drawing.Color.Black;
+            this.fullLabel4.Location = new System.Drawing.Point(32, 38);
+            this.fullLabel4.Name = "fullLabel4";
+            this.fullLabel4.Size = new System.Drawing.Size(51, 18);
+            this.fullLabel4.TabIndex = 14;
+            this.fullLabel4.Text = "Desde";
+            // 
             // tgrpPostReparacion
             // 
             this.tgrpPostReparacion.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
@@ -235,7 +389,7 @@
             this.cdcReparacionesPostReparacion.Name = "cdcReparacionesPostReparacion";
             this.cdcReparacionesPostReparacion.Size = new System.Drawing.Size(196, 23);
             this.cdcReparacionesPostReparacion.Sorted = true;
-            this.cdcReparacionesPostReparacion.TabIndex = 32;
+            this.cdcReparacionesPostReparacion.TabIndex = 1;
             // 
             // gbAgregarPostReparacion
             // 
@@ -251,7 +405,7 @@
             this.gbAgregarPostReparacion.Location = new System.Drawing.Point(685, 29);
             this.gbAgregarPostReparacion.Name = "gbAgregarPostReparacion";
             this.gbAgregarPostReparacion.Size = new System.Drawing.Size(68, 27);
-            this.gbAgregarPostReparacion.TabIndex = 30;
+            this.gbAgregarPostReparacion.TabIndex = 3;
             this.gbAgregarPostReparacion.Text = "Agregar";
             this.gbAgregarPostReparacion.W8Color = System.Drawing.Color.LimeGreen;
             this.gbAgregarPostReparacion.Click += new System.EventHandler(this.gbAgregarPostReparacion_Click);
@@ -288,7 +442,7 @@
             this.cdcControlesPostReparacion.Name = "cdcControlesPostReparacion";
             this.cdcControlesPostReparacion.Size = new System.Drawing.Size(176, 23);
             this.cdcControlesPostReparacion.Sorted = true;
-            this.cdcControlesPostReparacion.TabIndex = 6;
+            this.cdcControlesPostReparacion.TabIndex = 2;
             // 
             // neEnkmPostReparacion
             // 
@@ -296,7 +450,7 @@
             this.neEnkmPostReparacion.Location = new System.Drawing.Point(35, 32);
             this.neEnkmPostReparacion.Name = "neEnkmPostReparacion";
             this.neEnkmPostReparacion.Size = new System.Drawing.Size(51, 21);
-            this.neEnkmPostReparacion.TabIndex = 22;
+            this.neEnkmPostReparacion.TabIndex = 0;
             this.neEnkmPostReparacion.Text = "0";
             // 
             // fullLabel9
@@ -356,7 +510,7 @@
             this.neHastaKmsPeriodicos.Location = new System.Drawing.Point(310, 33);
             this.neHastaKmsPeriodicos.Name = "neHastaKmsPeriodicos";
             this.neHastaKmsPeriodicos.Size = new System.Drawing.Size(51, 21);
-            this.neHastaKmsPeriodicos.TabIndex = 34;
+            this.neHastaKmsPeriodicos.TabIndex = 2;
             this.neHastaKmsPeriodicos.Text = "0";
             // 
             // gbAgregarPeriodicosKms
@@ -373,7 +527,7 @@
             this.gbAgregarPeriodicosKms.Location = new System.Drawing.Point(685, 29);
             this.gbAgregarPeriodicosKms.Name = "gbAgregarPeriodicosKms";
             this.gbAgregarPeriodicosKms.Size = new System.Drawing.Size(68, 27);
-            this.gbAgregarPeriodicosKms.TabIndex = 30;
+            this.gbAgregarPeriodicosKms.TabIndex = 4;
             this.gbAgregarPeriodicosKms.Text = "Agregar";
             this.gbAgregarPeriodicosKms.W8Color = System.Drawing.Color.LimeGreen;
             this.gbAgregarPeriodicosKms.Click += new System.EventHandler(this.gbAgregarPeriodicos_Click);
@@ -406,7 +560,7 @@
             this.neCadaKmsPeriodicos.Location = new System.Drawing.Point(198, 33);
             this.neCadaKmsPeriodicos.Name = "neCadaKmsPeriodicos";
             this.neCadaKmsPeriodicos.Size = new System.Drawing.Size(51, 21);
-            this.neCadaKmsPeriodicos.TabIndex = 32;
+            this.neCadaKmsPeriodicos.TabIndex = 1;
             this.neCadaKmsPeriodicos.Text = "0";
             // 
             // cdcControlesPeriodicosKms
@@ -419,7 +573,7 @@
             this.cdcControlesPeriodicosKms.Name = "cdcControlesPeriodicosKms";
             this.cdcControlesPeriodicosKms.Size = new System.Drawing.Size(176, 23);
             this.cdcControlesPeriodicosKms.Sorted = true;
-            this.cdcControlesPeriodicosKms.TabIndex = 6;
+            this.cdcControlesPeriodicosKms.TabIndex = 3;
             // 
             // fullLabel11
             // 
@@ -449,7 +603,7 @@
             this.neDesdeKmsPeriodicos.Location = new System.Drawing.Point(91, 33);
             this.neDesdeKmsPeriodicos.Name = "neDesdeKmsPeriodicos";
             this.neDesdeKmsPeriodicos.Size = new System.Drawing.Size(51, 21);
-            this.neDesdeKmsPeriodicos.TabIndex = 22;
+            this.neDesdeKmsPeriodicos.TabIndex = 0;
             this.neDesdeKmsPeriodicos.Text = "0";
             // 
             // tgrpEspecifico
@@ -514,7 +668,7 @@
             this.gbAgregarEspecifico.Location = new System.Drawing.Point(685, 29);
             this.gbAgregarEspecifico.Name = "gbAgregarEspecifico";
             this.gbAgregarEspecifico.Size = new System.Drawing.Size(68, 27);
-            this.gbAgregarEspecifico.TabIndex = 30;
+            this.gbAgregarEspecifico.TabIndex = 2;
             this.gbAgregarEspecifico.Text = "Agregar";
             this.gbAgregarEspecifico.W8Color = System.Drawing.Color.LimeGreen;
             this.gbAgregarEspecifico.Click += new System.EventHandler(this.gbAgregarEspecifico_Click);
@@ -536,7 +690,7 @@
             this.neEnkmEspecifico.Location = new System.Drawing.Point(195, 33);
             this.neEnkmEspecifico.Name = "neEnkmEspecifico";
             this.neEnkmEspecifico.Size = new System.Drawing.Size(51, 21);
-            this.neEnkmEspecifico.TabIndex = 22;
+            this.neEnkmEspecifico.TabIndex = 0;
             this.neEnkmEspecifico.Text = "0";
             // 
             // cdcControlesEspecifico
@@ -549,7 +703,7 @@
             this.cdcControlesEspecifico.Name = "cdcControlesEspecifico";
             this.cdcControlesEspecifico.Size = new System.Drawing.Size(176, 23);
             this.cdcControlesEspecifico.Sorted = true;
-            this.cdcControlesEspecifico.TabIndex = 6;
+            this.cdcControlesEspecifico.TabIndex = 1;
             // 
             // fullLabel14
             // 
@@ -596,160 +750,6 @@
             this.cdcGruposDestinatarios.TabIndex = 32;
             this.cdcGruposDestinatarios.SelectedIndexChanged += new System.EventHandler(this.cdcGruposDestinatarios_SelectedIndexChanged);
             // 
-            // imgGroup1
-            // 
-            this.imgGroup1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.imgGroup1.BackgroundGradientColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.imgGroup1.BackgroundGradientMode = TNGS.NetControls.ImgGroup.GroupBoxGradientMode.ForwardDiagonal;
-            this.imgGroup1.BlackBorder = true;
-            this.imgGroup1.BorderColor = System.Drawing.Color.DodgerBlue;
-            this.imgGroup1.BorderThickness = 1F;
-            this.imgGroup1.Controls.Add(this.gbHelp);
-            this.imgGroup1.Controls.Add(this.fullLabel1);
-            this.imgGroup1.Controls.Add(this.deDesdeFechaPeriodicoPorFecha);
-            this.imgGroup1.Controls.Add(this.gbAgregarPeriodicosFecha);
-            this.imgGroup1.Controls.Add(this.fullLabel2);
-            this.imgGroup1.Controls.Add(this.neCadaMesesPeriodicosFecha);
-            this.imgGroup1.Controls.Add(this.cdcControlesPeriodicosFecha);
-            this.imgGroup1.Controls.Add(this.fullLabel3);
-            this.imgGroup1.Controls.Add(this.fullLabel4);
-            this.imgGroup1.CustomGroupBoxColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.imgGroup1.FlatMode = true;
-            this.imgGroup1.Font = new System.Drawing.Font("Arial", 9F);
-            this.imgGroup1.FontTitle = new System.Drawing.Font("Arial", 9F);
-            this.imgGroup1.ForeColor = System.Drawing.Color.Black;
-            this.imgGroup1.GroupImage = null;
-            this.imgGroup1.GroupTitle = "Periódicos por Fecha";
-            this.imgGroup1.Location = new System.Drawing.Point(210, 179);
-            this.imgGroup1.Name = "imgGroup1";
-            this.imgGroup1.Padding = new System.Windows.Forms.Padding(20);
-            this.imgGroup1.PaintGroupBox = false;
-            this.imgGroup1.RoundCorners = 4;
-            this.imgGroup1.ShadowColor = System.Drawing.Color.DarkGray;
-            this.imgGroup1.ShadowControl = false;
-            this.imgGroup1.ShadowThickness = 3;
-            this.imgGroup1.Size = new System.Drawing.Size(767, 66);
-            this.imgGroup1.SkinFixed = true;
-            this.imgGroup1.TabIndex = 114;
-            this.imgGroup1.TitleAlignment = TNGS.NetControls.ImgGroup.TitleAlign.Left;
-            this.imgGroup1.TitleBackground = System.Drawing.Color.IndianRed;
-            this.imgGroup1.TitleBackgroundDefault = TNGS.NetControls.ColorRuts.ColoresDefault.None;
-            this.imgGroup1.TitleFontColor = System.Drawing.Color.White;
-            // 
-            // gbAgregarPeriodicosFecha
-            // 
-            this.gbAgregarPeriodicosFecha.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.gbAgregarPeriodicosFecha.BlackBorder = true;
-            this.gbAgregarPeriodicosFecha.ButtonMode = TNGS.NetControls.GlassButton.GBMode.Flat;
-            this.gbAgregarPeriodicosFecha.CircleButton = false;
-            this.gbAgregarPeriodicosFecha.FlatColor = System.Drawing.Color.LimeGreen;
-            this.gbAgregarPeriodicosFecha.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.None;
-            this.gbAgregarPeriodicosFecha.FlatFontSize = 9;
-            this.gbAgregarPeriodicosFecha.FlatTextColor = System.Drawing.Color.Black;
-            this.gbAgregarPeriodicosFecha.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.gbAgregarPeriodicosFecha.Location = new System.Drawing.Point(685, 29);
-            this.gbAgregarPeriodicosFecha.Name = "gbAgregarPeriodicosFecha";
-            this.gbAgregarPeriodicosFecha.Size = new System.Drawing.Size(68, 27);
-            this.gbAgregarPeriodicosFecha.TabIndex = 30;
-            this.gbAgregarPeriodicosFecha.Text = "Agregar";
-            this.gbAgregarPeriodicosFecha.W8Color = System.Drawing.Color.LimeGreen;
-            this.gbAgregarPeriodicosFecha.Click += new System.EventHandler(this.gbAgregarPeriodicosFecha_Click);
-            // 
-            // fullLabel2
-            // 
-            this.fullLabel2.BackColor = System.Drawing.Color.Transparent;
-            this.fullLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fullLabel2.ForeColor = System.Drawing.Color.Black;
-            this.fullLabel2.Location = new System.Drawing.Point(429, 34);
-            this.fullLabel2.Name = "fullLabel2";
-            this.fullLabel2.Size = new System.Drawing.Size(59, 18);
-            this.fullLabel2.TabIndex = 16;
-            this.fullLabel2.Text = "Control:";
-            // 
-            // neCadaMesesPeriodicosFecha
-            // 
-            this.neCadaMesesPeriodicosFecha.BackColor = System.Drawing.SystemColors.Window;
-            this.neCadaMesesPeriodicosFecha.Location = new System.Drawing.Point(223, 34);
-            this.neCadaMesesPeriodicosFecha.Name = "neCadaMesesPeriodicosFecha";
-            this.neCadaMesesPeriodicosFecha.Size = new System.Drawing.Size(51, 21);
-            this.neCadaMesesPeriodicosFecha.TabIndex = 32;
-            this.neCadaMesesPeriodicosFecha.Text = "0";
-            // 
-            // cdcControlesPeriodicosFecha
-            // 
-            this.cdcControlesPeriodicosFecha.BackColor = System.Drawing.SystemColors.Window;
-            this.cdcControlesPeriodicosFecha.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cdcControlesPeriodicosFecha.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cdcControlesPeriodicosFecha.FormattingEnabled = true;
-            this.cdcControlesPeriodicosFecha.Location = new System.Drawing.Point(488, 32);
-            this.cdcControlesPeriodicosFecha.Name = "cdcControlesPeriodicosFecha";
-            this.cdcControlesPeriodicosFecha.Size = new System.Drawing.Size(176, 23);
-            this.cdcControlesPeriodicosFecha.Sorted = true;
-            this.cdcControlesPeriodicosFecha.TabIndex = 6;
-            // 
-            // fullLabel3
-            // 
-            this.fullLabel3.BackColor = System.Drawing.Color.Transparent;
-            this.fullLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fullLabel3.ForeColor = System.Drawing.Color.Black;
-            this.fullLabel3.Location = new System.Drawing.Point(172, 38);
-            this.fullLabel3.Name = "fullLabel3";
-            this.fullLabel3.Size = new System.Drawing.Size(57, 18);
-            this.fullLabel3.TabIndex = 31;
-            this.fullLabel3.Text = ",   cada";
-            // 
-            // fullLabel4
-            // 
-            this.fullLabel4.BackColor = System.Drawing.Color.Transparent;
-            this.fullLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fullLabel4.ForeColor = System.Drawing.Color.Black;
-            this.fullLabel4.Location = new System.Drawing.Point(32, 38);
-            this.fullLabel4.Name = "fullLabel4";
-            this.fullLabel4.Size = new System.Drawing.Size(51, 18);
-            this.fullLabel4.TabIndex = 14;
-            this.fullLabel4.Text = "Desde";
-            // 
-            // deDesdeFechaPeriodicoPorFecha
-            // 
-            this.deDesdeFechaPeriodicoPorFecha.BackColor = System.Drawing.SystemColors.Window;
-            this.deDesdeFechaPeriodicoPorFecha.Location = new System.Drawing.Point(89, 34);
-            this.deDesdeFechaPeriodicoPorFecha.Name = "deDesdeFechaPeriodicoPorFecha";
-            this.deDesdeFechaPeriodicoPorFecha.Size = new System.Drawing.Size(84, 21);
-            this.deDesdeFechaPeriodicoPorFecha.TabIndex = 35;
-            this.deDesdeFechaPeriodicoPorFecha.Text = "01/01/1900";
-            // 
-            // fullLabel1
-            // 
-            this.fullLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.fullLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fullLabel1.ForeColor = System.Drawing.Color.Black;
-            this.fullLabel1.Location = new System.Drawing.Point(280, 36);
-            this.fullLabel1.Name = "fullLabel1";
-            this.fullLabel1.Size = new System.Drawing.Size(57, 18);
-            this.fullLabel1.TabIndex = 36;
-            this.fullLabel1.Text = "meses";
-            // 
-            // gbHelp
-            // 
-            this.gbHelp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.gbHelp.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("gbHelp.BackgroundImage")));
-            this.gbHelp.BlackBorder = true;
-            this.gbHelp.ButtonMode = TNGS.NetControls.GlassButton.GBMode.Flat;
-            this.gbHelp.CircleButton = false;
-            this.gbHelp.FixedFlatImage = TNGS.NetControls.FixedFlatImageButtons.fQuestion;
-            this.gbHelp.FlatColor = System.Drawing.Color.DodgerBlue;
-            this.gbHelp.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.LightBlue;
-            this.gbHelp.FlatFontSize = 9;
-            this.gbHelp.FlatTextColor = System.Drawing.Color.Black;
-            this.gbHelp.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.gbHelp.Location = new System.Drawing.Point(332, 31);
-            this.gbHelp.Name = "gbHelp";
-            this.gbHelp.Size = new System.Drawing.Size(26, 24);
-            this.gbHelp.TabIndex = 37;
-            this.gbHelp.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.gbHelp.W8Color = System.Drawing.Color.DodgerBlue;
-            this.gbHelp.Click += new System.EventHandler(this.gbHelp_Click);
-            // 
             // AlertasForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -762,14 +762,14 @@
             this.Size = new System.Drawing.Size(998, 614);
             ((System.ComponentModel.ISupportInitialize)(this.fgConfigAlertas)).EndInit();
             this.tgrpAñadirAlertas.ResumeLayout(false);
+            this.imgGroup1.ResumeLayout(false);
+            this.imgGroup1.PerformLayout();
             this.tgrpPostReparacion.ResumeLayout(false);
             this.tgrpPostReparacion.PerformLayout();
             this.tgrpPeriódicos.ResumeLayout(false);
             this.tgrpPeriódicos.PerformLayout();
             this.tgrpEspecifico.ResumeLayout(false);
             this.tgrpEspecifico.PerformLayout();
-            this.imgGroup1.ResumeLayout(false);
-            this.imgGroup1.PerformLayout();
             this.ResumeLayout(false);
 
         }

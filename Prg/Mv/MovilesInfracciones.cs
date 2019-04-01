@@ -65,11 +65,11 @@ namespace Mrln.Mv
         {
             // Llenamos las Combos (por Lista)
             cmbPagada.AddStrCD("S", "SI", 0);
-            cmbPagada.AddStrCD(" N", "NO", 0);
+            cmbPagada.AddStrCD("N", "NO", 0);
 
             // Llenamos las Combos (por Lista)
             cdcAnulada.AddStrCD("S", "SI", 0);
-            cdcAnulada.AddStrCD(" N", "NO", 0);
+            cdcAnulada.AddStrCD("N", "NO", 0);
 
             // Llenamos las Combos (por Tablas)
             Bel.LEMotivosInfracciones l_lentMotivosInfracciones= Bll.Tablas.MtiUpFull(false, m_smResult);
@@ -221,7 +221,7 @@ namespace Mrln.Mv
             m_entMvlInfraccion.Pagada= cmbPagada.SelectedStrCode;
             m_entMvlInfraccion.Importe= txtImporte.Decimal;
             m_entMvlInfraccion.Comentario= txtComentario.Text;
-            m_entMvlInfraccion.Anulada = cdcAnulada.SelectedItem.ToString();
+            m_entMvlInfraccion.Anulada = cdcAnulada.SelectedStrCode;
 
             // Tratamos de grabar la entidad
             Bll.Moviles.MvifSave(m_entMvlInfraccion, m_smResult);
@@ -332,7 +332,7 @@ namespace Mrln.Mv
             cmbPagada.SelectedStrCode= m_entMvlInfraccion.Pagada;
             txtImporte.Decimal= m_entMvlInfraccion.Importe;
             txtComentario.Text= m_entMvlInfraccion.Comentario;
-            cdcAnulada.Text= m_entMvlInfraccion.Anulada;
+            cdcAnulada.SelectedStrCode = m_entMvlInfraccion.Anulada;
 
             // Habilitamos el frame
             txtPatente.NormalDisable= false;

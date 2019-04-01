@@ -16,7 +16,7 @@ namespace Mrln.Bll
     //----------------------------------------------------------------------------
     //                         TNG Software BLL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 28/03/2019 19:21
+    // Fecha                    : 01/04/2019 01:17
     // Sistema                  : Mrln
     // Clase para Administrar   : Moviles y Tablas Hijas
     //----------------------------------------------------------------------------
@@ -5035,10 +5035,19 @@ namespace Mrln.Bll
             }
 
             if ((p_entMovilInfraccion.Pagada != "S") &&
-                (p_entMovilInfraccion.Pagada != " N")) {
+                (p_entMovilInfraccion.Pagada != "N")) {
                 // El campo [Pagada] tiene opciones
-                p_smResult.BllWarning("El dato [Pagada] sólo admite\r\n\r\n[S]- SI\r\n[ N]- NO\r\n","");
+                p_smResult.BllWarning("El dato [Pagada] sólo admite\r\n\r\n[S]- SI\r\n[N]- NO\r\n","");
                 return;
+            }
+
+            if (p_entMovilInfraccion.Anulada.Trim() != "") {
+                if ((p_entMovilInfraccion.Anulada != "S") &&
+                    (p_entMovilInfraccion.Anulada != "N")) {
+                    // El campo [Anulada] tiene opciones
+                    p_smResult.BllWarning("El dato [Anulada] sólo admite\r\n\r\n[S]- SI\r\n[N]- NO\r\n","");
+                    return;
+                }
             }
 
             // ********

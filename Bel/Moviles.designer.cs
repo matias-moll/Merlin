@@ -14,7 +14,7 @@ namespace Mrln.Bel
     //----------------------------------------------------------------------------
     //                         TNG Software BEL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 28/03/2019 19:21
+    // Fecha                    : 01/04/2019 01:17
     // Sistema                  : Mrln
     // Clase para Administrar   : Moviles y Tablas Hijas
     //----------------------------------------------------------------------------
@@ -819,7 +819,7 @@ namespace Mrln.Bel
         /// <param name="p_strCodreparacion">Reparacion</param>
         /// <param name="p_strCodcontrol">Control</param>
         /// <param name="p_strCoddestinatarios">Destinatarios</param>
-        /// <param name="p_dtFecha">Fecha</param>
+        /// <param name="p_dtFecha">Fecha a Disparar Alerta</param>
         /// <returns>Entidad: MovilAlerta</returns>
         public static EMovilAlerta NewFilled(string p_strPatente,
                                              int p_iNroconfigalerta,
@@ -1034,7 +1034,7 @@ namespace Mrln.Bel
         }
 
         /// <summary>
-        /// Fecha
+        /// Fecha a Disparar Alerta
         /// </summary>
         public static string FechaCmp
         {
@@ -1042,7 +1042,7 @@ namespace Mrln.Bel
         }
 
         /// <summary>
-        /// Fecha
+        /// Fecha a Disparar Alerta
         /// </summary>
         public DateTime Fecha
         {
@@ -3580,11 +3580,8 @@ namespace Mrln.Bel
         /// </summary>
         public string Anulada
         {
-            get {return ((string) InternalData["mvi_cd1_anulada"]).Trim();}
-            set {
-                if (value.Trim().Length > 1) value= value.Trim().Substring(0,1);
-                InternalData["mvi_cd1_anulada"]= value.Trim();
-            }
+            get {return (string) InternalData["mvi_cd1_anulada"];}
+            set {InternalData["mvi_cd1_anulada"]= value;}
         }
 
         /// <summary>

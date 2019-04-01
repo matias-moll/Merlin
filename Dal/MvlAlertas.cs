@@ -10,7 +10,7 @@ namespace Mrln.Dal
     //----------------------------------------------------------------------------
     //                         TNG Software DAL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 15/03/2019 22:44
+    // Fecha                    : 01/04/2019 01:18
     // Sistema                  : Mrln
     // Clase para Administrar   : Alertas de los Moviles
     // Basada en la Tabla       : MvlAlertas
@@ -184,7 +184,7 @@ namespace Mrln.Dal
         /// <param name="p_strCodreparacion">Reparacion</param>
         /// <param name="p_strCodcontrol">Control</param>
         /// <param name="p_strCoddestinatarios">Destinatarios</param>
-        /// <param name="p_dtFecha">Fecha</param>
+        /// <param name="p_dtFecha">Fecha a Disparar Alerta</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static int Insert(DBConn p_dbcAccess,
                                  string p_strPatente,
@@ -229,7 +229,7 @@ namespace Mrln.Dal
         /// <param name="p_strCodreparacion">Reparacion</param>
         /// <param name="p_strCodcontrol">Control</param>
         /// <param name="p_strCoddestinatarios">Destinatarios</param>
-        /// <param name="p_dtFecha">Fecha</param>
+        /// <param name="p_dtFecha">Fecha a Disparar Alerta</param>
         /// <param name="p_smResult">Estado final de la operacion</param>
         public static int Update(DBConn p_dbcAccess,
                                  string p_strPatente,
@@ -514,6 +514,7 @@ namespace Mrln.Dal
                 p_dtResult.Columns["mal_control"].Caption= "V1ControlCN1";
                 p_dtResult.Columns["mal_destinats"].Caption= "V1DestinatariosCN1";
                 p_dtResult.Columns["mal_reparacion"].Caption= "V1ReparacionCN1";
+                p_dtResult.Columns["mal_fec_fecha"].Caption= "V1Fecha a Disparar AlertaFN1";
                 p_dtResult.Columns["mal_nro_kilometros"].Caption= "V1KilometrosNN1";
                 p_dtResult.Columns["mal_nro_nroconfigalerta"].Caption= "V1Nro Config AlertaNN1";
                 p_dtResult.Columns["mal_ecd_patente"].Caption= "V1PatenteCN1";

@@ -51,6 +51,7 @@ namespace Mrln.Mv
             cdcControlesEspecifico.FillFromStrLEntidad(m_leControles, Bel.EControl.CodCmp, Bel.EControl.DesCmp, "deleted");
             cdcControlesPeriodicosKms.FillFromStrLEntidad(m_leControles, Bel.EControl.CodCmp, Bel.EControl.DesCmp, "deleted");
             cdcControlesPostReparacion.FillFromStrLEntidad(m_leControles, Bel.EControl.CodCmp, Bel.EControl.DesCmp, "deleted");
+            cdcControlesPeriodicosFecha.FillFromStrLEntidad(m_leControles, Bel.EControl.CodCmp, Bel.EControl.DesCmp, "deleted");
 
             cdcReparacionesPostReparacion.FillFromStrLEntidad(m_leReparaciones, Bel.EReparacion.CodCmp, Bel.EReparacion.DesCmp, "deleted");
 
@@ -179,9 +180,6 @@ namespace Mrln.Mv
 
         private void grabarConfigAlerta(int kilometros, string codReparacion, string codControl, DateTime? fecha = null)
         {
-            if (fecha == null)
-                fecha = new DateTime(1, 1, 1900);
-
             ETalonario taloConfigAlerta = App.TaloGet("ConfAlerta", m_smResult);
             if (MsgRuts.AnalizeError(App.GetMainWindow(), m_smResult)) return;
 
@@ -192,6 +190,7 @@ namespace Mrln.Mv
             alertaNueva.Codreparacion = codReparacion;
             alertaNueva.Codcontrol = codControl;
             alertaNueva.Coddestinatarios = cdcGruposDestinatarios.SelectedStrCode;
+            alertaNueva.Fecha = fecha ?? new DateTime(1900, 1, 1);
             Bll.Moviles.MvalSave(alertaNueva, m_smResult);
             if (MsgRuts.AnalizeError(App.GetMainWindow(), m_smResult)) return;
 
