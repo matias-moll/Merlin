@@ -51,23 +51,20 @@ namespace Mrln.Shr
             l_aiData.ConLogo = true;
             l_aiData.Copyright = String.Format("© Copyright 2003-{0:yy} by TNGS\r\n" +
                                               "www.tngs.com.ar    email: info@\r\n\r\n" +
-                                              "Programa de distribución <TODO> como parte de <TODO>.",
+                                              "Programa de distribución Shr como parte de Solución Merlín.",
                                               DateTime.Now);
             l_aiData.ConScroll = true;
             l_aiData.ScrollColor = Color.FromArgb(3);
             l_aiData.ScrollTxt = "[C][O][3]" + p_strTitle +
-                                "[C][F][3]<TODO>\r\n\r\n" +
                                 "[I][N][2]Programadores:\r\n" +
-                                "[F][1][C]<TODO>\r\n" +
-                                "<TODO>\r\n\r\n" +
+                                "[F][1][C]Moll Matias\r\n" +
+                                "\r\n\r\n" +
                                 "[N][2][I]Diseño:\r\n" +
-                                "[F][1][C]<TODO>\r\n\r\n" +
+                                "[F][1][C]Moll Matias\r\n\r\n" +
                                 "[I]" +
                                 AboutInfo.AboutCopyright +       // No Remover!!. Son los copyrights de los elementos licenciados
-                                "<TODO: Copyrights adicionales>\r\n\r\n" +
-                                "Advertencia: Los códigos fuentes de este programa están protegidos por las leyes de derecho de autor para todo el territorio argentino.\r\n\r\n" +
-                                "El módulo ejecutable es de distribución <TODO> como parte de <TODO>";
-            l_aiData.EECode = "<TODO: Secuncia del EEgg>"; //"Menu, Alt\tT, Alt\tN, Alt\tG, Alt\tS, Alt\tY\tA\t";
+                                "Advertencia: Los códigos fuentes de este programa están protegidos por las leyes de derecho de autor para todo el territorio argentino.\r\n\r\n";
+            l_aiData.EECode = " "; //"Menu, Alt\tT, Alt\tN, Alt\tG, Alt\tS, Alt\tY\tA\t";
             l_aiData.EEImage = p_bmpEEgg;
             return l_aiData;
         }

@@ -6,10 +6,10 @@ using System.Runtime.CompilerServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 //
-[assembly: AssemblyConfiguration("VS2012 - DotNET 4.0 - TNGSNet 5.20")]
+[assembly: AssemblyConfiguration("VS2017 - DotNET 4.0 - TNGSNet 5.20")]
 [assembly: AssemblyCompany("TNG Software")]
-[assembly: AssemblyProduct("<TODO>")]
-[assembly: AssemblyCopyright("Copyright© TNG Software, <TODO>")]
+[assembly: AssemblyProduct("Solución Merlín")]
+[assembly: AssemblyCopyright("Copyright© Moll Matias, 2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]        
 

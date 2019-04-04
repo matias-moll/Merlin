@@ -37,5 +37,9 @@ namespace Mrln.Mv
         {
             this.FormBorderStyle = FormBorderStyle.None;
         }
+
+        private void Home_Load(object sender, EventArgs e)
+        {
+        }
     }
 }

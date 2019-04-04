@@ -56,7 +56,6 @@ namespace Mrln.Mv
             cdcReparacionesPostReparacion.FillFromStrLEntidad(m_leReparaciones, Bel.EReparacion.CodCmp, Bel.EReparacion.DesCmp, "deleted");
 
             cdcGruposDestinatarios.FillFromStrLEntidad(m_leGruposDestinatarios, Bel.EDestinatariosMail.CodigoCmp, Bel.EDestinatariosMail.DescripcionCmp, "deleted");
-            cdcGruposDestinatarios.AddStrCD("", "", 0);
 
             if (m_leGruposDestinatarios.Count == 1)
                 cdcGruposDestinatarios.SelectedStrCode = m_leGruposDestinatarios[0].Codigo;

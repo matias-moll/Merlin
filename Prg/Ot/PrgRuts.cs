@@ -61,7 +61,7 @@ namespace Mrln.Ot
         public static void MakeAboutInfo()
         {
             // Fijamos la información del About
-            App.AboutInfo= SysRuts.MakeAboutInfo("<TODO>:Descripcion del programa",
+            App.AboutInfo= SysRuts.MakeAboutInfo("Ordenes de Trabajo",
                                                  (Bitmap) App.Imagen("AppEEgg"));
         }
 

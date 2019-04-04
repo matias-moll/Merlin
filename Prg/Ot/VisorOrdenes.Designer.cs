@@ -92,7 +92,7 @@
             // xpnlPanel1
             // 
             this.xpnlPanel1.BackColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.xpnlPanel1.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
+            this.xpnlPanel1.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.xpnlPanel1.Controls.Add(this.xpPanelOrdenes);
             this.xpnlPanel1.Controls.Add(this.fgGrillaItemsOT);
             this.xpnlPanel1.Controls.Add(this.tsContainer1);
@@ -109,7 +109,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.xpPanelOrdenes.AutoScroll = true;
             this.xpPanelOrdenes.BackColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.xpPanelOrdenes.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
+            this.xpPanelOrdenes.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.xpPanelOrdenes.Controls.Add(this.itemBarra10);
             this.xpPanelOrdenes.Controls.Add(this.itemBarra9);
             this.xpPanelOrdenes.Controls.Add(this.itemBarra7);
@@ -282,12 +282,14 @@
             this.fgGrillaItemsOT.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.fgGrillaItemsOT.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
+            this.fgGrillaItemsOT.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.fgGrillaItemsOT.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.fgGrillaItemsOT.CaptionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(163)))), ((int)(((byte)(226)))));
-            this.fgGrillaItemsOT.CaptionFilterColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(119)))), ((int)(((byte)(7)))));
+            this.fgGrillaItemsOT.CaptionBackColor = System.Drawing.Color.DodgerBlue;
+            this.fgGrillaItemsOT.CaptionFilterColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.fgGrillaItemsOT.CaptionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.fgGrillaItemsOT.CaptionVisible = false;
             this.fgGrillaItemsOT.DataMember = "";
+            this.fgGrillaItemsOT.ExcelName = "Datos Exportados";
             this.fgGrillaItemsOT.ExcelTitle = "";
             this.fgGrillaItemsOT.GridOrder = "";
             this.fgGrillaItemsOT.HeaderForeColor = System.Drawing.SystemColors.ControlText;
@@ -335,6 +337,7 @@
             this.tsPanel1.Controls.Add(this.gbCerrarOT);
             this.tsPanel1.Controls.Add(this.gbCancelar);
             this.tsPanel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.tsPanel1.FlatColor = System.Drawing.Color.RoyalBlue;
             this.tsPanel1.Location = new System.Drawing.Point(502, 3);
             this.tsPanel1.Name = "tsPanel1";
             this.tsPanel1.Opacity = 255;
@@ -360,6 +363,7 @@
             this.gbInfo.Size = new System.Drawing.Size(28, 25);
             this.gbInfo.TabIndex = 8;
             this.gbInfo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.gbInfo.Visible = false;
             this.gbInfo.W8Color = System.Drawing.Color.RoyalBlue;
             this.gbInfo.Click += new System.EventHandler(this.gbInfo_Click);
             // 
@@ -381,6 +385,7 @@
             this.gbRealizando.Size = new System.Drawing.Size(110, 50);
             this.gbRealizando.TabIndex = 7;
             this.gbRealizando.Text = "Realizando Orden";
+            this.gbRealizando.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.gbRealizando.W8Color = System.Drawing.Color.DarkOrange;
             this.gbRealizando.Click += new System.EventHandler(this.gbRealizando_Click);
             // 
@@ -446,6 +451,7 @@
             this.gbVerItems.Size = new System.Drawing.Size(94, 50);
             this.gbVerItems.TabIndex = 2;
             this.gbVerItems.Text = "Ver Items ";
+            this.gbVerItems.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.gbVerItems.W8Color = System.Drawing.Color.DodgerBlue;
             this.gbVerItems.Click += new System.EventHandler(this.gbVerItems_Click);
             // 
@@ -467,6 +473,7 @@
             this.gbCerrarOT.Size = new System.Drawing.Size(81, 50);
             this.gbCerrarOT.TabIndex = 1;
             this.gbCerrarOT.Text = "Cerrar";
+            this.gbCerrarOT.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.gbCerrarOT.W8Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.gbCerrarOT.Click += new System.EventHandler(this.gbCerrarOT_Click);
             // 
@@ -498,6 +505,7 @@
             this.tsPanel2.Controls.Add(this.gbImprimirTodos);
             this.tsPanel2.Controls.Add(this.gbNuevaOrden);
             this.tsPanel2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.tsPanel2.FlatColor = System.Drawing.Color.RoyalBlue;
             this.tsPanel2.Location = new System.Drawing.Point(287, 3);
             this.tsPanel2.Name = "tsPanel2";
             this.tsPanel2.Opacity = 255;
@@ -523,6 +531,7 @@
             this.gbImprimirTodos.Size = new System.Drawing.Size(97, 51);
             this.gbImprimirTodos.TabIndex = 5;
             this.gbImprimirTodos.Text = "Imprimir Todas";
+            this.gbImprimirTodos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.gbImprimirTodos.W8Color = System.Drawing.Color.Gray;
             this.gbImprimirTodos.Click += new System.EventHandler(this.gbImprimirTodos_Click);
             // 
@@ -544,6 +553,7 @@
             this.gbNuevaOrden.Size = new System.Drawing.Size(89, 50);
             this.gbNuevaOrden.TabIndex = 4;
             this.gbNuevaOrden.Text = "Nueva";
+            this.gbNuevaOrden.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.gbNuevaOrden.W8Color = System.Drawing.Color.DodgerBlue;
             this.gbNuevaOrden.Click += new System.EventHandler(this.gbNuevaOrden_Click);
             // 
@@ -553,6 +563,7 @@
             this.tsPpanel1.Controls.Add(this.gbFiltrar);
             this.tsPpanel1.Controls.Add(this.cdcMoviles);
             this.tsPpanel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.tsPpanel1.FlatColor = System.Drawing.Color.RoyalBlue;
             this.tsPpanel1.Location = new System.Drawing.Point(0, 3);
             this.tsPpanel1.Name = "tsPpanel1";
             this.tsPpanel1.Opacity = 255;
@@ -578,6 +589,7 @@
             this.gbFiltrar.Size = new System.Drawing.Size(73, 50);
             this.gbFiltrar.TabIndex = 1;
             this.gbFiltrar.Text = "Filtrar";
+            this.gbFiltrar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.gbFiltrar.W8Color = System.Drawing.Color.DodgerBlue;
             this.gbFiltrar.Click += new System.EventHandler(this.gbFiltrar_Click);
             // 
@@ -596,6 +608,8 @@
             // tsBase1
             // 
             this.tsBase1.AutoSize = false;
+            this.tsBase1.FlatLigth = true;
+            this.tsBase1.ForeColor = System.Drawing.Color.Black;
             this.tsBase1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.tsBase1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tab1});

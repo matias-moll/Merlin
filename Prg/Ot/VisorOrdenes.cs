@@ -332,7 +332,7 @@ namespace Mrln.Ot
 
         private void gbInfo_Click(object sender, EventArgs e)
         {
-            // TODO: Armar mini popup que explique el control de orden y todos sus estadios. 
+            // TODO: hacer una ventana con imagenes explicando los estadios de las ordenes.
         }
     }
 }

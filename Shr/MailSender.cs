@@ -16,8 +16,7 @@ namespace Mrln.Shr
         static string mailRemitente, direccionSMTP, mailCredential, passCredential, safeMail;
         static int puertoSMTP;
 
-        public static void enviarMail(List<string> destinatarios, string titulo, string textoMail, int nroCliente, 
-                                      string nombreArchivoAdjunto, decimal precio, StatMsg p_smResult)
+        public static void enviarMail(List<string> destinatarios, string titulo, string textoMail, StatMsg p_smResult)
         {
             try
             {
@@ -48,22 +47,6 @@ namespace Mrln.Shr
                 NetworkCredential credentials = new NetworkCredential(MailSender.mailCredential, MailSender.passCredential, "");
                 client.Credentials = credentials;
 
-                // Si hay archivo adjunto => lo adjuntamos
-                if (nombreArchivoAdjunto != "")
-                {
-                    Attachment attachment = new Attachment(nombreArchivoAdjunto, MediaTypeNames.Application.Octet);
-                    ContentDisposition disposition = attachment.ContentDisposition;
-                    disposition.CreationDate = File.GetCreationTime(nombreArchivoAdjunto);
-                    disposition.ModificationDate = File.GetLastWriteTime(nombreArchivoAdjunto);
-                    disposition.ReadDate = File.GetLastAccessTime(nombreArchivoAdjunto);
-                    disposition.FileName = Path.GetFileName(nombreArchivoAdjunto);
-                    disposition.Size = new FileInfo(nombreArchivoAdjunto).Length;
-                    disposition.DispositionType = DispositionTypeNames.Attachment;
-                    msg.Attachments.Add(attachment);
-
-                    msg.Body = "Ante cualquier duda, ya sea comercial u operativa, nos encontramos a su disposición.";
-                }
-
                 client.Send(msg);
             }
             catch (Exception e)
@@ -74,27 +57,27 @@ namespace Mrln.Shr
 
         private static void cargarParametros(StatMsg p_smResult)
         {
-            EParametro paramMailRemit = App.ParaGet("mailRemit", true, p_smResult);
+            EParametro paramMailRemit = ROParam.Mailremit;
             if (MsgRuts.AnalizeError(App.GetMainWindow(), p_smResult)) return;
             mailRemitente = paramMailRemit.VStr;
 
-            EParametro paramDireccionSMTP = App.ParaGet("direccionSMTP", true, p_smResult);
+            EParametro paramDireccionSMTP = ROParam.Dirsmtp;
             if (MsgRuts.AnalizeError(App.GetMainWindow(), p_smResult)) return;
             direccionSMTP = paramDireccionSMTP.VStr;
 
-            EParametro paramMailCredential = App.ParaGet("mailCredential", true, p_smResult);
+            EParametro paramMailCredential = ROParam.Mailcreden;
             if (MsgRuts.AnalizeError(App.GetMainWindow(), p_smResult)) return;
             mailCredential = paramMailCredential.VStr;
 
-            EParametro paramPassCredential = App.ParaGet("passCredential", true, p_smResult);
+            EParametro paramPassCredential = ROParam.Passcreden;
             if (MsgRuts.AnalizeError(App.GetMainWindow(), p_smResult)) return;
             passCredential = paramPassCredential.VStr;
 
-            EParametro paramSafeMail = App.ParaGet("safeMail", true, p_smResult);
+            EParametro paramSafeMail = ROParam.Safemail;
             if (MsgRuts.AnalizeError(App.GetMainWindow(), p_smResult)) return;
             safeMail = paramSafeMail.VStr;
 
-            EParametro paramPuertoSMTP = App.ParaGet("puertoSMTP", true, p_smResult);
+            EParametro paramPuertoSMTP = ROParam.Puertosmtp;
             if (MsgRuts.AnalizeError(App.GetMainWindow(), p_smResult)) return;
             puertoSMTP = paramPuertoSMTP.VInt;
         }

@@ -57,7 +57,7 @@ namespace Mrln.Mv
         public static void MakeAboutInfo()
         {
             // Fijamos la información del About
-            App.AboutInfo= SysRuts.MakeAboutInfo("<TODO>:Descripcion del programa",
+            App.AboutInfo= SysRuts.MakeAboutInfo("Administración de Móviles",
                                                  (Bitmap) App.Imagen("AppEEgg"));
         }
 

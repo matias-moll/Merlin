@@ -41,6 +41,12 @@ namespace Mrln.Mv
                 TraerInfoBase();
                 TraerInfoEstados();
                 SwitchTo(ModoForm.Inicio);
+
+                foreach (EMovil movil in m_LEMoviles)
+                {
+                    Shr.AlertHelper.CheckForAlertsAndProcess(movil, m_smResult);
+                    if (MsgRuts.AnalizeError(App.GetMainWindow(), m_smResult)) return;
+                }
             }
         }
 
@@ -216,6 +222,9 @@ namespace Mrln.Mv
                 nuevosKilometros.Km = l_frmMovilCombustible.Kilometros;
                 nuevosKilometros.Fecha = DateTime.Now;
                 Bll.Moviles.MvkmSave(nuevosKilometros, m_smResult);
+                if (MsgRuts.AnalizeError(App.GetMainWindow(), m_smResult)) return;
+
+                Shr.AlertHelper.CheckForAlertsAndProcess(m_entMovil, m_smResult);
                 if (MsgRuts.AnalizeError(App.GetMainWindow(), m_smResult)) return;
             }
 

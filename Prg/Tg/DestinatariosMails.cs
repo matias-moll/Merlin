@@ -291,7 +291,7 @@ namespace Mrln.Tg
         private void gbGrabar_Click(object sender, System.EventArgs e)
         {
             // Pasamos los datos a la Entidad
-            m_entDestinatariosMail.Codigo= txtCodigo.Text;
+            m_entDestinatariosMail.Codigo= Bel.EDestinatariosMail.FrmtCodigo(txtCodigo.Text);
             m_entDestinatariosMail.Descripcion= txtDescripcion.Text;
             m_entDestinatariosMail.Destinatarios = getDestinatariosMails();
 

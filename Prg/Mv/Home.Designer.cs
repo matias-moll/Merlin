@@ -177,6 +177,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Home";
             this.Activated += new System.EventHandler(this.Home_Activated);
+            this.Load += new System.EventHandler(this.Home_Load);
             this.topPanel.ResumeLayout(false);
             this.topPanel.PerformLayout();
             this.ftContainer.ResumeLayout(false);

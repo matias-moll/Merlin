@@ -16,7 +16,7 @@ namespace Mrln.Bll
     //----------------------------------------------------------------------------
     //                         TNG Software BLL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 07/02/2019 03:30
+    // Fecha                    : 04/04/2019 02:20
     // Sistema                  : Mrln
     // Clase para Administrar   : 
     //----------------------------------------------------------------------------
@@ -223,6 +223,7 @@ namespace Mrln.Bll
                 case "mal_cd6_codreparacion"           : {return "V1ReparacionCN1";}
                 case "mal_cod_codcontrol"              : {return "V1ControlCN1";}
                 case "mal_cod_coddestinatarios"        : {return "V1DestinatariosCN1";}
+                case "mal_fec_fecha"                   : {return "V1Fecha a DispararFN2";}
                 case "mal_control"                     : {return "V1ControlCN1";}
                 case "mal_destinats"                   : {return "V1DestinatariosCN1";}
                 case "mal_reparacion"                  : {return "V1ReparacionCN1";}
@@ -234,6 +235,7 @@ namespace Mrln.Bll
                 case "mco_val_litros"                  : {return "V1Litros CargadosLN3";}
                 case "mco_imp_importe"                 : {return "V1Importe2N3";}
                 case "mco_rcd_codestacion"             : {return "V1Codigo estacionCN1";}
+                case "mco_nro_kilometros"              : {return "V1KilometrosNN3";}
 
                 // ****************************************
                 // Tabla: MvlEquipamiento     

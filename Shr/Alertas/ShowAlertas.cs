@@ -13,18 +13,22 @@ namespace Mrln.Shr
     {
         List<EAlerta> m_lsAlertas = null;
         private StatMsg m_smResult = null;
+        string patente = "";
         Bel.EAlerta m_eAlertaEnPantalla = null;
 
-        public ShowAlertas(List<EAlerta> alertasAMostrar)
+        public ShowAlertas(List<EAlerta> alertasAMostrar, string patenteMovil)
         {
             InitializeComponent();
             m_smResult = new StatMsg();
             m_lsAlertas = alertasAMostrar;
+            patente = patenteMovil;
         }
 
         private void ShowAlertas_Load(object sender, EventArgs e)
         {
             mostrarAlertaEnPantalla();
+
+            fllMovil.Text = "Móvil: " + patente;
         }
 
         #region Eventos 

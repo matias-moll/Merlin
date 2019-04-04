@@ -45,14 +45,16 @@
             this.lblDetalle = new TNGS.NetControls.FullLabel();
             this.lblDescripcion = new TNGS.NetControls.FullLabel();
             this.lblRecordar = new TNGS.NetControls.FullLabel();
+            this.fllMovil = new TNGS.NetControls.FullLabel();
             this.xpFondo.SuspendLayout();
             this.SuspendLayout();
             // 
             // xpFondo
             // 
             this.xpFondo.BackColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.xpFondo.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
+            this.xpFondo.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.xpFondo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.xpFondo.Controls.Add(this.fllMovil);
             this.xpFondo.Controls.Add(this.gbFinalizarAlerta);
             this.xpFondo.Controls.Add(this.lblTotalAlertas);
             this.xpFondo.Controls.Add(this.fullLabel2);
@@ -173,7 +175,6 @@
             this.gbConfirmarRecordarEn.RoundCorners = 2;
             this.gbConfirmarRecordarEn.Size = new System.Drawing.Size(30, 28);
             this.gbConfirmarRecordarEn.TabIndex = 211;
-            this.gbConfirmarRecordarEn.Text = "Aceptar";
             this.gbConfirmarRecordarEn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.gbConfirmarRecordarEn.W8Color = System.Drawing.Color.DodgerBlue;
             this.gbConfirmarRecordarEn.Click += new System.EventHandler(this.gbConfirmarRecordarEn_Click);
@@ -258,6 +259,17 @@
             this.lblRecordar.TabIndex = 1;
             this.lblRecordar.Text = "Recordar en";
             // 
+            // fllMovil
+            // 
+            this.fllMovil.BackColor = System.Drawing.Color.Transparent;
+            this.fllMovil.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fllMovil.Location = new System.Drawing.Point(90, -1);
+            this.fllMovil.Name = "fllMovil";
+            this.fllMovil.Size = new System.Drawing.Size(199, 27);
+            this.fllMovil.TabIndex = 218;
+            this.fllMovil.Text = "Móvil";
+            this.fllMovil.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // ShowAlertas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -294,5 +306,6 @@
         private TNGS.NetControls.GlassButton gbVisto;
         private TNGS.NetControls.GlassButton gbConfirmarRecordarEn;
         private System.Windows.Forms.Panel panel1;
+        private TNGS.NetControls.FullLabel fllMovil;
     }
 }
