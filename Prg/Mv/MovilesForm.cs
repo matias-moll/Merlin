@@ -41,12 +41,15 @@ namespace Mrln.Mv
                 TraerInfoBase();
                 TraerInfoEstados();
                 SwitchTo(ModoForm.Inicio);
+            }
+        }
 
-                foreach (EMovil movil in m_LEMoviles)
-                {
-                    Shr.AlertHelper.CheckForAlertsAndProcess(movil, m_smResult);
-                    if (MsgRuts.AnalizeError(App.GetMainWindow(), m_smResult)) return;
-                }
+        public void showPendingAlerts()
+        {
+            foreach (EMovil movil in m_LEMoviles)
+            {
+                Shr.AlertHelper.CheckForAlertsAndProcess(movil, m_smResult);
+                if (MsgRuts.AnalizeError(App.GetMainWindow(), m_smResult)) return;
             }
         }
 

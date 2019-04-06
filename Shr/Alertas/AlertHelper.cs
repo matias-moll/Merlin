@@ -51,11 +51,16 @@ namespace Mrln.Shr
 
                 List<string> destinatarios = destinatariosMail.Destinatarios.Split(',').ToList();
 
+                destinatarios = destinatarios.Where(destinatario => destinatario.Trim() != "").ToList();
+
                 MailSender.enviarMail(destinatarios, "Alerta Automatica Sistema Móviles", getDetalleMail(alerta, movil), p_smResult);
                 if (MsgRuts.AnalizeError(App.GetMainWindow(), p_smResult)) return;
 
-                alerta.Mailsenviados = "S";
-                Bll.Alertas.AleSave(alerta, p_smResult);
+                EAlerta alertaToupdate = Bll.Alertas.AleGet(alerta.Nroconfig, alerta.Nroalerta, true, p_smResult);
+                if (MsgRuts.AnalizeError(App.GetMainWindow(), p_smResult)) return;
+
+                alertaToupdate.Mailsenviados = "S";
+                Bll.Alertas.AleSave(alertaToupdate, p_smResult);
                 if (MsgRuts.AnalizeError(App.GetMainWindow(), p_smResult)) return;
             }
                 
@@ -63,7 +68,7 @@ namespace Mrln.Shr
 
         private static string getDetalleMail(EAlerta alerta, EMovil movil)
         {
-            return $"Movil: {movil.Patente} {Environment.NewLine} {Environment.NewLine} Descripción: {alerta.Descripcion} {Environment.NewLine} {Environment.NewLine} Detalle: {alerta.Detalle}";
+            return $"Movil: {movil.Patente} <br /> <br /> Descripción: {alerta.Descripcion} <br /> <br /> Detalle: {alerta.Detalle}";
         }
 
         private static bool pasaronDiasYDebeRepetirse(EAlerta alerta)

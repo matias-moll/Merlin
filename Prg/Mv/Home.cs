@@ -41,5 +41,10 @@ namespace Mrln.Mv
         private void Home_Load(object sender, EventArgs e)
         {
         }
+
+        internal void ShowAlerts()
+        {
+            movilesForm1.showPendingAlerts();
+        }
     }
 }

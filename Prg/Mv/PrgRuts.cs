@@ -38,6 +38,8 @@ namespace Mrln.Mv
             // Liberamos el menu
             App.LockMenu(false);
             App.HideMsg();
+
+            ((Home)App.GetMainWindow()).ShowAlerts();
         }
 
         /// <summary>

@@ -43,6 +43,8 @@ namespace Mrln.Shr
                 SmtpClient client = new SmtpClient(servidorCorreo, puerto);
 
                 client.EnableSsl = (MailSender.safeMail == "S");
+                client.DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network;
+                client.UseDefaultCredentials = false;
 
                 NetworkCredential credentials = new NetworkCredential(MailSender.mailCredential, MailSender.passCredential, "");
                 client.Credentials = credentials;
