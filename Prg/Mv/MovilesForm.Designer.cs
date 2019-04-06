@@ -43,12 +43,12 @@
             this.lblPatente = new TNGS.NetControls.FullLabel();
             this.gbNuevoMovil = new TNGS.NetControls.GlassButton();
             this.gbBorrarMovil = new TNGS.NetControls.GlassButton();
+            this.gbModificarMovil = new TNGS.NetControls.GlassButton();
             this.panelMovilSeleccionado = new System.Windows.Forms.Panel();
             this.gbHistorialCompleto = new TNGS.NetControls.GlassButton();
             this.fgKm = new TNGS.NetControls.FullGrid();
             this.gbCambiarEstado = new TNGS.NetControls.GlassButton();
             this.fgEquipamiento = new TNGS.NetControls.FullGrid();
-            this.gbModificarMovil = new TNGS.NetControls.GlassButton();
             this.fgCombustibles = new TNGS.NetControls.FullGrid();
             this.fullLabel4 = new TNGS.NetControls.FullLabel();
             this.fgMovilEstados = new TNGS.NetControls.FullGrid();
@@ -106,7 +106,7 @@
             this.tgrpMoviles.ForeColor = System.Drawing.Color.Black;
             this.tgrpMoviles.GroupImage = null;
             this.tgrpMoviles.GroupTitle = "Móviles";
-            this.tgrpMoviles.Location = new System.Drawing.Point(6, 70);
+            this.tgrpMoviles.Location = new System.Drawing.Point(3, 70);
             this.tgrpMoviles.Name = "tgrpMoviles";
             this.tgrpMoviles.Padding = new System.Windows.Forms.Padding(20);
             this.tgrpMoviles.PaintGroupBox = false;
@@ -114,7 +114,7 @@
             this.tgrpMoviles.ShadowColor = System.Drawing.Color.DarkGray;
             this.tgrpMoviles.ShadowControl = false;
             this.tgrpMoviles.ShadowThickness = 3;
-            this.tgrpMoviles.Size = new System.Drawing.Size(243, 541);
+            this.tgrpMoviles.Size = new System.Drawing.Size(247, 541);
             this.tgrpMoviles.TabIndex = 0;
             this.tgrpMoviles.TitleBackground = System.Drawing.Color.Firebrick;
             this.tgrpMoviles.TitleBackgroundDefault = TNGS.NetControls.ColorRuts.ColoresDefault.None;
@@ -133,9 +133,9 @@
             // ftrMoviles
             // 
             this.ftrMoviles.IgnoreLevelInFill = false;
-            this.ftrMoviles.Location = new System.Drawing.Point(12, 32);
+            this.ftrMoviles.Location = new System.Drawing.Point(7, 32);
             this.ftrMoviles.Name = "ftrMoviles";
-            this.ftrMoviles.Size = new System.Drawing.Size(222, 381);
+            this.ftrMoviles.Size = new System.Drawing.Size(234, 381);
             this.ftrMoviles.TabIndex = 0;
             this.ftrMoviles.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.ftrMoviles_AfterSelect);
             this.ftrMoviles.DoubleClick += new System.EventHandler(this.ftrMoviles_DoubleClick);
@@ -258,6 +258,28 @@
             this.gbBorrarMovil.W8Color = System.Drawing.Color.Red;
             this.gbBorrarMovil.Click += new System.EventHandler(this.gbBorrarMovil_Click);
             // 
+            // gbModificarMovil
+            // 
+            this.gbModificarMovil.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("gbModificarMovil.BackgroundImage")));
+            this.gbModificarMovil.BlackBorder = true;
+            this.gbModificarMovil.ButtonMode = TNGS.NetControls.GlassButton.GBMode.Flat;
+            this.gbModificarMovil.CircleButton = false;
+            this.gbModificarMovil.FixedFlatImage = TNGS.NetControls.FixedFlatImageButtons.Edit;
+            this.gbModificarMovil.FlatColor = System.Drawing.Color.DodgerBlue;
+            this.gbModificarMovil.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.LightBlue;
+            this.gbModificarMovil.FlatFontSize = 9;
+            this.gbModificarMovil.FlatTextColor = System.Drawing.Color.Black;
+            this.gbModificarMovil.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.gbModificarMovil.Location = new System.Drawing.Point(84, 14);
+            this.gbModificarMovil.Name = "gbModificarMovil";
+            this.gbModificarMovil.RoundCorners = 2;
+            this.gbModificarMovil.Size = new System.Drawing.Size(91, 41);
+            this.gbModificarMovil.TabIndex = 5;
+            this.gbModificarMovil.Text = "Modificar";
+            this.gbModificarMovil.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.gbModificarMovil.W8Color = System.Drawing.Color.DodgerBlue;
+            this.gbModificarMovil.Click += new System.EventHandler(this.gbModificarMovil_Click);
+            // 
             // panelMovilSeleccionado
             // 
             this.panelMovilSeleccionado.BackColor = System.Drawing.Color.Transparent;
@@ -363,28 +385,6 @@
             this.fgEquipamiento.Size = new System.Drawing.Size(326, 220);
             this.fgEquipamiento.SkinFixed = true;
             this.fgEquipamiento.TabIndex = 2;
-            // 
-            // gbModificarMovil
-            // 
-            this.gbModificarMovil.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("gbModificarMovil.BackgroundImage")));
-            this.gbModificarMovil.BlackBorder = true;
-            this.gbModificarMovil.ButtonMode = TNGS.NetControls.GlassButton.GBMode.Flat;
-            this.gbModificarMovil.CircleButton = false;
-            this.gbModificarMovil.FixedFlatImage = TNGS.NetControls.FixedFlatImageButtons.Edit;
-            this.gbModificarMovil.FlatColor = System.Drawing.Color.DodgerBlue;
-            this.gbModificarMovil.FlatDefaultColor = TNGS.NetControls.ColorRuts.ColoresDefault.LightBlue;
-            this.gbModificarMovil.FlatFontSize = 9;
-            this.gbModificarMovil.FlatTextColor = System.Drawing.Color.Black;
-            this.gbModificarMovil.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.gbModificarMovil.Location = new System.Drawing.Point(84, 14);
-            this.gbModificarMovil.Name = "gbModificarMovil";
-            this.gbModificarMovil.RoundCorners = 2;
-            this.gbModificarMovil.Size = new System.Drawing.Size(91, 41);
-            this.gbModificarMovil.TabIndex = 5;
-            this.gbModificarMovil.Text = "Modificar";
-            this.gbModificarMovil.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.gbModificarMovil.W8Color = System.Drawing.Color.DodgerBlue;
-            this.gbModificarMovil.Click += new System.EventHandler(this.gbModificarMovil_Click);
             // 
             // fgCombustibles
             // 

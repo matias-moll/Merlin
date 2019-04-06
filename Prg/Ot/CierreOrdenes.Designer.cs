@@ -59,7 +59,7 @@
             // xPanel1
             // 
             this.xPanel1.BackColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.xPanel1.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
+            this.xPanel1.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.xPanel1.BorderColor = System.Drawing.Color.Black;
             this.xPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.xPanel1.Controls.Add(this.tgrpItem);
@@ -90,20 +90,20 @@
             this.tgrpItem.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tgrpItem.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.tgrpItem.BackgroundGradientColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
+            this.tgrpItem.BackgroundGradientColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.tgrpItem.BackgroundGradientMode = TNGS.NetControls.ImgGroup.GroupBoxGradientMode.ForwardDiagonal;
             this.tgrpItem.BlackBorder = true;
-            this.tgrpItem.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.tgrpItem.BorderColor = System.Drawing.Color.DodgerBlue;
             this.tgrpItem.BorderThickness = 1F;
             this.tgrpItem.Controls.Add(this.gbAceptarItem);
             this.tgrpItem.Controls.Add(this.deImporteCierre);
             this.tgrpItem.Controls.Add(this.fullLabel3);
             this.tgrpItem.Controls.Add(this.fullLabel4);
             this.tgrpItem.Controls.Add(this.teComentarioCierre);
-            this.tgrpItem.CustomGroupBoxColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
+            this.tgrpItem.CustomGroupBoxColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.tgrpItem.FlatMode = true;
             this.tgrpItem.FontTitle = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tgrpItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.tgrpItem.ForeColor = System.Drawing.Color.Black;
             this.tgrpItem.GroupImage = null;
             this.tgrpItem.GroupTitle = "Item";
             this.tgrpItem.Location = new System.Drawing.Point(13, 370);
@@ -153,14 +153,14 @@
             this.deImporteCierre.Name = "deImporteCierre";
             this.deImporteCierre.Size = new System.Drawing.Size(236, 21);
             this.deImporteCierre.TabIndex = 3;
-            this.deImporteCierre.Text = "0.00";
+            this.deImporteCierre.Text = "0,00";
             // 
             // fullLabel3
             // 
             this.fullLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.fullLabel3.Location = new System.Drawing.Point(29, 44);
             this.fullLabel3.Name = "fullLabel3";
-            this.fullLabel3.Size = new System.Drawing.Size(143, 21);
+            this.fullLabel3.Size = new System.Drawing.Size(119, 21);
             this.fullLabel3.TabIndex = 13;
             this.fullLabel3.Text = "Comentario Cierre:";
             // 
@@ -168,16 +168,16 @@
             // 
             this.fullLabel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.fullLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fullLabel4.Location = new System.Drawing.Point(510, 44);
+            this.fullLabel4.Location = new System.Drawing.Point(535, 45);
             this.fullLabel4.Name = "fullLabel4";
-            this.fullLabel4.Size = new System.Drawing.Size(111, 24);
+            this.fullLabel4.Size = new System.Drawing.Size(89, 24);
             this.fullLabel4.TabIndex = 14;
             this.fullLabel4.Text = "Importe Final:";
             // 
             // teComentarioCierre
             // 
             this.teComentarioCierre.BackColor = System.Drawing.SystemColors.Window;
-            this.teComentarioCierre.Location = new System.Drawing.Point(180, 42);
+            this.teComentarioCierre.Location = new System.Drawing.Point(154, 42);
             this.teComentarioCierre.Multiline = true;
             this.teComentarioCierre.Name = "teComentarioCierre";
             this.teComentarioCierre.Size = new System.Drawing.Size(336, 86);
@@ -360,13 +360,15 @@
             // 
             this.fgItems.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.fgItems.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
+            this.fgItems.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.fgItems.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.fgItems.CaptionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(163)))), ((int)(((byte)(226)))));
-            this.fgItems.CaptionFilterColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(119)))), ((int)(((byte)(7)))));
+            this.fgItems.CaptionBackColor = System.Drawing.Color.DodgerBlue;
+            this.fgItems.CaptionFilterColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.fgItems.CaptionFont = new System.Drawing.Font("Arial Narrow", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fgItems.CaptionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.fgItems.CaptionVisible = false;
             this.fgItems.DataMember = "";
+            this.fgItems.ExcelName = "Datos Exportados";
             this.fgItems.ExcelTitle = "";
             this.fgItems.GridOrder = "";
             this.fgItems.HeaderForeColor = System.Drawing.SystemColors.ControlText;

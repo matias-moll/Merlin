@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 01/04/2019 01:18
+// Fecha       : 06/04/2019 03:40
 // Sistema     : Mrln
 // Tabla       : MvlAlertas
 //----------------------------------------------------------------------------
@@ -371,7 +371,7 @@ go
 --- <param name="@mal_cd6_codreparacion">Reparacion</param>
 --- <param name="@mal_cod_codcontrol">Control</param>
 --- <param name="@mal_cod_coddestinatarios">Destinatarios</param>
---- <param name="@mal_fec_fecha">Fecha a Disparar Alerta</param>
+--- <param name="@mal_fec_fecha">Fecha a Disparar</param>
 --- <param name="@usuario">Usuario que genera el insert</param>
 ---
 ---////////////////////////////////////////////////////////
@@ -437,7 +437,7 @@ go
 --- <param name="@mal_cd6_codreparacion">Reparacion</param>
 --- <param name="@mal_cod_codcontrol">Control</param>
 --- <param name="@mal_cod_coddestinatarios">Destinatarios</param>
---- <param name="@mal_fec_fecha">Fecha a Disparar Alerta</param>
+--- <param name="@mal_fec_fecha">Fecha a Disparar</param>
 --- <param name="@usuario">Usuario que genera el update</param>
 ---
 ---////////////////////////////////////////////////////////
