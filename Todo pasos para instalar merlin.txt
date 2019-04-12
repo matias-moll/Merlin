@@ -1,0 +1,7 @@
+- terminar de agregar los programa al archivo bbcf.
+
+- Crear la carpeta Merlin en Sistemas en el server.
+
+- Armar el ini.
+
+- Crear la base a mano. luego correr el archivo full de base de datos.
