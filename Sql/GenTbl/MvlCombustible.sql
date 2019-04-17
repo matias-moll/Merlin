@@ -1,11 +1,11 @@
 /*----------------------------------------------------------------------------
 //                 TNG Software Script Generator (Tablas)                     
 //----------------------------------------------------------------------------
-// Fecha              : 31/07/2018 21:45
+// Fecha              : 15/04/2019 00:59
 // Base de Datos      : TNGS_Mrln
 // Tabla              : MvlCombustible
 //----------------------------------------------------------------------------
-// © 1999-2018 by TNG Software                                      Gndr 5.20
+// © 1999-2019 by TNG Software                                      Gndr 5.20
 //---------------------------------------------------------------------------*/
 
 /* ***************************************************************************
@@ -44,6 +44,7 @@ create table MvlCombustible
       mco_val_litros tngs_valor,
       mco_imp_importe tngs_importe,
       mco_rcd_codestacion tngs_codigo_r,
+      mco_nro_kilometros tngs_numero,
       instante tngs_fecyhor,
       deleted tngs_borrado,
       usuario tngs_nombre,

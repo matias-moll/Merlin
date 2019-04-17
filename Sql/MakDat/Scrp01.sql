@@ -1,11 +1,11 @@
 /*---------------------------------------------------------------------------
 //                   TNG Software (Scripts iniciales de la Base)
 //---------------------------------------------------------------------------
-// Fecha              : 31/07/2018 21:45
+// Fecha              : 15/04/2019 00:59
 // Base de Datos      : TNGS_Mrln
 // Objetivo           : Creación de los usuarios de la base
 //----------------------------------------------------------------------------
-// © 1999-2018 by TNG Software                                      Gndr 5.20
+// © 1999-2019 by TNG Software                                      Gndr 5.20
 //---------------------------------------------------------------------------*/
 
 /* ***************************************************************************
@@ -38,6 +38,13 @@ print ' '
 
 if not exists (select * from sysusers where name = 'tngsqbe' and uid < 16382)
    EXEC sp_adduser 'tngsqbe', 'tngsqbe', 'public'
+go
+
+print 'Creando Usuario:  tngsview'
+print ' '
+
+if not exists (select * from sysusers where name = 'tngsview' and uid < 16382)
+   EXEC sp_adduser 'tngsview', 'tngsview', 'public'
 go
 
 /*--------------------------------------------------------------------------*/

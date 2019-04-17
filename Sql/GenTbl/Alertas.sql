@@ -1,11 +1,11 @@
 /*----------------------------------------------------------------------------
 //                 TNG Software Script Generator (Tablas)                     
 //----------------------------------------------------------------------------
-// Fecha              : 31/07/2018 21:45
+// Fecha              : 15/04/2019 00:59
 // Base de Datos      : TNGS_Mrln
 // Tabla              : Alertas
 //----------------------------------------------------------------------------
-// © 1999-2018 by TNG Software                                      Gndr 5.20
+// © 1999-2019 by TNG Software                                      Gndr 5.20
 //---------------------------------------------------------------------------*/
 
 /* ***************************************************************************
@@ -49,6 +49,7 @@ create table Alertas
       alr_nom_usuariovista tngs_nombre,
       alr_nro_repetirendias tngs_numero,
       alr_cd1_finalizada tngs_codigo_1,
+      alr_cd1_mailsenviados tngs_codigo_1,
       instante tngs_fecyhor,
       deleted tngs_borrado,
       usuario tngs_nombre,

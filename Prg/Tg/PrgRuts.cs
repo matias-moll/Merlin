@@ -36,10 +36,6 @@ namespace Mrln.Tg
             // Creamos el DockManager
             ((MainFrame) App.GetMainWindow()).CreateDockManager();
 
-            //Justo Abajo de la creacion del dockManager isntanciamos el primer dockeable
-            //Intanciamos el Dockeable principal.
-            Controles l_dcReparaciones = new Controles();
-
             // Liberamos el menu
             App.LockMenu(false);
             App.HideMsg();

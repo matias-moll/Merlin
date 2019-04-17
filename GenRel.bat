@@ -30,7 +30,6 @@ copy "T:\Ambiente0520\DNet0520\Release_Uil\MS.TabStripControlLibrary.520.dll"   
 copy "T:\Ambiente0520\DNet0520\Release_Uil\netchartdir.dll"                      "XX - Release\Prg"
 copy "T:\Ambiente0520\DNet0520\Release_Uil\PS.TaskDialog.520.dll"                "XX - Release\Prg"
 copy "T:\Ambiente0520\DNet0520\Release_Uil\WeifenLuo.WinFormsUI.Docking.520.dll" "XX - Release\Prg"
-REM copy "T:\Ambiente0520\DNet0520\Release_Uil\lame_enc.dll"                         "XX - Release\Prg"
 
 copy "T:\Ambiente0520\DNet0520\Release_Uil\TNGS.NetApp.520.dll"                  "XX - Release\Prg"
 copy "T:\Ambiente0520\DNet0520\Release_Uil\TNGS.NetAppBll.520.dll"               "XX - Release\Prg"
@@ -39,18 +38,23 @@ copy "T:\Ambiente0520\DNet0520\Release_Uil\TNGS.NetIPlugin.520.dll"             
 copy "T:\Ambiente0520\DNet0520\Release_Uil\TNGS.NetOffice.520.dll"               "XX - Release\Prg"
 copy "T:\Ambiente0520\DNet0520\Release_Uil\TNGS.NetRoutines.520.dll"             "XX - Release\Prg"
 copy "T:\Ambiente0520\DNet0520\Release_Uil\TNGS.NetSocket.520.dll"               "XX - Release\Prg"
+copy "T:\Mrln0200\ExternalLibraries\Bunifu_UI_v1.52.dll"                         "XX - Release\Prg"
 
 rem **
-rem ** Copiamos los elementos del Proyecto: Rivn
+rem ** Copiamos los elementos del Proyecto: Merlin
 rem **
 REM copy Pin\Def\bin\Release\Rivn.PlgDef.dll                                           "XX - Release\Prg"
 REM copy Pin\<TODO>\bin\Release\Rivn.<TODO>.Plugin.dll                                         "XX - Release\Plg"
 
-copy Dal\bin\Release\Rivn.Dal.dll                                                  "XX - Release\Prg"
-copy Bel\bin\Release\Rivn.Bel.dll                                                  "XX - Release\Prg"
-copy Bll\bin\Release\Rivn.Bll.dll                                                  "XX - Release\Prg"
-copy Shr\bin\Release\Rivn.Shr.dll                                                  "XX - Release\Prg"
-REM copy Prg\<TODO>\bin\release\Rivn.<TODO>.exe                                                "XX - Release\Prg"
+copy Dal\bin\Release\Mrln.Dal.dll                                                  "XX - Release\Prg"
+copy Bel\bin\Release\Mrln.Bel.dll                                                  "XX - Release\Prg"
+copy Bll\bin\Release\Mrln.Bll.dll                                                  "XX - Release\Prg"
+copy Shr\bin\Release\Mrln.Shr.dll                                                  "XX - Release\Prg"
+
+copy Prg\Mv\bin\Release\Mrln.Mv.exe                                                "XX - Release\Prg"
+copy Prg\Ot\bin\Release\Mrln.Ot.exe                                                "XX - Release\Prg"
+copy Prg\Rp\bin\Release\Mrln.Rp.exe                                                "XX - Release\Prg"
+copy Prg\Tg\bin\Release\Mrln.Tg.exe                                                "XX - Release\Prg"
 
 REM echo .
 REM echo Generando EUse

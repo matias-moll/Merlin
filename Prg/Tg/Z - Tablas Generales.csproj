@@ -99,6 +99,12 @@
     <Compile Include="Categorias.Designer.cs">
       <DependentUpon>Categorias.cs</DependentUpon>
     </Compile>
+    <Compile Include="CategoriasTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CategoriasTest.Designer.cs">
+      <DependentUpon>CategoriasTest.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controles y Reparaciones\Controles.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -181,6 +187,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Categorias.resx">
       <DependentUpon>Categorias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CategoriasTest.resx">
+      <DependentUpon>CategoriasTest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controles y Reparaciones\Controles.resx">
       <DependentUpon>Controles.cs</DependentUpon>
