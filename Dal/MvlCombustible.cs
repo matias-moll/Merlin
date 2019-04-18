@@ -10,7 +10,7 @@ namespace Mrln.Dal
     //----------------------------------------------------------------------------
     //                         TNG Software DAL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 01/04/2019 01:18
+    // Fecha                    : 18/04/2019 09:49
     // Sistema                  : Mrln
     // Clase para Administrar   : Combustible en moviles
     // Basada en la Tabla       : MvlCombustible
@@ -537,6 +537,7 @@ namespace Mrln.Dal
                 // Fijamos los nuevos captions de la grilla
                 p_dtResult.Columns["mco_rcd_codestacion"].Caption= "V1Codigo estacionCN1";
                 p_dtResult.Columns["mco_imp_importe"].Caption= "V1Importe2N1";
+                p_dtResult.Columns["mco_nro_kilometros"].Caption= "V1KilometrosNN1";
                 p_dtResult.Columns["mco_val_litros"].Caption= "V1Litros CargadosLN1";
                 p_dtResult.Columns["deleted"].Caption= "V1Borrado2N2";
             }

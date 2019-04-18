@@ -1,15 +1,6 @@
 TODO:
 
-- Validar que si el parametro conexion cedi es vacio no se conecte al cedi y devuelva una lista hardcoded para esa combo.
-Tiene que tolerar empresas que no interfaceen con cedi.
-
-- Probar el tema de que no funciona el cierre de forms de tablas generales.
-
-- Hacer un test general con lo deployado en roque perez.
-
-
-
-Testear con la base correcta y Grabar video demo.
+Grabar video demo del ordenes de trabajo.
 
 
 Crear programa de XF (Xfill)
