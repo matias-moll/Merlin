@@ -31,26 +31,26 @@ namespace Mrln.Bll.ObjetosSoporte
         private void llenarCaptions()
         {
             //Seteamos caption de los combustibles
-            Combustibles.ChangeCaption("mco_val_litros", "V1Litros2N1");
-            Combustibles.ChangeCaption("mco_imp_importe", "V1Importe2S2");
-            Combustibles.ChangeCaption("mco_fyh_fecha", "V1FechaFN1");
-            Combustibles.ChangeCaption("ets_des_des", "V1EstacionCN2");
+            Combustibles.ChangeCaption(EMovilCombus.LitrosCmp, "V1Litros2N1");
+            Combustibles.ChangeCaption(EMovilCombus.ImporteCmp, "V1Importe2S2");
+            Combustibles.ChangeCaption(EMovilCombus.FechaCmp, "V1FechaFN1");
+            Combustibles.ChangeCaption(EEstacion.DesCmp, "V1EstacionCN2");
+            Combustibles.ChangeCaption(EMovilCombus.KilometrosCmp, "V1KMsNN2");
 
             ////Cambiar caption de equipamiento
-            Equipamiento.ChangeCaption("meq_cod_codequip", "V1CCN1");
+            Equipamiento.ChangeCaption(EMovilEquip.CodequipCmp, "V1CCN1");
             Equipamiento.ChangeCaption("meq_des_Equip", "V1EquipamientoCN2");
             Equipamiento.ChangeCaption("deleted", "");
 
             //Seteamos caption de Km
-            Kms.ChangeCaption("mkm_fyh_fecha", "V1FechaFN2");
-            Kms.ChangeCaption("mkm_nro_km", "V1KilometrosNN2");
+            Kms.ChangeCaption(EMovilKms.FechaCmp, "V1FechaFN2");
+            Kms.ChangeCaption(EMovilKms.KmCmp, "V1KilometrosNN2");
 
             //Seteamos caption de estados
-            Estados.ChangeCaption("mve_fyh_fecha", "V1FechaFN2");
-            Estados.ChangeCaption("est_des_des", "V1EstadoCN2");
-            Estados.ChangeCaption("mve_nro_km", "V1KmsCN2");
-            Estados.ChangeCaption("mve_rcd_codestado", "V1CCN1");
-
+            Estados.ChangeCaption(EMovilEstado.FechaCmp, "V1FechaFN2");
+            Estados.ChangeCaption(EEstado.DesCmp, "V1EstadoCN2");
+            Estados.ChangeCaption(EMovilEstado.KmCmp, "V1KmsCN2");
+            Estados.ChangeCaption(EMovilEstado.CodestadoCmp, "V1CCN1");
         }
 
 

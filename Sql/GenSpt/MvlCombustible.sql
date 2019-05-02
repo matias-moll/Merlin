@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------
 //                         TNG Software SPs Generator
 //----------------------------------------------------------------------------
-// Fecha       : 06/04/2019 03:40
+// Fecha       : 18/04/2019 09:57
 // Sistema     : Mrln
 // Tabla       : MvlCombustible
 //----------------------------------------------------------------------------
@@ -865,7 +865,8 @@ begin
    SELECT TOP 5 mco_val_litros, 
    mco_imp_importe, 
    mco_fyh_fecha, 
-   ets_des_des 
+   ets_des_des, 
+   mco_nro_kilometros 
     
    FROM TNGS_Mrln..MvlCombustible 
    JOIN TNGS_Mrln..Estaciones 

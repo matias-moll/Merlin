@@ -168,7 +168,7 @@
         CsYqSDz+zwAARm0yf77BTHMAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="cmdNuevo.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="gbNuevo.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1
         MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxMAAAsTAQCanBgAAACmSURBVDhPY0ACukD8HIj/48HT
@@ -177,7 +177,7 @@
         aQAyIBgGoFSGLQOBMCcQEzQAHwZlcxwGMDAAALKGW8kkEgnIAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="cmdModificar.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="gbModificar.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1
         MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxMAAAsTAQCanBgAAAD0SURBVDhPjdNB5kJBAMfxOUOr
@@ -199,7 +199,7 @@
         IQOmsuHSFjJg568cWkAGvPyVQzOo7+BUG/wr3voL4gtMQKRDaecAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="cmdModPadre.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="gbModPadre.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1
         MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxMAAAsTAQCanBgAAACTSURBVDhPY/j//z9FGAaMgfgD

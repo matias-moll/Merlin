@@ -120,7 +120,7 @@ namespace Mrln.Mv
             if (m_AMAsocMoviles.Combustibles.Count != 0)
             {
                 fgCombustibles.FillFromLEntidad(m_AMAsocMoviles.Combustibles);
-                fgCombustibles.ColWitdhs = "57;60;100;175;";
+                fgCombustibles.ColWitdhs = "50;60;70;155;57;";
             }
         }
 
@@ -331,7 +331,7 @@ namespace Mrln.Mv
             // Fijamos el nuevo estado de la grilla
             switch (p_goNewGState)
             {
-                case OpGrid.Combus: { TraerInfoBase(); LlenarGridCombustible(); break; }
+                case OpGrid.Combus: { TraerInfoBase(); LlenarGridCombustible(); LlenarGridKm(); break; }
                 case OpGrid.Equip: { TraerInfoBase(); LlenarGridEquipamiento(); break; }
                 case OpGrid.Estados: { TraerInfoBase(); LlenarGridEstados(); break; }
                 case OpGrid.Km: { TraerInfoBase(); LlenarGridKm(); break; }

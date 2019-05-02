@@ -178,7 +178,9 @@ namespace Mrln.Bll
                 EParametro conexionCEDI = AppRuts.ParaGet("connCEDI", true, p_smResult);
                 if (p_smResult.NOk) return null;
 
-                 
+                if (conexionCEDI.VStr.Trim() == "")
+                    return null;
+
                 DBConn.AltDatConn = conexionCEDI.VStr;
                 l_dbcAccess = DBRuts.GetConection(Connections.AltDat, "tngsqbe", CriptoRuts.DESHide("qbe"));
 

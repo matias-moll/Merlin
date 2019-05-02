@@ -14,7 +14,7 @@ namespace Mrln.Bel
     //----------------------------------------------------------------------------
     //                         TNG Software BEL Generator
     //----------------------------------------------------------------------------
-    // Fecha                    : 01/04/2019 01:17
+    // Fecha                    : 18/04/2019 09:49
     // Sistema                  : Mrln
     // Clase para Administrar   : Moviles y Tablas Hijas
     //----------------------------------------------------------------------------
@@ -819,7 +819,7 @@ namespace Mrln.Bel
         /// <param name="p_strCodreparacion">Reparacion</param>
         /// <param name="p_strCodcontrol">Control</param>
         /// <param name="p_strCoddestinatarios">Destinatarios</param>
-        /// <param name="p_dtFecha">Fecha a Disparar Alerta</param>
+        /// <param name="p_dtFecha">Fecha a Disparar</param>
         /// <returns>Entidad: MovilAlerta</returns>
         public static EMovilAlerta NewFilled(string p_strPatente,
                                              int p_iNroconfigalerta,
@@ -1034,7 +1034,7 @@ namespace Mrln.Bel
         }
 
         /// <summary>
-        /// Fecha a Disparar Alerta
+        /// Fecha a Disparar
         /// </summary>
         public static string FechaCmp
         {
@@ -1042,7 +1042,7 @@ namespace Mrln.Bel
         }
 
         /// <summary>
-        /// Fecha a Disparar Alerta
+        /// Fecha a Disparar
         /// </summary>
         public DateTime Fecha
         {

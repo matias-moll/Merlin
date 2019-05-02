@@ -97,7 +97,7 @@ namespace Mrln.Tg
             // xpnlBase
             // 
             this.xpnlBase.BackColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.xpnlBase.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
+            this.xpnlBase.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.xpnlBase.Controls.Add(this.tsContainer1);
             this.xpnlBase.Controls.Add(this.lblTitle);
             this.xpnlBase.Controls.Add(this.grdDatos);
@@ -139,6 +139,7 @@ namespace Mrln.Tg
             this.tabStripPage1.Controls.Add(this.tsPanel2);
             this.tabStripPage1.Controls.Add(this.tsPanel1);
             this.tabStripPage1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabStripPage1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.tabStripPage1.Location = new System.Drawing.Point(4, 0);
             this.tabStripPage1.Name = "tabStripPage1";
             this.tabStripPage1.Opacity = 255;
@@ -155,6 +156,7 @@ namespace Mrln.Tg
             this.tsPanel2.Controls.Add(this.cmdCancelar);
             this.tsPanel2.Controls.Add(this.cmdGrabar);
             this.tsPanel2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.tsPanel2.FlatColor = System.Drawing.Color.RoyalBlue;
             this.tsPanel2.Location = new System.Drawing.Point(311, 3);
             this.tsPanel2.Name = "tsPanel2";
             this.tsPanel2.Opacity = 255;
@@ -260,6 +262,7 @@ namespace Mrln.Tg
             this.tsPanel1.Controls.Add(this.gbSalir);
             this.tsPanel1.Controls.Add(this.cmdModificar);
             this.tsPanel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.tsPanel1.FlatColor = System.Drawing.Color.RoyalBlue;
             this.tsPanel1.Location = new System.Drawing.Point(0, 3);
             this.tsPanel1.Name = "tsPanel1";
             this.tsPanel1.Opacity = 255;
@@ -360,6 +363,8 @@ namespace Mrln.Tg
             // tsBase1
             // 
             this.tsBase1.AutoSize = false;
+            this.tsBase1.FlatLigth = true;
+            this.tsBase1.ForeColor = System.Drawing.Color.Black;
             this.tsBase1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.tsBase1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tab1});
@@ -401,10 +406,11 @@ namespace Mrln.Tg
             this.grdDatos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.grdDatos.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
+            this.grdDatos.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.grdDatos.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.grdDatos.CaptionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(163)))), ((int)(((byte)(226)))));
-            this.grdDatos.CaptionFilterColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(119)))), ((int)(((byte)(7)))));
+            this.grdDatos.CaptionBackColor = System.Drawing.Color.DodgerBlue;
+            this.grdDatos.CaptionFilterColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.grdDatos.CaptionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.grdDatos.CaptionVisible = false;
             this.grdDatos.DataMember = "";
             this.grdDatos.ExcelName = "Datos Exportados";
@@ -471,10 +477,10 @@ namespace Mrln.Tg
             this.frmEdicion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.frmEdicion.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.frmEdicion.BackgroundGradientColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
+            this.frmEdicion.BackgroundGradientColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.frmEdicion.BackgroundGradientMode = TNGS.NetControls.ImgGroup.GroupBoxGradientMode.ForwardDiagonal;
             this.frmEdicion.BlackBorder = true;
-            this.frmEdicion.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.frmEdicion.BorderColor = System.Drawing.Color.DodgerBlue;
             this.frmEdicion.BorderThickness = 1F;
             this.frmEdicion.Controls.Add(this.lblCod);
             this.frmEdicion.Controls.Add(this.txtCod);
@@ -482,10 +488,10 @@ namespace Mrln.Tg
             this.frmEdicion.Controls.Add(this.txtDes);
             this.frmEdicion.Controls.Add(this.lblCrit);
             this.frmEdicion.Controls.Add(this.cmbCrit);
-            this.frmEdicion.CustomGroupBoxColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(227)))), ((int)(((byte)(242)))));
+            this.frmEdicion.CustomGroupBoxColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.frmEdicion.FlatMode = true;
             this.frmEdicion.FontTitle = new System.Drawing.Font("Arial", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.frmEdicion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.frmEdicion.ForeColor = System.Drawing.Color.Black;
             this.frmEdicion.GroupImage = null;
             this.frmEdicion.GroupTitle = " Control ";
             this.frmEdicion.Location = new System.Drawing.Point(4, 394);
@@ -580,9 +586,10 @@ namespace Mrln.Tg
             this.ClientSize = new System.Drawing.Size(984, 485);
             this.Controls.Add(this.xpnlBase);
             this.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Controles";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Controles_FormClosed);

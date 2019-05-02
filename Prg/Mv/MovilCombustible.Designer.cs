@@ -30,6 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             this.xpnlPanel = new TNGS.NetControls.XPanel();
+            this.cbGrabarKMs = new System.Windows.Forms.CheckBox();
+            this.neKms = new TNGS.NetControls.NumberEdit();
+            this.lblKilometros = new TNGS.NetControls.FullLabel();
             this.gbAceptar = new TNGS.NetControls.GlassButton();
             this.gbCancelar = new TNGS.NetControls.GlassButton();
             this.deImporte = new TNGS.NetControls.DecimalEdit();
@@ -38,9 +41,6 @@
             this.neLitros = new TNGS.NetControls.NumberEdit();
             this.lblLitros = new TNGS.NetControls.FullLabel();
             this.lblImporte = new TNGS.NetControls.FullLabel();
-            this.neKms = new TNGS.NetControls.NumberEdit();
-            this.lblKilometros = new TNGS.NetControls.FullLabel();
-            this.cbGrabarKMs = new System.Windows.Forms.CheckBox();
             this.xpnlPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -67,6 +67,39 @@
             this.xpnlPanel.SkinFixed = true;
             this.xpnlPanel.TabIndex = 0;
             // 
+            // cbGrabarKMs
+            // 
+            this.cbGrabarKMs.AutoSize = true;
+            this.cbGrabarKMs.BackColor = System.Drawing.Color.Transparent;
+            this.cbGrabarKMs.Location = new System.Drawing.Point(303, 144);
+            this.cbGrabarKMs.Name = "cbGrabarKMs";
+            this.cbGrabarKMs.Size = new System.Drawing.Size(91, 19);
+            this.cbGrabarKMs.TabIndex = 4;
+            this.cbGrabarKMs.Text = "Grabar KMs";
+            this.cbGrabarKMs.UseVisualStyleBackColor = false;
+            // 
+            // neKms
+            // 
+            this.neKms.BackColor = System.Drawing.SystemColors.Window;
+            this.neKms.Location = new System.Drawing.Point(171, 142);
+            this.neKms.MaxLength = 7;
+            this.neKms.Name = "neKms";
+            this.neKms.NegativeValid = false;
+            this.neKms.Size = new System.Drawing.Size(112, 21);
+            this.neKms.TabIndex = 3;
+            this.neKms.Text = "0";
+            this.neKms.ZeroValid = false;
+            // 
+            // lblKilometros
+            // 
+            this.lblKilometros.BackColor = System.Drawing.Color.Transparent;
+            this.lblKilometros.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblKilometros.Location = new System.Drawing.Point(16, 142);
+            this.lblKilometros.Name = "lblKilometros";
+            this.lblKilometros.Size = new System.Drawing.Size(105, 27);
+            this.lblKilometros.TabIndex = 10;
+            this.lblKilometros.Text = "Kilómetros:";
+            // 
             // gbAceptar
             // 
             this.gbAceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -81,7 +114,7 @@
             this.gbAceptar.Location = new System.Drawing.Point(299, 192);
             this.gbAceptar.Name = "gbAceptar";
             this.gbAceptar.Size = new System.Drawing.Size(96, 31);
-            this.gbAceptar.TabIndex = 8;
+            this.gbAceptar.TabIndex = 5;
             this.gbAceptar.Text = "Aceptar";
             this.gbAceptar.W8Color = System.Drawing.Color.LimeGreen;
             this.gbAceptar.Click += new System.EventHandler(this.gbAceptar_Click);
@@ -100,7 +133,7 @@
             this.gbCancelar.Location = new System.Drawing.Point(197, 192);
             this.gbCancelar.Name = "gbCancelar";
             this.gbCancelar.Size = new System.Drawing.Size(96, 31);
-            this.gbCancelar.TabIndex = 9;
+            this.gbCancelar.TabIndex = 6;
             this.gbCancelar.Text = "Cancelar";
             this.gbCancelar.W8Color = System.Drawing.Color.Red;
             this.gbCancelar.Click += new System.EventHandler(this.gbCancelar_Click);
@@ -112,8 +145,8 @@
             this.deImporte.MaxLength = 13;
             this.deImporte.Name = "deImporte";
             this.deImporte.Size = new System.Drawing.Size(112, 21);
-            this.deImporte.TabIndex = 6;
-            this.deImporte.Text = "0,00";
+            this.deImporte.TabIndex = 2;
+            this.deImporte.Text = "0.00";
             // 
             // lblEstacion
             // 
@@ -135,7 +168,7 @@
             this.cdcEstacion.Name = "cdcEstacion";
             this.cdcEstacion.Size = new System.Drawing.Size(223, 23);
             this.cdcEstacion.Sorted = true;
-            this.cdcEstacion.TabIndex = 4;
+            this.cdcEstacion.TabIndex = 1;
             // 
             // neLitros
             // 
@@ -144,7 +177,7 @@
             this.neLitros.MaxLength = 3;
             this.neLitros.Name = "neLitros";
             this.neLitros.Size = new System.Drawing.Size(112, 21);
-            this.neLitros.TabIndex = 2;
+            this.neLitros.TabIndex = 0;
             this.neLitros.Text = "0";
             // 
             // lblLitros
@@ -166,39 +199,6 @@
             this.lblImporte.Size = new System.Drawing.Size(78, 27);
             this.lblImporte.TabIndex = 1;
             this.lblImporte.Text = "Importe:";
-            // 
-            // neKms
-            // 
-            this.neKms.BackColor = System.Drawing.SystemColors.Window;
-            this.neKms.Location = new System.Drawing.Point(171, 142);
-            this.neKms.MaxLength = 7;
-            this.neKms.Name = "neKms";
-            this.neKms.NegativeValid = false;
-            this.neKms.Size = new System.Drawing.Size(112, 21);
-            this.neKms.TabIndex = 11;
-            this.neKms.Text = "0";
-            this.neKms.ZeroValid = false;
-            // 
-            // lblKilometros
-            // 
-            this.lblKilometros.BackColor = System.Drawing.Color.Transparent;
-            this.lblKilometros.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblKilometros.Location = new System.Drawing.Point(16, 142);
-            this.lblKilometros.Name = "lblKilometros";
-            this.lblKilometros.Size = new System.Drawing.Size(105, 27);
-            this.lblKilometros.TabIndex = 10;
-            this.lblKilometros.Text = "Kilómetros:";
-            // 
-            // cbGrabarKMs
-            // 
-            this.cbGrabarKMs.AutoSize = true;
-            this.cbGrabarKMs.BackColor = System.Drawing.Color.Transparent;
-            this.cbGrabarKMs.Location = new System.Drawing.Point(303, 144);
-            this.cbGrabarKMs.Name = "cbGrabarKMs";
-            this.cbGrabarKMs.Size = new System.Drawing.Size(91, 19);
-            this.cbGrabarKMs.TabIndex = 12;
-            this.cbGrabarKMs.Text = "Grabar KMs";
-            this.cbGrabarKMs.UseVisualStyleBackColor = false;
             // 
             // MovilCombustible
             // 

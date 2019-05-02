@@ -148,8 +148,10 @@ namespace Mrln.Mv
                 if (MsgRuts.AnalizeError(this, m_smResult)) return;
             }
 
-            cdcTipoMovil.FillFromStrLEntidad(tiposMoviles, "codigo", "descripcion", "deleted");
-
+            if (tiposMoviles == null || tiposMoviles.Count == 0)
+                cdcTipoMovil.AddStrCD("   1", "ESTANDAR");
+            else
+                cdcTipoMovil.FillFromStrLEntidad(tiposMoviles, "codigo", "descripcion", "deleted");
         }
 
         // chequea que todos los campos tengan datos validos.

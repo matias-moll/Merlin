@@ -186,7 +186,7 @@ namespace Mrln.Tg
         /// <summary>
         /// Llama al formulario de mantenimiento de la tabla Padre
         /// </summary>
-        private void cmdModPadre_Click(object sender, System.EventArgs e)
+        private void gbModPadre_Click(object sender, System.EventArgs e)
         {
             // Mostramos el formulario de ABM del padre
             App.SetACL(m_aclInfo);
@@ -263,7 +263,7 @@ namespace Mrln.Tg
             // Obtenemos la entidad del item seleccionado en la grilla
             App.ShowMsg("Recuperando Datos...");
             m_entControlRepa= Bll.Controles.CrepGet(cmbControl.SelectedStrCode,
-                                                    (int) grdDatos.GetMatrixValueObj(l_iRow, 2),
+                                                    (int) grdDatos.GetMatrixValueObj(l_iRow, 1),
                                                     false, m_smResult);
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
@@ -440,17 +440,18 @@ namespace Mrln.Tg
 
             // Habilitamos la grilla y los controles operativos
             cmbControl.Enabled= true;
-            cmdModPadre.Enabled= true;
-            cmdNuevo.Enabled= true;
-            cmdModificar.Enabled= true;
+            gbModPadre.Enabled= true;
+            gbNuevo.Enabled= true;
+            gbModificar.Enabled= true;
             gbSalir.Enabled= true;
+            gbCompactar.Enabled = true;
             cmdPrint.Enabled= true;
             cmdExcel.Enabled= true;
             grdDatos.Enabled= true;
 
             // Procesamos los comandos ACL
-            cmdNuevo.Visible= ((m_aclInfo[0].VStr == "S") || (m_aclInfo[1].VStr == "S"));
-            cmdModificar.Visible= ((m_aclInfo[0].VStr == "S") || (m_aclInfo[3].VStr == "S"));
+            gbNuevo.Visible= ((m_aclInfo[0].VStr == "S") || (m_aclInfo[1].VStr == "S"));
+            gbModificar.Visible= ((m_aclInfo[0].VStr == "S") || (m_aclInfo[3].VStr == "S"));
 
             // El ESC sale del formulario
             CancelButton= gbSalir;
@@ -472,10 +473,8 @@ namespace Mrln.Tg
             cdcCodRep.Enabled = m_entControlRepa.EsNueva;
             cmdCancelar.Enabled= true;
             cmdGrabar.Enabled= !m_entControlRepa.EstaBorrada;
-            gbDeshabilitar.FixedImage= (m_entControlRepa.EstaBorrada) ? FixedGlassButtons.Enable 
-                                                                 : FixedGlassButtons.Disable;
             gbDeshabilitar.Enabled= ((!m_entControlRepa.EsNueva) && (!m_entControlRepa.EstaBorrada));
-            gbHabilitar.Enabled= !gbDeshabilitar.Enabled;
+            gbHabilitar.Enabled= ((!m_entControlRepa.EsNueva) && !gbDeshabilitar.Enabled);
 
             // Procesamos los comandos ACL
             gbHabilitar.Visible= ((m_aclInfo[0].VStr == "S") || (m_aclInfo[4].VStr == "S"));
@@ -483,10 +482,11 @@ namespace Mrln.Tg
 
             // Dehabilitamos la grilla y los controles operativos
             cmbControl.Enabled= false;
-            cmdModPadre.Enabled= false;
-            cmdNuevo.Enabled= false;
-            cmdModificar.Enabled= false;
+            gbModPadre.Enabled= false;
+            gbNuevo.Enabled= false;
+            gbModificar.Enabled= false;
             gbSalir.Enabled= false;
+            gbCompactar.Enabled = false;
             cmdPrint.Enabled= false;
             cmdExcel.Enabled= false;
             grdDatos.Enabled= false;

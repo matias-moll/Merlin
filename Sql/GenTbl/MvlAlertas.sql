@@ -1,11 +1,11 @@
 /*----------------------------------------------------------------------------
 //                 TNG Software Script Generator (Tablas)                     
 //----------------------------------------------------------------------------
-// Fecha              : 31/07/2018 21:45
+// Fecha              : 15/04/2019 00:59
 // Base de Datos      : TNGS_Mrln
 // Tabla              : MvlAlertas
 //----------------------------------------------------------------------------
-// © 1999-2018 by TNG Software                                      Gndr 5.20
+// © 1999-2019 by TNG Software                                      Gndr 5.20
 //---------------------------------------------------------------------------*/
 
 /* ***************************************************************************
@@ -45,6 +45,7 @@ create table MvlAlertas
       mal_cd6_codreparacion tngs_codigo_6,
       mal_cod_codcontrol tngs_codigo,
       mal_cod_coddestinatarios tngs_codigo,
+      mal_fec_fecha tngs_fecha,
       instante tngs_fecyhor,
       deleted tngs_borrado,
       usuario tngs_nombre,
