@@ -153,7 +153,7 @@
             this.deImporteCierre.Name = "deImporteCierre";
             this.deImporteCierre.Size = new System.Drawing.Size(236, 21);
             this.deImporteCierre.TabIndex = 3;
-            this.deImporteCierre.Text = "0,00";
+            this.deImporteCierre.Text = "0.00";
             // 
             // fullLabel3
             // 
@@ -431,8 +431,10 @@
             this.ClientSize = new System.Drawing.Size(940, 585);
             this.Controls.Add(this.xPanel1);
             this.Font = new System.Drawing.Font("Arial", 9F);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "CierreOrdenes";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

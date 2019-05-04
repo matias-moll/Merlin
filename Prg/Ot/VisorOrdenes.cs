@@ -62,6 +62,12 @@ namespace Mrln.Ot
         {
             if (!gbFiltrar.Checked)
             {
+                if (cdcMoviles.SelectedStrCode == "")
+                {
+                    MsgRuts.ShowMsg(this, "No se puede filtrar por todas las ordenes. Elija un móvil antes de clickear filtrar.");
+                    return;
+                }
+
                 LEOrdenesTrabajo ordenesPorMovil = Bll.OrdenesTrabajo.ObtenerOTsPorPatente(cdcMoviles.SelectedStrCode, m_smResult);
                 if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
@@ -80,6 +86,7 @@ namespace Mrln.Ot
             {
                 actualizarOrdenesEnPantalla();
 
+                cdcMoviles.SelectedStrCode = "";
                 gbFiltrar.Checked = false;
                 gbFiltrar.Text = "Filtrar";
                 cdcMoviles.Enabled = true;
@@ -201,6 +208,9 @@ namespace Mrln.Ot
         {
             xpPanelOrdenes.Controls.Clear();
 
+            if (ordenesACargar.Count == 0)
+                return;
+
             // Separamos el primer caso por cuestion de la location.
             EOrdenTrabajo primeraOrden = ordenesACargar.First();
             itemBarra primerItem = newItemFromOrden(primeraOrden);
@@ -252,6 +262,8 @@ namespace Mrln.Ot
             cdcMoviles.FillFromStrLEntidad(m_LEMoviles, "mov_ecd_patente", "mov_des_des", "deleted");
             if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
+            cdcMoviles.AddStrCD("", "--TODOS--");
+            cdcMoviles.SelectedStrCode = "";
         }
 
         private void unItem_FueSeleccionado(object sender, EventArgs e)

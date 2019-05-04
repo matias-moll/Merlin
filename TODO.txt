@@ -1,25 +1,8 @@
 TODO:
 
-Revisar alta de moviles nuevos, genero 3 registros de kms vacios.
-
-Agregar opcion de TODOS en la combo de moviles en ordenes de trabajo.
-
-Agregar boton de cerrado en cierre de orden de trabajo. Que el aceptar funcione como cierre
-si todas las opciones estan cargadas.
-
 
 Testear con la base correcta y Grabar video demo.
 
-
-Crear programa de XF (Xfill)
-Metadata, Programas
-Xf
-no tiene splash
-Tiene que tener login con S
-no es mdi
-Sal en N
-
-Ejemplo de este programa en el publico Matias.
 
 
 

@@ -63,6 +63,7 @@
             this.gbImprimirTodos = new TNGS.NetControls.GlassButton();
             this.gbNuevaOrden = new TNGS.NetControls.GlassButton();
             this.tsPpanel1 = new TNGS.NetControls.TSPanel();
+            this.label1 = new System.Windows.Forms.Label();
             this.gbFiltrar = new TNGS.NetControls.GlassButton();
             this.cdcMoviles = new TNGS.NetControls.CDCombo();
             this.tsBase1 = new TNGS.NetControls.TSBase();
@@ -560,6 +561,7 @@
             // tsPpanel1
             // 
             this.tsPpanel1.Caption = "Seleccion Movil";
+            this.tsPpanel1.Controls.Add(this.label1);
             this.tsPpanel1.Controls.Add(this.gbFiltrar);
             this.tsPpanel1.Controls.Add(this.cdcMoviles);
             this.tsPpanel1.Dock = System.Windows.Forms.DockStyle.Left;
@@ -570,6 +572,15 @@
             this.tsPpanel1.Size = new System.Drawing.Size(287, 85);
             this.tsPpanel1.Speed = 1;
             this.tsPpanel1.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 7);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(34, 15);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Móvil";
             // 
             // gbFiltrar
             // 
@@ -599,7 +610,7 @@
             this.cdcMoviles.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cdcMoviles.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cdcMoviles.FormattingEnabled = true;
-            this.cdcMoviles.Location = new System.Drawing.Point(12, 23);
+            this.cdcMoviles.Location = new System.Drawing.Point(12, 25);
             this.cdcMoviles.Name = "cdcMoviles";
             this.cdcMoviles.Size = new System.Drawing.Size(181, 23);
             this.cdcMoviles.Sorted = true;
@@ -661,6 +672,7 @@
             this.tsPanel1.ResumeLayout(false);
             this.tsPanel2.ResumeLayout(false);
             this.tsPpanel1.ResumeLayout(false);
+            this.tsPpanel1.PerformLayout();
             this.tsBase1.ResumeLayout(false);
             this.tsBase1.PerformLayout();
             this.ResumeLayout(false);
@@ -703,5 +715,6 @@
         private TNGS.NetControls.GlassButton gbImprimirSeleccionado;
         private TNGS.NetControls.GlassButton gbRealizando;
         private TNGS.NetControls.GlassButton gbInfo;
+        private System.Windows.Forms.Label label1;
     }
 }

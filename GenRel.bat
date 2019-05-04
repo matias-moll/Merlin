@@ -43,6 +43,8 @@ copy Bel\bin\Release\Mrln.Bel.dll                                               
 copy Bll\bin\Release\Mrln.Bll.dll                                                  "XX - Release\Prg"
 copy Shr\bin\Release\Mrln.Shr.dll                                                  "XX - Release\Prg"
 
+copy Prg\ControlesCustom\bin\Release\ControlesCustom.dll                           "XX - Release\Prg"
+
 copy Prg\Mv\bin\Release\Mrln.Mv.exe                                                "XX - Release\Prg"
 copy Prg\Ot\bin\Release\Mrln.Ot.exe                                                "XX - Release\Prg"
 copy Prg\Rp\bin\Release\Mrln.Rp.exe                                                "XX - Release\Prg"

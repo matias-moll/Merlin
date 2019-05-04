@@ -98,6 +98,7 @@ namespace Mrln.Ot
             }
 
             Bll.Moviles.fCerrarOrden(m_eOrdenACerrar, m_smResult);
+            if (MsgRuts.AnalizeError(this, m_smResult)) return;
 
             MsgRuts.ShowMsg(this, "La orden de trabajo fue cerrada exitosamente");
 
