@@ -1,5 +1,6 @@
 TODO:
 
+<<<<<<< HEAD
 Revisar alta de moviles nuevos, genero 3 registros de kms vacios.
 
 Agregar opcion de TODOS en la combo de moviles en ordenes de trabajo.
@@ -9,6 +10,9 @@ si todas las opciones estan cargadas.
 
 
 Testear con la base correcta y Grabar video demo.
+=======
+Grabar video demo del ordenes de trabajo.
+>>>>>>> b117ae9df90b377f5d2eb8cff2d819e03a39e181
 
 
 Crear programa de XF (Xfill)
